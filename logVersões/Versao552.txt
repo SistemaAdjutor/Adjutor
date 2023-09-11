@@ -1,0 +1,29 @@
+Atualizado em 26/01/2021
+Inicio da versão: 19/01/2021
+
+patch 2 : CHEMVET, NORMANDIN, flexsul, QUANTICA
+  faltou o script 247 e 349 
+  Nova tela para impressão de etiquetas na entrada de nota ADJ 165 [CHEMVET]
+  Novo modelo de etiqueta - aguardar tarefa de inclusão da tela Adjt 337 [chemvet]
+  Melhoria na tela de impressão de etiquetas da entrada de nota adj 364
+  Aumentar a quantidade de digito da agencia adj 368 [ flexsul]
+  Erro no xml das notas fiscais adj 362
+  Centro de custo obrigatório no contas a pagar 361 [QUANTICA]
+  Incluir pesquisa por vendedor contas a receber 360 [ QUANTICA] 
+  Erro ao alterar tipo de pedido 358
+  
+  
+patch 1 : normadin, chemvet, QUANTICA
+   alteração das formulas 349 [ normadin]
+   modificar valores do tipo do gancho 347 [NORMANDIN]
+   Informar lote antecipadamente no PCP adj 346 [chemvet]
+   Adicionar um total geral no relatório de pedidos faturados por vendedor ADJ 355 [QUANTICA]
+   
+principal : normandin, collect,chemvet, delta
+	erro no dashboard, adj 351
+	ajustar cst do ipi adj 357 [NORMANDIN]
+	Problemas do instalador 356
+	Correção das palavras minusculas. ADJ 348 [NORMANDIN]
+	Sistema travou a movimentação das colunas ADJ 345 [Collect]
+	Erro ao imprimir ordem de produção modelo 1 adj 341 [ CHEMVET]
+	Tela de margens do pedido duplicando itens adj 247 [delta]

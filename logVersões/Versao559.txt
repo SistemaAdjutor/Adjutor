@@ -1,0 +1,36 @@
+﻿Atualizado em 05/08/2021
+Inicio da versão: 05/08/2021
+
+patch 03: Itagrill, Quantica, Chemvet do Brasil Ltda, Normadin, Hospital São José
+  Erro ao gravar o item do pedido - ADJ 637 [Novi]
+  Ordem de produção Itagrill - ADJ 635 [Itagrill]
+  Cor da fonte para itens abaixo do estoque minino - ADJ 632 [Quantica]
+  Remover e-mail do suporte - ADJ 633 - [Novi]
+  Ordem de produção ArtGrill - ADJ 628 [Chemvet do Brasil Ltda]
+  Ajuste da etiqueta de Expedição - ADJ 598 - Normadin
+  Verificar importação do arquivo retorno - ADJ 537 [Hospital São José]
+
+patch 02: Embraterm, BSC Industrial Aços Ltda, Chemvet, Quantica, FlexSul Calçados LTDA, Yvytu
+  Ajustar cálculo do PV - ADJ 623 - [Embraterm]
+  Campo fixo no relatório de OP. - ADJ 619 [BSC Industrial Aços Ltda]
+  Lote do produto envasado - ADJ  617 [Chemvet]
+  Parâmetro para limite de credito inicial - ADJ 595 - [Quantica]
+  Sistema não válida código do banco ao gerar remessa - ADJ 627 - [FlexSul Calçados LTDA]
+  Criar parâmetro para nome do campo no relatório - ADJ 599 - [Yvytu]
+  Copiar cadastro de usuário - ADJ 474 - Novi
+
+patch 01: Embraterm
+  Ajustes tela custo de fábrica - ADJ 610 [Embraterm]
+  Ajustar cálculo do ponto de equilíbrio - ADJ 618 [Novi]
+
+principal: BSC Industrial Aços Ltda, Quantica, Chemvet do Brasil, Metalúrgica Água, Embraterm, Rotor
+  Data de entrega PCP - ADJ 615 [BSC Industrial Aços Ltda]
+  Campo de consumo unitário - ADJ 614 [BSC Industrial Aços Ltda]
+  Colocar no script - validação de emp_código - ADJ 611 [Quantica]
+  Pedidos duplicados na tela de consulta pedidos - ADJ 606 [Novi]
+  Coluna de Lote no PCP - ADJ 586 [Chemvet do Brasil]
+  Erro no estorno do estoque - remessa de industrialização - ADJ 490 [Metalúrgica Água]
+  Erro ao converter pedido para venda - ADJ 607 [Quantica]
+  Ajustar arredondamento nós cálculos - ADJ 605 [Embraterm]
+  Incluir no script - correção consulta plano de contas - ADJ 612 [Embraterm]
+  Nova etiqueta no faturamento - ADJ 559 [Rotor]

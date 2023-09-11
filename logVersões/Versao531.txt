@@ -1,0 +1,111 @@
+﻿Atualizado em 07/05/2019
+Inicio da versão: 27/02/2019
+
+patch7
+  : 
+   parametro de responsável técnico colocado na tela de parametros -> nota fiscal ->  reponsável técnico
+ 
+   botão cadastro na tela de consulta pagamentos
+patch 6 :
+   repasse de doações CELESC http://192.168.0.250:8080/agile/tarefa/show/97828
+   retorno não mostra as duplicatas na consulta d http://192.168.0.250:8080/agile/tarefa/show/98038
+   log de versões
+   atalho do CRM no lugar do backup
+patch 5 :
+	ajuste do download do mdf destinatário, apagando certificado
+	margem do kit http://192.168.0.250:8080/agile/tarefa/show/98644
+	consulta do cnpj do fornecedor  http://192.168.0.250:8080/agile/tarefa/show/98765
+	ajuste do giro de estoque que inclui : http://192.168.0.250:8080/agile/tarefa/show/99018
+		data pesquisa antes de terminar de digitar;
+	    não filtrava corretamente por grupo e linha
+	    foi colocado o filtro de produto para facilitar
+		mostra as vendas de kit
+		otimização da consulta
+		ajuste no cadastro de produto mostra o vendas de kit
+	ajuste do executar script
+
+patch 4: 
+	erro de produção da nfe: tag a mais técnico responsável (somente para homologação) http://192.168.0.250:8080/agile/tarefa/show/98978
+	problemas emissão da NFe com CFOP 5405 e ICMS cobrando anteriormente por ST http://192.168.0.250:8080/agile/tarefa/show/99192
+	parametro reponsável tecnico na nfe
+	log de versões
+patch 3 :
+    atualização do acbr
+	nfce erro no relatório http://192.168.0.250:8080/agile/tarefa/show/97482
+	inclusão do tag na nfe do técnico responsável
+	Consulta cancelamento para SP    http://192.168.0.250:8080/agile/tarefa/show/95733
+	manifesto atualização e verifica todos os nsu, por vez desde a ultima atualização no sistema confrontando com a ultima da sefaz http://192.168.0.250:8080/agile/tarefa/show/96937
+	erro ao agrupar pedido http://192.168.0.250:8080/agile/tarefa/show/98829
+	relatório de pedidos faturados trazendo linhas duplicadas http://192.168.0.250:8080/agile/tarefa/show/98803
+	erro ao concluir op com lote http://192.168.0.250:8080/agile/tarefa/show/98380
+	tela de pcp lenta http://192.168.0.250:8080/agile/tarefa/show/98450
+	fluxo de caixa com consideração dos dias para crédito do "CARTÃO DE CRÉDITO" http://192.168.0.250:8080/agile/tarefa/show/98606
+	relatórios orçamentos (ultimo retorno) com cnpj e ie
+	telas CRM agenda e renovação maximizada
+	tela de receber com o botão de faturar
+	relatorio de pedidos trazendo pedidos com notas canceladas	
+	erro no pedido http://192.168.0.250:8080/agile/tarefa/show/98829
+patch 2 :  
+	Erro no cálculo de matérias primas na ordem de produção e consumos do PCP e Calculo do custo médio 
+	melhorias do CRM AGENDA http://192.168.0.250:8080/agile/tarefa/show/92124
+	tela de receber e pagar vai direto na pesquisa
+	fluxo de caixa, botão calcular mensal
+	fluxo de caixa, exportar para excel
+	fluxo de caixa, simular valores
+	tela de detalhes do fluxo de caixa, clicar em um fatura, vai aos detalhes da fatura	
+	mudar função baixar boletos da copel http://192.168.0.250:8080/agile/tarefa/show/97817	
+	No relatório não esta saindo a soma do custo total. http://192.168.0.250:8080/agile/tarefa/show/98102
+	mostra vairas vezes o mesmo produto porque o produto tem muitos codigos originais (veno). http://192.168.0.250:8080/agile/tarefa/show/98177
+	baixa automática http://192.168.0.250:8080/agile/tarefa/show/98692
+	boletos da empresa 3 aparecendo na empresa 1 e 2 http://192.168.0.250:8080/agile/tarefa/show/98650
+patch 1:
+	erro na lista de preço ao entrar na tela "PRE_TIPO_TABELA" http://192.168.0.250:8080/agile/tarefa/show/98479
+  
+Tarefas do versão principal:
+	numero de serie não esta sendo gravado http://192.168.0.250:8080/agile/tarefa/show/96210
+	Adicionar horário no relatório de vendas pendentes http://192.168.0.250:8080/agile/tarefa/show/96208
+	Ajustar descrição no campo http://192.168.0.250:8080/agile/tarefa/show/96483
+	Cadastrar novas unidades de medida no sistema http://192.168.0.250:8080/agile/tarefa/show/96150
+	Não deixar incluir o item provisório em pedidos de Venda http://192.168.0.250:8080/agile/tarefa/show/95985
+	Mostrar em quais produtos a materia-prima é utilizada http://192.168.0.250:8080/agile/tarefa/show/96587
+	evento não limpa, quando a pesquisa não traz nada http://192.168.0.250:8080/agile/tarefa/show/96670
+	Tela de transportadora não esta atualizando informações do frete http://192.168.0.250:8080/agile/tarefa/show/96504
+	BI - novos relatórios de ABC para estoque baseado em valor e quantidade http://192.168.0.250:8080/agile/tarefa/show/97394
+	Access violation na entrada de nota http://192.168.0.250:8080/agile/tarefa/show/96919
+	tradução das caixas de pergunta http://192.168.0.250:8080/agile/tarefa/show/97390
+	atualizações de componentes de algumas telas, eliminando rxlib
+	otimização da tela de pedido http://192.168.0.250:8080/agile/tarefa/show/97402
+	gestão de inadimplência http://192.168.0.250:8080/agile/tarefa/show/97392
+	inadimplências em financeiro e BI http://192.168.0.250:8080/agile/tarefa/show/97398
+	abc por cliente tem o indice de inadimplência http://192.168.0.250:8080/agile/tarefa/show/97396
+	rannk de pagadores conforme atraso no título no BI http://192.168.0.250:8080/agile/tarefa/show/97400
+	run script disponível http://192.168.0.250:8080/agile/tarefa/show/97404
+	No filtro de busca pelo número da nota http://192.168.0.250:8080/agile/tarefa/show/97022
+	Desativar botão emitir NFC-e quando for orçamento http://192.168.0.250:8080/agile/tarefa/show/97045
+	Na ficha técnica de composição abrir um campo Perda prevista para cada iten da ficha http://192.168.0.250:8080/agile/tarefa/show/97476
+	Impressão do pedido de compras saindo com mais casas depois da virgula http://192.168.0.250:8080/agile/tarefa/show/90695
+	Tela de expedição trazendo notas fiscais sem considerar emp_codigo com pedido http://192.168.0.250:8080/agile/tarefa/show/97087
+	Contas a Receber/e Pagar filtro pendente filtrar os parciais juntos http://192.168.0.250:8080/agile/tarefa/show/96759
+	Vendedor não pode ter acesso a page "Informações do Cliente" na tela de venda http://192.168.0.250:8080/agile/tarefa/show/96789
+	Colocar filtro no cabeçalho do relatório de giro de estoque http://192.168.0.250:8080/agile/tarefa/show/97151
+	concluir OP sem fazer apontamentos http://192.168.0.250:8080/agile/tarefa/show/96558 
+	Rotina de atualização de custos de produtos compostos - Validar base de composição http://192.168.0.250:8080/agile/tarefa/show/97476
+	Ao adicionar item no pedido deixar o campo de quantidade = 0 http://192.168.0.250:8080/agile/tarefa/show/97727
+	Ajustar razão social no arquivo de remessa na empresa 003 http://192.168.0.250:8080/agile/tarefa/show/97853
+	erro na hora de imprimir evento danfe, carta de correção
+	erro ortográfico no giro de estoque
+	arredondamento da curva abc e outros relatórios do BI http://192.168.0.250:8080/agile/tarefa/show/97394
+	limpar eventos da NFE quando o usuario realizar uma nova pesquisa http://192.168.0.250:8080/agile/tarefa/show/96670
+	Giro do estoque - abaixo do minimo sem sugestão de compra http://192.168.0.250:8080/agile/tarefa/show/98010
+	Problema pesquisa por clientes na tela de consulta de pedidos - falha na query de compartilhamento http://192.168.0.250:8080/agile/tarefa/show/97862
+	NCM do cadastro de produto mostra vazio - falha na query de compartilhamento http://192.168.0.250:8080/agile/tarefa/show/97905
+	diferença de saldo na impressao do estoque quando compartilhado  http://192.168.0.250:8080/agile/tarefa/show/98049
+	Contas a pagar travando o sistema http://192.168.0.250:8080/agile/tarefa/show/98119
+	fluxo de caixa considerando o saldo do banco http://192.168.0.250:8080/agile/tarefa/show/97030
+
+
+
+
+
+
+

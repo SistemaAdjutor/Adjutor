@@ -1,0 +1,40 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch01.sql
+Fim de Linha 25. ERROR: multiple rows in singleton select
+At procedure 'PRD_AJUSTA_SITUACAO_PEDIDOITEM' line: 6, col: 3
+At trigger 'PED_IT01_AU0'
+Fim de Linha 28. ERROR: multiple rows in singleton select
+At procedure 'PRD_AJUSTA_SITUACAO_PEDIDOITEM' line: 6, col: 3
+At trigger 'PED_IT01_AU0'
+Fim de Linha 29. ERROR: multiple rows in singleton select
+At procedure 'PRD_AJUSTA_SITUACAO_PEDIDOITEM' line: 6, col: 3
+At trigger 'PED_IT01_AU0'
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch01.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\EletricaBurda\eletricaburda - 1602.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.575_patch01.sql
+ok - Adjutor3.0.9.575_patch02.sql
+ok - Adjutor3.0.9.575_patch03.sql
+ok - Adjutor3.0.9.575_patch04.sql
+ok - Adjutor3.0.9.576.sql
+ok - Adjutor3.0.9.576_patch01.sql
+ok - Adjutor3.0.9.576_patch02.sql
+ok - Adjutor3.0.9.576_patch03.sql
+ok - Adjutor3.0.9.577.sql
+ok - Adjutor3.0.9.577_patch01.sql
+ok - Adjutor3.0.9.577_patch02.sql
+ok - Adjutor3.0.9.577_patch03.sql
+ok - Adjutor3.0.9.577_patch04.sql
+ok - Adjutor3.0.9.578.sql
+ok - Adjutor3.0.9.578_patch01.sql
+ok - Adjutor3.0.9.578_patch02.sql
+ok - Adjutor3.0.9.578_patch03.sql
+ok - Adjutor3.0.9.579.sql
+ok - Adjutor3.0.9.579_patch01.sql
+ok - Adjutor3.0.9.579_patch02.sql
+ok - Adjutor3.0.9.579_patch03.sql
+ok - Adjutor3.0.9.580.sql
+ok - Adjutor3.0.9.580_patch01.sql
+ok - Adjutor3.0.9.580_patch02.sql

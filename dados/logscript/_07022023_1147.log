@@ -1,0 +1,19 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch03.sql
+Fim de Linha 19. Generator Já existe --> GEN_HISTORICO_EMAIL already exists
+Fim de Linha 22. Tabela Já existe --> HISTORICO_EMAIL already ex
+Fim de Linha 24. Tabela já existe no banco ->HEM_MODULO.HISTORICO_EMAIL
+Fim de Linha 26. Tabela já existe no banco ->HEM_DESTINATARIO.HISTORICO_EMAIL
+Fim de Linha 28. Tabela já existe no banco ->HEM_TITULO.HISTORICO_EMAIL
+Fim de Linha 30. Tabela já existe no banco ->HEM_CLI_FOR.HISTORICO_EMAIL
+Fim de Linha 32. Tabela já existe no banco ->CLI_FOR_CODIGO.HISTORICO_EMAIL
+Fim de Linha 34. Tabela já existe no banco ->HEM_DATA_ENVIO.HISTORICO_EMAIL
+Fim de Linha 36. Tabela já existe no banco ->USU_CODIGO.HISTORICO_EMAIL
+Fim de Linha 38. Tabela já existe no banco ->EMP_CODIGO.HISTORICO_EMAIL
+Fim de Linha 40. Tabela já existe no banco ->HEM_ANEXO.HISTORICO_EMAIL
+Script com 11 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch03.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Quimica rocha\quimica - 2601.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.576_patch03.sql

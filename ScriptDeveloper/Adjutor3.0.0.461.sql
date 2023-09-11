@@ -1,0 +1,20 @@
+SET TERM ^ ;
+
+alter table SHAREDB add ESTOQUES char(1) ^
+COMMIT WORK^
+update sharedb set estoques='C' ^
+COMMIT WORK^
+
+Update VERSAOSISTEMA SET
+       VERSAOSISTEMA.SCRIPTADJUTOR = '3.0.0.461' ,
+       VERSAOSISTEMA.DATA   = '30.09.2016'
+ where VERSAOSISTEMA.CODIGO = 1^
+
+COMMIT WORK^
+
+SET TERM ; ^
+
+
+
+
+

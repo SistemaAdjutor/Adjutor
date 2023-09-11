@@ -1,0 +1,13 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562.sql
+Fim de Linha 8. Tabela já existe no banco ->OPV_INDUST_POR_KIT.OPV0000
+Fim de Linha 13. Tabela Já existe --> PED_IND_KIT already ex
+Fim de Linha 14. ERROR: unsuccessful metadata update
+Index IDX_PED_IND_KIT already exists
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562.sql
+Sumário: 
+Host:192.168.0.16
+Database 
+:/servidor/Jobdados/Embraterm/EMBRATERM0812.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.562.sql

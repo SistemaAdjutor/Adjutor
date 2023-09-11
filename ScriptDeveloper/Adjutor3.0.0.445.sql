@@ -1,0 +1,61 @@
+SET TERM ^ ;
+
+CREATE GENERATOR GEN_CSON_ID^
+
+CREATE TABLE CSON0000 (
+    CSON_ID         INTEGER NOT NULL,
+    CSON_COD        CHAR(3) CHARACTER SET WIN1252,
+    CSON_DESCRICAO  VARCHAR(115) CHARACTER SET WIN1252
+)^
+
+ALTER TABLE CSON0000 ADD CONSTRAINT PK_CSON0000 PRIMARY KEY (CSON_ID)^
+
+CREATE INDEX CSON0000_IDX1 ON CSON0000 (CSON_COD)^
+CREATE INDEX CSON0000_IDX2 ON CSON0000 (CSON_DESCRICAO)^
+COMMIT WORK^
+
+CREATE OR ALTER TRIGGER CSON0000_BI0 FOR CSON0000
+ACTIVE BEFORE INSERT POSITION 0
+AS
+begin
+    If (NEW.CSON_ID is NULL) then NEW.CSON_ID = GEN_ID(GEN_CSON_ID, 1);
+end
+^
+
+COMMIT WORK^
+
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('101','Tributada pelo Simples Nacional com permissão de crédito')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('102','Tributada pelo Simples Nacional sem permissão de crédito')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('103','Isenção do ICMS no Simples Nacional para faixa de receita bruta')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('201','Tributada pelo Simples Nacional com permissão de crédito e com cobrança do ICMS por substituição tributária')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('202','Tributada pelo Simples Nacional sem permissão de crédito e com cobrança do ICMS por substituição tributária')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('203','Isenção do ICMS no Simples Nacional para faixa de receita bruta e com cobrança do ICMS por substituição tributária')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('300','Imune')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('400','Não tributada pelo Simples Nacional')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('500','ICMS cobrado anteriormente por substituição tributária (substituído) ou por antecipação')^
+INSERT INTO cson0000 (CSON_COD, CSON_DESCRICAO) VALUES('900','Outros')^
+
+COMMIT WORK^
+
+ALTER TABLE OPE0000 ADD EMP_CSOSN INTEGER^
+ALTER TABLE OPE0000 ADD EMP_CSOSN_ST INTEGER^
+
+COMMIT WORK^
+
+ALTER TABLE BAN0000 ADD BAN_MULTA NUMERIC(15,2)^
+ALTER TABLE BAN0000 ADD BAN_MULTA_DIAS INTEGER^
+
+COMMIT WORK^
+
+
+
+Update VERSAOSISTEMA SET
+       VERSAOSISTEMA.SCRIPTADJUTOR = '3.0.0.445' ,
+       VERSAOSISTEMA.DATA   = '26.01.2016'
+ where VERSAOSISTEMA.CODIGO = 1^
+ 
+COMMIT WORK^
+
+SET TERM ; ^
+
+

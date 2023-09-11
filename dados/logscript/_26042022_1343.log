@@ -1,0 +1,32 @@
+﻿Inicio script -->C:\Developer\Adjutor2\ScriptDeveloper\Adjutor3.0.9.567_patch02.sql
+Fim de Linha 9. Tabela já existe no banco ->USP_AUTORIZA_RETIRADA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 10. Tabela já existe no banco ->USP_REALIZA_RETIRADA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 12. Generator Já existe --> GEN_REQUISICAO_MATERIAL already exists
+Fim de Linha 16. Generator Já existe --> GEN_REQUISICAO_MATERIAL_ITEM already exists
+Fim de Linha 20. Generator Já existe --> GEN_REQUISICAO_MATERIAL_AUT already exists
+Fim de Linha 26. Tabela Já existe --> REQUISICAO_MATERIAL already ex
+Fim de Linha 29. Tabela já existe no banco ->EMP_CODIGO.REQUISICAO_MATERIAL
+Fim de Linha 31. Tabela já existe no banco ->AMX_CODIGO.REQUISICAO_MATERIAL
+Fim de Linha 33. Tabela já existe no banco ->REM_DATA.REQUISICAO_MATERIAL
+Fim de Linha 35. Tabela já existe no banco ->REM_REQUISITANTE.REQUISICAO_MATERIAL
+Fim de Linha 37. Tabela já existe no banco ->SET_CODIGO.REQUISICAO_MATERIAL
+Fim de Linha 39. Tabela já existe no banco ->REM_OBSERVACAO.REQUISICAO_MATERIAL
+Fim de Linha 41. Tabela já existe no banco ->REM_STATUS.REQUISICAO_MATERIAL
+Fim de Linha 46. Tabela Já existe --> REQUISICAO_MATERIAL_ITEM already ex
+Fim de Linha 49. Tabela já existe no banco ->REM_CODIGO.REQUISICAO_MATERIAL_ITEM
+Fim de Linha 51. Tabela já existe no banco ->PRD_REFER.REQUISICAO_MATERIAL_ITEM
+Fim de Linha 53. Tabela já existe no banco ->RMI_QUANTIDADE.REQUISICAO_MATERIAL_ITEM
+Fim de Linha 59. Tabela Já existe --> REQUISICAO_MATERIAL_AUT already ex
+Fim de Linha 62. Tabela já existe no banco ->RMI_CODIGO.REQUISICAO_MATERIAL_AUT
+Fim de Linha 64. Tabela já existe no banco ->USU_NOME.REQUISICAO_MATERIAL_AUT
+Fim de Linha 66. Tabela já existe no banco ->RMA_SITUACAO.REQUISICAO_MATERIAL_AUT
+Fim de Linha 68. Tabela já existe no banco ->RMA_STATUS.REQUISICAO_MATERIAL_AUT
+Fim de Linha 70. Tabela já existe no banco ->RMA_DATA.REQUISICAO_MATERIAL_AUT
+Script com 23 erros 
+Fim script -->C:\Developer\Adjutor2\ScriptDeveloper\Adjutor3.0.9.567_patch02.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\Dados\BSC\BSC1504.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.567_patch02.sql
+ok - Adjutor3.0.9.567_patch03.sql

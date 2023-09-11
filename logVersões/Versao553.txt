@@ -1,0 +1,39 @@
+Atualizado em 25/012/2021
+Inicio da versão: 02/02/2021
+
+patch 4 : Empac, ITAGRIL, Normandin, CHEMVET, QUANTICA, FLEXSUL, fx film
+  pesquisa do fornecedor padrão no pedido de compras ADJ 406 [ EMPAC]
+  ERRO  ao cancelar a nota, no valor faturado adj 395 [ITAGRIL]
+  ajustar campos da op da Normandin adj 403
+  Aumentar o tamanho dos campos no relatório da O.P  ADJ 396 [Normandin]
+  Ajuste de estoque no processo de envase ADJ 383 [CHEMVET]
+  criar função de estorno na tela de envase adj 378 [ CHEMVET]
+  novo parametro para seleção de centro de custo adj 402 
+  Alterar descrição do pedido de compraADJ 394 [ QUANTICA]
+  Nova remessa esta imprimindo todas as faturas - Apenas no sicredi ADJ 390 [FLEXSUL]
+  Sistema não puxa comissão nos pedidos ADJ 382 [ FLEXSUL]
+  Erro ao alterar parcela do contas a receber ADJ 405 [FX FILM]
+  Erro ao acessar o cadastro de usuários adj 401 
+  
+patch 3 : BSC, Normandin, chemvet
+  problema de arredondamento no preço dos pedidos adj 14 [BSC]
+  Erro ao enviar produto para o PCP ADJ 374 [Normandin]
+  Ajustar campo no relatório de comissão ADJ 381 [chemvet]
+  Buscar lote na tela de Envase 229 [ CHEMVET]
+  
+patch 2 : Normandin, Quimica Rocha, ITAGRILL
+  Relatório de O.P no cadastro de produto adj 376 [Normandin]
+  Ajuste no xml para cst 30 adj 386 [quimica rocha]
+  Parâmetro para integrar produtos e serviços adj 340 [ITAGRILL]
+  
+patch 1 : Burda 
+  CST 99 do IPI não sai na nota  adj 385 [BURDA]
+principal : normandin, ITAGRILL, QUANTICA
+  Espaço entre produtos no relatório de pedido adj 375 [normandin]
+  Alterar campos das formulas fixas para Editáveis adj 373 [ normandin]
+  Erro ao cancelar lançamento manual de nota fiscal adj 372
+  Exclusão de item que esta na produção new ADJ 366 [ITAGRIL]
+  Relatório de O.S ADJ 354 [ QUANTICA]
+  Bloqueio do desconto na nota fiscal ADJ 363 [ QUANTICA]
+  Alterações Campos Técnicos.(1) ADJ 342 [Normandin]
+  

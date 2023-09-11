@@ -1,0 +1,28 @@
+﻿Atualizado em 22/02/2023
+Inicio da versão: 08/02/2023
+
+
+principal: Netocolor, Aleplast, Química Rocha, Arkson
+  1356 - Edição do item no pedido perdendo peso [Netocolor]
+  1359 - Novo relatório entrada de nota e retorno [Netocolor]
+  1361 - Atualizar quantidade faturada do pedido [Aleplast]
+  1376 - Exclusão do ICMS da base de PIS/COFINS [Química Rocha]
+  1377 - Erro no romaneio planilha com cores [Netocolor]
+  1379 - Ficha Técnica - Casas decimais [Arkson]
+
+patch 1: Arkson
+  1379 - Ficha Técnica - Casas decimais [Arkson]
+  1389 - Corrigir consultas gerenciamento de industrialização [Novi]
+
+patch 2:
+  1392 - Sistema não puxa unidade do cadastro de produtos [Novi]
+
+patch 3: BSC, Embraterm, Delta Cabos, Netocolor
+  1381 - Movimentação do almoxarifado vendido - Pedido de Industrialização [BSC]
+  1391 - Novo campo cópia pedido de industrialização [Embraterm]
+  1394 - Erro ao cadastrar nova atividade [Delta Cabos]
+  1398 - Corrigir filtros do romaneio com cores [Netocolor]
+
+patch 04: Chemvet, Delta Cabos
+  1399 - Novo parâmetro para lançamento conta corrente verba [Chemvet]
+  1401 - Novo campo ICMS no pedido de venda [Delta Cabos]

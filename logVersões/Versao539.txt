@@ -1,0 +1,74 @@
+﻿Atualizado em  20/12/2019 
+Inicio da versão: 03/12/2019
+
+ patch 6 : 
+   faturamento atualizando conta financeira http://192.168.0.250:8080/agile/tarefa/show/111226
+ PATCH 5 :FLEXSUL
+   ERRO NO JSON http://192.168.0.250:8080/agile/tarefa/show/111091 
+ 
+ patch 4: collect , vision, lion, forseti, embraterm , novi, coppersal, plasticos mundial, metalurgica água
+   
+   Corrigir erro na tela de renovação http://192.168.0.250:8080/agile/tarefa/show/109961
+   Modificação do relatório do PPCA http://192.168.0.250:8080/agile/tarefa/show/110429
+   Problemas na entrada manual da nota http://192.168.0.250:8080/agile/tarefa/show/110794
+   Disparar RPS direto da tela de consulta do Contas a receber - NFsE http://192.168.0.250:8080/agile/tarefa/show/106118  
+   problema no filtro do relatório de ordens de compra http://192.168.0.250:8080/agile/tarefa/show/98215
+   Produção: Gravar o usuário que fez o apontamento http://192.168.0.250:8080/agile/tarefa/show/109237
+   Produção: ativar filtros gerenciamento de apontamento http://192.168.0.250:8080/agile/tarefa/show/109162
+   Produção: Validações na edição de apontamentos http://192.168.0.250:8080/agile/tarefa/show/109722
+   Empresa 2 não puxa mensagem padrão do orçamento http://192.168.0.250:8080/agile/tarefa/show/109870
+   Relatório BI-ABC cliente arredondando valor http://192.168.0.250:8080/agile/tarefa/show/110384
+   Produção: Pedido com itens repetido não gera acordo http://192.168.0.250:8080/agile/tarefa/show/110427  
+   Quando consultado o CNPJ no cadastro de cliente o sistema mostra um erro e impede a consulta.http://192.168.0.250:8080/agile/tarefa/show/111028
+   Produção: orçamento mostrar a lista de contatos do cliente http://192.168.0.250:8080/agile/tarefa/show/110411
+   Campos razao social e endereço muito pequeno em vários cadastros http://192.168.0.250:8080/agile/tarefa/show/110559
+   Mensagem de diferimento : ICMS parcialmente diferido em 100%  http://192.168.0.250:8080/agile/tarefa/show/110543
+   Produção: adicionar colunas na tela de pedido de industrialização http://192.168.0.250:8080/agile/tarefa/show/110455
+   Produção: No orçamento não está sendo puxado alguns dados do cadastro http://192.168.0.250:8080/agile/tarefa/show/110439
+   Criar opção de compartilhamento da tabela Aliquota de Icms http://192.168.0.250:8080/agile/tarefa/show/110621
+   Erro ao dar entrada de nota de entrada na segunda empresa (com estoque exclusivo) http://192.168.0.250:8080/agile/tarefa/show/110572
+   Alterações na tela de vinculação de pedido de compra http://192.168.0.250:8080/agile/tarefa/show/110710
+   Produção: Ajustes em Relatórios para finalizar http://192.168.0.250:8080/agile/tarefa/show/110166
+   
+ patch 3 :embraterm
+   erro no boleto http://192.168.0.250:8080/agile/tarefa/show/110549
+   Produção: Produto com o tipo "KG" não habilitam campo de quantidade http://192.168.0.250:8080/agile/tarefa/show/110104
+   Produção: Orçamento erro ao abrir tela de simulação http://192.168.0.250:8080/agile/tarefa/show/109829
+   
+ patch 2: FlexSul, Empac, HSJ, EMBRATERM, Plasticos mundial, forseti usinagem
+ 
+   integração Mercos http://192.168.0.250:8080/agile/tarefa/show/105893
+   Erro na transmissão de NFSE http://192.168.0.250:8080/agile/tarefa/show/110067 e  http://192.168.0.250:8080/agile/tarefa/show/107746
+   No relatório de demonstrativos gerenciais/previsao de liquidez não mostrar faturas "Canceladas" http://192.168.0.250:8080/agile/tarefa/show/107327
+   Consultas do BI com inconsistencia de valores devido a desconto PIS e COFINS http://192.168.0.250:8080/agile/tarefa/show/109545
+   Produção: Erro na tabela de formação de preços http://192.168.0.250:8080/agile/tarefa/show/109824
+   Produção: Ordem de serviço abrindo duas ao invés de uma http://192.168.0.250:8080/agile/tarefa/show/109951
+   Produção: relatórios de Orçamento e Acordo com. dando erro ao abri http://192.168.0.250:8080/agile/tarefa/show/110096
+   Produção: Cadastro de processos não fechar ao alterar valores de qualidade http://192.168.0.250:8080/agile/tarefa/show/110134
+   NFSE: Erro no calculo de alíquota http://192.168.0.250:8080/agile/tarefa/show/110214
+   Função de exporta Excel relatório do fornecedores http://192.168.0.250:8080/agile/tarefa/show/110281 
+   Erro na Ficha técnica http://192.168.0.250:8080/agile/tarefa/show/109895
+   Problema critico ao alterar unidade na tela de pedido de compra http://192.168.0.250:8080/agile/tarefa/show/109081
+   Erro na emissão de NFSE http://192.168.0.250:8080/agile/tarefa/show/110367
+   Entrada de nota com Unidade, Qtde e preço diferente do pedido de compra http://192.168.0.250:8080/agile/tarefa/show/109084
+   Novo relatório de fornecedores e produtos que fornecem para exportar com excel http://192.168.0.250:8080/agile/tarefa/show/110319
+   
+ patch 1: embraterm, empac
+  Erro de RPS entre empresa http://192.168.0.250:8080/agile/tarefa/show/109114
+  Erro de no layout do Rps de Paranaguá mudou de GINFES para IPM http://192.168.0.250:8080/agile/tarefa/show/109639
+  Importação de retornos celesc http://192.168.0.250:8080/agile/tarefa/show/103697
+  Quando não houver percentual de fcp não deve incluir as tags no xml http://192.168.0.250:8080/agile/tarefa/show/109955
+  
+ Tarefas do versão principal : embraterm, plasticos mundial, novi sistemas
+  Produção: Apontamento: Adicionar campo para Situação da fase http://192.168.0.250:8080/agile/tarefa/show/109290
+  Produção: Tela de apontamento não funciona enter http://192.168.0.250:8080/agile/tarefa/show/109288
+  Depachado parcial para expedição dentro do cadastro dos pedidos http://192.168.0.250:8080/agile/tarefa/show/109298
+  bug na aba de vendas http://192.168.0.250:8080/agile/tarefa/show/109401
+  Relatorios de pedido Multi-empresa não estão funcionando http://192.168.0.250:8080/agile/tarefa/show/109117
+  Problema na expedição de material http://192.168.0.250:8080/agile/tarefa/show/109460
+  Produção: desabilitar produção pelo parametro de tratamento termico http://192.168.0.250:8080/agile/tarefa/show/109448
+  Quando não tem retenção mesmo assim tem que destacar iss http://192.168.0.250:8080/agile/tarefa/show/109556
+  produção: Alterações na tela do PCP http://192.168.0.250:8080/agile/tarefa/show/109631
+  Produção: erro ao editar apontamento http://192.168.0.250:8080/agile/tarefa/show/109669
+  Produção: Pedido de tratamento térmico com valores errados http://192.168.0.250:8080/agile/tarefa/show/109016 e http://192.168.0.250:8080/agile/tarefa/show/109748
+  Produção: data errada pedido de trat. e OS http://192.168.0.250:8080/agile/tarefa/show/109736

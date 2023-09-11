@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<retorno>
+    <rps>
+        <mensagem_rps>
+        </mensagem_rps>
+        <serie_rps>2030</serie_rps>
+        <numero_rps>2030</numero_rps>
+        <situacao>RPS NÃO convertido em Nota Fiscal Eletrônica</li>
+    </rps>
+</retorno>

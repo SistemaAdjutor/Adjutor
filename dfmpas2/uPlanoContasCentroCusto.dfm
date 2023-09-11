@@ -1,0 +1,518 @@
+object FrmPlanoContasCentroCusto: TFrmPlanoContasCentroCusto
+  Left = 331
+  Top = 58
+  Caption = 'Rateio de Centro de Custo por Conta'
+  ClientHeight = 548
+  ClientWidth = 587
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  OldCreateOrder = False
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 14
+  object grpConta: TGroupBox
+    Left = 0
+    Top = 57
+    Width = 587
+    Height = 73
+    Align = alTop
+    Caption = 'Conta Financeira'
+    TabOrder = 0
+    object Label1: TLabel
+      Left = 8
+      Top = 24
+      Width = 23
+      Height = 14
+      Caption = 'N'#237'vel'
+    end
+    object Label2: TLabel
+      Left = 168
+      Top = 24
+      Width = 49
+      Height = 14
+      Caption = 'Descri'#231#227'o'
+    end
+    object Label3: TLabel
+      Left = 520
+      Top = 24
+      Width = 45
+      Height = 14
+      Caption = 'Reduzido'
+    end
+    object edtConta: TEdit
+      Left = 8
+      Top = 40
+      Width = 153
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      ReadOnly = True
+      TabOrder = 0
+      Text = 'edtConta'
+    end
+    object edtDescricao: TEdit
+      Left = 168
+      Top = 40
+      Width = 345
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      ReadOnly = True
+      TabOrder = 1
+      Text = 'edtConta'
+    end
+    object edtReduzido: TEdit
+      Left = 520
+      Top = 40
+      Width = 57
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      ReadOnly = True
+      TabOrder = 2
+      Text = 'edtConta'
+    end
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 130
+    Width = 587
+    Height = 376
+    Align = alTop
+    Caption = 'Centro de Custos e Sub-Centros'
+    TabOrder = 1
+    object dbgrdCentros: TDBGrid
+      Left = 2
+      Top = 16
+      Width = 583
+      Height = 358
+      Align = alClient
+      Color = 16776176
+      DataSource = dsPlanoCentro
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
+      PopupMenu = pm1
+      TabOrder = 0
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Arial'
+      TitleFont.Style = []
+      OnDblClick = dbgrdCentrosDblClick
+      OnKeyPress = dbgrdCentrosKeyPress
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'Nivel'
+          Title.Alignment = taCenter
+          Title.Caption = 'N'#237'vel'
+          Width = 92
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CentroCusto'
+          Title.Alignment = taCenter
+          Title.Caption = 'Centro de Custo'
+          Width = 336
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Reduzido'
+          Title.Alignment = taCenter
+          Width = 55
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'Indice'
+          Title.Alignment = taCenter
+          Title.Caption = '% Rateio'
+          Width = 63
+          Visible = True
+        end>
+    end
+  end
+  object Bit_Gravar: TBitBtn
+    Left = 375
+    Top = 520
+    Width = 100
+    Height = 25
+    Cursor = crHandPoint
+    Hint = '|Grava registro...'
+    Caption = '&Gravar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    Glyph.Data = {
+      76010000424D7601000000000000760000002800000020000000100000000100
+      04000000000000010000CE0E0000D80E00001000000000000000000000000000
+      800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00555555555555
+      555555555555555555555555555555555555555555FF55555555555550055555
+      55555555577FF5555555555500005555555555557777F5555555555500005555
+      555555557777FF5555555550000005555555555777777F555555550000000555
+      5555557777777FF5555557000500005555555777757777F55555700555500055
+      55557775555777FF5555555555500005555555555557777F5555555555550005
+      555555555555777FF5555555555550005555555555555777FF55555555555570
+      05555555555555777FF5555555555557005555555555555777FF555555555555
+      5000555555555555577755555555555555555555555555555555}
+    NumGlyphs = 2
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 2
+    OnClick = Bit_GravarClick
+  end
+  object Bit_Cancelar: TBitBtn
+    Left = 479
+    Top = 520
+    Width = 100
+    Height = 25
+    Cursor = crHandPoint
+    Hint = '|Cancela registro atual...'
+    Cancel = True
+    Caption = '&Cancelar'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    Glyph.Data = {
+      DE010000424DDE01000000000000760000002800000024000000120000000100
+      04000000000068010000CE0E0000D80E00001000000000000000000000000000
+      80000080000000808000800000008000800080800000C0C0C000808080000000
+      FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+      333333333333333333333333000033333333333333333333333F333333333333
+      0000333333333333333333333388F333333F3333000033300333333300033333
+      38F38F333F88F33300003330003333300033333338F338F3F8338F3300003333
+      000333000333333338F3338F833338F3000033333000300033333333338F3338
+      3333F8330000333333000003333333333338F333333F83330000333333300033
+      3333333333338F3333383333000033333300000333333333333338F333833333
+      00003333300030003333333333333833338F3333000033330003330003333333
+      33338333338F333300003330003333300033333333383338F338F33300003330
+      0333333300033333338333838F338F3300003333333333333003333333833833
+      38F338F300003333333333333333333333388333338FFF830000333333333333
+      3333333333333333333888330000333333333333333333333333333333333333
+      0000}
+    NumGlyphs = 2
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+    TabOrder = 3
+    OnClick = Bit_CancelarClick
+  end
+  object btnAdicionar: TBitBtn
+    Left = 10
+    Top = 519
+    Width = 130
+    Height = 25
+    Cursor = crHandPoint
+    Caption = '&Vincular Centro'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    NumGlyphs = 2
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 4
+    OnClick = btnAdicionarClick
+  end
+  object btnRemover: TBitBtn
+    Left = 143
+    Top = 519
+    Width = 130
+    Height = 25
+    Cursor = crHandPoint
+    Caption = '&Remover Centro'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    NumGlyphs = 2
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = False
+    TabOrder = 5
+    OnClick = btnRemoverClick
+  end
+  object grpPerfil: TGroupBox
+    Left = 0
+    Top = 0
+    Width = 587
+    Height = 57
+    Align = alTop
+    Caption = 'Perfil'
+    Enabled = False
+    TabOrder = 6
+    object Label4: TLabel
+      Left = 2
+      Top = 27
+      Width = 27
+      Height = 14
+      Caption = 'In'#237'cio:'
+    end
+    object Label5: TLabel
+      Left = 148
+      Top = 27
+      Width = 41
+      Height = 14
+      Caption = 'T'#233'rmino:'
+    end
+    object RxDataInicial: TJvDateEdit
+      Left = 32
+      Top = 24
+      Width = 89
+      Height = 22
+      Date = 36557.000000000000000000
+      Color = 14145495
+      Glyph.Data = {
+        76050000424D760500000000000036000000280000001C0000000C0000000100
+        2000000000004005000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        800080808000808080008080800080808000FF00FF00FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FF00FF00FF00FF000000000000000000800000000000
+        0000800000008000000000000000800000000000000000000000800000008080
+        8000FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF0000000000000000000000
+        0000FFFFFF00000000000000000000000000C0C0C000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00808080008080800080808000FF00FF008080
+        80008080800080808000FF00FF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF00C0C0C000FFFFFF00C0C0
+        C00000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF0000000000FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0080808000FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        0000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00808080008080800080808000FF00FF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF000000000000000000FFFF
+        FF00FFFFFF0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF008080800080808000FFFFFF00FF00FF008080
+        8000FFFFFF00FFFFFF00FFFFFF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        000000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FF00FF00FF00FF0080808000808080008080800080808000FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+        FF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0
+        C000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FF00FF00}
+      ImageKind = ikCustom
+      NumGlyphs = 2
+      PopupColor = clBtnFace
+      ShowNullDate = False
+      TabOrder = 0
+    end
+    object RxDataFinal: TJvDateEdit
+      Left = 192
+      Top = 24
+      Width = 89
+      Height = 22
+      Date = 36557.000000000000000000
+      Color = 14145495
+      Glyph.Data = {
+        76050000424D760500000000000036000000280000001C0000000C0000000100
+        2000000000004005000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        800080808000808080008080800080808000FF00FF00FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FF00FF00FF00FF000000000000000000800000000000
+        0000800000008000000000000000800000000000000000000000800000008080
+        8000FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF0000000000000000000000
+        0000FFFFFF00000000000000000000000000C0C0C000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00808080008080800080808000FF00FF008080
+        80008080800080808000FF00FF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF00C0C0C000FFFFFF00C0C0
+        C00000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF0000000000FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0080808000FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        0000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00808080008080800080808000FF00FF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF000000000000000000FFFF
+        FF00FFFFFF0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF008080800080808000FFFFFF00FF00FF008080
+        8000FFFFFF00FFFFFF00FFFFFF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        000000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FF00FF00FF00FF0080808000808080008080800080808000FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+        FF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0
+        C000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FF00FF00}
+      ImageKind = ikCustom
+      NumGlyphs = 2
+      PopupColor = clBtnFace
+      ShowNullDate = False
+      TabOrder = 1
+    end
+  end
+  object CdsPlanoCentro: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT T1.pcx_codigo,T2.pcx_nivel,T2.pcx_descri,T1.pcxp_indice F' +
+      'ROM pcx0000_plano T1 join pcx0000 T2 ON (T2.pcx_codigo = T1.pcx_' +
+      'codigo)'#13#10'WHERE T1.cct_0000 = '#39'001'#39#13#10'ORDER BY T2.pcx_nivel'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    CommandText = 
+      'SELECT T1.pcx_codigo,T2.pcx_nivel,T2.pcx_descri,T1.pcxp_indice F' +
+      'ROM pcx0000_plano T1 join pcx0000 T2 ON (T2.pcx_codigo = T1.pcx_' +
+      'codigo)'#13#10'WHERE T1.cct_0000 = '#39'001'#39#13#10'ORDER BY T2.pcx_nivel'
+    DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
+    Left = 392
+    Top = 169
+    object CdsPlanoCentroPCX_CODIGO: TStringField
+      FieldName = 'PCX_CODIGO'
+      Size = 3
+    end
+    object CdsPlanoCentroPCX_NIVEL: TStringField
+      FieldName = 'PCX_NIVEL'
+      Size = 15
+    end
+    object CdsPlanoCentroPCX_DESCRI: TStringField
+      FieldName = 'PCX_DESCRI'
+      Size = 25
+    end
+    object CdsPlanoCentroPCXP_INDICE: TFMTBCDField
+      FieldName = 'PCXP_INDICE'
+      DisplayFormat = '##0.00%'
+      Precision = 20
+      Size = 5
+    end
+  end
+  object dsPlanoCentro: TDataSource
+    DataSet = CdsIndices
+    Left = 432
+    Top = 209
+  end
+  object CdsIndices: TClientDataSet
+    Aggregates = <>
+    IndexFieldNames = 'Nivel'
+    Params = <>
+    Left = 312
+    Top = 209
+    object CdsIndicesNivel: TStringField
+      FieldName = 'Nivel'
+      Size = 15
+    end
+    object CdsIndicesCentroCusto: TStringField
+      FieldName = 'CentroCusto'
+      Size = 40
+    end
+    object CdsIndicesReduzido: TStringField
+      FieldName = 'Reduzido'
+      Size = 3
+    end
+    object CdsIndicesIndice: TFloatField
+      FieldName = 'Indice'
+      DisplayFormat = '##0.00%'
+      currency = True
+    end
+    object CdsIndicesIndiceReal: TFloatField
+      FieldName = 'IndiceReal'
+    end
+  end
+  object pm1: TPopupMenu
+    Left = 488
+    Top = 177
+    object Adicionar1: TMenuItem
+      Caption = 'Adicionar'
+      OnClick = Adicionar1Click
+    end
+    object Remover1: TMenuItem
+      Caption = 'Remover'
+      OnClick = Remover1Click
+    end
+  end
+  object CdsPercentes: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    Left = 360
+    Top = 265
+    object CdsPercentesNivel: TIntegerField
+      FieldName = 'Nivel'
+    end
+    object CdsPercentessoma: TFloatField
+      FieldName = 'soma'
+    end
+    object CdsPercentesReferente: TStringField
+      FieldName = 'Referente'
+      Size = 50
+    end
+    object CdsPercentesIndiceReal: TFloatField
+      FieldName = 'IndiceReal'
+    end
+  end
+  object CdsClone: TClientDataSet
+    Aggregates = <>
+    IndexFieldNames = 'Nivel'
+    Params = <>
+    Left = 448
+    Top = 257
+    object CdsCloneNivel: TStringField
+      FieldName = 'Nivel'
+      Size = 15
+    end
+    object CdsCloneindice: TFloatField
+      FieldName = 'indice'
+    end
+    object CdsCloneReduzido: TStringField
+      FieldName = 'Reduzido'
+      Size = 3
+    end
+    object CdsCloneIndiceReal: TFloatField
+      FieldName = 'IndiceReal'
+    end
+    object CdsCloneCentroCusto: TStringField
+      FieldName = 'CentroCusto'
+      Size = 40
+    end
+  end
+end

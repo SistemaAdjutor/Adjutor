@@ -1,0 +1,33 @@
+Atualizado em 15/12/2020
+Inicio da versão: 1/12/2020
+
+patch 2: percarpa, NORMANDIN, INQUIBRA, collect, HSJ, pacpapel
+   erro ao alterar documento no contas da apagar adj 288 [Percapa]
+   Ajustar nome da empresa na etiqueta adj 338 [ PARSEALS]
+   Atualizar planilhas do ibpt adj 333 
+   erro após enviar boleto por email adj 332 
+   alterar descrição do cadastro de mola 329 [NORMANDIN]
+   Novo modelo ordem de produção ADJ 327 [INQUIBRA]
+   Alteração para baixa do arquivo de retorno copel ADJ 336 [Collect]
+   Alterar cor dos campos calculados na ficha tecnica adj 335 [NORMANDIN]
+   Erro ao digitar nome do cliente ADJ 331 [HSJ]
+   Ajustar calculo do crédito do icms simples nacional ADJ 199 [pacpapel]
+
+patch 1: chemvet, collect, lion, parseals
+	verificar ordem de produção sem alterações feitas adj 325 [CHEMVET]
+	Valor negativo na tela de cadastro de clientes ADJ 324 [CHEMVET]
+	Ajustar tela de impressão de boletos ADJ 323 [Collect]
+	Desabilitar produção antiga adj 316 
+	Inserir contador de linhas na tela de emissão de boletos adj-68 [Collect]
+	Incluir campo de observação na tela de importação do cte adj 147 [ LION]
+	Criar nova etiqueta para expedição adj 322 [PARSEALS]
+
+principal : Coopersal, BSC, LION , NORMANDIN
+	Erro ao cadastrar serviço adj 314
+	Ajustar no xml os totais do pis e cofins 317 
+	Tela de alteração do tipo de pedido 319
+	Ajustar ficha cadastral do cliente adj 318 [coppersal]
+	erro ao adicionar a observaçãono pedido de compra ADJ 310 [ BSC]
+	modificar a cor dos itens do pedido de compra adj 35 [LION]
+	novos campos de molas 290 [NORMANDIN]
+	Novo  relatorio por cfop na importação de cte adj 321 [lion]

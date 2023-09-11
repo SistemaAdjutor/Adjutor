@@ -1,0 +1,14 @@
+UPDATE  VERSAOSISTEMA 
+SET VERSAOSISTEMA.SCRIPTADJUTOR = '3.0.9.530 patch 5',
+       VERSAOSISTEMA.DATA   = '18.03.2019',
+        VERSAO = '3.0.9.530'
+ where VERSAOSISTEMA.CODIGO = 1;
+
+commit work;
+
+
+UPDATE OPE_REGRA SET OPR_ORIGEM = 'I'
+where  OPR_ORIGEM is null ;
+
+commit work;
+

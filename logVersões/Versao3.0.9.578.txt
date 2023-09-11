@@ -1,0 +1,36 @@
+﻿Atualizado em 23/03/2023
+Inicio da versão: 08/03/2023
+
+
+principal: Yvytu
+  1393 - Manutenção nas regras fiscais ST trocada [Yvytu]
+  1405 - Diferença ST pedido e ST do faturamento [Novi]
+
+patch 1: Normadin, Quimi Sani, Netocolor
+  1417 - Erro ao transmitir nfe [Novi]
+  1423 - Atualização ACBr [Novi]
+  1415 - Melhoria para vendas sem cliente [Novi]
+  1421 - Fechar caixa de novidades do sistema [Novi]
+  1419 - Lentidão no sistema após inclusão do icms [Novi]
+  1418 - 4° Ajuste bepine [Novi]
+  1410 - 3° Melhorias processo Normadin [Normadin]
+  1368 - Observação da ficha técnica na impressão da O.P [Quimi Sani]
+  1357 - Correção da impressão notas fiscais importadas [Netocolor]
+  1422 - Alteração de revisão e data de elaboração [Novi]
+  1397 - 3° Ajustes FCI [Novi]
+
+patch 2: Arkson, Collect, Netocolor, L Forja, Delta Cabos, Bepine
+  1375 - Aumentar quantidade de caracteres tipo de produto [Arkson]
+  1382 - Novo filtro data de nascimento no cadastro de clientes [Collect]
+  1406 - Adicionar colunas de peso liquido e peso bruto [Netocolor]
+  1407 - Melhorias para o PCP [Netocolor]
+  1408 - Adicionar coluna CFOP - RELATÓRIO notas fiscais de entrada e retorno [Netocolor]
+  1409 - Tela de apontamento com lentidão para abrir [L Forja]
+  1412 - Manutenção pedido web [Novi]
+  1414 - Valor do Difal a ser recolhido no pedido [Delta Cabos]
+  1426 - Parametro para obrigatoriedade dos campos [Novi]
+  1432 - Ordenação do romaneio simples [Bepine]
+
+patch 3:
+  1437 - Lentidão na tela de pedidos/produtos [Novi]
+  1439 - Correção no Difal da nota e fatura

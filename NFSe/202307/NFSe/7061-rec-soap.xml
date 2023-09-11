@@ -1,0 +1,9 @@
+<?xml version='1.0' encoding='utf-8'?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><ns:esRecepcionarLoteRpsResponse xmlns:ns="http://services.enfsws.es"><ns:return>&lt;?xml version="1.0" encoding="UTF-8"?>&#xd;
+&lt;es:esEnviarLoteRpsResposta xmlns:es="http://www.equiplano.com.br/esnfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.equiplano.com.br/esnfs enviarLoteRpsResposta_v01.xsd">&#xd;
+  &lt;protocolo>&#xd;
+    &lt;nrLote>7061&lt;/nrLote>&#xd;
+    &lt;dtRecebimento>2023-07-03T14:00:05&lt;/dtRecebimento>&#xd;
+    &lt;nrProtocolo>246&lt;/nrProtocolo>&#xd;
+  &lt;/protocolo>&#xd;
+&lt;/es:esEnviarLoteRpsResposta>&#xd;
+</ns:return></ns:esRecepcionarLoteRpsResponse></soapenv:Body></soapenv:Envelope>

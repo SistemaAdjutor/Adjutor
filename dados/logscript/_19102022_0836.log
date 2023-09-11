@@ -1,0 +1,35 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.572_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_FATURA_SEM_PESO.PRMT0001
+Fim de Linha 13. Generator Já existe --> GEN_REGRA_FISCAL_PROD_CAP already exists
+Fim de Linha 16. Tabela Já existe --> REGRA_FISCAL_PROD_CAP already ex
+Fim de Linha 19. Tabela já existe no banco ->OPR_REGISTRO.REGRA_FISCAL_PROD_CAP
+Fim de Linha 21. Tabela já existe no banco ->PRD_REFER.REGRA_FISCAL_PROD_CAP
+Fim de Linha 23. Tabela já existe no banco ->CAP_CODIGO.REGRA_FISCAL_PROD_CAP
+Script com 6 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.572_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.572_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->EMP_NFE_MAIL_ALIAS.EMP0000
+Fim de Linha 9. Tabela já existe no banco ->EMP_FINANCEIRO_MAIL_ALIAS.EMP0000
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.572_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573.sql
+Fim de Linha 12. Tabela Já existe --> PEDIDO_EM_EDICAO already ex
+Fim de Linha 14. ERROR: violation of PRIMARY or UNIQUE KEY constraint "INTEG_437" on table "CAPACIDADE"
+Problematic key value is ("CAP_CODIGO" = 0)
+Fim de Linha 17. Tabela já existe no banco ->ENF_ENVIADO_PCP_DEMANDA.ENF0001
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->BTR_REGISTRO_CONTRAPARTIDA.BAN_TRANSFERENCIA
+Fim de Linha 19. Tabela Já existe --> BAN_TRANSFERENCIA_MANUT_HIST already ex
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch01.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Netocolor\Netocolor1410.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.572_patch01.sql
+ok - Adjutor3.0.9.572_patch02.sql
+ok - Adjutor3.0.9.572_patch03.sql
+ok - Adjutor3.0.9.573.sql
+ok - Adjutor3.0.9.573_patch01.sql

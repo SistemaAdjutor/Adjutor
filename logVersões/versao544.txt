@@ -1,0 +1,51 @@
+﻿Atualizado em 25/05/2020
+Inicio da versão: 04/05/2020
+
+ patch 5 : embraterm, Lion equipamentos, BSC
+  Ajuste no espaçamento dos relatório de inspeção http://192.168.0.250:9090/agile/tarefa/show/119776 [Embraterm]
+  Criar relatório de listagem contatos de clientes http://192.168.0.250:9090/agile/tarefa/show/118426
+  Problema ao excluir apontamentos de ordens http://192.168.0.250:9090/agile/tarefa/show/119663 [Embraterm]
+  Ajustes na entrada de estoque e data de conclusão dos itens http://192.168.0.250:9090/agile/tarefa/show/119824 [Embraterm]
+  Na ordem de serviço fixar foto http://192.168.0.250:9090/agile/tarefa/show/119821 [Embraterm]
+  colocar para selecionar na CFOP qual imposto da nota de serviço irá tributar http://192.168.0.250:9090/agile/tarefa/show/120083 [LION EQUIPAMENTOS]
+  Relatório de índice de atraso  http://192.168.0.250:9090/agile/tarefa/show/119678 [Embreterm]
+  fluxo de caixa incorreto : não mostra contas liquidas na previsão http://192.168.0.250:9090/agile/tarefa/show/120017 [BSC]
+  
+ patch 4 :drimec
+   Erro na consulta do PCP http://192.168.0.250:9090/agile/tarefa/show/119629 [DRIMEC]
+ patch 3: lion equipamentos, bsc, PARSEALS INDUSTRIAL, drimec, empac. embraterm
+    Problema ao imprimir etiquetas pela empresa 2 http://192.168.0.250:9090/agile/tarefa/show/118045 [LION EQUIPAMENTOS]
+  	Sistema calculando markup errado http://192.168.0.250:9090/agile/tarefa/show/118993 [BSC]
+	Problema ao agrupar, não pega o ultimo selecionado http://192.168.0.250:9090/agile/tarefa/show/119778 [PARSEALS INDUSTRIAL]
+	Alterar nome do relatório http://192.168.0.250:9090/agile/tarefa/show/119802 [Drimec]
+	Empresa 2 não marca automaticamente o filtro de preços exclusivos http://192.168.0.250:9090/agile/tarefa/show/119061 [BSC]
+	Erro na emissão da NFSE PARANAGUA http://192.168.0.250:9090/agile/tarefa/show/119846 [EMPAC]
+	Erro ao gravar produtos na entrada de nota http://192.168.0.250:9090/agile/tarefa/show/119848 [PARSEALS]
+	Erro na consulta de pedidos http://192.168.0.250:9090/agile/tarefa/show/119613 [PARSEALS]
+	Ajustar quantidade no relatório de inspeção http://192.168.0.250:9090/agile/tarefa/show/119894 [Embraterm]
+ patch 2 : empac, embraterm, lion equipamentos
+   Entrada de nota não altera centro de custo e não vincula ao contas a pagar http://192.168.0.250:9090/agile/tarefa/show/119157 [EMPAC]
+   Adicionar mascara no relatório de apontamento http://192.168.0.250:9090/agile/tarefa/show/119483 [embraterm]
+   Pedido cancelado esta permitindo exclusão dos itens http://192.168.0.250:9090/agile/tarefa/show/119633 [lion equipamentos]
+   
+ patch 1 : embraterm, eletrica burda, Lion equipamentos, HSJ, 
+   layout do relatório tipo FOR (22) está incorreto http://192.168.0.250:9090/agile/tarefa/show/119544 
+   Sistema não deve calcula st quando o cst for 60 http://192.168.0.250:9090/agile/tarefa/show/119540
+   Calculo do st no pedido não traz o valor correto http://192.168.0.250:9090/agile/tarefa/show/119111
+   Erro na tela Tela de conciliação bancaria  http://192.168.0.250:9090/agile/tarefa/show/118015
+   classificar os contatos dos clientes http://192.168.0.250:9090/agile/tarefa/show/118470
+   
+ tarefa da versão principal : embraterm, metalurgica água, empac, frank
+  Criar tabela resultados para relatorio de inspeção metalográfica(FOR23) http://192.168.0.250:9090/agile/tarefa/show/115040 embraterm
+  índice de atrasos http://192.168.0.250:9090/agile/tarefa/show/117843 embraterm
+  Erro no apontamento - Total de tempo gasto http://192.168.0.250:9090/agile/tarefa/show/118662 embraterm
+  Erro na edição e exclusão de apontamentos http://192.168.0.250:9090/agile/tarefa/show/118137 embraterm
+  Ajustar impressão do orçamento industrial http://192.168.0.250:9090/agile/tarefa/show/119049 embraterm
+  Filtro incorreto no relatório de apontamento http://192.168.0.250:9090/agile/tarefa/show/119108 embraterm
+  layout do formulario  http://192.168.0.250:9090/agile/tarefa/show/118944 embraterm
+  Ordem de produção após gerada não mudar os dados http://192.168.0.250:9090/agile/tarefa/show/114740 embraterm
+  Criar regra para exclusão de apontamentos http://192.168.0.250:9090/agile/tarefa/show/118532 embraterm
+  Erro ao emitir NFE com certificado A3 http://192.168.0.250:9090/agile/tarefa/show/119469 metalurgica água
+  erro ao refazer login
+  Adicionar campo NFS na carta de cobrança http://192.168.0.250:9090/agile/tarefa/show/117325 EMPAC
+  Ajustar emissão da nota de exportação http://192.168.0.250:9090/agile/tarefa/show/118985  Frank compensados

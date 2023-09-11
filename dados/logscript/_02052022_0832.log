@@ -1,0 +1,43 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Fim de Linha 8. Tabela já existe no banco ->EQP_CODIGO.OPERACOES
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch01.sql
+Fim de Linha 11. Tabela Já existe --> USUARIO_ALMOXARIFADO already ex
+Fim de Linha 13. Tabela já existe no banco ->OPV_BAIXAR_ESTOQUE_PELO_FAT.OPV0000
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch01.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Mandibor\mandibor2210.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.562_patch03.sql
+ok - Adjutor3.0.9.562_patch04.sql
+ok - Adjutor3.0.9.562_patch05.sql
+ok - Adjutor3.0.9.562_patch06.sql
+ok - Adjutor3.0.9.563.sql
+ok - Adjutor3.0.9.563_patch01.sql
+ok - Adjutor3.0.9.563_patch02.sql
+ok - Adjutor3.0.9.563_patch03.sql
+ok - Adjutor3.0.9.563_patch04.sql
+ok - Adjutor3.0.9.564.sql
+ok - Adjutor3.0.9.564_patch01.sql
+ok - Adjutor3.0.9.564_patch02.sql
+ok - Adjutor3.0.9.565.sql
+ok - Adjutor3.0.9.565_patch01.sql
+ok - Adjutor3.0.9.565_patch02.sql
+ok - Adjutor3.0.9.565_patch03.sql
+ok - Adjutor3.0.9.565_patch04.sql
+ok - Adjutor3.0.9.565_patch05.sql
+ok - Adjutor3.0.9.566.sql
+ok - Adjutor3.0.9.566_patch01.sql
+ok - Adjutor3.0.9.566_patch02.sql
+ok - Adjutor3.0.9.566_patch03.sql
+ok - Adjutor3.0.9.566_patch04.sql
+ok - Adjutor3.0.9.566_patch05.sql
+ok - Adjutor3.0.9.567.sql
+ok - Adjutor3.0.9.567_patch01.sql
+ok - Adjutor3.0.9.567_patch02.sql
+ok - Adjutor3.0.9.567_patch03.sql
+ok - Adjutor3.0.9.567_patch04.sql
+ok - Adjutor3.0.9.567_patch05.sql

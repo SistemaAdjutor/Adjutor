@@ -1,0 +1,44 @@
+﻿Atualizado em 08/05/2019
+Inicio da versão: 26/04/2019
+  patch 2
+	Não atualiza o fornecedor nas parcelas quando muda http://192.168.0.250:8080/agile/tarefa/show/100262
+	Não buscao corretamente produtos com movimentos http://192.168.0.250:8080/agile/tarefa/show/100243 
+	erro ao incluir op parametro PMT_UNFORMULA esta em branco http://192.168.0.250:8080/agile/tarefa/show/99982
+	alteração dos meses não realiza pesquisa no giro de estoque http://192.168.0.250:8080/agile/tarefa/show/100291
+  patch 1 
+    na tab itens das notas mostra o numero do pedido e nome do cliente
+	Pedido x Faturamento : Enviar e retornar faturamento http://192.168.0.250:8080/agile/tarefa/show/99782
+	Criar paramentro : "Liberar pedido para Faturamento" http://192.168.0.250:8080/agile/tarefa/show/99788
+	tela de expedição http://192.168.0.250:8080/agile/tarefa/show/99766
+	Liberar Expedição no faturamento http://192.168.0.250:8080/agile/tarefa/show/99772
+	relatório de produção da funcional tintas http://192.168.0.250:8080/agile/tarefa/show/98724
+	CRM gravando data da abertura http://192.168.0.250:8080/agile/tarefa/show/100084
+	controle dos botões do CRM
+	atualização dos leioute da tela de pedido e faturamento
+	aproveitamento de credito ajustes finais
+	
+  principal 
+	
+	Atualização da Acbr
+	Baixa de contas a Receber - nao atualizar Banco (por parametro) http://192.168.0.250:8080/agile/tarefa/show/99872
+	parametro para não gerar os tags  vBCSTRet, pST, vICMSSubstituto e vICMSSTRet : PMT_GerarTagICMSSubsPagaAnter
+	botão F2 do pedido funcionar como pesquisa funcionando
+	Novos Campos Local de Entrega (no xml) http://192.168.0.250:8080/agile/tarefa/show/99202
+	Bloquear lista clientes/ ou exportar para quem não tem acesso ao relatório http://192.168.0.250:8080/agile/tarefa/show/99463
+	código do Cbnef http://192.168.0.250:8080/agile/tarefa/show/99480
+	não realizando baixa automatica na primeira parcela  http://192.168.0.250:8080/agile/tarefa/show/99503
+	não excluindo a baixa no cancelamento da nfe e nem no estorno	http://192.168.0.250:8080/agile/tarefa/show/99317
+	Não limpa a grid dos itens no cancelamento http://192.168.0.250:8080/agile/tarefa/show/98878
+    Faturar nota cuja valor da fatura e das duplicadas será menor que o valor da nota pois cliente já antecipou os valores. http://192.168.0.250:8080/agile/tarefa/show/99392
+	aproveitamento de credito de icms somente os itens csosn 101,201 http://192.168.0.250:8080/agile/tarefa/show/97090
+	menu de fluxo de caixa fica logo depois de conta a pagar
+	gestão de inadimplência virou controle de inadimplência, alteração das colunas
+	No faturamento ao confirmar valores e parcelas a opção de selecionar o Credito disponivel http://192.168.0.250:8080/agile/tarefa/show/99379
+	bloqueia fornecedor se há pelo menos um pagamento liquidado http://192.168.0.250:8080/agile/tarefa/show/98731
+	Melhoramento na tela de crédito de clientes	http://192.168.0.250:8080/agile/tarefa/show/99384
+	Liquidação incorreto banco itau http://192.168.0.250:8080/agile/tarefa/show/99680
+	Parametro de usuário para usar crédito da conta corrente do cliente
+	ajuste do filtro do BI na opção de inadimplência
+    ajuste nos relatórios de recebimento por data de pagamento
+	cadastro na tela de consulta de pagamentos  --> 531 patch 7
+	

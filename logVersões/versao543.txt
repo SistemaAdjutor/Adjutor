@@ -1,0 +1,40 @@
+Atualizado em 22/04/2020
+Inicio da versão: 02/04/2020
+ 
+ patch 4: frank
+   Adicionar mais chaves de referencia na notas de exportação e devolução http://192.168.0.250:9090/agile/tarefa/show/118942
+   
+ patch 3: embraterm, bragips, RENATO IPI
+   Aprovação para pagamentos de contas a pagar e nova grid do pagar http://192.168.0.250:9090/agile/tarefa/show/115899
+   Nova tela de consulta de pedidos http://192.168.0.250:9090/agile/tarefa/show/117543
+   Nova tela de consulta do contas a receber com melhorias http://192.168.0.250:9090/agile/tarefa/show/117100
+   Adicionar filtros na tela de inadimplência http://192.168.0.250:9090/agile/tarefa/show/116918
+   Erro na pesquisa campo processo no produto http://192.168.0.250:9090/agile/tarefa/show/116802
+   Após apontar inspeção perguntar se quer visualizar relatório http://192.168.0.250:9090/agile/tarefa/show/115409
+   Vendedores inativos no cadastro de clientes http://192.168.0.250:9090/agile/tarefa/show/118252
+   Liberar para faturamento lançando estoque http://192.168.0.250:9090/agile/tarefa/show/117831 * tinha ido errado no 543
+   Erro ao consultar cnpj http://192.168.0.250:9090/agile/tarefa/show/118670
+   Atualização da ACBR
+   
+ patch 2 : embraterm, eletrica burda, chemvet, ja molduras artisticas, bsc, collect
+   Erro ao vincular centro de custo no plano de contas http://192.168.0.250:9090/agile/tarefa/show/116991
+   Erro ao Exportar produtos com CEST http://192.168.0.250:9090/agile/tarefa/show/117537
+   Criar nova etiqueta de expedição http://192.168.0.250:9090/agile/tarefa/show/116951
+   erro ao gerar NFCE pelo pedido http://192.168.0.250:9090/agile/tarefa/show/118394
+   aumentar casa decimal no campo consumo http://192.168.0.250:9090/agile/tarefa/show/115719
+   erro ao apontar em sequencia as fases, não atualiza o banco http://192.168.0.250:9090/agile/tarefa/show/118377
+   Adicionar somatório nos relatórios de vendas http://192.168.0.250:9090/agile/tarefa/show/117303
+   
+ patch 1 : Bragips
+   erro na expedição http://192.168.0.250:9090/agile/tarefa/list/118228
+   
+ tarefa da versão principal : BRAGIPS, EMBRATERM
+   Adicionar opção de tipo de pedido não habilitar expedição http://192.168.0.250:9090/agile/tarefa/show/117495 
+   Melhorias na tela de expedição http://192.168.0.250:9090/agile/tarefa/show/117547
+   No pedido a aba de informações botão de pesquisa não funciona http://192.168.0.250:9090/agile/tarefa/show/116734
+   Erro no apontamento http://192.168.0.250:9090/agile/tarefa/show/117986   
+   Erro no relatorio de apontamento  : não atualiza a data inicial ao editar o apontamento http://192.168.0.250:9090/agile/tarefa/show/117998
+   erro ao cadastrar o produto na Nota de entrada http://192.168.0.250:9090/agile/tarefa/show/116747
+   Ao adicionar item no pedido de compra não faz a soma correta dos produtos http://192.168.0.250:9090/agile/tarefa/show/116984
+   ajustar a coluna data na tela de apontamento http://192.168.0.250:9090/agile/tarefa/show/117013
+   Liberar para faturamento lançando estoque  http://192.168.0.250:9090/agile/tarefa/show/117831

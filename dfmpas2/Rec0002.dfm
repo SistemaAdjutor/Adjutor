@@ -1,0 +1,1301 @@
+object FormContasRecParcelas: TFormContasRecParcelas
+  Left = 221
+  Top = 188
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Parcelas  [Contas '#224' Receber]'
+  ClientHeight = 510
+  ClientWidth = 826
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  OldCreateOrder = True
+  Position = poDesktopCenter
+  OnClose = FormClose
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 14
+  object GrpExclusao: TGroupBox
+    Left = 0
+    Top = 438
+    Width = 826
+    Height = 34
+    Align = alTop
+    TabOrder = 4
+    Visible = False
+    object Label34: TLabel
+      Left = 151
+      Top = 11
+      Width = 25
+      Height = 14
+      Caption = 'Data:'
+    end
+    object Label35: TLabel
+      Left = 248
+      Top = 11
+      Width = 40
+      Height = 14
+      Caption = 'Usu'#225'rio:'
+    end
+    object Label36: TLabel
+      Left = 497
+      Top = 11
+      Width = 34
+      Height = 14
+      Caption = 'Motivo:'
+    end
+    object DBEdit5: TDBEdit
+      Left = 182
+      Top = 7
+      Width = 65
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'FPC_DATA_EXCLUSAO'
+      DataSource = DataMovimento.DsrecParc
+      ReadOnly = True
+      TabOrder = 0
+    end
+    object Edt_Usu_Cod: TDBEdit
+      Left = 295
+      Top = 7
+      Width = 40
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'USU_CODIGO'
+      DataSource = DataMovimento.DsrecParc
+      ReadOnly = True
+      TabOrder = 1
+    end
+    object Edt_Usu_Nome: TDBEdit
+      Left = 336
+      Top = 7
+      Width = 100
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'USU_LOGIN'
+      DataSource = DataMovimento.DsrecParc
+      ReadOnly = True
+      TabOrder = 2
+    end
+    object DBCheckBox2: TDBCheckBox
+      Left = 7
+      Top = 10
+      Width = 123
+      Height = 17
+      TabStop = False
+      Caption = 'Registro Exclu'#237'do'
+      DataField = 'FPC_EXCLUSAO'
+      DataSource = DataMovimento.DsrecParc
+      ReadOnly = True
+      TabOrder = 3
+      ValueChecked = 'S'
+      ValueUnchecked = 'N'
+    end
+    object DBEdt_Motivo: TDBEdit
+      Left = 540
+      Top = 7
+      Width = 280
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'FPC_MOTIVO_EXCLUSAO'
+      DataSource = DataMovimento.DsrecParc
+      ReadOnly = True
+      TabOrder = 4
+    end
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 32
+    Width = 826
+    Height = 217
+    Align = alTop
+    Caption = 'Informa'#231#245'es'
+    TabOrder = 1
+    object Label15: TLabel
+      Left = 88
+      Top = 191
+      Width = 63
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Observa'#231#227'o:'
+    end
+    object Label16: TLabel
+      Left = 637
+      Top = 144
+      Width = 76
+      Height = 14
+      Caption = 'Valor Recebido:'
+      Color = clBtnFace
+      ParentColor = False
+    end
+    object Label17: TLabel
+      Left = 86
+      Top = 120
+      Width = 65
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Recebimento:'
+    end
+    object Label18: TLabel
+      Left = 593
+      Top = 45
+      Width = 50
+      Height = 14
+      Caption = 'Cobran'#231'a:'
+    end
+    object Label19: TLabel
+      Left = 119
+      Top = 168
+      Width = 34
+      Height = 14
+      Caption = 'Status:'
+    end
+    object Label21: TLabel
+      Left = 344
+      Top = 169
+      Width = 82
+      Height = 14
+      Caption = 'Valor da Parcela:'
+    end
+    object Label22: TLabel
+      Left = 92
+      Top = 47
+      Width = 59
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Vencimento:'
+    end
+    object Label23: TLabel
+      Left = 120
+      Top = 72
+      Width = 31
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Conta:'
+    end
+    object TLabel
+      Left = 71
+      Top = 96
+      Width = 80
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'N'#186' da Cobran'#231'a:'
+    end
+    object Label24: TLabel
+      Left = 102
+      Top = 142
+      Width = 49
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Desconto:'
+    end
+    object Label25: TLabel
+      Left = 319
+      Top = 120
+      Width = 105
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Conceder Descto at'#233':'
+    end
+    object Label2: TLabel
+      Left = 598
+      Top = 67
+      Width = 45
+      Height = 14
+      Caption = 'Tipo Doc:'
+    end
+    object Label4: TLabel
+      Left = 398
+      Top = 145
+      Width = 30
+      Height = 14
+      Caption = 'Juros:'
+    end
+    object Label5: TLabel
+      Left = 685
+      Top = 116
+      Width = 28
+      Height = 14
+      Caption = 'Multa:'
+    end
+    object Label3: TLabel
+      Left = 504
+      Top = 96
+      Width = 47
+      Height = 14
+      Caption = 'Impressa:'
+    end
+    object Label6: TLabel
+      Left = 627
+      Top = 96
+      Width = 138
+      Height = 14
+      Caption = 'Remessa enviada ao Banco:'
+    end
+    object Label28: TLabel
+      Left = 116
+      Top = 20
+      Width = 35
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Cliente:'
+    end
+    object Label12: TLabel
+      Left = 289
+      Top = 96
+      Width = 57
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Data boleto:'
+    end
+    object Label29: TLabel
+      Left = 560
+      Top = 167
+      Width = 78
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Forma de Pagto:'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+    end
+    object DbCBoxFpc_Status: TDBComboBox
+      Left = 153
+      Top = 164
+      Width = 169
+      Height = 22
+      Style = csDropDownList
+      DataField = 'FPC_STATUS'
+      DataSource = DataMovimento.DsrecParc
+      Items.Strings = (
+        'Bloqueada'
+        'Cancelada'
+        'Cart'#243'rio'
+        'Devolu'#231#227'o'
+        'Indicado C'
+        'Liq.p/Descto'
+        'Liquidada'
+        'Outros'
+        'Pendente'
+        'Protestada'
+        'Agrupada'
+        'Parcial')
+      TabOrder = 16
+      OnClick = DbCBoxFpc_StatusClick
+      OnExit = DbCBoxFpc_StatusExit
+    end
+    object DBeFpc_vlparc: TDBEdit
+      Left = 426
+      Top = 165
+      Width = 100
+      Height = 22
+      DataField = 'FPC_VLPARC'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      TabOrder = 17
+      OnClick = DBeFpc_vlparcClick
+      OnEnter = DBeFpc_vlparcClick
+    end
+    object DBeFpc_vlpagto: TDBEdit
+      Left = 719
+      Top = 139
+      Width = 100
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'FPC_VLPAGO'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      ReadOnly = True
+      TabOrder = 15
+      OnExit = DBeFpc_vlpagtoExit
+    end
+    object DBeFpc_cobnum: TDBEdit
+      Left = 153
+      Top = 92
+      Width = 130
+      Height = 22
+      DataField = 'FPC_COBNUM'
+      DataSource = DataMovimento.DsrecParc
+      TabOrder = 7
+    end
+    object DBeFpc_decto: TDBEdit
+      Left = 153
+      Top = 139
+      Width = 100
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'FPC_DESCTO'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      ReadOnly = True
+      TabOrder = 13
+    end
+    object CbxCarteira: TComboBox
+      Left = 649
+      Top = 40
+      Width = 170
+      Height = 22
+      Style = csDropDownList
+      CharCase = ecUpperCase
+      TabOrder = 3
+      OnClick = CbxCarteiraClick
+      OnExit = CbxCarteiraExit
+      Items.Strings = (
+        ''
+        'CARTEIRA'
+        'COBRAN'#199'A SIMPLES'
+        'COBRAN'#199'A CAUCIONADA'
+        'COBRAN'#199'A DESCONTADA'
+        'COBRAN'#199'A SEM REGISTRO'
+        'COBRAN'#199'A RAPIDA'
+        'CUSTODIA DE CHEQUE'
+        'CHEQUE DESCONTADO')
+    end
+    object CbxTipoDoc: TComboBox
+      Left = 649
+      Top = 64
+      Width = 170
+      Height = 22
+      Style = csDropDownList
+      TabOrder = 6
+      OnChange = CbxTipoDocChange
+      OnClick = CbxTipoDocClick
+      Items.Strings = (
+        ''
+        'DUPLICATA'
+        'BOLETO'
+        'RECIBO'
+        'CHEQUE'
+        'DINHEIRO'
+        'OUTROS'
+        'CREDITO CONTA')
+    end
+    object CbxBco: TComboBox
+      Left = 187
+      Top = 68
+      Width = 390
+      Height = 22
+      ItemIndex = 0
+      TabOrder = 5
+      OnClick = CbxBcoClick
+      Items.Strings = (
+        '')
+    end
+    object DbeBan_Codigo: TDBEdit
+      Left = 153
+      Top = 68
+      Width = 33
+      Height = 22
+      DataField = 'BAN_CODIGO'
+      DataSource = DataMovimento.DsrecParc
+      TabOrder = 4
+      OnExit = DbeBan_CodigoExit
+    end
+    object DbeFpc_Juros: TDBEdit
+      Left = 426
+      Top = 141
+      Width = 100
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'FPC_JUROS'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      ReadOnly = True
+      TabOrder = 14
+    end
+    object DBFPC_MULTA: TDBEdit
+      Left = 719
+      Top = 114
+      Width = 100
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'FPC_MULTA'
+      DataSource = DataMovimento.DsrecParc
+      ReadOnly = True
+      TabOrder = 12
+      OnExit = DBFPC_MULTAExit
+    end
+    object DBFPC_OBS: TDBEdit
+      Left = 153
+      Top = 187
+      Width = 666
+      Height = 22
+      CharCase = ecUpperCase
+      DataField = 'FPC_OBS'
+      DataSource = DataMovimento.DsrecParc
+      TabOrder = 18
+    end
+    object CbDup: TComboBox
+      Left = 557
+      Top = 93
+      Width = 48
+      Height = 22
+      Style = csDropDownList
+      CharCase = ecUpperCase
+      ItemIndex = 1
+      TabOrder = 8
+      Text = 'N'#195'O'
+      OnChange = CbDupChange
+      Items.Strings = (
+        'SIM'
+        'N'#195'O')
+    end
+    object CbRemessa: TComboBox
+      Left = 771
+      Top = 89
+      Width = 48
+      Height = 22
+      Style = csDropDownList
+      CharCase = ecUpperCase
+      ItemIndex = 1
+      TabOrder = 9
+      Text = 'N'#195'O'
+      OnChange = CbDupChange
+      Items.Strings = (
+        'SIM'
+        'N'#195'O')
+    end
+    object EdCliente: TEdit
+      Left = 152
+      Top = 17
+      Width = 667
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      ReadOnly = True
+      TabOrder = 0
+      Text = 'EdCliente'
+    end
+    object edFPagto: TSgDbSearchCombo
+      Left = 644
+      Top = 164
+      Width = 151
+      Height = 22
+      TabOrder = 19
+      CharCase = ecUpperCase
+      LookupSelect = 'FPG_DESCRICAO, FPG_REGISTRO'
+      LookupOrderBy = 'FPG_DESCRICAO'
+      LookupTable = 'FORMA_PAGAMENTO'
+      LookupDispl = 'FPG_DESCRICAO'
+      GridAutoSize = False
+      LookupSource = qFPagto
+      DataField = 'FPG_REGISTRO'
+      DataSource = DataMovimento.DsrecParc
+      LookupKeyField = 'FPG_REGISTRO'
+      ShowButton = True
+      AutoF8WinTitulo = 'Formas de Pagamento'
+      AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
+      GridLeft = 0
+      GridWidth = 0
+      GridHeight = 100
+      GridShowWhenEnter = False
+      SelectWithDoubleClick = False
+    end
+    object DbDtFPC_VENCTO: TJvDBDateEdit
+      Left = 153
+      Top = 43
+      Width = 100
+      Height = 22
+      DataField = 'FPC_VENCTO'
+      DataSource = DataMovimento.DsrecParc
+      Glyph.Data = {
+        76050000424D760500000000000036000000280000001C0000000C0000000100
+        2000000000004005000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        800080808000808080008080800080808000FF00FF00FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FF00FF00FF00FF000000000000000000800000000000
+        0000800000008000000000000000800000000000000000000000800000008080
+        8000FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF0000000000000000000000
+        0000FFFFFF00000000000000000000000000C0C0C000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00808080008080800080808000FF00FF008080
+        80008080800080808000FF00FF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF00C0C0C000FFFFFF00C0C0
+        C00000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF0000000000FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0080808000FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        0000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00808080008080800080808000FF00FF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF000000000000000000FFFF
+        FF00FFFFFF0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF008080800080808000FFFFFF00FF00FF008080
+        8000FFFFFF00FFFFFF00FFFFFF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        000000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FF00FF00FF00FF0080808000808080008080800080808000FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+        FF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0
+        C000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FF00FF00}
+      ImageKind = ikCustom
+      NumGlyphs = 2
+      PopupColor = clBtnFace
+      ShowNullDate = False
+      YearDigits = dyFour
+      TabOrder = 1
+      OnExit = DbDtFPC_VENCTOExit
+    end
+    object DbDtFpc_FPC_DTDESC: TJvDBDateEdit
+      Left = 425
+      Top = 116
+      Width = 100
+      Height = 22
+      TabStop = False
+      DataField = 'FPC_DTDESC'
+      DataSource = DataMovimento.DsrecParc
+      ReadOnly = True
+      Color = 14145495
+      Glyph.Data = {
+        76050000424D760500000000000036000000280000001C0000000C0000000100
+        2000000000004005000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        800080808000808080008080800080808000FF00FF00FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FF00FF00FF00FF000000000000000000800000000000
+        0000800000008000000000000000800000000000000000000000800000008080
+        8000FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF0000000000000000000000
+        0000FFFFFF00000000000000000000000000C0C0C000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00808080008080800080808000FF00FF008080
+        80008080800080808000FF00FF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF00C0C0C000FFFFFF00C0C0
+        C00000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF0000000000FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0080808000FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        0000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00808080008080800080808000FF00FF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF000000000000000000FFFF
+        FF00FFFFFF0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF008080800080808000FFFFFF00FF00FF008080
+        8000FFFFFF00FFFFFF00FFFFFF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        000000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FF00FF00FF00FF0080808000808080008080800080808000FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+        FF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0
+        C000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FF00FF00}
+      ImageKind = ikCustom
+      NumGlyphs = 2
+      PopupColor = clBtnFace
+      ShowNullDate = False
+      YearDigits = dyFour
+      TabOrder = 11
+      OnExit = DbDtFpc_FPC_DTDESCExit
+    end
+    object DbDtFpc_pagto: TJvDBDateEdit
+      Left = 153
+      Top = 116
+      Width = 100
+      Height = 22
+      TabStop = False
+      DataField = 'FPC_PAGTO'
+      DataSource = DataMovimento.DsrecParc
+      ReadOnly = True
+      Color = 14145495
+      Glyph.Data = {
+        76050000424D760500000000000036000000280000001C0000000C0000000100
+        2000000000004005000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        800080808000808080008080800080808000FF00FF00FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FF00FF00FF00FF000000000000000000800000000000
+        0000800000008000000000000000800000000000000000000000800000008080
+        8000FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF0000000000000000000000
+        0000FFFFFF00000000000000000000000000C0C0C000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00808080008080800080808000FF00FF008080
+        80008080800080808000FF00FF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF00C0C0C000FFFFFF00C0C0
+        C00000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF0000000000FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0080808000FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        0000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00808080008080800080808000FF00FF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF000000000000000000FFFF
+        FF00FFFFFF0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF008080800080808000FFFFFF00FF00FF008080
+        8000FFFFFF00FFFFFF00FFFFFF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        000000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FF00FF00FF00FF0080808000808080008080800080808000FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+        FF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0
+        C000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FF00FF00}
+      ImageKind = ikCustom
+      NumGlyphs = 2
+      PopupColor = clBtnFace
+      ShowNullDate = False
+      YearDigits = dyFour
+      TabOrder = 10
+      OnExit = DbDtFpc_pagtoExit
+    end
+    object DBDateEdit1: TJvDBDateEdit
+      Left = 352
+      Top = 92
+      Width = 87
+      Height = 22
+      DataField = 'FPC_DATABOLETO'
+      DataSource = DataMovimento.DsrecParc
+      Color = 14145495
+      Enabled = False
+      Glyph.Data = {
+        76050000424D760500000000000036000000280000001C0000000C0000000100
+        2000000000004005000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        800080808000808080008080800080808000FF00FF00FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FF00FF00FF00FF000000000000000000800000000000
+        0000800000008000000000000000800000000000000000000000800000008080
+        8000FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF0000000000000000000000
+        0000FFFFFF00000000000000000000000000C0C0C000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00808080008080800080808000FF00FF008080
+        80008080800080808000FF00FF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF00C0C0C000FFFFFF00C0C0
+        C00000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF0000000000FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0080808000FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        0000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00808080008080800080808000FF00FF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF000000000000000000FFFF
+        FF00FFFFFF0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF008080800080808000FFFFFF00FF00FF008080
+        8000FFFFFF00FFFFFF00FFFFFF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        000000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FF00FF00FF00FF0080808000808080008080800080808000FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+        FF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0
+        C000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FF00FF00}
+      ImageKind = ikCustom
+      NumGlyphs = 2
+      PopupColor = clBtnFace
+      ShowNullDate = False
+      YearDigits = dyFour
+      TabOrder = 2
+      OnExit = DbDtFPC_VENCTOExit
+    end
+  end
+  object Panel1: TPanel
+    Left = 0
+    Top = 0
+    Width = 826
+    Height = 32
+    Align = alTop
+    BevelOuter = bvNone
+    TabOrder = 0
+    object Label7: TLabel
+      Left = 102
+      Top = 13
+      Width = 49
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Fatura N'#186':'
+    end
+    object Label1: TLabel
+      Left = 239
+      Top = 13
+      Width = 39
+      Height = 14
+      Caption = 'Parcela:'
+    end
+    object DBEdit2: TDBEdit
+      Left = 153
+      Top = 9
+      Width = 80
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'FAT_CODIGO'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      ReadOnly = True
+      TabOrder = 0
+    end
+    object DBEdit1: TDBEdit
+      Left = 281
+      Top = 9
+      Width = 43
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'N_PARC_CC'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      ReadOnly = True
+      TabOrder = 1
+    end
+    object DBChkFat_previsao: TDBCheckBox
+      Left = 745
+      Top = 9
+      Width = 74
+      Height = 17
+      Caption = 'Previs'#227'o'
+      DataField = 'FPC_PREVISAO'
+      DataSource = DataMovimento.DsrecParc
+      TabOrder = 3
+      ValueChecked = 'S'
+      ValueUnchecked = 'N'
+    end
+    object DBCheckBox1: TDBCheckBox
+      Left = 661
+      Top = 9
+      Width = 74
+      Height = 17
+      Caption = 'Reembolso'
+      DataField = 'FPC_REEMBOLSO'
+      DataSource = DataMovimento.DsrecParc
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clNavy
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 2
+      ValueChecked = 'S'
+      ValueUnchecked = 'N'
+    end
+  end
+  object Panel2: TPanel
+    Left = 0
+    Top = 472
+    Width = 826
+    Height = 37
+    Align = alTop
+    BevelOuter = bvNone
+    TabOrder = 5
+    object Bit_Excluir: TBitBtn
+      Left = 421
+      Top = 6
+      Width = 100
+      Height = 25
+      Cursor = crHandPoint
+      Hint = '|Exclui registro atual..'
+      Caption = '&Excluir'
+      Glyph.Data = {
+        E6000000424DE60000000000000076000000280000000E0000000E0000000100
+        04000000000070000000CE0E0000D80E00001000000000000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3300333333333333330033333333333333003333333333333300333333333333
+        3300333333333333330033000000000033003300000000003300330000000000
+        3300333333333333330033333333333333003333333333333300333333333333
+        33003333333333333300}
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 0
+      TabStop = False
+      OnClick = Bit_ExcluirClick
+    end
+    object Bit_Gravar: TBitBtn
+      Left = 521
+      Top = 6
+      Width = 100
+      Height = 25
+      Cursor = crHandPoint
+      Hint = '|Grava registro...'
+      Caption = '&Gravar'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000CE0E0000D80E00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00555555555555
+        555555555555555555555555555555555555555555FF55555555555550055555
+        55555555577FF5555555555500005555555555557777F5555555555500005555
+        555555557777FF5555555550000005555555555777777F555555550000000555
+        5555557777777FF5555557000500005555555777757777F55555700555500055
+        55557775555777FF5555555555500005555555555557777F5555555555550005
+        555555555555777FF5555555555550005555555555555777FF55555555555570
+        05555555555555777FF5555555555557005555555555555777FF555555555555
+        5000555555555555577755555555555555555555555555555555}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+      TabStop = False
+      OnClick = Bit_GravarClick
+    end
+    object Bit_Cancelar: TBitBtn
+      Left = 621
+      Top = 6
+      Width = 100
+      Height = 25
+      Cursor = crHandPoint
+      Hint = '|Cancela registro atual...'
+      Caption = '&Cancelar'
+      Glyph.Data = {
+        DE010000424DDE01000000000000760000002800000024000000120000000100
+        04000000000068010000CE0E0000D80E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        333333333333333333333333000033333333333333333333333F333333333333
+        0000333333333333333333333388F333333F3333000033300333333300033333
+        38F38F333F88F33300003330003333300033333338F338F3F8338F3300003333
+        000333000333333338F3338F833338F3000033333000300033333333338F3338
+        3333F8330000333333000003333333333338F333333F83330000333333300033
+        3333333333338F3333383333000033333300000333333333333338F333833333
+        00003333300030003333333333333833338F3333000033330003330003333333
+        33338333338F333300003330003333300033333333383338F338F33300003330
+        0333333300033333338333838F338F3300003333333333333003333333833833
+        38F338F300003333333333333333333333388333338FFF830000333333333333
+        3333333333333333333888330000333333333333333333333333333333333333
+        0000}
+      NumGlyphs = 2
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+      TabStop = False
+      OnClick = Bit_CancelarClick
+    end
+    object Bit_Sair: TBitBtn
+      Left = 721
+      Top = 6
+      Width = 100
+      Height = 25
+      Cursor = crHandPoint
+      Caption = '&Sair'
+      Glyph.Data = {
+        CA010000424DCA01000000000000760000002800000026000000110000000100
+        04000000000054010000CE0E0000D80E00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+        8888888FFFFFFFFFFFFFFFFFFF008888888888880000078FFFFFFFFFFFFFFFFF
+        FF00833333333000BB03078FFFFFFFFFFFFFFFFFFF00830000000BBBBB03078F
+        FFFFFFFFFFFFFFFFFF00830000000BBBBB03078FFFFFFFFFFFFFFFFFFF008300
+        00000BBBBB03078FFFFFFFFFFFFFFFFFFF00830000000BBBBB03078FFFFFFFFF
+        FFFFFFFFFF00830000000BBBBB03078FFFFFFFFFFFFFFFFFFF00830000000BBB
+        B003008FFFFFFFFFFFFFFFFFFF00830000000BBBBB03078FFFFFFFFFFFFFFFFF
+        FF00830000000BBBBB03078FFFFFFFFFFFFFFFFFFF00830000000BBBBB03078F
+        FFFFFFFFFFFFFFFFFF00830000000BBBBB03078FFFFFFFFFFFFFFFFFFF008300
+        00000BBBBB03078FFFFFFFFFFFFFFFFFFF00833333333000BB03078FFFFFFFFF
+        FFFFFFFFFF008888888888880000088FFFFFFFFFFFFFFFFFFF00888888888888
+        8888888FFFFFFFFFFFFFFFFFFF00}
+      NumGlyphs = 2
+      TabOrder = 3
+      TabStop = False
+      OnClick = Bit_SairClick
+    end
+  end
+  object Cheque: TGroupBox
+    Left = 0
+    Top = 341
+    Width = 826
+    Height = 97
+    Align = alTop
+    Caption = 'Cheque'
+    TabOrder = 3
+    object Label20: TLabel
+      Left = 64
+      Top = 23
+      Width = 89
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Banco do Cheque:'
+    end
+    object Label26: TLabel
+      Left = 58
+      Top = 46
+      Width = 95
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'N'#250'mero do Cheque:'
+    end
+    object Label27: TLabel
+      Left = 299
+      Top = 46
+      Width = 53
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Digito (C3):'
+    end
+    object Label30: TLabel
+      Left = 58
+      Top = 67
+      Width = 95
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Sacado do Cheque:'
+    end
+    object DBEdt_Bco_Cheque: TDBEdit
+      Left = 153
+      Top = 19
+      Width = 33
+      Height = 22
+      DataField = 'FPC_BANCO_CHEQUE'
+      DataSource = DataMovimento.DsrecParc
+      TabOrder = 0
+      OnExit = DBEdt_Bco_ChequeExit
+    end
+    object CbBcoCheque: TComboBox
+      Left = 187
+      Top = 19
+      Width = 342
+      Height = 22
+      CharCase = ecUpperCase
+      MaxLength = 35
+      TabOrder = 1
+      OnClick = CbBcoChequeClick
+      OnExit = CbBcoChequeClick
+    end
+    object DbeCheque: TDBEdit
+      Left = 153
+      Top = 42
+      Width = 130
+      Height = 22
+      DataField = 'FPC_NUM_CHEQUE'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      TabOrder = 2
+      OnExit = DbeChequeExit
+    end
+    object DbeCheque_Dv: TDBEdit
+      Left = 353
+      Top = 42
+      Width = 22
+      Height = 22
+      DataField = 'FPC_NUM_CHEQUE_DV'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      TabOrder = 3
+    end
+    object DbeSacado_Cheque: TDBEdit
+      Left = 153
+      Top = 65
+      Width = 608
+      Height = 22
+      CharCase = ecUpperCase
+      DataField = 'FPC_SACADO_CHEQUE'
+      DataSource = DataMovimento.DsrecParc
+      TabOrder = 4
+    end
+  end
+  object GroupBox3: TGroupBox
+    Left = 0
+    Top = 249
+    Width = 826
+    Height = 92
+    Align = alTop
+    Caption = 'Descontos de t'#237'tulos ou cheques'
+    TabOrder = 2
+    object Label8: TLabel
+      Left = 92
+      Top = 17
+      Width = 61
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Descontado:'
+    end
+    object Label9: TLabel
+      Left = 212
+      Top = 17
+      Width = 89
+      Height = 14
+      Caption = 'Data do Desconto:'
+    end
+    object Label11: TLabel
+      Left = 403
+      Top = 15
+      Width = 100
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Confirma Devolu'#231#227'o:'
+    end
+    object Label13: TLabel
+      Left = 572
+      Top = 15
+      Width = 94
+      Height = 14
+      Caption = 'Data da Devolu'#231#227'o:'
+    end
+    object Label10: TLabel
+      Left = 26
+      Top = 66
+      Width = 127
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Observa'#231#227'o do Desconto:'
+    end
+    object Label14: TLabel
+      Left = 25
+      Top = 42
+      Width = 128
+      Height = 14
+      Alignment = taRightJustify
+      Caption = 'Valor do Juros  do Descto:'
+    end
+    object Edt_Descontado: TEdit
+      Left = 153
+      Top = 13
+      Width = 32
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      ReadOnly = True
+      TabOrder = 0
+      Text = 'Edt_Descontado'
+    end
+    object DBEdit3: TDBEdit
+      Left = 303
+      Top = 13
+      Width = 90
+      Height = 22
+      TabStop = False
+      Color = 14145495
+      DataField = 'FPC_DATADESCTO'
+      DataSource = DataMovimento.DsrecParc
+      TabOrder = 1
+    end
+    object CbxConfDevolucao: TComboBox
+      Left = 503
+      Top = 12
+      Width = 48
+      Height = 22
+      Style = csDropDownList
+      CharCase = ecUpperCase
+      ItemIndex = 1
+      TabOrder = 2
+      Text = 'N'#195'O'
+      OnChange = CbxConfDevolucaoChange
+      OnClick = CbxConfDevolucaoClick
+      Items.Strings = (
+        'SIM'
+        'N'#195'O')
+    end
+    object DBEdit4: TDBEdit
+      Left = 153
+      Top = 63
+      Width = 667
+      Height = 22
+      CharCase = ecUpperCase
+      DataField = 'FPC_OBS_DESCTO'
+      DataSource = DataMovimento.DsrecParc
+      TabOrder = 5
+    end
+    object DBFPC_JUROS_DESCTO: TDBEdit
+      Left = 153
+      Top = 38
+      Width = 100
+      Height = 22
+      DataField = 'FPC_JUROS_DESCTO'
+      DataSource = DataMovimento.DsrecParc
+      MaxLength = 13
+      TabOrder = 4
+      OnExit = DBeFpc_vlpagtoExit
+    end
+    object DBDataDevolucao: TJvDBDateEdit
+      Left = 669
+      Top = 12
+      Width = 93
+      Height = 22
+      DataField = 'FPC_DATADEVOLUCAO'
+      DataSource = DataMovimento.DsrecParc
+      Enabled = False
+      Glyph.Data = {
+        76050000424D760500000000000036000000280000001C0000000C0000000100
+        2000000000004005000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        800080808000808080008080800080808000FF00FF00FF00FF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FF00FF00FF00FF000000000000000000800000000000
+        0000800000008000000000000000800000000000000000000000800000008080
+        8000FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF00FFFFFF00FFFFFF00FFFFFF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF0000000000000000000000
+        0000FFFFFF00000000000000000000000000C0C0C000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00808080008080800080808000FF00FF008080
+        80008080800080808000FF00FF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF00C0C0C000FFFFFF00C0C0
+        C00000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF0000000000FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF0000000000FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0080808000FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        0000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FFFFFF00FF00FF00808080008080800080808000FF00FF00FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF000000000000000000FFFF
+        FF00FFFFFF0000000000FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF008080800080808000FFFFFF00FF00FF008080
+        8000FFFFFF00FFFFFF00FFFFFF00FFFFFF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00FFFFFF0000000000FFFFFF00FFFFFF0000000000000000000000
+        000000000000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FF00
+        FF0080808000FF00FF00FF00FF0080808000808080008080800080808000FF00
+        FF0080808000FFFFFF00FF00FF00FF00FF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00800000008080
+        8000FF00FF0080808000FFFFFF00FF00FF00FF00FF00FF00FF00FF00FF00FF00
+        FF00FF00FF00FF00FF00FF00FF00FF00FF0080808000FFFFFF00FF00FF00FF00
+        FF00FFFFFF00C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0C000C0C0
+        C000C0C0C000FFFFFF008000000080808000FF00FF0080808000FFFFFF00FFFF
+        FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+        FF0080808000FFFFFF00FF00FF00FF00FF000000000000000000000000000000
+        0000000000000000000000000000000000000000000000000000FF00FF00FF00
+        FF00FF00FF008080800080808000808080008080800080808000808080008080
+        80008080800080808000808080008080800080808000FF00FF00}
+      ImageKind = ikCustom
+      NumGlyphs = 2
+      PopupColor = clBtnFace
+      ShowNullDate = False
+      YearDigits = dyFour
+      TabOrder = 3
+      OnExit = DBDataDevolucaoExit
+    end
+  end
+  object SqlCdsBco: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT '#13#10'BAN_CODIGO,'#13#10'BAN_APELIDO,'#13#10'BAN_COD_APELIDO,'#13#10'EMP_CODIGO' +
+      ' '#13#10'FROM BAN0000 ORDER BY BAN_APELIDO'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    CommandText = 
+      'SELECT '#13#10'BAN_CODIGO,'#13#10'BAN_APELIDO,'#13#10'BAN_COD_APELIDO,'#13#10'EMP_CODIGO' +
+      ' '#13#10'FROM BAN0000 ORDER BY BAN_APELIDO'
+    DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
+    Left = 531
+    Top = 296
+    object SqlCdsBcoBAN_CODIGO: TStringField
+      FieldName = 'BAN_CODIGO'
+      Required = True
+      Size = 4
+    end
+    object SqlCdsBcoBAN_APELIDO: TStringField
+      FieldName = 'BAN_APELIDO'
+      Size = 14
+    end
+    object SqlCdsBcoBAN_COD_APELIDO: TIntegerField
+      FieldName = 'BAN_COD_APELIDO'
+    end
+    object SqlCdsBcoEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
+    end
+  end
+  object SqlBcoCheque: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 'select * from BANCOS'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    CommandText = 'select * from BANCOS'
+    DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
+    Left = 593
+    Top = 296
+    object SqlBcoChequeBCO_CODIGO: TIntegerField
+      FieldName = 'BCO_CODIGO'
+      Required = True
+    end
+    object SqlBcoChequeBCO_DESCRICAO: TStringField
+      FieldName = 'BCO_DESCRICAO'
+      Size = 35
+    end
+    object SqlBcoChequeEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
+    end
+  end
+  object qFPagto: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQL.Strings = (
+      'select FPG_DESCRICAO, FPG_REGISTRO'
+      'from FORMA_PAGAMENTO'
+      'Where FPG_REGISTRO='#39'-1'#39
+      'order by FPG_DESCRICAO'
+      ''
+      '')
+    SQLConnection = DataCadastros.SQLConnection1
+    Left = 718
+    Top = 196
+  end
+end

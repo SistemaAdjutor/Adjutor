@@ -1,0 +1,7 @@
+{ "Finalidade": [ 
+	{"codFinalidade":1,"finalidade":"NF-e normal"},
+	{"codFinalidade":2,"finalidade":"NF-e complementar"},
+	{"codFinalidade":3,"finalidade":"NF-e de Ajuste"},
+	{"codFinalidade":4,"finalidade":"Devolução/Retorno"}
+		]
+}

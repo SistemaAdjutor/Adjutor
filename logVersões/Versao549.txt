@@ -1,0 +1,50 @@
+Atualizado em 26/10/2020
+Inicio da versão: 06/10/2020
+
+patch 2 : BURDA, ILDO ,AÇOS FERRARA, FAST PINTURAS, RDR USINAGEM, LION
+  xml Local de retirada e entrega ADJ 291 [ELETRICA BURDA]
+  Erro nos relatórios de pedido. adj 287 [AÇOS FERRARA]
+  Relatórios com erro ADJ 292  
+  Erros no processo de produção RBM ADJ 285 [ILDO]
+  Erro no layout 400 banco caixa ADJ 249 [FAST PINTURAS]
+  Problema ao imprimir ops(listagem) ADJ 217 [RDR USINAGEM]
+  Campo de fornecedor. adj 280 [LION]
+  Mostrar estoque separado na tela de separação. adj 278 [LION]
+  Forma de pagamento some no contas a receber adj 257 [AÇOS FERRARA]
+  Impressão da ordem de produção(ANTIGA) não puxa etapas ADJ 286 [CHEMSYTEM]
+  ajustes da nfe eletronica quando não identifica o problema
+  Ajustar filtro de vendas ADJ 293
+  ERRO NO PAGAR NA NOTA DE ENTRADA
+  
+  
+patch 1 : BRAGIPS, METALURGICA AGUA, CHEMVET, LION, Aços Ferrara
+ Nova função no cadastro de usuários 236 [ BRAGIPS]
+ vincular Almoxarifado na ficha técnica dos produtos ADJ 274 [METALURGICA AGUA]
+ Modificação na entrada de notas - 2 ADJ 273 
+ Sistema calculando errado prazo da entrada de nota ADJ 260 [ROTOR]
+ Corrigir layout de Etiqueta ADJ 281 [chemvet]
+ Relatorio de clientes ADJ 277 [CHEMVET]
+ Relatorio de produção ADJ 276 [CHEMVET]
+ Codigo errado na lista de produção (antiga) ADJ 267 [LION]
+ Relatório por forma de pagamento errado adj 265 [ Aços Ferrara]
+ Caixa de seleção de lotes com bug adj 264 [ CRYSTAL CLEAN] 
+ Ajustar seleção no contas a pagar ADJ 243 [BRAGIPS]
+ Ajuste relatório de tabela de preços por linha adj 241 [PACPAPEL]
+ Erro na consulta de código original adj 272 [LION]
+ 
+ 
+Tarefas principais : ITAGRIL, CHEMVET, QUIMICA ROCHA, EMBRATERM, LION, AÇOS FERRARA
+ Valor total no contas a pagar. adj 255 [ ITAGRILL]
+ Quantidade concluida na tela de demanda. ADJ 232 [ITAGRILL]
+ Sequencia de etapas de fabricação. ADJ 250 [chemvet]
+ Criar função Incluir produção direto na tela de demanda ADJ 239 [chemvet]
+ Quantidade concluida na tela de demanda. adj 251 [itagril]
+ Relatório de ordem de envase ADJ 230 [CHEMVET]
+ Modificações para entrada de nota ADJ 195 
+ Relatório de produtos não esta aparecendo a marca. ADJ 185 [QUIMICA ROCHA]
+ Abrir campos do relatório ADJ 252 [EMBRATERM]
+ Tela de pedidos não atualiza a expedição para pedidos novos ADJ 244 [LION]
+ Sistema bloqueando adicionar inscrição estadual adj 238 [LION]
+ Erro ao tirar relatório ADJ 261 
+ Corrigir campo de quantidade. ADJ 246 [CHEMVET]
+ Novo relatório de pedidos faturados ADJ 235 [aços ferrara]

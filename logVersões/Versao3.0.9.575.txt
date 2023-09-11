@@ -1,0 +1,51 @@
+﻿Atualizado em 08/12/2022
+Inicio da versão: 01/12/2022
+
+
+principal: Brazinc, Chemvet, Delta Cabos, Rotor, Coval, Elétrica Burda
+  1245 - Erro ao incluir item no pedido pelo F6 [Brazinc]
+  1271 - Melhoria no Relatório de Vendedores [Chemvet]
+  1273 - Sequencia de itens na ordem de compra [Delta Cabos]
+  1291 - Ajuste NFSe Campo do Tenente + Ajuste NFSe de Paranaguá [Rotor]
+  1292 - Erro na sequência dos itens no orçamento [Delta Cabos]
+  1298 - Ajuste no relatório ABC vendas produtos por unidades [Coval]
+  1299 - Erro nos itens da ficha técnica - pedido [Elétrica Burda]
+  1301 - Manutenção coluna quantidade no pedido [Novi]
+
+patch 01: Delta Cabos
+  1310 - Colocar exportação para excel [Novi]
+  1311 - Relatório cortando casa do milhão[Delta Cabos]
+
+patch 02: Embraterm, Drimec, L forja, Netocolor, Arkson, Chemsystem, Fx Film Manaus
+  1277 - Duplicidade na mensagem de observação na impressão [Novi]
+  1303 - Manutenção compartilhamento - Ordens de compra [Embraterm]
+  1305 - 2° FCI cálculos de produtos com subordens [Drimec]
+  1308 - Sequenciador de ordens [L forja]
+  1312 - Melhoria processo de industrialização e O.P [Netocolor]
+  1313 - Melhoria processo de montagem da Ficha técnica [Arkson]
+  1315 - Ajuste arquivo de remessa banco viacred [Chemsystem]
+  1316 - Ajuste na coluna quantidade faturada [Embraterm]
+  1317 - Ajuste na programação da produção [Fx Film Manaus]
+
+patch 03: L Forja, Embraterm
+   516 - Melhoria - Permitir ordenar tela de pagamentos e recebimentos [Novi]
+  1286 - Implementação da Tela de Conta Corrente/Verba [L Forja]
+  1288 - Padronizar caracteres no login do usuário [Novi]
+  1302 - Manutenção tela de pedido de compra [Novi]
+  1306 - Melhoria para rastreamento de bugs do sistema [Novi]
+  1307 - Totalizador no relatório por vendedor - BI [Novi]
+  1320 - Ajuste na melhoria do processo de pedidos [Embraterm]
+
+patch 04: Chemsystem, Rotor, Inquibra, L Forja
+   993 - Campo do fone na tela do cadastro de cliente [Novi]
+  1058 - Importação da tabela Tipi [Novi]
+  1102 - Ativação e Homologação novo Banco Via Credi [Chemsystem]
+  1153 - Ajuste no relatório Centro de Custo por Item [Rotor]
+  1184 - Erro na movimentação do Kardex ao cancelar pedido de venda [BSC]
+  1225 - Atualização automática dos preços compostos [Inquibra]
+  1321 - Informações complementares da Ficha Técnica [L Forja]
+  1323 - Erro ao editar itens enviados para produção [L Forja]
+  1324 - Alterar caixa de novidades [Novi]
+  1325 - Exportar clientes/fornecedores/transportadoras - C9 [Novi]
+  1326 - Manutenção no processo de envase [Chemvet]
+  1327 - Manutenção na espécie da conta banco CNAB 240 [Chemsystem]

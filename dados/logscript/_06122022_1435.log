@@ -1,0 +1,62 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->BTR_REGISTRO_CONTRAPARTIDA.BAN_TRANSFERENCIA
+Fim de Linha 19. Tabela Já existe --> BAN_TRANSFERENCIA_MANUT_HIST already ex
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->CAP_SUBSTITUICAO_TRIBUTARIA.CAPACIDADE
+Fim de Linha 10. Tabela já existe no banco ->EMP_CODIGO.CAPACIDADE
+Fim de Linha 14. Tabela já existe no banco ->ENF_IT_ENVIADO_PCP_DEMANDA.ENF_IT01
+Fim de Linha 15. Tabela já existe no banco ->ENF_IT_QTD_ENV_PCP_DEMANDA.ENF_IT01
+Fim de Linha 16. Tabela já existe no banco ->ENF_REGISTRO.DEMANDA_PRODUCAO
+Fim de Linha 17. Tabela já existe no banco ->ENF_REGISTRO.PED_IT01
+Fim de Linha 18. Tabela já existe no banco ->PED_CODIGO.ENF_IT01
+Fim de Linha 20. Tabela já existe no banco ->FTI_TRATAMENTO_TERMICO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 22. Tabela já existe no banco ->FTI_TRATAMENTO_SUPERFICIAL.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 24. Tabela já existe no banco ->FTI_TOLERANCIA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 26. Tabela já existe no banco ->FTI_GRAVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 28. Tabela já existe no banco ->FTI_CORTE_QUANTIDADE.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 30. Tabela já existe no banco ->FTI_CORTE_COMPRIMENTO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 32. Tabela já existe no banco ->FTI_CORTE_QTDE_METROS.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 34. Tabela já existe no banco ->FTI_CORTE_OBSERVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 36. Tabela já existe no banco ->FTI_USINAGEM_OBSERVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 38. Tabela já existe no banco ->FTI_PRENSA_TIPO_CABECA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 40. Tabela já existe no banco ->FTI_PRENSA_CHAVE.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 42. Tabela já existe no banco ->FTI_PRENSA_ALT_CABECA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 44. Tabela já existe no banco ->FTI_PRENSA_MASSA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 46. Tabela já existe no banco ->FTI_PRENSA_CAIXA_N.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 48. Tabela já existe no banco ->FTI_PRENSA_MATRIZ.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 50. Tabela já existe no banco ->FTI_PRENSA_PINO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 52. Tabela já existe no banco ->FTI_PRENSA_BUCHA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 54. Tabela já existe no banco ->FTI_PRENSA_CONTRA_BUCHA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 56. Tabela já existe no banco ->FTI_PRENSA_OBSERVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 58. Tabela já existe no banco ->FTI_LAMINACAO_CAIXA_N.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 60. Tabela já existe no banco ->FTI_LAMINACAO_TIPO_ROLO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 62. Tabela já existe no banco ->FTI_LAMINACAO_TIPO_ROSCA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 64. Tabela já existe no banco ->FTI_LAMINACAO_ALT_USINAGEM.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 66. Tabela já existe no banco ->FTI_LAMINACAO_COMP_ROSCA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 68. Tabela já existe no banco ->FTI_LAMINACAO_OBSERVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Script com 32 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch04.sql
+Fim de Linha 8. Tabela já existe no banco ->FOR_CODIGO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 9. Tabela já existe no banco ->ENF_NOTANUMBER.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 10. Tabela já existe no banco ->MP_DATA_COMPRA.MATERIAPRIMA_ORDEMPRODUCAO
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch04.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Netocolor\netocolor2410.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.573_patch01.sql
+ok - Adjutor3.0.9.573_patch02.sql
+ok - Adjutor3.0.9.573_patch03.sql
+ok - Adjutor3.0.9.573_patch04.sql
+ok - Adjutor3.0.9.574.sql
+ok - Adjutor3.0.9.574_patch01.sql
+ok - Adjutor3.0.9.574_patch02.sql
+ok - Adjutor3.0.9.574_patch03.sql
+ok - Adjutor3.0.9.575-A.sql
+ok - Adjutor3.0.9.575-B.sql
+ok - Adjutor3.0.9.575.sql
+ok - Adjutor3.0.9.575_patch01.sql

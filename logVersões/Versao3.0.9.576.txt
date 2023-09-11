@@ -1,0 +1,37 @@
+﻿Atualizado em 30/01/2023
+Inicio da versão: 10/01/2023
+
+
+principal: 
+  1333 - Agrupamento de pedidos com erro [Novi]
+  1339 - Nova opção para correção das sequencias nos pedidos [Novi]
+
+patch 1: Quântica, Netocolor, Rotor, Embraterm
+   207 - Melhoria no relatório de pedidos faturar/faturados [Novi]
+   725 - Incluir vendedor em um relatório. [novi]
+   780 - Criar relatório de controle de orçamentos no mês [Quântica]
+  1330 - Melhoria relatórios por cores - retorno de industrialização [Netocolor]
+  1331 - Impressão de NFSe com data errada [Rotor]
+  1332 - Ajustes CNAB 240 [Novi]
+  1334 - Alteração da quantidade para pedidos enviados para produção [Novi]
+  1335 - Conversão de peso para kilo entrada de nota [Netocolor]
+  1336 - Manutenção exportar produto excel [Novi]
+  1337 - Modificação na tela Mais NFe 4.0 [Novi]
+  1338 - Nova opção de relatório no faturamento [Novi]
+  1346 - Manutenção na sequência dos itens pedido de venda [Embraterm]
+
+patch 2: Embraterm, FX Film Manaus
+  1348 - Manutenção na exclusão pedido de industrialização [Embraterm]
+  1363 - Corrigir impressão da ordem de produção [FX Film Manaus]
+
+patch 3: Normadin, Embraterm, Netocolor, Chemvet
+   745 - Ajuste relatório de clientes e produtos vendidos [Normadin]
+  1343 - Modificação para impressão da op das mola [Normadin]
+  1350 - Histórico de envio de e-mail [Embraterm]
+  1352 - Impressão do tratamento térmico [Normadin]
+  1365 - Melhorias OP [Normadin]
+  1366 - Ajustes campos técnicos do produto [Normadin]
+  1369 - Colocar modelo de impressão de molas na ordem de produção [Normadin]
+  1371 - Manutenção no registro de retorno pelo F6 [Netocolor]
+  1373 - Ajustar a quantidade faturada de cada [Novi]
+  1374 - Manutenção nos itens da ficha técnica [Chemvet]

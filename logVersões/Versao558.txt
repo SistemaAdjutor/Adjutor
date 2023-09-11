@@ -1,0 +1,31 @@
+﻿Atualizado em 07/07/2021
+Inicio da versão: 01/07/2021
+
+patch 03: Eletrica Burda Ltda, Embraterm
+  Ajuste sped fiscal - bloco c - registro c100 - ADJ 554 [Eletrica Burda Ltda]
+  Alterar revisão do relatório - ADJ 591 [Embraterm]
+  Ajusta da data de inspeção no relatório - ADJ 577 [Embraterm]
+
+patch 02: Embraterm, Normadin
+  fazer relatório com o calculo da rendabildade das Ordens de Serviço - ADJ 575 [Embraterm]
+  Verificar erro ao agrupar pedidos - ADJ 580 [Embraterm]
+  Ajustes tela de custos de fábrica - ADJ 579 [Embraterm]
+  Nova etiqueta para expedição - ADJ 562 [Normadin]
+  Ajustar relatório de notas fiscais - ADJ 535
+
+
+patch 01: BSC Industrial Aços Ltda
+  PROJETO BSC: Tela de consulta de pedidos faturados - ADJ 583 [BSC Industrial Aços Ltda]
+  Projeto BSC: Data de entrega errada na OP - ADJ 578 [BSC Industrial Aços Ltda]
+  Projeto BSC: Sem Coluna de estoque com preço fixo ADJ - 574 [BSC Industrial Aços Ltda]
+  
+
+principal: BSC Industrial Aços Ltda, Embraterm, BRASGIPS (DF, WB e Capital), Quantica, ROTOR
+  PROJETO BSC: Enviar OP para o PCP - ADJ 566 [BSC Industrial Aços Ltda]
+  Ajustes tela de custo de fabrica por centro de custo - ADJ 567 [Embraterm]
+  Ajustar valor do desconto - Tela de margens - ADJ 565 [BRASGIPS (DF, WB e Capital)]
+  Erro no cancelamento de notas fiscais - ADJ 550 [Quantica]
+  PROJETO BSC: Relatório de produção BSC - ADJ 536 [BSC Industrial Aços Ltda]
+  Novos índices - colocar no script - ADJ 570 - Novi Sistemas
+  Validação importação de xml - ADJ 501 - ROTOR
+  

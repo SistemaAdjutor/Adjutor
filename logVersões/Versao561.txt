@@ -1,0 +1,42 @@
+﻿Atualizado em 29/10/2021
+Inicio da versão: 04/10/2021
+
+patch 05: BSC Industrial Aços Ltda, Itagrill. Mandibor
+  Parametro para empenhar MP sem saldo. - ADJ 738 [Novi]
+  Coluna de Estoque na consulta de produto - ADJ 736 [BSC Industrial Aços Ltda]
+  Opção salvar em excel - ADJ 733 [Itagrill]
+  Novo campo no apontamento - ADJ 734 [Mandibor]
+
+patch 04: Hospital São José
+  Alterar importação do arquivo de retorno celesc - ADJ 603 [Hospital São José]
+  Ajustar ordenação da tela - ADJ 729 [Hospital São José]
+
+patch 03: Itagrill, Embraterm, Mandibor, Flexsul
+  Informações erradas de estoque - ADJ 723 [Itagrill]
+  Verificar por que não mostra as ordens - ADJ 722 [Embraterm]
+  Informação de acessório na tela de apontamentos - ADJ 692 [Mandibor]
+  Erro na consulta dos pedidos mercos - ADJ 730 [Flexsul]
+
+patch 02: SEA Filmes
+  Parâmetro para desabilitar botão de copiar. - ADJ 726 [Novi]
+  Manaus - Implementar multi IE nas telas - ADJ 715 [SEA filmes]
+  Manaus - implementar consumo na Produção por IE - ADJ 716 [SEA Filmes]
+
+patch 01: Itagrill, SEA Filmes, BSC Industrial Aços
+  SubOrdens no PCP - ADJ 711 [Itagrill]
+  Somatório do registro c190 - ADJ 701 [novi]
+  Ajuste sped fiscal - ADJ 700 [Novi]
+  Novos índices para pedido web - ADJ 706 [Novi]
+  Múltiplas IE - SEA FILMS - ADJ 693 [SEA Filmes]
+  Coluna de Margem na pesquisa do produto. - ADJ 703 [Novi]
+  Controle de Industrialização - ADJ 687 [BSC Industrial Aços]
+  PROJETO BSC: Solicitação de Compras - ADJ 587 [BSC Industrial Aços]
+
+principal: Metalúrgica Cecatto, LF Epis, Elétrica Burda, Flexsul
+  Erro ao selecionar certificado digital - ADJ 679 [Metalúrgica Cecatto]
+  Sistema não exporta xmls de entrada - ADJ 690 [Novi]
+  Sistema deve atualizar tabela de venda ao alterar o preço de venda - ADJ 682 [LF Epis]
+  Ajustes na criação de lotes pelo envase - ADJ 666 [Novi]
+  Ajuste sped fiscal - registro C110 - ADJ 600 [Elétrica Burda]
+  Erros nos cadastros dos bancos - ADJ 645 [Flexsul]
+  Ajustes sped fiscal - Registro 0190 - Cadastro de unidades - ADJ 539 [Elétrica Burda]

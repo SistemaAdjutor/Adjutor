@@ -1,0 +1,17 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560.sql
+Fim de Linha 8. Tabela já existe no banco ->USP_VISUALIZA_ABA_VENDA.USUARIO_PARAMETRO
+Fim de Linha 12. Tabela já existe no banco ->PMT_PRD_REFER_SCO_REFER.PRMT0001
+Fim de Linha 16. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 20. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 24. Tabela já existe no banco ->USP_REALIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 29. Tabela já existe no banco ->PMT_DESCRICAO_99_OUTROS.PRMT0001
+Fim de Linha 33. Tabela já existe no banco ->PED_ORS_CLI_CONSFINAL.PED0000
+Fim de Linha 34. Tabela já existe no banco ->PED_ORS_CLI_CONSU_PROPRIO.PED0000
+Fim de Linha 35. Tabela já existe no banco ->PED_ORS_CLI_REGIME_TRIBUTARIO.PED0000
+Script com 9 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560.sql
+Sumário: 
+Host:192.168.0.16
+Database :/servidor/Jobdados/fxmanaus/fxfilm0501.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.560.sql

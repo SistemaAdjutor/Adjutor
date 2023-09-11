@@ -1,0 +1,13 @@
+UPDATE  VERSAOSISTEMA 
+SET VERSAOSISTEMA.SCRIPTADJUTOR = '3.0.9.581',
+    VERSAOSISTEMA.DATA   = '31.05.2023',
+	VERSAO = '3.0.9.581'
+ where VERSAOSISTEMA.CODIGO = 1;
+commit work;
+
+ALTER TABLE ENTCTE ADD ECTE_TIPO_FRETE INTEGER DEFAULT 0;
+COMMENT ON COLUMN ENTCTE.ECTE_TIPO_FRETE IS 'Responsável Pelo Pagamento do Frete - 0: Por conta do emitente, 1: Por conta do destinatário/remetente, 2: Por conta de terceiros, 9: Sem cobrança de frete';
+UPDATE ENTCTE SET ECTE_TIPO_FRETE = 0 WHERE ECTE_TIPO_FRETE IS NULL ; 
+COMMIT WORK;
+
+

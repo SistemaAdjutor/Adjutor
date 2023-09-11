@@ -1,0 +1,19 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch04.sql
+Fim de Linha 8. Tabela já existe no banco ->FOR_CODIGO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 9. Tabela já existe no banco ->ENF_NOTANUMBER.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 10. Tabela já existe no banco ->MP_DATA_COMPRA.MATERIAPRIMA_ORDEMPRODUCAO
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch04.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Lforja\LFORJA2710.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.573_patch03.sql
+ok - Adjutor3.0.9.573_patch04.sql
+ok - Adjutor3.0.9.574.sql
+ok - Adjutor3.0.9.574_patch01.sql
+ok - Adjutor3.0.9.574_patch02.sql
+ok - Adjutor3.0.9.574_patch03.sql
+ok - Adjutor3.0.9.575-A.sql
+ok - Adjutor3.0.9.575-B.sql
+ok - Adjutor3.0.9.575.sql

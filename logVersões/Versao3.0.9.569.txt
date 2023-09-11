@@ -1,0 +1,39 @@
+﻿Atualizado em 09/06/2022
+Inicio da versão: 09/06/2022
+
+
+principal: Empac, Brasgips, Netocolor, Brasinc, Metalúrgica Água, Yvytu
+  494  - Alterações na tela pedidos de Compra [Empac]
+  1012 - Consulta da tela de cadastro de clientes [Novi]
+  1013 - Gravar total desconto e desconto médio da tela gerencial / demonstrativo de vendas por margem [Brasgips]
+  1014 - Gravar peso do Produto na Entrada de Nota e aplicar no retorno da Industrialização [Netocolor]
+  1025 - Ajuste da consulta tela de contas a receber [Brazinc]
+  1026 - Erro de certificado ao inutilizar nota fiscal [Novi]
+  1030 - Estorno de remessa pela industrialização [Metalúrgica Água]
+  1032 - Melhoria impressão do modelo orçamento [Yvytu]
+  1041 - Ajustar cálculos da nota de serviço [Empac]
+
+patch 1: Empac, Brasgips, Delta Cabos, Flexsul, Quântica, BSC Aços, PacPapel, Collect
+  1017 - Melhoria solicitação de compras [Novi]
+  1029 - Informativo de atualização no sistema [Novi]
+  1033 - Relatório gerencial vendas por Margem - Notas rejeitadas [Novi]
+  1035 - Retatório Orçamento Industrial - Alteração [Novi]
+  1037 - Logo da empresa saindo inversa [Empac]
+  1040 - Alteração de pedido faturado altera dados da expedição [Brasgips]
+  1043 - Melhorias retorno de industrialização [Novi]
+  1044 - Sistema enviando email de cancelamento/carta de correção para outro cliente [Delta Cabos]
+  1047 - Duplicidade de notas na tela - Mais NFe 4.0 [Flexsul]
+  1048 - Mostrar mensagem de limite de crédito no pedido [Quântica]
+  1049 - Incluir novo campo na tela de adicionar item [BSC Aços]
+  1050 - Sistema recalculando valor do ST [PacPapel]
+  1051 - cst de pis /cofins saindo errado no xml [PacPapel]
+  1053 - Incluir filtro de centro de custo [Quântica]
+  1056 - Centro de custo não esta inativando [Collect]
+  1057 - Bug ao selecionar tipo de pedido [Collect]
+
+patch 2: L. Forja, Embraterm, BSC
+  1022 - Mensagem ao faturar produto com quantidade na coluna falta [Novi]
+  1052 - Ajuste tamanho da etiqueta [L. Forja]
+  1060 - Reserva de estoque no pedido [Novi]
+  1063 - Bug centro de custo - Vincular nota [Embraterm]
+  1069 - Corrigir lançamento de contas a pagar(entrada de nfe) [BSC]

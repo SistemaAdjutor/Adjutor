@@ -1,0 +1,6 @@
+﻿Atualizado em 05/09/2023
+Inicio da versão: 05/09/2023
+
+principal: Unimatriz
+  1635 - Erro no Sped Fiscal [Unimatriz]
+ 

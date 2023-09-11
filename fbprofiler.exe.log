@@ -1,0 +1,33 @@
+ [2021-03-08 14:34:16.469 Info] Firebird database profiler started
+ [2021-03-08 14:34:21.184 Info] Creating trace...
+ [2021-03-08 14:34:21.189 Info] Trace name: new_trace_1
+ [2021-03-08 14:34:21.189 Info] Host name: localhost
+ [2021-03-08 14:34:21.189 Info] Port: 3050
+ [2021-03-08 14:34:21.189 Info] User name: SYSDBA (password specified)
+ [2021-03-08 14:34:21.189 Info] Configuration:
+<database>
+enabled true
+log_transactions true
+log_connections true
+log_statement_prepare true
+log_statement_free true
+log_statement_start true
+log_statement_finish true
+log_procedure_start true
+log_procedure_finish false
+log_trigger_start false
+log_trigger_finish false
+log_blr_requests true
+print_blr false
+log_dyn_requests true
+print_dyn false
+print_perf true
+print_plan true
+time_threshold 0
+max_sql_length 16000
+max_blr_length 16000
+max_dyn_length 16000
+</database>
+
+ [2021-03-08 14:34:21.189 Info] Starting trace new_trace_1
+ [2021-03-08 14:34:21.189 Info] Trace log redirected to file: C:\Developer\Adjutor\new_trace_1.log

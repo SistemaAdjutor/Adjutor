@@ -1,0 +1,38 @@
+﻿Atualizado em 17/03/2021
+Inicio da versão: 03/03/2021
+
+
+patch 2 : Pecarpa, QUIMICA ROCHA, BSC, Normadim
+  Mudança no cálculo do FCP adj 440 [Pecarpa]
+  Erro no relatório do PCP adj 436 [QUIMICA ROCHA] 
+  Erro na importação de CTE ADJ 437 [Pecarpa]
+  Sistema excluindo duas vezes o mesmo item na entrada de nota ADJ 419 [BSC]
+  Ajustes no tipo das molas ADJ 441 [ normadin]
+  
+patch 1 : Percapa, Itagril, ArtGrill, normandin, parseals
+  Tags de fcp st no simples nacional adj 430 [Pecarpa]
+  Validação da receita - código do enquadramento do IPI adj 424 
+  Coluna de valor no CRM Pós venda ADJ 427
+  Lentidão tela de Demanda ADJ 420 [ ITAGRIL]
+  Pesquisa de pedidos no PCP. adj 421 [itagril]
+  Colunas fixas na tela de demanda adj 423 [ITAGRIL]
+  Estornar Ordem de produção Iniciada. ADJ 422 [ ITAGRIL]
+  Pedido cancelado esta aparecendo na tela de demanda para produção. ADJ 367 [ QUIMICA ROCHA]
+  Relatório ordem de produção Art Grill ADJ 428  
+  Trocar coluna do relatorio de pedido com espaçamento adj 426 [normadin]
+  Ajustes no relatorio de O.P adj 425 [normandin]
+  Ajustar etiqueta na expedição adj 431 [Parseals]
+  
+principal : QUANTICA, EMBRATERM, FX Film, Frank compensados, Normadin
+
+  Nota denegada ainda consta como faturada. adj 412 [QUANTICA]
+  Consumo da matéria-prima não esta calculando o percentual ADJ 410 
+  Erro na movimentação do estoque - Pedido agrupado ADJ 389 [ EMBRATERM]
+  Liberar o campo de cfop na entrada de cte adj 408 [fx film]
+  Incluir na tela de importação de cte o botão de lançar contas a pagar adj 70 [fx film]
+  Bloquear edição do campo bairro 307
+  Impressão das notas fiscais divergem adj 400 [frank compensados] 
+  erro ao cancelar adj 413 
+  Campo de observação não aparece no relatório de espaçamento. adj 414 [normadin]
+  Valor do peso e de números de espiras totais esta alterando. adj 415 [normadin]
+ Ajustes ordem de produção Normadim e tela de campos técnicos adj 409 [normadin]

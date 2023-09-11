@@ -1,0 +1,41 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->ENF_REGISTRO.PED_IND_KIT
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_HABILITA_ICMS_PEDIDO.PRMT0001
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->CLI_CONSFINAL.PED0000
+Fim de Linha 11. Tabela já existe no banco ->CLI_CONSU_PROPRIO.PED0000
+Fim de Linha 16. Tabela já existe no banco ->PMT_FAT_NF_VALOR_ORIGINAL.PRMT0001
+Fim de Linha 19. Tabela já existe no banco ->PMT_FAT_NF_FRETE_SEGURO_DESP.PRMT0001
+Fim de Linha 22. Tabela já existe no banco ->PMT_FAT_NF_VALOR_LIQ_DESC.PRMT0001
+Fim de Linha 25. Tabela já existe no banco ->PMT_FAT_NF_VALOR_ANTECIPADO.PRMT0001
+Fim de Linha 28. Tabela já existe no banco ->PMT_FAT_NF_SEM_VALOR_COMERCIAL.PRMT0001
+Fim de Linha 31. Tabela já existe no banco ->PMT_FAT_NF_VL_LIQ_VALOR_ANTECIP.PRMT0001
+Script com 8 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.581.sql
+Fim de Linha 8. Tabela já existe no banco ->ECTE_TIPO_FRETE.ENTCTE
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.581.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Normadim\Normadim1608.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.580_patch01.sql
+ok - Adjutor3.0.9.580_patch02.sql
+ok - Adjutor3.0.9.580_patch03.sql
+ok - Adjutor3.0.9.581.sql
+ok - Adjutor3.0.9.581_patch01.sql
+ok - Adjutor3.0.9.581_patch02.sql
+ok - Adjutor3.0.9.581_patch03.sql
+ok - Adjutor3.0.9.581_patch04.sql
+ok - Adjutor3.0.9.582.sql
+ok - Adjutor3.0.9.582_patch01.sql
+ok - Adjutor3.0.9.582_patch02.sql
+ok - Adjutor3.0.9.582_patch03.sql
+ok - Adjutor3.0.9.583.sql
+ok - Adjutor3.0.9.583_patch01.sql

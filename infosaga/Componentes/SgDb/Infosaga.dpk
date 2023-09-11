@@ -1,0 +1,144 @@
+package Infosaga;
+
+{$R *.res}
+{$IFDEF IMPLICITBUILDING This IFDEF should not be used by users}
+{$ALIGN 8}
+{$ASSERTIONS ON}
+{$BOOLEVAL OFF}
+{$DEBUGINFO OFF}
+{$EXTENDEDSYNTAX ON}
+{$IMPORTEDDATA ON}
+{$IOCHECKS ON}
+{$LOCALSYMBOLS ON}
+{$LONGSTRINGS ON}
+{$OPENSTRINGS ON}
+{$OPTIMIZATION OFF}
+{$OVERFLOWCHECKS OFF}
+{$RANGECHECKS OFF}
+{$REFERENCEINFO ON}
+{$SAFEDIVIDE OFF}
+{$STACKFRAMES ON}
+{$TYPEDADDRESS OFF}
+{$VARSTRINGCHECKS ON}
+{$WRITEABLECONST OFF}
+{$MINENUMSIZE 1}
+{$IMAGEBASE $400000}
+{$DEFINE DEBUG}
+{$ENDIF IMPLICITBUILDING}
+{$IMPLICITBUILD ON}
+
+requires
+  rtl,
+  vcl,
+  dbrtl,
+  vcldb,
+  dsnap,
+  dbexpress,
+  vclx,
+  VclSmp,
+  frce,
+  Jcl,
+  JvCore,
+  JvSystem,
+  JvStdCtrls,
+  JvDB,
+  DBXInterBaseDriver,
+  DBXFirebirdDriver,
+  frx22,
+  fs22,
+  dbxcds,
+  frxe22,
+  RtmRxCtl220,
+  ibxpress,
+  IndySystem,
+  IndyProtocols,
+  JvMM,
+  DelPrintDXE8,
+  vclie,
+  inet,
+  soaprtl,
+  vclFireDAC,
+  FireDAC,
+  FireDACCommonDriver,
+  FireDACCommon,
+  FireDACIBDriver,
+  Tee,
+  TeeDB,
+  uniGUI22,
+  uniGUI22Core,
+  uniTools22,
+  QExport4RT_D22,
+  JvAppFrm,
+  JvGlobus,
+  JvPageComps,
+  rbIDE1622,
+  rbRCL1622,
+  rbRTL1622,
+  rbBDE1622,
+  rbDB1622,
+  rbDAD1622,
+  rbRAP1622,
+  rbDBE1622,
+  FlatStyle_D6,
+  PngComponents,
+  cxLibraryRS19,
+  dxGDIPlusRS19,
+  dxThemeRS19,
+  dxBarRS19,
+  dxComnRS19,
+  cxEditorsRS19,
+  cxDataRS19,
+  cxPageControlRS19,
+  pngimage_D7,
+  frxDB22,
+  cxPageControldxBarPopupMenuRS19,
+  RtmRxDB220,
+  JvNet,
+  cxGridRS19,
+  dxLayoutControlRS19,
+  cxExportRS19,
+  ACBr_DFeComum,
+  ACBr_TCP,
+  ACBr_Diversos,
+  ACBr_Comum,
+  ACBr_synapse,
+  ACBr_OpenSSL,
+  ACBr_Integrador,
+  ACBr_PCNComum,
+  ACBr_Serial,
+  ACBr_Boleto,
+  ACBr_BoletoRL,
+  ACBr_TXTComum,
+  ACBr_SPED,
+  ACBr_CTe,
+  ACBr_CTeDacteRL,
+  ACBrDFeReportRL,
+  ACBr_NFe,
+  ACBr_NFCeECFVirtual,
+  ACBr_NFeDanfeFR,
+  ACBr_NFeDanfeESCPOS,
+  ACBr_NFSe,
+  ACBr_NFSeDanfseFR,
+  ACBr_NFSeDanfseRL,
+  ACBr_NFeDanfeRL,
+  ZComponent,
+  ZParseSql,
+  ZCore,
+  ZDbc,
+  ZPlain;
+
+contains
+  Uteis in '..\..\Uteis.pas',
+  InicioDB in '..\..\InicioDB.pas' {DBInicio},
+  BaseDBEditForm in '..\..\BaseDBEditForm.pas' {frmBaseDBEdit},
+  BaseDBForm in '..\..\BaseDBForm.pas' {frmBaseDB},
+  BaseDBPesquisaForm in '..\..\BaseDBPesquisaForm.pas' {frmBaseDBPesquisa},
+  BaseForm in '..\..\BaseForm.pas' {frmBase},
+  BaseReportForm in '..\..\BaseReportForm.pas' {frmBaseReport},
+  BaseTelaRelatorioForm in '..\..\BaseTelaRelatorioForm.pas' {frmBaseTelaRelatorio},
+  ErrorForm in '..\..\ErrorForm.pas' {FrmError},
+  BaseDBPesquisaBaseForm in '..\..\BaseDBPesquisaBaseForm.pas' {frmBaseDBPesquisaBase},
+  CustomSettings in '..\..\CustomSettings.pas',
+  SgDbSeachComboUnit in 'SgDbSeachComboUnit.pas';
+
+end.

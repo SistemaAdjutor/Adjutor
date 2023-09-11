@@ -1,0 +1,42 @@
+﻿Atualizado em 28/04/2023
+Inicio da versão: 05/04/2023
+
+
+principal: L-Forja, Chemvet, Mandibor, Flexsul, Delta Cabos, Yvytu
+  1427 - Relatório de Ordem de Produção - data de entrega [L Forja]
+  1429 - Erro ao gerar remessa [Chemvet]
+  1431 - Duplicidade dos pedidos na ordem de produção [Mandibor]
+  1440 - Manutenção arquivo de remessa - Ailos [Flexsul]
+  1441 - Protesto de boletos - banco itau [Delta Cabos]
+  1447 - Manutenção nos parâmetros da nota fiscal [Yvytu]
+  1448 - Corrigir cadastro de mola [Novi]
+
+patch 1 - L Forja, PACPAPEL, SEA Filmes, BSC, EDGE, Chemsystem, Delta Cabos
+  1349 - Lentidão ao digitar data para o filtro de pesquisa [Novi]
+  1354 - Alteração relatório de ordem de produção [L Forja]
+  1395 - Manutenção nos relatórios Mais NFe 4.0 [PACPAPEL]
+  1430 - Relatório á faturar/faturados - prazo de pagamento [SEA Filmes]
+  1436 - Inserir CNPJ na impressão de ordem de compra [BSC]
+  1451 - Melhoria Exportação de planilhas adjutor [Novi]
+  1452 - Manutenção tabela de retorno pelo F4 [EDGE]
+  1453 - Melhoria cadastro do cliente pela consulta CNPJ [Novi]
+  1454 - Calculo da quantidade de retorno [EDGE]
+  1456 - Lentidão no ao gerar ordem de produção e tela de PCP [Novi]
+  1458 - Verificar consulta tela de gerenciamento de industrialização [Novi]
+  1459 - Layout relatório de itens para conferência [BSC]
+  1460 - Erro ao faturar nota fiscal com desconto [Chemsystem]
+  1461 - Manutenção em relatório de ordem de produção [L Forja]
+  1464 - Orçamento com valor zerado [Delta Cabos]
+
+patch 2 - Collect, Brasgips, MSL Pintura
+  1428 - Relatório agrupado por cliente/fatura - total de clientes [Collect]
+  1433 - 4° FCI REVISÃO [Novi]
+  1449 - Correções molas [Novi]
+  1467 - Valor incorreto na fatura ao faturar nota fiscal [Brasgips]
+  1470 - Fixar parâmetro em nota fiscal [MSL Pintura]
+  1471 - Correção impressão Normadim [Novi]
+
+patch 3 - Parseals, Normadin
+  1383 - Erro no agrupamento de pedido [Parseals]
+  1473 - Melhorias impressão de OP [Normadin]
+  1475 - Tolerâncias da mola [Normadin]

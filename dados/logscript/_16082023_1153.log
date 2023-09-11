@@ -1,0 +1,13 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.583_patch01.sql
+Fim de Linha 82. Tabela já existe no banco ->PRODUTO_PRECO_EMPRESA.SHAREDB
+Fim de Linha 92. Tabela Já existe --> PRD0000_PRECO_EMPRESA already ex
+Fim de Linha 93. ERROR: unsuccessful metadata update
+Index IDX_PRD0000_PRECO_EMPRESA already exists
+Fim de Linha 95. Tabela já existe no banco ->PMT_COMIS_SOBRE_DIF_VENDA_CUSTO.PRMT0001
+Script com 4 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.583_patch01.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Arkson\ARKSON1007.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.583_patch01.sql

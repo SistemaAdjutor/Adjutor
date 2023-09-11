@@ -1,0 +1,24 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.581.sql
+Fim de Linha 8. Tabela não existe
+ENTCTE
+At line 2, column 13.
+Fim de Linha 9. ERROR: unsuccessful metadata update
+column ECTE_TIPO_FRETE does not exist in table/view ENTCTE
+Fim de Linha 10. Tabela não existe
+ENTCTE
+At line 1, column 15
+[FireDAC][Phys][FB]invalid transaction handle (expecting explicit transaction start)
+[FireDAC][Phys][FB]invalid transaction handle (expecting explicit transaction start)
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.581.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\COLLECT\collect - 1206.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.580_patch03.sql
+3 erro(s) - Adjutor3.0.9.581.sql
+ok - Adjutor3.0.9.581_patch01.sql
+ok - Adjutor3.0.9.581_patch02.sql
+ok - Adjutor3.0.9.581_patch03.sql
+ok - Adjutor3.0.9.581_patch04.sql
+ok - Adjutor3.0.9.582.sql

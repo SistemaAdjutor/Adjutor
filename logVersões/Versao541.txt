@@ -1,0 +1,77 @@
+﻿Atualizado em 27/02/2020
+Inicio da versão: 04/02/2020
+ 
+ patch 8: Metalurgica água , industrial mangueiras, empac , drimec, yvitur, EMBRATERM
+	Acrescentar filtro por Centro de Custos nos relatórios de entrada de nota http://192.168.0.250:8080/agile/tarefa/show/110576
+	Bloquear alteração da forma de pagamento http://192.168.0.250:8080/agile/tarefa/show/100460
+	Crm Pos-vendas deixar mais flexivel dias do filtro cobrança http://192.168.0.250:8080/agile/tarefa/show/115300
+	Carta de cobrança para clientes - Enviar pelo CRM-pos Venda http://192.168.0.250:8080/agile/tarefa/show/115256
+	Tela de produtos erro no fornecedores http://192.168.0.250:8080/agile/tarefa/show/115386
+	Relatorio de clientes por Ramos de Atividade - ajustar http://192.168.0.250:8080/agile/tarefa/show/115381
+	Problema quando o ultimo item não passa pela regra fiscal http://192.168.0.250:8080/agile/tarefa/show/115439
+	Pedido de industrialização não está apagando mesmo com todos os apontamentos cancelados http://192.168.0.250:8080/agile/tarefa/show/114141
+	Criar opção para excluir apontamentos http://192.168.0.250:8080/agile/tarefa/show/113989
+	Alterar modalidade da base de calculo para 3 http://192.168.0.250:8080/agile/tarefa/show/114700
+	
+ patch 7: alteração no so script do patch 4 por causa de caracteres especias
+
+ patch 6: Drimec, yvitur, brasgips, lion equipamentos, embraterm
+   	Criar novo B.I - Vendas por Centro de custos http://192.168.0.250:8080/agile/tarefa/show/113366
+	Criar novo B.I - Vendas no Periodo por Estado http://192.168.0.250:8080/agile/tarefa/show/113359
+	criar novo B.I -Vendas - origem http://192.168.0.250:8080/agile/tarefa/show/113372
+	CFOP tributando icms mesmo flag tributar icms desmarcado http://192.168.0.250:8080/agile/tarefa/show/114436
+	Problema na utilização de créditos no faturamento  http://192.168.0.250:8080/agile/tarefa/show/114474
+	criar relatório de Cliente por Origem http://192.168.0.250:8080/agile/tarefa/show/114319
+	relatório com as quantidades de orçamentos de um periódo e vendas http://192.168.0.250:8080/agile/tarefa/show/114648
+	relatório de Clientes por Atividade http://192.168.0.250:8080/agile/tarefa/show/114753
+	Adicionar flag no cadastro da cfop http://192.168.0.250:8080/agile/tarefa/show/114698
+	Tela de impressão de etiquetas mostrando produtos duplicados http://192.168.0.250:8080/agile/tarefa/show/115035
+	Ajustar hint com a mensagem errada http://192.168.0.250:8080/agile/tarefa/show/115030
+	Sistema não altera alíquota quando o cliente é consumidor final http://192.168.0.250:8080/agile/tarefa/show/114913
+	relatório de inspeção http://192.168.0.250:8080/agile/tarefa/show/112846
+	
+ patch 5 : plasticos mundial
+   Erro no estorno do kit - controle de estoque no faturamento http://192.168.0.250:8080/agile/tarefa/show/115026
+   
+ PATCH 4: Quimica Rocha, Ildo, drimec, inquibra, vision controls, collect 
+   RPS no contas a receber deve ser de acordo com parâmetro de NFSe http://192.168.0.250:8080/agile/tarefa/show/114022
+   Melhoria na aba Produção http://192.168.0.250:8080/agile/tarefa/show/114203
+   incluir por script as origem de cliente padrão http://192.168.0.250:8080/agile/tarefa/show/114312
+   Totais do somatório de pis e cofins errado http://192.168.0.250:8080/agile/tarefa/show/114338
+   Erro no codigo do item no PPAC http://192.168.0.250:8080/agile/tarefa/show/114742
+   Ajuste de relatório do conta a receber (Relatório em Recebimentos) http://192.168.0.250:8080/agile/tarefa/show/114837
+   Gravar data de ultima compra do fornecedor e criar filtro http://192.168.0.250:8080/agile/tarefa/show/114713
+   ERRO NO XML http://192.168.0.250:8080/agile/tarefa/show/115001
+   
+ patch 3 : parseals, plasticos mundial, drimec, rotor, yvitur
+   Problema no agrupamento de vendas e orçamentos  http://192.168.0.250:8080/agile/tarefa/show/107062
+   Aumentando a tela do cadastro de produto e mudando de lugar o campo "Unidade Tributária" no cadastro dos produtos http://192.168.0.250:8080/agile/tarefa/show/114156
+   Colocar somatório das notas na tela de Nota Fiscal de Serviço http://192.168.0.250:8080/agile/tarefa/show/114196
+   Botão “ revisado “ na tela de NFS-e colocar explicação da sua função http://192.168.0.250:8080/agile/tarefa/show/114224
+   Aumentar a fonte da tela de emissão de nota de serviço http://192.168.0.250:8080/agile/tarefa/show/114230
+   Erro ortográfico na tela de manutenção RPS http://192.168.0.250:8080/agile/tarefa/show/114222
+   F4 de cliente na consulta de contas a receber http://192.168.0.250:8080/agile/tarefa/show/114281
+   Origem do cliente no pedido não atualizou cliente http://192.168.0.250:8080/agile/tarefa/show/114299
+   Atualizar IBPT 2020 http://192.168.0.250:8080/agile/tarefa/show/114402
+   Erro código do Município ao entrar no cadastro de empresa http://192.168.0.250:8080/agile/tarefa/show/114449
+   Sistema não altera cst quando o cliente é consumidor final http://192.168.0.250:8080/agile/tarefa/show/114426
+   
+ patch 2 : embraterm, pescabras, yvitur, collect 
+   Relatório de apontamentos não apresenta ordens que não apontam por carga corretamente http://192.168.0.250:8080/agile/tarefa/show/114049
+   Erro ao entrar no cadastro do cliente http://192.168.0.250:8080/agile/tarefa/show/114055
+   Tag percentual de redução da base com valor zerado<pRedBC>0.0000</pRedBC> http://192.168.0.250:8080/agile/tarefa/show/113955
+   Criar exportação Excel na tela de fornecedor http://192.168.0.250:8080/agile/tarefa/show/114286
+   Replicar novo relatório para recebimentos http://192.168.0.250:8080/agile/tarefa/show/114163
+   Erro de dll em base nova - erro no instalador http://192.168.0.250:8080/agile/tarefa/show/112756
+ patch 1: embraterm
+   erro ao gerar bloco k http://192.168.0.250:8080/agile/tarefa/show/114060
+   
+ Tarefas do versão principal : ALEPAST, Ildo, Collect, Embraterm, Ildo, sustenplast, lion
+   Tela mais visual para selecionar o diretório da exportação da nfe http://192.168.0.250:8080/agile/tarefa/show/98376
+   Erro de fluxo de caixa, valor previsto somando com nulo	 http://192.168.0.250:8080/agile/tarefa/show/113939
+   Criar novo relatório de recebimentos do contas a receber http://192.168.0.250:8080/agile/tarefa/show/113082
+   Aba de produção em produtos vai mostrar o produto em produção e os concluidos http://192.168.0.250:8080/agile/tarefa/show/113704
+   Erro ao editar o apontamento de uma ordem http://192.168.0.250:8080/agile/tarefa/show/113721
+   Ajustar importação de retorno Sicredi http://192.168.0.250:8080/agile/tarefa/show/113680
+   Na Cfop padrão do cliente não se pode apagar http://192.168.0.250:8080/agile/tarefa/show/113838
+   Ajustes nas etiquetas MODELO 4 em expedição http://192.168.0.250:8080/agile/tarefa/show/113830

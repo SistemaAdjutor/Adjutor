@@ -1,0 +1,46 @@
+﻿Atualizado em 06/07/2023
+Inicio da versão: 03/07/2023
+
+
+principal: Collect, PACPAPEL, Embraterm, Rotor, BSC, Drimec
+  1511 - Informações não estão salvando no cadastro da empresa [Novi]
+  1514 - Novo código no layout do arquivo de retorno (Bradesco) [Collect]
+  1528 - Nota editável com erro [PACPAPEL]
+  1546 - Inclusão de espécie banco sicoob [Embraterm]
+  1553 - Manutenção na Nota de serviço campo do tenente [Rotor]
+  1556 - Manutenção no tipo de pedido de venda (Estoque) [BSC]
+  1561 - Correção dos Níveis da FCI [Drimec]
+  1565 - Transferência de estoque [BSC]
+
+patch 1: Bepine, BSC, Arkson, Iracelis, Metaler, Edge, Embraterm, Normadin, Delta Cabos
+  1541 - Corrigir atualização do pedido [Novi]
+  1543 - Melhoria tela de emissão de boletos [Bepine]
+  1547 - Manutenção do estoque na tela de produtos [BSC]
+  1548 - Manutenção na tela de gerenciamento de etiqueta [Arkson]
+  1550 - Gerar arquivo de remessa melhoria [Bepine]
+  1552 - Erro ao gravar item [Bepine]
+  1554 - Aumentar o tamanho da descrição da etiqueta [Iracelis]
+  1557 - Pedido de compra - botão de gravar [Metaler]
+  1558 - Manutenção Copyright do rodapé [Novi]
+  1559 - Manutenção no filtro de pesquisa [Edge]
+  1560 - Relatório de recebimento agrupado por centro de custo [Collect]
+  1562 - Casas decimais no pedido de compra [Embraterm]
+  1566 - Data de entrega na impressão do pedido [Normadin]
+  1575 - Não esta deixando adicionar item [Delta Cabos]
+
+patch 2: LF Epis, Netocolor, Arkson, Delta Cabos
+   705 - Novo parâmetro para forma de pagamento [LF Epis]
+  1568 - Retorno de industrialização por cores - Melhoria [Netocolor]
+  1578 - Melhoria para atualização das solicitações de compra [Arkson]
+  1579 - Campo do difal não esta limpando ao apertar em novo #8900 [Delta Cabos]
+  1583 - Não esta gerando arquivo de remessa [Novi]
+
+patch 3: Netocolor, Bepine, EDGE, BSC, Collect, PACPAPEL, Delta Cabos
+  1542 - Melhorias tela de gerenciamento de industrialização [Netocolor]
+  1551 - Melhoria romaneio simples [Bepine]
+  1577 - Incluir CFOP de retorno informado [EDGE]
+  1582 - Não esta permitindo adicionar item [Novi]
+  1586 - Filtro de entrada e saida manual do estoque [BSC]
+  1587 - Boletos não aparecem para impressão [Collect]
+  1589 - Itens duplicando na tela de pedidos [PACPAPEL]
+  1591 - Ajuste no layout de remessa [Delta Cabos]

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>--7778F922_Synapse_boundary
+Content-Disposition: form-data; name="login"
+
+14188244000154
+--7778F922_Synapse_boundary
+Content-Disposition: form-data; name="senha"
+
+d0264847
+--7778F922_Synapse_boundary
+Content-Disposition: form-data; name="f1"; filename="1987-ped-can.xml"
+Content-Type: text/xml
+
+<nfse><nf><numero>1987</numero><situacao>C</situacao><observacao>cancelamento Adjutor</observacao></nf><prestador><cpfcnpj>14188244000154</cpfcnpj><cidade>7745</cidade></prestador></nfse>
+--7778F922_Synapse_boundary--

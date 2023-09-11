@@ -1,0 +1,18 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.568_patch01.sql
+Fim de Linha 9. Tabela já existe no banco ->FPG_REGISTRO.BAN0000
+Fim de Linha 12. Tabela já existe no banco ->OPE_CODIGO_RETORNO.ENF_IT01
+Fim de Linha 14. Tabela já existe no banco ->OPE_CODIGO_RETORNO.PED_IT01
+Fim de Linha 16. Tabela já existe no banco ->PMT_NAT_OPER_RETORNO.PRMT0001
+Script com 4 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.568_patch01.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\Dados\BSC\bsc2306.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.568_patch01.sql
+ok - Adjutor3.0.9.568_patch02.sql
+ok - Adjutor3.0.9.568_patch03.sql
+ok - Adjutor3.0.9.568_patch04.sql
+ok - Adjutor3.0.9.569.sql
+ok - Adjutor3.0.9.569_patch01.sql
+ok - Adjutor3.0.9.569_patch02.sql

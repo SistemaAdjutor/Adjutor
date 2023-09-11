@@ -1,0 +1,81 @@
+﻿Atualizado em 25/09/2019 
+Inicio da versão: 03/09/2019
+
+ patch 11 clientes : quimica rocha, CHEMSYSTEM QUIMICA , LION EQUIPAMENTOS
+ 
+	sistema não está apresentando os dados adicionais do DIFAL http://192.168.0.250:8080/agile/tarefa/show/105053
+	Problema na Importação de CTE http://192.168.0.250:8080/agile/tarefa/show/104727
+	Modelo 7 das etiquetas não está saindo no tamanho correto http://192.168.0.250:8080/agile/tarefa/show/104249
+	2° integração do produtos e serviços no financeiro http://192.168.0.250:8080/agile/tarefa/show/103823
+	Abrir chamado de suporte direto pela tela principal do ADJUTOR http://192.168.0.250:8080/agile/tarefa/show/104901
+	Se produto é compartilhado mostrar vendas no cliente de todas as empresas http://192.168.0.250:8080/agile/tarefa/show/104289
+	Tela vendas produtos :mostrar vendas por default de 12 meses atras http://192.168.0.250:8080/agile/tarefa/show/104284
+	
+ patch 10  clientes : PARSEALS INDUSTRIAL
+   Consultas no contas a receber e pagar com memorização da ultima consulta travando a tela http://192.168.0.250:8080/agile/tarefa/show/104845
+   ao mudar Tipo do Pedido o sistema não grava as alterações do pedido http://192.168.0.250:8080/agile/tarefa/show/104839
+   Não atualizar prazo do cadastro de cliente pelo pedido de venda http://192.168.0.250:8080/agile/tarefa/show/104830 
+   
+ patch 9 	Clientes : BSC, QUIMICA ROCHA
+  Alteração do preço da tabela exclusiva não esta salvando alterações http://192.168.0.250:8080/agile/tarefa/show/104814
+  Código cbenef causando rejeição http://192.168.0.250:8080/agile/tarefa/show/104697 
+  http://192.168.0.250:8080/agile/tarefa/show/104898
+  http://192.168.0.250:8080/agile/tarefa/show/104907
+  
+ patch 8 	Clientes : Plasticos MUNDIAL, BRASGIPS (DF e WB), QUIMICA ROCHA
+	Tela de Venda no demonstrativo de vendas por margem ajustar calculos http://192.168.0.250:8080/agile/tarefa/show/104162
+	Tela de Vendas demonstrativo por margem - incluir desconto na nota http://192.168.0.250:8080/agile/tarefa/show/104357
+	Erro no cancelamento de NF http://192.168.0.250:8080/agile/tarefa/show/104601
+	Consulta venda/rastreabilidade tirar do total da venda o valor de desconto na nota http://192.168.0.250:8080/agile/tarefa/show/104394
+	Nota fiscal com ST DIFAL deu base de ICMS ST com valor incorreto http://192.168.0.250:8080/agile/tarefa/show/104603
+	
+ PATCH 7 Clientes : BRASGIPS
+   relatórios do contas a pagar incrementar ordem http://192.168.0.250:8080/agile/tarefa/show/104165
+
+ patch 6: clientes : FORSETI, BRAGIPS
+	Erro no cálculo do ST pelo pedido http://192.168.0.250:8080/agile/tarefa/show/102633
+	Pedidos (orçamentos) de clientes sem cadastros não aparecem no relatório de orçamentos http://192.168.0.250:8080/agile/tarefa/show/104176
+	Colocar opção de impressão multiempresa nos relatórios da tela de pedido http://192.168.0.250:8080/agile/tarefa/show/104178
+	Falha na cópia de pedidos - 536 patch 3 http://192.168.0.250:8080/agile/tarefa/show/104625
+	
+ patch 5 cliente : Plasticos mundial 
+   Almoxarifado de retorno de terceiros mais flexivel na entrada de nota http://192.168.0.250:8080/agile/tarefa/show/104535
+
+ patch 4 clientes : PLÁSTICOS MUNDIAL, BRAGIPS, INDUSTRIAL MANGUEIRAS , FLEXSUL, FORSETI, LION EQUIPAMENTOS
+ 
+   erro no cancelamento da nfe http://192.168.0.250:8080/agile/tarefa/show/104409
+   Erro ao selecionar banco na baixa de contas a receber e pagar http://192.168.0.250:8080/agile/tarefa/show/104367
+   totais do demonstrativo de vendas / vendas por vendedores não fecha http://192.168.0.250:8080/agile/tarefa/show/104260
+   Update : Erro no relatório de clientes que não compram ( Datas da ultima compra erradas) http://192.168.0.250:8080/agile/tarefa/show/104258
+   Demonstrativos de vendas por margem mostrando duplicado na empresa 002 http://192.168.0.250:8080/agile/tarefa/show/104252
+   Problemas ao estonar faturamento com (produtos e serviços) http://192.168.0.250:8080/agile/tarefa/show/103816
+   Entrada de estoque manual não esta atualizando o custo dos itens http://192.168.0.250:8080/agile/tarefa/show/103374
+
+ patch 3 CLIENTES  PLÁSTICOS MUNDIAL, VISION CONTROLS ,  INDUSTRIAL MANGUEIRAS ,
+   Incluir coluna com numero da nfe tela de vendas/rastreabilidade http://192.168.0.250:8080/agile/tarefa/show/104232
+   Na tela de envio de remessa a banco não está puxando parâmetro do cadastro do banco http://192.168.0.250:8080/agile/tarefa/show/103985
+   Automatizacao dos Almoxarifados de Remessa e retorno de industrialização http://192.168.0.250:8080/agile/tarefa/show/103498
+   Alterar item principal do kit não esta recalculando a coluna "falta" http://192.168.0.250:8080/agile/tarefa/show/101389
+   
+ patch 2  clientes : Novi e Embraterm
+  Tela de Contas a Receber com erro: http://192.168.0.250:8080/agile/tarefa/show/104127
+  em produção :
+	- simulação de preço por setor / formação de preço
+	- relatorio pedido de tratamento termico
+	- ajuste do relatório de acordo comercial, ordem de serviço e orçamento industrial
+	- telefone puxando no orçamento industrial ao puxar cliente
+	- na hora de aprovar orçamento pede confirmação
+	- não aprovar sem cliente vinculado ao cadastro de cliente
+	- unidade e peça não calcular o o valor total multiplicando pelo peso unitiario
+
+ 
+ patch 1 (clientes: CRYSTAL, RDR, INQUIBRA): 
+ 
+   Rejeições na emissão de nfe com st (empresa do simples) http://192.168.0.250:8080/agile/tarefa/show/104096
+   Rejeição na emissão de NFE 933 http://192.168.0.250:8080/agile/tarefa/show/104067
+   
+ Tarefas do versão principal (CLIENTES : NOVI, LION EQUIPAMENTOS, BRASGIPS): 
+ 
+   impressão do protocolo de remessa de cobrança - ordenar por vencimento http://192.168.0.250:8080/agile/tarefa/show/103941
+   Melhoria na visualização de venda dos produtos http://192.168.0.250:8080/agile/tarefa/show/103865
+   Tela de expedição melhorias E performance http://192.168.0.250:8080/agile/tarefa/show/103647

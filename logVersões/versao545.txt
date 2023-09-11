@@ -1,0 +1,69 @@
+﻿Atualizado em 30/06/2020
+Inicio da versão: 02/06/2020
+
+patch 12: Quimica rocha, Solvis 
+  Envase e ajuste de nova produção 
+  CRM - ajustes na implementação que grava orçamento automatico no CRM http://192.168.0.250:9090/agile/tarefa/show/117951 youtrack 71
+  Sovis Implementação - gravar se pedido faturado qual a qtde do item foi faturado http://192.168.0.250:9090/agile/tarefa/show/108215 youtrack 55
+  
+patch 11: Ja molduras
+  Mais ajustes de Sistema gerando danfce desalinhada http://192.168.0.250:9090/agile/tarefa/show/121340 youtrack 78	
+  
+patch 10 : BSC , Collect, Lion, Embraterm, Crystal,  quimica rocha, Ja molduras
+  erro do CBENEF estado destino DF emissor PR cst 50 youtrack 86
+  erro no somatório do recebidos http://192.168.0.250:9090/agile/tarefa/show/120296 youtrack 79
+  Diferença de valores totais  http://192.168.0.250:9090/agile/tarefa/show/121198 youtrack 81
+  erro ao atualizar a tela do boleto http://192.168.0.250:9090/agile/tarefa/download/119054 youtrack 67
+  Atualização de preço de produto composto http://192.168.0.250:9090/agile/tarefa/show/119204 youtrack 72
+  Erro ao criar um subnível do plano de conta http://192.168.0.250:9090/agile/tarefa/show/120998 youtrack 75
+  incluir multiplicador de preço de venda http://192.168.0.250:9090/agile/tarefa/show/121113 youtrack 76
+  Erro no calculo do prazo de entrega http://192.168.0.250:9090/agile/tarefa/show/121189 youtrack 77
+  Sistema gerando danfce desalinhada http://192.168.0.250:9090/agile/tarefa/show/121340 youtrack 78
+  
+patch 9 : Burda
+  Melhoria bloco k280 http://192.168.0.250:9090/agile/tarefa/show/120502 e https://novidev.myjetbrains.com/youtrack/issue/ADJUTOR-80
+  Filtro do bloco H http://192.168.0.250:9090/agile/tarefa/show/120491 E https://novidev.myjetbrains.com/youtrack/issue/ADJUTOR-73
+
+patch 8 : quimica rocha
+  Ajustes na nova produção e flexibilidade na subordem
+patch 7 : empac , yvitur, BRASGIPS, Drimec, eltrica Burda, JA, Collect, TICK TACK
+  Incluir observação do pedido na fatura de locação http://192.168.0.250:9090/agile/tarefa/show/120783 [EMPAC]
+  Adicionar inscrição do suframa nos dados adicionais http://192.168.0.250:9090/agile/tarefa/show/115926 [YVITUR]
+  Trazer no pedido o vendedor vinculado ao usuário http://192.168.0.250:9090/agile/tarefa/show/121121 [BRASGIPS]
+  Sistema não finaliza op  http://192.168.0.250:9090/agile/tarefa/show/121180 [DRIMEC] 
+  Criar validação no cadastro de produto para informar o tipo, genero do SPED http://192.168.0.250:9090/agile/tarefa/show/115715 [burda]
+  Cupom fiscal não esta vinculando cnpj/CPF http://192.168.0.250:9090/agile/tarefa/show/121204  [JA]
+  Ao enviar boleto por email o sistema grava PDF na pasta com nome incorreto http://192.168.0.250:9090/agile/tarefa/show/120557 [Collect]
+  Marcar se o codigo de barras do produto deve gravar no xml http://192.168.0.250:9090/agile/tarefa/show/120640 [TICK TACK]
+patch 6 : Embraterm, drimec, quimica rocha, PARSEALS, Lion equipamentos
+  Problema ao editar o ultimo apontamento da ordem http://192.168.0.250:9090/agile/tarefa/show/120072 [Embraterm]
+  Ordens concluidas não aparecem na telado pcp - filtro parou de funcionar http://192.168.0.250:9090/agile/tarefa/show/120537 [Drimec] 
+  cst 30 não esta calculando ST http://192.168.0.250:9090/agile/tarefa/show/120876 [quimica rocha] 
+  no cad.produtos na aba Compras mostrar opção de compras Multi-empresa http://192.168.0.250:9090/agile/tarefa/show/120856 [PARSEALS]
+  Criar parâmetro para utilização de certificado a1 e a3 http://192.168.0.250:9090/agile/tarefa/show/120885 
+  Notas ficando com status amarelo, não traz o motivo da rejeição http://192.168.0.250:9090/agile/tarefa/show/120508 [Lion equipamentos]
+  Adicionar mais uma coluna "Data de faturamento" na consulta de pedidos http://192.168.0.250:9090/agile/tarefa/show/120879  [PARSEALS]
+  Alterar etiquetas do gerenciador para modo retrato http://192.168.0.250:9090/agile/tarefa/show/120866 
+  atualização do IBPT 15/05/2020
+  
+patch 5 : Quimica rocha
+  Nova produção [QUIMICA ROCHA)
+patch 4:FxFilm
+  Erro ao emitir notas em Goias http://192.168.0.250:9090/agile/tarefa/show/120843 [FxFilm]
+  
+patch 3 :FxFilm
+  Inclusão do valor desonerado no xml e pdf(cst 40) http://192.168.0.250:9090/agile/tarefa/show/120689 [FxFilm]
+patch 2: Tick Tack
+   Novo modelo de etiqueta no gerenciador de Etiquetas http://192.168.0.250:9090/agile/tarefa/show/120578[Tick Tack]
+ patch 1 : Drimec 
+	Na consulta de pedidos de vendas limitar vendedores a pesquisar somente 7 dias http://192.168.0.250:9090/agile/tarefa/show/120498 [DRIMEC]
+  
+tarefa da versão principal : FLEXSUL, DRIMEC, EMPAC, PARSEALS . embraterm 
+    problemas no controle de crédito do cliente http://192.168.0.250:9090/agile/tarefa/show/120225 [flexsul]
+    Erro no Layout de NFSE gerado pelo sistema http://192.168.0.250:9090/agile/tarefa/show/120165 [EMPAC]
+    Erro ao adicionar código original http://192.168.0.250:9090/agile/tarefa/show/120162 [PARSEALS]
+    Erro ao mudar a referencia do produto http://192.168.0.250:9090/agile/tarefa/show/120196 [DRIMEC]
+    Problema no filtro de data na tela de consulta de pedidos http://192.168.0.250:9090/agile/tarefa/show/120314 [PARSEALS]
+    Erro no calculo de PV http://192.168.0.250:9090/agile/tarefa/show/120220 [embraterm]
+    Ajustar relatorio BI - Vendas por Origem para sair pela data de emissão da nota http://192.168.0.250:9090/agile/tarefa/show/120624 [DRIMEC]
+

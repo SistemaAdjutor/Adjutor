@@ -1,0 +1,36 @@
+﻿Atualizado em 24/05/2023
+Inicio da versão: 02/05/2023
+
+
+principal: Normadin
+  1482 - Modelos de impressão [Normadin]
+
+patch 1: Normadin, Edge, Netocolor, Parseals
+  1438 - Ajuste no cadastro - novo cnpj/empresa no sistema [Novi]
+  1477 - Desconto no valor liquido da nota fiscal - NCM [Normadin]
+  1479 - Bugs e Melhorias na rotina retorno por KIT [Edge]
+  1481 - Melhoria processo Netocolor [Netocolor]
+  1484 - Colocar CFOP DE saida no relatório de Nota Fiscal por Produto Retornado [Netocolor]
+  1488 - Erro na unidade comercial de pedido agrupado [Parseals]
+
+patch 2: Collect, Iracelis, Rotor, Pacpapel, Chemsystem
+  1384 - Nova coluna de origem de exportação e filtro em clientes [Collect]
+  1385 - Filtro de centro de custo encerrado [Collect]
+  1478 - Erro no pedido - item com grade [Iracelis]
+  1486 - Ajuste em nota de serviço - Campo do Tenente [Rotor]
+  1487 - Novo parâmetro para pedido de venda [Novi]
+  1491 - Manutenção dos descontos ao transmitir nota fiscal [Pacpapel]
+  1494 - Manutenção nas consultas lançamento conta/verba [Chemsystem]
+  1496 - Erro de estresse do sistema na tela de pedido [Novi]
+
+patch 3: Rotor, Flexsul, L Forja, Parseals, Embraterm, Drimec, Netocolor
+  1362 - Manutenção relatório centro de custo por item [Rotor]
+  1444 - Relatório do cadastro do cliente [Flexsul]
+  1455 - Novo relatório de ordens de produção e pedidos [L Forja]
+  1495 - Definir finalidade da venda no pedido [Novi]
+  1498 - Pesquisar F2 - tela de pedido [Parseals]
+  1502 - Manutenção no relatório de tratamento térmico [Embraterm]
+  1506 - Soma do produto importado para FCI [Drimec]
+  1512 - Manutenção em erro de faturas em notas fiscais [Novi]
+  1513 - Retornos no gerenciador de industrialização [Netocolor]
+  1517 - Ajuste na tela de pedido - itens por kit [Parseals]

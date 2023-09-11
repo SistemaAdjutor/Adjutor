@@ -1,0 +1,2048 @@
+31|MG|Minas Gerais|SE|Sudeste|0|0
+3100104|Abadia dos Dourados|31|MG|0|0
+3100203|Abaeté|31|MG|0|0
+3100302|Abre Campo|31|MG|0|0
+3100401|Acaiaca|31|MG|0|0
+3100500|Açucena|31|MG|0|0
+3100609|Água Boa|31|MG|0|0
+3100708|Água Comprida|31|MG|0|0
+3100807|Aguanil|31|MG|0|0
+3100906|Águas Formosas|31|MG|0|0
+3101003|Águas Vermelhas|31|MG|0|0
+3101102|Aimorés|31|MG|0|0
+3101201|Aiuruoca|31|MG|0|0
+3101300|Alagoa|31|MG|0|0
+3101409|Albertina|31|MG|0|0
+3101508|Além Paraíba|31|MG|0|0
+3101607|Alfenas|31|MG|0|0
+3101631|Alfredo Vasconcelos|31|MG|0|0
+3101706|Almenara|31|MG|0|0
+3101805|Alpercata|31|MG|0|0
+3101904|Alpinópolis|31|MG|0|0
+3102001|Alterosa|31|MG|0|0
+3102050|Alto Caparaó|31|MG|0|0
+3102100|Alto Rio Doce|31|MG|0|0
+3102209|Alvarenga|31|MG|0|0
+3102308|Alvinópolis|31|MG|0|0
+3102407|Alvorada de Minas|31|MG|0|0
+3102506|Amparo do Serra|31|MG|0|0
+3102605|Andradas|31|MG|0|0
+3102704|Cachoeira de Pajeú|31|MG|0|0
+3102803|Andrelândia|31|MG|0|0
+3102852|Angelândia|31|MG|0|0
+3102902|Antônio Carlos|31|MG|0|0
+3103009|Antônio Dias|31|MG|0|0
+3103108|Antônio Prado de Minas|31|MG|0|0
+3103207|Araçaí|31|MG|0|0
+3103306|Aracitaba|31|MG|0|0
+3103405|Araçuaí|31|MG|0|0
+3103504|Araguari|31|MG|0|0
+3103603|Arantina|31|MG|0|0
+3103702|Araponga|31|MG|0|0
+3103751|Araporã|31|MG|0|0
+3103801|Arapuá|31|MG|0|0
+3103900|Araújos|31|MG|0|0
+3104007|Araxá|31|MG|0|0
+3104106|Arceburgo|31|MG|0|0
+3104205|Arcos|31|MG|0|0
+3104304|Areado|31|MG|0|0
+3104403|Argirita|31|MG|0|0
+3104452|Aricanduva|31|MG|0|0
+3104502|Arinos|31|MG|0|0
+3104601|Astolfo Dutra|31|MG|0|0
+3104700|Ataléia|31|MG|0|0
+3104809|Augusto de Lima|31|MG|0|0
+3104908|Baependi|31|MG|0|0
+3105004|Baldim|31|MG|0|0
+3105103|Bambuí|31|MG|0|0
+3105202|Bandeira|31|MG|0|0
+3105301|Bandeira do Sul|31|MG|0|0
+3105400|Barão de Cocais|31|MG|0|0
+3105509|Barão de Monte Alto|31|MG|0|0
+3105608|Barbacena|31|MG|0|0
+3105707|Barra Longa|31|MG|0|0
+3105905|Barroso|31|MG|0|0
+3106002|Bela Vista de Minas|31|MG|0|0
+3106101|Belmiro Braga|31|MG|0|0
+3106200|Belo Horizonte|31|MG|0|0
+3106309|Belo Oriente|31|MG|0|0
+3106408|Belo Vale|31|MG|0|0
+3106507|Berilo|31|MG|0|0
+3106606|Bertópolis|31|MG|0|0
+3106655|Berizal|31|MG|0|0
+3106705|Betim|31|MG|0|0
+3106804|Bias Fortes|31|MG|0|0
+3106903|Bicas|31|MG|0|0
+3107000|Biquinhas|31|MG|0|0
+3107109|Boa Esperança|31|MG|0|0
+3107208|Bocaina de Minas|31|MG|0|0
+3107307|Bocaiúva|31|MG|0|0
+3107406|Bom Despacho|31|MG|0|0
+3107505|Bom Jardim de Minas|31|MG|0|0
+3107604|Bom Jesus da Penha|31|MG|0|0
+3107703|Bom Jesus do Amparo|31|MG|0|0
+3107802|Bom Jesus do Galho|31|MG|0|0
+3107901|Bom Repouso|31|MG|0|0
+3108008|Bom Sucesso|31|MG|0|0
+3108107|Bonfim|31|MG|0|0
+3108206|Bonfinópolis de Minas|31|MG|0|0
+3108255|Bonito de Minas|31|MG|0|0
+3108305|Borda da Mata|31|MG|0|0
+3108404|Botelhos|31|MG|0|0
+3108503|Botumirim|31|MG|0|0
+3108552|Brasilândia de Minas|31|MG|0|0
+3108602|Brasília de Minas|31|MG|0|0
+3108701|Brás Pires|31|MG|0|0
+3108800|Braúnas|31|MG|0|0
+3108909|Brazópolis|31|MG|0|0
+3109006|Brumadinho|31|MG|0|0
+3109105|Bueno Brandão|31|MG|0|0
+3109204|Buenópolis|31|MG|0|0
+3109253|Bugre|31|MG|0|0
+3109303|Buritis|31|MG|0|0
+3109402|Buritizeiro|31|MG|0|0
+3109451|Cabeceira Grande|31|MG|0|0
+3109501|Cabo Verde|31|MG|0|0
+3109600|Cachoeira da Prata|31|MG|0|0
+3109709|Cachoeira de Minas|31|MG|0|0
+3109808|Cachoeira Dourada|31|MG|0|0
+3109907|Caetanópolis|31|MG|0|0
+3110004|Caeté|31|MG|0|0
+3110103|Caiana|31|MG|0|0
+3110202|Cajuri|31|MG|0|0
+3110301|Caldas|31|MG|0|0
+3110400|Camacho|31|MG|0|0
+3110509|Camanducaia|31|MG|0|0
+3110608|Cambuí|31|MG|0|0
+3110707|Cambuquira|31|MG|0|0
+3110806|Campanário|31|MG|0|0
+3110905|Campanha|31|MG|0|0
+3111002|Campestre|31|MG|0|0
+3111101|Campina Verde|31|MG|0|0
+3111150|Campo Azul|31|MG|0|0
+3111200|Campo Belo|31|MG|0|0
+3111309|Campo do Meio|31|MG|0|0
+3111408|Campo Florido|31|MG|0|0
+3111507|Campos Altos|31|MG|0|0
+3111606|Campos Gerais|31|MG|0|0
+3111705|Canaã|31|MG|0|0
+3111804|Canápolis|31|MG|0|0
+3111903|Cana Verde|31|MG|0|0
+3112000|Candeias|31|MG|0|0
+3112059|Cantagalo|31|MG|0|0
+3112109|Caparaó|31|MG|0|0
+3112208|Capela Nova|31|MG|0|0
+3112307|Capelinha|31|MG|0|0
+3112406|Capetinga|31|MG|0|0
+3112505|Capim Branco|31|MG|0|0
+3112604|Capinópolis|31|MG|0|0
+3112653|Capitão Andrade|31|MG|0|0
+3112703|Capitão Enéas|31|MG|0|0
+3112802|Capitólio|31|MG|0|0
+3112901|Caputira|31|MG|0|0
+3113008|Caraí|31|MG|0|0
+3113107|Caranaíba|31|MG|0|0
+3113206|Carandaí|31|MG|0|0
+3113305|Carangola|31|MG|0|0
+3113404|Caratinga|31|MG|0|0
+3113503|Carbonita|31|MG|0|0
+3113602|Careaçu|31|MG|0|0
+3113701|Carlos Chagas|31|MG|0|0
+3113800|Carmésia|31|MG|0|0
+3113909|Carmo da Cachoeira|31|MG|0|0
+3114006|Carmo da Mata|31|MG|0|0
+3114105|Carmo de Minas|31|MG|0|0
+3114204|Carmo do Cajuru|31|MG|0|0
+3114303|Carmo do Paranaíba|31|MG|0|0
+3114402|Carmo do Rio Claro|31|MG|0|0
+3114501|Carmópolis de Minas|31|MG|0|0
+3114550|Carneirinho|31|MG|0|0
+3114600|Carrancas|31|MG|0|0
+3114709|Carvalhópolis|31|MG|0|0
+3114808|Carvalhos|31|MG|0|0
+3114907|Casa Grande|31|MG|0|0
+3115003|Cascalho Rico|31|MG|0|0
+3115102|Cássia|31|MG|0|0
+3115201|Conceição da Barra de Minas|31|MG|0|0
+3115300|Cataguases|31|MG|0|0
+3115359|Catas Altas|31|MG|0|0
+3115409|Catas Altas da Noruega|31|MG|0|0
+3115458|Catuji|31|MG|0|0
+3115474|Catuti|31|MG|0|0
+3115508|Caxambu|31|MG|0|0
+3115607|Cedro do Abaeté|31|MG|0|0
+3115706|Central de Minas|31|MG|0|0
+3115805|Centralina|31|MG|0|0
+3115904|Chácara|31|MG|0|0
+3116001|Chalé|31|MG|0|0
+3116100|Chapada do Norte|31|MG|0|0
+3116159|Chapada Gaúcha|31|MG|0|0
+3116209|Chiador|31|MG|0|0
+3116308|Cipotânea|31|MG|0|0
+3116407|Claraval|31|MG|0|0
+3116506|Claro dos Poções|31|MG|0|0
+3116605|Cláudio|31|MG|0|0
+3116704|Coimbra|31|MG|0|0
+3116803|Coluna|31|MG|0|0
+3116902|Comendador Gomes|31|MG|0|0
+3117009|Comercinho|31|MG|0|0
+3117108|Conceição da Aparecida|31|MG|0|0
+3117207|Conceição das Pedras|31|MG|0|0
+3117306|Conceição das Alagoas|31|MG|0|0
+3117405|Conceição de Ipanema|31|MG|0|0
+3117504|Conceição do Mato Dentro|31|MG|0|0
+3117603|Conceição do Pará|31|MG|0|0
+3117702|Conceição do Rio Verde|31|MG|0|0
+3117801|Conceição dos Ouros|31|MG|0|0
+3117836|Cônego Marinho|31|MG|0|0
+3117876|Confins|31|MG|0|0
+3117900|Congonhal|31|MG|0|0
+3118007|Congonhas|31|MG|0|0
+3118106|Congonhas do Norte|31|MG|0|0
+3118205|Conquista|31|MG|0|0
+3118304|Conselheiro Lafaiete|31|MG|0|0
+3118403|Conselheiro Pena|31|MG|0|0
+3118502|Consolação|31|MG|0|0
+3118601|Contagem|31|MG|0|0
+3118700|Coqueiral|31|MG|0|0
+3118809|Coração de Jesus|31|MG|0|0
+3118908|Cordisburgo|31|MG|0|0
+3119005|Cordislândia|31|MG|0|0
+3119104|Corinto|31|MG|0|0
+3119203|Coroaci|31|MG|0|0
+3119302|Coromandel|31|MG|0|0
+3119401|Coronel Fabriciano|31|MG|0|0
+3119500|Coronel Murta|31|MG|0|0
+3119609|Coronel Pacheco|31|MG|0|0
+3119708|Coronel Xavier Chaves|31|MG|0|0
+3119807|Córrego Danta|31|MG|0|0
+3119906|Córrego do Bom Jesus|31|MG|0|0
+3119955|Córrego Fundo|31|MG|0|0
+3120003|Córrego Novo|31|MG|0|0
+3120102|Couto de Magalhães de Minas|31|MG|0|0
+3120151|Crisólita|31|MG|0|0
+3120201|Cristais|31|MG|0|0
+3120300|Cristália|31|MG|0|0
+3120409|Cristiano Otoni|31|MG|0|0
+3120508|Cristina|31|MG|0|0
+3120607|Crucilândia|31|MG|0|0
+3120706|Cruzeiro da Fortaleza|31|MG|0|0
+3120805|Cruzília|31|MG|0|0
+3120839|Cuparaque|31|MG|0|0
+3120870|Curral de Dentro|31|MG|0|0
+3120904|Curvelo|31|MG|0|0
+3121001|Datas|31|MG|0|0
+3121100|Delfim Moreira|31|MG|0|0
+3121209|Delfinópolis|31|MG|0|0
+3121258|Delta|31|MG|0|0
+3121308|Descoberto|31|MG|0|0
+3121407|Desterro de Entre Rios|31|MG|0|0
+3121506|Desterro do Melo|31|MG|0|0
+3121605|Diamantina|31|MG|0|0
+3121704|Diogo de Vasconcelos|31|MG|0|0
+3121803|Dionísio|31|MG|0|0
+3121902|Divinésia|31|MG|0|0
+3122009|Divino|31|MG|0|0
+3122108|Divino das Laranjeiras|31|MG|0|0
+3122207|Divinolândia de Minas|31|MG|0|0
+3122306|Divinópolis|31|MG|0|0
+3122355|Divisa Alegre|31|MG|0|0
+3122405|Divisa Nova|31|MG|0|0
+3122454|Divisópolis|31|MG|0|0
+3122470|Dom Bosco|31|MG|0|0
+3122504|Dom Cavati|31|MG|0|0
+3122603|Dom Joaquim|31|MG|0|0
+3122702|Dom Silvério|31|MG|0|0
+3122801|Dom Viçoso|31|MG|0|0
+3122900|Dona Euzébia|31|MG|0|0
+3123007|Dores de Campos|31|MG|0|0
+3123106|Dores de Guanhães|31|MG|0|0
+3123205|Dores do Indaiá|31|MG|0|0
+3123304|Dores do Turvo|31|MG|0|0
+3123403|Doresópolis|31|MG|0|0
+3123502|Douradoquara|31|MG|0|0
+3123528|Durandé|31|MG|0|0
+3123601|Elói Mendes|31|MG|0|0
+3123700|Engenheiro Caldas|31|MG|0|0
+3123809|Engenheiro Navarro|31|MG|0|0
+3123858|Entre Folhas|31|MG|0|0
+3123908|Entre Rios de Minas|31|MG|0|0
+3124005|Ervália|31|MG|0|0
+3124104|Esmeraldas|31|MG|0|0
+3124203|Espera Feliz|31|MG|0|0
+3124302|Espinosa|31|MG|0|0
+3124401|Espírito Santo do Dourado|31|MG|0|0
+3124500|Estiva|31|MG|0|0
+3124609|Estrela Dalva|31|MG|0|0
+3124708|Estrela do Indaiá|31|MG|0|0
+3124807|Estrela do Sul|31|MG|0|0
+3124906|Eugenópolis|31|MG|0|0
+3125002|Ewbank da Câmara|31|MG|0|0
+3125101|Extrema|31|MG|0|0
+3125200|Fama|31|MG|0|0
+3125309|Faria Lemos|31|MG|0|0
+3125408|Felício dos Santos|31|MG|0|0
+3125507|São Gonçalo do Rio Preto|31|MG|0|0
+3125606|Felisburgo|31|MG|0|0
+3125705|Felixlândia|31|MG|0|0
+3125804|Fernandes Tourinho|31|MG|0|0
+3125903|Ferros|31|MG|0|0
+3125952|Fervedouro|31|MG|0|0
+3126000|Florestal|31|MG|0|0
+3126109|Formiga|31|MG|0|0
+3126208|Formoso|31|MG|0|0
+3126307|Fortaleza de Minas|31|MG|0|0
+3126406|Fortuna de Minas|31|MG|0|0
+3126505|Francisco Badaró|31|MG|0|0
+3126604|Francisco Dumont|31|MG|0|0
+3126703|Francisco Sá|31|MG|0|0
+3126752|Franciscópolis|31|MG|0|0
+3126802|Frei Gaspar|31|MG|0|0
+3126901|Frei Inocêncio|31|MG|0|0
+3126950|Frei Lagonegro|31|MG|0|0
+3127008|Fronteira|31|MG|0|0
+3127057|Fronteira dos Vales|31|MG|0|0
+3127073|Fruta de Leite|31|MG|0|0
+3127107|Frutal|31|MG|0|0
+3127206|Funilândia|31|MG|0|0
+3127305|Galiléia|31|MG|0|0
+3127339|Gameleiras|31|MG|0|0
+3127354|Glaucilândia|31|MG|0|0
+3127370|Goiabeira|31|MG|0|0
+3127388|Goianá|31|MG|0|0
+3127404|Gonçalves|31|MG|0|0
+3127503|Gonzaga|31|MG|0|0
+3127602|Gouveia|31|MG|0|0
+3127701|Governador Valadares|31|MG|0|0
+3127800|Grão Mogol|31|MG|0|0
+3127909|Grupiara|31|MG|0|0
+3128006|Guanhães|31|MG|0|0
+3128105|Guapé|31|MG|0|0
+3128204|Guaraciaba|31|MG|0|0
+3128253|Guaraciama|31|MG|0|0
+3128303|Guaranésia|31|MG|0|0
+3128402|Guarani|31|MG|0|0
+3128501|Guarará|31|MG|0|0
+3128600|Guarda-Mor|31|MG|0|0
+3128709|Guaxupé|31|MG|0|0
+3128808|Guidoval|31|MG|0|0
+3128907|Guimarânia|31|MG|0|0
+3129004|Guiricema|31|MG|0|0
+3129103|Gurinhatã|31|MG|0|0
+3129202|Heliodora|31|MG|0|0
+3129301|Iapu|31|MG|0|0
+3129400|Ibertioga|31|MG|0|0
+3129509|Ibiá|31|MG|0|0
+3129608|Ibiaí|31|MG|0|0
+3129657|Ibiracatu|31|MG|0|0
+3129707|Ibiraci|31|MG|0|0
+3129806|Ibirité|31|MG|0|0
+3129905|Ibitiúra de Minas|31|MG|0|0
+3130002|Ibituruna|31|MG|0|0
+3130051|Icaraí de Minas|31|MG|0|0
+3130101|Igarapé|31|MG|0|0
+3130200|Igaratinga|31|MG|0|0
+3130309|Iguatama|31|MG|0|0
+3130408|Ijaci|31|MG|0|0
+3130507|Ilicínea|31|MG|0|0
+3130556|Imbé de Minas|31|MG|0|0
+3130606|Inconfidentes|31|MG|0|0
+3130655|Indaiabira|31|MG|0|0
+3130705|Indianópolis|31|MG|0|0
+3130804|Ingaí|31|MG|0|0
+3130903|Inhapim|31|MG|0|0
+3131000|Inhaúma|31|MG|0|0
+3131109|Inimutaba|31|MG|0|0
+3131158|Ipaba|31|MG|0|0
+3131208|Ipanema|31|MG|0|0
+3131307|Ipatinga|31|MG|0|0
+3131406|Ipiaçu|31|MG|0|0
+3131505|Ipuiúna|31|MG|0|0
+3131604|Iraí de Minas|31|MG|0|0
+3131703|Itabira|31|MG|0|0
+3131802|Itabirinha|31|MG|0|0
+3131901|Itabirito|31|MG|0|0
+3132008|Itacambira|31|MG|0|0
+3132107|Itacarambi|31|MG|0|0
+3132206|Itaguara|31|MG|0|0
+3132305|Itaipé|31|MG|0|0
+3132404|Itajubá|31|MG|0|0
+3132503|Itamarandiba|31|MG|0|0
+3132602|Itamarati de Minas|31|MG|0|0
+3132701|Itambacuri|31|MG|0|0
+3132800|Itambé do Mato Dentro|31|MG|0|0
+3132909|Itamogi|31|MG|0|0
+3133006|Itamonte|31|MG|0|0
+3133105|Itanhandu|31|MG|0|0
+3133204|Itanhomi|31|MG|0|0
+3133303|Itaobim|31|MG|0|0
+3133402|Itapagipe|31|MG|0|0
+3133501|Itapecerica|31|MG|0|0
+3133600|Itapeva|31|MG|0|0
+3133709|Itatiaiuçu|31|MG|0|0
+3133758|Itaú de Minas|31|MG|0|0
+3133808|Itaúna|31|MG|0|0
+3133907|Itaverava|31|MG|0|0
+3134004|Itinga|31|MG|0|0
+3134103|Itueta|31|MG|0|0
+3134202|Ituiutaba|31|MG|0|0
+3134301|Itumirim|31|MG|0|0
+3134400|Iturama|31|MG|0|0
+3134509|Itutinga|31|MG|0|0
+3134608|Jaboticatubas|31|MG|0|0
+3134707|Jacinto|31|MG|0|0
+3134806|Jacuí|31|MG|0|0
+3134905|Jacutinga|31|MG|0|0
+3135001|Jaguaraçu|31|MG|0|0
+3135050|Jaíba|31|MG|0|0
+3135076|Jampruca|31|MG|0|0
+3135100|Janaúba|31|MG|0|0
+3135209|Januária|31|MG|0|0
+3135308|Japaraíba|31|MG|0|0
+3135357|Japonvar|31|MG|0|0
+3135407|Jeceaba|31|MG|0|0
+3135456|Jenipapo de Minas|31|MG|0|0
+3135506|Jequeri|31|MG|0|0
+3135605|Jequitaí|31|MG|0|0
+3135704|Jequitibá|31|MG|0|0
+3135803|Jequitinhonha|31|MG|0|0
+3135902|Jesuânia|31|MG|0|0
+3136009|Joaíma|31|MG|0|0
+3136108|Joanésia|31|MG|0|0
+3136207|João Monlevade|31|MG|0|0
+3136306|João Pinheiro|31|MG|0|0
+3136405|Joaquim Felício|31|MG|0|0
+3136504|Jordânia|31|MG|0|0
+3136520|José Gonçalves de Minas|31|MG|0|0
+3136553|José Raydan|31|MG|0|0
+3136579|Josenópolis|31|MG|0|0
+3136603|Nova União|31|MG|0|0
+3136652|Juatuba|31|MG|0|0
+3136702|Juiz de Fora|31|MG|0|0
+3136801|Juramento|31|MG|0|0
+3136900|Juruaia|31|MG|0|0
+3136959|Juvenília|31|MG|0|0
+3137007|Ladainha|31|MG|0|0
+3137106|Lagamar|31|MG|0|0
+3137205|Lagoa da Prata|31|MG|0|0
+3137304|Lagoa dos Patos|31|MG|0|0
+3137403|Lagoa Dourada|31|MG|0|0
+3137502|Lagoa Formosa|31|MG|0|0
+3137536|Lagoa Grande|31|MG|0|0
+3137601|Lagoa Santa|31|MG|0|0
+3137700|Lajinha|31|MG|0|0
+3137809|Lambari|31|MG|0|0
+3137908|Lamim|31|MG|0|0
+3138005|Laranjal|31|MG|0|0
+3138104|Lassance|31|MG|0|0
+3138203|Lavras|31|MG|0|0
+3138302|Leandro Ferreira|31|MG|0|0
+3138351|Leme do Prado|31|MG|0|0
+3138401|Leopoldina|31|MG|0|0
+3138500|Liberdade|31|MG|0|0
+3138609|Lima Duarte|31|MG|0|0
+3138625|Limeira do Oeste|31|MG|0|0
+3138658|Lontra|31|MG|0|0
+3138674|Luisburgo|31|MG|0|0
+3138682|Luislândia|31|MG|0|0
+3138708|Luminárias|31|MG|0|0
+3138807|Luz|31|MG|0|0
+3138906|Machacalis|31|MG|0|0
+3139003|Machado|31|MG|0|0
+3139102|Madre de Deus de Minas|31|MG|0|0
+3139201|Malacacheta|31|MG|0|0
+3139250|Mamonas|31|MG|0|0
+3139300|Manga|31|MG|0|0
+3139409|Manhuaçu|31|MG|0|0
+3139508|Manhumirim|31|MG|0|0
+3139607|Mantena|31|MG|0|0
+3139706|Maravilhas|31|MG|0|0
+3139805|Mar de Espanha|31|MG|0|0
+3139904|Maria da Fé|31|MG|0|0
+3140001|Mariana|31|MG|0|0
+3140100|Marilac|31|MG|0|0
+3140159|Mário Campos|31|MG|0|0
+3140209|Maripá de Minas|31|MG|0|0
+3140308|Marliéria|31|MG|0|0
+3140407|Marmelópolis|31|MG|0|0
+3140506|Martinho Campos|31|MG|0|0
+3140530|Martins Soares|31|MG|0|0
+3140555|Mata Verde|31|MG|0|0
+3140605|Materlândia|31|MG|0|0
+3140704|Mateus Leme|31|MG|0|0
+3140803|Matias Barbosa|31|MG|0|0
+3140852|Matias Cardoso|31|MG|0|0
+3140902|Matipó|31|MG|0|0
+3141009|Mato Verde|31|MG|0|0
+3141108|Matozinhos|31|MG|0|0
+3141207|Matutina|31|MG|0|0
+3141306|Medeiros|31|MG|0|0
+3141405|Medina|31|MG|0|0
+3141504|Mendes Pimentel|31|MG|0|0
+3141603|Mercês|31|MG|0|0
+3141702|Mesquita|31|MG|0|0
+3141801|Minas Novas|31|MG|0|0
+3141900|Minduri|31|MG|0|0
+3142007|Mirabela|31|MG|0|0
+3142106|Miradouro|31|MG|0|0
+3142205|Miraí|31|MG|0|0
+3142254|Miravânia|31|MG|0|0
+3142304|Moeda|31|MG|0|0
+3142403|Moema|31|MG|0|0
+3142502|Monjolos|31|MG|0|0
+3142601|Monsenhor Paulo|31|MG|0|0
+3142700|Montalvânia|31|MG|0|0
+3142809|Monte Alegre de Minas|31|MG|0|0
+3142908|Monte Azul|31|MG|0|0
+3143005|Monte Belo|31|MG|0|0
+3143104|Monte Carmelo|31|MG|0|0
+3143153|Monte Formoso|31|MG|0|0
+3143203|Monte Santo de Minas|31|MG|0|0
+3143302|Montes Claros|31|MG|0|0
+3143401|Monte Sião|31|MG|0|0
+3143450|Montezuma|31|MG|0|0
+3143500|Morada Nova de Minas|31|MG|0|0
+3143609|Morro da Garça|31|MG|0|0
+3143708|Morro do Pilar|31|MG|0|0
+3143807|Munhoz|31|MG|0|0
+3143906|Muriaé|31|MG|0|0
+3144003|Mutum|31|MG|0|0
+3144102|Muzambinho|31|MG|0|0
+3144201|Nacip Raydan|31|MG|0|0
+3144300|Nanuque|31|MG|0|0
+3144359|Naque|31|MG|0|0
+3144375|Natalândia|31|MG|0|0
+3144409|Natércia|31|MG|0|0
+3144508|Nazareno|31|MG|0|0
+3144607|Nepomuceno|31|MG|0|0
+3144656|Ninheira|31|MG|0|0
+3144672|Nova Belém|31|MG|0|0
+3144706|Nova Era|31|MG|0|0
+3144805|Nova Lima|31|MG|0|0
+3144904|Nova Módica|31|MG|0|0
+3145000|Nova Ponte|31|MG|0|0
+3145059|Nova Porteirinha|31|MG|0|0
+3145109|Nova Resende|31|MG|0|0
+3145208|Nova Serrana|31|MG|0|0
+3145307|Novo Cruzeiro|31|MG|0|0
+3145356|Novo Oriente de Minas|31|MG|0|0
+3145372|Novorizonte|31|MG|0|0
+3145406|Olaria|31|MG|0|0
+3145455|Olhos-d'Água|31|MG|0|0
+3145505|Olímpio Noronha|31|MG|0|0
+3145604|Oliveira|31|MG|0|0
+3145703|Oliveira Fortes|31|MG|0|0
+3145802|Onça de Pitangui|31|MG|0|0
+3145851|Oratórios|31|MG|0|0
+3145877|Orizânia|31|MG|0|0
+3145901|Ouro Branco|31|MG|0|0
+3146008|Ouro Fino|31|MG|0|0
+3146107|Ouro Preto|31|MG|0|0
+3146206|Ouro Verde de Minas|31|MG|0|0
+3146255|Padre Carvalho|31|MG|0|0
+3146305|Padre Paraíso|31|MG|0|0
+3146404|Paineiras|31|MG|0|0
+3146503|Pains|31|MG|0|0
+3146552|Pai Pedro|31|MG|0|0
+3146602|Paiva|31|MG|0|0
+3146701|Palma|31|MG|0|0
+3146750|Palmópolis|31|MG|0|0
+3146909|Papagaios|31|MG|0|0
+3147006|Paracatu|31|MG|0|0
+3147105|Pará de Minas|31|MG|0|0
+3147204|Paraguaçu|31|MG|0|0
+3147303|Paraisópolis|31|MG|0|0
+3147402|Paraopeba|31|MG|0|0
+3147501|Passabém|31|MG|0|0
+3147600|Passa Quatro|31|MG|0|0
+3147709|Passa Tempo|31|MG|0|0
+3147808|Passa Vinte|31|MG|0|0
+3147907|Passos|31|MG|0|0
+3147956|Patis|31|MG|0|0
+3148004|Patos de Minas|31|MG|0|0
+3148103|Patrocínio|31|MG|0|0
+3148202|Patrocínio do Muriaé|31|MG|0|0
+3148301|Paula Cândido|31|MG|0|0
+3148400|Paulistas|31|MG|0|0
+3148509|Pavão|31|MG|0|0
+3148608|Peçanha|31|MG|0|0
+3148707|Pedra Azul|31|MG|0|0
+3148756|Pedra Bonita|31|MG|0|0
+3148806|Pedra do Anta|31|MG|0|0
+3148905|Pedra do Indaiá|31|MG|0|0
+3149002|Pedra Dourada|31|MG|0|0
+3149101|Pedralva|31|MG|0|0
+3149150|Pedras de Maria da Cruz|31|MG|0|0
+3149200|Pedrinópolis|31|MG|0|0
+3149309|Pedro Leopoldo|31|MG|0|0
+3149408|Pedro Teixeira|31|MG|0|0
+3149507|Pequeri|31|MG|0|0
+3149606|Pequi|31|MG|0|0
+3149705|Perdigão|31|MG|0|0
+3149804|Perdizes|31|MG|0|0
+3149903|Perdões|31|MG|0|0
+3149952|Periquito|31|MG|0|0
+3150000|Pescador|31|MG|0|0
+3150109|Piau|31|MG|0|0
+3150158|Piedade de Caratinga|31|MG|0|0
+3150208|Piedade de Ponte Nova|31|MG|0|0
+3150307|Piedade do Rio Grande|31|MG|0|0
+3150406|Piedade dos Gerais|31|MG|0|0
+3150505|Pimenta|31|MG|0|0
+3150539|Pingo-d'Água|31|MG|0|0
+3150570|Pintópolis|31|MG|0|0
+3150604|Piracema|31|MG|0|0
+3150703|Pirajuba|31|MG|0|0
+3150802|Piranga|31|MG|0|0
+3150901|Piranguçu|31|MG|0|0
+3151008|Piranguinho|31|MG|0|0
+3151107|Pirapetinga|31|MG|0|0
+3151206|Pirapora|31|MG|0|0
+3151305|Piraúba|31|MG|0|0
+3151404|Pitangui|31|MG|0|0
+3151503|Piumhi|31|MG|0|0
+3151602|Planura|31|MG|0|0
+3151701|Poço Fundo|31|MG|0|0
+3151800|Poços de Caldas|31|MG|0|0
+3151909|Pocrane|31|MG|0|0
+3152006|Pompéu|31|MG|0|0
+3152105|Ponte Nova|31|MG|0|0
+3152131|Ponto Chique|31|MG|0|0
+3152170|Ponto dos Volantes|31|MG|0|0
+3152204|Porteirinha|31|MG|0|0
+3152303|Porto Firme|31|MG|0|0
+3152402|Poté|31|MG|0|0
+3152501|Pouso Alegre|31|MG|0|0
+3152600|Pouso Alto|31|MG|0|0
+3152709|Prados|31|MG|0|0
+3152808|Prata|31|MG|0|0
+3152907|Pratápolis|31|MG|0|0
+3153004|Pratinha|31|MG|0|0
+3153103|Presidente Bernardes|31|MG|0|0
+3153202|Presidente Juscelino|31|MG|0|0
+3153301|Presidente Kubitschek|31|MG|0|0
+3153400|Presidente Olegário|31|MG|0|0
+3153509|Alto Jequitibá|31|MG|0|0
+3153608|Prudente de Morais|31|MG|0|0
+3153707|Quartel Geral|31|MG|0|0
+3153806|Queluzito|31|MG|0|0
+3153905|Raposos|31|MG|0|0
+3154002|Raul Soares|31|MG|0|0
+3154101|Recreio|31|MG|0|0
+3154150|Reduto|31|MG|0|0
+3154200|Resende Costa|31|MG|0|0
+3154309|Resplendor|31|MG|0|0
+3154408|Ressaquinha|31|MG|0|0
+3154457|Riachinho|31|MG|0|0
+3154507|Riacho dos Machados|31|MG|0|0
+3154606|Ribeirão das Neves|31|MG|0|0
+3154705|Ribeirão Vermelho|31|MG|0|0
+3154804|Rio Acima|31|MG|0|0
+3154903|Rio Casca|31|MG|0|0
+3155009|Rio Doce|31|MG|0|0
+3155108|Rio do Prado|31|MG|0|0
+3155207|Rio Espera|31|MG|0|0
+3155306|Rio Manso|31|MG|0|0
+3155405|Rio Novo|31|MG|0|0
+3155504|Rio Paranaíba|31|MG|0|0
+3155603|Rio Pardo de Minas|31|MG|0|0
+3155702|Rio Piracicaba|31|MG|0|0
+3155801|Rio Pomba|31|MG|0|0
+3155900|Rio Preto|31|MG|0|0
+3156007|Rio Vermelho|31|MG|0|0
+3156106|Ritápolis|31|MG|0|0
+3156205|Rochedo de Minas|31|MG|0|0
+3156304|Rodeiro|31|MG|0|0
+3156403|Romaria|31|MG|0|0
+3156452|Rosário da Limeira|31|MG|0|0
+3156502|Rubelita|31|MG|0|0
+3156601|Rubim|31|MG|0|0
+3156700|Sabará|31|MG|0|0
+3156809|Sabinópolis|31|MG|0|0
+3156908|Sacramento|31|MG|0|0
+3157005|Salinas|31|MG|0|0
+3157104|Salto da Divisa|31|MG|0|0
+3157203|Santa Bárbara|31|MG|0|0
+3157252|Santa Bárbara do Leste|31|MG|0|0
+3157278|Santa Bárbara do Monte Verde|31|MG|0|0
+3157302|Santa Bárbara do Tugúrio|31|MG|0|0
+3157336|Santa Cruz de Minas|31|MG|0|0
+3157377|Santa Cruz de Salinas|31|MG|0|0
+3157401|Santa Cruz do Escalvado|31|MG|0|0
+3157500|Santa Efigênia de Minas|31|MG|0|0
+3157609|Santa Fé de Minas|31|MG|0|0
+3157658|Santa Helena de Minas|31|MG|0|0
+3157708|Santa Juliana|31|MG|0|0
+3157807|Santa Luzia|31|MG|0|0
+3157906|Santa Margarida|31|MG|0|0
+3158003|Santa Maria de Itabira|31|MG|0|0
+3158102|Santa Maria do Salto|31|MG|0|0
+3158201|Santa Maria do Suaçuí|31|MG|0|0
+3158300|Santana da Vargem|31|MG|0|0
+3158409|Santana de Cataguases|31|MG|0|0
+3158508|Santana de Pirapama|31|MG|0|0
+3158607|Santana do Deserto|31|MG|0|0
+3158706|Santana do Garambéu|31|MG|0|0
+3158805|Santana do Jacaré|31|MG|0|0
+3158904|Santana do Manhuaçu|31|MG|0|0
+3158953|Santana do Paraíso|31|MG|0|0
+3159001|Santana do Riacho|31|MG|0|0
+3159100|Santana dos Montes|31|MG|0|0
+3159209|Santa Rita de Caldas|31|MG|0|0
+3159308|Santa Rita de Jacutinga|31|MG|0|0
+3159357|Santa Rita de Minas|31|MG|0|0
+3159407|Santa Rita de Ibitipoca|31|MG|0|0
+3159506|Santa Rita do Itueto|31|MG|0|0
+3159605|Santa Rita do Sapucaí|31|MG|0|0
+3159704|Santa Rosa da Serra|31|MG|0|0
+3159803|Santa Vitória|31|MG|0|0
+3159902|Santo Antônio do Amparo|31|MG|0|0
+3160009|Santo Antônio do Aventureiro|31|MG|0|0
+3160108|Santo Antônio do Grama|31|MG|0|0
+3160207|Santo Antônio do Itambé|31|MG|0|0
+3160306|Santo Antônio do Jacinto|31|MG|0|0
+3160405|Santo Antônio do Monte|31|MG|0|0
+3160454|Santo Antônio do Retiro|31|MG|0|0
+3160504|Santo Antônio do Rio Abaixo|31|MG|0|0
+3160603|Santo Hipólito|31|MG|0|0
+3160702|Santos Dumont|31|MG|0|0
+3160801|São Bento Abade|31|MG|0|0
+3160900|São Brás do Suaçuí|31|MG|0|0
+3160959|São Domingos das Dores|31|MG|0|0
+3161007|São Domingos do Prata|31|MG|0|0
+3161056|São Félix de Minas|31|MG|0|0
+3161106|São Francisco|31|MG|0|0
+3161205|São Francisco de Paula|31|MG|0|0
+3161304|São Francisco de Sales|31|MG|0|0
+3161403|São Francisco do Glória|31|MG|0|0
+3161502|São Geraldo|31|MG|0|0
+3161601|São Geraldo da Piedade|31|MG|0|0
+3161650|São Geraldo do Baixio|31|MG|0|0
+3161700|São Gonçalo do Abaeté|31|MG|0|0
+3161809|São Gonçalo do Pará|31|MG|0|0
+3161908|São Gonçalo do Rio Abaixo|31|MG|0|0
+3162005|São Gonçalo do Sapucaí|31|MG|0|0
+3162104|São Gotardo|31|MG|0|0
+3162203|São João Batista do Glória|31|MG|0|0
+3162252|São João da Lagoa|31|MG|0|0
+3162302|São João da Mata|31|MG|0|0
+3162401|São João da Ponte|31|MG|0|0
+3162450|São João das Missões|31|MG|0|0
+3162500|São João del Rei|31|MG|0|0
+3162559|São João do Manhuaçu|31|MG|0|0
+3162575|São João do Manteninha|31|MG|0|0
+3162609|São João do Oriente|31|MG|0|0
+3162658|São João do Pacuí|31|MG|0|0
+3162708|São João do Paraíso|31|MG|0|0
+3162807|São João Evangelista|31|MG|0|0
+3162906|São João Nepomuceno|31|MG|0|0
+3162922|São Joaquim de Bicas|31|MG|0|0
+3162948|São José da Barra|31|MG|0|0
+3162955|São José da Lapa|31|MG|0|0
+3163003|São José da Safira|31|MG|0|0
+3163102|São José da Varginha|31|MG|0|0
+3163201|São José do Alegre|31|MG|0|0
+3163300|São José do Divino|31|MG|0|0
+3163409|São José do Goiabal|31|MG|0|0
+3163508|São José do Jacuri|31|MG|0|0
+3163607|São José do Mantimento|31|MG|0|0
+3163706|São Lourenço|31|MG|0|0
+3163805|São Miguel do Anta|31|MG|0|0
+3163904|São Pedro da União|31|MG|0|0
+3164001|São Pedro dos Ferros|31|MG|0|0
+3164100|São Pedro do Suaçuí|31|MG|0|0
+3164209|São Romão|31|MG|0|0
+3164308|São Roque de Minas|31|MG|0|0
+3164407|São Sebastião da Bela Vista|31|MG|0|0
+3164431|São Sebastião da Vargem Alegre|31|MG|0|0
+3164472|São Sebastião do Anta|31|MG|0|0
+3164506|São Sebastião do Maranhão|31|MG|0|0
+3164605|São Sebastião do Oeste|31|MG|0|0
+3164704|São Sebastião do Paraíso|31|MG|0|0
+3164803|São Sebastião do Rio Preto|31|MG|0|0
+3164902|São Sebastião do Rio Verde|31|MG|0|0
+3165008|São Tiago|31|MG|0|0
+3165107|São Tomás de Aquino|31|MG|0|0
+3165206|São Tomé das Letras|31|MG|0|0
+3165305|São Vicente de Minas|31|MG|0|0
+3165404|Sapucaí-Mirim|31|MG|0|0
+3165503|Sardoá|31|MG|0|0
+3165537|Sarzedo|31|MG|0|0
+3165552|Setubinha|31|MG|0|0
+3165560|Sem-Peixe|31|MG|0|0
+3165578|Senador Amaral|31|MG|0|0
+3165602|Senador Cortes|31|MG|0|0
+3165701|Senador Firmino|31|MG|0|0
+3165800|Senador José Bento|31|MG|0|0
+3165909|Senador Modestino Gonçalves|31|MG|0|0
+3166006|Senhora de Oliveira|31|MG|0|0
+3166105|Senhora do Porto|31|MG|0|0
+3166204|Senhora dos Remédios|31|MG|0|0
+3166303|Sericita|31|MG|0|0
+3166402|Seritinga|31|MG|0|0
+3166501|Serra Azul de Minas|31|MG|0|0
+3166600|Serra da Saudade|31|MG|0|0
+3166709|Serra dos Aimorés|31|MG|0|0
+3166808|Serra do Salitre|31|MG|0|0
+3166907|Serrania|31|MG|0|0
+3166956|Serranópolis de Minas|31|MG|0|0
+3167004|Serranos|31|MG|0|0
+3167103|Serro|31|MG|0|0
+3167202|Sete Lagoas|31|MG|0|0
+3167301|Silveirânia|31|MG|0|0
+3167400|Silvianópolis|31|MG|0|0
+3167509|Simão Pereira|31|MG|0|0
+3167608|Simonésia|31|MG|0|0
+3167707|Sobrália|31|MG|0|0
+3167806|Soledade de Minas|31|MG|0|0
+3167905|Tabuleiro|31|MG|0|0
+3168002|Taiobeiras|31|MG|0|0
+3168051|Taparuba|31|MG|0|0
+3168101|Tapira|31|MG|0|0
+3168200|Tapiraí|31|MG|0|0
+3168309|Taquaraçu de Minas|31|MG|0|0
+3168408|Tarumirim|31|MG|0|0
+3168507|Teixeiras|31|MG|0|0
+3168606|Teófilo Otoni|31|MG|0|0
+3168705|Timóteo|31|MG|0|0
+3168804|Tiradentes|31|MG|0|0
+3168903|Tiros|31|MG|0|0
+3169000|Tocantins|31|MG|0|0
+3169059|Tocos do Moji|31|MG|0|0
+3169109|Toledo|31|MG|0|0
+3169208|Tombos|31|MG|0|0
+3169307|Três Corações|31|MG|0|0
+3169356|Três Marias|31|MG|0|0
+3169406|Três Pontas|31|MG|0|0
+3169505|Tumiritinga|31|MG|0|0
+3169604|Tupaciguara|31|MG|0|0
+3169703|Turmalina|31|MG|0|0
+3169802|Turvolândia|31|MG|0|0
+3169901|Ubá|31|MG|0|0
+3170008|Ubaí|31|MG|0|0
+3170057|Ubaporanga|31|MG|0|0
+3170107|Uberaba|31|MG|0|0
+3170206|Uberlândia|31|MG|0|0
+3170305|Umburatiba|31|MG|0|0
+3170404|Unaí|31|MG|0|0
+3170438|União de Minas|31|MG|0|0
+3170479|Uruana de Minas|31|MG|0|0
+3170503|Urucânia|31|MG|0|0
+3170529|Urucuia|31|MG|0|0
+3170578|Vargem Alegre|31|MG|0|0
+3170602|Vargem Bonita|31|MG|0|0
+3170651|Vargem Grande do Rio Pardo|31|MG|0|0
+3170701|Varginha|31|MG|0|0
+3170750|Varjão de Minas|31|MG|0|0
+3170800|Várzea da Palma|31|MG|0|0
+3170909|Varzelândia|31|MG|0|0
+3171006|Vazante|31|MG|0|0
+3171030|Verdelândia|31|MG|0|0
+3171071|Veredinha|31|MG|0|0
+3171105|Veríssimo|31|MG|0|0
+3171154|Vermelho Novo|31|MG|0|0
+3171204|Vespasiano|31|MG|0|0
+3171303|Viçosa|31|MG|0|0
+3171402|Vieiras|31|MG|0|0
+3171501|Mathias Lobato|31|MG|0|0
+3171600|Virgem da Lapa|31|MG|0|0
+3171709|Virgínia|31|MG|0|0
+3171808|Virginópolis|31|MG|0|0
+3171907|Virgolândia|31|MG|0|0
+3172004|Visconde do Rio Branco|31|MG|0|0
+3172103|Volta Grande|31|MG|0|0
+3172202|Wenceslau Braz|31|MG|0|0
+41|PR|Paraná|S|Sul|0|0
+4100103|Abatiá|41|PR|0|0
+4100202|Adrianópolis|41|PR|0|0
+4100301|Agudos do Sul|41|PR|0|0
+4100400|Almirante Tamandaré|41|PR|0|0
+4100459|Altamira do Paraná|41|PR|0|0
+4100509|Altônia|41|PR|0|0
+4100608|Alto Paraná|41|PR|0|0
+4100707|Alto Piquiri|41|PR|0|0
+4100806|Alvorada do Sul|41|PR|0|0
+4100905|Amaporã|41|PR|0|0
+4101002|Ampére|41|PR|0|0
+4101051|Anahy|41|PR|0|0
+4101101|Andirá|41|PR|0|0
+4101150|Ângulo|41|PR|0|0
+4101200|Antonina|41|PR|0|0
+4101309|Antônio Olinto|41|PR|0|0
+4101408|Apucarana|41|PR|0|0
+4101507|Arapongas|41|PR|0|0
+4101606|Arapoti|41|PR|0|0
+4101655|Arapuã|41|PR|0|0
+4101705|Araruna|41|PR|0|0
+4101804|Araucária|41|PR|0|0
+4101853|Ariranha do Ivaí|41|PR|0|0
+4101903|Assaí|41|PR|0|0
+4102000|Assis Chateaubriand|41|PR|0|0
+4102109|Astorga|41|PR|0|0
+4102208|Atalaia|41|PR|0|0
+4102307|Balsa Nova|41|PR|0|0
+4102406|Bandeirantes|41|PR|0|0
+4102505|Barbosa Ferraz|41|PR|0|0
+4102604|Barracão|41|PR|0|0
+4102703|Barra do Jacaré|41|PR|0|0
+4102752|Bela Vista da Caroba|41|PR|0|0
+4102802|Bela Vista do Paraíso|41|PR|0|0
+4102901|Bituruna|41|PR|0|0
+4103008|Boa Esperança|41|PR|0|0
+4103024|Boa Esperança do Iguaçu|41|PR|0|0
+4103040|Boa Ventura de São Roque|41|PR|0|0
+4103057|Boa Vista da Aparecida|41|PR|0|0
+4103107|Bocaiúva do Sul|41|PR|0|0
+4103156|Bom Jesus do Sul|41|PR|0|0
+4103206|Bom Sucesso|41|PR|0|0
+4103222|Bom Sucesso do Sul|41|PR|0|0
+4103305|Borrazópolis|41|PR|0|0
+4103354|Braganey|41|PR|0|0
+4103370|Brasilândia do Sul|41|PR|0|0
+4103404|Cafeara|41|PR|0|0
+4103453|Cafelândia|41|PR|0|0
+4103479|Cafezal do Sul|41|PR|0|0
+4103503|Califórnia|41|PR|0|0
+4103602|Cambará|41|PR|0|0
+4103701|Cambé|41|PR|0|0
+4103800|Cambira|41|PR|0|0
+4103909|Campina da Lagoa|41|PR|0|0
+4103958|Campina do Simão|41|PR|0|0
+4104006|Campina Grande do Sul|41|PR|0|0
+4104055|Campo Bonito|41|PR|0|0
+4104105|Campo do Tenente|41|PR|0|0
+4104204|Campo Largo|41|PR|0|0
+4104253|Campo Magro|41|PR|0|0
+4104303|Campo Mourão|41|PR|0|0
+4104402|Cândido de Abreu|41|PR|0|0
+4104428|Candói|41|PR|0|0
+4104451|Cantagalo|41|PR|0|0
+4104501|Capanema|41|PR|0|0
+4104600|Capitão Leônidas Marques|41|PR|0|0
+4104659|Carambeí|41|PR|0|0
+4104709|Carlópolis|41|PR|0|0
+4104808|Cascavel|41|PR|0|0
+4104907|Castro|41|PR|0|0
+4105003|Catanduvas|41|PR|0|0
+4105102|Centenário do Sul|41|PR|0|0
+4105201|Cerro Azul|41|PR|0|0
+4105300|Céu Azul|41|PR|0|0
+4105409|Chopinzinho|41|PR|0|0
+4105508|Cianorte|41|PR|0|0
+4105607|Cidade Gaúcha|41|PR|0|0
+4105706|Clevelândia|41|PR|0|0
+4105805|Colombo|41|PR|0|0
+4105904|Colorado|41|PR|0|0
+4106001|Congonhinhas|41|PR|0|0
+4106100|Conselheiro Mairinck|41|PR|0|0
+4106209|Contenda|41|PR|0|0
+4106308|Corbélia|41|PR|0|0
+4106407|Cornélio Procópio|41|PR|0|0
+4106456|Coronel Domingos Soares|41|PR|0|0
+4106506|Coronel Vivida|41|PR|0|0
+4106555|Corumbataí do Sul|41|PR|0|0
+4106571|Cruzeiro do Iguaçu|41|PR|0|0
+4106605|Cruzeiro do Oeste|41|PR|0|0
+4106704|Cruzeiro do Sul|41|PR|0|0
+4106803|Cruz Machado|41|PR|0|0
+4106852|Cruzmaltina|41|PR|0|0
+4106902|Curitiba|41|PR|0|0
+4107009|Curiúva|41|PR|0|0
+4107108|Diamante do Norte|41|PR|0|0
+4107124|Diamante do Sul|41|PR|0|0
+4107157|Diamante D'Oeste|41|PR|0|0
+4107207|Dois Vizinhos|41|PR|0|0
+4107256|Douradina|41|PR|0|0
+4107306|Doutor Camargo|41|PR|0|0
+4107405|Enéas Marques|41|PR|0|0
+4107504|Engenheiro Beltrão|41|PR|0|0
+4107520|Esperança Nova|41|PR|0|0
+4107538|Entre Rios do Oeste|41|PR|0|0
+4107546|Espigão Alto do Iguaçu|41|PR|0|0
+4107553|Farol|41|PR|0|0
+4107603|Faxinal|41|PR|0|0
+4107652|Fazenda Rio Grande|41|PR|0|0
+4107702|Fênix|41|PR|0|0
+4107736|Fernandes Pinheiro|41|PR|0|0
+4107751|Figueira|41|PR|0|0
+4107801|Floraí|41|PR|0|0
+4107850|Flor da Serra do Sul|41|PR|0|0
+4107900|Floresta|41|PR|0|0
+4108007|Florestópolis|41|PR|0|0
+4108106|Flórida|41|PR|0|0
+4108205|Formosa do Oeste|41|PR|0|0
+4108304|Foz do Iguaçu|41|PR|0|0
+4108320|Francisco Alves|41|PR|0|0
+4108403|Francisco Beltrão|41|PR|0|0
+4108452|Foz do Jordão|41|PR|0|0
+4108502|General Carneiro|41|PR|0|0
+4108551|Godoy Moreira|41|PR|0|0
+4108601|Goioerê|41|PR|0|0
+4108650|Goioxim|41|PR|0|0
+4108700|Grandes Rios|41|PR|0|0
+4108809|Guaíra|41|PR|0|0
+4108908|Guairaçá|41|PR|0|0
+4108957|Guamiranga|41|PR|0|0
+4109005|Guapirama|41|PR|0|0
+4109104|Guaporema|41|PR|0|0
+4109203|Guaraci|41|PR|0|0
+4109302|Guaraniaçu|41|PR|0|0
+4109401|Guarapuava|41|PR|0|0
+4109500|Guaraqueçaba|41|PR|0|0
+4109609|Guaratuba|41|PR|0|0
+4109658|Honório Serpa|41|PR|0|0
+4109708|Ibaiti|41|PR|0|0
+4109757|Ibema|41|PR|0|0
+4109807|Ibiporã|41|PR|0|0
+4109906|Icaraíma|41|PR|0|0
+4110003|Iguaraçu|41|PR|0|0
+4110052|Iguatu|41|PR|0|0
+4110078|Imbaú|41|PR|0|0
+4110102|Imbituva|41|PR|0|0
+4110201|Inácio Martins|41|PR|0|0
+4110300|Inajá|41|PR|0|0
+4110409|Indianópolis|41|PR|0|0
+4110508|Ipiranga|41|PR|0|0
+4110607|Iporã|41|PR|0|0
+4110656|Iracema do Oeste|41|PR|0|0
+4110706|Irati|41|PR|0|0
+4110805|Iretama|41|PR|0|0
+4110904|Itaguajé|41|PR|0|0
+4110953|Itaipulândia|41|PR|0|0
+4111001|Itambaracá|41|PR|0|0
+4111100|Itambé|41|PR|0|0
+4111209|Itapejara d'Oeste|41|PR|0|0
+4111258|Itaperuçu|41|PR|0|0
+4111308|Itaúna do Sul|41|PR|0|0
+4111407|Ivaí|41|PR|0|0
+4111506|Ivaiporã|41|PR|0|0
+4111555|Ivaté|41|PR|0|0
+4111605|Ivatuba|41|PR|0|0
+4111704|Jaboti|41|PR|0|0
+4111803|Jacarezinho|41|PR|0|0
+4111902|Jaguapitã|41|PR|0|0
+4112009|Jaguariaíva|41|PR|0|0
+4112108|Jandaia do Sul|41|PR|0|0
+4112207|Janiópolis|41|PR|0|0
+4112306|Japira|41|PR|0|0
+4112405|Japurá|41|PR|0|0
+4112504|Jardim Alegre|41|PR|0|0
+4112603|Jardim Olinda|41|PR|0|0
+4112702|Jataizinho|41|PR|0|0
+4112751|Jesuítas|41|PR|0|0
+4112801|Joaquim Távora|41|PR|0|0
+4112900|Jundiaí do Sul|41|PR|0|0
+4112959|Juranda|41|PR|0|0
+4113007|Jussara|41|PR|0|0
+4113106|Kaloré|41|PR|0|0
+4113205|Lapa|41|PR|0|0
+4113254|Laranjal|41|PR|0|0
+4113304|Laranjeiras do Sul|41|PR|0|0
+4113403|Leópolis|41|PR|0|0
+4113429|Lidianópolis|41|PR|0|0
+4113452|Lindoeste|41|PR|0|0
+4113502|Loanda|41|PR|0|0
+4113601|Lobato|41|PR|0|0
+4113700|Londrina|41|PR|0|0
+4113734|Luiziana|41|PR|0|0
+4113759|Lunardelli|41|PR|0|0
+4113809|Lupionópolis|41|PR|0|0
+4113908|Mallet|41|PR|0|0
+4114005|Mamborê|41|PR|0|0
+4114104|Mandaguaçu|41|PR|0|0
+4114203|Mandaguari|41|PR|0|0
+4114302|Mandirituba|41|PR|0|0
+4114351|Manfrinópolis|41|PR|0|0
+4114401|Mangueirinha|41|PR|0|0
+4114500|Manoel Ribas|41|PR|0|0
+4114609|Marechal Cândido Rondon|41|PR|0|0
+4114708|Maria Helena|41|PR|0|0
+4114807|Marialva|41|PR|0|0
+4114906|Marilândia do Sul|41|PR|0|0
+4115002|Marilena|41|PR|0|0
+4115101|Mariluz|41|PR|0|0
+4115200|Maringá|41|PR|0|0
+4115309|Mariópolis|41|PR|0|0
+4115358|Maripá|41|PR|0|0
+4115408|Marmeleiro|41|PR|0|0
+4115457|Marquinho|41|PR|0|0
+4115507|Marumbi|41|PR|0|0
+4115606|Matelândia|41|PR|0|0
+4115705|Matinhos|41|PR|0|0
+4115739|Mato Rico|41|PR|0|0
+4115754|Mauá da Serra|41|PR|0|0
+4115804|Medianeira|41|PR|0|0
+4115853|Mercedes|41|PR|0|0
+4115903|Mirador|41|PR|0|0
+4116000|Miraselva|41|PR|0|0
+4116059|Missal|41|PR|0|0
+4116109|Moreira Sales|41|PR|0|0
+4116208|Morretes|41|PR|0|0
+4116307|Munhoz de Melo|41|PR|0|0
+4116406|Nossa Senhora das Graças|41|PR|0|0
+4116505|Nova Aliança do Ivaí|41|PR|0|0
+4116604|Nova América da Colina|41|PR|0|0
+4116703|Nova Aurora|41|PR|0|0
+4116802|Nova Cantu|41|PR|0|0
+4116901|Nova Esperança|41|PR|0|0
+4116950|Nova Esperança do Sudoeste|41|PR|0|0
+4117008|Nova Fátima|41|PR|0|0
+4117057|Nova Laranjeiras|41|PR|0|0
+4117107|Nova Londrina|41|PR|0|0
+4117206|Nova Olímpia|41|PR|0|0
+4117214|Nova Santa Bárbara|41|PR|0|0
+4117222|Nova Santa Rosa|41|PR|0|0
+4117255|Nova Prata do Iguaçu|41|PR|0|0
+4117271|Nova Tebas|41|PR|0|0
+4117297|Novo Itacolomi|41|PR|0|0
+4117305|Ortigueira|41|PR|0|0
+4117404|Ourizona|41|PR|0|0
+4117453|Ouro Verde do Oeste|41|PR|0|0
+4117503|Paiçandu|41|PR|0|0
+4117602|Palmas|41|PR|0|0
+4117701|Palmeira|41|PR|0|0
+4117800|Palmital|41|PR|0|0
+4117909|Palotina|41|PR|0|0
+4118006|Paraíso do Norte|41|PR|0|0
+4118105|Paranacity|41|PR|0|0
+4118204|Paranaguá|41|PR|0|0
+4118303|Paranapoema|41|PR|0|0
+4118402|Paranavaí|41|PR|0|0
+4118451|Pato Bragado|41|PR|0|0
+4118501|Pato Branco|41|PR|0|0
+4118600|Paula Freitas|41|PR|0|0
+4118709|Paulo Frontin|41|PR|0|0
+4118808|Peabiru|41|PR|0|0
+4118857|Perobal|41|PR|0|0
+4118907|Pérola|41|PR|0|0
+4119004|Pérola d'Oeste|41|PR|0|0
+4119103|Piên|41|PR|0|0
+4119152|Pinhais|41|PR|0|0
+4119202|Pinhalão|41|PR|0|0
+4119251|Pinhal de São Bento|41|PR|0|0
+4119301|Pinhão|41|PR|0|0
+4119400|Piraí do Sul|41|PR|0|0
+4119509|Piraquara|41|PR|0|0
+4119608|Pitanga|41|PR|0|0
+4119657|Pitangueiras|41|PR|0|0
+4119707|Planaltina do Paraná|41|PR|0|0
+4119806|Planalto|41|PR|0|0
+4119905|Ponta Grossa|41|PR|0|0
+4119954|Pontal do Paraná|41|PR|0|0
+4120002|Porecatu|41|PR|0|0
+4120101|Porto Amazonas|41|PR|0|0
+4120150|Porto Barreiro|41|PR|0|0
+4120200|Porto Rico|41|PR|0|0
+4120309|Porto Vitória|41|PR|0|0
+4120333|Prado Ferreira|41|PR|0|0
+4120358|Pranchita|41|PR|0|0
+4120408|Presidente Castelo Branco|41|PR|0|0
+4120507|Primeiro de Maio|41|PR|0|0
+4120606|Prudentópolis|41|PR|0|0
+4120655|Quarto Centenário|41|PR|0|0
+4120705|Quatiguá|41|PR|0|0
+4120804|Quatro Barras|41|PR|0|0
+4120853|Quatro Pontes|41|PR|0|0
+4120903|Quedas do Iguaçu|41|PR|0|0
+4121000|Querência do Norte|41|PR|0|0
+4121109|Quinta do Sol|41|PR|0|0
+4121208|Quitandinha|41|PR|0|0
+4121257|Ramilândia|41|PR|0|0
+4121307|Rancho Alegre|41|PR|0|0
+4121356|Rancho Alegre D'Oeste|41|PR|0|0
+4121406|Realeza|41|PR|0|0
+4121505|Rebouças|41|PR|0|0
+4121604|Renascença|41|PR|0|0
+4121703|Reserva|41|PR|0|0
+4121752|Reserva do Iguaçu|41|PR|0|0
+4121802|Ribeirão Claro|41|PR|0|0
+4121901|Ribeirão do Pinhal|41|PR|0|0
+4122008|Rio Azul|41|PR|0|0
+4122107|Rio Bom|41|PR|0|0
+4122156|Rio Bonito do Iguaçu|41|PR|0|0
+4122172|Rio Branco do Ivaí|41|PR|0|0
+4122206|Rio Branco do Sul|41|PR|0|0
+4122305|Rio Negro|41|PR|0|0
+4122404|Rolândia|41|PR|0|0
+4122503|Roncador|41|PR|0|0
+4122602|Rondon|41|PR|0|0
+4122651|Rosário do Ivaí|41|PR|0|0
+4122701|Sabáudia|41|PR|0|0
+4122800|Salgado Filho|41|PR|0|0
+4122909|Salto do Itararé|41|PR|0|0
+4123006|Salto do Lontra|41|PR|0|0
+4123105|Santa Amélia|41|PR|0|0
+4123204|Santa Cecília do Pavão|41|PR|0|0
+4123303|Santa Cruz de Monte Castelo|41|PR|0|0
+4123402|Santa Fé|41|PR|0|0
+4123501|Santa Helena|41|PR|0|0
+4123600|Santa Inês|41|PR|0|0
+4123709|Santa Isabel do Ivaí|41|PR|0|0
+4123808|Santa Izabel do Oeste|41|PR|0|0
+4123824|Santa Lúcia|41|PR|0|0
+4123857|Santa Maria do Oeste|41|PR|0|0
+4123907|Santa Mariana|41|PR|0|0
+4123956|Santa Mônica|41|PR|0|0
+4124004|Santana do Itararé|41|PR|0|0
+4124020|Santa Tereza do Oeste|41|PR|0|0
+4124053|Santa Terezinha de Itaipu|41|PR|0|0
+4124103|Santo Antônio da Platina|41|PR|0|0
+4124202|Santo Antônio do Caiuá|41|PR|0|0
+4124301|Santo Antônio do Paraíso|41|PR|0|0
+4124400|Santo Antônio do Sudoeste|41|PR|0|0
+4124509|Santo Inácio|41|PR|0|0
+4124608|São Carlos do Ivaí|41|PR|0|0
+4124707|São Jerônimo da Serra|41|PR|0|0
+4124806|São João|41|PR|0|0
+4124905|São João do Caiuá|41|PR|0|0
+4125001|São João do Ivaí|41|PR|0|0
+4125100|São João do Triunfo|41|PR|0|0
+4125209|São Jorge d'Oeste|41|PR|0|0
+4125308|São Jorge do Ivaí|41|PR|0|0
+4125357|São Jorge do Patrocínio|41|PR|0|0
+4125407|São José da Boa Vista|41|PR|0|0
+4125456|São José das Palmeiras|41|PR|0|0
+4125506|São José dos Pinhais|41|PR|0|0
+4125555|São Manoel do Paraná|41|PR|0|0
+4125605|São Mateus do Sul|41|PR|0|0
+4125704|São Miguel do Iguaçu|41|PR|0|0
+4125753|São Pedro do Iguaçu|41|PR|0|0
+4125803|São Pedro do Ivaí|41|PR|0|0
+4125902|São Pedro do Paraná|41|PR|0|0
+4126009|São Sebastião da Amoreira|41|PR|0|0
+4126108|São Tomé|41|PR|0|0
+4126207|Sapopema|41|PR|0|0
+4126256|Sarandi|41|PR|0|0
+4126272|Saudade do Iguaçu|41|PR|0|0
+4126306|Sengés|41|PR|0|0
+4126355|Serranópolis do Iguaçu|41|PR|0|0
+4126405|Sertaneja|41|PR|0|0
+4126504|Sertanópolis|41|PR|0|0
+4126603|Siqueira Campos|41|PR|0|0
+4126652|Sulina|41|PR|0|0
+4126678|Tamarana|41|PR|0|0
+4126702|Tamboara|41|PR|0|0
+4126801|Tapejara|41|PR|0|0
+4126900|Tapira|41|PR|0|0
+4127007|Teixeira Soares|41|PR|0|0
+4127106|Telêmaco Borba|41|PR|0|0
+4127205|Terra Boa|41|PR|0|0
+4127304|Terra Rica|41|PR|0|0
+4127403|Terra Roxa|41|PR|0|0
+4127502|Tibagi|41|PR|0|0
+4127601|Tijucas do Sul|41|PR|0|0
+4127700|Toledo|41|PR|0|0
+4127809|Tomazina|41|PR|0|0
+4127858|Três Barras do Paraná|41|PR|0|0
+4127882|Tunas do Paraná|41|PR|0|0
+4127908|Tuneiras do Oeste|41|PR|0|0
+4127957|Tupãssi|41|PR|0|0
+4127965|Turvo|41|PR|0|0
+4128005|Ubiratã|41|PR|0|0
+4128104|Umuarama|41|PR|0|0
+4128203|União da Vitória|41|PR|0|0
+4128302|Uniflor|41|PR|0|0
+4128401|Uraí|41|PR|0|0
+4128500|Wenceslau Braz|41|PR|0|0
+4128534|Ventania|41|PR|0|0
+4128559|Vera Cruz do Oeste|41|PR|0|0
+4128609|Verê|41|PR|0|0
+4128625|Alto Paraíso|41|PR|0|0
+4128633|Doutor Ulysses|41|PR|0|0
+4128658|Virmond|41|PR|0|0
+4128708|Vitorino|41|PR|0|0
+4128807|Xambrê|41|PR|0|0
+42|SC|Santa Catarina|S|Sul|0|0
+4200051|Abdon Batista|42|SC|0|0
+4200101|Abelardo Luz|42|SC|0|0
+4200200|Agrolândia|42|SC|0|0
+4200309|Agronômica|42|SC|0|0
+4200408|Água Doce|42|SC|0|0
+4200507|Águas de Chapecó|42|SC|0|0
+4200556|Águas Frias|42|SC|0|0
+4200606|Águas Mornas|42|SC|0|0
+4200705|Alfredo Wagner|42|SC|0|0
+4200754|Alto Bela Vista|42|SC|0|0
+4200804|Anchieta|42|SC|0|0
+4200903|Angelina|42|SC|0|0
+4201000|Anita Garibaldi|42|SC|0|0
+4201109|Anitápolis|42|SC|0|0
+4201208|Antônio Carlos|42|SC|0|0
+4201257|Apiúna|42|SC|0|0
+4201273|Arabutã|42|SC|0|0
+4201307|Araquari|42|SC|0|0
+4201406|Araranguá|42|SC|0|0
+4201505|Armazém|42|SC|0|0
+4201604|Arroio Trinta|42|SC|0|0
+4201653|Arvoredo|42|SC|0|0
+4201703|Ascurra|42|SC|0|0
+4201802|Atalanta|42|SC|0|0
+4201901|Aurora|42|SC|0|0
+4201950|Balneário Arroio do Silva|42|SC|0|0
+4202008|Balneário Camboriú|42|SC|0|0
+4202057|Balneário Barra do Sul|42|SC|0|0
+4202073|Balneário Gaivota|42|SC|0|0
+4202081|Bandeirante|42|SC|0|0
+4202099|Barra Bonita|42|SC|0|0
+4202107|Barra Velha|42|SC|0|0
+4202131|Bela Vista do Toldo|42|SC|0|0
+4202156|Belmonte|42|SC|0|0
+4202206|Benedito Novo|42|SC|0|0
+4202305|Biguaçu|42|SC|0|0
+4202404|Blumenau|42|SC|0|0
+4202438|Bocaina do Sul|42|SC|0|0
+4202453|Bombinhas|42|SC|0|0
+4202503|Bom Jardim da Serra|42|SC|0|0
+4202537|Bom Jesus|42|SC|0|0
+4202578|Bom Jesus do Oeste|42|SC|0|0
+4202602|Bom Retiro|42|SC|0|0
+4202701|Botuverá|42|SC|0|0
+4202800|Braço do Norte|42|SC|0|0
+4202859|Braço do Trombudo|42|SC|0|0
+4202875|Brunópolis|42|SC|0|0
+4202909|Brusque|42|SC|0|0
+4203006|Caçador|42|SC|0|0
+4203105|Caibi|42|SC|0|0
+4203154|Calmon|42|SC|0|0
+4203204|Camboriú|42|SC|0|0
+4203253|Capão Alto|42|SC|0|0
+4203303|Campo Alegre|42|SC|0|0
+4203402|Campo Belo do Sul|42|SC|0|0
+4203501|Campo Erê|42|SC|0|0
+4203600|Campos Novos|42|SC|0|0
+4203709|Canelinha|42|SC|0|0
+4203808|Canoinhas|42|SC|0|0
+4203907|Capinzal|42|SC|0|0
+4203956|Capivari de Baixo|42|SC|0|0
+4204004|Catanduvas|42|SC|0|0
+4204103|Caxambu do Sul|42|SC|0|0
+4204152|Celso Ramos|42|SC|0|0
+4204178|Cerro Negro|42|SC|0|0
+4204194|Chapadão do Lageado|42|SC|0|0
+4204202|Chapecó|42|SC|0|0
+4204251|Cocal do Sul|42|SC|0|0
+4204301|Concórdia|42|SC|0|0
+4204350|Cordilheira Alta|42|SC|0|0
+4204400|Coronel Freitas|42|SC|0|0
+4204459|Coronel Martins|42|SC|0|0
+4204509|Corupá|42|SC|0|0
+4204558|Correia Pinto|42|SC|0|0
+4204608|Criciúma|42|SC|0|0
+4204707|Cunha Porã|42|SC|0|0
+4204756|Cunhataí|42|SC|0|0
+4204806|Curitibanos|42|SC|0|0
+4204905|Descanso|42|SC|0|0
+4205001|Dionísio Cerqueira|42|SC|0|0
+4205100|Dona Emma|42|SC|0|0
+4205159|Doutor Pedrinho|42|SC|0|0
+4205175|Entre Rios|42|SC|0|0
+4205191|Ermo|42|SC|0|0
+4205209|Erval Velho|42|SC|0|0
+4205308|Faxinal dos Guedes|42|SC|0|0
+4205357|Flor do Sertão|42|SC|0|0
+4205407|Florianópolis|42|SC|0|0
+4205431|Formosa do Sul|42|SC|0|0
+4205456|Forquilhinha|42|SC|0|0
+4205506|Fraiburgo|42|SC|0|0
+4205555|Frei Rogério|42|SC|0|0
+4205605|Galvão|42|SC|0|0
+4205704|Garopaba|42|SC|0|0
+4205803|Garuva|42|SC|0|0
+4205902|Gaspar|42|SC|0|0
+4206009|Governador Celso Ramos|42|SC|0|0
+4206108|Grão-Pará|42|SC|0|0
+4206207|Gravatal|42|SC|0|0
+4206306|Guabiruba|42|SC|0|0
+4206405|Guaraciaba|42|SC|0|0
+4206504|Guaramirim|42|SC|0|0
+4206603|Guarujá do Sul|42|SC|0|0
+4206652|Guatambú|42|SC|0|0
+4206702|Herval d'Oeste|42|SC|0|0
+4206751|Ibiam|42|SC|0|0
+4206801|Ibicaré|42|SC|0|0
+4206900|Ibirama|42|SC|0|0
+4207007|Içara|42|SC|0|0
+4207106|Ilhota|42|SC|0|0
+4207205|Imaruí|42|SC|0|0
+4207304|Imbituba|42|SC|0|0
+4207403|Imbuia|42|SC|0|0
+4207502|Indaial|42|SC|0|0
+4207577|Iomerê|42|SC|0|0
+4207601|Ipira|42|SC|0|0
+4207650|Iporã do Oeste|42|SC|0|0
+4207684|Ipuaçu|42|SC|0|0
+4207700|Ipumirim|42|SC|0|0
+4207759|Iraceminha|42|SC|0|0
+4207809|Irani|42|SC|0|0
+4207858|Irati|42|SC|0|0
+4207908|Irineópolis|42|SC|0|0
+4208005|Itá|42|SC|0|0
+4208104|Itaiópolis|42|SC|0|0
+4208203|Itajaí|42|SC|0|0
+4208302|Itapema|42|SC|0|0
+4208401|Itapiranga|42|SC|0|0
+4208450|Itapoá|42|SC|0|0
+4208500|Ituporanga|42|SC|0|0
+4208609|Jaborá|42|SC|0|0
+4208708|Jacinto Machado|42|SC|0|0
+4208807|Jaguaruna|42|SC|0|0
+4208906|Jaraguá do Sul|42|SC|0|0
+4208955|Jardinópolis|42|SC|0|0
+4209003|Joaçaba|42|SC|0|0
+4209102|Joinville|42|SC|0|0
+4209151|José Boiteux|42|SC|0|0
+4209177|Jupiá|42|SC|0|0
+4209201|Lacerdópolis|42|SC|0|0
+4209300|Lages|42|SC|0|0
+4209409|Laguna|42|SC|0|0
+4209458|Lajeado Grande|42|SC|0|0
+4209508|Laurentino|42|SC|0|0
+4209607|Lauro Müller|42|SC|0|0
+4209706|Lebon Régis|42|SC|0|0
+4209805|Leoberto Leal|42|SC|0|0
+4209854|Lindóia do Sul|42|SC|0|0
+4209904|Lontras|42|SC|0|0
+4210001|Luiz Alves|42|SC|0|0
+4210035|Luzerna|42|SC|0|0
+4210050|Macieira|42|SC|0|0
+4210100|Mafra|42|SC|0|0
+4210209|Major Gercino|42|SC|0|0
+4210308|Major Vieira|42|SC|0|0
+4210407|Maracajá|42|SC|0|0
+4210506|Maravilha|42|SC|0|0
+4210555|Marema|42|SC|0|0
+4210605|Massaranduba|42|SC|0|0
+4210704|Matos Costa|42|SC|0|0
+4210803|Meleiro|42|SC|0|0
+4210852|Mirim Doce|42|SC|0|0
+4210902|Modelo|42|SC|0|0
+4211009|Mondaí|42|SC|0|0
+4211058|Monte Carlo|42|SC|0|0
+4211108|Monte Castelo|42|SC|0|0
+4211207|Morro da Fumaça|42|SC|0|0
+4211256|Morro Grande|42|SC|0|0
+4211306|Navegantes|42|SC|0|0
+4211405|Nova Erechim|42|SC|0|0
+4211454|Nova Itaberaba|42|SC|0|0
+4211504|Nova Trento|42|SC|0|0
+4211603|Nova Veneza|42|SC|0|0
+4211652|Novo Horizonte|42|SC|0|0
+4211702|Orleans|42|SC|0|0
+4211751|Otacílio Costa|42|SC|0|0
+4211801|Ouro|42|SC|0|0
+4211850|Ouro Verde|42|SC|0|0
+4211876|Paial|42|SC|0|0
+4211892|Painel|42|SC|0|0
+4211900|Palhoça|42|SC|0|0
+4212007|Palma Sola|42|SC|0|0
+4212056|Palmeira|42|SC|0|0
+4212106|Palmitos|42|SC|0|0
+4212205|Papanduva|42|SC|0|0
+4212239|Paraíso|42|SC|0|0
+4212254|Passo de Torres|42|SC|0|0
+4212270|Passos Maia|42|SC|0|0
+4212304|Paulo Lopes|42|SC|0|0
+4212403|Pedras Grandes|42|SC|0|0
+4212502|Penha|42|SC|0|0
+4212601|Peritiba|42|SC|0|0
+4212650|Pescaria Brava|42|SC|0|0
+4212700|Petrolândia|42|SC|0|0
+4212809|Balneário Piçarras|42|SC|0|0
+4212908|Pinhalzinho|42|SC|0|0
+4213005|Pinheiro Preto|42|SC|0|0
+4213104|Piratuba|42|SC|0|0
+4213153|Planalto Alegre|42|SC|0|0
+4213203|Pomerode|42|SC|0|0
+4213302|Ponte Alta|42|SC|0|0
+4213351|Ponte Alta do Norte|42|SC|0|0
+4213401|Ponte Serrada|42|SC|0|0
+4213500|Porto Belo|42|SC|0|0
+4213609|Porto União|42|SC|0|0
+4213708|Pouso Redondo|42|SC|0|0
+4213807|Praia Grande|42|SC|0|0
+4213906|Presidente Castello Branco|42|SC|0|0
+4214003|Presidente Getúlio|42|SC|0|0
+4214102|Presidente Nereu|42|SC|0|0
+4214151|Princesa|42|SC|0|0
+4214201|Quilombo|42|SC|0|0
+4214300|Rancho Queimado|42|SC|0|0
+4214409|Rio das Antas|42|SC|0|0
+4214508|Rio do Campo|42|SC|0|0
+4214607|Rio do Oeste|42|SC|0|0
+4214706|Rio dos Cedros|42|SC|0|0
+4214805|Rio do Sul|42|SC|0|0
+4214904|Rio Fortuna|42|SC|0|0
+4215000|Rio Negrinho|42|SC|0|0
+4215059|Rio Rufino|42|SC|0|0
+4215075|Riqueza|42|SC|0|0
+4215109|Rodeio|42|SC|0|0
+4215208|Romelândia|42|SC|0|0
+4215307|Salete|42|SC|0|0
+4215356|Saltinho|42|SC|0|0
+4215406|Salto Veloso|42|SC|0|0
+4215455|Sangão|42|SC|0|0
+4215505|Santa Cecília|42|SC|0|0
+4215554|Santa Helena|42|SC|0|0
+4215604|Santa Rosa de Lima|42|SC|0|0
+4215653|Santa Rosa do Sul|42|SC|0|0
+4215679|Santa Terezinha|42|SC|0|0
+4215687|Santa Terezinha do Progresso|42|SC|0|0
+4215695|Santiago do Sul|42|SC|0|0
+4215703|Santo Amaro da Imperatriz|42|SC|0|0
+4215752|São Bernardino|42|SC|0|0
+4215802|São Bento do Sul|42|SC|0|0
+4215901|São Bonifácio|42|SC|0|0
+4216008|São Carlos|42|SC|0|0
+4216057|São Cristóvão do Sul|42|SC|0|0
+4216107|São Domingos|42|SC|0|0
+4216206|São Francisco do Sul|42|SC|0|0
+4216255|São João do Oeste|42|SC|0|0
+4216305|São João Batista|42|SC|0|0
+4216354|São João do Itaperiú|42|SC|0|0
+4216404|São João do Sul|42|SC|0|0
+4216503|São Joaquim|42|SC|0|0
+4216602|São José|42|SC|0|0
+4216701|São José do Cedro|42|SC|0|0
+4216800|São José do Cerrito|42|SC|0|0
+4216909|São Lourenço do Oeste|42|SC|0|0
+4217006|São Ludgero|42|SC|0|0
+4217105|São Martinho|42|SC|0|0
+4217154|São Miguel da Boa Vista|42|SC|0|0
+4217204|São Miguel do Oeste|42|SC|0|0
+4217253|São Pedro de Alcântara|42|SC|0|0
+4217303|Saudades|42|SC|0|0
+4217402|Schroeder|42|SC|0|0
+4217501|Seara|42|SC|0|0
+4217550|Serra Alta|42|SC|0|0
+4217600|Siderópolis|42|SC|0|0
+4217709|Sombrio|42|SC|0|0
+4217758|Sul Brasil|42|SC|0|0
+4217808|Taió|42|SC|0|0
+4217907|Tangará|42|SC|0|0
+4217956|Tigrinhos|42|SC|0|0
+4218004|Tijucas|42|SC|0|0
+4218103|Timbé do Sul|42|SC|0|0
+4218202|Timbó|42|SC|0|0
+4218251|Timbó Grande|42|SC|0|0
+4218301|Três Barras|42|SC|0|0
+4218350|Treviso|42|SC|0|0
+4218400|Treze de Maio|42|SC|0|0
+4218509|Treze Tílias|42|SC|0|0
+4218608|Trombudo Central|42|SC|0|0
+4218707|Tubarão|42|SC|0|0
+4218756|Tunápolis|42|SC|0|0
+4218806|Turvo|42|SC|0|0
+4218855|União do Oeste|42|SC|0|0
+4218905|Urubici|42|SC|0|0
+4218954|Urupema|42|SC|0|0
+4219002|Urussanga|42|SC|0|0
+4219101|Vargeão|42|SC|0|0
+4219150|Vargem|42|SC|0|0
+4219176|Vargem Bonita|42|SC|0|0
+4219200|Vidal Ramos|42|SC|0|0
+4219309|Videira|42|SC|0|0
+4219358|Vitor Meireles|42|SC|0|0
+4219408|Witmarsum|42|SC|0|0
+4219507|Xanxerê|42|SC|0|0
+4219606|Xavantina|42|SC|0|0
+4219705|Xaxim|42|SC|0|0
+4219853|Zortéa|42|SC|0|0
+4220000|Balneário Rincão|42|SC|0|0
+43|RS|Rio Grande do Sul|S|Sul|0|0
+4300034|Aceguá|43|RS|0|0
+4300059|Água Santa|43|RS|0|0
+4300109|Agudo|43|RS|0|0
+4300208|Ajuricaba|43|RS|0|0
+4300307|Alecrim|43|RS|0|0
+4300406|Alegrete|43|RS|0|0
+4300455|Alegria|43|RS|0|0
+4300471|Almirante Tamandaré do Sul|43|RS|0|0
+4300505|Alpestre|43|RS|0|0
+4300554|Alto Alegre|43|RS|0|0
+4300570|Alto Feliz|43|RS|0|0
+4300604|Alvorada|43|RS|0|0
+4300638|Amaral Ferrador|43|RS|0|0
+4300646|Ametista do Sul|43|RS|0|0
+4300661|André da Rocha|43|RS|0|0
+4300703|Anta Gorda|43|RS|0|0
+4300802|Antônio Prado|43|RS|0|0
+4300851|Arambaré|43|RS|0|0
+4300877|Araricá|43|RS|0|0
+4300901|Aratiba|43|RS|0|0
+4301008|Arroio do Meio|43|RS|0|0
+4301057|Arroio do Sal|43|RS|0|0
+4301073|Arroio do Padre|43|RS|0|0
+4301107|Arroio dos Ratos|43|RS|0|0
+4301206|Arroio do Tigre|43|RS|0|0
+4301305|Arroio Grande|43|RS|0|0
+4301404|Arvorezinha|43|RS|0|0
+4301503|Augusto Pestana|43|RS|0|0
+4301552|Áurea|43|RS|0|0
+4301602|Bagé|43|RS|0|0
+4301636|Balneário Pinhal|43|RS|0|0
+4301651|Barão|43|RS|0|0
+4301701|Barão de Cotegipe|43|RS|0|0
+4301750|Barão do Triunfo|43|RS|0|0
+4301800|Barracão|43|RS|0|0
+4301859|Barra do Guarita|43|RS|0|0
+4301875|Barra do Quaraí|43|RS|0|0
+4301909|Barra do Ribeiro|43|RS|0|0
+4301925|Barra do Rio Azul|43|RS|0|0
+4301958|Barra Funda|43|RS|0|0
+4302006|Barros Cassal|43|RS|0|0
+4302055|Benjamin Constant do Sul|43|RS|0|0
+4302105|Bento Gonçalves|43|RS|0|0
+4302154|Boa Vista das Missões|43|RS|0|0
+4302204|Boa Vista do Buricá|43|RS|0|0
+4302220|Boa Vista do Cadeado|43|RS|0|0
+4302238|Boa Vista do Incra|43|RS|0|0
+4302253|Boa Vista do Sul|43|RS|0|0
+4302303|Bom Jesus|43|RS|0|0
+4302352|Bom Princípio|43|RS|0|0
+4302378|Bom Progresso|43|RS|0|0
+4302402|Bom Retiro do Sul|43|RS|0|0
+4302451|Boqueirão do Leão|43|RS|0|0
+4302501|Bossoroca|43|RS|0|0
+4302584|Bozano|43|RS|0|0
+4302600|Braga|43|RS|0|0
+4302659|Brochier|43|RS|0|0
+4302709|Butiá|43|RS|0|0
+4302808|Caçapava do Sul|43|RS|0|0
+4302907|Cacequi|43|RS|0|0
+4303004|Cachoeira do Sul|43|RS|0|0
+4303103|Cachoeirinha|43|RS|0|0
+4303202|Cacique Doble|43|RS|0|0
+4303301|Caibaté|43|RS|0|0
+4303400|Caiçara|43|RS|0|0
+4303509|Camaquã|43|RS|0|0
+4303558|Camargo|43|RS|0|0
+4303608|Cambará do Sul|43|RS|0|0
+4303673|Campestre da Serra|43|RS|0|0
+4303707|Campina das Missões|43|RS|0|0
+4303806|Campinas do Sul|43|RS|0|0
+4303905|Campo Bom|43|RS|0|0
+4304002|Campo Novo|43|RS|0|0
+4304101|Campos Borges|43|RS|0|0
+4304200|Candelária|43|RS|0|0
+4304309|Cândido Godói|43|RS|0|0
+4304358|Candiota|43|RS|0|0
+4304408|Canela|43|RS|0|0
+4304507|Canguçu|43|RS|0|0
+4304606|Canoas|43|RS|0|0
+4304614|Canudos do Vale|43|RS|0|0
+4304622|Capão Bonito do Sul|43|RS|0|0
+4304630|Capão da Canoa|43|RS|0|0
+4304655|Capão do Cipó|43|RS|0|0
+4304663|Capão do Leão|43|RS|0|0
+4304671|Capivari do Sul|43|RS|0|0
+4304689|Capela de Santana|43|RS|0|0
+4304697|Capitão|43|RS|0|0
+4304705|Carazinho|43|RS|0|0
+4304713|Caraá|43|RS|0|0
+4304804|Carlos Barbosa|43|RS|0|0
+4304853|Carlos Gomes|43|RS|0|0
+4304903|Casca|43|RS|0|0
+4304952|Caseiros|43|RS|0|0
+4305009|Catuípe|43|RS|0|0
+4305108|Caxias do Sul|43|RS|0|0
+4305116|Centenário|43|RS|0|0
+4305124|Cerrito|43|RS|0|0
+4305132|Cerro Branco|43|RS|0|0
+4305157|Cerro Grande|43|RS|0|0
+4305173|Cerro Grande do Sul|43|RS|0|0
+4305207|Cerro Largo|43|RS|0|0
+4305306|Chapada|43|RS|0|0
+4305355|Charqueadas|43|RS|0|0
+4305371|Charrua|43|RS|0|0
+4305405|Chiapetta|43|RS|0|0
+4305439|Chuí|43|RS|0|0
+4305447|Chuvisca|43|RS|0|0
+4305454|Cidreira|43|RS|0|0
+4305504|Ciríaco|43|RS|0|0
+4305587|Colinas|43|RS|0|0
+4305603|Colorado|43|RS|0|0
+4305702|Condor|43|RS|0|0
+4305801|Constantina|43|RS|0|0
+4305835|Coqueiro Baixo|43|RS|0|0
+4305850|Coqueiros do Sul|43|RS|0|0
+4305871|Coronel Barros|43|RS|0|0
+4305900|Coronel Bicaco|43|RS|0|0
+4305934|Coronel Pilar|43|RS|0|0
+4305959|Cotiporã|43|RS|0|0
+4305975|Coxilha|43|RS|0|0
+4306007|Crissiumal|43|RS|0|0
+4306056|Cristal|43|RS|0|0
+4306072|Cristal do Sul|43|RS|0|0
+4306106|Cruz Alta|43|RS|0|0
+4306130|Cruzaltense|43|RS|0|0
+4306205|Cruzeiro do Sul|43|RS|0|0
+4306304|David Canabarro|43|RS|0|0
+4306320|Derrubadas|43|RS|0|0
+4306353|Dezesseis de Novembro|43|RS|0|0
+4306379|Dilermando de Aguiar|43|RS|0|0
+4306403|Dois Irmãos|43|RS|0|0
+4306429|Dois Irmãos das Missões|43|RS|0|0
+4306452|Dois Lajeados|43|RS|0|0
+4306502|Dom Feliciano|43|RS|0|0
+4306551|Dom Pedro de Alcântara|43|RS|0|0
+4306601|Dom Pedrito|43|RS|0|0
+4306700|Dona Francisca|43|RS|0|0
+4306734|Doutor Maurício Cardoso|43|RS|0|0
+4306759|Doutor Ricardo|43|RS|0|0
+4306767|Eldorado do Sul|43|RS|0|0
+4306809|Encantado|43|RS|0|0
+4306908|Encruzilhada do Sul|43|RS|0|0
+4306924|Engenho Velho|43|RS|0|0
+4306932|Entre-Ijuís|43|RS|0|0
+4306957|Entre Rios do Sul|43|RS|0|0
+4306973|Erebango|43|RS|0|0
+4307005|Erechim|43|RS|0|0
+4307054|Ernestina|43|RS|0|0
+4307104|Herval|43|RS|0|0
+4307203|Erval Grande|43|RS|0|0
+4307302|Erval Seco|43|RS|0|0
+4307401|Esmeralda|43|RS|0|0
+4307450|Esperança do Sul|43|RS|0|0
+4307500|Espumoso|43|RS|0|0
+4307559|Estação|43|RS|0|0
+4307609|Estância Velha|43|RS|0|0
+4307708|Esteio|43|RS|0|0
+4307807|Estrela|43|RS|0|0
+4307815|Estrela Velha|43|RS|0|0
+4307831|Eugênio de Castro|43|RS|0|0
+4307864|Fagundes Varela|43|RS|0|0
+4307906|Farroupilha|43|RS|0|0
+4308003|Faxinal do Soturno|43|RS|0|0
+4308052|Faxinalzinho|43|RS|0|0
+4308078|Fazenda Vilanova|43|RS|0|0
+4308102|Feliz|43|RS|0|0
+4308201|Flores da Cunha|43|RS|0|0
+4308250|Floriano Peixoto|43|RS|0|0
+4308300|Fontoura Xavier|43|RS|0|0
+4308409|Formigueiro|43|RS|0|0
+4308433|Forquetinha|43|RS|0|0
+4308458|Fortaleza dos Valos|43|RS|0|0
+4308508|Frederico Westphalen|43|RS|0|0
+4308607|Garibaldi|43|RS|0|0
+4308656|Garruchos|43|RS|0|0
+4308706|Gaurama|43|RS|0|0
+4308805|General Câmara|43|RS|0|0
+4308854|Gentil|43|RS|0|0
+4308904|Getúlio Vargas|43|RS|0|0
+4309001|Giruá|43|RS|0|0
+4309050|Glorinha|43|RS|0|0
+4309100|Gramado|43|RS|0|0
+4309126|Gramado dos Loureiros|43|RS|0|0
+4309159|Gramado Xavier|43|RS|0|0
+4309209|Gravataí|43|RS|0|0
+4309258|Guabiju|43|RS|0|0
+4309308|Guaíba|43|RS|0|0
+4309407|Guaporé|43|RS|0|0
+4309506|Guarani das Missões|43|RS|0|0
+4309555|Harmonia|43|RS|0|0
+4309571|Herveiras|43|RS|0|0
+4309605|Horizontina|43|RS|0|0
+4309654|Hulha Negra|43|RS|0|0
+4309704|Humaitá|43|RS|0|0
+4309753|Ibarama|43|RS|0|0
+4309803|Ibiaçá|43|RS|0|0
+4309902|Ibiraiaras|43|RS|0|0
+4309951|Ibirapuitã|43|RS|0|0
+4310009|Ibirubá|43|RS|0|0
+4310108|Igrejinha|43|RS|0|0
+4310207|Ijuí|43|RS|0|0
+4310306|Ilópolis|43|RS|0|0
+4310330|Imbé|43|RS|0|0
+4310363|Imigrante|43|RS|0|0
+4310405|Independência|43|RS|0|0
+4310413|Inhacorá|43|RS|0|0
+4310439|Ipê|43|RS|0|0
+4310462|Ipiranga do Sul|43|RS|0|0
+4310504|Iraí|43|RS|0|0
+4310538|Itaara|43|RS|0|0
+4310553|Itacurubi|43|RS|0|0
+4310579|Itapuca|43|RS|0|0
+4310603|Itaqui|43|RS|0|0
+4310652|Itati|43|RS|0|0
+4310702|Itatiba do Sul|43|RS|0|0
+4310751|Ivorá|43|RS|0|0
+4310801|Ivoti|43|RS|0|0
+4310850|Jaboticaba|43|RS|0|0
+4310876|Jacuizinho|43|RS|0|0
+4310900|Jacutinga|43|RS|0|0
+4311007|Jaguarão|43|RS|0|0
+4311106|Jaguari|43|RS|0|0
+4311122|Jaquirana|43|RS|0|0
+4311130|Jari|43|RS|0|0
+4311155|Jóia|43|RS|0|0
+4311205|Júlio de Castilhos|43|RS|0|0
+4311239|Lagoa Bonita do Sul|43|RS|0|0
+4311254|Lagoão|43|RS|0|0
+4311270|Lagoa dos Três Cantos|43|RS|0|0
+4311304|Lagoa Vermelha|43|RS|0|0
+4311403|Lajeado|43|RS|0|0
+4311429|Lajeado do Bugre|43|RS|0|0
+4311502|Lavras do Sul|43|RS|0|0
+4311601|Liberato Salzano|43|RS|0|0
+4311627|Lindolfo Collor|43|RS|0|0
+4311643|Linha Nova|43|RS|0|0
+4311700|Machadinho|43|RS|0|0
+4311718|Maçambará|43|RS|0|0
+4311734|Mampituba|43|RS|0|0
+4311759|Manoel Viana|43|RS|0|0
+4311775|Maquiné|43|RS|0|0
+4311791|Maratá|43|RS|0|0
+4311809|Marau|43|RS|0|0
+4311908|Marcelino Ramos|43|RS|0|0
+4311981|Mariana Pimentel|43|RS|0|0
+4312005|Mariano Moro|43|RS|0|0
+4312054|Marques de Souza|43|RS|0|0
+4312104|Mata|43|RS|0|0
+4312138|Mato Castelhano|43|RS|0|0
+4312153|Mato Leitão|43|RS|0|0
+4312179|Mato Queimado|43|RS|0|0
+4312203|Maximiliano de Almeida|43|RS|0|0
+4312252|Minas do Leão|43|RS|0|0
+4312302|Miraguaí|43|RS|0|0
+4312351|Montauri|43|RS|0|0
+4312377|Monte Alegre dos Campos|43|RS|0|0
+4312385|Monte Belo do Sul|43|RS|0|0
+4312401|Montenegro|43|RS|0|0
+4312427|Mormaço|43|RS|0|0
+4312443|Morrinhos do Sul|43|RS|0|0
+4312450|Morro Redondo|43|RS|0|0
+4312476|Morro Reuter|43|RS|0|0
+4312500|Mostardas|43|RS|0|0
+4312609|Muçum|43|RS|0|0
+4312617|Muitos Capões|43|RS|0|0
+4312625|Muliterno|43|RS|0|0
+4312658|Não-Me-Toque|43|RS|0|0
+4312674|Nicolau Vergueiro|43|RS|0|0
+4312708|Nonoai|43|RS|0|0
+4312757|Nova Alvorada|43|RS|0|0
+4312807|Nova Araçá|43|RS|0|0
+4312906|Nova Bassano|43|RS|0|0
+4312955|Nova Boa Vista|43|RS|0|0
+4313003|Nova Bréscia|43|RS|0|0
+4313011|Nova Candelária|43|RS|0|0
+4313037|Nova Esperança do Sul|43|RS|0|0
+4313060|Nova Hartz|43|RS|0|0
+4313086|Nova Pádua|43|RS|0|0
+4313102|Nova Palma|43|RS|0|0
+4313201|Nova Petrópolis|43|RS|0|0
+4313300|Nova Prata|43|RS|0|0
+4313334|Nova Ramada|43|RS|0|0
+4313359|Nova Roma do Sul|43|RS|0|0
+4313375|Nova Santa Rita|43|RS|0|0
+4313391|Novo Cabrais|43|RS|0|0
+4313409|Novo Hamburgo|43|RS|0|0
+4313425|Novo Machado|43|RS|0|0
+4313441|Novo Tiradentes|43|RS|0|0
+4313466|Novo Xingu|43|RS|0|0
+4313490|Novo Barreiro|43|RS|0|0
+4313508|Osório|43|RS|0|0
+4313607|Paim Filho|43|RS|0|0
+4313656|Palmares do Sul|43|RS|0|0
+4313706|Palmeira das Missões|43|RS|0|0
+4313805|Palmitinho|43|RS|0|0
+4313904|Panambi|43|RS|0|0
+4313953|Pantano Grande|43|RS|0|0
+4314001|Paraí|43|RS|0|0
+4314027|Paraíso do Sul|43|RS|0|0
+4314035|Pareci Novo|43|RS|0|0
+4314050|Parobé|43|RS|0|0
+4314068|Passa Sete|43|RS|0|0
+4314076|Passo do Sobrado|43|RS|0|0
+4314100|Passo Fundo|43|RS|0|0
+4314134|Paulo Bento|43|RS|0|0
+4314159|Paverama|43|RS|0|0
+4314175|Pedras Altas|43|RS|0|0
+4314209|Pedro Osório|43|RS|0|0
+4314308|Pejuçara|43|RS|0|0
+4314407|Pelotas|43|RS|0|0
+4314423|Picada Café|43|RS|0|0
+4314456|Pinhal|43|RS|0|0
+4314464|Pinhal da Serra|43|RS|0|0
+4314472|Pinhal Grande|43|RS|0|0
+4314498|Pinheirinho do Vale|43|RS|0|0
+4314506|Pinheiro Machado|43|RS|0|0
+4314548|Pinto Bandeira|43|RS|0|0
+4314555|Pirapó|43|RS|0|0
+4314605|Piratini|43|RS|0|0
+4314704|Planalto|43|RS|0|0
+4314753|Poço das Antas|43|RS|0|0
+4314779|Pontão|43|RS|0|0
+4314787|Ponte Preta|43|RS|0|0
+4314803|Portão|43|RS|0|0
+4314902|Porto Alegre|43|RS|0|0
+4315008|Porto Lucena|43|RS|0|0
+4315057|Porto Mauá|43|RS|0|0
+4315073|Porto Vera Cruz|43|RS|0|0
+4315107|Porto Xavier|43|RS|0|0
+4315131|Pouso Novo|43|RS|0|0
+4315149|Presidente Lucena|43|RS|0|0
+4315156|Progresso|43|RS|0|0
+4315172|Protásio Alves|43|RS|0|0
+4315206|Putinga|43|RS|0|0
+4315305|Quaraí|43|RS|0|0
+4315313|Quatro Irmãos|43|RS|0|0
+4315321|Quevedos|43|RS|0|0
+4315354|Quinze de Novembro|43|RS|0|0
+4315404|Redentora|43|RS|0|0
+4315453|Relvado|43|RS|0|0
+4315503|Restinga Sêca|43|RS|0|0
+4315552|Rio dos Índios|43|RS|0|0
+4315602|Rio Grande|43|RS|0|0
+4315701|Rio Pardo|43|RS|0|0
+4315750|Riozinho|43|RS|0|0
+4315800|Roca Sales|43|RS|0|0
+4315909|Rodeio Bonito|43|RS|0|0
+4315958|Rolador|43|RS|0|0
+4316006|Rolante|43|RS|0|0
+4316105|Ronda Alta|43|RS|0|0
+4316204|Rondinha|43|RS|0|0
+4316303|Roque Gonzales|43|RS|0|0
+4316402|Rosário do Sul|43|RS|0|0
+4316428|Sagrada Família|43|RS|0|0
+4316436|Saldanha Marinho|43|RS|0|0
+4316451|Salto do Jacuí|43|RS|0|0
+4316477|Salvador das Missões|43|RS|0|0
+4316501|Salvador do Sul|43|RS|0|0
+4316600|Sananduva|43|RS|0|0
+4316709|Santa Bárbara do Sul|43|RS|0|0
+4316733|Santa Cecília do Sul|43|RS|0|0
+4316758|Santa Clara do Sul|43|RS|0|0
+4316808|Santa Cruz do Sul|43|RS|0|0
+4316907|Santa Maria|43|RS|0|0
+4316956|Santa Maria do Herval|43|RS|0|0
+4316972|Santa Margarida do Sul|43|RS|0|0
+4317004|Santana da Boa Vista|43|RS|0|0
+4317103|Sant'Ana do Livramento|43|RS|0|0
+4317202|Santa Rosa|43|RS|0|0
+4317251|Santa Tereza|43|RS|0|0
+4317301|Santa Vitória do Palmar|43|RS|0|0
+4317400|Santiago|43|RS|0|0
+4317509|Santo Ângelo|43|RS|0|0
+4317558|Santo Antônio do Palma|43|RS|0|0
+4317608|Santo Antônio da Patrulha|43|RS|0|0
+4317707|Santo Antônio das Missões|43|RS|0|0
+4317756|Santo Antônio do Planalto|43|RS|0|0
+4317806|Santo Augusto|43|RS|0|0
+4317905|Santo Cristo|43|RS|0|0
+4317954|Santo Expedito do Sul|43|RS|0|0
+4318002|São Borja|43|RS|0|0
+4318051|São Domingos do Sul|43|RS|0|0
+4318101|São Francisco de Assis|43|RS|0|0
+4318200|São Francisco de Paula|43|RS|0|0
+4318309|São Gabriel|43|RS|0|0
+4318408|São Jerônimo|43|RS|0|0
+4318424|São João da Urtiga|43|RS|0|0
+4318432|São João do Polêsine|43|RS|0|0
+4318440|São Jorge|43|RS|0|0
+4318457|São José das Missões|43|RS|0|0
+4318465|São José do Herval|43|RS|0|0
+4318481|São José do Hortêncio|43|RS|0|0
+4318499|São José do Inhacorá|43|RS|0|0
+4318507|São José do Norte|43|RS|0|0
+4318606|São José do Ouro|43|RS|0|0
+4318614|São José do Sul|43|RS|0|0
+4318622|São José dos Ausentes|43|RS|0|0
+4318705|São Leopoldo|43|RS|0|0
+4318804|São Lourenço do Sul|43|RS|0|0
+4318903|São Luiz Gonzaga|43|RS|0|0
+4319000|São Marcos|43|RS|0|0
+4319109|São Martinho|43|RS|0|0
+4319125|São Martinho da Serra|43|RS|0|0
+4319158|São Miguel das Missões|43|RS|0|0
+4319208|São Nicolau|43|RS|0|0
+4319307|São Paulo das Missões|43|RS|0|0
+4319356|São Pedro da Serra|43|RS|0|0
+4319364|São Pedro das Missões|43|RS|0|0
+4319372|São Pedro do Butiá|43|RS|0|0
+4319406|São Pedro do Sul|43|RS|0|0
+4319505|São Sebastião do Caí|43|RS|0|0
+4319604|São Sepé|43|RS|0|0
+4319703|São Valentim|43|RS|0|0
+4319711|São Valentim do Sul|43|RS|0|0
+4319737|São Valério do Sul|43|RS|0|0
+4319752|São Vendelino|43|RS|0|0
+4319802|São Vicente do Sul|43|RS|0|0
+4319901|Sapiranga|43|RS|0|0
+4320008|Sapucaia do Sul|43|RS|0|0
+4320107|Sarandi|43|RS|0|0
+4320206|Seberi|43|RS|0|0
+4320230|Sede Nova|43|RS|0|0
+4320263|Segredo|43|RS|0|0
+4320305|Selbach|43|RS|0|0
+4320321|Senador Salgado Filho|43|RS|0|0
+4320354|Sentinela do Sul|43|RS|0|0
+4320404|Serafina Corrêa|43|RS|0|0
+4320453|Sério|43|RS|0|0
+4320503|Sertão|43|RS|0|0
+4320552|Sertão Santana|43|RS|0|0
+4320578|Sete de Setembro|43|RS|0|0
+4320602|Severiano de Almeida|43|RS|0|0
+4320651|Silveira Martins|43|RS|0|0
+4320677|Sinimbu|43|RS|0|0
+4320701|Sobradinho|43|RS|0|0
+4320800|Soledade|43|RS|0|0
+4320859|Tabaí|43|RS|0|0
+4320909|Tapejara|43|RS|0|0
+4321006|Tapera|43|RS|0|0
+4321105|Tapes|43|RS|0|0
+4321204|Taquara|43|RS|0|0
+4321303|Taquari|43|RS|0|0
+4321329|Taquaruçu do Sul|43|RS|0|0
+4321352|Tavares|43|RS|0|0
+4321402|Tenente Portela|43|RS|0|0
+4321436|Terra de Areia|43|RS|0|0
+4321451|Teutônia|43|RS|0|0
+4321469|Tio Hugo|43|RS|0|0
+4321477|Tiradentes do Sul|43|RS|0|0
+4321493|Toropi|43|RS|0|0
+4321501|Torres|43|RS|0|0
+4321600|Tramandaí|43|RS|0|0
+4321626|Travesseiro|43|RS|0|0
+4321634|Três Arroios|43|RS|0|0
+4321667|Três Cachoeiras|43|RS|0|0
+4321709|Três Coroas|43|RS|0|0
+4321808|Três de Maio|43|RS|0|0
+4321832|Três Forquilhas|43|RS|0|0
+4321857|Três Palmeiras|43|RS|0|0
+4321907|Três Passos|43|RS|0|0
+4321956|Trindade do Sul|43|RS|0|0
+4322004|Triunfo|43|RS|0|0
+4322103|Tucunduva|43|RS|0|0
+4322152|Tunas|43|RS|0|0
+4322186|Tupanci do Sul|43|RS|0|0
+4322202|Tupanciretã|43|RS|0|0
+4322251|Tupandi|43|RS|0|0
+4322301|Tuparendi|43|RS|0|0
+4322327|Turuçu|43|RS|0|0
+4322343|Ubiretama|43|RS|0|0
+4322350|União da Serra|43|RS|0|0
+4322376|Unistalda|43|RS|0|0
+4322400|Uruguaiana|43|RS|0|0
+4322509|Vacaria|43|RS|0|0
+4322525|Vale Verde|43|RS|0|0
+4322533|Vale do Sol|43|RS|0|0
+4322541|Vale Real|43|RS|0|0
+4322558|Vanini|43|RS|0|0
+4322608|Venâncio Aires|43|RS|0|0
+4322707|Vera Cruz|43|RS|0|0
+4322806|Veranópolis|43|RS|0|0
+4322855|Vespasiano Corrêa|43|RS|0|0
+4322905|Viadutos|43|RS|0|0
+4323002|Viamão|43|RS|0|0
+4323101|Vicente Dutra|43|RS|0|0
+4323200|Victor Graeff|43|RS|0|0
+4323309|Vila Flores|43|RS|0|0
+4323358|Vila Lângaro|43|RS|0|0
+4323408|Vila Maria|43|RS|0|0
+4323457|Vila Nova do Sul|43|RS|0|0
+4323507|Vista Alegre|43|RS|0|0
+4323606|Vista Alegre do Prata|43|RS|0|0
+4323705|Vista Gaúcha|43|RS|0|0
+4323754|Vitória das Missões|43|RS|0|0
+4323770|Westfália|43|RS|0|0
+4323804|Xangri-lá|43|RS|0|0

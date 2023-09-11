@@ -1,0 +1,102 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_RETORNO_POR_CORES.PRMT0001
+Fim de Linha 11. Tabela já existe no banco ->ACO_CODIGO.PED_IT01_INDUST
+Fim de Linha 18. Tabela já existe no banco ->BAN_DIAS_PARA_BAIXA.BAN0000
+Fim de Linha 20. Tabela já existe no banco ->PMT_ALTERA_QUANT_ITEM_PED.PRMT0001
+Script com 4 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch03.sql
+Fim de Linha 11. Tabela já existe no banco ->MMO_DIAMETRO_MEDIO_MEIO.TIPO_MOLA
+Fim de Linha 14. Tabela já existe no banco ->MMO_DIAMETRO_MEDIO_MEIO.MOLA_MATERIA
+Fim de Linha 15. Tabela já existe no banco ->MMO_DIAMETRO_MEDIO_MEIO_MIN.MOLA_MATERIA
+Fim de Linha 16. Tabela já existe no banco ->MMO_DIAMETRO_MEDIO_MEIO_MAX.MOLA_MATERIA
+Fim de Linha 19. Generator Já existe --> GEN_HISTORICO_EMAIL already exists
+Fim de Linha 22. Tabela Já existe --> HISTORICO_EMAIL already ex
+Fim de Linha 24. Tabela já existe no banco ->HEM_MODULO.HISTORICO_EMAIL
+Fim de Linha 26. Tabela já existe no banco ->HEM_DESTINATARIO.HISTORICO_EMAIL
+Fim de Linha 28. Tabela já existe no banco ->HEM_TITULO.HISTORICO_EMAIL
+Fim de Linha 30. Tabela já existe no banco ->HEM_CLI_FOR.HISTORICO_EMAIL
+Fim de Linha 32. Tabela já existe no banco ->CLI_FOR_CODIGO.HISTORICO_EMAIL
+Fim de Linha 34. Tabela já existe no banco ->HEM_DATA_ENVIO.HISTORICO_EMAIL
+Fim de Linha 36. Tabela já existe no banco ->USU_CODIGO.HISTORICO_EMAIL
+Fim de Linha 38. Tabela já existe no banco ->EMP_CODIGO.HISTORICO_EMAIL
+Fim de Linha 40. Tabela já existe no banco ->HEM_ANEXO.HISTORICO_EMAIL
+Script com 15 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.577_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_ENVIA_COPIA_PEDIDO_INDUST.PRMT0001
+Fim de Linha 11. Tabela Já existe --> CLI_ATV1_2 already ex
+Fim de Linha 12. Tabela já existe no banco ->RCL_ATIVIDADE.CLI_ATV1_2
+Fim de Linha 13. Tabela já existe no banco ->EMP_CODIGO.CLI_ATV1_2
+Fim de Linha 14. ERROR: violation of PRIMARY or UNIQUE KEY constraint "INTEG_449" on table "CLI_ATV1_2"
+Problematic key value is ("RCL_CODIGO" = '001')
+Fim de Linha 15. ERROR: Dynamic SQL Error
+SQL error code = -607
+Invalid command
+Table CLI_ATV1 does not exist
+Fim de Linha 16. Tabela Já existe --> CLI_ATV1 already ex
+Fim de Linha 18. ERROR: arithmetic exception, numeric overflow, or string truncation
+string right truncation
+Fim de Linha 19. ERROR: arithmetic exception, numeric overflow, or string truncation
+string right truncation
+Script com 9 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.577_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.577_patch04.sql
+Fim de Linha 9. Tabela já existe no banco ->PMT_LANCA_CONTA_CORRENTE_VERBA.PRMT0001
+Fim de Linha 11. Tabela já existe no banco ->PMT_LANCA_CC_VERBA_FPG_REGISTRO.PRMT0001
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.577_patch04.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.578_patch02.sql
+Fim de Linha 11. Tabela já existe no banco ->CLI_DTNASCIMENTO.CLI0000
+Fim de Linha 14. Tabela já existe no banco ->PMT_VALOR_DIFAL_PEDIDO.PRMT0001
+Fim de Linha 18. Tabela já existe no banco ->PED_VLDIFAL.PED0000
+Fim de Linha 21. Tabela já existe no banco ->PMT_VENDA_CLI_SEM_CAD_OBRIG.PRMT0001
+Fim de Linha 25. Tabela já existe no banco ->NF_VLDIFAL.NF0001
+Script com 5 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.578_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.578_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->OPE_ARTIGO_DIFERIMENTO.OPE0000
+Fim de Linha 12. Tabela já existe no banco ->OPE_ARTIGO_REDUCAO.OPE0000
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.578_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.579_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->MMO_PERDA_PADRAO.TIPO_MOLA
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.579_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.579_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_UTILIZA_CODIGO_ORIG_VD_PD.PRMT0001
+Fim de Linha 15. Tabela já existe no banco ->MMO_GRAU_TOLERANCIA_DM.MOLA_MATERIA
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.579_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->ENF_REGISTRO.PED_IND_KIT
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_HABILITA_ICMS_PEDIDO.PRMT0001
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.580_patch02.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\Dados\ChemVet\CHEMVET1005.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.576.sql
+ok - Adjutor3.0.9.576_patch01.sql
+ok - Adjutor3.0.9.576_patch02.sql
+ok - Adjutor3.0.9.576_patch03.sql
+ok - Adjutor3.0.9.577.sql
+ok - Adjutor3.0.9.577_patch01.sql
+ok - Adjutor3.0.9.577_patch02.sql
+ok - Adjutor3.0.9.577_patch03.sql
+ok - Adjutor3.0.9.577_patch04.sql
+ok - Adjutor3.0.9.578.sql
+ok - Adjutor3.0.9.578_patch01.sql
+ok - Adjutor3.0.9.578_patch02.sql
+ok - Adjutor3.0.9.578_patch03.sql
+ok - Adjutor3.0.9.579.sql
+ok - Adjutor3.0.9.579_patch01.sql
+ok - Adjutor3.0.9.579_patch02.sql
+ok - Adjutor3.0.9.579_patch03.sql
+ok - Adjutor3.0.9.580.sql
+ok - Adjutor3.0.9.580_patch01.sql
+ok - Adjutor3.0.9.580_patch02.sql

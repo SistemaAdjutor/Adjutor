@@ -1,0 +1,51 @@
+﻿Atualizado em 23/03/2022
+Inicio da versão: 28/02/2022
+
+
+principal: BSC Industrial, Delta Cabos, Fx Film Manaus
+
+  789 - Baixa de estoque seguindo parâmetro do tipo de pedido [BSC Industrial]
+  889 - Verificar itens fora de sequencia ainda [Delta Cabos]
+  893 - Ajuste ordem de produção Modelo 11 [Fx Film Manaus]
+
+patch 01: Embraterm, Metalúrgica Água
+  626 - Melhoria no rateio manual do contas a pagar [Embraterm]
+  902 - Erro ao baixar quantidade da nota de industrialização [Metalúrgica Água]
+  908 - Ajustar relatório contas a pagar [Novi]
+
+patch 02: Eletrica Burda, Quântica, Chemvet do Brasil
+  912 - CFOP -dados adicionais fiscais [Eletrica Burda]
+  907 - Novo relatório de produtos - Custo de Mercadoria Vendida - CMV [Quântica]
+  890 - ativar parametro de limite de desconto no pedido quando desconto na nota [Quântica]
+  877 - Melhoria tela de envase [Chemvet do Brasil]
+  888 - Ajustar retorno para tela de item [Quantica]
+
+patch 03: Empac, Flexsul, LF EPIS, Quântica, BSC Industrial Aços Ltda
+  920 - Verificar mensagem automática - Banco safra [Novi]
+  880 - Sistema não puxa cidade do cliente - NFSe [Empac]
+  917 - Erro no cálculo do desconto [Novi]
+  914 - Erro na emissão da Nota de serviço [Empac]
+  900 - Correção consulta para impressão dos pedidos [Flexsul]
+  897 - CRM pos vendas : abrir busca de clientes sem compra [LF EPIS]
+  881 - Habilitar fazer preço de venda dos produtos com custo por Dentro [Quântica]
+  843 - Criar tela de Regularização do Estoque [BSC Industrial Aços Ltda]
+  702 - Novo status pendente para emissão de nfs-e (APENAS CURITIBA) [Empac]
+  
+patch 04: Quântica, Embraterm, Fx Film Manaus
+   891 - colocar limite de valor no cadastro de prazo e validar na venda [Quântica]
+   894 - AJUSTE CONTAS A PAGAR [Novi]
+   895 - GERENCIAMENTO DO GIRO DE ESTOQUE [Novi]
+   898 - CORREÇÃO DO RATEIO PELA QUANTIDADE [Embraterm]
+   899 - AJUSTAR TELA DO CADASTRO DO CLIENTE PARA ABRIR A TAREFA CRM AGENDA [Novi]
+   906 - Inclusão de imagem na ordem de PRODUÇÃO [Fx Film Manaus]
+ 
+patch 05: Fx Film Manaus, Sustemplast, Normadin, Delta Cabos, Quântica
+  903 - Erro ao importar xml - Importação de faturamento [Fx Film Manaus]
+  918 - Cadastrar Itens do pedido de venda por xml de terceiro [Sustemplast]
+  923 - Colocar filtro de cliente no relatório gerencial [Normadin]
+  925 - Atualização do preço dos produtos [Novi]
+  927 - Ajuste ao copiar pedido [Delta Cabos]
+  930 - Permitir alterar descrição do produto [Quântica]
+  932 - Ajustar layout da tela gerencial - pedidos [Novi]
+
+ 

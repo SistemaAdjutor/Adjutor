@@ -1,0 +1,417 @@
+object FormCnae: TFormCnae
+  Left = 543
+  Top = 265
+  BorderIcons = [biSystemMenu]
+  BorderStyle = bsSingle
+  Caption = 'Cadastro de CNAE - Atividades econ'#244'micas'
+  ClientHeight = 442
+  ClientWidth = 753
+  Color = clBtnFace
+  Font.Charset = ANSI_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'Arial'
+  Font.Style = []
+  FormStyle = fsMDIChild
+  KeyPreview = True
+  OldCreateOrder = True
+  Position = poDesktopCenter
+  Visible = True
+  OnClose = FormClose
+  OnCloseQuery = FormCloseQuery
+  OnDestroy = FormDestroy
+  OnKeyPress = FormKeyPress
+  OnShow = FormShow
+  PixelsPerInch = 96
+  TextHeight = 14
+  object Label1: TLabel
+    Left = 7
+    Top = 12
+    Width = 43
+    Height = 14
+    Caption = 'Registro:'
+  end
+  object Label2: TLabel
+    Left = 123
+    Top = 54
+    Width = 52
+    Height = 14
+    Caption = 'Descri'#231#227'o:'
+  end
+  object Label3: TLabel
+    Left = 8
+    Top = 54
+    Width = 36
+    Height = 14
+    Caption = 'C'#243'digo:'
+  end
+  object Label4: TLabel
+    Left = 544
+    Top = 54
+    Width = 87
+    Height = 14
+    Caption = 'Carga M'#233'dia Trib.:'
+  end
+  object Label5: TLabel
+    Left = 8
+    Top = 80
+    Width = 113
+    Height = 14
+    Hint = 'Item de servi'#231'o'
+    Alignment = taRightJustify
+    Caption = 'Item de servi'#231'o padr'#227'o:'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    ParentShowHint = False
+    ShowHint = True
+  end
+  object DbeEve_descri: TDBEdit
+    Left = 181
+    Top = 48
+    Width = 357
+    Height = 22
+    CharCase = ecUpperCase
+    DataField = 'CNAE_DESCRICAO'
+    DataSource = DataCadastros.dsCnae
+    TabOrder = 2
+  end
+  object EdtEve_codigo: TEdit
+    Left = 53
+    Top = 10
+    Width = 28
+    Height = 22
+    MaxLength = 3
+    ParentColor = True
+    TabOrder = 0
+    Text = 'EdtEve_codigo'
+    OnClick = EdtEve_codigoClick
+    OnEnter = EdtEve_codigoClick
+    OnExit = EdtEve_codigoExit
+    OnKeyPress = EdtEve_codigoKeyPress
+  end
+  object Panel1: TPanel
+    Left = 6
+    Top = 34
+    Width = 741
+    Height = 5
+    Color = 12681984
+    TabOrder = 4
+  end
+  object DBNavigator1: TDBNavigator
+    Left = 625
+    Top = 3
+    Width = 120
+    Height = 25
+    DataSource = DataCadastros.dsCnae
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+    TabOrder = 5
+    OnClick = DBNavigator1Click
+  end
+  object Panel2: TPanel
+    Left = 375
+    Top = 407
+    Width = 289
+    Height = 33
+    BevelOuter = bvNone
+    TabOrder = 6
+    object Bit_Cancelar: TBitBtn
+      Left = 214
+      Top = 4
+      Width = 70
+      Height = 25
+      Cursor = crHandPoint
+      Hint = '|Cancela registro atual...'
+      Caption = '&Cancelar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Glyph.Data = {
+        DE010000424DDE01000000000000760000002800000024000000120000000100
+        04000000000068010000CE0E0000D80E00001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        333333333333333333333333000033333333333333333333333F333333333333
+        0000333333333333333333333388F333333F3333000033300333333300033333
+        38F38F333F88F33300003330003333300033333338F338F3F8338F3300003333
+        000333000333333338F3338F833338F3000033333000300033333333338F3338
+        3333F8330000333333000003333333333338F333333F83330000333333300033
+        3333333333338F3333383333000033333300000333333333333338F333833333
+        00003333300030003333333333333833338F3333000033330003330003333333
+        33338333338F333300003330003333300033333333383338F338F33300003330
+        0333333300033333338333838F338F3300003333333333333003333333833833
+        38F338F300003333333333333333333333388333338FFF830000333333333333
+        3333333333333333333888330000333333333333333333333333333333333333
+        0000}
+      NumGlyphs = 2
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+      TabStop = False
+      OnClick = Bit_CancelarClick
+    end
+    object Bit_Sair: TBitBtn
+      Left = 215
+      Top = 4
+      Width = 70
+      Height = 25
+      Cursor = crHandPoint
+      Caption = '&Sair'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Glyph.Data = {
+        CA010000424DCA01000000000000760000002800000026000000110000000100
+        04000000000054010000CE0E0000D80E00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00888888888888
+        8888888FFFFFFFFFFFFFFFFFFF008888888888880000078FFFFFFFFFFFFFFFFF
+        FF00833333333000BB03078FFFFFFFFFFFFFFFFFFF00830000000BBBBB03078F
+        FFFFFFFFFFFFFFFFFF00830000000BBBBB03078FFFFFFFFFFFFFFFFFFF008300
+        00000BBBBB03078FFFFFFFFFFFFFFFFFFF00830000000BBBBB03078FFFFFFFFF
+        FFFFFFFFFF00830000000BBBBB03078FFFFFFFFFFFFFFFFFFF00830000000BBB
+        B003008FFFFFFFFFFFFFFFFFFF00830000000BBBBB03078FFFFFFFFFFFFFFFFF
+        FF00830000000BBBBB03078FFFFFFFFFFFFFFFFFFF00830000000BBBBB03078F
+        FFFFFFFFFFFFFFFFFF00830000000BBBBB03078FFFFFFFFFFFFFFFFFFF008300
+        00000BBBBB03078FFFFFFFFFFFFFFFFFFF00833333333000BB03078FFFFFFFFF
+        FFFFFFFFFF008888888888880000088FFFFFFFFFFFFFFFFFFF00888888888888
+        8888888FFFFFFFFFFFFFFFFFFF00}
+      NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 4
+      TabStop = False
+      OnClick = Bit_SairClick
+    end
+    object Bit_novo: TBitBtn
+      Left = 4
+      Top = 4
+      Width = 70
+      Height = 25
+      Cursor = crHandPoint
+      Caption = '&Novo'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Glyph.Data = {
+        E6000000424DE60000000000000076000000280000000E0000000E0000000100
+        04000000000070000000CE0E0000D80E00001000000000000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3300333333333333330033333333333333003333300033333300333330003333
+        3300333330003333330033000000000333003300000000033300330000000003
+        3300333330003333330033333000333333003333300033333300333333333333
+        33003333333333333300}
+      ParentFont = False
+      TabOrder = 0
+      TabStop = False
+      OnClick = Bit_novoClick
+    end
+    object Bit_Excluir: TBitBtn
+      Left = 74
+      Top = 4
+      Width = 70
+      Height = 25
+      Cursor = crHandPoint
+      Hint = '|Exclui registro atual..'
+      Caption = '&Excluir'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Glyph.Data = {
+        E6000000424DE60000000000000076000000280000000E0000000E0000000100
+        04000000000070000000CE0E0000D80E00001000000000000000000000000000
+        BF0000BF000000BFBF00BF000000BF00BF00BFBF0000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+        3300333333333333330033333333333333003333333333333300333333333333
+        3300333333333333330033000000000033003300000000003300330000000000
+        3300333333333333330033333333333333003333333333333300333333333333
+        33003333333333333300}
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+      TabStop = False
+      OnClick = Bit_ExcluirClick
+    end
+    object Bit_Gravar: TBitBtn
+      Left = 144
+      Top = 4
+      Width = 70
+      Height = 25
+      Cursor = crHandPoint
+      Hint = '|Grava registro...'
+      Caption = '&Gravar'
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clBlack
+      Font.Height = -11
+      Font.Name = 'MS Sans Serif'
+      Font.Style = []
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000CE0E0000D80E00001000000000000000000000000000
+        800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00555555555555
+        555555555555555555555555555555555555555555FF55555555555550055555
+        55555555577FF5555555555500005555555555557777F5555555555500005555
+        555555557777FF5555555550000005555555555777777F555555550000000555
+        5555557777777FF5555557000500005555555777757777F55555700555500055
+        55557775555777FF5555555555500005555555555557777F5555555555550005
+        555555555555777FF5555555555550005555555555555777FF55555555555570
+        05555555555555777FF5555555555557005555555555555777FF555555555555
+        5000555555555555577755555555555555555555555555555555}
+      NumGlyphs = 2
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 2
+      TabStop = False
+      OnClick = Bit_GravarClick
+    end
+  end
+  object GroupBox1: TGroupBox
+    Left = 0
+    Top = 102
+    Width = 745
+    Height = 292
+    Caption = 'Diretivas'
+    TabOrder = 7
+    object dbgrdDiretivas: TDBGrid
+      Left = 2
+      Top = 16
+      Width = 741
+      Height = 274
+      Align = alClient
+      DataSource = DataCadastros.dsCnae
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
+      TabOrder = 0
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Arial'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'CNAE_CODIGO'
+          Title.Alignment = taCenter
+          Title.Caption = 'C'#243'digo'
+          Width = 78
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CNAE_DESCRICAO'
+          Title.Alignment = taCenter
+          Title.Caption = 'Descri'#231#227'o'
+          Width = 392
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'CNAE_CARGA_TRIB_MEDIA'
+          Title.Alignment = taCenter
+          Title.Caption = 'Carga M'#233'dia Trib.'
+          Width = 99
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'srv_codigo'
+          Title.Caption = 'Item Servi'#231'o'
+          Width = 140
+          Visible = True
+        end>
+    end
+  end
+  object DBEdit1: TDBEdit
+    Left = 46
+    Top = 50
+    Width = 73
+    Height = 22
+    CharCase = ecUpperCase
+    DataField = 'CNAE_CODIGO'
+    DataSource = DataCadastros.dsCnae
+    TabOrder = 1
+  end
+  object DBEdit2: TDBEdit
+    Left = 638
+    Top = 50
+    Width = 107
+    Height = 22
+    CharCase = ecUpperCase
+    DataField = 'CNAE_CARGA_TRIB_MEDIA'
+    DataSource = DataCadastros.dsCnae
+    TabOrder = 3
+  end
+  object edServicoCodigo: TDBEdit
+    Left = 134
+    Top = 76
+    Width = 61
+    Height = 22
+    DataField = 'srv_codigo'
+    DataSource = DataCadastros.dsCnae
+    TabOrder = 8
+  end
+  object PesqServico: TSgDbSearchCombo
+    Left = 197
+    Top = 76
+    Width = 524
+    Height = 22
+    TabOrder = 9
+    CharCase = ecUpperCase
+    LookupSelect = 'srv_codigo, srv_descricao'
+    LookupOrderBy = 'srv_descricao'
+    LookupTable = 'SRV0000'
+    LookupDispl = 'SRV_DESCRICAO'
+    OnSelect = PesqServicoSelect
+    GridAutoSize = False
+    LookupSource = qservico
+    DataField = 'SRV_CODIGO'
+    DataSource = DataCadastros.dsCnae
+    LookupKeyField = 'srv_codigo'
+    ShowButton = True
+    AutoF8WinTitulo = 'Item de servi'#231'o'
+    AutoF8ColumnsTitulo = 'C'#243'digo, Servi'#231'o'
+    GridLeft = 0
+    GridWidth = 0
+    GridHeight = 100
+    GridShowWhenEnter = False
+    SelectWithDoubleClick = False
+  end
+  object DBCheckBox1: TDBCheckBox
+    Left = 97
+    Top = 11
+    Width = 97
+    Height = 17
+    Caption = 'Ativo'
+    DataField = 'cnae_ativo'
+    DataSource = DataCadastros.dsCnae
+    TabOrder = 10
+    ValueChecked = 'A'
+    ValueUnchecked = 'I'
+  end
+  object qservico: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQL.Strings = (
+      'SELECT srv_codigo, srv_descricao'
+      'FROM SRV0000'
+      ''
+      '')
+    SQLConnection = frmBaseDB.DBConn
+    Left = 456
+    Top = 68
+  end
+end

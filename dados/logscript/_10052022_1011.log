@@ -1,0 +1,22 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.568.sql
+Fim de Linha 13. ERROR: Dynamic SQL Error
+SQL error code = -104
+Token unknown - line 1, column 8
+TRANSACTION
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.568.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Netocolor\Netocolor0505.fdb
+Backup não realizado.
+ok - Adjutor3.0.9.566_patch02.sql
+ok - Adjutor3.0.9.566_patch03.sql
+ok - Adjutor3.0.9.566_patch04.sql
+ok - Adjutor3.0.9.566_patch05.sql
+ok - Adjutor3.0.9.567.sql
+ok - Adjutor3.0.9.567_patch01.sql
+ok - Adjutor3.0.9.567_patch02.sql
+ok - Adjutor3.0.9.567_patch03.sql
+ok - Adjutor3.0.9.567_patch04.sql
+ok - Adjutor3.0.9.567_patch05.sql
+ok - Adjutor3.0.9.568.sql

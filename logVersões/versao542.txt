@@ -1,0 +1,70 @@
+Atualizado em 31/03/2020
+Inicio da versão: 02/03/2020
+
+ patch 6 : empac, embraterm, drimec
+   Nota de locação http://192.168.0.250:9090/agile/tarefa/show/117478
+   Definir filtro padrao na tela de pcp http://192.168.0.250:9090/agile/tarefa/show/116741
+   Novo modelo de Impressão Orçamento com foto maior http://192.168.0.250:9090/agile/tarefa/show/116978
+   
+ patch 5: drimec, yvitur, flexsul, embraterm, bsc, aleplast, lion, empac 
+   criar o cadastro de Unidade de medida http://192.168.0.250:9090/agile/tarefa/show/115865
+   mudar forma de carregar fotos dos produtos http://192.168.0.250:9090/agile/tarefa/show/116959
+   Criar tarefa automatica no CRM quando for criado um Orçamento http://192.168.0.250:9090/agile/tarefa/show/115537
+   Custo de Entrada do cadastro de produto inserir parametro de retirada de valores http://192.168.0.250:9090/agile/tarefa/show/114092
+   Erro no relatório de Relação de clientes do Repres. http://192.168.0.250:9090/agile/tarefa/show/116381
+   Erro no relatorio de apontamento http://192.168.0.250:9090/agile/tarefa/show/116604
+   Erro de estoque na entrada de nota http://192.168.0.250:9090/agile/tarefa/show/116393
+   Alterar o modelo de pesquisa http://192.168.0.250:9090/agile/tarefa/show/116725
+   Adicionar unidade de medida http://192.168.0.250:9090/agile/tarefa/show/116831 
+   Erro no relatório do BI de DRE por centro de custos http://192.168.0.250:9090/agile/tarefa/show/116862
+   Erro na tela de apontamento http://192.168.0.250:9090/agile/tarefa/show/117010 
+   Adicionar campo NF na carta de cobrança http://192.168.0.250:9090/agile/tarefa/show/117002
+   Não está dando para adicionar logo da Nfe http://192.168.0.250:9090/agile/tarefa/show/117007
+   tab na aba tratamento termico do produto esta errado http://192.168.0.250:9090/agile/tarefa/show/116800
+   Não permitir mudar empresa com telas abertas http://192.168.0.250:9090/agile/tarefa/show/116856
+   
+ patch 4:
+  Erro no atualizador automático - parou de baixar do FTP http://192.168.0.250:9090/agile/tarefa/show/117048
+  troca de porta do validador http://192.168.0.250:9090/agile/tarefa/show/117121  
+  
+ patch 3 : Chemvet 
+  Relatório de produção http://192.168.0.250:9090/agile/tarefa/show/115104
+  Valor da fatura dobrando valor original http://192.168.0.250:9090/agile/tarefa/show/116466
+  Retirar Balão de informação do pedido de comp http://192.168.0.250:9090/agile/tarefa/show/116597
+  Melhoria bloco k280 http://192.168.0.250:9090/agile/tarefa/show/116723
+  
+ patch 2 (Especial Sexta-feira 13): plástico mundial, chemvet,flexsul, embraterm, HSJ, Eletrica Burda, Industrial mangueiras, Bragips,Empac
+   No pedido não mostrou vendas dos produtos do cliente http://192.168.0.250:9090/agile/tarefa/show/115891
+   Erro pedido de compras http://192.168.0.250:9090/agile/tarefa/show/114509
+   Tela de cadastro de produtos não obedece parametro http://192.168.0.250:9090/agile/tarefa/show/116358
+   Erro no relatório de Relação de clientes do Repres. http://192.168.0.250:9090/agile/tarefa/show/116301
+   Remover entrada de industrialização dos B.I de compra http://192.168.0.250:9090/agile/tarefa/show/115326
+   Adicionar nova medida de etiqueta http://192.168.0.250:9090/agile/tarefa/show/115352
+   Erro na consulta conciliação bancaria http://192.168.0.250:9090/agile/tarefa/show/115356
+   Exclusão de apontamento tornar motivo obrigatório http://192.168.0.250:9090/agile/tarefa/show/115535
+   Criar função : Bloco K280 http://192.168.0.250:9090/agile/tarefa/show/115827
+   Pedidos agrupados não deixam alterar informações http://192.168.0.250:9090/agile/tarefa/show/116195
+   Rejeição quando valor da duplicata esta zerado http://192.168.0.250:9090/agile/tarefa/show/114458
+   Carta de cobrançao do CRM Pos-venda : fazer melhorias http://192.168.0.250:9090/agile/tarefa/show/115940 
+   Erro no RUNSCRIPT, liberado versão 1.2 http://192.168.0.250:9090/agile/tarefa/show/116528
+   
+ patch 1:Flexsul, embraterm, Lion , Boyler, empac
+	Erro nos relatórios do cadastro dos clientes http://192.168.0.250:9090/agile/tarefa/show/115507
+	Não esta mostrando o grafico de vendas do cliente dos 12 meses para outras empresas http://192.168.0.250:9090/agile/tarefa/show/115885
+	melhoria do run script, guardar log-separado http://192.168.0.250:9090/agile/tarefa/show/115933
+	Erro de relatório de orçamento http://192.168.0.250:9090/agile/tarefa/show/115945
+	Erro na tela de etiquetas da expedição http://192.168.0.250:9090/agile/tarefa/show/116008
+	Ajuste do campo "Roteiro-Processo de fabricação" http://192.168.0.250:9090/agile/tarefa/show/94471
+	Fatura de locação http://192.168.0.250:9090/agile/tarefa/show/115369
+	Mudar o endereço do webservice da Novi	http://192.168.0.250:9090/agile/tarefa/show/115441
+	Pedido com ordem gerado (limitar alterações ) http://192.168.0.250:9090/agile/tarefa/show/115470
+	Erro de relatório de apontamento - data final incorreta http://192.168.0.250:9090/agile/tarefa/show/115819
+	Melhorar mensagens na tela de impressao de boleto http://192.168.0.250:9090/agile/tarefa/show/115958
+	Estoque ficando negativo ao excluir item http://192.168.0.250:9090/agile/tarefa/show/115565
+	
+ tarefa da versão principal : Industrial mangueiras, bragips, itagril, Deck, parseals industrial
+   Erro ao baixar varias parcelas alterando o desconto  http://192.168.0.250:9090/agile/tarefa/show/112072
+   Sistema zerando base do icms e valor no cst 60 http://192.168.0.250:9090/agile/tarefa/show/115678
+   Erro no layout do relatório Entrada de Notas Fiscais(cortando n nota)  http://192.168.0.250:9090/agile/tarefa/show/115432
+   Gravar itens da Entrada de nota por XML diretamente nos produto http://192.168.0.250:9090/agile/tarefa/show/115335
+   Remover forma de pagamento da tela de importar cte (Esta em desuso) http://192.168.0.250:9090/agile/tarefa/show/115658

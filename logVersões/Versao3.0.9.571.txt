@@ -1,0 +1,53 @@
+﻿Atualizado em 18/08/2022
+Inicio da versão: 04/08/2022
+
+
+principal: Netocolor, Embraterm
+  1135 - Novo relatório para tela de gerenciamento da industrialização [Netocolor]
+  1141 - Peso errado enviado para produção [Embraterm]
+  1142 - Cálculo de st não esta considerando desconto [Novi]
+
+patch 1: Empac, NJ Portas, FX Film Manaus, BSC Industrial Aços Ltda, Bepine, Netocolor
+  491  - Realizar estorno do faturamento - Cancelamento da nota de serviço [Empac]
+  1119 - Erro de Overflow na Conciliação Financeira [NJ Portas]
+  1120 - Integração da requisição de material e Ordem de produção [FX Film Manaus]
+  1132 - Faturamento com multiplas CFOP's [Novi]
+  1143 - Remover cifrão da tela de adicionar produto no pedido [BSC Industrial Aços Ltda]
+  1144 - 2° Alterações para tela de indústria plástica [Bepine]
+  1150 - Erro no relatório Gerencial - BI [Novi]
+  1151 - Erro relatório de nota fiscal de entrada [Novi]
+  1152 - Melhoria importação de xmls [Bepine]
+  1154 - Erro na movimentação do Kardex ao cancelar NF [BSC Industrial Aços Ltda]
+  1156 - Adicionar opção exportar pdf [Netocolor]
+  1157 - Ajuste na Exportação na Nota Fiscal de Entrada [BSC Industrial Aços Ltda]
+
+patch 2: Inquibra, BSC Industrial Aços Ltda, Netocolor, Yvytu, Bepine
+  1159 - Sistema pulando rotina de atualização do preço [Inquibra]
+  1160 - Notas fiscais sem peso para o processo de industrialização [Netocolor]
+  1161 - Ajuste na requisição de material [BSC Industrial Aços Ltda]
+  1162 - Ajuste regularização de estoque [BSC Industrial Aços Ltda]
+  1163 - Novo parâmetro para campo Industrialização-Entrada de Nota Fiscal [Netocolor]
+  1164 - Novo parâmetro Nota Fiscal - Espécie Padrão [Netocolor]
+  1165 - Ajuste ao iniciar produção e abertura de requisição [Novi]
+  1166 - Ajuste montagem da descrição do item na NFE [Yvytu]
+  1169 - Ajustar Romaneio do faturamento [Bepine]
+  1171 - Erro ao adicionar item novamente no pedido [Netocolor]
+  1172 - Erro ao incluir item na demanda [BSC Industrial Aços Ltda]
+  1174 - Atualizar a procedure atualização de custo
+
+patch 3: Chemsystem, BSC, Brasinc, Netocolor, Fx Film Manaus, Inquibra
+  1114 - Erros na tela de pedido de compra [Novi]
+  1115 - Hora e data de impressão na OP. [ChemSystem]
+  1138 - Erro de compartilhamento Multiplas empresas - Clientes [BSC]
+  1146 - Campo desconto no cadastro de produto para puxar na venda [Brazinc]
+  1176 - Peso no pedido e faturamento [Netocolor]
+  1177 - Melhoria parâmetro de industrialização [Netocolor]
+  1178 - Correção de parametrização [Novi]
+  1180 - Melhorias solicitação de compras [Fx Film Manaus]
+  1181 - Ajuste na entrada de nota fiscal de entrada - Industrialização [Netocolor]
+  1185 - Ajustar - banco bradesco pode ser sem instrução [Brazinc]
+  1186 - Erro ao imprimir ordem de produção [Inquibra]
+
+patch 4: 
+  1190 - Erro ao abrir cadastro de produtos [Novi]
+

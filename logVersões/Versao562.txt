@@ -1,0 +1,44 @@
+﻿Atualizado em 30/11/2021
+Inicio da versão: 03/11/2021
+
+patch 06: Nanotec
+  Erro ao incluir na demanda
+
+patch 05: Embraterm, LF EPIS
+  Alteração no filtro de data - ADJ 754 [Embraterm]
+  Erro ao fazer pedidos e fatura ao mesmo tempo - ADJ 770 [LF EPIS]
+
+patch 04: FX Film, Yvytu, Quântica
+  Erro na emissão de notas no estado de GO e SP - ADJ 710 [FX Film]
+  Sistema não segue o parâmetro icms desonerado - ADJ 758 [FX film]
+  Incluir cfop na listagem - ADJT 638 [Yvytu]
+  Nome do vendedor não aparece no gráfico de faturamento - ADJ 767 [Quântica]
+
+patch 03: EDGE, Embraterm, Plásticos Mundial
+  Corrigir nome das colunas - ADJ 763 [Novi]
+  Criar box com opção de marcar/desmarcar todos - ADJ 765 [EDGE]
+  Salvar o parâmetro da box de Filtrar itens com ficha Técnica - ADJ 764 [EDGE]
+  Atualizar tela de formação de preço ao sair do editar - ADJ 714 [Embraterm]
+  Criar campo "Utiliza lote" e alterar opção de lote no relatório de "Consulta de Vendas / Rastreabilidade" - ADJ 759 [Plásticos Mundial]
+
+patch 02: SEA Filmes, BSC Industrial Aços Ltda, Brasgips, Normadin, Aleplast
+  Erro ao faturar Cupom fiscal - ADJ 757 [SEA Filmes]
+  AJuste das IEs. - ADJ 755 [SEA Filmes]
+  Tag da contabilidade no XML. - ADJ 753 [BSC Industrial Aços Ltda]
+  Correção do DIFERENCIAL DE ALÍQUOTAS - ADJ 752 [Brasgips]
+  Envio automático de eventos da NFE - ADJ 709 [Normadin]
+  Sistema permitindo cadastrar produtos com mesma referência - ADJ 210 [Aleplast]
+  Erro ao cadastrar uma nova marca de produto - ADJ 756 - [Quântica]
+  
+patch 01: Quântica
+  Erro ao acessar o gerar a NFC - ADJ 750 [Quântica]
+  Ordem de produção Mandibor - ADJ 731 [Mandibor]
+
+principal: Itagrill, EDGE, FX Film
+  Verificar por que não habilita o botão gravar - ADJ 737 - [Itagrill]
+  Industrialização por kit. - ADJ 687 [EDGE]
+  Alterar descrição do cliente no PCP. - ADJ 748 [Novi]
+  Na tela de Apontamentos precisamos da coluna nome do cliente - ADJ 742 - [FX Film]
+  Ajuste nas ordens programadas - ADJ 740 [Fx Film Manaus]
+
+

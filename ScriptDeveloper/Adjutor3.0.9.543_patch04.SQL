@@ -1,0 +1,34 @@
+UPDATE  VERSAOSISTEMA 
+SET VERSAOSISTEMA.SCRIPTADJUTOR = '3.0.9.543 patch 4',
+       VERSAOSISTEMA.DATA   = '22.04.2020',
+	    VERSAO = '3.0.9.543'
+ where VERSAOSISTEMA.CODIGO = 1;
+
+commit work; 
+
+
+CREATE TABLE NF_REFERENCIA (
+    COD_REFERENCIA INTEGER NOT NULL,
+    NF_CHAVE_NFE_REFERENCIADA VARCHAR(44) NOT NULL,
+	NF_REGISTRO INTEGER
+	);
+
+ALTER TABLE NF_REFERENCIA
+ADD CONSTRAINT PK_NF_REFERENCIA
+PRIMARY KEY (COD_REFERENCIA);
+
+CREATE SEQUENCE GEN_NF_REFERENCIA;
+
+SET TERM ^ ;
+
+create trigger nf_referencia_bi for nf_referencia
+active before insert position 0
+as
+begin
+  if (new.cod_referencia is null) then
+    new.cod_referencia = gen_id(gen_nf_referencia,1);
+end^
+
+SET TERM ; ^
+
+COMMENT ON TABLE NF_REFERENCIA IS 'CHAVES DE REFERENCIAS';

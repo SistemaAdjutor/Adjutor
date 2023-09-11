@@ -1,0 +1,38 @@
+﻿Atualizado em 16/12/2021
+Inicio da versão: 03/13/2021
+
+patch 04: Rotor, Embraterm, Normadin, FX Film Manaus, BSC Industrial Aços Ltda, Perseals Industrial, HDL, Hospital São José, Empac
+  Opção da emissão da nfse não habilita - ADJ 813 [Rotor]
+  Bug na inclusão do cadastro de equipamento - ADJ 811 [Novi]
+  Alteração na consulta de rentabilidade - ADJ 805 [Embraterm]
+  Data de entrega do item - ADJ 803 [Normadin]
+  Mudar nomes de algumas tela/menu da produção - ADJ 802 [Novi]
+  Criar novo modelo de impressão de OP - ADJ 801 [FX Film Manaus]
+  Nova Aba de industrialização - ADJ 797 [BSC Industrial Aços Ltda]
+  Erro ao selecionar item - vendas pendentes - ADJ 592 [Perseals Industrial]
+  Incluir botao F4- Pesquisar o produto - ADJ 808 [HDL]
+  Criar parâmetro para alteração de Nº de Relatório - ADJ 807 [Embraterm]
+  Alterar atalho do icone de Produção. - ADJ 796 [Normadin]
+  Pedido doação não lança comissão - ADJ 746 [Hospital São José]
+  Copiar formato dos relatórios - ADJ 728 [Empac]
+
+patch 03: Embraterm, Normadin
+  Verificar importação de cte - ADJ 793 [ Embraterm]
+  Incluir o relatório de OP na tela do gerenciamento do PCP - ADJ 790 [Normadin]
+  Sequencia dos itens no relatório de O.P - ADJ 788 [Normadin]
+  Data de entrega no relatório de O.P - ADJ 787 [Normadin]
+
+patch 02: Quantica, SEA Filmes
+  Botão cancelar pedido não bloqueia - ADJ 791 [Quantica]
+  Gerar XML SCOA para secretaria da fazenda de Manaus - ADJ 769 [SEA Filmes]
+
+patch 01: Embraterm, SEA Filmes
+  Erro de "Access violation" - ADJ 785 [Embraterm]
+  correções do sistema para ajustar o relatório de rentabilidade - ADJ 784 [Embraterm]
+  Alteração sped fiscal - código do produto - ADJ 719 [ Novi]
+  Manaus - Bloco K do sped dar opção de selecionar por almoxarifado - ADJ 717 [SEA Filmes]
+
+principal: Delta Cabos
+  Lentidão no crm - verificar índices - ADJ 781 [Delta Cabos]
+
+

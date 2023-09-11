@@ -1,0 +1,43 @@
+﻿Atualizado em 27/06/2023
+Inicio da versão: 31/05/2023
+
+
+principal: Elétrica Burda, Chemvet, Arkson. Delta Cabos, Collect, BSC
+  557  - Ajuste sped fiscal - registro D100 [Elétrica Burda]
+  1490 - Tratamento caractere especial na ficha técnica [Chemvet]
+  1504 - Nova etiqueta de produto [Arkson]
+  1507 - Manutenção na movimentação do saldo de lotes [Delta Cabos]
+  1520 - Erro no layout do arquivo de remessa (Celesc) [Collect]
+  1523 - Pedido de compra - botão copiar [BSC]
+  1524 - Corrigir sequenciador de pedidos pcp demanda [BSC]
+
+patch 1: Netocolor
+  1510 - Impressão da nota fiscal por produto retornado [Netocolor]
+
+patch 2: Flexsul, L Forja, Arkson, Vedseals, Normadin, Delta Cabos, Bepine
+  1342 - Vendedores inativos no filtro de pesquisa [Flexsul]
+  1501 - Relatório BI por vendedores - Lançamento conta corrente/verba [L Forja]
+  1505 - Impressão do certificado de qualidade [Arkson]
+  1508 - Manutenção tela de consulta dos produtos [Vedseals]
+  1510 - Impressão da nota fiscal por produto retornado [Netocolor]
+  1526 - Nova opção exporta pcp demanda [Normadin]
+  1529 - Modificação etiqueta arkson [Arkson]
+  1530 - Erro ao tirar CFOP do pedido [Delta Cabos]
+  1531 - Regra fiscal no pedido e faturamento [Bepine]
+  1533 - Xml sem código CBNEF [Novi]
+
+patch 3: Parseals, Yvytu, Normadin, Edge, Delta Cabos
+  1358 - Alteração das cores no pedido de orçamento [Parseals]
+  1386 - Erro ao inativar regra fiscal [Yvytu]
+  1402 - Manutenção novo cadastro de regra fiscal [Novi]
+  1445 - Erro no pedido de venda - sequencia da fatura [Novi]
+  1463 - Manutenção tela de cadastro de CFOP [Normadin]
+  1466 - Ajuste Mais NFe Período de emissão [Novi]
+  1474 - Itens inativos - Entrada e saída manual de estoque [Novi]
+  1509 - Lentidão na tela de inutilização de nota [Novi]
+  1521 - Relatório por ordem de produção sem data inicial e final [Novi]
+  1535 - Consulta notas de entradas de saídas do Produto- Erro na tela [Edge]
+  1536 - Ajuste no compartilhamento da operação fiscal [Delta Cabos]
+
+patch 4: Normadin
+  1563 - Ajustar exportação de demanda molas #8895 [Normadin]

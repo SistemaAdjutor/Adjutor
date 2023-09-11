@@ -1,0 +1,48 @@
+﻿Atualizado em 26/07/2019
+Inicio da versão: 01/07/2019 	
+patch 5 :
+	Giro do Estoque querys do liquidando estoque incorretas http://192.168.0.250:8080/agile/tarefa/show/102101
+	CRM Renovação Query dos filtros incorretas http://192.168.0.250:8080/agile/tarefa/show/102095
+	Consulta saldo no conta corrente/verba http://192.168.0.250:8080/agile/tarefa/show/101893
+	Kardex com erro ao consultar produto (quantidade não suportada) http://192.168.0.250:8080/agile/tarefa/show/102183
+	Produto inativo no kardex http://192.168.0.250:8080/agile/tarefa/show/101517
+	erro ao focar campo na ordem de compra http://192.168.0.250:8080/agile/tarefa/show/102170
+	CFOP marcado com "Sem valor fiscal" nao habilitar botão "Gravar faturas" na entrada de NF http://192.168.0.250:8080/agile/tarefa/show/102145
+	Colocar filtro de colaborador no relatório de Entrada e saídas do estoque http://192.168.0.250:8080/agile/tarefa/show/100966
+	Administrador/zerar estoque almoxarifados. http://192.168.0.250:8080/agile/tarefa/show/102354
+	Tela de entrada e saida Manual do estoque http://192.168.0.250:8080/agile/tarefa/show/102369
+	Tela de transferência de estoque mostrando itens inativos http://192.168.0.250:8080/agile/tarefa/show/102372
+	erro na tela de pedido de compra http://192.168.0.250:8080/agile/tarefa/show/102485
+patch 4 :	
+	últimos ajustes para expedição
+patch 3: 
+	função serve para transferência de estoque entre filiais da mesma empresa http://192.168.0.250:8080/agile/tarefa/show/100962
+	Adicionar colunas de telefone na listagem de clientes http://192.168.0.250:8080/agile/tarefa/show/101714
+	multiempresa na expedição 
+	Controle da separação na expedição http://192.168.0.250:8080/agile/tarefa/show/99795
+    erro ao realizar a importação de XMLs http://192.168.0.250:8080/agile/tarefa/show/101969
+	posição do estoque http://192.168.0.250:8080/agile/tarefa/show/102032
+    ajuste do fornecedor que está com for_Ativo com nulo ou branco
+	fornecedor grava nulo http://192.168.0.250:8080/agile/tarefa/show/102077
+
+patch 2:
+  Arquivo de remessa(santander) com CNPJ e razão social errado http://192.168.0.250:8080/agile/tarefa/show/101792
+  r mensagem de aviso na tela de fluxo de caixa quando multi-empresa http://192.168.0.250:8080/agile/tarefa/show/101696
+  Ajustes no gerenciador de etiquetas - modelo 2 http://192.168.0.250:8080/agile/tarefa/show/101700
+patch 1:
+	Opção de editar diferimento da edição de nota http://192.168.0.250:8080/agile/tarefa/show/101704
+	itens da notas estão incorretos base icms , base icms st, frete, desconto, ipi importação http://192.168.0.250:8080/agile/tarefa/show/101784
+	novo relatório por cliente/banco http://192.168.0.250:8080/agile/tarefa/show/101303
+	realizado por banco http://192.168.0.250:8080/agile/tarefa/show/101303
+	
+patch Brasgips
+    Impressão de Orçamento, Pedido de Venda e Romaneio os dados da empresa http://192.168.0.250:8080/agile/tarefa/show/101852
+Tarefas do versão principal:
+	consulta do arquivo cnab só pesquisa da empresa logada
+	não importar arquivo de retorno diferente da empresa logada
+	desconsiderar faturamentos excluidos na aba vendas do cliente http://192.168.0.250:8080/agile/tarefa/show/101510
+	item do pedido,	tipo de produto, grupo de produto,	fatura do produto,	sincronização dos custos http://192.168.0.250:8080/agile/tarefa/show/100960	
+	gerar preço de venda pelo custo médio, atualizado as telas : nota de entrada,  pedido de compra, cadastro de produto, 	cadastro de parametros
+	Fornecedor inativo aparecendo no pedido de compra http://192.168.0.250:8080/agile/tarefa/show/101557
+	desabilitar o botão confirmar quando o mesmo e clicado no faturamento http://192.168.0.250:8080/agile/tarefa/show/101483
+	Desconsiderar Conversão  http://192.168.0.250:8080/agile/tarefa/show/101477

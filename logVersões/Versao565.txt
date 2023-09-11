@@ -1,0 +1,51 @@
+﻿Atualizado em 14/02/2022
+Inicio da versão: 31/01/2022
+
+
+principal: BSC Industrial, Empac, Embraterm
+
+  851 - Bloquear acesso a empresa [BSC Industrial]
+  849 - Ajustes envio de e-mail [Novi]
+  847 - Ajustar relatório do contas a pagar [Empac]
+  844 - Ajuste no relatório de custo de fabrica por centro de custo [Embraterm]
+  842 - Sistema não esta gravando o pedido de compra [Novi]
+  846 - Ajustar relatório de inspeção [Embraterm]
+
+
+patch 01: LF EPIS, Inquibra, Normadin, Chemvet do Brasil Ltda, Rotor
+
+  854 - Erro na entrada de nota por XML [LF EPIS]
+  855 - Aumentar campo Inquibra [Inquibra]
+  839 - Numero da Ordem de produção [Normadin]
+  858 - Erro na tela de faturamento [Chemvet do Brasil Ltda]
+  856 - Erro de number is out of range [Rotor]
+  852 - Alterar ordem de produção modelo 11 [Novi]
+
+
+patch 02: Inquibra, Parseals Industrial
+
+  861 - Ajustar informações de consumo quando usa o fator de conversão [Inquibra]
+  760 - Ajustar tela de consulta pedidos [Parseals Industrial]
+
+patch 03: Fx Film Manaus, Quântica, Chemvet do Brasil Ltda, Delta Cabos, BSC Industrial Aços Ltda
+  739 - Ajustar consulta - Estoque em falta na produção [Fx Film Manaus]
+  743 - Erro na tela de pedido [Novi]
+  827 - Adicionar Forma de Pagamento em Pedido por Linha/Marca de produto [Quântica]
+  850 - Ajustes telas de Programação dos processos de fabricação [Novi]
+  857 - Melhorar abertura da tela emissão de boletos [Chemvet do Brasil Ltda]
+  859 - Ativar data e hora da impressão nos relatórios [Quântica]
+  864 - Erro ao adicionar item kit ao pedido [Delta Cabos]
+  865 - Ajustar sequencia dos itens na impressão [Delta Cabos]
+  866 - Mostrar estoque apenas da empresa logada [BSC Industrial Aços Ltda]
+
+patch 04: Metalúrgica Água Ltda, Embraterm, BSC Industrial Aços Ltda
+  870 - Sistema arredondando valor total - Entrada de nota [Metalúrgica Água Ltda]
+  872 - Colocar botão limpar quantidade à faturar - tela de faturamento [Embraterm]
+  871 - Adicionar nova coluna na tela de edição de tabela de preços [BSC Industrial Aços Ltda]
+
+patch 05: Chemvet do Brasil, Brasgips, Fx Film Manaus, BSC Industrial Aços Ltda
+  886 - Erro ao abrir tela de etiquetas [Chemvet do Brasil]
+  879 - Sistema excluindo item da nota de entrada [Brasgips]
+  875 - Impressão da ordem de produção pela tela Programação dos processos de fabricação [Fx Film Manaus]
+  873 - Adicionar novas opções na tela de modificar PROCESSO [Fx Film Manaus]
+  862 - Habilitar em qual Almoxarifado o Usuário pode dar Manutenção [BSC Industrial Aços Ltda]

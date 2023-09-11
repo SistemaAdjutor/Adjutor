@@ -1,0 +1,317 @@
+inherited frmBaseDBPesquisaBase: TfrmBaseDBPesquisaBase
+  Left = 309
+  Top = 238
+  Caption = 'DB'
+  ClientHeight = 455
+  ClientWidth = 675
+  OldCreateOrder = True
+  OnMouseWheel = FormMouseWheel
+  OnResize = FormResize
+  ExplicitWidth = 683
+  ExplicitHeight = 482
+  PixelsPerInch = 96
+  TextHeight = 13
+  object PageControl1: TPageControl [0]
+    Left = 0
+    Top = 0
+    Width = 675
+    Height = 419
+    ActivePage = tsNotas
+    Align = alClient
+    TabOrder = 1
+    TabStop = False
+    object tsNotas: TTabSheet
+      Caption = 'Pesquisa'
+      object pnControle: TPanel
+        Left = 0
+        Top = 0
+        Width = 667
+        Height = 79
+        Align = alTop
+        BevelOuter = bvNone
+        TabOrder = 0
+        OnResize = pnControleResize
+        object pnFiltro: TPanel
+          Left = 0
+          Top = 0
+          Width = 409
+          Height = 76
+          BevelOuter = bvNone
+          TabOrder = 0
+          object pn1: TPanel
+            Left = 0
+            Top = 1
+            Width = 409
+            Height = 75
+            Align = alBottom
+            BevelOuter = bvNone
+            Ctl3D = True
+            ParentCtl3D = False
+            TabOrder = 0
+            object btnPesquisa: TSpeedButton
+              Left = 296
+              Top = 15
+              Width = 85
+              Height = 20
+              Hint = 
+                'Executa a filtragem dos registros as informa'#231#245'es digitadas nos c' +
+                'ampos de pesquisas.'
+              Caption = '&Pesquisar'
+              Glyph.Data = {
+                76010000424D7601000000000000760000002800000020000000100000000100
+                04000000000000010000130B0000130B00001000000000000000000000000000
+                800000800000008080008000000080008000808000007F7F7F00BFBFBF000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+                33033333333333333F7F3333333333333000333333333333F777333333333333
+                000333333333333F777333333333333000333333333333F77733333333333300
+                033333333FFF3F777333333700073B703333333F7773F77733333307777700B3
+                33333377333777733333307F8F8F7033333337F333F337F3333377F8F9F8F773
+                3333373337F3373F3333078F8F8F870333337F33F7FFF37F333307F9F8F9F703
+                33337F377777337F3333078F8F8F8703333373F337F33373333377F8F9F8F773
+                333337F3373337F33333307F8F8F70333333373FF333F7333333330777770333
+                333333773FF77333333333370007333333333333777333333333}
+              NumGlyphs = 2
+              OnClick = btnPesquisaClick
+            end
+            object btnLimpar: TSpeedButton
+              Left = 296
+              Top = 41
+              Width = 85
+              Height = 20
+              Hint = 'Limpa as informa'#231#245'es digitadas nos campos de pesquisas.'
+              Caption = '&Limpar     '
+              Glyph.Data = {
+                76010000424D7601000000000000760000002800000020000000100000000100
+                0400000000000001000000000000000000001000000000000000000000000000
+                80000080000000808000800000008000800080800000C0C0C000808080000000
+                FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00500005000555
+                555558888F888555F55500000000555055558888888855F85555005500055055
+                555588F5888F58555555005550055555555588FF588F5FF55555500550050055
+                5555588FF88588FF555555005050110555555588F858888FF555555505099910
+                555555FF85888888FF555005550999910555588F5F88888885F5500505509990
+                3055588F85F88888585F55005055090B030555885855888585855555555550B0
+                B03055555F555858585855550555550B0B335555855555858555555555555550
+                BBB35555F55555585F555550555555550BBB55585555555585F5555555555555
+                50BB555555555555585F555555555555550B5555555555555585}
+              NumGlyphs = 2
+              OnClick = btnLimparClick
+            end
+          end
+        end
+      end
+      object DBGrid: TDBGrid
+        Left = 0
+        Top = 79
+        Width = 667
+        Height = 312
+        Align = alClient
+        DataSource = dsBusca
+        PopupMenu = mnuGridPesquisa
+        ReadOnly = True
+        TabOrder = 1
+        TitleFont.Charset = DEFAULT_CHARSET
+        TitleFont.Color = clWindowText
+        TitleFont.Height = -11
+        TitleFont.Name = 'Tahoma'
+        TitleFont.Style = []
+        OnDblClick = DBGridDblClick
+        OnKeyDown = DBGridKeyDown
+      end
+    end
+  end
+  object Panel2: TPanel [1]
+    Left = 0
+    Top = 419
+    Width = 675
+    Height = 36
+    Align = alBottom
+    Alignment = taLeftJustify
+    Anchors = [akLeft, akRight]
+    TabOrder = 0
+    DesignSize = (
+      675
+      36)
+    object btCalc: TSpeedButton
+      Left = 4
+      Top = 6
+      Width = 85
+      Height = 25
+      Caption = '(Ctrl+F5)'
+      Glyph.Data = {
+        D6050000424DD605000000000000360000002800000014000000120000000100
+        200000000000A005000064000000640000000000000000000000FFFFFFFFF6F6
+        F6FFBBBBBBFF7A7A7AFF595959FF595959FF595959FF595959FF595959FF5959
+        59FF595959FF595959FF565656FF606060FF565656FF575757FF606060FF5C5C
+        5CFF8E8E8EFFF2F2F2FFFFFFFFFFEFEFEFFF999999FF404040FF686868FF6868
+        68FF686868FF686868FF686868FF686868FF686868FF686868FF696969FF6767
+        67FF5B5B5BFF707070FF7F7F7FFF515151FF616161FFC9C9C9FFFEFEFEFFF7F7
+        F7FF747474FF5B5B5BFFADADADFFFFFFFFFFD0D0D0FF737373FF575757FF9F9F
+        9FFFFFFFFFFFDCDCDCFF727272FF656565FF8C8C8CFFFFFFFFFFE8E8E8FF7373
+        73FF585858FFBCBCBCFFFEFEFEFFF7F7F7FF747474FF5B5B5BFFDEDEDEFFFFFF
+        FFFFF0F0F0FF737373FF616161FFD1D1D1FFFCFCFCFFFEFEFEFF818181FF5555
+        55FFC0C0C0FFFFFFFFFFF8F8F8FF9B9B9BFF4B4B4BFFC4C4C4FFFEFEFEFFF7F7
+        F7FF747474FF5B5B5BFF9E9E9EFFEDEDEDFFCFCFCFFF6A6A6AFF4F4F4FFFA0A0
+        A0FFE7E7E7FFCCCCCCFF747474FF565656FF8B8B8BFFEFEFEFFFD8D8D8FF7575
+        75FF4E4E4EFFC4C4C4FFFEFEFEFFF7F7F7FF747474FF5B5B5BFF575757FF5858
+        58FF565656FF5C5C5CFF646464FF656565FF5E5E5EFF505050FF585858FF5F5F
+        5FFF606060FF6C6C6CFF434343FF646464FF585858FFBBBBBBFFFEFEFEFFF7F7
+        F7FF747474FF5B5B5BFF979797FFF2F2F2FFAFAFAFFF737373FF585858FF8181
+        81FFECECECFFC4C4C4FF636363FF6B6B6BFF757575FFE7E7E7FFCECECEFF6666
+        66FF676767FFBABABAFFFEFEFEFFF7F7F7FF747474FF5B5B5BFFE2E2E2FFFCFC
+        FCFFF3F3F3FF747474FF626262FFD5D5D5FFF9F9F9FFFFFFFFFF858585FF4F4F
+        4FFFCCCCCCFFF9F9F9FFFDFDFDFF969696FF4D4D4DFFC2C2C2FFFEFEFEFFF7F7
+        F7FF747474FF5B5B5BFFAFAFAFFFFFFFFFFFE6E6E6FF6D6D6DFF4D4D4DFFAFAF
+        AFFFF9F9F9FFE4E4E4FF808080FF515151FF9E9E9EFFF8F8F8FFF1F1F1FF7474
+        74FF4C4C4CFFC4C4C4FFFEFEFEFFF7F7F7FF747474FF5B5B5BFF5F5F5FFF7D7D
+        7DFF666666FF606060FF5D5D5DFF616161FF7F7F7FFF696969FF5A5A5AFF6767
+        67FF5A5A5AFF888888FF5B5B5BFF616161FF5E5E5EFFBDBDBDFFFEFEFEFFECEC
+        ECFF7A7A7AFF656565FF696969FF6A6A6AFF696969FF676767FF696969FF6D6D
+        6DFF6B6B6BFF666666FF696969FF686868FF6F6F6FFF5D5D5DFF7A7A7AFF6B6B
+        6BFF4F4F4FFFC7C7C7FFFBFBFBFFFBFBFBFF797979FF545454FFE2E2E2FFEAEA
+        EAFFF1F1F1FFF0F0F0FFEDEDEDFFEEEEEEFFEFEFEFFFEDEDEDFFF7F7F7FFE7E7
+        E7FFEAEAEAFFE5E5E5FFEBEBEBFF999999FF4F4F4FFFBFBFBFFFFDFDFDFFFDFD
+        FDFF747474FF5B5B5BFFE6E6E6FFF5F5F5FFFFFFFFFFFFFFFFFFFCFCFCFFFAFA
+        FAFFFCFCFCFFFEFEFEFFFBFBFBFFFAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFF9898
+        98FF4B4B4BFFC3C3C3FFFFFFFFFFF2F2F2FF6C6C6CFF6C6C6CFFECECECFFFBFB
+        FBFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF9F9F9FFFFFF
+        FFFFFFFFFFFFFAFAFAFFF2F2F2FF989898FF565656FFBABABAFFFFFFFFFFF2F2
+        F2FF707070FF5B5B5BFF9D9D9DFFA3A3A3FFA7A7A7FFA6A6A6FFA5A5A5FFA6A6
+        A6FFA6A6A6FFA4A4A4FFA3A3A3FFA5A5A5FFA2A2A2FFA2A2A2FFB2B2B2FF8383
+        83FF636363FFBCBCBCFFFFFFFFFFFFFFFFFF949494FF505050FF595959FF5959
+        59FF575757FF555555FF575757FF5C5C5CFF5A5A5AFF545454FF686868FF5C5C
+        5CFF595959FF5B5B5BFF5C5C5CFF464646FF636363FFD2D2D2FFFFFFFFFFFFFF
+        FFFFD4D4D4FF939393FF6E6E6EFF6F6F6FFF6C6C6CFF6A6A6AFF6D6D6DFF7171
+        71FF6F6F6FFF6A6A6AFF666666FF626262FF6C6C6CFF707070FF6D6D6DFF7878
+        78FFB2B2B2FFFFFFFFFFFDFDFDFFF8F8F8FFFFFFFFFFF2F2F2FFEDEDEDFFF1F1
+        F1FFF1F1F1FFF0F0F0FFF1F1F1FFF4F4F4FFF2F2F2FFEEEEEEFFF7F7F7FFF1F1
+        F1FFF3F3F3FFEBEBEBFFEBEBEBFFFDFDFDFFFFFFFFFFFCFCFCFF}
+      OnClick = btCalcClick
+    end
+    object btnSelect: TSpeedButton
+      Left = 527
+      Top = 6
+      Width = 144
+      Height = 25
+      Anchors = [akTop, akRight]
+      Caption = 'Seleciona (Ctrl+Enter)'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        0400000000000001000000000000000000001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00555555555555
+        555555555555555555555555555555555555555555FF55555555555559055555
+        55555555577FF5555555555599905555555555557777F5555555555599905555
+        555555557777FF5555555559999905555555555777777F555555559999990555
+        5555557777777FF5555557990599905555555777757777F55555790555599055
+        55557775555777FF5555555555599905555555555557777F5555555555559905
+        555555555555777FF5555555555559905555555555555777FF55555555555579
+        05555555555555777FF5555555555557905555555555555777FF555555555555
+        5990555555555555577755555555555555555555555555555555}
+      NumGlyphs = 2
+      Visible = False
+      OnClick = btnSelectClick
+    end
+    object lbCntRegistros: TLabel
+      Left = 95
+      Top = 10
+      Width = 70
+      Height = 13
+      Caption = 'lbCntRegistros'
+    end
+  end
+  inherited coCalcula: TACBrCalculadora
+    Left = 608
+    Top = 168
+  end
+  inherited DBConn: TSQLConnection
+    Params.Strings = (
+      'DriverUnit=Data.DBXFirebird'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver220.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=22.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
+        'birdDriver220.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
+        'actory,Borland.Data.DbxFirebirdDriver,Version=22.0.0.0,Culture=n' +
+        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxfb.dll'
+      'LibraryNameOsx=libsqlfb.dylib'
+      'VendorLib=fbclient.dll'
+      'VendorLibWin64=fbclient.dll'
+      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
+      'Database=database.fdb'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'TrimChar=False'
+      'DriverName=Firebird'
+      'RoleName=RoleName'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'ServerCharSet='
+      'SQLDialect=3'
+      'ErrorResourceFile='
+      'LocaleCode=0000'
+      'BlobSize=-1'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'IsolationLevel=ReadCommitted'
+      'Trim Char=False')
+    Left = 128
+    Top = 176
+  end
+  object Timer1: TTimer
+    Enabled = False
+    Interval = 300
+    OnTimer = Timer1Timer
+    Left = 180
+    Top = 176
+  end
+  object qBusco: TSQLQuery
+    MaxBlobSize = 1
+    Params = <>
+    SQL.Strings = (
+      'select * from emp0000')
+    SQLConnection = DBConn
+    Left = 276
+    Top = 161
+  end
+  object dspBusco: TDataSetProvider
+    DataSet = qBusco
+    Left = 332
+    Top = 161
+  end
+  object cdsBusco: TClientDataSet
+    Aggregates = <>
+    ObjectView = False
+    PacketRecords = 16
+    Params = <>
+    ProviderName = 'dspBusco'
+    AfterOpen = cdsBuscoAfterOpen
+    AfterClose = cdsBuscoAfterClose
+    OnFilterRecord = cdsBuscoFilterRecord
+    AfterApplyUpdates = cdsBuscoAfterApplyUpdates
+    AfterRowRequest = cdsBuscoAfterRowRequest
+    Left = 380
+    Top = 161
+  end
+  object dsBusca: TDataSource
+    DataSet = cdsBusco
+    Left = 436
+    Top = 160
+  end
+  object mnuGridPesquisa: TPopupMenu
+    Left = 492
+    Top = 240
+    object Copiar1: TMenuItem
+      Caption = 'Copiar conte'#250'do da c'#233'lula selecionada P/'#193'rea de Transfer'#234'ncia'
+      OnClick = Copiar1Click
+    end
+  end
+end

@@ -1,0 +1,52 @@
+﻿Atualizado em 26/08/2020
+Inicio da versão: 04/08/2020
+
+patch 3: BRASGIPS, QUIMICA ROCHA, LION, CHEMVET, EMBRATERM, COPPERSAL
+
+   Erro ao abrir faturamento, a nota fica sem pedido, isso acontece com notas canceladas em que mudou a empresa ADJ-189 [BRASGIPS]
+   Codigo da OP esta sumindo quando clica na data adj-169
+   Não esta empenhando ao apontar adj-168 
+   Campo referente ao cst de pis/confis e IPI não aparecem para seleção adj-181
+   Mensagem de erro ao acessar a tela de PCP adj-194 [QUIMICA ROCHA]
+   Adicionar filtro no relatório total por CFOP ADJ-192 [LION]
+   Ordem da ficha técnica ADJ-188 [QUIMICA ROCHA]
+   Bloquear botão gravar tela de entrada de nota ADJ-186 
+   Incluir retrato e paisagem na lista de demanda ADJ-183 [QUIMICA ROCHA]
+   Coluna de tipo de pedido sem descrição. adj-178 [QUIMICA ROCHA]
+   Regra para repasse do st ADJ-177 [INDUSTRIAL QUIMICA]
+   Conta ao receber/contas a pagar está com erro ao realizar a baixa da parcela adj-161
+   criar nova etiqueta de saida de nota fiscal adj 166 [CHEMVET]
+   Erro ao fazer o rateio de centro de custo no contas a pagar adj-155 [EMBRATERM]
+   Consulta rápida no cadastro de produto. adj-152 [LION]
+   Alteração número Acordo Comercial ADJ-150 [ EMBRATERM]
+   Atualizar opção de frete do cadastro do cliente adj-190 [COPPERSAL]
+   Alterar tela para selecionar pasta de exportação de xml(nota de entrada) adj-48 
+	  
+patch 2 : quimica rocha, ITAGRIL, LION, SMART PINTURAS
+   Relatórios de clientes - todos estão mostrando o mesmo cliente várias vezes adj-173
+   relatorio cliente por ramo de atividade imprimindo cliente repetidamente ADJ 156
+   Desabilitar opção de alterar referencia. adj-157
+   Atualização de preços de produtos compostos adj-154 [QUIMICA ROCHA]
+   preço de custo e venda parou de aparecer nas fichas técnicas - bug adj-151 [QUIMICA ROCHA]
+   Tela de previsão compras está calculando quantidade sem considerar base ADJ-167 [ QUIMICA ROCHA]
+   novos default para a tela de Gerenciamento de PCP ADJ-162 [QUIMICA ROCHA]
+   criar parametro Habilitar Envase adj-170 [ITAGRIL]
+   Ajustar exportação dos pedidos de compra para excel ADJ-114 [LION]
+   Impressão do cupom fiscal não pede para selecionar impressora adj-160 [ INDUSTRIAL MANGUEIRAS]
+   Agrupar pedidos não puxa dados B2B adj-149 [ yvitur]
+   Consumindo o empenho duas vezes adj-175 [QUIMICA ROCHA]
+   Alterar coluna no relatório demanda ADJ-171 [ QUIMICA ROCHA]
+   Erro no boleto caixa - ADJ 164[SMART PINTURAS]
+
+patch 1 : quimica rocha, Chemvet, Flexsul
+	Executa envase sem itens nprd-98 [ quimica rocha]
+	Atualizar acbr - Possui ajuste no arquivo de remessa CAIXA adj-142
+	Corrigir escrita no Kardex adj-144 [quimica rocha]
+	Relatório de listagem geral de clientes erro ao gerar adj-139 [CHEMVET]
+	Adicionar novos filtros para o relatório vendas por linha do produto adj-141 [Flexsul]
+	Flag de envase tornar visível apenas com parametro marcado - nprd99 
+	
+tarefa da versão principal :  Aços ferrara
+  Criar novo relatório Romaneio de Expedição youtrack adj-131 [ Aços ferrara]
+  
+

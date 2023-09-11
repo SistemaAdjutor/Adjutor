@@ -1,0 +1,67 @@
+﻿Atualizado em 04/04/2022
+Inicio da versão: 04/04/2022
+
+
+principal: Frank Compensados,Chemvet do Brasil, Collect, Inquibra, ChemSystem
+
+  339 - Alterar nota editavel [Frank Compensados]
+  686 - Arquivo de configuração do banco de dados [Novi]
+  772 - Coluna de saldo do crédito [Chemvet do Brasil]
+  878 - Erro na pesquisa por numero de pedido [Collect]
+  882 - retirar da tela de apontamentos a opção de cadastrar novo colaborador [Novi]
+  910 - Filtro no campo de pesquisa na Ordem de Produção [Inquibra]
+  913 - Não informar tag autXML [Novi]
+  915 - Adicionar mais uma casa no campo de telefone da NFe [Chemsystem]
+  936 - Coluna de "Vlr total" não apaga os dados na simulação do PV [Embraterm]
+  937 - Emissão de carta de correção-Erro no envio de email [Novi]
+
+patch 01: Embraterm, BSC Industrial, Normadin, Empac, Delta Cabos, LF EPIS
+  952 - Mudança no relatório script relatório de rentabilidade [Embraterm]
+  941 - Erro ao alterar tipo de pedido [BSC Industrial]
+  949 - Alterar descrição do item quando estiver no parâmetro [Normadin]
+  943 - Ajustes tela de nfse [Empac]
+  482 - Caixa de seleção some ao clicar selecionar [Novi]
+  946 - Erro de parâmetros no lote - de orçamento para venda [Delta Cabos]
+  945 - Duplicidade de produtos [LF EPIS]
+  942 - Ajustar tela de emissão da Nfs-e [Novi]
+  948 - Ajustar ponto de equilíbrio [Embraterm]
+
+patch 02: Brasgips, BSC, Sustemplast, Fx Film Manaus, Crystal Clean, Rotor
+  646 - Melhoria na importação de NFE [Brasgpis]
+  933 - 1° Requisição de material para retirada do estoque [BSC]
+  935 - 2°Tela para Autorização das Requisições de materiais [BSC]
+  938 - 2° Tarefa importação de itens por xml [Sustemplast]
+  944 - Ajuste na movimentação de estoque para industrialização [Novi]
+  947 - Atualização da placa Mercosul no cadastro de transportadores [Novi]
+  955 - Estorno do estoque quando baixa pelo faturamento [Novi]
+  956 - Quando sair da aba gravar as informações [Fx Film Manaus]
+  957 - Encerramento da ordem de produção [BSC]
+  958 - Baixa dos lotes não esta ocorrendo [Crystal Clean]
+  959 - Tela de Parâmetro deve abrir na empresa atual[Novi]
+  962 - Tipo de etiqueta > Modelo 11 > na impressão embaixo de > Rastreabilidade [Rotor]
+  963 - Ajuste consulta do contas a pagar [Brasgips]
+
+patch 03: Metalúrgica Água, LF EPIS, Brasgips, Collect, BSC Industrial
+  970 - 4° Importação de itens por xml - Novi
+  967 - Atualização do preço dos produtos - Novi
+  950 - CFOP 5903 RETORNO DE INDUSTRIALIZAÇÃO-SOBRA [Metalúrgica Água]
+  924 - Tabela de Preço não funciona p/ Produtos cadastrados por entrada de nota [LF EPIS]
+  968 - Atualizar o pedido antes de deixar editar [Brasgips]
+  965 - Tela de consulta de pedidos não mostra data [Collect]
+  940 - Relatório > Receber agrupado por Banco no recebimento [Collect]
+  833 - Compras : remodelar /modificar processos de solicitação de compra - Parte 1/2 [BSC Industrial]
+  835 - Compras : remodelar /modificar processos de solicitação de compra - Parte 2/2 [BSC Industrial]
+
+patch 04:
+  969 - Movimentação do estoque no produto [Novi]
+  974 - Colocar a função F8 pelo mouse na tela de pedido [Novi]
+
+patch 05: Eletrica Burda, FX Film Manaus
+  708 - Gravar filtro da tela de consulta de clientes [Novi]
+  817 - Gravar origem do produto na entrada de nota [Eletrica Burda]
+  979 - Modelo de impressão da solicitação de compra [Novi]
+  980 - Correções regularização do estoque [Novi]
+  981 - Correção solicitação de compra [Novi]
+  982 - Sistema não grava observações da fabricação [FX Film Manaus]
+
+

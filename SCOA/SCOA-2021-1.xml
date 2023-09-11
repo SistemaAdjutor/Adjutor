@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<enviSCOA xmlns="http://www.sefaz.am.gov.br/scoa">
+  <versao>1.00</versao>
+  <IE>062013319</IE>
+  <periodoArquivo>20211</periodoArquivo>
+  <nomeResponsavel></nomeResponsavel>
+  <listaArmazem>
+    <dadosArmazem>
+      <numCNPJ>26295146000103</numCNPJ>
+      <numAtoDeclaratorio>00227</numAtoDeclaratorio>
+      <validadeAtoDeclaratorio>2026-09-30</validadeAtoDeclaratorio>
+      <listaProdutosInventario></listaProdutosInventario>
+      <listaNotasFiscais></listaNotasFiscais>
+      <diferencaValorOperacoes>
+        <difValor>
+          <codProduto>00000</codProduto>
+          <diferencaBaseCalculo>0.00</diferencaBaseCalculo>
+          <chaveAcessoNFeComplementar>00000000000000000000000000000000000000000000</chaveAcessoNFeComplementar>
+        </difValor>
+      </diferencaValorOperacoes>
+    </dadosArmazem>
+  </listaArmazem>
+</enviSCOA>

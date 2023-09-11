@@ -1,0 +1,353 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.559_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_OS_CABECALHO.PRMT0001
+Fim de Linha 9. Tabela já existe no banco ->PMT_OS_REV.PRMT0001
+Fim de Linha 10. Tabela já existe no banco ->PMT_OS_DATA_EMISSAO.PRMT0001
+Fim de Linha 12. Tabela já existe no banco ->PMT_LIMITE_CREDITO_INICIAL.PRMT0001
+Fim de Linha 14. Tabela já existe no banco ->PMT_REL_DATA_EXPEDICAO.PRMT0001
+Fim de Linha 16. Tabela já existe no banco ->USP_FATURARSEMCONCLUSAO.USUARIO_PARAMETRO
+Fim de Linha 17. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 18. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Script com 8 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.559_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560.sql
+Fim de Linha 8. Tabela já existe no banco ->USP_VISUALIZA_ABA_VENDA.USUARIO_PARAMETRO
+Fim de Linha 12. Tabela já existe no banco ->PMT_PRD_REFER_SCO_REFER.PRMT0001
+Fim de Linha 16. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 20. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 24. Tabela já existe no banco ->USP_REALIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 29. Tabela já existe no banco ->PMT_DESCRICAO_99_OUTROS.PRMT0001
+Fim de Linha 33. Tabela já existe no banco ->PED_ORS_CLI_CONSFINAL.PED0000
+Fim de Linha 34. Tabela já existe no banco ->PED_ORS_CLI_CONSU_PROPRIO.PED0000
+Fim de Linha 35. Tabela já existe no banco ->PED_ORS_CLI_REGIME_TRIBUTARIO.PED0000
+Script com 9 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_AMX_ENVASE_SAIDA.PRMT0001
+Fim de Linha 9. Tabela já existe no banco ->AMX_CODIGO.FTC0000
+Fim de Linha 11. ERROR: unsuccessful metadata update
+Index HISTORICO_ORDEMPRODUCAO_IDX2 already exists
+Fim de Linha 12. ERROR: unsuccessful metadata update
+Index HISTORICO_ORDEMPRODUCAO_IDX1 already exists
+Fim de Linha 13. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX3 already exists
+Fim de Linha 14. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX2 already exists
+Fim de Linha 15. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX1 already exists
+Script com 7 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->OPE_FORMULA_BASE_ICMS.OPE0000
+Fim de Linha 9. Tabela já existe no banco ->OPE_ICMS_DESONERADO_DIMINUI.OPE0000
+Fim de Linha 11. Tabela já existe no banco ->PED_OBS_PRODUCAO.PED0000
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch03.sql
+Fim de Linha 8. ERROR: violation of PRIMARY or UNIQUE KEY constraint "PK_PRD_LINHA" on table "PRD_LINHA"
+Problematic key value is ("LIN_CODIGO" = '999')
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch01.sql
+Fim de Linha 160. Tabela já existe no banco ->PMT_PRD_REFER_SCO_REFER.PRMT0001
+Fim de Linha 164. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 168. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 173. Tabela já existe no banco ->USP_REALIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Script com 4 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Fim de Linha 8. Tabela já existe no banco ->EQP_CODIGO.OPERACOES
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Sumário: 
+Host:172.29.171.188
+Database :/servidor/Jobdados/lfepis/LF1409.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.559_patch02.sql
+ok - Adjutor3.0.9.559_patch03.sql
+ok - Adjutor3.0.9.560.sql
+ok - Adjutor3.0.9.560_patch01.sql
+ok - Adjutor3.0.9.560_patch02.sql
+ok - Adjutor3.0.9.560_patch03.sql
+ok - Adjutor3.0.9.560_patch04.sql
+ok - Adjutor3.0.9.560_patch05.sql
+ok - Adjutor3.0.9.561.sql
+ok - Adjutor3.0.9.561_patch01.sql
+ok - Adjutor3.0.9.561_patch02.sql
+ok - Adjutor3.0.9.561_patch03.sql
+ok - Adjutor3.0.9.561_patch04.sql
+ok - Adjutor3.0.9.561_patch05.sql
+ok - Adjutor3.0.9.562.sql
+ok - Adjutor3.0.9.562_patch01.sql
+ok - Adjutor3.0.9.562_patch02.sql
+ok - Adjutor3.0.9.562_patch03.sql
+ok - Adjutor3.0.9.562_patch04.sql
+ok - Adjutor3.0.9.562_patch05.sql
+ok - Adjutor3.0.9.562_patch06.sql
+ok - Adjutor3.0.9.563.sql
+ok - Adjutor3.0.9.563_patch01.sql
+ok - Adjutor3.0.9.563_patch02.sql
+ok - Adjutor3.0.9.563_patch03.sql
+ok - Adjutor3.0.9.563_patch04.sql
+ok - Adjutor3.0.9.564.sql
+ok - Adjutor3.0.9.564_patch01.sql
+ok - Adjutor3.0.9.564_patch02.sql
+ok - Adjutor3.0.9.565.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560.sql
+Fim de Linha 8. Tabela já existe no banco ->USP_VISUALIZA_ABA_VENDA.USUARIO_PARAMETRO
+Fim de Linha 12. Tabela já existe no banco ->PMT_PRD_REFER_SCO_REFER.PRMT0001
+Fim de Linha 16. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 20. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 24. Tabela já existe no banco ->USP_REALIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 29. Tabela já existe no banco ->PMT_DESCRICAO_99_OUTROS.PRMT0001
+Fim de Linha 33. Tabela já existe no banco ->PED_ORS_CLI_CONSFINAL.PED0000
+Fim de Linha 34. Tabela já existe no banco ->PED_ORS_CLI_CONSU_PROPRIO.PED0000
+Fim de Linha 35. Tabela já existe no banco ->PED_ORS_CLI_REGIME_TRIBUTARIO.PED0000
+Script com 9 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_AMX_ENVASE_SAIDA.PRMT0001
+Fim de Linha 9. Tabela já existe no banco ->AMX_CODIGO.FTC0000
+Fim de Linha 11. ERROR: unsuccessful metadata update
+Index HISTORICO_ORDEMPRODUCAO_IDX2 already exists
+Fim de Linha 12. ERROR: unsuccessful metadata update
+Index HISTORICO_ORDEMPRODUCAO_IDX1 already exists
+Fim de Linha 13. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX3 already exists
+Fim de Linha 14. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX2 already exists
+Fim de Linha 15. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX1 already exists
+Script com 7 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->OPE_FORMULA_BASE_ICMS.OPE0000
+Fim de Linha 9. Tabela já existe no banco ->OPE_ICMS_DESONERADO_DIMINUI.OPE0000
+Fim de Linha 11. Tabela já existe no banco ->PED_OBS_PRODUCAO.PED0000
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch03.sql
+Fim de Linha 8. ERROR: violation of PRIMARY or UNIQUE KEY constraint "PK_PRD_LINHA" on table "PRD_LINHA"
+Problematic key value is ("LIN_CODIGO" = '999')
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch04.sql
+Fim de Linha 14. Tabela já existe no banco ->ENF_DADOS_ADICIONAIS_FISCO.ENF0001
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch04.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561.sql
+Fim de Linha 143. Tabela já existe no banco ->PRD_UNIPADRAO.PRD_UNIDADE
+Fim de Linha 150. Tabela Já existe --> PRD_UNIDADE_EQUIVALENTE already ex
+Fim de Linha 155. ERROR: unsuccessful metadata update
+Index IDX_PRD_UNID_EQUIV already exists
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch01.sql
+Fim de Linha 143. ERROR: unsuccessful metadata update
+Index PEDIDO_WEB_ITEM_IDX1 already exists
+Fim de Linha 144. ERROR: unsuccessful metadata update
+Index PEDIDO_WEB_ITEM_IDX2 already exists
+Fim de Linha 145. ERROR: unsuccessful metadata update
+Index PEDIDO_WEB_IDX3 already exists
+Fim de Linha 146. ERROR: unsuccessful metadata update
+Index PEDIDO_WEB_IDX2 already exists
+Fim de Linha 147. ERROR: unsuccessful metadata update
+Index PEDIDO_WEB_IDX1 already exists
+Fim de Linha 149. Tabela já existe no banco ->OPE_REF_NFE_IND.OPE0000
+Fim de Linha 155. Tabela Já existe --> REF_NFE_IND already ex
+Fim de Linha 160. Tabela já existe no banco ->PMT_PRD_REFER_SCO_REFER.PRMT0001
+Fim de Linha 164. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 168. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 173. Tabela já existe no banco ->USP_REALIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 179. Generator Já existe --> GEN_SOLICITACAO_COMPRA already exists
+Fim de Linha 184. Tabela Já existe --> SOLICITACAO_COMPRA already ex
+Fim de Linha 186. Tabela já existe no banco ->SET_CODIGO.SOLICITACAO_COMPRA
+Fim de Linha 188. Tabela já existe no banco ->SCO_OBSERVACAO.SOLICITACAO_COMPRA
+Fim de Linha 190. Tabela já existe no banco ->SCO_DATA_SOLICITACAO.SOLICITACAO_COMPRA
+Fim de Linha 192. Tabela já existe no banco ->SCO_SOLICITANTE.SOLICITACAO_COMPRA
+Fim de Linha 194. Tabela já existe no banco ->PRD_REFER.SOLICITACAO_COMPRA
+Fim de Linha 196. Tabela já existe no banco ->SCO_DESCRICAO_PRODUTO.SOLICITACAO_COMPRA
+Fim de Linha 198. Tabela já existe no banco ->UND_SIGLA.SOLICITACAO_COMPRA
+Fim de Linha 200. Tabela já existe no banco ->SCO_QTDE_MIN.SOLICITACAO_COMPRA
+Fim de Linha 202. Tabela já existe no banco ->SCO_QTDE_MAX.SOLICITACAO_COMPRA
+Fim de Linha 204. Tabela já existe no banco ->SCO_STATUS_SOLICITACAO.SOLICITACAO_COMPRA
+Fim de Linha 206. Tabela já existe no banco ->SCO_STAT_SOLICIT_RESP.SOLICITACAO_COMPRA
+Fim de Linha 208. Tabela já existe no banco ->SCO_DATA_ENTREGA.SOLICITACAO_COMPRA
+Fim de Linha 210. Tabela já existe no banco ->SCO_DATA_AUTORIZACAO_COTACAO.SOLICITACAO_COMPRA
+Fim de Linha 212. Tabela já existe no banco ->SCO_OBSERVACAO_APROVACAO.SOLICITACAO_COMPRA
+Fim de Linha 214. Tabela já existe no banco ->SCO_NRO_PEDIDO_VENDA.SOLICITACAO_COMPRA
+Fim de Linha 217. Generator Já existe --> GEN_SOLICITACAO_ITEM already exists
+Fim de Linha 222. Tabela Já existe --> SOLICITACAO_ITEM already ex
+Fim de Linha 224. Tabela já existe no banco ->SCO_CODIGO.SOLICITACAO_ITEM
+Fim de Linha 228. Tabela já existe no banco ->FOR_CODIGO.SOLICITACAO_ITEM
+Fim de Linha 230. Tabela já existe no banco ->FOR_RAZAO.SOLICITACAO_ITEM
+Fim de Linha 232. Tabela já existe no banco ->FOR_FONE.SOLICITACAO_ITEM
+Fim de Linha 234. Tabela já existe no banco ->FOR_EMAIL.SOLICITACAO_ITEM
+Fim de Linha 236. Tabela já existe no banco ->FOR_CGC.SOLICITACAO_ITEM
+Fim de Linha 238. Tabela já existe no banco ->SIT_COTACAO_APROVADA.SOLICITACAO_ITEM
+Fim de Linha 240. Tabela já existe no banco ->SIT_PEDIDO_COMPRA.SOLICITACAO_ITEM
+Fim de Linha 242. Tabela já existe no banco ->SIT_DATA_COTACAO.SOLICITACAO_ITEM
+Fim de Linha 244. Tabela já existe no banco ->SIT_PRECO_COTACAO.SOLICITACAO_ITEM
+Fim de Linha 246. Tabela já existe no banco ->SIT_PRAZO_ENTREGA.SOLICITACAO_ITEM
+Fim de Linha 248. Tabela já existe no banco ->SIT_TIPO_FRETE.SOLICITACAO_ITEM
+Fim de Linha 250. Tabela já existe no banco ->SIT_NRO_PEDIDO_COMPRA.SOLICITACAO_ITEM
+Fim de Linha 252. Tabela já existe no banco ->SIT_PRAZO_PAGAMENTO.SOLICITACAO_ITEM
+Fim de Linha 254. Tabela já existe no banco ->SIT_DATA_FINALIZACAO_COTACAO.SOLICITACAO_ITEM
+Fim de Linha 256. Tabela já existe no banco ->SIT_DATA_AUTORIZACAO_COMPRA.SOLICITACAO_ITEM
+Fim de Linha 258. Tabela já existe no banco ->SIT_CONCLUIDA.SOLICITACAO_ITEM
+Fim de Linha 260. Tabela já existe no banco ->SIT_STATUS_COMPRA.SOLICITACAO_ITEM
+Fim de Linha 262. Tabela já existe no banco ->SIT_STATUS_COMPRA_OBS.SOLICITACAO_ITEM
+Fim de Linha 264. Tabela já existe no banco ->SIT_STAT_COMPRA_RESP.SOLICITACAO_ITEM
+Fim de Linha 267. Generator Já existe --> GEN_SOLICITACAO_ITEM_LOG already exists
+Fim de Linha 272. Tabela Já existe --> SOLICITACAO_ITEM_LOG already ex
+Fim de Linha 274. Tabela já existe no banco ->SIT_CODIGO.SOLICITACAO_ITEM_LOG
+Fim de Linha 276. Tabela já existe no banco ->SIT_STATUS_COMPRA.SOLICITACAO_ITEM_LOG
+Fim de Linha 278. Tabela já existe no banco ->SIT_STATUS_SOLICITACAO.SOLICITACAO_ITEM_LOG
+Fim de Linha 280. Tabela já existe no banco ->USU_NOME.SOLICITACAO_ITEM_LOG
+Fim de Linha 282. Tabela já existe no banco ->SIL_DATA.SOLICITACAO_ITEM_LOG
+Fim de Linha 285. Tabela já existe no banco ->PMT_MULTIPLAS_IE.PRMT0001
+Fim de Linha 293. Tabela Já existe --> EMP_MULTIPLAS_IE already ex
+Fim de Linha 297. Tabela Já existe --> PEDIDO_IE already ex
+Script com 60 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->USP_DESABILITA_COPIAR_PEDIDO.USUARIO_PARAMETRO
+Fim de Linha 10. Tabela já existe no banco ->EMI_IE.ALMOX0000
+Fim de Linha 11. Tabela já existe no banco ->EMI_IE.OCP0000
+Fim de Linha 12. Tabela já existe no banco ->EMI_IE.ENF0001
+Fim de Linha 13. Tabela já existe no banco ->EMI_IE.PED0000
+Script com 5 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->TEM_CARGA.MODL_PROCESSOS
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch05.sql
+Fim de Linha 8. Tabela já existe no banco ->APF_REBARBA.APONTAMENTO_FAB
+Fim de Linha 9. Tabela já existe no banco ->FAB_REBARBA.FABRICACAO
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch05.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562.sql
+Fim de Linha 8. Tabela já existe no banco ->OPV_INDUST_POR_KIT.OPV0000
+Fim de Linha 13. Tabela Já existe --> PED_IND_KIT already ex
+Fim de Linha 14. ERROR: unsuccessful metadata update
+Index IDX_PED_IND_KIT already exists
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->EMI_CODIGO.OCP0000
+Fim de Linha 9. Tabela já existe no banco ->EMI_CODIGO.ALMOX0000
+Fim de Linha 10. Tabela já existe no banco ->EMI_CODIGO.ENF0001
+Fim de Linha 11. Tabela já existe no banco ->EMI_CODIGO.PED0000
+Fim de Linha 12. Tabela já existe no banco ->EMI_CODIGO.PEDIDO_IE
+Script com 5 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_LOTE_RASTREABILIDADE.PRMT0001
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562_patch05.sql
+Fim de Linha 8. Tabela já existe no banco ->IOP_TEMCARGA.ITEM_ORDEMPRODUCAO
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.562_patch05.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.563_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->AMX_NUM_ATO_DECLARATORIO.ALMOX0000
+Fim de Linha 9. Tabela já existe no banco ->AMX_VALIDADE_ATO_DECLARATORIO.ALMOX0000
+Fim de Linha 10. Tabela já existe no banco ->OPE_VENDA_SAIDA_ARMAZEM.OPE0000
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.563_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.563_patch04.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_REVISAO_RELATORIO.PRMT0001
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.563_patch04.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Fim de Linha 8. Tabela já existe no banco ->EQP_CODIGO.OPERACOES
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_HABILITAR_DIFAL.PRMT0001
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->EMP_USAR_MAIL_ACBR.EMP0000
+Fim de Linha 12. Tabela já existe no banco ->USP_VISUALIZA_PEDIDOS_CRM.USUARIO_PARAMETRO
+Fim de Linha 14. Tabela já existe no banco ->FAB_DIAS.FABRICACAO
+Fim de Linha 16. Tabela já existe no banco ->PMT_HABILITA_MEDIDAPRD_DESC1.PRMT0001
+Fim de Linha 17. Tabela já existe no banco ->PMT_HABILITA_MEDIDAPRD_DESC2.PRMT0001
+Fim de Linha 18. Tabela já existe no banco ->PMT_HABILITA_MEDIDAPRD_DESC3.PRMT0001
+Fim de Linha 19. Tabela já existe no banco ->PMT_HABILITA_MEDIDAPRD_DESC4.PRMT0001
+Fim de Linha 25. Generator Já existe --> GEN_HIST_OPER_PROC_FAB already exists
+Fim de Linha 32. Tabela Já existe --> HIST_OPER_PROC_FAB already ex
+Fim de Linha 33. ERROR: unsuccessful metadata update
+Index IDX_HIST_OPER_PROC_FAB already exists
+Script com 10 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.565.sql
+Fim de Linha 8. Tabela já existe no banco ->EMP_UTILIZAR_API_ACBR.EMP0000
+Fim de Linha 9. Tabela já existe no banco ->EMP_USUARIO_API_ACBR.EMP0000
+Fim de Linha 10. Tabela já existe no banco ->EMP_TOKEN_API_ACBR.EMP0000
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.565.sql
+Sumário: 
+Host:172.29.171.188
+Database :/servidor/Jobdados/lfepis/LF1409.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.559_patch02.sql
+ok - Adjutor3.0.9.559_patch03.sql
+ok - Adjutor3.0.9.560.sql
+ok - Adjutor3.0.9.560_patch01.sql
+ok - Adjutor3.0.9.560_patch02.sql
+ok - Adjutor3.0.9.560_patch03.sql
+ok - Adjutor3.0.9.560_patch04.sql
+ok - Adjutor3.0.9.560_patch05.sql
+ok - Adjutor3.0.9.561.sql
+ok - Adjutor3.0.9.561_patch01.sql
+ok - Adjutor3.0.9.561_patch02.sql
+ok - Adjutor3.0.9.561_patch03.sql
+ok - Adjutor3.0.9.561_patch04.sql
+ok - Adjutor3.0.9.561_patch05.sql
+ok - Adjutor3.0.9.562.sql
+ok - Adjutor3.0.9.562_patch01.sql
+ok - Adjutor3.0.9.562_patch02.sql
+ok - Adjutor3.0.9.562_patch03.sql
+ok - Adjutor3.0.9.562_patch04.sql
+ok - Adjutor3.0.9.562_patch05.sql
+ok - Adjutor3.0.9.562_patch06.sql
+ok - Adjutor3.0.9.563.sql
+ok - Adjutor3.0.9.563_patch01.sql
+ok - Adjutor3.0.9.563_patch02.sql
+ok - Adjutor3.0.9.563_patch03.sql
+ok - Adjutor3.0.9.563_patch04.sql
+ok - Adjutor3.0.9.564.sql
+ok - Adjutor3.0.9.564_patch01.sql
+ok - Adjutor3.0.9.564_patch02.sql
+ok - Adjutor3.0.9.565.sql
+Arquivo de log em : C:\Developer\adjutor2\dados\logscript
+\_01022022_0856.log
+ok - Adjutor3.0.9.560.sql
+ok - Adjutor3.0.9.560_patch01.sql
+ok - Adjutor3.0.9.560_patch02.sql
+ok - Adjutor3.0.9.560_patch03.sql
+ok - Adjutor3.0.9.560_patch04.sql
+ok - Adjutor3.0.9.560_patch05.sql
+ok - Adjutor3.0.9.561.sql
+ok - Adjutor3.0.9.561_patch01.sql
+ok - Adjutor3.0.9.561_patch02.sql
+ok - Adjutor3.0.9.561_patch03.sql
+ok - Adjutor3.0.9.561_patch04.sql
+ok - Adjutor3.0.9.561_patch05.sql
+ok - Adjutor3.0.9.562.sql
+ok - Adjutor3.0.9.562_patch01.sql
+ok - Adjutor3.0.9.562_patch02.sql
+ok - Adjutor3.0.9.562_patch03.sql
+ok - Adjutor3.0.9.562_patch04.sql
+ok - Adjutor3.0.9.562_patch05.sql
+ok - Adjutor3.0.9.562_patch06.sql
+ok - Adjutor3.0.9.563.sql
+ok - Adjutor3.0.9.563_patch01.sql
+ok - Adjutor3.0.9.563_patch02.sql
+ok - Adjutor3.0.9.563_patch03.sql
+ok - Adjutor3.0.9.563_patch04.sql
+ok - Adjutor3.0.9.564.sql
+ok - Adjutor3.0.9.564_patch01.sql
+ok - Adjutor3.0.9.564_patch02.sql
+ok - Adjutor3.0.9.565.sql

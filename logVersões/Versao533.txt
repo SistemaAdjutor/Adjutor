@@ -1,0 +1,69 @@
+﻿Atualizado em 01/07/2019
+Inicio da versão: 24/05/2019 
+
+  patch 8 
+    erro ao entrar com item do pedido de compra quando produto é exclusivo http://192.168.0.250:8080/agile/tarefa/show/101584
+	
+  patch 7 
+    Erro na tela de pedido de compra :   http://192.168.0.250:8080/agile/tarefa/show/101461
+	erro no cancelar
+	erro quando tem mais de um codigo do fornecedor
+	erro ao incluir novo item
+    	não faz o balanço corretamente ao importar excel para produto, só fazia inclusão
+	controle para bloquear exportação de produto , mesmo relatório
+	
+  patch 6 
+     problema de consulta da nfe quando esta autorizado e manda consulta vindo cancelado http://192.168.0.250:8080/agile/tarefa/show/101219
+     Ao dar entrada de nota do tipo remessa não está registrando no kardex a movimentação http://192.168.0.250:8080/agile/tarefa/show/101416
+	 Criar novo modelo de Etiqueta de produtos e mostrar estoque na tela http://192.168.0.250:8080/agile/tarefa/show/100757
+	 função exportar produtos no mesmo layout da Importação http://192.168.0.250:8080/agile/tarefa/show/100946
+	 
+  patch 5
+    O sistema não esta alterando o status para NFE que cancelada fora do prazo http://192.168.0.250:8080/agile/tarefa/show/101219
+	"Pesquisar" na tela de faturamento nao funciona http://192.168.0.250:8080/agile/tarefa/show/100800
+	Sistema pulando numero de fatura http://192.168.0.250:8080/agile/tarefa/show/100780
+  patch 4
+    Entrada de nota não mostrar fornecedor Inativo http://192.168.0.250:8080/agile/tarefa/show/99666
+	cep na exportação de cliente 
+	Importação de planilha do Excel para os cadastros - reatualização http://192.168.0.250:8080/agile/tarefa/show/101014
+	Retirar a função Manifestação de destinatário do sistema http://192.168.0.250:8080/agile/tarefa/show/101093
+	atualizar produtos, fornecedores e clientes   http://192.168.0.250:8080/agile/sprint/show/99177
+	
+  patch 3
+    
+    atualizar cest 
+    Adicionar NCM no primeiro modelo de impressão de Orçamento  http://192.168.0.250:8080/agile/tarefa/show/100830
+    Pedido de compra com opção para imprimir Código e descrição do fornecedor http://192.168.0.250:8080/agile/tarefa/show/100818
+    exportação de dados por xml com erro ao importar segunda empresa http://192.168.0.250:8080/agile/tarefa/show/100769
+	Adicionar novo filtro ao verificar relatório de contas faturadas http://192.168.0.250:8080/agile/tarefa/show/100754
+	quando tiver lote do item do pedido e o lote estiver com data de validade vazia nao imprimir http://192.168.0.250:8080/agile/tarefa/show/100786
+	Preço de oferta no pedido de venda não esta funcionando http://192.168.0.250:8080/agile/tarefa/show/100408
+	erro na criação de lote pela tela de entrada e saída de manual do estoque http://192.168.0.250:8080/agile/tarefa/show/98522
+	Fluxo de caixa parou de mostrar saldo Acumulado http://192.168.0.250:8080/agile/tarefa/show/100931
+	
+  patch 2
+    
+    conversao de quantidade na entrada de nota http://192.168.0.250:8080/agile/tarefa/show/100802
+    copia pedido de venda para orçamento faz saida no kardex
+ 
+  patch 1
+    estorno da copel 
+    ajuste da baixa da copel procurando pelo codigo do cliente pegando o vencimento mais antigo	
+	
+  principal
+    exportar xml nfce http://192.168.0.250:8080/agile/tarefa/show/100429 http://192.168.0.250:8080/agile/tarefa/show/100411
+    Erro ao selecionar o produtor no item do pedido através do enter http://192.168.0.250:8080/agile/tarefa/show/97997
+    mostra motivo de cancela quando não tem registro na pesquisa
+    relatório danfe ficou tortinho nas sessão duplicatas http://192.168.0.250:8080/agile/tarefa/show/99258  
+    Codigo original duplicando produtos na pesquisa do item do pedido http://192.168.0.250:8080/agile/tarefa/show/99817
+    erro emissão nfse de SP http://192.168.0.250:8080/agile/tarefa/show/99759
+    Erro em alguns relatórios do BI http://192.168.0.250:8080/agile/tarefa/show/100397
+    novo grid para filtra e agrupar em BI
+    Opção default do primeiro relatório receber provocando impressao incorreta padrão por vencimento http://192.168.0.250:8080/agile/tarefa/show/100489
+    Baixa de arquivos da Copel - mudar regra para Baixa http://192.168.0.250:8080/agile/tarefa/show/98833
+    CRM Agenda e CRM Renovação bloqueando vendedor http://192.168.0.250:8080/agile/tarefa/show/100446
+    Autorização de download para contador na NFe servidor Bahia  http://192.168.0.250:8080/agile/tarefa/show/100416
+    Ajuste de leiaute da nfe http://192.168.0.250:8080/agile/tarefa/show/100360
+    Nas NFSe de Araucária vários tipo da natureza da operação http://192.168.0.250:8080/agile/tarefa/show/100368
+    Não identificado o arquivo como da empresa logada, o CNPJ diferente do arquivo diferente da empresa
+    Verificar o problema de "Number is out of range em venda pendente http://192.168.0.250:8080/agile/tarefa/show/99940

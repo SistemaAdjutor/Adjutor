@@ -1,0 +1,24 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Fim de Linha 8. Tabela já existe no banco ->EQP_CODIGO.OPERACOES
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->EMP_USAR_MAIL_ACBR.EMP0000
+Fim de Linha 14. Tabela já existe no banco ->FAB_DIAS.FABRICACAO
+Fim de Linha 16. Tabela já existe no banco ->PMT_HABILITA_MEDIDAPRD_DESC1.PRMT0001
+Fim de Linha 17. Tabela já existe no banco ->PMT_HABILITA_MEDIDAPRD_DESC2.PRMT0001
+Fim de Linha 18. Tabela já existe no banco ->PMT_HABILITA_MEDIDAPRD_DESC3.PRMT0001
+Fim de Linha 19. Tabela já existe no banco ->PMT_HABILITA_MEDIDAPRD_DESC4.PRMT0001
+Fim de Linha 25. Generator Já existe --> GEN_HIST_OPER_PROC_FAB already exists
+Fim de Linha 32. Tabela Já existe --> HIST_OPER_PROC_FAB already ex
+Fim de Linha 33. ERROR: unsuccessful metadata update
+Index IDX_HIST_OPER_PROC_FAB already exists
+Script com 9 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564_patch02.sql
+Sumário: 
+Host:192.168.0.16
+Database :/servidor/Jobdados/fxmanaus/fxmanaus2810.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.564.sql
+ok - Adjutor3.0.9.564_patch01.sql
+ok - Adjutor3.0.9.564_patch02.sql

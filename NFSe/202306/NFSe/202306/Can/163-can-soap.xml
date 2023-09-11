@@ -1,0 +1,6 @@
+<?xml version='1.0' encoding='utf-8'?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><ns:esCancelarNfseResponse xmlns:ns="http://services.enfsws.es"><ns:return>&lt;?xml version="1.0" encoding="UTF-8"?>&#xd;
+&lt;es:esCancelarNfseResposta xmlns:es="http://www.equiplano.com.br/esnfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.equiplano.com.br/esnfs esCancelarNfseResposta_v01.xsd">&#xd;
+  &lt;sucesso>true&lt;/sucesso>&#xd;
+  &lt;dtCancelamento>2023-06-20T14:14:14&lt;/dtCancelamento>&#xd;
+&lt;/es:esCancelarNfseResposta>&#xd;
+</ns:return></ns:esCancelarNfseResponse></soapenv:Body></soapenv:Envelope>

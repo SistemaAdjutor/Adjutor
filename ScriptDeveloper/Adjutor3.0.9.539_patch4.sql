@@ -1,0 +1,267 @@
+UPDATE  VERSAOSISTEMA 
+SET VERSAOSISTEMA.SCRIPTADJUTOR = '3.0.9.539 patch 4',
+       VERSAOSISTEMA.DATA   = '18.12.2019',
+	    VERSAO = '3.0.9.539'
+ where VERSAOSISTEMA.CODIGO = 1;
+
+commit work;
+ 
+
+ALTER TABLE NFSERVICO ADD NFS_REVISADO VARCHAR(1);
+COMMENT ON COLUMN NFSERVICO.NFS_REVISADO IS 'INDICA SE O RPS FOI REVISADO';
+ALTER TABLE NFSERVICO ADD USU_CODIGO INTEGER;
+COMMENT ON COLUMN NFSERVICO.USU_CODIGO IS 'USUARIO QUE FEZ A REVISAO';
+
+
+UPDATE NFSERVICO
+SET NFS_REVISADO = 'S'
+WHERE NFSE_NUM_DANFSE IS NOT NULL;
+
+COMMIT WORK;
+
+
+UPDATE NFSERVICO
+SET NFS_REVISADO = 'N'
+WHERE NFSE_NUM_DANFSE IS NULL;
+
+COMMIT WORK;
+
+ALTER TABLE PRD0000 ADD CNAE_CODIGO VARCHAR(10);
+COMMENT ON COLUMN PRD0000.CNAE_CODIGO IS 'CNAE PADRAO DO SERVICO';
+ALTER TABLE PRD0000 ADD SRV_CODIGO VARCHAR(5);
+COMMENT ON COLUMN PRD0000.SRV_CODIGO IS 'ITEM DE SERVICO PADRAO DO PRODUTO';
+
+COMMENT ON COLUMN EQUIPAMENTO.PCX_CODIGO IS ' CHAVE DO CENTRO DE CUSTO PCX0000';
+
+ALTER TABLE EQUIPAMENTO ADD SET_CODIGO INTEGER;
+
+COMMENT ON COLUMN EQUIPAMENTO.SET_CODIGO IS 'CHAVE DO SETOR (SETOR)';
+
+ALTER TABLE EQUIPAMENTO
+ADD CONSTRAINT FK_EQUIPAMENTO_SETOR
+FOREIGN KEY (SET_CODIGO)
+REFERENCES SETOR(SET_CODIGO)
+ON DELETE SET NULL
+ON UPDATE CASCADE;
+
+UPDATE PRD0000
+SET PRD_UND = trim(PRD_UND);
+
+commit work;
+
+SET TERM ^ ;
+
+CREATE OR ALTER PROCEDURE SUMARIZACAO_CLIENTE (EMP_CODIGO VARCHAR(3), DATA_INICIO DATE, DATA_FIM DATE, REGIME INTEGER)
+RETURNS (
+	CODIGO VARCHAR(18),
+	VALOR DECIMAL(18,4),
+	CLIENTE VARCHAR(100),
+	CONTA INTEGER,
+	RANQ INTEGER,
+	ACUMULADO DECIMAL(18,4),
+	SHAREMARKETINDIVIDUAL DECIMAL(18,4),
+	PERC_ACUMULADO DECIMAL(18,4),
+	MESESCICLO INTEGER,
+	INDICEINADIMPLENCIA DECIMAL(18,4),
+	VALORPEND DECIMAL(18,4)
+)
+AS
+declare variable N integer;
+declare variable VALORTOTAL decimal(18,4);
+begin
+  N = 0;
+  ACUMULADO = 0;
+  RANQ = 0;
+  PERC_ACUMULADO = 0;
+  if (:EMP_CODIGO = '') then
+    EMP_CODIGO = '999';/* MULTIEMPRESA */
+
+  if (:REGIME = 0) then
+  /* competencia - EMISSĂO*/
+  begin
+    select sum(NF_TOT_NOTA-COALESCE(NF_VL_DESCTO_FAT,0)) as VALOR
+    from NF0001 NF
+    join CLI0000 T2 on (T2.CLI_CODIGO = NF.CLI_CODIGO)
+    where NF_EMISSAO between :DATA_INICIO and :DATA_FIM and
+          NF_TOT_NOTA > 0 and
+          NF_CANCELADA = 'N' and
+          NF_VENDA_FATURADA = 'S' and
+          (NF.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999')
+    into :VALORTOTAL;
+
+    for select NF.CLI_CODIGO as CODIGO, sum(NF_TOT_NOTA-COALESCE(NF_VL_DESCTO_FAT,0)) as VALOR, count(*) as CONTA, CLI_RAZAO as CLIENTE,
+               datediff(month, min(NF_EMISSAO), max(NF_EMISSAO)) as MESESCICLO
+        from NF0001 NF
+        join CLI0000 T2 on (T2.CLI_CODIGO = NF.CLI_CODIGO)
+        where NF_EMISSAO between :DATA_INICIO and :DATA_FIM and
+              NF_TOT_NOTA > 0 and
+              NF_CANCELADA = 'N' and
+              NF_VENDA_FATURADA = 'S' and
+              (NF.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999')
+        group by NF.CLI_CODIGO, T2.CLI_RAZAO
+        order by 2 desc
+
+        into :CODIGO, :VALOR, :CONTA, :CLIENTE, :MESESCICLO
+    do
+    begin
+
+      select coalesce(sum(PC.FPC_VLPARC), 0) VALORPEND
+      from FAT0000 FT
+      inner join FAT_PC01 PC on (FT.FAT_CODIGO = PC.FAT_CODIGO)
+      where FPC_STATUS = 'Pendente' and
+            FPC_EXCLUSAO = 'N' and
+            FT.CLI_CODIGO = :CODIGO and
+            FPC_VENCTO between :DATA_INICIO and :DATA_FIM and
+            (FT.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999')
+      into :VALORPEND;
+
+      if (:VALOR > 0 and
+          :VALORPEND > 0) then
+        INDICEINADIMPLENCIA = VALORPEND / VALOR * 100;
+      else
+        INDICEINADIMPLENCIA = 0;
+
+      if (:MESESCICLO = 0) then
+        MESESCICLO = 1;
+      N = N + 1;
+      RANQ = N;
+      SHAREMARKETINDIVIDUAL = (VALOR / VALORTOTAL) * 100;
+      ACUMULADO = ACUMULADO + VALOR;
+      PERC_ACUMULADO = (ACUMULADO / VALORTOTAL) * 100;
+      suspend;
+    end
+
+  end
+  else
+  if (:REGIME = 1) then
+  /*caixa - VENCIMENTO*/
+  begin
+
+    select sum(
+           case
+             when (FPC_VLPAGO = 0) or (FPC_VLPAGO is null) then FPC_VLPARC
+             else FPC_VLPAGO
+           end) as VALOR
+    from FAT_PC01 FT
+    left join CLI0000 CL on (CL.CLI_CODIGO = FT.CLI_CODIGO)
+    where FPC_EXCLUSAO <> 'S' and
+          (FT.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999') and
+          FPC_VENCTO between :DATA_INICIO and :DATA_FIM
+    into :VALORTOTAL;
+
+    for select CL.CLI_CODIGO, sum(
+               case
+                 when (FT.FPC_VLPAGO = 0) or (FT.FPC_VLPAGO is null) then FT.FPC_VLPARC
+                 else FT.FPC_VLPAGO
+               end) as VALOR,
+               count(*) as CONTA, CLI_RAZAO as CLIENTE,
+               datediff(month, min(FPC_VENCTO), max(FPC_VENCTO)) as MESESCICLO
+        from FAT_PC01 FT
+        left join CLI0000 CL on (CL.CLI_CODIGO = FT.CLI_CODIGO)
+        where FPC_EXCLUSAO <> 'S' and
+              (FT.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999') and
+              FPC_VENCTO between :DATA_INICIO and :DATA_FIM
+        group by CL.CLI_CODIGO, CL.CLI_RAZAO
+        order by 2 desc
+        into :CODIGO, :VALOR, :CONTA, :CLIENTE, :MESESCICLO
+    do
+    begin
+      select coalesce(sum(PC.FPC_VLPARC), 0) VALORPEND
+      from FAT0000 FT
+      inner join FAT_PC01 PC on (FT.FAT_CODIGO = PC.FAT_CODIGO)
+      where FPC_STATUS = 'Pendente' and
+            FPC_EXCLUSAO = 'N' and
+            FT.CLI_CODIGO = :CODIGO and
+            FPC_VENCTO between :DATA_INICIO and :DATA_FIM and
+            (FT.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999')
+      into :VALORPEND;
+      if (:VALOR > 0 and
+          :VALORPEND > 0) then
+        INDICEINADIMPLENCIA = VALORPEND / VALOR * 100;
+      else
+        INDICEINADIMPLENCIA = 0;
+      N = N + 1;
+      RANQ = N;
+      SHAREMARKETINDIVIDUAL = (VALOR / VALORTOTAL) * 100;
+      ACUMULADO = ACUMULADO + VALOR;
+      PERC_ACUMULADO = (ACUMULADO / VALORTOTAL) * 100;
+      suspend;
+    end
+  end /* fim if caixa */
+  else
+  if (:REGIME = 2) then
+  /*REALIZADO - PAGAMENTO*/
+  begin
+
+    select sum(FPC_VLPAGO) VALOR
+    from FAT_PC01 FT
+    left join CLI0000 CL on (CL.CLI_CODIGO = FT.CLI_CODIGO)
+    where FPC_EXCLUSAO <> 'S' and
+          (FT.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999') and
+          FPC_PAGTO between :DATA_INICIO and :DATA_FIM
+    into :VALORTOTAL;
+
+    for select CL.CLI_CODIGO, sum(coalesce(FT.FPC_VLPAGO, FT.FPC_VLPARC)) VALOR, count(*) as CONTA,
+               CLI_RAZAO as CLIENTE, datediff(month, min(FPC_PAGTO), max(FPC_PAGTO)) as MESESCICLO
+        from FAT_PC01 FT
+        left join CLI0000 CL on (CL.CLI_CODIGO = FT.CLI_CODIGO)
+        where FPC_EXCLUSAO <> 'S' and
+              (FT.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999') and
+              FPC_PAGTO between :DATA_INICIO and :DATA_FIM
+        group by CL.CLI_CODIGO, CL.CLI_RAZAO
+        order by 2 desc
+        into :CODIGO, :VALOR, :CONTA, :CLIENTE, :MESESCICLO
+    do
+    begin
+      select coalesce(sum(PC.FPC_VLPARC), 0) VALORPEND
+      from FAT0000 FT
+      inner join FAT_PC01 PC on (FT.FAT_CODIGO = PC.FAT_CODIGO)
+      where FPC_STATUS = 'Pendente' and
+            FPC_EXCLUSAO = 'N' and
+            FT.CLI_CODIGO = :CODIGO and
+            FPC_VENCTO between :DATA_INICIO and :DATA_FIM and
+            (FT.EMP_CODIGO = :EMP_CODIGO or :EMP_CODIGO = '999')
+      into :VALORPEND;
+      if (:VALOR > 0 and
+          :VALORPEND > 0) then
+        INDICEINADIMPLENCIA = VALORPEND / VALOR * 100;
+      else
+        INDICEINADIMPLENCIA = 0;
+      N = N + 1;
+      RANQ = N;
+      SHAREMARKETINDIVIDUAL = (VALOR / VALORTOTAL) * 100;
+      ACUMULADO = ACUMULADO + VALOR;
+      PERC_ACUMULADO = (ACUMULADO / VALORTOTAL) * 100;
+      suspend;
+    end
+  end
+end
+^
+
+SET TERM ; ^
+
+
+ALTER TABLE CLI0000 ALTER COLUMN CLI_RAZAO TYPE VARCHAR(70);
+ALTER TABLE CLI0000 ALTER COLUMN CLI_ENDERE TYPE VARCHAR(60);
+
+ALTER TABLE EMP0000 ALTER COLUMN EMP_RAZAO TYPE VARCHAR(70);
+ALTER TABLE EMP0000 ALTER COLUMN EMP_ENDERE TYPE VARCHAR(60);
+
+ALTER TABLE FOR0000 ALTER COLUMN FOR_RAZAO TYPE VARCHAR(70);
+ALTER TABLE FOR0000 ALTER COLUMN FOR_ENDERE TYPE VARCHAR(60);
+
+ALTER TABLE FOR0000_ALTER ALTER COLUMN FORA_VALOR_ANTERIOR TYPE varchar(120);
+ALTER TABLE FOR0000_ALTER ALTER COLUMN FORA_VALOR_NOVO TYPE varchar(120);
+
+ALTER TABLE CLI0000_ALTER ALTER COLUMN CLIA_VALOR_ANTERIOR TYPE varchar(120);
+ALTER TABLE CLI0000_ALTER ALTER COLUMN CLIA_VALOR_NOVO TYPE varchar(120);
+
+
+ALTER TABLE SHAREDB ADD ICMS VARCHAR (1);
+
+UPDATE SHAREDB
+SET ICMS = 'C'
+;
+
+COMMIT WORK;
+

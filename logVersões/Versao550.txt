@@ -1,0 +1,26 @@
+Atualizado em 24/11/2020
+Inicio da versão: 10/11/2020
+
+patch 2 : inquibra, flexsul, chemvet, empac , bsc
+  produto sem pedido com densidade adj 315 [inquibra]
+  correção da mercos adj 313 [flexsul]
+  Alterar tributação no pis/cofins 311 
+  Divergência de calculo de ST na tela de pedido e faturamento adj 308
+  caracteristica do produto 294 [ chemvet]
+  Relatório do contas a receber - Recebimentos 309 [ EMPAC]
+  Tela de vinculação de pedidos de compra replicando itens ADJ 298 [bsc]
+  Valor total da fatura esta divergente. adj 296 [CHEMVET]
+  Ajustar impressão de imagens big ADJ 312 [drimec]
+  
+patch 1 :
+  Ajustar campo do arquivo de remessa - Banco do brasil adj 302 [BSC]
+  Pedido interno aparece na consulta de pedidos. ADJ 297 [chemvet]
+  Implementação dos relatórios de produção. ADJ 305 [CHEMVET]
+  
+Tarefas principais : LION, EMBRATERM, CHEMVET
+  Impressão das notas saindo com a mensagem de homologação adj 303
+  Excluir valor das notas canceladas das vendas ADJ 299 [LION]
+  Tela de contas a receber mostrando faturas duplicadas ADJ 300
+  Erro na consulta de código original adj 272 [LION]
+  Erro na impressão do relatório orçamento de processo de produção ADJ 304 [EMBRATERM]
+  Alterar descrição 295 [CHEMVET]

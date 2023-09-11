@@ -1,0 +1,46 @@
+﻿Atualizado em 29/09/2020
+Inicio da versão: 09/09/2020
+
+patch 3 : ITAGRIL, LION , PARSEALS
+   Pedido esta duplicando no PCP ADJ 248 [ITAGRIL]
+   Calculo do difal na tela de pedidos não esta considerando o frete , faltou o rateio ADJ240[ LION]
+   Ajustar relatório de fechamento de caixa adj 219
+   Travar alteração do vendedor no pedido adj 221 [PARSEALSS]
+patch 2 : Vision, CHEMVET
+   erro de protocolona emissão da nfse de curitiba ADJ 228 [vision]
+   lista de clientes com cidade adj 227 [CHEMVET]
+   Cadastro de fornecedores ADJ 226 [CHEMVET]
+   Complemento no cadastro de produto. ADJ 225 [CHEMVET]
+   Coluna de bairro na consulta de pedidos. adj 223 [ [chemvet]
+   Relatório de expedição adj 222[chemvet]
+   Melhorias no relatório por cfop 220 
+   Bloquear botão na nota de entrada(edição do item) adj 218 
+   criar parametro para definir qual o modelo da Ordem de Produção adj 212
+   Relatório de vendas por linha do produto trazendo muti-empresa adj 159
+   Erro sistema permite excluir Tipo, grupo e linha. adj 143
+   
+patch 1 : CHEMVET, quimica rocha, Aleplast, CRYSTAL CLEAN, BRAGIPS
+  Relatório de produção chemvet adj 214 [CHEMVET]
+  Relatório de ENVASE da CHEMVET ADJ 213 [CHEMVET]
+  Modificações e ajustes na tela de apontamentos de produção ADJ 203
+  Ajustar impressão da ordem de produção/tela de itens da ordem 193 [ CHEMVET]
+  incluir mais dois campos na tela de concluir OP. adj 184 [quimica rocha]
+  Conclusão da ope mostrando numero com expoente adj 216 [quimica rocha]
+  Erro na ficha tecnica adj 215 [quimica rocha]
+  Sistema deixa excluir produtos com entrada de nota adj 211 [ALEPLAST]
+  Seleção dos lotes mostrando lotes zerados adj 209 [CRYSTAL CLEAN]
+  Travar botão confirmar e abandonar ADJ 208 [aleplast]
+  novo modelo Ordem de produção com Operações adj 209
+  Gravar junto ao motivo de cancelamento o usuário responsável adj 148 [BRAGIPS]
+  impressão dos arquivos de retorno não mostra o cliente adj 134  [CHEMVET]
+  
+Tarefas principais : quimica rocha, LION, embraterm
+  Problemas no Gerenciamento do PCP  ADJT-198 [quimica rocha]
+  Tela de gerenciamento de PCP ADJT-206 [quimica rocha]
+  Total das operações fiscais errado. adjt-204 [LION]
+  DATA AJUSTADA - ADJT- 196 [ QUIMICA ROCHA]
+  Listagem das ordem de produção  ADJT-201 
+  Diminuir a fonte do relatório. adj 191 [ quimica rocha]
+  Erro na impressão do relatório tabela de preço/Acordo comercial adjt-176 [embraterm]
+  Campos do novo produção deve seguir parâmetro MPR I adjt-123 
+

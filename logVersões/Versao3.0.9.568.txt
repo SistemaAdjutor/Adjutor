@@ -1,0 +1,58 @@
+﻿Atualizado em 24/05/2022
+Inicio da versão: 09/05/2022
+
+
+principal: FlexSul Calcados Ltda, Rotor, Mandibor, FX Film Manaus, Drimec, BSC Industrial Aços Ltda, Collect
+  707 - Baixa de estoque nos pedidos web [FlexSul Calcados Ltda]
+  774 - Verificar emissão da nota de serviço em campo do tenente [Rotor]
+  837 - Operações de apontamento [Mandibor]
+  876 - Nova etiqueta de finalização de processo - Validar com cliente a impressora e o tamanho [FX Film Manaus]
+  961 - Novo relatório por centro de custo [Novi]
+  973 - Incluir filtro por lote na pesquisa da produção [Novi]
+  977 - Ajuste do cálculo do DIFAL por estado [Drimec]
+  987 - Correções requisição de material [BSC Industrial Aços Ltda]
+  985 - Ajustar rotina de gravar filtros do cliente [Novi]
+  986 - Ajustar funcionalidades das teclas F (F2 F4 F5 F6 F8 F9 F11) [Novi]
+  987 - Ajuste do relatório de recebidos por banco [Collect]
+
+patch 1: Embraterm, BSC Industrial Aços Ltda, Delta Cabos, Collect, Normadin, Netocolor, Edge
+  568 - Mensagem de aviso não aparece [Novi]
+  576 - Ajustar função exportar xml no faturamento [Novi]
+  988 - Verificar entrada e saida manual do estoque [Embraterm]
+  989 - Ajuste tela de requisição de material [BSC Industrial Aços Ltda]
+  990 - Valor do ST muda ao editar observações do pedido [Delta Cabos]
+  992 - Entrada de nota fiscal dando erro/trazendo nota zerada e duplicada [Novi]
+  994 - Entrada de nota manual [Novi]
+  996 - Tipo de pagamento padrão para copel [Collect]
+  997 - Melhorias relatórios gerenciais [Normadin]
+  999 - Entrada de Industrialização ajustes necessários [Netocolor]
+  1001 - Melhoria para retorno de nota fiscal [Edge]
+  1002 - Novo campo de recebimentos no cadastro do cliente [Novi]
+  1005 - FCP não esta sendo calculado [Drimec]
+
+patch 2: Mandibor, Embraterm, LF EPIS
+  713  - Notas rejeitadas ficam com o status de transmitida [Novi]
+  773  - Data de entrega no relatório da OP. [Mandibor]
+  983  - Melhoria do processo de CRM Agenda [Novi]
+  1000 - Certificado digital - Configurações parâmetros [Novi]
+  1003 - Mensagem de erro no kardex [Embraterm]
+  1004 - Novo filtro na tela de Mais NF e 4.0 [Novi]
+  1006 - Mensagem padrão pelo cliente - Envio Email [Novi]
+  1008 - Alterar marcação Default na entrada de Nota [Novi]
+  1009 - Erro na tela de CRM Agenda [Novi]
+  1015 - Ajuste tela de pedidos - tela branca [LF EPIS]
+
+patch 3: Collect, Quântica, LFEpis
+  1010 - Ajuste arquivo de remessa CELESC [Collect]
+  1011 - Trocar sequenciador da NFC [Quântica]
+ *1018 - Adicionar coluna "Banco" na aba de Faturas do cadastro de clientes [Collect]
+  1027 - Tela branca ao entrar na tela de pedidos [LF Epis]
+
+patch 4: Delta Cabos, LForja, LF EPIS
+  1020 - Mudança no controle de lotes no pedido [Delta Cabos]
+  1021 - Colocar novo modelo de etiqueta na expedição [LForja]
+  1024 - Alterações ordem de produção modelo 11 - Industria plástica [Novi]
+  1031 - Erro nos pedidos - travando nos itens [LF EPIS]
+
+
+

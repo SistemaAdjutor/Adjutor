@@ -1,0 +1,126 @@
+﻿Atualizado em 30/01/2020
+Inicio da versão: 03/01/2020
+
+ patch 16: Forseti, Plasticos mundial, embraterm, BSC, Drimec, yvitur
+   Adicionar CNPJ na impressão de relatórios de ordem de compra http://192.168.0.250:8080/agile/tarefa/show/98378
+   Problema ao alterar cfop na tela de faturamento http://192.168.0.250:8080/agile/tarefa/show/98406
+   Colocar filtro de status no Gerencial/Demonstrativo de vendas por margem http://192.168.0.250:8080/agile/tarefa/show/97093
+   Na tela de gerenciamento filtro de data esta dando assim não permite gerar relatório de apontamentos http://192.168.0.250:8080/agile/tarefa/show/113258 
+   Definir origem do cliente http://192.168.0.250:8080/agile/tarefa/show/113391
+   Transferência de estoque entre empresas com erro http://192.168.0.250:8080/agile/tarefa/show/113460
+   criar um cadastro "Origem do Cliente" http://192.168.0.250:8080/agile/tarefa/show/113380
+   Unidade da nota minúsculo e unidade de compra maiúsculo http://192.168.0.250:8080/agile/tarefa/show/113646
+   Em eventos como carta de correção e cancelamento adicionar opção de enviar por e-mail http://192.168.0.250:8080/agile/tarefa/show/113709 
+   Erro ao faturar parcial quando possui regra fiscal  http://192.168.0.250:8080/agile/tarefa/show/113003
+   
+ patch 15: Bioar, lion , BSC, EMPAC, Aleplast
+   Pedidos de compra não aparecem para vinculação http://192.168.0.250:8080/agile/tarefa/show/112871
+   Criar novas unidades de medida no cadastro do produto http://192.168.0.250:8080/agile/tarefa/show/113314
+   Itens do pedido pegando código original sem o parâmetro habilitado http://192.168.0.250:8080/agile/tarefa/show/113322
+   Criar relatório das Notas fiscais de serviços emitidas no período http://192.168.0.250:8080/agile/tarefa/show/113191
+   Duplicidade nos Rps Gerados http://192.168.0.250:8080/agile/tarefa/show/113234
+   Erro ao selecionar CFOP no mais NF-e 4.0 http://192.168.0.250:8080/agile/tarefa/show/113311
+   Opção de consultar a aba de vendas por multi-empresa http://192.168.0.250:8080/agile/tarefa/show/108568
+   
+ patch 14 : Forseti , plasticos mundial, lion ,embraterm , yvitur
+  Status no pedido de compra http://192.168.0.250:8080/agile/tarefa/show/98217
+  Rotina de Transferencia - limpar tela apos execução http://192.168.0.250:8080/agile/tarefa/show/103486
+  novo modelo de etiqueta de expedição http://192.168.0.250:8080/agile/tarefa/show/112951
+  exportar acordo comercial para dpf http://192.168.0.250:8080/agile/tarefa/show/113347
+  Cadastro de cliente, situação de consumidor Final alterar textos http://192.168.0.250:8080/agile/tarefa/show/113287
+  inserir filtro de "Pendente de Transmissão" para NFSe http://192.168.0.250:8080/agile/tarefa/show/113270
+  
+ patch 13: Plasticos Mundial
+ 
+	Ao copiar o pedido da erro http://192.168.0.250:8080/agile/tarefa/show/111893
+	Erro ao vincular pedido de compra http://192.168.0.250:8080/agile/tarefa/show/112903
+
+ patch 12: RDR
+	No Cadastro de CFOP deve buscar CST Pis/Cofins por seleção http://192.168.0.250:8080/agile/tarefa/show/112849
+	Aba de vendas não está apresentando as vendas http://192.168.0.250:8080/agile/tarefa/show/112865
+
+ patch 11: embraterm
+   Novos ajustes que faltaram  "Produção: Relatório de apontamentos" http://192.168.0.250:8080/agile/tarefa/show/110110 
+   fluxo de Caixa valor Previsto a receber com valor incorreto quando foi liq. por desconto http://192.168.0.250:8080/agile/tarefa/show/112705
+
+ patch 10 : BSC, Embraterm, delta cabos, Vision, flexsul, chemvet
+   	Erro ao importar xml - Tela de manutenção do item http://192.168.0.250:8080/agile/tarefa/show/112337
+	Produção: Relatório de apontamentos http://192.168.0.250:8080/agile/tarefa/show/110110
+	vinculo para finalizar ordens após faturamento de pedido http://192.168.0.250:8080/agile/tarefa/show/112471
+	algumas vezes ao tentar imprimir relatório selecionando de ordem deveria imprimir de todas ordens que contem o pedido http://192.168.0.250:8080/agile/tarefa/show/112583
+	Criar hiperlink nos dashboards http://192.168.0.250:8080/agile/tarefa/show/112687
+	Sistema está se perdendo nos campos de entrega ao alterar os dias corridos http://192.168.0.250:8080/agile/tarefa/show/112876
+	Botão de resultado de inspeção dando erro http://192.168.0.250:8080/agile/tarefa/show/112798
+	Erro ao importar o xml - some a lista de nota na consulta http://192.168.0.250:8080/agile/tarefa/show/112922
+	ajuste no relatório Vision http://192.168.0.250:8080/agile/tarefa/show/112980
+	Pedidos Web não estão trazendo a comissão http://192.168.0.250:8080/agile/tarefa/show/112787
+	Sovis : Não gravando comissão dos pedidos pedido Web aprovados http://192.168.0.250:8080/agile/tarefa/show/108221
+	
+ patch 9 : yvitur,  lion equipamentos
+  Mensagem adicional de redução da base do icms com cálculo errado http://192.168.0.250:8080/agile/tarefa/show/111797
+  Alterar relatório agrupado pro cfop http://192.168.0.250:8080/agile/tarefa/show/111911
+  Erro ao colocar quantidade recebida ao baixar pedido de compra http://192.168.0.250:8080/agile/tarefa/show/111586
+  Ajustes no relatório http://192.168.0.250:8080/agile/tarefa/show/112713
+  
+ patch 8 : PLASTSOPRO
+   Não abrir mais o dashboard http://192.168.0.250:8080/agile/tarefa/show/112567
+   Erro ao tentar faturar nota com ipi http://192.168.0.250:8080/agile/tarefa/show/112621
+   
+ patch 7 : embraterm
+   Ordem de produçãonão está considerando compartilhamento http://192.168.0.250:8080/agile/tarefa/show/111942
+   criar opção para incluir ordem em carga já finalizada http://192.168.0.250:8080/agile/tarefa/show/111966
+   Ordem de serviço puxando fase fora do que deveria http://192.168.0.250:8080/agile/tarefa/show/112082
+   no pcp não grava data de inicio da carga http://192.168.0.250:8080/agile/tarefa/show/112581 
+   
+ patch 6 : vision, metalurgica água, embraterm, lion equipamentos, plasticos mundial, industrial mangueiras, eletrica burda
+  Ajuste no tamanho da fonte e letras Maiusculashttp://192.168.0.250:8080/agile/tarefa/show/111845
+  Tela de faturamento com itens duplicados http://192.168.0.250:8080/agile/tarefa/show/111986
+  Relatório de orçamento com contato errado http://192.168.0.250:8080/agile/tarefa/show/112067
+  Opção "Abrir chamado Novi" está travando os parâmetros quando ativo para 2 usuários http://192.168.0.250:8080/agile/tarefa/show/112116 
+  Adicionar nova unidade de medida http://192.168.0.250:8080/agile/tarefa/show/110701
+  Relatórios de fechamento de caixa considerando fatura excluida http://192.168.0.250:8080/agile/tarefa/show/110685
+  erro ao importar nota - fornecedor e numero da nfe igual http://192.168.0.250:8080/agile/tarefa/show/111793
+  
+ patch 5: embraterm
+  Pedido de tratamento termio com valores errados http://192.168.0.250:8080/agile/tarefa/show/112007
+  Carga cancelada e mostra mensagem de carga confirmadahttp://192.168.0.250:8080/agile/tarefa/show/111953
+  Carga sem nenhuma ordem http://192.168.0.250:8080/agile/tarefa/show/111938
+  
+ patch 4 : yvitur 
+  Empresa com CRT 2 - não destaca tags do grupo de icms para consumidor final 192.168.0.250:8080/agile/tarefa/show/111993
+  
+ patch 3 : embraterm, flexsul, lion, empac, forseti
+  No PCP Opção de incluir na carga não está funcionando e está permitindo editar dados direto na grid http://192.168.0.250:8080/agile/tarefa/show/111746 
+  Mensagem adicional de diferimento com cálculo errado http://192.168.0.250:8080/agile/tarefa/show/111764
+  erro nos relatórios de fornecedores http://192.168.0.250:8080/agile/tarefa/show/111882
+  Erro no filtro nf4 http://192.168.0.250:8080/agile/tarefa/show/111673
+  Erro de impressão da NFSE: erro aliquota http://192.168.0.250:8080/agile/tarefa/show/110639
+  Colocar na impressão da danfe de NFSE local de prestação de serviço. http://192.168.0.250:8080/agile/tarefa/show/110645
+  Ajustar relatório de inventario de estoque: mostrando os produtos sem saldo http://192.168.0.250:8080/agile/tarefa/show/101690
+  PCP: na inserção de carga atualmente mostra o peso unitário, alterar para que seja o total http://192.168.0.250:8080/agile/tarefa/show/111652 
+  
+ PATCH 2 : FLEXSUL, PLASTICOS
+  Codigo de pedido da MERCOS http://192.168.0.250:8080/agile/tarefa/show/111246 
+  FLEXSUL  DASHBOARD http://192.168.0.250:8080/agile/tarefa/show/111594
+  PLASTICOS MUNDIAL  DASHBOARD http://192.168.0.250:8080/agile/tarefa/show/111601
+  ao migrar por xml o pedido fica com valor faturado 0 http://192.168.0.250:8080/agile/tarefa/show/111849
+  
+ patch 1 : yvitur , collect , embraterm
+   Ajustar mensagem referente a redução da base de calculo http://192.168.0.250:8080/agile/tarefa/show/111545 
+   Dashboard trazendo valores incorretos para clientes de doação http://192.168.0.250:8080/agile/tarefa/show/111450 
+   Tabela de preços não está fazendo o compartilhamento multiempresa http://192.168.0.250:8080/agile/tarefa/show/111509 
+   Produção: Numero do acordo comercial não aparece no pedido de tratamento http://192.168.0.250:8080/agile/tarefa/show/111512
+   Produção: apontamentos está listando nomes errado de usuário assim impedindo o apontamento http://192.168.0.250:8080/agile/tarefa/show/111644 
+   Produção: No orçamento Ajuste ao selecionar cliente http://192.168.0.250:8080/agile/tarefa/show/111089 
+   Pegar informações de dados adicionais da segunda cfop da regra fiscal http://192.168.0.250:8080/agile/tarefa/show/111531
+   
+ Tarefas do versão principal : YVITUR
+  dashboard http://192.168.0.250:8080/agile/tarefa/show/109150
+  Fechamento de valores : Dash, Demonstrativos, BI e Demonstrativo de Vendas por margem http://192.168.0.250:8080/agile/tarefa/show/110726 
+  Quantidade faturado no relatorio esta suprimindo primeiro digito http://192.168.0.250:8080/agile/tarefa/show/110991
+  Mudar CST de IPI e PIS e Cofins conforme a CFOP http://192.168.0.250:8080/agile/tarefa/show/100952
+  Sistema não puxa cst pis/cofins dos cadastro de produto http://192.168.0.250:8080/agile/tarefa/show/111274
+  Ajustar mensagem de redução da base de cálculo http://192.168.0.250:8080/agile/tarefa/show/111277
+  alterar frase (LABEL) redução http://192.168.0.250:8080/agile/tarefa/show/111280
+  CRT 2 - Deve destacar icms na nota http://192.168.0.250:8080/agile/tarefa/show/111283
+  Dashboard não difere o ano http://192.168.0.250:8080/agile/tarefa/show/111447

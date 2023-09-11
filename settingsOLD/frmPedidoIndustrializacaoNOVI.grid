@@ -1,0 +1,146 @@
+﻿[Main]
+Version=2
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1: TcxGridDBTableView]
+=
+Footer="False"
+GroupByBox="False"
+GroupFooters=0
+NewItemRow="False"
+FilterActive="True"
+Filter="Hex:FEFFFFFF0000000000"
+FilterMRUItem0="Hex:FEFFFFFF000100000000445855464D540606000000320032003700310039003200010000001C000000630078006700720064003100440042005400610062006C006500560069006500770031005000450044005F0043004F004400490047004F001206000000320032003700310039003200"
+Version=1
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1OPR_CODIGO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=56
+AlignmentHorz=0
+Index=0
+Visible="False"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1PED_CODIGO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=46
+AlignmentHorz=0
+Index=1
+Visible="True"
+SortOrder="soAscending"
+SortIndex=0
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1CLI_CODIGO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=55
+AlignmentHorz=0
+Index=2
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1CLI_RAZAO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=227
+AlignmentHorz=0
+Index=3
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1OPR_EMISSAO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=69
+AlignmentHorz=0
+Index=4
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1OPR_DTENTREGA: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=99
+AlignmentHorz=0
+Index=5
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1OPR_CONCLUSAO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=87
+AlignmentHorz=0
+Index=6
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1OPR_STATUS: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=71
+AlignmentHorz=0
+Index=7
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1PED_SITUACAO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=86
+AlignmentHorz=0
+Index=8
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1PED_VLTOTAL_BRUTO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=118
+AlignmentHorz=1
+Index=9
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1EMP_CODIGO: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=22
+AlignmentHorz=0
+Index=10
+Visible="False"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+
+[frmPedidoIndustrializacao.cxgrd1DBTableView1/cxgrd1DBTableView1OPR_DATAFATURA: TcxGridDBColumn]
+=
+GroupIndex=-1
+Width=208
+AlignmentHorz=0
+Index=11
+Visible="True"
+SortOrder="soNone"
+SortIndex=-1
+WasVisibleBeforeGrouping="False"
+

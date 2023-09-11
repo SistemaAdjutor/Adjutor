@@ -1,0 +1,84 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.565_patch05.sql
+Fim de Linha 8. Tabela Já existe --> USUARIO_ALMOXARIFADO already ex
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.565_patch05.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566.sql
+Fim de Linha 8. Tabela já existe no banco ->OPV_BAIXAR_ESTOQUE_PELO_FAT.OPV0000
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch01.sql
+Fim de Linha 11. Tabela Já existe --> USUARIO_ALMOXARIFADO already ex
+Fim de Linha 13. Tabela já existe no banco ->OPV_BAIXAR_ESTOQUE_PELO_FAT.OPV0000
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch03.sql
+Fim de Linha 12. Tabela já existe no banco ->EMP_TIPO_CERTIFICADO_NFSE.EMP0000
+Fim de Linha 14. Tabela já existe no banco ->PMT_METODO_CALCULO_PRECO.PRMT0001
+Fim de Linha 18. Tabela já existe no banco ->PRD_ESTOQUE_SEGURANCA_REG.PRD0000
+Fim de Linha 19. Tabela já existe no banco ->PRD_LOTE_COMPRA_REG.PRD0000
+Fim de Linha 20. Tabela já existe no banco ->PRD_OBSERVACAO_REG.PRD0000
+Fim de Linha 21. Tabela já existe no banco ->PRD_DATA_REG.PRD0000
+Fim de Linha 22. Tabela já existe no banco ->PRD_USU_CODIGO_REG.PRD0000
+Fim de Linha 23. Tabela já existe no banco ->PRD_ALMOX_UNICO.PRD0000
+Fim de Linha 24. Tabela já existe no banco ->USP_PROD_SEM_ALMOX.USUARIO_PARAMETRO
+Script com 9 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch04.sql
+Fim de Linha 8. Tabela já existe no banco ->PCL_VALOR_MINIMO_VENDA.PCL0000
+Fim de Linha 11. Tabela já existe no banco ->USP_PEDIDO_ABAIXO_PRAZO_MINIMO.USUARIO_PARAMETRO
+Fim de Linha 12. Tabela já existe no banco ->PED_PERMITE_VL_ABAIXO_PRAZO_MIN.PED0000
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch04.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch05.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_IMPORTA_ITENS_XML.PRMT0001
+Fim de Linha 9. Tabela já existe no banco ->PED_CAMINHO_XML.PED0000
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.566_patch05.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.567_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_NAT_OPER_PADRAO.PRMT0001
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.567_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.567_patch02.sql
+Fim de Linha 9. Tabela já existe no banco ->USP_AUTORIZA_RETIRADA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 10. Tabela já existe no banco ->USP_REALIZA_RETIRADA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 12. Generator Já existe --> GEN_REQUISICAO_MATERIAL already exists
+Fim de Linha 16. Generator Já existe --> GEN_REQUISICAO_MATERIAL_ITEM already exists
+Fim de Linha 20. Generator Já existe --> GEN_REQUISICAO_MATERIAL_AUT already exists
+Fim de Linha 26. Tabela Já existe --> REQUISICAO_MATERIAL already ex
+Fim de Linha 29. Tabela já existe no banco ->EMP_CODIGO.REQUISICAO_MATERIAL
+Fim de Linha 31. Tabela já existe no banco ->AMX_CODIGO.REQUISICAO_MATERIAL
+Fim de Linha 33. Tabela já existe no banco ->REM_DATA.REQUISICAO_MATERIAL
+Fim de Linha 35. Tabela já existe no banco ->REM_REQUISITANTE.REQUISICAO_MATERIAL
+Fim de Linha 37. Tabela já existe no banco ->SET_CODIGO.REQUISICAO_MATERIAL
+Fim de Linha 39. Tabela já existe no banco ->REM_OBSERVACAO.REQUISICAO_MATERIAL
+Fim de Linha 41. Tabela já existe no banco ->REM_STATUS.REQUISICAO_MATERIAL
+Fim de Linha 46. Tabela Já existe --> REQUISICAO_MATERIAL_ITEM already ex
+Fim de Linha 49. Tabela já existe no banco ->REM_CODIGO.REQUISICAO_MATERIAL_ITEM
+Fim de Linha 51. Tabela já existe no banco ->PRD_REFER.REQUISICAO_MATERIAL_ITEM
+Fim de Linha 53. Tabela já existe no banco ->RMI_QUANTIDADE.REQUISICAO_MATERIAL_ITEM
+Fim de Linha 59. Tabela Já existe --> REQUISICAO_MATERIAL_AUT already ex
+Fim de Linha 62. Tabela já existe no banco ->RMI_CODIGO.REQUISICAO_MATERIAL_AUT
+Fim de Linha 64. Tabela já existe no banco ->USU_NOME.REQUISICAO_MATERIAL_AUT
+Fim de Linha 66. Tabela já existe no banco ->RMA_SITUACAO.REQUISICAO_MATERIAL_AUT
+Fim de Linha 68. Tabela já existe no banco ->RMA_STATUS.REQUISICAO_MATERIAL_AUT
+Fim de Linha 70. Tabela já existe no banco ->RMA_DATA.REQUISICAO_MATERIAL_AUT
+Script com 23 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.567_patch02.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Quantyca\Quantyca0812.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.565_patch01.sql
+ok - Adjutor3.0.9.565_patch02.sql
+ok - Adjutor3.0.9.565_patch03.sql
+ok - Adjutor3.0.9.565_patch04.sql
+ok - Adjutor3.0.9.565_patch05.sql
+ok - Adjutor3.0.9.566.sql
+ok - Adjutor3.0.9.566_patch01.sql
+ok - Adjutor3.0.9.566_patch02.sql
+ok - Adjutor3.0.9.566_patch03.sql
+ok - Adjutor3.0.9.566_patch04.sql
+ok - Adjutor3.0.9.566_patch05.sql
+ok - Adjutor3.0.9.567.sql
+ok - Adjutor3.0.9.567_patch01.sql
+ok - Adjutor3.0.9.567_patch02.sql

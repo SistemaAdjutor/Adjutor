@@ -1,0 +1,108 @@
+﻿Atualizado em 30/10/2019 
+Inicio da versão: 01/10/2019 
+
+ patch 8 : Collect, Hospital São José, Industrial Mangueiras
+    erro na tela de pesquisa de vendas doação http://192.168.0.250:8080/agile/tarefa/show/107563
+	ajuste do relatório de doação	http://192.168.0.250:8080/agile/tarefa/show/107585
+    Lentidão para abrir tela de produtos http://192.168.0.250:8080/agile/tarefa/show/106267
+ 
+ patch 7 : LFEPIS e Embraterm
+    Selecionar item do pedido que vai sair nas impressões http://192.168.0.250:8080/agile/tarefa/show/104564
+	Modelo de impressão somente com serviços http://192.168.0.250:8080/agile/tarefa/show/104550
+	Embraterm :
+	  ajuste dos relatórios do ordem de serviço, pedido de tratamento, inspeção;
+	  correção de erros de pedido de industrialização e apontamentos;
+	  nova tela de carga para confirmação 
+	  ordem de serviço vai ter o mesmo numero inicial do pedido
+	  cadastro de parametros de resultado
+	  ajuste de erros na tela de equipamentos
+	  no apontamento colocar os valores de inspeção de qualidade
+	  correção de erros nas telas de gerenciamento de apontamento, cadastro de processo e orçamento
+	
+ patch 6 : Hospital São José, Chenvet, Lion, Plasticos mundial, Forsetti , Collect , Novi, Quimica Rocha, Eletrica Burda, Industrial de Mangueiras, Aleplast, Conforto ambiental
+ 
+   Erro no filtro da tela pesquisa de vendas por doação http://192.168.0.250:8080/agile/tarefa/show/106968
+   Sistema não atualiza valor total dos produtos ao excluir item (ordem de compra) http://192.168.0.250:8080/agile/tarefa/show/106842
+   criar os campos Latitude e Longitude http://192.168.0.250:8080/agile/tarefa/show/106802
+   Valor não informado Erro na tela de pedidos de venda web http://192.168.0.250:8080/agile/tarefa/show/106792
+   Codigo original na nota fiscal para sair na Nota não funciona http://192.168.0.250:8080/agile/tarefa/show/106671 e http://192.168.0.250:8080/agile/tarefa/show/106680
+   Relatório de pesquisa de doação http://192.168.0.250:8080/agile/tarefa/show/106838
+   Relatório deve ter o mesmo dinamismo da tela http://192.168.0.250:8080/agile/tarefa/show/107278
+   campos pequenos no Cadastros de fornecedores/page colaborador http://192.168.0.250:8080/agile/tarefa/show/106777
+   Colocar mensagem nos dados adicionais para clientes do simples que utilizam ipi em devolução http://192.168.0.250:8080/agile/tarefa/show/106619
+   Sistema calculando valor do st diferente no pedido vs faturamentohttp://192.168.0.250:8080/agile/tarefa/show/106230
+   Sistema calculando diferencial de alíquota no pedido quando o ST é 60 http://192.168.0.250:8080/agile/tarefa/show/106596
+   Inclusão da pesquisa por cliente na tela de emissão de boletos/duplicatas http://192.168.0.250:8080/agile/tarefa/show/106154
+   Criar botão para ocultar excluídos na tela de contas a receber e contas a pagar http://192.168.0.250:8080/agile/tarefa/show/106003
+   Erro de arredondamento na tela de expedição http://192.168.0.250:8080/agile/tarefa/show/104238
+   Cálculo de IPI na tela de pedidos http://192.168.0.250:8080/agile/tarefa/show/103741
+   Bloqueio do botão Abandonar (faturamento do pedido) http://192.168.0.250:8080/agile/tarefa/show/103230
+   Bloquear relatórios na tela de faturamento http://192.168.0.250:8080/agile/tarefa/show/100192
+   memorizar Filtro da tela de consulta de pedidos http://192.168.0.250:8080/agile/tarefa/show/100178
+   Ajustar valor unitário na NFEhttp://192.168.0.250:8080/agile/tarefa/show/100168
+   Criar opção de busca pela UNIDADE CONSUMIDORA http://192.168.0.250:8080/agile/tarefa/show/89416
+   Opção de exportar somente o xml para a contabilidade 0http://192.168.0.250:8080/agile/tarefa/show/104775
+   Criar uma coluna com status de liquidação (situação da conta) de pago ou não pago na tela de emissão de boletos http://192.168.0.250:8080/agile/tarefa/show/103580
+   Aumentar o limite de caracteres no campo descrição na nfe no cadastro de CFOP http://192.168.0.250:8080/agile/tarefa/show/102620
+   Alteração do Relatório de Conciliação Bancária http://192.168.0.250:8080/agile/tarefa/show/94725
+   
+ patch 5 : CHEMVET, PARSEALS, Plasticos Mundial, Quimica rocha , EMPAC, HOSPITAL SAO JOSE, Collect, EMBRATERM
+  	Sistema não está trazendo o tipo de pedido ao transformar pedido web em pedido de venda	http://192.168.0.250:8080/agile/tarefa/show/106376
+	Erro ao adicionar item no pedido de venda http://192.168.0.250:8080/agile/tarefa/show/106347
+	Corrigir situações na entrada de nota (SEM VALOR COMERCIAL) http://192.168.0.250:8080/agile/tarefa/show/106138
+	Ativar Cnae para nota de serviço http://192.168.0.250:8080/agile/tarefa/show/106101
+	Pedido Web não está obedecendo os parâmetros de comissão http://192.168.0.250:8080/agile/tarefa/show/106417
+	Tela de manutenção do item na entrada de nota (CFOP EXCLUSIVO) http://192.168.0.250:8080/agile/tarefa/show/106260
+	Sistema dando erro nas licenças (validação) http://192.168.0.250:8080/agile/tarefa/show/106191
+	Entrada de nota por xml e manual não atualizando margem http://192.168.0.250:8080/agile/tarefa/show/106148
+	Ajustes nos filtros dos relatório de títulos a receber e recebidos http://192.168.0.250:8080/agile/tarefa/show/106143
+	Botão de Exportar Excel está travando sistema nos relatórios do BI http://192.168.0.250:8080/agile/tarefa/show/106136
+	Colocar botão de impressão na tela de pedidos doação http://192.168.0.250:8080/agile/tarefa/show/101989
+	
+ patch 4  : Drimec
+   Nota de exportação - Unidade Comercial e Unidade Tributária http://192.168.0.250:8080/agile/tarefa/show/102016
+   Data de Saída menor que a Data de Emissão http://192.168.0.250:8080/agile/tarefa/show/106180
+
+ patch 3
+   Ajuste do apontamento, pedido de industrialização, pcp, ordem de produção e orçamento de produção
+   
+ patch 2
+  bug 537 patch 1 : itens adicionado no pedido com campo margem provocando overflow e truncation http://192.168.0.250:8080/agile/tarefa/show/105956
+  Sincronizar custo de entrada faltou atualizar o campo custo liquido http://192.168.0.250:8080/agile/tarefa/show/105948
+  Data de saida do faturamento não gravando na NFe http://192.168.0.250:8080/agile/tarefa/show/105650
+  Quando preechido da Tag de compra no item do pedido mostrar na impressao da DANFE http://192.168.0.250:8080/agile/tarefa/show/105277
+  reajuste das medidas http://192.168.0.250:8080/agile/tarefa/show/105604
+  Entrada e saida de produtos do estoque com código de barras http://192.168.0.250:8080/agile/tarefa/show/105084
+  
+ patch 1 clientes (embraterm, parseals, quimica rocha, plastivos mundial, chemvet) : 03/10/2019
+  Tela de entrada de nota não mostra cfops http://192.168.0.250:8080/agile/tarefa/show/105905
+  Não atualizar forma de pagamento do cadastro de cliente pela venda http://192.168.0.250:8080/agile/tarefa/show/105805
+  tela adiciona item no pedido filtro por medidas não deixando rolar a tela http://192.168.0.250:8080/agile/tarefa/show/105604
+  No pedido de venda vendedor não pagar comissão de vendas do cliente http://192.168.0.250:8080/agile/tarefa/show/105599
+  Retirar ICMS da base de calculo do pis e confins http://192.168.0.250:8080/agile/tarefa/show/105521
+  Função que grava codigo original junto da descrição do item do pedido e mostra na nota http://192.168.0.250:8080/agile/tarefa/show/105414
+  Problema na coluna **em compras tela de posição do estoque http://192.168.0.250:8080/agile/tarefa/show/105096
+  Ordem de Compra Pendente http://192.168.0.250:8080/agile/tarefa/show/105039
+  Ajuste ao transformar pedido web em pedido de venda http://192.168.0.250:8080/agile/tarefa/show/105345
+  Correção dos filtros na tela de pedido web http://192.168.0.250:8080/agile/tarefa/show/105361
+  Problema ao faturar pedidos com desconto quanto integra serviços no faturamento http://192.168.0.250:8080/agile/tarefa/show/100717
+  
+ Tarefas do versão principal : Burda, Delta Cabos, PARSEALS, Plasticos Mundial , BR-INOVA, Embraterm, Hospital São José, Lion, Vision controls, SUSTENPLAST : 01/10
+   Problema tela de manutenção do item(entrada de nota)  http://192.168.0.250:8080/agile/tarefa/show/105303
+   Tela de entrada de nota : mostra icone F4 e trazer CNPJ http://192.168.0.250:8080/agile/tarefa/show/101732
+   rotina atualizar margens dos produtos pelo cadastro de grupo seguir parametro de atualização http://192.168.0.250:8080/agile/tarefa/show/105240
+   rotina sincronizar custo de entrada deve seguir parametro de atualiza ou não preço de Venda http://192.168.0.250:8080/agile/tarefa/show/105235
+   Desvincular o frete do faturamento de serviços http://192.168.0.250:8080/agile/tarefa/show/105108
+   Adicionar filtros na tela de pedido de compra  http://192.168.0.250:8080/agile/tarefa/show/105106
+   Erro no relatório de despesas por contas (previsto - detalhada) http://192.168.0.250:8080/agile/tarefa/show/105252
+   finalidade da nota fiscal http://192.168.0.250:8080/agile/tarefa/show/105193
+   Ajuste na tela de consulta arquivos de remessa e retorno http://192.168.0.250:8080/agile/tarefa/show/105439
+   Erro na tela cadastro de produtos -> aba vendas http://192.168.0.250:8080/agile/tarefa/show/105045
+   Layout de Impressão exclusivo do cliente Vision http://192.168.0.250:8080/agile/tarefa/show/104089
+   Adicionar na tela de regras fiscais filtro de NCM, UF e ST http://192.168.0.250:8080/agile/tarefa/show/104979
+   Pedidos com muitos itens demoram para faturar http://192.168.0.250:8080/agile/tarefa/show/103787
+   Lançamento das parcelas estão entrando como já impressa http://192.168.0.250:8080/agile/tarefa/show/103641
+   Erro no parâmetro de produto : consulta padrao http://192.168.0.250:8080/agile/tarefa/show/103542
+   Bloquear o campo desconto quanto o item estiver com preço de oferta http://192.168.0.250:8080/agile/tarefa/show/101409
+   
+   

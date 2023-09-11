@@ -1,0 +1,94 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.559_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_OS_CABECALHO.PRMT0001
+Fim de Linha 9. Tabela já existe no banco ->PMT_OS_REV.PRMT0001
+Fim de Linha 10. Tabela já existe no banco ->PMT_OS_DATA_EMISSAO.PRMT0001
+Fim de Linha 12. Tabela já existe no banco ->PMT_LIMITE_CREDITO_INICIAL.PRMT0001
+Fim de Linha 14. Tabela já existe no banco ->PMT_REL_DATA_EXPEDICAO.PRMT0001
+Fim de Linha 16. Tabela já existe no banco ->USP_FATURARSEMCONCLUSAO.USUARIO_PARAMETRO
+Fim de Linha 17. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 18. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Script com 8 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.559_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560.sql
+Fim de Linha 8. Tabela já existe no banco ->USP_VISUALIZA_ABA_VENDA.USUARIO_PARAMETRO
+Fim de Linha 12. Tabela já existe no banco ->PMT_PRD_REFER_SCO_REFER.PRMT0001
+Fim de Linha 16. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 20. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 24. Tabela já existe no banco ->USP_REALIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 29. Tabela já existe no banco ->PMT_DESCRICAO_99_OUTROS.PRMT0001
+Fim de Linha 33. Tabela já existe no banco ->PED_ORS_CLI_CONSFINAL.PED0000
+Fim de Linha 34. Tabela já existe no banco ->PED_ORS_CLI_CONSU_PROPRIO.PED0000
+Fim de Linha 35. Tabela já existe no banco ->PED_ORS_CLI_REGIME_TRIBUTARIO.PED0000
+Script com 9 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_AMX_ENVASE_SAIDA.PRMT0001
+Fim de Linha 9. Tabela já existe no banco ->AMX_CODIGO.FTC0000
+Fim de Linha 11. ERROR: unsuccessful metadata update
+Index HISTORICO_ORDEMPRODUCAO_IDX2 already exists
+Fim de Linha 12. ERROR: unsuccessful metadata update
+Index HISTORICO_ORDEMPRODUCAO_IDX1 already exists
+Fim de Linha 13. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX3 already exists
+Fim de Linha 14. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX2 already exists
+Fim de Linha 15. ERROR: unsuccessful metadata update
+Index MATERIAPRIMA_ORDEMPRODUCAO_IDX1 already exists
+Script com 7 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->OPE_FORMULA_BASE_ICMS.OPE0000
+Fim de Linha 9. Tabela já existe no banco ->OPE_ICMS_DESONERADO_DIMINUI.OPE0000
+Fim de Linha 11. Tabela já existe no banco ->PED_OBS_PRODUCAO.PED0000
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch03.sql
+Fim de Linha 8. ERROR: violation of PRIMARY or UNIQUE KEY constraint "PK_PRD_LINHA" on table "PRD_LINHA"
+Problematic key value is ("LIN_CODIGO" = '999')
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.560_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch01.sql
+Fim de Linha 160. Tabela já existe no banco ->PMT_PRD_REFER_SCO_REFER.PRMT0001
+Fim de Linha 164. Tabela já existe no banco ->USP_AUTORIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 168. Tabela já existe no banco ->USP_AUTORIZA_COMPRA_MATERIAL.USUARIO_PARAMETRO
+Fim de Linha 173. Tabela já existe no banco ->USP_REALIZA_COTACAO_MATERIAL.USUARIO_PARAMETRO
+Script com 4 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.561_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Fim de Linha 8. Tabela já existe no banco ->EQP_CODIGO.OPERACOES
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.564.sql
+Sumário: 
+Host:172.29.171.188
+Database :/servidor/Jobdados/lfepis/LF1409.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.559_patch02.sql
+ok - Adjutor3.0.9.559_patch03.sql
+ok - Adjutor3.0.9.560.sql
+ok - Adjutor3.0.9.560_patch01.sql
+ok - Adjutor3.0.9.560_patch02.sql
+ok - Adjutor3.0.9.560_patch03.sql
+ok - Adjutor3.0.9.560_patch04.sql
+ok - Adjutor3.0.9.560_patch05.sql
+ok - Adjutor3.0.9.561.sql
+ok - Adjutor3.0.9.561_patch01.sql
+ok - Adjutor3.0.9.561_patch02.sql
+ok - Adjutor3.0.9.561_patch03.sql
+ok - Adjutor3.0.9.561_patch04.sql
+ok - Adjutor3.0.9.561_patch05.sql
+ok - Adjutor3.0.9.562.sql
+ok - Adjutor3.0.9.562_patch01.sql
+ok - Adjutor3.0.9.562_patch02.sql
+ok - Adjutor3.0.9.562_patch03.sql
+ok - Adjutor3.0.9.562_patch04.sql
+ok - Adjutor3.0.9.562_patch05.sql
+ok - Adjutor3.0.9.562_patch06.sql
+ok - Adjutor3.0.9.563.sql
+ok - Adjutor3.0.9.563_patch01.sql
+ok - Adjutor3.0.9.563_patch02.sql
+ok - Adjutor3.0.9.563_patch03.sql
+ok - Adjutor3.0.9.563_patch04.sql
+ok - Adjutor3.0.9.564.sql
+ok - Adjutor3.0.9.564_patch01.sql
+ok - Adjutor3.0.9.564_patch02.sql
+ok - Adjutor3.0.9.565.sql

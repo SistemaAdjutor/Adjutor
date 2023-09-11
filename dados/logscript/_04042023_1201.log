@@ -1,0 +1,24 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch04.sql
+Fim de Linha 20. ERROR: unsuccessful metadata update
+New size specified for column CLI_FONE must be at least 15 characters.
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch04.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Lforja\LFORJA-0711.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.575_patch03.sql
+ok - Adjutor3.0.9.575_patch04.sql
+ok - Adjutor3.0.9.576.sql
+ok - Adjutor3.0.9.576_patch01.sql
+ok - Adjutor3.0.9.576_patch02.sql
+ok - Adjutor3.0.9.576_patch03.sql
+ok - Adjutor3.0.9.577.sql
+ok - Adjutor3.0.9.577_patch01.sql
+ok - Adjutor3.0.9.577_patch02.sql
+ok - Adjutor3.0.9.577_patch03.sql
+ok - Adjutor3.0.9.577_patch04.sql
+ok - Adjutor3.0.9.578.sql
+ok - Adjutor3.0.9.578_patch01.sql
+ok - Adjutor3.0.9.578_patch02.sql
+ok - Adjutor3.0.9.578_patch03.sql

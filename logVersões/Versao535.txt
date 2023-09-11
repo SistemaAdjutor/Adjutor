@@ -1,0 +1,82 @@
+﻿Atualizado em 29/08/2019
+Inicio da versão: 30/07/2019 
+
+ patch 11
+  Trazer nova tela de Posição de Vendas na tela do pedido de venda http://192.168.0.250:8080/agile/tarefa/show/103556
+  Adicionar informações na impressão no romaneio de expedição http://192.168.0.250:8080/agile/tarefa/show/103649
+  Colocar mensagem de confirmação na separação http://192.168.0.250:8080/agile/tarefa/show/103645
+ patch 10
+
+	Novo cadastro do Turno http://192.168.0.250:8080/agile/tarefa/show/97603
+	criar novos campos no cadastro de Operação http://192.168.0.250:8080/agile/tarefa/show/97597
+	parametros da operação
+	tabela ascII para incluir caracteres especiais como ±
+	Criar novos campos no cadastro de equipamentos http://192.168.0.250:8080/agile/tarefa/show/97595
+	criar novos campos ( 8 ) no cadastro do produto http://192.168.0.250:8080/agile/tarefa/show/97062
+	Implementação acordo comercial : Incrementar campos e novo modelo de Impressão http://192.168.0.250:8080/agile/tarefa/show/96902
+	Orçamento industrial, que pode gerar acordo e pedido industrial
+	Pedido industrial , tela de pedido tipo de pedido industrialização
+	Pedido de industrialização gera ordem de produção
+	Simulação do preço de venda
+	Tabela de formação de preços
+	Cadastro de processos
+	PCP - planejamento de controle e produção de carga
+	Apontamento de cargas
+	Gerenciamento de apontamentos 
+	Ajustes para firedac
+    Ajuste para firebird 3.0
+	
+ patch 9 
+   Adicionar para ocultar itens inativos no kardex http://192.168.0.250:8080/agile/tarefa/show/103669
+
+ patch 8
+  Rejeição na emissão de NFE em Goias http://192.168.0.250:8080/agile/tarefa/show/103713
+  Entrada de nota (usuário tendo que passar pelo quantidade) http://192.168.0.250:8080/agile/tarefa/show/103683
+  Verificar cálculo do diferencial de alíquota - nao faz corretamente http://192.168.0.250:8080/agile/tarefa/show/103197
+  CRM - modificar nomes http://192.168.0.250:8080/agile/tarefa/show/103548
+  
+ patch 7 
+  CFOP marcado com "Sem valor fiscal" nao habilitar botão "Gravar faturas" na entrada de NF http://192.168.0.250:8080/agile/tarefa/show/102145
+  Posição de estoque page "Produção" - melhoria 01 http://192.168.0.250:8080/agile/tarefa/show/103021
+  
+ patch 6
+  tela de posição do estoque não deve mostrar produtos Inativos   http://192.168.0.250:8080/agile/tarefa/show/103528
+  Posição de Estoque com parametro de "Estoque por pedido" http://192.168.0.250:8080/agile/tarefa/show/103537
+  liberar opção de mudar Empresa dos Pedidos de Compras http://192.168.0.250:8080/agile/tarefa/show/103480
+  
+ patch 5 
+   necessário data de entrada da importação de CTE e melhorar relatório http://192.168.0.250:8080/agile/tarefa/show/98597
+   faturamento multiempresa http://192.168.0.250:8080/agile/tarefa/show/100956
+   faturamento parcial de kit http://192.168.0.250:8080/agile/tarefa/show/98183
+   Impressão dos pedidos de compra estão saindo cortados http://192.168.0.250:8080/agile/tarefa/show/102622 
+   Erro nos relatórios dos pedidos http://192.168.0.250:8080/agile/tarefa/show/102743
+   
+ patch 4
+   Não atualiza a versão no banco  no cliente e somente faz download, no Servidor atualiza a versão (patch) no banco caso precise e não faz download da versão
+   Retirado do pacote do instalador o executável atualizador.exe que pode estar infectado com algum trojano, além de ser usado
+   Opção para deixar contas banco inativa http://192.168.0.250:8080/agile/tarefa/show/101698
+   Não esta gerando sub-ordens quando a ordem de produção é feita pelo pedido http://192.168.0.250:8080/agile/tarefa/show/103114
+   gerar no script para corrigir o total de compras que mostra nos produtos http://192.168.0.250:8080/agile/tarefa/show/103009
+   Tela "Posição de Estoque" mostrando pedidos que não são de vendas http://192.168.0.250:8080/agile/tarefa/show/103138
+   Adicionar filtro de tipo de cliente na tela de consulta de clientes http://192.168.0.250:8080/agile/tarefa/show/102738
+   Criar filtro de vendedor no relatório de Pedidos a Faturar/Faturados http://192.168.0.250:8080/agile/tarefa/show/98368
+   
+ patch 3
+   Posição de estoque(demanda) ajustes No. 1 http://192.168.0.250:8080/agile/tarefa/show/102712
+   Posição de estoque(demanda) ajustes No. 2 http://192.168.0.250:8080/agile/tarefa/show/102718
+   Tela Posição de estoque - melhoria http://192.168.0.250:8080/agile/tarefa/show/102751
+   Transferência de titulos do contas a receber de um banco para outro http://192.168.0.250:8080/agile/tarefa/show/102600
+   
+ patch 2
+   Sistema não está apresentando as quatro casas decimais na nota fiscal http://192.168.0.250:8080/agile/tarefa/show/102555
+
+ patch 1
+ 	Mensagem da instrução 2 (0094) não está saindo no arquivo CNAB http://192.168.0.250:8080/agile/tarefa/show/92605
+	exportação do relatório de notas fiscais http://192.168.0.250:8080/agile/tarefa/show/102271
+	Correção do codigo da cidade no endereço do cliente http://192.168.0.250:8080/agile/tarefa/show/101685
+	Erro ao faturar na conta financeira na tela de contas a receber http://192.168.0.250:8080/agile/tarefa/show/100353
+	Lentidão ao abrir anexos do cliente http://192.168.0.250:8080/agile/tarefa/show/100337
+	mudar no menu o nome da função de desconto de títulos http://192.168.0.250:8080/agile/tarefa/show/102613
+	
+ Tarefas do versão principal:
+   sumario da consulta dos pedidos não deveria contar com notas cancelas http://192.168.0.250:8080/agile/tarefa/show/101374

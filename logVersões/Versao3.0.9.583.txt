@@ -1,0 +1,62 @@
+﻿Atualizado em 29/08/2023
+Inicio da versão: 08/08/2023
+
+
+principal: Bepine, NJ Portas, Jupiter, Drimec, Embraterm, Vedseals, Pacpapel, Flexsul, Normadin
+  1469 - Melhoria no cadastro de cliente [Novi]
+  1537 - Melhoria - indústria plástica [Bepine]
+  1549 - Manutenção no retorno de industrialização pelo F6 [NJ Portas]
+  1569 - Tela de edição do item no pedido - botão ENTER [Jupiter]
+  1580 - Edição de pedidos agrupados [Novi]
+  1581 - Relatório orçamento imagem big [Drimec]
+  1585 - Alteração de imagem de rodapé [Embraterm]
+  1590 - Obrigar seleção da capacidade [Bepine]
+  1592 - Inclusão de campos no relatório da FCI [Drimec]
+  1593 - Etiquetas materiais - KIT [Vedseals]
+  1594 - Endereço de entrega no orçamento [Pacpapel]
+  1595 - Erro na curva abc por vendedor [Flexsul]
+  1596 - Incluir campo mola de tração biconica [Normadin]
+
+patch 1: Embraterm, Collect, Rotor, Delta Cabos, Arkson, Iracelis
+   284 - Incluir pesquisa por prazo de entrega [Embraterm]
+   631 - Ajustar relatório para validar emp_codigo dos produtos [Novi]
+  1039 - Inclusão conta financeira no cadastro do cliente [Collect]
+  1351 - Manutenção nas telas - Consulta cliente pelo F4 [Novi]
+  1400 - Ajuste nota de serviço Campo do Tenente [Rotor]
+  1497 - Processo devolução notas de entrada [Novi]
+  1539 - Preço do produto por empresa - 1° Fase [Delta Cabos]
+  1570 - novo calculo para pagamento de comissão [Arkson]
+  1571 - Corrigir margem na tela de produtos [Arkson]
+  1600 - Manutenção em NFSe [Rotor]
+  1601 - Grade gravando sem a unidade [Iracelis]
+  1602 - Exportação C9 [Novi]
+
+patch 2: Hospital São José, Collect, Chemsystem, Bepine, Embraterm, Crystal Clean
+   234 - Nova ação para o crm [Novi]
+   655 - Melhoria controle de inadimplência [Hospital São José]
+  1519 - Ajuste em relatório de doações [Collect]
+  1603 - Manutenção no layout de remessa [Chemsystem]
+  1605 - Melhorias tela de entrada de notas [Novi]
+  1606 - Movimentação de estoque - Lote [Crystal Clean]
+  1607 - Correções indústria plástica [Bepine]
+  1608 - impressão da nfe com logo de outra empresa [Novi]
+  1609 - Imagem de rodapé - Pedido de Industrialização [Embraterm]
+
+patch 3: Hospital São José, Normadin, Embraterm
+   130 - Erro ao gerar Bloco H para almoxarifado de terceiro [Novi]
+   572 - Adicionar coluna com o vendedor na exportação do excel [Hospital São José]
+   601 - Erro no contador de boletos [Hospital São José]
+  1611 - Correções item do pedidos [Novi]
+  1614 - Contas a receber [Novi]
+  1615 - Verificar estorno de notas fiscais [Novi]
+  1616 - Carregamento dos recebimentos [Novi]
+  1617 - Melhoria exportação da demanda de produção [Normadin]
+  1618 - Erro na pesquisa de produto [Novi]
+  1620 - Erro ao gravar item pedido de compra [Novi]
+  1622 - Tela de consulta de pedidos [Novi]
+  1623 - Sistema mostrando a mensagem errada [Novi]
+  1628 - Arquivo de remessa não gerado [Embraterm]
+  1629 - Entrada de NF - gravar item [Embraterm]
+
+patch 4:
+  1630 - Impressão da ordem de produção [Novi]

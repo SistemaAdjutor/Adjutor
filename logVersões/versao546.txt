@@ -1,0 +1,95 @@
+﻿Atualizado em 03/08/2020
+Inicio da versão: 01/07/2020
+
+patch 10 : quimica rocha 
+ erro ao incluir o produto no envase
+patch 9 :  
+  erro ao incluir novo produto na lista de preço youtrack 145
+  
+patch 8 : itagrill, quimica rocha
+  Coluna de quantidade nao aparece no PCP youtrack-97 
+  Enviar ao envase duas vezes o mesmo pedido youtrack-93
+  Não tem opção de imprimir OE na tela de envase youtrack-87
+  
+patch 7: industrial mangueiras, embraterm, empac, collect, eletrica burda, itagrill, quimica rocha
+   Campo de desconto do produto aumentando valor líquido youtrack-137
+   CRM não gravando dados correto a partir do Orçamento youtrack-132
+   Erro ao trocar banco da parcela(contas a pagar) youtrack-138
+   Alteração observações gerais - alterar o campo do valor   youtrack-136 [EMBRATERM]
+   Função para ajustar preço da tabela exclusiva youtrack-116 [EMBRATERM]
+   Adicionar o campo grupo na importação pela planilha do Excel youtrack-98 [empac]
+   Ajustar listagem de vendedores na tela de doação youtrack-99 [collect]
+   Erro ao gerar relatório de entrada de notas youtrack-109 [ eletrica burda]
+   produção :
+	NPRD-85	Pedidos repetidos na tela de PCP
+	NPRD-60	mostrar novos campos na tela do PCP
+	NPRD-62	implementar novos campos na tela demanda de produção
+	NPRD-71	Função Executar Envase - funcionalidades
+	NPRD-72	Enviar do pedido de venda direto para a tela de Envase
+	NPRD-73	Marcar produto que vai para Envase
+	NPRD-74	Tela de Envase -> Previsão de compras = Previsão de Faltas
+	NPRD-75	Tela de demanda mudar default de data e criar filtro
+	NPRD-79	Alterações de ordens programadas na demanda
+	NPRD-88	Ao executar envase não entra no estoque
+	NPRD-63	Cores no PCP
+	NPRD-64	Foco da tela concluir
+	NPRD-76	Ordem de produção não está gerando corretamente
+	NPRD-78	Data de entrega na tela de Quantidade Programada
+	NPRD-80	Estorno errado da demanda
+	NPRD-82	Alterar especificação no relatório de ordem de produção
+	NPRD-83	Regras para envase.
+	NPRD-84	Criar filtros da tela de demanda
+	NPRD-86	Descrição no totalizador na Previsão de faltas.	
+	NPRD-89	Gravar histórico quando for recebido no envase
+	NPRD-90	Ajuste no layout ao executar OE
+	NPRD-58	Relatório de demanda
+	   
+   
+patch 6: BSC, EMBRATERM, ELETRICA BURDA
+   Ficha técnica não atualiza custo e preço de venda YOUTRACK-125 [BSC]
+   Incluir novos index nas tabelas YOUTRACK-124
+   Erro ao alterar os dados do apontamento de inspeção YOUTRACK-112 [EMBRATERM]
+   Bug apagando equipamento selecionado YOUTRACK-115 [ EMBRATERM]
+   Erro ao adicionar cst no produto na entrada de nota [ELETRICA BURDA]
+
+patch 5 : delta Cabos
+   Controle de lote ele checar somente quando movimenta estoque youtrack-127 [ Delta Cabos ] 
+patch 4 : bsc
+   Filtros na tela de pedido não deve aparecer quando não utiliza MRP I youtrack-117 
+   Mudar almoxarifado esta atualizando o preço  youtrack-121 [BSC]
+   Deixar obrigatório seleção do cliente na tabela exclusiva YOUTRACK-111 [bsc]
+   Erro na tela de cadastro de clientes youtrack-93 [QUIMICA ROCHA]
+   Relatorios clientes por ramo de atividade incorreto YOUTRACK-119
+   
+patch 3 : Delta cabos, Drimec 
+   modificar para selecionar multiplos lotes do pedido youtrack 97 [DELTA CABOS]
+   Sistema aceita cadastrar mesmo cpf/cnpj youtrack 104
+   Adicionar parâmetro para controle do multiplicador P youtrack 92
+   Tela de pedidos não atualiza a origem YOUTRACK-103 [DRIMEC]
+
+patch 2 : Chimica Rocha, Itagrill
+   Sistema trava na tela de ordem programada. youtrack NPRD-61
+   Erro na tela de PCP youtrack NPRD-67 
+   Lista de pedidos na tela de demanda não esta trazendo informações youtrack NPRD-47
+   mudar default da data na tela de demanda youtrack NPRD-59
+   Incluir filtro na tela de Gerenciamento do PCP. youtrack NPRD-66
+   Não envia pedido para o PCP youtrack NPRD-68
+   Erro de dataset ao abrir tela de novo apontamento youtrack NPRD-16
+   não expandir item a clicar na caixa de seleção youtrack NPRD-35
+   Sequencial das OP´s de um pedido estão saindo errado youtrack nprd-40
+   Foco da tela concluir youtrack nprd-64
+   Historico na tela de demanda. nprd-70
+   Status concluido na demanda. youtrack nprd-65
+   
+patch 1 : delta cabos, Embraterm, ARDAM, Lion 
+   Ajustar calculo de margem na tela de pedidos youtrack 88 [DELTA CABOS]
+   Total do peso da carga incorreto no relatório de apontamentos  http://192.168.0.250:9090/agile/tarefa/show/120892 YOUTRACK-74 [EMBRATERM]
+   Alterar configuração não habilitao botão gravar youtrack-87
+   Adicionar totais de pis e confins em dados adicionais YOUTRACK-85
+   Adicionar coluna relatório de Romaneio de orçamento YOUTRACK-82
+   
+tarefa da versão principal :  Burda
+  Valor faturado incorreto nos pedidos youtrack 95
+  Erro ao gerar k280 youtrack 91
+  
+

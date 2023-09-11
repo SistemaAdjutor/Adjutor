@@ -1,0 +1,33 @@
+Atualizado em 24/05/2021
+Inicio da versão: 06/04/2021
+
+patch 03: Collect,BSC Industrial Aços Ltda, Hospital São José, Inquibra
+  Modificação para envio de boletos por e-mail - adj 371 [Collect]
+  Erro nas movimentações de estoque - adj 475 [BSC Industrial Aços Ltda]
+  Estorno de fatura com juros esta deixando um valor negativo na parcela adj - 481 [Hospital São José]
+  Verificar tela de consulta contas a pagar - adj 507 
+  Controle de Qualidade: fazer parâmetros por produto - adj 509 [Inquibra]
+  Trocar porta do endereço de consulta do servidor novi - adj 514
+
+patch 02: Normadim, Inquibra, Brasgips
+  Ajustes campos Normadim 6 adj 505 [normadim]
+  Ajuste Controle de Qualidade 2 adj 503 [inquibra]
+  Ajustar cálculos na tela de demonstrativo de vendas por margem adj 502 [brasgips]
+  Melhoria na organização do crm-pós vendas adj 504 
+  Alteração da conta financeira e centro de custo deve atualizar a nota de entrada adh 483
+
+patch 01: Chemvet, Inquibra
+  Verificar importação do arquivo de retorno adj 468
+  Ajustes nos relatórios de produção e envase adj 417 [chemvet]
+  Ajuste no relatório de envase adj 478 [chemvet]
+  Retirar texto da label ajd 495
+  Tarefa 97 não funciona a partir da versão 551 ajd 493
+  Ajustes Controle de Qualidade 1 adj 500 [inquibra]
+
+principal: Quantica, Embraterm, Inquibra
+  Campo valor mínimo do serviço adj 492 [embraterm]
+  Ajustes campos Normadim adj 487 [normadim]
+  Ajustes campos Normadim adj 486 [normadim]
+  Ajustes campos Normadim adj 485 [normadim]
+  Adicionar Cadastro de Tipo de Embalagem adj 471 [normadim]
+  Controle de Qualidade adj 465 [ inquibra]

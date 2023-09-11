@@ -1,0 +1,65 @@
+﻿Atualizado em 16/09/2022
+Inicio da versão: 06/09/2022
+
+
+principal: Unimatriz, Collect, Embraterm, Delta Cabos, L Forja, NetoColor, Inquibra, Bepine, Aleplast, Brazinc, Metalúrgica Cecatto, SEA Filmes
+  1106 - Homologação nota de serviço - Prefeitura de Joinville [Unimatriz]
+  1110 - Adicionar filtro de tipo de pedido - relatório gerencial [Collect]
+  1121 - Filtro de pesquisa por data de criação de produtos [Embraterm]
+  1148 - Inclusão de novo filtro tela CRM Agenda [Delta Cabos]
+  1167 - Melhoria na mensagem de Aviso para o usuário - nfe [Novi]
+  1173 - Novo modelo da ordem de produção + melhoria na ficha técnica [L Forja]
+  1187 - Ajuste no relatório - planilha de industrialização [Netocolor]
+  1189 - Adicionar coluna total -> Relatório de produtos [Inquibra]
+  1192 - 3° Melhorias indústria plástica [Bepine]
+  1193 - Erro ao apertar F6 - Request synchronization [Aleplast]
+  1194 - Correção de campos - Contas a Receber [Novi]
+  1196 - Novo modelo de Romaneio produção [Brazinc]
+  1198 - Erro na emissão de nfe [Metalúrgica Cecatto]
+  1201 - Modificação inclusão de itens pelo F6 [Netocolor]
+  1202 - Erro ao gerar arquivo SCOA [SEA Filmes]
+
+patch 1: Embraterm, SEA Filmes, Bepine, BSC Industrial Aços, L Forja, Netocolor
+  1199 - Melhoria do filtro de data de criação do produto [Embraterm]
+  1200 - Novo relatório contas a receber [Novi]
+  1204 - Novo parâmetros de nota fiscal - Organização da tela [SEA Filmes]
+  1207 - Melhoria regras fiscais pedidos e faturamento [Bepine]
+  1208 - Lentidão na consulta de produtos [BSC Industrial Aços]
+  1210 - Bug Romaneio de Planilha [Novi]
+  1211 - Erro importação de xml [Embraterm]
+  1212 - Bug de compartilhamento de Tabelas - Multiplas empresas [Novi]
+  1213 - Quantidade produção deixar editável [L Forja]
+  1215 - Calculo do peso na tela de gerenciamento e faturamento errado [Netocolor]
+  1216 - Erro entrada de nota fiscal - Industrialização [Novi]
+  1217 - Relatório de nota fiscal por produto pendente [Netocolor]
+  1218 - Ajuste na remessa sicredi CNAB 400 [Netocolor]
+
+patch 2: L Forja, Arkson, Drimec
+  1125 - Função adicionar lançamento na conciliação bancaria [L Forja]
+  1127 - Unificação de faturas [L Forja]
+  1197 - Novo modelo ordem de Produção [Arkson]
+  1203 - Relatório gerar arquivo excel em branco [Drimec]
+  1209 - Emissão de notas com data retroativa [L Forja]
+  1220 - Erro de movimentação no kardex - Nota cancelada [Novi]
+  1222 - Regra Fiscal para CFOP 6107 não está validando - Origem Estrangeira [Drimec]
+  1224 - Verificar mensagem erro ao gerar fatura [Novi]
+  1226 - Bug CRM Agenda Pós Venda [Novi]
+  1227 - Retirar acentuação no arquivo de remessa sicredi [Novi]
+  1228 - Ajuste impressão da ordem de produção Lforja [Novi]
+
+patch 3 - BSC Industrial aços, Unimatriz, Aços Ferrara
+  1136 - Novos relatórios para requisição de material [BSC Industrial aços]
+  1137 - Novos relatórios tela de regularização do estoque [BSC Industrial aços]
+  1168 - Ajuste envio de e-mail [Unimatriz]
+  1206 - Tratamento na mensagem de faturamento - Certificado Digital [Novi]
+  1223 - PREENCHIMENTO INDEVIDO NO CAMPO REDUÇÃO DE BASE DE CÁLCULO [Aços Ferrara]
+  1229 - Lançamento manual de nota de entrada - unidade tributária [Novi]
+  1232 - Retirar horário no lançamento em conciliação bancária [novi]
+  1233 - Ajustar importação do arquivo retorno caixa [Novi]
+  1234 - Mudança na tela de item do pedido [Bepine]
+  1236 - Ajuste fiscal [Novi]
+  1240 - Adicionar no relatório simples no faturamento [Novi]
+  1241 - Erro ao Gerar Arquivo de Remessa [Collect]
+
+
+

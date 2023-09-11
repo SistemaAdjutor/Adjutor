@@ -1,0 +1,36 @@
+﻿Atualizado em 13/01/2022
+Inicio da versão: 10/01/2022
+
+
+principal: Sea filmes, Rotor, FX Film Manaus, Normadin, Embraterm, Braagips
+  822 - Dados adicionais não mostra caracteres especiais [Novi]
+  820 - Alterar data no rodapé do sistema [Novi]
+  819 - Parametro para não deixar empenhar sem estoque não funciona nas multiplas IE [Sea filmes]
+  815 - Sistema não mostra tag de iss quando o percentual é zero [Rotor]
+  814 - Pequenos ajustes na tela de Apontamentos [Novi]
+  812 - No cadastro da operação já fazer o vinculo com o Equipamento [FX Film Manaus]
+  712 - Tirar a consulta de notas fiscais para SP [Normadin]
+  704 - Ajustar campo de data para aceitar mais 23h [Embraterm]]
+  806 - Alteração de layout / posição das colunas de tabela [Embraterm]
+  800 - Adicionar total no rodapé da tela [Brasgips]
+  799 - Bloquear botão "consulta "após o primeiro clique [Novi]
+
+patch 01: Delta Cabos, Drimec
+  829 - Ajuste para novos pedidos com cliente sem cadastro [Delta Cabos]
+  826 - Novo parâmetro para inativar cálculo do difal [Novi]
+  824 - Pesquisa por referencia na entrada de estoque [Drimec]
+  782 - Ajuste no romaneio planilha [Delta Cabos]
+
+patch 02: Quântica, Delta Cabos, FX Film Manaus, Embraterm, Normadin
+  836 - Retirar clipboard das telas [Novi]
+  832 - nvio automático de e-mail invertendo o endereço de NFe com Contato [Quântica]
+  621 - Ajustar parâmetro -> visualizar pedidos do usuário [Delta Cabos]
+  828 - Ajustes CRM AGENDA [Delta Cabos]
+  825 - tela de Modificação de Operação [FX Film Manaus]
+  810 - Criar tela de programação dos processos de fabricação [Fx Film Manaus]
+  804 - Quantidade de horas na produção - filtrar concluído pelo faturamento [Embraterm]
+  697 - Verificar lançamento dos resultados de inspeção [Embraterm]
+  821 - Falha no envio de e-mail [FX Film Manaus]
+  809 - Implementar o parametro Habilitar campos nos produtos para venda [FX Film Manaus]
+  795 - Analisar permissões de exclusão de produtos em Demanda para produção [Normadin]
+

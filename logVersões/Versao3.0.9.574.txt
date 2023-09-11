@@ -1,0 +1,26 @@
+﻿Atualizado em 11/11/2022
+Inicio da versão: 04/11/2022
+
+
+principal: Netocolor
+  1279 - Ajustes Romaneio planilha [Netocolor]
+
+patch 01: Delta Cabos, L Forja, Embraterm, Netocolor, Rotor]
+  1267 - Adicionar o tipo Linha na planilha de produtos [Novi]
+  1272 - Ajuste na baixa de estoque [Delta Cabos]
+  1278 - Erro Impressão de Pedidos - PCP Demanda [L Forja]
+  1280 - Ajuste no cadastro de Produtos - Ficha Técnic [L Forja]
+  1282 - Melhoria no processo embraterm - pedidos [Embraterm]
+  1284 - Ajustar relatório de notas pendentes [Netocolor]
+  1285 - Fazer tratamento para retornos da equiplano - NFSE [Rotor]
+
+patch 02: Drimec
+  1258 - Ficha de Conteúdo de Importação (implementar)
+
+patch 03: Empac, FX Film, Embraterm
+  1270 - Atualizar o pedido antes de deixar editar - Manutenção [Novi]
+  1290 - Ajuste na consulta de NFSe [empac]
+  1293 - Erro na edição de pedido [Novi]
+  1294 - Informações duplicadas na ordem de produção [FX film]
+  1295 - Erro ao inserir item pelo F6 [Embraterm]
+  1296 - Erro ao agrupar pedido de venda [Embraterm]

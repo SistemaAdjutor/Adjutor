@@ -1,0 +1,54 @@
+Atualizado em 30/04/2021
+Inicio da versão: 06/04/2021
+
+patch5: Quantica, Embraterm
+  Incluir novo filtro por marca/linha na tela de vendas/rastreabilidade adj 459 [quantica]
+  Criar campo para valor mínimo da ordem de serviço ajd 479 [embraterm]
+  Alterar descrição na tela de vendas por margem adj 476
+
+patch 4: Normadim, Collect, Brasgips, Embraterm
+  Ajustes Campos Tecnicos Normadim adj 470 [ normandim]
+  Incluir na tela de crm-pós venda a mensagem adj 466  
+  Erro ao exportar relatório em excel - tela de crm-pós-venda adj 464 [collect]
+  Incluir flag para Inativar o tipo de pedido. adj 237 [brasgips]
+  Erro na tela de baixa de contas a receber. adj 460 
+  Erro ao alterar o tipo de pedido. adj 457
+  Tela de vendas /rastreabilidade duplicando pedidos. adj 253 [embraterm]
+  
+  
+patch 3 : chemvet, quantica, itagril
+  Etapas de fabricação adj 462 [ CHEMVET]
+  Data de recebimento adj 467 [quantica]
+  Deixar padrão todas opções para exportar excel adj 463 [itagrill]
+  Incluir novo filtro por marca/linha na tela de vendas/rastreabilidade adj 459 [ quantica]
+  Cadastro de cliente prazo de protesto adj 275 
+  
+pathc 2 : quimica, burda
+  Calculo do ST DIFAL errado adj 359 [quimica, burda]
+  Ajuste no xml para cst 30 adj 469 [quimica rocha]
+  
+patch 1 : BSC, Quantica, Collect, itagril, normandim
+  Tela de demonstrativo de vendas por margem adj 449 [BSC]
+  Regra de vendas a faturar adj 455 [QUANTICA]
+  Verificar rodapé da tela de consulta de pedidos adj 448 
+  Ajustar crm pós-vendas adj 454 [Collect]
+  Melhoria na importação do retorno copel adj 344 [Collect]
+  Criar script para atualizar as ordens de produção como concluída adj 458 [itagrill] 
+  Cadastro de molas Normadim adj 444 [ normandim]
+  Ajustar tela de emissão de nfs adj 450 [Empac]
+  
+Principal : PARSEALS, collect, quimica rocha, pecarpa, empac, quantica, Itagril, Conforto ambiental
+  ATUALIZAÇÃO ACBR ADJ 379, ATUALIZAR coluna que ativa através UPDATE PRMT0001 SET PMT_ATIVAR_INTERMEDIADOR = 'N'
+  Adicionar coluna forma de pagamento no tela de contas a pagar ADDJ 443 [PARSEALS] 
+  Criar novo filtro da situação do cliente adj 231 [Collect]
+  Não mostrar pedidos cancelados na demanda adj 429 [Quimica Rocha]
+  Adicionar valor do FCP ST na primeira parcela adj 434 [Pecarpa]
+  Adicionar opção 'Em recuperação nos relatórios de clientes adj 445 [Collect]
+  Ajustar emissão de NFS-E adj 446 [empac]
+  Filtro no relatório de O.S adj 435 [quantica] 
+  Erro na versão ADJ 447
+  Erro na tela de demonstrativo de vendas por margem adj 387
+  Sistema não mostra produto para incluir no pedido ADJ 418 [ITAGRIL]
+  ajustar filtros da tela de pedidos adj 254 
+  Criar desvio no Dashboard - Total do faturamento adj 438 [Conforto ambiental]
+  Gravar filtros na tela de contas a pagar adj 45 [conforto ambiental]

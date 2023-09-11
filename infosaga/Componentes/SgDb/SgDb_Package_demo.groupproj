@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9A1B6E03-A175-43BA-A132-7471E08458CD}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="Infosaga.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="Exemplo\SgDb_Demo.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="Infosaga">
+        <MSBuild Projects="Infosaga.dproj"/>
+    </Target>
+    <Target Name="Infosaga:Clean">
+        <MSBuild Projects="Infosaga.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="Infosaga:Make">
+        <MSBuild Projects="Infosaga.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="SgDb_Demo">
+        <MSBuild Projects="Exemplo\SgDb_Demo.dproj"/>
+    </Target>
+    <Target Name="SgDb_Demo:Clean">
+        <MSBuild Projects="Exemplo\SgDb_Demo.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="SgDb_Demo:Make">
+        <MSBuild Projects="Exemplo\SgDb_Demo.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="Infosaga;SgDb_Demo"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="Infosaga:Clean;SgDb_Demo:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="Infosaga:Make;SgDb_Demo:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>

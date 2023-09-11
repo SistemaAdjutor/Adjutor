@@ -1,0 +1,60 @@
+﻿Atualizado em 20/07/2022
+Inicio da versão: 01/07/2022
+
+
+principal: Elétrica Burda, Drimec, Collect, Fx Film Manaus, Unimatriz, Parseals, Delta Cabos, Aleplast, BSC Industrial
+  608  - Excluir despesas acessórias do pis e cofins [Elétrica Burda]
+  960  - Novo parâmetro na tela de entrada de nota fiscal [novi]
+  971  - Novo modelo de etiqueta A4 [Drimec]
+  1055 - Alteração plano de contas [Elétrica Burda]
+  1061 - Sistema pegando custo errado da mercadoria [Novi]
+  1062 - Novo parâmetro - tipo de pedido [Collect]
+  1064 - Saida da tela de manutenção-Nota fiscal de entrada [Novi]
+  1067 - Aumento da imagem na OP [Fx Film Manaus]
+  1068 - Erro no processo da nota de serviço provedor ipm [Unimatriz]
+  1071 - Relatório de orçamento saindo sem informações do cliente [Novi]
+  1073 - Bug no relatório de Demonstrativo de Vendas por Margem [Novi]
+  1074 - Ajustar modelo 5 da etiqueta expedição [Parseals]
+  1075 - Nova etiqueta modelo 8 expedição [Delta Cabos]
+  1076 - Ajustes modelos de impressão - ordem de compra [Delta Cabos]
+  1078 - Erro de consulta no Kardex [Aleplast]
+  1081 - Validação de crédito do cliente [Quântica]
+  1084 - Alteração de etiqueta [BSC Industrial]
+
+patch 1: Bepine, Collect, Metalúrgica Água, Netocolor, Quântica, Delta Cabos, BSC Industrial Aços Ltda
+  1065 - Nova tela para pedidos da indústria plástica [Bepine]
+  1077 - Arredondamento de valores na base de cálculo [Novi]
+  1079 - Manutenção dos relatório contas a receber/pagar [Collect]
+  1086 - Fatura sendo exibida várias vezes no contas a receber [Metalúrgica Água]
+  1087 - Melhoria modelos de impressão gerenciamento da industrialização [Netocolor]
+  1089 - Ajustar tela de demonstrativos de margens [Quântica]
+  1091 - Cálculo do PESO para notas de retorno [Netocolor]
+  1092 - Sistema não calcula peso unitário [Delta Cabos]
+  1096 - abela padrão ao ativar tabelas exclusivas [BSC Industrial Aços Ltda]
+  1097 - Erro ao importar nota fiscal [Novi]
+
+patch 2: Quântica, Denta Cabos, Embraterm, Unimatriz, Empac, Collect
+  1093 - Desconto de crédito de cliente não aparece no contas a receber [Quântica]
+  1094 - Parâmetro para exibir/não exibir aba Informações do cliente [Delta Cabos]
+  1100 - Descrição no item na nota fiscal e pedido [Embraterm]
+  1101 - Conversão de pedidos não esta validando limite disponível [Quântica]
+  1103 - Manutenção no campo observação do pedido de compra [Novi]
+  1104 - Cancelamento nota de serviço ipm [Unimatriz]
+  1105 - Ajustes nfse [Empac]
+  1107 - Erro ao adicionar item no pedido [Novi]
+  1108 - Consulta de metas errada [Collect]
+  1111 - Não mostrar tabela de preço com valor zero [Quântica]
+  1116 - Tratar campo Centro de Custo na ENF [Novi]
+
+patch 3: Netocolor
+  1113 - Ajustes layout romaneio de expedição [Netocolor]
+  1123 - Opção selecionar todos retorno de industrialização [Netocolor]
+  1124 - Sistema bloqueando cliente com limite zerado [Novi]
+  1130 - Calculo de icms errado quanto tem desconto [Novi]
+  1131 - Cálculo da margem por dentro - entrada de nota [Novi]
+
+patch 4: Netocolor
+  1122 - Modificação para importação automática de produtos [Netocolor]
+  1134 - Erro no cálculo de diferimento quando tem desconto [Novi]
+
+

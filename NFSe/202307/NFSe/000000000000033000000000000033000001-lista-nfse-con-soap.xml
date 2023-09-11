@@ -1,0 +1,13 @@
+<?xml version='1.0' encoding='utf-8'?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><ns:esConsultarNfseResponse xmlns:ns="http://services.enfsws.es"><ns:return>&lt;?xml version="1.0" encoding="UTF-8"?>&#xd;
+&lt;es:esConsultarNfseResposta xmlns:es="http://www.equiplano.com.br/esnfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.equiplano.com.br/esnfs consultarNfseResposta_v01.xsd">&#xd;
+  &lt;listaNfse class="list">&#xd;
+    &lt;nfse>&#xd;
+      &lt;nrNfse>33&lt;/nrNfse>&#xd;
+      &lt;cdAutenticacao>DBFD6F361738D9FFF11FCBC4D37DEC1&lt;/cdAutenticacao>&#xd;
+      &lt;dtEmissaoNfs>2022-11-09T10:41:09&lt;/dtEmissaoNfs>&#xd;
+      &lt;nrRps>66&lt;/nrRps>&#xd;
+      &lt;nrEmissorRps>1&lt;/nrEmissorRps>&#xd;
+    &lt;/nfse>&#xd;
+  &lt;/listaNfse>&#xd;
+&lt;/es:esConsultarNfseResposta>&#xd;
+</ns:return></ns:esConsultarNfseResponse></soapenv:Body></soapenv:Envelope>

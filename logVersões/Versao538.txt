@@ -1,0 +1,89 @@
+﻿Atualizado em  28/11/2019 
+Inicio da versão: 05/11/2019
+
+ patch10 :  plasticos mundial, Electrica Burda, Forseti
+   Opção pra enviar a copia da Nfe para o e mail do Vendodor http://192.168.0.250:8080/agile/tarefa/show/99275
+   Sistema não está permitindo importar CTE caso já exista o mesmo número da nota http://192.168.0.250:8080/agile/tarefa/show/109341
+   Erro ao transmitir NFE http://192.168.0.250:8080/agile/tarefa/show/109592
+   
+ patch 9: EMBRATERM, PLASTICOS mundial, lion 
+   Tela de Expedição replicando itens http://192.168.0.250:8080/agile/tarefa/show/109164
+   Erro ao faturar serviços http://192.168.0.250:8080/agile/tarefa/show/109301
+   Produção: Mudar a forma de busca no apontamento http://192.168.0.250:8080/agile/tarefa/show/108669
+   Produção: poder imprimir todas as ordens do pedido na sequencia http://192.168.0.250:8080/agile/tarefa/show/109138
+   Produção: Titulo da tela de gerenciamento de apontamentos errado http://192.168.0.250:8080/agile/tarefa/show/109245
+   Telas mantendo informações de outro lançamento http://192.168.0.250:8080/agile/tarefa/show/106187
+   
+ patch 8: industrial mangueiras, Brasgips, embraterm
+   habilitar opção de inserir e editar municipio na tabela de ISS http://192.168.0.250:8080/agile/tarefa/show/108898
+   PRODUTOS DUPLICADOS http://192.168.0.250:8080/agile/tarefa/show/109112
+   Mensagem de confirmação para a expedição http://192.168.0.250:8080/agile/tarefa/show/107598
+   Expandir tela de Planilha de custos http://192.168.0.250:8080/agile/tarefa/show/108140
+   Sistema está trazendo o nome da ocorrência incorreto na tela de retorno http://192.168.0.250:8080/agile/tarefa/show/107808
+   Produção: Mudar a forma de busca no apontamento http://192.168.0.250:8080/agile/tarefa/show/108669
+   
+   
+ patch 7 : embraterm
+  Produção: Quando o item for "KG" incluir campo http://192.168.0.250:8080/agile/tarefa/show/108684
+  
+  
+ patch 6 : embraterm, PLÁSTICOS MUNDIAL, br-inova, metalurgica agua
+    Sistema não deixa faturar quando tem isenção de pis e cofins  http://192.168.0.250:8080/agile/tarefa/show/108909
+    bug versao 538 patch 5 - valor do frete entrando como diferença ao faturar http://192.168.0.250:8080/agile/tarefa/show/108923
+	Produção: Na simulação PV adicionar total do ponto de equilibrio http://192.168.0.250:8080/agile/tarefa/show/108675
+    Produção: Mostrar todos os itens no pedido de tratamento http://192.168.0.250:8080/agile/tarefa/show/108664
+    Produção: Criar opção para excluir ordem http://192.168.0.250:8080/agile/tarefa/show/108652
+	Cópia do pedido trazer também o complemento do item http://192.168.0.250:8080/agile/tarefa/show/108596
+	Aumentar campo do smtp de envio http://192.168.0.250:8080/agile/tarefa/show/108796
+	Key violation nas fichas técnicas http://192.168.0.250:8080/agile/tarefa/show/108769
+	Ajuste da observações do orçamento
+	
+ patch 5: empac, collect , Industrial Mangueiras, NOVO TEMPO, Plastico Mundial,Tecmax
+   Quando marcado a opção (Iss não retido na fonte) o sistemas está retendo o iss, a opção não está fucionando  http://192.168.0.250:8080/agile/tarefa/show/108579
+   Ao entrar em cadastro de usuários aparece a mensagem de erro abaixohttp://192.168.0.250:8080/agile/tarefa/show/108615
+   Erro ao enviar descrição do código de serviço  http://192.168.0.250:8080/agile/tarefa/show/108626
+   Aba de vendas travada  http://192.168.0.250:8080/agile/tarefa/show/108438
+   Quando consultado o cnpj no sistema ele registra informações do cliente  http://192.168.0.250:8080/agile/tarefa/show/108332
+   Problema ao transferir estoque de produtos http://192.168.0.250:8080/agile/tarefa/show/107725
+   Descriminação dos serviços com problemas http://192.168.0.250:8080/agile/tarefa/show/108672
+   Implementar BI - Compras - ABC de produtos por valor http://192.168.0.250:8080/agile/tarefa/show/108405
+  
+ patch 4 : EMPAC, Novi sistemas, 
+   Faturamento de Serviço deverá informar local de serviço http://192.168.0.250:8080/agile/tarefa/show/106107
+   verificar disponibilidade de NFse para novos Municipios http://192.168.0.250:8080/agile/tarefa/show/106124
+   No cadastro de CFOP informar se NFSe tem Retenção http://192.168.0.250:8080/agile/tarefa/show/106093 
+   Utilizar o cadastro do ISS Municipio para emissão de nota de serviço http://192.168.0.250:8080/agile/tarefa/show/106088
+   erro ao enviar NFse, sem mensagem do erro http://192.168.0.250:8080/agile/tarefa/show/107719
+   Erro no valor total do serviço na tela de emissão de nota de serviço http://192.168.0.250:8080/agile/tarefa/show/108339
+   Colocar o valor total do serviço na descrição na NFS-e http://192.168.0.250:8080/agile/tarefa/show/108248
+   Ordenação da tela de emissão de nota de serviço http://192.168.0.250:8080/agile/tarefa/show/108240
+   Melhorias no relatório de vendas http://192.168.0.250:8080/agile/tarefa/show/107795
+   
+ patch 3 : Plasticos Mundial, BRASGIPS, flexsul, collect, Lion equipamentos
+	Melhoria no processo depois que uma nota é denegada http://192.168.0.250:8080/agile/tarefa/show/105037
+	base do st DIFAL incorreta http://192.168.0.250:8080/agile/tarefa/show/108146
+	Tipo de pedido definir se pode ou não ir para expedição http://192.168.0.250:8080/agile/tarefa/show/107600
+	Recibo de comissões não está funcionando corretamente http://192.168.0.250:8080/agile/tarefa/show/107964
+	Criar novas opções de tipo de pagamento na entrada de nota http://192.168.0.250:8080/agile/tarefa/show/108099
+	Erro na tela de recebimentos da Collect http://192.168.0.250:8080/agile/tarefa/show/108358
+	Calculo da base do st por MVA errada http://192.168.0.250:8080/agile/tarefa/show/108253
+	
+ patch 2: 
+   Integração do FCP E FECP - nfe 4.0 http://192.168.0.250:8080/agile/tarefa/show/107310
+   FCP - ajustar para impressão da DANFE quando houver http://192.168.0.250:8080/agile/tarefa/show/107758
+   Vendas interestaduais com ST deve-se somar o FCP do ST No total da nota	 http://192.168.0.250:8080/agile/tarefa/show/107777
+   Demonstrativos gerenciais mostrando fatura excluída http://192.168.0.250:8080/agile/tarefa/show/106772
+   Tela do BI mostrando vendas que tiveram o contas a receber excluido http://192.168.0.250:8080/agile/tarefa/show/106767
+   fazer cabeçalhos do pedidos PPCA pelo cadastro de observações http://192.168.0.250:8080/agile/tarefa/show/107160
+   Numero da NFE na tela de carta de correção http://192.168.0.250:8080/agile/tarefa/show/101105
+   cadastro de produtos exportacao para excel - retirar coluna http://192.168.0.250:8080/agile/tarefa/show/99007
+   Tela de recebimentos não traz numero da NFE  http://192.168.0.250:8080/agile/tarefa/show/103590   
+   Incluir o filtro de clientes no crm renovaçãohttp://192.168.0.250:8080/agile/tarefa/show/101987
+   [DEBUG] A aba de vendas nos produtos está com uma falha http://192.168.0.250:8080/agile/tarefa/show/107983
+	
+	
+ patch 1 : LION EQUIPAMENTOS
+   Parâmetro de código original na Danfe - Deixar selecionar http://192.168.0.250:8080/agile/tarefa/show/107926	
+
+ Tarefas do versão principal :LION EQUIPAMENTOS
+    Erro ao faturar nota com parâmetro de sair codigo original na nota http://192.168.0.250:8080/agile/tarefa/show/107828

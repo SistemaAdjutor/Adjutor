@@ -1,0 +1,19 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch02.sql
+Fim de Linha 10. Tabela já existe no banco ->PMT_LANCA_PERC_MATERIA_PRIMA.PRMT0001
+Fim de Linha 14. Tabela já existe no banco ->FTI_PERCENTUAL.FTC_IT01
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->TRP_CODIGO.FOR0000
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch03.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\dados\Arkson\arkson0512.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.575_patch02.sql
+ok - Adjutor3.0.9.575_patch03.sql
+ok - Adjutor3.0.9.575_patch04.sql
+ok - Adjutor3.0.9.576.sql
+ok - Adjutor3.0.9.576_patch01.sql
+ok - Adjutor3.0.9.576_patch02.sql

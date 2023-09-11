@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>--6F5A8723_Synapse_boundary
+Content-Disposition: form-data; name="login"
+
+14188244000154
+--6F5A8723_Synapse_boundary
+Content-Disposition: form-data; name="senha"
+
+d0264847
+--6F5A8723_Synapse_boundary
+Content-Disposition: form-data; name="f1"; filename="2009S-con-nfse-rps.xml"
+Content-Type: text/xml
+
+<consulta_rps><cidade>7745</cidade><serie_rps></serie_rps><numero_rps>2009</numero_rps></consulta_rps>
+--6F5A8723_Synapse_boundary--

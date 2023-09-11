@@ -1,0 +1,138 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->CAP_SUBSTITUICAO_TRIBUTARIA.CAPACIDADE
+Fim de Linha 10. Tabela já existe no banco ->EMP_CODIGO.CAPACIDADE
+Fim de Linha 14. Tabela já existe no banco ->ENF_IT_ENVIADO_PCP_DEMANDA.ENF_IT01
+Fim de Linha 15. Tabela já existe no banco ->ENF_IT_QTD_ENV_PCP_DEMANDA.ENF_IT01
+Fim de Linha 16. Tabela já existe no banco ->ENF_REGISTRO.DEMANDA_PRODUCAO
+Fim de Linha 17. Tabela já existe no banco ->ENF_REGISTRO.PED_IT01
+Fim de Linha 18. Tabela já existe no banco ->PED_CODIGO.ENF_IT01
+Fim de Linha 20. Tabela já existe no banco ->FTI_TRATAMENTO_TERMICO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 22. Tabela já existe no banco ->FTI_TRATAMENTO_SUPERFICIAL.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 24. Tabela já existe no banco ->FTI_TOLERANCIA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 26. Tabela já existe no banco ->FTI_GRAVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 28. Tabela já existe no banco ->FTI_CORTE_QUANTIDADE.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 30. Tabela já existe no banco ->FTI_CORTE_COMPRIMENTO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 32. Tabela já existe no banco ->FTI_CORTE_QTDE_METROS.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 34. Tabela já existe no banco ->FTI_CORTE_OBSERVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 36. Tabela já existe no banco ->FTI_USINAGEM_OBSERVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 38. Tabela já existe no banco ->FTI_PRENSA_TIPO_CABECA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 40. Tabela já existe no banco ->FTI_PRENSA_CHAVE.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 42. Tabela já existe no banco ->FTI_PRENSA_ALT_CABECA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 44. Tabela já existe no banco ->FTI_PRENSA_MASSA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 46. Tabela já existe no banco ->FTI_PRENSA_CAIXA_N.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 48. Tabela já existe no banco ->FTI_PRENSA_MATRIZ.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 50. Tabela já existe no banco ->FTI_PRENSA_PINO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 52. Tabela já existe no banco ->FTI_PRENSA_BUCHA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 54. Tabela já existe no banco ->FTI_PRENSA_CONTRA_BUCHA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 56. Tabela já existe no banco ->FTI_PRENSA_OBSERVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 58. Tabela já existe no banco ->FTI_LAMINACAO_CAIXA_N.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 60. Tabela já existe no banco ->FTI_LAMINACAO_TIPO_ROLO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 62. Tabela já existe no banco ->FTI_LAMINACAO_TIPO_ROSCA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 64. Tabela já existe no banco ->FTI_LAMINACAO_ALT_USINAGEM.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 66. Tabela já existe no banco ->FTI_LAMINACAO_COMP_ROSCA.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 68. Tabela já existe no banco ->FTI_LAMINACAO_OBSERVACAO.MATERIAPRIMA_ORDEMPRODUCAO
+Script com 32 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch04.sql
+Fim de Linha 8. Tabela já existe no banco ->FOR_CODIGO.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 9. Tabela já existe no banco ->ENF_NOTANUMBER.MATERIAPRIMA_ORDEMPRODUCAO
+Fim de Linha 10. Tabela já existe no banco ->MP_DATA_COMPRA.MATERIAPRIMA_ORDEMPRODUCAO
+Script com 3 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.573_patch04.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.574_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_ATUALIZA_LOTE.PRMT0001
+Fim de Linha 14. Tabela Já existe --> PEDIDO_ITEM_LOTE already ex
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.574_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.574_patch02.sql
+Fim de Linha 8. Tabela já existe no banco ->PRD_CODIGO_FCI.PRD0000
+Fim de Linha 9. Tabela já existe no banco ->PRD_FCI_DATA_GERACAO.PRD0000
+Fim de Linha 10. Tabela já existe no banco ->PRD_FCI_CONTEUDO_IMPORTACAO.PRD0000
+Fim de Linha 11. Tabela já existe no banco ->PRD_FCI_VALOR_PARCELA_IMPORTADA.PRD0000
+Script com 4 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.574_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575.sql
+Fim de Linha 8. Tabela já existe no banco ->PRF_SEQUENCIA.PED_IT01
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch02.sql
+Fim de Linha 8. Tabela Já existe --> IOP_RESERVA_PREFIXO already ex
+Fim de Linha 10. Tabela já existe no banco ->PMT_LANCA_PERC_MATERIA_PRIMA.PRMT0001
+Fim de Linha 14. Tabela já existe no banco ->FTI_PERCENTUAL.FTC_IT01
+Fim de Linha 19. Tabela já existe no banco ->BAN_TIPO_JUROS.BAN0000
+Script com 4 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch02.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->TRP_CODIGO.FOR0000
+Script com 1 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch04.sql
+Fim de Linha 12. ERROR: conversion error from string "01933222000/"
+Fim de Linha 47. ERROR: violation of PRIMARY or UNIQUE KEY constraint "PK_BANCOS" on table "BANCOS"
+Problematic key value is ("BCO_CODIGO" = 85)
+Script com 2 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.575_patch04.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch01.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_RETORNO_POR_CORES.PRMT0001
+Fim de Linha 11. Tabela já existe no banco ->ACO_CODIGO.PED_IT01_INDUST
+Fim de Linha 18. Tabela já existe no banco ->BAN_DIAS_PARA_BAIXA.BAN0000
+Fim de Linha 20. Tabela já existe no banco ->PMT_ALTERA_QUANT_ITEM_PED.PRMT0001
+Script com 4 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch01.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch03.sql
+Fim de Linha 11. Tabela já existe no banco ->MMO_DIAMETRO_MEDIO_MEIO.TIPO_MOLA
+Fim de Linha 14. Tabela já existe no banco ->MMO_DIAMETRO_MEDIO_MEIO.MOLA_MATERIA
+Fim de Linha 15. Tabela já existe no banco ->MMO_DIAMETRO_MEDIO_MEIO_MIN.MOLA_MATERIA
+Fim de Linha 16. Tabela já existe no banco ->MMO_DIAMETRO_MEDIO_MEIO_MAX.MOLA_MATERIA
+Fim de Linha 19. Generator Já existe --> GEN_HISTORICO_EMAIL already exists
+Fim de Linha 22. Tabela Já existe --> HISTORICO_EMAIL already ex
+Fim de Linha 24. Tabela já existe no banco ->HEM_MODULO.HISTORICO_EMAIL
+Fim de Linha 26. Tabela já existe no banco ->HEM_DESTINATARIO.HISTORICO_EMAIL
+Fim de Linha 28. Tabela já existe no banco ->HEM_TITULO.HISTORICO_EMAIL
+Fim de Linha 30. Tabela já existe no banco ->HEM_CLI_FOR.HISTORICO_EMAIL
+Fim de Linha 32. Tabela já existe no banco ->CLI_FOR_CODIGO.HISTORICO_EMAIL
+Fim de Linha 34. Tabela já existe no banco ->HEM_DATA_ENVIO.HISTORICO_EMAIL
+Fim de Linha 36. Tabela já existe no banco ->USU_CODIGO.HISTORICO_EMAIL
+Fim de Linha 38. Tabela já existe no banco ->EMP_CODIGO.HISTORICO_EMAIL
+Fim de Linha 40. Tabela já existe no banco ->HEM_ANEXO.HISTORICO_EMAIL
+Script com 15 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.576_patch03.sql
+Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.577_patch03.sql
+Fim de Linha 8. Tabela já existe no banco ->PMT_ENVIA_COPIA_PEDIDO_INDUST.PRMT0001
+Fim de Linha 11. Tabela Já existe --> CLI_ATV1_2 already ex
+Fim de Linha 12. Tabela já existe no banco ->RCL_ATIVIDADE.CLI_ATV1_2
+Fim de Linha 13. Tabela já existe no banco ->EMP_CODIGO.CLI_ATV1_2
+Fim de Linha 14. ERROR: violation of PRIMARY or UNIQUE KEY constraint "INTEG_1000038" on table "CLI_ATV1_2"
+Problematic key value is ("RCL_CODIGO" = '01')
+Script com 5 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.577_patch03.sql
+Sumário: 
+Host:192.168.0.251
+Database :E:\Dados\BSC\BSC MATRIZ\BSCMATRIZ2203.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.573_patch02.sql
+ok - Adjutor3.0.9.573_patch03.sql
+ok - Adjutor3.0.9.573_patch04.sql
+ok - Adjutor3.0.9.574.sql
+ok - Adjutor3.0.9.574_patch01.sql
+ok - Adjutor3.0.9.574_patch02.sql
+ok - Adjutor3.0.9.574_patch03.sql
+ok - Adjutor3.0.9.575-A.sql
+ok - Adjutor3.0.9.575-B.sql
+ok - Adjutor3.0.9.575.sql
+ok - Adjutor3.0.9.575_patch01.sql
+ok - Adjutor3.0.9.575_patch02.sql
+ok - Adjutor3.0.9.575_patch03.sql
+ok - Adjutor3.0.9.575_patch04.sql
+ok - Adjutor3.0.9.576.sql
+ok - Adjutor3.0.9.576_patch01.sql
+ok - Adjutor3.0.9.576_patch02.sql
+ok - Adjutor3.0.9.576_patch03.sql
+ok - Adjutor3.0.9.577.sql
+ok - Adjutor3.0.9.577_patch01.sql
+ok - Adjutor3.0.9.577_patch02.sql
+ok - Adjutor3.0.9.577_patch03.sql
+ok - Adjutor3.0.9.577_patch04.sql
+ok - Adjutor3.0.9.578.sql
+ok - Adjutor3.0.9.578_patch01.sql
+ok - Adjutor3.0.9.578_patch02.sql

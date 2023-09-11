@@ -1,0 +1,48 @@
+﻿Atualizado em 13/10/2022
+Inicio da versão: 06/10/2022
+
+
+principal: Delta Cabos, BSC Industrial Aços, Netocolor, Collect
+  1239 - Ajuste baixa de estoque itens com lote [Delta Cabos]
+  1242 - Atualizar o pedido antes de deixar editar [BSC Industrial Aços]
+  1244 - Ajuste no Relatório Demonstrativos de Vendas por Margem [Novi]
+  1246 - Revisão de regras fiscais [Novi]
+  1247 - Gerenciamento de industrialização melhorias [Netocolor]
+  1248 - Melhorias na Tela de Conciliação-Lançamentos [Novi]
+  1250 - Erro na importação do arquivo de retorno [Collect]
+  1251 - Baixar parcela no Contas á Receber com preenchimento automático [Novi]
+  1252 - Erro na consulta CNPJ [Novi]
+
+patch 1: Flexsul Calçados Ltda, L Forja, Empac
+  0681 - Ajuste prazos de pagamento [Novi]
+  1183 - Verificar consulta de licenças e bloqueio do cliente novi [Novi]
+  1195 - Campo observação pedido WEB - Kardex [Flexsul Calçados Ltda]
+  1221 - Nova coluna Origem da Mercadoria - Regra Fiscal =[Novi]
+  1235 - Opção de Exclusão de Lançamento de transferência [L Forja]
+  1237 - Manutenção Cadastro Conta Banco [Novi]
+  1238 - Ajuste no Agrupamento - Valor Parcial [L Forja]
+  1249 - Ajuste na tela de NF 4.0 [Novi]
+  1254 - Erro no filtro de data do relatório de vendedores [Novi]
+  1255 - Ajuste na rotina importação de arquivo de retorno [Novi]
+  1256 - Ajuste ordem de produção - lforja [L Forja]
+  1257 - Ajustar impressão do nfse [Empac]
+
+patch 2: L Forja, Bepine
+  1126 - Erro no cálculo de etiquetas para impressão - Expedição [L Forja]
+  1260 - Troca de CSOSN na nfe [Bepine]
+  1261 - Ajustes tela de itens [Bepine]
+  1262 - Ajustar envio produtos para produção [Novi]
+  1263 - Correção na impressão da ordem Lforja [L forja]
+
+patch 3: Netocolor
+  1268 - Verificar descrição do item na produção [Netocolor]
+
+patch 4: Embraterm, Mandibor, Chemvet do Brasil, NJ Portas, Rotor, Sea Filmes
+   830 - Ajuste no filtro da consulta de Pedido de Industrialização [Embraterm]
+  1139 - Tributos federal,estadual,municipal nos dados adicionais da NF [Mandibor]
+  1145 - Novo layout de boleto Padrão/Carnê [Chemvet do Brasil]
+  1149 - Ajuste de lançamento no uso do crédito [NJ Portas]
+  1265 - Verificar erro ao abrir a tela de NFse [Rotor]
+  1266 - Relatório de acordo comercial [Embraterm] 
+  1274 - Ajuste scoa [Sea Filmes]
+  1275 - Correções na O.P lforja [L forja]

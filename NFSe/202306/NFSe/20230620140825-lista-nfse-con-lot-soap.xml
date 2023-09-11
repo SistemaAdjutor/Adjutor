@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='utf-8'?><soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"><soapenv:Body><ns:esConsultarLoteRpsResponse xmlns:ns="http://services.enfsws.es"><ns:return>&lt;?xml version="1.0" encoding="UTF-8"?>&#xd;
+&lt;es:esConsultarLoteRpsResposta xmlns:es="http://www.equiplano.com.br/esnfs" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.equiplano.com.br/esnfs esConsultarLoteRpsResposta_v01.xsd">&#xd;
+  &lt;listaNfse class="list">&#xd;
+    &lt;nfse>&#xd;
+      &lt;nrNfse>157&lt;/nrNfse>&#xd;
+      &lt;cdAutenticacao>C41FD3411E0F7B1282CC824C7AC81668&lt;/cdAutenticacao>&#xd;
+      &lt;dtEmissaoNfs>2023-05-11T11:04:23&lt;/dtEmissaoNfs>&#xd;
+      &lt;nrRps>228&lt;/nrRps>&#xd;
+      &lt;nrEmissorRps>1&lt;/nrEmissorRps>&#xd;
+      &lt;cancelamento>&#xd;
+        &lt;dtCancelamento>2023-05-11T11:05:51&lt;/dtCancelamento>&#xd;
+        &lt;dsCancelamento>cancelamento Adjutor&lt;/dsCancelamento>&#xd;
+      &lt;/cancelamento>&#xd;
+    &lt;/nfse>&#xd;
+  &lt;/listaNfse>&#xd;
+&lt;/es:esConsultarLoteRpsResposta>&#xd;
+</ns:return></ns:esConsultarLoteRpsResponse></soapenv:Body></soapenv:Envelope>

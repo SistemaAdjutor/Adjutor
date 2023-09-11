@@ -1,0 +1,171 @@
+<?xml version="1.0"?>
+<enviSCOA xmlns="http://www.sefaz.am.gov.br/scoa">
+  <versao>1.00</versao>
+  <IE>062013319</IE>
+  <periodoArquivo>20221</periodoArquivo>
+  <nomeResponsavel></nomeResponsavel>
+  <listaArmazem>
+    <dadosArmazem>
+      <numCNPJ>26295146000103</numCNPJ>
+      <numAtoDeclaratorio>00227</numAtoDeclaratorio>
+      <validadeAtoDeclaratorio>2026-09-30</validadeAtoDeclaratorio>
+      <listaProdutosInventario>
+        <produtoInventario>
+          <codProduto>00001</codProduto>
+          <descProduto>FILME DE PVC 380 X 09 X 1000</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>128.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>66.43</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00061</codProduto>
+          <descProduto>FILME DE PVC 380 X 09 X 1200</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>2016.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>76.88</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00062</codProduto>
+          <descProduto>FILME DE PVC 380 X 09 X 1400</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>224.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>95.39</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00070</codProduto>
+          <descProduto>FILME DE PVC 380 X 09 X 700</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>448.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>50.53</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00072</codProduto>
+          <descProduto>FILME DE PVC 380 X 09 X 800</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>224.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>52.64</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00074</codProduto>
+          <descProduto>FILME DE PVC 380 X 09 X 900</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>896.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>61.35</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00078</codProduto>
+          <descProduto>FILME DE PVC 380 X 10 X 1000</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>0.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>79.21</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00081</codProduto>
+          <descProduto>FILME DE PVC 380 X 10 X 300</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>0.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>28.96</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00085</codProduto>
+          <descProduto>FILME DE PVC 380 X 10 X 400</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>0.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>35.46</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00087</codProduto>
+          <descProduto>FILME DE PVC 380 X 10 X 500</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>0.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>43.14</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00097</codProduto>
+          <descProduto>FILME DE PVC 380 X 10 X 800</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>0.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>64.79</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00316</codProduto>
+          <descProduto>FILME DE PVC LINHA DOMESTICA 280 X 08 X 15</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>96.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>2.19</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00317</codProduto>
+          <descProduto>FILME DE PVC LINHA DOMESTICA 280 X 08 X 30</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>96.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>2.85</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00318</codProduto>
+          <descProduto>FILME DE PVC LINHA DOMESTICA 280 X 08 X 100</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>48.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>5.44</precoUnitProduto>
+        </produtoInventario>
+        <produtoInventario>
+          <codProduto>00371</codProduto>
+          <descProduto>FILME DE PVC 300 X 09 X 900</descProduto>
+          <creditoEstimulo>5500</creditoEstimulo>
+          <estoqueInicial>280.00</estoqueInicial>
+          <unidProduto>UN</unidProduto>
+          <precoUnitProduto>48.65</precoUnitProduto>
+        </produtoInventario>
+      </listaProdutosInventario>
+      <listaNotasFiscais>
+        <notaFiscal>
+          <chaveAcessoNFe>13220138299417000170550050000000221877996539</chaveAcessoNFe>
+          <tipoOperacaoNFe>R</tipoOperacaoNFe>
+          <listaProdutosNFe>
+            <produtoNFe>
+              <codProdutoNFe>00001</codProdutoNFe>
+              <quantidade>2688.00</quantidade>
+              <precoUnitProdutoNFe>68.61</precoUnitProdutoNFe>
+            </produtoNFe>
+            <produtoNFe>
+              <codProdutoNFe>00316</codProdutoNFe>
+              <quantidade>4800.00</quantidade>
+              <precoUnitProdutoNFe>1.38</precoUnitProdutoNFe>
+            </produtoNFe>
+            <produtoNFe>
+              <codProdutoNFe>00317</codProdutoNFe>
+              <quantidade>4800.00</quantidade>
+              <precoUnitProdutoNFe>2.24</precoUnitProdutoNFe>
+            </produtoNFe>
+            <produtoNFe>
+              <codProdutoNFe>00318</codProdutoNFe>
+              <quantidade>3600.00</quantidade>
+              <precoUnitProdutoNFe>4.61</precoUnitProdutoNFe>
+            </produtoNFe>
+          </listaProdutosNFe>
+        </notaFiscal>
+      </listaNotasFiscais>
+      <diferencaValorOperacoes>
+        <difValor>
+          <codProduto>00000</codProduto>
+          <diferencaBaseCalculo>0.00</diferencaBaseCalculo>
+          <chaveAcessoNFeComplementar>00000000000000000000000000000000000000000000</chaveAcessoNFeComplementar>
+        </difValor>
+      </diferencaValorOperacoes>
+    </dadosArmazem>
+  </listaArmazem>
+</enviSCOA>

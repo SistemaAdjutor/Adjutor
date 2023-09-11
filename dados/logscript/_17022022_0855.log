@@ -1,0 +1,101 @@
+﻿Inicio script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.555.SQL
+Fim de Linha 9. Tabela já existe no banco ->FPG_REGISTRO.PAG_PC01
+Fim de Linha 13. Tabela já existe no banco ->PMT_ATIVAR_INTERMEDIADOR.PRMT0001
+Fim de Linha 22. ERROR: unsuccessful metadata update
+Index PTI_DISPONIVEL_VENDAS_IDX already exists
+Fim de Linha 23. ERROR: unsuccessful metadata update
+Index PRD0000_LIN_CODIGO_IDX already exists
+Fim de Linha 24. ERROR: unsuccessful metadata update
+Index PRD0000_PTI_CODIGO_IDX already exists
+Fim de Linha 25. ERROR: unsuccessful metadata update
+Index PRD0000_PGR_CODIGO_IDX already exists
+Fim de Linha 26. ERROR: unsuccessful metadata update
+Index PED0000_REP_CODIGO already exists
+Fim de Linha 27. ERROR: unsuccessful metadata update
+Index PED0000_OPV_CODIGO already exists
+Fim de Linha 28. ERROR: unsuccessful metadata update
+Index PED0000_OPE_CODIGO already exists
+Fim de Linha 29. ERROR: unsuccessful metadata update
+Index PED0000_PCL_CODIGO already exists
+Fim de Linha 30. ERROR: unsuccessful metadata update
+Index PED0000_PCX_CODIGO already exists
+Fim de Linha 32. ERROR: unsuccessful metadata update
+Index FAT0000_OPV_CODIGO_IDX already exists
+Fim de Linha 33. ERROR: unsuccessful metadata update
+Index FAT0000_PCL_CODIGO already exists
+Fim de Linha 34. ERROR: unsuccessful metadata update
+Index FAT0000_REP_CODIGO already exists
+Fim de Linha 35. ERROR: unsuccessful metadata update
+Index FAT0000_PCX_CODIGO already exists
+Fim de Linha 36. ERROR: unsuccessful metadata update
+Index FAT0000_CCT_CODIGO already exists
+Fim de Linha 37. ERROR: unsuccessful metadata update
+Index FAT0000_OPE_CODIGO already exists
+Fim de Linha 39. ERROR: unsuccessful metadata update
+Index FAT_PC01_BAN_CODIGO already exists
+Fim de Linha 40. ERROR: unsuccessful metadata update
+Index FAT_PC01_CCT_CODIGO already exists
+Fim de Linha 41. ERROR: unsuccessful metadata update
+Index FAT_PC01_PCX_CODIGO already exists
+Fim de Linha 42. ERROR: unsuccessful metadata update
+Index FAT_PC01_PAG_CODIGO already exists
+Fim de Linha 43. ERROR: unsuccessful metadata update
+Index FAT_PC01_USU_CODIGO already exists
+Fim de Linha 45. ERROR: unsuccessful metadata update
+Index NF0001_PCL_CODIGO already exists
+Fim de Linha 46. ERROR: unsuccessful metadata update
+Index NF0001_OPE_CODIGO already exists
+Fim de Linha 47. ERROR: unsuccessful metadata update
+Index NF0001_REP_CODIGO already exists
+Fim de Linha 48. ERROR: unsuccessful metadata update
+Index NF0001_CLI_CODIGO already exists
+Fim de Linha 49. ERROR: unsuccessful metadata update
+Index NF0001_AMX_CODIGO already exists
+Fim de Linha 50. ERROR: unsuccessful metadata update
+Index NF0001_OPV_CODIGO already exists
+Fim de Linha 52. ERROR: unsuccessful metadata update
+Index NF_IT01_PED_CODIGO already exists
+Fim de Linha 53. ERROR: unsuccessful metadata update
+Index NF_IT01_IPI_CODIGO already exists
+Fim de Linha 54. ERROR: unsuccessful metadata update
+Index NF_IT01_OPE_CODIGO already exists
+Fim de Linha 55. ERROR: unsuccessful metadata update
+Index NF_IT01_AMX_CODIGO_DESTINO already exists
+Fim de Linha 56. ERROR: unsuccessful metadata update
+Index NF_IT01_AMX_CODIGO_ORIGEM already exists
+Fim de Linha 57. ERROR: unsuccessful metadata update
+Index NF_IT01_USU_CODIGO already exists
+Fim de Linha 58. ERROR: unsuccessful metadata update
+Index NF_IT01_PRDCO_CODIGO_ORIGINAL already exists
+Fim de Linha 59. ERROR: unsuccessful metadata update
+Index NF_IT01_PRD_CODIGO already exists
+Fim de Linha 61. ERROR: unsuccessful metadata update
+Index IOP_ORE_CODIGO already exists
+Fim de Linha 62. ERROR: unsuccessful metadata update
+Index KAS_EMPCODIGO already exists
+Fim de Linha 63. ERROR: unsuccessful metadata update
+Index PED_IT01_PRD_CODIGO already exists
+Fim de Linha 64. ERROR: unsuccessful metadata update
+Index PED_IT01_OPE_CODIGO already exists
+Fim de Linha 66. ERROR: unsuccessful metadata update
+Index DEMANDA_PRODUCAO_FTI already exists
+Fim de Linha 67. ERROR: unsuccessful metadata update
+Index DEMANDA_PRODUCAO_PRD_CODIGO already exists
+Fim de Linha 68. ERROR: unsuccessful metadata update
+Index DEMANDA_PRODUCAO_IOP_CODIGO already exists
+Fim de Linha 70. ERROR: unsuccessful metadata update
+Index ORDEM_PROGRAMADA_PEDIDO already exists
+Fim de Linha 71. ERROR: unsuccessful metadata update
+Index ORDEM_PROGRAMADA_DEP_CODIGO already exists
+Fim de Linha 72. ERROR: unsuccessful metadata update
+Index ORDEM_PROGRAMADA_PRD_CODIGO already exists
+Fim de Linha 73. ERROR: unsuccessful metadata update
+Index ORDEM_PROGRAMADA_IOP_CODIGO already exists
+Fim de Linha 76. Tabela já existe no banco ->PMT_DESCOSIDERAR_FATURA.PRMT0001
+Script com 48 erros 
+Fim script -->C:\Developer\adjutor2\ScriptDeveloper\Adjutor3.0.9.555.SQL
+Sumário: 
+Host:192.168.0.16
+Database :/servidor/Jobdados/fxmanaus/fxfilm0501.FDB
+Backup não realizado.
+ok - Adjutor3.0.9.555.SQL

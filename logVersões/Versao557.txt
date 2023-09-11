@@ -1,0 +1,43 @@
+﻿Atualizado em 04/06/2021
+Inicio da versão: 01/06/2021
+
+patch 03: BSC Industrial Aços Ltda, Embraterm, Inquibra
+  Erro ao converter pedido - ADJ 553 [BSC Industrial Aços Ltda]
+  Renomear os campos da tela custos da fabrica - ADJ 542 [Embraterm]
+  Relatório de OP ajustado (Controle de Qualidade) - ADJ - 558 [Inquibra]
+  No Setor é preciso vincular a que Centro de custo ele pertence - ADJ 546 [Embraterm]
+  Gravar tabela de Formação de preço de Venda automaticamente - ADJ 545 [Embraterm]
+  Cadastro do centro de custo marcar para participar do custo operacional - ADJ 544 [Embraterm]
+  Atalho do PCP na tela de Demanda - ADJ 538 [BSC Industrial Aços Ltda]
+  Nova etiqueta no gerenciador de etiqueta - ADJ 532 [Rotor]
+
+
+patch 02: NJ Portas, Chemvet do Brasil LTDA - ME, LF EPIS, Embraterm, BRASGIPS (DF, WD e Capital), Empac, Inquibra
+  Melhoria - Alterar tela de pesquisa de clientes no financeiro - ADJ 548 [ Novi]
+  Mensagem padrão não esta saindo nos dados adicionais - ADJ 540 [NJ Portas]
+  Não esta estornando Ordem no PCP. - ADJ 530 [Chemvet do Brasil LTDA - ME]
+  Cadastro de empresa - ADJ 529 [Novi]
+  Erro ao faturar e fazer pedido para o cliente ao mesmo tempo - ADJ 543 [LF EPIS]
+  Criar visualização em grade tipo planilha - ADJ 513 [Embraterm]
+  Ajustar valor da venda - ADJ 506 - BRASGIPS (DF, WD e Capital)
+  Ajuste para emissão das notas de serviço - curitiba - ADJ 472 [Empac]
+  Relatório de OP e Qualidade - ADJ 524 [ Inquibra]
+
+patch 01: BSC Industrial Aços Ltda, Normadin, Quantica, Quimica Rocha
+  Ajuste ADJT 519 - ADJ 523 - [BSC Industrial Aços Ltda]
+  Ajustes do ADJT-508 - ADJ 522 - [Normadin]
+  PRODUÇÃO BSC PARAMETRO PARA PERMITIR EMPENHAR SEM ESTOQUE - ADJ 518 - [BSC Industrial Aços Ltda]
+  PRODUÇÃO BSC INCLUIR ESTOQUE DA MP SUBSTITUTA. - ADJ 517 - [BSC Industrial Aços Ltda]
+  Homologação banco SAFRA - ADJ - 489 - [Quantica]
+  Erro no relatório do PCP - ADJ - 525 [Quimica Rocha]
+  Ajuste - Arquivo de remessa banco do brasil - ADJ 520 - [BSC Industrial Aços Ltda]
+  Campos tecnicos - ADJ 511 - [Novi]
+
+principal: BSC Industrial Aços Ltda, Itagrill, Normadin
+  PRODUÇÃO BSC 003 - adj - 519 [BSC Industrial Aços Ltda]
+  Valor do item na tela de demanda. - adj 498 [Itagrill]
+  Ajustes campos Normadim 7 - adj 508 - [Normadin]
+  Ajustes campos Normadim 5 - adj 499 - [Normadin]
+  Ajustes campos Normadim 4 - adj 497 - [Normadin]
+
+  

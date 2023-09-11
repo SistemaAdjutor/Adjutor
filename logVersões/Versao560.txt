@@ -1,0 +1,60 @@
+﻿Atualizado em 14/09/2021
+Inicio da versão: 01/09/2021
+
+patch 05: Itagrill, Elétrica Burda, Solve
+  Erro ao enviar pedidos para demanda - ADJ 685 [Itagrill]
+  Sistema calculando errado valor do icms pago anteriormente. - ADJ 597 [Elétrica Burda]
+  Adicionar opção data de emissão nos relatórios - ADJ 594 [ Solve]
+
+patch 04: Elétrica Burda, Nanotec, Embraterm
+  Abrir campos para digitação - ADJ 596 [Elétrica Burda]
+  Melhoria do gráfico do fluxo - ADJ 673 [Nanotec]
+  Erro ao estornar contas a receber com desconto - ADJ 659 [Embraterm]
+  Ajustar caixa de seleção no CRM - ADJ 461 [Novi]
+  Sistema não importa dados da tag infAdFisco - ADJ 620 [Elétrica Burda]
+  Criar opção "Copiar" no Pedido de Compra - ADJ 32 [Plásticos Mundial]
+
+patch 03: Elétrica Burda, LF Epis, Rotor, Embraterm, Brasgips, Itagrill, BSC Industrial Aços
+  Sistema não mostra base do FCP ST - ADJ 674 [Elétrica Burda]
+  Sistema não mostra linhas para selecionar - ADJ 672 [Novi]
+  Abandonar a operação não funciona - ADJ 670 [LF Epis]
+  Alterar cte duplica os lançamentos - ADJ 671 [Rotor]
+  Erro ao gravar informações na tabela exclusiva - ADJ 667 [Embraterm]
+  Erro ao abrir ordem de serviço - ADJ 658 [Embraterm]
+  Itens não aparecem na expedição - ADJ 656 [Brasgips]
+  Excluir Materia prima na demanda - ADJ 640 [Itagrill]
+  PROJETO BSC: Relatório de compra por Produto - ADJ 551 [BSC Industrial Aços]
+  Melhorias na tela de controle de lotes - ADJ 242 [Novi]
+  Não esta baixando estoque pelo faturamento - ADJ 676 [Novi]
+  Colocar update no script - ADJ 677 [Novi]
+  
+
+patch 02: Itagrill, Nanotec, Chemvet
+  Cálculo do icms desonerado - ADJ 650 [Novi]
+  Erro da tela de gerenciamento do PCP ADJ 665 [Novi]
+  Novo campo de observação da Produção - ADJ 664 [Itagrill]
+  Relatório de Apontamento por Colaborador/Período e Ordem de produção. - ADJ 654 [Nanotec]
+  Ajuste tela Previsão de compra Produção. - ADJ 649 [Chemvet]
+
+patch01: Delta Cabos, Chemvet, Rotor, Itagrill
+  Lentidão na tela de crm agenda - ADJ 652 - [Delta Cabos]
+  Ajuste na tela de envase - ADJ 636 - [Chemvet]
+  Erro ao gravar item após referenciar - ADJ 663 [Rotor]
+  Erro ao cancelar nota fiscal - ADJ 662 [Itagrill]
+  Ajuste Movimentação Envase - ADJ 641 [Chemvet]
+  Cancelamento de pedido não valida emp_código - ADJ 647 [Itagrill]
+  Inverter nomes dos campo - ADJ 643 [Novi]
+  Sistema não deixa excluir item não enviado para produção - ADJ 533 [Itagrill]
+  Colocar índices no script - ADJ 661 [Novi]
+
+principal: BSC Industrial Aços Ltda, BRASGIPS, Delta Cabos, Hospital São José
+  Verificar sistema não encontra estoque do produto - ADJ 639 [BSC Industrial Aços Ltda]
+  Erro ao abrir consulta de pedidos - ADJ 644 [Novi]
+  Erro no cálculo do resultado - ADJ 642 - [BRASGIPS]
+  Erro no cancelamento de notas fiscais - ADJ 625 [BRASGPIS]
+  Parâmetro de produtos ajustes - ADJ 613 - [Delta Cabos]
+  Adicionar coluna de vendedor na consulta de clientes - ADJ 593 [Hospital São José]
+  Alterar nome do campo - tela demonstrativos de margem por venda - ADJ 585 [Novi]
+  Incluir opção salvar pdf e exportar para excel - ADJ 564 [Hospital São josé]
+  Alteração no cadastro de pagamento - xml - ADJ 380 [Novi]
+  Alteração para calculo do ST - Pedidos com clientes sem cadastro - ADJ 353 [Delta Cabos]
