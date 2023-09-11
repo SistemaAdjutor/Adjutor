@@ -2978,7 +2978,7 @@ procedure TDBInicio.LerVersao;
     end;
     vlVersao.patch := 0;
     vlVersao.Issues := '';
-	// teste ssh
+	// teste ssh branch
 
     r := TIdIPWatch.Create( nil );
     try
