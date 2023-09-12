@@ -513,7 +513,8 @@ uses
   uMolaToleranciaDiametroMedio in 'dfmpas2\uMolaToleranciaDiametroMedio.pas' {frmMolaToleranciaDiametroMedio},
   uDevolucaoNotaEntrada in 'dfmpas2\uDevolucaoNotaEntrada.pas' {frmDevolucaoNotaEntrada},
   uSelecinaCFOP in 'dfmpas2\uSelecinaCFOP.pas' {frmSelecionaCFOP},
-  uSelecionaAlmoxarifado in 'dfmpas2\uSelecionaAlmoxarifado.pas' {frmSelecionaAlmoxarifado};
+  uSelecionaAlmoxarifado in 'dfmpas2\uSelecionaAlmoxarifado.pas' {frmSelecionaAlmoxarifado},
+  fdac.SgDbAutoF8Unit in 'infosaga\Componentes\SgDb\fdac.SgDbAutoF8Unit.pas';
 
 {$R *.res}
 {$D+}

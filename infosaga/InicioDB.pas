@@ -886,7 +886,7 @@ Function FormataRefer( const pRefer : string ) : String;
 implementation
 
 uses
-  Uteis,
+  Uteis, FDAC.SgDbAutoF8Unit,
   ConfiguraBancoForm,
   LicencaForm,
   Val0002,
