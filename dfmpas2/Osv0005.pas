@@ -19,7 +19,11 @@ uses
   dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue, Data.DBXFirebird, SimpleDS, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, RxCurrEdit, JvExMask, JvToolEdit;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, Data.DBXFirebird, SimpleDS, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, RxCurrEdit, JvExMask, JvToolEdit,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinTheBezier, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light;
 
 type
   TFormConcluirOP = class(TFrmBaseDbEstoque)

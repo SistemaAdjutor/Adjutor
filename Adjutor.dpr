@@ -287,7 +287,6 @@ uses
   ImportarXMLMigracaoNovi in 'dfmpas2\ImportarXMLMigracaoNovi.pas' {frmImportarXMLMigracaoNovi},
   PesquisaClientesForm in 'dfmpas2\PesquisaClientesForm.pas' {frmPesquisaClientes},
   Nfs0001 in 'dfmpas2\Nfs0001.pas' {FormNfEntrada},
-  OsvN0001 in 'dfmpas2\OsvN0001.pas' {FormOrdServCentroNovo},
   Prd0006 in 'dfmpas2\Prd0006.pas' {FormProdutoGrid},
   PrevC001 in 'dfmpas2\PrevC001.pas' {FormPrevConsumo},
   For0002 in 'dfmpas2\For0002.pas' {FormFornecGrid},
@@ -514,7 +513,8 @@ uses
   uDevolucaoNotaEntrada in 'dfmpas2\uDevolucaoNotaEntrada.pas' {frmDevolucaoNotaEntrada},
   uSelecinaCFOP in 'dfmpas2\uSelecinaCFOP.pas' {frmSelecionaCFOP},
   uSelecionaAlmoxarifado in 'dfmpas2\uSelecionaAlmoxarifado.pas' {frmSelecionaAlmoxarifado},
-  fdac.SgDbAutoF8Unit in 'infosaga\Componentes\SgDb\fdac.SgDbAutoF8Unit.pas';
+  fdac.SgDbAutoF8Unit in 'infosaga\Componentes\SgDb\fdac.SgDbAutoF8Unit.pas',
+  OsvN0001 in 'dfmpas2\OsvN0001.pas' {FormOrdServCentroNovo};
 
 {$R *.res}
 {$D+}
@@ -545,6 +545,7 @@ begin
   Application.CreateForm(TDmProducao, DmProducao);
   Application.CreateForm(TDmCfg, DmCfg);
   Application.CreateForm(TFrmMenu, FrmMenu);
+  Application.CreateForm(TFormOrdServCentroNovo, FormOrdServCentroNovo);
   if dbInicio.ModulosComoAplicacao then
   begin
      Application.CreateForm(TfrmBaseDBFDAC, frmBaseDBFDAC);

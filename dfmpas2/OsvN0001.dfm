@@ -14,7 +14,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
   Position = poDesktopCenter
   Visible = True
   ExplicitWidth = 1328
-  ExplicitHeight = 700
+  ExplicitHeight = 704
   PixelsPerInch = 96
   TextHeight = 14
   object pgcPCP: TPageControl [0]
@@ -29,10 +29,6 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     OnChange = pgcPCPChange
     object tsOrdem: TTabSheet
       Caption = 'Orde&m de Produ'#231#227'o'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DbGridCelulas: TDBGrid
         Left = 0
         Top = 388
@@ -3687,6 +3683,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -3703,6 +3700,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -3712,21 +3717,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -3734,13 +3751,26 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 848
     Top = 209
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 40217
@@ -3760,13 +3790,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 265
@@ -3779,6 +3811,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -3791,6 +3824,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -3804,13 +3838,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FOLHA DE PESAGEM (PRODU'#199#195'O)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4092
@@ -3825,6 +3861,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_EMISSAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3848,6 +3885,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3870,6 +3908,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3893,13 +3932,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Essencia(s)=>'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 1852
@@ -3914,13 +3955,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Produzir:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 93655
@@ -3935,13 +3978,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OP N'#186'.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 166689
@@ -3955,6 +4000,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3977,13 +4023,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LblTipo2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LT'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4233
@@ -4078,6 +4126,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4100,6 +4149,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4122,6 +4172,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4144,6 +4195,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4166,6 +4218,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4188,6 +4241,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR8'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4230,13 +4284,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MAT.PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4251,13 +4307,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PESO Kg'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -4282,13 +4340,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LOTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3260
@@ -4333,13 +4393,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QUANTIDADE EM GRAMAS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4405,13 +4467,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P. BRUTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4426,13 +4490,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TARA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4448,13 +4514,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P. LIQUIDO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4469,13 +4537,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4490,6 +4560,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4512,6 +4583,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText101'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4535,13 +4607,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INICIAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4557,13 +4631,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FINAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4578,13 +4654,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label102'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ADI'#199#195'O DE MAT.PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -4599,6 +4677,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSet
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4618,6 +4697,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line19'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4632,13 +4712,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CLIENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -4653,6 +4735,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4675,6 +4758,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText81'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4698,13 +4782,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LOTE N'#186':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -4719,6 +4805,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText82'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_LOTE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4741,13 +4828,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PEDIDO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -4762,6 +4851,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText83'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4784,6 +4874,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText84'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_DTENTREGA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4807,13 +4898,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENTREGA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -4828,13 +4921,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LblProduzir'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'KG'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4233
@@ -4849,6 +4944,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText87'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE_CONVERTIDA'
         DataPipeline = ppDBPipeline1
         DisplayFormat = '#,###0.000'
@@ -4874,13 +4970,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = #1
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 131763
@@ -4894,6 +4992,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         DisplayFormat = '#,###0.000'
@@ -4915,8 +5014,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 4498
@@ -4926,6 +5024,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -4948,6 +5047,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.000000'
@@ -4971,6 +5071,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4983,6 +5084,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -4996,6 +5098,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line6'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4233
@@ -5009,6 +5112,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line7'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -5022,6 +5126,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line8'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -5035,6 +5140,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line9'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -5048,6 +5154,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line10'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -5061,6 +5168,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -5074,6 +5182,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line11'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -5087,6 +5196,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -5100,6 +5210,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -5114,6 +5225,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText86'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_LOTE'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -5133,7 +5245,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 131498
       mmPrintPosition = 0
@@ -5173,13 +5285,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -5194,6 +5308,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -5257,6 +5372,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line13'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5269,6 +5385,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line14'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5281,6 +5398,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line15'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 86519
@@ -5295,13 +5413,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N.Tq. ARMAZENADO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 30956
@@ -5316,13 +5436,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N.Tq. PREPARO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 1852
@@ -5337,13 +5459,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OBSERVA'#199#213'ES:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -5358,6 +5482,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5380,6 +5505,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5402,6 +5528,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5424,6 +5551,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5446,6 +5574,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText22'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5468,6 +5597,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5500,13 +5630,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Lote Produzido ='
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -5521,13 +5653,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ph = '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -5542,13 +5676,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Densidade ='
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -5594,13 +5730,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[_] Aprovado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 117740
@@ -5615,13 +5753,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[_] Reprovado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 117740
@@ -5645,13 +5785,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Provid'#234'ncias:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -5666,13 +5808,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label28'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SA'#205'DA DO LABORAT'#211'RIO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 794
@@ -5686,13 +5830,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA: ____/____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 794
@@ -5706,13 +5852,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'HORA: ______:______'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 42333
@@ -5726,13 +5874,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label301'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO:__________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 73554
@@ -5746,13 +5896,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RETORNO DO LABORAT'#211'RIO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 529
@@ -5766,13 +5918,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA: ____/____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 529
@@ -5786,13 +5940,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label302'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'HORA: ______:______'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 42069
@@ -5806,13 +5962,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO:__________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 73290
@@ -5825,6 +5983,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line16'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 142611
@@ -5837,6 +5996,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line17'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 142875
@@ -5849,6 +6009,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer1
         UserName = 'Line18'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 161661
@@ -5862,13 +6023,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label25'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PROCESSO DA PRODU'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3810
         mmLeft = 794
@@ -5882,13 +6045,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label31'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Observa'#231#245'es da Ordem de Produ'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3810
         mmLeft = 529
@@ -5902,6 +6067,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText85'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_LOTE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5924,6 +6090,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5945,6 +6112,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         OnPrint = mPROC_PRC_M1Print
         DesignLayer = ppDesignLayer1
         UserName = 'mPROC_PRC_M1'
+        Border.mmPadding = 0
         Caption = 'mPROC_PRC_M1'
         CharWrap = False
         Font.Charset = DEFAULT_CHARSET
@@ -5983,6 +6151,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -5999,6 +6168,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -6008,21 +6185,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -6030,13 +6219,26 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 816
     Top = 209
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand2: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 42598
@@ -6046,13 +6248,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 265
@@ -6065,6 +6269,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -6077,6 +6282,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -6090,6 +6296,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_EMISSAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6112,6 +6319,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6134,13 +6342,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label37'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Emiss'#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -6155,13 +6365,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LBL_00_EMPRESA1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Ordem de Produ'#231#227'o No.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4939
         mmLeft = 0
@@ -6175,13 +6387,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label40'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'T.U.P.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4939
         mmLeft = 173567
@@ -6195,6 +6409,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText26'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_TUP'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6217,13 +6432,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label39'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRODUTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -6237,6 +6454,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6259,6 +6477,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'DESC_PROD_CC'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6281,13 +6500,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label41'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QTDE PRODUZIR:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 53884
@@ -6301,6 +6522,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6323,13 +6545,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label401'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TUP TOTAL:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 165171
@@ -6343,6 +6567,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'VarToTup'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -6377,13 +6602,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Mat'#233'ria'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -6419,13 +6646,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label44'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Quantidade ->'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 47361
@@ -6439,13 +6668,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label45'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Consumo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6460,13 +6691,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label46'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Unidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6521,13 +6754,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6542,13 +6777,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label73'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Situa'#231#227'o.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4939
@@ -6563,6 +6800,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText44'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_STATUS_CC'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6584,6 +6822,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line27'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -6597,13 +6836,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label36'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PEDIDO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -6617,6 +6858,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText45'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6639,13 +6881,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data de Entrega:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -6660,6 +6904,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText46'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_DTENTREGA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6682,13 +6927,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label74'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CLIENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -6702,6 +6949,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText48'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6725,6 +6973,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6757,13 +7006,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label78'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -6778,13 +7029,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label79'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Separada'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2910
         mmLeft = 140499
@@ -6798,13 +7051,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label80'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QTDE SOLITADA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 0
@@ -6818,13 +7073,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label81'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QTDE ESTOQUE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 106709
@@ -6838,6 +7095,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText303'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_ESTOQUE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6860,13 +7118,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label133'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'por'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6883,13 +7143,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Prima'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -6905,6 +7167,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE_SOLICITADA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6927,13 +7190,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label173'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QTDE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6948,13 +7213,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label174'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CONSUMO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6969,13 +7236,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label175'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OBSERVA'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6997,8 +7266,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 5821
@@ -7007,6 +7275,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -7019,6 +7288,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line8'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7032,6 +7302,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line10'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7045,6 +7316,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7058,6 +7330,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7072,6 +7345,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -7092,6 +7366,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line23'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7105,6 +7380,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line24'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7118,6 +7394,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line25'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7131,6 +7408,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line39'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7145,6 +7423,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -7166,6 +7445,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSI_UC'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -7188,6 +7468,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText56'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -7210,6 +7491,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line34'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7224,6 +7506,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText501'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_SIGLA'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -7247,6 +7530,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText502'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,0;-#,0'
@@ -7269,6 +7553,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line31'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -7283,6 +7568,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText31'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -7301,7 +7587,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppSummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 66675
       mmPrintPosition = 0
@@ -7322,13 +7608,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label48'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -7343,13 +7631,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MONTAGEM:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -7364,13 +7654,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CORTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -7385,13 +7677,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FABRICA'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -7406,13 +7700,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label52'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -7426,13 +7722,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label501'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -7446,13 +7744,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label54'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -7466,13 +7766,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label55'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -7486,13 +7788,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label56'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -7506,13 +7810,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -7526,13 +7832,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -7546,13 +7854,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -7566,13 +7876,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -7586,13 +7898,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -7606,13 +7920,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -7626,13 +7942,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label601'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -7646,13 +7964,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -7666,13 +7986,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label66'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -7686,13 +8008,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -7706,13 +8030,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -7726,13 +8052,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'GERENCIA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -7747,13 +8075,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label70'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'EXPEDI'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -7768,13 +8098,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label502'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QUALIDADE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -7789,13 +8121,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label72'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DISTRIBUI'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -7809,6 +8143,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer2
         UserName = 'Line102'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 32279
@@ -7833,6 +8168,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -7855,6 +8191,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -7877,13 +8214,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label75'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Observa'#231#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 794
@@ -7897,6 +8236,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -7919,6 +8259,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -7941,6 +8282,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -7963,6 +8305,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -7985,6 +8328,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText701'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -8004,16 +8348,17 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060E
-        566172546F5475704F6E43616C630B50726F6772616D54797065070B74745072
-        6F63656475726506536F75726365067D70726F63656475726520566172546F54
-        75704F6E43616C63287661722056616C75653A2056617269616E74293B0D0A62
-        6567696E0D0A0D0A202056616C7565203A3D20204442506970656C696E65315B
-        274F53565F51544445275D2A4442506970656C696E65315B274654435F545550
-        275D3B0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D650608566172
-        546F547570094576656E744E616D6506064F6E43616C63074576656E74494402
-        21084361726574506F730102000200000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'VarToTupOnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure VarToTupOnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value ' +
+          ':=  DBPipeline1['#39'OSV_QTDE'#39']*DBPipeline1['#39'FTC_TUP'#39'];'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'VarToTup'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
     end
     object ppDesignLayers2: TppDesignLayers
       object ppDesignLayer2: TppDesignLayer
@@ -8219,7 +8564,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     Left = 210
     Top = 90
     Bitmap = {
-      494C010103000500040010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500080010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -8355,6 +8700,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -8371,6 +8717,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -8380,21 +8734,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -8402,13 +8768,26 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 848
     Top = 257
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand3: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 40217
@@ -8428,13 +8807,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 265
@@ -8447,6 +8828,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -8459,6 +8841,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -8472,13 +8855,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FOLHA DE PESAGEM (PRODU'#199#195'O)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4092
@@ -8493,6 +8878,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_EMISSAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -8516,6 +8902,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -8538,6 +8925,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -8561,13 +8949,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Essencia(s)=>'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 1852
@@ -8582,13 +8972,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRODUZIR:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1322
@@ -8603,13 +8995,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OP N'#186'.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 164834
@@ -8623,6 +9017,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -8645,6 +9040,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         DisplayFormat = '#,###0.000'
@@ -8669,13 +9065,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LblTipo2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LT'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -8760,13 +9158,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MAT'#201'RIA-PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3704
@@ -8781,13 +9181,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PESO Kg'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -8812,13 +9214,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LOTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -8873,13 +9277,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -8895,13 +9301,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INICIAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -8917,13 +9325,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FINAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -8938,13 +9348,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label102'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ADI'#199#195'O DE MAT.PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -8959,6 +9371,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSet
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -8978,6 +9391,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line19'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -8992,13 +9406,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CLIENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -9013,6 +9429,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9035,6 +9452,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText81'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9058,13 +9476,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LOTE N'#186':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -9079,6 +9499,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText82'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_LOTE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9101,13 +9522,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PEDIDO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -9122,6 +9545,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText83'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9144,6 +9568,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText84'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_DTENTREGA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9167,13 +9592,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENTREGA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -9188,13 +9615,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LblProduzir'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'KG'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -9209,6 +9638,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText87'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE_CONVERTIDA'
         DataPipeline = ppDBPipeline1
         DisplayFormat = '#,###0.000'
@@ -9234,13 +9664,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SOLICITADA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 55568
@@ -9251,8 +9683,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppDetailBand3: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 4498
@@ -9262,6 +9693,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -9284,6 +9716,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -9307,6 +9740,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -9319,6 +9753,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -9332,6 +9767,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line6'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4233
@@ -9345,6 +9781,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line10'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -9358,6 +9795,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -9371,6 +9809,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line11'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -9384,6 +9823,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -9397,6 +9837,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -9411,6 +9852,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText109'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_LOTE'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -9433,6 +9875,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText95'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -9452,13 +9895,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppFooterBand1: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 6350
       mmPrintPosition = 0
       object ppSystemVariable4: TppSystemVariable
         DesignLayer = ppDesignLayer3
         UserName = 'SystemVariable2'
+        Border.mmPadding = 0
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -9475,13 +9919,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLabel182: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label2'
+        Border.mmPadding = 0
         Caption = 'Data:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 2910
@@ -9493,13 +9939,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLabel218: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label218'
+        Border.mmPadding = 0
         Caption = 'Hora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 30163
@@ -9511,6 +9959,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppSystemVariable5: TppSystemVariable
         DesignLayer = ppDesignLayer3
         UserName = 'SystemVariable3'
+        Border.mmPadding = 0
         VarType = vtTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9527,7 +9976,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppSummaryBand3: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 131498
       mmPrintPosition = 0
@@ -9567,13 +10016,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -9588,6 +10039,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -9651,6 +10103,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line13'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -9663,6 +10116,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line14'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -9677,13 +10131,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N.Tq. ARMAZENADO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 30956
@@ -9698,13 +10154,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N.Tq. PREPARO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 1852
@@ -9719,13 +10177,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ANALISES'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 64560
@@ -9739,6 +10199,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9761,6 +10222,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9783,6 +10245,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9805,6 +10268,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9827,6 +10291,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9849,6 +10314,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText22'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9871,6 +10337,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -9893,13 +10360,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ph = '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -9914,13 +10383,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Densidade ='
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -9966,13 +10437,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[_] Aprovado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 117740
@@ -9987,13 +10460,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[_] Reprovado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 117740
@@ -10017,13 +10492,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Provid'#234'ncias:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -10038,13 +10515,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label28'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SA'#205'DA DO LABORAT'#211'RIO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 794
@@ -10058,13 +10537,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA: ____/____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 794
@@ -10078,13 +10559,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'HORA: ______:______'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 42333
@@ -10098,13 +10581,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label301'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO:__________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 73554
@@ -10118,13 +10603,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RETORNO DO LABORAT'#211'RIO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 529
@@ -10138,13 +10625,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA: ____/____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 529
@@ -10158,13 +10647,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label302'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'HORA: ______:______'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 42069
@@ -10178,13 +10669,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO:__________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 73290
@@ -10197,6 +10690,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line16'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 142611
@@ -10209,6 +10703,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line17'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 142875
@@ -10221,6 +10716,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line18'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 161661
@@ -10234,13 +10730,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label25'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PROCESSO DA FABRICA'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 794
@@ -10254,13 +10752,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label31'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Observa'#231#245'es da Ordem de Produ'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3810
         mmLeft = 529
@@ -10273,6 +10773,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer3
         UserName = 'Line7'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 527
@@ -10284,6 +10785,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppDBMemo1: TppDBMemo
         DesignLayer = ppDesignLayer3
         UserName = 'DBMemo1'
+        Border.mmPadding = 0
         CharWrap = False
         DataField = 'FTC_ETAPAS'
         DataPipeline = ppDBPipeline2
@@ -10324,6 +10826,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -10340,6 +10843,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -10349,21 +10860,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -10371,13 +10894,26 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 912
     Top = 257
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand4: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 42598
@@ -10387,13 +10923,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 265
@@ -10406,6 +10944,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -10418,6 +10957,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -10431,6 +10971,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_EMISSAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10453,6 +10994,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10475,13 +11017,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label37'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Emiss'#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -10496,13 +11040,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LBL_00_EMPRESA1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Ordem de Produ'#231#227'o No.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4939
         mmLeft = 0
@@ -10516,13 +11062,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label40'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'T.U.P.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4939
         mmLeft = 173567
@@ -10536,6 +11084,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText26'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_TUP'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10558,13 +11107,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label39'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Produto.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4939
         mmLeft = 0
@@ -10578,6 +11129,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10600,6 +11152,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'DESC_PROD_CC'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10622,13 +11175,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label41'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde. Produzir:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 54769
@@ -10642,6 +11197,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10664,13 +11220,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label401'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL T.U.P.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 157427
@@ -10684,6 +11242,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'VarToTup'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -10718,13 +11277,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MAT. PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -10760,13 +11321,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label45'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Consumo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -10781,13 +11344,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label46'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Unit'#225'rio'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -10842,13 +11407,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -10863,6 +11430,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText301'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10886,13 +11454,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label73'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Situa'#231#227'o.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4939
@@ -10907,6 +11477,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_STATUS_CC'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10928,6 +11499,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line33'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -10941,13 +11513,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label36'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PEDIDO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -10961,6 +11535,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -10983,13 +11558,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data do Pedido:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3260
@@ -11004,6 +11581,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_DTENTRADA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -11026,13 +11604,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label74'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CLIENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -11046,6 +11626,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -11069,6 +11650,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText64'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -11101,13 +11683,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label78'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -11122,13 +11706,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label79'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Separada'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2910
         mmLeft = 174625
@@ -11142,13 +11728,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label80'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde. Solicitada:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -11162,6 +11750,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText302'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE_SOLICITADA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -11184,13 +11773,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label81'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde. Estoque:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 109009
@@ -11204,6 +11795,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText303'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_ESTOQUE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -11226,13 +11818,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label170'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Grade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -11247,13 +11841,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label171'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Ordem de Compra:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3260
@@ -11268,6 +11864,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText133'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_NUMERO_PED_CLIENTE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -11290,13 +11887,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data de Entrega:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -11311,6 +11910,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText134'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_DTSAIDA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -11330,8 +11930,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppDetailBand4: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 5292
@@ -11340,6 +11939,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -11352,6 +11952,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line9'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11365,6 +11966,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11378,6 +11980,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11392,6 +11995,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -11412,6 +12016,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line23'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11425,6 +12030,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line24'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11438,6 +12044,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line39'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11452,6 +12059,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -11472,6 +12080,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line42'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11486,6 +12095,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSI_UC'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -11508,6 +12118,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE1_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -11531,6 +12142,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText52'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'GRADE'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -11552,6 +12164,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -11575,6 +12188,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText501'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_SIGLA'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -11598,6 +12212,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'Separa_CC'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -11618,6 +12233,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line63'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11631,6 +12247,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line61'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -11642,7 +12259,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppSummaryBand4: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 66675
       mmPrintPosition = 0
@@ -11663,13 +12280,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label48'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -11684,13 +12303,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[__________]:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -11705,13 +12326,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CORTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -11726,13 +12349,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MONTAGEM:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -11747,13 +12372,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label52'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -11767,13 +12394,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label501'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -11787,13 +12416,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label54'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -11807,13 +12438,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label55'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -11827,13 +12460,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label56'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -11847,13 +12482,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -11867,13 +12504,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -11887,13 +12526,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -11907,13 +12548,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -11927,13 +12570,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -11947,13 +12592,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -11967,13 +12614,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label601'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -11987,13 +12636,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -12007,13 +12658,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label66'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -12027,13 +12680,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -12047,13 +12702,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -12067,13 +12724,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'GERENCIA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -12088,13 +12747,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label70'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'EXPEDI'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -12109,13 +12770,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label502'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ACABAMENTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -12130,13 +12793,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label72'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DISTRIBUI'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -12150,6 +12815,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer4
         UserName = 'Line102'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 32279
@@ -12174,6 +12840,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -12196,6 +12863,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText66'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -12218,13 +12886,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label75'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Observa'#231#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 794
@@ -12238,6 +12908,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -12260,6 +12931,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -12282,6 +12954,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -12304,6 +12977,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText70'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -12326,6 +13000,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText701'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -12345,16 +13020,17 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060E
-        566172546F5475704F6E43616C630B50726F6772616D54797065070B74745072
-        6F63656475726506536F75726365067D70726F63656475726520566172546F54
-        75704F6E43616C63287661722056616C75653A2056617269616E74293B0D0A62
-        6567696E0D0A0D0A202056616C7565203A3D20204442506970656C696E65315B
-        274F53565F51544445275D2A4442506970656C696E65315B274654435F545550
-        275D3B0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D650608566172
-        546F547570094576656E744E616D6506064F6E43616C63074576656E74494402
-        21084361726574506F730102000200000000}
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'VarToTupOnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure VarToTupOnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value ' +
+          ':=  DBPipeline1['#39'OSV_QTDE'#39']*DBPipeline1['#39'FTC_TUP'#39'];'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'VarToTup'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
     end
     object ppDesignLayers4: TppDesignLayers
       object ppDesignLayer4: TppDesignLayer
@@ -12367,7 +13043,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     end
   end
   object frxOP: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -12402,12 +13078,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 1012.914040000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Top = 29.811070000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -12417,6 +13097,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12425,11 +13106,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 48.708720000000000000
           Width = 718.110700000000000000
           Height = 75.590600000000000000
+          Frame.Typ = []
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Top = 48.708720000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
@@ -12439,6 +13123,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -12447,6 +13132,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 48.708720000000000000
           Width = 147.401670000000000000
@@ -12456,6 +13142,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -12464,6 +13151,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Top = 67.606370000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
@@ -12473,6 +13161,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -12481,6 +13170,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Top = 105.401670000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
@@ -12490,6 +13180,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -12498,6 +13189,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 87.504020000000000000
           Width = 147.401670000000000000
@@ -12507,6 +13199,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -12515,6 +13208,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.236240000000000000
           Top = 191.330860000000000000
           Width = 718.110700000000000000
@@ -12524,6 +13218,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             'OBS:')
@@ -12531,6 +13226,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 105.401670000000000000
           Width = 147.401670000000000000
@@ -12541,6 +13237,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -12549,68 +13246,91 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Shape4: TfrxShapeView
+          AllowVectorExport = True
           Top = 889.646260000000000000
           Width = 721.890230000000000000
           Height = 113.385900000000000000
+          Frame.Typ = []
         end
         object Shape5: TfrxShapeView
+          AllowVectorExport = True
           Top = 889.646260000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape6: TfrxShapeView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 889.646260000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape7: TfrxShapeView
+          AllowVectorExport = True
           Top = 927.441560000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape8: TfrxShapeView
+          AllowVectorExport = True
           Top = 965.236860000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape9: TfrxShapeView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 927.441560000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape10: TfrxShapeView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 965.236860000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape11: TfrxShapeView
+          AllowVectorExport = True
           Left = 147.401670000000000000
           Top = 889.646260000000000000
           Width = 211.653680000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape12: TfrxShapeView
+          AllowVectorExport = True
           Left = 147.401670000000000000
           Top = 927.441560000000000000
           Width = 211.653680000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape13: TfrxShapeView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 889.646260000000000000
           Width = 211.653680000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Shape14: TfrxShapeView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 927.441560000000000000
           Width = 211.653680000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Top = 870.748610000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -12620,6 +13340,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12628,6 +13349,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Top = 889.646260000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
@@ -12637,6 +13359,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Terceiriza'#231#227'o:'
@@ -12645,6 +13368,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 889.646260000000000000
           Width = 147.401670000000000000
@@ -12655,6 +13379,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Terceiriza'#231#227'o:'
@@ -12663,6 +13388,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Top = 927.441560000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
@@ -12672,6 +13398,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Quantidade Final:')
@@ -12679,6 +13406,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 927.441560000000000000
           Width = 147.401670000000000000
@@ -12689,6 +13417,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Liberada Por:')
@@ -12696,6 +13425,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Top = 965.236860000000000000
           Width = 147.401670000000000000
           Height = 37.795300000000000000
@@ -12705,6 +13435,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'N'#176' Nota Fiscal:'
@@ -12713,6 +13444,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 965.236860000000000000
           Width = 147.401670000000000000
@@ -12723,6 +13455,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Confer'#234'ncia Final:')
@@ -12730,6 +13463,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 228.228510000000000000
           Width = 105.826840000000000000
           Height = 18.897650000000000000
@@ -12739,6 +13473,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12747,6 +13482,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 105.826840000000000000
           Top = 228.228510000000000000
           Width = 105.826840000000000000
@@ -12757,6 +13493,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12765,6 +13502,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 211.653680000000000000
           Top = 228.228510000000000000
           Width = 105.826840000000000000
@@ -12775,6 +13513,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12783,6 +13522,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 228.228510000000000000
           Width = 105.826840000000000000
@@ -12793,6 +13533,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12801,6 +13542,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 228.228510000000000000
           Width = 105.826840000000000000
@@ -12811,6 +13553,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12819,6 +13562,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Top = 228.228510000000000000
           Width = 94.488250000000000000
@@ -12829,6 +13573,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12837,6 +13582,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 228.228510000000000000
           Width = 94.488250000000000000
@@ -12847,6 +13593,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clSilver
           Fill.Style = bsClear
           HAlign = haCenter
@@ -12855,213 +13602,292 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Shape3: TfrxShapeView
+          AllowVectorExport = True
           Top = 247.126160000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape15: TfrxShapeView
+          AllowVectorExport = True
           Top = 266.023810000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape16: TfrxShapeView
+          AllowVectorExport = True
           Top = 284.921460000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape17: TfrxShapeView
+          AllowVectorExport = True
           Top = 303.819110000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape18: TfrxShapeView
+          AllowVectorExport = True
           Top = 322.716760000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape19: TfrxShapeView
+          AllowVectorExport = True
           Top = 341.614410000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape20: TfrxShapeView
+          AllowVectorExport = True
           Top = 360.512060000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape21: TfrxShapeView
+          AllowVectorExport = True
           Top = 379.409710000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape22: TfrxShapeView
+          AllowVectorExport = True
           Top = 398.307360000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape23: TfrxShapeView
+          AllowVectorExport = True
           Top = 417.205010000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape24: TfrxShapeView
+          AllowVectorExport = True
           Top = 436.102660000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape25: TfrxShapeView
+          AllowVectorExport = True
           Top = 455.000310000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape26: TfrxShapeView
+          AllowVectorExport = True
           Top = 473.897960000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape27: TfrxShapeView
+          AllowVectorExport = True
           Top = 492.795610000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape28: TfrxShapeView
+          AllowVectorExport = True
           Top = 511.693260000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape29: TfrxShapeView
+          AllowVectorExport = True
           Top = 530.590910000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape30: TfrxShapeView
+          AllowVectorExport = True
           Top = 549.488560000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape31: TfrxShapeView
+          AllowVectorExport = True
           Top = 568.386210000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape32: TfrxShapeView
+          AllowVectorExport = True
           Top = 587.283860000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape33: TfrxShapeView
+          AllowVectorExport = True
           Top = 606.181510000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape34: TfrxShapeView
+          AllowVectorExport = True
           Top = 625.079160000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape35: TfrxShapeView
+          AllowVectorExport = True
           Top = 643.976810000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape36: TfrxShapeView
+          AllowVectorExport = True
           Top = 662.874460000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape37: TfrxShapeView
+          AllowVectorExport = True
           Top = 681.772110000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape38: TfrxShapeView
+          AllowVectorExport = True
           Top = 700.669760000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape39: TfrxShapeView
+          AllowVectorExport = True
           Top = 719.567410000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape40: TfrxShapeView
+          AllowVectorExport = True
           Top = 738.465060000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape41: TfrxShapeView
+          AllowVectorExport = True
           Top = 757.362710000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape42: TfrxShapeView
+          AllowVectorExport = True
           Top = 776.260360000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape43: TfrxShapeView
+          AllowVectorExport = True
           Top = 795.158010000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape44: TfrxShapeView
+          AllowVectorExport = True
           Top = 814.055660000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape45: TfrxShapeView
+          AllowVectorExport = True
           Top = 832.953310000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Shape46: TfrxShapeView
+          AllowVectorExport = True
           Top = 851.850960000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 105.826840000000000000
           Top = 247.126160000000000000
           Height = 623.622450000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 211.653680000000000000
           Top = 247.126160000000000000
           Height = 623.622450000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 247.126160000000000000
           Height = 623.622450000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 247.126160000000000000
           Height = 623.622450000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Top = 247.126160000000000000
           Height = 623.622450000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 247.126160000000000000
           Height = 623.622450000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 135.637910000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
@@ -13071,6 +13897,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -13079,6 +13906,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Top = 154.535560000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
@@ -13088,6 +13916,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -13096,6 +13925,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Top = 173.433210000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
@@ -13105,6 +13935,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -13113,6 +13944,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object frxdbdtstOrdemProducaoOSV_RESPONSAVEL: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 105.401670000000000000
           Width = 211.653680000000000000
@@ -13125,12 +13957,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_RESPONSAVEL"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 133.283550000000000000
           Top = 48.708720000000000000
           Width = 226.771800000000000000
@@ -13142,12 +13976,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoCLI_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Top = 69.606370000000000000
           Width = 585.827150000000000000
@@ -13160,6 +13996,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             
@@ -13168,6 +14005,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPED_DTSAIDA: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 87.504020000000000000
           Width = 211.653680000000000000
@@ -13179,12 +14017,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_DTENTREGA"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPED_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 508.457020000000000000
           Top = 48.708720000000000000
           Width = 211.653680000000000000
@@ -13197,12 +14037,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_CODIGO"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Top = 155.535560000000000000
           Width = 585.827150000000000000
@@ -13215,12 +14057,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Top = 135.637910000000000000
           Width = 226.771800000000000000
@@ -13232,12 +14076,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 135.637910000000000000
           Width = 147.401670000000000000
@@ -13248,6 +14094,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -13256,6 +14103,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object frxdbdtstOrdemProducaoPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 135.637910000000000000
           Width = 211.653680000000000000
@@ -13268,12 +14116,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_UND"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_COMPL: TfrxMemoView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Top = 173.433210000000000000
           Width = 374.173470000000000000
@@ -13286,12 +14136,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_COMPL"]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 132.842610000000000000
           Top = 105.401670000000000000
           Width = 226.771800000000000000
@@ -13303,12 +14155,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_ORDEM_COMPRA"]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 86.929190000000000000
           Width = 132.283550000000000000
@@ -13318,6 +14172,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           HAlign = haRight
           Memo.UTF8W = (
@@ -13326,6 +14181,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 132.283550000000000000
           Top = 87.929190000000000000
           Width = 226.771800000000000000
@@ -13337,12 +14193,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_EMISSAO"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.134200000000000000
           Top = 172.858380000000000000
           Width = 211.653680000000000000
@@ -13352,6 +14210,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.Style = bsClear
           Memo.UTF8W = (
             'Desenho:')
@@ -13360,6 +14219,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         end
       end
       object wFrxRazao: TfrxMemoView
+        AllowVectorExport = True
         Left = 6.000000000000000000
         Top = 11.677180000000000000
         Width = 566.929500000000000000
@@ -13370,12 +14230,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '[RAZAO]')
         ParentFont = False
         VAlign = vaCenter
       end
       object Page: TfrxMemoView
+        AllowVectorExport = True
         Left = 600.945270000000000000
         Top = 0.677180000000000000
         Width = 113.385900000000000000
@@ -13385,6 +14247,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haRight
         Memo.UTF8W = (
           'Pag. [Page#] de [TotalPages#]')
@@ -13930,7 +14793,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     Top = 208
   end
   object frxOP1: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -13978,13 +14841,17 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 37.795300000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         KeepChild = True
         object frxdbdtstOrdemProducaoOSV_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.769540770000000000
           Top = 11.338590000000000000
           Width = 105.826840000000000000
@@ -13997,12 +14864,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 121.714190770000000000
           Width = 359.055350000000000000
           Height = 37.795300000000000000
@@ -14011,6 +14880,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -14020,6 +14890,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.769540770000000000
           Width = 105.826840000000000000
           Height = 37.795300000000000000
@@ -14028,6 +14899,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14035,6 +14907,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 586.596380770000000000
           Width = 132.283550000000000000
           Height = 37.795300000000000000
@@ -14043,6 +14916,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14050,6 +14924,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 586.596380770000000000
           Top = 15.118120000000000000
           Width = 113.385900000000000000
@@ -14059,12 +14934,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.769230770000000000
           Top = 12.984230000000000000
           Width = 104.133890000000000000
@@ -14077,12 +14954,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo118: TfrxMemoView
+          AllowVectorExport = True
           Width = 120.944960000000000000
           Height = 37.795300000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -14090,6 +14969,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[RazaoSocial]')
@@ -14099,10 +14979,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 287.314115380000000000
         Top = 79.370130000000000000
         Width = 718.110700000000000000
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.230769230000000000
           Top = 249.448980000000000000
           Width = 717.978426920000000000
@@ -14112,6 +14994,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -14121,6 +15004,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.076923070000000000
           Top = 269.518815380000000000
           Width = 124.724490000000000000
@@ -14130,6 +15014,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14137,6 +15022,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 122.615384610000000000
           Top = 269.518815380000000000
           Width = 417.098806150000000000
@@ -14146,6 +15032,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14153,6 +15040,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.307692300000000000
           Top = 269.518815380000000000
           Width = 70.878336150000000000
@@ -14162,6 +15050,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14169,6 +15058,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.348246919999990000
           Width = 253.228510000000000000
           Height = 42.210813080000000000
@@ -14177,6 +15067,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14184,6 +15075,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 253.228510000000000000
           Top = 37.348246919999990000
           Width = 245.669450000000000000
@@ -14193,6 +15085,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14201,6 +15094,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.897960000000000000
           Top = 37.348246919999990000
           Width = 219.212740000000000000
@@ -14210,6 +15104,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14218,6 +15113,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Top = 79.559060000000000000
           Width = 404.409710000000000000
           Height = 37.795300000000000000
@@ -14226,6 +15122,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14233,6 +15130,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 404.409710000000000000
           Top = 79.559060000000000000
           Width = 151.181200000000000000
@@ -14242,6 +15140,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14249,6 +15148,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 555.590910000000000000
           Top = 79.559060000000000000
           Width = 162.519790000000000000
@@ -14258,6 +15158,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14265,6 +15166,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Top = 117.354360000000000000
           Width = 468.661720000000000000
           Height = 37.795300000000000000
@@ -14273,6 +15175,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14280,6 +15183,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 468.661720000000000000
           Top = 117.354360000000000000
           Width = 249.448980000000000000
@@ -14289,6 +15193,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14296,6 +15201,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Top = 155.149660000000000000
           Width = 166.299320000000000000
           Height = 45.354360000000000000
@@ -14304,6 +15210,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14313,6 +15220,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 166.299320000000000000
           Top = 155.149660000000000000
           Width = 207.874150000000000000
@@ -14322,6 +15230,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14329,6 +15238,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Top = 155.149660000000000000
           Width = 162.519790000000000000
@@ -14338,6 +15248,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14347,6 +15258,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 155.149660000000000000
           Width = 181.417440000000000000
@@ -14356,6 +15268,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14365,6 +15278,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Top = 200.504020000000000000
           Width = 166.299320000000000000
           Height = 45.354360000000000000
@@ -14373,6 +15287,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14382,6 +15297,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 166.299320000000000000
           Top = 200.504020000000000000
           Width = 207.874150000000000000
@@ -14391,6 +15307,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14400,6 +15317,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Top = 200.504020000000000000
           Width = 162.519790000000000000
@@ -14409,6 +15327,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14418,6 +15337,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 200.504020000000000000
           Width = 181.417440000000000000
@@ -14427,6 +15347,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14436,6 +15357,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 11.527520000000000000
           Width = 105.826840000000000000
@@ -14448,11 +15370,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_QTDE1: TfrxMemoView
+          AllowVectorExport = True
           Left = 593.386210000000000000
           Top = 7.747990000000001000
           Width = 105.826840000000000000
@@ -14465,11 +15389,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_QTDE1"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoCLI_FONE: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 94.677180000000010000
           Width = 105.826840000000000000
@@ -14482,11 +15408,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_FONE"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoCLI_CELULAR: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 94.677180000000010000
           Width = 113.385900000000000000
@@ -14499,11 +15427,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_CELULAR"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoCLI_ENDERE: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Top = 132.472480000000000000
           Width = 445.984540000000000000
@@ -14516,11 +15446,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_ENDERE"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoCLI_BAIRRO: TfrxMemoView
+          AllowVectorExport = True
           Left = 483.779840000000000000
           Top = 132.472480000000000000
           Width = 215.433210000000000000
@@ -14533,11 +15465,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_BAIRRO"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_EMISSAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.000000000000000000
           Top = 52.818799999999990000
           Width = 203.905690000000000000
@@ -14550,12 +15484,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_EMISSAO"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER1: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.307692320000000000
           Top = 15.706793080000000000
           Width = 86.929190000000000000
@@ -14563,10 +15499,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           DataField = 'PRD_REFER'
           DataSet = frxdbdtstOrdemProducao
           DataSetName = 'frxdbdtstOrdemProducao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
         end
         object frxdbdtstOrdemProducaoOSV_QTDE: TfrxMemoView
+          AllowVectorExport = True
           Left = 601.230769240000000000
           Top = 14.937562310000010000
           Width = 110.042481540000000000
@@ -14574,10 +15512,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           DataField = 'OSV_QTDE'
           DataSet = frxdbdtstOrdemProducao
           DataSetName = 'frxdbdtstOrdemProducao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_QTDE"]')
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Width = 120.944960000000000000
           Height = 37.795300000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -14585,6 +15525,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14592,6 +15533,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.827150000000000000
           Width = 132.283550000000000000
           Height = 37.795300000000000000
@@ -14600,6 +15542,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14607,6 +15550,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoCLI_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 93.488250000000010000
           Width = 377.953000000000000000
@@ -14619,11 +15563,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_RAZAO"]')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Width = 464.882190000000000000
           Height = 37.795300000000000000
@@ -14632,6 +15578,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14639,6 +15586,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 126.842610000000000000
           Top = 15.118120000000010000
           Width = 453.543600000000000000
@@ -14651,11 +15599,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER2: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Top = 15.118120000000010000
           Width = 86.929190000000000000
@@ -14668,11 +15618,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 609.504330000000000000
           Top = 269.346630000000000000
           Width = 108.673636150000000000
@@ -14682,6 +15634,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -14689,6 +15642,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_QTDE2: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Top = 11.338590000000000000
           Width = 102.047310000000000000
@@ -14701,6 +15655,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_QTDE"]')
           ParentFont = False
@@ -14708,6 +15663,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 427.086890000000000000
         Width = 718.110700000000000000
@@ -14715,6 +15671,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DataSetName = 'frxdbdtstFichaTecnica'
         RowCount = 0
         object frxdbdtstFichaTecnicaPRD_REFER_ITENS: TfrxMemoView
+          AllowVectorExport = True
           Left = 10.769230780000000000
           Top = 2.805289230000028000
           Width = 94.488250000000000000
@@ -14727,11 +15684,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 130.769230770000000000
           Top = 2.343750769999986000
           Width = 400.630180000000000000
@@ -14744,11 +15703,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaOSI_QTDE1: TfrxMemoView
+          AllowVectorExport = True
           Left = 626.538461550000000000
           Top = 3.651443079999979000
           Width = 60.411969220000000000
@@ -14761,12 +15722,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."OSI_QTDE1"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 552.307692310000000000
           Top = 2.846486149999976000
           Width = 56.656581540000000000
@@ -14779,60 +15742,74 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_UND"]')
           ParentFont = False
         end
       end
       object Line11: TfrxLineView
+        AllowVectorExport = True
         Left = 719.110700000000000000
         Top = 621.606680000000000000
         Height = 177.637910000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line12: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 662.401980000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line13: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 684.858690000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line14: TfrxLineView
+        AllowVectorExport = True
         Left = 1.220470000000000000
         Top = 706.315400000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line15: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 729.772110000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line16: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 751.228820000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo33: TfrxMemoView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 639.504330000000000000
         Width = 90.708720000000000000
@@ -14842,6 +15819,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           #193'REA')
@@ -14849,6 +15827,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo34: TfrxMemoView
+        AllowVectorExport = True
         Left = 91.165430000000000000
         Top = 639.504330000000000000
         Width = 90.708720000000000000
@@ -14858,6 +15837,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'DATA INICIAL')
@@ -14865,6 +15845,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo35: TfrxMemoView
+        AllowVectorExport = True
         Left = 180.433210000000000000
         Top = 639.504330000000000000
         Width = 86.929190000000000000
@@ -14874,6 +15855,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'DATA FINAL')
@@ -14881,6 +15863,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo36: TfrxMemoView
+        AllowVectorExport = True
         Left = 269.700990000000000000
         Top = 639.504330000000000000
         Width = 90.708720000000000000
@@ -14890,6 +15873,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'RESPONS'#193'VEL')
@@ -14897,6 +15881,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo37: TfrxMemoView
+        AllowVectorExport = True
         Left = 360.071120000000000000
         Top = 639.504330000000000000
         Width = 90.708720000000000000
@@ -14906,6 +15891,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           #193'REA')
@@ -14913,6 +15899,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo38: TfrxMemoView
+        AllowVectorExport = True
         Left = 450.000310000000000000
         Top = 639.504330000000000000
         Width = 90.708720000000000000
@@ -14922,6 +15909,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'DATA INICIAL')
@@ -14929,6 +15917,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo39: TfrxMemoView
+        AllowVectorExport = True
         Left = 539.709030000000000000
         Top = 639.504330000000000000
         Width = 90.708720000000000000
@@ -14938,6 +15927,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'DATA FINAL')
@@ -14945,6 +15935,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo40: TfrxMemoView
+        AllowVectorExport = True
         Left = 630.197280000000000000
         Top = 639.504330000000000000
         Width = 90.708720000000000000
@@ -14954,6 +15945,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'RESPONS'#193'VEL')
@@ -14961,62 +15953,77 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line17: TfrxLineView
+        AllowVectorExport = True
         Left = 90.708720000000000000
         Top = 640.283860000000000000
         Height = 158.740260000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line18: TfrxLineView
+        AllowVectorExport = True
         Left = 180.417440000000000000
         Top = 640.283860000000000000
         Height = 158.740260000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line19: TfrxLineView
+        AllowVectorExport = True
         Left = 269.346630000000000000
         Top = 640.283860000000000000
         Height = 158.740260000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line20: TfrxLineView
+        AllowVectorExport = True
         Left = 360.055350000000000000
         Top = 640.504330000000000000
         Height = 158.740260000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line21: TfrxLineView
+        AllowVectorExport = True
         Left = 449.764070000000000000
         Top = 640.283860000000000000
         Height = 158.740260000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line22: TfrxLineView
+        AllowVectorExport = True
         Left = 539.472790000000000000
         Top = 640.504330000000000000
         Height = 158.740260000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line23: TfrxLineView
+        AllowVectorExport = True
         Left = 629.401980000000000000
         Top = 639.504330000000000000
         Height = 158.740260000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo41: TfrxMemoView
+        AllowVectorExport = True
         Top = 661.961040000000000000
         Width = 90.708720000000000000
         Height = 22.677180000000000000
@@ -15025,12 +16032,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  DESENHO')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo42: TfrxMemoView
+        AllowVectorExport = True
         Top = 683.858690000000000000
         Width = 90.708720000000000000
         Height = 22.677180000000000000
@@ -15039,12 +16048,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  CORTE')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo43: TfrxMemoView
+        AllowVectorExport = True
         Top = 706.535870000000000000
         Width = 90.708720000000000000
         Height = 22.677180000000000000
@@ -15053,12 +16064,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  SERRALHEIRO')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo44: TfrxMemoView
+        AllowVectorExport = True
         Top = 729.213050000000000000
         Width = 90.708720000000000000
         Height = 22.677180000000000000
@@ -15067,12 +16080,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  POLIDOR')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo45: TfrxMemoView
+        AllowVectorExport = True
         Top = 751.890230000000000000
         Width = 90.708720000000000000
         Height = 22.677180000000000000
@@ -15081,20 +16096,24 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  SERRALHEIRO')
         ParentFont = False
         VAlign = vaCenter
       end
       object Line24: TfrxLineView
+        AllowVectorExport = True
         Left = 0.779530000000000000
         Top = 774.346940000000000000
         Width = 359.055350000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo46: TfrxMemoView
+        AllowVectorExport = True
         Top = 774.346940000000000000
         Width = 90.708720000000000000
         Height = 22.677180000000000000
@@ -15103,20 +16122,24 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  POLIDOR')
         ParentFont = False
         VAlign = vaCenter
       end
       object Line25: TfrxLineView
+        AllowVectorExport = True
         Left = 0.779530000000000000
         Top = 798.803650000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo47: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 661.181510000000000000
         Width = 90.708720000000000000
@@ -15126,12 +16149,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  SERRALHEIRO')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo48: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 683.858690000000000000
         Width = 90.708720000000000000
@@ -15141,12 +16166,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  POLIDOR')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo49: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 706.535870000000000000
         Width = 90.708720000000000000
@@ -15156,12 +16183,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  SERRALHEIRO')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo50: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 729.213050000000000000
         Width = 90.708720000000000000
@@ -15171,12 +16200,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  POLIDOR')
         ParentFont = False
         VAlign = vaCenter
       end
       object Memo51: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 751.890230000000000000
         Width = 94.488250000000000000
@@ -15186,6 +16217,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '   CONFER'#202'NCIA '
           '   QUALIDADE')
@@ -15193,22 +16225,27 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line26: TfrxLineView
+        AllowVectorExport = True
         Left = 0.779530000000000000
         Top = 798.921770000000000000
         Height = 56.692950000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line27: TfrxLineView
+        AllowVectorExport = True
         Left = 719.110700000000000000
         Top = 799.921770000000000000
         Height = 56.692950000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo52: TfrxMemoView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 799.039890000000000000
         Width = 717.978426920000000000
@@ -15218,6 +16255,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clAppWorkSpace
         Fill.Style = bsClear
         HAlign = haCenter
@@ -15227,22 +16265,27 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line28: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 855.717070000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line32: TfrxLineView
+        AllowVectorExport = True
         Left = 360.055350000000000000
         Top = 818.819420000000000000
         Height = 37.795300000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo53: TfrxMemoView
+        AllowVectorExport = True
         Top = 819.921770000000000000
         Width = 170.078850000000000000
         Height = 18.897650000000000000
@@ -15251,11 +16294,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '   INSTALA'#199#195'O DE ESTRUTURA:')
         ParentFont = False
       end
       object Memo54: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 819.921770000000000000
         Width = 170.078850000000000000
@@ -15265,27 +16310,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '   INSTALA'#199#195'O DE VIDRO:')
         ParentFont = False
       end
       object Line29: TfrxLineView
+        AllowVectorExport = True
         Left = 0.779530000000000000
         Top = 856.055660000000000000
         Height = 64.252010000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line30: TfrxLineView
+        AllowVectorExport = True
         Left = 719.110700000000000000
         Top = 856.055660000000000000
         Height = 64.252010000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo55: TfrxMemoView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 855.173780000000000000
         Width = 717.978426920000000000
@@ -15295,6 +16346,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clAppWorkSpace
         Fill.Style = bsClear
         HAlign = haCenter
@@ -15304,22 +16356,27 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line31: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 919.850960000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line33: TfrxLineView
+        AllowVectorExport = True
         Left = 360.055350000000000000
         Top = 874.953310000000000000
         Height = 45.354360000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo56: TfrxMemoView
+        AllowVectorExport = True
         Top = 876.055660000000000000
         Width = 359.055350000000000000
         Height = 41.574830000000000000
@@ -15328,6 +16385,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '   ESTRUTURA:'
           ''
@@ -15337,6 +16395,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         ParentFont = False
       end
       object Memo57: TfrxMemoView
+        AllowVectorExport = True
         Left = 359.055350000000000000
         Top = 876.055660000000000000
         Width = 359.055350000000000000
@@ -15346,6 +16405,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  VIDRO:'
           '  '
@@ -15355,30 +16415,37 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         ParentFont = False
       end
       object Line7: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 598.149970000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line8: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 619.606680000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line10: TfrxLineView
+        AllowVectorExport = True
         Left = 0.779530000000000000
         Top = 620.606680000000000000
         Height = 177.637910000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo32: TfrxMemoView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 619.724800000000000000
         Width = 717.978426920000000000
@@ -15388,6 +16455,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clAppWorkSpace
         Fill.Style = bsClear
         HAlign = haCenter
@@ -15397,38 +16465,47 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line5: TfrxLineView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 488.543600000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line6: TfrxLineView
+        AllowVectorExport = True
         Left = 1.220470000000000000
         Top = 488.543600000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line2: TfrxLineView
+        AllowVectorExport = True
         Left = 0.779530000000000000
         Top = 488.323130000000000000
         Height = 132.283550000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line1: TfrxLineView
+        AllowVectorExport = True
         Left = 94.488250000000000000
         Top = 510.543600000000000000
         Height = 109.606370000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo25: TfrxMemoView
+        AllowVectorExport = True
         Left = 1.000000000000000000
         Top = 487.441250000000000000
         Width = 717.978426920000000000
@@ -15438,6 +16515,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clAppWorkSpace
         Fill.Style = bsClear
         HAlign = haCenter
@@ -15447,22 +16525,27 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line3: TfrxLineView
+        AllowVectorExport = True
         Left = 719.110700000000000000
         Top = 487.764070000000000000
         Height = 132.283550000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line9: TfrxLineView
+        AllowVectorExport = True
         Left = 563.149970000000000000
         Top = 507.205010000000000000
         Height = 113.385900000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo26: TfrxMemoView
+        AllowVectorExport = True
         Top = 507.441250000000000000
         Width = 94.488250000000000000
         Height = 22.677180000000000000
@@ -15471,6 +16554,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'DATA')
@@ -15478,6 +16562,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo27: TfrxMemoView
+        AllowVectorExport = True
         Left = 94.488250000000000000
         Top = 507.441250000000000000
         Width = 468.661720000000000000
@@ -15487,6 +16572,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'MOTIVO')
@@ -15494,6 +16580,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo28: TfrxMemoView
+        AllowVectorExport = True
         Left = 563.149970000000000000
         Top = 507.441250000000000000
         Width = 158.740260000000000000
@@ -15503,6 +16590,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -9
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         HAlign = haCenter
         Memo.UTF8W = (
           'RESPONS'#193'VEL')
@@ -15510,32 +16598,40 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line4: TfrxLineView
+        AllowVectorExport = True
         Left = 1.220470000000000000
         Top = 573.606680000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line53: TfrxLineView
+        AllowVectorExport = True
         Left = 2.000000000000000000
         Top = 552.590910000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line54: TfrxLineView
+        AllowVectorExport = True
         Top = 530.913730000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line55: TfrxLineView
+        AllowVectorExport = True
         Top = 619.622450000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
@@ -15548,64 +16644,82 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle2: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 904.622760000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Line56: TfrxLineView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 483.520100000000000000
           Height = 249.448980000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line57: TfrxLineView
+          AllowVectorExport = True
           Left = 718.110700000000000000
           Top = 480.740570000000000000
           Height = 249.448980000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line58: TfrxLineView
+          AllowVectorExport = True
           Top = 521.535870000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line59: TfrxLineView
+          AllowVectorExport = True
           Top = 543.992580000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line60: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 565.449290000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line61: TfrxLineView
+          AllowVectorExport = True
           Top = 588.906000000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line62: TfrxLineView
+          AllowVectorExport = True
           Top = 610.362710000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Top = 498.638220000000000000
           Width = 60.472480000000000000
           Height = 22.677180000000000000
@@ -15614,6 +16728,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QUANT')
@@ -15621,75 +16736,94 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line63: TfrxLineView
+          AllowVectorExport = True
           Left = 59.472480000000000000
           Top = 499.417750000000000000
           Height = 230.551330000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line64: TfrxLineView
+          AllowVectorExport = True
           Left = 361.173470000000000000
           Top = 499.417750000000000000
           Height = 230.551330000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line65: TfrxLineView
+          AllowVectorExport = True
           Left = 421.645950000000000000
           Top = 499.417750000000000000
           Height = 230.551330000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line66: TfrxLineView
+          AllowVectorExport = True
           Left = 603.401980000000000000
           Top = 498.638220000000000000
           Height = 230.551330000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line67: TfrxLineView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 633.480830000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line68: TfrxLineView
+          AllowVectorExport = True
           Top = 656.921770000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line69: TfrxLineView
+          AllowVectorExport = True
           Top = 683.378480000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line70: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 706.055660000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line71: TfrxLineView
+          AllowVectorExport = True
           Top = 728.512370000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Top = 482.638220000000000000
           Width = 717.978426920000000000
           Height = 19.795300000000000000
@@ -15698,6 +16832,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -15707,6 +16842,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 247.787570000000000000
           Top = 499.976810000000000000
           Width = 113.385900000000000000
@@ -15716,6 +16852,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'IDENTIFICA'#199#195'O')
@@ -15723,14 +16860,17 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line75: TfrxLineView
+          AllowVectorExport = True
           Left = 247.819110000000000000
           Top = 498.976810000000000000
           Height = 230.551330000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo74: TfrxMemoView
+          AllowVectorExport = True
           Left = 59.472480000000000000
           Top = 499.976810000000000000
           Width = 188.976500000000000000
@@ -15740,6 +16880,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'DESCRI'#199#195'O DE CORTE')
@@ -15747,6 +16888,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 361.173470000000000000
           Top = 499.976810000000000000
           Width = 60.472480000000000000
@@ -15756,6 +16898,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QUANT')
@@ -15763,6 +16906,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 421.645950000000000000
           Top = 499.976810000000000000
           Width = 181.417440000000000000
@@ -15772,6 +16916,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'DESCRI'#199#195'O DE CORTE')
@@ -15779,6 +16924,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 603.401980000000000000
           Top = 499.976810000000000000
           Width = 113.385900000000000000
@@ -15788,6 +16934,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'IDENTIFICA'#199#195'O')
@@ -15795,45 +16942,56 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line73: TfrxLineView
+          AllowVectorExport = True
           Top = 729.205320000000000000
           Height = 173.858380000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line74: TfrxLineView
+          AllowVectorExport = True
           Left = 718.331170000000000000
           Top = 727.205320000000000000
           Height = 177.637910000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line78: TfrxLineView
+          AllowVectorExport = True
           Left = 0.440940000000000000
           Top = 811.134510000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line80: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 856.047930000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line82: TfrxLineView
+          AllowVectorExport = True
           Left = 361.393940000000000000
           Top = 745.102970000000000000
           Height = 158.740260000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 728.323440000000000000
           Width = 717.978426920000000000
@@ -15843,6 +17001,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -15852,6 +17011,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 745.646260000000000000
           Width = 359.055350000000000000
@@ -15861,6 +17021,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             ''
             '  TIPO DE VIDRO:'
@@ -15869,6 +17030,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo75: TfrxMemoView
+          AllowVectorExport = True
           Left = 361.834880000000000000
           Top = 745.646260000000000000
           Width = 359.055350000000000000
@@ -15878,6 +17040,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  '
             '  ESPESSURA DO VIDRO:'
@@ -15888,14 +17051,17 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Line72: TfrxLineView
+          AllowVectorExport = True
           Left = 180.417440000000000000
           Top = 810.898270000000000000
           Height = 45.354360000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 179.756030000000000000
           Top = 809.898270000000000000
           Width = 181.417440000000000000
@@ -15905,11 +17071,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  DATA:')
           ParentFont = False
         end
         object Memo76: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.000000000000000000
           Top = 809.898270000000000000
           Width = 181.417440000000000000
@@ -15919,11 +17087,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  MEDIDOR:')
           ParentFont = False
         end
         object Memo78: TfrxMemoView
+          AllowVectorExport = True
           Left = 363.834880000000000000
           Top = 809.898270000000000000
           Width = 351.496290000000000000
@@ -15933,6 +17103,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  COR DO VIDRO:'
             '  INCOLOR (  )     VERDE (  )     FUM'#202' (  )     BRONZE (  )  '
@@ -15940,6 +17111,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.779530000000000000
           Top = 856.032160000000000000
           Width = 359.055350000000000000
@@ -15949,6 +17121,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  MOLDE:'
             ''
@@ -15956,6 +17129,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 361.614410000000000000
           Top = 856.032160000000000000
           Width = 355.275820000000000000
@@ -15965,63 +17139,79 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  QUANTIDADE DE MOLDE:')
           ParentFont = False
         end
         object Line34: TfrxLineView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 58.787570000000000000
           Height = 423.307360000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line35: TfrxLineView
+          AllowVectorExport = True
           Left = 718.110700000000000000
           Top = 58.787570000000000000
           Height = 423.307360000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line36: TfrxLineView
+          AllowVectorExport = True
           Top = 80.582870000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line37: TfrxLineView
+          AllowVectorExport = True
           Top = 103.039580000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line38: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 124.496290000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line39: TfrxLineView
+          AllowVectorExport = True
           Top = 147.953000000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line40: TfrxLineView
+          AllowVectorExport = True
           Top = 169.409710000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Top = 57.685220000000000000
           Width = 90.708720000000000000
           Height = 22.677180000000000000
@@ -16030,6 +17220,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'DATA')
@@ -16037,6 +17228,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 449.000310000000000000
           Top = 57.685220000000000000
           Width = 90.708720000000000000
@@ -16046,6 +17238,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'SERRALHEIRO')
@@ -16053,6 +17246,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo65: TfrxMemoView
+          AllowVectorExport = True
           Left = 538.709030000000000000
           Top = 57.685220000000000000
           Width = 90.708720000000000000
@@ -16062,6 +17256,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'POLIDOR')
@@ -16069,6 +17264,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 629.197280000000000000
           Top = 57.685220000000000000
           Width = 90.708720000000000000
@@ -16078,6 +17274,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'AJUDANTE')
@@ -16085,53 +17282,66 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line41: TfrxLineView
+          AllowVectorExport = True
           Left = 89.708720000000000000
           Top = 58.464750000000000000
           Height = 253.228510000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line45: TfrxLineView
+          AllowVectorExport = True
           Left = 448.764070000000000000
           Top = 58.464750000000000000
           Height = 253.228510000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line46: TfrxLineView
+          AllowVectorExport = True
           Left = 538.472790000000000000
           Top = 58.685220000000000000
           Height = 253.228510000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line47: TfrxLineView
+          AllowVectorExport = True
           Left = 628.401980000000000000
           Top = 57.685220000000000000
           Height = 253.228510000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line48: TfrxLineView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 192.527830000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line49: TfrxLineView
+          AllowVectorExport = True
           Top = 215.968770000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 89.708720000000000000
           Top = 57.228510000000000000
           Width = 359.055350000000000000
@@ -16141,6 +17351,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'MOTIVO: INSTALA'#199#195'O / RETORNO PARA CORRE'#199#195'O')
@@ -16148,42 +17359,53 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line42: TfrxLineView
+          AllowVectorExport = True
           Top = 242.425480000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line43: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 265.102660000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line44: TfrxLineView
+          AllowVectorExport = True
           Top = 287.559370000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line50: TfrxLineView
+          AllowVectorExport = True
           Top = 310.236550000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line51: TfrxLineView
+          AllowVectorExport = True
           Top = 482.079160000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.000000000000000000
           Top = 313.236550000000000000
           Width = 718.110700000000000000
@@ -16193,6 +17415,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '   HOUVE ATRASO NA ENTREGA?'
             ''
@@ -16202,21 +17425,26 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Line52: TfrxLineView
+          AllowVectorExport = True
           Top = 355.811380000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.000000000000000000
           Top = 358.590910000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '   OBS.:')
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.905690000000000000
           Width = 717.978426920000000000
           Height = 19.795300000000000000
@@ -16225,6 +17453,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -16234,6 +17463,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo116: TfrxMemoView
+          AllowVectorExport = True
           Left = 586.047620000000000000
           Top = 15.133890000000000000
           Width = 113.385900000000000000
@@ -16243,12 +17473,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo111: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220780000000000000
           Top = 11.354360000000000000
           Width = 105.826840000000000000
@@ -16261,12 +17493,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo112: TfrxMemoView
+          AllowVectorExport = True
           Left = 121.165430000000000000
           Top = 0.015770000000000000
           Width = 359.055350000000000000
@@ -16276,6 +17510,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -16285,6 +17520,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo113: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220780000000000000
           Top = 0.015770000000000000
           Width = 105.826840000000000000
@@ -16294,6 +17530,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -16301,6 +17538,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo114: TfrxMemoView
+          AllowVectorExport = True
           Left = 586.047620000000000000
           Top = 0.015770000000000000
           Width = 132.283550000000000000
@@ -16310,6 +17548,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -16317,6 +17556,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo117: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220470000000000000
           Top = 13.000000000000000000
           Width = 104.133890000000000000
@@ -16329,12 +17569,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo115: TfrxMemoView
+          AllowVectorExport = True
           Width = 120.944960000000000000
           Height = 37.795300000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -16342,6 +17584,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[RazaoSocial]')
@@ -16349,6 +17592,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo119: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 15.118120000000000000
           Width = 113.385900000000000000
@@ -16358,16 +17602,19 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Line86: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 903.606990000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
@@ -16381,91 +17628,115 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle3: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 894.496600000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Line99: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 702.063390000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line84: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 58.968770000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line85: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 81.425480000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line87: TfrxLineView
+          AllowVectorExport = True
           Left = 0.440940000000000000
           Top = 102.882190000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line88: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 126.338900000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line89: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 147.795610000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line94: TfrxLineView
+          AllowVectorExport = True
           Top = 170.913730000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line95: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 194.354670000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line96: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 220.811380000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line97: TfrxLineView
+          AllowVectorExport = True
           Left = 0.440940000000000000
           Top = 243.488560000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 58.000000000000000000
           Width = 298.582870000000000000
@@ -16475,6 +17746,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16482,6 +17754,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 80.677180000000000000
           Width = 298.582870000000000000
@@ -16491,6 +17764,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16498,6 +17772,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo87: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 103.354360000000000000
           Width = 298.582870000000000000
@@ -16507,6 +17782,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16514,6 +17790,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo88: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 125.031540000000000000
           Width = 298.582870000000000000
@@ -16523,6 +17800,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16530,6 +17808,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo89: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 148.929190000000000000
           Width = 298.582870000000000000
@@ -16539,6 +17818,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16546,6 +17826,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo90: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 171.385900000000000000
           Width = 298.582870000000000000
@@ -16555,6 +17836,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16562,6 +17844,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo91: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 194.283550000000000000
           Width = 298.582870000000000000
@@ -16571,6 +17854,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16578,6 +17862,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo92: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 220.519790000000000000
           Width = 298.582870000000000000
@@ -16587,6 +17872,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16594,6 +17880,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 243.196970000000000000
           Width = 298.582870000000000000
@@ -16603,6 +17890,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16610,13 +17898,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line77: TfrxLineView
+          AllowVectorExport = True
           Top = 266.874150000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 266.874150000000000000
           Width = 298.582870000000000000
@@ -16626,6 +17917,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16633,13 +17925,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line79: TfrxLineView
+          AllowVectorExport = True
           Top = 289.551330000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo95: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 59.000000000000000000
           Width = 298.582870000000000000
@@ -16649,6 +17944,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16656,6 +17952,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 81.677180000000000000
           Width = 298.582870000000000000
@@ -16665,6 +17962,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16672,6 +17970,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo97: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 104.354360000000000000
           Width = 298.582870000000000000
@@ -16681,6 +17980,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16688,6 +17988,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo98: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 126.031540000000000000
           Width = 298.582870000000000000
@@ -16697,6 +17998,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16704,6 +18006,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo99: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 149.929190000000000000
           Width = 298.582870000000000000
@@ -16713,6 +18016,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16720,6 +18024,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo100: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 172.385900000000000000
           Width = 298.582870000000000000
@@ -16729,6 +18034,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16736,6 +18042,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo101: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 195.283550000000000000
           Width = 298.582870000000000000
@@ -16745,6 +18052,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16752,6 +18060,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo102: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 221.519790000000000000
           Width = 298.582870000000000000
@@ -16761,6 +18070,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16768,6 +18078,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo103: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 244.196970000000000000
           Width = 298.582870000000000000
@@ -16777,6 +18088,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16784,6 +18096,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo104: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 267.874150000000000000
           Width = 298.582870000000000000
@@ -16793,6 +18106,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'X')
@@ -16800,38 +18114,47 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line93: TfrxLineView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 289.330860000000000000
           Height = 415.748300000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line98: TfrxLineView
+          AllowVectorExport = True
           Left = 718.110700000000000000
           Top = 289.330860000000000000
           Height = 415.748300000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo105: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 303.212740000000000000
           Width = 158.740260000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '   OBSERVA'#199#195'O:')
         end
         object Line83: TfrxLineView
+          AllowVectorExport = True
           Left = 718.331170000000000000
           Top = 37.173470000000000000
           Height = 253.228510000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 59.692950000000000000
           Top = 37.409710000000000000
           Width = 302.362400000000000000
@@ -16841,6 +18164,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'LARGURA X ALTURA')
@@ -16848,6 +18172,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo85: TfrxMemoView
+          AllowVectorExport = True
           Left = 361.393940000000000000
           Top = 37.409710000000000000
           Width = 60.472480000000000000
@@ -16857,6 +18182,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QUANT')
@@ -16864,6 +18190,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo86: TfrxMemoView
+          AllowVectorExport = True
           Left = 421.866420000000000000
           Top = 37.409710000000000000
           Width = 294.803340000000000000
@@ -16873,6 +18200,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'LARGURA X ALTURA')
@@ -16880,13 +18208,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line81: TfrxLineView
+          AllowVectorExport = True
           Top = 39.953000000000000000
           Height = 253.228510000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo81: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 39.850650000000000000
           Width = 60.472480000000000000
@@ -16896,6 +18227,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QUANT')
@@ -16903,38 +18235,47 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line90: TfrxLineView
+          AllowVectorExport = True
           Left = 59.692950000000000000
           Top = 39.850650000000000000
           Height = 249.448980000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line91: TfrxLineView
+          AllowVectorExport = True
           Left = 361.393940000000000000
           Top = 39.850650000000000000
           Height = 249.448980000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line92: TfrxLineView
+          AllowVectorExport = True
           Left = 421.866420000000000000
           Top = 40.850650000000000000
           Height = 249.448980000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line76: TfrxLineView
+          AllowVectorExport = True
           Left = -0.118120000000000000
           Top = 40.000000000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo120: TfrxMemoView
+          AllowVectorExport = True
           Left = 586.047620000000000000
           Top = 15.133890000000000000
           Width = 113.385900000000000000
@@ -16944,12 +18285,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo121: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220780000000000000
           Top = 11.354360000000000000
           Width = 105.826840000000000000
@@ -16962,12 +18305,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo122: TfrxMemoView
+          AllowVectorExport = True
           Left = 121.165430000000000000
           Top = 0.015770000000000000
           Width = 359.055350000000000000
@@ -16977,6 +18322,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -16986,6 +18332,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo123: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220780000000000000
           Top = 0.015770000000000000
           Width = 105.826840000000000000
@@ -16995,6 +18342,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17002,6 +18350,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo125: TfrxMemoView
+          AllowVectorExport = True
           Left = 586.047620000000000000
           Top = 0.015770000000000000
           Width = 132.283550000000000000
@@ -17011,6 +18360,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17018,6 +18368,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo126: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220470000000000000
           Top = 13.000000000000000000
           Width = 104.133890000000000000
@@ -17030,12 +18381,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo127: TfrxMemoView
+          AllowVectorExport = True
           Width = 120.944960000000000000
           Height = 37.795300000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -17043,6 +18396,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[RazaoSocial]')
@@ -17050,6 +18404,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo128: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 15.118120000000000000
           Width = 113.385900000000000000
@@ -17059,12 +18414,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo106: TfrxMemoView
+          AllowVectorExport = True
           Top = 700.992580000000000000
           Width = 717.978426920000000000
           Height = 19.795300000000000000
@@ -17073,6 +18430,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -17082,35 +18440,44 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line100: TfrxLineView
+          AllowVectorExport = True
           Top = 719.433520000000000000
           Height = 105.826840000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line101: TfrxLineView
+          AllowVectorExport = True
           Left = 718.110700000000000000
           Top = 719.110700000000000000
           Height = 105.826840000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line102: TfrxLineView
+          AllowVectorExport = True
           Top = 771.244590000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line103: TfrxLineView
+          AllowVectorExport = True
           Top = 825.039890000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo107: TfrxMemoView
+          AllowVectorExport = True
           Top = 720.213050000000000000
           Width = 718.110700000000000000
           Height = 52.913420000000000000
@@ -17119,6 +18486,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -17131,22 +18499,27 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line104: TfrxLineView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Top = 772.126470000000000000
           Height = 52.913420000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line105: TfrxLineView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Top = 772.126470000000000000
           Height = 52.913420000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo108: TfrxMemoView
+          AllowVectorExport = True
           Top = 772.126470000000000000
           Width = 219.212740000000000000
           Height = 52.913420000000000000
@@ -17155,11 +18528,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  NOME DO CLIENTE:')
           ParentFont = False
         end
         object Memo109: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.787570000000000000
           Top = 771.346940000000000000
           Width = 400.630180000000000000
@@ -17169,11 +18544,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  ASSINATURA DO CLIENTE:')
           ParentFont = False
         end
         object Memo110: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.622450000000000000
           Top = 771.126470000000000000
           Width = 98.267780000000000000
@@ -17183,6 +18560,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  DATA:')
           ParentFont = False
@@ -17197,12 +18575,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle4: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 41.574830000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo131: TfrxMemoView
+          AllowVectorExport = True
           Left = 586.047620000000000000
           Top = 15.133890000000000000
           Width = 113.385900000000000000
@@ -17212,12 +18594,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo132: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220780000000000000
           Top = 11.354360000000000000
           Width = 105.826840000000000000
@@ -17230,12 +18614,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo133: TfrxMemoView
+          AllowVectorExport = True
           Left = 121.165430000000000000
           Top = 0.015770000000000000
           Width = 359.055350000000000000
@@ -17245,6 +18631,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -17254,6 +18641,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo134: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220780000000000000
           Top = 0.015770000000000000
           Width = 105.826840000000000000
@@ -17263,6 +18651,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17270,6 +18659,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo135: TfrxMemoView
+          AllowVectorExport = True
           Left = 586.047620000000000000
           Top = 0.015770000000000000
           Width = 132.283550000000000000
@@ -17279,6 +18669,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17286,6 +18677,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo136: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.220470000000000000
           Top = 13.000000000000000000
           Width = 104.133890000000000000
@@ -17298,12 +18690,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo137: TfrxMemoView
+          AllowVectorExport = True
           Width = 120.944960000000000000
           Height = 37.795300000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -17311,6 +18705,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[RazaoSocial]')
@@ -17318,6 +18713,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo138: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 15.118120000000000000
           Width = 113.385900000000000000
@@ -17327,6 +18723,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
@@ -17334,6 +18731,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         end
       end
       object Memo129: TfrxMemoView
+        AllowVectorExport = True
         Top = 64.692950000000000000
         Width = 717.978426920000000000
         Height = 27.354360000000000000
@@ -17342,6 +18740,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clAppWorkSpace
         Fill.Style = bsClear
         HAlign = haCenter
@@ -17351,26 +18750,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line106: TfrxLineView
+        AllowVectorExport = True
         Top = 64.590600000000000000
         Height = 839.055660000000000000
         Color = clBlack
+        Frame.Typ = []
         Diagonal = True
       end
       object Line107: TfrxLineView
+        AllowVectorExport = True
         Left = 718.110700000000000000
         Top = 64.149660000000000000
         Height = 839.055660000000000000
         Color = clBlack
+        Frame.Typ = []
         Diagonal = True
       end
       object Line108: TfrxLineView
+        AllowVectorExport = True
         Top = 901.866730000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo124: TfrxMemoView
+        AllowVectorExport = True
         Top = 222.771800000000000000
         Width = 717.978426920000000000
         Height = 27.354360000000000000
@@ -17379,6 +18785,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clAppWorkSpace
         Fill.Style = bsClear
         HAlign = haCenter
@@ -17390,29 +18797,36 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line109: TfrxLineView
+        AllowVectorExport = True
         Top = 152.401670000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line110: TfrxLineView
+        AllowVectorExport = True
         Left = 343.937230000000000000
         Top = 94.488250000000000000
         Height = 132.283550000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Line111: TfrxLineView
+        AllowVectorExport = True
         Left = 616.063390000000000000
         Top = 91.149660000000000000
         Height = 132.283550000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo130: TfrxMemoView
+        AllowVectorExport = True
         Top = 94.149660000000000000
         Width = 343.937230000000000000
         Height = 18.897650000000000000
@@ -17421,11 +18835,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  NOME RESPONS'#193'VEL PELO PROJETO:')
         ParentFont = False
       end
       object Memo139: TfrxMemoView
+        AllowVectorExport = True
         Top = 152.401670000000000000
         Width = 343.937230000000000000
         Height = 30.236240000000000000
@@ -17434,12 +18850,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  NOME RESPONS'#193'VEL PELA MEDIDA DE PRODU'#199#195'O E AN'#193'LISE '
           '  CR'#205'TICA:')
         ParentFont = False
       end
       object Memo140: TfrxMemoView
+        AllowVectorExport = True
         Left = 343.937230000000000000
         Top = 94.149660000000000000
         Width = 94.488250000000000000
@@ -17449,11 +18867,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  ASSINATURA:')
         ParentFont = False
       end
       object Memo141: TfrxMemoView
+        AllowVectorExport = True
         Left = 343.937230000000000000
         Top = 152.401670000000000000
         Width = 94.488250000000000000
@@ -17463,11 +18883,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  ASSINATURA:')
         ParentFont = False
       end
       object Memo142: TfrxMemoView
+        AllowVectorExport = True
         Left = 616.063390000000000000
         Top = 91.929190000000000000
         Width = 94.488250000000000000
@@ -17477,11 +18899,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  DATA:')
         ParentFont = False
       end
       object Memo143: TfrxMemoView
+        AllowVectorExport = True
         Left = 616.063390000000000000
         Top = 152.401670000000000000
         Width = 94.488250000000000000
@@ -17491,6 +18915,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           '  DATA:')
         ParentFont = False
@@ -17504,12 +18929,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle5: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 37.811070000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo144: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.268090000000000000
           Top = 15.133890000000000000
           Width = 113.385900000000000000
@@ -17519,12 +18948,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo145: TfrxMemoView
+          AllowVectorExport = True
           Left = 479.441250000000000000
           Top = 11.354360000000000000
           Width = 105.826840000000000000
@@ -17537,12 +18968,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo146: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.385900000000000000
           Top = 0.015770000000000000
           Width = 359.055350000000000000
@@ -17552,6 +18985,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -17561,6 +18995,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo147: TfrxMemoView
+          AllowVectorExport = True
           Left = 479.441250000000000000
           Top = 0.015770000000000000
           Width = 105.826840000000000000
@@ -17570,6 +19005,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17577,6 +19013,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo148: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.268090000000000000
           Top = 0.015770000000000000
           Width = 132.283550000000000000
@@ -17586,6 +19023,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17593,6 +19031,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo149: TfrxMemoView
+          AllowVectorExport = True
           Left = 479.440940000000000000
           Top = 13.000000000000000000
           Width = 104.133890000000000000
@@ -17605,12 +19044,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo150: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.779530000000000000
           Width = 120.944960000000000000
           Height = 37.795300000000000000
@@ -17619,6 +19060,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[RazaoSocial]')
@@ -17626,6 +19068,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo151: TfrxMemoView
+          AllowVectorExport = True
           Left = 588.827150000000000000
           Top = 15.118120000000000000
           Width = 113.385900000000000000
@@ -17635,6 +19078,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
@@ -17642,26 +19086,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         end
       end
       object Line112: TfrxLineView
+        AllowVectorExport = True
         Top = 63.008040000000000000
         Height = 676.535870000000000000
         Color = clBlack
+        Frame.Typ = []
         Diagonal = True
       end
       object Line113: TfrxLineView
+        AllowVectorExport = True
         Left = 718.110700000000000000
         Top = 82.464750000000000000
         Height = 657.638220000000000000
         Color = clBlack
+        Frame.Typ = []
         Diagonal = True
       end
       object Line114: TfrxLineView
+        AllowVectorExport = True
         Top = 738.764380000000000000
         Width = 718.110700000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object Memo152: TfrxMemoView
+        AllowVectorExport = True
         Top = 59.669450000000000000
         Width = 717.978426920000000000
         Height = 27.354360000000000000
@@ -17670,6 +19121,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clAppWorkSpace
         Fill.Style = bsClear
         HAlign = haCenter
@@ -17776,7 +19228,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     end
   end
   object frxOP2: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -17824,12 +19276,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 192.825865380000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.779530000000001200
           Width = 120.944960000000000000
           Height = 41.574830000000000000
@@ -17838,6 +19294,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17845,6 +19302,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 118.596070770000000000
           Top = 1.559059999999999000
           Width = 359.055350000000000000
@@ -17854,6 +19312,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -17863,6 +19322,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 478.651420770000000000
           Top = 1.559059999999999000
           Width = 105.826840000000000000
@@ -17872,6 +19332,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17879,6 +19340,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 584.478260770000000000
           Top = 1.559059999999999000
           Width = 136.063080000000000000
@@ -17888,6 +19350,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17895,6 +19358,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 571.478260770000000000
           Top = 16.677180000000000000
           Width = 113.385900000000000000
@@ -17904,6 +19368,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '   [Page#] de [TotalPages#]')
@@ -17915,6 +19380,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object frxdbdtstOrdemProducaoOSV_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.651110770000000000
           Top = 14.543290000000000000
           Width = 104.133890000000000000
@@ -17927,12 +19393,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = -3.779530000000000000
           Top = 1.338590000000000000
           Width = 120.944960000000000000
@@ -17942,6 +19410,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[RazaoSocial]')
@@ -17949,6 +19418,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 121.133890000000000000
           Width = 313.700990000000000000
@@ -17958,6 +19428,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17965,6 +19436,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 78.923076920000000000
           Width = 173.858380000000000000
           Height = 42.210813080000000000
@@ -17973,6 +19445,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17980,6 +19453,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 335.228510000000000000
           Top = 78.923076920000000000
           Width = 188.976500000000000000
@@ -17989,6 +19463,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -17996,6 +19471,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 523.897960000000000000
           Top = 78.923076920000000000
           Width = 196.535560000000000000
@@ -18005,6 +19481,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18012,6 +19489,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 53.102350000000000000
           Width = 105.826840000000000000
@@ -18024,11 +19502,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_EMISSAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.000000000000000000
           Top = 97.393630000000000000
           Width = 147.212740000000000000
@@ -18040,12 +19520,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_DTENTRADA"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER1: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.307692320000000000
           Top = 57.281623080000000000
           Width = 86.929190000000000000
@@ -18053,10 +19535,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           DataField = 'PRD_REFER'
           DataSet = frxdbdtstOrdemProducao
           DataSetName = 'frxdbdtstOrdemProducao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Top = 41.574830000000000000
           Width = 120.944960000000000000
           Height = 37.795300000000000000
@@ -18065,6 +19549,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18072,6 +19557,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 626.827150000000000000
           Top = 41.574830000000000000
           Width = 90.708720000000000000
@@ -18081,6 +19567,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18088,6 +19575,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 41.574830000000000000
           Width = 506.457020000000000000
@@ -18097,6 +19585,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18104,6 +19593,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 126.842610000000000000
           Top = 55.692949999999990000
           Width = 498.897960000000000000
@@ -18116,11 +19606,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER2: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.669295000000000000
           Top = 57.913420000000000000
           Width = 113.385900000000000000
@@ -18133,11 +19625,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_QTDE2: TfrxMemoView
+          AllowVectorExport = True
           Left = 632.614410000000000000
           Top = 57.692950000000000000
           Width = 75.590600000000000000
@@ -18149,11 +19643,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_QTDE"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 497.897960000000000000
           Top = 120.944960000000000000
           Width = 222.992270000000000000
@@ -18163,6 +19659,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18170,6 +19667,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 533.559370000000000000
           Top = 96.149660000000000000
           Width = 147.212740000000000000
@@ -18181,12 +19679,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_DTENTREGA"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 351.551330000000000000
           Top = 97.267780000000000000
           Width = 147.212740000000000000
@@ -18198,12 +19698,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_EMISSAO"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 527.913730000000000000
           Top = 137.504020000000000000
           Width = 151.181200000000000000
@@ -18215,11 +19717,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_ORDEM_COMPRA"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 313.409710000000000000
           Top = 120.385900000000000000
           Width = 185.196970000000000000
@@ -18229,6 +19733,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18236,6 +19741,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.071120000000000000
           Top = 137.944960000000000000
           Width = 105.826840000000000000
@@ -18247,11 +19753,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_CODIGO"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 174.417440000000000000
           Top = 79.370130000000000000
           Width = 162.519790000000000000
@@ -18261,6 +19769,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18268,6 +19777,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.417440000000000000
           Top = 98.267780000000000000
           Width = 101.858380000000000000
@@ -18279,12 +19789,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_CODIGO"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.230769230000000000
           Top = 160.944960000000000000
           Width = 721.757956920000000000
@@ -18294,6 +19806,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -18303,6 +19816,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.143546930000000000
           Top = 177.014795380000000000
           Width = 132.283550000000000000
@@ -18312,6 +19826,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18319,6 +19834,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 127.953974610000000000
           Top = 177.235265380000000000
           Width = 417.098806150000000000
@@ -18328,6 +19844,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18335,6 +19852,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 545.646282300000000000
           Top = 177.235265380000000000
           Width = 70.878336150000000000
@@ -18344,6 +19862,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18351,6 +19870,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 617.606680000000000000
           Top = 176.740260000000000000
           Width = 101.114576150000000000
@@ -18360,6 +19880,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -18369,58 +19890,72 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 521.575140000000000000
         Top = 355.275820000000000000
         Width = 718.110700000000000000
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 338.551329999999900000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 350.582870000000000000
           Height = 162.519790000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 719.331170000000000000
           Top = 337.244279999999900000
           Height = 177.637910000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 1.440940000000000000
           Top = 421.173470000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 1.220470000000000000
           Top = 466.086890000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 361.189240000000000000
           Top = 355.141929999999900000
           Height = 158.740260000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.220470000000000000
           Top = 338.362400000000100000
           Width = 717.978426920000000000
@@ -18430,6 +19965,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -18437,6 +19973,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.779530000000000000
           Top = 355.685220000000000000
           Width = 359.055350000000000000
@@ -18446,6 +19983,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             ''
             '  Terceiriza'#231#227'o NF Remessa :'
@@ -18454,6 +19992,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 362.834880000000000000
           Top = 355.685220000000000000
           Width = 359.055350000000000000
@@ -18463,6 +20002,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  '
             '  Terceariza'#231#227'o NF Retorno'
@@ -18470,14 +20010,17 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Top = 420.937230000000100000
           Height = 45.354360000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.653680000000000000
           Top = 419.937230000000100000
           Width = 181.417440000000000000
@@ -18487,11 +20030,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  Data')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Top = 419.937230000000100000
           Width = 181.417440000000000000
           Height = 45.354360000000000000
@@ -18500,11 +20045,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  Quantidade Final')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Top = 466.071120000000000000
           Width = 359.055350000000000000
@@ -18514,58 +20061,72 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             ' Liberado por')
           ParentFont = False
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Height = 336.378170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line10: TfrxLineView
+          AllowVectorExport = True
           Left = 719.110700000000000000
           Top = 23.440940000000010000
           Height = 313.700990000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line12: TfrxLineView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 41.125850000000010000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line13: TfrxLineView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 122.582560000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line14: TfrxLineView
+          AllowVectorExport = True
           Left = 0.559060000000000000
           Top = 147.039270000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line15: TfrxLineView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 171.495980000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.118120000000000000
           Top = 22.007729999999980000
           Width = 98.267780000000000000
@@ -18575,6 +20136,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'OPERADOR')
@@ -18582,6 +20144,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 104.724490000000000000
           Top = 22.007729999999980000
           Width = 71.811070000000000000
@@ -18591,6 +20154,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'OPERA'#199#195'O')
@@ -18598,6 +20162,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 187.771800000000000000
           Top = 22.007729999999980000
           Width = 75.590600000000000000
@@ -18607,6 +20172,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QTDE INICIAL')
@@ -18614,6 +20180,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 276.039580000000000000
           Top = 22.007729999999980000
           Width = 75.590600000000000000
@@ -18623,6 +20190,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QTDE FINAL')
@@ -18630,6 +20198,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 366.409710000000000000
           Top = 22.007729999999980000
           Width = 75.590600000000000000
@@ -18639,6 +20208,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'DATA')
@@ -18646,6 +20216,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 455.338900000000000000
           Top = 22.007729999999980000
           Width = 71.811070000000000000
@@ -18655,6 +20226,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'INICIO')
@@ -18662,6 +20234,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 636.315400000000000000
           Top = 22.007729999999980000
           Width = 75.590600000000000000
@@ -18671,6 +20244,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'RESPONS'#193'VEL')
@@ -18678,180 +20252,225 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line17: TfrxLineView
+          AllowVectorExport = True
           Left = 100.047310000000000000
           Top = 23.007729999999980000
           Height = 181.417440000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line18: TfrxLineView
+          AllowVectorExport = True
           Left = 183.756030000000000000
           Top = 24.007729999999980000
           Height = 177.637910000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line19: TfrxLineView
+          AllowVectorExport = True
           Left = 268.685220000000000000
           Top = 23.007729999999980000
           Height = 177.637910000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line20: TfrxLineView
+          AllowVectorExport = True
           Left = 359.393940000000000000
           Top = 23.228200000000020000
           Height = 173.858380000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line21: TfrxLineView
+          AllowVectorExport = True
           Left = 449.102660000000000000
           Top = 24.007729999999980000
           Height = 173.858380000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line22: TfrxLineView
+          AllowVectorExport = True
           Left = 538.811380000000000000
           Top = 23.228200000000020000
           Height = 173.858380000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line23: TfrxLineView
+          AllowVectorExport = True
           Left = 628.740570000000000000
           Top = 23.228200000000020000
           Height = 173.858380000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line24: TfrxLineView
+          AllowVectorExport = True
           Left = 2.015770000000000000
           Top = 69.456399999999970000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line25: TfrxLineView
+          AllowVectorExport = True
           Left = 0.354360000000000000
           Top = 96.133580000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line26: TfrxLineView
+          AllowVectorExport = True
           Top = 282.000000000000100000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line28: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 309.456710000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line29: TfrxLineView
+          AllowVectorExport = True
           Top = 337.370129999999900000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line31: TfrxLineView
+          AllowVectorExport = True
           Left = 99.708720000000000000
           Top = 200.425170000000000000
           Height = 136.063080000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line32: TfrxLineView
+          AllowVectorExport = True
           Left = 184.417440000000000000
           Top = 200.425170000000000000
           Height = 136.063080000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line33: TfrxLineView
+          AllowVectorExport = True
           Left = 269.346630000000000000
           Top = 197.425170000000000000
           Height = 139.842610000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line34: TfrxLineView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 192.645640000000000000
           Height = 143.622140000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line35: TfrxLineView
+          AllowVectorExport = True
           Left = 448.764070000000000000
           Top = 193.425170000000000000
           Height = 143.622140000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line69: TfrxLineView
+          AllowVectorExport = True
           Left = 539.472790000000000000
           Top = 193.645640000000000000
           Height = 143.622140000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line70: TfrxLineView
+          AllowVectorExport = True
           Left = 629.401980000000000000
           Top = 193.645640000000000000
           Height = 143.622140000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line71: TfrxLineView
+          AllowVectorExport = True
           Left = 0.015770000000000000
           Top = 254.551020000000100000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line72: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 199.645640000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line73: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 227.322820000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 1.212429999999984000
           Width = 717.978426920000000000
@@ -18861,6 +20480,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -18870,30 +20490,37 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line74: TfrxLineView
+          AllowVectorExport = True
           Left = 1.220470000000000000
           Top = 513.645950000000100000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line75: TfrxLineView
+          AllowVectorExport = True
           Left = 2.779530000000000000
           Top = 22.007729999999980000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line76: TfrxLineView
+          AllowVectorExport = True
           Left = 565.575140000000000000
           Top = 421.637910000000000000
           Height = 45.354360000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 360.055350000000000000
           Top = 422.637910000000000000
           Width = 154.960730000000000000
@@ -18903,11 +20530,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  Numero da Nota Fiscal')
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 562.370440000000000000
           Top = 419.637910000000000000
           Width = 170.078850000000000000
@@ -18917,11 +20546,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '  Data')
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 546.693260000000000000
           Top = 22.007729999999980000
           Width = 71.811070000000000000
@@ -18931,6 +20562,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'FIM')
@@ -18938,6 +20570,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 370.393940000000000000
           Top = 466.882190000000000000
           Width = 359.055350000000000000
@@ -18947,6 +20580,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             ' Data Libera'#231#227'o / Conclus'#227'o')
           ParentFont = False
@@ -18954,6 +20588,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 272.126160000000000000
         Width = 718.110700000000000000
@@ -18961,6 +20596,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DataSetName = 'frxdbdtstFichaTecnica'
         RowCount = 0
         object frxdbdtstFichaTecnicaPRD_REFER_ITENS: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.328290780000000000
           Top = 4.364349230000016000
           Width = 94.488250000000000000
@@ -18973,11 +20609,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 134.241710770000000000
           Top = 4.343750769999985000
           Width = 411.968770000000000000
@@ -18990,11 +20628,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaOSI_QTDE1: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.097521550000000000
           Top = 5.210503080000024000
           Width = 75.530089220000000000
@@ -19009,12 +20649,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."OSI_QTDE_TOTAL_cc"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 552.866752310000000000
           Top = 4.405546150000020000
           Width = 56.656581540000000000
@@ -19027,6 +20669,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_UND"]')
           ParentFont = False
@@ -19035,7 +20678,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     end
   end
   object frxOP3: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -19083,12 +20726,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 767.480830000000000000
         Top = 366.614410000000000000
         Width = 718.110700000000000000
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.008040000000000000
           Top = 370.393940000000000000
           Width = 45.354360000000000000
@@ -19098,6 +20745,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Sement.')
@@ -19105,6 +20753,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 370.393940000000000000
           Width = 41.574830000000000000
@@ -19114,6 +20763,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Outros:')
@@ -19121,6 +20771,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Top = 9.779530000000000000
           Width = 46.704866150000000000
           Height = 25.354360000000000000
@@ -19129,6 +20780,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -19138,6 +20790,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 47.795300000000000000
           Top = 9.456710000000000000
           Width = 61.822986150000000000
@@ -19147,6 +20800,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -19156,6 +20810,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.267780000000000000
           Top = 9.897650000000000000
           Width = 258.358546150000000000
@@ -19165,6 +20820,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -19174,6 +20830,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 367.157700000000000000
           Top = 9.897650000000000000
           Width = 84.500166150000000000
@@ -19183,6 +20840,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -19192,6 +20850,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 450.984540000000000000
           Top = 9.897650000000000000
           Width = 46.704866150000000000
@@ -19201,6 +20860,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -19210,6 +20870,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 495.338900000000000000
           Top = 9.897650000000000000
           Width = 42.925336150000000000
@@ -19219,6 +20880,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -19228,6 +20890,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.252320000000000000
           Top = 9.897650000000000000
           Width = 58.043456150000000000
@@ -19237,6 +20900,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -19246,6 +20910,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.520100000000000000
           Top = 9.559060000000000000
           Width = 42.925336150000000000
@@ -19255,6 +20920,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -19264,118 +20930,147 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line33: TfrxLineView
+          AllowVectorExport = True
           Left = 47.133890000000000000
           Top = 35.015770000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 109.267780000000000000
           Top = 34.692950000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 35.015770000000000000
           Height = 604.724800000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 344.819110000000000000
           Top = 35.236240000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 367.496290000000000000
           Top = 35.015770000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 451.205010000000000000
           Top = 35.015770000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 537.913730000000000000
           Top = 34.795300000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 577.268090000000000000
           Top = 34.795300000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = 634.181510000000000000
           Top = 34.236240000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line11: TfrxLineView
+          AllowVectorExport = True
           Left = 673.756340000000000000
           Top = 35.015770000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line37: TfrxLineView
+          AllowVectorExport = True
           Left = 144.960730000000000000
           Top = 367.614410000000000000
           Height = 30.236240000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line38: TfrxLineView
+          AllowVectorExport = True
           Left = 184.196970000000000000
           Top = 367.614410000000000000
           Height = 30.236240000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line39: TfrxLineView
+          AllowVectorExport = True
           Left = 219.433210000000000000
           Top = 367.055350000000000000
           Height = 30.236240000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line40: TfrxLineView
+          AllowVectorExport = True
           Left = 257.567100000000000000
           Top = 367.393940000000000000
           Height = 30.236240000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 37.795300000000000000
           Width = 34.015770000000000000
@@ -19385,6 +21080,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '10')
@@ -19392,6 +21088,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 54.913420000000000000
           Width = 34.015770000000000000
@@ -19401,6 +21098,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '20')
@@ -19408,6 +21106,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 74.590600000000000000
           Width = 34.015770000000000000
@@ -19417,6 +21116,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '30')
@@ -19424,6 +21124,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 93.488250000000000000
           Width = 34.015770000000000000
@@ -19433,6 +21134,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '40')
@@ -19440,6 +21142,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 112.385900000000000000
           Width = 34.015770000000000000
@@ -19449,6 +21152,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '50')
@@ -19456,6 +21160,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 131.283550000000000000
           Width = 34.015770000000000000
@@ -19465,6 +21170,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '51')
@@ -19472,6 +21178,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.000000000000000000
           Top = 149.401670000000000000
           Width = 34.015770000000000000
@@ -19481,6 +21188,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '52')
@@ -19488,6 +21196,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.779530000000000000
           Top = 169.078850000000000000
           Width = 34.015770000000000000
@@ -19497,6 +21206,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '60')
@@ -19504,6 +21214,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 187.196970000000000000
           Width = 34.015770000000000000
@@ -19513,6 +21224,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '61')
@@ -19520,6 +21232,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 205.315090000000000000
           Width = 34.015770000000000000
@@ -19529,6 +21242,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '62')
@@ -19536,6 +21250,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 224.771800000000000000
           Width = 34.015770000000000000
@@ -19545,6 +21260,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '70')
@@ -19552,6 +21268,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 244.669450000000000000
           Width = 34.015770000000000000
@@ -19561,6 +21278,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '71')
@@ -19568,6 +21286,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 262.567100000000000000
           Width = 34.015770000000000000
@@ -19577,6 +21296,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '72')
@@ -19584,6 +21304,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 281.464750000000000000
           Width = 34.015770000000000000
@@ -19593,6 +21314,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '80')
@@ -19600,6 +21322,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 300.362400000000000000
           Width = 34.015770000000000000
@@ -19609,6 +21332,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '81')
@@ -19616,6 +21340,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 319.260050000000000000
           Width = 34.015770000000000000
@@ -19625,6 +21350,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '82')
@@ -19632,6 +21358,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 343.937230000000000000
           Width = 34.015770000000000000
@@ -19641,6 +21368,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '90')
@@ -19648,6 +21376,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 375.953000000000000000
           Width = 34.015770000000000000
@@ -19657,6 +21386,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '100')
@@ -19664,6 +21394,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 408.189240000000000000
           Width = 34.015770000000000000
@@ -19673,6 +21404,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '110')
@@ -19680,6 +21412,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 432.645950000000000000
           Width = 34.015770000000000000
@@ -19689,6 +21422,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '120')
@@ -19696,6 +21430,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 35.795300000000000000
           Width = 34.015770000000000000
@@ -19705,6 +21440,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PCP')
@@ -19712,6 +21448,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 54.692950000000000000
           Width = 34.015770000000000000
@@ -19721,6 +21458,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'COM')
@@ -19728,6 +21466,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 73.590600000000000000
           Width = 52.913420000000000000
@@ -19737,6 +21476,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ALMOX')
@@ -19744,6 +21484,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 92.488250000000000000
           Width = 34.015770000000000000
@@ -19753,6 +21494,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'SF')
@@ -19760,6 +21502,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 111.385900000000000000
           Width = 56.692950000000000000
@@ -19769,6 +21512,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOR COV')
@@ -19776,6 +21520,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 131.283550000000000000
           Width = 56.692950000000000000
@@ -19785,6 +21530,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOR COV')
@@ -19792,6 +21538,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 149.181200000000000000
           Width = 56.692950000000000000
@@ -19801,6 +21548,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOR COV')
@@ -19808,6 +21556,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 169.078850000000000000
           Width = 56.692950000000000000
@@ -19817,6 +21566,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOR CNC')
@@ -19824,6 +21574,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 186.196970000000000000
           Width = 56.692950000000000000
@@ -19833,6 +21584,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOR CNC')
@@ -19840,6 +21592,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 205.094620000000000000
           Width = 56.692950000000000000
@@ -19849,6 +21602,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOR CNC')
@@ -19856,6 +21610,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo65: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.574830000000000000
           Top = 225.551330000000000000
           Width = 56.692950000000000000
@@ -19865,6 +21620,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'FRE COV')
@@ -19872,6 +21628,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 243.889920000000000000
           Width = 56.692950000000000000
@@ -19881,6 +21638,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'FRE COV')
@@ -19888,6 +21646,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.354360000000000000
           Top = 262.567100000000000000
           Width = 56.692950000000000000
@@ -19897,6 +21656,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'FRE COV')
@@ -19904,6 +21664,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 281.464750000000000000
           Width = 56.692950000000000000
@@ -19913,6 +21674,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNC')
@@ -19920,6 +21682,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 300.362400000000000000
           Width = 56.692950000000000000
@@ -19929,6 +21692,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNC')
@@ -19936,6 +21700,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo74: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 319.480520000000000000
           Width = 56.692950000000000000
@@ -19945,6 +21710,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNC')
@@ -19952,6 +21718,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo75: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 343.937230000000000000
           Width = 56.692950000000000000
@@ -19961,6 +21728,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'AJUS')
@@ -19968,6 +21736,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo76: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 366.614410000000000000
           Width = 56.692950000000000000
@@ -19977,6 +21746,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'SERV.'
@@ -19985,6 +21755,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 408.189240000000000000
           Width = 56.692950000000000000
@@ -19994,6 +21765,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'INSP')
@@ -20001,6 +21773,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo78: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Top = 432.645950000000000000
           Width = 56.692950000000000000
@@ -20010,6 +21783,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'EXP')
@@ -20017,6 +21791,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Left = 106.826840000000000000
           Top = 370.393940000000000000
           Width = 37.795300000000000000
@@ -20026,6 +21801,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Termp.')
@@ -20033,6 +21809,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 147.401670000000000000
           Top = 370.393940000000000000
           Width = 37.795300000000000000
@@ -20042,6 +21819,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Retific.')
@@ -20049,6 +21827,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo81: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Top = 370.393940000000000000
           Width = 37.795300000000000000
@@ -20058,6 +21837,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Corte'
@@ -20066,6 +21846,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 217.212740000000000000
           Top = 370.393940000000000000
           Width = 41.574830000000000000
@@ -20075,6 +21856,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Oxida'#231'.')
@@ -20082,6 +21864,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo85: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 37.795300000000000000
           Width = 222.992270000000000000
@@ -20091,11 +21874,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Programa'#231#227'o e Planejamento da Produ'#231#227'o')
           ParentFont = False
         end
         object Memo86: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 56.692950000000000000
           Width = 230.551330000000000000
@@ -20105,11 +21890,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Comprar material conforme Desenho e O.C. do cliente.')
           ParentFont = False
         end
         object Memo87: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 75.590600000000000000
           Width = 230.551330000000000000
@@ -20119,11 +21906,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inspe'#231#227'o de recebimento dos materiais.')
           ParentFont = False
         end
         object Memo88: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 94.488250000000000000
           Width = 230.551330000000000000
@@ -20133,11 +21922,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Comprar material conforme Desenho e O.C. do cliente.')
           ParentFont = False
         end
         object Memo89: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 112.385900000000000000
           Width = 230.551330000000000000
@@ -20147,11 +21938,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tornear conforme Desenho')
           ParentFont = False
         end
         object Memo95: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 226.771800000000000000
           Width = 230.551330000000000000
@@ -20161,11 +21954,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fresar conforme Desenho')
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 245.669450000000000000
           Width = 230.551330000000000000
@@ -20175,11 +21970,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fresar conforme Desenho')
           ParentFont = False
         end
         object Memo97: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 264.567100000000000000
           Width = 230.551330000000000000
@@ -20189,11 +21986,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fresar conforme Desenho')
           ParentFont = False
         end
         object Memo98: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 283.464750000000000000
           Width = 230.551330000000000000
@@ -20203,11 +22002,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Usinar conforme Desenho')
           ParentFont = False
         end
         object Memo99: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 302.362400000000000000
           Width = 230.551330000000000000
@@ -20217,11 +22018,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Usinar conforme Desenho')
           ParentFont = False
         end
         object Memo100: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 321.260050000000000000
           Width = 230.551330000000000000
@@ -20231,11 +22034,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Usinar conforme Desenho')
           ParentFont = False
         end
         object Memo101: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 340.157700000000000000
           Width = 230.551330000000000000
@@ -20245,6 +22050,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Verificar acabamento da pe'#231'a removendo cantos vivos, cavacos, ma' +
@@ -20252,6 +22058,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo102: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 400.630180000000000000
           Width = 230.551330000000000000
@@ -20261,6 +22068,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Verificar e inspecionar todas as cotas conforme desenho e relat'#243 +
@@ -20268,6 +22076,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo103: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 434.645950000000000000
           Width = 230.551330000000000000
@@ -20277,43 +22086,53 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Embalar e solicitar entrega.')
           ParentFont = False
         end
         object Line43: TfrxLineView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Top = 487.559370000000000000
           Height = 151.181200000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line44: TfrxLineView
+          AllowVectorExport = True
           Left = 159.181200000000000000
           Top = 487.559370000000000000
           Height = 151.181200000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line45: TfrxLineView
+          AllowVectorExport = True
           Left = 301.582870000000000000
           Top = 487.559370000000000000
           Height = 151.181200000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line46: TfrxLineView
+          AllowVectorExport = True
           Left = 408.189240000000000000
           Top = 487.559370000000000000
           Height = 151.181200000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo104: TfrxMemoView
+          AllowVectorExport = True
           Top = 491.338900000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -20322,6 +22141,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'REFUGO')
@@ -20329,6 +22149,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo105: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Top = 491.338900000000000000
           Width = 79.370130000000000000
@@ -20338,6 +22159,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QUANTIDADE')
@@ -20345,6 +22167,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo106: TfrxMemoView
+          AllowVectorExport = True
           Left = 204.094620000000000000
           Top = 491.338900000000000000
           Width = 56.692950000000000000
@@ -20354,6 +22177,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'MOTIVO')
@@ -20361,6 +22185,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo107: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 491.338900000000000000
           Width = 98.267780000000000000
@@ -20370,6 +22195,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'RESPONS'#193'VEL')
@@ -20377,6 +22203,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo108: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Top = 491.338900000000000000
           Width = 211.653680000000000000
@@ -20386,6 +22213,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'LIBERA'#199#195'O')
@@ -20394,15 +22222,18 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         end
         object Line47: TfrxLineView
           Align = baCenter
+          AllowVectorExport = True
           Left = 716.220935000000000000
           Top = 758.906000000000000000
           Width = -714.331170000000000000
           Height = 1889.763779527560000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo109: TfrxMemoView
+          AllowVectorExport = True
           Top = 566.929500000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -20411,6 +22242,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'RETRABALHO')
@@ -20418,6 +22250,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo110: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Top = 566.929500000000000000
           Width = 79.370130000000000000
@@ -20427,6 +22260,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QUANTIDADE')
@@ -20434,6 +22268,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo111: TfrxMemoView
+          AllowVectorExport = True
           Left = 204.094620000000000000
           Top = 566.929500000000000000
           Width = 56.692950000000000000
@@ -20443,6 +22278,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'MOTIVO')
@@ -20450,6 +22286,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo112: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 566.929500000000000000
           Width = 98.267780000000000000
@@ -20459,6 +22296,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'RESPONS'#193'VEL')
@@ -20466,6 +22304,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo113: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Top = 566.929500000000000000
           Width = 211.653680000000000000
@@ -20475,6 +22314,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'LIBERA'#199#195'O')
@@ -20482,14 +22322,17 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line57: TfrxLineView
+          AllowVectorExport = True
           Left = 495.118430000000000000
           Top = 34.015770000000000000
           Height = 453.543600000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 673.535870000000000000
           Top = 9.559060000000000000
           Width = 42.925336150000000000
@@ -20499,6 +22342,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -20508,6 +22352,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 537.693260000000000000
           Top = 9.897650000000000000
           Width = 39.145806150000000000
@@ -20517,6 +22362,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -20526,244 +22372,305 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Line56: TfrxLineView
+          AllowVectorExport = True
           Top = 71.811070000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line58: TfrxLineView
+          AllowVectorExport = True
           Left = 1.220470000000000000
           Top = 90.708720000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line59: TfrxLineView
+          AllowVectorExport = True
           Left = 1.220470000000000000
           Top = 109.606370000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line60: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 128.504020000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line61: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 147.401670000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line62: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 166.299320000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line63: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 185.196970000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line64: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 204.094620000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line65: TfrxLineView
+          AllowVectorExport = True
           Left = 1.220470000000000000
           Top = 222.992270000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line66: TfrxLineView
+          AllowVectorExport = True
           Left = 1.220470000000000000
           Top = 241.889920000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line67: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 260.787570000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line68: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 279.685220000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line69: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 298.582870000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line70: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 317.480520000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line71: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 336.378170000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line72: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 365.834880000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line73: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 396.850650000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line74: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 427.086890000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line75: TfrxLineView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Top = 449.764070000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line76: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 468.661720000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line77: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 487.559370000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line78: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 507.236550000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line79: TfrxLineView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 526.693260000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line80: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 547.031850000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line81: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 564.929500000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line82: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 585.827150000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line83: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 602.724800000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line84: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 621.622450000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line85: TfrxLineView
+          AllowVectorExport = True
           Top = 638.740570000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 366.614410000000000000
           Height = 30.236240000000000000
           Color = clBlack
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Diagonal = True
         end
         object Memo90: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 132.283550000000000000
           Width = 230.551330000000000000
@@ -20773,11 +22680,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tornear conforme Desenho')
           ParentFont = False
         end
         object Memo91: TfrxMemoView
+          AllowVectorExport = True
           Left = 112.165430000000000000
           Top = 151.181200000000000000
           Width = 230.551330000000000000
@@ -20787,11 +22696,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tornear conforme Desenho')
           ParentFont = False
         end
         object Memo92: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 170.078850000000000000
           Width = 230.551330000000000000
@@ -20801,11 +22712,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tornear conforme Desenho')
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 188.976500000000000000
           Width = 230.551330000000000000
@@ -20815,11 +22728,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tornear conforme Desenho')
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 204.094620000000000000
           Width = 230.551330000000000000
@@ -20829,12 +22744,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tornear conforme Desenho')
           ParentFont = False
         end
         object Memo115: TfrxMemoView
           Align = baCenter
+          AllowVectorExport = True
           Top = 638.740570000000000000
           Width = 718.110700000000000000
           Height = 41.574830000000000000
@@ -20843,6 +22760,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -20852,10 +22770,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 202.992270000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo114: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.102350000000000000
           Top = 0.779530000000000000
           Width = 120.944960000000000000
@@ -20865,6 +22785,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -20872,6 +22793,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Line12: TfrxLineView
+          AllowVectorExport = True
           Left = 716.331170000000000000
           Top = 195.425480000000000000
           Height = 789.921770000000000000
@@ -20880,6 +22802,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Frame.Width = 0.500000000000000000
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.015770000000000000
           Top = 181.417440000000000000
           Width = 135.130346150000000000
@@ -20889,6 +22812,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -20896,6 +22820,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 607.827150000000000000
           Top = 181.299320000000000000
           Width = 108.673636150000000000
@@ -20905,6 +22830,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -20912,6 +22838,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 174.417440000000000000
           Top = 79.370130000000000000
           Width = 162.519790000000000000
@@ -20921,6 +22848,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -20928,6 +22856,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.596070770000000000
           Top = 1.559060000000000000
           Width = 359.055350000000000000
@@ -20937,6 +22866,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -20946,6 +22876,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 477.651420770000000000
           Top = 1.559060000000000000
           Width = 109.606370000000000000
@@ -20955,6 +22886,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -20962,6 +22894,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 584.478260770000000000
           Top = 1.559060000000000000
           Width = 132.283550000000000000
@@ -20971,6 +22904,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -20978,6 +22912,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 571.478260770000000000
           Top = 16.677180000000000000
           Width = 113.385900000000000000
@@ -20987,6 +22922,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '   [Page#] de [TotalPages#]')
@@ -20998,6 +22934,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object frxdbdtstOrdemProducaoOSV_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.651110770000000000
           Top = 14.543290000000000000
           Width = 104.133890000000000000
@@ -21010,12 +22947,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 3.118120000000000000
           Width = 120.944960000000000000
@@ -21025,6 +22964,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[RazaoSocial]')
@@ -21032,6 +22972,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 121.133890000000000000
           Width = 313.700990000000000000
@@ -21041,6 +22982,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21048,6 +22990,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 78.923076920000000000
           Width = 177.637910000000000000
           Height = 42.210813080000000000
@@ -21056,6 +22999,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21063,6 +23007,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 336.228510000000000000
           Top = 78.923076920000000000
           Width = 188.976500000000000000
@@ -21072,6 +23017,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21079,6 +23025,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 524.897960000000000000
           Top = 78.923076920000000000
           Width = 192.756030000000000000
@@ -21088,6 +23035,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21095,6 +23043,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 53.102350000000000000
           Width = 105.826840000000000000
@@ -21107,11 +23056,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_EMISSAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.000000000000000000
           Top = 97.393630000000000000
           Width = 147.212740000000000000
@@ -21123,12 +23074,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_DTENTRADA"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER1: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.307692320000000000
           Top = 57.281623080000000000
           Width = 86.929190000000000000
@@ -21136,10 +23089,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           DataField = 'PRD_REFER'
           DataSet = frxdbdtstOrdemProducao
           DataSetName = 'frxdbdtstOrdemProducao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Top = 41.574830000000000000
           Width = 120.944960000000000000
           Height = 37.795300000000000000
@@ -21148,6 +23103,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21155,6 +23111,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.827150000000000000
           Top = 41.574830000000000000
           Width = 86.929190000000000000
@@ -21164,6 +23121,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21171,6 +23129,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 41.574830000000000000
           Width = 514.016080000000000000
@@ -21180,6 +23139,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21187,6 +23147,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 126.842610000000000000
           Top = 55.692950000000000000
           Width = 502.677490000000000000
@@ -21199,11 +23160,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER2: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.669295000000000000
           Top = 57.913420000000000000
           Width = 113.385900000000000000
@@ -21216,11 +23179,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_QTDE2: TfrxMemoView
+          AllowVectorExport = True
           Left = 636.614410000000000000
           Top = 57.692950000000000000
           Width = 75.590600000000000000
@@ -21232,11 +23197,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_QTDE"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 497.897960000000000000
           Top = 120.944960000000000000
           Width = 219.212740000000000000
@@ -21246,6 +23213,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21253,6 +23221,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 533.559370000000000000
           Top = 96.149660000000000000
           Width = 147.212740000000000000
@@ -21264,12 +23233,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_DTENTREGA"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 352.551330000000000000
           Top = 97.267780000000000000
           Width = 147.212740000000000000
@@ -21281,12 +23252,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_EMISSAO"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 527.913730000000000000
           Top = 137.504020000000000000
           Width = 151.181200000000000000
@@ -21298,11 +23271,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_ORDEM_COMPRA"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 313.409710000000000000
           Top = 121.165430000000000000
           Width = 185.196970000000000000
@@ -21312,6 +23287,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21319,6 +23295,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 331.937230000000000000
           Top = 137.944960000000000000
           Width = 105.826840000000000000
@@ -21330,11 +23307,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_CODIGO"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.417440000000000000
           Top = 98.267780000000000000
           Width = 101.858380000000000000
@@ -21346,12 +23325,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_CODIGO"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.230769230000000000
           Top = 162.504020000000000000
           Width = 717.978426920000000000
@@ -21361,6 +23342,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -21370,6 +23352,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 133.953974610000000000
           Top = 181.794325380000000000
           Width = 405.760216150000000000
@@ -21379,6 +23362,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21386,6 +23370,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 539.646282300000000000
           Top = 181.794325380000000000
           Width = 70.878336150000000000
@@ -21395,6 +23380,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21403,6 +23389,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         end
       end
       object Memo70: TfrxMemoView
+        AllowVectorExport = True
         Left = -10.779530000000000000
         Top = -192.756030000000000000
         Width = 58.043456150000000000
@@ -21412,6 +23399,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -21419,6 +23407,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo71: TfrxMemoView
+        AllowVectorExport = True
         Left = -11.338590000000000000
         Top = -167.519790000000000000
         Width = 58.043456150000000000
@@ -21428,6 +23417,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -21435,6 +23425,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo72: TfrxMemoView
+        AllowVectorExport = True
         Left = -11.338590000000000000
         Top = -143.063080000000000000
         Width = 58.043456150000000000
@@ -21444,6 +23435,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -21451,6 +23443,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo73: TfrxMemoView
+        AllowVectorExport = True
         Left = -10.559060000000000000
         Top = -117.385900000000000000
         Width = 58.043456150000000000
@@ -21460,6 +23453,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -21467,13 +23461,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Line13: TfrxLineView
+        AllowVectorExport = True
         Height = 854.173780000000000000
         Color = clBlack
+        Frame.Typ = []
         Frame.Width = 0.500000000000000000
         Diagonal = True
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 283.464750000000000000
         Width = 718.110700000000000000
@@ -21481,6 +23478,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DataSetName = 'frxdbdtstFichaTecnica'
         RowCount = 0
         object frxdbdtstFichaTecnicaPRD_REFER_ITENS: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 1.800128460000000000
           Width = 94.488250000000000000
@@ -21493,11 +23491,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 141.811069990000000000
           Top = 1.779530000000000000
           Width = 389.291590000000000000
@@ -21510,11 +23510,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaOSI_QTDE1: TfrxMemoView
+          AllowVectorExport = True
           Left = 626.548760770000000000
           Top = 2.646282310000000000
           Width = 75.530089220000000000
@@ -21529,12 +23531,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."OSI_QTDE_TOTAL_cc"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 541.538461530000000000
           Top = 1.841325380000000000
           Width = 56.656581540000000000
@@ -21547,6 +23551,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_UND"]')
           ParentFont = False
@@ -21635,7 +23640,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     end
   end
   object frxOP_Mod9: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -21695,12 +23700,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 202.992270000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 133.953974610000000000
           Top = 181.794325380000000000
           Width = 405.760216150000000000
@@ -21710,6 +23719,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21717,6 +23727,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 607.827150000000000000
           Top = 181.299320000000000000
           Width = 108.673636150000000000
@@ -21726,6 +23737,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21733,6 +23745,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 539.646282300000000000
           Top = 181.794325380000000000
           Width = 70.878336150000000000
@@ -21742,6 +23755,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21749,6 +23763,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.015770000000000000
           Top = 181.417440000000000000
           Width = 135.130346150000000000
@@ -21758,6 +23773,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21765,6 +23781,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo114: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.102350000000000000
           Top = 0.779530000000001200
           Width = 120.944960000000000000
@@ -21774,11 +23791,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 174.417440000000000000
           Top = 79.370130000000000000
           Width = 162.519790000000000000
@@ -21788,6 +23807,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21795,6 +23815,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.596070770000000000
           Top = 1.559059999999999000
           Width = 359.055350000000000000
@@ -21804,6 +23825,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -21813,6 +23835,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 477.651420770000000000
           Top = 1.559059999999999000
           Width = 109.606370000000000000
@@ -21822,6 +23845,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21829,6 +23853,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.478260770000000000
           Top = 1.559059999999999000
           Width = 132.283550000000000000
@@ -21838,6 +23863,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21845,6 +23871,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 571.478260770000000000
           Top = 16.677180000000000000
           Width = 113.385900000000000000
@@ -21854,6 +23881,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '   [Page#] de [TotalPages#]')
@@ -21865,6 +23893,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object frxdbdtstOrdemProducaoOSV_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.651110770000000000
           Top = 14.543290000000000000
           Width = 104.133890000000000000
@@ -21877,12 +23906,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 3.118120000000001000
           Width = 120.944960000000000000
@@ -21892,6 +23923,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[RazaoSocial]')
@@ -21899,6 +23931,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 121.133890000000000000
           Width = 313.700990000000000000
@@ -21908,6 +23941,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21915,6 +23949,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 78.923076920000000000
           Width = 177.637910000000000000
           Height = 42.210813080000000000
@@ -21923,6 +23958,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21930,6 +23966,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 336.228510000000000000
           Top = 78.923076920000000000
           Width = 188.976500000000000000
@@ -21939,6 +23976,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21946,6 +23984,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 524.897960000000000000
           Top = 78.923076920000000000
           Width = 192.756030000000000000
@@ -21955,6 +23994,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -21962,6 +24002,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 53.102350000000000000
           Width = 105.826840000000000000
@@ -21974,11 +24015,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_EMISSAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.000000000000000000
           Top = 97.393630000000000000
           Width = 147.212740000000000000
@@ -21990,12 +24033,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_DTENTRADA"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER1: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.307692320000000000
           Top = 57.281623080000000000
           Width = 86.929190000000000000
@@ -22003,10 +24048,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           DataField = 'PRD_REFER'
           DataSet = frxdbdtstOrdemProducao
           DataSetName = 'frxdbdtstOrdemProducao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Top = 41.574830000000000000
           Width = 120.944960000000000000
           Height = 37.795300000000000000
@@ -22015,6 +24062,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -22022,6 +24070,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.827150000000000000
           Top = 41.574830000000000000
           Width = 85.795275590551190000
@@ -22031,6 +24080,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -22038,6 +24088,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 41.574830000000000000
           Width = 514.016080000000000000
@@ -22047,6 +24098,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -22054,6 +24106,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 126.842610000000000000
           Top = 55.692949999999990000
           Width = 502.677490000000000000
@@ -22066,11 +24119,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER2: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.669295000000000000
           Top = 57.913420000000000000
           Width = 113.385900000000000000
@@ -22083,11 +24138,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_QTDE2: TfrxMemoView
+          AllowVectorExport = True
           Left = 636.614410000000000000
           Top = 57.692950000000000000
           Width = 75.590600000000000000
@@ -22099,11 +24156,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_QTDE"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.897960000000000000
           Top = 120.944960000000000000
           Width = 219.212740000000000000
@@ -22113,6 +24172,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -22120,6 +24180,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 533.559370000000000000
           Top = 96.149660000000000000
           Width = 147.212740000000000000
@@ -22131,12 +24192,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_DTENTREGA"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 352.551330000000000000
           Top = 97.267780000000000000
           Width = 147.212740000000000000
@@ -22148,12 +24211,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_EMISSAO"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 527.913730000000000000
           Top = 137.504020000000000000
           Width = 151.181200000000000000
@@ -22165,11 +24230,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_ORDEM_COMPRA"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 313.409710000000000000
           Top = 121.165430000000000000
           Width = 185.196970000000000000
@@ -22179,6 +24246,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -22186,6 +24254,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 331.937230000000000000
           Top = 137.944960000000000000
           Width = 105.826840000000000000
@@ -22197,11 +24266,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_CODIGO"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.417440000000000000
           Top = 98.267780000000000000
           Width = 101.858380000000000000
@@ -22213,12 +24284,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_CODIGO"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.230769230000000000
           Top = 162.504020000000000000
           Width = 717.978426920000000000
@@ -22228,6 +24301,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22238,6 +24312,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         end
       end
       object Memo70: TfrxMemoView
+        AllowVectorExport = True
         Left = -10.779530000000000000
         Top = -192.756030000000000000
         Width = 58.043456150000000000
@@ -22247,6 +24322,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -22254,6 +24330,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo71: TfrxMemoView
+        AllowVectorExport = True
         Left = -11.338590000000000000
         Top = -167.519790000000000000
         Width = 58.043456150000000000
@@ -22263,6 +24340,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -22270,6 +24348,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo72: TfrxMemoView
+        AllowVectorExport = True
         Left = -11.338590000000000000
         Top = -143.063080000000000000
         Width = 58.043456150000000000
@@ -22279,6 +24358,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -22286,6 +24366,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo73: TfrxMemoView
+        AllowVectorExport = True
         Left = -10.559060000000000000
         Top = -117.385900000000000000
         Width = 58.043456150000000000
@@ -22295,6 +24376,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -22303,6 +24385,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 283.464750000000000000
         Width = 718.110700000000000000
@@ -22313,6 +24396,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         PrintIfDetailEmpty = True
         RowCount = 0
         object frxdbdtstFichaTecnicaPRD_REFER_ITENS: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 1.800128459999996000
           Width = 94.488250000000000000
@@ -22325,11 +24409,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 141.811069990000000000
           Top = 1.779530000000022000
           Width = 389.291590000000000000
@@ -22342,11 +24428,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaOSI_QTDE1: TfrxMemoView
+          AllowVectorExport = True
           Left = 626.548760770000000000
           Top = 2.646282310000004000
           Width = 75.530089220000000000
@@ -22361,12 +24449,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."OSI_QTDE_TOTAL_cc"]')
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 541.538461530000000000
           Top = 1.841325380000001000
           Width = 56.656581540000000000
@@ -22379,6 +24469,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstFichaTecnica."PRD_UND"]')
           ParentFont = False
@@ -22386,6 +24477,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 25.661424650000000000
         Top = 377.953000000000000000
         Width = 718.110700000000000000
@@ -22398,18 +24490,23 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         RowCount = 0
         Stretched = True
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 59.472480000000000000
           Top = 0.338590000000010600
           Width = 306.141930000000000000
           Height = 25.322834650000000000
+          Frame.Typ = []
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Left = 0.779530000000000000
           Top = 0.338590000000010600
           Width = 57.826771653543310000
           Height = 25.322834650000000000
+          Frame.Typ = []
         end
         object frxDBEngenhariaSEQUENCIA: TfrxMemoView
+          AllowVectorExport = True
           Left = 9.118120000000000000
           Top = 6.677180000000022000
           Width = 41.574830000000000000
@@ -22422,11 +24519,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEngenharia."SEQUENCIA"]')
           ParentFont = False
         end
         object frxDBEngenhariaOPE_DESCRICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 66.472480000000000000
           Top = 6.677180000000022000
           Width = 253.228510000000000000
@@ -22439,11 +24538,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEngenharia."OPE_DESCRICAO"]')
           ParentFont = False
         end
         object Memo117: TfrxMemoView
+          AllowVectorExport = True
           Left = 365.614410000000000000
           Top = 0.338590000000010600
           Width = 84.500166150000000000
@@ -22453,6 +24554,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22460,6 +24562,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo134: TfrxMemoView
+          AllowVectorExport = True
           Left = 450.543600000000000000
           Top = 0.338590000000010600
           Width = 46.704866150000000000
@@ -22469,6 +24572,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22476,6 +24580,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo135: TfrxMemoView
+          AllowVectorExport = True
           Left = 495.897960000000000000
           Top = 0.338590000000010600
           Width = 42.925336150000000000
@@ -22485,6 +24590,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22492,6 +24598,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo136: TfrxMemoView
+          AllowVectorExport = True
           Left = 576.811380000000000000
           Top = 0.338590000000010600
           Width = 58.043456150000000000
@@ -22501,6 +24608,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22508,6 +24616,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo137: TfrxMemoView
+          AllowVectorExport = True
           Left = 635.079160000000000000
           Top = 0.338590000000010600
           Width = 42.925336150000000000
@@ -22517,6 +24626,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22524,6 +24634,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo138: TfrxMemoView
+          AllowVectorExport = True
           Left = 674.094930000000000000
           Top = 0.338590000000010600
           Width = 44.598425196850390000
@@ -22533,6 +24644,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22540,6 +24652,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo139: TfrxMemoView
+          AllowVectorExport = True
           Left = 538.252320000000000000
           Top = 0.338590000000010600
           Width = 39.145806150000000000
@@ -22549,6 +24662,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22558,11 +24672,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 25.322834650000000000
         Top = 328.819110000000000000
         Width = 718.110700000000000000
         ReprintOnNewPage = True
         object Memo116: TfrxMemoView
+          AllowVectorExport = True
           Width = 58.043456150000000000
           Height = 25.322834650000000000
           Font.Charset = DEFAULT_CHARSET
@@ -22570,6 +24686,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22579,6 +24696,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo118: TfrxMemoView
+          AllowVectorExport = True
           Left = 58.133890000000000000
           Width = 307.492436150000000000
           Height = 25.322834650000000000
@@ -22587,6 +24705,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22596,6 +24715,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo119: TfrxMemoView
+          AllowVectorExport = True
           Left = 366.157700000000000000
           Width = 88.279696150000000000
           Height = 25.322834650000000000
@@ -22604,6 +24724,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22613,6 +24734,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo120: TfrxMemoView
+          AllowVectorExport = True
           Left = 450.984540000000000000
           Width = 46.704866150000000000
           Height = 25.322834650000000000
@@ -22621,6 +24743,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22630,6 +24753,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo121: TfrxMemoView
+          AllowVectorExport = True
           Left = 495.338900000000000000
           Width = 42.925336150000000000
           Height = 25.322834650000000000
@@ -22638,6 +24762,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22647,6 +24772,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo122: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.252320000000000000
           Width = 58.043456150000000000
           Height = 25.322834650000000000
@@ -22655,6 +24781,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22664,6 +24791,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo123: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.520100000000000000
           Width = 42.925336150000000000
           Height = 25.322834650000000000
@@ -22672,6 +24800,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22681,6 +24810,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo124: TfrxMemoView
+          AllowVectorExport = True
           Left = 673.535870000000000000
           Width = 44.220472440944880000
           Height = 25.322834650000000000
@@ -22689,6 +24819,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22698,6 +24829,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo125: TfrxMemoView
+          AllowVectorExport = True
           Left = 537.693260000000000000
           Width = 39.145806150000000000
           Height = 25.322834650000000000
@@ -22706,6 +24838,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -22717,6 +24850,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object DetailData1: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
@@ -22731,6 +24865,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Filter = '<frxDBEngenharia."FAB_CODIGO">=<frxDBEspecifica."FAB_CODIGO">'
         RowCount = 0
         object frxDBEspecificaESR_NOME: TfrxMemoView
+          AllowVectorExport = True
           Left = 47.472480000000000000
           Top = 3.779530000000079000
           Width = 68.031540000000000000
@@ -22743,11 +24878,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_NOME"]')
           ParentFont = False
         end
         object frxDBEspecificaESR_PADROES: TfrxMemoView
+          AllowVectorExport = True
           Left = 135.724490000000000000
           Top = 3.559059999999875000
           Width = 105.826840000000000000
@@ -22760,11 +24897,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_PADROES"]')
           ParentFont = False
         end
         object frxDBEspecificaESR_COL1: TfrxMemoView
+          AllowVectorExport = True
           Left = 254.480520000000000000
           Top = 3.559059999999875000
           Width = 49.133890000000000000
@@ -22777,11 +24916,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL1"]')
           ParentFont = False
         end
         object Memo126: TfrxMemoView
+          AllowVectorExport = True
           Left = 315.732530000000000000
           Top = 3.779529999999852000
           Width = 52.913420000000000000
@@ -22794,11 +24935,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL2"]')
           ParentFont = False
         end
         object Memo128: TfrxMemoView
+          AllowVectorExport = True
           Left = 438.016080000000000000
           Top = 3.779529999999852000
           Width = 60.472480000000000000
@@ -22811,11 +24954,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL4"]')
           ParentFont = False
         end
         object Memo130: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.764070000000000000
           Top = 3.779529999999852000
           Width = 56.692950000000000000
@@ -22828,11 +24973,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL3"]')
           ParentFont = False
         end
         object Memo131: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.268090000000000000
           Top = 3.779529999999852000
           Width = 60.472480000000000000
@@ -22845,11 +24992,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL5"]')
           ParentFont = False
         end
         object Memo132: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.724800000000000000
           Top = 3.779529999999852000
           Width = 60.472480000000000000
@@ -22862,11 +25011,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL6"]')
           ParentFont = False
         end
         object Memo133: TfrxMemoView
+          AllowVectorExport = True
           Left = 632.858690000000000000
           Top = 3.779529999999852000
           Width = 60.472480000000000000
@@ -22879,34 +25030,44 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL7"]')
           ParentFont = False
         end
         object Shape7: TfrxShapeView
+          AllowVectorExport = True
           Left = 30.236220470000000000
           Width = 98.267716540000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
         end
         object Shape8: TfrxShapeView
+          AllowVectorExport = True
           Left = 128.881889760000000000
           Top = 0.220469999999977500
           Width = 120.944881890000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
         end
         object Shape9: TfrxShapeView
+          AllowVectorExport = True
           Left = 249.448818900000000000
           Width = 61.984251970000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
         end
         object Shape10: TfrxShapeView
+          AllowVectorExport = True
           Left = 311.944881890000000000
           Width = 60.472440940000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
         end
       end
       object Header2: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
@@ -22918,36 +25079,47 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Width = 718.110700000000000000
         KeepChild = True
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 250.551330000000000000
           Width = 60.472480000000000000
           Height = 30.236240000000000000
           DataField = 'ESP_COL1'
           DataSet = frxDbParam
           DataSetName = 'frxDbParam'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL1"]')
         end
         object Shape11: TfrxShapeView
+          AllowVectorExport = True
           Left = 128.740260000000000000
           Width = 120.944960000000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
         end
         object Shape12: TfrxShapeView
+          AllowVectorExport = True
           Left = 311.793700790000000000
           Width = 60.472480000000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
         end
         object Shape13: TfrxShapeView
+          AllowVectorExport = True
           Left = 249.448980000000000000
           Width = 61.984251970000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
         end
         object Shape14: TfrxShapeView
+          AllowVectorExport = True
           Left = 30.236240000000000000
           Width = 98.267780000000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 45.692950000000010000
           Width = 75.590600000000000000
           Height = 30.236240000000000000
@@ -22959,12 +25131,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDbParam."ESP_NOME"]')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 129.724490000000000000
           Top = 1.000000000000000000
           Width = 117.165430000000000000
@@ -22977,12 +25151,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDbParam."ESP_PADROES"]')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 375.937230000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -22994,11 +25170,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL3"]')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 436.630180000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -23010,11 +25188,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL4"]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 497.102660000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -23026,11 +25206,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL5"]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 553.795610000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -23042,11 +25224,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL6"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 606.709030000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -23058,17 +25242,20 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL7"]')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.244280000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
           DataField = 'ESP_COL2'
           DataSet = frxDbParam
           DataSetName = 'frxDbParam'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL2"]')
         end
@@ -23277,6 +25464,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -23293,6 +25481,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -23302,21 +25498,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -23324,13 +25532,26 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 856
     Top = 345
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand5: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 40217
@@ -23351,13 +25572,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 265
@@ -23370,6 +25593,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -23383,6 +25607,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_EMISSAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -23406,6 +25631,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -23428,6 +25654,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -23451,13 +25678,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Essencia(s)=>'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 1852
@@ -23472,13 +25701,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRODUZIR:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1322
@@ -23493,13 +25724,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186'.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 125677
@@ -23513,6 +25746,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -23535,6 +25769,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         DisplayFormat = '#,###0.000'
@@ -23559,13 +25794,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LblTipo2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LT'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -23640,13 +25877,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MAT'#201'RIA-PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3704
@@ -23661,13 +25900,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PESO Kg'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -23692,13 +25933,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LOTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -23744,13 +25987,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INICIAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -23766,13 +26011,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FINAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -23787,13 +26034,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label102'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ADI'#199#195'O DE MAT.PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -23808,6 +26057,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSet
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -23827,6 +26077,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line19'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -23841,13 +26092,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CLIENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -23862,6 +26115,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -23884,6 +26138,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText81'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -23907,13 +26162,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LOTE N'#186':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -23928,6 +26185,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText82'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_LOTE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -23950,13 +26208,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PEDIDO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -23971,6 +26231,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText83'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -23993,6 +26254,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText84'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_DTENTREGA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -24016,13 +26278,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENTREGA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -24037,13 +26301,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LblProduzir'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'KG'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -24058,6 +26324,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText87'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE_CONVERTIDA'
         DataPipeline = ppDBPipeline1
         DisplayFormat = '#,###0.000'
@@ -24083,13 +26350,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SOLICITADA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 55568
@@ -24103,13 +26372,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'LBL_00_EMPRESA2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ORDEM DE PRODU'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4234
         mmLeft = 62177
@@ -24121,6 +26392,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine94: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line94'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 794
@@ -24133,6 +26405,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line96'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 181
@@ -24143,10 +26416,9 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppDetailBand5: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
       Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
       Border.Visible = True
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 4498
@@ -24156,6 +26428,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -24179,6 +26452,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -24203,6 +26477,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         StretchWithParent = True
         Weight = 0.750000000000000000
@@ -24217,6 +26492,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line6'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         StretchWithParent = True
         Weight = 0.750000000000000000
@@ -24231,6 +26507,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line10'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         StretchWithParent = True
         Weight = 0.750000000000000000
@@ -24245,6 +26522,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         StretchWithParent = True
         Weight = 0.750000000000000000
@@ -24259,6 +26537,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         StretchWithParent = True
         Weight = 0.750000000000000000
@@ -24273,6 +26552,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DesignLayer = ppDesignLayer5
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         StretchWithParent = True
         Weight = 0.750000000000000000
@@ -24288,6 +26568,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBText95'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -24310,6 +26591,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         OnPrint = pmemoLotePrint
         DesignLayer = ppDesignLayer5
         UserName = 'Memo1'
+        Border.mmPadding = 0
         Caption = 'Memo1'
         CharWrap = True
         Font.Charset = DEFAULT_CHARSET
@@ -24338,7 +26620,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
     end
     object ppSummaryBand5: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 151342
       mmPrintPosition = 0
@@ -24378,13 +26660,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -24399,6 +26683,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -24444,13 +26729,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENVASE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 1852
@@ -24475,13 +26762,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[_] Aprovado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 3969
@@ -24496,13 +26785,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[_] Reprovado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 32544
@@ -24526,13 +26817,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Provid'#234'ncias:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -24547,13 +26840,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 166952
@@ -24567,13 +26862,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QTDE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 74348
@@ -24587,13 +26884,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label301'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 111390
@@ -24607,13 +26906,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'EMBALAGEM'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 2910
@@ -24627,13 +26928,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label25'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PROCESSO DA FABRICA'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 794
@@ -24646,6 +26949,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         OnPrint = mProcPRCPrint
         DesignLayer = ppDesignLayer5
         UserName = 'mProcPRC'
+        Border.mmPadding = 0
         Caption = 'mProcPRC'
         CharWrap = False
         Font.Charset = DEFAULT_CHARSET
@@ -24670,6 +26974,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine41: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line41'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 3969
         mmLeft = 794
@@ -24681,6 +26986,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine56: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line56'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 3969
         mmLeft = 798
@@ -24692,6 +26998,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine78: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line78'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 3969
         mmLeft = 803
@@ -24703,6 +27010,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine79: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line79'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1852
         mmLeft = 265
@@ -24714,6 +27022,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine83: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line83'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 25135
@@ -24726,6 +27035,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine84: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line84'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 25135
@@ -24738,6 +27048,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine85: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line85'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 25135
@@ -24750,6 +27061,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine86: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line86'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 3969
         mmLeft = 798
@@ -24764,13 +27076,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CONTROLE DE QUALIDADE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 1323
@@ -24785,13 +27099,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESPECIFICA'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 63765
@@ -24803,6 +27119,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine80: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line80'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 34572
@@ -24817,13 +27134,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label196'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = ' - ASPECTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1323
@@ -24835,6 +27154,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine81: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line81'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 977
         mmLeft = 0
@@ -24848,13 +27168,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label197'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = ' - COR:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1323
@@ -24866,6 +27188,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine82: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line82'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 977
         mmLeft = 5
@@ -24879,13 +27202,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label201'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = ' - ODOR:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1058
@@ -24897,6 +27222,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine87: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line87'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -24910,13 +27236,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label205'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = ' - PH :'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1058
@@ -24928,6 +27256,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine88: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line88'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 5
@@ -24941,13 +27270,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label207'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = ' - VISCOSIDADE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1323
@@ -24959,6 +27290,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine89: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line89'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 977
         mmLeft = 5
@@ -24972,13 +27304,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label208'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = ' - DENSIDADE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3705
         mmLeft = 1323
@@ -24990,6 +27324,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine90: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line90'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 977
         mmLeft = 5
@@ -25003,13 +27338,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label210'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = ' - REFRA'#199#195'O :'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1147
@@ -25024,13 +27361,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'EXPEDI'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 1852
@@ -25044,13 +27383,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label212'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 3529
@@ -25064,13 +27405,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label213'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TRANSPORTADOR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 30252
@@ -25082,6 +27425,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine92: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line801'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 15081
@@ -25094,6 +27438,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine93: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line93'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 354
@@ -25108,13 +27453,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO T'#201'CNICO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 119592
@@ -25126,6 +27473,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine97: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line97'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 265
@@ -25139,13 +27487,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         UserName = 'Label215'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'AN'#193'LISE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1588
@@ -25160,13 +27510,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RESULTADO 1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 110331
@@ -25181,13 +27533,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RESULTADO 2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 153988
@@ -25199,6 +27553,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine98: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line802'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 34660
@@ -25211,6 +27566,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       object ppLine99: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line803'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 34660
@@ -25232,7 +27588,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     end
   end
   object frxOp_Mod11: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -25293,12 +27649,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 172.748300000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo114: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.559059999999999000
           Width = 173.858380000000000000
           Height = 41.574830000000000000
@@ -25307,11 +27667,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 174.417440000000000000
           Top = 78.923076920000000000
           Width = 162.519790000000000000
@@ -25330,6 +27692,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 173.509490770000000000
           Top = 1.559059999999999000
           Width = 306.141930000000000000
@@ -25350,6 +27713,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 477.651420770000000000
           Top = 1.559059999999999000
           Width = 109.606370000000000000
@@ -25359,6 +27723,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           Memo.UTF8W = (
@@ -25366,6 +27731,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.478260770000000000
           Top = 1.559059999999999000
           Width = 132.283464570000000000
@@ -25384,6 +27750,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 571.478260770000000000
           Top = 16.677180000000000000
           Width = 113.385900000000000000
@@ -25393,6 +27760,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '   [Page#] de [TotalPages#]')
@@ -25404,6 +27772,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object frxdbdtstOrdemProducaoOSV_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.651110770000000000
           Top = 14.543290000000000000
           Width = 104.133890000000000000
@@ -25416,12 +27785,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 1.118120000000001000
           Width = 173.858380000000000000
@@ -25441,6 +27812,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 120.944960000000000000
           Width = 313.700990000000000000
@@ -25459,6 +27831,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 78.923076920000000000
           Width = 177.637910000000000000
           Height = 42.210813080000000000
@@ -25476,6 +27849,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 336.228510000000000000
           Top = 78.923076920000000000
           Width = 188.976500000000000000
@@ -25494,6 +27868,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 524.897960000000000000
           Top = 78.923076920000000000
           Width = 192.756030000000000000
@@ -25512,6 +27887,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 53.102350000000000000
           Width = 105.826840000000000000
@@ -25524,11 +27900,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_EMISSAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.000000000000000000
           Top = 97.393630000000000000
           Width = 147.212740000000000000
@@ -25540,12 +27918,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_DTENTRADA"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER1: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.307692320000000000
           Top = 57.281623080000000000
           Width = 86.929190000000000000
@@ -25553,10 +27933,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           DataField = 'PRD_REFER'
           DataSet = frxdbdtstOrdemProducao
           DataSetName = 'frxdbdtstOrdemProducao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Top = 41.574830000000000000
           Width = 120.944960000000000000
           Height = 37.795300000000000000
@@ -25574,6 +27956,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.827150000000000000
           Top = 41.574830000000000000
           Width = 85.795275590000000000
@@ -25592,6 +27975,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 41.574830000000000000
           Width = 514.016080000000000000
@@ -25610,6 +27994,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 126.842610000000000000
           Top = 55.692949999999990000
           Width = 502.677490000000000000
@@ -25622,11 +28007,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER2: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.669295000000000000
           Top = 57.913420000000000000
           Width = 113.385900000000000000
@@ -25639,11 +28026,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_QTDE2: TfrxMemoView
+          AllowVectorExport = True
           Left = 636.614410000000000000
           Top = 57.692950000000000000
           Width = 75.590600000000000000
@@ -25655,11 +28044,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_QTDE"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.897960000000000000
           Top = 120.944960000000000000
           Width = 219.212740000000000000
@@ -25678,6 +28069,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 533.559370000000000000
           Top = 97.149660000000000000
           Width = 147.212740000000000000
@@ -25689,12 +28081,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_DTENTREGA"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 352.551330000000000000
           Top = 98.267780000000000000
           Width = 147.212740000000000000
@@ -25706,12 +28100,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_EMISSAO"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 527.913730000000000000
           Top = 137.504020000000000000
           Width = 151.181200000000000000
@@ -25723,11 +28119,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_ORDEM_COMPRA"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 313.409710000000000000
           Top = 120.944960000000000000
           Width = 185.196970000000000000
@@ -25746,6 +28144,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 331.937230000000000000
           Top = 137.944960000000000000
           Width = 105.826840000000000000
@@ -25757,11 +28156,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_CODIGO"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.417440000000000000
           Top = 98.267780000000000000
           Width = 101.858380000000000000
@@ -25773,6 +28174,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_CODIGO"]')
@@ -25780,6 +28182,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         end
       end
       object Memo70: TfrxMemoView
+        AllowVectorExport = True
         Left = -10.779530000000000000
         Top = -192.756030000000000000
         Width = 58.043456150000000000
@@ -25789,6 +28192,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -25796,6 +28200,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo71: TfrxMemoView
+        AllowVectorExport = True
         Left = -11.338590000000000000
         Top = -167.519790000000000000
         Width = 58.043456150000000000
@@ -25805,6 +28210,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -25812,6 +28218,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo72: TfrxMemoView
+        AllowVectorExport = True
         Left = -11.338590000000000000
         Top = -143.063080000000000000
         Width = 58.043456150000000000
@@ -25821,6 +28228,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -25828,6 +28236,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo73: TfrxMemoView
+        AllowVectorExport = True
         Left = -10.559060000000000000
         Top = -117.385900000000000000
         Width = 58.043456150000000000
@@ -25837,6 +28246,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -25845,6 +28255,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 400.630180000000000000
         Width = 718.110700000000000000
@@ -25858,12 +28269,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         RowCount = 0
         Stretched = True
         object Shape3: TfrxShapeView
+          AllowVectorExport = True
           Left = 650.834645670000000000
           Width = 67.653543310000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object frxdbdtstFichaTecnicaPRD_REFER_ITENS: TfrxMemoView
+          AllowVectorExport = True
           Width = 136.818897640000000000
           Height = 22.677165350000000000
           DataField = 'PRD_REFER_ITENS'
@@ -25882,6 +28296,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.811069990000000000
           Width = 404.409710000000000000
           Height = 22.677165350000000000
@@ -25908,6 +28323,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object frxdbdtstFichaTecnicaPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.646282300000100000
           Width = 37.039370080000000000
           Height = 22.677165350000000000
@@ -25927,6 +28343,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaOSI_QTDE1: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.511811020000000000
           Width = 72.944881890000000000
           Height = 22.677165350000000000
@@ -25951,6 +28368,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 64.252010000000030000
         Top = 498.897960000000000000
         Width = 718.110700000000000000
@@ -25962,17 +28380,22 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         RowCount = 0
         Stretched = True
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 58.960629920000000000
           Width = 306.141930000000000000
           Height = 25.322834650000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Width = 59.716535430000000000
           Height = 25.322834650000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object frxDBEngenhariaSEQUENCIA: TfrxMemoView
+          AllowVectorExport = True
           Left = 9.118120000000000000
           Top = 6.677179999999964000
           Width = 41.574830000000000000
@@ -25985,11 +28408,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEngenharia."SEQUENCIA"]')
           ParentFont = False
         end
         object frxDBEngenhariaOPE_DESCRICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 66.472480000000000000
           Top = 6.677179999999738000
           Width = 253.228510000000000000
@@ -26002,11 +28427,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEngenharia."OPE_DESCRICAO"]')
           ParentFont = False
         end
         object Memo117: TfrxMemoView
+          AllowVectorExport = True
           Left = 365.614410000000000000
           Width = 84.500166150000000000
           Height = 25.322834650000000000
@@ -26015,6 +28442,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
           Fill.BackColor = clWhite
           Fill.Style = bsClear
@@ -26023,6 +28451,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo134: TfrxMemoView
+          AllowVectorExport = True
           Left = 450.543600000000000000
           Width = 46.704866150000000000
           Height = 25.322834650000000000
@@ -26031,6 +28460,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
           Fill.BackColor = clWhite
           Fill.Style = bsClear
@@ -26039,6 +28469,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo135: TfrxMemoView
+          AllowVectorExport = True
           Left = 495.897960000000000000
           Width = 42.925336150000000000
           Height = 25.322834650000000000
@@ -26047,6 +28478,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26054,6 +28486,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo136: TfrxMemoView
+          AllowVectorExport = True
           Left = 576.811380000000000000
           Width = 58.043456150000000000
           Height = 25.322834650000000000
@@ -26062,6 +28495,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26069,6 +28503,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo137: TfrxMemoView
+          AllowVectorExport = True
           Left = 635.079160000000000000
           Width = 42.925336150000000000
           Height = 25.322834650000000000
@@ -26077,6 +28512,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26084,6 +28520,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo138: TfrxMemoView
+          AllowVectorExport = True
           Left = 674.094930000000000000
           Width = 44.220472440000000000
           Height = 25.322834650000000000
@@ -26092,6 +28529,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26099,6 +28537,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo139: TfrxMemoView
+          AllowVectorExport = True
           Left = 538.252320000000000000
           Width = 39.145806150000000000
           Height = 25.322834650000000000
@@ -26107,6 +28546,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26114,6 +28554,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 25.456710000000040000
           Width = 718.110700000000000000
@@ -26137,11 +28578,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 25.322834650000000000
         Top = 449.764070000000000000
         Width = 718.110700000000000000
         ReprintOnNewPage = True
         object Memo116: TfrxMemoView
+          AllowVectorExport = True
           Width = 60.472440940000000000
           Height = 25.322834650000000000
           Font.Charset = DEFAULT_CHARSET
@@ -26149,6 +28592,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26158,6 +28602,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo118: TfrxMemoView
+          AllowVectorExport = True
           Left = 59.133890000000000000
           Width = 307.492436150000000000
           Height = 25.322834650000000000
@@ -26166,6 +28611,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26175,6 +28621,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo119: TfrxMemoView
+          AllowVectorExport = True
           Left = 366.157700000000000000
           Width = 88.279696150000000000
           Height = 25.322834650000000000
@@ -26183,6 +28630,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26192,6 +28640,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo120: TfrxMemoView
+          AllowVectorExport = True
           Left = 450.984540000000000000
           Width = 46.704866150000000000
           Height = 25.322834650000000000
@@ -26200,6 +28649,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26209,6 +28659,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo121: TfrxMemoView
+          AllowVectorExport = True
           Left = 495.338900000000000000
           Width = 42.925336150000000000
           Height = 25.322834650000000000
@@ -26217,6 +28668,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26226,6 +28678,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo122: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.252320000000100000
           Width = 58.043456150000000000
           Height = 25.322834650000000000
@@ -26234,6 +28687,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
           Fill.BackColor = clWhite
           Fill.Style = bsClear
@@ -26244,6 +28698,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo123: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.520100000000000000
           Width = 42.925336150000000000
           Height = 25.322834650000000000
@@ -26252,6 +28707,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26261,6 +28717,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo124: TfrxMemoView
+          AllowVectorExport = True
           Left = 673.535870000000000000
           Width = 44.976377950000000000
           Height = 25.322834650000000000
@@ -26269,6 +28726,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26278,6 +28736,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo125: TfrxMemoView
+          AllowVectorExport = True
           Left = 537.693260000000000000
           Width = 39.145806150000000000
           Height = 25.322834650000000000
@@ -26286,6 +28745,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
           Fill.BackColor = clWhite
           Fill.Style = bsClear
@@ -26298,6 +28758,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object DetailData1: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
@@ -26312,6 +28773,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Filter = '<frxDBEngenharia."FAB_CODIGO">=<frxDBEspecifica."FAB_CODIGO">'
         RowCount = 0
         object frxDBEspecificaESR_NOME: TfrxMemoView
+          AllowVectorExport = True
           Left = 47.472480000000000000
           Top = 3.779529999999908000
           Width = 68.031540000000000000
@@ -26324,11 +28786,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_NOME"]')
           ParentFont = False
         end
         object frxDBEspecificaESR_PADROES: TfrxMemoView
+          AllowVectorExport = True
           Left = 135.724490000000000000
           Top = 3.559059999999704000
           Width = 105.826840000000000000
@@ -26341,11 +28805,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_PADROES"]')
           ParentFont = False
         end
         object frxDBEspecificaESR_COL1: TfrxMemoView
+          AllowVectorExport = True
           Left = 254.480520000000000000
           Top = 3.559059999999704000
           Width = 49.133890000000000000
@@ -26358,11 +28824,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL1"]')
           ParentFont = False
         end
         object Memo126: TfrxMemoView
+          AllowVectorExport = True
           Left = 315.732530000000000000
           Top = 3.779529999999908000
           Width = 52.913420000000000000
@@ -26375,11 +28843,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL2"]')
           ParentFont = False
         end
         object Memo128: TfrxMemoView
+          AllowVectorExport = True
           Left = 438.016080000000000000
           Top = 3.779529999999908000
           Width = 60.472480000000000000
@@ -26392,11 +28862,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL4"]')
           ParentFont = False
         end
         object Memo130: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.764070000000000000
           Top = 3.779529999999908000
           Width = 56.692950000000000000
@@ -26409,11 +28881,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL3"]')
           ParentFont = False
         end
         object Memo131: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.268090000000000000
           Top = 3.779529999999908000
           Width = 60.472480000000000000
@@ -26426,11 +28900,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL5"]')
           ParentFont = False
         end
         object Memo132: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.724800000000000000
           Top = 3.779529999999908000
           Width = 60.472480000000000000
@@ -26443,11 +28919,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL6"]')
           ParentFont = False
         end
         object Memo133: TfrxMemoView
+          AllowVectorExport = True
           Left = 632.858690000000000000
           Top = 3.779529999999908000
           Width = 60.472480000000000000
@@ -26460,38 +28938,48 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL7"]')
           ParentFont = False
         end
         object Shape7: TfrxShapeView
+          AllowVectorExport = True
           Left = 30.236220470000000000
           Width = 98.267716540000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape8: TfrxShapeView
+          AllowVectorExport = True
           Left = 128.881889760000000000
           Top = 0.220469999999977500
           Width = 120.944881890000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape9: TfrxShapeView
+          AllowVectorExport = True
           Left = 249.448818900000000000
           Width = 61.984251970000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape10: TfrxShapeView
+          AllowVectorExport = True
           Left = 311.944881890000000000
           Width = 60.472440940000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
       end
       object Header2: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
@@ -26503,40 +28991,51 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Width = 718.110700000000000000
         KeepChild = True
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 250.551330000000000000
           Width = 60.472480000000000000
           Height = 30.236240000000000000
           DataField = 'ESP_COL1'
           DataSet = frxDbParam
           DataSetName = 'frxDbParam'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL1"]')
         end
         object Shape11: TfrxShapeView
+          AllowVectorExport = True
           Left = 128.740260000000000000
           Width = 120.944960000000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape12: TfrxShapeView
+          AllowVectorExport = True
           Left = 311.793700790000000000
           Width = 60.472480000000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape13: TfrxShapeView
+          AllowVectorExport = True
           Left = 249.448980000000000000
           Width = 61.984251970000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape14: TfrxShapeView
+          AllowVectorExport = True
           Left = 30.236240000000000000
           Width = 98.267780000000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 45.692950000000000000
           Width = 75.590600000000000000
           Height = 30.236240000000000000
@@ -26548,12 +29047,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDbParam."ESP_NOME"]')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 129.724490000000000000
           Top = 1.000000000000000000
           Width = 117.165430000000000000
@@ -26566,12 +29067,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDbParam."ESP_PADROES"]')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 375.937230000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -26583,11 +29086,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL3"]')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 436.630180000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -26599,11 +29104,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL4"]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 497.102660000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -26615,11 +29122,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL5"]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 553.795610000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -26631,11 +29140,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL6"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 606.709030000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
@@ -26647,28 +29158,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL7"]')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.244280000000000000
           Width = 49.133890000000000000
           Height = 30.236240000000000000
           DataField = 'ESP_COL2'
           DataSet = frxDbParam
           DataSetName = 'frxDbParam'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL2"]')
         end
       end
       object Header3: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 125.408425380000000000
         Top = 253.228510000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 134.953974610000000000
           Top = 111.392655380000000000
           Width = 405.760216150000000000
@@ -26687,6 +29203,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.590910000000000000
           Top = 111.392655380000000000
           Width = 74.657866150000000000
@@ -26705,6 +29222,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.646282300000100000
           Top = 111.392655380000000000
           Width = 36.862566150000000000
@@ -26723,6 +29241,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Top = 111.392655380000000000
           Width = 135.130346150000000000
           Height = 14.015770000000000000
@@ -26740,6 +29259,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.230769230000000000
           Top = 91.102350000000030000
           Width = 717.978426920000000000
@@ -26749,6 +29269,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -26758,6 +29279,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 49.133890000000000000
           StretchMode = smActualHeight
@@ -26780,6 +29302,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           WordBreak = True
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 650.858690000000000000
           Top = 111.385900000000000000
           Width = 67.098806150000000000
@@ -26800,6 +29323,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object DetailData2: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 623.622450000000000000
         Width = 718.110700000000000000
@@ -26811,12 +29335,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         KeepTogether = True
         RowCount = 0
         object Shape4: TfrxShapeView
+          AllowVectorExport = True
           Left = 650.834645670000000000
           Width = 67.653543310000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Width = 136.818897640000000000
           Height = 22.677165350000000000
           DataField = 'PRD_REFER_ITENS'
@@ -26835,6 +29362,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.811069990000000000
           Width = 404.409710000000000000
           Height = 22.677165350000000000
@@ -26861,6 +29389,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.646282300000100000
           Width = 37.039370080000000000
           Height = 22.677165350000000000
@@ -26880,6 +29409,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.511811020000000000
           Width = 72.944881890000000000
           Height = 22.677165350000000000
@@ -26904,10 +29434,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object Header4: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.408425380000000000
         Top = 585.827150000000000000
         Width = 718.110700000000000000
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 135.184743840000000000
           Top = 0.290305379999949800
           Width = 405.760216150000000000
@@ -26926,6 +29458,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.821679230000000000
           Top = 0.290305379999949800
           Width = 74.657866150000000000
@@ -26944,6 +29477,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.877051530000000000
           Top = 0.290305379999949800
           Width = 36.862566150000000000
@@ -26962,6 +29496,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.230769230000000000
           Top = 0.290305379999949800
           Width = 135.130346150000000000
@@ -26980,6 +29515,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 651.089459230000000000
           Top = 0.283549999999991100
           Width = 67.098806150000000000
@@ -27005,11 +29541,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -27019,11 +29558,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 1036
     Top = 352
   end
   object frxOp_Mod12: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -27084,12 +29626,16 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 168.968770000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo114: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.559060000000000000
           Width = 173.858380000000000000
           Height = 41.574830000000000000
@@ -27098,11 +29644,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clWhite
           Fill.Style = bsClear
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 174.417440000000000000
           Top = 78.923076920000000000
           Width = 162.519790000000000000
@@ -27121,6 +29669,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 173.509490770000000000
           Top = 1.559060000000000000
           Width = 306.141930000000000000
@@ -27141,6 +29690,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 477.651420770000000000
           Top = 1.559060000000000000
           Width = 109.606370000000000000
@@ -27158,6 +29708,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.478260770000000000
           Top = 1.559060000000000000
           Width = 132.283464570000000000
@@ -27176,6 +29727,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 571.478260770000000000
           Top = 16.677180000000000000
           Width = 113.385900000000000000
@@ -27185,6 +29737,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '   [Page#] de [TotalPages#]')
@@ -27196,6 +29749,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object frxdbdtstOrdemProducaoOSV_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.651110770000000000
           Top = 14.543290000000000000
           Width = 104.133890000000000000
@@ -27208,12 +29762,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 1.118120000000000000
           Width = 173.858380000000000000
@@ -27233,6 +29789,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 120.944960000000000000
           Width = 313.700990000000000000
@@ -27251,6 +29808,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 78.923076920000000000
           Width = 177.637910000000000000
           Height = 42.210813080000000000
@@ -27268,6 +29826,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 336.228510000000000000
           Top = 78.923076920000000000
           Width = 188.976500000000000000
@@ -27286,6 +29845,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 524.897960000000000000
           Top = 78.923076920000000000
           Width = 192.756030000000000000
@@ -27304,6 +29864,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 53.102350000000000000
           Width = 105.826840000000000000
@@ -27316,11 +29877,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_EMISSAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.000000000000000000
           Top = 97.393630000000000000
           Width = 147.212740000000000000
@@ -27332,12 +29895,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_DTENTRADA"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER1: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.307692320000000000
           Top = 57.281623080000000000
           Width = 86.929190000000000000
@@ -27345,10 +29910,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           DataField = 'PRD_REFER'
           DataSet = frxdbdtstOrdemProducao
           DataSetName = 'frxdbdtstOrdemProducao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Top = 41.574830000000000000
           Width = 120.944960000000000000
           Height = 37.795300000000000000
@@ -27366,6 +29933,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.827150000000000000
           Top = 41.574830000000000000
           Width = 85.795275590000000000
@@ -27384,6 +29952,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 41.574830000000000000
           Width = 514.016080000000000000
@@ -27402,6 +29971,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 126.842610000000000000
           Top = 55.692950000000000000
           Width = 502.677490000000000000
@@ -27414,11 +29984,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoPRD_REFER2: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.669295000000000000
           Top = 57.913420000000000000
           Width = 113.385900000000000000
@@ -27431,11 +30003,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PRD_REFER"]')
           ParentFont = False
         end
         object frxdbdtstOrdemProducaoOSV_QTDE2: TfrxMemoView
+          AllowVectorExport = True
           Left = 636.614410000000000000
           Top = 57.692950000000000000
           Width = 75.590600000000000000
@@ -27447,11 +30021,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_QTDE"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.897960000000000000
           Top = 120.944960000000000000
           Width = 219.212740000000000000
@@ -27470,6 +30046,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 533.559370000000000000
           Top = 97.149660000000000000
           Width = 147.212740000000000000
@@ -27481,12 +30058,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_DTENTREGA"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 352.551330000000000000
           Top = 98.267780000000000000
           Width = 147.212740000000000000
@@ -27498,12 +30077,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_EMISSAO"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 527.913730000000000000
           Top = 137.504020000000000000
           Width = 151.181200000000000000
@@ -27515,11 +30096,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."OSV_ORDEM_COMPRA"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 313.409710000000000000
           Top = 120.944960000000000000
           Width = 185.196970000000000000
@@ -27538,6 +30121,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 331.937230000000000000
           Top = 137.944960000000000000
           Width = 105.826840000000000000
@@ -27549,11 +30133,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."CLI_CODIGO"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.417440000000000000
           Top = 98.267780000000000000
           Width = 101.858380000000000000
@@ -27565,21 +30151,25 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_CODIGO"]')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.019978290000000000
           Top = 135.205386590000000000
           Width = 244.839797070000000000
           Height = 20.003853900000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstOrdemProducao."PED_DTENTRADA"]')
         end
       end
       object Memo70: TfrxMemoView
+        AllowVectorExport = True
         Left = -10.779530000000000000
         Top = -192.756030000000000000
         Width = 58.043456150000000000
@@ -27589,6 +30179,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -27596,6 +30187,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo71: TfrxMemoView
+        AllowVectorExport = True
         Left = -11.338590000000000000
         Top = -167.519790000000000000
         Width = 58.043456150000000000
@@ -27605,6 +30197,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -27612,6 +30205,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo72: TfrxMemoView
+        AllowVectorExport = True
         Left = -11.338590000000000000
         Top = -143.063080000000000000
         Width = 58.043456150000000000
@@ -27621,6 +30215,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -27628,6 +30223,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         VAlign = vaCenter
       end
       object Memo73: TfrxMemoView
+        AllowVectorExport = True
         Left = -10.559060000000000000
         Top = -117.385900000000000000
         Width = 58.043456150000000000
@@ -27637,6 +30233,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = [fsBold]
+        Frame.Typ = []
         Fill.BackColor = clWhite
         Fill.Style = bsClear
         HAlign = haCenter
@@ -27645,6 +30242,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 396.850650000000000000
         Width = 718.110700000000000000
@@ -27658,12 +30256,15 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         RowCount = 0
         Stretched = True
         object Shape3: TfrxShapeView
+          AllowVectorExport = True
           Left = 650.834645670000000000
           Width = 67.653543310000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object frxdbdtstFichaTecnicaPRD_REFER_ITENS: TfrxMemoView
+          AllowVectorExport = True
           Width = 136.818897640000000000
           Height = 22.677165350000000000
           DataField = 'PRD_REFER_ITENS'
@@ -27682,6 +30283,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.811069990000000000
           Width = 404.409710000000000000
           Height = 22.677165350000000000
@@ -27708,6 +30310,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object frxdbdtstFichaTecnicaPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.646282300000000000
           Width = 37.039370080000000000
           Height = 22.677165350000000000
@@ -27727,6 +30330,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object frxdbdtstFichaTecnicaOSI_QTDE1: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.511811020000000000
           Width = 72.944881890000000000
           Height = 22.677165350000000000
@@ -27751,6 +30355,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 68.252010000000000000
         Top = 445.984540000000000000
         Width = 718.110700000000000000
@@ -27762,19 +30367,24 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         RowCount = 0
         Stretched = True
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 58.960629920000000000
           Top = 5.000000000000000000
           Width = 658.393700787401600000
           Height = 25.322834650000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Top = 5.000000000000000000
           Width = 58.960629921259840000
           Height = 25.322834650000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object frxDBEngenhariaSEQUENCIA: TfrxMemoView
+          AllowVectorExport = True
           Left = 9.118120000000000000
           Top = 11.677179999999960000
           Width = 41.574830000000000000
@@ -27787,11 +30397,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEngenharia."SEQUENCIA"]')
           ParentFont = False
         end
         object frxDBEngenhariaOPE_DESCRICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 66.472480000000000000
           Top = 11.677180000000000000
           Width = 638.740570000000000000
@@ -27804,12 +30416,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBEngenharia."OPE_DESCRICAO"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 30.456710000000000000
           Width = 718.110700000000000000
@@ -27833,6 +30447,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object DetailData1: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
@@ -27847,61 +30462,80 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Filter = '<frxDBEngenharia."FAB_CODIGO">=<frxDBEspecifica."FAB_CODIGO">'
         RowCount = 0
         object Shape15: TfrxShapeView
+          AllowVectorExport = True
           Left = 239.110390000000000000
           Top = 0.220470000000000000
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape9: TfrxShapeView
+          AllowVectorExport = True
           Left = 159.740098900000000000
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape8: TfrxShapeView
+          AllowVectorExport = True
           Left = 79.747999760000000000
           Top = 0.220470000000000000
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape10: TfrxShapeView
+          AllowVectorExport = True
           Left = 319.283471890000000000
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape19: TfrxShapeView
+          AllowVectorExport = True
           Left = 638.740157480000000000
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape18: TfrxShapeView
+          AllowVectorExport = True
           Left = 558.929500000000000000
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape16: TfrxShapeView
+          AllowVectorExport = True
           Left = 399.496062992126000000
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape7: TfrxShapeView
+          AllowVectorExport = True
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape17: TfrxShapeView
+          AllowVectorExport = True
           Left = 478.866141732283500000
           Width = 79.748031500000000000
           Height = 22.677165350000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object frxDBEspecificaESR_NOME: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.118120000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -27914,11 +30548,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_NOME"]')
           ParentFont = False
         end
         object frxDBEspecificaESR_PADROES: TfrxMemoView
+          AllowVectorExport = True
           Left = 80.811070000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -27931,11 +30567,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_PADROES"]')
           ParentFont = False
         end
         object frxDBEspecificaESR_COL1: TfrxMemoView
+          AllowVectorExport = True
           Left = 161.992270000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -27948,11 +30586,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL1"]')
           ParentFont = False
         end
         object Memo126: TfrxMemoView
+          AllowVectorExport = True
           Left = 241.141930000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -27965,11 +30605,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL2"]')
           ParentFont = False
         end
         object Memo128: TfrxMemoView
+          AllowVectorExport = True
           Left = 401.000310000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -27982,11 +30624,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL4"]')
           ParentFont = False
         end
         object Memo130: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.071120000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -27999,11 +30643,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL3"]')
           ParentFont = False
         end
         object Memo131: TfrxMemoView
+          AllowVectorExport = True
           Left = 483.370440000000000000
           Top = 3.779530000000000000
           Width = 71.811070000000000000
@@ -28016,11 +30662,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL5"]')
           ParentFont = False
         end
         object Memo132: TfrxMemoView
+          AllowVectorExport = True
           Left = 560.724800000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -28033,11 +30681,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL6"]')
           ParentFont = False
         end
         object Memo133: TfrxMemoView
+          AllowVectorExport = True
           Left = 640.858690000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -28050,6 +30700,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBEspecifica."ESR_COL7"]')
           ParentFont = False
@@ -28057,6 +30708,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object Header2: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
@@ -28068,63 +30720,82 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         Width = 718.110700000000000000
         KeepChild = True
         object Shape13: TfrxShapeView
+          AllowVectorExport = True
           Left = 159.740260000000000000
           Width = 79.748031500000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape24: TfrxShapeView
+          AllowVectorExport = True
           Left = 558.929500000000000000
           Width = 79.748031500000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape21: TfrxShapeView
+          AllowVectorExport = True
           Left = 399.409710000000000000
           Width = 79.748031500000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape22: TfrxShapeView
+          AllowVectorExport = True
           Left = 478.897960000000000000
           Width = 79.748031500000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape20: TfrxShapeView
+          AllowVectorExport = True
           Left = 319.598640000000000000
           Width = 79.748031500000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 161.842610000000000000
           Width = 75.590600000000000000
           Height = 30.236220470000000000
           DataField = 'ESP_COL1'
           DataSet = frxDbParam
           DataSetName = 'frxDbParam'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL1"]')
         end
         object Shape11: TfrxShapeView
+          AllowVectorExport = True
           Left = 79.606370000000000000
           Width = 79.748031496062990000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape12: TfrxShapeView
+          AllowVectorExport = True
           Left = 239.762160790000000000
           Width = 79.748031500000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Shape14: TfrxShapeView
+          AllowVectorExport = True
           Width = 79.748031500000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.118120000000000000
           Width = 75.590600000000000000
           Height = 30.236220470000000000
@@ -28136,12 +30807,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDbParam."ESP_NOME"]')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 80.590600000000000000
           Width = 75.590600000000000000
           Height = 30.236220470000000000
@@ -28153,12 +30826,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDbParam."ESP_PADROES"]')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 321.921460000000000000
           Width = 75.590600000000000000
           Height = 30.236220470000000000
@@ -28170,11 +30845,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL3"]')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 400.055350000000000000
           Width = 75.590600000000000000
           Height = 30.236220470000000000
@@ -28186,11 +30863,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL4"]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 481.645950000000000000
           Width = 75.590600000000000000
           Height = 30.236220472440940000
@@ -28202,11 +30881,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL5"]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 560.913730000000000000
           Width = 75.590600000000000000
           Height = 30.236220472440940000
@@ -28218,27 +30899,33 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL6"]')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 241.551330000000000000
           Width = 75.590600000000000000
           Height = 30.236220470000000000
           DataField = 'ESP_COL2'
           DataSet = frxDbParam
           DataSetName = 'frxDbParam'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL2"]')
         end
         object Shape23: TfrxShapeView
+          AllowVectorExport = True
           Left = 638.740157480000000000
           Width = 79.748031500000000000
           Height = 34.015748030000000000
+          Frame.Typ = []
           Frame.Width = 0.100000000000000000
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 640.488560000000000000
           Width = 75.590600000000000000
           Height = 30.236220472440940000
@@ -28250,6 +30937,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDbParam."ESP_COL7"]')
           ParentFont = False
@@ -28257,10 +30945,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object Header3: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 125.408425380000000000
         Top = 249.448980000000000000
         Width = 718.110700000000000000
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Width = 717.921770000000000000
           Height = 93.652395380000000000
           DataSet = frxdbdtstOrdemProducao
@@ -28279,6 +30969,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           WordBreak = True
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 134.953974610000000000
           Top = 111.392655380000000000
           Width = 405.760216150000000000
@@ -28297,6 +30988,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.590910000000000000
           Top = 111.392655380000000000
           Width = 74.657866150000000000
@@ -28315,6 +31007,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.646282300000000000
           Top = 111.392655380000000000
           Width = 36.862566150000000000
@@ -28333,6 +31026,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Top = 111.392655380000000000
           Width = 135.130346150000000000
           Height = 14.015770000000000000
@@ -28350,6 +31044,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.230769230000000000
           Top = 91.102350000000000000
           Width = 717.978426920000000000
@@ -28359,6 +31054,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clAppWorkSpace
           Fill.Style = bsClear
           HAlign = haCenter
@@ -28368,6 +31064,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Top = 20.118120000000000000
           Width = 710.551640000000000000
           Height = 49.133890000000000000
@@ -28377,6 +31074,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[<frxdbdtstOrdemProducao."FTC_PROC1">+<frxdbdtstOrdemProducao."F' +
@@ -28388,6 +31086,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           WordBreak = True
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 650.858690000000000000
           Top = 111.385900000000000000
           Width = 67.098806150000000000
@@ -28408,6 +31107,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object DetailData2: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 574.488560000000000000
         Width = 718.110700000000000000
@@ -28419,6 +31119,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         KeepTogether = True
         RowCount = 0
         object Shape4: TfrxShapeView
+          AllowVectorExport = True
           Left = 642.936995670000000000
           Width = 75.590551180000000000
           Height = 22.677165350000000000
@@ -28426,6 +31127,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Frame.Width = 0.100000000000000000
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 57.070866140000000000
           Width = 80.125947640000000000
           Height = 22.677165350000000000
@@ -28445,6 +31147,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.811069990000000000
           Width = 279.685220000000000000
           Height = 22.677165350000000000
@@ -28464,6 +31167,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           WordBreak = True
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 417.417191020000000000
           Width = 72.944881890000000000
           Height = 22.677165350000000000
@@ -28486,6 +31190,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Shape5: TfrxShapeView
+          AllowVectorExport = True
           Left = 491.559370000000000000
           Width = 75.590551180000000000
           Height = 22.677165350000000000
@@ -28493,6 +31198,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Frame.Width = 0.100000000000000000
         end
         object Shape6: TfrxShapeView
+          AllowVectorExport = True
           Left = 567.488560000000000000
           Width = 75.590551180000000000
           Height = 22.677165350000000000
@@ -28500,6 +31206,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Frame.Width = 0.100000000000000000
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Width = 58.249227060000000000
           Height = 22.677165350000000000
           DisplayFormat.FormatStr = '%g'
@@ -28517,10 +31224,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object Header4: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.408425380000000000
         Top = 536.693260000000000000
         Width = 718.110700000000000000
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 136.818897640000000000
           Top = 1.000000000000000000
           Width = 281.035726150000000000
@@ -28539,6 +31248,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 417.259842519685000000
           Top = 1.000000000000000000
           Width = 74.657866150000000000
@@ -28557,6 +31267,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 56.923719230000000000
           Top = 1.000000000000000000
           Width = 79.370042130000000000
@@ -28575,6 +31286,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 642.897637795275600000
           Top = 1.000000000000000000
           Width = 75.590551180000000000
@@ -28593,6 +31305,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.559370000000000000
           Top = 1.000000000000000000
           Width = 75.590551180000000000
@@ -28611,6 +31324,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 567.370440000000000000
           Top = 1.000000000000000000
           Width = 75.590551180000000000
@@ -28629,6 +31343,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.000000000000000000
           Width = 56.692862130000000000
           Height = 14.015770000000000000
@@ -28649,10 +31364,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 721.890230000000000000
         Width = 718.110700000000000000
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 417.417191020000000000
           Width = 60.472480000000000000
           Height = 17.007874020000000000
@@ -28661,11 +31378,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxdbdtstFichaTecnica."OSI_QTDE_TOTAL_cc">,DetailData2)]')
           ParentFont = False
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 52.913420000000000000
           Width = 75.590600000000000000
           Height = 17.007874020000000000
@@ -28674,11 +31393,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[(SUM(<frxdbdtstFichaTecnica."OSI_UC">,DetailData2))*100]')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.275206070000000000
           Top = 0.557635570000000000
           Width = 46.903347700000000000
@@ -28688,11 +31409,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total : ')
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 366.614410000000000000
           Width = 46.903347700000000000
           Height = 17.007874020000000000
@@ -28701,6 +31424,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total : ')
           ParentFont = False
@@ -28717,7 +31441,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     Top = 287
   end
   object frxListaOrdem: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -28755,8 +31479,11 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.750772730000000000
         Top = 177.637910000000000000
         Width = 1046.929810000000000000
@@ -28764,6 +31491,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
         DataSetName = 'frxDBop'
         RowCount = 0
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.727272730000000000
           Top = 2.944031819999964000
           Width = 55.683673640000000000
@@ -28773,11 +31501,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBop."OSV_CODIGO"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 61.247680910000000000
           Top = 2.944031819999964000
           Width = 62.863327270000000000
@@ -28787,11 +31517,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBop."OSV_EMISSAO"]')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 127.504638180000000000
           Top = 2.944031819999964000
           Width = 53.006493640000000000
@@ -28801,11 +31533,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBop."OSV_DTENTREGA"]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 185.166048190000000000
           Top = 2.944031819999992000
           Width = 58.031540000000000000
@@ -28815,11 +31549,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBop."PRD_REFER"]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 247.670686360000000000
           Top = 2.944031819999992000
           Width = 329.749536360000000000
@@ -28829,11 +31565,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBop."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 613.803958180000000000
           Top = 2.944031819999992000
           Width = 69.942795450000000000
@@ -28847,12 +31585,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBop."OSV_QTDE"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 695.356524550000000000
           Top = 2.944031819999992000
           Width = 29.942795450000000000
@@ -28862,11 +31602,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBop."PRD_UND"]')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 809.567718180000000000
           Top = 2.944031819999992000
           Width = 67.215522730000000000
@@ -28880,12 +31622,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBop."OSV_QTDE_CONCLUIDA"]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 731.557513640000000000
           Top = 2.944031819999992000
           Width = 65.397340910000000000
@@ -28895,11 +31639,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBop."PED_CODIGO"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 887.434446370000000000
           Top = 2.944031819999992000
           Width = 87.308596360000000000
@@ -28910,6 +31656,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[IIF(<frxDBop."OSV_STATUS">='#39'C'#39','#39'Conclu'#237'da'#39','
             'IIF(<frxDBop."OSV_STATUS">='#39'I'#39' ,'#39'C.Parcial'#39','
@@ -28925,6 +31672,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
             end>
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 975.818181820000000000
           Top = 2.944031819999992000
           Width = 60.851886360000000000
@@ -28934,6 +31682,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBop."OSV_LOTE"]')
           ParentFont = False
@@ -28941,10 +31690,12 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 98.826840000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.727272730000000000
           Top = 75.632034549999800000
           Width = 55.683673640000000000
@@ -28954,11 +31705,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'O.P.')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 61.247680910000000000
           Top = 75.632034549999800000
           Width = 62.863327270000000000
@@ -28968,11 +31721,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Emiss'#227'o')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 127.504638180000000000
           Top = 75.632034549999800000
           Width = 53.006493640000000000
@@ -28982,11 +31737,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Entrega')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 185.166048190000000000
           Top = 75.632034549999800000
           Width = 58.031540000000000000
@@ -28996,11 +31753,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 247.670686360000000000
           Top = 75.632034549999800000
           Width = 310.851886360000000000
@@ -29010,11 +31769,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 616.803958180000000000
           Top = 75.632034550000000000
           Width = 69.942795450000000000
@@ -29024,11 +31785,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Qtde Produzir')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 695.356524550000000000
           Top = 75.632034550000000000
           Width = 29.942795450000000000
@@ -29038,11 +31801,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'UND')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 809.567718180000000000
           Top = 75.632034550000000000
           Width = 67.215522730000000000
@@ -29052,11 +31817,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Concluida')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 731.557513640000000000
           Top = 75.632034550000000000
           Width = 65.397340910000000000
@@ -29066,11 +31833,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Pedido')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 887.434446370000000000
           Top = 75.632034549999800000
           Width = 60.851886360000000000
@@ -29080,11 +31849,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Status')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 980.077303640000000000
           Top = 75.632034550000000000
           Width = 60.851886360000000000
@@ -29094,11 +31865,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Lote')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.454545450000000000
           Top = 19.129560909999900000
           Width = 578.268090000000000000
@@ -29108,11 +31881,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Listagem de PCP')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.454545450000000000
           Top = 0.231910909999896800
           Width = 578.268090000000000000
@@ -29122,11 +31897,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 902.541745450000000000
           Top = 0.231910909999999900
           Width = 139.842610000000000000
@@ -29137,12 +31914,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 902.541745450002000000
           Top = 19.129560909999900000
           Width = 139.842610000000000000
@@ -29153,12 +31932,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.454545450000000000
           Top = 38.027210910000000000
           Width = 718.110700000000000000
@@ -29168,30 +31949,37 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FILTROS]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 0.015770000000000000
           Top = 95.047310000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 71.811070000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 36.008890000000000000
         Top = 222.992270000000000000
         Width = 1046.929810000000000000
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 616.803958180000000000
           Top = 2.000000000000000000
           Width = 69.942795450000000000
@@ -29205,12 +31993,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBop."OSV_QTDE">,MasterData1)]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Top = 2.000000000000000000
           Width = 241.889920000000000000
           Height = 18.897650000000000000
@@ -29219,17 +32009,21 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total de ordens: [COUNT(MasterData1)]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 0.338590000000010600
           Width = 1043.150280000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 809.567718180000000000
           Top = 2.000000000000000000
           Width = 65.856370000000000000
@@ -29243,12 +32037,14 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBop."OSV_QTDE_CONCLUIDA">,MasterData1)]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 528.206710000000000000
           Top = 2.000000000000000000
           Width = 84.942795450000000000
@@ -29258,11 +32054,13 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total a produzir:')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 729.192950000000000000
           Top = 2.000000000000000000
           Width = 79.942795450000000000
@@ -29272,6 +32070,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total concluida:')
           ParentFont = False
