@@ -31,7 +31,7 @@ AppComments=Sistema {#VersaoSistema} patch {#PatchSistema} de {#DataCriacaoInsta
 DefaultDirName=C:\{#NomeAplicacao}FB
 DefaultGroupName={#NomeAplicacao}FB
 AllowNoIcons=true
-OutputDir=C:\Developer\Adjutor2\Instalador\compactado
+OutputDir=C:\Developer\Adjutor\Instalador\compactado
 OutputBaseFilename=AdjutorServer{#VersaoBuild}{#Patch}
 Compression=lzma
 SolidCompression=true
@@ -39,9 +39,9 @@ VersionInfoVersion={#VersaoSistema}
 ShowLanguageDialog=yes
 InternalCompressLevel=max
 WindowVisible=true
-WizardImageFile=C:\Developer\Adjutor2\Instalador\bitmap.bmp
+WizardImageFile=C:\Developer\Adjutor\Instalador\bitmap.bmp
 wizardImageBackColor=clWhite
-wizardSmallImageFile=C:\Developer\Adjutor2\Instalador\install1.bmp
+wizardSmallImageFile=C:\Developer\Adjutor\Instalador\install1.bmp
 WizardImageStretch=false
 AllowCancelDuringInstall=true
 
@@ -62,69 +62,70 @@ Name: desktopicon; Description: Create a &desktop icon; GroupDescription: Additi
 Name: quicklaunchicon; Description: Create a &Quick Launch icon; GroupDescription: Additional icons:; MinVersion: 4,4; Flags: unchecked
 
 [Files]
-Source: C:\Developer\Adjutor2\fichas\Default.rtf; DestDir: {app}\fichas\Default.rtf; Flags: ignoreversion
-Source: C:\Developer\Adjutor2\Adjutor.exe; DestDir: {app}; Flags: ignoreversion
-Source: C:\Developer\Adjutor2\ACBrNFeServicos.ini; DestDir: {app}; Flags: ignoreversion
-Source: C:\Developer\Adjutor2\ACBrNFSeServicos.ini; DestDir: {app}; Flags: ignoreversion
-Source: C:\Developer\Adjutor2\ACBrNFSeXServicos.ini; DestDir: {app}; Flags: ignoreversion
-Source: C:\Developer\Adjutor2\AnyDesk\AnyDesk.exe; DestDir: {app}; Flags: ignoreversion 
-Source: C:\Developer\Adjutor2\TeamViewer\TeamViewerQS.exe; DestDir: {app}; Flags: ignoreversion 
-Source: C:\Developer\Adjutor2\RwEditor.exe; DestDir: {app}; Flags: ignoreversion
-;Source: C:\Instalação Adjutor2\NotaFiscalEletronica.rav; DestDir: {app}; Flags: ignoreversion
-Source: C:\Instalação Adjutor\adjrw.ico; DestDir: {app}; Flags: ignoreversion
-Source: C:\Developer\Adjutor2\*.dll; DestDir: {app}; Flags: ignoreversion
+Source: C:\Developer\Adjutor\fichas\Default.rtf; DestDir: {app}\fichas\Default.rtf; Flags: ignoreversion
+Source: C:\Developer\Adjutor\Adjutor.exe; DestDir: {app}; Flags: ignoreversion
+Source: C:\Developer\Adjutor\ACBrNFeServicos.ini; DestDir: {app}; Flags: ignoreversion
+Source: C:\Developer\Adjutor\ACBrNFSeServicos.ini; DestDir: {app}; Flags: ignoreversion
+Source: C:\Developer\Adjutor\ACBrNFSeXServicos.ini; DestDir: {app}; Flags: ignoreversion
+Source: C:\Developer\Adjutor\AnyDesk\AnyDesk.exe; DestDir: {app}; Flags: ignoreversion 
+Source: C:\Developer\Adjutor\TeamViewer\TeamViewerQS.exe; DestDir: {app}; Flags: ignoreversion 
+Source: C:\Developer\Adjutor\RwEditor.exe; DestDir: {app}; Flags: ignoreversion
+;Source: C:\Instalação Adjutor\NotaFiscalEletronica.rav; DestDir: {app}; Flags: ignoreversion
+;Source: C:\Instalação Adjutor\adjrw.ico; DestDir: {app}; Flags: ignoreversion
+Source: C:\Developer\Adjutor\adjrw.ico; DestDir: {app}; Flags: ignoreversion
+Source: C:\Developer\Adjutor\*.dll; DestDir: {app}; Flags: ignoreversion
 ;Source: C:\Instalação Adjutor\*.dll; DestDir: {app}; Flags: ignoreversion
 ;Source: C:\Instalação Adjutor\*.fr3; DestDir: {app}; Flags: ignoreversion
 
-Source: C:\Developer\Adjutor2\logVersões\*.*; DestDir: {app}\logVersões; Flags: ignoreversion
+Source: C:\Developer\Adjutor\logVersões\*.*; DestDir: {app}\logVersões; Flags: ignoreversion
 
-Source: C:\Developer\Adjutor2\NFSe\Curitiba\*.*; DestDir: {app}\NFSe\Curitiba; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\ISSJoinville\*.*; DestDir: {app}\NFSe\ISSJoinville; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\Campo do Tenente\*.*; DestDir: {app}\NFSe\Campo do Tenente; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\Equiplano\*.*; DestDir: {app}\NFSe\Equiplano; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\Lexsom\*.*; DestDir: {app}\NFSe\Lexsom; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\ipm\*.*; DestDir: {app}\NFSe\ipm; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\SP\*.*; DestDir: {app}\NFSe\SP; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\Betha\*.*; DestDir: {app}\NFSe\SP; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\Ginfes\*.*; DestDir: {app}\NFSe\SP; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\SJP\*.*; DestDir: {app}\NFSe\SP; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\ArqINI\*.*; DestDir: {app}\NFSe\ArqINI; Flags: ignoreversion recursesubdirs
-Source: C:\Developer\Adjutor2\NFSe\relatorio\*.*; DestDir: {app}\NFSe\relatorio; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\Curitiba\*.*; DestDir: {app}\NFSe\Curitiba; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\ISSJoinville\*.*; DestDir: {app}\NFSe\ISSJoinville; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\Campo do Tenente\*.*; DestDir: {app}\NFSe\Campo do Tenente; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\Equiplano\*.*; DestDir: {app}\NFSe\Equiplano; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\Lexsom\*.*; DestDir: {app}\NFSe\Lexsom; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\ipm\*.*; DestDir: {app}\NFSe\ipm; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\SP\*.*; DestDir: {app}\NFSe\SP; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\Betha\*.*; DestDir: {app}\NFSe\SP; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\Ginfes\*.*; DestDir: {app}\NFSe\SP; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\SJP\*.*; DestDir: {app}\NFSe\SP; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\ArqINI\*.*; DestDir: {app}\NFSe\ArqINI; Flags: ignoreversion recursesubdirs
+Source: C:\Developer\Adjutor\NFSe\relatorio\*.*; DestDir: {app}\NFSe\relatorio; Flags: ignoreversion recursesubdirs
 
-Source: C:\Developer\Adjutor2\NFe4\schemas\*.*; DestDir: {app}\NFe4\schemas; Flags: ignoreversion  
-Source: C:\Developer\Adjutor2\NFe4\relatorio\*.*; DestDir: {app}\NFe4\relatorio; Flags: ignoreversion
+Source: C:\Developer\Adjutor\NFe4\schemas\*.*; DestDir: {app}\NFe4\schemas; Flags: ignoreversion  
+Source: C:\Developer\Adjutor\NFe4\relatorio\*.*; DestDir: {app}\NFe4\relatorio; Flags: ignoreversion
 
-Source: C:\Developer\Adjutor2\Atualização\DLLS\*.*; DestDir: {app}\atualização\DLLS; Flags: ignoreversion
+Source: C:\Developer\Adjutor\Atualização\DLLS\*.*; DestDir: {app}\atualização\DLLS; Flags: ignoreversion
 
 ; acbr diversos
-;Source: C:\Developer\Adjutor2\Atualização\DLLS\x86\*.*; DestDir: {app}; Flags: ignoreversion; check: "not IsWin64"
-;Source: C:\Developer\Adjutor2\Atualização\DLLS\x64\*.*; DestDir: {app}; Flags: ignoreversion; check: IsWin64
+;Source: C:\Developer\Adjutor\Atualização\DLLS\x86\*.*; DestDir: {app}; Flags: ignoreversion; check: "not IsWin64"
+;Source: C:\Developer\Adjutor\Atualização\DLLS\x64\*.*; DestDir: {app}; Flags: ignoreversion; check: IsWin64
 
 ;openssl
 ;check: "not IsWin64"
-Source: C:\Developer\Adjutor2\Atualização\DLLS\OpenSSL\1.1.1.4\x86\*.*; DestDir: {app}; Flags: ignoreversion; 
+Source: C:\Developer\Adjutor\Atualização\DLLS\OpenSSL\1.1.1.4\x86\*.*; DestDir: {app}; Flags: ignoreversion; 
 ;check: IsWin64
-Source: C:\Developer\Adjutor2\Atualização\DLLS\OpenSSL\1.1.1.4\x64\*.*; DestDir: {app}; Flags: ignoreversion; 
+Source: C:\Developer\Adjutor\Atualização\DLLS\OpenSSL\1.1.1.4\x64\*.*; DestDir: {app}; Flags: ignoreversion; 
 
 ;libxml2
 ;check: "not IsWin64" 
-Source: C:\Developer\Adjutor2\Atualização\DLLS\LibXml2\x86\*.*; DestDir: {app}; Flags: ignoreversion; 
-;Source: C:\Developer\Adjutor2\Atualização\DLLS\LibXml2\x64\*.*; DestDir: {app}; Flags: ignoreversion; check: IsWin64
+Source: C:\Developer\Adjutor\Atualização\DLLS\LibXml2\x86\*.*; DestDir: {app}; Flags: ignoreversion; 
+;Source: C:\Developer\Adjutor\Atualização\DLLS\LibXml2\x64\*.*; DestDir: {app}; Flags: ignoreversion; check: IsWin64
 
-Source: C:\Developer\Adjutor2\Atualização\Capicom\*.*; DestDir: {app}; Flags: ignoreversion
+Source: C:\Developer\Adjutor\Atualização\Capicom\*.*; DestDir: {app}; Flags: ignoreversion
 
 
-Source: C:\Developer\Adjutor2\bancos\logos\*.*; DestDir: {app}\Bancos\Logos; Flags: ignoreversion
-Source: C:\Developer\Adjutor2\ScriptDeveloper\*.*; DestDir: {app}\Dados\Scripts; Flags: ignoreversion  
-Source: C:\Developer\Adjutor2\manuais\*.*; DestDir: {app}\Manuais; Flags: ignoreversion   
-Source: C:\Developer\Adjutor2\Atualização\Capicom\*.*; DestDir: {app}\atualização\Capicom; Flags: ignoreversion
-Source: C:\Developer\Adjutor2\Run.exe ; DestDir: {app}  ;Flags: ignoreversion
-Source: C:\Developer\Adjutor2\IBPT\*.* ; DestDir: {app}\IBPT  ;Flags: ignoreversion
+Source: C:\Developer\Adjutor\bancos\logos\*.*; DestDir: {app}\Bancos\Logos; Flags: ignoreversion
+Source: C:\Developer\Adjutor\ScriptDeveloper\*.*; DestDir: {app}\Dados\Scripts; Flags: ignoreversion  
+Source: C:\Developer\Adjutor\manuais\*.*; DestDir: {app}\Manuais; Flags: ignoreversion   
+Source: C:\Developer\Adjutor\Atualização\Capicom\*.*; DestDir: {app}\atualização\Capicom; Flags: ignoreversion
+Source: C:\Developer\Adjutor\Run.exe ; DestDir: {app}  ;Flags: ignoreversion
+Source: C:\Developer\Adjutor\IBPT\*.* ; DestDir: {app}\IBPT  ;Flags: ignoreversion
 
 ;Source: C:\Instalação Adjutor\Fichas\*.*; DestDir: {app}\Fichas; Flags: ignoreversion
-Source: C:\Instalação Adjutor\Fotos\*.*; DestDir: {app}\Fotos; Flags: ignoreversion
+Source: C:\Developer\Adjutor\Fotos\*.*; DestDir: {app}\Fotos; Flags: ignoreversion
 ;Source: C:\Instalação Adjutor\logo\*.*; DestDir: {app}\logo; Flags: ignoreversion
-Source: C:\Instalação Adjutor\logo\fundo\*.*; DestDir: {app}\logo\fundo; Flags: ignoreversion
+Source: C:\Developer\Adjutor\logo\fundo\*.*; DestDir: {app}\logo\fundo; Flags: ignoreversion
 ;Source: C:\Instalação Adjutor\Relatorios\*.*; DestDir: c:\AdjutorFB\Relatorios; Flags: ignoreversion  
 
 [Code]

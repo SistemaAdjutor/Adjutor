@@ -15,7 +15,8 @@ uses
   JvToolEdit, Data.DBXFirebird, SgDbSeachComboUnit,   ACBrUtil,
   SgDbAutoF8Unit, SgDbLookupComboUnit, ACBrEnterTab, ACBrBase, ACBrCalculadora, BaseForm, JvExControls, JvArrowButton, JvExMask, JvDBControls, JvExComCtrls, JvComCtrls,  pesqcodigooriginal,
   JvValidators, JvComponentBase, JvErrorIndicator, JvMaskEdit, VclTee.TeeGDIPlus, BaseTelaRelatorioForm, dateutils, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
-  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, JvAnimatedImage, JvGIFCtrl, FireDAC.Stan.Async, FireDAC.DApt, JvEdit, JvValidateEdit;
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Comp.DataSet, FireDAC.Comp.Client, JvAnimatedImage, JvGIFCtrl, FireDAC.Stan.Async, FireDAC.DApt, JvEdit, JvValidateEdit,
+  frxExportBaseDialog;
 
 type
   TItens = class
@@ -7966,14 +7967,18 @@ begin
   if SqlCdsPedidoItemPRD_UND.AsString = 'KG' then
     SqlCdsPedidoItemFKP.AsFloat := SqlCdsPedidoItemPRF_PRECO.AsFloat
   else
-    SqlCdsPedidoItemFKP.AsFloat := (SqlCdsPedidoItemPRF_PRECO.AsFloat / SqlCdsPedidoItemPRG_MEDIDA_1.AsFloat / SqlCdsPedidoItemPRG_MEDIDA_2.AsFloat / SqlCdsPedidoItemPRG_MEDIDA_3.AsFloat) * 10;
+  begin
+    if (SqlCdsPedidoItemPRG_MEDIDA_1.AsFloat > 0) and (SqlCdsPedidoItemPRG_MEDIDA_2.AsFloat > 0) and (SqlCdsPedidoItemPRG_MEDIDA_3.AsFloat > 0)  then
+      SqlCdsPedidoItemFKP.AsFloat := (SqlCdsPedidoItemPRF_PRECO.AsFloat / SqlCdsPedidoItemPRG_MEDIDA_1.AsFloat / SqlCdsPedidoItemPRG_MEDIDA_2.AsFloat / SqlCdsPedidoItemPRG_MEDIDA_3.AsFloat) * 10;
+  end;
 
 
 
   if SqlCdsPedidoItemPRD_UND.AsString = 'KG' then
     SqlCdsPedidoItemFKG.AsFloat := SqlCdsPedidoItemTOTAL.AsFloat / SqlCdsPedidoItemPRF_QTDE.AsFloat;
   if SqlCdsPedidoItemPRD_UND.AsString = 'MIL' then
-    SqlCdsPedidoItemFKG.AsFloat := SqlCdsPedidoItemTOTAL.AsFloat / SqlCdsPedidoItemPRF_PESO.AsFloat;
+    if SqlCdsPedidoItemPRF_PESO.AsFloat > 0  then
+      SqlCdsPedidoItemFKG.AsFloat := SqlCdsPedidoItemTOTAL.AsFloat / SqlCdsPedidoItemPRF_PESO.AsFloat;
 
 end;
 

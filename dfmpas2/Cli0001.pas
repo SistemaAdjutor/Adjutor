@@ -28,7 +28,11 @@ uses
   dxSkinWhiteprint, dxSkinXmas2008Blue, VclTee.TeeGDIPlus, Data.DBXFirebird,
   SimpleDS, cxCheckBox, RxDBComb, ACBrConsultaCNPJ, ACBrSuframa, BaseDBForm ,  System.StrUtils, ACBrEnterTab,
    ACBrCalculadora, JvExControls, JvArrowButton,importcliente, ComObj, JvMenus, animacao, Vcl.CustomizeDlg, ComboBoxRW, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error,
-  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinTheBezier, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light;
 
 type
   TFormCliente = class(TfrmBaseDB)
@@ -765,6 +769,7 @@ type
     cdsClientesBAN_CONTA: TStringField;
     qClientesBAN_DIGCONTA: TStringField;
     cdsClientesBAN_DIGCONTA: TStringField;
+    SimpleDataSet1: TSimpleDataSet;
 
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
@@ -1095,6 +1100,7 @@ begin
   begin
     CampoCurrency := nil;
   end;
+
 end;
 
 procedure TFormCliente.Bit_SairClick(Sender: tObject);
@@ -1587,7 +1593,6 @@ var
 begin
   tcr:= tFrmPesquisaClientes.Create(self);
   try
-
    tcr.ShowModal;
    if tcr.modalresult = mrok then
       BuscaCliente( tcr.IDRetorno );

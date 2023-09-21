@@ -2,6 +2,7 @@
 program Adjutor;
 
 {$define ADJUTOR}
+{$define SISTEMA}
 
 
 
@@ -15,7 +16,7 @@ uses
   Datasnap.Midas,
   Uteis in 'infosaga\Uteis.pas',
   BaseForm in 'infosaga\BaseForm.pas' {frmBase},
-  InicioDB in 'infosaga\InicioDB.pas' {dbInicio: Delphi\Componentes\06-infosaga_desktop\BaseDBForm.pas' {frmBaseDB},
+  InicioDB in 'infosaga\InicioDB.pas' {dbInicio},
   BaseDBForm in 'infosaga\BaseDBForm.pas' {frmBaseDB},
   BaseDBPesquisaBaseForm in 'infosaga\BaseDBPesquisaBaseForm.pas' {frmBaseDBPesquisaBase},
   BaseDBPesquisaForm in 'infosaga\BaseDBPesquisaForm.pas' {frmBaseDBPesquisa},
@@ -514,7 +515,8 @@ uses
   uSelecinaCFOP in 'dfmpas2\uSelecinaCFOP.pas' {frmSelecionaCFOP},
   uSelecionaAlmoxarifado in 'dfmpas2\uSelecionaAlmoxarifado.pas' {frmSelecionaAlmoxarifado},
   fdac.SgDbAutoF8Unit in 'infosaga\Componentes\SgDb\fdac.SgDbAutoF8Unit.pas',
-  OsvN0001 in 'dfmpas2\OsvN0001.pas' {FormOrdServCentroNovo};
+  OsvN0001 in 'dfmpas2\OsvN0001.pas' {FormOrdServCentroNovo},
+  testes in 'testes.pas' {Form3};
 
 {$R *.res}
 {$D+}
@@ -545,7 +547,7 @@ begin
   Application.CreateForm(TDmProducao, DmProducao);
   Application.CreateForm(TDmCfg, DmCfg);
   Application.CreateForm(TFrmMenu, FrmMenu);
-  Application.CreateForm(TFormOrdServCentroNovo, FormOrdServCentroNovo);
+  Application.CreateForm(TForm3, Form3);
   if dbInicio.ModulosComoAplicacao then
   begin
      Application.CreateForm(TfrmBaseDBFDAC, frmBaseDBFDAC);

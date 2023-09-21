@@ -3,8 +3,8 @@ inherited frmProcessaNFe: TfrmProcessaNFe
   Caption = 'Processamento NF4.0'
   ClientHeight = 293
   ClientWidth = 700
-  ExplicitWidth = 708
-  ExplicitHeight = 320
+  ExplicitWidth = 716
+  ExplicitHeight = 332
   PixelsPerInch = 96
   TextHeight = 13
   object EnviarEmail: TPNGButton [0]
@@ -479,7 +479,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
   end
   object frxReport1: TfrxReport
     Tag = 1
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -612,12 +612,15 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       PaperHeight = 3276.000000000000000000
       PaperSize = 256
       TopMargin = 0.500000000000000000
+      Frame.Typ = []
       EndlessHeight = True
       LargeDesignHeight = True
+      MirrorMode = []
       PrintIfEmpty = False
       OnBeforePrint = 'Page1OnBeforePrint'
       object ValorTributos: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 17.007874020000000000
         Top = 1137.638530000000000000
         Width = 272.126160000000000000
@@ -626,6 +629,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         Stretched = True
         object Memo17: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 1.889763779999950000
           Width = 272.126160000000000000
@@ -636,6 +640,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           GapY = 2.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -647,6 +652,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object MensagemFiscal: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.897632910000000000
         Top = 249.448980000000000000
         Width = 272.126160000000000000
@@ -654,6 +660,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         Stretched = True
         object Memo6: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Width = 272.126160000000000000
           Height = 15.118120000000000000
           StretchMode = smActualHeight
@@ -662,6 +669,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Fill.BackColor = clSilver
           HAlign = haCenter
           Memo.UTF8W = (
@@ -673,17 +681,20 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object QRCode: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 120.944881890000000000
         Top = 782.362710000000000000
         Width = 272.126160000000000000
         RowCount = 1
         object ImgQrCode1: TfrxPictureView
           Align = baWidth
+          AllowVectorExport = True
           Top = 1.889763780000000000
           Width = 272.126160000000000000
           Height = 117.165322600000000000
           Center = True
           Frame.Color = clFuchsia
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -691,6 +702,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object DadosProdutos: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456702680000000000
         Top = 340.157700000000000000
         Width = 272.126160000000000000
@@ -700,6 +712,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         Stretched = True
         object MemDescricaoProd: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Width = 272.126160000000000000
           Height = 11.338582680000000000
@@ -709,6 +722,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[DadosProdutos."CProd"] [DadosProdutos."DescricaoProduto"]')
@@ -716,6 +730,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object memqCom: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 13.496065430000000000
           Width = 79.370093390000000000
@@ -726,6 +741,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -735,6 +751,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object memvUnCom: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Left = 79.370093390000000000
           Top = 13.496065430000000000
@@ -746,6 +763,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -755,6 +773,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo140: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Left = 173.858282370000000000
           Top = 13.496065430000000000
@@ -769,6 +788,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -779,11 +799,13 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object DadosProdutosHeader: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 27.590560940000000000
         Top = 291.023810000000000000
         Width = 272.126160000000000000
         Condition = 'DadosProdutos."ChaveNFe"'
         object Memo121: TfrxMemoView
+          AllowVectorExport = True
           Left = 56.692913390000000000
           Top = 14.472448270000000000
           Width = 22.677165350000000000
@@ -793,6 +815,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           GapY = 2.000000000000000000
           Memo.UTF8W = (
             'UN')
@@ -801,6 +824,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           VAlign = vaCenter
         end
         object Memo123: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370078740000000000
           Top = 14.472448270000000000
           Width = 94.488188980000000000
@@ -810,6 +834,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           GapY = 2.000000000000000000
           Memo.UTF8W = (
             'VL.UNIT')
@@ -818,6 +843,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           VAlign = vaCenter
         end
         object Memo116: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.354328270000000000
           Width = 68.031500940000000000
           Height = 13.228346460000000000
@@ -826,6 +852,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           GapY = 2.000000000000000000
           Memo.UTF8W = (
             'C'#211'DIGO')
@@ -834,6 +861,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           VAlign = vaCenter
         end
         object Memo117: TfrxMemoView
+          AllowVectorExport = True
           Left = 68.472440940000000000
           Top = 1.354328270000000000
           Width = 204.094659060000000000
@@ -843,6 +871,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           GapY = 2.000000000000000000
           Memo.UTF8W = (
             'DESCRI'#199#195'O')
@@ -852,6 +881,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo122: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Top = 14.472448270000000000
           Width = 56.692913390000000000
           Height = 11.338582680000000000
@@ -860,6 +890,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           GapY = 2.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -870,6 +901,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo125: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Left = 173.858267720000000000
           Top = 14.472448270000000000
           Width = 98.267892280000000000
@@ -879,6 +911,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           GapY = 2.000000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -890,6 +923,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object DadosPagamentoHeader: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 83.063040940000000000
         Top = 487.559370000000000000
         Width = 272.126160000000000000
@@ -897,6 +931,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         ReprintOnNewPage = True
         object memTitDadosPagamento: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Top = 2.559060000000000000
           Width = 128.504020000000000000
           Height = 46.488210940000000000
@@ -905,6 +940,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           GapX = 3.000000000000000000
           Memo.UTF8W = (
@@ -917,6 +953,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object memDadosPagamento: TfrxMemoView
           Align = baRight
+          AllowVectorExport = True
           Left = 128.504020000000000000
           Top = 2.559060000000000000
           Width = 143.622140000000000000
@@ -927,6 +964,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           GapX = 3.000000000000000000
           HAlign = haRight
@@ -953,6 +991,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo7: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Top = 49.133890000000000000
           Width = 128.504020000000000000
           Height = 15.118120000000000000
@@ -961,6 +1000,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Valor a Pagar R$')
@@ -969,6 +1009,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo8: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Top = 68.252010000000000000
           Width = 128.504020000000000000
           Height = 11.338590000000000000
@@ -977,6 +1018,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'FORMA DE PAGAMENTO ')
@@ -985,6 +1027,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo10: TfrxMemoView
           Align = baRight
+          AllowVectorExport = True
           Left = 128.504020000000000000
           Top = 49.133890000000000000
           Width = 143.622140000000000000
@@ -994,6 +1037,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1004,6 +1048,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo11: TfrxMemoView
           Align = baRight
+          AllowVectorExport = True
           Left = 128.504020000000000000
           Top = 68.362245000000000000
           Width = 143.622140000000000000
@@ -1013,6 +1058,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1024,6 +1070,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object DadosPagamento: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 14.740159920000000000
         Top = 593.386210000000000000
         Width = 272.126160000000000000
@@ -1033,6 +1080,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         Stretched = True
         object Memo19: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Top = 0.110233780000000000
           Width = 128.504020000000000000
           Height = 12.472440940000000000
@@ -1044,6 +1092,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           GapX = 3.000000000000000000
           Memo.UTF8W = (
@@ -1054,6 +1103,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo18: TfrxMemoView
           Align = baRight
+          AllowVectorExport = True
           Left = 128.504020000000000000
           Top = 0.110233780000000000
           Width = 143.622140000000000000
@@ -1067,6 +1117,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           GapX = 3.000000000000000000
           HAlign = haRight
@@ -1079,6 +1130,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 71.811070000000000000
         Top = 18.897650000000000000
         Width = 272.126160000000000000
@@ -1088,6 +1140,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object Observacoes: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 1179.213360000000000000
         Width = 272.126160000000000000
@@ -1096,6 +1149,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         Stretched = True
         object Memo21: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Width = 272.126160000000000000
           Height = 15.118120000000000000
@@ -1105,6 +1159,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           GapY = 2.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1114,12 +1169,14 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 76.047310000000000000
         Top = 113.385900000000000000
         Width = 272.126160000000000000
         Stretched = True
         object Memo9: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Top = 52.488250000000000000
           Width = 272.126160000000000000
           Height = 22.677180000000000000
@@ -1129,6 +1186,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1139,6 +1197,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo2: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Left = 57.692950000000000000
           Width = 214.433210000000000000
           Height = 51.023631810000000000
@@ -1148,6 +1207,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           LineSpacing = 4.000000000000000000
           Memo.UTF8W = (
@@ -1175,6 +1235,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
             end>
         end
         object ImgLogo: TfrxPictureView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 1.440940000000000000
           Width = 56.692950000000000000
@@ -1182,6 +1243,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Center = True
           DataField = 'LogoCarregado'
           DataSetName = 'Parametros'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -1189,6 +1251,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object IdentificacaoQrCodeNormal: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 128.503934570000000000
         Top = 631.181510000000000000
         Width = 272.126160000000000000
@@ -1197,6 +1260,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         Stretched = True
         object Memo46: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Top = 0.110189840000000000
           Width = 272.126160000000000000
           Height = 15.118110240000000000
@@ -1206,6 +1270,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1215,6 +1280,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo1: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 15.881880000000000000
           Width = 272.126160000000000000
@@ -1225,6 +1291,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Identificacao."URL"]')
@@ -1234,6 +1301,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo4: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 76.590600000000000000
           Width = 272.126160000000000000
@@ -1244,6 +1312,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1268,6 +1337,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo23: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 37.133872910000000000
           Width = 272.126160000000000000
@@ -1278,6 +1348,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Identificacao."Chave"]')
@@ -1287,6 +1358,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo12: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 57.913420000000000000
           Width = 272.126160000000000000
@@ -1297,6 +1369,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1307,6 +1380,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object memDadosAutorizacao1: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 101.385814570000000000
           Width = 272.126160000000000000
@@ -1318,6 +1392,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1335,6 +1410,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object Rodape: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 37.795275590551180000
         Top = 1220.788190000000000000
         Width = 272.126160000000000000
@@ -1343,6 +1419,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         Stretched = True
         object Memo3: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 1.889763780000070000
           Width = 272.126160000000000000
@@ -1353,6 +1430,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           GapY = 2.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1362,6 +1440,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object IdentificacaoQrCodeLateral: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 189.417440000000000000
         Top = 925.984850000000000000
         Visible = False
@@ -1371,6 +1450,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         Stretched = True
         object Memo24: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           Top = 0.110189840000000000
           Width = 272.126160000000000000
           Height = 11.338580240000000000
@@ -1380,6 +1460,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1389,6 +1470,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo25: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 12.881880000000000000
           Width = 272.126160000000000000
@@ -1399,6 +1481,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Identificacao."URL"]')
@@ -1408,6 +1491,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo26: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Left = 109.606370000000000000
           Top = 77.692950000000000000
@@ -1419,6 +1503,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1443,6 +1528,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo27: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 32.354342910000000000
           Width = 272.126160000000000000
@@ -1453,6 +1539,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Identificacao."Chave"]')
@@ -1462,6 +1549,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo28: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 53.795300000000000000
           Width = 272.126160000000000000
@@ -1472,6 +1560,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           GapX = 5.000000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1482,6 +1571,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object memDadosAutorizacao2: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Left = 109.606370000000000000
           Top = 144.062994570000000000
@@ -1494,6 +1584,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -1513,12 +1604,14 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object ImgQrCode2: TfrxPictureView
           Align = baLeft
+          AllowVectorExport = True
           ShiftMode = smWhenOverlapped
           Top = 77.590600000000000000
           Width = 109.606370000000000000
           Height = 109.606262600000000000
           Center = True
           Frame.Color = clFuchsia
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -1526,6 +1619,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object DadosDesconto: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 389.291590000000000000
         Width = 272.126160000000000000
@@ -1533,6 +1627,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         RowCount = 1
         object Memo29: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Left = 170.078962280000000000
           Width = 102.047197720000000000
@@ -1545,6 +1640,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1554,6 +1650,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo30: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Width = 170.078962280000000000
           Height = 11.338582680000000000
@@ -1565,6 +1662,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1574,6 +1672,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo14: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Left = 170.078962280000000000
           Top = 11.338582677165400000
@@ -1587,6 +1686,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1596,6 +1696,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo15: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Top = 11.338582680000000000
           Width = 170.078962280000000000
@@ -1608,6 +1709,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1618,6 +1720,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
       end
       object DadosAcrescimo: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 438.425480000000000000
         Width = 272.126160000000000000
@@ -1625,6 +1728,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         RowCount = 1
         object Memo31: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Left = 170.078962280000000000
           Width = 102.047197720000000000
@@ -1637,6 +1741,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1646,6 +1751,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo32: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Width = 170.078962280000000000
           Height = 11.338582680000000000
@@ -1657,6 +1763,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1666,6 +1773,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo16: TfrxMemoView
           Align = baWidth
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Left = 170.078962280000000000
           Top = 11.338590000000000000
@@ -1679,6 +1787,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -1688,6 +1797,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
         end
         object Memo20: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           ShiftMode = smDontShift
           Top = 11.338590000000000000
           Width = 170.078962280000000000
@@ -1700,6 +1810,7 @@ inherited frmProcessaNFe: TfrmProcessaNFe
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (

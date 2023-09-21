@@ -4,22 +4,23 @@ inherited FormFatPedido: TFormFatPedido
   BorderIcons = [biSystemMenu]
   Caption = 'Faturamento do Pedido'
   ClientHeight = 589
-  ClientWidth = 1370
+  ClientWidth = 1284
   Font.Name = 'Arial'
   KeyPreview = True
   Position = poDesktopCenter
-  ExplicitWidth = 1378
-  ExplicitHeight = 616
+  ExplicitWidth = 1300
+  ExplicitHeight = 628
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox1: TGroupBox [0]
     Left = 0
     Top = 219
-    Width = 1370
+    Width = 1284
     Height = 150
     Align = alTop
     Caption = 'Nota'
     TabOrder = 2
+    ExplicitWidth = 1370
     object Label23: TLabel
       Left = 28
       Top = 49
@@ -440,7 +441,7 @@ inherited FormFatPedido: TFormFatPedido
       Hint = 'CFOP'
       TabOrder = 0
       CharCase = ecUpperCase
-      onClick = CbOperClick
+      OnClick = CbOperClick
       LookupSelect = 'ope_codigo, cfop, OPE_NATUREZA'
       LookupOrderBy = 'ope_descri'
       LookupTable = 'OPE0000_VIEW_PESQUISA'
@@ -457,8 +458,10 @@ inherited FormFatPedido: TFormFatPedido
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'OPE0000_VIEW_PESQUISA'
       CamposCarregar = 'ope_codigo, cfop, OPE_NATUREZA'
       CamposRetornar = 'ope_codigo'
@@ -575,10 +578,11 @@ inherited FormFatPedido: TFormFatPedido
   object GroupBox5: TGroupBox [1]
     Left = 0
     Top = 0
-    Width = 1370
+    Width = 1284
     Height = 69
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 1370
     object Label3: TLabel
       Left = 45
       Top = 19
@@ -700,8 +704,10 @@ inherited FormFatPedido: TFormFatPedido
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'OPV0000'
       CamposCarregar = 'OPV_DESCRICAO'
       CamposRetornar = 'OPV_CODIGO'
@@ -787,11 +793,12 @@ inherited FormFatPedido: TFormFatPedido
   object Panel2: TPanel [2]
     Left = 0
     Top = 552
-    Width = 1370
+    Width = 1284
     Height = 37
     Align = alBottom
     ParentColor = True
     TabOrder = 3
+    ExplicitWidth = 1370
     object Label13: TLabel
       Left = 8
       Top = 19
@@ -974,11 +981,12 @@ inherited FormFatPedido: TFormFatPedido
   object Panel3: TPanel [3]
     Left = 0
     Top = 69
-    Width = 1370
+    Width = 1284
     Height = 150
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 1370
     object GroupBox3: TGroupBox
       Left = 0
       Top = 0
@@ -1078,8 +1086,10 @@ inherited FormFatPedido: TFormFatPedido
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'ban0000'
         CamposCarregar = 'BAN_CODIGO,BAN_APELIDO,BAN_COBTIPO,BAN_COD_APELIDO'
         CamposRetornar = 'BAN_CODIGO'
@@ -1116,8 +1126,10 @@ inherited FormFatPedido: TFormFatPedido
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object CurrcodBanco: TEdit
         Left = 6
@@ -1143,6 +1155,10 @@ inherited FormFatPedido: TFormFatPedido
       TabStop = False
       object TabSheet1: TTabSheet
         Caption = 'Dados Adicionais'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object ScrollBox1: TScrollBox
           Left = 0
           Top = 0
@@ -1218,6 +1234,10 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet2: TTabSheet
         Caption = 'Transporte'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label4: TLabel
           Left = 11
           Top = 59
@@ -1287,8 +1307,10 @@ inherited FormFatPedido: TFormFatPedido
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'TRP0000'
           CamposCarregar = 'TRP_CODIGO, TRP_RAZAO, TRP_PLACA, TRP_PLACAUF'
           CamposRetornar = 'TRP_CODIGO'
@@ -1356,6 +1378,10 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet3: TTabSheet
         Caption = 'Devolu'#231#227'o'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object GroupBox7: TLabel
           Left = 7
           Top = 31
@@ -1402,6 +1428,10 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet4: TTabSheet
         Caption = 'Exporta'#231#227'o'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label11: TLabel
           Left = 15
           Top = 12
@@ -1511,6 +1541,10 @@ inherited FormFatPedido: TFormFatPedido
       object tsServico: TTabSheet
         Caption = 'Servi'#231'o'
         ImageIndex = 4
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label38: TLabel
           Left = 3
           Top = 9
@@ -1812,11 +1846,12 @@ inherited FormFatPedido: TFormFatPedido
   object GroupBox2: TGroupBox [4]
     Left = 0
     Top = 369
-    Width = 1370
+    Width = 1284
     Height = 183
     Align = alClient
     Caption = 'Itens do Pedido '#224' Faturar'
     TabOrder = 4
+    ExplicitWidth = 1370
     object PanOperacao: TLabel
       Left = 630
       Top = 18

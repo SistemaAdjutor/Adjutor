@@ -15,8 +15,9 @@ inherited FormProduto: TFormProduto
   Position = poDefaultPosOnly
   Visible = True
   OnCloseQuery = FormCloseQuery
+  ExplicitTop = -466
   ExplicitWidth = 2506
-  ExplicitHeight = 1025
+  ExplicitHeight = 1029
   PixelsPerInch = 96
   TextHeight = 14
   object PctrlProdutos: TPageControl [0]
@@ -24,7 +25,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Tbs_FichaTec
+    ActivePage = Tbs_Produtos
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -1018,8 +1019,10 @@ inherited FormProduto: TFormProduto
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               Tabela = 'prd_grade'
               CamposCarregar = 'PRG_REGISTRO,prg_descricao'
               CamposRetornar = 'PRG_REGISTRO'
@@ -1065,8 +1068,10 @@ inherited FormProduto: TFormProduto
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object DateModif: TJvDateEdit
               Left = 929
@@ -1174,8 +1179,10 @@ inherited FormProduto: TFormProduto
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               Tabela = 'ALMOX0000'
               CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
               CamposRetornar = 'amx_CODIGO'
@@ -2095,8 +2102,10 @@ inherited FormProduto: TFormProduto
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object SgDbSearchCombo3: TSgDbSearchCombo
                 Left = 154
@@ -2121,8 +2130,10 @@ inherited FormProduto: TFormProduto
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object SgDbSearchCombo4: TSgDbSearchCombo
                 Left = 154
@@ -2147,8 +2158,10 @@ inherited FormProduto: TFormProduto
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object edTempo_revenimento: TDBEdit
                 Left = 154
@@ -3369,8 +3382,10 @@ inherited FormProduto: TFormProduto
                 GridLeft = 0
                 GridWidth = 1000
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object ALT_GANCHO: TDBEdit
                 Left = 570
@@ -4958,8 +4973,10 @@ inherited FormProduto: TFormProduto
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object CBaCABAMENTOCORES: TSgDbSearchCombo
                 Left = 145
@@ -4984,8 +5001,10 @@ inherited FormProduto: TFormProduto
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object TRATAMENTO_SUPERFICIAL2: TSgDbSearchCombo
                 Left = 145
@@ -5010,8 +5029,10 @@ inherited FormProduto: TFormProduto
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object TIPOEMBALAGEM: TSgDbSearchCombo
                 Left = 145
@@ -5036,8 +5057,10 @@ inherited FormProduto: TFormProduto
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
             end
           end
@@ -5098,8 +5121,10 @@ inherited FormProduto: TFormProduto
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object DBGrid6: TDBGrid
             Left = 0
@@ -8373,8 +8398,10 @@ inherited FormProduto: TFormProduto
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               OnMenuNovoClick = CbTipoMenuNovoClick
               OnMenuEditaClick = CbTipoMenuNovoClick
             end
@@ -8402,8 +8429,10 @@ inherited FormProduto: TFormProduto
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               OnMenuNovoClick = CbGrupoMenuNovoClick
               OnMenuEditaClick = CbGrupoMenuNovoClick
             end
@@ -8450,8 +8479,10 @@ inherited FormProduto: TFormProduto
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               OnMenuNovoClick = CbSegmMenuNovoClick
               OnMenuEditaClick = CbSegmMenuNovoClick
             end
@@ -9097,8 +9128,10 @@ inherited FormProduto: TFormProduto
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             OnMenuPesquisaClick = DBEdit24MenuPesquisaClick
           end
           object DBEdit33: TDBEdit
@@ -9131,8 +9164,10 @@ inherited FormProduto: TFormProduto
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object DbePrd_ICMS: TDBEdit
             Left = 1014
@@ -9258,8 +9293,10 @@ inherited FormProduto: TFormProduto
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object edServicoCodigo: TDBEdit
             Left = 86
@@ -9292,8 +9329,10 @@ inherited FormProduto: TFormProduto
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
         end
         object TabSheet11: TTabSheet
@@ -9466,8 +9505,10 @@ inherited FormProduto: TFormProduto
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
         end
         object TabSheet2: TTabSheet
@@ -9770,8 +9811,10 @@ inherited FormProduto: TFormProduto
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
         end
       end
@@ -11757,8 +11800,10 @@ inherited FormProduto: TFormProduto
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           OnMenuPesquisaClick = sgDBLookupCombo1MenuPesquisaClick
         end
         object dbedtPRDL_LOTE: TDBEdit
@@ -12404,79 +12449,7 @@ inherited FormProduto: TFormProduto
     Top = 8
   end
   inherited DBConn: TSQLConnection
-    Params.Strings = (
-      'ServerCharSet='
-      'DriverUnit=Data.DBXFirebird'
-      
-        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver220.' +
-        'bpl'
-      
-        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
-        'nd.Data.DbxCommonDriver,Version=22.0.0.0,Culture=neutral,PublicK' +
-        'eyToken=91d62ebb5b0d1b1b'
-      
-        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
-        'birdDriver220.bpl'
-      
-        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
-        'actory,Borland.Data.DbxFirebirdDriver,Version=22.0.0.0,Culture=n' +
-        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
-      'GetDriverFunc=getSQLDriverINTERBASE'
-      'LibraryName=dbxfb.dll'
-      'LibraryNameOsx=libsqlfb.dylib'
-      'VendorLib=fbclient.dll'
-      'VendorLibWin64=fbclient.dll'
-      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
-      'Role=RoleName'
-      'MaxBlobSize=-1'
-      'TrimChar=False'
-      'DriverName=Firebird'
-      'Database=C:\JobDados\exemplo/EXEMPLO.FDB'
-      'RoleName=RoleName'
-      'User_Name=sysdba'
-      'Password=masterkey'
-      'SQLDialect=3'
-      'ErrorResourceFile='
-      'LocaleCode=0000'
-      'BlobSize=-1'
-      'CommitRetain=False'
-      'WaitOnLocks=True'
-      'IsolationLevel=ReadCommitted'
-      'Trim Char=True'
-      
-        'ConnectionString=DriverUnit=Data.DBXFirebird,DriverPackageLoader' +
-        '=TDBXDynalinkDriverLoader,DbxCommonDriver220.bpl,DriverAssemblyL' +
-        'oader=Borland.Data.TDBXDynalinkDriverLoader,Borland.Data.DbxComm' +
-        'onDriver,Version=22.0.0.0,Culture=neutral,PublicKeyToken=91d62eb' +
-        'b5b0d1b1b,MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFacto' +
-        'ry,DbxFirebirdDriver220.bpl,MetaDataAssemblyLoader=Borland.Data.' +
-        'TDBXFirebirdMetaDataCommandFactory,Borland.Data.DbxFirebirdDrive' +
-        'r,Version=22.0.0.0,Culture=neutral,PublicKeyToken=91d62ebb5b0d1b' +
-        '1b,GetDriverFunc=getSQLDriverINTERBASE,LibraryName=dbxfb.dll,Lib' +
-        'raryNameOsx=libsqlfb.dylib,VendorLib=fbclient.dll,VendorLibWin64' +
-        '=fbclient.dll,VendorLibOsx=/Library/Frameworks/Firebird.framewor' +
-        'k/Firebird,Role=RoleName,MaxBlobSize=-1,TrimChar=False,DriverNam' +
-        'e=Firebird,Database=C:\JobDados\drimec.fdb,RoleName=RoleName,Use' +
-        'r_Name=sysdba,Password=masterkey,ServerCharSet=,SQLDialect=3,Err' +
-        'orResourceFile=,LocaleCode=0000,BlobSize=-1,CommitRetain=False,W' +
-        'aitOnLocks=True,IsolationLevel=ReadCommitted,Trim Char=True,Conn' +
-        'ectionString=DriverUnit=Data.DBXFirebird,DriverPackageLoader=TDB' +
-        'XDynalinkDriverLoader,DbxCommonDriver220.bpl,DriverAssemblyLoade' +
-        'r=Borland.Data.TDBXDynalinkDriverLoader,Borland.Data.DbxCommonDr' +
-        'iver,Version=22.0.0.0,Culture=neutral,PublicKeyToken=91d62ebb5b0' +
-        'd1b1b,MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,D' +
-        'bxFirebirdDriver220.bpl,MetaDataAssemblyLoader=Borland.Data.TDBX' +
-        'FirebirdMetaDataCommandFactory,Borland.Data.DbxFirebirdDriver,Ve' +
-        'rsion=22.0.0.0,Culture=neutral,PublicKeyToken=91d62ebb5b0d1b1b,G' +
-        'etDriverFunc=getSQLDriverINTERBASE,LibraryName=dbxfb.dll,Library' +
-        'NameOsx=libsqlfb.dylib,VendorLib=fbclient.dll,VendorLibWin64=fbc' +
-        'lient.dll,VendorLibOsx=/Library/Frameworks/Firebird.framework/Fi' +
-        'rebird,Role=RoleName,MaxBlobSize=-1,TrimChar=False,DriverName=Fi' +
-        'rebird,Database=C:\JobDados\drimec.fdb,RoleName=RoleName,User_Na' +
-        'me=sysdba,Password=masterkey,ServerCharSet=,SQLDialect=3,ErrorRe' +
-        'sourceFile=,LocaleCode=0000,BlobSize=-1,CommitRetain=False,WaitO' +
-        'nLocks=True,IsolationLevel=ReadCommitted,Trim Char=True')
-    Left = 64
+    Left = 104
     Top = 9
   end
   inherited qAux: TSQLQuery
@@ -12487,18 +12460,13 @@ inherited FormProduto: TFormProduto
     Left = 354
     Top = 4
   end
-  inherited qAux3: TSQLQuery
-    Left = 394
-    Top = 4
-  end
-  object DsQFornec: TDataSource
+  object DsQFornec: TDataSource [8]
     DataSet = CdsFornecedorAux
     Left = 1067
     Top = 619
   end
-  object CdsFornecedorAux: TSqlClientDataSet
+  object CdsFornecedorAux: TSqlClientDataSet [9]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'SELECT'#13#10'T1.FOR_CODIGO,'#13#10'T1.FOR_RAZAO,'#13#10'T1.FOR_CONTATO,'#13#10'T1.FOR_F' +
       'ONCONT,'#13#10'T1.FOR_FONE,'#13#10'T1.FOR_EMAIL,'#13#10'T1.FOR_PRAZOVENDAS'#13#10'FROM F' +
@@ -12512,7 +12480,6 @@ inherited FormProduto: TFormProduto
       'ONCONT,'#13#10'T1.FOR_FONE,'#13#10'T1.FOR_EMAIL,'#13#10'T1.FOR_PRAZOVENDAS'#13#10'FROM F' +
       'OR0000 T1'#13#10'WHERE T1.FOR_CODIGO in (select t2.for_codigo from PRD' +
       '0000_CODIGO t2 where t2.prd_codigo = '#39'0001'#39')'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -12549,15 +12516,13 @@ inherited FormProduto: TFormProduto
       Size = 30
     end
   end
-  object SqlCdsSegm: TSqlClientDataSet
+  object SqlCdsSegm: TSqlClientDataSet [10]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'select * from PRD_LINHA'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select * from PRD_LINHA'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -12578,15 +12543,13 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object SqlCdsfor: TSqlClientDataSet
+  object SqlCdsfor: TSqlClientDataSet [11]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'select FOR_CODIGO, FOR_RAZAO from FOR0000'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select FOR_CODIGO, FOR_RAZAO from FOR0000'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -12602,9 +12565,8 @@ inherited FormProduto: TFormProduto
       Size = 40
     end
   end
-  object SqlCdsProduto: TSqlClientDataSet
+  object SqlCdsProduto: TSqlClientDataSet [12]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'select '#13#10'P2.PRD_REFER, '#13#10'P2.PRD_DESCRI, '#13#10'P2.PRD_DCVAR1, '#13#10'P2.PR' +
       'D_DCVAR2, '#13#10'P2.PRD_DCVAR3, '#13#10'P2.PRD_DCVAR4, '#13#10'P2.PRD_DCVAR5, '#13#10'P' +
@@ -12616,7 +12578,6 @@ inherited FormProduto: TFormProduto
       'select '#13#10'P2.PRD_REFER, '#13#10'P2.PRD_DESCRI, '#13#10'P2.PRD_DCVAR1, '#13#10'P2.PR' +
       'D_DCVAR2, '#13#10'P2.PRD_DCVAR3, '#13#10'P2.PRD_DCVAR4, '#13#10'P2.PRD_DCVAR5, '#13#10'P' +
       '2.PRD_DCVAR6, '#13#10'P2.PRD_DCVAR7, '#13#10'P2.PRD_DCVAR8 '#13#10'from PRD0000 P2'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -12662,7 +12623,7 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRD_REFER'
     end
   end
-  object CdsItensFicha: TClientDataSet
+  object CdsItensFicha: TClientDataSet [13]
     Aggregates = <>
     AggregatesActive = True
     AutoCalcFields = False
@@ -12856,20 +12817,18 @@ inherited FormProduto: TFormProduto
       EditFormat = '##0.000'
     end
   end
-  object DsItensFicha: TDataSource
+  object DsItensFicha: TDataSource [14]
     DataSet = CdsItensFicha
     Left = 1785
     Top = 221
   end
-  object SqlCdsMaterial: TSqlClientDataSet
+  object SqlCdsMaterial: TSqlClientDataSet [15]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'select '#13#10'P2.PRD_REFER, '#13#10'P2.PRD_DESCRI '#13#10'from PRD0000 P2'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select '#13#10'P2.PRD_REFER, '#13#10'P2.PRD_DESCRI '#13#10'from PRD0000 P2'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -12883,9 +12842,8 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRD_REFER'
     end
   end
-  object SqlRelProdutos: TSqlClientDataSet
+  object SqlRelProdutos: TSqlClientDataSet [16]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'select'#13#10'F1.PRD_REFER,'#13#10'F1.ftc_tup,'#13#10'F1.ftc_criacao,'#13#10'F1.FTC_PROC' +
       '1,'#13#10'F1.FTC_PROC2,'#13#10'F1.FTC_PROC3,'#13#10'F1.FTC_PROC4,'#13#10'F1.FTC_PROC5,'#13#10 +
@@ -12913,7 +12871,6 @@ inherited FormProduto: TFormProduto
       'P1.pti_codigo = T1.pti_codigo'#13#10'left join prd_grupo G1 on P1.pgr_' +
       'codigo = G1.pgr_codigo'#13#10'left join prd_linha L1 on P1.lin_codigo ' +
       '= L1.lin_codigo'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -13027,14 +12984,13 @@ inherited FormProduto: TFormProduto
       Size = 2000
     end
   end
-  object DsRelProduto: TDataSource
+  object DsRelProduto: TDataSource [17]
     DataSet = SqlRelProdutos
     Left = 1746
     Top = 619
   end
-  object SqlItensGrade: TSqlClientDataSet
+  object SqlItensGrade: TSqlClientDataSet [18]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'select'#13#10'F2.*,'#13#10'P1.PRD_DESCRI,'#13#10'P1.PRD_GRADE,'#13#10'P1.PRD_UND,'#13#10'P2.PT' +
       'I_SIGLA,'#13#10'P1.PRD_PCUSTO'#13#10'from ftc_it01 F2'#13#10'left join prd0000 P1 ' +
@@ -13048,7 +13004,6 @@ inherited FormProduto: TFormProduto
       'I_SIGLA,'#13#10'P1.PRD_PCUSTO'#13#10'from ftc_it01 F2'#13#10'left join prd0000 P1 ' +
       'on f2.prd_refer_itens = p1.prd_refer'#13#10'left join prd_tipo P2 on p' +
       '1.pti_codigo = p2.pti_codigo'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -13158,12 +13113,12 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRD_REFER_ITENS'
     end
   end
-  object DsRelItens: TDataSource
+  object DsRelItens: TDataSource [19]
     DataSet = CdsRelItens
     Left = 1786
     Top = 336
   end
-  object CdsRelItens: TClientDataSet
+  object CdsRelItens: TClientDataSet [20]
     Aggregates = <>
     CommandText = 
       'Select F2.*, P1.PRD_DESCRI, P1.PRD_UND, P1.PRD_GRADE, P2.PTI_SIG' +
@@ -13266,27 +13221,25 @@ inherited FormProduto: TFormProduto
       FieldName = 'TOTAL'
     end
   end
-  object DsItensGrade: TDataSource
+  object DsItensGrade: TDataSource [21]
     DataSet = SqlItensGrade
     Left = 1149
     Top = 624
   end
-  object SqlcdsFichaTec: TSqlClientDataSet
+  object SqlcdsFichaTec: TSqlClientDataSet [22]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'SELECT PRD_REFER FROM FTC0000'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'SELECT PRD_REFER FROM FTC0000'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
     Left = 2072
     Top = 505
   end
-  object PopupMenu1: TPopupMenu
+  object PopupMenu1: TPopupMenu [23]
     OnPopup = PopupMenu1Popup
     Left = 1104
     Top = 11
@@ -13310,10 +13263,9 @@ inherited FormProduto: TFormProduto
       OnClick = VeraFichaTcnicaDesteItem1Click
     end
   end
-  object SqlCdsEstoqueDetalhe: TSqlClientDataSet
+  object SqlCdsEstoqueDetalhe: TSqlClientDataSet [24]
     Aggregates = <>
     AggregatesActive = True
-    Connection = DBConn
     DataSet.CommandText = 
       'Select V1.PED_CODIGO,V1.OSV_CODIGO,V1.PRD_REFER,V1.OSV_QTDE,V1.O' +
       'SV_QTDE1,V1.OSV_QTDE2,V1.OSV_QTDE3'#13#10',V1.OSV_QTDE4,V1.OSV_QTDE5,V' +
@@ -13334,7 +13286,6 @@ inherited FormProduto: TFormProduto
       '000 P1 on (P1.PRD_REFER = V1.PRD_REFER)'#13#10'Left join cli0000 C1 on' +
       ' (V1.CLI_CODIGO = C1.CLI_CODIGO)'#13#10'Where V1.OSV_STATUS not in('#39'C'#39 +
       ','#39'E'#39')'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -13424,14 +13375,13 @@ inherited FormProduto: TFormProduto
       Size = 11
     end
   end
-  object DsEstoqueDetalhe: TDataSource
+  object DsEstoqueDetalhe: TDataSource [25]
     DataSet = SqlCdsEstoqueDetalhe
     Left = 1098
     Top = 432
   end
-  object SqlcdsVar: TSqlClientDataSet
+  object SqlcdsVar: TSqlClientDataSet [26]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'select '#13#10'P1.PED_CODIGO,P1.PRF_VAR1,P1.PRF_VAR2,P1.PRF_VAR3,P1.PR' +
       'F_VAR4,P1.PRF_VAR5,P1.PRF_VAR6,P1.PRF_VAR7,P1.PRF_VAR8,'#13#10'P1.PRD_' +
@@ -13449,7 +13399,6 @@ inherited FormProduto: TFormProduto
       ' p2 ,OPV0000 P3'#13#10'where P1.PED_CODIGO = P2.PED_CODIGO and P2.PED_' +
       'SITUACAO = '#39'F'#39' and P3.OPV_CODIGO = P2.OPV_CODIGO'#13#10'AND P3.OPV_ATE' +
       'STOQUE = '#39'S'#39
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -13505,12 +13454,12 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRD_REFER'
     end
   end
-  object DataSource1: TDataSource
+  object DataSource1: TDataSource [27]
     DataSet = SqlProdutos
     Left = 2078
     Top = 580
   end
-  object ppDBPipeline1: TppDBPipeline
+  object ppDBPipeline1: TppDBPipeline [28]
     DataSource = DsRelProduto
     UserName = 'DBPipeline1'
     Left = 1745
@@ -13786,7 +13735,7 @@ inherited FormProduto: TFormProduto
       Sortable = False
     end
   end
-  object ppDBPipeline2: TppDBPipeline
+  object ppDBPipeline2: TppDBPipeline [29]
     DataSource = DsRelItens
     UserName = 'DBPipeline2'
     Left = 1784
@@ -13972,12 +13921,13 @@ inherited FormProduto: TFormProduto
       Sortable = False
     end
   end
-  object ppRelFichaTec: TppReport
+  object ppRelFichaTec: TppReport [30]
     AutoStop = False
     DataPipeline = ppDBPipeline2
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -13994,6 +13944,14 @@ inherited FormProduto: TFormProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -14003,22 +13961,34 @@ inherited FormProduto: TFormProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -14026,13 +13996,26 @@ inherited FormProduto: TFormProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1786
     Top = 440
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 35454
@@ -14062,13 +14045,15 @@ inherited FormProduto: TFormProduto
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1323
@@ -14082,13 +14067,15 @@ inherited FormProduto: TFormProduto
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1058
@@ -14102,6 +14089,7 @@ inherited FormProduto: TFormProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -14122,6 +14110,7 @@ inherited FormProduto: TFormProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -14142,13 +14131,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -14163,6 +14154,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14186,6 +14178,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14208,13 +14201,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Mat'#233'ria-Prima'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
@@ -14229,13 +14224,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o da Mat'#233'ria-Prima'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
@@ -14250,13 +14247,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Consumo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
@@ -14271,13 +14270,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UND'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3440
@@ -14292,13 +14293,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'T.U.P.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 140759
@@ -14312,6 +14315,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_TUP'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14333,6 +14337,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line13'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -14346,6 +14351,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line14'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -14359,6 +14365,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line17'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -14372,6 +14379,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -14385,6 +14393,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -14398,6 +14407,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -14411,6 +14421,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -14424,6 +14435,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line6'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -14437,6 +14449,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line7'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -14450,6 +14463,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line9'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -14464,13 +14478,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Item'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -14495,13 +14511,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label26'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TIPO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -14516,6 +14534,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14538,6 +14557,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14559,6 +14579,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -14572,6 +14593,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line29'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -14586,13 +14608,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'GRUPO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -14606,6 +14630,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line35'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -14620,6 +14645,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PGR_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14642,6 +14668,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PGR_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14663,6 +14690,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line36'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -14677,13 +14705,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label28'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SEGMENTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -14697,6 +14727,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line37'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -14711,6 +14742,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText36'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'LIN_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14734,6 +14766,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText37'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'LIN_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -14755,6 +14788,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line43'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -14769,13 +14803,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '*'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4498
@@ -14790,13 +14826,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P. Custo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3704
@@ -14811,13 +14849,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Custo Material'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3704
@@ -14831,6 +14871,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -14842,8 +14883,7 @@ inherited FormProduto: TFormProduto
       end
     end
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 24342
@@ -14853,6 +14893,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -14875,6 +14916,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_UC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -14899,6 +14941,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -14921,6 +14964,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line8'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6348
@@ -14934,6 +14978,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line10'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6300
@@ -14947,6 +14992,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6300
@@ -14960,6 +15006,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line23'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6300
@@ -14973,6 +15020,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line24'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6300
@@ -14986,6 +15034,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line27'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6300
@@ -14999,6 +15048,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line34'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 265
@@ -15011,6 +15061,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line102'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6300
@@ -15025,6 +15076,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText38'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_ITEM'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -15045,6 +15097,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line44'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6300
@@ -15059,6 +15112,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText40'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_SIGLA'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -15080,6 +15134,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line32'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6300
@@ -15094,6 +15149,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText401'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PCUSTO'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -15117,6 +15173,7 @@ inherited FormProduto: TFormProduto
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALITEM'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -15138,6 +15195,7 @@ inherited FormProduto: TFormProduto
       object ppDBMemo1: TppDBMemo
         DesignLayer = ppDesignLayer1
         UserName = 'DBMemo1'
+        Border.mmPadding = 0
         CharWrap = False
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline2
@@ -15164,7 +15222,7 @@ inherited FormProduto: TFormProduto
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 41804
       mmPrintPosition = 0
@@ -15172,6 +15230,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line38'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 41275
@@ -15185,6 +15244,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line39'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 41275
@@ -15198,6 +15258,7 @@ inherited FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line40'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -15211,13 +15272,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PROCESSO DE PRODU'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4498
         mmLeft = 2910
@@ -15231,13 +15294,15 @@ inherited FormProduto: TFormProduto
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Custo Total: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3934
@@ -15250,6 +15315,7 @@ inherited FormProduto: TFormProduto
       object ppDBCalc1: TppDBCalc
         DesignLayer = ppDesignLayer1
         UserName = 'DBCalc1'
+        Border.mmPadding = 0
         DataField = 'TOTALITEM'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -15271,6 +15337,7 @@ inherited FormProduto: TFormProduto
       object ppDBMemo2: TppDBMemo
         DesignLayer = ppDesignLayer1
         UserName = 'DBMemo2'
+        Border.mmPadding = 0
         CharWrap = True
         DataField = 'FTC_ETAPAS'
         DataPipeline = ppDBPipeline1
@@ -15299,16 +15366,20 @@ inherited FormProduto: TFormProduto
     object daDataModule1: TdaDataModule
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650621
-        5265706F727441667465724175746F5365617263684469616C6F674372656174
-        650B50726F6772616D54797065070B747450726F63656475726506536F757263
-        65065B70726F636564757265205265706F727441667465724175746F53656172
-        63684469616C6F674372656174653B0D0A626567696E0D0A656E643B20202020
-        202020202020202020202020202020202020202020202020202020200D0A0D43
-        6F6D706F6E656E744E616D6506065265706F7274094576656E744E616D65061B
-        41667465724175746F5365617263684469616C6F67437265617465074576656E
-        744944020A084361726574506F730102200203000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'ReportAfterAutoSearchDialogCreate'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure ReportAfterAutoSearchDialogCreate;'#13#10'begin'#13#10'end;       ' +
+          '                         '#13#10
+        raProgram.ComponentName = 'Report'
+        raProgram.EventName = 'AfterAutoSearchDialogCreate'
+        raProgram.EventID = 10
+        raProgram.CaretPos = (
+          32
+          3)
+      end
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
@@ -15320,7 +15391,7 @@ inherited FormProduto: TFormProduto
     object ppParameterList1: TppParameterList
     end
   end
-  object CdsSaldos: TClientDataSet
+  object CdsSaldos: TClientDataSet [31]
     Aggregates = <>
     FieldDefs = <
       item
@@ -15365,18 +15436,17 @@ inherited FormProduto: TFormProduto
       Precision = 15
     end
   end
-  object DspSaldos: TDataSetProvider
+  object DspSaldos: TDataSetProvider [32]
     DataSet = SqlSaldos
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1086
     Top = 137
   end
-  object SqlSaldos: TSQLDataSet
+  object SqlSaldos: TSQLDataSet [33]
     CommandText = 'SELECT * FROM pcd_kardex_saldo('#39'001'#39','#39'00012'#39',null)'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 1088
     Top = 88
     object SqlSaldosAMX_CODIGO_RET: TStringField
@@ -15393,17 +15463,17 @@ inherited FormProduto: TFormProduto
       Precision = 15
     end
   end
-  object DsSaldos: TDataSource
+  object DsSaldos: TDataSource [34]
     DataSet = CdsSaldos
     Left = 1097
     Top = 241
   end
-  object DsGrade: TDataSource
+  object DsGrade: TDataSource [35]
     DataSet = CdsGrade
     Left = 1636
     Top = 221
   end
-  object CdsGrade: TClientDataSet
+  object CdsGrade: TClientDataSet [36]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspGrade'
@@ -15501,18 +15571,17 @@ inherited FormProduto: TFormProduto
       Size = 5
     end
   end
-  object DspGrade: TDataSetProvider
+  object DspGrade: TDataSetProvider [37]
     DataSet = SqlGrade
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1635
     Top = 125
   end
-  object SqlGrade: TSQLDataSet
+  object SqlGrade: TSQLDataSet [38]
     CommandText = 'SELECT * FROM PRD_GRADE ORDER BY PRG_DESCRICAO'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 1635
     Top = 77
     object SqlGradePRG_REGISTRO: TIntegerField
@@ -15567,15 +15636,15 @@ inherited FormProduto: TFormProduto
       Size = 5
     end
   end
-  object CdsSpedTipo: TSqlClientDataSet
+  object CdsSpedTipo: TSqlClientDataSet [39]
     Aggregates = <>
-    Connection = DBConn
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 'select * from SPED_TIPOITEM'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select * from SPED_TIPOITEM'
-    DBConnection = DBConn
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -15598,20 +15667,18 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object dsSpedTipo: TDataSource
+  object dsSpedTipo: TDataSource [40]
     DataSet = CdsSpedTipo
     Left = 1233
     Top = 667
   end
-  object CdsSpedServico: TSqlClientDataSet
+  object CdsSpedServico: TSqlClientDataSet [41]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'SELECT * FROM SRV0000 where SRV_LANCAMENTO = '#39'S'#39
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'SELECT * FROM SRV0000 where SRV_LANCAMENTO = '#39'S'#39
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -15638,15 +15705,13 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object CdsSpedGenero: TSqlClientDataSet
+  object CdsSpedGenero: TSqlClientDataSet [42]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'select * from SPED_GENERO'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select * from SPED_GENERO'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -15669,35 +15734,33 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object dsSpedServico: TDataSource
+  object dsSpedServico: TDataSource [43]
     DataSet = CdsSpedServico
     Left = 1233
     Top = 619
   end
-  object dsSpedGenero: TDataSource
+  object dsSpedGenero: TDataSource [44]
     DataSet = CdsSpedGenero
     Left = 1329
     Top = 619
   end
-  object dsProdutosReferencia: TDataSource
+  object dsProdutosReferencia: TDataSource [45]
     DataSet = CdsProdutosReferencia
     Left = 1492
     Top = 438
   end
-  object dsFornecedor: TDataSource
+  object dsFornecedor: TDataSource [46]
     DataSet = CdsFornecedor
     Left = 1932
     Top = 614
   end
-  object CdsFornecedor: TSqlClientDataSet
+  object CdsFornecedor: TSqlClientDataSet [47]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'select FOR_CODIGO, FOR_RAZAO from FOR0000 order by FOR_RAZAO'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select FOR_CODIGO, FOR_RAZAO from FOR0000 order by FOR_RAZAO'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -15714,13 +15777,12 @@ inherited FormProduto: TFormProduto
       Size = 40
     end
   end
-  object SQLProdutoCodigo: TSQLDataSet
+  object SQLProdutoCodigo: TSQLDataSet [48]
     CommandText = 
       'SELECT T1.*, T2.FOR_RAZAO FROM PRD0000_CODIGO T1 JOIN FOR0000 T2' +
       ' ON (T2.FOR_CODIGO = T1.FOR_CODIGO) ORDER BY T1.PRDC_REFERENCIA'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 1489
     Top = 283
     object SQLProdutoCodigoPRDC_REGISTRO: TIntegerField
@@ -15749,13 +15811,13 @@ inherited FormProduto: TFormProduto
       Size = 500
     end
   end
-  object DspProdutoCodigo: TDataSetProvider
+  object DspProdutoCodigo: TDataSetProvider [49]
     DataSet = SQLProdutoCodigo
     Options = [poAllowCommandText]
     Left = 1489
     Top = 331
   end
-  object CdsProdutosReferencia: TClientDataSet
+  object CdsProdutosReferencia: TClientDataSet [50]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspProdutoCodigo'
@@ -15791,14 +15853,13 @@ inherited FormProduto: TFormProduto
       Size = 500
     end
   end
-  object OpenDialog1: TOpenDialog
+  object OpenDialog1: TOpenDialog [51]
     Filter = '*.jpg'
     Left = 1416
     Top = 8
   end
-  object CdsCompras: TSqlClientDataSet
+  object CdsCompras: TSqlClientDataSet [52]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'select'#13#10't3.enf_emissao,'#13#10't3.enf_notanumber,'#13#10't1.for_codigo,'#13#10't2.' +
       'for_razao,'#13#10't1.enf_preco,'#13#10'coalesce(t1.enf_preco,0) + coalesce(t' +
@@ -15827,7 +15888,6 @@ inherited FormProduto: TFormProduto
       'or_codigo = t1.for_codigo)'#13#10'join enf0001 t3 on (t3.enf_notanumbe' +
       'r = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo)'#13#10'whe' +
       're t1.prd_refer = '#39'0001'#39#13#10'order by t3.enf_entrada desc'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -15929,17 +15989,17 @@ inherited FormProduto: TFormProduto
       FieldName = 'ENF_ORIGEM_MERCADORIA'
     end
   end
-  object dsCompras: TDataSource
+  object dsCompras: TDataSource [53]
     DataSet = CdsCompras
     Left = 1412
     Top = 619
   end
-  object dsLote: TDataSource
+  object dsLote: TDataSource [54]
     DataSet = CdsLotes
     Left = 1409
     Top = 432
   end
-  object CdsLotes: TClientDataSet
+  object CdsLotes: TClientDataSet [55]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspLotes'
@@ -16033,13 +16093,13 @@ inherited FormProduto: TFormProduto
       Precision = 15
     end
   end
-  object DspLotes: TDataSetProvider
+  object DspLotes: TDataSetProvider [56]
     DataSet = QLotes
     Options = [poAllowCommandText]
     Left = 1409
     Top = 331
   end
-  object QLotes: TSQLQuery
+  object QLotes: TSQLQuery [57]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -16047,7 +16107,6 @@ inherited FormProduto: TFormProduto
       'from PRD_LOTE A'
       '    LEFT JOIN for0000 B ON B.for_codigo=A.for_codigo'
       'WHERE A.prdl_registro='#39'-1'#39)
-    SQLConnection = DBConn
     Left = 1409
     Top = 283
     object QLotesPRDL_REGISTRO: TIntegerField
@@ -16125,9 +16184,8 @@ inherited FormProduto: TFormProduto
       Precision = 15
     end
   end
-  object CdsVendas: TSqlClientDataSet
+  object CdsVendas: TSqlClientDataSet [58]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'select  t3.NF_EMISSAO,     t3.NF_NOTANUMBER,    t3.NF_NUM_NFE,  ' +
       '  T1.NTP_CFOP,    t3.PED_CODIGO,    t3.CLI_CODIGO,    t2.CLI_RAZ' +
@@ -16167,7 +16225,6 @@ inherited FormProduto: TFormProduto
       't1.NF_IT_NOTANUMER) join CLI0000 t2 on (t2.CLI_CODIGO = t3.CLI_C' +
       'ODIGO)left outer join prd_lote p ON (P.prdl_registro = T1.prdl_r' +
       'egistro) ORDER BY T3.NF_EMISSAO DESC'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -16242,13 +16299,13 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object dsVendas: TDataSource
+  object dsVendas: TDataSource [59]
     DataSet = CdsVendas
     Left = 1476
     Top = 620
   end
-  object frxReport1: TfrxReport
-    Version = '5.3.16'
+  object frxReport1: TfrxReport [60]
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -16285,12 +16342,16 @@ inherited FormProduto: TFormProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 83.149660000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -16300,11 +16361,13 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Vendas do Produto')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -16313,11 +16376,13 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -16327,12 +16392,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -16343,12 +16410,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -16358,17 +16427,21 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -16378,18 +16451,22 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emiss'#227'o')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Top = 56.692950000000000000
           Width = 60.472480000000000000
@@ -16400,12 +16477,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 56.692950000000000000
           Width = 60.472480000000000000
@@ -16416,12 +16495,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'NFe')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Top = 56.692950000000000000
           Width = 60.472480000000000000
@@ -16432,12 +16513,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CFOP')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 241.889920000000000000
           Top = 56.692950000000000000
           Width = 60.472480000000000000
@@ -16448,12 +16531,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Pedido')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 56.692950000000000000
           Width = 83.149660000000000000
@@ -16464,12 +16549,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Total c/ Imposto')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 880.630490000000000000
           Top = 56.692950000000000000
           Width = 83.149660000000000000
@@ -16480,12 +16567,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor ST')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Top = 56.692950000000000000
           Width = 83.149660000000000000
@@ -16496,12 +16585,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor IPI')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Top = 56.692950000000000000
           Width = 83.149660000000000000
@@ -16512,12 +16603,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Total')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.961040000000000000
           Top = 56.692950000000000000
           Width = 79.370130000000000000
@@ -16528,12 +16621,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Pre'#231'o')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 56.692950000000000000
           Width = 64.252010000000000000
@@ -16544,12 +16639,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Quantidade')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 56.692950000000000000
           Width = 268.346630000000000000
@@ -16560,6 +16657,7 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Cliente')
@@ -16568,6 +16666,7 @@ inherited FormProduto: TFormProduto
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 124.724490000000000000
         Width = 1046.929810000000000000
@@ -16575,6 +16674,7 @@ inherited FormProduto: TFormProduto
         DataSetName = 'frxdbdtstVendas'
         RowCount = 0
         object frxdbFornecedorMateriaPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 60.472480000000000000
           Height = 18.897650000000000000
           DataField = 'NF_EMISSAO'
@@ -16585,11 +16685,13 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstVendas."NF_EMISSAO"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 60.472480000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -16601,11 +16703,13 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstVendas."NF_NOTANUMBER"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -16617,11 +16721,13 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstVendas."NF_NUM_NFE"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -16633,11 +16739,13 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstVendas."NTP_CFOP"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 241.889920000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -16649,11 +16757,13 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstVendas."PED_CODIGO"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Width = 268.346630000000000000
           Height = 18.897650000000000000
@@ -16665,12 +16775,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbdtstVendas."CLI_RAZAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -16682,12 +16794,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstVendas."NF_QTDE"]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.961040000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -16702,12 +16816,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstVendas."NF_PRECO"]')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -16721,12 +16837,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstVendas."TOTAL"]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -16740,12 +16858,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstVendas."VALOR_IPI"]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 880.630490000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -16759,12 +16879,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstVendas."VALOR_ST"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -16778,6 +16900,7 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbdtstVendas."TOTAL_COM_IMPOSTOS"]')
@@ -16786,10 +16909,12 @@ inherited FormProduto: TFormProduto
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 166.299320000000000000
         Width = 1046.929810000000000000
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -16799,12 +16924,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Total:')
           ParentFont = False
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -16813,12 +16940,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxdbdtstVendas."NF_QTDE">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -16830,12 +16959,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxdbdtstVendas."TOTAL">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo4: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -16847,12 +16978,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxdbdtstVendas."VALOR_IPI">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo5: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 880.630490000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -16864,12 +16997,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxdbdtstVendas."VALOR_ST">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo6: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -16881,26 +17016,31 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxdbdtstVendas."TOTAL_COM_IMPOSTOS">,MasterData1,3)]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 22.677180000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
     end
   end
-  object frxdbdtstVendas: TfrxDBDataset
+  object frxdbdtstVendas: TfrxDBDataset [61]
     UserName = 'frxdbdtstVendas'
     CloseDataSource = False
     FieldAliases.Strings = (
@@ -16922,16 +17062,19 @@ inherited FormProduto: TFormProduto
     Left = 1476
     Top = 676
   end
-  object frxPDFExport1: TfrxPDFExport
+  object frxPDFExport1: TfrxPDFExport [62]
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -16942,10 +17085,13 @@ inherited FormProduto: TFormProduto
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 1748
     Top = 11
   end
-  object frxXLSExport1: TfrxXLSExport
+  object frxXLSExport1: TfrxXLSExport [63]
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
@@ -16960,12 +17106,12 @@ inherited FormProduto: TFormProduto
     Left = 1828
     Top = 11
   end
-  object DsCodigoOriginal: TDataSource
+  object DsCodigoOriginal: TDataSource [64]
     DataSet = CdsCodigoOriginal
     Left = 1484
     Top = 221
   end
-  object CdsCodigoOriginal: TClientDataSet
+  object CdsCodigoOriginal: TClientDataSet [65]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspCodigoOriginal'
@@ -17014,18 +17160,17 @@ inherited FormProduto: TFormProduto
       Size = 7
     end
   end
-  object DspCodigoOriginal: TDataSetProvider
+  object DspCodigoOriginal: TDataSetProvider [66]
     DataSet = SqlCodCli
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1483
     Top = 133
   end
-  object SqlArquivo: TSQLDataSet
+  object SqlArquivo: TSQLDataSet [67]
     CommandText = 'SELECT * FROM ARQUIVO ORDER BY ARQ_DESCRICAO'
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 1571
     Top = 77
     object SqlArquivoARQ_REGISTRO: TIntegerField
@@ -17059,14 +17204,14 @@ inherited FormProduto: TFormProduto
       Size = 200
     end
   end
-  object DspArquivo: TDataSetProvider
+  object DspArquivo: TDataSetProvider [68]
     DataSet = SqlArquivo
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1571
     Top = 125
   end
-  object CdsArquivo: TClientDataSet
+  object CdsArquivo: TClientDataSet [69]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspArquivo'
@@ -17103,12 +17248,12 @@ inherited FormProduto: TFormProduto
       Size = 200
     end
   end
-  object dsArquivo: TDataSource
+  object dsArquivo: TDataSource [70]
     DataSet = CdsArquivo
     Left = 1572
     Top = 221
   end
-  object pmArquivo: TPopupMenu
+  object pmArquivo: TPopupMenu [71]
     Left = 1508
     Top = 8
     object AbrirArquivo1: TMenuItem
@@ -17123,15 +17268,13 @@ inherited FormProduto: TFormProduto
       OnClick = ExcluirArquivo1Click
     end
   end
-  object SqlCdsEnderecamento: TSqlClientDataSet
+  object SqlCdsEnderecamento: TSqlClientDataSet [72]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'select * from PRD0000_ENDERECAMENTO'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select * from PRD0000_ENDERECAMENTO'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -17149,7 +17292,7 @@ inherited FormProduto: TFormProduto
       Size = 30
     end
   end
-  object mnuListar: TPopupMenu
+  object mnuListar: TPopupMenu [73]
     Left = 1588
     Top = 9
     object Listagem1: TMenuItem
@@ -17168,7 +17311,7 @@ inherited FormProduto: TFormProduto
       OnClick = N3Mesmoleaiutedeimportao1Click
     end
   end
-  object SqlCodCli: TSQLQuery
+  object SqlCodCli: TSQLQuery [74]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -17176,7 +17319,6 @@ inherited FormProduto: TFormProduto
       'FROM PRD_CODIGOORIGINAL A'
       '    JOIN cli0000 B ON B.cli_codigo=A.cli_codigo'
       'ORDER BY A.CLI_CODIGO')
-    SQLConnection = DBConn
     Left = 1480
     Top = 80
     object SqlCodCliPRDCO_REGISTRO: TIntegerField
@@ -17213,18 +17355,17 @@ inherited FormProduto: TFormProduto
       Size = 7
     end
   end
-  object JvTransparentForm1: TJvTransparentForm
+  object JvTransparentForm1: TJvTransparentForm [75]
     Left = 1320
     Top = 8
   end
-  object qFor: TSQLQuery
+  object qFor: TSQLQuery [76]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
       'select for_codigo, for_razao'
       'from for0000'
       'where for_codigo='#39'-1'#39)
-    SQLConnection = DBConn
     Left = 2033
     Top = 91
     object qForFOR_CODIGO: TStringField
@@ -17237,19 +17378,17 @@ inherited FormProduto: TFormProduto
       Size = 40
     end
   end
-  object qCstPC: TSQLQuery
+  object qCstPC: TSQLQuery [77]
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 1914
     Top = 147
   end
-  object SqlProdutos: TSQLQuery
+  object SqlProdutos: TSQLQuery [78]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
       'SELECT * FROM PRD0000')
-    SQLConnection = DBConn
     Left = 1384
     Top = 85
     object SqlProdutosPRD_CODIGO: TStringField
@@ -18102,13 +18241,13 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object DspProdutos: TDataSetProvider
+  object DspProdutos: TDataSetProvider [79]
     DataSet = SqlProdutos
     Options = [poAllowCommandText]
     Left = 1384
     Top = 133
   end
-  object CdsProdutos: TClientDataSet
+  object CdsProdutos: TClientDataSet [80]
     Aggregates = <>
     PacketRecords = 6
     Params = <>
@@ -19112,17 +19251,17 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object DsProdutos: TDataSource
+  object DsProdutos: TDataSource [81]
     DataSet = CdsProdutos
     Left = 1384
     Top = 229
   end
-  object DsPrdClassIPI: TDataSource
+  object DsPrdClassIPI: TDataSource [82]
     DataSet = CdsPrdClassIPI
     Left = 1652
     Top = 618
   end
-  object CdsPrdClassIPI_OLD: TClientDataSet
+  object CdsPrdClassIPI_OLD: TClientDataSet [83]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspPrdClassIPI'
@@ -19171,46 +19310,42 @@ inherited FormProduto: TFormProduto
       Size = 2
     end
   end
-  object DspPrdClassIPI: TDataSetProvider
+  object DspPrdClassIPI: TDataSetProvider [84]
     DataSet = CdsPrdClassIPI
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1644
     Top = 522
   end
-  object dsTipoProduto: TDataSource
+  object dsTipoProduto: TDataSource [85]
     Left = 1556
     Top = 619
   end
-  object qTipoProduto: TSQLQuery
+  object qTipoProduto: TSQLQuery [86]
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 1556
     Top = 575
   end
-  object qGrupo: TSQLQuery
+  object qGrupo: TSQLQuery [87]
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 2036
     Top = 151
   end
-  object qLinha: TSQLQuery
+  object qLinha: TSQLQuery [88]
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 2156
     Top = 95
   end
-  object qCest: TSQLQuery
+  object qCest: TSQLQuery [89]
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 2092
     Top = 151
   end
-  object qItensFicha: TSQLQuery
+  object qItensFicha: TSQLQuery [90]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19257,22 +19392,21 @@ inherited FormProduto: TFormProduto
       'on g1.PRG_REGISTRO = f2.PRG_REGISTRO'
       'left JOIN prmt0001 PRMT'
       'ON PRMT.emp_codigo = P1.emp_codigo')
-    SQLConnection = DBConn
     Left = 1788
     Top = 81
   end
-  object DspItensFicha: TDataSetProvider
+  object DspItensFicha: TDataSetProvider [91]
     DataSet = qItensFicha
     UpdateMode = upWhereKeyOnly
     Left = 1788
     Top = 128
   end
-  object DSSitTributaria: TDataSource
+  object DSSitTributaria: TDataSource [92]
     DataSet = CDSSitTributaria
     Left = 1272
     Top = 436
   end
-  object CDSSitTributaria: TClientDataSet
+  object CDSSitTributaria: TClientDataSet [93]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
@@ -19311,19 +19445,18 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object DSPSitTributaria: TDataSetProvider
+  object DSPSitTributaria: TDataSetProvider [94]
     DataSet = SQLSitTributaria
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1272
     Top = 340
   end
-  object SQLSitTributaria: TSQLQuery
+  object SQLSitTributaria: TSQLQuery [95]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
       'SELECT T1.*  FROM SITUACAO_TRIBUTARIA T1')
-    SQLConnection = DBConn
     Left = 1272
     Top = 288
     object SQLSitTributariaSTB_CODIGO: TIntegerField
@@ -19358,20 +19491,19 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object Timer1: TTimer
+  object Timer1: TTimer [96]
     Left = 1164
     Top = 9
   end
-  object qOperacoes: TSQLQuery
+  object qOperacoes: TSQLQuery [97]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
       'select ope_codigo, ope_descricao')
-    SQLConnection = DBConn
     Left = 1976
     Top = 87
   end
-  object qEspecifica: TSQLQuery
+  object qEspecifica: TSQLQuery [98]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19380,21 +19512,20 @@ inherited FormProduto: TFormProduto
         'SP_COL2, ESP_COL3, ESP_COL4,'
       'ESP_COL5, ESP_COL6, ESP_COL7 '
       'FROM ESPECIFICACOES')
-    SQLConnection = DBConn
     Left = 1176
     Top = 87
   end
-  object dsProcessos: TDataSource
+  object dsProcessos: TDataSource [99]
     DataSet = cdsProcessos
     Left = 1304
     Top = 231
   end
-  object dspProcessos: TDataSetProvider
+  object dspProcessos: TDataSetProvider [100]
     DataSet = qProcesso
     Left = 1304
     Top = 135
   end
-  object qProcesso: TSQLQuery
+  object qProcesso: TSQLQuery [101]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19406,11 +19537,10 @@ inherited FormProduto: TFormProduto
       'INNER JOIN OPERACOES OP ON (OP.OPE_CODIGO = EP.OPE_CODIGO) '
       'LEFT JOIN EQUIPAMENTO EQ ON (EQ.EQP_CODIGO = EP.EQP_CODIGO)'
       'order by sequencia')
-    SQLConnection = DBConn
     Left = 1304
     Top = 87
   end
-  object cdsProcessos: TClientDataSet
+  object cdsProcessos: TClientDataSet [102]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProcessos'
@@ -19450,12 +19580,12 @@ inherited FormProduto: TFormProduto
       Size = 60
     end
   end
-  object dsEspecifica: TDataSource
+  object dsEspecifica: TDataSource [103]
     DataSet = cdsEspecifica
     Left = 1168
     Top = 239
   end
-  object cdsEspecifica: TClientDataSet
+  object cdsEspecifica: TClientDataSet [104]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspEspecifica'
@@ -19505,12 +19635,12 @@ inherited FormProduto: TFormProduto
       Size = 100
     end
   end
-  object dspEspecifica: TDataSetProvider
+  object dspEspecifica: TDataSetProvider [105]
     DataSet = qEspecifica
     Left = 1168
     Top = 135
   end
-  object JvPopupMenu1: TJvPopupMenu
+  object JvPopupMenu1: TJvPopupMenu [106]
     ImageMargin.Left = 0
     ImageMargin.Top = 0
     ImageMargin.Right = 0
@@ -19532,16 +19662,15 @@ inherited FormProduto: TFormProduto
       OnClick = miLeaiuteClick
     end
   end
-  object SQLQuery1: TSQLQuery
+  object SQLQuery1: TSQLQuery [107]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
       'select ope_codigo, ope_descricao')
-    SQLConnection = DBConn
     Left = 2176
     Top = 340
   end
-  object cdsMPusado: TClientDataSet
+  object cdsMPusado: TClientDataSet [108]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspMPusado'
@@ -19576,12 +19705,12 @@ inherited FormProduto: TFormProduto
       DisplayFormat = '#,####0.00 %'
     end
   end
-  object dsMPusado: TDataSource
+  object dsMPusado: TDataSource [109]
     DataSet = cdsMPusado
     Left = 1872
     Top = 423
   end
-  object qMPusado: TSQLQuery
+  object qMPusado: TSQLQuery [110]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19593,12 +19722,12 @@ inherited FormProduto: TFormProduto
     Left = 1872
     Top = 279
   end
-  object dspMPusado: TDataSetProvider
+  object dspMPusado: TDataSetProvider [111]
     DataSet = qMPusado
     Left = 1872
     Top = 327
   end
-  object puExportar: TPopupMenu
+  object puExportar: TPopupMenu [112]
     Left = 816
     Top = 8
     object miExcel: TMenuItem
@@ -19610,22 +19739,22 @@ inherited FormProduto: TFormProduto
       OnClick = miWordClick
     end
   end
-  object SaveDialog1: TSaveDialog
+  object SaveDialog1: TSaveDialog [113]
     Left = 1236
     Top = 7
   end
-  object JvDBGridWordExport1: TJvDBGridWordExport
+  object JvDBGridWordExport1: TJvDBGridWordExport [114]
     Caption = 'Exporting to MS Word...'
     Left = 652
     Top = 65535
   end
-  object JvDBGridExcelExport1: TJvDBGridExcelExport
+  object JvDBGridExcelExport1: TJvDBGridExcelExport [115]
     Caption = 'Exporting to MS Excel...'
     AutoFit = False
     Left = 532
     Top = 65535
   end
-  object pExportarLote: TPopupMenu
+  object pExportarLote: TPopupMenu [116]
     Left = 1668
     Top = 7
     object miLoteExcel: TMenuItem
@@ -19637,8 +19766,8 @@ inherited FormProduto: TFormProduto
       OnClick = miLoteWordClick
     end
   end
-  object frxMPusado: TfrxReport
-    Version = '5.3.16'
+  object frxMPusado: TfrxReport [117]
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -19674,12 +19803,16 @@ inherited FormProduto: TFormProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 64.385900000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.779530000000000000
           Top = 1.559059999999999000
           Width = 559.370440000000000000
@@ -19689,11 +19822,13 @@ inherited FormProduto: TFormProduto
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.472790000000000000
           Top = 3.779530000000001000
           Width = 124.724490000000000000
@@ -19703,12 +19838,14 @@ inherited FormProduto: TFormProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 42.488250000000000000
           Width = 642.520100000000000000
@@ -19718,6 +19855,7 @@ inherited FormProduto: TFormProduto
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia : [REFER] - [PRODUTO]')
           ParentFont = False
@@ -19728,6 +19866,7 @@ inherited FormProduto: TFormProduto
             end>
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 22.456710000000000000
           Width = 559.370440000000000000
@@ -19737,6 +19876,7 @@ inherited FormProduto: TFormProduto
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TITULO]')
           ParentFont = False
@@ -19744,6 +19884,7 @@ inherited FormProduto: TFormProduto
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -19758,6 +19899,7 @@ inherited FormProduto: TFormProduto
         RowCount = 0
         Stretched = True
         object fdsMPusadoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 0.779529999999994100
           Width = 86.929190000000000000
@@ -19765,10 +19907,12 @@ inherited FormProduto: TFormProduto
           DataField = 'PRD_REFER'
           DataSet = fdsMPusado
           DataSetName = 'fdsMPusado'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[fdsMPusado."PRD_REFER"]')
         end
         object fdsMPusadoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 98.267780000000000000
           Top = 0.779529999999994100
           Width = 343.937230000000000000
@@ -19777,10 +19921,12 @@ inherited FormProduto: TFormProduto
           DataField = 'PRD_DESCRI'
           DataSet = fdsMPusado
           DataSetName = 'fdsMPusado'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[fdsMPusado."PRD_DESCRI"]')
         end
         object fdsMPusadoPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 448.016080000000000000
           Top = 0.779529999999994100
           Width = 22.677180000000000000
@@ -19788,10 +19934,12 @@ inherited FormProduto: TFormProduto
           DataField = 'PRD_UND'
           DataSet = fdsMPusado
           DataSetName = 'fdsMPusado'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[fdsMPusado."PRD_UND"]')
         end
         object fdsMPusadoFTC_CRIACAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 0.779529999999994100
           Width = 79.370130000000000000
@@ -19799,10 +19947,12 @@ inherited FormProduto: TFormProduto
           DataField = 'FTC_CRIACAO'
           DataSet = fdsMPusado
           DataSetName = 'fdsMPusado'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[fdsMPusado."FTC_CRIACAO"]')
         end
         object fdsMPusadoFTI_PERDA: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Top = 0.779529999999994100
           Width = 79.370130000000000000
@@ -19810,10 +19960,12 @@ inherited FormProduto: TFormProduto
           DataField = 'FTI_PERDA'
           DataSet = fdsMPusado
           DataSetName = 'fdsMPusado'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[fdsMPusado."FTI_PERDA"]')
         end
         object fdsMPusadoFTI_UC: TfrxMemoView
+          AllowVectorExport = True
           Left = 555.590910000000000000
           Top = 0.779529999999994100
           Width = 71.811070000000000000
@@ -19821,80 +19973,98 @@ inherited FormProduto: TFormProduto
           DataField = 'FTI_UC'
           DataSet = fdsMPusado
           DataSetName = 'fdsMPusado'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[fdsMPusado."FTI_UC"]')
         end
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 143.622140000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 10.338590000000000000
           Top = 4.204700000000003000
           Width = 86.929190000000010000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 101.047310000000000000
           Top = 4.204700000000003000
           Width = 86.929190000000010000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 449.016080000000000000
           Top = 4.204700000000003000
           Width = 22.677180000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'UN')
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 543.252320000000100000
           Top = 4.204700000000003000
           Width = 86.929190000000010000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Consumo')
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 633.961040000000000000
           Top = 4.204700000000003000
           Width = 86.929190000000010000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Perda')
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 476.220780000000000000
           Top = 3.779529999999994000
           Width = 56.692950000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Criado')
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 22.661409999999990000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
     end
   end
-  object fdsMPusado: TfrxDBDataset
+  object fdsMPusado: TfrxDBDataset [118]
     UserName = 'fdsMPusado'
     CloseDataSource = False
     FieldAliases.Strings = (
@@ -19909,7 +20079,7 @@ inherited FormProduto: TFormProduto
     Left = 1868
     Top = 471
   end
-  object qProcessos: TSQLQuery
+  object qProcessos: TSQLQuery [119]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19922,7 +20092,6 @@ inherited FormProduto: TFormProduto
       'where PRD_STATUS = '#39'Z'#39' and'
       '      (coalesce(PD.PRD_REFER, '#39#39') <> '#39#39')'
       'order by PD.PRD_REFER  ')
-    SQLConnection = DBConn
     Left = 2095
     Top = 92
     object qProcessosPRO_CODIGO: TIntegerField
@@ -19933,7 +20102,7 @@ inherited FormProduto: TFormProduto
       Size = 100
     end
   end
-  object qCnae: TSQLQuery
+  object qCnae: TSQLQuery [120]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19944,7 +20113,7 @@ inherited FormProduto: TFormProduto
     Left = 1975
     Top = 152
   end
-  object qservico: TSQLQuery
+  object qservico: TSQLQuery [121]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19956,12 +20125,12 @@ inherited FormProduto: TFormProduto
     Left = 1911
     Top = 92
   end
-  object dsUnidade: TDataSource
+  object dsUnidade: TDataSource [122]
     DataSet = cdsUnidade
     Left = 1708
     Top = 223
   end
-  object cdsUnidade: TClientDataSet
+  object cdsUnidade: TClientDataSet [123]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspunidade'
@@ -19979,33 +20148,32 @@ inherited FormProduto: TFormProduto
       Size = 30
     end
   end
-  object dspunidade: TDataSetProvider
+  object dspunidade: TDataSetProvider [124]
     DataSet = qUnidade
     Left = 1708
     Top = 127
   end
-  object qUnidade: TSQLQuery
+  object qUnidade: TSQLQuery [125]
     Params = <>
     SQL.Strings = (
       'select * from PRD_UNIDADE')
     Left = 1708
     Top = 79
   end
-  object dsMola: TDataSource
+  object dsMola: TDataSource [126]
     DataSet = cdsMola
     Left = 1720
     Top = 424
   end
-  object qMola: TSQLQuery
+  object qMola: TSQLQuery [127]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
       'SELECT * FROM MOLA_MATERIA')
-    SQLConnection = DBConn
     Left = 1720
     Top = 280
   end
-  object cdsMola: TClientDataSet
+  object cdsMola: TClientDataSet [128]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspMola'
@@ -20801,17 +20969,17 @@ inherited FormProduto: TFormProduto
       Size = 1024
     end
   end
-  object dspMola: TDataSetProvider
+  object dspMola: TDataSetProvider [129]
     DataSet = qMola
     Left = 1720
     Top = 328
   end
-  object dsGancho: TDataSource
+  object dsGancho: TDataSource [130]
     DataSet = cdsGancho
     Left = 1232
     Top = 232
   end
-  object cdsGancho: TClientDataSet
+  object cdsGancho: TClientDataSet [131]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspGancho'
@@ -20834,40 +21002,38 @@ inherited FormProduto: TFormProduto
       Required = True
     end
   end
-  object qGancho: TSQLQuery
+  object qGancho: TSQLQuery [132]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
       'select * from gancho')
-    SQLConnection = DBConn
     Left = 1232
     Top = 88
   end
-  object dspGancho: TDataSetProvider
+  object dspGancho: TDataSetProvider [133]
     DataSet = qGancho
     Left = 1232
     Top = 136
   end
-  object QParametros: TSQLQuery
+  object QParametros: TSQLQuery [134]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
       'SELECT * FROM PARAMETROS_DA_QUALIDADE')
-    SQLConnection = DBConn
     Left = 1640
     Top = 280
   end
-  object dspParametros: TDataSetProvider
+  object dspParametros: TDataSetProvider [135]
     DataSet = QParametros
     Left = 1640
     Top = 328
   end
-  object dsParametros: TDataSource
+  object dsParametros: TDataSource [136]
     DataSet = cdsParametros
     Left = 1640
     Top = 424
   end
-  object cdsParametros: TClientDataSet
+  object cdsParametros: TClientDataSet [137]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspParametros'
@@ -20884,12 +21050,12 @@ inherited FormProduto: TFormProduto
       Size = 255
     end
   end
-  object dsCQP: TDataSource
+  object dsCQP: TDataSource [138]
     DataSet = cdsCQP
     Left = 1574
     Top = 426
   end
-  object cdsCQP: TClientDataSet
+  object cdsCQP: TClientDataSet [139]
     Aggregates = <>
     FieldDefs = <
       item
@@ -20950,12 +21116,12 @@ inherited FormProduto: TFormProduto
       Size = 255
     end
   end
-  object dspCQP: TDataSetProvider
+  object dspCQP: TDataSetProvider [140]
     DataSet = qCQP
     Left = 1574
     Top = 330
   end
-  object qCQP: TSQLQuery
+  object qCQP: TSQLQuery [141]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -20963,7 +21129,6 @@ inherited FormProduto: TFormProduto
       
         'JOIN PARAMETROS_DA_QUALIDADE PQ ON PQ.PAR_CODIGO = CQP.PAR_CODIG' +
         'O')
-    SQLConnection = DBConn
     Left = 1574
     Top = 282
     object qCQPPRD_REFER: TStringField
@@ -20989,9 +21154,8 @@ inherited FormProduto: TFormProduto
       Size = 255
     end
   end
-  object CdsIndustrializacao: TSqlClientDataSet
+  object CdsIndustrializacao: TSqlClientDataSet [142]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'select'#13#10't3.enf_emissao,'#13#10't3.enf_notanumber,'#13#10't1.for_codigo,'#13#10't2.' +
       'for_razao,'#13#10't1.enf_preco,'#13#10'coalesce(t1.enf_preco,0) + coalesce(t' +
@@ -21020,7 +21184,6 @@ inherited FormProduto: TFormProduto
       'or_codigo = t1.for_codigo)'#13#10'join enf0001 t3 on (t3.enf_notanumbe' +
       'r = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo)'#13#10'whe' +
       're t1.prd_refer = '#39'0001'#39#13#10'order by t3.enf_entrada desc'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -21108,17 +21271,17 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object dsIndustrializacao: TDataSource
+  object dsIndustrializacao: TDataSource [143]
     DataSet = CdsIndustrializacao
     Left = 1836
     Top = 619
   end
-  object qAuxF: TFDQuery
+  object qAuxF: TFDQuery [144]
     Connection = DBInicio.FDACConn
     Left = 440
     Top = 10
   end
-  object CdsPrdClassIPI: TFDQuery
+  object CdsPrdClassIPI: TFDQuery [145]
     Connection = DBInicio.FDACConn
     Left = 1644
     Top = 479
@@ -21163,9 +21326,13 @@ inherited FormProduto: TFormProduto
       Size = 2
     end
   end
-  object qRegistroEndereco: TSQLQuery
+  object qRegistroEndereco: TSQLQuery [146]
     Params = <>
     Left = 2156
     Top = 151
+  end
+  inherited qAux3: TSQLQuery
+    Left = 394
+    Top = 4
   end
 end

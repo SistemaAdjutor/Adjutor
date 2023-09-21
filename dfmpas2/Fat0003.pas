@@ -867,7 +867,7 @@ begin
   if (DBInicio.Empresa.EMP_CODIGO = EmpCodigo) then
   begin    // primeiro carregamento
     fPMT_CERTIFICADO_DIGITAL:=  dbinicio.Empresa.wPMT_CERTIFICADO_DIGITAL;
-    if FormFaturamento = nil then
+    if Fat0000.FormFaturamento = nil then
       pedCodigo := frmPedido.edPedidoNumero.Text
     else
       pedCodigo := FormFaturamento.cdsPedidos.FieldByName('PED_CODIGO').AsString;

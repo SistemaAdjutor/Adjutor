@@ -15,7 +15,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
   OnCloseQuery = FormCloseQuery
   OnResize = FormResize
   ExplicitWidth = 896
-  ExplicitHeight = 435
+  ExplicitHeight = 436
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox1: TGroupBox [0]
@@ -384,9 +384,8 @@ inherited FormCaixaFecha: TFormCaixaFecha
       OnClick = Bit_ImprimirClick
     end
   end
-  object SqlCdsRelFechaCx: TSqlClientDataSet
+  object SqlCdsRelFechaCx: TSqlClientDataSet [8]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 
       'SELECT Y2.CCT_DESCRI,Y1.* FROM CAIXA001 Y1'#13#10'LEFT JOIN CCT_0000 Y' +
       '2 ON Y2.CCT_CODIGO = Y1.CCT_CODIGO'#13#10'ORDER BY Y1.CXA_DATA,Y1.CXA_' +
@@ -398,7 +397,6 @@ inherited FormCaixaFecha: TFormCaixaFecha
       'SELECT Y2.CCT_DESCRI,Y1.* FROM CAIXA001 Y1'#13#10'LEFT JOIN CCT_0000 Y' +
       '2 ON Y2.CCT_CODIGO = Y1.CCT_CODIGO'#13#10'ORDER BY Y1.CXA_DATA,Y1.CXA_' +
       'TIPODOC Desc, Y1.CXA_LANCTO'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -454,23 +452,24 @@ inherited FormCaixaFecha: TFormCaixaFecha
       Calculated = True
     end
   end
-  object DsRelFechaCx: TDataSource
+  object DsRelFechaCx: TDataSource [9]
     DataSet = CdsRelFechaCx
     Left = 296
     Top = 264
   end
-  object ppDBFechaCx: TppDBPipeline
+  object ppDBFechaCx: TppDBPipeline [10]
     DataSource = DsRelFechaCx
     UserName = 'DBFechaCx'
     Left = 416
     Top = 224
   end
-  object ppRELFechaCx: TppReport
+  object ppRELFechaCx: TppReport [11]
     AutoStop = False
     DataPipeline = ppDBFechaCx
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -487,6 +486,14 @@ inherited FormCaixaFecha: TFormCaixaFecha
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -496,22 +503,34 @@ inherited FormCaixaFecha: TFormCaixaFecha
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -519,14 +538,27 @@ inherited FormCaixaFecha: TFormCaixaFecha
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 400
     Top = 280
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBFechaCx'
     object pp00HeaderBand1: TppHeaderBand
       BeforePrint = pp00HeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 16933
       mmPrintPosition = 0
@@ -534,6 +566,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -547,13 +580,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3217
         mmLeft = 0
@@ -567,13 +602,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -587,13 +624,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -606,6 +645,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -619,6 +659,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -639,6 +680,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -658,6 +700,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -672,13 +715,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Lancto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 15346
@@ -693,13 +738,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -715,13 +762,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Documento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -737,13 +786,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Hist'#243'rico'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -759,13 +810,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Entradas'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -781,13 +834,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Sa'#237'das'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -803,13 +858,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Conta Analise'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -825,13 +882,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Saldo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -843,8 +902,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
       end
     end
     object pp00DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -854,6 +912,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'LANCTO'
         DataPipeline = ppDBFechaCx
         Font.Charset = DEFAULT_CHARSET
@@ -875,6 +934,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'DATA'
         DataPipeline = ppDBFechaCx
         Font.Charset = DEFAULT_CHARSET
@@ -896,6 +956,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'DOCUMENTO'
         DataPipeline = ppDBFechaCx
         Font.Charset = DEFAULT_CHARSET
@@ -917,6 +978,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'HISTORICO'
         DataPipeline = ppDBFechaCx
         Font.Charset = DEFAULT_CHARSET
@@ -938,6 +1000,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'ENTRADA'
         DataPipeline = ppDBFechaCx
         DisplayFormat = '#,##0.00'
@@ -961,6 +1024,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'SAIDA'
         DataPipeline = ppDBFechaCx
         DisplayFormat = '#,##0.00'
@@ -984,6 +1048,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CONTANALISE'
         DataPipeline = ppDBFechaCx
         Font.Charset = DEFAULT_CHARSET
@@ -1005,6 +1070,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'ACUMULADO'
         DataPipeline = ppDBFechaCx
         DisplayFormat = '#,##0.00'
@@ -1025,7 +1091,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 8731
       mmPrintPosition = 0
@@ -1033,6 +1099,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         DesignLayer = ppDesignLayer1
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 265
@@ -1045,6 +1112,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         DesignLayer = ppDesignLayer1
         UserName = 'Line6'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1057,6 +1125,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1070,13 +1139,15 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SALDO ATUAL R$.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 131234
@@ -1090,6 +1161,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBCalc4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'SALDO_CC'
         DataPipeline = ppDBFechaCx
         DisplayFormat = '#,##0.00'
@@ -1113,6 +1185,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'ENTRADA'
         DataPipeline = ppDBFechaCx
         DisplayFormat = '#,##0.00'
@@ -1136,6 +1209,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
         UserName = 'DBCalc2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'SAIDA'
         DataPipeline = ppDBFechaCx
         DisplayFormat = '#,##0.00'
@@ -1165,7 +1239,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
     object ppParameterList1: TppParameterList
     end
   end
-  object CdsRelFechaCx: TClientDataSet
+  object CdsRelFechaCx: TClientDataSet [12]
     Aggregates = <>
     Params = <>
     OnCalcFields = CdsRelFechaCxCalcFields
@@ -1205,12 +1279,11 @@ inherited FormCaixaFecha: TFormCaixaFecha
       Calculated = True
     end
   end
-  object qFechaCaixa: TSQLQuery
+  object qFechaCaixa: TSQLQuery [13]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
       'select * from CAIXA002')
-    SQLConnection = DBConn
     Left = 473
     Top = 160
     object qFechaCaixaCXF_CODIGO: TStringField
@@ -1245,14 +1318,14 @@ inherited FormCaixaFecha: TFormCaixaFecha
       Size = 3
     end
   end
-  object DspFechaCaixa: TDataSetProvider
+  object DspFechaCaixa: TDataSetProvider [14]
     DataSet = qFechaCaixa
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 562
     Top = 161
   end
-  object CdsFechaCaixa: TClientDataSet
+  object CdsFechaCaixa: TClientDataSet [15]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
@@ -1306,7 +1379,7 @@ inherited FormCaixaFecha: TFormCaixaFecha
       Calculated = True
     end
   end
-  object DsFechaCaixa: TDataSource
+  object DsFechaCaixa: TDataSource [16]
     DataSet = CdsFechaCaixa
     Left = 733
     Top = 160

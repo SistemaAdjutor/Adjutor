@@ -5,6 +5,7 @@
 // {$D-}
 
 {$DEFINE ADJUTOR}
+{$DEFINE SISTEMA} //COMENTE ESTA LINHA PARA COMPILAR O PACK infosagaD102 - remova o comentario para compilar o sistema
 
 interface
 
@@ -732,8 +733,8 @@ type
         pReferencia : string );
       function InsereView( pNomeView, vSql : string ) : boolean;
 
-      Function GeraArquivoIni : boolean;
-      procedure LerVersao;
+      {$ifdef SISTEMA}Function GeraArquivoIni : boolean;{$endif}
+      {$ifdef SISTEMA}procedure LerVersao;{$endif}
 
       procedure LeLogoEmpresa( const pCod : string );
       function GetEmpCod : string;
@@ -741,17 +742,17 @@ type
       procedure OpenParametrosSistema;
       procedure OpenParametrosUsuario;
 
-      procedure CarregaComboEmpresas;
+      {$ifdef SISTEMA}procedure CarregaComboEmpresas;{$endif}
       procedure OpenAux( const pSql : string );
       Function CheckUpdtClient : boolean;
       function CheckUpdtServer : boolean;
-      procedure Validacao;
+      {$ifdef SISTEMA}procedure Validacao;{$Endif}
       procedure LeEstilo;
       procedure CriaMonitor( psqlDB : TSQLConnection );
 
     public
 
-      procedure CarregaEmpresaSelecionada( const pCod : string );
+      {$ifdef SISTEMA}procedure CarregaEmpresaSelecionada( const pCod : string );{$endif}
       procedure CarregaParametrosNFSe;
       procedure CarregarParametrosNFe;
       procedure CarregarParametrosNFCe;
@@ -807,20 +808,25 @@ type
       function GetParametroUsuario( const NomeParam : string ) : String;
 
       function Exclusivo( pNomeCompartilhamento : string ) : boolean;
+
       Function ExclusivoSql( CONST pNomeCompartilhamento : string )
         : String; overload;
       Function ExclusivoSql(
         CONST pNomeCompartilhamento : string;
         const Empresa               : string ) : String; overload;
+
+
       function GetNextSequence( const pNomeGenerator : string ) : Integer;
       procedure SetNaoAbrirDash( const aValue : boolean );
       // novi
       function RetornaRegistroTabela( const sTabela, sCampoRegistro,
         sCondicao : String ) : String;
+      {$ifdef SISTEMA}
       function ValidaLimiteCredito(
         const sClienteCodigo : string;
         sEmpresaCodigo       : String;
         bBloqueia            : boolean ) : boolean;
+      {$endif}
 
       Property IsDesenvolvimento : boolean
         Read fIsDesenvolvimento
@@ -878,22 +884,44 @@ const
   db_usernm = 'SYSDBA';
   db_passwd = 'masterkey';
 
-Function SplashStart( const pShow : boolean ) : boolean;
+{$ifdef SISTEMA}Function SplashStart( const pShow : boolean ) : boolean;{$endif}
 function EncontrouIni : boolean;
 function EncontrouVariosIni : boolean;
 Function FormataRefer( const pRefer : string ) : String;
 
+Function ExclusivoSqlE( CONST pNomeCompartilhamento : string ): String;
+Function BuscaUmDadoSqlAsStringE(const sql: string): String;
+Procedure InsereGeneratorE( pNmGenerator : string );
+
+Exports ExclusivoSqlE, BuscaUmDadoSqlAsStringE, InsereGeneratorE;
+
 implementation
 
 uses
-  Uteis, FDAC.SgDbAutoF8Unit,
-  ConfiguraBancoForm,
+  Uteis {$ifdef SISTEMA}
+  , ConfiguraBancoForm,
   LicencaForm,
   Val0002,
   Animacao,
-  RWFunc;
+  RWFunc {$EndIf}
+  ;
 
 {$R *.dfm}
+
+Procedure InsereGeneratorE( pNmGenerator : string );
+begin
+  dbInicio.InsereGenerator( pNmGenerator );
+end;
+
+Function BuscaUmDadoSqlAsStringE(const sql: string): String;
+begin
+  result:= dbInicio.BuscaUmDadoSqlasString(sql);
+end;
+
+Function ExclusivoSqlE( CONST pNomeCompartilhamento : string ): String;
+begin
+  result:=dbInicio.ExclusivoSql(pNomeCompartilhamento);
+end;
 
 Function FormataRefer( const pRefer : string ) : String;
   var
@@ -913,6 +941,7 @@ Function FormataRefer( const pRefer : string ) : String;
       Result := pRefer;
   end;
 
+{$ifdef SISTEMA}
 function SplashStart( const pShow : boolean ) : boolean;
 
   var
@@ -931,7 +960,7 @@ function SplashStart( const pShow : boolean ) : boolean;
         DBInicio.Close;
         FreeAndNil( DBInicio );
       end;
-      DBInicio := TDBInicio.Create( Nil );
+      DBInicio := TDBInicio.Create( application );
 
       with DBInicio do
       begin
@@ -1014,7 +1043,7 @@ function SplashStart( const pShow : boolean ) : boolean;
         then
         begin
 
-          CarregaComboEmpresas;
+          {$ifdef SISTEMA}CarregaComboEmpresas;{$endif}
         end;
 
         if ( usr = '' ) and ( DelphiAberto )
@@ -1075,6 +1104,8 @@ function SplashStart( const pShow : boolean ) : boolean;
       end;
     end;
   end;
+{$endif}
+
 
 function TDBInicio.LaunchExe( const pForm : string ) : boolean;
   begin
@@ -1282,6 +1313,7 @@ Procedure TDBInicio.OpenAux( const pSql : string );
     qAux.Open;
   end;
 
+{$ifdef SISTEMA}
 Procedure TDBInicio.CarregaComboEmpresas;
   begin
     CbEmpresa.Items.Clear;
@@ -1342,7 +1374,7 @@ function TDBInicio.ValidaLimiteCredito(
     end;
 
   end;
-
+{$endif}
 function TDBInicio.RetornaRegistroTabela( const sTabela, sCampoRegistro,
   sCondicao : String ) : String;
   var
@@ -2403,15 +2435,19 @@ procedure TDBInicio.ReadIniFile( const name : string = 'Adjutor.ini' );
 procedure TDBInicio.ACBrMailAfterMailProcess( Sender : TObject );
   begin
     inherited;
+    {$ifdef SISTEMA}
     ConnectionStatus.Add( 'Depois de Enviar o email: ' + TACBrMail( Sender )
       .Subject );
+    {$endif}
   end;
 
 procedure TDBInicio.ACBrMailBeforeMailProcess( Sender : TObject );
   begin
     inherited;
+    {$ifdef SISTEMA}
     ConnectionStatus.Add( 'Antes de Enviar o email: ' + TACBrMail( Sender )
       .Subject );
+    {$endif}
   end;
 
 procedure TDBInicio.ACBrMailMailException(
@@ -2420,9 +2456,11 @@ procedure TDBInicio.ACBrMailMailException(
   var ThrowIt : boolean );
   begin
     inherited;
+    {$ifdef SISTEMA}
     ConnectionStatus.Add( E.Message );
     ThrowIt := False;
     ConnectionStatus.Add( '*** Erro ao Enviar o email: ' + AMail.Subject );
+    {$endif}
   end;
 
 procedure TDBInicio.ACBrMailMailProcess(
@@ -2430,6 +2468,7 @@ procedure TDBInicio.ACBrMailMailProcess(
   const aStatus : TMailStatus );
   begin
     inherited;
+    {$ifdef SISTEMA}
     case aStatus of
       pmsStartProcess :
         ConnectionStatus.Add( 'Iniciando processo de envio.' );
@@ -2455,6 +2494,7 @@ procedure TDBInicio.ACBrMailMailProcess(
         ConnectionStatus.Add( 'Terminando e limpando.' );
     end;
     ConnectionStatus.Add( '   ' + AMail.Subject );
+    {$endif}
     // Application.ProcessMessages;
   end;
 
@@ -2466,6 +2506,7 @@ procedure TDBInicio.btCancelClick( Sender : TObject );
 
 procedure TDBInicio.btOKClick( Sender : TObject );
   begin
+  {$ifdef SISTEMA}
     inherited;
     if ( EdUsuario.text = 'NOVI' ) and ( edSenha.text <> '@1N19' ) and
       ( trim( vlVersao.Issues ) = '' )
@@ -2516,6 +2557,7 @@ procedure TDBInicio.btOKClick( Sender : TObject );
       ModalResult := mrOK;
       // provoca acessviolation FrmMenu.Status.Panels[0].Text:= 'Usuário: '+DBInicio.Usuario.NOME;
     end;
+    {$endif}
   end;
 
 procedure TDBInicio.FormCreate( Sender : TObject );
@@ -2588,17 +2630,20 @@ procedure TDBInicio.IdConnectionIntercept1Connect
   ( ASender : TIdConnectionIntercept );
   begin
     inherited;
+    {$ifdef SISTEMA}
     Uteis.ConnectionStatus.Add( '' );
     Uteis.ConnectionStatus.Add( 'Conectou!' );
+    {$endif}
   end;
 
 procedure TDBInicio.IdConnectionIntercept1Disconnect
   ( ASender : TIdConnectionIntercept );
   begin
     inherited;
+    {$ifdef SISTEMA}
     Uteis.ConnectionStatus.Add( '' );
     Uteis.ConnectionStatus.Add( 'Desconectou!' );
-
+    {$endif}
   end;
 
 procedure TDBInicio.IdConnectionIntercept1Receive(
@@ -2606,8 +2651,10 @@ procedure TDBInicio.IdConnectionIntercept1Receive(
   var ABuffer : TIdBytes );
   begin
     inherited;
+    {$ifdef SISTEMA}
     Uteis.ConnectionStatus.Add( '' );
     Uteis.ConnectionStatus.Add( 'Recebeu: ' + BytesToString( ABuffer ) );
+    {$endif}
   end;
 
 procedure TDBInicio.IdConnectionIntercept1Send(
@@ -2615,8 +2662,10 @@ procedure TDBInicio.IdConnectionIntercept1Send(
   var ABuffer : TIdBytes );
   begin
     inherited;
+    {$ifdef SISTEMA}
     Uteis.ConnectionStatus.Add( '' );
     Uteis.ConnectionStatus.Add( 'Enviou: ' + BytesToString( ABuffer ) );
+    {$endif}
   end;
 
 Function TDBInicio.IniciaDB(
@@ -2862,6 +2911,7 @@ procedure TDBInicio.JvThread1Begin( Sender : TObject );
     if VERSAO.Issues = ''
     then
     begin
+      {$ifdef SISTEMA}
       fmAnimacao := TfmAnimacao.Create( Application );
       fmAnimacao.Panel1.Caption :=
         'Carregando configurações do servidor. Aguarde, isto poderá demorar um pouco...';
@@ -2870,6 +2920,7 @@ procedure TDBInicio.JvThread1Begin( Sender : TObject );
 
       ValidaOnline( DBInicio.Empresa.CNPJ_CNPF, False, '', 0, 0 );
       fmAnimacao.Free;
+      {$endif}
     end;
 
   end;
@@ -2882,6 +2933,7 @@ procedure TDBInicio.JvThread1Execute(
     //
   end;
 
+{$ifdef SISTEMA}
 procedure TDBInicio.LerVersao;
   var
     versaosistema, versaobanco, versaoreduzida, IPMAQUINA, Origem,
@@ -2977,7 +3029,7 @@ procedure TDBInicio.LerVersao;
       end;
     end;
     vlVersao.patch := 0;
-    vlVersao.Issues := 'teste3';
+    vlVersao.Issues := 'TESTE';
 
     r := TIdIPWatch.Create( nil );
     try
@@ -3073,12 +3125,15 @@ procedure TDBInicio.LerVersao;
         Application.Terminate;
       end;
   end;
+{$endif}
 
+{$ifdef SISTEMA}
 Function TDBInicio.GeraArquivoIni : boolean;
-{$IFDEF ADJUTOR}var
-    tcr : TFrmConfiguraBanco; {$ENDIF}
+  {$IFDEF ADJUTOR}var
+    tcr : TFrmConfiguraBanco;
+  {$ENDIF}
   begin
-{$IFDEF ADJUTOR}
+  {$IFDEF ADJUTOR}
     tcr := TFrmConfiguraBanco.Create( Application );
     try
       tcr.ShowModal;
@@ -3086,8 +3141,9 @@ Function TDBInicio.GeraArquivoIni : boolean;
     finally
       FreeAndNil( tcr );
     end;
-{$ENDIF}
+  {$ENDIF}
   end;
+ {$endif}
 
 Function TDBInicio.GetParametroSistema( const NomeParam : string ) : String;
   begin
@@ -3273,6 +3329,7 @@ procedure TDBInicio.LeLogoEmpresa( const pCod : string );
     end;
   end;
 
+{$ifdef SISTEMA}
 procedure TDBInicio.CarregaEmpresaSelecionada( const pCod : string );
   var
     lcod : string;
@@ -3390,6 +3447,7 @@ procedure TDBInicio.CarregaEmpresaSelecionada( const pCod : string );
     CarregarParametrosNFCe;
 
   end;
+{$endif}
 
 procedure TDBInicio.CarregaParametrosNFSe;
   begin
@@ -3519,7 +3577,7 @@ procedure TDBInicio.cbConfigCloseUp( Sender : TObject );
     GetBancoConexao( BancoConexao );
     IniciaDBFireDAC( FDACConn );
     IniciaDB( MainDB );
-    CarregaComboEmpresas;
+    {$ifdef SISTEMA}CarregaComboEmpresas;{$endif}
   end;
 
 procedure TDBInicio.CbEmpresaClick( Sender : TObject );
@@ -3544,6 +3602,7 @@ procedure TDBInicio.CEmpresaExit( Sender : TObject );
       CbEmpresaClick( nil );
   end;
 
+{$ifdef SISTEMA}
 procedure TDBInicio.Validacao;
 {$IFDEF ADJUTOR}
   var
@@ -3660,6 +3719,7 @@ procedure TDBInicio.Validacao;
         RetornaNull( Criptografa( DateToStr( date ) ) ) );
 {$ENDIF}
   end;
+{$endif}
 
 procedure TDBInicio.ValidaOnline(
   const pCnpj        : String;

@@ -1764,6 +1764,7 @@ type
         Function RetornaCodigo(wNomeProcedure:String):Integer;
         procedure BeginTran;
         procedure CommitTran;
+        // compatibilizar tSqlClientDataSet via rtti
   end;
 
 var

@@ -382,6 +382,7 @@ type
      wNumeroRegistro,
      wNossoNumero,
      wQtdeDuplicatas: Integer;
+     wARQUIVO_LIMPAR,
      wEndereco,
      wBairro,
      wCep,
@@ -1772,26 +1773,29 @@ var
 begin
   arquivo := TStringList.Create;
   extensao := TStringList.Create;
-  if FileExists(FileArqSalvar.FileName) then
+//  if FileExists(FileArqSalvar.FileName) then
+  if FileExists(wARQUIVO_LIMPAR) then
   begin
-    a := ExtractFileName(FileArqSalvar.FileName);
+    a := ExtractFileName(wARQUIVO_LIMPAR);
     a := a.Substring(0, Length(a) -4);
-    e := ExtractFileExt(FileArqSalvar.FileName);
-    p := ExtractFilePath(FileArqSalvar.FileName);
+    e := ExtractFileExt(wARQUIVO_LIMPAR);
+    p := ExtractFilePath(wARQUIVO_LIMPAR);
     arquivo.Add(a);
     extensao.Add(e);
   end
   else
-    for Path in TDirectory.GetFiles(FileArqSalvar.FileName)  do
+    // for Path in TDirectory.GetFiles(FileArqSalvar.FileName)  do
+    for Path in TDirectory.GetFiles(wARQUIVO_LIMPAR)  do
     begin
       a := ExtractFileName(path);
       a := a.Substring(0, Length(a) -4);
       e := ExtractFileExt(path);
-      p := FileArqSalvar.FileName;
+      p := ExtractFilePath(wARQUIVO_LIMPAR);
       arquivo.Add(a);
       extensao.Add(e);
     end;
 
+  FileArqSalvar.FileName := wARQUIVO_LIMPAR;
   for j := 0 to arquivo.Count -1  do
   begin
 
@@ -3371,7 +3375,7 @@ begin
 
          end;
       end;
-     ACBrBoleto1.GerarRemessa(wSEQ_REMESSA);
+     wARQUIVO_LIMPAR := ACBrBoleto1.GerarRemessa(wSEQ_REMESSA);
      except on E:EDataBaseError do
        begin
           //beep;

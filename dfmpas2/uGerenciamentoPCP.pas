@@ -11,7 +11,23 @@ uses
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls,uProducaoDAO, cxGridBandedTableView, cxGridDBBandedTableView,
   cxProgressBar,cxGridDBDataDefinitions, uselproduto, uEmpenharLote, BaseDbEstoqueForm, uconclusaoOP, ppDB, ppDBPipe, frxDBSet, ppParameter, ppDesignLayer, ppCtrls, ppBands, ppStrtch, ppMemo, ppVar,
   ppPrnabl, ppClass, ppCache, ppComm, ppRelatv, ppProd, ppReport, cxExtEditRepositoryItems, Vcl.Mask, JvExMask, JvToolEdit, cxPCdxBarPopupMenu, cxPC, System.ImageList, Vcl.ImgList,
-  uInfLote, frxExportXLSX, frxExportPDF, Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr ;
+  uInfLote, frxExportXLSX, frxExportPDF, Data.FMTBcd, Datasnap.DBClient, Datasnap.Provider, Data.SqlExpr,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue,
+  cxDataControllerConditionalFormattingRulesManagerDialog, frxExportBaseDialog ;
 
 type
   TfrmGerenciamentoPCP = class(TfrmBaseDBPesquisaFDAC)
@@ -925,7 +941,7 @@ var
 
 implementation
 
-uses uteis, InicioDB, uvinculandoServico, Animacao, RWFunc, uPCPObservacaoIOP,
+uses uteis, InicioDB, uvinculandoServico, Animacao, RWFunc, uPCPObservacaoIOP, uSelecionaAlmoxarifado,
      uRequisicaoMaterial, uRequisicaoMaterialPesq, uPCPInformaFornecedor;
 {$R *.dfm}
 
@@ -1500,7 +1516,7 @@ end;
 
 procedure TfrmGerenciamentoPCP.btnNovoClick(Sender: TObject);
 var dep_codigo : integer;
-
+    almoxarifado: string;
 begin
   inherited;
 
@@ -1536,6 +1552,49 @@ begin
     end;
     cdsMateriaPrima.First;
   end;
+
+
+  if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
+  begin
+    ExecSQL('RECREATE TABLE PCP_TEMP (PRD_CODIGO VARCHAR(5), PRD_REFER VARCHAR(20), AMX_CODIGO VARCHAR(4) ) ' );
+    cdsMateriaPrima.First;
+    while not cdsMateriaPrima.eof do
+    begin
+
+      OpenAux4(' SELECT fi.AMX_CODIGO, op.CLI_CODIGO FROM ORDEMPRODUCAO op ' +
+                ' JOIN ITEM_ORDEMPRODUCAO iop ON (iop.OPR_CODIGO = op.OPR_CODIGO ) ' +
+                ' JOIN PRD0000 pr ON (pr.PRD_CODIGO = iop.PRD_CODIGO) ' +
+                ' LEFT JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER) ' +
+                ' LEFT JOIN FTC_IT01 fi ON ft.PRD_REFER = fi.PRD_REFER ' +
+                ' WHERE iop.IOP_CODIGO = ' + cdsBuscaIOP_CODIGO.AsString +
+                ' AND fi.PRD_REFER_ITENS = ' + QuotedStr(cdsMateriaPrimaPRD_REFER.AsString)
+                );
+      almoxarifado :=  BuscaUmDadoSqlAsString('SELECT a.AMX_CODIGO, A.AMX_CNPJ_PART  FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(qAux4.FieldByName('CLI_CODIGO').AsString) + ' ) ' );
+      if frmSelecionaAlmoxarifado = nil then
+       frmSelecionaAlmoxarifado := TfrmSelecionaAlmoxarifado.Create(Application);
+      frmSelecionaAlmoxarifado.cbAlmoxarifado.idRetorno := almoxarifado;
+      frmSelecionaAlmoxarifado.prd_codigo := cdsMateriaPrimaPRD_CODIGO.AsString;
+      frmSelecionaAlmoxarifado.lbAtencao.Caption := 'ATENÇÂO!!! ' + cdsMateriaPrimaPRD_REFER.AsString + ' - ' + BuscaUmDadoSqlAsString('SELECT PRD_DESCRI FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(cdsMateriaPrimaPRD_REFER.AsString) );
+      frmSelecionaAlmoxarifado.ShowModal;
+      if frmSelecionaAlmoxarifado.ModalResult = mrOk then
+      begin
+        almoxarifado := frmSelecionaAlmoxarifado.cbAlmoxarifado.idRetorno;
+        ExecSql('INSERT INTO PCP_TEMP VALUES (' +
+                  QuotedStr(cdsMateriaPrimaPRD_CODIGO.AsString)  +  ',' +
+                  QuotedStr(cdsMateriaPrimaPRD_REFER.AsString)  + ',' +
+                  QuotedStr(almoxarifado)  +
+                ')'
+               );
+      end
+      else
+        Abort;
+
+      cdsMateriaPrima.Next;
+
+    end;
+  end;
+
+  cdsMateriaPrima.First;
 
    try
       TSpeedButton(sender).Enabled := False;

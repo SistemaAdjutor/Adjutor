@@ -3,8 +3,8 @@ object FrmMenu: TFrmMenu
   Top = 115
   BorderWidth = 1
   Caption = 'Adjutor - Sistema de Gest'#227'o Empresarial'
-  ClientHeight = 400
-  ClientWidth = 1340
+  ClientHeight = 394
+  ClientWidth = 1134
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clBlack
@@ -22,15 +22,15 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   DesignSize = (
-    1340
-    400)
+    1134
+    394)
   PixelsPerInch = 96
   TextHeight = 14
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1340
-    Height = 361
+    Width = 1134
+    Height = 355
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676596260200FFD8FFE000104A46494600010101006000
@@ -4552,7 +4552,7 @@ object FrmMenu: TFrmMenu
   end
   object imgLogoNovi: TImage
     Left = 32
-    Top = 338
+    Top = 352
     Width = 249
     Height = 83
     Anchors = [akLeft, akBottom]
@@ -6902,7 +6902,7 @@ object FrmMenu: TFrmMenu
   object imgSuporte: TImage
     AlignWithMargins = True
     Left = 956
-    Top = 256
+    Top = 270
     Width = 128
     Height = 139
     Anchors = [akLeft, akBottom]
@@ -7697,8 +7697,8 @@ object FrmMenu: TFrmMenu
   end
   object Status: TStatusBar
     Left = 0
-    Top = 383
-    Width = 1340
+    Top = 377
+    Width = 1134
     Height = 17
     Panels = <
       item
@@ -7711,20 +7711,16 @@ object FrmMenu: TFrmMenu
       end>
     ParentFont = True
     UseSystemFont = False
-    ExplicitTop = 385
-    ExplicitWidth = 1002
   end
   object Pan_Versao: TPanel
     Left = 0
-    Top = 361
-    Width = 1340
+    Top = 355
+    Width = 1134
     Height = 22
     Align = alBottom
     BevelOuter = bvNone
     Color = 12615680
     TabOrder = 1
-    ExplicitTop = 363
-    ExplicitWidth = 1002
     object RxLEmpresa: TJvLabel
       Left = 668
       Top = 2
@@ -9038,7 +9034,7 @@ object FrmMenu: TFrmMenu
     About = 'Renew Inform'#225'tica Ltda.'
     ConexaoBanco = DataCadastros.SQLConnection1
     MultiEmpresa = True
-    Left = 320
+    Left = 336
     Top = 76
   end
   object IdHTTP1: TIdHTTP
@@ -9074,7 +9070,7 @@ object FrmMenu: TFrmMenu
     Enabled = False
     Interval = 30000
     OnTimer = TimerbakcupTimer
-    Left = 488
+    Left = 496
     Top = 192
   end
 end

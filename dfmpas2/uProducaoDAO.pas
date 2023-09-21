@@ -993,13 +993,7 @@ begin
    begin
      if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
      begin
-       almoxarifado :=  BuscaUmDadoSqlAsString('SELECT a.AMX_CODIGO, A.AMX_CNPJ_PART  FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(qAux4.FieldByName('CLI_CODIGO').AsString) + ' ) ' );
-       if frmSelecionaAlmoxarifado = nil then
-         frmSelecionaAlmoxarifado := TfrmSelecionaAlmoxarifado.Create(Application);
-       frmSelecionaAlmoxarifado.cbAlmoxarifado.idRetorno := almoxarifado;
-       frmSelecionaAlmoxarifado.ShowModal;
-       if frmSelecionaAlmoxarifado.ModalResult = mrOk then
-        almoxarifado := frmSelecionaAlmoxarifado.cbAlmoxarifado.idRetorno;
+       almoxarifado :=  BuscaUmDadoSqlAsString('SELECT AMX_CODIGO FROM PCP_TEMP WHERE PRD_CODIGO =  ' + QuotedStr(PRD_CODIGO) );
      end
      else
        almoxarifado := iif(qAux4.FieldByName('AMX_CODIGO').AsString <> '' , qAux4.FieldByName('AMX_CODIGO').AsString, DBInicio.empresa.PMT_AMX_PRODUCAO_SAIDA );

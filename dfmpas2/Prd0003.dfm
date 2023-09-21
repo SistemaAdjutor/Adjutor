@@ -4,8 +4,8 @@ inherited FormProdTipo: TFormProdTipo
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Tipo do Produto'
-  ClientHeight = 450
-  ClientWidth = 908
+  ClientHeight = 453
+  ClientWidth = 828
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   FormStyle = fsStayOnTop
@@ -14,8 +14,8 @@ inherited FormProdTipo: TFormProdTipo
   Position = poDesktopCenter
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitWidth = 914
-  ExplicitHeight = 475
+  ExplicitWidth = 834
+  ExplicitHeight = 482
   PixelsPerInch = 96
   TextHeight = 14
   object Label1: TLabel [0]
@@ -585,26 +585,24 @@ inherited FormProdTipo: TFormProdTipo
   end
   inherited coCalcula: TACBrCalculadora
     CalcLeft = 835
-    Left = 1176
-    Top = 184
+    Left = 344
+    Top = 88
   end
   inherited ACBrEnterTab1: TACBrEnterTab
-    Left = 1048
-    Top = 72
+    Left = 208
+    Top = 88
   end
   inherited DBConn: TSQLConnection
-    Left = 1120
-    Top = 185
+    Left = 280
+    Top = 89
   end
-  object SQLCdsRelPrdTipo: TSqlClientDataSet
+  object SQLCdsRelPrdTipo: TSqlClientDataSet [23]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'select * from PRD_TIPO ORDER BY PTI_DESCRI'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select * from PRD_TIPO ORDER BY PTI_DESCRI'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -629,23 +627,24 @@ inherited FormProdTipo: TFormProdTipo
       Size = 2
     end
   end
-  object DsPrdTipo: TDataSource
+  object DsPrdTipo: TDataSource [24]
     DataSet = CdsPrdTipo
     Left = 664
     Top = 216
   end
-  object ppDBPrdTipo: TppDBPipeline
+  object ppDBPrdTipo: TppDBPipeline [25]
     DataSource = dsSQLCdsRelPrdTipo
     UserName = 'DBPrdTipo'
     Left = 736
     Top = 8
   end
-  object ppRPRelTipoProd01: TppReport
+  object ppRPRelTipoProd01: TppReport [26]
     AutoStop = False
     DataPipeline = ppDBPrdTipo
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -662,6 +661,14 @@ inherited FormProdTipo: TFormProdTipo
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -671,22 +678,34 @@ inherited FormProdTipo: TFormProdTipo
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -694,13 +713,26 @@ inherited FormProdTipo: TFormProdTipo
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 744
     Top = 64
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPrdTipo'
     object pp00HeaderBand2: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 15346
       mmPrintPosition = 0
@@ -708,6 +740,7 @@ inherited FormProdTipo: TFormProdTipo
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -721,13 +754,15 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3246
         mmLeft = 0
@@ -741,13 +776,15 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -761,13 +798,15 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -780,6 +819,7 @@ inherited FormProdTipo: TFormProdTipo
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -793,6 +833,7 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -813,6 +854,7 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -833,13 +875,15 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'COD'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3246
         mmLeft = 0
@@ -853,13 +897,15 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESCRI'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3246
         mmLeft = 9260
@@ -872,6 +918,7 @@ inherited FormProdTipo: TFormProdTipo
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -882,8 +929,7 @@ inherited FormProdTipo: TFormProdTipo
       end
     end
     object pp00DetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -893,6 +939,7 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_CODIGO'
         DataPipeline = ppDBPrdTipo
         Font.Charset = DEFAULT_CHARSET
@@ -916,6 +963,7 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_DESCRI'
         DataPipeline = ppDBPrdTipo
         Font.Charset = DEFAULT_CHARSET
@@ -935,7 +983,7 @@ inherited FormProdTipo: TFormProdTipo
       end
     end
     object pp00SummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -943,6 +991,7 @@ inherited FormProdTipo: TFormProdTipo
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -956,13 +1005,15 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Tipos de Produtos Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3246
         mmLeft = 0
@@ -976,6 +1027,7 @@ inherited FormProdTipo: TFormProdTipo
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBPrdTipo
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -994,7 +1046,6 @@ inherited FormProdTipo: TFormProdTipo
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {00}
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
@@ -1006,20 +1057,18 @@ inherited FormProdTipo: TFormProdTipo
     object ppParameterList1: TppParameterList
     end
   end
-  object dsSpedTipo: TDataSource
+  object dsSpedTipo: TDataSource [27]
     DataSet = CdsSpedTipo
     Left = 697
     Top = 363
   end
-  object CdsSpedTipo: TSqlClientDataSet
+  object CdsSpedTipo: TSqlClientDataSet [28]
     Aggregates = <>
-    Connection = DBConn
     DataSet.CommandText = 'select * from SPED_TIPOITEM'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select * from SPED_TIPOITEM'
-    DBConnection = DBConn
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1042,12 +1091,11 @@ inherited FormProdTipo: TFormProdTipo
       Size = 3
     end
   end
-  object SqlPrdTipo: TSQLQuery
+  object SqlPrdTipo: TSQLQuery [29]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
       'select * from PRD_TIPO')
-    SQLConnection = DBConn
     Left = 441
     Top = 216
     object SqlPrdTipoEMP_CODIGO: TStringField
@@ -1144,14 +1192,14 @@ inherited FormProdTipo: TFormProdTipo
       Size = 5
     end
   end
-  object DspPrdTipo: TDataSetProvider
+  object DspPrdTipo: TDataSetProvider [30]
     DataSet = SqlPrdTipo
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 516
     Top = 217
   end
-  object CdsPrdTipo: TClientDataSet
+  object CdsPrdTipo: TClientDataSet [31]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
@@ -1264,7 +1312,7 @@ inherited FormProdTipo: TFormProdTipo
       Size = 5
     end
   end
-  object dsSQLCdsRelPrdTipo: TDataSource
+  object dsSQLCdsRelPrdTipo: TDataSource [32]
     DataSet = SQLCdsRelPrdTipo
     Left = 568
     Top = 64

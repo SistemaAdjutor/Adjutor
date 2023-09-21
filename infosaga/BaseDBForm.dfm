@@ -4,8 +4,8 @@ inherited frmBaseDB: TfrmBaseDB
   Caption = 'frmBaseDB'
   ClientHeight = 256
   ClientWidth = 542
-  ExplicitWidth = 550
-  ExplicitHeight = 283
+  ExplicitWidth = 558
+  ExplicitHeight = 295
   PixelsPerInch = 96
   TextHeight = 13
   inherited coCalcula: TACBrCalculadora

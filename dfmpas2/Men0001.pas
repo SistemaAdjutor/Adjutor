@@ -552,6 +552,7 @@ type
     procedure FichadecontedodeImportao1Click(Sender: TObject);
     procedure Histricodoenviodeemail1Click(Sender: TObject);
     procedure MainMenuChange(Sender: TObject; Source: TMenuItem; Rebuild: Boolean);
+    procedure Button1000Click(Sender: TObject);
   private
     LastActiveForm: String;
     empCodigo: string;
@@ -659,7 +660,8 @@ uses Uteis, Rep0001, Trp0001, Ban0001, Eve0001, Pag0001,
   upesqissmunicipio,uDashboradCom, urlmon, upesqcliorigem,pesqunidade , uDemandaProducao, uGerenciamentoPCP, uNovoAponta, uPrevisaoCompras, uEnvaseProdutos, uPesqArtefato, uPesqArame,
   uPesqClassificacao, uPesqGancho, uPesqAcabamentoSup,PesqCores, upesqtratamento, uPesqTipoMola, uPesqParametrosDaQualidade, uControleDeQualidade, uPesqTipoEmbalagem,
   CustoFabricaCentroCusto, uRentabilidadeOS, uSolicitacaoCompra, uXMLSCOAManaus, uProgramacaoProcessoFabricacao, UCotacaoPesquisa, uCotacaoAutorizacao, uRegularizacaoEstoque,
-  uRequisicaoMaterial, uPesqRequisicaoMaterialOri, uPesqCapacidade, uHistoricoEmail;
+  uRequisicaoMaterial, uPesqRequisicaoMaterialOri, uPesqCapacidade, uHistoricoEmail,
+  testes;
 
 
 
@@ -1838,7 +1840,7 @@ begin
     TrimAppmemorySize;
     if not assigned(FormCliente) then
     begin
-      FormCliente := TFormCliente.Create(Application);
+      FormCliente := TFormCliente.Create(Self);
       FormCliente.BotoesAcesso;
       if (MDIChildCount > 1) then
       begin
@@ -3533,6 +3535,11 @@ begin
   else
     ShowMessage
       ('Não foi possivel fazer o download, verifique sua conexão com a internet!')
+end;
+
+procedure TFrmMenu.Button1000Click(Sender: TObject);
+begin
+  Form3.showmodal;
 end;
 
 procedure TFrmMenu.Button1Click(Sender: tObject);

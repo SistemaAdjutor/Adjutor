@@ -15,7 +15,7 @@ inherited FormCliente: TFormCliente
   Visible = True
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 1758
-  ExplicitHeight = 635
+  ExplicitHeight = 639
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox2: TGroupBox [0]
@@ -67,7 +67,7 @@ inherited FormCliente: TFormCliente
     Top = 42
     Width = 1752
     Height = 538
-    ActivePage = TabSheet1
+    ActivePage = tsVendas
     Align = alClient
     TabOrder = 0
     OnChange = PageClienteChange
@@ -816,8 +816,10 @@ inherited FormCliente: TFormCliente
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               OnMenuPesquisaClick = edTabelaMenuPesquisaClick
             end
             object DBEdit21: TDBEdit
@@ -860,8 +862,10 @@ inherited FormCliente: TFormCliente
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object CbTipoFrete: TComboBox
               Left = 733
@@ -1063,8 +1067,10 @@ inherited FormCliente: TFormCliente
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               Tabela = 'OPE0000_VIEW_PESQUISA'
               CamposCarregar = 'ope_codigo, cfop, OPE_NATUREZA'
               CamposRetornar = 'ope_codigo'
@@ -1266,8 +1272,10 @@ inherited FormCliente: TFormCliente
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
           end
         end
@@ -2198,7 +2206,6 @@ inherited FormCliente: TFormCliente
               Properties.ValueChecked = '1'
               Properties.ValueUnchecked = '0'
               TabOrder = 9
-              Width = 114
             end
             object DBNavigator4: TDBNavigator
               Left = 3
@@ -2619,8 +2626,10 @@ inherited FormCliente: TFormCliente
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object edVendInterno: TSgDbSearchCombo
         Left = 590
@@ -2645,8 +2654,10 @@ inherited FormCliente: TFormCliente
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object DBEdit2: TDBEdit
         Left = 545
@@ -2683,8 +2694,10 @@ inherited FormCliente: TFormCliente
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object dbedCLI_DTNASCIMENTO: TDBDateEdit
         Left = 378
@@ -4979,21 +4992,98 @@ inherited FormCliente: TFormCliente
     Top = 9
   end
   inherited qAux: TSQLQuery
-    SQLConnection = DBInicio.MainDB
     Top = 65525
   end
   object SqlCdsAtiv: TSqlClientDataSet
     Aggregates = <>
+    Connection.DriverName = 'Firebird'
+    Connection.Params.Strings = (
+      'DriverUnit=Data.DBXFirebird'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver250.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
+        'birdDriver250.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
+        'actory,Borland.Data.DbxFirebirdDriver,Version=24.0.0.0,Culture=n' +
+        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxfb.dll'
+      'LibraryNameOsx=libsqlfb.dylib'
+      'VendorLib=fbclient.dll'
+      'VendorLibWin64=fbclient.dll'
+      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
+      'Database=database.fdb'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'LocaleCode=0000'
+      'IsolationLevel=ReadCommitted'
+      'SQLDialect=3'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'TrimChar=False'
+      'BlobSize=-1'
+      'ErrorResourceFile='
+      'RoleName=RoleName'
+      'ServerCharSet='
+      'Trim Char=False')
     DataSet.CommandText = 'select RCL_CODIGO, RCL_ATIVIDADE, EMP_CODIGO from CLI_ATV1'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select RCL_CODIGO, RCL_ATIVIDADE, EMP_CODIGO from CLI_ATV1'
+    DBConnection.DriverName = 'Firebird'
+    DBConnection.Params.Strings = (
+      'DriverUnit=Data.DBXFirebird'
+      
+        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver250.' +
+        'bpl'
+      
+        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
+        'nd.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicK' +
+        'eyToken=91d62ebb5b0d1b1b'
+      
+        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
+        'birdDriver250.bpl'
+      
+        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
+        'actory,Borland.Data.DbxFirebirdDriver,Version=24.0.0.0,Culture=n' +
+        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
+      'GetDriverFunc=getSQLDriverINTERBASE'
+      'LibraryName=dbxfb.dll'
+      'LibraryNameOsx=libsqlfb.dylib'
+      'VendorLib=fbclient.dll'
+      'VendorLibWin64=fbclient.dll'
+      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
+      'Database=database.fdb'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'Role=RoleName'
+      'MaxBlobSize=-1'
+      'LocaleCode=0000'
+      'IsolationLevel=ReadCommitted'
+      'SQLDialect=3'
+      'CommitRetain=False'
+      'WaitOnLocks=True'
+      'TrimChar=False'
+      'BlobSize=-1'
+      'ErrorResourceFile='
+      'RoleName=RoleName'
+      'ServerCharSet='
+      'Trim Char=False')
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 1261
-    Top = 82
+    Left = 562
+    Top = 362
     object SqlCdsAtivRCL_CODIGO: TStringField
       DisplayWidth = 3
       FieldName = 'RCL_CODIGO'
@@ -5595,7 +5685,7 @@ inherited FormCliente: TFormCliente
     end
   end
   object frxVendas: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -5636,12 +5726,16 @@ inherited FormCliente: TFormCliente
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 79.370130000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -5650,11 +5744,13 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Produtos Vendidos')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -5663,11 +5759,13 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
@@ -5676,23 +5774,29 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CLIENTE: ')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -5702,12 +5806,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -5718,12 +5824,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 56.692950000000000000
           Width = 389.291590000000000000
@@ -5733,12 +5841,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -5748,12 +5858,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Pedido')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -5763,12 +5875,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -5778,12 +5892,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'NF-e')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 729.449290000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -5793,12 +5909,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emiss'#227'o')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 880.630490000000000000
           Top = 56.692950000000000000
           Width = 79.370130000000000000
@@ -5808,12 +5926,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Pre'#231'o')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -5823,12 +5943,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Quantidade')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 56.692950000000000000
           Width = 83.149660000000000000
@@ -5838,12 +5960,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor Final')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
@@ -5852,12 +5976,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object frxDBDataset1CLI_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 56.692950000000000000
           Top = 37.795300000000000000
           Width = 990.236860000000000000
@@ -5869,6 +5995,7 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."CLI_CODIGO"]-[frxDBDataset1."CLI_RAZAO"]'
             '')
@@ -5877,6 +6004,7 @@ inherited FormCliente: TFormCliente
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 158.740260000000000000
         Width = 1046.929810000000000000
@@ -5884,6 +6012,7 @@ inherited FormCliente: TFormCliente
         DataSetName = 'frxDBVendas'
         RowCount = 0
         object frxDBVendasPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 109.606370000000000000
           Height = 18.897650000000000000
           DataField = 'PRD_REFER'
@@ -5894,12 +6023,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."PRD_REFER"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBVendasPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Width = 389.291590000000000000
           Height = 18.897650000000000000
@@ -5911,12 +6042,14 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."PRD_DESCRI"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBVendasPED_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -5928,11 +6061,13 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."PED_CODIGO"]')
           ParentFont = False
         end
         object frxDBVendasNF_IT_NOTANUMER: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -5944,11 +6079,13 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."NF_IT_NOTANUMER"]')
           ParentFont = False
         end
         object frxDBVendasNF_NUM_NFE: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -5960,11 +6097,13 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."NF_NUM_NFE"]')
           ParentFont = False
         end
         object frxDBVendasNF_EMISSAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 729.449290000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -5976,11 +6115,13 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."NF_EMISSAO"]')
           ParentFont = False
         end
         object frxDBVendasNF_QTDE: TfrxMemoView
+          AllowVectorExport = True
           Left = 805.039890000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -5992,11 +6133,13 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."NF_QTDE"]')
           ParentFont = False
         end
         object frxDBVendasNF_PRECO: TfrxMemoView
+          AllowVectorExport = True
           Left = 880.630490000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -6008,11 +6151,13 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."NF_PRECO"]')
           ParentFont = False
         end
         object frxDBVendasVALOR_FINAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -6024,6 +6169,7 @@ inherited FormCliente: TFormCliente
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBVendas."VALOR_FINAL"]')
           ParentFont = False
@@ -7713,5 +7859,13 @@ inherited FormCliente: TFormCliente
     SQLConnection = DBConn
     Left = 944
     Top = 436
+  end
+  object SimpleDataSet1: TSimpleDataSet
+    Aggregates = <>
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    Left = 556
+    Top = 427
   end
 end

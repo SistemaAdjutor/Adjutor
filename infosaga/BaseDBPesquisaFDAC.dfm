@@ -3,8 +3,8 @@ inherited frmBaseDBPesquisaFDAC: TfrmBaseDBPesquisaFDAC
   ClientHeight = 461
   ClientWidth = 829
   OnKeyDown = FormKeyDown
-  ExplicitWidth = 837
-  ExplicitHeight = 488
+  ExplicitWidth = 845
+  ExplicitHeight = 500
   PixelsPerInch = 96
   TextHeight = 13
   object pgc1: TPageControl [0]
@@ -562,7 +562,7 @@ inherited frmBaseDBPesquisaFDAC: TfrmBaseDBPesquisaFDAC
     Top = 56
   end
   object frxPadrao: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

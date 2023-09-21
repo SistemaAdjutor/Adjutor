@@ -3,8 +3,8 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
   ClientHeight = 541
   ClientWidth = 885
   WindowState = wsMinimized
-  ExplicitWidth = 893
-  ExplicitHeight = 568
+  ExplicitWidth = 901
+  ExplicitHeight = 580
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
@@ -13,6 +13,8 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
     ExplicitWidth = 885
     ExplicitHeight = 464
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 877
       ExplicitHeight = 436
       inherited pnlControle: TPanel
@@ -731,29 +733,37 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       PrintIfEmpty = False
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 177.637910000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 113.149660000000000000
           Width = 279.685220000000000000
           Height = 26.456710000000000000
+          Frame.Typ = []
         end
         object frxDBQualidadeCQUA_PRDL_LOTE: TfrxMemoView
+          AllowVectorExport = True
           Left = 47.149660000000000000
           Top = 118.948551530000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQUA_PRDL_LOTE"]')
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 8.721992310000000000
           Top = 119.274416150000000000
           Width = 32.852837690000000000
@@ -763,11 +773,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Lote:')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 141.000000000000000000
           Top = 119.274416150000000000
           Width = 69.866752310000000000
@@ -777,21 +789,25 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#186' Ordem:')
           ParentFont = False
         end
         object frxDBQualidadeIOP_NORDEM: TfrxMemoView
+          AllowVectorExport = True
           Left = 215.433210000000000000
           Top = 118.948551530000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."IOP_NORDEM"]')
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.000000000000000000
           Top = 150.826840000000000000
           Width = 75.590600000000000000
@@ -801,11 +817,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 150.826840000000000000
           Width = 68.031540000000000000
@@ -815,11 +833,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 147.165430000000000000
           Height = 30.236240000000000000
@@ -827,6 +847,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftLeft]
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 706.772110000000000000
           Top = 147.165430000000000000
           Height = 30.236240000000000000
@@ -834,6 +855,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftLeft]
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 2.779530000000000000
           Top = 147.165430000000000000
           Width = 702.992580000000000000
@@ -841,16 +863,19 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftTop]
         end
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 196.535433070000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 5.559060000000000000
           Width = 362.834880000000000000
@@ -861,11 +886,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
         end
         object wFrxEndereco: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.567100000000000000
           Top = 23.779530000000000000
           Width = 362.834880000000000000
@@ -876,11 +903,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 40.795300000000000000
           Width = 64.252010000000000000
@@ -891,11 +920,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CEP]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 272.464750000000000000
           Top = 40.795300000000000000
           Width = 188.976500000000000000
@@ -906,11 +937,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE]')
           ParentFont = False
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 462.338900000000000000
           Top = 40.795300000000000000
           Width = 18.897650000000000000
@@ -921,11 +954,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[UF]')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 489.016080000000000000
           Top = 40.795300000000000000
           Width = 79.370130000000000000
@@ -936,11 +971,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FONE]')
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.330860000000000000
           Top = 57.692950000000000000
           Width = 222.992270000000000000
@@ -951,11 +988,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [EMAIL]')
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 488.866420000000000000
           Top = 57.692950000000000000
           Width = 105.826840000000000000
@@ -966,11 +1005,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CNPJ]')
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 451.323130000000000000
           Top = 57.692950000000000000
           Width = 34.015770000000000000
@@ -981,11 +1022,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 606.929500000000000000
           Top = 57.913420000000000000
           Width = 45.354360000000000000
@@ -996,11 +1039,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inscri'#231#227'o:')
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 654.401980000000000000
           Top = 57.692950000000000000
           Width = 60.472480000000000000
@@ -1011,12 +1056,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[INSCR]')
           ParentFont = False
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 590.709030000000000000
           Top = 4.779530000000000000
           Width = 124.724490000000000000
@@ -1026,12 +1073,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Pag. [Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 79.370130000000000000
           Width = 714.331170000000000000
@@ -1039,6 +1088,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftTop]
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 279.685220000000000000
           Top = 83.149660000000000000
           Width = 181.417440000000000000
@@ -1048,11 +1098,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Controle de Qualidade')
           ParentFont = False
         end
         object Line10: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 102.047310000000000000
           Width = 714.331170000000000000
@@ -1062,6 +1114,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 50.574830000000000000
         Top = 257.008040000000000000
         Width = 718.110700000000000000
@@ -1069,6 +1122,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         DataSetName = 'frxDBQualidade'
         RowCount = 0
         object frxDBQualidadePRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 90.708720000000000000
           Height = 18.897650000000000000
@@ -1079,11 +1133,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBQualidadePRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
@@ -1094,11 +1150,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 31.456710000000000000
           Width = 98.267780000000000000
@@ -1108,11 +1166,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Especifica'#231#227'o')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 260.787570000000000000
           Top = 31.456710000000000000
           Width = 75.590600000000000000
@@ -1122,11 +1182,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Resultado')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 366.614410000000000000
           Top = 31.456710000000000000
           Width = 68.031540000000000000
@@ -1136,11 +1198,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'M'#237'nimo')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 449.764070000000000000
           Top = 31.456710000000000000
           Width = 68.031540000000000000
@@ -1150,11 +1214,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'M'#225'ximo')
           ParentFont = False
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = 3.071120000000000000
           Top = 19.763760000000000000
           Width = 702.992580000000000000
@@ -1162,6 +1228,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftTop]
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 707.063700000000000000
           Top = 0.102350000000000000
           Height = 18.897650000000000000
@@ -1169,6 +1236,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftLeft]
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 2.291590000000000000
           Top = 0.322820000000000000
           Height = 18.897650000000000000
@@ -1176,6 +1244,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftLeft]
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 560.913730000000000000
           Top = 20.338590000000000000
           Width = 75.590600000000000000
@@ -1185,12 +1254,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data'
             'Conclus'#227'o')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Top = 49.133890000000000000
           Width = 714.331170000000000000
@@ -1200,6 +1271,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       end
       object DetailData1: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 30.236240000000000000
         Top = 328.819110000000000000
         Width = 718.110700000000000000
@@ -1208,6 +1280,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         DataSetName = 'frxDBQualidade'
         RowCount = 0
         object frxDBQualidadePAR_DESCRICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 249.448980000000000000
@@ -1219,11 +1292,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PAR_DESCRICAO"]')
           ParentFont = False
         end
         object frxDBQualidadeCQUA_RESULTADO: TfrxMemoView
+          AllowVectorExport = True
           Left = 260.787570000000000000
           Top = 3.779530000000000000
           Width = 98.267780000000000000
@@ -1235,11 +1310,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQUA_RESULTADO"]')
           ParentFont = False
         end
         object frxDBQualidadePAR_VALOR_MIN: TfrxMemoView
+          AllowVectorExport = True
           Left = 366.614410000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -1251,11 +1328,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQP_VALOR_MIN"]')
           ParentFont = False
         end
         object frxDBQualidadePAR_VALOR_MAX: TfrxMemoView
+          AllowVectorExport = True
           Left = 449.764070000000000000
           Top = 3.779530000000000000
           Width = 86.929190000000000000
@@ -1267,11 +1346,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQP_VALOR_MAX"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 3.779530000000000000
           Width = 151.181200000000000000
@@ -1283,6 +1364,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[iif(ValidDate(<frxDBQualidade."CQUA_DATA_CONCLUSAO">),<frxDBQua' +
@@ -1292,12 +1374,16 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       end
       object Child1: TfrxChild
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 381.732530000000000000
         Width = 718.110700000000000000
         KeepChild = True
         Stretched = True
+        ToNRows = 0
+        ToNRowsMode = rmCount
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Width = 600.945270000000000000
           Height = 18.897650000000000000
@@ -1307,11 +1393,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQUA_OBSERVACAO"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -1320,11 +1408,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Observa'#231#245'es:')
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Top = 18.897650000000000000
           Width = 714.331170000000000000
@@ -1471,7 +1561,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
     Top = 417
   end
   object frxOP5: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1524,19 +1614,25 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 124.842610000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 63.031540000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 46.354360000000000000
           Top = 64.252010000000000000
           Width = 71.811070000000000000
@@ -1546,11 +1642,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBProdutoOP5."PRD_REFER"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 64.252010000000000000
           Width = 313.700990000000000000
@@ -1560,11 +1658,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBProdutoOP5."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 440.425480000000000000
           Top = 64.252010000000000000
           Width = 102.047310000000000000
@@ -1574,11 +1674,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Qtd. a Produzir/[frxDBProdutoOP5."PRD_UND"]:')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Top = 64.252010000000000000
           Width = 94.488250000000000000
@@ -1588,11 +1690,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fab.: [frxDBProdutoOP5."OPR_EMISSAO"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
@@ -1601,6 +1705,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
@@ -1612,6 +1717,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
             end>
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Top = 45.354360000000000000
           Width = 37.795300000000000000
@@ -1623,17 +1729,21 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Time]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 82.149660000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Top = 105.944960000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
@@ -1649,6 +1759,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 260.787570000000000000
           Top = 105.944960000000000000
           Width = 362.834880000000000000
@@ -1665,6 +1776,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Top = 105.944960000000000000
           Width = 158.740115980000000000
@@ -1681,6 +1793,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 105.944960000000000000
           Width = 94.488250000000000000
@@ -1698,6 +1811,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Top = 64.252010000000000000
           Width = 45.354360000000000000
           Height = 18.897650000000000000
@@ -1714,6 +1828,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 64.252010000000000000
           Width = 68.031540000000000000
@@ -1723,11 +1838,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBProdutoOP5."PRF_QTDE"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Top = 85.929190000000000000
           Width = 721.890230000000000000
           Height = 18.897650000000000000
@@ -1744,18 +1861,23 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 103.047310000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 119.724490000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 544.472790000000000000
           Top = 45.354360000000000000
           Width = 124.724490000000000000
@@ -1765,21 +1887,25 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Emitido em: [Date]')
           ParentFont = False
         end
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 177.637783070000000000
           Height = 60.472480000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 1.779530000000000000
           Width = 362.834880000000000000
@@ -1789,12 +1915,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 304.141930000000000000
           Top = 18.456710000000000000
           Width = 166.299320000000000000
@@ -1804,12 +1932,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Ordem de Produ'#231#227'o / Lote')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Top = 37.795300000000000000
           Width = 154.960585980000000000
@@ -1829,6 +1959,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 204.094620000000000000
         Width = 718.110700000000000000
@@ -1836,6 +1967,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         DataSetName = 'frxDBMateriaPrimaOP5'
         RowCount = 0
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Width = 102.047310000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1850,6 +1982,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 616.063390000000000000
           Width = 102.047310000000000000
           Height = 15.118120000000000000
@@ -1869,6 +2002,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 105.826840000000000000
           Width = 154.960585980000000000
           Height = 15.118120000000000000
@@ -1884,6 +2018,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Width = 347.716615980000000000
           Height = 15.118120000000000000
@@ -1899,14 +2034,17 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Top = 13.338590000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 215.094620000000000000
         Top = 241.889920000000000000
         Width = 718.110700000000000000
@@ -1914,13 +2052,16 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         DataSetName = 'frxDBSoma'
         RowCount = 0
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 17.677180000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 139.842610000000000000
           Height = 15.118120000000000000
@@ -1936,6 +2077,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 574.488560000000000000
           Width = 147.401670000000000000
           Height = 15.118120000000000000
@@ -1955,6 +2097,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 22.338590000000000000
           Width = 718.110700000000000000
@@ -1973,6 +2116,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.779530000000000000
           Top = 195.858380000000000000
           Width = 151.181200000000000000
@@ -1982,11 +2126,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Inicial:_______________')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 196.756030000000000000
           Top = 195.858380000000000000
           Width = 151.181200000000000000
@@ -1996,11 +2142,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Hora Inicial:_______________')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 195.858380000000000000
           Width = 151.181200000000000000
@@ -2010,11 +2158,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Final:_______________')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 560.370440000000000000
           Top = 195.858380000000000000
           Width = 151.181200000000000000
@@ -2024,19 +2174,23 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Hora Final:_______________')
           ParentFont = False
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 189.078850000000000000
           Width = 718.110700000000000000
           Height = 22.677180000000000000
+          Frame.Typ = []
         end
       end
       object MasterData3: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 54.354360000000000000
         Top = 597.165740000000000000
         Width = 718.110700000000000000
@@ -2044,6 +2198,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         DataSetName = 'frxDBQualidade'
         RowCount = 0
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Top = 35.236240000000000000
           Width = 98.267780000000000000
           Height = 18.897650000000000000
@@ -2052,11 +2207,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Especifica'#231#227'o')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 234.330860000000000000
           Top = 35.236240000000000000
           Width = 75.590600000000000000
@@ -2066,11 +2223,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Resultado')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 424.086890000000000000
           Top = 35.236240000000000000
           Width = 68.031540000000000000
@@ -2080,11 +2239,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'M'#237'nimo')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 504.457020000000000000
           Top = 35.236240000000000000
           Width = 68.031540000000000000
@@ -2094,11 +2255,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'M'#225'ximo')
           ParentFont = False
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 4.291590000000000000
           Top = 23.543290000000000000
           Width = 702.992580000000000000
@@ -2106,6 +2269,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftTop]
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.826771653543300000
           Top = 35.456710000000000000
           Width = 117.165430000000000000
@@ -2115,11 +2279,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Conclus'#227'o')
           ParentFont = False
         end
         object Line12: TfrxLineView
+          AllowVectorExport = True
           Left = -1.779530000000000000
           Top = 52.913420000000000000
           Width = 714.331170000000000000
@@ -2127,6 +2293,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftTop]
         end
         object Line18: TfrxLineView
+          AllowVectorExport = True
           Left = 708.480520000000000000
           Top = 0.661410000000000000
           Height = 22.677180000000000000
@@ -2134,6 +2301,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftLeft]
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 0.220470000000000000
           Height = 22.677180000000000000
@@ -2141,6 +2309,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftLeft]
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 3.779530000000000000
           Width = 94.488250000000000000
@@ -2150,11 +2319,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PRD_REFER"]')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 3.779530000000000000
           Width = 559.370440000000000000
@@ -2164,11 +2335,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 332.598640000000000000
           Top = 35.795300000000000000
           Width = 75.590600000000000000
@@ -2178,6 +2351,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Esperado')
           ParentFont = False
@@ -2185,6 +2359,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       end
       object DetailData1: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 52.913420000000000000
         Top = 672.756340000000000000
         Width = 718.110700000000000000
@@ -2192,6 +2367,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         DataSetName = 'frxDBQualidade'
         RowCount = 0
         object frxDBQualidadeCQUA_RESULTADO: TfrxMemoView
+          AllowVectorExport = True
           Left = 234.330708660000000000
           Top = 3.779530000000000000
           Width = 86.929190000000000000
@@ -2203,11 +2379,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQUA_RESULTADO"]')
           ParentFont = False
         end
         object frxDBQualidadePAR_VALOR_MIN: TfrxMemoView
+          AllowVectorExport = True
           Left = 424.062992125984300000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -2219,11 +2397,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQP_VALOR_MIN"]')
           ParentFont = False
         end
         object frxDBQualidadePAR_VALOR_MAX: TfrxMemoView
+          AllowVectorExport = True
           Left = 504.566929133858300000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -2235,11 +2415,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQP_VALOR_MAX"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.827150000000000000
           Top = 3.779530000000000000
           Width = 132.283550000000000000
@@ -2251,6 +2433,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[iif(ValidDate(<frxDBQualidade."CQUA_DATA_CONCLUSAO">),<frxDBQua' +
@@ -2258,6 +2441,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 105.826840000000000000
           Top = 26.456710000000000000
           Width = 600.945270000000000000
@@ -2268,11 +2452,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQUA_OBSERVACAO"]')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 26.456710000000000000
           Width = 94.488250000000000000
@@ -2282,34 +2468,41 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Observa'#231#245'es:')
           ParentFont = False
         end
         object Line13: TfrxLineView
+          AllowVectorExport = True
           Top = 45.354360000000000000
           Width = 714.331170000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Top = 3.779530000000000000
           Width = 226.771800000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PAR_DESCRICAO"]')
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 332.598425200000000000
           Top = 3.779530000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQP_ESPERADO"]')
         end
       end
       object MasterData4: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 94.252010000000000000
         Top = 480.000310000000000000
         Width = 718.110700000000000000
@@ -2317,6 +2510,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         DataSetName = 'frxDBQualidadeCabecalho'
         RowCount = 0
         object Line10: TfrxLineView
+          AllowVectorExport = True
           Left = 4.071120000000000000
           Top = 64.354360000000000000
           Height = 30.236240000000000000
@@ -2324,6 +2518,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftLeft]
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 9.721992310000000000
           Top = 36.124756150000000000
           Width = 32.852837690000000000
@@ -2333,27 +2528,33 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Lote:')
           ParentFont = False
         end
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 4.779530000000000000
           Top = 30.000000000000000000
           Width = 355.275820000000000000
           Height = 26.456710000000000000
+          Frame.Typ = []
         end
         object frxDBQualidadeCQUA_PRDL_LOTE: TfrxMemoView
+          AllowVectorExport = True
           Left = 48.149660000000000000
           Top = 35.798891530000000000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidadeCabecalho."CQUA_PRDL_LOTE"]')
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 179.795300000000000000
           Top = 36.124756150000000000
           Width = 69.866752310000000000
@@ -2363,21 +2564,25 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#186' Ordem:')
           ParentFont = False
         end
         object frxDBQualidadeIOP_NORDEM: TfrxMemoView
+          AllowVectorExport = True
           Left = 254.228510000000000000
           Top = 35.798891530000000000
           Width = 98.267780000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidadeCabecalho."IOP_NORDEM"]')
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.000000000000000000
           Top = 67.677180000000000000
           Width = 75.590600000000000000
@@ -2387,11 +2592,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 114.385900000000000000
           Top = 67.677180000000000000
           Width = 68.031540000000000000
@@ -2401,11 +2608,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
         end
         object Line14: TfrxLineView
+          AllowVectorExport = True
           Left = 707.772110000000000000
           Top = 64.015770000000000000
           Height = 30.236240000000000000
@@ -2413,6 +2622,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftLeft]
         end
         object Line15: TfrxLineView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 64.015770000000000000
           Width = 702.992580000000000000
@@ -2420,6 +2630,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = [ftTop]
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 280.685220000000000000
           Width = 181.417440000000000000
           Height = 18.897650000000000000
@@ -2428,11 +2639,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Controle de Qualidade')
           ParentFont = False
         end
         object Line16: TfrxLineView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Top = 18.897650000000000000
           Width = 714.331170000000000000
@@ -2930,7 +3143,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
     end
   end
   object frxCertificadoQualidade: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2972,35 +3185,45 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       PrintIfEmpty = False
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 295.362400000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Shape3: TfrxShapeView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 269.126160000000000000
           Width = 207.874150000000000000
           Height = 26.456710000000000000
+          Frame.Typ = []
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Left = 272.126160000000000000
           Top = 269.126160000000000000
           Width = 234.330860000000000000
           Height = 26.456710000000000000
+          Frame.Typ = []
         end
         object frxDBQualidadeCQUA_PRDL_LOTE: TfrxMemoView
+          AllowVectorExport = True
           Left = 561.842920000000000000
           Top = 131.287141530000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CQUA_PRDL_LOTE"]')
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 522.076662310000000000
           Top = 131.450073840000000000
           Width = 36.632367690000000000
@@ -3010,21 +3233,25 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Lote:')
           ParentFont = False
         end
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 196.535433070000000000
           Height = 98.267780000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 244.551330000000000000
           Top = 22.559060000000000000
           Width = 468.661720000000000000
@@ -3035,11 +3262,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
         end
         object wFrxEndereco: TfrxMemoView
+          AllowVectorExport = True
           Left = 244.567100000000000000
           Top = 47.559060000000000000
           Width = 468.661720000000000000
@@ -3050,11 +3279,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO] | [BAIRRO]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 244.551330000000000000
           Top = 64.133890000000000000
           Width = 468.661720000000000000
@@ -3064,6 +3295,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'CEP. [CEP] | [CIDADE] | [UF] | PABX [FONE]')
           ParentFont = False
@@ -3078,6 +3310,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
             end>
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Top = 208.094620000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -3086,12 +3319,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CERTIFICADO DE AN'#193'LISE')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 23.354360000000000000
           Top = 109.606370000000000000
           Width = 55.530017690000000000
@@ -3101,31 +3336,37 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cliente:')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.826840000000000000
           Top = 109.443437690000000000
           Width = 328.819110000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."CLI_RAZAO"]')
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 553.679987690000000000
           Top = 109.443437690000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."NF_NOTANUMBER"]')
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 522.076662310000000000
           Top = 109.606370000000000000
           Width = 32.852837690000000000
@@ -3135,23 +3376,27 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'NF.:')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 579.679987690000000000
           Top = 152.181200000000000000
           Width = 128.504020000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[frxDBQualidade."IOP_QUANTIDADE"] [frxDBQualidade."PRD_UNIDESCRI' +
               '"]')
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 522.076662310000000000
           Top = 152.344132310000000000
           Width = 55.530017690000000000
@@ -3161,11 +3406,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Volume:')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 83.826840000000000000
           Top = 131.287141530000000000
           Width = 419.527830000000000000
@@ -3177,11 +3424,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 23.354360000000000000
           Top = 131.450073840000000000
           Width = 59.309547690000000000
@@ -3191,11 +3440,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Produto:')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.826840000000000000
           Top = 152.181200000000000000
           Width = 105.826840000000000000
@@ -3207,11 +3458,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PRDL_DATA_FABRICACAO"]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 23.354360000000000000
           Top = 152.344132310000000000
           Width = 78.207197690000000000
@@ -3221,11 +3474,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fabrica'#231#227'o:')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 317.480520000000000000
           Top = 152.181200000000000000
           Width = 166.299320000000000000
@@ -3237,11 +3492,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PRDL_DATA_VALIDADE"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 240.330860000000000000
           Top = 152.344132310000000000
           Width = 74.427667690000000000
@@ -3251,12 +3508,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Validade:')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 514.016231340000000000
           Top = 272.905690000000000000
           Width = 196.535560000000000000
@@ -3266,12 +3525,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'RESULTADOS')
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 279.685371340000000000
           Top = 272.905690000000000000
           Width = 219.212740000000000000
@@ -3281,12 +3542,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PAR'#194'METROS')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 37.795300000000000000
           Top = 272.905690000000000000
           Width = 98.267780000000000000
@@ -3296,19 +3559,23 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'AN'#193'LISE')
           ParentFont = False
         end
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Top = 269.126160000000000000
           Width = 238.110390000000000000
           Height = 26.456710000000000000
+          Frame.Typ = []
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 374.173470000000000000
         Width = 718.110700000000000000
@@ -3316,21 +3583,28 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         DataSetName = 'frxDBQualidade'
         RowCount = 0
         object Shape6: TfrxShapeView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Width = 207.874150000000000000
           Height = 26.456710000000000000
+          Frame.Typ = []
         end
         object Shape5: TfrxShapeView
+          AllowVectorExport = True
           Left = 272.126160000000000000
           Width = 234.330860000000000000
           Height = 26.456710000000000000
+          Frame.Typ = []
         end
         object Shape4: TfrxShapeView
+          AllowVectorExport = True
           Left = 34.015770000000000000
           Width = 238.110390000000000000
           Height = 26.456710000000000000
+          Frame.Typ = []
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 514.016080000000000000
           Top = 3.779530000000000000
           Width = 196.535560000000000000
@@ -3342,12 +3616,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBQualidade."CQUA_RESULTADO"]')
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 279.685156540000000000
           Top = 3.779530000000000000
           Width = 222.992270000000000000
@@ -3357,12 +3633,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBQualidade."CQP_ESPERADO"]')
           ParentFont = False
         end
         object frxDBQualidadePAR_DESCRICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 37.795300000000000000
           Top = 3.779530000000000000
           Width = 215.433210000000000000
@@ -3374,6 +3652,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBQualidade."PAR_DESCRICAO"]')
           ParentFont = False
@@ -3381,10 +3660,12 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 249.448980000000000000
         Top = 461.102660000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 119.782027690000000000
           Height = 16.571785380000000000
@@ -3393,12 +3674,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Observa'#231#245'es:')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 128.504020000000000000
           Width = 570.709030000000000000
           Height = 18.897650000000000000
@@ -3409,6 +3692,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Os dados neste documento foram preparados conforme procedimento ' +
@@ -3416,6 +3700,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 77.590600000000000000
           Width = 510.236550000000000000
@@ -3425,6 +3710,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE], [HOJE]')
           ParentFont = False
@@ -3437,6 +3723,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
             end>
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 151.181200000000000000
           Top = 139.842610000000000000
           Width = 195.372627690000000000
@@ -3446,12 +3733,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Qu'#237'mico Respons'#225'vel:')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 350.275820000000000000
           Top = 139.842610000000000000
           Width = 188.976500000000000000
@@ -3463,11 +3752,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Ruy Carlos Guimar'#227'es')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.448980000000000000
           Top = 158.740260000000000000
           Width = 44.191427690000000000
@@ -3477,12 +3768,14 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'CRQ:')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 298.362400000000000000
           Top = 158.740260000000000000
           Width = 188.976500000000000000
@@ -3494,11 +3787,13 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '09400719 - IX Regi'#227'o')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 14.779530000000000000
           Top = 18.897650000000000000
           Width = 570.709030000000000000
@@ -3510,6 +3805,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'amostragem, na data de produ'#231#227'o.')
           ParentFont = False

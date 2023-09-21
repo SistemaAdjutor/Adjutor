@@ -10,8 +10,9 @@ inherited FrmPedidoItem: TFrmPedidoItem
   Position = poDesigned
   OnCloseQuery = FormCloseQuery
   OnResize = FormResize
-  ExplicitWidth = 1378
-  ExplicitHeight = 757
+  ExplicitTop = -99
+  ExplicitWidth = 1386
+  ExplicitHeight = 769
   PixelsPerInch = 96
   TextHeight = 14
   object pAcoes: TPanel [0]
@@ -620,8 +621,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               Tabela = 'ALMOX0000'
               CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
               CamposRetornar = 'amx_CODIGO'
@@ -685,8 +688,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
             end
             object pnVerba: TPanel
@@ -1514,17 +1519,15 @@ inherited FrmPedidoItem: TFrmPedidoItem
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
           end
           object tsDiretivas: TTabSheet
             Caption = 'Diretivas'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object RxDBGrid1: TDBGrid
               Left = 0
               Top = 14
@@ -2284,7 +2287,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
         OnExit = cbComboBuscaExit
         OnkeyUp = cbReferenciakeyUp
         CharCase = ecUpperCase
-        onClick = cbReferenciaClick
+        OnClick = cbReferenciaClick
         LookupSelect = 
           'PD.PRD_CODIGO, PD.PRD_REFER, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.' +
           'PRD_PRODSERV, PD.PRD_UND, T2.LIN_DESCRI, PD.PRD_PVENDA, PRD_EMBA' +
@@ -2313,8 +2316,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = True
+        LimparCampoAoSair = True
       end
       object cbDescricao: TSgDbSearchCombo
         Left = 125
@@ -2324,10 +2329,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
         TabOrder = 2
         OnExit = cbComboBuscaExit
         OnChange = cbMedInternoChange
-        OnkeyDown = cbDescricaokeyDown
+        OnKeyDown = cbDescricaokeyDown
         OnKeyPress = cbDescricaoKeyPress
         CharCase = ecUpperCase
-        onClick = cbDescricaoClick
+        OnClick = cbDescricaoClick
         LookupSelect = 
           'PD.PRD_CODIGO, PD.PRD_REFER, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.' +
           'PRD_PRODSERV, PD.PRD_UND, T2.LIN_DESCRI, 0.0 AS PRD_PVENDA'
@@ -2355,8 +2360,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = True
+        LimparCampoAoSair = True
       end
       object cbBarras: TSgDbSearchCombo
         Left = 475
@@ -2366,7 +2373,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
         TabOrder = 3
         OnExit = cbComboBuscaExit
         CharCase = ecUpperCase
-        onClick = cbBarrasClick
+        OnClick = cbBarrasClick
         LookupSelect = 
           'PD.PRD_CODIGO, PD.PRD_REFER, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.' +
           'PRD_PRODSERV, PD.PRD_UND, T2.LIN_DESCRI, 0.0 AS PRD_PVENDA'
@@ -2394,8 +2401,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = True
+        LimparCampoAoSair = True
       end
       object cbCodigos: TSgDbSearchCombo
         Left = 600
@@ -2405,7 +2414,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
         TabOrder = 4
         OnExit = cbComboBuscaExit
         CharCase = ecUpperCase
-        onClick = cbCodigosClick
+        OnClick = cbCodigosClick
         LookupSelect = 
           'distinct PD.PRD_CODIGO, PD.PRD_REFER, PD.PRD_DESCRI, PD.PRD_CODB' +
           'ARRA, PD.PRD_PRODSERV, PD.PRD_UND, T3.PRDC_REFERENCIA , T5.PRDCO' +
@@ -2435,8 +2444,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = True
+        LimparCampoAoSair = True
       end
       object cbEndereco: TSgDbSearchCombo
         Left = 803
@@ -2445,7 +2456,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
         Height = 22
         TabOrder = 5
         CharCase = ecUpperCase
-        onClick = cbEnderecoClick
+        OnClick = cbEnderecoClick
         LookupSelect = 
           'PD.PRD_CODIGO, PD.PRD_REFER, t4.PRDE_ENDERECO, PD.PRD_DESCRI, PD' +
           '.PRD_CODBARRA, PD.PRD_PRODSERV, PD.PRD_UND, T2.LIN_DESCRI    , 0' +
@@ -2474,8 +2485,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = True
+        LimparCampoAoSair = True
       end
     end
     object cbMedInterno: TSgDbSearchCombo
@@ -2517,8 +2530,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = True
+      LimparCampoAoSair = True
     end
     object cbMedExterno: TSgDbSearchCombo
       Left = 224
@@ -2558,8 +2573,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = True
+      LimparCampoAoSair = True
     end
     object cbMedAltura1: TSgDbSearchCombo
       Left = 324
@@ -2599,8 +2616,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = True
+      LimparCampoAoSair = True
     end
     object cbMedAltura2: TSgDbSearchCombo
       Left = 422
@@ -2640,8 +2659,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = True
+      LimparCampoAoSair = True
     end
     object EdVariacao: TEdit
       Left = 535
@@ -3025,8 +3046,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'PRD_DIRETIVA'
         CamposCarregar = 'PRDD_DESCRICAO'
         CamposRetornar = 'PRDD_REGISTRO'
@@ -3124,8 +3147,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object CurSaldoLote: TJvValidateEdit
         Left = 424
@@ -3164,8 +3189,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object cbCor: TSgDbSearchCombo
       Left = 537
@@ -3190,8 +3217,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object CbGrade: TComboBoxRw
       Left = 55
@@ -3214,8 +3243,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'prd_grade'
       CamposCarregar = 'prg_descricao'
       CamposRetornar = 'PRG_REGISTRO'
@@ -3335,7 +3366,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
     Left = 1349
     Top = 202
     Bitmap = {
-      494C010102000500040010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500080010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

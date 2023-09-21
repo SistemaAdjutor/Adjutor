@@ -30,7 +30,7 @@ var
 
 implementation
 
-Uses InicioDB,  Men0001, Uteis;
+Uses InicioDB {$ifdef SISTEMA},  Men0001{$ENDIF}, Uteis;
 
 {$R *.dfm}
 
@@ -49,12 +49,13 @@ begin
 
   DBConn :=DBInicio.maindb;
   SqlConnection:=DBConn;
-
+  {$ifdef SISTEMA}
   if not assigned( dbInicio ) then
      iniciodb.SplashStart(False);
    if not DBConn.Connected then
       DBInicio.IniciaDB( dbConn ) ;
   FormatarCamposTabelas ;
+  {$endif}
  // self.Constraints.MaxHeight := FrmMenu.height - 100
 end;
 
