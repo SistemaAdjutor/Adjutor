@@ -6,7 +6,8 @@ uses
    Prd0006, Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, BaseDbEstoqueForm,
   Dialogs, StdCtrls, Buttons, SqlExpr,Provider, DB, DBClient, DBLocal,
   DBLocalS, Grids, DBGrids, {uProcedimentos,} Mask,  rxToolEdit, DBCtrls,
-  Data.DBXFirebird, SimpleDS, Iniciodb, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.ExtCtrls, JvExMask, JvToolEdit, SgDbSeachComboUnit, RxCurrEdit, Vcl.Menus;
+  Data.DBXFirebird, SimpleDS, Iniciodb, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.ExtCtrls, JvExMask, JvToolEdit, SgDbSeachComboUnit, RxCurrEdit, Vcl.Menus,
+  frxClass, frxDBSet;
 
 type
   TFrmIndustrializacaoPorKit = class(TfrmBaseDbEstoque)
@@ -70,6 +71,16 @@ type
     SqlCdsNotasDisponiveisOPE_CODIGO_RETORNO: TStringField;
     SqlCdsNotasDisponiveisENF_CFOP_RETORNO: TStringField;
     AlterarCFOPdeRetorno1: TMenuItem;
+    Label3: TLabel;
+    lbNItensFichaTecnica: TLabel;
+    Label4: TLabel;
+    lbNItensSelecionados: TLabel;
+    SqlCdsNotasDisponiveisENF_IT_DET_NITEM: TIntegerField;
+    cbSelecionados: TCheckBox;
+    BitBtn1: TBitBtn;
+    frxNotasDisponiveis: TfrxReport;
+    frxDBNotasDisponiveis: TfrxDBDataset;
+    SqlCdsNotasDisponiveisENF_SERIE: TStringField;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);
@@ -86,6 +97,11 @@ type
     procedure dbgrdNotasDisponveisCellClick(Column: TColumn);
     procedure InverteSeleo1Click(Sender: TObject);
     procedure AlterarCFOPdeRetorno1Click(Sender: TObject);
+    procedure cbSelecionadosClick(Sender: TObject);
+    procedure frxNotasDisponiveisBeginDoc(Sender: TObject);
+    procedure frxNotasDisponiveisGetValue(const VarName: string;
+      var Value: Variant);
+    procedure BitBtn1Click(Sender: TObject);
   private
     { Private declarations }
     procedure ConsultaDisponiveis;
@@ -141,6 +157,20 @@ begin
   ConsultaDisponiveis;
 end;
 
+procedure TFrmIndustrializacaoPorKit.cbSelecionadosClick(Sender: TObject);
+begin
+  inherited;
+  if cbSelecionados.Checked then
+  begin
+    SqlCdsNotasDisponiveis.Filtered := False;
+    SqlCdsNotasDisponiveis.Filter := 'Selecao = True';
+    SqlCdsNotasDisponiveis.Filtered := True;
+  end
+  else
+    SqlCdsNotasDisponiveis.Filtered := False;
+
+end;
+
 procedure TFrmIndustrializacaoPorKit.ConsultaDisponiveis;
 var
   NotaFiscal: string;
@@ -162,11 +192,13 @@ begin
     '  	      AND pk.PRD_REFER = ft.PRD_REFER_ITENS ' +
     '  	      AND pk.ENF_REGISTRO = ei.ENF_REGISTRO ' +
     '    ) AS retornado, ' +
+    '    ei.ENF_IT_DET_NITEM, ' +
     '    ei.prd_codigo, ' +
     '    ei.ENF_REGISTRO, ' +
     '    ei.enf_ipialiq, ' +
     '    ei.enf_vlsubst, '+
     '    ef.enf_notanumber, '+
+    '    ef.ENF_SERIE, ' +
     '    ef.enf_emissao, '+
     '    ei.enf_cfop, '+
     '    ei.OPE_CODIGO_RETORNO, '+
@@ -186,7 +218,8 @@ begin
     ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
     ' AND ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
     iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') +
-    '  order by ei.prd_refer, ef.enf_emissao ';
+    '  order by ef.enf_emissao, ei.ENF_IT_DET_NITEM ';
+//    '  order by ei.prd_refer, ef.enf_emissao ';
 //    '  order by ef.enf_emissao, ef.enf_notanumber desc';
 
   if DBInicio.IsDesenvolvimento then
@@ -203,6 +236,7 @@ begin
     SqlCdsNotasDisponiveis.Post;
     SqlCdsNotasDisponiveis.Next;
   end;
+  lbNItensSelecionados.Caption :=  IntToStr(SqlCdsNotasDisponiveis.RecordCount);
   SqlCdsNotasDisponiveis.First;
   OpenAux(
     'SELECT ' +
@@ -261,6 +295,9 @@ begin
 end;
 
 procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisCellClick(Column: TColumn);
+var
+  sel, rec: integer;
+
 begin
   inherited;
   if Column.FieldName = 'Selecao' then
@@ -269,6 +306,19 @@ begin
     Column.Field.AsBoolean := not Column.Field.AsBoolean;
     SqlCdsNotasDisponiveis.Post;
   end;
+  rec := SqlCdsNotasDisponiveis.RecNo;
+  SqlCdsNotasDisponiveis.DisableControls;
+  SqlCdsNotasDisponiveis.First;
+  sel := 0;
+  while not SqlCdsNotasDisponiveis.Eof do
+  begin
+    if SqlCdsNotasDisponiveis.FieldByName('Selecao').AsBoolean then
+      inc(sel);
+    SqlCdsNotasDisponiveis.Next;
+  end;
+  SqlCdsNotasDisponiveis.RecNo := rec;
+  SqlCdsNotasDisponiveis.EnableControls;
+  lbNItensSelecionados.Caption := IntToStr(sel);
 end;
 
 procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisDblClick(
@@ -301,10 +351,41 @@ begin
 
 end;
 
+procedure TFrmIndustrializacaoPorKit.frxNotasDisponiveisBeginDoc(
+  Sender: TObject);
+begin
+  inherited;
+  TfrxPictureView(frxNotasDisponiveis.FindObject('logoempresa')).Picture.Bitmap.Assign(DbInicio.empresa.logo);
+end;
+
+procedure TFrmIndustrializacaoPorKit.frxNotasDisponiveisGetValue(
+  const VarName: string; var Value: Variant);
+begin
+  inherited;
+  if VarName = 'EMPRESA' then
+    Value := DBInicio.Empresa.RAZAO
+  else
+  if VarName = 'PRODUTO' then
+    Value := prdRefer.Text + ' - ' + prdDescricao.Text
+  else
+  if VarName = 'QUANTIDADE' then
+    Value := CurQuantidade.Value
+  else
+  if VarName = 'NITENS' then
+    Value := lbNItensFichaTecnica.Caption
+  else
+  if VarName = 'NITENSSEL' then
+    Value := lbNItensSelecionados.Caption
+  ;
+end;
+
 procedure TFrmIndustrializacaoPorKit.InverteSeleo1Click(Sender: TObject);
+var
+  sel, rec: integer;
 begin
   inherited;
   SqlCdsNotasDisponiveis.DisableControls;
+  rec := SqlCdsNotasDisponiveis.RecNo;
   SqlCdsNotasDisponiveis.First;
   while not SqlCdsNotasDisponiveis.Eof do
   begin
@@ -314,6 +395,16 @@ begin
     SqlCdsNotasDisponiveis.Next;
   end;
   SqlCdsNotasDisponiveis.First;
+
+  sel := 0;
+  while not SqlCdsNotasDisponiveis.Eof do
+  begin
+    if SqlCdsNotasDisponiveis.FieldByName('Selecao').AsBoolean then
+      inc(sel);
+    SqlCdsNotasDisponiveis.Next;
+  end;
+  SqlCdsNotasDisponiveis.RecNo := rec;
+  lbNItensSelecionados.Caption := IntToStr(sel);
   SqlCdsNotasDisponiveis.EnableControls;
 end;
 
@@ -327,6 +418,7 @@ begin
     MessageDlg('Referência não encontrada', mtError, [mbOk], 0)
   else
     ConsultaDisponiveis;
+  lbNItensFichaTecnica.Caption := BuscaUmDadoSqlAsString('SELECT COUNT(FTI_REGISTRO) FROM FTC_IT01 fi WHERE PRD_REFER = '  + QuotedStr(prdRefer.Text) );
 end;
 
 procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisDrawColumnCell(
@@ -381,6 +473,12 @@ begin
       end;
 end;
 
+procedure TFrmIndustrializacaoPorKit.BitBtn1Click(Sender: TObject);
+begin
+  inherited;
+  frxNotasDisponiveis.ShowReport();
+end;
+
 procedure TFrmIndustrializacaoPorKit.BitCancelarClick(
   Sender: tObject);
 begin
@@ -391,7 +489,7 @@ procedure TFrmIndustrializacaoPorKit.BitConfirmarClick(
   Sender: tObject);
 var
   sReferenciaProdutoSelecionada,
-  sCodigoProdutoSelecionado:string;
+  sCodigoProdutoSelecionado, prdDescri :string;
   iRegistro,
   iRegistroItem:Integer;
 
@@ -465,13 +563,21 @@ begin
                     end;
 
 
+                 if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
+                    prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString + ' ' +
+                                 ' # RETORNO REF NF ' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
+                                 ' SÉRIE '  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
+                                 ' EMITIDA EM ' +  SqlCdsNotasDisponiveisENF_EMISSAO.AsString
+                 else
+                    prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString  ;
+
                  iRegistroItem := GravarPedidoItem(0,
                                                    '',
                                                    FrmPedido.EdPedidoNumero.Text,
                                                    SqlCdsNotasDisponiveisPRD_CODIGO.AsString,
                                                    SqlCdsNotasDisponiveisPRD_REFER.AsString,
                                                    SqlCdsProdutoPRD_CODORIGINAL.AsString,
-                                                   COPY(SqlCdsNotasDisponiveisPRD_DESCRI.AsString,1,100),
+                                                   COPY(prdDescri,1,100),
                                                    SqlCdsNotasDisponiveisAMX_CODIGO.AsString,
                                                    '',
                                                    '',

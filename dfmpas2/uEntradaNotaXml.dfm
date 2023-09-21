@@ -7,8 +7,8 @@ inherited FrmEntradaNotaXml: TFrmEntradaNotaXml
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   Position = poDesktopCenter
-  ExplicitWidth = 981
-  ExplicitHeight = 627
+  ExplicitWidth = 989
+  ExplicitHeight = 639
   PixelsPerInch = 96
   TextHeight = 14
   object Label26: TLabel [0]
@@ -1467,7 +1467,7 @@ inherited FrmEntradaNotaXml: TFrmEntradaNotaXml
     object DBCtrlGrid1: TDBCtrlGrid
       Left = 2
       Top = 16
-      Width = 967
+      Width = 969
       Height = 52
       Align = alClient
       ColCount = 3
@@ -1476,7 +1476,6 @@ inherited FrmEntradaNotaXml: TFrmEntradaNotaXml
       PanelWidth = 317
       TabOrder = 0
       RowCount = 2
-      ExplicitWidth = 969
       object dbedtDuplicata: TDBEdit
         Left = 1
         Top = 2
@@ -1792,7 +1791,7 @@ inherited FrmEntradaNotaXml: TFrmEntradaNotaXml
     Left = 695
     Top = 208
     Bitmap = {
-      494C010103000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

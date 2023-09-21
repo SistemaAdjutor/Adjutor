@@ -49,7 +49,6 @@ object DataCadastros: TDataCadastros
       'WaitOnLocks=True'
       'IsolationLevel=ReadCommitted'
       'Trim Char=False')
-    Connected = True
     Left = 399
     Top = 1
   end

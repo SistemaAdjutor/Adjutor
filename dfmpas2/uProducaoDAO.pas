@@ -782,8 +782,12 @@ var dep_codigo : integer;
 
 begin
   //materia prima
-   OpenAux2('SELECT epe_codigo FROM MATERIAPRIMA_ORDEMPRODUCAO mp '+
-           'JOIN EMPENHO epe ON (mp.IOP_CODIGO = epe.IOP_CODIGO AND epe.MP_CODIGO = mp.MP_CODIGO) where mp.iop_codigo = '+IntToStr(iop_codigo) ) ;
+   OpenAux2('SELECT epe_codigo ' +
+            ' FROM MATERIAPRIMA_ORDEMPRODUCAO mp '+
+            ' JOIN EMPENHO epe ON (mp.IOP_CODIGO = epe.IOP_CODIGO AND epe.MP_CODIGO = mp.MP_CODIGO) ' +
+            ' where mp.iop_codigo = '+IntToStr(iop_codigo) +
+            ' and epe.EMP_TIPO <> ''E''  '
+            ) ;
    qAux2.First;
    while not qAux2.Eof do
    begin
@@ -994,6 +998,11 @@ begin
      if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
      begin
        almoxarifado :=  BuscaUmDadoSqlAsString('SELECT AMX_CODIGO FROM PCP_TEMP WHERE PRD_CODIGO =  ' + QuotedStr(PRD_CODIGO) );
+       ExecSql(' UPDATE MATERIAPRIMA_ORDEMPRODUCAO MP   '+
+               ' SET AMX_CODIGO = ' + QuotedStr(almoxarifado)+
+               ' WHERE MP_CODIGO = '+ IntToStr(mp_codigo) )   ;
+
+
      end
      else
        almoxarifado := iif(qAux4.FieldByName('AMX_CODIGO').AsString <> '' , qAux4.FieldByName('AMX_CODIGO').AsString, DBInicio.empresa.PMT_AMX_PRODUCAO_SAIDA );
@@ -1302,22 +1311,28 @@ end;
 procedure TProducaoDao.EstornarEmpenho(const epe_codigo: integer);
 var kardex: TfrmBaseDbEstoque;
     custo : double   ;
+    almoxarifado: string;
 begin
   ExecSql('update empenho set emp_tipo = ''E'' where epe_codigo = '+IntToStr(epe_codigo))  ;
   kardex := TfrmBaseDbEstoque.create(Application);
   try
-    OpenAux('SELECT IOP_NORDEM, E.PRD_CODIGO, E.PRDL_REGISTRO, E.EMP_QUANTIDADE ,  mp.MP_EMPENHADO,  PR.PRD_REFER, mp.MP_CODIGO, epe_custo, e.iop_codigo   '+
+    OpenAux('SELECT IOP_NORDEM, E.PRD_CODIGO, E.PRDL_REGISTRO, E.EMP_QUANTIDADE ,  mp.MP_EMPENHADO,  PR.PRD_REFER, mp.MP_CODIGO, epe_custo, e.iop_codigo, mp.AMX_CODIGO   '+
             ' FROM EMPENHO E '+
             ' JOIN ITEM_ORDEMPRODUCAO IOP ON (IOP.IOP_CODIGO = E.IOP_CODIGO) '+
             ' JOIN PRD0000 PR ON E.PRD_CODIGO = PR.PRD_CODIGO' +
             ' JOIN MATERIAPRIMA_ORDEMPRODUCAO mp ON (mp.MP_CODIGO = e.MP_CODIGO) '+
             ' WHERE EPE_CODIGO = '+IntToStr(epe_codigo)  );
 
+    if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
+      almoxarifado := qAux.FieldByName('AMX_CODIGO').AsString
+    else
+      almoxarifado := DBInicio.empresa.PMT_AMX_PRODUCAO_SAIDA;
+
     custo := qAux.FieldByName('epe_custo').AsFloat * qAux.FieldByName('EMP_QUANTIDADE').AsFloat ;
     kardex.KardexLancamento(
           qAux.FieldByName('iop_nordem').AsString, // numero documento
           'PRO',
-          DBInicio.empresa.PMT_AMX_PRODUCAO_SAIDA,
+          almoxarifado,
            '',   //amoxarifado destino
           qAux.FieldByName('PRD_CODIGO').AsString  ,
           '',//grade

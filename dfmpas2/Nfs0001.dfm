@@ -14,7 +14,7 @@ inherited FormNfEntrada: TFormNfEntrada
   Position = poDesktopCenter
   Visible = True
   ExplicitWidth = 1769
-  ExplicitHeight = 630
+  ExplicitHeight = 634
   PixelsPerInch = 96
   TextHeight = 14
   object PageControl1: TPageControl [0]
@@ -2922,8 +2922,10 @@ inherited FormNfEntrada: TFormNfEntrada
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = True
+          LimparCampoAoSair = True
         end
       end
       object EdtNota: TEdit

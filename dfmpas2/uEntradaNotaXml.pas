@@ -1481,6 +1481,7 @@ begin
                iRegistro := dbInicio.GetNextSequence('gen_enf_it01');
                wSql1 := 'INSERT INTO ENF_IT01 ('+
                               'ENF_registro,'+
+                              'ENF_IT_DET_NITEM, ' +
                               'ENF_IT_NOTANUMBER,'+
                               'ENF_LOTE,'+
                               'OPE_CODIGO,'+
@@ -1536,6 +1537,7 @@ begin
 
 
                wSql2 := 'VALUES ('''+IntToStr(iRegistro)+''','''+
+                                 cdsItensnitem.AsString+''','''+
                                  NumeroNota+''','''+
                                  ''+''','''+
                                  cdsItensOPE_CODIGO.AsString+''','''+

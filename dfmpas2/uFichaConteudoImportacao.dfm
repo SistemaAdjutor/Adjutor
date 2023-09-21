@@ -3,8 +3,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
   ClientHeight = 621
   ClientWidth = 1461
   OnKeyUp = FormKeyUp
-  ExplicitWidth = 1469
-  ExplicitHeight = 648
+  ExplicitLeft = -94
+  ExplicitWidth = 1477
+  ExplicitHeight = 660
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
@@ -71,8 +72,6 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       inherited cxgrd1: TcxGrid
         Width = 1453
         Height = 437
-        ExplicitLeft = -40
-        ExplicitTop = 3
         ExplicitWidth = 1453
         ExplicitHeight = 437
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -1585,6 +1584,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
   object cxEditRepository1: TcxEditRepository
     Left = 908
     Top = 193
+    PixelsPerInch = 96
     object Botao: TcxEditRepositoryButtonItem
       Properties.Buttons = <
         item
@@ -1596,7 +1596,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
     end
   end
   object frxFCI: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1672,13 +1672,17 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 89.488250000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         Stretched = True
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 944.882500000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
@@ -1687,6 +1691,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
@@ -1698,6 +1703,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
             end>
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 997.795920000000000000
           Top = 45.354360000000000000
           Width = 37.795300000000000000
@@ -1709,11 +1715,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Time]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 869.512370000000000000
           Top = 45.354360000000000000
           Width = 124.724490000000000000
@@ -1723,20 +1731,24 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Emitido em: [Date]')
           ParentFont = False
         end
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Width = 177.637783070000000000
           Height = 60.472480000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 201.771800000000000000
           Top = 1.779530000000000000
           Width = 646.299630000000000000
@@ -1746,12 +1758,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Top = 18.456710000000000000
           Width = 1043.150280000000000000
@@ -1761,12 +1775,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Ficha de Conte'#250'do de Importa'#231#227'o')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Top = 68.031540000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1775,11 +1791,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 68.031540000000000000
           Width = 86.929190000000000000
@@ -1789,23 +1807,27 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 89.488250000000000000
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 65.133890000000000000
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 869.291900000000000000
           Top = 68.031540000000000000
           Width = 170.078850000000000000
@@ -1815,12 +1837,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Conte'#250'do de Importa'#231#227'o')
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 661.417750000000000000
           Top = 68.031540000000000000
           Width = 177.637910000000000000
@@ -1830,12 +1854,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Valor da Parcela Importada')
           ParentFont = False
         end
         object Memo76: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 68.031540000000000000
           Width = 98.267780000000000000
@@ -1845,11 +1871,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'GTIN')
           ParentFont = False
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 454.866420000000000000
           Top = 68.031540000000000000
           Width = 98.267780000000000000
@@ -1859,6 +1887,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'NCM')
           ParentFont = False
@@ -1866,6 +1895,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       end
       object Nivel1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 46.031540000000000000
         Top = 170.078850000000000000
         Width = 1046.929810000000000000
@@ -1874,6 +1904,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         RowCount = 0
         StartNewPage = True
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 23.574830000000000000
           Width = 94.488250000000000000
@@ -1883,11 +1914,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 128.504020000000000000
           Top = 23.574830000000000000
           Width = 86.929190000000000000
@@ -1897,11 +1930,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 2.503710000000000000
           Top = 46.031540000000000000
           Width = 1043.150280000000000000
@@ -1909,12 +1944,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Frame.Typ = [ftTop]
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 20.677180000000000000
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 768.197280000000000000
           Top = 24.456710000000000000
           Width = 64.252010000000000000
@@ -1924,12 +1961,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Quant.')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 835.906000000000000000
           Top = 24.456710000000000000
           Width = 68.031540000000000000
@@ -1939,12 +1978,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Vl. Compra')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 909.173780000000000000
           Top = 24.456710000000000000
           Width = 60.472480000000000000
@@ -1954,12 +1995,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '% Orig.')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 978.898270000000000000
           Top = 24.456710000000000000
           Width = 64.252010000000000000
@@ -1969,12 +2012,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Parc. Imp.')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 728.386210000000000000
           Top = 24.456710000000000000
           Width = 26.456678270000000000
@@ -1984,12 +2029,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Un.')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Top = 24.456710000000000000
           Width = 26.456710000000000000
           Height = 18.897650000000000000
@@ -2000,11 +2047,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RECALCULA1]')
           ParentFont = False
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 687.370440000000000000
           Top = 24.456710000000000000
           Width = 34.015748030000000000
@@ -2014,12 +2063,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Tipo')
           ParentFont = False
         end
         object Memo78: TfrxMemoView
+          AllowVectorExport = True
           Left = 458.645950000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2031,11 +2082,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."NCM"]')
           ParentFont = False
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2047,11 +2100,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."GTIN"]')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Width = 105.826840000000000000
           Height = 18.897650000000000000
           DataField = 'PRD_REFER'
@@ -2062,11 +2117,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."PRD_REFER"]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Width = 343.937230000000000000
           Height = 18.897650000000000000
@@ -2078,11 +2135,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 937.323440000000000000
           Width = 105.826840000000000000
           Height = 18.897650000000000000
@@ -2095,12 +2154,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBBusca."CI"] %')
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 729.449290000000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
@@ -2113,12 +2174,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'R$ [frxDBBusca."PRD_FCI_VALOR_PARCELA_IMPORTADA"]')
           ParentFont = False
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 411.968770000000000000
           Top = 26.456710000000000000
           Width = 86.929190000000000000
@@ -2128,11 +2191,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'NCM')
           ParentFont = False
         end
         object Memo81: TfrxMemoView
+          AllowVectorExport = True
           Left = 521.575140000000000000
           Top = 26.456710000000000000
           Width = 86.929190000000000000
@@ -2142,6 +2207,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'GTIN')
           ParentFont = False
@@ -2149,6 +2215,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       end
       object Nivel2: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 238.110390000000000000
         Width = 1046.929810000000000000
@@ -2157,6 +2224,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         Filter = '<frxDBBusca."PRD_REFER"> = <frxDBBuscaDetalhes."PRD_REFER">'
         RowCount = 0
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2168,11 +2236,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 104.504020000000000000
           Width = 302.362194960630000000
           Height = 15.118120000000000000
@@ -2184,11 +2254,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.417750000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -2201,12 +2273,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."FTI_UC"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 831.906000000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -2219,12 +2293,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'R$ [frxDBBuscaDetalhes."PRECO_COMPRA_MEDIO"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 912.953310000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -2237,12 +2313,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."PERCENTUAL_ORIGEM"] %')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 971.323440000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2255,12 +2333,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."PARCELA_IMPORTADA"]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.606680000000000000
           Width = 34.015738270000000000
           Height = 15.118120000000000000
@@ -2272,12 +2352,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."PRD_UND"]')
           ParentFont = False
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataSet = frxDBBusca
@@ -2287,11 +2369,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RECALCULA2]')
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 688.590910000000000000
           Width = 34.015748030000000000
           Height = 15.118120000000000000
@@ -2303,12 +2387,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."PTI_SIGLA"]')
           ParentFont = False
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 411.968770000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -2320,11 +2406,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."NCM"]')
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -2336,6 +2424,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBuscaDetalhes."GTIN"]')
           ParentFont = False
@@ -2343,6 +2432,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       end
       object Nivel3: TfrxSubdetailData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 275.905690000000000000
         Width = 1046.929810000000000000
@@ -2353,6 +2443,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           '">'
         RowCount = 0
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 38.913420000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2363,11 +2454,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel3."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.181200000000000000
           Width = 302.362194960630000000
           Height = 15.118120000000000000
@@ -2378,11 +2471,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel3."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.417750000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -2395,12 +2490,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBNivel3."FTI_UC"]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 831.906000000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -2413,12 +2510,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'R$ [frxDBNivel3."PRECO_COMPRA_MEDIO"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 912.953310000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -2431,12 +2530,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBNivel3."PERCENTUAL_ORIGEM"] %')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 971.323440000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2447,6 +2548,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -2456,6 +2558,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.606680000000000000
           Width = 34.015738270000000000
           Height = 15.118120000000000000
@@ -2467,12 +2570,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBNivel3."PRD_UND"]')
           ParentFont = False
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataSet = frxDBBusca
@@ -2482,11 +2587,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RECALCULA3]')
           ParentFont = False
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 688.590910000000000000
           Width = 34.015748030000000000
           Height = 15.118120000000000000
@@ -2498,12 +2605,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBNivel3."PTI_SIGLA"]')
           ParentFont = False
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -2515,11 +2624,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel3."NCM"]')
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -2531,6 +2642,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel3."GTIN"]')
           ParentFont = False
@@ -2538,6 +2650,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       end
       object Nivel4: TfrxDataBand4
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 313.700990000000000000
         Width = 1046.929810000000000000
@@ -2546,6 +2659,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         Filter = '<frxDBNivel3."PRD_REFER_ITENS">=<frxDBNivel4."PRD_REFER">'
         RowCount = 0
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.252010000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2556,11 +2670,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel4."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 127.740260000000000000
           Width = 302.362194960630000000
           Height = 15.118120000000000000
@@ -2571,11 +2687,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel4."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.417750000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -2588,12 +2706,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBNivel4."FTI_UC"]')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 831.906000000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -2606,12 +2726,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'R$ [frxDBNivel4."PRECO_COMPRA_MEDIO"]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 912.953310000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -2624,12 +2746,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBNivel4."PERCENTUAL_ORIGEM"] %')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 971.323440000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2642,6 +2766,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -2651,6 +2776,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.606680000000000000
           Width = 34.015738270000000000
           Height = 15.118120000000000000
@@ -2661,12 +2787,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBNivel4."PRD_UND"]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataSet = frxDBBusca
@@ -2676,11 +2804,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RECALCULA4]')
           ParentFont = False
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Left = 688.590910000000000000
           Width = 34.015748030000000000
           Height = 15.118120000000000000
@@ -2692,12 +2822,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBNivel4."PTI_SIGLA"]')
           ParentFont = False
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 434.645950000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -2709,11 +2841,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel4."NCM"]')
           ParentFont = False
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.472790000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -2725,6 +2859,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel4."GTIN"]')
           ParentFont = False
@@ -2732,6 +2867,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       end
       object Nivel5: TfrxDataBand5
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 351.496290000000000000
         Width = 1046.929810000000000000
@@ -2740,6 +2876,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         Filter = '<frxDBNivel4."PRD_REFER_ITENS">=<frxDBNivel5."PRD_REFER">'
         RowCount = 0
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 59.370130000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2750,11 +2887,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel5."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 137.858380000000000000
           Width = 302.362194960630000000
           Height = 15.118120000000000000
@@ -2766,11 +2905,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel5."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.417750000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -2783,12 +2924,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBNivel5."FTI_UC"]')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 831.906000000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -2801,12 +2944,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'R$ [frxDBNivel5."PRECO_COMPRA_MEDIO"]')
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 912.953310000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -2819,12 +2964,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBNivel5."PERCENTUAL_ORIGEM"] %')
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 971.323440000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2837,6 +2984,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -2846,6 +2994,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.606680000000000000
           Width = 34.015738270000000000
           Height = 15.118120000000000000
@@ -2856,12 +3005,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBNivel5."PRD_UND"]')
           ParentFont = False
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataSet = frxDBBusca
@@ -2871,11 +3022,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RECALCULA5]')
           ParentFont = False
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 688.590910000000000000
           Width = 34.015748030000000000
           Height = 15.118120000000000000
@@ -2887,12 +3040,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBNivel5."PTI_SIGLA"]')
           ParentFont = False
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 444.205010000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -2904,11 +3059,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel5."NCM"]')
           ParentFont = False
         end
         object Memo74: TfrxMemoView
+          AllowVectorExport = True
           Left = 550.031850000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -2920,6 +3077,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel5."GTIN"]')
           ParentFont = False
@@ -2927,6 +3085,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       end
       object Nivel6: TfrxDataBand6
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 389.291590000000000000
         Width = 1046.929810000000000000
@@ -2935,6 +3094,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         Filter = '<frxDBNivel5."PRD_REFER_ITENS">=<frxDBNivel6."PRD_REFER">'
         RowCount = 0
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 76.047310000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2945,11 +3105,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel6."PRD_REFER_ITENS"]')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 155.315090000000000000
           Width = 302.362194960630000000
           Height = 15.118120000000000000
@@ -2960,11 +3122,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel6."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.417750000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -2977,12 +3141,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBNivel6."FTI_UC"]')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 831.906000000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -2995,12 +3161,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'R$ [frxDBNivel6."PRECO_COMPRA_MEDIO"]')
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 912.953310000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -3013,12 +3181,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBNivel6."PERCENTUAL_ORIGEM"] %')
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 971.323440000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -3031,6 +3201,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -3040,6 +3211,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.606680000000000000
           Width = 34.015738270000000000
           Height = 15.118120000000000000
@@ -3050,12 +3222,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBNivel6."PRD_UND"]')
           ParentFont = False
         end
         object Memo65: TfrxMemoView
+          AllowVectorExport = True
           Left = 688.590910000000000000
           Width = 34.015748030000000000
           Height = 15.118120000000000000
@@ -3067,12 +3241,14 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBNivel6."PTI_SIGLA"]')
           ParentFont = False
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -3084,11 +3260,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel6."NCM"]')
           ParentFont = False
         end
         object Memo75: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.929500000000000000
           Width = 98.267758030000000000
           Height = 15.118120000000000000
@@ -3100,6 +3278,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBNivel6."GTIN"]')
           ParentFont = False

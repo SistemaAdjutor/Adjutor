@@ -11,7 +11,7 @@ object FrmEntradaNotaXmlOpcao: TFrmEntradaNotaXmlOpcao
   Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   PixelsPerInch = 96
   TextHeight = 14
   object grpOpcoes: TGroupBox
