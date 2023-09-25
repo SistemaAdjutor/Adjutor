@@ -1774,6 +1774,9 @@ begin
   arquivo := TStringList.Create;
   extensao := TStringList.Create;
 //  if FileExists(FileArqSalvar.FileName) then
+  if wARQUIVO_LIMPAR = '' then
+    wARQUIVO_LIMPAR := FileArqSalvar.FileName;
+
   if FileExists(wARQUIVO_LIMPAR) then
   begin
     a := ExtractFileName(wARQUIVO_LIMPAR);

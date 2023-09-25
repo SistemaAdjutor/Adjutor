@@ -3,7 +3,7 @@
         <ProjectGuid>{8A3DBD83-53A7-4DCF-B9D2-E860EF14A76A}</ProjectGuid>
         <MainSource>Adjutor.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
+        <Config Condition="'$(Config)'==''">Release</Config>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
@@ -124,8 +124,9 @@
         <VerInfo_Build>584</VerInfo_Build>
         <VerInfo_MajorVer>3</VerInfo_MajorVer>
         <VerInfo_Release>9</VerInfo_Release>
-        <VerInfo_Keys>CompanyName=Novi Sistemas;FileDescription=sistema Adjutor ERP;FileVersion=3.0.9.584;InternalName=adjutor.exe;LegalCopyright=Novi sistemas;LegalTrademarks=Novi sistemas;OriginalFilename=adjutor;ProductName=Adjutor;ProductVersion=3.0.9.584;Comments=sistema Adjutor http://www.novisistemas.com.br/;SpecialBuild=;PrivateBuild=;patch=0;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Novi Sistemas;FileDescription=sistema Adjutor ERP;FileVersion=3.0.9.584;InternalName=adjutor.exe;LegalCopyright=Novi sistemas;LegalTrademarks=Novi sistemas;OriginalFilename=adjutor;ProductName=Adjutor;ProductVersion=3.0.9.584;Comments=sistema Adjutor http://www.novisistemas.com.br/;SpecialBuild=patch 1;PrivateBuild=;patch=0;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <BT_BuildType>Debug</BT_BuildType>
+        <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win64)'!=''">
         <VerInfo_Locale>1033</VerInfo_Locale>

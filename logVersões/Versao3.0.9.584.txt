@@ -4,3 +4,16 @@ Inicio da versão: 05/09/2023
 principal: Unimatriz
   1635 - Erro no Sped Fiscal [Unimatriz]
  
+patch 1: BSC, Arkson, Vedseals, Crystal Clean, Rotor, Bepine
+   129 - Duplicidade na tabela de preço exclusiva [BSC]
+  1538 - Melhoria estoques e produção [Arkson]
+  1621 - Erro ao adicionar tabela de preço [Novi]
+  1625 - Movimentação do estoque - Kardex [BSC]
+  1626 - Unidade comercial - pedido agrupado [Vedseals]
+  1632 - ORDEM DE PRODUÇÃO e LOTE [Crystal Clean]
+  1634 - Melhoria para impressão do desenho técnico junto com a Ordem [Normadin]
+  1635 - Erro no Sped Fiscal [Unimatriz]
+  1636 - Layout 240 banco Bradesco - nosso número [Rotor]
+  1645 - Erro ao gerar remessa [Bepine]
+  1646 - Melhoria para montagem do retorno pelo F4 [Arkson]
+  
