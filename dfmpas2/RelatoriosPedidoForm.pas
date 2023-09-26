@@ -7,7 +7,8 @@ uses
   Dialogs, BaseDBForm, {{DBXpress,}  DB, SqlExpr, ACBrBase, ACBrCalculadora,
   ExtCtrls, Provider, DBClient, DBLocal, DBLocalS, frxClass, frxDBSet,
   frxExportXLS, frxExportRTF, frxExportPDF, FMTBCd, jPeg, Data.DBXInterBase,
-  Data.DBXFirebird, ACBrEnterTab, ACBrETQ, frxExportXLSX, frxCross, SYSTEM.StrUtils, System.Threading;
+  Data.DBXFirebird, ACBrEnterTab, ACBrETQ, frxExportXLSX, frxCross, SYSTEM.StrUtils, System.Threading,
+  frxExportBaseDialog;
 
 type
   TFrmRelatoriosPedido = class(TfrmBaseDB)
