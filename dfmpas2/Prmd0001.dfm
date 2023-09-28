@@ -8,10 +8,10 @@ inherited FormParametros: TFormParametros
   ClientWidth = 1920
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 1926
-  ExplicitHeight = 937
+  ExplicitHeight = 941
   PixelsPerInch = 96
   TextHeight = 14
   object Label663: TLabel [0]
@@ -493,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 5
+      PageIndex = 3
       TabOrder = 0
       object TPage
         Left = 0
@@ -1577,8 +1577,28 @@ inherited FormParametros: TFormParametros
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
+              end
+              object DBCheckBox96: TDBCheckBox
+                Left = 408
+                Top = 217
+                Width = 339
+                Height = 17
+                Caption = 'Utiliza Gerenciamento Avan'#231'ado de Antecipa'#231#227'o/Desconto'
+                DataField = 'PMT_GER_AVANC_ANTECIP_DESC'
+                DataSource = DataCadastros1.DsParametros
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = [fsBold]
+                ParentFont = False
+                TabOrder = 18
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
             object tsTabelaPreco: TTabSheet
@@ -3791,8 +3811,10 @@ inherited FormParametros: TFormParametros
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object GroupBox39: TGroupBox
                 Left = 459
@@ -4557,8 +4579,10 @@ inherited FormParametros: TFormParametros
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
         end
       end

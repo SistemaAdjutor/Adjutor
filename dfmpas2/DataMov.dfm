@@ -1568,6 +1568,17 @@ object DataMovimento: TDataMovimento
     object CdsRecParcefpg_registro: TIntegerField
       FieldName = 'fpg_registro'
     end
+    object CdsRecParceFPC_ANTECIPACAO_CONCLUIDA: TStringField
+      FieldName = 'FPC_ANTECIPACAO_CONCLUIDA'
+      Size = 1
+    end
+    object CdsRecParceFPC_USU_CODIGO_ANTECIPACAO: TIntegerField
+      FieldName = 'FPC_USU_CODIGO_ANTECIPACAO'
+      OnGetText = CdsRecParceFPC_USU_CODIGO_ANTECIPACAOGetText
+    end
+    object CdsRecParceFPC_DATA_ANTECIPACAO: TSQLTimeStampField
+      FieldName = 'FPC_DATA_ANTECIPACAO'
+    end
   end
   object DspRecParce: TDataSetProvider
     DataSet = SqlRecParce
@@ -1856,6 +1867,16 @@ object DataMovimento: TDataMovimento
     end
     object SqlRecParcefpg_registro: TIntegerField
       FieldName = 'fpg_registro'
+    end
+    object SqlRecParceFPC_ANTECIPACAO_CONCLUIDA: TStringField
+      FieldName = 'FPC_ANTECIPACAO_CONCLUIDA'
+      Size = 1
+    end
+    object SqlRecParceFPC_USU_CODIGO_ANTECIPACAO: TIntegerField
+      FieldName = 'FPC_USU_CODIGO_ANTECIPACAO'
+    end
+    object SqlRecParceFPC_DATA_ANTECIPACAO: TSQLTimeStampField
+      FieldName = 'FPC_DATA_ANTECIPACAO'
     end
   end
   object DsrecParc: TDataSource

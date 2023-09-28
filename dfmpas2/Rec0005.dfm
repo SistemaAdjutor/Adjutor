@@ -826,8 +826,10 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'FORMA_PAGAMENTO'
           CamposCarregar = 'FPG_DESCRICAO'
           CamposRetornar = 'FPG_REGISTRO'
@@ -1425,13 +1427,11 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
   end
   object SqlCdsCliente: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 'select c1.cli_codigo,c1.cli_razao from CLI0000 c1'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select c1.cli_codigo,c1.cli_razao from CLI0000 c1'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1449,7 +1449,6 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
   end
   object SqlCdsRemessa: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'Select'#13#10'F2.FAT_REGISTRO,'#13#10'F2.FAT_CODIGO,'#13#10'F2.FPC_NUMER,'#13#10'F2.CLI_' +
       'CODIGO,'#13#10'C1.CLI_RAZAO,'#13#10'F2.FPC_VLPARC,'#13#10'F2.FPC_NUM_CHEQUE,'#13#10'F2.F' +
@@ -1478,7 +1477,6 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
       'ODIGO) AND (F2.EMP_CODIGO = F1.EMP_CODIGO)'#13#10'LEFT JOIN CLI0000 C1' +
       ' ON (F2.CLI_CODIGO = C1.CLI_CODIGO)'#13#10'LEFT JOIN BAN0000 B1 ON (F2' +
       '.BAN_CODIGO = B1.BAN_CODIGO)'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1647,7 +1645,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
     Left = 218
     Top = 226
     Bitmap = {
-      494C010103000500040010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500080010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -1791,7 +1789,6 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
   end
   object SqlCdsBco: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'Select '#13#10'B1.EMP_CODIGO,'#13#10'B1.BAN_CODIGO,'#13#10'B1.BAN_APELIDO, '#13#10'B1.BA' +
       'N_LIMITE_DESCTOCHEQ,'#13#10'B1.BAN_LIMITE_DESCTODUPL,'#13#10'B1.BAN_LIMITE_U' +
@@ -1805,7 +1802,6 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
       'N_LIMITE_DESCTOCHEQ,'#13#10'B1.BAN_LIMITE_DESCTODUPL,'#13#10'B1.BAN_LIMITE_U' +
       'TILIZADO_CHEQ,'#13#10'B1.BAN_LIMITE_UTILIZADO_DUPL,'#13#10'B1.BAN_JUROS_DESC' +
       'TOCHEQ,'#13#10'B1.BAN_JUROS_DESCTODUPL'#13#10'from BAN0000 B1'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1851,13 +1847,11 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
   end
   object SqlCdsTransfBco: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 'Select B1.BAN_CODIGO,B1.BAN_APELIDO from BAN0000 B1'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'Select B1.BAN_CODIGO,B1.BAN_APELIDO from BAN0000 B1'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll

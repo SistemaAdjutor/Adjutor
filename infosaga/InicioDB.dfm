@@ -8,7 +8,7 @@ inherited DBInicio: TDBInicio
   ClientWidth = 1112
   Color = clWhite
   KeyPreview = True
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   ExplicitWidth = 1112
   ExplicitHeight = 424
   PixelsPerInch = 96

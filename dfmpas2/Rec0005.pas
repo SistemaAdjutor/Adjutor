@@ -2107,7 +2107,8 @@ begin
            try
              try
                FrmAtualizaLimite := TFrmAtualizaLimite.Create(Application);
-               FrmAtualizaLimite.ShowModal;
+               FrmAtualizaLimite.BitImprimeEtiq.Click;
+               // FrmAtualizaLimite.ShowModal;
              finally
                FrmAtualizaLimite.Destroy;
                FrmAtualizaLimite := nil;
