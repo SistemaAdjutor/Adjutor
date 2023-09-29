@@ -11,7 +11,7 @@ object FrmCadastroProdutoLote: TFrmCadastroProdutoLote
   Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
@@ -38,6 +38,20 @@ object FrmCadastroProdutoLote: TFrmCadastroProdutoLote
       Width = 52
       Height = 14
       Caption = 'Descri'#231#227'o:'
+    end
+    object Label8: TLabel
+      Left = 264
+      Top = 24
+      Width = 67
+      Height = 14
+      Caption = 'Almoxarifado:'
+    end
+    object lbAlmoxarifado: TLabel
+      Left = 335
+      Top = 24
+      Width = 62
+      Height = 14
+      Caption = 'almoxarifado'
     end
     object edtReferencia: TEdit
       Left = 95
@@ -220,7 +234,7 @@ object FrmCadastroProdutoLote: TFrmCadastroProdutoLote
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DataCadastros.SQLConnection1
-    Left = 273
+    Left = 225
     Top = 107
     object SqlCdsLotesPRDL_REGISTRO: TIntegerField
       FieldName = 'PRDL_REGISTRO'
@@ -261,15 +275,18 @@ object FrmCadastroProdutoLote: TFrmCadastroProdutoLote
       FieldName = 'PRDL_DESCRICAO'
       Size = 100
     end
+    object SqlCdsLotesAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
+    end
   end
   object DspLotes: TDataSetProvider
     DataSet = SqlCdsLotes
     Options = [poAllowCommandText]
-    Left = 313
+    Left = 289
     Top = 107
   end
   object CdsLotes: TClientDataSet
-    Active = True
     Aggregates = <>
     CommandText = 'select * from PRD_LOTE'
     Params = <>
@@ -315,6 +332,10 @@ object FrmCadastroProdutoLote: TFrmCadastroProdutoLote
     object CdsLotesPRDL_DESCRICAO: TStringField
       FieldName = 'PRDL_DESCRICAO'
       Size = 100
+    end
+    object CdsLotesAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
     end
   end
 end

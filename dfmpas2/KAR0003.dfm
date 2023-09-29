@@ -11,8 +11,8 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
   Position = poDesktopCenter
   Visible = True
   OnResize = FormResize
-  ExplicitWidth = 978
-  ExplicitHeight = 606
+  ExplicitWidth = 986
+  ExplicitHeight = 618
   PixelsPerInch = 96
   TextHeight = 14
   object PageControl1: TPageControl [0]
@@ -165,6 +165,12 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
             Title.Alignment = taCenter
             Title.Caption = 'Quantidade'
             Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'AMX_DESCRI'
+            Title.Caption = 'Almoxarifado'
+            Visible = True
           end>
       end
       object Panel1: TPanel
@@ -215,6 +221,15 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
           Caption = 'Validade vencida'
           TabOrder = 1
           OnClick = chkvencidaClick
+        end
+        object chkTodosLotes: TCheckBox
+          Left = 350
+          Top = 2
+          Width = 97
+          Height = 17
+          Caption = 'Todos os Lotes'
+          TabOrder = 2
+          OnClick = chkTodosLotesClick
         end
       end
     end
@@ -374,8 +389,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'PRD0000'
         CamposCarregar = 'prd_codigo,prd_refer,prd_descri,prd_und'
         CamposRetornar = 'prd_codigo'
@@ -432,8 +449,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edColaborador: TSgDbSearchCombo
       Left = 5
@@ -455,8 +474,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object GroupBox3: TGroupBox
       Left = 2
@@ -683,8 +704,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object CbAlmoxarifadoDestino: TComboBoxRw
       Left = 5
@@ -692,7 +715,7 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       Width = 352
       Height = 22
       TabOrder = 16
-      OnkeyDown = CbAlmoxarifadoDestinokeyDown
+      OnKeyDown = CbAlmoxarifadoDestinokeyDown
       OnKeyPress = CbAlmoxarifadoDestinoKeyPress
       OnkeyUp = CbAlmoxarifadoDestinokeyUp
       CharCase = ecUpperCase
@@ -711,8 +734,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'ALMOX0000'
       CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
       CamposRetornar = 'amx_CODIGO'
@@ -1023,6 +1048,14 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       DisplayFormat = '#,##0.00'
       EditFormat = '#,##0.00'
       Precision = 15
+    end
+    object CdsLoteProdutoAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
+    end
+    object CdsLoteProdutoAMX_DESCRI: TStringField
+      FieldName = 'AMX_DESCRI'
+      Size = 60
     end
   end
   object dspGrade: TDataSetProvider

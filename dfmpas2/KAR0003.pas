@@ -23,7 +23,12 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
 	dxSkinWhiteprint, dxSkinXmas2008Blue, dxSkinscxPCPainter, cxNavigator,
-  Data.DBXFirebird, SimpleDS, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.Grids, Vcl.DBGrids, ACBrETQ, SgDbSeachComboUnit, ComboBoxRW, Vcl.ComCtrls, cxDBExtLookupComboBox;
+  Data.DBXFirebird, SimpleDS, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.Grids, Vcl.DBGrids, ACBrETQ, SgDbSeachComboUnit, ComboBoxRW, Vcl.ComCtrls, cxDBExtLookupComboBox,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinTheBezier, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light,
+  cxDataControllerConditionalFormattingRulesManagerDialog;
 
 type
   TFrmKardexLancamentoManual = class(TFrmBaseDbEstoque)
@@ -131,6 +136,9 @@ type
     cxGrid1DBTableView1PRD_CODIGO: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
     cbProduto2: TcxExtLookupComboBox;
+    chkTodosLotes: TCheckBox;
+    CdsLoteProdutoAMX_CODIGO: TStringField;
+    CdsLoteProdutoAMX_DESCRI: TStringField;
     procedure FormCreate(Sender: tObject);
     procedure FormClose(Sender: tObject; var Action: TCloseAction);
     procedure Bit_CancelarClick(Sender: tObject);
@@ -161,6 +169,7 @@ type
     procedure CbAlmoxarifadoDestinokeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cbProduto2Exit(Sender: TObject);
     procedure cbProduto2PropertiesChange(Sender: TObject);
+    procedure chkTodosLotesClick(Sender: TObject);
   private
    KardexLancEntrada    :boolean;
    KardexLancSaida      :boolean;
@@ -239,7 +248,7 @@ begin
 			CdsSaldos.First;
 
 		 CdsLoteProduto.Close;
-		 CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT * from PRD_LOTE','where PRD_CODIGO = '''+CbProduto.idRetorno+'''','PRD_CODIGO','');
+		 CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT pl.*, a.AMX_DESCRI from PRD_LOTE pl LEFT JOIN ALMOX0000 a ON (a.AMX_CODIGO = pl.AMX_CODIGO) ','where PRD_CODIGO = '''+CbProduto.idRetorno+'''','PRD_CODIGO','pl.');
 		 CdsLoteProduto.Open;
 		 bGrade := ((dbInicio.Empresa.bUtilizaGrade) or (dbInicio.Empresa.bDigitacaoGradeVendas)) and
 			(SqlCdsProduto.FieldByName('PRD_GRADE_OBRIGATORIO').AsString = 'S');
@@ -287,6 +296,12 @@ begin
 //     raise Exception.Create('Balanço maior que a quantidade inicial');
 
 
+end;
+
+procedure TFrmKardexLancamentoManual.chkTodosLotesClick(Sender: TObject);
+begin
+  inherited;
+  Filtro;
 end;
 
 procedure TFrmKardexLancamentoManual.chkvencidaClick(Sender: TObject);
@@ -485,6 +500,7 @@ begin
     begin
       AtualizaSaldos;
     end;
+    Filtro;
   end;
 end;
 
@@ -496,6 +512,7 @@ end;
 procedure TFrmKardexLancamentoManual.Filtro;
 var filtro : string;
 begin
+  CdsLoteProduto.Filter := '';
   CdsLoteProduto.Filtered := False;
   if chkMaiorZero.Checked then
     CdsLoteProduto.Filter := 'PRDL_SALDO > 0';
@@ -506,8 +523,15 @@ begin
     else
      CdsLoteProduto.Filter := CdsLoteProduto.Filter + ' and PRDL_DATA_VALIDADE < '+ QuotedStr(FormatDateTime('dd/mm/yyyy',date))
   end;
+  if not chkTodosLotes.Checked then
+  begin
+    if CdsLoteProduto.Filter = '' then
+     CdsLoteProduto.Filter := 'AMX_CODIGO =  '+ QuotedStr(CbAlmoxarifadoDestino.idRetorno)
+    else
+     CdsLoteProduto.Filter := CdsLoteProduto.Filter + ' and AMX_CODIGO =  '+ QuotedStr(CbAlmoxarifadoDestino.idRetorno)
+  end;
 
-  CdsLoteProduto.Filtered := chkMaiorZero.Checked or chkvencida.Checked ;
+  CdsLoteProduto.Filtered := chkMaiorZero.Checked or chkvencida.Checked or (not chkTodosLotes.Checked) ;
 end;
 
 procedure TFrmKardexLancamentoManual.FormClose(Sender: tObject; var Action: TCloseAction);
@@ -896,7 +920,6 @@ begin
   cbProduto.WherePersonalizado := ' WHERE PRD_STATUS = ''A'' ' ;
  // 	RbReferencia.Checked := True;
 
-
   end;
 
 procedure TFrmKardexLancamentoManual.RbAdicionarClick(Sender: tObject);
@@ -939,6 +962,8 @@ begin
 						try
 							FrmCadastroProdutoLote := TFrmCadastroProdutoLote.Create(Application);
 							FrmCadastroProdutoLote.sPrdCodido := SqlCdsProdutoPRD_CODIGO.AsString;
+              FrmCadastroProdutoLote.amxCodigo := CbAlmoxarifadoDestino.idRetorno;
+              FrmCadastroProdutoLote.lbAlmoxarifado.Caption := CbAlmoxarifadoDestino.Text;
 							FrmCadastroProdutoLote.ShowModal;
 						finally
 							FrmCadastroProdutoLote.Destroy;
