@@ -15,7 +15,6 @@ inherited FormProduto: TFormProduto
   Position = poDefaultPosOnly
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitTop = -466
   ExplicitWidth = 2506
   ExplicitHeight = 1029
   PixelsPerInch = 96
@@ -25,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = Lotes
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -148,7 +147,7 @@ inherited FormProduto: TFormProduto
         Top = 34
         Width = 1051
         Height = 483
-        ActivePage = tsCamposTecnicos
+        ActivePage = tsGeral
         Align = alCustom
         Anchors = [akLeft, akBottom]
         TabOrder = 2
@@ -11625,6 +11624,12 @@ inherited FormProduto: TFormProduto
           end
           item
             Expanded = False
+            FieldName = 'AMX_DESCRI'
+            Title.Caption = 'Almoxarifado'
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'FOR_RAZAO'
             Title.Caption = 'Fornecedor'
             Visible = True
@@ -12001,6 +12006,48 @@ inherited FormProduto: TFormProduto
           Alignment = taRightJustify
           TabOrder = 10
           Text = ''
+        end
+        object cbAlmoxarifadoLote: TComboBoxRw
+          Left = 351
+          Top = 73
+          Width = 180
+          Height = 22
+          TabOrder = 11
+          CharCase = ecUpperCase
+          LookupSelect = 'amx_CODIGO,AMX_DESCRI'
+          LookupOrderBy = 'AMX_DESCRI'
+          LookupTable = 'ALMOX0000'
+          LookupDispl = 'AMX_DESCRI'
+          GridAutoSize = False
+          LookupSource = CbAlmoxarifado.InternalSource
+          DataField = 'AMX_CODIGO'
+          DataSource = dsLote
+          LookupKeyField = 'amx_CODIGO'
+          ShowButton = True
+          LookupTableShare = 'TABELAS'
+          AutoF8WinTitulo = 'Almoxarifados'
+          AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
+          Tabela = 'ALMOX0000'
+          CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
+          CamposRetornar = 'amx_CODIGO'
+          CamposOrdernar = 'AMX_DESCRI'
+          ConexaoBanco = DataCadastros.SQLConnection1
+          Compartilhar = 'TABELAS'
+          Localizado = False
+          CodigoEmpresa = 0
+          ResetaCampos = False
+          MultiEmpresa = False
+          Localizar = False
+          CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
         end
       end
       object Panel3: TPanel
@@ -16092,6 +16139,14 @@ inherited FormProduto: TFormProduto
       ProviderFlags = []
       Precision = 15
     end
+    object CdsLotesAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
+    end
+    object CdsLotesAMX_DESCRI: TStringField
+      FieldName = 'AMX_DESCRI'
+      Size = 60
+    end
   end
   object DspLotes: TDataSetProvider [56]
     DataSet = QLotes
@@ -16182,6 +16237,14 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRDL_QTDELOTE'
       ProviderFlags = []
       Precision = 15
+    end
+    object QLotesAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
+    end
+    object QLotesAMX_DESCRI: TStringField
+      FieldName = 'AMX_DESCRI'
+      Size = 60
     end
   end
   object CdsVendas: TSqlClientDataSet [58]

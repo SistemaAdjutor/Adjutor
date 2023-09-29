@@ -2220,6 +2220,11 @@ type
     IncluirArquivoFichaTecnica: TFilenameEdit;
     BitBtn5: TBitBtn;
     cdsMolaMMO_ARQUIVO_FICHA_TECNICA: TStringField;
+    cbAlmoxarifadoLote: TComboBoxRw;
+    QLotesAMX_CODIGO: TStringField;
+    CdsLotesAMX_CODIGO: TStringField;
+    QLotesAMX_DESCRI: TStringField;
+    CdsLotesAMX_DESCRI: TStringField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -3504,9 +3509,10 @@ begin
   if ( not CdsProdutos.isEmpty ) then
   begin
     QLotes.sql.Clear;
-    QLotes.sql.Add( 'select A.*, B.for_razao' );
+    QLotes.sql.Add( 'select A.*, B.for_razao, C.amx_descri' );
     QLotes.sql.Add( 'from PRD_LOTE A' );
     QLotes.sql.Add( '    LEFT JOIN for0000 B ON B.for_codigo=A.for_codigo' );
+    QLotes.sql.Add( '    LEFT JOIN almox0000 C ON C.amx_codigo = A.amx_codigo' );
     QLotes.sql.Add( 'WHERE A.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) );
     QLotes.sql.Add( 'ORDER BY A.PRDL_DATA_VALIDADE' );
     CdsLotes.Open;
