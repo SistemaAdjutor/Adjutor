@@ -11,8 +11,8 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
   Position = poDesktopCenter
   Visible = True
   OnResize = FormResize
-  ExplicitWidth = 978
-  ExplicitHeight = 606
+  ExplicitWidth = 986
+  ExplicitHeight = 618
   PixelsPerInch = 96
   TextHeight = 14
   object PageControl1: TPageControl [0]
@@ -20,7 +20,7 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
     Top = 386
     Width = 970
     Height = 193
-    ActivePage = tslote
+    ActivePage = tsgrade
     Align = alClient
     TabOrder = 1
     Visible = False
@@ -374,8 +374,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'PRD0000'
         CamposCarregar = 'prd_codigo,prd_refer,prd_descri,prd_und'
         CamposRetornar = 'prd_codigo'
@@ -432,8 +434,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edColaborador: TSgDbSearchCombo
       Left = 5
@@ -455,8 +459,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object GroupBox3: TGroupBox
       Left = 2
@@ -683,8 +689,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object CbAlmoxarifadoDestino: TComboBoxRw
       Left = 5
@@ -692,7 +700,7 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       Width = 352
       Height = 22
       TabOrder = 16
-      OnkeyDown = CbAlmoxarifadoDestinokeyDown
+      OnKeyDown = CbAlmoxarifadoDestinokeyDown
       OnKeyPress = CbAlmoxarifadoDestinoKeyPress
       OnkeyUp = CbAlmoxarifadoDestinokeyUp
       CharCase = ecUpperCase
@@ -711,8 +719,10 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'ALMOX0000'
       CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
       CamposRetornar = 'amx_CODIGO'
@@ -735,6 +745,9 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       Height = 200
       TabOrder = 17
       Visible = False
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = DsProduto

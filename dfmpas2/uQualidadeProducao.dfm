@@ -1,7 +1,7 @@
 inherited frmQualidadeOperacao: TfrmQualidadeOperacao
   Caption = 'Qualidade de produ'#231#227'o'
   ClientWidth = 763
-  ExplicitWidth = 771
+  ExplicitWidth = 779
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
@@ -33,6 +33,9 @@ inherited frmQualidadeOperacao: TfrmQualidadeOperacao
     Height = 370
     Align = alClient
     TabOrder = 2
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Cancel.Visible = False
@@ -68,14 +71,6 @@ inherited frmQualidadeOperacao: TfrmQualidadeOperacao
   inherited FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Left = 224
     Top = 112
-  end
-  inherited dbConn: TFDConnection
-    Params.Strings = (
-      'Database=C:\Jobdados\exemplo\EXEMPLO.FDB'
-      'User_Name=sysdba'
-      'Password=masterkey'
-      'CharacterSet=ISO8859_1'
-      'DriverID=FB')
   end
   inherited dsEdits: TDataSource
     DataSet = cdsEspecificacao

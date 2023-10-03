@@ -1,8 +1,7 @@
 inherited frmPesqcreditoFatura: TfrmPesqcreditoFatura
   Caption = 'Pesquisa de cr'#233'ditos'
   ClientWidth = 491
-  ExplicitWidth = 499
-  ExplicitHeight = 482
+  ExplicitWidth = 507
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtilTop: TPanel
@@ -143,6 +142,9 @@ inherited frmPesqcreditoFatura: TfrmPesqcreditoFatura
         Height = 271
         Align = alClient
         TabOrder = 2
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         object cxGrid1DBTableView1: TcxGridDBTableView
           PopupMenu = mnuGridPesquisa
           OnDblClick = cxGrid1DBTableView1DblClick

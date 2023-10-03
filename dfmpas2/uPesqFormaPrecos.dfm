@@ -13,6 +13,9 @@ inherited frmFormacaoPreco: TfrmFormacaoPreco
         end
       end
       inherited cxgrd1: TcxGrid
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         inherited cxgrd1DBTableView1: TcxGridDBTableView
           DataController.DataModeController.GridMode = True
           DataController.DataModeController.SyncMode = False

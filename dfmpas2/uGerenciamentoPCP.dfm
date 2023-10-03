@@ -227,6 +227,9 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Top = 105
         Width = 1376
         Height = 434
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitTop = 105
         ExplicitWidth = 1376
         ExplicitHeight = 434

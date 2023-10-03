@@ -2,8 +2,8 @@ inherited frmDevolucaoNotaEntrada: TfrmDevolucaoNotaEntrada
   Caption = 'Devolu'#231#227'o de Nota Fiscal de Entrada'
   ClientHeight = 717
   ClientWidth = 1199
-  ExplicitWidth = 1207
-  ExplicitHeight = 744
+  ExplicitWidth = 1215
+  ExplicitHeight = 756
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
@@ -165,8 +165,10 @@ inherited frmDevolucaoNotaEntrada: TfrmDevolucaoNotaEntrada
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edChave: TEdit
       Left = 124
@@ -560,6 +562,9 @@ inherited frmDevolucaoNotaEntrada: TfrmDevolucaoNotaEntrada
       Height = 369
       Align = alClient
       TabOrder = 0
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
       object cxGrid1DBTableView1: TcxGridDBTableView
         PopupMenu = pmSeleciona
         Navigator.Buttons.CustomButtons = <>
@@ -588,6 +593,7 @@ inherited frmDevolucaoNotaEntrada: TfrmDevolucaoNotaEntrada
           Caption = '*'
           DataBinding.FieldName = 'SELECIONADO'
           PropertiesClassName = 'TcxCheckBoxProperties'
+          Properties.Alignment = taRightJustify
           Properties.ValueChecked = '1'
           Properties.ValueUnchecked = '0'
           Properties.OnChange = cxGrid1DBTableView1SELECIONADOPropertiesChange

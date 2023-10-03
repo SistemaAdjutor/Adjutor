@@ -2,8 +2,8 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
   Caption = 'Envase de produtos'
   ClientHeight = 479
   ClientWidth = 1370
-  ExplicitWidth = 1378
-  ExplicitHeight = 506
+  ExplicitWidth = 1386
+  ExplicitHeight = 518
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
@@ -61,6 +61,9 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       inherited cxgrd1: TcxGrid
         Width = 1362
         Height = 171
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitWidth = 1362
         ExplicitHeight = 171
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -367,6 +370,9 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Height = 122
           Align = alClient
           TabOrder = 0
+          LookAndFeel.Kind = lfStandard
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.ScrollbarMode = sbmClassic
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             FilterBox.CustomizeDialog = False
@@ -944,7 +950,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
     Top = 385
   end
   object frxRelOSP10: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -984,12 +990,16 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 162.740260000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 616.063390000000000000
           Height = 18.897650000000000000
           StretchMode = smActualHeight
@@ -998,17 +1008,20 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 19.897650000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 226.771800000000000000
           Top = 20.897650000000000000
           Width = 162.519790000000000000
@@ -1018,11 +1031,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'ORDEM DE ENVASE')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 411.968770000000000000
           Top = 20.897650000000000000
           Width = 166.299320000000000000
@@ -1032,11 +1047,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#176'.: [frxDBBusca."ORE_CODIGO"]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = -7.559060000000000000
           Top = 39.795300000000000000
           Width = 725.669760000000000000
@@ -1044,6 +1061,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Frame.Typ = [ftTop]
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Top = 62.472480000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -1052,11 +1070,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'PRODUZIR:')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Top = 62.472480000000000000
           Width = 75.590600000000000000
@@ -1066,12 +1086,14 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBBusca."IOP_QUANTIDADE"]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 151.181200000000000000
           Top = 62.472480000000000000
           Width = 22.677180000000000000
@@ -1081,11 +1103,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."PRD_UND"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 62.472480000000000000
           Width = 68.031540000000000000
@@ -1095,11 +1119,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'ENTREGA:')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 593.386210000000000000
           Top = 62.472480000000000000
           Width = 71.811070000000000000
@@ -1109,9 +1135,11 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Top = 41.795300000000000000
           Width = 45.354360000000000000
           Height = 15.118120000000000000
@@ -1120,11 +1148,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."PRD_REFER"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 64.252010000000000000
           Top = 41.795300000000000000
           Width = 264.567100000000000000
@@ -1134,11 +1164,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."PRD_DESCRI"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = -0.236240000000000000
           Top = 60.692950000000000000
           Width = 718.110700000000000000
@@ -1146,6 +1178,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Frame.Typ = [ftTop]
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Top = 82.590599999999990000
           Width = 517.795610000000000000
           Height = 15.118120000000000000
@@ -1154,11 +1187,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."CLI_RAZAO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 82.590599999999990000
           Width = 196.535560000000000000
@@ -1168,11 +1203,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'LOTE N'#176': [frxDBBusca."PRDL_LOTE"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Top = 117.385900000000000000
           Width = 306.141930000000000000
           Height = 15.118120000000000000
@@ -1188,6 +1225,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Top = 132.504020000000000000
           Width = 306.141930000000000000
           Height = 30.236240000000000000
@@ -1203,6 +1241,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 305.464750000000000000
           Top = 117.385900000000000000
           Width = 79.370130000000000000
@@ -1217,6 +1256,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 305.464750000000000000
           Top = 132.504020000000000000
           Width = 79.370130000000000000
@@ -1234,6 +1274,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 573.488560000000000000
           Top = 117.385900000000000000
           Width = 71.811070000000000000
@@ -1248,6 +1289,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 645.299630000000000000
           Top = 117.385900000000000000
           Width = 71.811070000000000000
@@ -1262,6 +1304,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 573.488560000000000000
           Top = 132.504020000000000000
           Width = 143.622140000000000000
@@ -1279,6 +1322,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 573.488560000000000000
           Top = 147.622140000000000000
           Width = 71.811070000000000000
@@ -1296,6 +1340,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 645.299630000000000000
           Top = 147.622140000000000000
           Width = 71.811070000000000000
@@ -1313,6 +1358,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.173470000000000000
           Top = 117.385900000000000000
           Width = 154.960730000000000000
@@ -1327,6 +1373,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.173470000000000000
           Top = 132.504020000000000000
           Width = 154.960730000000000000
@@ -1344,6 +1391,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 616.063390000000000000
           Top = 3.779530000000001000
           Width = 102.047310000000000000
@@ -1353,12 +1401,14 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[PAGE#] of [TOTALPAGES#]')
           ParentFont = False
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 18.897650000000000000
           Width = 94.488250000000000000
@@ -1368,6 +1418,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[DATE]')
@@ -1375,6 +1426,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           VAlign = vaBottom
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 384.275820000000000000
           Top = 132.504020000000000000
           Width = 34.015770000000000000
@@ -1391,6 +1443,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 384.275820000000000000
           Top = 117.385900000000000000
           Width = 34.015770000000000000
@@ -1408,6 +1461,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 241.889920000000000000
         Width = 718.110700000000000000
@@ -1415,6 +1469,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
         DataSetName = 'frxDBMateriaPrima'
         RowCount = 0
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Width = 75.590600000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -1430,6 +1485,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 230.551330000000000000
           Height = 15.118120000000000000
@@ -1446,6 +1502,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 305.464750000000000000
           Width = 79.370130000000000000
           Height = 15.118120000000000000
@@ -1464,6 +1521,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.173470000000000000
           Width = 154.960730000000000000
           Height = 15.118120000000000000
@@ -1477,6 +1535,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 573.488560000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1490,6 +1549,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 645.299630000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1503,6 +1563,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 384.275820000000000000
           Width = 34.015770000000000000
           Height = 15.118120000000000000
@@ -1520,10 +1581,12 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 570.929500000000000000
         Top = 279.685220000000000000
         Width = 718.110700000000000000
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.779530000000022500
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -1540,6 +1603,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.913420000000000000
           Top = 0.779530000000022500
           Width = 321.260050000000000000
@@ -1559,6 +1623,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 396.850650000000000000
           Top = 0.779530000000022500
           Width = 321.260050000000000000
@@ -1573,6 +1638,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Top = 15.897650000000000000
           Width = 718.110700000000000000
           Height = 136.063080000000000000
@@ -1588,6 +1654,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Top = 151.960730000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -1603,6 +1670,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Top = 170.858380000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
@@ -1616,6 +1684,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 185.976500000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
@@ -1629,6 +1698,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Top = 201.315090000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
@@ -1642,6 +1712,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Top = 215.433210000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
@@ -1655,6 +1726,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Top = 230.551330000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
@@ -1668,6 +1740,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Top = 245.669450000000000000
           Width = 718.110700000000000000
           Height = 22.677180000000000000
@@ -1683,6 +1756,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Top = 268.346629999999900000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -1698,6 +1772,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.228510000000000000
           Top = 268.346629999999900000
           Width = 124.724490000000000000
@@ -1714,6 +1789,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 268.346629999999900000
           Width = 154.960730000000000000
@@ -1730,6 +1806,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 268.346629999999900000
           Width = 181.417440000000000000
@@ -1746,6 +1823,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Top = 283.464750000000000000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -1761,6 +1839,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.228510000000000000
           Top = 283.464750000000000000
           Width = 124.724490000000000000
@@ -1775,6 +1854,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo65: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.512060000000000000
           Top = 283.464750000000000000
           Width = 154.960730000000000000
@@ -1789,6 +1869,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.472790000000000000
           Top = 283.464750000000000000
           Width = 181.417440000000000000
@@ -1803,6 +1884,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Top = 298.803340000000000000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -1818,6 +1900,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 298.803340000000000000
           Width = 124.724490000000000000
@@ -1832,6 +1915,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 298.803340000000000000
           Width = 154.960730000000000000
@@ -1846,6 +1930,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 298.803340000000000000
           Width = 181.417440000000000000
@@ -1860,6 +1945,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Top = 312.921460000000000000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -1875,6 +1961,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 312.921460000000000000
           Width = 124.724490000000000000
@@ -1889,6 +1976,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 312.921460000000000000
           Width = 154.960730000000000000
@@ -1903,6 +1991,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo74: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 312.921460000000000000
           Width = 181.417440000000000000
@@ -1917,6 +2006,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo75: TfrxMemoView
+          AllowVectorExport = True
           Top = 328.039579999999900000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -1932,6 +2022,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo76: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 328.039579999999900000
           Width = 124.724490000000000000
@@ -1946,6 +2037,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 328.039579999999900000
           Width = 154.960730000000000000
@@ -1960,6 +2052,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo78: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 328.039579999999900000
           Width = 181.417440000000000000
@@ -1974,6 +2067,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Top = 343.937230000000100000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -1989,6 +2083,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 343.937230000000100000
           Width = 124.724490000000000000
@@ -2003,6 +2098,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo81: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 343.937230000000100000
           Width = 154.960730000000000000
@@ -2017,6 +2113,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 343.937230000000100000
           Width = 181.417440000000000000
@@ -2031,6 +2128,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Top = 358.055350000000000000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -2046,6 +2144,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 358.055350000000000000
           Width = 124.724490000000000000
@@ -2060,6 +2159,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo85: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 358.055350000000000000
           Width = 154.960730000000000000
@@ -2074,6 +2174,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo86: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 358.055350000000000000
           Width = 181.417440000000000000
@@ -2088,6 +2189,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo87: TfrxMemoView
+          AllowVectorExport = True
           Top = 373.173470000000000000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -2103,6 +2205,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo88: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 373.173470000000000000
           Width = 124.724490000000000000
@@ -2117,6 +2220,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo89: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 373.173470000000000000
           Width = 154.960730000000000000
@@ -2131,6 +2235,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo90: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 373.173470000000000000
           Width = 181.417440000000000000
@@ -2145,6 +2250,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo91: TfrxMemoView
+          AllowVectorExport = True
           Top = 449.984540000000000000
           Width = 718.110700000000000000
           Height = 22.677180000000000000
@@ -2160,6 +2266,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo92: TfrxMemoView
+          AllowVectorExport = True
           Top = 472.661720000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
@@ -2175,6 +2282,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 472.661720000000000000
           Width = 340.157700000000000000
@@ -2191,6 +2299,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 453.543600000000000000
           Top = 472.661720000000000000
           Width = 264.567100000000000000
@@ -2207,6 +2316,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo100: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.000000000000000000
           Top = 475.661720000000000000
           Width = 11.338590000000000000
@@ -2220,12 +2330,15 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 113.267780000000000000
           Top = 475.661720000000000000
           Width = 11.338590000000000000
           Height = 11.338590000000000000
+          Frame.Typ = []
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Top = 389.291590000000000000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -2241,6 +2354,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 389.291590000000000000
           Width = 124.724490000000000000
@@ -2255,6 +2369,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 389.291590000000000000
           Width = 154.960730000000000000
@@ -2269,6 +2384,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo101: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 389.291590000000000000
           Width = 181.417440000000000000
@@ -2283,6 +2399,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo102: TfrxMemoView
+          AllowVectorExport = True
           Top = 405.189240000000000000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -2298,6 +2415,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo103: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 405.189240000000000000
           Width = 124.724490000000000000
@@ -2312,6 +2430,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo104: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 405.189240000000000000
           Width = 154.960730000000000000
@@ -2326,6 +2445,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo105: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 405.189240000000000000
           Width = 181.417440000000000000
@@ -2340,6 +2460,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo106: TfrxMemoView
+          AllowVectorExport = True
           Top = 419.307360000000000000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -2355,6 +2476,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo107: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 419.307360000000000000
           Width = 124.724490000000000000
@@ -2369,6 +2491,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo108: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 419.307360000000000000
           Width = 154.960730000000000000
@@ -2383,6 +2506,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo109: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 419.307360000000000000
           Width = 181.417440000000000000
@@ -2397,6 +2521,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo110: TfrxMemoView
+          AllowVectorExport = True
           Top = 434.425480000000100000
           Width = 257.008040000000000000
           Height = 15.118120000000000000
@@ -2412,6 +2537,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo111: TfrxMemoView
+          AllowVectorExport = True
           Left = 257.448980000000000000
           Top = 434.425480000000100000
           Width = 124.724490000000000000
@@ -2426,6 +2552,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo112: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 434.425480000000100000
           Width = 154.960730000000000000
@@ -2440,6 +2567,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo113: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 434.425480000000100000
           Width = 181.417440000000000000
@@ -2454,6 +2582,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo98: TfrxMemoView
+          AllowVectorExport = True
           Top = 529.354669999999900000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
@@ -2467,6 +2596,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo99: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Top = 529.354669999999900000
           Width = 642.520100000000000000
@@ -2481,6 +2611,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Top = 506.677490000000000000
           Width = 75.590600000000000000
           Height = 22.677180000000000000
@@ -2496,6 +2627,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo97: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Top = 506.677490000000000000
           Width = 642.520100000000000000
@@ -2512,6 +2644,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo95: TfrxMemoView
+          AllowVectorExport = True
           Top = 491.559370000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
@@ -2583,7 +2716,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
     Top = 91
   end
   object frxOE2: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2630,12 +2763,16 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 132.504020000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Top = 1.000000000000000000
           Width = 253.228510000000000000
           Height = 15.118120000000000000
@@ -2644,17 +2781,21 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 17.897650000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 253.228510000000000000
           Top = 18.897650000000000000
           Width = 211.653680000000000000
@@ -2665,17 +2806,21 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -16
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Ordem de envase N'#186' [frxDBBusca."OPR_CODIGO"]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 40.574830000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 41.795300000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -2684,11 +2829,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."PRD_REFER"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811070000000000000
           Top = 41.795300000000000000
           Width = 404.409710000000000000
@@ -2698,11 +2845,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBBusca."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 478.220780000000000000
           Top = 41.795300000000000000
           Width = 139.842610000000000000
@@ -2712,11 +2861,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Produzir:[frxDBBusca."IOP_QUANTIDADE"] [frxDBBusca."PRD_UND"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
@@ -2725,6 +2876,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
@@ -2736,6 +2888,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
             end>
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 18.897650000000000000
           Width = 94.488250000000000000
@@ -2745,6 +2898,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date]')
@@ -2752,12 +2906,15 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           VAlign = vaCenter
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 59.692950000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Top = 60.692950000000000000
           Width = 370.393940000000000000
           Height = 15.118120000000000000
@@ -2766,11 +2923,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'PEDIDO: [frxDBBusca."PED_CODIGO"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Top = 75.811070000000000000
           Width = 540.472790000000000000
           Height = 15.118120000000000000
@@ -2779,11 +2938,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CLIENTE: [frxDBBusca."CLI_RAZAO"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Top = 60.692950000000000000
           Width = 158.740260000000000000
@@ -2793,9 +2954,11 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Top = 98.488250000000000000
           Width = 377.953000000001000000
           Height = 15.118120000000000000
@@ -2810,6 +2973,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Top = 113.606370000000000000
           Width = 377.953000000001000000
           Height = 18.897650000000000000
@@ -2825,6 +2989,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 113.606370000000000000
           Width = 75.590600000000000000
@@ -2841,6 +3006,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 453.543600000000000000
           Top = 113.606370000000000000
           Width = 151.181200000000000000
@@ -2857,6 +3023,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 604.724800000001000000
           Top = 113.606370000000000000
           Width = 113.385900000000000000
@@ -2873,6 +3040,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 98.488250000000000000
           Width = 75.590600000000000000
@@ -2888,6 +3056,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 453.543600000000000000
           Top = 98.488250000000000000
           Width = 151.181200000000000000
@@ -2901,6 +3070,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 604.724800000001000000
           Top = 98.488250000000000000
           Width = 113.385900000000000000
@@ -2914,6 +3084,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Top = 75.590600000000000000
           Width = 117.165430000000000000
@@ -2923,6 +3094,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'LOTE: [frxDBBusca."PRDL_LOTE"]')
           ParentFont = False
@@ -2930,6 +3102,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 211.653680000000000000
         Width = 718.110700000000000000
@@ -2938,6 +3111,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
         DataSetName = 'frxDBMateriaPrima'
         RowCount = 0
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Width = 377.953000000000000000
           Height = 15.118120000000000000
           DataSet = frxDBMateriaPrima
@@ -2958,6 +3132,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
             end>
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -2976,6 +3151,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 453.543600000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
@@ -2988,6 +3164,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 604.724800000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
@@ -3002,10 +3179,12 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 755.906000000000000000
         Top = 287.244280000000000000
         Width = 718.110700000000000000
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Width = 102.047310000000000000
           Height = 15.118120000000000000
@@ -3020,6 +3199,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -3038,6 +3218,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Top = 15.118120000000000000
           Width = 718.110700000000000000
           Height = 86.929190000000000000
@@ -3052,6 +3233,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Top = 102.047310000000000000
           Width = 718.110700000000000000
           Height = 249.448980000000000000
@@ -3066,6 +3248,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Top = 34.015770000000000000
           Width = 185.196970000000000000
           Height = 15.118120000000000000
@@ -3074,12 +3257,14 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Rotulagem:_____________________')
           ParentFont = False
           VAlign = vaBottom
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Top = 34.015770000000000000
           Width = 185.196970000000000000
@@ -3089,12 +3274,14 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Carimbo:_______________________')
           ParentFont = False
           VAlign = vaBottom
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Top = 362.834880000000000000
           Width = 718.110700000000000000
           Height = 60.472480000000000000
@@ -3111,6 +3298,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Top = 362.834880000000000000
           Width = 139.842610000000000000
           Height = 60.472480000000000000
@@ -3128,6 +3316,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Top = 423.307360000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3142,6 +3331,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 423.307360000000000000
           Width = 139.842610000000000000
@@ -3157,6 +3347,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 279.685220000000000000
           Top = 423.307360000000000000
           Width = 143.622140000000000000
@@ -3172,6 +3363,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 423.307360000000000000
           Width = 147.401670000000000000
@@ -3187,6 +3379,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 423.307360000000000000
           Width = 147.401670000000000000
@@ -3202,6 +3395,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Top = 442.205010000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3216,6 +3410,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 442.205010000000000000
           Width = 139.842610000000000000
@@ -3229,6 +3424,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Top = 461.102660000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3243,6 +3439,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 461.102660000000000000
           Width = 139.842610000000000000
@@ -3256,6 +3453,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Top = 480.000310000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3270,6 +3468,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 480.000310000000000000
           Width = 139.842610000000000000
@@ -3283,6 +3482,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Top = 498.897960000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3297,6 +3497,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 498.897960000000000000
           Width = 139.842610000000000000
@@ -3310,6 +3511,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Top = 517.795610000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3324,6 +3526,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 517.795610000000000000
           Width = 139.842610000000000000
@@ -3337,6 +3540,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Top = 536.693260000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3351,6 +3555,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 536.693260000000000000
           Width = 139.842610000000000000
@@ -3364,6 +3569,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Top = 555.590910000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3378,6 +3584,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 555.590910000000000000
           Width = 139.842610000000000000
@@ -3391,6 +3598,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Top = 574.488560000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3405,6 +3613,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 574.488560000000000000
           Width = 139.842610000000000000
@@ -3418,6 +3627,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Top = 593.386210000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3432,6 +3642,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 593.386210000000000000
           Width = 139.842610000000000000
@@ -3445,6 +3656,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Top = 612.283860000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3459,6 +3671,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 140.504020000000000000
           Top = 612.283860000000000000
           Width = 139.842610000000000000
@@ -3472,6 +3685,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 279.685220000000000000
           Top = 442.205010000000000000
           Width = 143.622140000000000000
@@ -3485,6 +3699,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Top = 442.205010000000000000
           Width = 147.401670000000000000
@@ -3504,6 +3719,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 442.205010000000000000
           Width = 147.401670000000000000
@@ -3517,6 +3733,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 279.685220000000000000
           Top = 536.693260000000000000
           Width = 143.622140000000000000
@@ -3530,6 +3747,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 502.677490000000000000
           Width = 147.401670000000000000
@@ -3543,6 +3761,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 563.149970000000000000
           Width = 147.401670000000000000
@@ -3556,6 +3775,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 70.590600000000000000
           Top = 687.653990000000000000
           Width = 192.756030000000000000
@@ -3565,11 +3785,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Inicial:___/___/___')
           ParentFont = False
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 687.653990000000000000
           Width = 162.519790000000000000
@@ -3579,11 +3801,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Visto:_______________')
           ParentFont = False
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Top = 634.961040000000000000
           Width = 718.110700000000000000
           Height = 22.677180000000000000
@@ -3599,6 +3823,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811070000000000000
           Top = 717.110700000000000000
           Width = 192.756030000000000000
@@ -3608,11 +3833,13 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Final:___/___/___')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Top = 114.385900000000000000
           Width = 710.551640000000000000
@@ -3622,6 +3849,7 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FTC_ETAPAS]')
           ParentFont = False

@@ -10,6 +10,9 @@ inherited frmEmpresaExportacao: TfrmEmpresaExportacao
     Height = 226
     Align = alClient
     TabOrder = 0
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True

@@ -8,8 +8,8 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
   Position = poDesktopCenter
   Visible = True
   OnResize = FormResize
-  ExplicitWidth = 1191
-  ExplicitHeight = 627
+  ExplicitWidth = 1199
+  ExplicitHeight = 639
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter [0]
@@ -134,8 +134,10 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object ButPesquisa: TButton
       Left = 1084
@@ -779,6 +781,9 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Height = 254
           Align = alClient
           TabOrder = 0
+          LookAndFeel.Kind = lfStandard
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.ScrollbarMode = sbmClassic
           object cxGridPedidoDBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnCanFocusRecord = cxGridPedidoDBTableView1CanFocusRecord
@@ -1935,7 +1940,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
     Left = 39
     Top = 168
     Bitmap = {
-      494C01010A000D00040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010A000D00080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       00000000000000000000000000000000000000000000FFFFFF00FFD6AB00FFD6
       AB00FFD6AB00FFD6AB00FFD6AB00FFD6AB00FFD6AB00FFD6AB00FFD6AB00FFD6
@@ -2358,7 +2363,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
     end
   end
   object frxRomaneioDesp: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2399,27 +2404,35 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 71.811070000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         Stretched = True
         object nomeempresa: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000001000
           Width = 347.716760000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 26.456710000000000000
           Width = 215.433210000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Romaneio de despacho')
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 888.410020000000000000
           Width = 154.960730000000000000
           Height = 18.897650000000000000
@@ -2428,12 +2441,14 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Data: [DATE]')
           ParentFont = False
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 865.512370000000000000
           Top = 45.354360000000000000
           Width = 173.858380000000000000
@@ -2443,17 +2458,20 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P'#225'gina [PAGE#] de [TOTALPAGES#]')
           ParentFont = False
         end
         object filtro: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.687346340000000000
           Top = 49.069746830000000000
           Width = 495.579348290000000000
           Height = 18.436731710000000000
           StretchMode = smActualHeight
+          Frame.Typ = []
           Memo.UTF8W = (
             'Filtro')
           WordBreak = True
@@ -2461,6 +2479,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 192.756030000000000000
         Width = 1046.929810000000000000
@@ -2469,6 +2488,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
         RowCount = 0
         Stretched = True
         object frxDBDataset1TRP_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 594.961040000000000000
           Width = 166.299320000000000000
           Height = 18.897650000000000000
@@ -2485,6 +2505,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxDBDataset1CLI_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 156.637910000000000000
           Width = 226.771653543307100000
           Height = 18.897650000000000000
@@ -2502,6 +2523,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxDBDataset1NF_NUM_NFE: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811023622047240000
           Height = 18.897650000000000000
           DataField = 'NF_NUM_NFE'
@@ -2519,6 +2541,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxDBDataset1CLI_CIDADE: TfrxMemoView
+          AllowVectorExport = True
           Left = 420.205010000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
@@ -2536,6 +2559,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxDBDataset1PED_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 534.370440000000000000
           Width = 60.472480000000000000
           Height = 18.897650000000000000
@@ -2553,6 +2577,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxDBDataset1PED_DTSAIDA: TfrxMemoView
+          AllowVectorExport = True
           Left = 761.787880000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2571,6 +2596,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxDBDataset1NF_EMISSAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 72.590600000000000000
           Width = 83.149606300000000000
           Height = 18.897650000000000000
@@ -2589,6 +2615,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxDBDataset1CLI_UF: TfrxMemoView
+          AllowVectorExport = True
           Left = 384.630180000000000000
           Width = 34.015770000000010000
           Height = 18.897650000000000000
@@ -2606,6 +2633,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxDBDataset1NF_TOT_NOTA: TfrxMemoView
+          AllowVectorExport = True
           Left = 856.512370000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2623,17 +2651,21 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 951.685039370078800000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 151.181200000000000000
         Width = 1046.929810000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 594.961040000000000000
           Width = 166.299212600000000000
           Height = 18.897650000000000000
@@ -2649,6 +2681,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -2663,6 +2696,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 156.637910000000000000
           Width = 226.771800000000000000
           Height = 18.897650000000000000
@@ -2678,6 +2712,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 420.205010000000000000
           Width = 113.385826770000000000
           Height = 18.897650000000000000
@@ -2693,6 +2728,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 534.370440000000000000
           Width = 60.472440939999990000
           Height = 18.897650000000000000
@@ -2708,6 +2744,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 72.590600000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -2723,6 +2760,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 384.630180000000000000
           Width = 34.015770000000010000
           Height = 18.897650000000000000
@@ -2738,6 +2776,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 761.787880000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2753,6 +2792,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 856.512370000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2768,6 +2808,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 951.685039370078800000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -3281,7 +3322,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
     Top = 176
   end
   object frxRomaneioEntrega: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3320,22 +3361,28 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 245.669450000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object frxqExpedicaoEMP_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Width = 207.874150000000000000
           Height = 18.897650000000000000
           DataField = 'EMP_RAZAO'
           DataSet = frxqExpedicao
           DataSetName = 'frxqExpedicao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxqExpedicao."EMP_RAZAO"]')
         end
         object frxqExpedicaoEMP_ENDERE: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Top = 22.677180000000000000
           Width = 400.630180000000000000
@@ -3347,11 +3394,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Endere'#231'o: [frxqExpedicao."EMP_ENDERE"]')
           ParentFont = False
         end
         object frxqExpedicaoEMP_FONE: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Top = 45.354360000000000000
           Width = 196.535560000000000000
@@ -3363,11 +3412,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fone: [frxqExpedicao."EMP_FONE"]')
           ParentFont = False
         end
         object frxqExpedicaoEXP_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 128.504020000000000000
           Width = 238.110390000000000000
@@ -3379,11 +3430,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Num Expedi'#231#227'o : [frxqExpedicao."EXP_CODIGO"]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 102.047310000000000000
           Width = 222.992270000000000000
@@ -3393,11 +3446,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Informa'#231#245'es da Expedi'#231#227'o')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.338900000000000000
           Top = 105.826840000000000000
           Width = 222.992270000000000000
@@ -3407,11 +3462,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Dados do movimento vinculado')
           ParentFont = False
         end
         object frxqExpedicaoped_codigo: TfrxMemoView
+          AllowVectorExport = True
           Left = 343.937230000000000000
           Top = 132.283550000000000000
           Width = 215.433210000000000000
@@ -3423,30 +3480,38 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Pedido de Venda : [frxqExpedicao."ped_codigo"]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 101.771800000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 124.724490000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 336.378170000000000000
           Top = 102.826840000000000000
           Height = 143.622140000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object frxqExpedicaocli_razao: TfrxMemoView
+          AllowVectorExport = True
           Left = 343.937230000000000000
           Top = 158.740260000000000000
           Width = 370.393940000000000000
@@ -3458,6 +3523,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Cliente : [frxqExpedicao."CLI_CODIGO"] - [frxqExpedicao."cli_raz' +
@@ -3466,6 +3532,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxqExpedicaoEXP_DATAENVIO: TfrxMemoView
+          AllowVectorExport = True
           Left = 344.157700000000000000
           Top = 224.771800000000000000
           Width = 272.126160000000000000
@@ -3477,11 +3544,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data de envio : [frxqExpedicao."EXP_DATAENVIO"]')
           ParentFont = False
         end
         object frxqExpedicaoEXP_DATAABERTURA: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 154.960730000000000000
           Width = 272.126160000000000000
@@ -3493,11 +3562,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data de Abertura : [frxqExpedicao."EXP_DATAABERTURA"]')
           ParentFont = False
         end
         object frxqExpedicaoEXP_DATAENCERRA: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 177.637910000000000000
           Width = 272.126160000000000000
@@ -3509,11 +3580,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data de Encerramento : [frxqExpedicao."EXP_DATAENCERRA"]')
           ParentFont = False
         end
         object frxqExpedicaoUSU_NOME: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 221.433210000000000000
           Width = 313.700990000000000000
@@ -3525,11 +3598,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Respons'#225'vel: [frxqExpedicao."USU_NOME"]')
           ParentFont = False
         end
         object frxqExpedicaoEXP_SITUACAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.779530000000000000
           Top = 199.315090000000000000
           Width = 291.023810000000000000
@@ -3541,6 +3616,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Situa'#231#227'o: [IIF(<frxqExpedicao."EXP_SITUACAO">='#39'F'#39','#39'Efetivado'#39','#39'E' +
@@ -3553,14 +3629,17 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
             end>
         end
         object LOGO: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 207.874150000000000000
           Height = 90.708720000000000000
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 430.866420000000000000
           Top = 71.811070000000000000
           Width = 280.945063330000000000
@@ -3570,6 +3649,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Situa'#231#227'o expedi'#231#227'o : [frxqExpedicao."sitexp"]')
@@ -3578,6 +3658,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 393.071120000000000000
         Width = 718.110700000000000000
@@ -3586,6 +3667,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
         RowCount = 0
         Stretched = True
         object frxqItensExpedicaoPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 79.370130000000000000
@@ -3593,10 +3675,12 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           DataField = 'PRD_REFER'
           DataSet = frxqItensExpedicao
           DataSetName = 'frxqItensExpedicao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxqItensExpedicao."PRD_REFER"]')
         end
         object frxqItensExpedicaoPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Top = 3.779530000000000000
           Width = 309.921460000000000000
@@ -3605,11 +3689,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           DataField = 'PRD_DESCRI'
           DataSet = frxqItensExpedicao
           DataSetName = 'frxqItensExpedicao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxqItensExpedicao."PRD_DESCRI"]')
           WordBreak = True
         end
         object frxqItensExpedicaoAMX_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.189240000000000000
           Top = 3.779530000000000000
           Width = 162.519790000000000000
@@ -3617,10 +3703,12 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           DataField = 'AMX_DESCRI'
           DataSet = frxqItensExpedicao
           DataSetName = 'frxqItensExpedicao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxqItensExpedicao."AMX_DESCRI"]')
         end
         object frxqItensExpedicaoPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 3.779530000000000000
           Width = 30.236240000000000000
@@ -3628,10 +3716,12 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           DataField = 'PRD_UND'
           DataSet = frxqItensExpedicao
           DataSetName = 'frxqItensExpedicao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxqItensExpedicao."PRD_UND"]')
         end
         object frxqItensExpedicaoEXI_QTDE: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Top = 3.779530000000000000
           Width = 90.708720000000000000
@@ -3644,6 +3734,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxqItensExpedicao."EXI_QTDE"]')
@@ -3652,10 +3743,12 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 45.354360000000000000
         Top = 325.039580000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Top = 3.779530000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -3670,6 +3763,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 25.677180000000000000
           Width = 79.370130000000000000
@@ -3679,11 +3773,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 92.267780000000000000
           Top = 25.677180000000000000
           Width = 94.488250000000000000
@@ -3693,11 +3789,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 562.268090000000000000
           Top = 25.677180000000000000
           Width = 64.252010000000000000
@@ -3707,11 +3805,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Unidade')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.520100000000000000
           Top = 25.677180000000000000
           Width = 79.370130000000000000
@@ -3721,6 +3821,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade')
           ParentFont = False
@@ -3728,11 +3829,13 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 272.126160000000000000
         Top = 442.205010000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3746,6 +3849,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object frxqExpedicaoEXP_OBSERVACAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 343.937230000000000000
           Top = 22.677180000000000000
           Width = 313.700990000000000000
@@ -3754,18 +3858,22 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           DataField = 'EXP_OBSERVACAO'
           DataSet = frxqExpedicao
           DataSetName = 'frxqExpedicao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxqExpedicao."EXP_OBSERVACAO"]')
           WordBreak = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 336.378170000000000000
           Top = 18.897650000000000000
           Height = 94.488250000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.559060000000000000
           Top = 21.456710000000000000
           Width = 294.803340000000000000
@@ -3775,6 +3883,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data retirada :'
             'Quem retirou :'
@@ -3783,6 +3892,7 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 18.897650000000000000
           Top = 48.692950000000000000
           Width = 294.803340000000000000
@@ -3792,19 +3902,23 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Declaro que recebi os materiais acima relacionados, ficando '
             'respons'#225'vel pelos mesmo ap'#243's a emiss'#227'o deste documento')
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 718.110700000000000000
           Top = 113.385900000000000000
           Width = -721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object frxqExpedicaoPED_OBSERVACAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 136.063080000000000000
           Width = 676.535870000000000000
@@ -3813,10 +3927,12 @@ inherited FrmExpedicaoPedidos: TFrmExpedicaoPedidos
           DataField = 'PED_OBSERVACAO'
           DataSet = frxqExpedicao
           DataSetName = 'frxqExpedicao'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxqExpedicao."PED_OBSERVACAO"]')
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Top = 113.385900000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000

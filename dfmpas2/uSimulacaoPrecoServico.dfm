@@ -3,10 +3,8 @@ inherited frmSimularPrecoServicos: TfrmSimularPrecoServicos
   Caption = 'Simula'#231#227'o do pre'#231'o'
   ClientHeight = 546
   ClientWidth = 1089
-  ExplicitLeft = -68
-  ExplicitTop = -121
-  ExplicitWidth = 1097
-  ExplicitHeight = 573
+  ExplicitWidth = 1105
+  ExplicitHeight = 585
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter [0]
@@ -34,6 +32,9 @@ inherited frmSimularPrecoServicos: TfrmSimularPrecoServicos
       Height = 278
       Align = alClient
       TabOrder = 0
+      LookAndFeel.Kind = lfOffice11
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
       object cxgrd1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataModeController.GridMode = True

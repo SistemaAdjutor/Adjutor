@@ -2,8 +2,8 @@ inherited frmRequisicaoMaterialAutorizacao: TfrmRequisicaoMaterialAutorizacao
   Caption = 'Libera'#231#227'o de Requisi'#231#227'o de Material'
   ClientHeight = 475
   ClientWidth = 1243
-  ExplicitWidth = 1251
-  ExplicitHeight = 502
+  ExplicitWidth = 1259
+  ExplicitHeight = 514
   PixelsPerInch = 96
   TextHeight = 13
   object cxGrid1: TcxGrid [0]
@@ -13,6 +13,9 @@ inherited frmRequisicaoMaterialAutorizacao: TfrmRequisicaoMaterialAutorizacao
     Height = 338
     Align = alClient
     TabOrder = 0
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxGrid1DBTableView1: TcxGridDBTableView
       OnDblClick = cxGrid1DBTableView1DblClick
       Navigator.Buttons.CustomButtons = <>
@@ -88,6 +91,7 @@ inherited frmRequisicaoMaterialAutorizacao: TfrmRequisicaoMaterialAutorizacao
         Caption = '*'
         DataBinding.FieldName = 'SELECIONARETIRADA'
         PropertiesClassName = 'TcxCheckBoxProperties'
+        Properties.Alignment = taRightJustify
         Properties.ValueChecked = '1'
         Properties.ValueUnchecked = '0'
         HeaderAlignmentHorz = taCenter
@@ -401,8 +405,10 @@ inherited frmRequisicaoMaterialAutorizacao: TfrmRequisicaoMaterialAutorizacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object edSetorCodigo: TEdit
         Left = 6

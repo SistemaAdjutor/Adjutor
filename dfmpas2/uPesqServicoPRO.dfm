@@ -41,6 +41,9 @@ inherited frmServicos: TfrmServicos
       end
       inherited cxgrd1: TcxGrid
         Width = 535
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitWidth = 535
         inherited cxgrd1DBTableView1: TcxGridDBTableView
           OptionsCustomize.ColumnGrouping = False

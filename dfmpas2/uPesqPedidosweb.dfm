@@ -5,6 +5,9 @@ inherited frmPesqPedidosWeb: TfrmPesqPedidosWeb
   inherited pgc1: TPageControl
     inherited tsNotas: TTabSheet
       inherited cxgrd1: TcxGrid
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         inherited cxgrd1DBTableView1: TcxGridDBTableView
           object cxgrd1DBTableView1EMP_CODIGO: TcxGridDBColumn
             Caption = 'Empresa'

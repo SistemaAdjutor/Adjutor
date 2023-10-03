@@ -2,8 +2,8 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
   Caption = 'Gerenciamento de Apontamentos'
   ClientHeight = 574
   ClientWidth = 1054
-  ExplicitWidth = 1062
-  ExplicitHeight = 601
+  ExplicitWidth = 1070
+  ExplicitHeight = 613
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
@@ -120,8 +120,10 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object PesqSetor: TSgDbSearchCombo
               Left = 376
@@ -146,8 +148,10 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object chkFinalizados: TCheckBox
               Left = 704
@@ -215,6 +219,9 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
         Width = 1046
         Height = 380
         LevelTabs.CaptionAlignment = taLeftJustify
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         RootLevelOptions.DetailTabsPosition = dtpTop
         OnActiveTabChanged = cxgrd1ActiveTabChanged
         ExplicitTop = 89
@@ -884,6 +891,8 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
     end
   end
   inherited cdsBuscaDetalhes: TFDQuery
@@ -1239,7 +1248,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
     end
   end
   object frxRelatorioApont: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1412,31 +1421,39 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 69.283417530000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         OnBeforePrint = 'Header1OnBeforePrint'
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 1.176470590000000000
           Top = 2.871615850000001000
           Width = 83.477028170000000000
           Height = 31.560951770000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 0.465116280000000000
           Top = 2.105541980000002000
           Width = 717.574099410000000000
           Height = 0.072959420000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 320.000000000000000000
           Top = 3.427931399999999000
           Width = 86.116156970000000000
@@ -1446,11 +1463,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'EMBRATERM')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.441860470000000000
           Top = 23.427931390000000000
           Width = 154.488249990000000000
@@ -1460,27 +1479,33 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Relat'#243'rio de Apontamentos')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 0.465116280000000000
           Top = 38.776768600000000000
           Width = 717.574099410000000000
           Height = 0.072959420000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 52.730256979999990000
           Width = 717.574099410000000000
           Height = 0.072959420000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.477686990000000000
           Top = 38.701344340000000000
           Width = 716.989821330000000000
@@ -1490,12 +1515,14 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[FILTRO]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 16.216216220000000000
           Top = 54.075322970000000000
           Width = 38.272033790000000000
@@ -1505,19 +1532,23 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Carga')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = -0.540540540000000000
           Top = 69.210458110000000000
           Width = 719.736261570000000000
           Height = 0.072959420000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 78.378378370000000000
           Top = 53.534782430000010000
           Width = 53.390153790000000000
@@ -1527,11 +1558,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Qtde.')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 142.567567570000000000
           Top = 53.534782430000010000
           Width = 57.169683790000000000
@@ -1541,11 +1574,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Peso')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 212.459459460000000000
           Top = 53.534782430000010000
           Width = 55.577838650000000000
@@ -1555,11 +1590,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Inicio')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 354.135135140000000000
           Top = 53.534782430000010000
           Width = 55.577838650000000000
@@ -1569,11 +1606,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Final')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 269.859608190000000000
           Top = 52.994241890000000000
           Width = 55.577838650000000000
@@ -1583,11 +1622,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Hora Inicio')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 495.513513510000000000
           Top = 54.075322970000000000
           Width = 54.492503790000000000
@@ -1597,11 +1638,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Qtd Horas')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 560.108108110000000000
           Top = 53.534782430000010000
           Width = 28.035793790000000000
@@ -1611,11 +1654,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'O.S.')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 411.445193780000000000
           Top = 54.075322970000000000
           Width = 55.577838650000000000
@@ -1625,6 +1670,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Hora Final')
           ParentFont = False
@@ -1632,18 +1678,22 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       end
       object FooterRelatorio: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 20.094788700000000000
         Top = 434.645950000000000000
         Width = 718.110700000000000000
         OnBeforePrint = 'FooterRelatorioOnBeforePrint'
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 0.540540540000000000
           Top = 0.817036490000020900
           Width = 718.378378380000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.290322580000000000
           Top = 2.331507419999980000
           Width = 66.101153230000000000
@@ -1653,11 +1703,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total Setor')
           ParentFont = False
         end
         object TotalHorasSetor: TfrxMemoView
+          AllowVectorExport = True
           Left = 483.779840000000000000
           Top = 2.331507419999980000
           Width = 87.816326670000000000
@@ -1667,11 +1719,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[totalSetor]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.333333330000000000
           Top = 2.331507419999980000
           Width = 53.390153790000000000
@@ -1684,11 +1738,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."IOP_QUANTIDADE">,MasterData1,1)]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 144.288806670000000000
           Top = 2.331507419999980000
           Width = 60.472480000000000000
@@ -1701,6 +1757,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."IOP_PESO">,MasterData1,1)]')
           ParentFont = False
@@ -1708,6 +1765,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       end
       object GroupHeaderEquipamento: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 49.540765860000000000
         Top = 109.606370000000000000
         Width = 718.110700000000000000
@@ -1717,6 +1775,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
         KeepTogether = True
         StartNewPage = True
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.860611080000000000
           Top = 8.872854059999995000
           Width = 33.947709460000000000
@@ -1726,11 +1785,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Setor:')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 38.247998470000000000
           Top = 8.314295490000006000
           Width = 132.866628380000000000
@@ -1740,11 +1801,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."SET_DESCRICAO"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 8.108108110000000000
           Top = 30.300773510000000000
           Width = 71.785547290000000000
@@ -1754,11 +1817,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Equipamento:')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 80.000000000000000000
           Top = 30.300773510000000000
           Width = 321.260050000000000000
@@ -1768,6 +1833,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."EQP_DESCRICAO"]')
           ParentFont = False
@@ -1775,12 +1841,14 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       end
       object GroupHeaderDia: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.496706760000000000
         Top = 181.417440000000000000
         Width = 718.110700000000000000
         OnBeforePrint = 'GroupHeaderDiaOnBeforePrint'
         Condition = 'FormatDateTime('#39'dd/mm/yyyy'#39',<frxDBDataset1."PCP_DATAINI">)'
         object Carga: TfrxMemoView
+          AllowVectorExport = True
           Left = 8.657156220000000000
           Top = 0.378586759999990300
           Width = 209.663432710000000000
@@ -1790,6 +1858,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FormatDateTime('#39'dd/mm/yyyy'#39',<frxDBDataset1."PCP_DATAINI">)]')
           ParentFont = False
@@ -1797,19 +1866,23 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       end
       object GrupoFooterDia: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 25.760216030000000000
         Top = 343.937230000000000000
         Width = 718.110700000000000000
         OnAfterPrint = 'GrupoFooterDiaOnAfterPrint'
         OnBeforePrint = 'GrupoFooterDiaOnBeforePrint'
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 0.779530000000000000
           Top = 0.285989459999996100
           Width = 717.837837840000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 17.995746220000000000
           Top = 3.529232700000023000
           Width = 50.163925680000000000
@@ -1819,11 +1892,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total dia')
           ParentFont = False
         end
         object TotalHorasDia: TfrxMemoView
+          AllowVectorExport = True
           Left = 484.337085680000000000
           Top = 3.396103330000017000
           Width = 87.816326670000000000
@@ -1835,11 +1910,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TotalDia]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 78.666666660000000000
           Top = 3.529232700000023000
           Width = 53.390153790000000000
@@ -1852,11 +1929,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."IOP_QUANTIDADE">,MasterData1,1)]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 143.622140000000000000
           Top = 3.529232700000000000
           Width = 60.472480000000000000
@@ -1870,6 +1949,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."IOP_PESO">,MasterData1,1)]')
           ParentFont = False
@@ -1877,12 +1957,14 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       end
       object GroupFooterEquipamento: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 17.224205410000000000
         Top = 393.071120000000000000
         Width = 718.110700000000000000
         OnAfterPrint = 'GroupFooterEquipamentoOnAfterPrint'
         OnBeforePrint = 'GroupFooterEquipamentoOnBeforePrint'
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.081081080000000000
           Top = 0.488717570000005700
           Width = 73.389150900000000000
@@ -1892,16 +1974,20 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total Equip.')
           ParentFont = False
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Width = 717.837837840000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object TotalHorasEquipamento: TfrxMemoView
+          AllowVectorExport = True
           Left = 483.779840000000000000
           Width = 87.816326670000000000
           Height = 15.118120000000000000
@@ -1912,11 +1998,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TotalEquipamento]')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.333333330000000000
           Top = 0.395342700000014700
           Width = 53.390153790000000000
@@ -1929,11 +2017,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."IOP_QUANTIDADE">,MasterData1,1)]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 144.288806670000000000
           Top = 0.395342700000014700
           Width = 60.472480000000000000
@@ -1947,6 +2037,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."IOP_PESO">,MasterData1,1)]')
           ParentFont = False
@@ -1954,6 +2045,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       end
       object GroupHeaderCarga: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 10.000000000000000000
         Top = 219.212740000000000000
         Visible = False
@@ -1967,6 +2059,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       end
       object GrupoFooterCarga: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 298.582870000000000000
         Width = 718.110700000000000000
@@ -1974,6 +2067,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
         OnBeforePrint = 'GrupoFooterCargaOnBeforePrint'
         Stretched = True
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 211.792792790000000000
           Width = 139.842610000000000000
           Height = 15.118120000000000000
@@ -1982,11 +2076,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PCP_DATAINI"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 16.216216220000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -1996,11 +2092,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CargaouOrdem]')
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 354.135135140000000000
           Width = 124.724490000000000000
           Height = 15.118120000000000000
@@ -2009,11 +2107,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PCP_DATAFIM"]')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 553.522021080000000000
           Width = 148.724490000000000000
           Height = 15.118120000000000000
@@ -2023,11 +2123,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[OrdemCarga]')
           ParentFont = False
         end
         object SysMemo7: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -2039,11 +2141,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."IOP_QUANTIDADE">,MasterData1,1)]')
           ParentFont = False
         end
         object SysMemo8: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 144.288806670000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -2056,11 +2160,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."IOP_PESO">,MasterData1,1)]')
           ParentFont = False
         end
         object TotalHorasCarga: TfrxMemoView
+          AllowVectorExport = True
           Left = 484.000310000000000000
           Top = 0.666666659999975800
           Width = 60.472480000000000000
@@ -2072,6 +2178,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TotalCarga]')
           ParentFont = False
@@ -2079,6 +2186,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 253.228510000000000000
         Visible = False
@@ -2087,6 +2195,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object PESOTOTAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 514.016080000000000000
           Width = 105.826840000000000000
           Height = 18.897650000000000000
@@ -2100,11 +2209,13 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[<frxDBDataset1."IOP_QUANTIDADE">*<frxDBDataset1."IOP_PESO">]')
           ParentFont = False
         end
         object frxDBDataset1IOP_QUANTIDADE1: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
@@ -2115,21 +2226,25 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."IOP_QUANTIDADE"]')
           ParentFont = False
         end
         object frxDBDataset1CAR_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DataField = 'CAR_CODIGO'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."CAR_CODIGO"]')
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 166.299320000000000000
           Top = 1.000000000000000000
           Width = 113.385900000000000000
@@ -2145,6 +2260,7 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."IOP_PESO"]')
           ParentFont = False
@@ -2435,11 +2551,14 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -2449,6 +2568,9 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 676
     Top = 345
   end

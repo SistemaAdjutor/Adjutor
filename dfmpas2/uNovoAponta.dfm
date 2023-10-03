@@ -3,8 +3,8 @@ inherited frmNovoApontamento: TfrmNovoApontamento
   ClientHeight = 638
   ClientWidth = 1436
   Font.Height = -13
-  ExplicitWidth = 1444
-  ExplicitHeight = 665
+  ExplicitWidth = 1452
+  ExplicitHeight = 677
   PixelsPerInch = 96
   TextHeight = 16
   inherited pgc1: TPageControl
@@ -53,6 +53,9 @@ inherited frmNovoApontamento: TfrmNovoApontamento
         Top = 215
         Width = 1428
         Height = 173
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitTop = 215
         ExplicitWidth = 1428
         ExplicitHeight = 173
@@ -383,6 +386,9 @@ inherited frmNovoApontamento: TfrmNovoApontamento
           Height = 122
           Align = alClient
           TabOrder = 0
+          LookAndFeel.Kind = lfStandard
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.ScrollbarMode = sbmClassic
           object cxGrid1DBTableView1: TcxGridDBTableView
             OnDblClick = cxGrid1DBTableView1DblClick
             Navigator.Buttons.CustomButtons = <>
@@ -489,7 +495,7 @@ inherited frmNovoApontamento: TfrmNovoApontamento
           ColCount = 6
           DataSource = dsOperacoes
           PanelHeight = 21
-          PanelWidth = 234
+          PanelWidth = 233
           TabOrder = 0
           RowCount = 6
           SelectedColor = clRed
@@ -497,14 +503,14 @@ inherited frmNovoApontamento: TfrmNovoApontamento
           object Panel1: TPanel
             Left = 0
             Top = 0
-            Width = 234
+            Width = 233
             Height = 21
             Align = alClient
             TabOrder = 0
             object DBText1: TDBText
               Left = 1
               Top = 1
-              Width = 232
+              Width = 231
               Height = 19
               Align = alClient
               Alignment = taCenter

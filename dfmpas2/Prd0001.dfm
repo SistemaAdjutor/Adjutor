@@ -15,7 +15,6 @@ inherited FormProduto: TFormProduto
   Position = poDefaultPosOnly
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitTop = -466
   ExplicitWidth = 2506
   ExplicitHeight = 1029
   PixelsPerInch = 96
@@ -25,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = Tbs_FichaTec
     Align = alTop
     HotTrack = True
     TabOrder = 0

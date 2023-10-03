@@ -52,8 +52,10 @@ inherited frmPCP: TfrmPCP
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object NumOS: TLabeledEdit
               Left = 9
@@ -108,11 +110,15 @@ inherited frmPCP: TfrmPCP
       end
       inherited cxgrd1: TcxGrid
         PopupMenu = pmGerarCarga
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         inherited cxgrd1DBTableView1: TcxGridDBTableView
           object cxgrd1DBTableView1Column1: TcxGridDBColumn
             Caption = '*'
             DataBinding.FieldName = 'MARCADO'
             PropertiesClassName = 'TcxCheckBoxProperties'
+            Properties.Alignment = taRightJustify
             HeaderAlignmentHorz = taCenter
           end
           object cxgrd1DBTableView1OPE_NOME: TcxGridDBColumn
@@ -211,6 +217,7 @@ inherited frmPCP: TfrmPCP
             Caption = '*'
             DataBinding.FieldName = 'MARCADO'
             PropertiesClassName = 'TcxCheckBoxProperties'
+            Properties.Alignment = taRightJustify
             Properties.ValueChecked = '1'
             Properties.ValueUnchecked = '0'
             HeaderAlignmentHorz = taCenter

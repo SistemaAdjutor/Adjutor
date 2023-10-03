@@ -2,8 +2,8 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
   Caption = 'Gerar Solicita'#231#227'o de Compra'
   ClientHeight = 476
   ClientWidth = 992
-  ExplicitWidth = 1000
-  ExplicitHeight = 503
+  ExplicitWidth = 1008
+  ExplicitHeight = 515
   PixelsPerInch = 96
   TextHeight = 13
   object pTop: TPanel [0]
@@ -73,8 +73,10 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'SETOR'
       CamposCarregar = 'SET_CODIGO,SET_DESCRICAO'
       CamposRetornar = 'SET_CODIGO'
@@ -205,8 +207,10 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'PRD0000'
         CamposCarregar = 'PRD_REFER,PRD_DESCRI'
         CamposRetornar = 'PRD_REFER'
@@ -387,6 +391,9 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     Height = 248
     Align = alClient
     TabOrder = 1
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True

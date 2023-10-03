@@ -9,6 +9,9 @@ inherited frmParametrosQualidade: TfrmParametrosQualidade
     Height = 378
     Align = alClient
     TabOrder = 1
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Filter.Enabled = False

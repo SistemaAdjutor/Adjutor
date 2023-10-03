@@ -2,10 +2,8 @@ inherited frmEstruturaFicha: TfrmEstruturaFicha
   Caption = 'Estrutura ficha t'#233'cnica'
   ClientHeight = 419
   ClientWidth = 1017
-  OnClose = FormClose
-  OnShow = FormShow
-  ExplicitWidth = 1025
-  ExplicitHeight = 446
+  ExplicitWidth = 1033
+  ExplicitHeight = 458
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
@@ -22,7 +20,6 @@ inherited frmEstruturaFicha: TfrmEstruturaFicha
     Top = 81
     Width = 1017
     Height = 338
-    Hint = ''
     Align = alClient
     Bands = <
       item
@@ -30,7 +27,6 @@ inherited frmEstruturaFicha: TfrmEstruturaFicha
     Navigator.Buttons.CustomButtons = <>
     PopupMenus.ColumnHeaderMenu.Items = [tlchmiSortAscending, tlchmiSortDescending, tlchmiFooter, tlchmiGroupFooters, tlchmiRemoveThisColumn, tlchmiFieldChooser, tlchmiHorzAlignment, tlchmiVertAlignment, tlchmiBestFit, tlchmiBestFitAllColumns]
     TabOrder = 1
-    ExplicitTop = 87
     object cxPRD_REFER: TcxTreeListColumn
       Caption.Text = 'Refer'#234'ncia'
       DataBinding.ValueType = 'String'

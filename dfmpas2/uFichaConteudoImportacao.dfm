@@ -3,7 +3,6 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
   ClientHeight = 621
   ClientWidth = 1461
   OnKeyUp = FormKeyUp
-  ExplicitLeft = -94
   ExplicitWidth = 1477
   ExplicitHeight = 660
   PixelsPerInch = 96
@@ -72,6 +71,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       inherited cxgrd1: TcxGrid
         Width = 1453
         Height = 437
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitWidth = 1453
         ExplicitHeight = 437
         inherited cxgrd1DBTableView1: TcxGridDBTableView

@@ -58,17 +58,17 @@ object FrmKardex: TFrmKardex
     LookAndFeel.Kind = lfStandard
     LookAndFeel.NativeStyle = True
     OnChange = cxPageControl1Change
-    ClientRectBottom = 598
-    ClientRectLeft = 2
-    ClientRectRight = 962
-    ClientRectTop = 23
+    ClientRectBottom = 596
+    ClientRectLeft = 4
+    ClientRectRight = 960
+    ClientRectTop = 25
     object cxTabSheet1: TcxTabSheet
       Caption = 'Extrato'
       ImageIndex = 0
       object GroupBox1: TGroupBox
         Left = 0
         Top = 0
-        Width = 960
+        Width = 956
         Height = 137
         Align = alTop
         Caption = 'Selecione o Produto e  o Almoxarifado para pesquisa'
@@ -272,8 +272,10 @@ object FrmKardex: TFrmKardex
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
         end
         object chkInativos: TCheckBox
           Left = 368
@@ -300,16 +302,16 @@ object FrmKardex: TFrmKardex
       object GroupBox2: TGroupBox
         Left = 0
         Top = 137
-        Width = 960
-        Height = 243
+        Width = 956
+        Height = 239
         Align = alClient
         Caption = 'Movimenta'#231#227'o do Produto'
         TabOrder = 1
         object gridExtrato: TJvDBGrid
           Left = 2
           Top = 16
-          Width = 956
-          Height = 225
+          Width = 952
+          Height = 221
           Align = alClient
           Ctl3D = True
           DataSource = DsKardex
@@ -407,7 +409,7 @@ object FrmKardex: TFrmKardex
               FieldName = 'KEX_USUARIO_DESCRICAO'
               Title.Alignment = taCenter
               Title.Caption = 'Usu'#225'rio'
-              Width = 119
+              Width = 118
               Visible = True
             end
             item
@@ -415,7 +417,7 @@ object FrmKardex: TFrmKardex
               FieldName = 'KEX_DETALHE'
               Title.Alignment = taCenter
               Title.Caption = 'Detalhe'
-              Width = 242
+              Width = 239
               Visible = True
             end>
         end
@@ -426,6 +428,9 @@ object FrmKardex: TFrmKardex
           Height = 200
           TabOrder = 1
           Visible = False
+          LookAndFeel.Kind = lfStandard
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.ScrollbarMode = sbmClassic
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
@@ -462,8 +467,8 @@ object FrmKardex: TFrmKardex
       end
       object Panel1: TPanel
         Left = 0
-        Top = 533
-        Width = 960
+        Top = 529
+        Width = 956
         Height = 42
         Align = alBottom
         TabOrder = 2
@@ -488,8 +493,8 @@ object FrmKardex: TFrmKardex
       end
       object Panel2: TPanel
         Left = 0
-        Top = 380
-        Width = 960
+        Top = 376
+        Width = 956
         Height = 153
         Align = alBottom
         BevelOuter = bvNone
@@ -518,7 +523,7 @@ object FrmKardex: TFrmKardex
         object GroupBox4: TGroupBox
           Left = 377
           Top = 0
-          Width = 583
+          Width = 579
           Height = 153
           Align = alClient
           Caption = 'Saldos dos Almoxarifados da empresa'
@@ -526,7 +531,7 @@ object FrmKardex: TFrmKardex
           object JvDBGrid5: TJvDBGrid
             Left = 2
             Top = 16
-            Width = 579
+            Width = 575
             Height = 135
             Align = alClient
             Ctl3D = True
@@ -555,7 +560,7 @@ object FrmKardex: TFrmKardex
                 FieldName = 'AMX_CODIGO_RET'
                 Title.Alignment = taCenter
                 Title.Caption = 'C'#243'digo'
-                Width = 82
+                Width = 81
                 Visible = True
               end
               item
@@ -563,7 +568,7 @@ object FrmKardex: TFrmKardex
                 FieldName = 'AMX_DESCRI_RET'
                 Title.Alignment = taCenter
                 Title.Caption = 'Descri'#231#227'o'
-                Width = 393
+                Width = 390
                 Visible = True
               end
               item
@@ -645,7 +650,7 @@ object FrmKardex: TFrmKardex
         Left = 0
         Top = 0
         Width = 353
-        Height = 575
+        Height = 571
         Align = alLeft
         Caption = 'Almoxarifados'
         TabOrder = 1
@@ -653,7 +658,7 @@ object FrmKardex: TFrmKardex
           Left = 2
           Top = 16
           Width = 349
-          Height = 557
+          Height = 553
           Align = alClient
           Ctl3D = True
           DataSource = DsAlmoxarifadoGeral
@@ -1187,7 +1192,7 @@ object FrmKardex: TFrmKardex
     Top = 417
   end
   object frxKardexExtrato: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1223,13 +1228,17 @@ object FrmKardex: TFrmKardex
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 49.133890000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 589.606680000000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -1238,12 +1247,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[empresa]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 15.118120000000000000
           Width = 589.606680000000000000
           Height = 15.118120000000000000
@@ -1253,12 +1264,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Hist'#243'rico de Movimenta'#231#227'o do Estoque')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 30.236239999999990000
           Width = 589.606680000000000000
           Height = 15.118120000000000000
@@ -1269,6 +1282,7 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Produto: [produto] de [dataInicial] at'#233' [dataFinal] - Almoxarifa' +
@@ -1278,6 +1292,7 @@ object FrmKardex: TFrmKardex
           VAlign = vaCenter
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 15.118120000000000000
           Width = 128.504020000000000000
@@ -1287,6 +1302,7 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[TIME]')
@@ -1294,6 +1310,7 @@ object FrmKardex: TFrmKardex
           VAlign = vaCenter
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 30.236240000000000000
           Width = 128.504020000000000000
@@ -1303,6 +1320,7 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[PAGE#] de [TOTALPAGES#]')
@@ -1310,6 +1328,7 @@ object FrmKardex: TFrmKardex
           VAlign = vaCenter
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 128.504020000000000000
           Height = 15.118120000000000000
@@ -1318,6 +1337,7 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[DATE]')
@@ -1327,6 +1347,7 @@ object FrmKardex: TFrmKardex
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 173.858380000000000000
         Width = 718.110700000000000000
@@ -1334,6 +1355,7 @@ object FrmKardex: TFrmKardex
         DataSetName = 'frxDBKardexExtrato'
         RowCount = 0
         object frxDBKardexExtratoKEX_DATA_HORA: TfrxMemoView
+          AllowVectorExport = True
           Width = 113.385900000000000000
           Height = 15.118120000000000000
           DataSet = frxDBKardexExtrato
@@ -1344,11 +1366,13 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBKardexExtrato."KEX_DATA_HORA"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 75.590600000000000000
           Height = 15.118120000000000000
@@ -1361,11 +1385,13 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBKardexExtrato."KEX_ORIGEM"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -1378,11 +1404,13 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBKardexExtrato."KEX_TIPO"]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -1395,12 +1423,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBKardexExtrato."KEX_QUANTIDADE"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
@@ -1413,11 +1443,13 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBKardexExtrato."KEX_DOCUMENTO"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1430,12 +1462,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBKardexExtrato."KEX_SALDO"]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Width = 102.047310000000000000
           Height = 15.118120000000000000
@@ -1448,11 +1482,13 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBKardexExtrato."KEX_USUARIO_DESCRICAO"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 158.740260000000000000
           Height = 15.118120000000000000
@@ -1465,6 +1501,7 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBKardexExtrato."KEX_DETALHE"]')
           ParentFont = False
@@ -1473,10 +1510,12 @@ object FrmKardex: TFrmKardex
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 3.779530000000000000
         Top = 249.448980000000000000
         Width = 718.110700000000000000
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Style = fsDot
@@ -1485,12 +1524,14 @@ object FrmKardex: TFrmKardex
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 128.504020000000000000
         Width = 718.110700000000000000
         KeepChild = True
         ReprintOnNewPage = True
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 2.440940000000000000
           Width = 714.331170000000000000
           Color = clBlack
@@ -1498,6 +1539,7 @@ object FrmKardex: TFrmKardex
           Frame.Typ = [ftTop]
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Top = 1.779530000000000000
           Width = 79.370130000000000000
@@ -1508,12 +1550,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data/Hora')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 118.944960000000000000
           Top = 1.779530000000000000
           Width = 64.252010000000000000
@@ -1524,12 +1568,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Origem')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Top = 1.779530000000000000
           Width = 26.456710000000000000
@@ -1540,12 +1586,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tipo')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 222.992270000000000000
           Top = 1.779530000000000000
           Width = 68.031540000000000000
@@ -1556,6 +1604,7 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Quantidade')
@@ -1563,6 +1612,7 @@ object FrmKardex: TFrmKardex
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Top = 1.779530000000000000
           Width = 90.708720000000000000
@@ -1573,6 +1623,7 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Documento')
@@ -1580,6 +1631,7 @@ object FrmKardex: TFrmKardex
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 379.732530000000000000
           Top = 1.779530000000000000
           Width = 64.252010000000000000
@@ -1590,12 +1642,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Saldo')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 456.543600000000000000
           Top = 1.779530000000000000
           Width = 90.708720000000000000
@@ -1606,12 +1660,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Usu'#225'rio')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 1.779530000000000000
           Width = 158.740260000000000000
@@ -1622,12 +1678,14 @@ object FrmKardex: TFrmKardex
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Detalhe')
           ParentFont = False
           VAlign = vaCenter
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 20.118120000000000000
           Width = 714.330708660000000000
@@ -1663,11 +1721,14 @@ object FrmKardex: TFrmKardex
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -1678,6 +1739,9 @@ object FrmKardex: TFrmKardex
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 804
     Top = 130
   end

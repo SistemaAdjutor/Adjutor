@@ -5,8 +5,8 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
   ClientHeight = 485
   ClientWidth = 1071
   Position = poDesigned
-  ExplicitWidth = 1079
-  ExplicitHeight = 512
+  ExplicitWidth = 1087
+  ExplicitHeight = 524
   PixelsPerInch = 96
   TextHeight = 13
   object Label6: TLabel [0]
@@ -23,6 +23,9 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
     Height = 308
     Align = alClient
     TabOrder = 1
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxProcessoDBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True
@@ -387,8 +390,10 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edEquipamentoCodigo: TEdit
       Left = 370
@@ -423,8 +428,10 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object gbPeriodo: TGroupBox
       Left = 8
@@ -552,8 +559,10 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
   end
   inherited coCalcula: TACBrCalculadora
@@ -663,7 +672,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
     Top = 260
   end
   object frxPPF: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -710,12 +719,16 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 57.929190000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 469.252320000000000000
           Top = 45.354360000000000000
           Width = 18.897650000000000000
@@ -725,40 +738,52 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Un.')
           ParentFont = False
         end
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Width = 136.063080000000000000
           Height = 45.354360000000000000
+          Frame.Typ = []
         end
         object Shape16: TfrxShapeView
+          AllowVectorExport = True
           Left = 525.354670000000000000
           Width = 90.708720000000000000
           Height = 37.795300000000000000
+          Frame.Typ = []
         end
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Top = 4.779530000000000000
           Width = 132.283423070000000000
           Height = 37.795300000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Shape3: TfrxShapeView
+          AllowVectorExport = True
           Left = 944.882500000000000000
           Width = 102.047310000000000000
           Height = 45.354360000000000000
+          Frame.Typ = []
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Left = 136.063080000000000000
           Width = 808.819420000000000000
           Height = 45.354360000000000000
           Fill.BackColor = clSilver
+          Frame.Typ = []
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 139.842610000000000000
           Top = 12.669295000000000000
           Width = 801.260360000000000000
@@ -768,12 +793,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Programa'#231#227'o dos Processos de Fabrica'#231#227'o')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 948.662030000000000000
           Top = 7.559060000000000000
           Width = 56.692950000000000000
@@ -783,12 +810,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'P'#193'GINA')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 986.457330000000000000
           Top = 27.677180000000000000
           Width = 56.692950000000000000
@@ -798,6 +827,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Page] de [TotalPages#]')
@@ -809,6 +839,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
             end>
         end
         object Line16: TfrxLineView
+          AllowVectorExport = True
           Left = 43.574830000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -816,6 +847,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line17: TfrxLineView
+          AllowVectorExport = True
           Left = 214.889920000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -823,6 +855,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line18: TfrxLineView
+          AllowVectorExport = True
           Left = 468.472790000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -830,6 +863,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line19: TfrxLineView
+          AllowVectorExport = True
           Left = 488.709030000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -837,6 +871,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line20: TfrxLineView
+          AllowVectorExport = True
           Left = 532.945270000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -844,6 +879,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line21: TfrxLineView
+          AllowVectorExport = True
           Left = 574.740570000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -851,6 +887,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line22: TfrxLineView
+          AllowVectorExport = True
           Left = 615.756340000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -858,6 +895,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line23: TfrxLineView
+          AllowVectorExport = True
           Left = 656.772110000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -865,6 +903,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line24: TfrxLineView
+          AllowVectorExport = True
           Left = 713.685530000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -872,6 +911,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line25: TfrxLineView
+          AllowVectorExport = True
           Left = 760.039890000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -879,6 +919,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line26: TfrxLineView
+          AllowVectorExport = True
           Left = 834.173780000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -886,6 +927,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line27: TfrxLineView
+          AllowVectorExport = True
           Left = 887.528140000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -893,6 +935,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line28: TfrxLineView
+          AllowVectorExport = True
           Left = 941.441560000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -900,6 +943,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line29: TfrxLineView
+          AllowVectorExport = True
           Left = 994.575450000000000000
           Top = 45.590600000000000000
           Height = 11.338590000000000000
@@ -907,6 +951,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line30: TfrxLineView
+          AllowVectorExport = True
           Left = 1046.929810000000000000
           Top = 46.590600000000000000
           Height = 11.338590000000000000
@@ -914,6 +959,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line31: TfrxLineView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 45.354360000000000000
           Height = 11.338590000000000000
@@ -921,6 +967,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line33: TfrxLineView
+          AllowVectorExport = True
           Left = -1.000000000000000000
           Top = 56.692950000000000000
           Width = 1046.929810000000000000
@@ -928,6 +975,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftTop]
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Top = 45.354360000000000000
           Width = 37.795300000000000000
           Height = 11.338590000000000000
@@ -936,11 +984,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#186' Ordem')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 45.354360000000000000
           Top = 45.354360000000000000
           Width = 75.590600000000000000
@@ -950,11 +1000,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Raz'#227'o Social')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 216.669450000000000000
           Top = 45.354360000000000000
           Width = 37.795300000000000000
@@ -964,11 +1016,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Ref.')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 258.244280000000000000
           Top = 45.354360000000000000
           Width = 49.133890000000000000
@@ -978,11 +1032,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Produto')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 489.370440000000000000
           Top = 45.354360000000000000
           Width = 41.574830000000000000
@@ -992,12 +1048,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Interno]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 530.945270000000000000
           Top = 45.354360000000000000
           Width = 45.354360000000000000
@@ -1007,12 +1065,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Externo]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 575.740570000000000000
           Top = 45.354360000000000000
           Width = 37.795300000000000000
@@ -1022,12 +1082,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Altura1]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 617.756340000000000000
           Top = 45.354360000000000000
           Width = 37.795300000000000000
@@ -1037,12 +1099,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Altura2]')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 659.772110000000000000
           Top = 45.354360000000000000
           Width = 37.795300000000000000
@@ -1052,11 +1116,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Status')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 717.685530000000000000
           Top = 45.354360000000000000
           Width = 37.795300000000000000
@@ -1066,12 +1132,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Solicitada')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 757.260360000000000000
           Top = 45.354360000000000000
           Width = 49.133890000000000000
@@ -1081,12 +1149,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Produzida')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 839.953310000000000000
           Top = 45.354360000000000000
           Width = 41.574830000000000000
@@ -1096,11 +1166,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Prevista')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 890.307670000000000000
           Top = 45.354360000000000000
           Width = 41.574830000000000000
@@ -1110,11 +1182,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Ajustada')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 943.441560000000000000
           Top = 45.354360000000000000
           Width = 41.574830000000000000
@@ -1124,11 +1198,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inicio')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 996.575450000000000000
           Top = 45.354360000000000000
           Width = 49.133890000000000000
@@ -1138,11 +1214,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Concl.')
           ParentFont = False
         end
         object Line35: TfrxLineView
+          AllowVectorExport = True
           Left = 256.126160000000000000
           Top = 45.354360000000000000
           Height = 11.338590000000000000
@@ -1150,6 +1228,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 808.819420000000000000
           Top = 45.354360000000000000
           Width = 26.456710000000000000
@@ -1159,12 +1238,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Dias')
           ParentFont = False
         end
         object Line38: TfrxLineView
+          AllowVectorExport = True
           Left = 808.819420000000000000
           Top = 45.354360000000000000
           Height = 11.338590000000000000
@@ -1174,6 +1255,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 11.338590000000000000
         Top = 136.063080000000000000
         Width = 1046.929810000000000000
@@ -1181,6 +1263,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
         DataSetName = 'frxDBPPF'
         RowCount = 0
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 258.244280000000000000
           Width = 207.874150000000000000
           Height = 11.338590000000000000
@@ -1189,11 +1272,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 37.795300000000000000
           Height = 11.338590000000000000
@@ -1202,11 +1287,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."IOP_NORDEM"]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 216.669450000000000000
           Width = 37.795300000000000000
           Height = 11.338590000000000000
@@ -1215,11 +1302,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."PRD_REFER"]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 469.252320000000000000
           Width = 18.897650000000000000
           Height = 11.338590000000000000
@@ -1228,11 +1317,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."PRD_UND"]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 489.370440000000000000
           Width = 41.574830000000000000
           Height = 11.338590000000000000
@@ -1241,12 +1332,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPPF."INTERNO"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 535.283860000000000000
           Width = 37.795300000000000000
           Height = 11.338590000000000000
@@ -1255,12 +1348,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPPF."EXTERNO"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 575.858690000000000000
           Width = 37.795300000000000000
           Height = 11.338590000000000000
@@ -1269,12 +1364,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPPF."ALTURA1"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 618.315400000000000000
           Width = 30.236240000000000000
           Height = 11.338590000000000000
@@ -1286,12 +1383,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPPF."ALTURA2"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 657.772110000000000000
           Width = 56.692950000000000000
           Height = 11.338590000000000000
@@ -1303,11 +1402,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."IOP_STATUS"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 715.685530000000000000
           Width = 41.574830000000000000
           Height = 11.338590000000000000
@@ -1319,12 +1420,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPPF."PRF_QTDE"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 761.039890000000000000
           Width = 45.354360000000000000
           Height = 11.338590000000000000
@@ -1336,12 +1439,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPPF."FAB_PRODUZIDA"]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 836.173780000000000000
           Width = 49.133858270000000000
           Height = 11.338590000000000000
@@ -1353,11 +1458,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."IOP_DATA_PREVISTA"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 890.307670000000000000
           Width = 49.133858270000000000
           Height = 11.338590000000000000
@@ -1369,11 +1476,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."IOP_DATA_AJUSTADA"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 943.441560000000000000
           Width = 49.133858270000000000
           Height = 11.338590000000000000
@@ -1385,11 +1494,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."IOP_DATA_INICIO"]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 996.575450000000000000
           Width = 49.133890000000000000
           Height = 11.338590000000000000
@@ -1401,119 +1512,139 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."IOP_DATA_CONCLUSAO"]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = 43.574830000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 468.472790000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 488.709030000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 532.945270000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 574.740570000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 615.756340000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 656.772110000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = 713.685530000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line10: TfrxLineView
+          AllowVectorExport = True
           Left = 760.039890000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line11: TfrxLineView
+          AllowVectorExport = True
           Left = 834.173780000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line12: TfrxLineView
+          AllowVectorExport = True
           Left = 887.528140000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line13: TfrxLineView
+          AllowVectorExport = True
           Left = 941.441560000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line14: TfrxLineView
+          AllowVectorExport = True
           Left = 994.575450000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line15: TfrxLineView
+          AllowVectorExport = True
           Left = 1046.929810000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line32: TfrxLineView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line36: TfrxLineView
+          AllowVectorExport = True
           Left = 256.126160000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 214.889920000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line37: TfrxLineView
+          AllowVectorExport = True
           Left = 808.819420000000000000
           Height = 11.338590000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 808.819420000000000000
           Width = 22.677180000000000000
           Height = 11.338590000000000000
@@ -1525,12 +1656,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPPF."FAB_DIAS"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 45.354360000000000000
           Width = 166.299320000000000000
           Height = 11.338590000000000000
@@ -1539,6 +1672,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPPF."CLI_RAZAO"]')
           ParentFont = False
@@ -1546,15 +1680,18 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 170.078850000000000000
         Width = 1046.929810000000000000
         object Line34: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 700.449290000000000000
           Top = 2.763760000000000000
           Width = 56.692950000000000000
@@ -1568,12 +1705,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBPPF."PRF_QTDE">,MasterData1)]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 760.921770000000000000
           Top = 2.763760000000000000
           Width = 45.354360000000000000
@@ -1587,12 +1726,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBPPF."FAB_PRODUZIDA">,MasterData1)]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 658.874460000000000000
           Top = 2.763760000000000000
           Width = 37.795300000000000000
@@ -1602,6 +1743,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Totais')
@@ -1929,7 +2071,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
     Top = 417
   end
   object frxOP11: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1979,8 +2121,11 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 302.362400000000000000
         Width = 718.110700000000000000
@@ -1990,6 +2135,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
         PrintIfDetailEmpty = True
         RowCount = 0
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 2.000000000000000000
           Width = 94.488250000000000000
@@ -2001,6 +2147,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBOP11Corpo."MP_CONSUMOTOTAL"]')
@@ -2008,6 +2155,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           VAlign = vaBottom
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 2.000000000000000000
           Width = 393.071120000000000000
@@ -2017,12 +2165,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Corpo."PRD_DESCRI"]')
           ParentFont = False
           VAlign = vaBottom
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 2.000000000000000000
           Width = 79.370130000000000000
@@ -2032,6 +2182,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBOP11Corpo."PRD_REFER"]')
@@ -2039,6 +2190,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           VAlign = vaBottom
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 676.535870000000000000
           Top = 2.000000000000000000
           Width = 34.015770000000000000
@@ -2048,23 +2200,27 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Corpo."PRD_UND"]')
           ParentFont = False
           VAlign = vaBottom
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Height = 18.897650000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 718.110700000000000000
           Height = 18.897650000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.338900000000000000
           Top = 2.220470000000000000
           Width = 86.929190000000000000
@@ -2079,6 +2235,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBOP11Corpo."MP_UCONSUMO"]')
@@ -2088,17 +2245,21 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 158.740260000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         PrintChildIfInvisible = True
         Stretched = True
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 42.574830000000000000
           Width = 718.110700000000000000
           Height = 120.944960000000000000
+          Frame.Typ = []
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 143.622140000000000000
           Top = 16.110235000000000000
           Width = 377.953000000000000000
@@ -2108,12 +2269,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Ordem de Produ'#231#227'o')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 580.929500000000000000
           Top = 92.929190000000000000
           Width = 109.606370000000000000
@@ -2123,12 +2286,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'N'#250'mero')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 580.929500000000000000
           Top = 105.929190000000000000
           Width = 109.606370000000000000
@@ -2138,12 +2303,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."IOP_NORDEM"]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 83.031540000000000000
           Top = 56.291341020000000000
           Width = 627.401980000000000000
@@ -2153,11 +2320,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."PRD_DESCRI"]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Top = 41.574830000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -2166,11 +2335,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'C'#243'd. Prod.')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.244125000000000000
           Width = 79.370130000000000000
           Height = 15.118120000000000000
@@ -2179,11 +2350,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."PRD_REFER"]')
           ParentFont = False
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Left = 82.031540000000000000
           Top = 41.574842200000000000
           Width = 79.370130000000000000
@@ -2193,11 +2366,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Produto')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.559060000000000000
           Top = 140.614255000000000000
           Width = 355.275820000000000000
@@ -2207,11 +2382,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."EQP_DESCRICAO"]')
           ParentFont = False
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.779530000000000000
           Top = 126.944960000000000000
           Width = 79.370130000000000000
@@ -2221,11 +2398,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'M'#225'quina')
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Top = 106.488250000000000000
           Width = 302.362400000000000000
           Height = 15.118120000000000000
@@ -2234,6 +2413,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."CLI_RAZAO"]')
           ParentFont = False
@@ -2244,6 +2424,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
             end>
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Top = 92.929190000000000000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
@@ -2252,11 +2433,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'CLIENTE')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 313.700990000000000000
           Top = 105.598485000000000000
           Width = 120.944960000000000000
@@ -2268,12 +2451,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."IOP_QUANTIDADE"]')
           ParentFont = False
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Top = 92.929190000000000000
           Width = 79.370130000000000000
@@ -2283,12 +2468,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Quantidade')
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 143.622140000000000000
           Width = 377.953000000000000000
           Height = 22.677180000000000000
@@ -2297,12 +2484,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."OPE_NOME"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Top = 74.031540000000000000
           Width = 718.110700000000000000
           Height = 15.118110240000000000
@@ -2312,11 +2501,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."PRD_COMPL"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 438.425480000000000000
           Top = 105.267780000000000000
           Width = 30.236240000000000000
@@ -2326,11 +2517,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."PRD_UND"]')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.000310000000000000
           Top = 105.598485000000000000
           Width = 90.708720000000000000
@@ -2340,12 +2533,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."PED_DTENTRADA"]')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 480.000310000000000000
           Top = 92.929190000000000000
           Width = 90.708720000000000000
@@ -2355,12 +2550,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emiss'#227'o')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 126.944967320000000000
           Width = 109.606370000000000000
@@ -2370,30 +2567,36 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Aplica'#231#227'o')
           ParentFont = False
         end
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 1.000000000000000000
           Width = 132.283423070000000000
           Height = 37.795300000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object BarCode1: TfrxBarCodeView
+          AllowVectorExport = True
           Left = 555.590910000000000000
           Top = 7.559060000000000000
           Width = 129.000000000000000000
           Height = 22.677180000000000000
           BarType = bcCode39
           Expression = '<frxDBOP11Cabecalho."IOP_NORDEM">'
+          Frame.Typ = []
           Rotation = 0
           ShowText = False
+          TestLine = False
           Text = '12345678'
           WideBarRatio = 2.000000000000000000
           Zoom = 1.000000000000000000
@@ -2402,19 +2605,24 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          ColorBar = clBlack
         end
       end
       object Header2: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 43.015770000000000000
         Top = 238.110390000000000000
         Width = 718.110700000000000000
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Top = 9.000000000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Top = 10.551175000000000000
           Width = 718.110700000000000000
           Height = 15.118120000000000000
@@ -2423,12 +2631,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Insumos')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 28.677180000000000000
           Width = 393.071120000000000000
@@ -2438,12 +2648,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Nome')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 28.677180000000000000
           Width = 79.370130000000000000
@@ -2453,12 +2665,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'C'#243'digo')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 676.535870000000000000
           Top = 28.677180000000000000
           Width = 37.795300000000000000
@@ -2468,11 +2682,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'UND.')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Top = 28.677180000000000000
           Width = 71.811070000000000000
@@ -2482,12 +2698,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Quantidade')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = 718.331170000000000000
           Top = 25.236240000000000000
           Height = 22.677180000000000000
@@ -2495,12 +2713,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 28.236240000000000000
           Height = 15.118120000000000000
           Color = clBlack
           Frame.Typ = [ftLeft]
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 528.134200000000000000
           Top = 30.236240000000000000
           Width = 49.133890000000000000
@@ -2510,6 +2730,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Unit %')
@@ -2518,10 +2739,12 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 555.590910000000000000
         Width = 718.110700000000000000
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 461.102660000000000000
           Height = 18.897650000000000000
@@ -2531,11 +2754,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 468.661720000000000000
           Width = 98.267780000000000000
           Height = 18.897650000000000000
@@ -2544,11 +2769,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[USUARIO]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
@@ -2557,6 +2784,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[<Date>]  [<Time>]')
@@ -2565,11 +2793,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 343.937230000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 3.779530000000000000
           Width = 170.078850000000000000
@@ -2579,11 +2809,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total de Bobinas por palete:')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 603.370440000000000000
           Top = 2.779542200000000000
           Width = 113.385900000000000000
@@ -2595,12 +2827,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBOP11Corpo."MP_CONSUMOTOTAL">, MasterData1,0)]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 504.102660000000000000
           Top = 3.779530000000000000
           Width = 86.929190000000000000
@@ -2610,12 +2844,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total Insumo:')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
@@ -2623,6 +2859,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 41.574830000000000000
         Top = 389.291590000000000000
         Width = 718.110700000000000000
@@ -2631,6 +2868,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
         RowCount = 0
         Stretched = True
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 702.992580000000000000
@@ -2640,27 +2878,32 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Observa'#231#245'es da OP')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.779530000000000000
           Top = 18.897650000000000000
           Width = 695.433520000000000000
           Height = 18.897650000000000000
           StretchMode = smActualHeight
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."FTC_ETAPAS"]')
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Left = 2.000000000000000000
           Width = 714.331170000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Height = 41.574830000000000000
           StretchMode = smMaxHeight
@@ -2668,6 +2911,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 717.110700000000000000
           Top = 0.779530000000000000
           Height = 41.574830000000000000
@@ -2678,6 +2922,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
       end
       object MasterData3: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 41.574830000000000000
         Top = 453.543600000000000000
         Width = 718.110700000000000000
@@ -2686,6 +2931,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
         RowCount = 0
         Stretched = True
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 18.338590000000000000
           Width = 695.433520000000000000
@@ -2696,11 +2942,13 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBOP11Cabecalho."PED_OBS_PRODUCAO"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.000000000000000000
           Width = 702.992580000000000000
           Height = 18.897650000000000000
@@ -2710,12 +2958,14 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Observa'#231#245'es do Produto')
           ParentFont = False
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 41.015770000000000000
           Width = 718.110700000000000000
@@ -2723,6 +2973,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftTop]
         end
         object Line10: TfrxLineView
+          AllowVectorExport = True
           Left = 717.110700000000000000
           Height = 41.574830000000000000
           StretchMode = smMaxHeight
@@ -2730,6 +2981,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Frame.Typ = [ftLeft]
         end
         object Line11: TfrxLineView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Height = 41.574830000000000000
           StretchMode = smMaxHeight

@@ -7,8 +7,8 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   Position = poDesktopCenter
-  ExplicitWidth = 972
-  ExplicitHeight = 629
+  ExplicitWidth = 980
+  ExplicitHeight = 641
   PixelsPerInch = 96
   TextHeight = 14
   object bitBtn2: TJvArrowButton [0]
@@ -150,8 +150,10 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'cli0000'
       CamposCarregar = 'CLI_RAZAO'
       CamposRetornar = 'CLI_CODIGO'
@@ -212,8 +214,10 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'FORMA_PAGAMENTO'
       CamposCarregar = 'FPG_DESCRICAO'
       CamposRetornar = 'FPG_REGISTRO'
@@ -263,8 +267,10 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'BAN0000'
       CamposCarregar = 'BAN_APELIDO'
       CamposRetornar = 'BAN_CODIGO'
@@ -323,8 +329,10 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'PCX0000'
       CamposCarregar = 'PCX_DESCRI'
       CamposRetornar = 'PCX_CODIGO'
@@ -443,6 +451,9 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       Height = 421
       Align = alClient
       TabOrder = 0
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
       object DBGridRecParceDBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         Navigator.Buttons.First.Visible = True
@@ -854,7 +865,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     Top = 488
   end
   object frxReportReceber: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -891,8 +902,11 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -906,6 +920,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
         DataSetName = 'frxDBDatasetReceber'
         RowCount = 0
         object frxDBDatasetReceberFPC_NUMER: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Width = 52.913420000000000000
           Height = 15.118120000000000000
@@ -918,12 +933,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FAT_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -936,12 +953,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPC_NUMER"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 238.110390000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -954,12 +973,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_DATA_RECEBIMENTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Width = 147.401670000000000000
           Height = 15.118120000000000000
@@ -971,6 +992,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[frxDBDatasetReceber."CLI_CODIGO"] [frxDBDatasetReceber."CLI_RAZ' +
@@ -979,6 +1001,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -993,6 +1016,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_VALOR"]')
@@ -1000,6 +1024,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1014,6 +1039,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_DESCONTO"]')
@@ -1021,6 +1047,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1035,6 +1062,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_JUROS"]')
@@ -1042,6 +1070,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1055,6 +1084,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_MULTA"]')
@@ -1062,6 +1092,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1076,6 +1107,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_RECEBIDO"]')
@@ -1083,6 +1115,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 937.323440000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -1095,12 +1128,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPG_DESCRICAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 817.717070000000000000
           Top = 0.220470000000006000
           Width = 117.165430000000000000
@@ -1114,6 +1149,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBDatasetReceber."BAN_APELIDO"]')
@@ -1121,6 +1157,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 166.299320000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1133,12 +1170,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPC_VENCTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataField = 'EMP_CODIGO'
@@ -1150,12 +1189,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."EMP_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Width = 45.354360000000000000
           Height = 15.118120000000000000
@@ -1168,6 +1209,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."NF_NUM_NFE"]')
           ParentFont = False
@@ -1176,10 +1218,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 192.756030000000000000
         Width = 1046.929810000000000000
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -1188,11 +1232,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object SysMemo6: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -1201,23 +1247,29 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[COUNT(MasterData1,3)]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1229,12 +1281,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_VALOR">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1246,12 +1300,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_DESCONTO">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1263,12 +1319,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_JUROS">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo4: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1280,12 +1338,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_MULTA">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo5: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1297,6 +1357,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_RECEBIDO">,MasterData1,3)]')
@@ -1305,10 +1366,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -1318,11 +1381,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Recebimentos do Contas '#224' Receber')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -1331,11 +1396,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -1345,23 +1412,29 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -1371,12 +1444,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -1387,12 +1462,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 56.692949999999990000
           Width = 52.913420000000000000
@@ -1403,12 +1480,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 56.692949999999990000
           Width = 41.574830000000000000
@@ -1419,12 +1498,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parcela')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 238.110390000000000000
           Top = 56.692949999999990000
           Width = 71.811070000000000000
@@ -1435,12 +1516,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Recebimento')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Top = 56.692949999999990000
           Width = 147.401670000000000000
@@ -1451,12 +1534,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Top = 56.692949999999990000
           Width = 71.811070000000000000
@@ -1467,12 +1552,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Top = 56.692949999999990000
           Width = 71.811070000000000000
@@ -1483,12 +1570,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Desconto')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Top = 56.692949999999990000
           Width = 71.811070000000000000
@@ -1499,12 +1588,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Juros')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Top = 56.692949999999990000
           Width = 71.811070000000000000
@@ -1515,12 +1606,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Recebido')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Top = 56.692949999999990000
           Width = 71.811070000000000000
@@ -1531,6 +1624,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Multa'
@@ -1538,6 +1632,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 937.323440000000000000
           Top = 56.472479999999990000
           Width = 109.606370000000000000
@@ -1547,12 +1642,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Forma de pag')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 816.378480000000000000
           Top = 56.692949999999990000
           Width = 120.944960000000000000
@@ -1563,12 +1660,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Conta Banco')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 166.299320000000000000
           Top = 56.692949999999990000
           Width = 71.811070000000000000
@@ -1579,12 +1678,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vencimento')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 26.456710000000000000
           Height = 18.897650000000000000
@@ -1594,12 +1695,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emp.')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.944960000000000000
           Top = 56.692949999999990000
           Width = 45.354360000000000000
@@ -1610,6 +1713,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'NFe')
@@ -1657,6 +1761,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     CreationTime = 0.000000000000000000
     DataOnly = False
     PictureType = gpPNG
+    OpenAfterExport = False
     Background = True
     Creator = 'FastReport'
     Language = 'en'
@@ -1684,11 +1789,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -1699,6 +1807,9 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 64
     Top = 293
   end
@@ -1711,7 +1822,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     end
   end
   object frxReportReceberAgrupado: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1748,8 +1859,11 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -1763,6 +1877,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
         DataSetName = 'frxDBDatasetReceber'
         RowCount = 0
         object frxDBDatasetReceberFPC_NUMER: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Width = 52.913420000000000000
           Height = 15.118120000000000000
@@ -1775,12 +1890,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FAT_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -1793,12 +1910,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPC_NUMER"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 230.551330000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1811,12 +1930,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_DATA_RECEBIMENTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Width = 154.960730000000000000
           Height = 15.118120000000000000
@@ -1828,6 +1949,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[frxDBDatasetReceber."CLI_CODIGO"] [frxDBDatasetReceber."CLI_RAZ' +
@@ -1836,6 +1958,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1850,6 +1973,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_VALOR"]')
@@ -1857,6 +1981,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1871,6 +1996,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_DESCONTO"]')
@@ -1878,6 +2004,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1892,6 +2019,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_JUROS"]')
@@ -1899,6 +2027,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1912,6 +2041,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_MULTA"]')
@@ -1919,6 +2049,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1933,6 +2064,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_RECEBIDO"]')
@@ -1940,6 +2072,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 816.378480000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -1952,12 +2085,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPG_DESCRICAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Width = 120.944960000000000000
           Height = 15.118120000000000000
@@ -1970,12 +2105,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."BAN_APELIDO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 158.740260000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1988,12 +2125,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPC_VENCTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataField = 'EMP_CODIGO'
@@ -2005,12 +2144,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."EMP_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -2023,6 +2164,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."NF_NUM_NFE"]')
           ParentFont = False
@@ -2031,10 +2173,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 279.685220000000000000
         Width = 1046.929810000000000000
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -2043,11 +2187,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object SysMemo6: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2056,23 +2202,29 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[COUNT(MasterData1,2)]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2084,12 +2236,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_VALOR">,MasterData1,2)]')
           ParentFont = False
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2101,12 +2255,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_DESCONTO">,MasterData1,2)]')
           ParentFont = False
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2118,12 +2274,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_JUROS">,MasterData1,2)]')
           ParentFont = False
         end
         object SysMemo4: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2135,12 +2293,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_MULTA">,MasterData1,2)]')
           ParentFont = False
         end
         object SysMemo5: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2152,6 +2312,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_RECEBIDO">,MasterData1,2)]')
@@ -2160,10 +2321,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -2173,11 +2336,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Recebimentos do Contas '#224' Receber')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -2186,11 +2351,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -2200,23 +2367,29 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -2226,12 +2399,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -2242,12 +2417,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 56.692950000000000000
           Width = 52.913420000000000000
@@ -2258,12 +2435,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 56.692950000000000000
           Width = 30.236240000000000000
@@ -2274,12 +2453,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parc.')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 230.551330000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2290,12 +2471,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Recebimento')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 56.692950000000000000
           Width = 154.960730000000000000
@@ -2306,12 +2489,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2322,12 +2507,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2338,12 +2525,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Desconto')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2354,12 +2543,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Juros')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2370,12 +2561,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Recebido')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2386,6 +2579,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Multa'
@@ -2393,6 +2587,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 816.378480000000000000
           Top = 56.692950000000000000
           Width = 109.606370000000000000
@@ -2403,12 +2598,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Forma de Rec.')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 925.984850000000000000
           Top = 56.692950000000000000
           Width = 120.944960000000000000
@@ -2419,12 +2616,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Conta Banco')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 158.740260000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2435,12 +2634,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vencimento')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 26.456710000000000000
           Height = 18.897650000000000000
@@ -2450,12 +2651,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emp.')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 56.692950000000000000
           Width = 49.133890000000000000
@@ -2466,6 +2669,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'NFe')
@@ -2474,12 +2678,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
         Condition = 'frxDBDatasetReceber."FPG_DESCRICAO"'
         KeepTogether = True
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Width = 389.291590000000000000
           Height = 15.118120000000000000
           DataField = 'FPG_DESCRICAO'
@@ -2491,24 +2697,29 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPG_DESCRICAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 238.110390000000000000
         Width = 1046.929810000000000000
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -2517,11 +2728,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object SysMemo7: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2530,12 +2743,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
         end
         object SysMemo8: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 457.323130000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2547,12 +2762,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_VALOR">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo9: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 529.134200000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2564,12 +2781,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_DESCONTO">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo10: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 600.945270000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2581,12 +2800,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_JUROS">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo11: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2598,12 +2819,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_MULTA">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo12: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 744.567410000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2615,6 +2838,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetReceber."FRE_RECEBIDO">,MasterData1)]')
@@ -2644,7 +2868,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     end
   end
   object frxRecebimentosCPFCNPJ: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2754,9 +2978,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -2772,6 +2999,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
         KeepHeader = True
         RowCount = 0
         object frxDBDatasetReceberFPC_VENCTO: TfrxMemoView
+          AllowVectorExport = True
           Left = 108.622140000000000000
           Width = 56.692913390000000000
           Height = 15.118120000000000000
@@ -2785,12 +3013,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPC_VENCTO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 246.275820000000000000
           Width = 318.849896960000000000
           Height = 15.118120000000000000
@@ -2801,6 +3031,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."CLI_RAZAO"]')
           ParentFont = False
@@ -2812,6 +3043,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
             end>
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 666.197280000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
@@ -2825,12 +3057,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_VALOR"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 730.346940000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
@@ -2844,12 +3078,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_JUROS"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.275820000000000000
           Width = 71.811028500000000000
           Height = 15.118120000000000000
@@ -2860,6 +3096,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -2868,6 +3105,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataField = 'EMP_CODIGO'
@@ -2879,12 +3117,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."EMP_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object frxCNPJ: TfrxMemoView
+          AllowVectorExport = True
           Left = 564.504330000000000000
           Width = 102.047273390000000000
           Height = 15.118120000000000000
@@ -2899,12 +3139,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBDatasetReceber."CLI_CGC"]')
           ParentFont = False
         end
         object frxDBDatasetReceberBAN_APELIDO: TfrxMemoView
+          AllowVectorExport = True
           Left = 853.024120000000000000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
@@ -2916,12 +3158,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBDatasetReceber."BAN_APELIDO"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 942.441560000000000000
           Width = 102.701798500000000000
           Height = 15.118120000000000000
@@ -2935,11 +3179,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPG_DESCRICAO"]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 795.187733910000000000
           Width = 56.692908500000000000
           Height = 15.118120000000000000
@@ -2953,12 +3199,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FRE_RECEBIDO"]')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.695652170000000000
           Width = 46.870105590000000000
           Height = 15.118120000000000000
@@ -2971,12 +3219,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FAT_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 76.460887830000000000
           Width = 32.972455590000000000
           Height = 15.118120000000000000
@@ -2989,6 +3239,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetReceber."FPC_NUMER"]')
           ParentFont = False
@@ -2997,10 +3248,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 177.637910000000000000
         Width = 1046.929810000000000000
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -3009,22 +3262,28 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811070000000000000
           Width = 77.531728260000000000
           Height = 18.897650000000000000
@@ -3034,11 +3293,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[quantidade]')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 666.197280000000000000
           Width = 64.251968500000000000
           Height = 18.897650000000000000
@@ -3050,12 +3311,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalValor]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 795.187733910000000000
           Width = 64.251968500000000000
           Height = 18.897650000000000000
@@ -3067,12 +3330,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalRecebido]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 606.412237650000000000
           Width = 58.957850850000000000
           Height = 18.897650000000000000
@@ -3081,11 +3346,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Valor Total:')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 730.882352950000000000
           Width = 64.251968490000000000
           Height = 18.897650000000000000
@@ -3094,6 +3361,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total de rec:')
           ParentFont = False
@@ -3101,10 +3369,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 58.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 171.209266470000000000
           Height = 18.897650000000000000
@@ -3114,11 +3384,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Contas '#224' Receber')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -3127,11 +3399,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 173.270144710000000000
           Top = 18.677180000000000000
           Width = 325.039580000000000000
@@ -3142,6 +3416,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Filtro: [DataIni] a [DataFim]')
           ParentFont = False
@@ -3152,18 +3427,23 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
             end>
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 39.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 58.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3173,12 +3453,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -3189,12 +3471,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 28.574830000000000000
           Top = 42.472480000000000000
           Width = 46.870105590000000000
@@ -3204,11 +3488,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 242.496290000000000000
           Top = 42.472480000000000000
           Width = 232.958027830000000000
@@ -3219,12 +3505,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 106.622140000000000000
           Top = 42.472480000000000000
           Width = 56.692913390000000000
@@ -3235,12 +3523,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vencimento')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 666.197280000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -3251,12 +3541,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 730.346940000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -3266,12 +3558,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Juros')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.275820000000000000
           Top = 42.472480000000000000
           Width = 71.811028500000000000
@@ -3281,12 +3575,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Recebimento')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Top = 42.472480000000000000
           Width = 26.456710000000000000
           Height = 11.338582680000000000
@@ -3296,12 +3592,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emp.')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 564.504330000000000000
           Top = 42.472480000000000000
           Width = 102.047273390000000000
@@ -3311,12 +3609,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNPJ/CPF')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 853.024120000000000000
           Top = 42.472480000000000000
           Width = 86.929153390000000000
@@ -3326,12 +3626,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Conta Banco')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 942.441560000000000000
           Top = 42.472480000000000000
           Width = 92.790388500000000000
@@ -3341,11 +3643,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Forma de pagamento')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 795.187733910000000000
           Top = 42.472480000000000000
           Width = 56.692908500000000000
@@ -3355,12 +3659,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Recebido')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 76.460887830000000000
           Top = 42.472480000000000000
           Width = 25.413395590000000000
@@ -3370,6 +3676,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Parc.')
           ParentFont = False
@@ -3378,7 +3685,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     end
   end
   object frxReceberporBanco: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3491,9 +3798,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -3509,6 +3819,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
         KeepHeader = True
         RowCount = 0
         object frxDBDatasetReceberFPC_VENCTO: TfrxMemoView
+          AllowVectorExport = True
           Left = 103.692950000000000000
           Width = 64.251973390000000000
           Height = 15.118120000000000000
@@ -3522,12 +3833,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBReceberBanco."FPC_VENCTO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 234.708666300000000000
           Width = 219.212740000000000000
           Height = 15.118120000000000000
@@ -3538,12 +3851,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBReceberBanco."CLI_RAZAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Width = 45.354335590000000000
           Height = 15.118120000000000000
@@ -3555,12 +3870,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBReceberBanco."FAT_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 73.252022210000000000
           Width = 26.456685590000000000
           Height = 15.118120000000000000
@@ -3571,6 +3888,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[frxDBReceberBanco."FPC_NUMER"]/[frxDBReceberBanco."FPC_NPARCELA' +
@@ -3579,6 +3897,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 169.653680000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -3592,6 +3911,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -3601,6 +3921,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 565.134200000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
@@ -3614,12 +3935,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBReceberBanco."FPC_VLPARC"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.945270000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
@@ -3634,12 +3957,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBReceberBanco."FRE_JUROS"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 699.378480000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
@@ -3653,12 +3978,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBReceberBanco."FPC_VLPAGO"]')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 769.969080000000000000
           Width = 86.929148500000000000
           Height = 15.118120000000000000
@@ -3673,12 +4000,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBReceberBanco."BAN_APELIDO"]')
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataSet = frxDBDatasetReceber
@@ -3688,12 +4017,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBReceberBanco."EMP_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object frxCNPJ: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.000310000000000000
           Width = 102.047273390000000000
           Height = 15.118120000000000000
@@ -3708,12 +4039,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBReceberBanco."CLI_CGC"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 921.205320000000000000
           Width = 124.724448500000000000
           Height = 15.118120000000000000
@@ -3727,6 +4060,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBReceberBanco."FPG_DESCRICAO"]')
           ParentFont = False
@@ -3734,10 +4068,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 58.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -3747,11 +4083,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Contas '#224' Receber')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -3760,11 +4098,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Top = 18.677180000000000000
           Width = 608.504330000000000000
@@ -3776,18 +4116,22 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 39.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 42.472480000000000000
           Width = 37.795275590000000000
@@ -3797,17 +4141,21 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 58.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -3817,12 +4165,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -3833,12 +4183,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 74.488250000000000000
           Top = 42.472480000000000000
           Width = 22.677155590000000000
@@ -3848,11 +4200,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Parc.')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 167.653680000000000000
           Top = 42.472480000000000000
           Width = 60.472480000000000000
@@ -3862,12 +4216,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Recebimento')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 227.244280000000000000
           Top = 42.472480000000000000
           Width = 230.551330000000000000
@@ -3878,12 +4234,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 103.133890000000000000
           Top = 42.472480000000000000
           Width = 56.692913390000000000
@@ -3894,12 +4252,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vencimento')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 565.134200000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -3910,12 +4270,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.945270000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -3925,12 +4287,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Juros')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 699.378480000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -3941,12 +4305,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Recebido')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 769.969080000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -3956,12 +4322,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Conta Banco')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Top = 42.472480000000000000
           Width = 26.456710000000000000
           Height = 11.338582680000000000
@@ -3971,12 +4339,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emp.')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 460.779840000000000000
           Top = 42.472480000000000000
           Width = 102.047273390000000000
@@ -3986,12 +4356,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNPJ/CPF')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 922.205320000000000000
           Top = 42.472480000000000000
           Width = 117.165388500000000000
@@ -4001,6 +4373,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Forma de pagamento')
           ParentFont = False
@@ -4008,11 +4381,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 139.842610000000000000
         Width = 1046.929810000000000000
         Condition = 'frxDBReceberBanco."BAN_APELIDO"'
         object frxDBDatasetReceberBAN_APELIDO: TfrxMemoView
+          AllowVectorExport = True
           Left = 30.236240000000000000
           Top = 3.779530000000000000
           Width = 302.362400000000000000
@@ -4024,6 +4399,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Banco: [IIF( <frxDBReceberBanco."BAN_APELIDO">='#39#39','#39'SEM BANCO'#39',<f' +
@@ -4033,16 +4409,20 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 28.913420000000000000
         Top = 219.212740000000000000
         Width = 1046.929810000000000000
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 28.118120000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Top = 10.000000000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -4052,11 +4432,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811070000000000000
           Top = 10.000000000000000000
           Width = 94.488250000000000000
@@ -4068,17 +4450,21 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[quantidade]')
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 7.559060000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 6.236240000000000000
           Width = 64.251968500000000000
@@ -4091,12 +4477,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBReceberBanco."FPC_VLPARC">,MasterData1)]')
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 633.740570000000000000
           Top = 6.236240000000000000
           Width = 64.251968500000000000
@@ -4109,12 +4497,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBReceberBanco."FPC_DESCTO">,MasterData1)]')
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 701.173780000000000000
           Top = 6.236240000000000000
           Width = 64.251968500000000000
@@ -4127,12 +4517,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBReceberBanco."FPC_VLPAGO">,MasterData1)]')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 253.228510000000000000
           Top = 6.236240000000000000
           Width = 302.362400000000000000
@@ -4144,6 +4536,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             ' [frxDBReceberBanco."BAN_APELIDO"] Total :')
@@ -4152,10 +4545,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 272.126160000000000000
         Width = 1046.929810000000000000
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'Memo31OnBeforePrint'
@@ -4165,16 +4560,20 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811070000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -4184,11 +4583,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[quantidadeTotal]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 567.913730000000000000
           Width = 64.251968500000000000
           Height = 18.897650000000000000
@@ -4200,12 +4601,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalValor]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.724800000000000000
           Width = 64.251968500000000000
           Height = 18.897650000000000000
@@ -4217,12 +4620,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalDesconto]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 702.158010000000000000
           Width = 64.251968500000000000
           Height = 18.897650000000000000
@@ -4234,15 +4639,18 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalRecebido]')
           ParentFont = False
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
@@ -4658,7 +5066,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     Top = 333
   end
   object frxReceberCentroCusto: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4771,9 +5179,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -4789,6 +5200,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
         KeepHeader = True
         RowCount = 0
         object frxDBDatasetReceberFPC_VENCTO: TfrxMemoView
+          AllowVectorExport = True
           Left = 103.692950000000000000
           Width = 64.251973390000000000
           Height = 15.118120000000000000
@@ -4802,12 +5214,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."FPC_VENCTO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 234.708666300000000000
           Width = 219.212740000000000000
           Height = 15.118120000000000000
@@ -4818,12 +5232,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."CLI_RAZAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Width = 45.354335590000000000
           Height = 15.118120000000000000
@@ -4835,12 +5251,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."FAT_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 73.252022210000000000
           Width = 26.456685590000000000
           Height = 15.118120000000000000
@@ -4851,6 +5269,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[frxDBReceberCentroCusto."FPC_NUMER"]/[frxDBReceberCentroCusto."' +
@@ -4864,6 +5283,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
             end>
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 169.653680000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -4877,6 +5297,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -4886,6 +5307,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           WordWrap = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 565.134200000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
@@ -4899,12 +5321,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."FPC_VLPARC"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.945270000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
@@ -4918,12 +5342,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."FRE_JUROS"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 699.378480000000000000
           Width = 90.708678500000000000
           Height = 15.118120000000000000
@@ -4937,12 +5363,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."FPC_VLPAGO"]')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 793.969080000000000000
           Width = 86.929148500000000000
           Height = 15.118120000000000000
@@ -4956,12 +5384,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."BAN_APELIDO"]')
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataSet = frxDBDatasetReceber
@@ -4971,12 +5401,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."EMP_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object frxCNPJ: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.000310000000000000
           Width = 102.047273390000000000
           Height = 15.118120000000000000
@@ -4991,12 +5423,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."CLI_CGC"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 921.205320000000000000
           Width = 124.724448500000000000
           Height = 15.118120000000000000
@@ -5010,6 +5444,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBReceberCentroCusto."FPG_DESCRICAO"]')
           ParentFont = False
@@ -5017,10 +5452,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 58.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -5029,11 +5466,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Contas '#224' Receber por Centro de Custo')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -5042,11 +5481,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Top = 18.677180000000000000
           Width = 608.504330000000000000
@@ -5058,18 +5499,22 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 39.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 42.472480000000000000
           Width = 37.795275590000000000
@@ -5079,17 +5524,21 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 58.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -5099,12 +5548,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -5115,12 +5566,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 74.488250000000000000
           Top = 42.472480000000000000
           Width = 22.677155590000000000
@@ -5130,11 +5583,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Parc.')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 167.653680000000000000
           Top = 42.472480000000000000
           Width = 60.472480000000000000
@@ -5144,12 +5599,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Recebimento')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 227.244280000000000000
           Top = 42.472480000000000000
           Width = 230.551330000000000000
@@ -5160,12 +5617,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 103.133890000000000000
           Top = 42.472480000000000000
           Width = 56.692913390000000000
@@ -5176,12 +5635,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vencimento')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 565.134200000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -5192,12 +5653,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.945270000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -5207,12 +5670,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Juros')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 699.378480000000000000
           Top = 42.472480000000000000
           Width = 90.708678500000000000
@@ -5223,12 +5688,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Recebido')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 793.969080000000000000
           Top = 42.472480000000000000
           Width = 64.251968500000000000
@@ -5238,12 +5705,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Conta Banco')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Top = 42.472480000000000000
           Width = 26.456710000000000000
           Height = 11.338582680000000000
@@ -5253,12 +5722,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emp.')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 460.779840000000000000
           Top = 42.472480000000000000
           Width = 102.047273390000000000
@@ -5268,12 +5739,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNPJ/CPF')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 922.205320000000000000
           Top = 42.472480000000000000
           Width = 117.165388500000000000
@@ -5283,6 +5756,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Forma de pagamento')
           ParentFont = False
@@ -5290,11 +5764,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 139.842610000000000000
         Width = 1046.929810000000000000
         Condition = '<frxDBReceberCentroCusto."PCX_DESCRI">'
         object frxDBDatasetReceberBAN_APELIDO: TfrxMemoView
+          AllowVectorExport = True
           Left = 30.236240000000000000
           Top = 3.779530000000000000
           Width = 302.362400000000000000
@@ -5306,6 +5782,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Centro de Custo: [IIF( <frxDBReceberCentroCusto."PCX_DESCRI">='#39#39 +
@@ -5315,16 +5792,20 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 28.913420000000000000
         Top = 219.212740000000000000
         Width = 1046.929810000000000000
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 28.118120000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Top = 10.000000000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -5334,11 +5815,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811070000000000000
           Top = 10.000000000000000000
           Width = 94.488250000000000000
@@ -5350,17 +5833,21 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[quantidade]')
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 7.559060000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 6.236240000000000000
           Width = 94.488208500000000000
@@ -5373,12 +5860,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBReceberCentroCusto."FPC_VLPARC">,MasterData1)]')
           ParentFont = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 633.740570000000000000
           Top = 6.236240000000000000
           Width = 64.251968500000000000
@@ -5391,12 +5880,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBReceberCentroCusto."FPC_DESCTO">,MasterData1)]')
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 701.173780000000000000
           Top = 6.236240000000000000
           Width = 90.708678500000000000
@@ -5409,12 +5900,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBReceberCentroCusto."FPC_VLPAGO">,MasterData1)]')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 238.110390000000000000
           Top = 6.236240000000000000
           Width = 291.023810000000000000
@@ -5426,6 +5919,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -5436,10 +5930,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 272.126160000000000000
         Width = 1046.929810000000000000
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'Memo31OnBeforePrint'
@@ -5449,16 +5945,20 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811070000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -5468,11 +5968,13 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[quantidadeTotal]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 537.677490000000000000
           Width = 94.488208500000000000
           Height = 18.897650000000000000
@@ -5484,12 +5986,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalValor]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.724800000000000000
           Width = 64.251968500000000000
           Height = 18.897650000000000000
@@ -5501,12 +6005,14 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalDesconto]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 702.158010000000000000
           Width = 90.708678500000000000
           Height = 18.897650000000000000
@@ -5518,15 +6024,18 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalRecebido]')
           ParentFont = False
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end

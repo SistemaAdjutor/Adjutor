@@ -13,8 +13,6 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
     ExplicitWidth = 885
     ExplicitHeight = 464
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
       ExplicitWidth = 877
       ExplicitHeight = 436
       inherited pnlControle: TPanel
@@ -93,6 +91,9 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       inherited cxgrd1: TcxGrid
         Width = 877
         Height = 234
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitWidth = 877
         ExplicitHeight = 234
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -247,6 +248,9 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         Height = 123
         Align = alBottom
         TabOrder = 2
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         object cxGrid1DBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           FilterBox.CustomizeDialog = False

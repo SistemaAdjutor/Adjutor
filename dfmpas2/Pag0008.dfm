@@ -7,8 +7,8 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   Position = poDesktopCenter
-  ExplicitWidth = 972
-  ExplicitHeight = 629
+  ExplicitWidth = 980
+  ExplicitHeight = 641
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox1: TGroupBox [0]
@@ -116,8 +116,10 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'FOR0000'
       CamposCarregar = 'FOR_RAZAO'
       CamposRetornar = 'FOR_CODIGO'
@@ -178,8 +180,10 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'FORMA_PAGAMENTO'
       CamposCarregar = 'FPG_DESCRICAO'
       CamposRetornar = 'FPG_REGISTRO'
@@ -229,8 +233,10 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'BAN0000'
       CamposCarregar = 'BAN_APELIDO'
       CamposRetornar = 'BAN_CODIGO'
@@ -373,7 +379,6 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       'Pagamentos - Para imprimir o recibo bot'#227'o direito no mouse sobre' +
       ' a parcela (Imprimir Recibo)'
     TabOrder = 5
-    ExplicitTop = 111
     object DBGridRecParce: TcxGrid
       Left = 2
       Top = 16
@@ -381,10 +386,9 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       Height = 421
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 162
-      ExplicitTop = 56
-      ExplicitWidth = 250
-      ExplicitHeight = 200
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
       object DBGridRecParceDBTableView1: TcxGridDBTableView
         PopupMenu = PopupMenu1
         Navigator.Buttons.CustomButtons = <>
@@ -763,7 +767,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
     Top = 120
   end
   object frxReportPagar: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -800,8 +804,11 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -815,6 +822,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
         DataSetName = 'frxDBDatasetPagar'
         RowCount = 0
         object frxDBDatasetReceberFPC_NUMER: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -827,12 +835,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 83.149660000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -845,12 +855,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PPC_NUMER"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -863,12 +875,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_DATA_PAGAMENTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Width = 173.858380000000000000
           Height = 15.118120000000000000
@@ -880,12 +894,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."FOR_CODIGO"] [frxDBDatasetPagar."FOR_RAZAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 438.425480000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -900,6 +916,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_VALOR"]')
@@ -907,6 +924,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 510.236550000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -921,6 +939,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_DESCONTO"]')
@@ -928,6 +947,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -942,6 +962,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_JUROS"]')
@@ -949,6 +970,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -963,6 +985,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_MULTA"]')
@@ -970,6 +993,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.669760000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -984,6 +1008,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_PAGO"]')
@@ -991,6 +1016,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -1003,12 +1029,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."FPG_DESCRICAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 15.118120000000000000
@@ -1021,12 +1049,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."BAN_APELIDO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.724490000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -1039,12 +1069,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PPC_VENCTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataField = 'EMP_CODIGO'
@@ -1056,6 +1088,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."EMP_CODIGO"]')
           ParentFont = False
@@ -1064,10 +1097,12 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 192.756030000000000000
         Width = 1046.929810000000000000
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -1076,11 +1111,13 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object SysMemo6: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -1089,23 +1126,29 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[COUNT(MasterData1,3)]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 438.425480000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1117,12 +1160,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_VALOR">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 510.236550000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1134,12 +1179,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_DESCONTO">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1151,12 +1198,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_JUROS">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo4: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1168,12 +1217,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_MULTA">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo5: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 725.669760000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1185,6 +1236,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_PAGO">,MasterData1,3)]')
@@ -1193,10 +1245,12 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -1206,11 +1260,13 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Pagamentos do Contas '#224' Pagar')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -1219,11 +1275,13 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -1233,23 +1291,29 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -1259,12 +1323,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -1275,12 +1341,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 56.692950000000000000
           Width = 56.692950000000000000
@@ -1291,12 +1359,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 83.149660000000000000
           Top = 56.692950000000000000
           Width = 41.574830000000000000
@@ -1307,12 +1377,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parcela')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -1323,12 +1395,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Pagamento')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 56.692950000000000000
           Width = 173.858380000000000000
@@ -1339,12 +1413,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Fornecedor')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 438.425480000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -1355,12 +1431,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 510.236550000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -1371,12 +1449,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Desconto')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -1387,12 +1467,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Juros')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.669760000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -1403,12 +1485,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Pago')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -1419,6 +1503,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Multa'
@@ -1426,6 +1511,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Top = 56.692950000000000000
           Width = 109.606370000000000000
@@ -1436,12 +1522,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Forma de Pag.')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 56.692950000000000000
           Width = 139.842610000000000000
@@ -1452,12 +1540,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Conta Banco')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.724490000000000000
           Top = 56.692950000000000000
           Width = 68.031540000000000000
@@ -1468,12 +1558,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vencimento')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 26.456710000000000000
           Height = 18.897650000000000000
@@ -1483,6 +1575,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emp.')
@@ -1527,6 +1620,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
     CreationTime = 0.000000000000000000
     DataOnly = False
     PictureType = gpPNG
+    OpenAfterExport = False
     Background = True
     Creator = 'FastReport'
     Language = 'en'
@@ -1554,11 +1648,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -1569,6 +1666,9 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 768
     Top = 117
   end
@@ -1581,7 +1681,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
     end
   end
   object frxReportPagarAgrupado: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1618,8 +1718,11 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -1633,6 +1736,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
         DataSetName = 'frxDBDatasetPagar'
         RowCount = 0
         object frxDBDatasetReceberFPC_NUMER: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -1645,12 +1749,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_CODIGO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 83.149660000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -1663,12 +1769,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PPC_NUMER"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1681,12 +1789,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_DATA_PAGAMENTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Width = 173.858380000000000000
           Height = 15.118120000000000000
@@ -1698,12 +1808,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."FOR_CODIGO"] [frxDBDatasetPagar."FOR_RAZAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 438.425480000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1718,6 +1830,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_VALOR"]')
@@ -1725,6 +1838,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 510.236550000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1739,6 +1853,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_DESCONTO"]')
@@ -1746,6 +1861,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1760,6 +1876,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_JUROS"]')
@@ -1767,6 +1884,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1781,6 +1899,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_MULTA"]')
@@ -1788,6 +1907,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.669760000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1802,6 +1922,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PAG_PAGO"]')
@@ -1809,6 +1930,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           WordWrap = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -1821,12 +1943,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."FPG_DESCRICAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 15.118120000000000000
@@ -1839,12 +1963,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."BAN_APELIDO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.724490000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -1857,12 +1983,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."PPC_VENCTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Width = 26.456710000000000000
           Height = 15.118120000000000000
           DataField = 'EMP_CODIGO'
@@ -1874,6 +2002,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."EMP_CODIGO"]')
           ParentFont = False
@@ -1882,10 +2011,12 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 283.464750000000000000
         Width = 1046.929810000000000000
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -1894,11 +2025,13 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object SysMemo6: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -1907,23 +2040,29 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[COUNT(MasterData1,3)]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 438.425480000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1935,12 +2074,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_VALOR">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 510.236550000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1952,12 +2093,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_DESCONTO">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1969,12 +2112,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_JUROS">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo4: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -1986,12 +2131,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_MULTA">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo5: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 725.669760000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2003,6 +2150,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_PAGO">,MasterData1,3)]')
@@ -2011,10 +2159,12 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -2024,11 +2174,13 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Pagamentos do Contas '#224' Pagar')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -2037,11 +2189,13 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -2051,23 +2205,29 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -2077,12 +2237,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -2093,12 +2255,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 56.692950000000000000
           Width = 56.692950000000000000
@@ -2109,12 +2273,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 83.149660000000000000
           Top = 56.692950000000000000
           Width = 41.574830000000000000
@@ -2125,12 +2291,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Parcela')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2141,12 +2309,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Pagamento')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 264.567100000000000000
           Top = 56.692950000000000000
           Width = 173.858380000000000000
@@ -2157,12 +2327,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Fornecedor')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 438.425480000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2173,12 +2345,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 510.236550000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2189,12 +2363,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Desconto')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2205,12 +2381,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Juros')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 725.669760000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2221,12 +2399,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Pago')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -2237,6 +2417,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Multa'
@@ -2244,6 +2425,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Top = 56.692950000000000000
           Width = 109.606370000000000000
@@ -2254,12 +2436,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Forma de Pag.')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 56.692950000000000000
           Width = 139.842610000000000000
@@ -2270,12 +2454,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Conta Banco')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.724490000000000000
           Top = 56.692950000000000000
           Width = 68.031540000000000000
@@ -2286,12 +2472,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vencimento')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 26.456710000000000000
           Height = 18.897650000000000000
@@ -2301,6 +2489,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emp.')
@@ -2309,12 +2498,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
         Condition = 'frxDBDatasetPagar."FPG_DESCRICAO"'
         KeepTogether = True
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Width = 374.173470000000000000
           Height = 15.118120000000000000
           DataField = 'FPG_DESCRICAO'
@@ -2326,24 +2517,29 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDatasetPagar."FPG_DESCRICAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 238.110390000000000000
         Width = 1046.929810000000000000
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -2352,11 +2548,13 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade:')
           ParentFont = False
         end
         object SysMemo7: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2365,12 +2563,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
         end
         object SysMemo8: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 438.425480000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2382,12 +2582,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_VALOR">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo9: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 510.236550000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2399,12 +2601,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_DESCONTO">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo10: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 582.047620000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2416,12 +2620,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_JUROS">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo11: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2433,12 +2639,14 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_MULTA">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo12: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 725.669760000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2450,6 +2658,7 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDatasetPagar."PAG_PAGO">,MasterData1)]')
