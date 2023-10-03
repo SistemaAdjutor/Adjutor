@@ -38,7 +38,11 @@ interface
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxGraphics, cxLookAndFeels,
   cxLookAndFeelPainters, cxEdit, ACBrDFe, ACBrNFe, JvExStdCtrls, JvCombobox,
   JvDBCombobox, RxDBComb, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
-  cxDBLookupEdit, cxDBLookupComboBox, ACBrBase, SgDbSeachComboUnit, Data.FMTBCd, JvExMask, JvToolEdit, JvDBControls, JvBaseDlg, JvBrowseFolder;
+  cxDBLookupEdit, cxDBLookupComboBox, ACBrBase, SgDbSeachComboUnit, Data.FMTBCd, JvExMask, JvToolEdit, JvDBControls, JvBaseDlg, JvBrowseFolder,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinTheBezier, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light;
 
 type
   TFormParametros = class(TfrmBase)

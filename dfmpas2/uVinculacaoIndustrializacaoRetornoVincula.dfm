@@ -11,7 +11,7 @@ object FrmVinculacaoIndustrializacaoRetornoVincula: TFrmVinculacaoIndustrializac
   Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
@@ -23,7 +23,6 @@ object FrmVinculacaoIndustrializacaoRetornoVincula: TFrmVinculacaoIndustrializac
     Align = alTop
     Caption = 'Quantidade'
     TabOrder = 0
-    ExplicitWidth = 344
     object CurQuantidade: TCurrencyEdit
       Left = 8
       Top = 16
@@ -109,7 +108,6 @@ object FrmVinculacaoIndustrializacaoRetornoVincula: TFrmVinculacaoIndustrializac
     Align = alTop
     Caption = 'Situa'#231#227'o'
     TabOrder = 3
-    ExplicitWidth = 344
     object SpeedButton2: TSpeedButton
       Left = 312
       Top = 18

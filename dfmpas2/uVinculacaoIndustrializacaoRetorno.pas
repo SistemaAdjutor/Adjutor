@@ -474,6 +474,11 @@ begin
                     SqlCdsNotasDisponiveis.Next;
                   end;
                   frmVinculacaoCoresRetorno.lbTotal.Caption := FormatFloat('###.###.###,##', frmVinculacaoCoresRetorno.edQuantidade.Value);
+                  if SqlCdsNotasDisponiveis.RecordCount > 1 then
+                  begin
+                    frmVinculacaoCoresRetorno.lbReferencia.Caption := 'Várias';
+                    frmVinculacaoCoresRetorno.lbItem.Caption := 'Vários';
+                  end;
 
                   frmVinculacaoCoresRetorno.ShowModal;
                   if (frmVinculacaoCoresRetorno.ModalResult <> mrOK) or (frmVinculacaoCoresRetorno.cdsGrade.RecordCount = 0) then

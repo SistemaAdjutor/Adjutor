@@ -8,10 +8,10 @@ inherited FormParametros: TFormParametros
   ClientWidth = 1920
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 1926
-  ExplicitHeight = 937
+  ExplicitHeight = 941
   PixelsPerInch = 96
   TextHeight = 14
   object Label663: TLabel [0]
@@ -278,6 +278,10 @@ inherited FormParametros: TFormParametros
     object TbConverte: TTabSheet
       Caption = 'Convers'#227'o'
       ImageIndex = 10
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox13: TGroupBox
         Left = 1
         Top = 2
@@ -493,12 +497,14 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 5
+      PageIndex = 8
       TabOrder = 0
       object TPage
         Left = 0
         Top = 0
         Caption = 'Or'#195#167'amento'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object POrcaIndustrial: TPanel
           Left = 984
           Top = 56
@@ -512,6 +518,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Global'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PGlobal: TPanel
           Left = 0
           Top = 0
@@ -840,6 +848,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Estoque'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PEstoque: TPanel
           Left = 0
           Top = 0
@@ -1189,6 +1199,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Financeiro'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PFinanceiro: TPanel
           Left = 0
           Top = 0
@@ -1206,6 +1218,10 @@ inherited FormParametros: TFormParametros
             TabOrder = 0
             object tsFinanceiro: TTabSheet
               Caption = 'Financeiro'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label19: TLabel
                 Left = 413
                 Top = 36
@@ -1577,13 +1593,19 @@ inherited FormParametros: TFormParametros
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
             end
             object tsTabelaPreco: TTabSheet
               Caption = 'Tabelas de Pre'#231'os'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox32: TGroupBox
                 Left = 0
                 Top = 0
@@ -2003,6 +2025,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Pedido'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PPedido: TPanel
           Left = 0
           Top = 0
@@ -2021,6 +2045,10 @@ inherited FormParametros: TFormParametros
             object TabSheet1: TTabSheet
               Caption = 'Principal'
               OnShow = TabSheet1Show
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label610: TLabel
                 Left = 12
                 Top = 42
@@ -2572,6 +2600,10 @@ inherited FormParametros: TFormParametros
             object TabSheet2: TTabSheet
               Caption = 'Mensagens'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object grp1: TGroupBox
                 Left = 0
                 Top = 0
@@ -2615,6 +2647,10 @@ inherited FormParametros: TFormParametros
             object TabSheet3: TTabSheet
               Caption = 'Item do Pedido'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label8: TLabel
                 Left = 10
                 Top = 183
@@ -2900,6 +2936,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Producao'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PProducao: TPanel
           Left = 0
           Top = 0
@@ -2917,6 +2955,10 @@ inherited FormParametros: TFormParametros
             TabOrder = 0
             object tsPCPOld: TTabSheet
               Caption = 'PCP Old'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox7: TGroupBox
                 Left = 0
                 Top = 0
@@ -3393,6 +3435,10 @@ inherited FormParametros: TFormParametros
             object tsPcpIndustrial: TTabSheet
               Caption = 'Or'#231'amento Industrial'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object LCAMINHO: TLabel
                 Left = 18
                 Top = 80
@@ -3517,6 +3563,10 @@ inherited FormParametros: TFormParametros
             object tsPCPNew: TTabSheet
               Caption = 'PCP New'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label660: TLabel
                 Left = 459
                 Top = 130
@@ -3791,8 +3841,10 @@ inherited FormParametros: TFormParametros
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object GroupBox39: TGroupBox
                 Left = 459
@@ -4009,6 +4061,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Produto'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PProduto: TPanel
           Left = 0
           Top = 0
@@ -4323,6 +4377,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'OrdemCompra'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object POrdemCompra: TPanel
           Left = 0
           Top = 0
@@ -4557,8 +4613,10 @@ inherited FormParametros: TFormParametros
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
         end
       end
@@ -4566,6 +4624,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Sintegra'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PSintegra: TPanel
           Left = 0
           Top = 0
@@ -4816,6 +4876,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Expedicao'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PEXPEDICAO: TPanel
           Left = 0
           Top = 0
@@ -4858,6 +4920,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Faturamento'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PFaturamento: TPanel
           Left = 0
           Top = 0
@@ -5066,6 +5130,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'NotaFiscal'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PNotaFiscal: TPanel
           Left = 0
           Top = 0
@@ -5083,6 +5149,10 @@ inherited FormParametros: TFormParametros
             TabOrder = 0
             object tsEntrada: TTabSheet
               Caption = 'Entrada'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label616: TLabel
                 Left = 12
                 Top = 12
@@ -5177,6 +5247,10 @@ inherited FormParametros: TFormParametros
             object tsSaida: TTabSheet
               Caption = 'Sa'#237'da'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label13: TLabel
                 Left = 10
                 Top = 14
@@ -5507,6 +5581,10 @@ inherited FormParametros: TFormParametros
             object TabSheet4: TTabSheet
               Caption = 'C'#225'lculo dos Valores do Faturamento'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object GroupBox42: TGroupBox
                 Left = 3
                 Top = 3
@@ -5603,6 +5681,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'NotaFiscalLayout'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PNotaFiscalLayout: TPanel
           Left = 0
           Top = 0
@@ -14647,6 +14727,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'NotaFiscalEtiqueta'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PNotaFiscalEtiqueta: TPanel
           Left = 0
           Top = 0
@@ -16466,6 +16548,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Duplicata'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PDuplicata: TPanel
           Left = 0
           Top = 0
@@ -17962,6 +18046,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Cheque'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PCheque: TPanel
           Left = 0
           Top = 0
@@ -18619,6 +18705,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Comissao'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PComissao: TPanel
           Left = 0
           Top = 0
@@ -18880,6 +18968,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Boleto'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PBoleto: TPanel
           Left = 0
           Top = 0
@@ -18983,6 +19073,8 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'BoletoLayoutMatricial'
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object PBoletoLayout: TPanel
           Left = 0
           Top = 0

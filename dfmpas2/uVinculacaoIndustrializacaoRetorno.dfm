@@ -6,9 +6,9 @@ inherited FrmVinculacaoIndustrializacaoRetorno: TFrmVinculacaoIndustrializacaoRe
   ClientWidth = 1049
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
-  Position = poDesktopCenter
-  ExplicitWidth = 1057
-  ExplicitHeight = 620
+  Position = poMainFormCenter
+  ExplicitWidth = 1065
+  ExplicitHeight = 632
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox1: TGroupBox [0]

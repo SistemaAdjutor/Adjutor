@@ -90,6 +90,7 @@ begin
   inherited;
   if Column.FieldName = 'BOTAO' then
     ApagaRegistro;
+  DBGrid1.SelectedIndex := 0;
 end;
 
 procedure TfrmVinculacaoCoresRetorno.DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -134,6 +135,12 @@ var
   total: double;
 begin
   inherited;
+  if cdsGrade.Recordcount = 0 then
+  begin
+    MessageDlg('Escolha uma cor.', mtWarning, [mbOK], 0);
+    ModalResult := mrNone;
+    Abort;
+  end;
   cdsGrade.First;
   while not cdsGrade.Eof do
   begin

@@ -2,8 +2,8 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
   Caption = 'Vincula'#231#227'o de Cores Retorno'
   ClientHeight = 275
   ClientWidth = 564
-  ExplicitWidth = 572
-  ExplicitHeight = 302
+  ExplicitWidth = 580
+  ExplicitHeight = 314
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
@@ -102,8 +102,10 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object BitConfirmar: TBitBtn
       Left = 279
