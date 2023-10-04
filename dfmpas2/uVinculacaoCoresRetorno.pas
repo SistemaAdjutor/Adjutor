@@ -5,7 +5,27 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, InicioDB,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDBForm, Data.DBXFirebird, Data.FMTBcd, Data.DB, Data.SqlExpr, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.StdCtrls, Datasnap.DBClient, Datasnap.Provider,
-  Vcl.Grids, Vcl.DBGrids, Vcl.Samples.Spin, SgDbSeachComboUnit, Vcl.ExtCtrls, Vcl.Buttons, SimpleDS, JvExStdCtrls, JvEdit, JvValidateEdit, Vcl.Mask, RxToolEdit, RxCurrEdit;
+  Vcl.Grids, Vcl.DBGrids, Vcl.Samples.Spin, SgDbSeachComboUnit, Vcl.ExtCtrls, Vcl.Buttons, SimpleDS, JvExStdCtrls, JvEdit, JvValidateEdit, Vcl.Mask, RxToolEdit, RxCurrEdit,
+  cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, cxDBData,
+  cxButtonEdit, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
 
 type
   TfrmVinculacaoCoresRetorno = class(TfrmBaseDB)
@@ -20,7 +40,6 @@ type
     Label3: TLabel;
     Label4: TLabel;
     Panel3: TPanel;
-    DBGrid1: TDBGrid;
     cdsGrade: TClientDataSet;
     dsGrade: TDataSource;
     BitConfirmar: TBitBtn;
@@ -33,16 +52,28 @@ type
     cdsGradeBOTAO: TStringField;
     Label5: TLabel;
     lbTotal: TLabel;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1ACO_NOME: TcxGridDBColumn;
+    cxGrid1DBTableView1PEDIND_QUANTIDADE: TcxGridDBColumn;
+    cxGrid1DBTableView1BOTAO: TcxGridDBColumn;
     procedure BitConfirmarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure DBGrid1KeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure cbCorSelect(Sender: TObject);
     procedure edQuantidadeKeyPress(Sender: TObject; var Key: Char);
     procedure bitFinalizarClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
-    procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
-    procedure DBGrid1CellClick(Column: TColumn);
     procedure ApagaRegistro;
+    procedure cxGrid1DBTableView1BOTAOPropertiesButtonClick(Sender: TObject;
+      AButtonIndex: Integer);
+    procedure cxGrid1DBTableView1EditKeyUp(Sender: TcxCustomGridTableView;
+      AItem: TcxCustomGridTableItem; AEdit: TcxCustomEdit; var Key: Word;
+      Shift: TShiftState);
+    procedure cxGrid1DBTableView1FocusedRecordChanged(
+      Sender: TcxCustomGridTableView; APrevFocusedRecord,
+      AFocusedRecord: TcxCustomGridRecord;
+      ANewItemRecordFocusingChanged: Boolean);
   private
     { Private declarations }
   public
@@ -85,39 +116,28 @@ begin
     edQuantidade.SetFocus;
 end;
 
-procedure TfrmVinculacaoCoresRetorno.DBGrid1CellClick(Column: TColumn);
+procedure TfrmVinculacaoCoresRetorno.cxGrid1DBTableView1BOTAOPropertiesButtonClick(
+  Sender: TObject; AButtonIndex: Integer);
 begin
   inherited;
-  if Column.FieldName = 'BOTAO' then
-    ApagaRegistro;
-  DBGrid1.SelectedIndex := 0;
+  ApagaRegistro;
 end;
 
-procedure TfrmVinculacaoCoresRetorno.DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
-var
-  BUTTON: Integer;
-  R: TRect;
-  bcolor: TColor;
-begin
-  if Column.FieldName = 'BOTAO' then
-  begin
-    DBGrid1.Canvas.FillRect(Rect);
-    BUTTON := 0;
-    R:=Rect;
-    InflateRect(R,-1,-1); //Diminui o tamanho do Botão
-    DrawFrameControl(DBGrid1.Canvas.Handle,R,BUTTON, BUTTON or BUTTON);
-    bcolor := DBGrid1.Canvas.Brush.Color; // guarda a cor de fundo original
-    DBGrid1.Canvas.Brush.Color := clBtnFace; // muda a cor de fundo
-    DrawText(DBGrid1.Canvas.Handle,'Excluir',7,R,DT_VCENTER or DT_CENTER);
-    DBGrid1.Canvas.Brush.Color := bcolor; // devolve a cor original
-  end;
-end;
-
-procedure TfrmVinculacaoCoresRetorno.DBGrid1KeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+procedure TfrmVinculacaoCoresRetorno.cxGrid1DBTableView1EditKeyUp(
+  Sender: TcxCustomGridTableView; AItem: TcxCustomGridTableItem;
+  AEdit: TcxCustomEdit; var Key: Word; Shift: TShiftState);
 begin
   inherited;
   if key = 46  then
     ApagaRegistro;
+end;
+
+procedure TfrmVinculacaoCoresRetorno.cxGrid1DBTableView1FocusedRecordChanged(
+  Sender: TcxCustomGridTableView; APrevFocusedRecord,
+  AFocusedRecord: TcxCustomGridRecord; ANewItemRecordFocusingChanged: Boolean);
+begin
+  inherited;
+  TcxButtonEditProperties(cxGrid1DBTableView1BOTAO.Properties).Buttons[0].Caption := 'Excluir';
 end;
 
 procedure TfrmVinculacaoCoresRetorno.edQuantidadeKeyPress(Sender: TObject; var Key: Char);

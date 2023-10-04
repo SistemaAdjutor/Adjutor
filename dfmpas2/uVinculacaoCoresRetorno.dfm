@@ -1,18 +1,19 @@
 inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
   Caption = 'Vincula'#231#227'o de Cores Retorno'
-  ClientHeight = 275
-  ClientWidth = 564
-  ExplicitWidth = 580
-  ExplicitHeight = 314
+  ClientHeight = 367
+  ClientWidth = 603
+  ExplicitWidth = 619
+  ExplicitHeight = 406
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
     Left = 0
     Top = 0
-    Width = 564
+    Width = 603
     Height = 97
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 564
     object Label1: TLabel
       Left = 24
       Top = 1
@@ -161,63 +162,77 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
   object Panel2: TPanel [1]
     Left = 0
     Top = 97
-    Width = 564
-    Height = 137
+    Width = 603
+    Height = 229
     Align = alClient
     TabOrder = 1
-    object DBGrid1: TDBGrid
+    ExplicitWidth = 564
+    ExplicitHeight = 137
+    object cxGrid1: TcxGrid
       Left = 1
       Top = 1
-      Width = 562
-      Height = 135
+      Width = 601
+      Height = 227
       Align = alClient
-      DataSource = dsGrade
       TabOrder = 0
-      TitleFont.Charset = DEFAULT_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Tahoma'
-      TitleFont.Style = []
-      OnCellClick = DBGrid1CellClick
-      OnDrawColumnCell = DBGrid1DrawColumnCell
-      OnKeyUp = DBGrid1KeyUp
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'ACO_NOME'
-          ReadOnly = True
-          Title.Caption = 'Cor'
-          Width = 231
-          Visible = True
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
+      ExplicitLeft = 0
+      ExplicitTop = 165
+      ExplicitWidth = 774
+      ExplicitHeight = 200
+      object cxGrid1DBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        OnEditKeyUp = cxGrid1DBTableView1EditKeyUp
+        OnFocusedRecordChanged = cxGrid1DBTableView1FocusedRecordChanged
+        DataController.DataSource = dsGrade
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsView.ShowEditButtons = gsebAlways
+        OptionsView.GroupByBox = False
+        object cxGrid1DBTableView1ACO_NOME: TcxGridDBColumn
+          Caption = 'Cor'
+          DataBinding.FieldName = 'ACO_NOME'
+          Width = 251
         end
-        item
-          Expanded = False
-          FieldName = 'PEDIND_QUANTIDADE'
-          ReadOnly = True
-          Title.Caption = 'Quantidade Retornada'
-          Width = 134
-          Visible = True
+        object cxGrid1DBTableView1PEDIND_QUANTIDADE: TcxGridDBColumn
+          Caption = 'Quantidade Retornada'
+          DataBinding.FieldName = 'PEDIND_QUANTIDADE'
+          Width = 140
         end
-        item
-          Alignment = taCenter
-          Expanded = False
-          FieldName = 'BOTAO'
-          Title.Alignment = taCenter
-          Title.Caption = 'Excluir'
-          Width = 59
-          Visible = True
-        end>
+        object cxGrid1DBTableView1BOTAO: TcxGridDBColumn
+          Caption = 'Excluir'
+          DataBinding.FieldName = 'BOTAO'
+          PropertiesClassName = 'TcxButtonEditProperties'
+          Properties.Buttons = <
+            item
+              Caption = 'Excluir'
+              Default = True
+              Kind = bkText
+            end>
+          Properties.ViewStyle = vsButtonsOnly
+          Properties.OnButtonClick = cxGrid1DBTableView1BOTAOPropertiesButtonClick
+          Width = 71
+        end
+      end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = cxGrid1DBTableView1
+      end
     end
   end
   object Panel3: TPanel [2]
     Left = 0
-    Top = 234
-    Width = 564
+    Top = 326
+    Width = 603
     Height = 41
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 234
+    ExplicitWidth = 564
     DesignSize = (
-      564
+      603
       41)
     object Label5: TLabel
       Left = 217
@@ -248,7 +263,7 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
       ParentFont = False
     end
     object bitFinalizar: TBitBtn
-      Left = 458
+      Left = 497
       Top = 9
       Width = 100
       Height = 25
@@ -281,6 +296,7 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
       ParentFont = False
       TabOrder = 0
       OnClick = bitFinalizarClick
+      ExplicitLeft = 458
     end
   end
   inherited coCalcula: TACBrCalculadora
