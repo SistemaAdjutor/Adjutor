@@ -2211,6 +2211,7 @@ type
     cbLoteVencido: TCheckBox;
     cbFiltroAlmoxarifado: TComboBoxRw;
     Label331: TLabel;
+    Label332: TLabel;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );

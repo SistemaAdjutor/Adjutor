@@ -20,7 +20,11 @@ uses
   dxSkinOffice2013White, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
   dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
-  dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, System.StrUtils, RxLookup;
+  dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue, System.StrUtils, RxLookup,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinTheBezier, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light;
 
 type
   TFrmEntradaNotaXmlItem = class(TForm)
@@ -505,7 +509,7 @@ begin
   begin
     grpLote.Visible := True;
     CdsLoteProduto.Close;
-    CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT * from PRD_LOTE','where PRD_CODIGO = '''+RetornaProdutoReferencia(dbedtReferencia.Text)+'''','PRD_CODIGO','');
+    CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT * from PRD_LOTE','where AMX_CODIGO = ' + QuotedStr(edtAlmox.Text) +  ' and PRD_CODIGO = '''+RetornaProdutoReferencia(dbedtReferencia.Text)+'''','PRD_CODIGO','');
     CdsLoteProduto.Open;
   end;
 end;
@@ -579,7 +583,7 @@ begin
    begin
         grpLote.Visible := True;
         CdsLoteProduto.Close;
-        CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT * from PRD_LOTE','where PRD_CODIGO = '''+RetornaProdutoReferencia(dbedtReferencia.Text)+'''','PRD_CODIGO','');
+        CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT * from PRD_LOTE','where AMX_CODIGO = ' + QuotedStr(edtAlmox.Text) +  ' and PRD_CODIGO = '''+RetornaProdutoReferencia(dbedtReferencia.Text)+'''','PRD_CODIGO','');
         CdsLoteProduto.Open;
    end;
 end;
@@ -598,7 +602,7 @@ begin
      begin
        grpLote.Visible := True;
        CdsLoteProduto.Close;
-       CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT * from PRD_LOTE','where PRD_CODIGO = '''+RetornaProdutoReferencia(dbedtReferencia.Text)+'''','PRD_CODIGO','');
+       CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT * from PRD_LOTE','where AMX_CODIGO = ' + QuotedStr(edtAlmox.Text) +  ' and PRD_CODIGO = '''+RetornaProdutoReferencia(dbedtReferencia.Text)+'''','PRD_CODIGO','');
        CdsLoteProduto.Open;
      end;
    end;
@@ -684,6 +688,8 @@ begin
                   FrmCadastroProdutoLote.edtIdentificacao.Text := FrmEntradaNotaXml.edtFornecedorRazao.Text+' NFe:'+FrmEntradaNotaXml.edtNumerNfe.Text;
                end;
           end;
+        FrmCadastroProdutoLote.amxCodigo := EdtAlmox.Text;
+        FrmCadastroProdutoLote.lbAlmoxarifado.Caption := CbAlmox.Text;
         FrmCadastroProdutoLote.ShowModal;
       finally
         FrmCadastroProdutoLote.Destroy;
@@ -792,6 +798,10 @@ end;
 procedure TFrmEntradaNotaXmlItem.EdtAlmoxChange(Sender: tObject);
 begin
    ImgAlmozarifado.Visible := (EdtAlmox.Text = '') ;
+       CdsLoteProduto.Close;
+       CdsLoteProduto.CommandText := SQLDEF('PRODUTOS','SELECT * from PRD_LOTE','where AMX_CODIGO = ' + QuotedStr(EdtAlmox.Text) +  ' and PRD_CODIGO = '''+RetornaProdutoReferencia(dbedtReferencia.Text)+'''','PRD_CODIGO','');
+       CdsLoteProduto.Open;
+
 end;
 
 procedure TFrmEntradaNotaXmlItem.edtQuantidadeConversaoExit(Sender: TObject);

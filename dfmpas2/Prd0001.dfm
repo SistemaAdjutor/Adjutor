@@ -11632,7 +11632,6 @@ inherited FormProduto: TFormProduto
             Expanded = False
             FieldName = 'FOR_RAZAO'
             Title.Caption = 'Fornecedor'
-            Width = 64
             Visible = True
           end
           item
@@ -11658,6 +11657,8 @@ inherited FormProduto: TFormProduto
         Height = 273
         Align = alBottom
         TabOrder = 1
+        ExplicitLeft = 24
+        ExplicitTop = 268
         object Label75: TLabel
           Left = 211
           Top = 75
@@ -11728,6 +11729,13 @@ inherited FormProduto: TFormProduto
           Width = 79
           Height = 14
           Caption = 'Total do Estoque'
+        end
+        object Label332: TLabel
+          Left = 352
+          Top = 60
+          Width = 64
+          Height = 14
+          Caption = 'Almoxarifado'
         end
         object DBNavigator4: TDBNavigator
           Left = 8
