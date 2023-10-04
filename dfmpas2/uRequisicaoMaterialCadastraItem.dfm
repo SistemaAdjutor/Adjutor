@@ -2,8 +2,8 @@ inherited frmRequisicaoMaterialCadastraItem: TfrmRequisicaoMaterialCadastraItem
   Caption = 'Requisi'#231#227'o de Material - Cadastro de Itens'
   ClientHeight = 354
   ClientWidth = 576
-  ExplicitWidth = 584
-  ExplicitHeight = 381
+  ExplicitWidth = 592
+  ExplicitHeight = 393
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
@@ -304,8 +304,10 @@ inherited frmRequisicaoMaterialCadastraItem: TfrmRequisicaoMaterialCadastraItem
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object dbPrdRefer: TDBEdit
         Left = 122
@@ -338,6 +340,9 @@ inherited frmRequisicaoMaterialCadastraItem: TfrmRequisicaoMaterialCadastraItem
     Height = 229
     Align = alClient
     TabOrder = 2
+    LookAndFeel.Kind = lfUltraFlat
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True

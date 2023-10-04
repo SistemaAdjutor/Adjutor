@@ -5,10 +5,8 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
   Font.Height = -16
   Position = poDesigned
   WindowState = wsMaximized
-  OnClose = FormClose
-  OnShow = FormShow
-  ExplicitWidth = 1420
-  ExplicitHeight = 744
+  ExplicitWidth = 1428
+  ExplicitHeight = 756
   PixelsPerInch = 96
   TextHeight = 19
   object presumo: TPanel [0]
@@ -999,7 +997,9 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
         ParentFont = False
         PopupMenu = pmGraficoVendas
         TabOrder = 0
-        LookAndFeel.Kind = lfFlat
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         object cxGraficoVendasDBChartView1: TcxGridDBChartView
           OnDblClick = cxGraficoVendasDBChartView1DblClick
           DataController.DataSource = dsVendedores
@@ -1039,6 +1039,10 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
         ParentFont = False
         PopupMenu = pmVendasVendedores
         TabOrder = 1
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
+        LookAndFeel.SkinName = ''
         object cxGridDBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsVendedores
@@ -1093,6 +1097,9 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
         Align = alLeft
         PopupMenu = pmGraficoFinanceiro
         TabOrder = 0
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         object cxGarficoReceberPagar: TcxGridDBChartView
           DataController.DataSource = dsfinanceiro
           DiagramColumn.Active = True
@@ -1129,6 +1136,9 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
         Align = alLeft
         PopupMenu = pmfaturamento
         TabOrder = 1
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         object GraficoFaturamento: TcxGridDBChartView
           DataController.DataSource = dsFaturamento
           DiagramColumn.Active = True
@@ -1419,6 +1429,7 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
     Version = 0
     Left = 538
     Top = 225
+    PixelsPerInch = 96
     object dxVendedoresVendas: TdxGridReportLink
       Active = True
       Component = cxGrid2
@@ -1435,15 +1446,17 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'VendasVendedores'
-      ReportDocument.CreationDate = 44215.479722349530000000
+      ReportDocument.CreationDate = 45202.364060937500000000
       OptionsSize.AutoWidth = True
       OptionsView.Caption = False
       OptionsView.FilterBar = False
+      PixelsPerInch = 96
       BuiltInReportLink = True
     end
     object dxGraficoVendas: TdxGridReportLink
       Active = True
       Component = cxGraficoVendas
+      DateFormat = 0
       DesignerCaption = 'Gr'#225'fico Vendas'
       PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
@@ -1457,15 +1470,17 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 44215.479722418980000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 45202.364061006940000000
+      TimeFormat = 0
       OptionsView.Caption = False
       OptionsView.FilterBar = False
+      PixelsPerInch = 96
       BuiltInReportLink = True
     end
     object dxGraficoFaturas: TdxGridReportLink
       Active = True
       Component = cxGraficoFaturas
+      DateFormat = 0
       DesignerCaption = 'Gr'#225'fico do faturamento'
       PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
@@ -1480,14 +1495,16 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Grafico f'#225'turas'
-      ReportDocument.CreationDate = 44215.479722488420000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 45202.364061157410000000
+      TimeFormat = 0
       OptionsView.Caption = False
+      PixelsPerInch = 96
       BuiltInReportLink = True
     end
     object dxGraficoFinanceiro: TdxGridReportLink
       Active = True
       Component = cxGraficoFinanceiro
+      DateFormat = 0
       DesignerCaption = 'Gr'#225'fico financeiro'
       PageNumberFormat = pnfNumeral
       PrinterPage.DMPaper = 9
@@ -1501,9 +1518,10 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
       PrinterPage.PageSize.Y = 297000
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
-      ReportDocument.CreationDate = 44215.479722534720000000
-      AssignedFormatValues = [fvDate, fvTime, fvPageNumber]
+      ReportDocument.CreationDate = 45202.364061238430000000
+      TimeFormat = 0
       OptionsView.Caption = False
+      PixelsPerInch = 96
       BuiltInReportLink = True
     end
     object dxvendasresumo: TdxCustomContainerReportLink
@@ -1522,8 +1540,9 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Vendas'
-      ReportDocument.CreationDate = 44215.479722604170000000
+      ReportDocument.CreationDate = 45202.364061342600000000
       ReportDocument.Creator = 'Novi sistemas'
+      PixelsPerInch = 96
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}
@@ -1545,7 +1564,8 @@ inherited frmDashBoardComecialFin: TfrmDashBoardComecialFin
       PrinterPage._dxMeasurementUnits_ = 0
       PrinterPage._dxLastMU_ = 2
       ReportDocument.Caption = 'Financeiro'
-      ReportDocument.CreationDate = 44215.479722638890000000
+      ReportDocument.CreationDate = 45202.364061516200000000
+      PixelsPerInch = 96
       BuiltInReportLink = True
       HiddenComponents = {}
       ExcludedComponents = {}

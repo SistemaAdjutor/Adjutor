@@ -7,7 +7,23 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDBFormFdac, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Phys.FBDef, FireDAC.UI.Intf, FireDAC.VCLUI.Wait, FireDAC.VCLUI.Error, FireDAC.Stan.Def, FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.FB, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxCustomData, cxStyles, cxTL, cxMaskEdit, cxInplaceContainer, cxDBTL, Data.DB, Vcl.ExtCtrls, cxTLData, FireDAC.Comp.Client, FireDAC.Comp.UI,
-  FireDAC.Phys.IBBase, FireDAC.Comp.DataSet, cxClasses, cxLocalization, ACBrBase, ACBrEnterTab, cxTextEdit, Datasnap.DBClient;
+  FireDAC.Phys.IBBase, FireDAC.Comp.DataSet, cxClasses, cxLocalization, ACBrBase, ACBrEnterTab, cxTextEdit, Datasnap.DBClient,
+  cxTLdxBarBuiltInMenu, cxDataControllerConditionalFormattingRulesManagerDialog,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue;
 
 type
   TfrmEstruturaFicha = class(TfrmBaseDBFDAC)
@@ -42,7 +58,7 @@ type
     procedure FormShow(Sender: TObject);
   private
     fPrd_Refer : string;
-    procedure subitens (APNode: TcxTreeListNode; const prd_refer : string);
+    procedure subitens (APNode: TcxTreeListNode; const prd_refer : string; baseFormula: double);
     function AddTreeListNode( APNode: TcxTreeListNode; const AValues: Array of Variant; AImageIndex: Integer): TcxTreeListNode;
 
   public
@@ -141,14 +157,14 @@ begin
   node .Values[5] := qaux.FieldByName('PRD_PCUSTO').AsFloat;
   node .Values[6] := qaux.FieldByName('TOTALITEM').AsFloat;
   node .Values[7] := qaux.FieldByName('PRD_PVENDA').AsFloat;
-  subitens(node,  prd_Refer);
+  subitens(node,  prd_Refer, qaux.fieldByName('FTC_BASEFORMULA').asfloat);
 //  node  .Values[1] := 'teste';
 //  AddTreeListNode(node,['1829182','tetetet'],0);
   cxTreeList1.FullExpand;
   cxTreeList1.EndUpdate;
 end;
 
-procedure TfrmEstruturaFicha.subitens(APNode: TcxTreeListNode; const prd_refer: string);
+procedure TfrmEstruturaFicha.subitens(APNode: TcxTreeListNode; const prd_refer: string; baseFormula: double);
 var sql : string;
  clone : TFDMemTable;
   node :TcxTreeListNode;
@@ -193,12 +209,12 @@ begin
           clone.FieldByName('prd_descri').AsString,
           clone.FieldByName('pti_sigla').AsString,
           clone.FieldByName('prd_und').AsString,
-          clone.FieldByName('FTI_UC').AsFloat,
+          clone.FieldByName('FTI_UC').AsFloat / baseFormula,
           clone.FieldByName('PRD_PCUSTO').AsFloat,
           clone.FieldByName('TOTALITEM').AsFloat,
           clone.FieldByName('PRD_PVENDA').AsFloat ],0
          )  ;
-      subitens(node,clone.FieldByName('prd_refer').AsString);
+      subitens(node,clone.FieldByName('prd_refer').AsString, baseFormula);
       clone.Next;
     end;
   finally

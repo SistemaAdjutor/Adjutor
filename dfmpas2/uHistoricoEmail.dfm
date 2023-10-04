@@ -2,8 +2,8 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
   Caption = 'Hist'#243'rico de eMails Enviados'
   ClientHeight = 647
   ClientWidth = 1229
-  ExplicitWidth = 1237
-  ExplicitHeight = 674
+  ExplicitWidth = 1245
+  ExplicitHeight = 686
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
@@ -228,8 +228,10 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
                 GridLeft = 0
                 GridWidth = 0
                 GridHeight = 100
+                GridTop = 0
                 GridShowWhenEnter = False
                 SelectWithDoubleClick = False
+                LimparCampoAoSair = True
               end
               object rbCliente: TRadioButton
                 Left = 16
@@ -280,8 +282,10 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
           end
         end
@@ -290,6 +294,9 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
         Top = 140
         Width = 1221
         Height = 402
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitTop = 140
         ExplicitWidth = 1221
         ExplicitHeight = 402
@@ -569,18 +576,24 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 85.047310000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 63.031540000000000000
           Width = 1043.150280000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 945.441560000000000000
           Top = 9.000000000000000000
           Width = 94.488250000000000000
@@ -590,6 +603,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
@@ -601,6 +615,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
             end>
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 1003.354980000000000000
           Top = 41.574830000000000000
           Width = 37.795300000000000000
@@ -612,11 +627,13 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Time]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Top = 66.149660000000000000
           Width = 45.354360000000000000
           Height = 18.897650000000000000
@@ -632,6 +649,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 320.614410000000000000
           Top = 66.149660000000000000
           Width = 45.354360000000000000
@@ -648,6 +666,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 158.740260000000000000
           Top = 66.149660000000000000
           Width = 71.810925980000000000
@@ -664,6 +683,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 66.149660000000000000
           Width = 37.795300000000000000
@@ -680,12 +700,15 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 81.929190000000000000
           Width = 1043.150280000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 875.071430000000000000
           Top = 41.574830000000000000
           Width = 124.724490000000000000
@@ -695,21 +718,25 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Emitido em: [Date]')
           ParentFont = False
         end
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 177.637783070000000000
           Height = 60.472480000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 9.338590000000000000
           Width = 721.890230000000000000
@@ -719,12 +746,14 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 270.126160000000000000
           Top = 37.354360000000000000
           Width = 593.386210000000000000
@@ -734,12 +763,14 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Hist'#243'rico dos eMails enviados')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 656.992580000000000000
           Top = 66.149660000000000000
           Width = 105.826840000000000000
@@ -758,6 +789,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 848.850960000000000000
           Top = 66.149660000000000000
           Width = 117.165430000000000000
@@ -775,6 +807,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 982.677800000000000000
           Top = 66.149660000000000000
           Width = 60.472480000000000000
@@ -794,6 +827,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 166.299320000000000000
         Width = 1046.929810000000000000
@@ -801,6 +835,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
         DataSetName = 'frxDBcdsBusca'
         RowCount = 0
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 151.181200000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -808,11 +843,13 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBcdsBusca."HEM_MODULO"]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 154.960730000000000000
           Width = 158.740260000000000000
           Height = 15.118120000000000000
@@ -821,11 +858,13 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBcdsBusca."HEM_DESTINATARIO"]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 316.834880000000000000
           Width = 306.141930000000000000
           Height = 15.118120000000000000
@@ -834,11 +873,13 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBcdsBusca."HEM_TITULO"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 645.653990000000000000
           Width = 188.976500000000000000
           Height = 15.118120000000000000
@@ -857,6 +898,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 856.410020000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
@@ -872,6 +914,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 967.559680000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -888,6 +931,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 627.401980000000000000
           Width = 15.118120000000000000
           Height = 15.118120000000000000
@@ -896,6 +940,7 @@ inherited frmHistoricoEmail: TfrmHistoricoEmail
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBcdsBusca."HEM_CLI_FOR"]')
           ParentFont = False

@@ -428,6 +428,9 @@ object FrmKardex: TFrmKardex
           Height = 200
           TabOrder = 1
           Visible = False
+          LookAndFeel.Kind = lfStandard
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.ScrollbarMode = sbmClassic
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
@@ -651,7 +654,7 @@ object FrmKardex: TFrmKardex
         Left = 0
         Top = 0
         Width = 353
-        Height = 575
+        Height = 571
         Align = alLeft
         Caption = 'Almoxarifados'
         TabOrder = 1
@@ -659,7 +662,7 @@ object FrmKardex: TFrmKardex
           Left = 2
           Top = 16
           Width = 349
-          Height = 557
+          Height = 553
           Align = alClient
           Ctl3D = True
           DataSource = DsAlmoxarifadoGeral

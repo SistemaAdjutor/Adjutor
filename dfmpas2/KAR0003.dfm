@@ -20,7 +20,7 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
     Top = 386
     Width = 970
     Height = 193
-    ActivePage = tslote
+    ActivePage = tsgrade
     Align = alClient
     TabOrder = 1
     Visible = False
@@ -760,6 +760,9 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       Height = 200
       TabOrder = 17
       Visible = False
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = DsProduto

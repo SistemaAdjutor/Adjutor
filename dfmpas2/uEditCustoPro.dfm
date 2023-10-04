@@ -2,8 +2,8 @@ inherited frmCustoMesAno: TfrmCustoMesAno
   Caption = ''
   ClientHeight = 419
   ClientWidth = 1063
-  ExplicitWidth = 1071
-  ExplicitHeight = 446
+  ExplicitWidth = 1079
+  ExplicitHeight = 458
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
@@ -45,6 +45,10 @@ inherited frmCustoMesAno: TfrmCustoMesAno
     Height = 387
     Align = alClient
     TabOrder = 1
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
+    ExplicitTop = 2
     object cxgrd1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataModeController.GridMode = True

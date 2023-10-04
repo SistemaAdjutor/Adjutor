@@ -3,16 +3,15 @@ inherited frmConfirmaDemanda: TfrmConfirmaDemanda
   ClientHeight = 331
   ClientWidth = 684
   Position = poOwnerFormCenter
-  OnKeyPress = FormKeyPress
-  ExplicitWidth = 692
-  ExplicitHeight = 358
+  ExplicitWidth = 700
+  ExplicitHeight = 370
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
     Top = 299
     Width = 684
     ExplicitTop = 299
-    ExplicitWidth = 585
+    ExplicitWidth = 684
     inherited btnOk: TSpeedButton
       Left = 436
       Caption = 'Confirma'
@@ -31,7 +30,9 @@ inherited frmConfirmaDemanda: TfrmConfirmaDemanda
     Height = 299
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 585
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       DataController.DataSource = dsItens

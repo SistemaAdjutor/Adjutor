@@ -120,6 +120,9 @@ inherited frmBaseDBPesquisaFDAC: TfrmBaseDBPesquisaFDAC
         Height = 277
         Align = alClient
         TabOrder = 1
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         object cxgrd1DBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsBusca

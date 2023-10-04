@@ -6,8 +6,8 @@ inherited frmNfe40: TfrmNfe40
   FormStyle = fsMDIChild
   Position = poDesktopCenter
   Visible = True
-  ExplicitWidth = 1379
-  ExplicitHeight = 674
+  ExplicitWidth = 1387
+  ExplicitHeight = 686
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter [0]
@@ -277,8 +277,10 @@ inherited frmNfe40: TfrmNfe40
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edVendedorCodigo: TEdit
       Left = 616
@@ -315,8 +317,10 @@ inherited frmNfe40: TfrmNfe40
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object PesquisaOper: TComboBoxRw
       Left = 616
@@ -342,8 +346,10 @@ inherited frmNfe40: TfrmNfe40
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'OPE0000_VIEW_PESQUISA'
       CamposCarregar = 'ope_codigo, cfop, OPE_NATUREZA'
       CamposRetornar = 'OPE_NATUREZA'
@@ -5504,6 +5510,9 @@ inherited frmNfe40: TfrmNfe40
       Height = 299
       Align = alClient
       TabOrder = 0
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
       object cxNotafiscal: TcxGridDBTableView
         PopupMenu = pmSeleciona
         OnDblClick = cxNotafiscalDblClick
@@ -6318,7 +6327,7 @@ inherited frmNfe40: TfrmNfe40
     Left = 152
     Top = 568
     Bitmap = {
-      494C01010E001100040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E001100080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7238,6 +7247,7 @@ inherited frmNfe40: TfrmNfe40
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
@@ -7253,6 +7263,14 @@ inherited frmNfe40: TfrmNfe40
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -7262,20 +7280,32 @@ inherited frmNfe40: TfrmNfe40
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -7284,13 +7314,26 @@ inherited frmNfe40: TfrmNfe40
     XLSSettings.DefaultBands = [btHeader, btTitle, btDetail, btSummary, btFooter]
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 904
     Top = 247
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'pipNotas'
     object ppTitleBand2: TppTitleBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 13229
       mmPrintPosition = 0
@@ -7298,13 +7341,15 @@ inherited frmNfe40: TfrmNfe40
         OnPrint = lempresaPrint
         DesignLayer = ppDesignLayer1
         UserName = 'lempresa'
+        Border.mmPadding = 0
         Caption = 'lempresa'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 794
@@ -7316,13 +7361,15 @@ inherited frmNfe40: TfrmNfe40
       object lrelatorio: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label15'
+        Border.mmPadding = 0
         Caption = 'Relat'#243'rio de NFe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 793
@@ -7335,13 +7382,15 @@ inherited frmNfe40: TfrmNfe40
         OnPrint = lfiltroPrint
         DesignLayer = ppDesignLayer1
         UserName = 'lfiltro'
+        Border.mmPadding = 0
         Caption = 'lfiltro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 794
@@ -7353,13 +7402,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel10: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label10'
+        Border.mmPadding = 0
         Caption = 'Impresso:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 233628
@@ -7371,6 +7422,7 @@ inherited frmNfe40: TfrmNfe40
       object ppSystemVariable1: TppSystemVariable
         DesignLayer = ppDesignLayer1
         UserName = 'SystemVariable1'
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -7388,13 +7440,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel12: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label12'
+        Border.mmPadding = 0
         Caption = 'P'#225'gina'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 254360
@@ -7406,6 +7460,7 @@ inherited frmNfe40: TfrmNfe40
       object ppSystemVariable2: TppSystemVariable
         DesignLayer = ppDesignLayer1
         UserName = 'SystemVariable2'
+        Border.mmPadding = 0
         VarType = vtPageNo
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -7423,13 +7478,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel11: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label11'
+        Border.mmPadding = 0
         Caption = 'de'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 270499
@@ -7441,6 +7498,7 @@ inherited frmNfe40: TfrmNfe40
       object ppSystemVariable3: TppSystemVariable
         DesignLayer = ppDesignLayer1
         UserName = 'SystemVariable3'
+        Border.mmPadding = 0
         VarType = vtPageCount
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -7457,20 +7515,22 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 6879
       mmPrintPosition = 0
       object ppLabel1: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label1'
+        Border.mmPadding = 0
         Caption = 'No NFe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 265
@@ -7482,13 +7542,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel2: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label2'
+        Border.mmPadding = 0
         Caption = 'Emiss'#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 17994
@@ -7500,13 +7562,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel3: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label3'
+        Border.mmPadding = 0
         Caption = 'Raz'#227'o social'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 34925
@@ -7518,13 +7582,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel4: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label4'
+        Border.mmPadding = 0
         Caption = 'Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -7537,13 +7603,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel5: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label5'
+        Border.mmPadding = 0
         Caption = 'IPI'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -7556,13 +7624,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel6: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label6'
+        Border.mmPadding = 0
         Caption = 'ICMS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -7575,13 +7645,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel7: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label7'
+        Border.mmPadding = 0
         Caption = 'ICMS ST'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -7594,13 +7666,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel8: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label8'
+        Border.mmPadding = 0
         Caption = 'Total NFe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -7613,13 +7687,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel9: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label9'
+        Border.mmPadding = 0
         Caption = 'Chave'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -7632,6 +7708,7 @@ inherited frmNfe40: TfrmNfe40
       object ppLine2: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
+        Border.mmPadding = 0
         Position = lpBottom
         Weight = 0.750000000000000000
         mmHeight = 2117
@@ -7644,6 +7721,7 @@ inherited frmNfe40: TfrmNfe40
       object ppLine1: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
+        Border.mmPadding = 0
         Position = lpBottom
         Weight = 0.750000000000000000
         mmHeight = 1852
@@ -7656,13 +7734,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel37: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label37'
+        Border.mmPadding = 0
         Caption = '.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 12965
@@ -7673,8 +7753,7 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 3440
@@ -7682,6 +7761,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText1: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText1'
+        Border.mmPadding = 0
         DataField = 'NF_STATUS_NFE'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -7701,6 +7781,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText3: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText3'
+        Border.mmPadding = 0
         DataField = 'NF_EMISSAO'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -7720,6 +7801,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText4: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText4'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -7739,6 +7821,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText5: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText5'
+        Border.mmPadding = 0
         DataField = 'NF_TOT_NOTA'
         DataPipeline = pipNotas
         DisplayFormat = '#,####0.00'
@@ -7760,6 +7843,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText6: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText6'
+        Border.mmPadding = 0
         DataField = 'NF_TOT_PROD'
         DataPipeline = pipNotas
         DisplayFormat = '#,####0.00'
@@ -7781,6 +7865,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText7: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText7'
+        Border.mmPadding = 0
         DataField = 'NF_VL_IPI'
         DataPipeline = pipNotas
         DisplayFormat = '#,####0.00'
@@ -7802,6 +7887,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText8: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText8'
+        Border.mmPadding = 0
         DataField = 'NF_VL_ICMS'
         DataPipeline = pipNotas
         DisplayFormat = '#,####0.00'
@@ -7823,6 +7909,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText9: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText9'
+        Border.mmPadding = 0
         DataField = 'NF_VL_SUBTRIB'
         DataPipeline = pipNotas
         DisplayFormat = '#,####0.00'
@@ -7844,6 +7931,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText10: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText10'
+        Border.mmPadding = 0
         DataField = 'NF_CHAVE_NFE'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -7863,13 +7951,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel35: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'labelNFE'
+        Border.mmPadding = 0
         Caption = 'labelNFE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3441
@@ -7881,27 +7971,29 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object ppFooterBand1: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintOnFirstPage = False
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 5027
       mmPrintPosition = 0
       object ppLabel13: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label13'
+        Border.mmPadding = 0
         Caption = 'Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -7916,6 +8008,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_TOT_NOTA'
         DataPipeline = pipNotas
         DisplayFormat = '#,##0.00'
@@ -7940,6 +8033,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VL_SUBTRIB'
         DataPipeline = pipNotas
         DisplayFormat = '#,##0.00'
@@ -7964,6 +8058,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VL_ICMS'
         DataPipeline = pipNotas
         DisplayFormat = '#,##0.00'
@@ -7988,6 +8083,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc101'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VL_IPI'
         DataPipeline = pipNotas
         DisplayFormat = '#,##0.00'
@@ -8012,6 +8108,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_TOT_PROD'
         DataPipeline = pipNotas
         DisplayFormat = '#,##0.00'
@@ -8034,6 +8131,7 @@ inherited frmNfe40: TfrmNfe40
       object ppLine5: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1681
         mmLeft = 2662
@@ -8044,26 +8142,34 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650611
-        6C6162656C4E46454F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F7572636506C770726F636564757265206C6162
-        656C4E46454F6E476574546578742876617220546578743A20537472696E6729
-        3B0D0A626567696E0D0A2020696620537472546F496E74287069704E6F746173
-        5B274E465F4E554D5F4E4645275D29203E2030207468656E200D0A2020202054
-        657874203A3D20207069704E6F7461735B274E465F4E554D5F4E4645275D0D0A
-        2020656C7365200D0A202020202074657874203A3D20207069704E6F7461735B
-        274E465F4E554D5F4E464345275D203B0D0A0D0A656E643B0D0A0D436F6D706F
-        6E656E744E616D6506086C6162656C4E4645094576656E744E616D6506094F6E
-        47657454657874074576656E7449440235084361726574506F73010228020600
-        0001060F5472614576656E7448616E646C65720B50726F6772616D4E616D6506
-        215265706F727441667465724175746F5365617263684469616C6F6743726561
-        74650B50726F6772616D54797065070B747450726F63656475726506536F7572
-        6365063D70726F636564757265205265706F727441667465724175746F536561
-        7263684469616C6F674372656174653B0D0A626567696E0D0A0D0A656E643B0D
-        0A0D436F6D706F6E656E744E616D6506065265706F7274094576656E744E616D
-        65061B41667465724175746F5365617263684469616C6F674372656174650745
-        76656E744944020A084361726574506F730102650204000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'labelNFEOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure labelNFEOnGetText(var Text: String);'#13#10'begin'#13#10'  if StrT' +
+          'oInt(pipNotas['#39'NF_NUM_NFE'#39']) > 0 then '#13#10'    Text :=  pipNotas['#39'N' +
+          'F_NUM_NFE'#39']'#13#10'  else '#13#10'     text :=  pipNotas['#39'NF_NUM_NFCE'#39'] ;'#13#10#13 +
+          #10'end;'#13#10
+        raProgram.ComponentName = 'labelNFE'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          40
+          6)
+      end
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'ReportAfterAutoSearchDialogCreate'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 'procedure ReportAfterAutoSearchDialogCreate;'#13#10'begin'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Report'
+        raProgram.EventName = 'AfterAutoSearchDialogCreate'
+        raProgram.EventID = 10
+        raProgram.CaretPos = (
+          101
+          4)
+      end
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
@@ -8147,6 +8253,7 @@ inherited frmNfe40: TfrmNfe40
     DataPipeline = pipNotasCFOP
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
@@ -8162,6 +8269,14 @@ inherited frmNfe40: TfrmNfe40
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -8171,20 +8286,32 @@ inherited frmNfe40: TfrmNfe40
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -8194,14 +8321,27 @@ inherited frmNfe40: TfrmNfe40
     XLSSettings.IncludeSingleHeader = True
     XLSSettings.Subject = 'ReportCFOP'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 976
     Top = 247
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'pipNotasCFOP'
     object ppTitleBand1: TppTitleBand
       Save = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 14023
@@ -8210,13 +8350,15 @@ inherited frmNfe40: TfrmNfe40
         OnPrint = lempresaPrint
         DesignLayer = ppDesignLayer2
         UserName = 'lempresa'
+        Border.mmPadding = 0
         Caption = 'lempresa'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -8228,13 +8370,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel27: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label15'
+        Border.mmPadding = 0
         Caption = 'Relat'#243'rio de NFe agrupado por CFOP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -8247,13 +8391,15 @@ inherited frmNfe40: TfrmNfe40
         OnPrint = lfiltroPrint
         DesignLayer = ppDesignLayer2
         UserName = 'lfiltro'
+        Border.mmPadding = 0
         Caption = 'lfiltro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1323
@@ -8265,13 +8411,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel23: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label101'
+        Border.mmPadding = 0
         Caption = 'Impresso:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 236273
@@ -8283,6 +8431,7 @@ inherited frmNfe40: TfrmNfe40
       object ppSystemVariable4: TppSystemVariable
         DesignLayer = ppDesignLayer2
         UserName = 'SystemVariable4'
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -8299,20 +8448,22 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object ppHeaderBand2: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 11113
       mmPrintPosition = 0
       object ppLabel14: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label1'
+        Border.mmPadding = 0
         Caption = 'No NFe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 265
@@ -8324,13 +8475,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel15: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label2'
+        Border.mmPadding = 0
         Caption = 'Emiss'#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 17994
@@ -8342,13 +8495,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel16: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label3'
+        Border.mmPadding = 0
         Caption = 'Raz'#227'o social'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 34925
@@ -8360,13 +8515,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel17: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label4'
+        Border.mmPadding = 0
         Caption = 'Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -8379,13 +8536,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel18: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label5'
+        Border.mmPadding = 0
         Caption = 'IPI'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -8398,13 +8557,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel19: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label6'
+        Border.mmPadding = 0
         Caption = 'ICMS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -8417,13 +8578,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel20: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label7'
+        Border.mmPadding = 0
         Caption = 'ICMS ST'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -8436,13 +8599,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel21: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label8'
+        Border.mmPadding = 0
         Caption = 'Total NFe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -8455,13 +8620,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel22: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label9'
+        Border.mmPadding = 0
         Caption = 'Chave'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -8474,6 +8641,7 @@ inherited frmNfe40: TfrmNfe40
       object ppLine3: TppLine
         DesignLayer = ppDesignLayer2
         UserName = 'Line2'
+        Border.mmPadding = 0
         Position = lpBottom
         Weight = 0.750000000000000000
         mmHeight = 1852
@@ -8486,6 +8654,7 @@ inherited frmNfe40: TfrmNfe40
       object ppLine4: TppLine
         DesignLayer = ppDesignLayer2
         UserName = 'Line1'
+        Border.mmPadding = 0
         Position = lpBottom
         Weight = 0.750000000000000000
         mmHeight = 1852
@@ -8498,13 +8667,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel34: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label102'
+        Border.mmPadding = 0
         Caption = '.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 32544
@@ -8516,13 +8687,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel25: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label25'
+        Border.mmPadding = 0
         Caption = 'P'#225'gina'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 267912
@@ -8534,6 +8707,7 @@ inherited frmNfe40: TfrmNfe40
       object ppSystemVariable5: TppSystemVariable
         DesignLayer = ppDesignLayer2
         UserName = 'SystemVariable5'
+        Border.mmPadding = 0
         VarType = vtPageNo
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -8551,22 +8725,21 @@ inherited frmNfe40: TfrmNfe40
     end
     object ppDetailBand2: TppDetailBand
       Visible = False
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppFooterBand2: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintOnFirstPage = False
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppSummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 29898
@@ -8574,13 +8747,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel29: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label13'
+        Border.mmPadding = 0
         Caption = 'Total geral'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -8595,6 +8770,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'nf_totalitem'
         DataPipeline = pipNotasCFOP
         DisplayFormat = '#,##0.00'
@@ -8619,6 +8795,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VL_IPI'
         DataPipeline = pipNotasCFOP
         DisplayFormat = '#,##0.00'
@@ -8643,6 +8820,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VL_ICMS'
         DataPipeline = pipNotasCFOP
         DisplayFormat = '#,##0.00'
@@ -8667,6 +8845,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VL_SUBTRIB'
         DataPipeline = pipNotasCFOP
         DisplayFormat = '#,##0.00'
@@ -8691,6 +8870,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_TOT_NOTA'
         DataPipeline = pipNotasCFOP
         DisplayFormat = '#,##0.00'
@@ -8713,6 +8893,7 @@ inherited frmNfe40: TfrmNfe40
       object ppLine7: TppLine
         DesignLayer = ppDesignLayer2
         UserName = 'Line7'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 801
         mmLeft = 0
@@ -8725,13 +8906,15 @@ inherited frmNfe40: TfrmNfe40
         DesignLayer = ppDesignLayer2
         UserName = 'Label103'
         OnGetText = pvendaCFOPGetText
+        Border.mmPadding = 0
         Caption = 'Label10'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 9260
@@ -8744,13 +8927,15 @@ inherited frmNfe40: TfrmNfe40
         DesignLayer = ppDesignLayer2
         UserName = 'pcompras'
         OnGetText = pcomprasGetText
+        Border.mmPadding = 0
         Caption = 'pcompras'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 9260
@@ -8763,13 +8948,15 @@ inherited frmNfe40: TfrmNfe40
         DesignLayer = ppDesignLayer2
         UserName = 'poutroscfop'
         OnGetText = poutroscfopGetText
+        Border.mmPadding = 0
         Caption = 'poutroscfop'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 9260
@@ -8782,13 +8969,15 @@ inherited frmNfe40: TfrmNfe40
         DesignLayer = ppDesignLayer2
         UserName = 'pdevolucaocfop'
         OnGetText = pdevolucaocfopGetText
+        Border.mmPadding = 0
         Caption = 'pdevolucaocfop'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 9260
@@ -8811,7 +9000,7 @@ inherited frmNfe40: TfrmNfe40
       DataPipelineName = 'pipNotasCFOP'
       NewFile = False
       object ppGroupHeaderBand2: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         PrintHeight = phDynamic
         mmBottomOffset = 0
         mmHeight = 5822
@@ -8820,13 +9009,15 @@ inherited frmNfe40: TfrmNfe40
           DesignLayer = ppDesignLayer2
           UserName = 'Label14'
           AutoSize = False
+          Border.mmPadding = 0
           Caption = 'CFOP:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 10
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 4059
           mmLeft = 352
@@ -8839,6 +9030,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText23: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText12'
+          Border.mmPadding = 0
           DataField = 'OPE_NATUREZA'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -8858,7 +9050,7 @@ inherited frmNfe40: TfrmNfe40
         end
       end
       object ppGroupFooterBand2: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 5027
@@ -8868,6 +9060,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc5'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'nf_totalitem'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -8892,13 +9085,15 @@ inherited frmNfe40: TfrmNfe40
         object ppLabel31: TppLabel
           DesignLayer = ppDesignLayer2
           UserName = 'Label31'
+          Border.mmPadding = 0
           Caption = 'Total CFOP'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 9
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3968
@@ -8912,6 +9107,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText24: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText24'
+          Border.mmPadding = 0
           DataField = 'OPE_NATUREZA'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -8932,6 +9128,7 @@ inherited frmNfe40: TfrmNfe40
         object ppLine6: TppLine
           DesignLayer = ppDesignLayer2
           UserName = 'Line4'
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 801
           mmLeft = 0
@@ -8946,6 +9143,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc6'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_IPI'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -8972,6 +9170,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc7'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_ICMS'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -8998,6 +9197,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc8'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_SUBTRIB'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9024,6 +9224,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc9'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_TOT_NOTA'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9060,7 +9261,7 @@ inherited frmNfe40: TfrmNfe40
       DataPipelineName = 'pipNotasCFOP'
       NewFile = False
       object ppGroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 5556
         mmPrintPosition = 0
@@ -9068,6 +9269,7 @@ inherited frmNfe40: TfrmNfe40
           DesignLayer = ppDesignLayer2
           UserName = 'DBText1'
           OnGetText = ppDBText12GetText
+          Border.mmPadding = 0
           DataField = 'NF_STATUS_NFE'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9087,7 +9289,7 @@ inherited frmNfe40: TfrmNfe40
         end
       end
       object ppGroupFooterBand1: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         PrintHeight = phDynamic
         HideWhenOneDetail = False
         mmBottomOffset = 0
@@ -9098,6 +9300,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc3'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'nf_totalitem'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9122,13 +9325,15 @@ inherited frmNfe40: TfrmNfe40
         object ppLabel32: TppLabel
           DesignLayer = ppDesignLayer2
           UserName = 'Label32'
+          Border.mmPadding = 0
           Caption = 'Total '
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 9
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3441
@@ -9142,6 +9347,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText25: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText25'
+          Border.mmPadding = 0
           DataField = 'OPE_NATUREZA'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9162,6 +9368,7 @@ inherited frmNfe40: TfrmNfe40
         object ppLine8: TppLine
           DesignLayer = ppDesignLayer2
           UserName = 'Line8'
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 801
           mmLeft = 0
@@ -9176,6 +9383,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc4'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_IPI'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9202,6 +9410,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc18'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_ICMS'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9228,6 +9437,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc19'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_SUBTRIB'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9254,6 +9464,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc20'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_TOT_NOTA'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9279,6 +9490,7 @@ inherited frmNfe40: TfrmNfe40
           DesignLayer = ppDesignLayer2
           UserName = 'DBText26'
           OnGetText = ppDBText12GetText
+          Border.mmPadding = 0
           DataField = 'NF_STATUS_NFE'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9299,13 +9511,15 @@ inherited frmNfe40: TfrmNfe40
         object ppLabel33: TppLabel
           DesignLayer = ppDesignLayer2
           UserName = 'Label16'
+          Border.mmPadding = 0
           Caption = '-'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 9
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3969
           mmLeft = 33602
@@ -9331,13 +9545,14 @@ inherited frmNfe40: TfrmNfe40
       NewFile = False
       object ppGroupHeaderBand3: TppGroupHeaderBand
         Visible = False
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 4498
         mmPrintPosition = 0
         object ppDBText2: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText2'
+          Border.mmPadding = 0
           DataField = 'NF_EMISSAO'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9358,6 +9573,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText13: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText13'
+          Border.mmPadding = 0
           DataField = 'CLI_CODIGO'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9378,6 +9594,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText27: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText27'
+          Border.mmPadding = 0
           DataField = 'CLI_RAZAO'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9398,6 +9615,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText28: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText28'
+          Border.mmPadding = 0
           DataField = 'nf_totalitem'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,####0.00'
@@ -9420,6 +9638,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText29: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText29'
+          Border.mmPadding = 0
           DataField = 'NF_VL_IPI'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,####0.00'
@@ -9442,6 +9661,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText30: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText30'
+          Border.mmPadding = 0
           DataField = 'NF_VL_ICMS'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,####0.00'
@@ -9464,6 +9684,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText31: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText31'
+          Border.mmPadding = 0
           DataField = 'NF_VL_SUBTRIB'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,####0.00'
@@ -9486,6 +9707,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText32: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText32'
+          Border.mmPadding = 0
           DataField = 'NF_TOT_NOTA'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,####0.00'
@@ -9508,6 +9730,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText33: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText33'
+          Border.mmPadding = 0
           DataField = 'NF_CHAVE_NFE'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9527,7 +9750,7 @@ inherited frmNfe40: TfrmNfe40
         end
       end
       object ppGroupFooterBand3: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 4763
@@ -9537,6 +9760,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc21'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'nf_totalitem'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9563,6 +9787,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc22'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_IPI'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9589,6 +9814,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc23'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_SUBTRIB'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9615,6 +9841,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc201'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_TOT_NOTA'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9639,6 +9866,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText34: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText34'
+          Border.mmPadding = 0
           DataField = 'NF_EMISSAO'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9659,6 +9887,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText35: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText35'
+          Border.mmPadding = 0
           DataField = 'CLI_CODIGO'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9679,6 +9908,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText36: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText36'
+          Border.mmPadding = 0
           DataField = 'CLI_RAZAO'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9699,6 +9929,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText37: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText37'
+          Border.mmPadding = 0
           DataField = 'NF_CHAVE_NFE'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9719,6 +9950,7 @@ inherited frmNfe40: TfrmNfe40
         object ppDBText38: TppDBText
           DesignLayer = ppDesignLayer2
           UserName = 'DBText102'
+          Border.mmPadding = 0
           DataField = 'NOTA'
           DataPipeline = pipNotasCFOP
           Font.Charset = DEFAULT_CHARSET
@@ -9741,6 +9973,7 @@ inherited frmNfe40: TfrmNfe40
           UserName = 'DBCalc25'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'NF_VL_ICMS'
           DataPipeline = pipNotasCFOP
           DisplayFormat = '#,##0.00'
@@ -9765,22 +9998,30 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650621
-        5265706F727441667465724175746F5365617263684469616C6F674372656174
-        650B50726F6772616D54797065070B747450726F63656475726506536F757263
-        65063D70726F636564757265205265706F727441667465724175746F53656172
-        63684469616C6F674372656174653B0D0A626567696E0D0A0D0A656E643B0D0A
-        0D436F6D706F6E656E744E616D6506065265706F7274094576656E744E616D65
-        061B41667465724175746F5365617263684469616C6F67437265617465074576
-        656E744944020A084361726574506F7301020C0203000001060F547261457665
-        6E7448616E646C65720B50726F6772616D4E616D650614466F6F746572426566
-        6F726547656E65726174650B50726F6772616D54797065070B747450726F6365
-        6475726506536F75726365063070726F63656475726520466F6F746572426566
-        6F726547656E65726174653B0D0A626567696E0D0A0D0A656E643B0D0A0D436F
-        6D706F6E656E744E616D650606466F6F746572094576656E744E616D65060E42
-        65666F726547656E6572617465074576656E744944021A084361726574506F73
-        0102040204000000}
+      object raProgramInfo3: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'ReportAfterAutoSearchDialogCreate'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 'procedure ReportAfterAutoSearchDialogCreate;'#13#10'begin'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Report'
+        raProgram.EventName = 'AfterAutoSearchDialogCreate'
+        raProgram.EventID = 10
+        raProgram.CaretPos = (
+          12
+          3)
+      end
+      object raProgramInfo4: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'FooterBeforeGenerate'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 'procedure FooterBeforeGenerate;'#13#10'begin'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Footer'
+        raProgram.EventName = 'BeforeGenerate'
+        raProgram.EventID = 26
+        raProgram.CaretPos = (
+          4
+          4)
+      end
     end
     object ppDesignLayers2: TppDesignLayers
       object ppDesignLayer2: TppDesignLayer
@@ -10402,6 +10643,7 @@ inherited frmNfe40: TfrmNfe40
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -10417,6 +10659,14 @@ inherited frmNfe40: TfrmNfe40
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -10426,20 +10676,32 @@ inherited frmNfe40: TfrmNfe40
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -10448,13 +10710,26 @@ inherited frmNfe40: TfrmNfe40
     XLSSettings.DefaultBands = [btHeader, btTitle, btDetail, btSummary, btFooter]
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 904
     Top = 303
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'pipNotas'
     object ppTitleBand3: TppTitleBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 13229
       mmPrintPosition = 0
@@ -10462,13 +10737,15 @@ inherited frmNfe40: TfrmNfe40
         OnPrint = lempresaPrint
         DesignLayer = ppDesignLayer3
         UserName = 'lempresa'
+        Border.mmPadding = 0
         Caption = 'lempresa'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 794
@@ -10480,13 +10757,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel36: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label15'
+        Border.mmPadding = 0
         Caption = 'Relat'#243'rio de NFe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 793
@@ -10499,13 +10778,15 @@ inherited frmNfe40: TfrmNfe40
         OnPrint = lfiltroPrint
         DesignLayer = ppDesignLayer3
         UserName = 'lfiltro'
+        Border.mmPadding = 0
         Caption = 'lfiltro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 794
@@ -10517,13 +10798,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel39: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label10'
+        Border.mmPadding = 0
         Caption = 'Impresso:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 148696
@@ -10535,6 +10818,7 @@ inherited frmNfe40: TfrmNfe40
       object ppSystemVariable6: TppSystemVariable
         DesignLayer = ppDesignLayer3
         UserName = 'SystemVariable1'
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -10552,13 +10836,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel40: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label12'
+        Border.mmPadding = 0
         Caption = 'P'#225'gina'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 169598
@@ -10570,6 +10856,7 @@ inherited frmNfe40: TfrmNfe40
       object ppSystemVariable7: TppSystemVariable
         DesignLayer = ppDesignLayer3
         UserName = 'SystemVariable2'
+        Border.mmPadding = 0
         VarType = vtPageNo
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -10587,13 +10874,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel41: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label11'
+        Border.mmPadding = 0
         Caption = 'de'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 185738
@@ -10605,6 +10894,7 @@ inherited frmNfe40: TfrmNfe40
       object ppSystemVariable8: TppSystemVariable
         DesignLayer = ppDesignLayer3
         UserName = 'SystemVariable3'
+        Border.mmPadding = 0
         VarType = vtPageCount
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -10621,20 +10911,22 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object ppHeaderBand3: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 6879
       mmPrintPosition = 0
       object ppLabel42: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label1'
+        Border.mmPadding = 0
         Caption = 'No NFe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 265
@@ -10646,13 +10938,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel43: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label2'
+        Border.mmPadding = 0
         Caption = 'Emiss'#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 35624
@@ -10664,13 +10958,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel44: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label3'
+        Border.mmPadding = 0
         Caption = 'Raz'#227'o social'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 52555
@@ -10682,13 +10978,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel49: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label8'
+        Border.mmPadding = 0
         Caption = 'Total NFe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -10701,13 +10999,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel50: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label9'
+        Border.mmPadding = 0
         Caption = 'N'#186' do Pedido XML'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -10720,6 +11020,7 @@ inherited frmNfe40: TfrmNfe40
       object ppLine9: TppLine
         DesignLayer = ppDesignLayer3
         UserName = 'Line2'
+        Border.mmPadding = 0
         Position = lpBottom
         Weight = 0.750000000000000000
         mmHeight = 2117
@@ -10732,6 +11033,7 @@ inherited frmNfe40: TfrmNfe40
       object ppLine10: TppLine
         DesignLayer = ppDesignLayer3
         UserName = 'Line1'
+        Border.mmPadding = 0
         Position = lpBottom
         Weight = 0.750000000000000000
         mmHeight = 1852
@@ -10744,13 +11046,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel51: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label37'
+        Border.mmPadding = 0
         Caption = '.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 12965
@@ -10762,13 +11066,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel45: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label45'
+        Border.mmPadding = 0
         Caption = 'Pedido'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 17463
@@ -10779,8 +11085,7 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object ppDetailBand3: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 3440
@@ -10788,6 +11093,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText11: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText1'
+        Border.mmPadding = 0
         DataField = 'NF_STATUS_NFE'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -10807,6 +11113,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText14: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText3'
+        Border.mmPadding = 0
         DataField = 'NF_EMISSAO'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -10826,6 +11133,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText15: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText4'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -10845,6 +11153,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText16: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText5'
+        Border.mmPadding = 0
         DataField = 'NF_TOT_NOTA'
         DataPipeline = pipNotas
         DisplayFormat = '#,####0.00'
@@ -10866,6 +11175,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText21: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText10'
+        Border.mmPadding = 0
         DataField = 'PED_CAMINHO_XML'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -10886,13 +11196,15 @@ inherited frmNfe40: TfrmNfe40
       object ppLabel52: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'labelNFE'
+        Border.mmPadding = 0
         Caption = 'labelNFE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3441
@@ -10905,6 +11217,7 @@ inherited frmNfe40: TfrmNfe40
       object ppDBText17: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText17'
+        Border.mmPadding = 0
         DataField = 'ped_codigo'
         DataPipeline = pipNotas
         Font.Charset = DEFAULT_CHARSET
@@ -10923,27 +11236,29 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object ppFooterBand3: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintOnFirstPage = False
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppSummaryBand3: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 5027
       mmPrintPosition = 0
       object ppLabel53: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label13'
+        Border.mmPadding = 0
         Caption = 'Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -10958,6 +11273,7 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'DBCalc13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_TOT_NOTA'
         DataPipeline = pipNotas
         DisplayFormat = '#,##0.00'
@@ -10979,26 +11295,34 @@ inherited frmNfe40: TfrmNfe40
       end
     end
     object raCodeModule3: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650611
-        6C6162656C4E46454F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F7572636506C770726F636564757265206C6162
-        656C4E46454F6E476574546578742876617220546578743A20537472696E6729
-        3B0D0A626567696E0D0A2020696620537472546F496E74287069704E6F746173
-        5B274E465F4E554D5F4E4645275D29203E2030207468656E200D0A2020202054
-        657874203A3D20207069704E6F7461735B274E465F4E554D5F4E4645275D0D0A
-        2020656C7365200D0A202020202074657874203A3D20207069704E6F7461735B
-        274E465F4E554D5F4E464345275D203B0D0A0D0A656E643B0D0A0D436F6D706F
-        6E656E744E616D6506086C6162656C4E4645094576656E744E616D6506094F6E
-        47657454657874074576656E7449440235084361726574506F73010228020600
-        0001060F5472614576656E7448616E646C65720B50726F6772616D4E616D6506
-        215265706F727441667465724175746F5365617263684469616C6F6743726561
-        74650B50726F6772616D54797065070B747450726F63656475726506536F7572
-        6365063D70726F636564757265205265706F727441667465724175746F536561
-        7263684469616C6F674372656174653B0D0A626567696E0D0A0D0A656E643B0D
-        0A0D436F6D706F6E656E744E616D6506065265706F7274094576656E744E616D
-        65061B41667465724175746F5365617263684469616C6F674372656174650745
-        76656E744944020A084361726574506F730102650204000000}
+      object raProgramInfo5: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'labelNFEOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure labelNFEOnGetText(var Text: String);'#13#10'begin'#13#10'  if StrT' +
+          'oInt(pipNotas['#39'NF_NUM_NFE'#39']) > 0 then '#13#10'    Text :=  pipNotas['#39'N' +
+          'F_NUM_NFE'#39']'#13#10'  else '#13#10'     text :=  pipNotas['#39'NF_NUM_NFCE'#39'] ;'#13#10#13 +
+          #10'end;'#13#10
+        raProgram.ComponentName = 'labelNFE'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          40
+          6)
+      end
+      object raProgramInfo6: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'ReportAfterAutoSearchDialogCreate'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 'procedure ReportAfterAutoSearchDialogCreate;'#13#10'begin'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Report'
+        raProgram.EventName = 'AfterAutoSearchDialogCreate'
+        raProgram.EventID = 10
+        raProgram.CaretPos = (
+          101
+          4)
+      end
     end
     object ppDesignLayers3: TppDesignLayers
       object ppDesignLayer3: TppDesignLayer
@@ -11049,7 +11373,7 @@ inherited frmNfe40: TfrmNfe40
     Top = 247
   end
   object frxNotasUF: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -11087,8 +11411,11 @@ inherited frmNfe40: TfrmNfe40
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 268.346630000000000000
         Width = 1046.929810000000000000
@@ -11096,6 +11423,7 @@ inherited frmNfe40: TfrmNfe40
         DataSetName = 'frxdbNotasUF'
         RowCount = 0
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -11104,11 +11432,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_NUM_NFE"] [frxdbNotasUF."NF_STATUS_NFE"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590600000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -11120,11 +11450,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_EMISSAO"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 151.181102362204700000
           Width = 302.362400000000000000
           Height = 15.118120000000000000
@@ -11136,11 +11468,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbNotasUF."CLI_RAZAO"]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 525.354330710000000000
           Width = 45.354330708661420000
           Height = 15.118120000000000000
@@ -11153,12 +11487,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_IPI"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 574.488188976378000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -11172,12 +11508,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_ICMS"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842519685039400000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
@@ -11191,12 +11529,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_SUBTRIB"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 457.897960000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -11209,12 +11549,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[<frxdbNotasUF."NF_TOT_NOTA">]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 687.874015748031500000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
@@ -11227,6 +11569,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -11235,6 +11578,7 @@ inherited frmNfe40: TfrmNfe40
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 775.378480000000000000
           Width = 268.346630000000000000
           Height = 15.118120000000000000
@@ -11245,6 +11589,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_CHAVE_NFE"]')
@@ -11253,11 +11598,13 @@ inherited frmNfe40: TfrmNfe40
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 222.992270000000000000
         Width = 1046.929810000000000000
         Condition = 'frxdbNotasUF."CLI_UF"'
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Top = 3.000000000000000000
           Width = 294.803340000000000000
           Height = 15.118120000000000000
@@ -11266,6 +11613,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ESTADO]')
           ParentFont = False
@@ -11273,10 +11621,12 @@ inherited frmNfe40: TfrmNfe40
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 306.141930000000000000
         Width = 1046.929810000000000000
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 525.354670000000000000
           Width = 45.354360000000000000
           Height = 15.118120000000000000
@@ -11289,12 +11639,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_IPI"]')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 574.488560000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -11308,12 +11660,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_ICMS"]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -11327,12 +11681,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_SUBTRIB"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 458.078740160000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -11345,12 +11701,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sum(<frxdbNotasUF."NF_TOT_NOTA">, MasterData1, 0)]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 687.874460000000000000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
@@ -11363,6 +11721,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -11372,17 +11731,20 @@ inherited frmNfe40: TfrmNfe40
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 22.677180000000000000
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 347.716760000000000000
           Width = 105.826840000000000000
           Height = 15.118120000000000000
@@ -11391,6 +11753,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total por Estado')
@@ -11399,10 +11762,12 @@ inherited frmNfe40: TfrmNfe40
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 52.929190000000000000
         Top = 109.606370000000000000
         Width = 1046.929810000000000000
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 34.031540000000000000
           Width = 68.031540000000000000
@@ -11412,11 +11777,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'N'#186' NFe.')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 0.338590000000000000
           Top = 30.252010000000000000
           Width = 1046.929810000000000000
@@ -11424,6 +11791,7 @@ inherited frmNfe40: TfrmNfe40
           Frame.Typ = [ftTop]
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 75.590551180000000000
           Top = 34.031540000000000000
           Width = 68.031540000000000000
@@ -11433,11 +11801,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Emiss'#227'o')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 151.181102360000000000
           Top = 34.031540000000000000
           Width = 147.401670000000000000
@@ -11447,11 +11817,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Raz'#227'o Social')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 525.354330710000000000
           Top = 34.031540000000000000
           Width = 45.354330710000000000
@@ -11461,12 +11833,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'IPI')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 574.488188980000000000
           Top = 34.031540000000000000
           Width = 41.574830000000000000
@@ -11476,12 +11850,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'ICMS')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842519690000000000
           Top = 34.031540000000000000
           Width = 64.251968500000000000
@@ -11491,12 +11867,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'ICMS ST')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 687.874015750000000000
           Top = 34.031540000000000000
           Width = 86.929133860000000000
@@ -11506,12 +11884,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total NFe.')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 458.236550000000000000
           Top = 34.031540000000000000
           Width = 64.251968500000000000
@@ -11521,12 +11901,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 779.496600000000000000
           Top = 34.031540000000000000
           Width = 90.708720000000000000
@@ -11536,11 +11918,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Chave')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 35.015755350000000000
           Width = 139.842610000000000000
@@ -11550,6 +11934,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P'#225'g. [Page#] de [TotalPages#]')
@@ -11561,12 +11946,14 @@ inherited frmNfe40: TfrmNfe40
             end>
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 52.913420000000000000
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 4.000000000000000000
           Width = 1043.150238500000000000
@@ -11576,6 +11963,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Relat'#243'rio de Notas Fiscais Agrupadas por Estado')
@@ -11584,18 +11972,22 @@ inherited frmNfe40: TfrmNfe40
       end
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 69.472480000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Width = 196.535433070000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 1.779530000000000000
           Width = 653.858690000000000000
@@ -11606,11 +11998,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
         end
         object wFrxEndereco: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.567100000000000000
           Top = 20.000000000000000000
           Width = 653.858690000000000000
@@ -11621,11 +12015,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 37.015770000000000000
           Width = 64.252010000000000000
@@ -11636,11 +12032,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CEP]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 272.464750000000000000
           Top = 37.015770000000000000
           Width = 188.976500000000000000
@@ -11651,11 +12049,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE]')
           ParentFont = False
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 462.559370000000000000
           Top = 37.015770000000000000
           Width = 18.897650000000000000
@@ -11666,11 +12066,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[UF]')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 481.457020000000000000
           Top = 37.015770000000000000
           Width = 83.149660000000000000
@@ -11681,11 +12083,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FONE]')
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.330860000000000000
           Top = 53.913420000000000000
           Width = 219.212740000000000000
@@ -11696,11 +12100,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [EMAIL]')
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 464.086890000000000000
           Top = 53.913420000000000000
           Width = 105.826840000000000000
@@ -11711,11 +12117,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CNPJ]')
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 427.543600000000000000
           Top = 53.913420000000000000
           Width = 34.015770000000000000
@@ -11726,11 +12134,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 906.189550000000000000
           Top = 54.133890000000000000
           Width = 45.354360000000000000
@@ -11741,11 +12151,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inscri'#231#227'o:')
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 952.984850000000000000
           Top = 54.354360000000000000
           Width = 83.149660000000000000
@@ -11756,11 +12168,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[INSCR]')
           ParentFont = False
         end
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 1.755903070000000000
           Width = 139.842610000000000000
@@ -11771,6 +12185,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
@@ -11779,10 +12194,12 @@ inherited frmNfe40: TfrmNfe40
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 120.944960000000000000
         Top = 389.291590000000000000
         Width = 1046.929810000000000000
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Top = 34.015770000000000000
           Width = 71.811023620000000000
@@ -11792,12 +12209,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Vendas:')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Top = 56.692950000000000000
           Width = 71.811023620000000000
@@ -11807,12 +12226,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Compras:')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Top = 79.370130000000000000
           Width = 71.811023620000000000
@@ -11822,12 +12243,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Outros:')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 15.118120000000000000
           Top = 102.047310000000000000
           Width = 71.811023620000000000
@@ -11837,12 +12260,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Devolu'#231#227'o:')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 34.015770000000000000
           Width = 94.488188980000000000
@@ -11854,12 +12279,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[VENDAS]')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 56.692950000000000000
           Width = 94.488188980000000000
@@ -11871,12 +12298,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[COMPRAS]')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 79.370130000000000000
           Width = 94.488188980000000000
@@ -11888,12 +12317,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[OUTROS]')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 102.047310000000000000
           Width = 94.488188980000000000
@@ -11905,12 +12336,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[DEVOLUCAO]')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 528.378589840000000000
           Width = 45.354360000000000000
           Height = 15.118120000000000000
@@ -11923,12 +12356,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_IPI"]')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 577.512479840000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -11942,12 +12377,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_ICMS"]')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 622.866839840000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -11961,12 +12398,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbNotasUF."NF_VL_SUBTRIB"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -11979,12 +12418,14 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sum(<frxdbNotasUF."NF_TOT_NOTA">, MasterData1, 0)]')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 690.898379840000000000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
@@ -11997,6 +12438,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -12006,6 +12448,7 @@ inherited frmNfe40: TfrmNfe40
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 347.716760000000000000
           Width = 105.826840000000000000
           Height = 15.118120000000000000
@@ -12014,6 +12457,7 @@ inherited frmNfe40: TfrmNfe40
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total Geral')

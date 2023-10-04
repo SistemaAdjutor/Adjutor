@@ -10,7 +10,23 @@ uses
   FireDAC.Comp.Client, FireDAC.Comp.UI, FireDAC.Phys.IBBase, FireDAC.Comp.DataSet, cxLocalization, ACBrBase, ACBrEnterTab, JvExControls, JvArrowButton, Vcl.StdCtrls, cxGridLevel, cxClasses,
   cxGridCustomView, cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, Vcl.Buttons, Vcl.ExtCtrls, Vcl.ComCtrls, cxGridBandedTableView, cxGridDBBandedTableView, cxCheckBox, uProducaoDAO,
   BaseDbEstoqueForm, Datasnap.DBClient, System.StrUtils,uProdutoDao, Animacao, System.ImageList, Vcl.ImgList, Vcl.Mask, JvExMask, JvToolEdit, uOdemProgramacao, cxButtonEdit, frxDBSet, System.DateUtils,
-  Data.FMTBcd, Data.SqlExpr, Datasnap.Provider, cxDropDownEdit, cxEditRepositoryItems;
+  Data.FMTBcd, Data.SqlExpr, Datasnap.Provider, cxDropDownEdit, cxEditRepositoryItems,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue,
+  cxDataControllerConditionalFormattingRulesManagerDialog, cxImageList;
 
   type
   TfrmDemandaProducao = class(TfrmBaseDBPesquisaFDAC)
@@ -512,7 +528,8 @@ begin
          tipo.iop_codigo := 0 ;
          Tipo.opr_codigo := 0 ;
 
-
+      //   cdsbuscaqtdeprd.asfloat            cdsbuscaDEP_QTDE_ESTOQUE.AsFloat
+      //   cdsfichaqtdeprd.asfloat            cdsFichaDEP_QTDE_ESTOQUE.AsFloat
          if (cdsBuscaQTDEPRD.AsFloat = 0 ) or (cdsBuscaQTDEPRD.IsNull) then
            produzir := cdsBuscaPRF_QTDE.asfloat - cdsBuscaDEP_QTDE_ESTOQUE.AsFloat  // vai produzir se não especificar tudo - o que usar no estoque
          else if cdsBuscaQTDEPRD.AsFloat > 0  then
@@ -1107,19 +1124,30 @@ begin
   cdsFicha.close;
 
   cdsFicha.SQL.Text :=
-    'SELECT ft.FTI_REGISTRO , DEP_CODIGO,  ft.PRD_REFER, PRD_REFER_ITENS, pr.PRD_DESCRI ,PR.PRD_UND, FTI_UC,  '+
+    'SELECT ft.FTI_REGISTRO , DEP_CODIGO,  ft.PRD_REFER, PRD_REFER_ITENS, pr.PRD_DESCRI ,PR.PRD_UND, ' +
+    ' (FTI_UC / ftc.FTC_BASEFORMULA) AS FTI_UC,  '+
+//    ' FTI_UC,  '+
     // PEGAR A DATA DE ENTREGA DO ITEM PRINCIPAL / SENÃO SE DATA DE ENTREGA ESTIVER PREENCHIDA, SERÁ RETORNADA ESTA
      iif( VarIsNull(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1DTENTREGA.Index]),
          ' DEP_DATA_ENTREGA DTENTREGA,',
          ' COALESCE(DEP_DATA_ENTREGA, cast( '+DateToSQL(VarToDateTime(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1DTENTREGA.Index]))  +' as date)) as  DTENTREGA, ')+
 
-    ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, iop.IOP_QUANTIDADE QTDEPRD, iop.IOP_NORDEM,DEP_QTDE_ESTOQUE,         '+
+ //   ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, iop.IOP_QUANTIDADE QTDEPRD, iop.IOP_NORDEM,DEP_QTDE_ESTOQUE,         '+
+    ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, ' + // iop.IOP_QUANTIDADE QTDEPRD,' +
+
+ //    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS QTDEPRD,  '+
+    ' CAST( ' + FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS QTDEPRD,  '+
+
+    ' iop.IOP_NORDEM,DEP_QTDE_ESTOQUE, '+
     ' (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = pr.PRD_CODIGO ) EstoqueDisponivel,  ' +
     ' pr.prd_codigo, '+QuotedStr(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PED_CODIGO.Index] ) + ' as ped_codigo, ' +
-    ' pr.PTI_CODIGO, tp.PTI_DESCRI, tp.PTI_SIGLA, pr.PRD_UND,(FTI_UC*'+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS UC_TOTAL,  '+
+    ' pr.PTI_CODIGO, tp.PTI_DESCRI, tp.PTI_SIGLA, pr.PRD_UND, ' +
+//    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS UC_TOTAL,  '+
+    ' CAST( '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS UC_TOTAL,  '+
     ' DEP_GERASUBORDENS ' +
     ' FROM FTC_IT01 ft                                                                                                 '+
     ' join prd0000 Pr on (ft.prd_refer_itens = pr.prd_refer '+ ConcatSe(' and ft.', DBInicio.ExclusivoSql('PRODUTOS'))+ ')'+
+    ' join ftc0000 ftc on (ftc.prd_refer = ft.prd_refer '+ ConcatSe(' and ftc.', DBInicio.ExclusivoSql('PRODUTOS'))+ ')'+
     ' JOIN PRD_TIPO tp ON (tp.PTI_CODIGO = pr.PTI_CODIGO ) '+
     ' LEFT JOIN DEMANDA_PRODUCAO dpr ON (dpr.FTI_REGISTRO = ft.FTI_REGISTRO AND ped_codigo ='+QuotedStr(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PED_CODIGO.Index])+' ) '+  // pega a demanda de acordo pedido e registro
     ' LEFT JOIN ORDEMPRODUCAO OP  ON (   OP.EMP_CODIGO = '+ QuotedStr (DBInicio.Empresa.EMP_CODIGO) +
@@ -1127,8 +1155,10 @@ begin
     ' LEFT JOIN ITEM_ORDEMPRODUCAO iop ON (Iop.OPR_CODIGO = OP.OPR_CODIGO AND pr.prd_codigo = iop.PRD_CODIGO)          '+
     ' WHERE ft.PRD_REFER = '+ QuotedStr(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRD_REFER.Index] ) + ConcatSe(' and ft.', DBInicio.ExclusivoSql('PRODUTOS')) +
     ' and  PTI_SIGLA in (''PA'',''PI'',''KT'')'  ; //DBInicio.Empresa.Bpmt_gerarsubordens
- cdsFicha.Open;
-
+  if dbInicio.Isdesenvolvimento then
+   copyToClipBoard(cdsFicha.SQL.Text);
+  cdsFicha.Open;
+  cxgrd1DBBandedTableView1.DataController.Refresh;
 end;
 
 procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1DataControllerFilterGetValueList(Sender: TcxFilterCriteria; AItemIndex: Integer; AValueList: TcxDataFilterValueList);
@@ -1382,6 +1412,8 @@ begin
 //  if not DBInicio.Empresa.Bpmt_gerarsubordens then // VAI SEMPRE APARECER
 //    exit;
 
+  Exit;
+
   AMasterRecord.Focused := True;
   cdsFicha.close;
 
@@ -1489,15 +1521,13 @@ begin
    Filtrados := true;
    if (edPesquisa.Text <> '') and (Length( edPesquisa.Text) >2) then
    begin
-    if TryStrToInt64(edPesquisa.Text,i) then
       SqlAdd('( pe.ped_codigo CONTAINING '+ QuotedStr(edPesquisa.Text) +
-              ' or IT.PRD_REFER CONTAINING  '+ QuotedStr(edPesquisa.Text) +' )' )
-    else
-    begin
-      SqlAdd('( PR.PRD_DESCRI CONTAINING  '+  QuotedStr(edPesquisa.Text)  +
-             ' or IT.PRF_PRDDESCRI CONTAINING  '+ QuotedStr(edPesquisa.Text) +' )' );
-    end;
-
+              ' or PR.PRD_REFER CONTAINING  '+  QuotedStr(edPesquisa.Text)  +
+              ' or IT.PRD_REFER CONTAINING  '+ QuotedStr(edPesquisa.Text) +
+              ' or PR.PRD_DESCRI CONTAINING  '+  QuotedStr(edPesquisa.Text)  +
+              ' or IT.PRF_PRDDESCRI CONTAINING  '+ QuotedStr(edPesquisa.Text) +
+              ' or IT.PRF_PRDDESCRI CONTAINING  '+ QuotedStr(edPesquisa.Text) +' )'
+             );
 
    end;
    if radPedido.Checked then

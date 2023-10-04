@@ -2,11 +2,9 @@ inherited frmSolicitacaoCompraCadastro: TfrmSolicitacaoCompraCadastro
   Caption = 'Gerar Solicita'#231#227'o de Compra'
   ClientHeight = 699
   ClientWidth = 950
-  OnKeyPress = FormKeyPress
   OnResize = FormResize
-  ExplicitTop = -181
-  ExplicitWidth = 958
-  ExplicitHeight = 726
+  ExplicitWidth = 966
+  ExplicitHeight = 738
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
@@ -103,8 +101,10 @@ inherited frmSolicitacaoCompraCadastro: TfrmSolicitacaoCompraCadastro
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'SETOR'
         CamposCarregar = 'SET_CODIGO,SET_DESCRICAO'
         CamposRetornar = 'SET_CODIGO'
@@ -237,8 +237,10 @@ inherited frmSolicitacaoCompraCadastro: TfrmSolicitacaoCompraCadastro
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'PRD0000'
           CamposCarregar = 'PRD_REFER,PRD_DESCRI'
           CamposRetornar = 'PRD_REFER'
@@ -403,8 +405,10 @@ inherited frmSolicitacaoCompraCadastro: TfrmSolicitacaoCompraCadastro
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'FOR0000'
           CamposCarregar = 'FOR_CODIGO,FOR_RAZAO'
           CamposRetornar = 'FOR_CODIGO'
@@ -807,6 +811,9 @@ inherited frmSolicitacaoCompraCadastro: TfrmSolicitacaoCompraCadastro
         Height = 182
         Align = alBottom
         TabOrder = 3
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         object cxGrid1DBTableView1: TcxGridDBTableView
           PopupMenu = PopupMenu1
           Navigator.Buttons.CustomButtons = <>

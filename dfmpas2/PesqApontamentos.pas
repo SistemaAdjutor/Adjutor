@@ -12,7 +12,23 @@ uses
   cxGridDBDataDefinitions, ACBrCalculadora, dxPSGlbl, dxPSUtl, dxPSEngn, dxPrnPg, dxBkgnd, dxWrap, dxPrnDev, dxPSFillPatterns, dxPSEdgePatterns,
   cxDrawTextUtils, dxPSPrVwStd, dxPSPrVwAdv, dxPSPrVwRibbon, dxPScxPageControlProducer, dxPScxEditorProducers, dxPScxExtEditorProducers, dxPSCore, frxDBSet, Vcl.Mask, JvExMask, JvToolEdit,
   cxContainer, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxDBLookupComboBox, Datasnap.DBClient, FireDAC.Stan.StorageBin, frxExportImage, frxExportDOCX, frxExportPDF, cxFilter, cxData, FireDAC.Phys.Intf,
-  FireDAC.DApt.Intf, FireDAC.Phys.FBDef, system.StrUtils,BaseDbEstoqueForm;
+  FireDAC.DApt.Intf, FireDAC.Phys.FBDef, system.StrUtils,BaseDbEstoqueForm,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue,
+  cxDataControllerConditionalFormattingRulesManagerDialog, frxExportBaseDialog;
   
 type
   TfrmApontamentosCargas = class(TfrmBaseDBPesquisaFDAC)

@@ -3,8 +3,8 @@ inherited frmExecutarEnvase: TfrmExecutarEnvase
   ClientHeight = 403
   ClientWidth = 970
   Font.Height = -16
-  ExplicitWidth = 978
-  ExplicitHeight = 430
+  ExplicitWidth = 986
+  ExplicitHeight = 442
   PixelsPerInch = 96
   TextHeight = 19
   object cxgrd1: TcxGrid [0]
@@ -14,6 +14,9 @@ inherited frmExecutarEnvase: TfrmExecutarEnvase
     Height = 274
     Align = alClient
     TabOrder = 1
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxgrd1DBTableView1: TcxGridDBTableView
       PopupMenu = pmEnvase
       Navigator.Buttons.CustomButtons = <>
@@ -682,8 +685,10 @@ inherited frmExecutarEnvase: TfrmExecutarEnvase
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edEquipamento: TEdit
       Left = 146
@@ -739,8 +744,10 @@ inherited frmExecutarEnvase: TfrmExecutarEnvase
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object dtFabricacao: TJvDateEdit
       Left = 579

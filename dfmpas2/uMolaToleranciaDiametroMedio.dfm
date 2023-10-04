@@ -13,8 +13,9 @@ inherited frmMolaToleranciaDiametroMedio: TfrmMolaToleranciaDiametroMedio
         end
       end
       inherited cxgrd1: TcxGrid
-        ExplicitLeft = -3
-        ExplicitTop = 83
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         inherited cxgrd1DBTableView1: TcxGridDBTableView
           OptionsData.Deleting = False
           OptionsData.Editing = False

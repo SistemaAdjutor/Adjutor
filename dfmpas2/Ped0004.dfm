@@ -10,8 +10,9 @@ inherited FormPedidoGrid: TFormPedidoGrid
   KeyPreview = True
   OldCreateOrder = True
   Position = poMainFormCenter
+  WindowState = wsMaximized
   ExplicitWidth = 1097
-  ExplicitHeight = 625
+  ExplicitHeight = 629
   PixelsPerInch = 96
   TextHeight = 14
   object Panel1: TPanel [0]
@@ -415,8 +416,10 @@ inherited FormPedidoGrid: TFormPedidoGrid
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
     object name: TGroupBox
@@ -800,6 +803,9 @@ inherited FormPedidoGrid: TFormPedidoGrid
           Height = 330
           Align = alClient
           TabOrder = 4
+          LookAndFeel.Kind = lfStandard
+          LookAndFeel.NativeStyle = False
+          LookAndFeel.ScrollbarMode = sbmClassic
           object cxtbPedido: TcxGridDBTableView
             OnDblClick = cxtbPedidoDblClick
             OnKeyDown = cxtbPedidoKeyDown
@@ -1648,8 +1654,10 @@ inherited FormPedidoGrid: TFormPedidoGrid
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object CbFantasia: TSgDbSearchCombo
             Left = 49
@@ -1674,8 +1682,10 @@ inherited FormPedidoGrid: TFormPedidoGrid
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object cbVendedor: TSgDbSearchCombo
             Left = 49
@@ -1700,8 +1710,10 @@ inherited FormPedidoGrid: TFormPedidoGrid
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
         end
         object gbCCusto: TGroupBox
@@ -1753,8 +1765,10 @@ inherited FormPedidoGrid: TFormPedidoGrid
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
         end
       end
@@ -2643,7 +2657,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
     Cells = <>
     Aggregates = <>
     MergedCells = <>
-    DefRowHeight = 12.750000000000000000
     Left = 1052
     Top = 114
   end

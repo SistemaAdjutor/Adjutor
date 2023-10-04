@@ -4,8 +4,8 @@
   ClientHeight = 534
   ClientWidth = 877
   OnResize = FormResize
-  ExplicitWidth = 885
-  ExplicitHeight = 561
+  ExplicitWidth = 893
+  ExplicitHeight = 573
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
@@ -98,6 +98,9 @@
       Height = 316
       Align = alClient
       TabOrder = 0
+      LookAndFeel.Kind = lfStandard
+      LookAndFeel.NativeStyle = False
+      LookAndFeel.ScrollbarMode = sbmClassic
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = dsEditDetail
@@ -244,8 +247,10 @@
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object grpPrevisao: TGroupBox
       Left = 8
@@ -284,7 +289,6 @@
       object HoraIni: TcxTimeEdit
         Left = 168
         Top = 30
-        EditValue = 0d
         TabOrder = 1
         Width = 90
       end
@@ -297,7 +301,6 @@
       object HoraFim: TcxTimeEdit
         Left = 660
         Top = 30
-        EditValue = 0d
         TabOrder = 4
         OnExit = HoraFimExit
         Width = 90
@@ -305,7 +308,6 @@
       object tempoExecucao: TcxTimeEdit
         Left = 373
         Top = 30
-        EditValue = 0d
         TabOrder = 2
         OnExit = tempoExecucaoExit
         Width = 90
@@ -319,14 +321,6 @@
   inherited FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Left = 176
     Top = 96
-  end
-  inherited dbConn: TFDConnection
-    Params.Strings = (
-      'Database=C:\Jobdados\exemplo\EXEMPLO.FDB'
-      'User_Name=sysdba'
-      'Password=masterkey'
-      'CharacterSet=ISO8859_1'
-      'DriverID=FB')
   end
   inherited dsEdits: TDataSource
     Left = 597

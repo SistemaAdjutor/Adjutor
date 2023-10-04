@@ -3,8 +3,8 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
   ClientHeight = 581
   ClientWidth = 1163
   WindowState = wsMaximized
-  ExplicitWidth = 1171
-  ExplicitHeight = 608
+  ExplicitWidth = 1179
+  ExplicitHeight = 620
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
@@ -78,8 +78,10 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object edPesquisaLivre: TLabeledEdit
               Left = 25
@@ -255,6 +257,9 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
         Top = 145
         Width = 1155
         Height = 331
+        LookAndFeel.Kind = lfStandard
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitTop = 145
         ExplicitWidth = 1155
         ExplicitHeight = 331
@@ -371,8 +376,8 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           DataController.Summary.SummaryGroups = <>
           Filtering.ColumnAddValueItems = False
           Filtering.ColumnMRUItemsList = False
-          OptionsBehavior.ImmediateEditor = False
           OptionsBehavior.IncSearchItem = cxgrd1DBTableView2OIP_DESCRICAO
+          OptionsBehavior.ImmediateEditor = False
           OptionsData.CancelOnExit = False
           OptionsData.Deleting = False
           OptionsData.DeletingConfirmation = False
@@ -734,6 +739,8 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
     end
   end
   object qCli: TSQLQuery [20]
@@ -959,7 +966,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
     Top = 376
   end
   object frxOrcamento: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1026,6 +1033,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Fill.BackColor = clWhite
       end
       item
@@ -1035,6 +1043,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
         Font.Height = -13
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Fill.BackColor = 15000804
       end>
     object Data: TfrxDataPage
@@ -1050,10 +1059,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
       Frame.Color = clNone
+      Frame.Typ = []
+      MirrorMode = []
       OnAfterPrint = 'Page1OnAfterPrint'
       OnBeforePrint = 'Page1OnBeforePrint'
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -1066,118 +1078,143 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
         OnAfterPrint = 'ReportTitle1OnAfterPrint'
         OnBeforePrint = 'ReportTitle1OnBeforePrint'
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 340.076708970000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
         end
         object Shape27: TfrxShapeView
+          AllowVectorExport = True
           Left = 641.636480000000000000
           Top = 78.419591380000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape25: TfrxShapeView
+          AllowVectorExport = True
           Left = 32.288731380000000000
           Top = 78.419591380000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape29: TfrxShapeView
+          AllowVectorExport = True
           Left = 634.961040000000000000
           Top = 33.133890000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape28: TfrxShapeView
+          AllowVectorExport = True
           Left = 634.961040000000000000
           Top = 8.559060000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape26: TfrxShapeView
+          AllowVectorExport = True
           Left = 336.378170000000000000
           Top = 78.419591380000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape17: TfrxShapeView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Top = 124.724490000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape13: TfrxShapeView
+          AllowVectorExport = True
           Top = 185.196970000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape12: TfrxShapeView
+          AllowVectorExport = True
           Top = 124.724490000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape15: TfrxShapeView
+          AllowVectorExport = True
           Top = 245.669450000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape16: TfrxShapeView
+          AllowVectorExport = True
           Top = 275.905690000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape14: TfrxShapeView
+          AllowVectorExport = True
           Top = 215.433210000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 97.267780000000000000
           Width = 718.110700000000000000
           Color = clBlack
@@ -1186,6 +1223,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Frame.Width = 3.000000000000000000
         end
         object frxDataOrcamentoORC_DATAAQUISICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.961040000000000000
           Top = 32.795300000000000000
           Width = 75.590600000000000000
@@ -1198,12 +1236,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             ' [frxDataOrcamento."ORC_DATAAQUISICAO"]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 633.961040000000000000
           Top = 9.559060000000000000
           Width = 75.590600000000000000
@@ -1213,12 +1253,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDataOrcamento."ORC_CODIGO"]')
           ParentFont = False
         end
         object frxDataOrcamentoORC_CLIENTE: TfrxMemoView
+          AllowVectorExport = True
           Top = 109.606370000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -1229,11 +1271,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Raz'#227'o social:')
           ParentFont = False
         end
         object frxDataOrcamentoORC_ENDERECO: TfrxMemoView
+          AllowVectorExport = True
           Top = 170.078850000000000000
           Width = 52.913420000000000000
           Height = 15.118120000000000000
@@ -1244,41 +1288,49 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Endere'#231'o:')
           ParentFont = False
         end
         object frxDataOrcamentoORC_BAIRRO: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 215.433210000000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
           DataSet = frxDataOrcamento
           DataSetName = 'frxDataOrcamento'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."ORC_BAIRRO"]')
         end
         object frxDataOrcamentoORC_CONTATO: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 245.669450000000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
           DataSet = frxDataOrcamento
           DataSetName = 'frxDataOrcamento'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."ORC_CONTATO"]')
         end
         object frxDataOrcamentoORC_EMAIL: TfrxMemoView
+          AllowVectorExport = True
           Left = 4.345711760000000000
           Top = 275.941056920000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
           DataSet = frxDataOrcamento
           DataSetName = 'frxDataOrcamento'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."ORC_EMAIL"]')
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.307809090000000000
           Top = 343.142689090000000000
           Width = 27.831084550000000000
@@ -1288,11 +1340,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Item')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 33.236240000000000000
           Top = 343.937230000000000000
           Width = 156.335104550000000000
@@ -1302,11 +1356,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Material')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 196.535560000000000000
           Top = 343.937230000000000000
           Width = 58.067324550000000000
@@ -1316,35 +1372,43 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tratamento')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.307809090000000000
           Top = 78.787360560000000000
           Width = 59.364712740000000000
           Height = 13.011234260000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'FOR: 018')
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 291.023810000000000000
           Top = 78.787360560000000000
           Width = 103.078090910000000000
           Height = 13.011234260000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Revis'#227'o: 02')
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 587.709030000000000000
           Top = 78.787360560000000000
           Width = 114.416680910000000000
           Height = 13.011234260000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Elab:  07/03/2023')
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 73.811070000000000000
           Width = 721.890230000000000000
           Color = clBlack
@@ -1353,6 +1417,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Frame.Width = 3.000000000000000000
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 260.787570000000000000
           Top = 343.937230000000000000
           Width = 76.964974550000000000
@@ -1362,11 +1427,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tipo/C'#243'd Pe'#231'a')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 343.937230000000000000
           Top = 343.937230000000000000
           Width = 65.626384550000000000
@@ -1376,11 +1443,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Dureza')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Top = 343.937230000000000000
           Width = 65.626384550000000000
@@ -1390,11 +1459,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Camada')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 502.677490000000000000
           Top = 343.937230000000000000
           Width = 46.728734550000000000
@@ -1404,11 +1475,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Qtde')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 560.149970000000000000
           Top = 343.937230000000000000
           Width = 39.169674550000000000
@@ -1418,11 +1491,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Peso')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 603.724800000000000000
           Top = 343.937230000000000000
           Width = 39.169674550000000000
@@ -1432,11 +1507,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Vlr Com.')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 646.299630000000000000
           Top = 344.157700000000000000
           Width = 24.051554550000000000
@@ -1446,11 +1523,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'UN')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Top = 343.937230000000000000
           Width = 39.169674550000000000
@@ -1460,11 +1539,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 124.724490000000000000
           Width = 525.354670000000000000
@@ -1475,19 +1556,23 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Color = clNone
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."ORC_CLIENTE"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 185.196970000000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."ORC_ENDERECO"]')
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Top = 200.315090000000000000
           Width = 45.354360000000000000
           Height = 15.118120000000000000
@@ -1496,11 +1581,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Bairro:')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Top = 230.551330000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
@@ -1509,11 +1596,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Contato:')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Top = 260.787570000000000000
           Width = 37.795300000000000000
           Height = 15.118120000000000000
@@ -1522,11 +1611,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Email:')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 109.606370000000000000
           Width = 94.488250000000000000
@@ -1536,29 +1627,35 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 124.724490000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CLICNPJ]')
         end
         object Shape18: TfrxShapeView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Top = 154.960730000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 139.842610000000000000
           Width = 94.488250000000000000
@@ -1568,29 +1665,35 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'I.E./RG:')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 154.960730000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."CLI_INSC"]')
         end
         object Shape19: TfrxShapeView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Top = 185.196970000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 170.078850000000000000
           Width = 94.488250000000000000
@@ -1600,29 +1703,35 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cidade/UF:')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 185.196970000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."ORC_CIDADE"] / [frxDataOrcamento."ORC_UF"]')
         end
         object Shape20: TfrxShapeView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Top = 215.433210000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 200.315090000000000000
           Width = 94.488250000000000000
@@ -1632,29 +1741,35 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'CEP:')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 215.433210000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CLICEP]')
         end
         object Shape21: TfrxShapeView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Top = 245.669450000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 230.551330000000000000
           Width = 94.488250000000000000
@@ -1664,19 +1779,23 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fax:')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 245.669450000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CLIFAX]')
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Top = 139.842610000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
@@ -1685,23 +1804,28 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fantasia:')
           ParentFont = False
         end
         object Shape22: TfrxShapeView
+          AllowVectorExport = True
           Top = 154.960730000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Top = 154.960730000000000000
           Width = 529.134200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."CLI_FANTASIA"]')
           Formats = <
@@ -1711,16 +1835,19 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
             end>
         end
         object Shape23: TfrxShapeView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Top = 275.905690000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 260.787570000000000000
           Width = 94.488250000000000000
@@ -1730,19 +1857,23 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Telefone:')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 275.905690000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CLIFONE]')
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.540540540000000000
           Top = 302.362400000000000000
           Width = 207.874150000000000000
@@ -1752,11 +1883,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold, fsUnderline]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Aten'#231#227'o: Departamento de Compras ')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 30.236240000000000000
           Top = 325.039580000000000000
           Width = 551.811380000000000000
@@ -1766,6 +1899,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Atendendo a vossa solicita'#231#227'o de servi'#231'os de tratamentos t'#233'rmico' +
@@ -1773,6 +1907,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 298.582870000000000000
           Width = 725.669760000000000000
           Color = clBlack
@@ -1781,152 +1916,194 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Frame.Width = 3.000000000000000000
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 546.657475450000000000
           Top = 11.579833640000000000
           Width = 80.057317270000000000
           Height = 13.743745450000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Or'#231'amento n'#186' :')
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 523.313122730000000000
           Top = 34.297801820000000000
           Width = 100.672935450000000000
           Height = 16.148900910000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data do Or'#231'amento:')
         end
         object Line18: TfrxLineView
+          AllowVectorExport = True
           Left = 600.386210000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line19: TfrxLineView
+          AllowVectorExport = True
           Left = 645.740570000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line20: TfrxLineView
+          AllowVectorExport = True
           Left = 672.197280000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line21: TfrxLineView
+          AllowVectorExport = True
           Left = 759.126470000000000000
           Top = 294.803340000000000000
           Height = 22.677180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line22: TfrxLineView
+          AllowVectorExport = True
           Left = 834.717070000000000000
           Top = 294.803340000000000000
           Height = 22.677180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line23: TfrxLineView
+          AllowVectorExport = True
           Left = 914.087200000000000000
           Top = 294.803340000000000000
           Height = 22.677180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line24: TfrxLineView
+          AllowVectorExport = True
           Left = 974.559680000000000000
           Top = 294.803340000000000000
           Height = 22.677180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line25: TfrxLineView
+          AllowVectorExport = True
           Left = 1019.914040000000000000
           Top = 294.803340000000000000
           Height = 22.677180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line26: TfrxLineView
+          AllowVectorExport = True
           Left = 1065.268400000000000000
           Top = 294.803340000000000000
           Height = 22.677180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line27: TfrxLineView
+          AllowVectorExport = True
           Left = 1091.725110000000000000
           Top = 294.803340000000000000
           Height = 22.677180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Shape31: TfrxShapeView
+          AllowVectorExport = True
           Left = 0.266666670000000000
           Top = 340.157700000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
         end
         object Line28: TfrxLineView
+          AllowVectorExport = True
           Left = 555.590910000000000000
           Top = 340.617470110000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line29: TfrxLineView
+          AllowVectorExport = True
           Left = 495.118430000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line30: TfrxLineView
+          AllowVectorExport = True
           Left = 415.748300000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line31: TfrxLineView
+          AllowVectorExport = True
           Left = 340.157700000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line32: TfrxLineView
+          AllowVectorExport = True
           Left = 257.008040000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line33: TfrxLineView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line34: TfrxLineView
+          AllowVectorExport = True
           Left = 30.236240000000000000
           Top = 340.157700000000000000
           Height = 18.897650000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 7.323828780000000000
           Top = 1.605571630000000000
           Width = 161.814283070000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -1934,6 +2111,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -1948,12 +2126,15 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
         RowCount = 0
         Stretched = True
         object Shape30: TfrxShapeView
+          AllowVectorExport = True
           Left = 0.266666670000000000
           Top = 0.533333340000013000
           Width = 717.844033330000000000
           Height = 24.810513330000000000
+          Frame.Typ = []
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 0.559060000000000000
           Width = 717.574413240000000000
           Height = 25.343846670000000000
@@ -1963,6 +2144,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Color = clNone
+          Frame.Typ = []
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
           Highlight.Font.Height = -13
@@ -1971,9 +2153,11 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Highlight.Condition = '<Line> mod 2 = 0'
           Highlight.FillType = ftBrush
           Highlight.Fill.BackColor = 15000804
+          Highlight.Frame.Typ = []
           ParentFont = False
         end
         object frxDataItensOIP_MATERIAL_TERM: TfrxMemoView
+          AllowVectorExport = True
           Left = 31.574830000000000000
           Width = 159.494063330000000000
           Height = 24.543846670000000000
@@ -1985,12 +2169,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataItens."OIP_DESCRICAO"]')
           ParentFont = False
           WordBreak = True
         end
         object frxDataItensSRV_NOME: TfrxMemoView
+          AllowVectorExport = True
           Left = 194.094620000000000000
           Width = 61.805813330000000000
           Height = 24.543846670000000000
@@ -2002,12 +2188,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDataItens."SRV_NOME"]')
           ParentFont = False
         end
         object frxDataItensOIP_TIPOPECA_TERM: TfrxMemoView
+          AllowVectorExport = True
           Left = 258.464750000000000000
           Width = 80.657266670000000000
           Height = 24.543846670000000000
@@ -2018,6 +2206,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDataItens."OIP_TIPOPECA_TERM"]'
@@ -2032,6 +2221,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
             end>
         end
         object frxDataItensOIP_DUREZASUPERFICIAL_TERM: TfrxMemoView
+          AllowVectorExport = True
           Left = 340.886333330000000000
           Width = 73.944403340000000000
           Height = 24.543846670000000000
@@ -2043,12 +2233,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDataItens."OIP_DUREZASUPERFICIAL_TERM"]')
           ParentFont = False
         end
         object frxDataItensOIP_EHT_TERM: TfrxMemoView
+          AllowVectorExport = True
           Left = 416.743600000000000000
           Width = 77.190600000000000000
           Height = 24.010513330000000000
@@ -2059,12 +2251,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDataItens."OIP_PROFUNDIDADE_TERM"]')
           ParentFont = False
         end
         object frxDataItensOIP_QDE: TfrxMemoView
+          AllowVectorExport = True
           Left = 496.693260000000000000
           Width = 57.492950000000000000
           Height = 24.543846670000000000
@@ -2077,12 +2271,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDataItens."OIP_QDE"]')
           ParentFont = False
         end
         object frxDataItensOIP_PESO: TfrxMemoView
+          AllowVectorExport = True
           Left = 556.386210000000000000
           Width = 43.174830000000000000
           Height = 24.543846670000000000
@@ -2096,12 +2292,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDataItens."OIP_PESO"]')
           ParentFont = False
         end
         object frxDataItensOIP_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 646.551083330000000000
           Width = 24.830179400000000000
           Height = 25.077180000000000000
@@ -2113,12 +2311,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDataItens."OIP_UND"]')
           ParentFont = False
         end
         object frxDataItensOIP_PRECO: TfrxMemoView
+          AllowVectorExport = True
           Left = 601.063390000000000000
           Width = 43.928633330000000000
           Height = 24.543846670000000000
@@ -2132,12 +2332,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDataItens."OIP_PRECO"]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.379530000000000000
           Top = 0.028495379999999990
           Width = 27.090181290000000000
@@ -2150,76 +2352,98 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataItens."OIP_SEQ"]')
           ParentFont = False
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 30.236240000000000000
           Height = 25.610513340000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Height = 25.877180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line10: TfrxLineView
+          AllowVectorExport = True
           Left = 257.008040000000000000
           Height = 25.877180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line11: TfrxLineView
+          AllowVectorExport = True
           Left = 340.157700000000000000
           Height = 25.343846670000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line12: TfrxLineView
+          AllowVectorExport = True
           Left = 415.748300000000000000
           Height = 25.610513340000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line13: TfrxLineView
+          AllowVectorExport = True
           Left = 495.118430000000000000
           Height = 25.877180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line14: TfrxLineView
+          AllowVectorExport = True
           Left = 555.636477870000000000
           Top = 0.184006520000025000
           Height = 25.343846670000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line15: TfrxLineView
+          AllowVectorExport = True
           Left = 600.485499890000000000
           Top = 0.149425290000011000
           Height = 25.077179990000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = 646.133333330000000000
           Top = 0.441186670000000000
           Width = -0.000000010000000000
           Height = 24.800000000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line17: TfrxLineView
+          AllowVectorExport = True
           Left = 671.993121610000000000
           Top = 1.066666670000020000
           Height = 24.277180000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Left = 672.756340000000000000
           Width = 45.354360000000000000
           Height = 26.456710000000000000
@@ -2231,6 +2455,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'R$[frxDataItens."OIP_TOTAL"]')
@@ -2240,11 +2465,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
       object Footer1: TfrxFooter
         FillType = ftBrush
         Fill.BackColor = clWindow
+        Frame.Typ = []
         Height = 342.256400000000000000
         Top = 487.559370000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Top = 160.640630000000000000
           Width = 714.318120000000000000
           Height = 14.897650000000000000
@@ -2257,20 +2484,24 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '<u><b>Observa'#231#245'es Especificas:</b></u>'
             '[frxDataOrcamento."ORC_OBSERVACAO"]')
           ParentFont = False
         end
         object Shape24: TfrxShapeView
+          AllowVectorExport = True
           Left = 476.875835060000000000
           Top = 1.779530000000020000
           Width = 241.889920000000000000
           Height = 22.677180000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 486.811380000000000000
           Top = 4.779530000000000000
           Width = 60.472480000000000000
@@ -2280,11 +2511,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Valor total: ')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Top = 177.417440000000000000
           Width = 718.651240540000000000
           Height = 18.897650000000000000
@@ -2293,6 +2526,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -2301,6 +2535,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 364.834880000000000000
           Top = 232.850546670000000000
           Width = 119.685116670000000000
@@ -2310,6 +2545,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
             'Nome do Respons'#225'vel :'
@@ -2318,6 +2554,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 367.354566670000000000
           Top = 215.212740000000000000
           Width = 249.448980000000000000
@@ -2327,12 +2564,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
             'APROVA'#199#195'O DO CLIENTE')
           ParentFont = False
         end
         object frxDataOrcamentoREP_NOME: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.338590000000000000
           Top = 215.212740000000000000
           Width = 359.344960000000000000
@@ -2344,12 +2583,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
             '[frxDataOrcamento."REP_NOME"]')
           ParentFont = False
         end
         object frxDataOrcamentoREP_FONE: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.338590000000000000
           Top = 250.889920000000000000
           Width = 359.344960000000000000
@@ -2361,6 +2602,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
             '[REPFONE] / [REPFAX]')
@@ -2372,6 +2614,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
             end>
         end
         object frxDataOrcamentoREP_EMAIL: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.338590000000000000
           Top = 286.567100000000000000
           Width = 359.344960000000000000
@@ -2384,21 +2627,25 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
             '[frxDataOrcamento."REP_EMAIL"]')
           ParentFont = False
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Left = 1.600000000000000000
           Top = 28.204390000000000000
           Width = 714.318120000000000000
           Height = 128.000000000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Shape = skRoundRectangle
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 12.000000000000000000
           Top = 32.804390000000000000
           Width = 131.206370000000000000
@@ -2408,11 +2655,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold, fsUnderline]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Observa'#231#245'es Gerais:')
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 141.600000000000000000
           Top = 32.804390000000000000
           Width = 154.803030000000000000
@@ -2422,11 +2671,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '**Ordem M'#237'nima de Servi'#231'o = ')
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 56.004390000000000000
           Width = 116.006370000000000000
@@ -2436,11 +2687,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '- Prazo de entrega:')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 114.600000000000000000
           Top = 56.004390000000000000
           Width = 574.104020000000000000
@@ -2450,6 +2703,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[frxDataOrcamento."ORC_DIAS_ENTREGA"] Dias '#250'teis (normalmente ex' +
@@ -2457,6 +2711,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 72.404390000000000000
           Width = 41.606370000000000000
@@ -2466,11 +2721,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '- Frete:')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 54.200000000000000000
           Top = 72.404390000000000000
           Width = 274.406370000000000000
@@ -2481,11 +2738,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."CLI_FRETE"]')
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 87.804390000000000000
           Width = 156.006370000000000000
@@ -2495,11 +2754,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '- Condi'#231#227'o de pagamento:')
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 153.000000000000000000
           Top = 87.804390000000000000
           Width = 226.406370000000000000
@@ -2509,11 +2770,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."PCL_NOME"]')
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 103.004390000000000000
           Width = 697.606370000000000000
@@ -2523,6 +2786,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '- Reservamo-nos no direito de subtrair no m'#237'nimo 01(uma) pe'#231'a pa' +
@@ -2530,6 +2794,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 118.604390000000000000
           Width = 146.765430000000000000
@@ -2539,11 +2804,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '- Validade desta cota'#231#227'o:')
           ParentFont = False
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Left = 143.400000000000000000
           Top = 118.604390000000000000
           Width = 120.806370000000000000
@@ -2553,6 +2820,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[<frxDataOrcamento."ORC_DATAAQUISICAO">+<frxDataOrcamento."ORC_D' +
@@ -2560,6 +2828,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 135.004390000000000000
           Width = 657.606370000000000000
@@ -2569,6 +2838,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '- Material sujeito a confer'#234'ncia conforme Manual de Fornecimento' +
@@ -2576,6 +2846,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.338590000000000000
           Top = 269.281570000000000000
           Width = 359.344960000000000000
@@ -2585,11 +2856,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO_SOC]')
           ParentFont = False
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.338590000000000000
           Top = 304.681570000000000000
           Width = 359.344960000000000000
@@ -2599,11 +2872,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SITE]')
           ParentFont = False
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.338590000000000000
           Top = 232.510390000000000000
           Width = 359.344960000000000000
@@ -2613,11 +2888,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDataOrcamento."REP_OBS"]')
           ParentFont = False
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Top = 4.779530000000000000
           Width = 94.488250000000000000
@@ -2630,12 +2907,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'R$ [SUM(<frxDataItens."OIP_TOTAL">,MasterData1)]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.338900000000000000
           Top = 267.905690000000000000
           Width = 219.212740000000000000
@@ -2649,6 +2928,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.338900000000000000
           Top = 253.008040000000000000
           Width = 219.212740000000000000
@@ -2662,6 +2942,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo65: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.338900000000000000
           Top = 237.669450000000000000
           Width = 219.212740000000000000
@@ -2675,6 +2956,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 362.834880000000000000
           Top = 32.795300000000000000
           Width = 343.779530000000000000
@@ -2684,11 +2966,13 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[PMT_MSG_ORCAMENTO_INDUST]')
           ParentFont = False
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 298.582870000000000000
           Top = 33.015770000000000000
           Width = 60.314780000000000000
@@ -2700,6 +2984,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDataOrcamento."PMT_VALOR_MINIMO_DO_SERVICO"]')
@@ -2708,10 +2993,12 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
       end
       object rodape: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 96.047310000000000000
         Top = 891.969080000000000000
         Width = 718.110700000000000000
         object Line16: TfrxLineView
+          AllowVectorExport = True
           Left = 1.379310340000000000
           Width = 718.110700000000000000
           Color = clBlack
@@ -2720,6 +3007,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Frame.Width = 3.000000000000000000
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 119.165430000000000000
           Width = 449.764070000000000000
           Height = 18.897650000000000000
@@ -2728,12 +3016,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -11
           Font.Name = 'Arial Black'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'EMBRATERM EMPRESA BRASILEIRA DE TRATAMENTOS T'#201'RMICOS LTDA')
           ParentFont = False
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 114.385900000000000000
           Top = 14.677180000000000000
           Width = 472.441250000000000000
@@ -2743,6 +3033,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'R. Cezinando Dias Paredes, n'#186' 1154 - Boqueir'#227'o, Curitiba - PR - ' +
@@ -2750,6 +3041,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.606370000000000000
           Top = 26.795300000000000000
           Width = 449.764070000000000000
@@ -2759,6 +3051,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Fone (41)3286-6025 - E-mail: embraterm@embraterm.ind.br - Site: ' +
@@ -2766,6 +3059,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Top = 47.354360000000000000
           Width = 514.016080000000000000
@@ -2775,6 +3069,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'POL'#205'TICA DA QUALIDADE'
@@ -2786,10 +3081,12 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           ParentFont = False
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 10.000000000000000000
           Top = 3.779530000000000000
           Width = 90.708720000000000000
           Height = 90.708720000000000000
+          Frame.Typ = []
           Picture.Data = {
             07544269746D617056720100424D56720100000000003600000028000000A800
             0000BC0000000100180000000000207201000000000000000000000000000000
@@ -5760,10 +6057,12 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           TransparentColor = clWhite
         end
         object Picture2: TfrxPictureView
+          AllowVectorExport = True
           Left = 624.283860000000000000
           Top = 5.559060000000000000
           Width = 86.929190000000000000
           Height = 86.929190000000000000
+          Frame.Typ = []
           Picture.Data = {
             07544269746D6170F6AC0100424DF6AC0100000000003600000028000000BA00
             0000C40000000100180000000000C0AC01000000000000000000000000000000
@@ -9754,11 +10053,14 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -9768,6 +10070,9 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 660
     Top = 185
   end
@@ -9777,6 +10082,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
     OverwritePrompt = False
     DataOnly = False
     PictureType = gpPNG
+    OpenAfterExport = False
     Wysiwyg = True
     Creator = 'FastReport'
     SuppressPageHeadersFooters = False

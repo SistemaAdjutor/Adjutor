@@ -1,7 +1,7 @@
 inherited frmParamResultados: TfrmParamResultados
   Caption = 'Resultados de inspe'#231#227'o de produ'#231#227'o'
   ClientHeight = 448
-  ExplicitHeight = 475
+  ExplicitHeight = 487
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
@@ -15,6 +15,9 @@ inherited frmParamResultados: TfrmParamResultados
     Height = 416
     Align = alClient
     TabOrder = 1
+    LookAndFeel.Kind = lfStandard
+    LookAndFeel.NativeStyle = False
+    LookAndFeel.ScrollbarMode = sbmClassic
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Filter.Enabled = False
@@ -38,14 +41,6 @@ inherited frmParamResultados: TfrmParamResultados
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1
     end
-  end
-  inherited dbConn: TFDConnection
-    Params.Strings = (
-      'Database=C:\Jobdados\exemplo\EXEMPLO.FDB'
-      'User_Name=sysdba'
-      'Password=masterkey'
-      'CharacterSet=ISO8859_1'
-      'DriverID=FB')
   end
   inherited cdsEdit: TFDQuery
     OnNewRecord = cdsEditNewRecord
