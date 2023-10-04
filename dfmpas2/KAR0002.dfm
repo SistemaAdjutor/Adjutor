@@ -13,8 +13,8 @@ inherited FrmKardexTransferencia: TFrmKardexTransferencia
   Position = poDesktopCenter
   Visible = True
   OnResize = FormResize
-  ExplicitWidth = 935
-  ExplicitHeight = 543
+  ExplicitWidth = 943
+  ExplicitHeight = 555
   PixelsPerInch = 96
   TextHeight = 14
   object Panel1: TPanel [0]
@@ -160,8 +160,10 @@ inherited FrmKardexTransferencia: TFrmKardexTransferencia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object cbProduto: TSgDbSearchCombo
         Left = 17
@@ -187,8 +189,10 @@ inherited FrmKardexTransferencia: TFrmKardexTransferencia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 300
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
     object grp1: TGroupBox
@@ -305,8 +309,10 @@ inherited FrmKardexTransferencia: TFrmKardexTransferencia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object cbProdutoDestino: TSgDbSearchCombo
         Left = 17
@@ -332,8 +338,10 @@ inherited FrmKardexTransferencia: TFrmKardexTransferencia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 300
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
     object grp2: TGroupBox

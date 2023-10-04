@@ -25,7 +25,12 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVS2010, dxSkinWhiteprint, dxSkinXmas2008Blue,
   dxSkinscxPCPainter, cxPCdxBarPopupMenu, cxLookAndFeels, Vcl.ComCtrls, dxCore,
-  cxDateUtils, Vcl.Menus, Data.DBXFirebird, SimpleDS, SgDbSeachComboUnit, cxNavigator, cxDBExtLookupComboBox, cxDBEditRepository ;
+  cxDateUtils, Vcl.Menus, Data.DBXFirebird, SimpleDS, SgDbSeachComboUnit, cxNavigator, cxDBExtLookupComboBox, cxDBEditRepository,
+  dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinTheBezier, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxBarBuiltInMenu,
+  cxDataControllerConditionalFormattingRulesManagerDialog, frxExportBaseDialog ;
 
 type
   TFrmKardex = class(TForm)

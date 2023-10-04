@@ -522,19 +522,6 @@ type
     dsCompras : TDataSource;
     dsLote : TDataSource;
     dbedtPRDC_REFERENCIA : TDBEdit;
-    CdsLotes : TClientDataSet;
-    DspLotes : TDataSetProvider;
-    QLotes : TSQLQuery;
-    QLotesPRDL_REGISTRO : TIntegerField;
-    QLotesEMP_CODIGO : TStringField;
-    QLotesPRDL_DATA_FABRICACAO : TDateField;
-    QLotesPRDL_DATA_VALIDADE : TDateField;
-    QLotesPRDL_LOTE : TStringField;
-    QLotesPRDL_PRECO_MAXIMO : TFMTBCdField;
-    QLotesPRDL_SALDO : TFMTBCdField;
-    QLotesPRD_CODIGO : TStringField;
-    QLotesPRDL_CADASTRO : TDateField;
-    QLotesPRDL_DESCRICAO : TStringField;
     SqlGradePRG_MEDIDA_1 : TFMTBCdField;
     SqlGradePRG_MEDIDA_2 : TFMTBCdField;
     SqlGradePRG_MEDIDA_3 : TFMTBCdField;
@@ -724,9 +711,6 @@ type
     CdsCodigoOriginalCLI_RAZAO : TStringField;
     BtnDuplicar : TBitBtn;
     JvTransparentForm1 : TJvTransparentForm;
-    QLotesPRDL_CUSTO : TFMTBCdField;
-    QLotesPRDL_NFE : TStringField;
-    QLotesFOR_CODIGO : TStringField;
     Lotes : TTabSheet;
     dbgrdLote : TDBGrid;
     Panel2 : TPanel;
@@ -746,21 +730,6 @@ type
     Label99 : TLabel;
     dbedtPRDL_LOTE : TDBEdit;
     Label94 : TLabel;
-    QLotesFOR_RAZAO : TStringField;
-    CdsLotesPRDL_REGISTRO : TIntegerField;
-    CdsLotesEMP_CODIGO : TStringField;
-    CdsLotesPRDL_DATA_FABRICACAO : TDateField;
-    CdsLotesPRDL_DATA_VALIDADE : TDateField;
-    CdsLotesPRDL_LOTE : TStringField;
-    CdsLotesPRDL_PRECO_MAXIMO : TFMTBCdField;
-    CdsLotesPRDL_SALDO : TFMTBCdField;
-    CdsLotesPRD_CODIGO : TStringField;
-    CdsLotesPRDL_CADASTRO : TDateField;
-    CdsLotesPRDL_DESCRICAO : TStringField;
-    CdsLotesPRDL_CUSTO : TFMTBCdField;
-    CdsLotesPRDL_NFE : TStringField;
-    CdsLotesFOR_CODIGO : TStringField;
-    CdsLotesFOR_RAZAO : TStringField;
     qFor : TSQLQuery;
     qForFOR_CODIGO : TStringField;
     qForFOR_RAZAO : TStringField;
@@ -1439,15 +1408,12 @@ type
     puExportar : TPopupMenu;
     miExcel : TMenuItem;
     miWord : TMenuItem;
-    CdsLotesPRDL_QTDELOTE : TFMTBCdField;
-    CdsLotesQtde_USADA : TFMTBCdField;
     SaveDialog1 : TSaveDialog;
     JvDBGridWordExport1 : TJvDBGridWordExport;
     JvDBGridExcelExport1 : TJvDBGridExcelExport;
     pExportarLote : TPopupMenu;
     miLoteExcel : TMenuItem;
     miLoteWord : TMenuItem;
-    QLotesPRDL_QTDELOTE : TFMTBCdField;
     Panel3 : TPanel;
     JvArrowButton1 : TJvArrowButton;
     CurPerda : TJvValidateEdit;
@@ -2220,6 +2186,32 @@ type
     IncluirArquivoFichaTecnica: TFilenameEdit;
     BitBtn5: TBitBtn;
     cdsMolaMMO_ARQUIVO_FICHA_TECNICA: TStringField;
+    cbAlmoxarifadoLote: TComboBoxRw;
+    cdsLotes: TFDQuery;
+    cdsLotesPRDL_REGISTRO: TIntegerField;
+    cdsLotesEMP_CODIGO: TStringField;
+    cdsLotesPRDL_DATA_FABRICACAO: TDateField;
+    cdsLotesPRDL_DATA_VALIDADE: TDateField;
+    cdsLotesPRDL_LOTE: TStringField;
+    cdsLotesPRDL_PRECO_MAXIMO: TFMTBCDField;
+    cdsLotesPRDL_SALDO: TFMTBCDField;
+    cdsLotesPRD_CODIGO: TStringField;
+    cdsLotesPRDL_CADASTRO: TDateField;
+    cdsLotesPRDL_DESCRICAO: TStringField;
+    cdsLotesPRDL_CUSTO: TFMTBCDField;
+    cdsLotesPRDL_NFE: TStringField;
+    cdsLotesFOR_CODIGO: TStringField;
+    cdsLotesFOR_RAZAO: TStringField;
+    cdsLotesPRDL_QTDELOTE: TFMTBCDField;
+    cdsLotesQtde_USADA: TFMTBCDField;
+    cdsLotesAMX_CODIGO: TStringField;
+    cdsLotesAMX_DESCRI: TStringField;
+    cbSemEstoque: TCheckBox;
+    cbApenasComEstoque: TCheckBox;
+    cbLoteVencido: TCheckBox;
+    cbFiltroAlmoxarifado: TComboBoxRw;
+    Label331: TLabel;
+    Label332: TLabel;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2331,7 +2323,7 @@ type
     procedure CdsCodigoOriginalBeforeInsert( DataSet : TDataSet );
     procedure CdsCodigoOriginalBeforeEdit( DataSet : TDataSet );
     procedure sgDBLookupCombo1MenuPesquisaClick( Sender : tObject );
-    procedure CdsLotesPRDL_DATA_FABRICACAOGetText( Sender : TField; var Text : string; DisplayText : Boolean );
+    procedure cdsLotesPRDL_DATA_FABRICACAOGetText( Sender : TField; var Text : string; DisplayText : Boolean );
     procedure CdsProdutosAfterInsert( DataSet : TDataSet );
     procedure CdsProdutosBeforeEdit( DataSet : TDataSet );
     procedure CdsProdutosCalcFields( DataSet : TDataSet );
@@ -2480,6 +2472,10 @@ type
     procedure edCustoEntradaEnter( Sender : tObject );
     procedure IncluirArquivoFichaTecnicaChange(Sender: TObject);
     procedure BitBtn5Click(Sender: TObject);
+    procedure cbSemEstoqueClick(Sender: TObject);
+    procedure cbApenasComEstoqueClick(Sender: TObject);
+    procedure cbLoteVencidoClick(Sender: TObject);
+    procedure cbFiltroAlmoxarifadoChange(Sender: TObject);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -2528,6 +2524,7 @@ type
       procedure CalculaCampo( Sender : tObject );
       procedure SetToleranciaDM;
       procedure ComissaoPorGrupo;
+      procedure FiltraGrid();
     public
       wcodbarrant, sGradeDescricaoCadastrada : string;
       calculaValor : Boolean;
@@ -3167,6 +3164,22 @@ procedure TFormProduto.DbeVar2Exit( Sender : tObject );
     DbeVar3.SetFocus;
   end;
 
+procedure TFormProduto.FiltraGrid;
+
+begin
+  cdsLotes.Filtered := False;
+  cdsLotes.Filter := '1 = 1 ';
+  if cbSemEstoque.Checked then
+    cdsLotes.Filter := cdsLotes.Filter + ' AND PRDL_SALDO <= 0 ';
+  if cbApenasComEstoque.Checked then
+    cdsLotes.Filter := cdsLotes.Filter + ' AND PRDL_SALDO > 0 ';
+  if cbLoteVencido.Checked then
+    cdsLotes.Filter := cdsLotes.Filter + ' AND PRDL_DATA_VALIDADE < ' + QuotedStr(FormatDateTime('dd/mm/yyyy', Date));
+  if cbFiltroAlmoxarifado.idRetorno <> '' then
+    cdsLotes.Filter := cdsLotes.Filter + ' AND AMX_CODIGO =  ' + QuotedStr(cbFiltroAlmoxarifado.idRetorno);
+  cdsLotes.Filtered := True;
+end;
+
 procedure TFormProduto.FormActivate( Sender : tObject );
   var
     arquivo : string;
@@ -3503,12 +3516,13 @@ begin
   CdsLotes.close;
   if ( not CdsProdutos.isEmpty ) then
   begin
-    QLotes.sql.Clear;
-    QLotes.sql.Add( 'select A.*, B.for_razao' );
-    QLotes.sql.Add( 'from PRD_LOTE A' );
-    QLotes.sql.Add( '    LEFT JOIN for0000 B ON B.for_codigo=A.for_codigo' );
-    QLotes.sql.Add( 'WHERE A.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) );
-    QLotes.sql.Add( 'ORDER BY A.PRDL_DATA_VALIDADE' );
+    cdsLotes.sql.Clear;
+    cdsLotes.sql.Add( 'select A.*, B.for_razao, C.amx_descri' );
+    cdsLotes.sql.Add( 'from PRD_LOTE A' );
+    cdsLotes.sql.Add( '    LEFT JOIN for0000 B ON B.for_codigo=A.for_codigo' );
+    cdsLotes.sql.Add( '    LEFT JOIN almox0000 C ON C.amx_codigo = A.amx_codigo' );
+    cdsLotes.sql.Add( 'WHERE A.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) );
+    cdsLotes.sql.Add( 'ORDER BY A.PRDL_DATA_VALIDADE' );
     CdsLotes.Open;
   end;
 
@@ -3722,6 +3736,12 @@ begin
   end;
   FormPrdLinha.Show;
   FormPrdLinha.FormShow( Sender );
+end;
+
+procedure TFormProduto.cbSemEstoqueClick(Sender: TObject);
+begin
+  inherited;
+  FiltraGrid();
 end;
 
 procedure TFormProduto.DBEPRD_CODBAREnter( Sender : tObject );
@@ -5918,6 +5938,18 @@ begin
   DesabilitaBotoesFTC;
 end;
 
+procedure TFormProduto.cbApenasComEstoqueClick(Sender: TObject);
+begin
+  inherited;
+  FiltraGrid();
+end;
+
+procedure TFormProduto.cbFiltroAlmoxarifadoChange(Sender: TObject);
+begin
+  inherited;
+  FiltraGrid();
+end;
+
 procedure TFormProduto.cbGrauToleranciaChange( Sender : tObject );
 begin
   inherited;
@@ -6545,7 +6577,8 @@ end;
 procedure TFormProduto.CdsLotesAfterPost( DataSet : TDataSet );
 begin
   CdsLotes.ApplyUpdates( 0 );
-  CdsLotes.Refresh;
+  CdsLotes.Close;
+  cdsLotes.Open;
 end;
 
 procedure TFormProduto.CdsLotesBeforeInsert( DataSet : TDataSet );
@@ -6570,7 +6603,7 @@ begin
 
 end;
 
-procedure TFormProduto.CdsLotesPRDL_DATA_FABRICACAOGetText( Sender : TField; var Text : string; DisplayText : Boolean );
+procedure TFormProduto.cdsLotesPRDL_DATA_FABRICACAOGetText( Sender : TField; var Text : string; DisplayText : Boolean );
 begin
   if ( Sender.IsNull ) OR ( Sender.AsDateTime = 0 ) THEN
     Text := ''
@@ -8515,6 +8548,12 @@ begin
 
     spMargemVenda.Visible := False;
   end;
+end;
+
+procedure TFormProduto.cbLoteVencidoClick(Sender: TObject);
+begin
+  inherited;
+  FiltraGrid();
 end;
 
 procedure TFormProduto.cbPrecoEmpresaChange( Sender : tObject );

@@ -50,6 +50,10 @@ type
     CdsLotesPRDL_DESCRICAO: TStringField;
     Label7: TLabel;
     edtIdentificacao: TEdit;
+    Label8: TLabel;
+    lbAlmoxarifado: TLabel;
+    CdsLotesAMX_CODIGO: TStringField;
+    SqlCdsLotesAMX_CODIGO: TStringField;
     procedure Bit_CancelarClick(Sender: tObject);
     procedure FormClose(Sender: tObject; var Action: TCloseAction);
     procedure FormShow(Sender: tObject);
@@ -63,7 +67,8 @@ type
 
   public
     { Public declarations }
-    sPrdCodido:String;
+    sPrdCodido, amxCodigo : String;
+
   end;
 
 var
@@ -139,6 +144,7 @@ begin
        CdsLotesPRD_CODIGO.AsString := sPrdCodido;
        CdsLotesPRDL_CADASTRO.AsDateTime := Date;
        CdsLotesPRDL_DESCRICAO.AsString := edtIdentificacao.Text;
+       CdsLotesAMX_CODIGO.AsString := amxCodigo;
        CdsLotes.ApplyUpdates(0);
        CdsLotes.Refresh;
        if (Assigned(FrmKardexLancamentoManual)) then
