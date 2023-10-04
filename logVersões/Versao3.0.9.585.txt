@@ -1,0 +1,9 @@
+﻿Atualizado em 04/10/2023
+Inicio da versão: 04/10/2023
+
+principal: Netocolor, Rotor, Arkson
+  1633 - Retorno F6 tela de pedidos [Netocolor]
+  1638 - Novo tamanho de etiqueta [Rotor]
+  1651 - Melhoria para o processo de lotes [Arkson]
+  1655 - Correção das telas com grades [Novi]
+  1656 - Correção demanda [Arkson]
