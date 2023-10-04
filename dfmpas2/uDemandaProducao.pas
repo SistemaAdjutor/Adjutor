@@ -1134,13 +1134,16 @@ begin
 
  //   ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, iop.IOP_QUANTIDADE QTDEPRD, iop.IOP_NORDEM,DEP_QTDE_ESTOQUE,         '+
     ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, ' + // iop.IOP_QUANTIDADE QTDEPRD,' +
-    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS QTDEPRD,  '+
+
+ //    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS QTDEPRD,  '+
+    ' CAST( ' + FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS QTDEPRD,  '+
 
     ' iop.IOP_NORDEM,DEP_QTDE_ESTOQUE, '+
     ' (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = pr.PRD_CODIGO ) EstoqueDisponivel,  ' +
     ' pr.prd_codigo, '+QuotedStr(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PED_CODIGO.Index] ) + ' as ped_codigo, ' +
     ' pr.PTI_CODIGO, tp.PTI_DESCRI, tp.PTI_SIGLA, pr.PRD_UND, ' +
-    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS UC_TOTAL,  '+
+//    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS UC_TOTAL,  '+
+    ' CAST( '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS UC_TOTAL,  '+
     ' DEP_GERASUBORDENS ' +
     ' FROM FTC_IT01 ft                                                                                                 '+
     ' join prd0000 Pr on (ft.prd_refer_itens = pr.prd_refer '+ ConcatSe(' and ft.', DBInicio.ExclusivoSql('PRODUTOS'))+ ')'+
@@ -1156,7 +1159,6 @@ begin
    copyToClipBoard(cdsFicha.SQL.Text);
   cdsFicha.Open;
   cxgrd1DBBandedTableView1.DataController.Refresh;
-//  cxgrd1DBBandedTableView1.ViewData.Collapse(True);
 end;
 
 procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1DataControllerFilterGetValueList(Sender: TcxFilterCriteria; AItemIndex: Integer; AValueList: TcxDataFilterValueList);

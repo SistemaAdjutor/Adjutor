@@ -166,8 +166,7 @@ inherited frmDemandaProducao: TfrmDemandaProducao
         Top = 89
         Width = 1156
         Height = 244
-        ExplicitLeft = -3
-        ExplicitTop = 87
+        ExplicitTop = 89
         ExplicitWidth = 1156
         ExplicitHeight = 244
         inherited cxgrd1DBTableView1: TcxGridDBTableView

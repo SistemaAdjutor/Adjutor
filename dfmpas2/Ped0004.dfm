@@ -10,6 +10,7 @@ inherited FormPedidoGrid: TFormPedidoGrid
   KeyPreview = True
   OldCreateOrder = True
   Position = poMainFormCenter
+  WindowState = wsMaximized
   ExplicitWidth = 1097
   ExplicitHeight = 629
   PixelsPerInch = 96
