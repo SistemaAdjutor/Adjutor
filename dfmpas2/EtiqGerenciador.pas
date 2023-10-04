@@ -444,6 +444,28 @@ type
     lbCnpjMod13: TppLabel;
     ppLabel76: TppLabel;
     ppShape3: TppShape;
+    rbModelo14: TRadioButton;
+    prModelo14: TppReport;
+    ppDetailBand14: TppDetailBand;
+    ppLabel79: TppLabel;
+    ppDBText31: TppDBText;
+    ppLabel80: TppLabel;
+    ppLabel83: TppLabel;
+    ppLabel84: TppLabel;
+    ppDBText33: TppDBText;
+    ppLabel85: TppLabel;
+    ppLine29: TppLine;
+    ppDBBarCode10: TppDBBarCode;
+    ppLabel86: TppLabel;
+    ppDBText37: TppDBText;
+    ppLabel87: TppLabel;
+    ppDBText38: TppDBText;
+    ppDBBarCode11: TppDBBarCode;
+    ppShape5: TppShape;
+    ppDBText39: TppDBText;
+    ppDesignLayers14: TppDesignLayers;
+    ppDesignLayer14: TppDesignLayer;
+    ppParameterList14: TppParameterList;
     procedure cbTipoSelect(Sender: TObject);
     procedure CbGrupoSelect(Sender: TObject);
     procedure CBLinhaSelect(Sender: TObject);
@@ -572,7 +594,8 @@ procedure TFrmGerenciadorEtiquetas.BitImprimeEtiqClick(Sender: TObject);
 begin
    if not (rbModelo1.Checked or rbModelo2.Checked or
     rbModelo3.Checked or rbModelo4.Checked or rbModelo5.Checked or rbModelo6.Checked or rbNovoModelo2.Checked or
-    rbModelo8.checked or rbModelo9.Checked or rbModelo10.Checked or rbModelo11.Checked or rbModelo12.Checked  or rbModelo13.Checked )	then
+    rbModelo8.checked or rbModelo9.Checked or rbModelo10.Checked or rbModelo11.Checked or rbModelo12.Checked  or
+    rbModelo13.Checked or rbModelo14.Checked )	then
     begin
      uteis.erro ('Selecione um modelo');
      exit;
@@ -610,6 +633,8 @@ begin
     ImprimeReports(prModelo12)
    else if rbModelo13.Checked then
     ImprimeReports(prModelo13)
+   else if rbModelo14.Checked then
+    ImprimeReports(prModelo14)
     ;
 
 
