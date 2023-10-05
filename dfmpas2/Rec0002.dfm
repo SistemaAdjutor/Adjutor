@@ -26,7 +26,6 @@ object FormContasRecParcelas: TFormContasRecParcelas
     Align = alTop
     TabOrder = 4
     Visible = False
-    ExplicitTop = 438
     object Label34: TLabel
       Left = 151
       Top = 11
@@ -845,7 +844,6 @@ object FormContasRecParcelas: TFormContasRecParcelas
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 5
-    ExplicitTop = 472
     object Bit_Excluir: TBitBtn
       Left = 421
       Top = 6
@@ -870,7 +868,7 @@ object FormContasRecParcelas: TFormContasRecParcelas
       OnClick = Bit_ExcluirClick
     end
     object Bit_Gravar: TBitBtn
-      Left = 521
+      Left = 527
       Top = 6
       Width = 100
       Height = 25
@@ -966,7 +964,6 @@ object FormContasRecParcelas: TFormContasRecParcelas
     Align = alTop
     Caption = 'Cheque'
     TabOrder = 3
-    ExplicitTop = 341
     object Label20: TLabel
       Left = 64
       Top = 23
@@ -1245,7 +1242,7 @@ object FormContasRecParcelas: TFormContasRecParcelas
     object dbFPC_DATA_ANTECIPACAO: TDBText
       Left = 470
       Top = 6
-      Width = 81
+      Width = 107
       Height = 17
       DataField = 'FPC_DATA_ANTECIPACAO'
       DataSource = DataMovimento.DsrecParc
@@ -1264,17 +1261,13 @@ object FormContasRecParcelas: TFormContasRecParcelas
       Height = 14
       Caption = 'Data:'
     end
-    object cbFPC_ANTECIPACAO_CONCLUIDA: TDBCheckBox
-      Left = 64
+    object cbFPC_ANTECIPACAO_CONCLUIDA: TCheckBox
+      Left = 71
       Top = 6
-      Width = 137
+      Width = 147
       Height = 17
       Caption = 'Antecipa'#231#227'o Conclu'#237'da'
-      DataField = 'FPC_ANTECIPACAO_CONCLUIDA'
-      DataSource = DataMovimento.DsrecParc
       TabOrder = 0
-      ValueChecked = #39'S'#39
-      ValueUnchecked = #39'N'#39
       OnClick = cbFPC_ANTECIPACAO_CONCLUIDAClick
     end
   end

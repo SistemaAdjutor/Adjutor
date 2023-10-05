@@ -258,6 +258,7 @@ type
     CdsParcelasGridTotalRetencao: TAggregateField;
     qCli: TSQLQuery;
     cbClientes: TSgDbSearchCombo;
+    CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA: TStringField;
     procedure HabilitaBotoes;
     procedure DesabilitaBotoes;
     procedure AplicaParcelamento;
@@ -890,25 +891,27 @@ begin
             begin
               DbGridRecParc.Canvas.FillRect(Rect);
               if (CdsParcelasGridFPC_EXCLUSAO.AsString = 'S') then
-                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,6)
+                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,6)     // X Exclusão
               else
               if  (CdsParcelasGridFPC_STATUS.AsString = 'Devolução') then
-                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,2)
+                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,2) // CINZA Devolvido
               else
               if (CdsParcelasGridFPC_PREVISAO.AsString = 'S') then
-                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,3)
+                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,3) // PRETO Previsão
               else
               if ((CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridCCPendente.AsCurrency < CdsParcelasGridFPC_VLPARC.AsCurrency)) then
-                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,0)
+                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,0) // AMARELO Parcial
               else
-              if ((CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date)) then
-                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,4)
+              if ((CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date))
+                or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date)   )
+              then
+                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,4) // VERMELHO Vencida ou Descontada
               else
               if ((CdsParcelasGridCCPendente.AsCurrency = CdsParcelasGridFPC_VLPARC.AsCurrency) and (CdsParcelasGridFPC_VENCTO.AsDateTime >= Date)) then
-                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,5)
+                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,5) // VERDE Pendente
               else
               if (CdsParcelasGridCCPendente.AsCurrency = 0) then
-                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,1) ;
+                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,1) ; // AZUL Liquidado
 
 
             end;
@@ -1241,8 +1244,10 @@ begin
                '         AND nsp.EMP_CODIGO = p1.EMP_CODIGO                       '+
                '         AND NFSE_DTCANCELADO IS NULL                             '+
                '), ''Não'') as NFSE, FPC_VALR_SERVICOS,      '+
-               'P1.FPC_PREVISAO,P1.FPC_SITPAG,P1.FPC_EXCLUSAO,P2.BAN_APELIDO,P1.FPC_DESCTO,P1.FPC_JUROS,p1.FPC_MULTA, P1.PCXPF_REGISTRO, FPC_STATUS_REMESSA, p1.FPC_NPARCELAS, '+
-               'FPG_DESCRICAO, FPC_VL_RET From FAT_PC01 P1 ';
+               'P1.FPC_PREVISAO,P1.FPC_SITPAG,P1.FPC_EXCLUSAO,P2.BAN_APELIDO,P1.FPC_DESCTO,P1.FPC_JUROS,p1.FPC_MULTA, ' +
+               ' P1.PCXPF_REGISTRO, FPC_STATUS_REMESSA, p1.FPC_NPARCELAS, '+
+               'FPG_DESCRICAO, FPC_VL_RET, FPC_ANTECIPACAO_CONCLUIDA ' +
+               ' From FAT_PC01 P1 ';
       wSql2 := 'Left Join BAN0000 P2 ON (P2.BAN_CODIGO = P1.BAN_CODIGO) '+
       ' LEFT JOIN FORMA_PAGAMENTO FP ON (FP.FPG_REGISTRO = P1.FPG_REGISTRO ) ';
       CdsParcelasGrid.Close;

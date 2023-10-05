@@ -15,7 +15,7 @@ inherited FormContasReceber: TFormContasReceber
   Visible = True
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 1496
-  ExplicitHeight = 640
+  ExplicitHeight = 644
   PixelsPerInch = 96
   TextHeight = 14
   object v: TPanel [0]
@@ -1154,8 +1154,10 @@ inherited FormContasReceber: TFormContasReceber
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object CbxProjCx: TSgDbSearchCombo
       Left = 673
@@ -1180,8 +1182,10 @@ inherited FormContasReceber: TFormContasReceber
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object CbxParcela: TSgDbSearchCombo
       Left = 113
@@ -1207,8 +1211,10 @@ inherited FormContasReceber: TFormContasReceber
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object CbxCtaAnalise: TSgDbSearchCombo
       Left = 111
@@ -1234,8 +1240,10 @@ inherited FormContasReceber: TFormContasReceber
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object DBeNFe_codigo: TDBEdit
       Left = 965
@@ -1444,8 +1452,10 @@ inherited FormContasReceber: TFormContasReceber
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object DbDtFat_DtEmis: TJvDBDateEdit
       Left = 310
@@ -1541,8 +1551,10 @@ inherited FormContasReceber: TFormContasReceber
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
   end
   object PgParcelas: TPageControl [3]
@@ -2955,6 +2967,10 @@ inherited FormContasReceber: TFormContasReceber
       FieldName = 'FPC_VL_RET'
       Precision = 15
     end
+    object CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA: TStringField
+      FieldName = 'FPC_ANTECIPACAO_CONCLUIDA'
+      Size = 1
+    end
     object CdsParcelasGridTotalParcelas: TAggregateField
       DefaultExpression = '0'
       FieldName = 'TotalParcelas'
@@ -2993,7 +3009,7 @@ inherited FormContasReceber: TFormContasReceber
     Left = 311
     Top = 312
     Bitmap = {
-      494C010107000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010107000900080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       00000000000000000000000000000000000000000000D8D8F2007272D0007272
       D0007272D0007272D0007272D0007272D0007272D0007272D0007272D0007272

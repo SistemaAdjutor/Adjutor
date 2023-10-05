@@ -123,11 +123,11 @@ type
     DBDateEdit1: TJvDBDateEdit;
     DBDataDevolucao: TJvDBDateEdit;
     pnAntecipacao: TPanel;
-    cbFPC_ANTECIPACAO_CONCLUIDA: TDBCheckBox;
     dbFPC_USU_CODIGO_ANTECIPACAO: TDBText;
     dbFPC_DATA_ANTECIPACAO: TDBText;
     Label31: TLabel;
     Label32: TLabel;
+    cbFPC_ANTECIPACAO_CONCLUIDA: TCheckBox;
     procedure MudaCorCampos(Sender: tObject);
     procedure DesabilitaBotoes;
     procedure HabilitaBotoes;
@@ -534,6 +534,10 @@ begin
                 end;
          end;
          //
+
+         DataMovimento.CdsRecParceFPC_ANTECIPACAO_CONCLUIDA.AsString := iif(cbFPC_ANTECIPACAO_CONCLUIDA.Checked, 'S', 'N');
+
+         DataMovimento.CdsRecParce.Post;
          DataMovimento.CdsRecParce.ApplyUpdates(0);
 
          rValorParcelaDepois := DataMovimento.CdsRecParceFPC_VLPARC.AsCurrency;
@@ -684,6 +688,9 @@ begin
       MostraDados;
       rValorParcelaAntes := DataMovimento.CdsRecParceFPC_VLPARC.AsCurrency;
       pnAntecipacao.Visible := (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S') and (DbCBoxFpc_Status.Text = 'Liq.p/Descto');
+
+      cbFPC_ANTECIPACAO_CONCLUIDA.Checked := iif(DataMovimento.CdsRecParceFPC_ANTECIPACAO_CONCLUIDA.AsString = 'S', True, False);
+
          DBeFpc_vlparc.Enabled := (DataMovimento.CdsRecParceFPC_STATUS.AsString = 'Pendente');
       DbDtFpc_Vencto.SetFocus;
     except on E:EdatabaseError do
@@ -935,7 +942,13 @@ end;
 procedure TFormContasRecParcelas.cbFPC_ANTECIPACAO_CONCLUIDAClick(
   Sender: TObject);
 begin
-  if DataMovimento.CdsReceber.State in dsEditModes then
+  if not (DataMovimento.CdsRecParce.State in dsEditModes) then
+  begin
+    DataMovimento.CdsRecParce.Edit;
+    DataMovimento.CdsRecParceFPC_USU_CODIGO_ANTECIPACAO.AsString := DBInicio.Usuario.CODIGO;
+    DataMovimento.CdsRecParceFPC_DATA_ANTECIPACAO.AsDateTime := Now;
+  end;
+  if (DataMovimento.CdsRecParce.State in dsEditModes) then
   begin
     DataMovimento.CdsRecParceFPC_USU_CODIGO_ANTECIPACAO.AsString := DBInicio.Usuario.CODIGO;
     DataMovimento.CdsRecParceFPC_DATA_ANTECIPACAO.AsDateTime := Now;
