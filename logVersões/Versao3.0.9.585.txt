@@ -1,4 +1,4 @@
-﻿Atualizado em 04/10/2023
+﻿Atualizado em 06/10/2023
 Inicio da versão: 04/10/2023
 
 principal: Netocolor, Rotor, Arkson
@@ -7,3 +7,8 @@ principal: Netocolor, Rotor, Arkson
   1651 - Melhoria para o processo de lotes [Arkson]
   1655 - Correção das telas com grades [Novi]
   1656 - Correção demanda [Arkson]
+
+patch 1: Arkson
+  1653 - Melhoria para controle de faturas antecipadas [Arkson]
+  1671 - Instalador sem opção para selecionar a pasta [Novi]
+  
