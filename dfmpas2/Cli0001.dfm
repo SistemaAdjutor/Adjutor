@@ -67,7 +67,7 @@ inherited FormCliente: TFormCliente
     Top = 42
     Width = 1752
     Height = 538
-    ActivePage = tsVendas
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     OnChange = PageClienteChange
@@ -4988,97 +4988,21 @@ inherited FormCliente: TFormCliente
     Top = 0
   end
   inherited DBConn: TSQLConnection
-    Left = 544
-    Top = 9
+    Left = 576
+    Top = 1
   end
   inherited qAux: TSQLQuery
     Top = 65525
   end
-  object SqlCdsAtiv: TSqlClientDataSet
+  object SqlCdsAtiv: TSqlClientDataSet [9]
     Aggregates = <>
-    Connection.DriverName = 'Firebird'
-    Connection.Params.Strings = (
-      'DriverUnit=Data.DBXFirebird'
-      
-        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver250.' +
-        'bpl'
-      
-        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
-        'nd.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicK' +
-        'eyToken=91d62ebb5b0d1b1b'
-      
-        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
-        'birdDriver250.bpl'
-      
-        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
-        'actory,Borland.Data.DbxFirebirdDriver,Version=24.0.0.0,Culture=n' +
-        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
-      'GetDriverFunc=getSQLDriverINTERBASE'
-      'LibraryName=dbxfb.dll'
-      'LibraryNameOsx=libsqlfb.dylib'
-      'VendorLib=fbclient.dll'
-      'VendorLibWin64=fbclient.dll'
-      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
-      'Database=database.fdb'
-      'User_Name=sysdba'
-      'Password=masterkey'
-      'Role=RoleName'
-      'MaxBlobSize=-1'
-      'LocaleCode=0000'
-      'IsolationLevel=ReadCommitted'
-      'SQLDialect=3'
-      'CommitRetain=False'
-      'WaitOnLocks=True'
-      'TrimChar=False'
-      'BlobSize=-1'
-      'ErrorResourceFile='
-      'RoleName=RoleName'
-      'ServerCharSet='
-      'Trim Char=False')
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 'select RCL_CODIGO, RCL_ATIVIDADE, EMP_CODIGO from CLI_ATV1'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select RCL_CODIGO, RCL_ATIVIDADE, EMP_CODIGO from CLI_ATV1'
-    DBConnection.DriverName = 'Firebird'
-    DBConnection.Params.Strings = (
-      'DriverUnit=Data.DBXFirebird'
-      
-        'DriverPackageLoader=TDBXDynalinkDriverLoader,DbxCommonDriver250.' +
-        'bpl'
-      
-        'DriverAssemblyLoader=Borland.Data.TDBXDynalinkDriverLoader,Borla' +
-        'nd.Data.DbxCommonDriver,Version=24.0.0.0,Culture=neutral,PublicK' +
-        'eyToken=91d62ebb5b0d1b1b'
-      
-        'MetaDataPackageLoader=TDBXFirebirdMetaDataCommandFactory,DbxFire' +
-        'birdDriver250.bpl'
-      
-        'MetaDataAssemblyLoader=Borland.Data.TDBXFirebirdMetaDataCommandF' +
-        'actory,Borland.Data.DbxFirebirdDriver,Version=24.0.0.0,Culture=n' +
-        'eutral,PublicKeyToken=91d62ebb5b0d1b1b'
-      'GetDriverFunc=getSQLDriverINTERBASE'
-      'LibraryName=dbxfb.dll'
-      'LibraryNameOsx=libsqlfb.dylib'
-      'VendorLib=fbclient.dll'
-      'VendorLibWin64=fbclient.dll'
-      'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
-      'Database=database.fdb'
-      'User_Name=sysdba'
-      'Password=masterkey'
-      'Role=RoleName'
-      'MaxBlobSize=-1'
-      'LocaleCode=0000'
-      'IsolationLevel=ReadCommitted'
-      'SQLDialect=3'
-      'CommitRetain=False'
-      'WaitOnLocks=True'
-      'TrimChar=False'
-      'BlobSize=-1'
-      'ErrorResourceFile='
-      'RoleName=RoleName'
-      'ServerCharSet='
-      'Trim Char=False')
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -5099,7 +5023,7 @@ inherited FormCliente: TFormCliente
       Size = 3
     end
   end
-  object SqlCdsTransp: TSqlClientDataSet
+  object SqlCdsTransp: TSqlClientDataSet [10]
     Aggregates = <>
     DataSet.CommandText = 'select TRP_CODIGO, TRP_RAZAO, EMP_CODIGO from TRP0000'
     DataSet.MaxBlobSize = -1
@@ -5126,7 +5050,7 @@ inherited FormCliente: TFormCliente
       Size = 3
     end
   end
-  object SqlCdsRegiao: TSqlClientDataSet
+  object SqlCdsRegiao: TSqlClientDataSet [11]
     Aggregates = <>
     DataSet.CommandText = 'select REG_CODIGO, REG_DESCRI, EMP_CODIGO from REG0000'
     DataSet.MaxBlobSize = -1
@@ -5153,7 +5077,7 @@ inherited FormCliente: TFormCliente
       Size = 3
     end
   end
-  object SqlCdsDupFat: TSqlClientDataSet
+  object SqlCdsDupFat: TSqlClientDataSet [12]
     Aggregates = <>
     DataSet.CommandText = 
       'select f1.FAT_REGISTRO, '#13#10'f1.fat_codigo,'#13#10'f1.fpc_numer,'#13#10'f1.fpc_' +
@@ -5219,13 +5143,13 @@ inherited FormCliente: TFormCliente
       Size = 4
     end
   end
-  object DsDupFat: TDataSource
+  object DsDupFat: TDataSource [13]
     DataSet = SqlCdsDupFat
     OnDataChange = DsDupFatDataChange
     Left = 672
     Top = 276
   end
-  object SqlCdsNFS: TSqlClientDataSet
+  object SqlCdsNFS: TSqlClientDataSet [14]
     Aggregates = <>
     DataSet.CommandText = 
       'SELECT'#13#10'F1.FAT_CODIGO,'#13#10'F1.FAT_DTEMIS,'#13#10'F1.PED_CODIGO,'#13#10'F1.CLI_C' +
@@ -5280,12 +5204,12 @@ inherited FormCliente: TFormCliente
       Precision = 15
     end
   end
-  object DsNFS: TDataSource
+  object DsNFS: TDataSource [15]
     DataSet = SqlCdsNFS
     Left = 760
     Top = 140
   end
-  object SqlCdsProdNF: TSqlClientDataSet
+  object SqlCdsProdNF: TSqlClientDataSet [16]
     Aggregates = <>
     DataSet.CommandText = 
       'SELECT'#13#10'N1.NF_IT_NOTANUMER,'#13#10'N1.PRD_REFER,'#13#10'P1.PRD_DESCRI,'#13#10'N1.N' +
@@ -5336,12 +5260,12 @@ inherited FormCliente: TFormCliente
       Calculated = True
     end
   end
-  object DsProdNF: TDataSource
+  object DsProdNF: TDataSource [17]
     DataSet = SqlCdsProdNF
     Left = 1184
     Top = 404
   end
-  object SqlCdsBanco: TSqlClientDataSet
+  object SqlCdsBanco: TSqlClientDataSet [18]
     Aggregates = <>
     DataSet.CommandText = 'Select BAN_CODIGO, BAN_APELIDO  from BAN0000'
     DataSet.MaxBlobSize = -1
@@ -5363,7 +5287,7 @@ inherited FormCliente: TFormCliente
       Size = 25
     end
   end
-  object SqlCdsPrazo: TSqlClientDataSet
+  object SqlCdsPrazo: TSqlClientDataSet [19]
     Aggregates = <>
     DataSet.CommandText = 'Select PCL_CODIGO, PCL_NOME  FROM PCL0000'
     DataSet.MaxBlobSize = -1
@@ -5385,12 +5309,12 @@ inherited FormCliente: TFormCliente
       Size = 35
     end
   end
-  object DSPais: TDataSource
+  object DSPais: TDataSource [20]
     DataSet = SqlCdsPais
     Left = 1238
     Top = 216
   end
-  object SqlCdsPais: TSqlClientDataSet
+  object SqlCdsPais: TSqlClientDataSet [21]
     Aggregates = <>
     DataSet.CommandText = 'Select * from pais0000 order by PAI_PAIS'
     DataSet.MaxBlobSize = -1
@@ -5412,7 +5336,7 @@ inherited FormCliente: TFormCliente
       Size = 255
     end
   end
-  object CdsCFOP: TSqlClientDataSet
+  object CdsCFOP: TSqlClientDataSet [22]
     Aggregates = <>
     DataSet.CommandText = 'Select OPE_CODIGO, OPE_NATUREZA||'#39'-'#39'||OPE_DESCRI  FROM OPE0000'
     DataSet.MaxBlobSize = -1
@@ -5434,17 +5358,17 @@ inherited FormCliente: TFormCliente
       Size = 55
     end
   end
-  object DsCfop: TDataSource
+  object DsCfop: TDataSource [23]
     DataSet = CdsCFOP
     Left = 1262
     Top = 505
   end
-  object dsVendas: TDataSource
+  object dsVendas: TDataSource [24]
     DataSet = CdsVendas
     Left = 1566
     Top = 328
   end
-  object CdsVendas: TSqlClientDataSet
+  object CdsVendas: TSqlClientDataSet [25]
     Aggregates = <>
     DataSet.CommandText = 
       'select'#13#10'  t1.prd_refer,'#13#10'  t1.prd_descri,'#13#10'  t1.ped_codigo,'#13#10'  T' +
@@ -5537,7 +5461,7 @@ inherited FormCliente: TFormCliente
       Size = 3
     end
   end
-  object SqlCdsCentroCusto: TSqlClientDataSet
+  object SqlCdsCentroCusto: TSqlClientDataSet [26]
     Aggregates = <>
     DataSet.CommandText = 'Select t1.*  from PCX0000 t1 order by t1.PCX_NIVEL'
     DataSet.MaxBlobSize = -1
@@ -5577,12 +5501,12 @@ inherited FormCliente: TFormCliente
       Size = 3
     end
   end
-  object DsClienteContato: TDataSource
+  object DsClienteContato: TDataSource [27]
     DataSet = CdsClienteContato
     Left = 1176
     Top = 162
   end
-  object CdsClienteContato: TClientDataSet
+  object CdsClienteContato: TClientDataSet [28]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
@@ -5632,14 +5556,14 @@ inherited FormCliente: TFormCliente
       Size = 1
     end
   end
-  object DspClienteContato: TDataSetProvider
+  object DspClienteContato: TDataSetProvider [29]
     DataSet = SqlCLienteContato
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1056
     Top = 162
   end
-  object SqlCLienteContato: TSQLDataSet
+  object SqlCLienteContato: TSQLDataSet [30]
     GetMetadata = False
     CommandText = 'select * from CLI_CONTATO'
     MaxBlobSize = -1
@@ -5684,7 +5608,7 @@ inherited FormCliente: TFormCliente
       Size = 1
     end
   end
-  object frxVendas: TfrxReport
+  object frxVendas: TfrxReport [31]
     Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -6177,7 +6101,7 @@ inherited FormCliente: TFormCliente
       end
     end
   end
-  object frxdbCliente: TfrxDBDataset
+  object frxdbCliente: TfrxDBDataset [32]
     UserName = 'frxDBDataset1'
     CloseDataSource = False
     FieldAliases.Strings = (
@@ -6254,7 +6178,7 @@ inherited FormCliente: TFormCliente
     Left = 1062
     Top = 297
   end
-  object frxdbVendas: TfrxDBDataset
+  object frxdbVendas: TfrxDBDataset [33]
     UserName = 'frxDBVendas'
     CloseDataSource = False
     FieldAliases.Strings = (
@@ -6275,7 +6199,7 @@ inherited FormCliente: TFormCliente
     Left = 1182
     Top = 353
   end
-  object SqlCdsGraficoVendas: TSqlClientDataSet
+  object SqlCdsGraficoVendas: TSqlClientDataSet [34]
     Aggregates = <>
     DataSet.CommandText = 
       'select'#13#10'  first 12'#13#10'  (extract (year from t1.nf_emissao)) as ano' +
@@ -6317,7 +6241,7 @@ inherited FormCliente: TFormCliente
       Size = 5
     end
   end
-  object SqlAvisos: TSQLDataSet
+  object SqlAvisos: TSQLDataSet [35]
     GetMetadata = False
     CommandText = 'select * from CLI_MENSAGENS'
     MaxBlobSize = -1
@@ -6349,14 +6273,14 @@ inherited FormCliente: TFormCliente
       FieldName = 'CLIM_MENSAGEM'
     end
   end
-  object DspAvisos: TDataSetProvider
+  object DspAvisos: TDataSetProvider [36]
     DataSet = SqlAvisos
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1387
     Top = 83
   end
-  object CdsAvisos: TClientDataSet
+  object CdsAvisos: TClientDataSet [37]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
@@ -6391,12 +6315,12 @@ inherited FormCliente: TFormCliente
       OnGetText = CdsAvisosCLIM_MENSAGEMGetText
     end
   end
-  object dsAvisos: TDataSource
+  object dsAvisos: TDataSource [38]
     DataSet = CdsAvisos
     Left = 1555
     Top = 115
   end
-  object SqlCdsCNAE: TSqlClientDataSet
+  object SqlCdsCNAE: TSqlClientDataSet [39]
     Aggregates = <>
     DataSet.CommandText = 
       'Select CNAE_REGISTRO, CNAE_CODIGO||'#39'-'#39'||CNAE_DESCRICAO||'#39'-'#39'||cas' +
@@ -6422,12 +6346,12 @@ inherited FormCliente: TFormCliente
       Size = 511
     end
   end
-  object dsCNAE: TDataSource
+  object dsCNAE: TDataSource [40]
     DataSet = SqlCdsCNAE
     Left = 1102
     Top = 353
   end
-  object ACBrCEP1: TACBrCEP
+  object ACBrCEP1: TACBrCEP [41]
     ProxyPort = '8080'
     ParseText = True
     TimeOut = 10000
@@ -6437,7 +6361,7 @@ inherited FormCliente: TFormCliente
     Left = 123
     Top = 293
   end
-  object ACBrCEPEntrega: TACBrCEP
+  object ACBrCEPEntrega: TACBrCEP [42]
     ProxyPort = '8080'
     ParseText = True
     TimeOut = 10000
@@ -6447,7 +6371,7 @@ inherited FormCliente: TFormCliente
     Left = 195
     Top = 277
   end
-  object ACBrCEPCobranca: TACBrCEP
+  object ACBrCEPCobranca: TACBrCEP [43]
     ProxyPort = '8080'
     ParseText = True
     TimeOut = 10000
@@ -6457,7 +6381,7 @@ inherited FormCliente: TFormCliente
     Left = 1467
     Top = 317
   end
-  object SqlArquivo: TSQLDataSet
+  object SqlArquivo: TSQLDataSet [44]
     CommandText = 'SELECT * FROM ARQUIVO ORDER BY ARQ_DESCRICAO'
     MaxBlobSize = 1
     Params = <>
@@ -6496,14 +6420,14 @@ inherited FormCliente: TFormCliente
       Size = 200
     end
   end
-  object DspArquivo: TDataSetProvider
+  object DspArquivo: TDataSetProvider [45]
     DataSet = SqlArquivo
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 963
     Top = 301
   end
-  object CdsArquivo: TClientDataSet
+  object CdsArquivo: TClientDataSet [46]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
@@ -6542,12 +6466,12 @@ inherited FormCliente: TFormCliente
       Size = 200
     end
   end
-  object dsArquivo: TDataSource
+  object dsArquivo: TDataSource [47]
     DataSet = CdsArquivo
     Left = 780
     Top = 293
   end
-  object pmArquivo: TPopupMenu
+  object pmArquivo: TPopupMenu [48]
     Left = 1276
     Top = 8
     object AbrirArquivo1: TMenuItem
@@ -6562,7 +6486,7 @@ inherited FormCliente: TFormCliente
       OnClick = ExcluirArquivo1Click
     end
   end
-  object qTabelas: TSQLQuery
+  object qTabelas: TSQLQuery [49]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -6573,7 +6497,7 @@ inherited FormCliente: TFormCliente
     Left = 1288
     Top = 272
   end
-  object qItensTabela: TSQLQuery
+  object qItensTabela: TSQLQuery [50]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -6638,12 +6562,12 @@ inherited FormCliente: TFormCliente
       Size = 60
     end
   end
-  object DspItensTabela: TDataSetProvider
+  object DspItensTabela: TDataSetProvider [51]
     DataSet = qItensTabela
     Left = 1488
     Top = 447
   end
-  object cdsItensTabela: TClientDataSet
+  object cdsItensTabela: TClientDataSet [52]
     Aggregates = <>
     FieldDefs = <>
     IndexDefs = <>
@@ -6710,12 +6634,12 @@ inherited FormCliente: TFormCliente
       Size = 60
     end
   end
-  object dsItensTabela: TDataSource
+  object dsItensTabela: TDataSource [53]
     DataSet = cdsItensTabela
     Left = 1565
     Top = 447
   end
-  object sqlClienteEnder: TSQLQuery
+  object sqlClienteEnder: TSQLQuery [54]
     MaxBlobSize = -1
     Params = <
       item
@@ -6836,14 +6760,14 @@ inherited FormCliente: TFormCliente
       Size = 70
     end
   end
-  object dspClienteEnder: TDataSetProvider
+  object dspClienteEnder: TDataSetProvider [55]
     DataSet = sqlClienteEnder
     Options = [poAllowCommandText, poUseQuoteChar]
     UpdateMode = upWhereKeyOnly
     Left = 1077
     Top = 485
   end
-  object cdsClienteEnder: TClientDataSet
+  object cdsClienteEnder: TClientDataSet [56]
     Aggregates = <>
     PacketRecords = 5
     Params = <
@@ -6948,13 +6872,13 @@ inherited FormCliente: TFormCliente
       Size = 70
     end
   end
-  object dsClienteEnder: TDataSource
+  object dsClienteEnder: TDataSource [57]
     AutoEdit = False
     DataSet = cdsClienteEnder
     Left = 1293
     Top = 445
   end
-  object cdsEnderPadrao: TClientDataSet
+  object cdsEnderPadrao: TClientDataSet [58]
     Aggregates = <>
     PacketRecords = 5
     Params = <
@@ -6983,7 +6907,7 @@ inherited FormCliente: TFormCliente
       FieldName = 'TOTAL'
     end
   end
-  object sqlEnderPadrao: TSQLQuery
+  object sqlEnderPadrao: TSQLQuery [59]
     MaxBlobSize = -1
     Params = <
       item
@@ -7006,34 +6930,34 @@ inherited FormCliente: TFormCliente
     Left = 1437
     Top = 509
   end
-  object dspEnderPadrao: TDataSetProvider
+  object dspEnderPadrao: TDataSetProvider [60]
     DataSet = sqlEnderPadrao
     Options = [poAllowCommandText, poUseQuoteChar]
     UpdateMode = upWhereKeyOnly
     Left = 1381
     Top = 389
   end
-  object DataSetProvider1: TDataSetProvider
+  object DataSetProvider1: TDataSetProvider [61]
     DataSet = sqlEnderPadrao
     Options = [poAllowCommandText, poUseQuoteChar]
     UpdateMode = upWhereKeyOnly
     Left = 1349
     Top = 333
   end
-  object DataSetProvider2: TDataSetProvider
+  object DataSetProvider2: TDataSetProvider [62]
     DataSet = sqlEnderPadrao
     Options = [poAllowCommandText, poUseQuoteChar]
     UpdateMode = upWhereKeyOnly
     Left = 1485
     Top = 381
   end
-  object ACBrSuframa1: TACBrSuframa
+  object ACBrSuframa1: TACBrSuframa [63]
     ProxyPort = '8080'
     ParseText = True
     Left = 344
     Top = 96
   end
-  object qRep: TSQLQuery
+  object qRep: TSQLQuery [64]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -7047,7 +6971,7 @@ inherited FormCliente: TFormCliente
     Left = 1644
     Top = 196
   end
-  object JvPopupMenu1: TJvPopupMenu
+  object JvPopupMenu1: TJvPopupMenu [65]
     ImageMargin.Left = 0
     ImageMargin.Top = 0
     ImageMargin.Right = 0
@@ -7069,7 +6993,7 @@ inherited FormCliente: TFormCliente
       OnClick = ExportarparaC91Click
     end
   end
-  object qFPagto: TSQLQuery
+  object qFPagto: TSQLQuery [66]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -7083,7 +7007,7 @@ inherited FormCliente: TFormCliente
     Left = 1644
     Top = 316
   end
-  object qArquivoBlob: TSQLDataSet
+  object qArquivoBlob: TSQLDataSet [67]
     CommandText = 'SELECT * FROM ARQUIVO ORDER BY ARQ_DESCRICAO'
     MaxBlobSize = 1
     Params = <>
@@ -7122,7 +7046,7 @@ inherited FormCliente: TFormCliente
       Size = 200
     end
   end
-  object qOrigem: TSQLQuery
+  object qOrigem: TSQLQuery [68]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -7131,12 +7055,11 @@ inherited FormCliente: TFormCliente
     Left = 490
     Top = 65533
   end
-  object qOperFisc: TSQLQuery
+  object qOperFisc: TSQLQuery [69]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
       'select * from ope0000 where ope_codigo='#39'-99'#39)
-    SQLConnection = DBConn
     Left = 537
     Top = 261
     object qOperFiscEMP_CODIGO: TStringField
@@ -7333,12 +7256,12 @@ inherited FormCliente: TFormCliente
       Size = 2
     end
   end
-  object DsRecebimentos: TDataSource
+  object DsRecebimentos: TDataSource [70]
     DataSet = CDSRecebimentos
     Left = 352
     Top = 413
   end
-  object CDSRecebimentos: TClientDataSet
+  object CDSRecebimentos: TClientDataSet [71]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
@@ -7405,12 +7328,12 @@ inherited FormCliente: TFormCliente
       Required = True
     end
   end
-  object dspRecebimentos: TDataSetProvider
+  object dspRecebimentos: TDataSetProvider [72]
     DataSet = qRecebimentos
     Left = 164
     Top = 410
   end
-  object qRecebimentos: TSQLQuery
+  object qRecebimentos: TSQLQuery [73]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -7497,12 +7420,12 @@ inherited FormCliente: TFormCliente
       Required = True
     end
   end
-  object dsExportaExcel: TDataSource
+  object dsExportaExcel: TDataSource [74]
     DataSet = cdsClientes
     Left = 456
     Top = 524
   end
-  object qClientes: TSQLQuery
+  object qClientes: TSQLQuery [75]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -7718,12 +7641,12 @@ inherited FormCliente: TFormCliente
       Size = 1
     end
   end
-  object dspClientes: TDataSetProvider
+  object dspClientes: TDataSetProvider [76]
     DataSet = qClientes
     Left = 456
     Top = 428
   end
-  object cdsClientes: TClientDataSet
+  object cdsClientes: TClientDataSet [77]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspClientes'
@@ -7853,14 +7776,13 @@ inherited FormCliente: TFormCliente
       Size = 1
     end
   end
-  object qContafinanceira: TSQLQuery
+  object qContafinanceira: TSQLQuery [78]
     MaxBlobSize = -1
     Params = <>
-    SQLConnection = DBConn
     Left = 944
     Top = 436
   end
-  object SimpleDataSet1: TSimpleDataSet
+  object SimpleDataSet1: TSimpleDataSet [79]
     Aggregates = <>
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>

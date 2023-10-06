@@ -2366,6 +2366,10 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
       FieldName = 'CLI_PESSOA'
       Size = 1
     end
+    object CdsReceberFPC_ANTECIPACAO_CONCLUIDA: TStringField
+      FieldName = 'FPC_ANTECIPACAO_CONCLUIDA'
+      Size = 1
+    end
   end
   object DsReceber: TDataSource
     DataSet = CdsReceber

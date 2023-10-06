@@ -122,6 +122,12 @@ type
     DbDtFpc_pagto: TJvDBDateEdit;
     DBDateEdit1: TJvDBDateEdit;
     DBDataDevolucao: TJvDBDateEdit;
+    pnAntecipacao: TPanel;
+    dbFPC_USU_CODIGO_ANTECIPACAO: TDBText;
+    dbFPC_DATA_ANTECIPACAO: TDBText;
+    Label31: TLabel;
+    Label32: TLabel;
+    cbFPC_ANTECIPACAO_CONCLUIDA: TCheckBox;
     procedure MudaCorCampos(Sender: tObject);
     procedure DesabilitaBotoes;
     procedure HabilitaBotoes;
@@ -154,6 +160,7 @@ type
     procedure DbeChequeExit(Sender: tObject);
     procedure DBEdt_Bco_ChequeExit(Sender: tObject);
     procedure CbBcoChequeClick(Sender: tObject);
+    procedure cbFPC_ANTECIPACAO_CONCLUIDAClick(Sender: TObject);
   private
     { Private declarations }
      {campos}
@@ -527,6 +534,10 @@ begin
                 end;
          end;
          //
+
+         DataMovimento.CdsRecParceFPC_ANTECIPACAO_CONCLUIDA.AsString := iif(cbFPC_ANTECIPACAO_CONCLUIDA.Checked, 'S', 'N');
+
+         DataMovimento.CdsRecParce.Post;
          DataMovimento.CdsRecParce.ApplyUpdates(0);
 
          rValorParcelaDepois := DataMovimento.CdsRecParceFPC_VLPARC.AsCurrency;
@@ -676,6 +687,9 @@ begin
          end;
       MostraDados;
       rValorParcelaAntes := DataMovimento.CdsRecParceFPC_VLPARC.AsCurrency;
+      pnAntecipacao.Visible := (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S') and (DbCBoxFpc_Status.Text = 'Liq.p/Descto');
+
+      cbFPC_ANTECIPACAO_CONCLUIDA.Checked := iif(DataMovimento.CdsRecParceFPC_ANTECIPACAO_CONCLUIDA.AsString = 'S', True, False);
 
          DBeFpc_vlparc.Enabled := (DataMovimento.CdsRecParceFPC_STATUS.AsString = 'Pendente');
       DbDtFpc_Vencto.SetFocus;
@@ -925,6 +939,22 @@ begin
        DataMovimento.CdsRecParce.Edit;
 end;
 
+procedure TFormContasRecParcelas.cbFPC_ANTECIPACAO_CONCLUIDAClick(
+  Sender: TObject);
+begin
+  if not (DataMovimento.CdsRecParce.State in dsEditModes) then
+  begin
+    DataMovimento.CdsRecParce.Edit;
+    DataMovimento.CdsRecParceFPC_USU_CODIGO_ANTECIPACAO.AsString := DBInicio.Usuario.CODIGO;
+    DataMovimento.CdsRecParceFPC_DATA_ANTECIPACAO.AsDateTime := Now;
+  end;
+  if (DataMovimento.CdsRecParce.State in dsEditModes) then
+  begin
+    DataMovimento.CdsRecParceFPC_USU_CODIGO_ANTECIPACAO.AsString := DBInicio.Usuario.CODIGO;
+    DataMovimento.CdsRecParceFPC_DATA_ANTECIPACAO.AsDateTime := Now;
+  end;
+end;
+
 procedure TFormContasRecParcelas.CbxCarteiraExit(Sender: tObject);
 begin
     if (ActiveControl.Name = 'Bit_Cancelar') then
@@ -1008,13 +1038,14 @@ begin
                 CbxBco.Enabled        := True;
             end;
       end;
+    pnAntecipacao.Visible := (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S') and (DbCBoxFpc_Status.Text = 'Liq.p/Descto');
 end;
 
 procedure TFormContasRecParcelas.DbCBoxFpc_StatusExit(Sender: tObject);
 begin
    if (ActiveControl <> Nil) and
       (ActiveControl.Name <> 'Bit_Cancelar') then
-      if (DbCBoxFpc_Status.ItemIndex = 5) then
+      if (DbCBoxFpc_Status.ItemIndex = 5) then // Liq.p/Descto
          begin
             uteis.aviso(pchar('Status não pode ser selecionado manualmente.'+#13#10+
                         'Para utiliza-lo, execute procedimento de remessa.'+#13#10));

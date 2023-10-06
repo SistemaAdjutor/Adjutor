@@ -1598,6 +1598,24 @@ inherited FormParametros: TFormParametros
                 SelectWithDoubleClick = False
                 LimparCampoAoSair = True
               end
+              object DBCheckBox96: TDBCheckBox
+                Left = 408
+                Top = 217
+                Width = 339
+                Height = 17
+                Caption = 'Utiliza Gerenciamento Avan'#231'ado de Antecipa'#231#227'o/Desconto'
+                DataField = 'PMT_GER_AVANC_ANTECIP_DESC'
+                DataSource = DataCadastros1.DsParametros
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = [fsBold]
+                ParentFont = False
+                TabOrder = 18
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
             end
             object tsTabelaPreco: TTabSheet
               Caption = 'Tabelas de Pre'#231'os'

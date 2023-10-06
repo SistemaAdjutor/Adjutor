@@ -339,6 +339,7 @@ type
     cdsExportaExcelEMP_CODIGO: TStringField;
     CdsConsultaClieCLI_PESSOA: TStringField;
     CdsReceberCLI_PESSOA: TStringField;
+    CdsReceberFPC_ANTECIPACAO_CONCLUIDA: TStringField;
     procedure FormShow(Sender: tObject);
     procedure BaixarnaConsulta;
     procedure Bit_SairClick(Sender: tObject);
@@ -816,7 +817,7 @@ begin
          qReceber.Sql.add( '       F1.FPC_PAGTO,');
          qReceber.Sql.add( '       F1.FPC_NUMER,');
          qReceber.Sql.add( '       F1.FPC_SITPAG,');
-         qReceber.Sql.add( '       F1.FPC_STATUS,');
+         qReceber.Sql.add( '       F1.FPC_STATUS, F1.FPC_ANTECIPACAO_CONCLUIDA, ');
          qReceber.Sql.add( '       F1.FPC_PREVISAO,');
          qReceber.Sql.add( '       CASE WHEN (F1.FPC_EXCLUSAO = ''S'') THEN ''REGISTRO EXCLUÍDO: ''||F1.FPC_MOTIVO_EXCLUSAO ELSE t1.FAT_OBS END AS OBSERVACAO,');
          qReceber.Sql.add( '       F1.FPC_DESCTO,');
@@ -1159,31 +1160,32 @@ begin
     if not VarIsNull(AViewInfo.GridRecord.Values[cxgrdReceberFPC_VENCTO.Index]) then
       vencimento := VarToDateTime(AViewInfo.GridRecord.Values[cxgrdReceberFPC_VENCTO.Index]);
     if  AViewInfo.GridRecord.Values[cxgrdReceberFPC_STATUS.Index] = 'Agrupada' then
-      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,7)
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,7) // Agrupada
     else
     if  AViewInfo.GridRecord.Values[cxgrdReceberFPC_EXCLUSAO.Index] = 'S' then
-      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,6)
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,6) // Excluída
     else
     if  (AViewInfo.GridRecord.Values[cxgrdReceberFPC_STATUS.Index] = 'Devolução') then
-      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,2)
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,2) // CINZA Devolvido
     else
     if  (AViewInfo.GridRecord.Values[cxgrdReceberFPC_PREVISAO.Index]  = 'S') then
-      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,3)
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,3) // PRETO Previsão
     else
     if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index]   > 0) and
      (AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index]  < AViewInfo.GridRecord.Values[cxgrdReceberFPC_VLPARC.Index]  )) then
-      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,0)
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,0) // AMARELO Parcial
     else
-    if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0)
-    and ( vencimento   < Date) AND (vencimento>0)) then
-      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,4)
+    if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0)  and ( vencimento   < Date) AND (vencimento>0))
+      or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsReceberFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (vencimento < Date)   )
+    then
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,4) // VERMELHO Vencida ou Descontada
     else
     if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] =  AViewInfo.GridRecord.Values[cxgrdReceberFPC_VLPARC.Index] )
       and (  vencimento   >= Date) AND (vencimento>0)) then
-      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,5)
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,5) // VERDE Pendente
     else
     if ( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] = 0) then
-      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,1);
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,1); // AZUL Liquidado
    end;
 
 

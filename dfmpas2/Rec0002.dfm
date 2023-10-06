@@ -4,7 +4,7 @@ object FormContasRecParcelas: TFormContasRecParcelas
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Parcelas  [Contas '#224' Receber]'
-  ClientHeight = 510
+  ClientHeight = 556
   ClientWidth = 826
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -13,14 +13,14 @@ object FormContasRecParcelas: TFormContasRecParcelas
   Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = True
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
   object GrpExclusao: TGroupBox
     Left = 0
-    Top = 438
+    Top = 473
     Width = 826
     Height = 34
     Align = alTop
@@ -502,8 +502,10 @@ object FormContasRecParcelas: TFormContasRecParcelas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object DbDtFPC_VENCTO: TJvDBDateEdit
       Left = 153
@@ -836,7 +838,7 @@ object FormContasRecParcelas: TFormContasRecParcelas
   end
   object Panel2: TPanel
     Left = 0
-    Top = 472
+    Top = 507
     Width = 826
     Height = 37
     Align = alTop
@@ -866,7 +868,7 @@ object FormContasRecParcelas: TFormContasRecParcelas
       OnClick = Bit_ExcluirClick
     end
     object Bit_Gravar: TBitBtn
-      Left = 521
+      Left = 527
       Top = 6
       Width = 100
       Height = 25
@@ -956,7 +958,7 @@ object FormContasRecParcelas: TFormContasRecParcelas
   end
   object Cheque: TGroupBox
     Left = 0
-    Top = 341
+    Top = 376
     Width = 826
     Height = 97
     Align = alTop
@@ -1220,6 +1222,53 @@ object FormContasRecParcelas: TFormContasRecParcelas
       YearDigits = dyFour
       TabOrder = 3
       OnExit = DBDataDevolucaoExit
+    end
+  end
+  object pnAntecipacao: TPanel
+    Left = 0
+    Top = 341
+    Width = 826
+    Height = 35
+    Align = alTop
+    TabOrder = 6
+    object dbFPC_USU_CODIGO_ANTECIPACAO: TDBText
+      Left = 307
+      Top = 6
+      Width = 106
+      Height = 17
+      DataField = 'FPC_USU_CODIGO_ANTECIPACAO'
+      DataSource = DataMovimento.DsrecParc
+    end
+    object dbFPC_DATA_ANTECIPACAO: TDBText
+      Left = 470
+      Top = 6
+      Width = 107
+      Height = 17
+      DataField = 'FPC_DATA_ANTECIPACAO'
+      DataSource = DataMovimento.DsrecParc
+    end
+    object Label31: TLabel
+      Left = 224
+      Top = 6
+      Width = 77
+      Height = 14
+      Caption = 'Confirmado Por:'
+    end
+    object Label32: TLabel
+      Left = 439
+      Top = 6
+      Width = 25
+      Height = 14
+      Caption = 'Data:'
+    end
+    object cbFPC_ANTECIPACAO_CONCLUIDA: TCheckBox
+      Left = 71
+      Top = 6
+      Width = 147
+      Height = 17
+      Caption = 'Antecipa'#231#227'o Conclu'#237'da'
+      TabOrder = 0
+      OnClick = cbFPC_ANTECIPACAO_CONCLUIDAClick
     end
   end
   object SqlCdsBco: TSqlClientDataSet

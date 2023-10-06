@@ -1648,6 +1648,12 @@ type
     CdsPedItemACO_CODIGO: TIntegerField;
     SqlPedItemPRF_VALOR_ST: TFMTBCDField;
     CdsPedItemPRF_VALOR_ST: TFMTBCDField;
+    SqlRecParceFPC_ANTECIPACAO_CONCLUIDA: TStringField;
+    SqlRecParceFPC_USU_CODIGO_ANTECIPACAO: TIntegerField;
+    CdsRecParceFPC_ANTECIPACAO_CONCLUIDA: TStringField;
+    CdsRecParceFPC_USU_CODIGO_ANTECIPACAO: TIntegerField;
+    SqlRecParceFPC_DATA_ANTECIPACAO: TSQLTimeStampField;
+    CdsRecParceFPC_DATA_ANTECIPACAO: TSQLTimeStampField;
     procedure CdsRecParceAfterEdit(DataSet: TDataSet);
     procedure CdsPagarParcCalcFields(DataSet: TDataSet);
     procedure CdsPedItemCalcFields(DataSet: TDataSet);
@@ -1686,6 +1692,8 @@ type
     procedure CdsEnfBeforePost(DataSet: TDataSet);
     procedure CdsRecParceAfterInsert(DataSet: TDataSet);
     procedure CdsOrdCompraAfterEdit(DataSet: TDataSet);
+    procedure CdsRecParceFPC_USU_CODIGO_ANTECIPACAOGetText(Sender: TField;
+      var Text: string; DisplayText: Boolean);
   private
     wTransacao: TTransactionDesc;
     Procedure buscaItemNota;
@@ -1967,6 +1975,15 @@ begin
        CdsRecParceN_PARC_CC.AsString := CdsRecParceFPC_NUMER.AsString+'/'+StrZero(CdsRecParceFPC_NPARCELAS.AsString,2);
 end;
 
+
+procedure TDataMovimento.CdsRecParceFPC_USU_CODIGO_ANTECIPACAOGetText(
+  Sender: TField; var Text: string; DisplayText: Boolean);
+begin
+  if Sender.asString = '' then
+    exit;
+  DisplayText := True;
+  Text := BuscaUmDadoSqlAsStringE('SELECT USU_NOME  FROM USUARIO WHERE USU_CODIGO = ' + Sender.AsString);
+end;
 
 procedure TDataMovimento.CdsPedItemAfterPost(DataSet: TDataSet);
 begin

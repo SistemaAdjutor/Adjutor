@@ -1690,6 +1690,8 @@ type
     CdsParametrosPMT_COMIS_SOBRE_DIF_VENDA_CUSTO: TStringField;
     SqlParametrosPMT_BAIXA_ESTOQUE_AVANCADO: TStringField;
     CdsParametrosPMT_BAIXA_ESTOQUE_AVANCADO: TStringField;
+    SqlParametrosPMT_GER_AVANC_ANTECIP_DESC: TStringField;
+    CdsParametrosPMT_GER_AVANC_ANTECIP_DESC: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
