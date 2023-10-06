@@ -191,7 +191,6 @@ type
     procedure FormCloseQuery(Sender: tObject; var CanClose: Boolean);
     procedure Rad_RemessaClick(Sender: tObject);
     procedure CbxCarteiraChange(Sender: tObject);
-    procedure FormActivate(Sender: tObject);
     procedure Bit_AtualizarClick(Sender: tObject);
     procedure DBGrid1TitleClick(Column: TColumn);
     procedure Bit_RelatorioClick(Sender: tObject);
@@ -322,6 +321,7 @@ begin
       LayOutGerar;
       CarregarCombos;
       MostrarDados;
+      Atualizar_Limite;
     except on E:EDataBaseError do
        uteis.erro  (pchar('Erro ao carregar os dados ! '+e.message));
     end;
@@ -2093,11 +2093,6 @@ begin
        wTipo := 'C'  //Cheque
     else
        wTipo := 'D'; // duplçicata
-end;
-
-procedure TFrmRemessaDescontar.FormActivate(Sender: tObject);
-begin
-    Atualizar_Limite;
 end;
 
 procedure TFrmRemessaDescontar.Atualizar_Limite;
