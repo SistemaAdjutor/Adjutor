@@ -2062,7 +2062,11 @@ begin
                    '                    ELSE t2.PRD_PESOLIQ  * t1.PRF_QTDE ' +
                    '               END ' +
                    '     END) AS PRF_PESOKG, ' +
-                   '     PRF_MARGEM_PRODUTO, PRF_ICMSALIQ, PRF_VALOR_ICMS, COALESCE(prf_qtdePend,0) AS prf_qtdePend , ' +
+                   '     PRF_MARGEM_PRODUTO, PRF_ICMSALIQ, PRF_VALOR_ICMS, ' +
+
+                   // '     COALESCE(prf_qtdePend,0) AS prf_qtdePend , ' +
+                    '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = t1.ped_codigo),0) as prf_qtdePend,  '+
+
                    '     PRF_PRODUTO_SEMVALOR, ' +
                    ' (SELECT CAST(COUNT(1) AS INTEGER) FROM PED_IT01 it2 WHERE T1.PRF_REGISTRO = IT2.PRF_REGISTRO_VINCULADO)  KIT_VIRTUAL, '+
                    ' PED_TIPOPECA_TERM, PED_MATERIAL_TERM , PED_DUREZASUPERFICIAL_TERM, PED_DUREZANUCLEO_TERM , PED_PROFUNDIDADE_TERM ,  PED_TAMANHOGRAO_TERM, PED_EHT_TERM , PED_DESENHO_TERM,  ' +
