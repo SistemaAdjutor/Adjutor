@@ -3,26 +3,27 @@ inherited FormPedidoGrid: TFormPedidoGrid
   Top = 189
   BorderStyle = bsSingle
   Caption = 'Consulta de Pedidos'
-  ClientHeight = 600
-  ClientWidth = 1091
+  ClientHeight = 603
+  ClientWidth = 1102
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   KeyPreview = True
   OldCreateOrder = True
   Position = poMainFormCenter
   WindowState = wsMaximized
-  ExplicitWidth = 1097
-  ExplicitHeight = 629
+  ExplicitWidth = 1108
+  ExplicitHeight = 632
   PixelsPerInch = 96
   TextHeight = 14
   object Panel1: TPanel [0]
     Left = 0
     Top = 0
-    Width = 1091
+    Width = 1102
     Height = 107
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitWidth = 1090
     object Lb_Lista: TLabel
       Left = 319
       Top = 7
@@ -534,8 +535,8 @@ inherited FormPedidoGrid: TFormPedidoGrid
   end
   object GroupBox6: TGroupBox [1]
     Left = 0
-    Top = 554
-    Width = 1091
+    Top = 557
+    Width = 1102
     Height = 46
     Align = alBottom
     Caption = 'Sum'#225'rio dos Pedidos'
@@ -546,6 +547,8 @@ inherited FormPedidoGrid: TFormPedidoGrid
     Font.Style = []
     ParentFont = False
     TabOrder = 1
+    ExplicitTop = 554
+    ExplicitWidth = 1090
     object Label17: TLabel
       Left = 7
       Top = 18
@@ -781,31 +784,39 @@ inherited FormPedidoGrid: TFormPedidoGrid
   object pgPesquisa: TPageControl [2]
     Left = 0
     Top = 107
-    Width = 1091
-    Height = 447
+    Width = 1102
+    Height = 450
     ActivePage = tsPedidos
     Align = alClient
     TabOrder = 2
+    ExplicitWidth = 1090
+    ExplicitHeight = 447
     object tsPedidos: TTabSheet
       Caption = 'Pedidos'
+      ExplicitWidth = 1082
+      ExplicitHeight = 418
       object Panel2: TPanel
         Left = 0
         Top = 0
-        Width = 1083
-        Height = 418
+        Width = 1094
+        Height = 421
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
+        ExplicitWidth = 1082
+        ExplicitHeight = 418
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
-          Width = 1083
-          Height = 330
+          Width = 1094
+          Height = 333
           Align = alClient
           TabOrder = 4
           LookAndFeel.Kind = lfStandard
           LookAndFeel.NativeStyle = False
           LookAndFeel.ScrollbarMode = sbmClassic
+          ExplicitWidth = 1082
+          ExplicitHeight = 330
           object cxtbPedido: TcxGridDBTableView
             OnDblClick = cxtbPedidoDblClick
             OnKeyDown = cxtbPedidoKeyDown
@@ -1325,12 +1336,14 @@ inherited FormPedidoGrid: TFormPedidoGrid
         end
         object GbMotivoCancela: TGroupBox
           Left = 0
-          Top = 371
-          Width = 1083
+          Top = 374
+          Width = 1094
           Height = 47
           Align = alBottom
           Caption = 'Motivo Cancelamento'
           TabOrder = 2
+          ExplicitTop = 371
+          ExplicitWidth = 1082
           object LblMotivoCancelamento: TLabel
             Left = 13
             Top = 11
@@ -1350,11 +1363,13 @@ inherited FormPedidoGrid: TFormPedidoGrid
         end
         object Panel3: TPanel
           Left = 0
-          Top = 330
-          Width = 1083
+          Top = 333
+          Width = 1094
           Height = 41
           Align = alBottom
           TabOrder = 3
+          ExplicitTop = 330
+          ExplicitWidth = 1082
           object pfinalizado: TPanel
             Left = 14
             Top = 10
@@ -1777,11 +1792,13 @@ inherited FormPedidoGrid: TFormPedidoGrid
       Caption = 'Itens'
       ImageIndex = 1
       OnShow = tsitemShow
+      ExplicitWidth = 1082
+      ExplicitHeight = 418
       object GroupBox2: TGroupBox
         Left = 0
         Top = 30
-        Width = 1083
-        Height = 388
+        Width = 1094
+        Height = 391
         Align = alClient
         Caption = 'P = Produto  S = Servi'#231'o'
         Font.Charset = ANSI_CHARSET
@@ -1792,11 +1809,13 @@ inherited FormPedidoGrid: TFormPedidoGrid
         ParentFont = False
         TabOrder = 0
         TabStop = True
+        ExplicitWidth = 1082
+        ExplicitHeight = 388
         object DBGrid1: TDBGrid
           Left = 2
           Top = 16
-          Width = 1079
-          Height = 370
+          Width = 1090
+          Height = 373
           Align = alClient
           Color = 16776176
           DataSource = DsPedItens
@@ -1874,10 +1893,11 @@ inherited FormPedidoGrid: TFormPedidoGrid
       object ppedido: TPanel
         Left = 0
         Top = 0
-        Width = 1083
+        Width = 1094
         Height = 30
         Align = alTop
         TabOrder = 1
+        ExplicitWidth = 1082
         object Label1: TLabel
           Left = 10
           Top = 8
@@ -2242,8 +2262,8 @@ inherited FormPedidoGrid: TFormPedidoGrid
     PacketRecords = 10
     Params = <>
     ProviderName = 'dspSqlCdsItens'
-    Left = 272
-    Top = 408
+    Left = 304
+    Top = 336
     object SqlCdsItensPRD_REFER: TStringField
       FieldName = 'PRD_REFER'
       Size = 11
@@ -2414,8 +2434,8 @@ inherited FormPedidoGrid: TFormPedidoGrid
   end
   object DsPedItens: TDataSource
     DataSet = SqlCdsItens
-    Left = 152
-    Top = 384
+    Left = 304
+    Top = 392
   end
   object dspSqlCdsPesq: TDataSetProvider
     DataSet = qSqlCdsPesq
@@ -2458,15 +2478,15 @@ inherited FormPedidoGrid: TFormPedidoGrid
   object dspSqlCdsItens: TDataSetProvider
     DataSet = qSqlCdsItens
     Options = [poAllowCommandText, poUseQuoteChar]
-    Left = 275
-    Top = 350
+    Left = 307
+    Top = 270
   end
   object qSqlCdsItens: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
-    Left = 275
-    Top = 294
+    Left = 307
+    Top = 214
   end
   object SqlCdsClie: TSQLQuery
     MaxBlobSize = -1
@@ -2606,6 +2626,8 @@ inherited FormPedidoGrid: TFormPedidoGrid
       Font.Name = 'Tahoma'
       Font.Style = []
       TextColor = clRed
+    end
+    object cxPadrao: TcxStyle
     end
   end
   object cxStyleRepository2: TcxStyleRepository

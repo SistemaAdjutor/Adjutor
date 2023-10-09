@@ -328,6 +328,7 @@ type
     SqlCdsItensPRF_SEQUENCIA: TIntegerField;
     SqlCdsItensPRF_REGISTRO: TIntegerField;
     SqlCdsItensPRD_UND: TStringField;
+    cxPadrao: TcxStyle;
     procedure BtnSairClick(Sender: tObject);
     procedure Rad_ClienteClick(Sender: tObject);
     procedure Edt_ListaExit(Sender: tObject);
@@ -1029,6 +1030,10 @@ begin
       SqlCdsPesq.DisableControls;
       SqlCdsPesq.Close;
       SqlCdsPesq.SetProvider(dspSqlCdsPesq);
+
+
+
+
       qSqlCdsPesq.sql.text:= 'SELECT ' +
                              iif(DBInicio.Empresa.bHabilitaColunaNF, ' t1.NF_NOTANUMBER, ', ' DISTINCT '''' as NF_NOTANUMBER, ') +
                              ' p1.ped_CODIGO, p1.EMP_CODIGO, p1.PED_PCP_SIT_PRODUCAO,P1.PED_registro, P1.PED_CONTATO_CLIENTE, P1.PED_DTENTRADA, '+
@@ -1043,7 +1048,9 @@ begin
                              '       case when (C1.CLI_RAZAO IS NULL) then p1.PED_ORS_CLIENTE ELSE C1.CLI_RAZAO end as CLI_RAZAO, '+
                              '       C1.CLI_FANTASIA, C1.CLI_CGC, C1.CLI_BAIRRO, t3.rep_nome, p1.PCL_CODIGO,p1.TRP_CODIGO, p1.ope_codigo, p1.ped_frete,  '+
                              '       p1.PED_ORS_FONE, p1.PED_ORS_FAX, p1.PED_ORS_EMAIL,p1.PED_ORS_ESTADO, p1.FPG_REGISTRO,  '+
-                             '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = p1.ped_codigo),0) as pend,  '+
+                             iif (DBInicio.Empresa.wAtualizaEstoque = 'P',
+                             '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = p1.ped_codigo),0) as pend,  ' ,
+                             '      CAST(0.00 as NUMERIC(18,5)) as pend,  '   ) +
                              iif(DataTipo.ItemIndex = 2, ' T1.NF_EMISSAO ',
                              '  (SELECT first 1 T1.NF_EMISSAO FROM NF0001 T1 WHERE T1.PED_CODIGO=p1.Ped_codigo  and t1.NF_STATUS_NFE <> ''C'' AND t1.emp_codigo = p1.emp_codigo ) as NF_EMISSAO ') +
                              '   FROM PED0000 P1 '+
@@ -1191,6 +1198,8 @@ begin
       if DBInicio.IsDesenvolvimento then
         CopyToClipBoard(qSqlCdsPesq.SQL.Text);
       SqlCdsPesq.open;
+
+
       SomarTotais;
 
  finally
@@ -1468,12 +1477,17 @@ begin
   inherited;
   IF NOT  (ARecord is TcxGridDataRow) then
     exit;
+
+  AStyle := cxPadrao;
   if ARecord.Values[ cxtbPedidoPED_SITUACAO.Index] = 'T'  then // FATURADO
   begin
     AStyle := cxBlue;
     exit;
   end;
+
   if (ARecord.Values[ cxtbPedidopend.Index] > 0) then // com valores com pendencia
+//  if ( StrToIntDef( ARecord.Values[ cxGrid1DBTableView2PRF_QTDEPEND.Index ], 0 ) > 0) then // com valores com pendencia
+//  if ( BuscaUmDadoSqlAsFloat('SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = ' + QuotedStr(ARecord.Values[ cxtbPedidoPED_CODIGO.Index ] )    ) > 0) then // com valores com pendencia
   begin
     AStyle := cxred;
     exit;
