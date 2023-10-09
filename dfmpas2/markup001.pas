@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask, DBCtrls, Grids, DBGrids, ExtCtrls, Buttons,db,RwFunc,
   SqlExpr,SqlClientDataSet, Provider, DBClient, DBLocal, DBLocalS,
-  Data.DBXFirebird, SimpleDS;
+  Data.DBXFirebird, SimpleDS, JvExControls, JvAnimatedImage, JvGIFCtrl;
 
 type
   TFormTabelaMarkup = class(TForm)
@@ -72,6 +72,9 @@ type
     SqlCdsLinhaEMP_CODIGO: TStringField;
     CbLinha: TComboBox;
     DbRadTipoCalculo: TDBRadioGroup;
+    PanelAguarde: TPanel;
+    JvGIFAnimator1: TJvGIFAnimator;
+    pinfo: TPanel;
     procedure MudaCorCampos(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure HabilitaBotoes;
@@ -188,6 +191,8 @@ begin
         uteis.erro  (pchar('Erro ao Abrir a Tabela Markup Interna!'+e.message));
     end;
 
+    PanelAguarde.Top := (Self.Height div 2) - (PanelAguarde.Height div 2);
+    PanelAguarde.Left := (Self.Width div 2) - (PanelAguarde.Width div 2);
 
     HabilitaBotoes;
     if DataCadastros1.CdsMarkup.IsEmpty Then  //Evita alteração antes que se inclua registros na tabela.
@@ -395,6 +400,8 @@ var
 begin
    uteis.aviso('Atenção : Você esta entrando na rotina que modificará ou criará Tabelas de Preços.');
    if uteis.confirmacao ( 'Confirma Atualização das Tabelas de Preços?')= Mryes then
+      PanelAguarde.Visible := True;
+      Application.ProcessMessages;
       begin
        // se calculo é por desconto colocar cada percental com 0 menos (-) na frente
        if DataCadastros1.CdsMarkupMKP_AC_DC.AsString = 'D' then
@@ -434,6 +441,9 @@ begin
           condicao := 'where lin_codigo = '+QuotedStr(EditLIN_CODIGO.Text);
        {Atualiza margem de Venda dos produtos}
        // PVENDA
+       pinfo.Caption := 'Atualizando preço de venda da Tabela Padrão';
+       Application.ProcessMessages;
+
        DataCadastros.sqlUpdate.close;
        DataCadastros.SqlUpdate.sql.text :=
          SQLDEF('PRODUTOS',
@@ -442,6 +452,8 @@ begin
        DataCadastros.sqlUpdate.Execsql;
 
        // PVENDA2
+       pinfo.Caption := 'Atualizando preço de venda da Tabela 2';
+       Application.ProcessMessages;
        DataCadastros.sqlUpdate.close;
        { a partir do preço 2 se nao ter markup então nao contruir preço }
        if DataCadastros1.CdsMarkupMKP_PERC2.AsCurrency = 0 then
@@ -454,6 +466,8 @@ begin
        DataCadastros.sqlUpdate.Execsql;
 
         // PVENDA3
+       pinfo.Caption := 'Atualizando preço de venda da Tabela 3';
+       Application.ProcessMessages;
        DataCadastros.sqlUpdate.close;
        { a partir do preço 2 se nao ter markup então nao contruir preço }
        if DataCadastros1.CdsMarkupMKP_PERC3.AsCurrency = 0 then
@@ -467,6 +481,9 @@ begin
        DataCadastros.sqlUpdate.Execsql;
 
         // PVENDA4
+       pinfo.Caption := 'Atualizando preço de venda da Tabela 4';
+       Application.ProcessMessages;
+
        DataCadastros.sqlUpdate.close;
        { a partir do preço 2 se nao ter markup então nao contruir preço }
        if DataCadastros1.CdsMarkupMKP_PERC4.AsCurrency = 0 then
@@ -480,6 +497,9 @@ begin
        DataCadastros.sqlUpdate.Execsql;
 
           // PVENDA5
+       pinfo.Caption := 'Atualizando preço de venda da Tabela 5';
+       Application.ProcessMessages;
+
        DataCadastros.sqlUpdate.close;
        { a partir do preço 2 se nao ter markup então nao contruir preço }
        if DataCadastros1.CdsMarkupMKP_PERC5.AsCurrency = 0 then
@@ -493,6 +513,9 @@ begin
        DataCadastros.sqlUpdate.Execsql;
 
          // PVENDA6
+       pinfo.Caption := 'Atualizando preço de venda da Tabela 6';
+       Application.ProcessMessages;
+
        DataCadastros.sqlUpdate.close;
        { a partir do preço 2 se nao ter markup então nao contruir preço }
        if DataCadastros1.CdsMarkupMKP_PERC6.AsCurrency = 0 then
@@ -507,6 +530,9 @@ begin
 
 
        // gravar usuario que esta rodando a rotina no produto e data
+       pinfo.Caption := 'Atualizando Usuário na tabela de Produtos';
+       Application.ProcessMessages;
+
         DataCadastros.sqlUpdate.close;     // LINHA ESPECIAFICA
         DataCadastros.SqlUpdate.sql.text :=
                                           SQLDEF('PRODUTOS','Update PRD0000 set USU_CODIGO_ATUAL_TAB = '''+ValorAmericano(CurrToStr(strtoInt(dbInicio.Usuario.Codigo)))+
@@ -514,6 +540,7 @@ begin
         DataCadastros.sqlUpdate.Execsql;
 
 
+       PanelAguarde.Visible := False;
        Screen.Cursor := crdefault;
        uteis.aviso('Cálculos concluidos com sucesso!');
        Mostratipo;
