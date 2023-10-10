@@ -81,6 +81,7 @@ type
     frxNotasDisponiveis: TfrxReport;
     frxDBNotasDisponiveis: TfrxDBDataset;
     SqlCdsNotasDisponiveisENF_SERIE: TStringField;
+    SqlCdsNotasDisponiveisENF_UCOM: TStringField;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);
@@ -206,6 +207,7 @@ begin
     '    ei.prd_refer, '+
     '    ei.prd_descri, '+
     '    ei.enf_qtde, '+
+    '    ei.enf_ucom, '+
     '    ei.enf_quantidade_ind_retorno, '+
     '    ei.enf_preco, '+
     '    ei.amx_codigo '+
@@ -572,7 +574,7 @@ begin
                     prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString  ;
 
                  iRegistroItem := GravarPedidoItem(0,
-                                                   '',
+                                                   SqlCdsNotasDisponiveisENF_UCOM.AsString,
                                                    FrmPedido.EdPedidoNumero.Text,
                                                    SqlCdsNotasDisponiveisPRD_CODIGO.AsString,
                                                    SqlCdsNotasDisponiveisPRD_REFER.AsString,

@@ -10,7 +10,6 @@ inherited FrmPedidoItem: TFrmPedidoItem
   Position = poDesigned
   OnCloseQuery = FormCloseQuery
   OnResize = FormResize
-  ExplicitTop = -99
   ExplicitWidth = 1386
   ExplicitHeight = 769
   PixelsPerInch = 96
@@ -204,6 +203,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       object tsSemGrade: TTabSheet
         Caption = 'Sem Grade'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object pgc2: TPageControl
           Left = 0
           Top = 0
@@ -215,6 +218,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
           OnChange = pgc2Change
           object tsInfoLancamento: TTabSheet
             Caption = 'Informa'#231#245'es do Lan'#231'amento'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object lblTabelaPreco: TLabel
               Left = 7
               Top = 29
@@ -1528,6 +1535,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
           object tsDiretivas: TTabSheet
             Caption = 'Diretivas'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object RxDBGrid1: TDBGrid
               Left = 0
               Top = 14
@@ -3366,7 +3377,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
     Left = 1349
     Top = 202
     Bitmap = {
-      494C010102000500080010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101020005000C0010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
