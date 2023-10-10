@@ -345,6 +345,7 @@ type
     procedure RomaneioSimples1Click(Sender: TObject);
     procedure frxRomaneioSimplesGetValue(const VarName: string; var Value: Variant);
     procedure frxRomaneioSimplesBeginDoc(Sender: TObject);
+    procedure GridPedidosTitleClick(Column: TColumn);
   private
      FPesqStatus : string;
      pSqlShareDB: string ;
@@ -598,6 +599,12 @@ begin
     Key := 0;
  end;
  inherited;
+end;
+
+procedure TFormFaturamento.GridPedidosTitleClick(Column: TColumn);
+begin
+//  inherited;
+// faz nada...
 end;
 
 procedure TFormFaturamento.jvOutrasImpressoesClick(Sender: TObject);

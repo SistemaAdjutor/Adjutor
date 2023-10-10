@@ -265,7 +265,6 @@ var y: integer;
 begin
      if pLeEstadoPesquisa then
      begin
-
           if fileexists(dbInicio.SistemaLocal+'settings\Pesquisas.filtrosUsu'+DBInicio.Usuario.CODIGO+'.psq')  then
           begin
                Sect := Self.Name+'.'+aPanel.Name;

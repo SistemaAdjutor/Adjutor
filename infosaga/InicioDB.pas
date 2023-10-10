@@ -969,8 +969,8 @@ function SplashStart( const pShow : boolean ) : boolean;
 
         SistemaLocal := InsereBarraDiretorio
           ( ExtractFileDir( Application.ExeName ) );
-        DeletarArquivos( SistemaLocal + '\settings', '*.psq' );
-        // Limpar arquivos persistencia pesquisas
+        // DeletarArquivos( SistemaLocal + '\settings', '*.psq' );
+        // Limpar arquivos persistencia pesquisas ???????
 
         flg := not EncontrouIni;
         if flg

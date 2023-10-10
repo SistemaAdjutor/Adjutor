@@ -23,7 +23,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 1090
     object Lb_Lista: TLabel
       Left = 319
       Top = 7
@@ -547,8 +546,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    ExplicitTop = 554
-    ExplicitWidth = 1090
     object Label17: TLabel
       Left = 7
       Top = 18
@@ -789,12 +786,8 @@ inherited FormPedidoGrid: TFormPedidoGrid
     ActivePage = tsPedidos
     Align = alClient
     TabOrder = 2
-    ExplicitWidth = 1090
-    ExplicitHeight = 447
     object tsPedidos: TTabSheet
       Caption = 'Pedidos'
-      ExplicitWidth = 1082
-      ExplicitHeight = 418
       object Panel2: TPanel
         Left = 0
         Top = 0
@@ -803,8 +796,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 0
-        ExplicitWidth = 1082
-        ExplicitHeight = 418
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
@@ -815,8 +806,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
           LookAndFeel.Kind = lfStandard
           LookAndFeel.NativeStyle = False
           LookAndFeel.ScrollbarMode = sbmClassic
-          ExplicitWidth = 1082
-          ExplicitHeight = 330
           object cxtbPedido: TcxGridDBTableView
             OnDblClick = cxtbPedidoDblClick
             OnKeyDown = cxtbPedidoKeyDown
@@ -1342,8 +1331,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
           Align = alBottom
           Caption = 'Motivo Cancelamento'
           TabOrder = 2
-          ExplicitTop = 371
-          ExplicitWidth = 1082
           object LblMotivoCancelamento: TLabel
             Left = 13
             Top = 11
@@ -1368,8 +1355,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
           Height = 41
           Align = alBottom
           TabOrder = 3
-          ExplicitTop = 330
-          ExplicitWidth = 1082
           object pfinalizado: TPanel
             Left = 14
             Top = 10
@@ -1792,8 +1777,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
       Caption = 'Itens'
       ImageIndex = 1
       OnShow = tsitemShow
-      ExplicitWidth = 1082
-      ExplicitHeight = 418
       object GroupBox2: TGroupBox
         Left = 0
         Top = 30
@@ -1809,8 +1792,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
         ParentFont = False
         TabOrder = 0
         TabStop = True
-        ExplicitWidth = 1082
-        ExplicitHeight = 388
         object DBGrid1: TDBGrid
           Left = 2
           Top = 16
@@ -1897,7 +1878,6 @@ inherited FormPedidoGrid: TFormPedidoGrid
         Height = 30
         Align = alTop
         TabOrder = 1
-        ExplicitWidth = 1082
         object Label1: TLabel
           Left = 10
           Top = 8

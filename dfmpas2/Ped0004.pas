@@ -812,8 +812,8 @@ end;
 
 procedure TFormPedidoGrid.LayOutPesq;
 begin
-//     RxDataInicial.Date := Date - 90;
-//     RxDataFinal.Date := Date;
+     RxDataInicial.Date := Date - 60;
+     RxDataFinal.Date := Date;
      CBVendedor.Visible := False;
 
    if (dbInicio.Empresa.sPadraoConsultaPedidoStatus = 'T') then
