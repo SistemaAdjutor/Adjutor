@@ -1,4 +1,4 @@
-﻿Atualizado em 09/10/2023
+﻿Atualizado em 10/10/2023
 Inicio da versão: 04/10/2023
 
 principal: Netocolor, Rotor, Arkson
@@ -15,4 +15,7 @@ patch 1: Arkson
 patch 2: LF Epis
   1666 - Atualização de tabelas de preço [LF Epis]
   1673 - Lentidão abertura de pedidos e consulta de pedidos [LF Epis]
+
+patch 3: LF Epis
+  1683 - Melhorias sistemas [LF Epis]
 
