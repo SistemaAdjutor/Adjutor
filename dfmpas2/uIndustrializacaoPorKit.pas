@@ -268,7 +268,7 @@ end;
 
 procedure TFrmIndustrializacaoPorKit.CurQuantidadeExit(Sender: TObject);
 var
-  Quantidade: double;
+  Quantidade, Base: double;
 begin
 
   inherited;
@@ -276,18 +276,23 @@ begin
   SqlCdsNotasDisponiveis.First;
   while not SqlCdsNotasDisponiveis.Eof do
   begin
-    Quantidade := BuscaUmDadoSqlAsFloat(
-      'SELECT FTI_UC ' +
+    qAux.Close;
+    qAux.SQL.Text :=
+      'SELECT FTI_UC, FTC_BASEFORMULA ' +
       ' FROM FTC_IT01 fi  ' +
+      ' JOIN FTC0000 f ON f.PRD_REFER = fi.PRD_REFER ' +
       ' LEFT JOIN PRD0000 pr ON (pr.PRD_REFER = fi.PRD_REFER_ITENS AND pr.EMP_CODIGO = fi.EMP_CODIGO ) ' +
       ' LEFT JOIN PRD_GRADE pg ON (pg.PRG_REGISTRO = fi.PRG_REGISTRO) ' +
       ' WHERE fi.PRD_REFER_ITENS = ' +  QuotedStr(SqlCdsNotasDisponiveisPRD_REFER.AsString) +
       ' AND fi.PRD_REFER = ' +  QuotedStr(prdRefer.Text) +
       ' AND pr.EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo)
-    );
+    ;
+    qAux.Open;
+    Quantidade := qAux.FieldByName('FTI_UC').AsFloat;
+    Base := qAux.FieldByName('FTC_BASEFORMULA').AsFloat;
     SqlCdsNotasDisponiveis.Edit;
-    SqlCdsNotasDisponiveisqtdSolicitada.AsFloat := CurQuantidade.Value * Quantidade;
-    SqlCdsNotasDisponiveisQuantidadeTmp.AsFloat := CurQuantidade.Value * Quantidade;
+    SqlCdsNotasDisponiveisqtdSolicitada.AsFloat := (CurQuantidade.Value * Quantidade) / Base;
+    SqlCdsNotasDisponiveisQuantidadeTmp.AsFloat := (CurQuantidade.Value * Quantidade) / Base;
     SqlCdsNotasDisponiveisSaldo.AsFloat := SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat;
     SqlCdsNotasDisponiveis.Post;
     SqlCdsNotasDisponiveis.Next;
