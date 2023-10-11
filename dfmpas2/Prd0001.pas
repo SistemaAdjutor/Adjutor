@@ -2636,7 +2636,9 @@ begin
 //  CdsProdutos.close;
 //  SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
 //  CdsProdutos.Open;
-  CdsProdutos.Refresh;
+  // CdsProdutos.Refresh;
+  CdsProdutos.Close;
+  CdsProdutos.Open;
 
   if eNotaEntrada then // para otimizar
   begin
@@ -3053,7 +3055,9 @@ begin
 
   cdsMola.Post;
   cdsMola.ApplyUpdates( 0 );
-  cdsMola.Refresh;
+  // cdsMola.Refresh;
+  cdsMola.Close;
+  cdsMola.Open;
 
   BIT_MOLA_GRAVAR.Enabled := False;
   BIT_MOLA_CANCELAR.Enabled := False;
@@ -3191,7 +3195,12 @@ procedure TFormProduto.FormActivate( Sender : tObject );
       RichDoc.Lines.LoadFromFile( arquivo );
     if not ( CdsProdutos.isEmpty ) and not ( CdsProdutos.State in dsEditModes )
     then
-      CdsProdutos.Refresh;
+    begin
+      // CdsProdutos.Refresh;
+      CdsProdutos.Close;
+      CdsProdutos.Open;
+    end;
+
   end;
 
 procedure TFormProduto.FormClose(
@@ -3956,7 +3965,11 @@ begin
     Exit;
 
   if not CdsItensFicha.isEmpty then
-    CdsItensFicha.Refresh;
+  begin
+    // CdsItensFicha.Refresh;
+    cdsItensFicha.Close;
+    cdsItensFicha.Open;
+  end;
 
   CdsItensFicha.First;
   clone := TClientDataSet.Create( Self );
@@ -4289,7 +4302,10 @@ begin
   begin
     ExcluirItensFTC;
 
-    CdsItensFicha.Refresh;
+    // CdsItensFicha.Refresh;
+    cdsItensFicha.Close;
+    cdsItensFicha.Open;
+
     LimparDadosFTC;
     SpProduto.Enabled := True;
     EdtRefer.TabStop := True;
@@ -5664,7 +5680,11 @@ begin
   begin
     ExcluirItensFTC;
     LimparDadosFTC;
-    CdsItensFicha.Refresh;
+
+    // CdsItensFicha.Refresh;
+    cdsItensFicha.Close;
+    cdsItensFicha.Open;
+
     SpProduto.Enabled := True;
     EdtRefer.TabStop := True;
     EdtRefer.ReadOnly := False;
@@ -6236,13 +6256,17 @@ end;
 procedure TFormProduto.CdsGradeAfterPost( DataSet : TDataSet );
 begin
   CdsGrade.ApplyUpdates( 0 );
-  CdsGrade.Refresh;
+  // CdsGrade.Refresh;
+  cdsGrade.Close;
+  cdsGrade.Open;
 end;
 
 procedure TFormProduto.CdsProdutosReferenciaAfterPost( DataSet : TDataSet );
 begin
   CdsProdutosReferencia.ApplyUpdates( 0 );
-  CdsProdutosReferencia.Refresh;
+  // CdsProdutosReferencia.Refresh;
+  CdsProdutosReferencia.Close;
+  CdsProdutosReferencia.Open;
 end;
 
 procedure TFormProduto.CdsProdutosReferenciaBeforePost( DataSet : TDataSet );
@@ -6731,7 +6755,9 @@ end;
 procedure TFormProduto.SqlItensGradeAfterPost( DataSet : TDataSet );
 begin
   SqlItensGrade.ApplyUpdates( 0 );
-  SqlItensGrade.Refresh;
+  // SqlItensGrade.Refresh;
+  SqlItensGrade.Close;
+  SqlItensGrade.Open;
 end;
 
 procedure TFormProduto.CdsGradeAfterDelete( DataSet : TDataSet );
@@ -7762,7 +7788,9 @@ begin
     CdsCodigoOriginal.Post;
     CdsCodigoOriginal.ApplyUpdates( 0 );
 
-    CdsCodigoOriginal.Refresh;
+    // CdsCodigoOriginal.Refresh;
+    CdsCodigoOriginal.Close;
+    CdsCodigoOriginal.Open;
 
   end
   else
@@ -7829,7 +7857,9 @@ begin
       CdsArquivoARQ_DATA.AsDateTime := now;
       CdsArquivoARQ_ARQUIVO.LoadFromFile( FilenameArquivo.FileName );
       CdsArquivo.ApplyUpdates( 0 );
-      CdsArquivo.Refresh;
+      // CdsArquivo.Refresh;
+      CdsArquivo.Close;
+      CdsArquivo.Open;
       FilenameArquivo.Clear;
       EdDescricaoArquivo.Clear;
     end;
@@ -8313,7 +8343,9 @@ begin
     tcr.ShowModal;
     if tcr.ModalResult = mrOk then
     begin
-      CdsProdutos.Refresh;
+      // CdsProdutos.Refresh;
+      CdsProdutos.Close;
+      CdsProdutos.Open;
       EdtPrd_Refer.Text := tcr.Edit2.Text;
       EdtPrd_ReferExit( nil );
     end;
@@ -8472,7 +8504,9 @@ begin
   if comissaoGrupo > 0 then
   begin
     ExecSql('UPDATE PRD0000 SET PRD_COMISSAO = ' + FloatToSQL(comissaoGrupo) + ' WHERE PRD_CODIGO = ' + QuotedStr(CdsProdutosPRD_CODIGO.AsString)  );
-    CdsProdutos.Refresh;
+    // CdsProdutos.Refresh;
+    CdsProdutos.Close;
+    CdsProdutos.Open;
   end;
 
 end;
