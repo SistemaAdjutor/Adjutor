@@ -324,6 +324,7 @@ end;
 
 procedure TFormConsultaPedido.LayOutPesq;
 begin
+    Edt_Lista.Text :=  '';
     if (Rad_Cliente.checked ) then
        begin
            //GbCliente.Caption   := 'Cliente / C.Custo:';
@@ -669,7 +670,8 @@ end;
 
 procedure TFormConsultaPedido.cbClientes1Select(Sender: TObject);
 begin
-  Edt_Lista.Text := cbClientes1.idRetorno;
+  if cbClientes1.idRetorno <> '' then
+    Edt_Lista.Text := cbClientes1.idRetorno;
   BitPesquisar.Click
 end;
 

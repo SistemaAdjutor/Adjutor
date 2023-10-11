@@ -431,7 +431,7 @@ object FormConsultaPedido: TFormConsultaPedido
       end
       object Edt_Lista: TEdit
         Left = 59
-        Top = 17
+        Top = 16
         Width = 38
         Height = 21
         CharCase = ecUpperCase
@@ -470,8 +470,10 @@ object FormConsultaPedido: TFormConsultaPedido
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'PCX0000'
         CamposCarregar = 'PCX_CODIGO,PCX_DESCRI'
         CamposRetornar = 'PCX_CODIGO'
@@ -533,8 +535,10 @@ object FormConsultaPedido: TFormConsultaPedido
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'PRD_LINHA'
         CamposCarregar = 'LIN_CODIGO,LIN_DESCRI'
         CamposRetornar = 'LIN_CODIGO'
@@ -581,8 +585,10 @@ object FormConsultaPedido: TFormConsultaPedido
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
     object GroupBox1: TGroupBox
@@ -670,8 +676,8 @@ object FormConsultaPedido: TFormConsultaPedido
       end
     end
     object BitPesquisar: TBitBtn
-      Left = 867
-      Top = 8
+      Left = 866
+      Top = 9
       Width = 100
       Height = 25
       Hint = 'Pesquisar'
@@ -1505,6 +1511,7 @@ object FormConsultaPedido: TFormConsultaPedido
     DataPipeline = ppDBPesq
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
@@ -1522,6 +1529,14 @@ object FormConsultaPedido: TFormConsultaPedido
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -1531,22 +1546,34 @@ object FormConsultaPedido: TFormConsultaPedido
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -1554,14 +1581,27 @@ object FormConsultaPedido: TFormConsultaPedido
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 458
     Top = 264
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPesq'
     object pp00HeaderBand2: TppHeaderBand
       BeforePrint = pp00HeaderBand2BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 17727
       mmPrintPosition = 0
@@ -1569,6 +1609,7 @@ object FormConsultaPedido: TFormConsultaPedido
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1582,13 +1623,15 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 0
@@ -1602,13 +1645,15 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -1622,13 +1667,15 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -1642,6 +1689,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1662,6 +1710,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1681,6 +1730,7 @@ object FormConsultaPedido: TFormConsultaPedido
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1693,6 +1743,7 @@ object FormConsultaPedido: TFormConsultaPedido
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1707,13 +1758,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'NFE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -1729,13 +1782,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 53446
@@ -1750,13 +1805,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Nome Vendedor'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3440
@@ -1772,13 +1829,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Refer'#234'ncia'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3704
@@ -1794,13 +1853,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -1817,13 +1878,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VL. Unit.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -1840,13 +1903,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VL.Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -1863,13 +1928,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Entrada'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -1886,13 +1953,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Dt Fatura'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -1909,13 +1978,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Pedido'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 0
@@ -1930,13 +2001,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o do Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3440
@@ -1952,13 +2025,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'C'#243'd.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3969
@@ -1974,13 +2049,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vl. c/desto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 5295
@@ -1996,13 +2073,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CFOP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2015,8 +2094,7 @@ object FormConsultaPedido: TFormConsultaPedido
       end
     end
     object pp00DetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3440
@@ -2026,6 +2104,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM_NFE'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2049,6 +2128,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_NOME'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2071,6 +2151,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2093,6 +2174,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRF_QTDE'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0'
@@ -2117,6 +2199,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRF_PRECO'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0.00'
@@ -2141,6 +2224,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2162,6 +2246,7 @@ object FormConsultaPedido: TFormConsultaPedido
       object ppDBText11: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText11'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2181,6 +2266,7 @@ object FormConsultaPedido: TFormConsultaPedido
       object ppDBText12: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText12'
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2202,6 +2288,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_DTENTRADA'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2225,6 +2312,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_EMISSAO'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2248,6 +2336,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_TOTAL_CC'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0.00'
@@ -2272,6 +2361,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'VL_DESCONTO'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0.00'
@@ -2294,6 +2384,7 @@ object FormConsultaPedido: TFormConsultaPedido
       object ppDBText27: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText14'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2313,6 +2404,7 @@ object FormConsultaPedido: TFormConsultaPedido
       object ppDBText2: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText2'
+        Border.mmPadding = 0
         DataField = 'NTP_CFOP'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -2332,7 +2424,7 @@ object FormConsultaPedido: TFormConsultaPedido
       end
     end
     object pp00SummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 4763
       mmPrintPosition = 0
@@ -2340,6 +2432,7 @@ object FormConsultaPedido: TFormConsultaPedido
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2354,6 +2447,7 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRF_QTDE'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0'
@@ -2378,13 +2472,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -2399,6 +2495,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'VarTotal'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -2424,6 +2521,7 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_TOTAL_CC'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0.00'
@@ -2444,25 +2542,32 @@ object FormConsultaPedido: TFormConsultaPedido
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060E
-        566172546F74616C4F6E43616C630B50726F6772616D54797065070B74745072
-        6F63656475726506536F7572636506A570726F63656475726520566172546F74
-        616C4F6E43616C63287661722056616C75653A2056617269616E74293B0D0A56
-        61720D0A202077546F74616C203A2043757272656E63793B0D0A626567696E0D
-        0A2020202077546F74616C203A3D284442506573715B275052465F505245434F
-        275D2A4442506573715B275052465F51544445275D293B0D0A202056616C7565
-        203A3D2077546F74616C3B0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E
-        616D650608566172546F74616C094576656E744E616D6506064F6E43616C6307
-        4576656E7449440221084361726574506F730102040203000001060F54726145
-        76656E7448616E646C65720B50726F6772616D4E616D65061044425465787434
-        4F6E476574546578740B50726F6772616D54797065070B747450726F63656475
-        726506536F75726365066A70726F63656475726520444254657874344F6E4765
-        74546578742876617220546578743A20537472696E67293B0D0A626567696E0D
-        0A0D0A202054657874203A3D636F7079284442506573715B275245505F4E4F4D
-        45275D2C312C3235293B200D0A0D0A656E643B0D0A0D436F6D706F6E656E744E
-        616D65060744425465787434094576656E744E616D6506094F6E476574546578
-        74074576656E7449440235084361726574506F730102000200000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'VarTotalOnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure VarTotalOnCalc(var Value: Variant);'#13#10'Var'#13#10'  wTotal : C' +
+          'urrency;'#13#10'begin'#13#10'    wTotal :=(DBPesq['#39'PRF_PRECO'#39']*DBPesq['#39'PRF_Q' +
+          'TDE'#39']);'#13#10'  Value := wTotal;'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'VarTotal'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+        raProgram.CaretPos = (
+          4
+          3)
+      end
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText4OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText4OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text :' +
+          '=copy(DBPesq['#39'REP_NOME'#39'],1,25); '#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText4'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
@@ -2479,6 +2584,7 @@ object FormConsultaPedido: TFormConsultaPedido
     DataPipeline = ppDBPesq
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
@@ -2496,6 +2602,14 @@ object FormConsultaPedido: TFormConsultaPedido
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -2505,22 +2619,34 @@ object FormConsultaPedido: TFormConsultaPedido
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -2528,14 +2654,27 @@ object FormConsultaPedido: TFormConsultaPedido
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 458
     Top = 320
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPesq'
     object ppHeaderBand1: TppHeaderBand
       BeforePrint = pp00HeaderBand2BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 17727
       mmPrintPosition = 0
@@ -2543,6 +2682,7 @@ object FormConsultaPedido: TFormConsultaPedido
         DesignLayer = ppDesignLayer2
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2556,13 +2696,15 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 0
@@ -2576,13 +2718,15 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -2596,13 +2740,15 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -2616,6 +2762,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2636,6 +2783,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2655,6 +2803,7 @@ object FormConsultaPedido: TFormConsultaPedido
         DesignLayer = ppDesignLayer2
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2667,6 +2816,7 @@ object FormConsultaPedido: TFormConsultaPedido
         DesignLayer = ppDesignLayer2
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 410
@@ -2681,13 +2831,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'NFE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -2703,13 +2855,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 44754
@@ -2724,13 +2878,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Nome Vendedor'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3440
@@ -2746,13 +2902,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Refer'#234'ncia'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3699
@@ -2768,13 +2926,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2791,13 +2951,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VL. Unit.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2814,13 +2976,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VL.Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2837,13 +3001,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Entrada'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2860,13 +3026,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Dt Fatura'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2883,13 +3051,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Pedido'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 0
@@ -2904,13 +3074,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o do Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3440
@@ -2926,13 +3098,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'No.Lote'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2949,13 +3123,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vl. c/desto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 5295
@@ -2967,8 +3143,7 @@ object FormConsultaPedido: TFormConsultaPedido
       end
     end
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3440
@@ -2978,6 +3153,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM_NFE'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3001,6 +3177,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3023,6 +3200,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_NOME'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3045,6 +3223,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3067,6 +3246,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRF_QTDE'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0'
@@ -3091,6 +3271,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRF_PRECO'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0.00'
@@ -3115,6 +3296,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3136,6 +3318,7 @@ object FormConsultaPedido: TFormConsultaPedido
       object ppDBText21: TppDBText
         DesignLayer = ppDesignLayer2
         UserName = 'DBText11'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3155,6 +3338,7 @@ object FormConsultaPedido: TFormConsultaPedido
       object ppDBText22: TppDBText
         DesignLayer = ppDesignLayer2
         UserName = 'DBText12'
+        Border.mmPadding = 0
         DataField = 'PRDL_LOTE'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3177,6 +3361,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_DTENTRADA'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3200,6 +3385,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_EMISSAO'
         DataPipeline = ppDBPesq
         Font.Charset = DEFAULT_CHARSET
@@ -3223,6 +3409,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_TOTAL_CC'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0.00'
@@ -3247,6 +3434,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'VL_DESCONTO'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0.00'
@@ -3268,7 +3456,7 @@ object FormConsultaPedido: TFormConsultaPedido
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 4763
       mmPrintPosition = 0
@@ -3276,6 +3464,7 @@ object FormConsultaPedido: TFormConsultaPedido
         DesignLayer = ppDesignLayer2
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3290,6 +3479,7 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRF_QTDE'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0'
@@ -3314,13 +3504,15 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -3335,6 +3527,7 @@ object FormConsultaPedido: TFormConsultaPedido
         UserName = 'VarTotal'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -3360,6 +3553,7 @@ object FormConsultaPedido: TFormConsultaPedido
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_TOTAL_CC'
         DataPipeline = ppDBPesq
         DisplayFormat = '#,##0.00'
@@ -3380,33 +3574,43 @@ object FormConsultaPedido: TFormConsultaPedido
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060E
-        566172546F74616C4F6E43616C630B50726F6772616D54797065070B74745072
-        6F63656475726506536F7572636506A570726F63656475726520566172546F74
-        616C4F6E43616C63287661722056616C75653A2056617269616E74293B0D0A56
-        61720D0A202077546F74616C203A2043757272656E63793B0D0A626567696E0D
-        0A2020202077546F74616C203A3D284442506573715B275052465F505245434F
-        275D2A4442506573715B275052465F51544445275D293B0D0A202056616C7565
-        203A3D2077546F74616C3B0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E
-        616D650608566172546F74616C094576656E744E616D6506064F6E43616C6307
-        4576656E7449440221084361726574506F730102040203000001060F54726145
-        76656E7448616E646C65720B50726F6772616D4E616D65061044425465787432
-        4F6E476574546578740B50726F6772616D54797065070B747450726F63656475
-        726506536F75726365066B70726F63656475726520444254657874324F6E4765
-        74546578742876617220546578743A20537472696E67293B0D0A626567696E0D
-        0A0D0A202054657874203A3D20436F7079284442506573715B27434C495F5241
-        5A414F275D2C312C3335293B0D0A0D0A656E643B0D0A0D436F6D706F6E656E74
-        4E616D65060744425465787432094576656E744E616D6506094F6E4765745465
-        7874074576656E7449440235084361726574506F730102000200000001060F54
-        72614576656E7448616E646C65720B50726F6772616D4E616D65061044425465
-        7874344F6E476574546578740B50726F6772616D54797065070B747450726F63
-        656475726506536F75726365066A70726F63656475726520444254657874344F
-        6E476574546578742876617220546578743A20537472696E67293B0D0A626567
-        696E0D0A0D0A202054657874203A3D636F7079284442506573715B275245505F
-        4E4F4D45275D2C312C3235293B200D0A0D0A656E643B0D0A0D436F6D706F6E65
-        6E744E616D65060744425465787434094576656E744E616D6506094F6E476574
-        54657874074576656E7449440235084361726574506F730102000200000000}
+      object raProgramInfo3: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'VarTotalOnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure VarTotalOnCalc(var Value: Variant);'#13#10'Var'#13#10'  wTotal : C' +
+          'urrency;'#13#10'begin'#13#10'    wTotal :=(DBPesq['#39'PRF_PRECO'#39']*DBPesq['#39'PRF_Q' +
+          'TDE'#39']);'#13#10'  Value := wTotal;'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'VarTotal'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+        raProgram.CaretPos = (
+          4
+          3)
+      end
+      object raProgramInfo4: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText2OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText2OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text :' +
+          '= Copy(DBPesq['#39'CLI_RAZAO'#39'],1,35);'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText2'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo5: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText4OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText4OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text :' +
+          '=copy(DBPesq['#39'REP_NOME'#39'],1,25); '#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText4'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers2: TppDesignLayers
       object ppDesignLayer2: TppDesignLayer
