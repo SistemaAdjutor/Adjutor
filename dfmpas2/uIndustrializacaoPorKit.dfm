@@ -35,7 +35,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
   object lbNItensSelecionados: TLabel [3]
     Left = 466
     Top = 500
-    Width = 14
+    Width = 6
     Height = 14
     Caption = '0'
   end
@@ -47,7 +47,6 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     Align = alTop
     Caption = 'Industrializa'#231#245'es Solicitadas e Dispon'#237'veis'
     TabOrder = 0
-    ExplicitTop = 57
     object dbgrdNotasDisponveis: TDBGrid
       Left = 2
       Top = 16
@@ -480,6 +479,10 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     object SqlCdsNotasDisponiveisENF_SERIE: TStringField
       FieldName = 'ENF_SERIE'
       Size = 3
+    end
+    object SqlCdsNotasDisponiveisENF_UCOM: TStringField
+      FieldName = 'ENF_UCOM'
+      Size = 5
     end
   end
   object dsNotaDisponivel: TDataSource
