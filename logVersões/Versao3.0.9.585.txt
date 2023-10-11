@@ -1,4 +1,4 @@
-﻿Atualizado em 10/10/2023
+﻿Atualizado em 11/10/2023
 Inicio da versão: 04/10/2023
 
 principal: Netocolor, Rotor, Arkson
@@ -19,3 +19,9 @@ patch 2: LF Epis
 patch 3: LF Epis
   1683 - Melhorias sistemas [LF Epis]
 
+patch 4: Arkson, Netocolor, Rotor
+  1642 - Correções tela de pedido [Arkson]
+  1674 - Erro ao editar item com ficha [Arkson]
+  1678 - Erro ao gerar relatórios de industrialização [Netocolor]
+  1684 - Corrigir filtro tela de consulta/ rastreabilidade [Rotor]
+  
