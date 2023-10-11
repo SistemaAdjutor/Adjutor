@@ -7,7 +7,8 @@ uses
   Dialogs, StdCtrls, Buttons, SqlExpr,SqlClientDataSet, Provider, DB, DBClient, DBLocal,
   DBLocalS, Grids, DBGrids, Mask,  rxToolEdit, frxClass, frxDBSet, jpeg,
   DBCtrls, Data.DBXFirebird, SimpleDS, Vcl.ExtCtrls, JvExMask, JvToolEdit, Vcl.Menus, JvExControls, JvArrowButton, Vcl.ComCtrls, Data.FMTBcd, frxExportPDF, FireDAC.Stan.Intf, FireDAC.Stan.Option,
-  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  frxExportBaseDialog;
  
 type
   TFrmEnfIndustrializacao = class(TForm)
@@ -261,6 +262,7 @@ type
     procedure NotaFiscalporProdutoRetornado1Click(Sender: TObject);
     procedure frxEntradaNFRetornoBeginDoc(Sender: TObject);
     procedure frxEntradaNFRetorno0BeginDoc(Sender: TObject);
+    procedure frxRomaneioPlanilhaBeginDoc(Sender: TObject);
   private
     { Private declarations }
     procedure AtualizaConsultaNotas;
@@ -778,6 +780,17 @@ begin
   if (VarName  = 'INSCR') then
      Value := dbInicio.Empresa.INSC_EST;
 
+
+  Exit;
+
+  {
+
+  https://novidev.myjetbrains.com/youtrack/issue/ADJT-1678/Erro-ao-gerar-relatorios-de-industrializacao
+  ERRO ESTRUTURAL, CADA CAMPO QUE ERA LIDO, ALOCAVA O ESPACO DO STREAM DA LOGO NA MEMÓRIA, NEM LIBERANDO O STREAM SOLUCIONOU,
+  FOI MUDADO PARA O EVENTO ONBEGINDOC DO RELATÓRIO A LEITURA DA LOGO, QUE É LIDA UMA ÚNICA VEZ QUANDO DA IMPRESSÃO DO RELATÓRIO.
+  FICA A DICA PARA AS PRÓXIMAS GERAÇÕES ;)
+
+
   DataCadastros.sqlUpdate.Close;
   DataCadastros.SqlUpdate.sql.text :='SELECT EMP_LOGO FROM EMP0000 WHERE EMP_CODIGO ='+QuotedStr(dbInicio.Empresa.EMP_CODIGO);
   DataCadastros.sqlUpdate.Open;
@@ -792,8 +805,10 @@ begin
               MinhaImagem.SaveToStream(stream);
               TfrxPictureView(frxIndustrializacao.FindObject('LogoEmpresa')).Picture.Assign(MinhaImagem);
               TfrxPictureView(frxRomaneioPlanilha.FindObject('LogoEmpresa')).Picture.Assign(MinhaImagem);
+              FreeAndNil(stream)
            end;
      end;
+  }
 end;
  
 procedure TFrmEnfIndustrializacao.dsNotaItemDataChange(Sender: tObject;
@@ -930,6 +945,11 @@ begin
            end;
      end;
 
+end;
+
+procedure TFrmEnfIndustrializacao.frxRomaneioPlanilhaBeginDoc(Sender: TObject);
+begin
+  TfrxPictureView(frxRomaneioPlanilha.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.Logo);
 end;
 
 procedure TFrmEnfIndustrializacao.NotaFiscalPorProdutoPendent1Click(Sender: TObject);
