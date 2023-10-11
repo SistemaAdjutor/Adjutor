@@ -766,7 +766,8 @@ begin
               '       PRD_PRECOOFERTA, PRD_INICIOOFERTA, PRD_FIMOFERTA, PRD_TIPOPECA_TERM, PRD_MATERIAL_TERM, PRD_DUREZASUPERFICIAL_TERM, '+
               ' PRD_DUREZANUCLEO_TERM, PRD_PROFUNDIDADE_TERM, PRD_TAMANHOGRAO_TERM, PRD_EHT_TERM, PRD_DESENHO_TERM, PRD_PESOLIQ, t1.PRD_UND ,PRD_MULTIPLICADOR   ' +
 							'FROM prd0000 T1 '+
-              '    inner JOIN PRD_TIPO pt ON (T1.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = '+ QuotedStr('S')+')'+
+//              '    inner JOIN PRD_TIPO pt ON (T1.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = '+ QuotedStr('S')+')'+
+              '    inner JOIN PRD_TIPO pt ON (T1.PTI_CODIGO = pt.PTI_CODIGO )'+
 							'     left join ipi0000 t2 on (t2.ipi_codigo = t1.ipi_codigo) '+
 							'     left join PRD_TIPO T3 on (t3.pti_codigo = t1.pti_codigo) '+
 							'     left join IPI0000 t4 on (t4.IPI_CODIGO = t1.ipi_codigo) '+
@@ -5779,7 +5780,8 @@ begin
                                      ' 0.00 AS PRD_PVENDA2, 0.00 AS PRD_PVENDA3, 0.00 AS PRD_PVENDA4, 0.00 AS PRD_PVENDA5, 0.00 AS PRD_PVENDA6, '+
                                      '  ( SELECT FIRST 1 pc.PRDCO_CODIGO_ORIGINAL FROM PRD_CODIGOORIGINAL pc WHERE pc.PRD_CODIGO = pd.PRD_CODIGO  and pc.cli_codigo = '+qStr(cliente)+' ) PRDCO_CODIGO_ORIGINAL , '+
                                      ' interno, externo, altura1, altura2';
-          CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+          // CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+          CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO )'+
                                      ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) '+
                                      ' Join precos0000 TB on TB.cli_codigo = '+qStr(cliente)+
                                      ' Join precos0001 PR on PR.PRE_ID=TB.PRE_ID AND PR.PRD_CODIGO=PD.PRD_CODIGO ';
@@ -5795,7 +5797,8 @@ begin
                                       ' FROM kardex_almox_saldo '+
                                        'WHERE prd_codigo = pd.prd_codigo '+
                                       ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque ';
-          cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+          // cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+          cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO )'+
                                   ' left join PRD0000_CODIGO T3 on (T3.PRD_CODIGO = PD.PRD_CODIGO) left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO) '+
                                   ' Join precos0000 TB on TB.cli_codigo = '+qStr(cliente)+
                                   ' Join precos0001 PR on PR.PRE_ID=TB.PRE_ID AND PR.PRD_CODIGO=PD.PRD_CODIGO '+
@@ -5811,7 +5814,8 @@ begin
                                       ' FROM kardex_almox_saldo '+
                                        'WHERE prd_codigo = pd.prd_codigo '+
                                       ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque ';
-          cbEndereco.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+          // cbEndereco.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+          cbEndereco.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO )'+
                                    ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) join PRD0000_ENDERECAMENTO T4 on (t4.PRDE_REGISTRO=PD.PRDE_REGISTRO) '+
                                   ' Join precos0000 TB on TB.cli_codigo = '+qStr(cliente)+
                                   ' Join precos0001 PR on PR.PRE_ID=TB.PRE_ID AND PR.PRD_CODIGO=PD.PRD_CODIGO '+
@@ -5859,13 +5863,15 @@ begin
                                         'WHERE prd_codigo = pd.prd_codigo '+
                                         ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque, '+
                                          ' interno, externo, altura1, altura2';
-             CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             // CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO )'+
                                         'left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO)';
                                    //     ' left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO  )';
 
              cbCodigos.LookupSelect:= 'distinct PD.PRD_EMBALA, PD.PRD_CODIGO, PD.PRD_REFER, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.PRD_PRODSERV, PD.PRD_UND, T3.PRDC_REFERENCIA , T5.PRDCO_CODIGO_ORIGINAL, '+
                                        lCampoTabela+', T2.LIN_DESCRI, interno, externo, altura1, altura2';
-             cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             // cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO)'+
                                      ' left join PRD0000_CODIGO T3 on (T3.PRD_CODIGO = PD.PRD_CODIGO) left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO) '+
                                      ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) ';
 
@@ -5875,7 +5881,8 @@ begin
                                        ' FROM kardex_almox_saldo '+
                                         'WHERE prd_codigo = pd.prd_codigo '+
                                         ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque ';
-             cbEndereco.LookupTable:=  'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             // cbEndereco.LookupTable:=  'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             cbEndereco.LookupTable:=  'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO)'+
                                        ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) join PRD0000_ENDERECAMENTO T4 on (t4.PRDE_REGISTRO=PD.PRDE_REGISTRO) '+
                                        ' left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO )';
 
@@ -5914,7 +5921,8 @@ begin
                                       ' FROM kardex_almox_saldo '+
                                        'WHERE prd_codigo = pd.prd_codigo '+
                                       ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque ';
-             CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             // CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO)'+
                                         ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO)';
                                      //   ' left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO  )';
 
@@ -5933,7 +5941,8 @@ begin
                                       ' 0.00 AS PRD_PVENDA2, 0.00 AS PRD_PVENDA3, 0.00 AS PRD_PVENDA4, 0.00 AS PRD_PVENDA5, 0.00 AS PRD_PVENDA6,'+
                                       ' T2.LIN_DESCRI, interno, externo, altura1, altura2';
 
-             cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             // cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO )'+
                                      ' left join PRD0000_CODIGO T3 on (T3.PRD_CODIGO = PD.PRD_CODIGO) left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO) '+
                                      ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) ';
 
@@ -5956,7 +5965,8 @@ begin
                                       ' FROM kardex_almox_saldo '+
                                        'WHERE prd_codigo = pd.prd_codigo '+
                                       ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque ';
-             cbEndereco.LookupTable:=  'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             // cbEndereco.LookupTable:=  'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
+             cbEndereco.LookupTable:=  'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO )'+
                                        ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) join PRD0000_ENDERECAMENTO T4 on (t4.PRDE_REGISTRO=PD.PRDE_REGISTRO) ';
                                      // ' left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO  )';
            END;
