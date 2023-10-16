@@ -227,7 +227,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Top = 105
         Width = 1376
         Height = 434
-        ExplicitTop = 103
+        ExplicitTop = 105
         ExplicitWidth = 1376
         ExplicitHeight = 434
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -37092,7 +37092,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            'Data: [frxDBBusca."PRDL_DATA_FABRICACAO"]')
+            'Data: [frxDBBusca."OPR_EMISSAO"]')
           ParentFont = False
         end
         object Memo105: TfrxMemoView
@@ -37260,8 +37260,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Memo.UTF8W = (
             
               'Quantidade a Produzir: [frxDBBusca."IOP_QUANTIDADE"]L           ' +
-              '         [PESO] Kg.       Dens: [ <frxDBBusca."IOP_QUANTIDADE"> ' +
-              '/ <PESO>]')
+              '         [PESO] Kg.       Dens: [FormatFloat('#39'###,###.00'#39' ,<frxD' +
+              'BBusca."IOP_QUANTIDADE"> / <PESO>) ]')
           ParentFont = False
           Formats = <
             item
