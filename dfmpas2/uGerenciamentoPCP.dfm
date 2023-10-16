@@ -227,10 +227,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Top = 105
         Width = 1376
         Height = 434
-        LookAndFeel.Kind = lfStandard
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmClassic
-        ExplicitTop = 105
+        ExplicitTop = 103
         ExplicitWidth = 1376
         ExplicitHeight = 434
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -37080,29 +37077,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             '[frxDBBusca."PRD_DESCRI"]')
           ParentFont = False
         end
-        object Memo5: TfrxMemoView
-          AllowVectorExport = True
-          Left = 285.464750000000000000
-          Top = 154.960730000000000000
-          Width = 128.504020000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            
-              '??? Produzir:[frxDBBusca."IOP_QUANTIDADE"] [frxDBBusca."PRD_UND"' +
-              ']')
-          ParentFont = False
-          Formats = <
-            item
-            end
-            item
-            end>
-        end
         object Memo11: TfrxMemoView
           AllowVectorExport = True
           Left = 600.945270000000000000
@@ -37236,7 +37210,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            'N'#186' Lote: ________________')
+            'N'#186' Lote: [frxDBBusca."PRDL_LOTE"]')
           ParentFont = False
         end
         object Memo108: TfrxMemoView
@@ -37285,9 +37259,17 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Frame.Typ = []
           Memo.UTF8W = (
             
-              'Quantidade a Produzir: ________ L                    _________ K' +
-              'g.       Dens:___________')
+              'Quantidade a Produzir: [frxDBBusca."IOP_QUANTIDADE"]L           ' +
+              '         [PESO] Kg.       Dens: [ <frxDBBusca."IOP_QUANTIDADE"> ' +
+              '/ <PESO>]')
           ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end
+            item
+            end>
         end
         object Memo111: TfrxMemoView
           AllowVectorExport = True
@@ -37566,8 +37548,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 418.393700787402000000
-          Width = 26.456692913385800000
+          Left = 418.393700790000000000
+          Width = 26.456692910000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -37575,6 +37557,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Font.Name = 'Arial'
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            '[PERCENTUAL]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
@@ -38757,6 +38741,16 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             'Aprovado por:')
           ParentFont = False
           VAlign = vaCenter
+        end
+        object Memo85: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 404.409710000000000000
+          Width = 706.772110000000000000
+          Height = 132.283550000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[ORIENTACOES]')
         end
       end
     end

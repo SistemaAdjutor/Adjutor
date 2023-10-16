@@ -2375,7 +2375,11 @@ begin
         ' WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO);
     qAux4.ExecSQL;
     DecodeDate(date(), ano, mes, dia);
-    Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '-' + IntToStr(ano) ;
+    if DBInicio.Empresa.PMT_REL_ORDEMPRODUCAO = '13' then
+      Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '-' + IntToStr(dia) + IntToStr(mes) + IntToStr(ano)
+    else
+      Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '-' + IntToStr(ano)
+    ;
   end
   else
   if lote <> '' then

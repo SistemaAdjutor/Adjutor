@@ -79,7 +79,7 @@ var
 implementation
 
 {$R *.dfm}
- uses InicioDB, uteis, uSelProduto;
+ uses InicioDB, uteis, uSelProduto, uDemandaProducao;
 { TProducaoDao }
 
 procedure TProducaoDao.FazerReserva(const prd_codigo: string; UsarEstoque: double);
@@ -484,22 +484,24 @@ function TProducaoDao.AdicionandoMP(Sender: TObject; const ped_codigo, prd_codig
   consumototal: Double;const mp_codigo_subst,ope_codigo : Integer ): Integer;
 var sql :string;
  chave : Integer;
- prd_refer : string;
+ prd_refer, prdRefer2, prdReferItens : string;
  controlaLote : boolean;
  FaltaEmpenhar : double;
  QuantEmpenharLote : double;
  Empenhado : double;
  custototal : double;
+ percentual: double;
 begin
   try
 
     chave := GetNextSequence('gen_materiaprima');
 
+    prd_refer := BuscaUmDadoSqlAsString('select prd_refer from prd0000 where prd_codigo = '+QuotedStr(prd_codigo)  );
+
     // consumir insumo ao enviar a produção
     if (sender.classname = 'TProducaoDao') and (DBInicio.Empresa.PMT_COMSUMIRINSUMO = 'E') then
      begin
 
-       prd_refer := BuscaUmDadoSqlAsString('select prd_refer from prd0000 where prd_codigo = '+QuotedStr(prd_codigo)  );
        controlaLote := BuscaUmDadoSqlAsString(' select PRD_GERENCIA_LOTE from prd0000 where prd_codigo = '+QuotedStr(prd_codigo) ) = 'S' ;
        if controlaLote then
        begin
@@ -561,14 +563,23 @@ begin
        end;
      end;
 
+    if frmDemandaProducao <> nil then
+    begin
+      prdRefer2 := BuscaUmDadoSqlAsString('SELECT PRD_REFER FROM PRD0000 WHERE PRD_CODIGO = ' +  QuotedStr(frmDemandaProducao.cdsBuscaPRD_CODIGO.AsString));
+      prdReferItens := BuscaUmDadoSqlAsString('SELECT PRD_REFER FROM PRD0000 WHERE PRD_CODIGO = ' +  QuotedStr(prd_codigo));
+      percentual := BuscaUmDadoSqlAsFloat('SELECT FTI_PERCENTUAL FROM FTC_IT01 fi  WHERE PRD_REFER = ' + QuotedStr(prdRefer2) + ' AND PRD_REFER_ITENS =  ' + QuotedStr(prdReferItens) );
+    end
+    else
+      percentual := 0;
 
     sql := 'INSERT INTO MATERIAPRIMA_ORDEMPRODUCAO '+
-           ' (MP_CODIGO, PED_CODIGO, IOP_CODIGO, OPR_CODIGO, PRD_CODIGO, MP_UCONSUMO, MP_BASECOMPOSICAO, MP_CONSUMOTOTAL, MP_EMPENHADO, MP_CODIGO_SUBST, OPE_CODIGO, MP_CUSTO, MP_EXTRA) '+
+           ' (MP_CODIGO, PED_CODIGO, IOP_CODIGO, OPR_CODIGO, PRD_CODIGO, FTI_PERCENTUAL, MP_UCONSUMO, MP_BASECOMPOSICAO, MP_CONSUMOTOTAL, MP_EMPENHADO, MP_CODIGO_SUBST, OPE_CODIGO, MP_CUSTO, MP_EXTRA) '+
             ' VALUES('+IntToStr(CHAVE) +','+
             QuotedStr(PED_CODIGO) + ','+
             IntToStr(iop_codigo) + ','+
             IntToStr(opr_codigo) +','+
             QuotedStr(prd_codigo) +','+
+            FloatToSQL(percentual) + ','+
             FloatToSQL(uc) + ','+
             FloatToSQL(basecomposicao)+ ','+
             FloatToSQL(consumototal) +','+

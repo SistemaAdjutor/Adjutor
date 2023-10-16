@@ -2477,10 +2477,38 @@ begin
 end;
 
 procedure TfrmGerenciamentoPCP.frxOP1GetValue(const VarName: string; var Value: Variant);
+var
+  prdRefer: string;
 begin
   inherited;
   if (VarName = 'EMPRESA') then
-    Value := dbInicio.Empresa.RAZAO;
+    Value := dbInicio.Empresa.RAZAO
+  else
+  if (VarName = 'ORIENTACOES') then
+  begin
+    qAux4.Close;
+    qAux4.SQL.Text := 'SELECT FTC_ETAPAS FROM FTC0000 f WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString);
+    qAux4.Open;
+    Value := qAux4.FieldByName('FTC_ETAPAS').AsString
+  end
+  else
+  if (VarName = 'PERCENTUAL') then
+  begin
+    prdRefer := BuscaUmDadoSqlAsString('SELECT PRD_REFER FROM PRD0000 WHERE PRD_CODIGO = ' +  QuotedStr(cdsMateriaPrima2PRD_CODIGO_1.AsString));
+    Value := BuscaUmDadoSqlAsString('SELECT FTI_PERCENTUAL FROM FTC_IT01 fi  WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString) + ' AND PRD_REFER_ITENS =  ' + QuotedStr(prdRefer) );
+  end
+  else
+  if (VarName = 'PESO') then
+  begin
+    qAux4.Close;
+    qAux4.SQL.Text := 'SELECT SUM(MP_CONSUMOTOTAL) AS MP_CONSUMOTOTAL ' +
+                      ' FROM MATERIAPRIMA_ORDEMPRODUCAO ' +
+                      ' WHERE PED_CODIGO = ' + QuotedStr(cdsBuscaPED_CODIGO.AsString) +
+                      ' AND IOP_CODIGO = ' + cdsBuscaIOP_CODIGO.AsString ;
+    qAux4.Open;
+    Value := qAux4.FieldByName('MP_CONSUMOTOTAL').AsString
+  end
+    ;
 end;
 
 procedure TfrmGerenciamentoPCP.frxOP4GetValue(const VarName: string; var Value: Variant);
