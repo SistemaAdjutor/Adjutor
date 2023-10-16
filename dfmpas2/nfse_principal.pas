@@ -1046,7 +1046,7 @@ begin
          ACBrNFSe1.NotasFiscais.Items[ACBrNFSe1.NotasFiscais.Count-1].NFSe.Servico.Valores.IssRetido := stNormal;
          If DBInicio.Empresa.CID_IBGE = 4106902 Then
            // para iss curitiba dividir a aliquicota por 100, conforme o manual
-             ACBrNFSe1.NotasFiscais.Items[ACBrNFSe1.NotasFiscais.Count-1].NFSe.Servico.Valores.Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat
+            ACBrNFSe1.NotasFiscais.Items[ACBrNFSe1.NotasFiscais.Count-1].NFSe.Servico.Valores.Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat
          else
             ACBrNFSe1.NotasFiscais.Items[ACBrNFSe1.NotasFiscais.Count-1].NFSe.Servico.Valores.Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat;
 
@@ -3023,17 +3023,19 @@ begin
             Servico.Valores.BaseCalculo :=  clone.FieldByName('NFSI_basecalculo').AsFloat;
 
          // Servico.Valores.IssRetido := stNormal;
-         If (DBInicio.Empresa.CID_IBGE = 4106902)  Then
+         If (DBInicio.Empresa.CID_IBGE = 4106902) or (DBInicio.Empresa.CID_IBGE = 4104105)  Then
            // para iss curitiba dividir a aliquicota por 100, conforme o manual
             Servico.Valores.Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat/100
          else
            Servico.Valores.Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat;
 
         // Valor do ISS calculado multiplicando-se a base de calculo pela aliquota
-         If (DBInicio.Empresa.CID_IBGE = 4106902)  Then
-           ValorISS := (Servico.Valores.BaseCalculo * Servico.Valores.Aliquota)
-         else
-           ValorISS := Servico.Valores.BaseCalculo * (Servico.Valores.Aliquota / 100);
+        //  If (DBInicio.Empresa.CID_IBGE = 4106902)  Then
+        //    ValorISS := (Servico.Valores.BaseCalculo * Servico.Valores.Aliquota)
+        //  else
+        //    ValorISS := Servico.Valores.BaseCalculo * (Servico.Valores.Aliquota / 100);
+
+         ValorISS := Servico.Valores.BaseCalculo * (Servico.Valores.Aliquota);
 
          Servico.Valores.ValorIss := Uteis.RoundTo(ValorISS, -2);
 
@@ -3123,7 +3125,7 @@ begin
           else
             BaseCalculo :=  clone.FieldByName('NFSI_basecalculo').AsFloat;
            // Servico.Valores.IssRetido := stNormal;
-           If (DBInicio.Empresa.CID_IBGE = 4106902)  Then
+           If (DBInicio.Empresa.CID_IBGE = 4106902) or (DBInicio.Empresa.CID_IBGE = 4104105)   Then
              Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat / 100
            else
              Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat;
