@@ -623,6 +623,9 @@ inherited FrmVinculacaoIndustrializacaoRetorno: TFrmVinculacaoIndustrializacaoRe
       BlobType = ftMemo
       Size = 1
     end
+    object SqlCdsNotasDisponiveisENF_IT_DET_NITEM: TIntegerField
+      FieldName = 'ENF_IT_DET_NITEM'
+    end
   end
   object dsNotaDisponivel: TDataSource
     DataSet = SqlCdsNotasDisponiveis

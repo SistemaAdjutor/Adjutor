@@ -103,6 +103,7 @@ type
     procedure frxNotasDisponiveisGetValue(const VarName: string;
       var Value: Variant);
     procedure BitBtn1Click(Sender: TObject);
+    procedure dbgrdNotasDisponveisTitleClick(Column: TColumn);
   private
     { Private declarations }
     procedure ConsultaDisponiveis;
@@ -220,8 +221,8 @@ begin
     ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
     ' AND ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
     iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') +
-    '  order by ef.enf_emissao, ei.ENF_IT_DET_NITEM ';
-//    '  order by ei.prd_refer, ef.enf_emissao ';
+//    '  order by ef.enf_emissao, ei.ENF_IT_DET_NITEM ';
+    '  order by ei.prd_refer, ef.enf_emissao ';
 //    '  order by ef.enf_emissao, ef.enf_notanumber desc';
 
   if DBInicio.IsDesenvolvimento then
@@ -344,6 +345,13 @@ begin
       Key := #0;
       Seleciona;
     end;
+end;
+
+procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisTitleClick(
+  Column: TColumn);
+begin
+  inherited;
+  // faz nada. Para desabilitar a ordenação das colunas
 end;
 
 procedure TFrmIndustrializacaoPorKit.FormShow(Sender: tObject);
@@ -570,11 +578,17 @@ begin
                     end;
 
 
+//                 if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
+//                    prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString + ' ' +
+//                                 ' # RETORNO REF NF ' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
+//                                 ' SÉRIE '  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
+//                                 ' EMITIDA EM ' +  SqlCdsNotasDisponiveisENF_EMISSAO.AsString
+
+
                  if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
                     prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString + ' ' +
-                                 ' # RETORNO REF NF ' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
-                                 ' SÉRIE '  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
-                                 ' EMITIDA EM ' +  SqlCdsNotasDisponiveisENF_EMISSAO.AsString
+                                 ' #RR|' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
+                                 '|'  + SqlCdsNotasDisponiveisENF_IT_DET_NITEM.AsString + '|'
                  else
                     prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString  ;
 

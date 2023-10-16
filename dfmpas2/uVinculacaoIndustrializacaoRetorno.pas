@@ -81,6 +81,7 @@ type
     SqlCdsNotasDisponiveisENF_OBS_INDUST: TMemoField;
     SqlCdsProdutoPRDC_REFERENCIA: TStringField;
     DesmarcarTodos1: TMenuItem;
+    SqlCdsNotasDisponiveisENF_IT_DET_NITEM: TIntegerField;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);
@@ -189,6 +190,7 @@ begin
                                         '    T1.enf_cfop, '+
                                         '    t1.prd_refer, '+
                                         '    t1.prd_descri, '+
+                                        '    t1.ENF_IT_DET_NITEM, ' +
                                         '    t1.enf_qtde, '+
                                         '    t1.enf_quantidade_ind_retorno, '+
                                         '    t1.enf_preco, '+
@@ -566,11 +568,16 @@ begin
     //                 else
                         Preco := SqlCdsNotasDisponiveisENF_PRECO.AsFloat;
 
+//                        if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
+//                          prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString + ' ' +
+//                                       ' # RETORNO REF NF ' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
+//                                       ' SÉRIE '  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
+//                                       ' EMITIDA EM ' +  SqlCdsNotasDisponiveisENF_EMISSAO.AsString
+
                         if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
                           prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString + ' ' +
-                                       ' # RETORNO REF NF ' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
-                                       ' SÉRIE '  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
-                                       ' EMITIDA EM ' +  SqlCdsNotasDisponiveisENF_EMISSAO.AsString
+                                 ' #RR|' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
+                                 '|'  + SqlCdsNotasDisponiveisENF_IT_DET_NITEM.AsString + '|'
                         else
                           prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString  ;
 
@@ -721,11 +728,17 @@ begin
 //                 else
                     Preco := SqlCdsNotasDisponiveisENF_PRECO.AsFloat;
 
-                    if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
-                      prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString +
-                                   ' # RETORNO REF NF ' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
-                                   ' SÉRIE '  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
-                                   ' EMITIDA EM ' +  SqlCdsNotasDisponiveisENF_EMISSAO.AsString
+//                    if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
+//                      prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString +
+//                                   ' # RETORNO REF NF ' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
+//                                   ' SÉRIE '  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
+//                                   ' EMITIDA EM ' +  SqlCdsNotasDisponiveisENF_EMISSAO.AsString
+
+
+                        if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
+                            prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString + ' ' +
+                                 ' #RR|' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
+                                 '|'  + SqlCdsNotasDisponiveisENF_IT_DET_NITEM.AsString + '|'
                     else
                       prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString;
 
