@@ -3035,7 +3035,11 @@ begin
         //  else
         //    ValorISS := Servico.Valores.BaseCalculo * (Servico.Valores.Aliquota / 100);
 
-         ValorISS := Servico.Valores.BaseCalculo * (Servico.Valores.Aliquota);
+         If (DBInicio.Empresa.CID_IBGE = 4104105) then
+           ValorISS := Servico.Valores.BaseCalculo * (Servico.Valores.Aliquota / 100)
+         else
+           ValorISS := Servico.Valores.BaseCalculo * (Servico.Valores.Aliquota);
+
 
          Servico.Valores.ValorIss := Uteis.RoundTo(ValorISS, -2);
 
@@ -3125,12 +3129,15 @@ begin
           else
             BaseCalculo :=  clone.FieldByName('NFSI_basecalculo').AsFloat;
            // Servico.Valores.IssRetido := stNormal;
-           If (DBInicio.Empresa.CID_IBGE = 4106902) or (DBInicio.Empresa.CID_IBGE = 4104105)   Then
+           If (DBInicio.Empresa.CID_IBGE = 4106902)  Then // or (DBInicio.Empresa.CID_IBGE = 4104105)
              Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat / 100
            else
              Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat;
            // Valor do ISS calculado multiplicando-se a base de calculo pela aliquota
-          ValorISS := BaseCalculo * Aliquota ;
+          If (DBInicio.Empresa.CID_IBGE = 4104105) then
+            ValorISS := BaseCalculo * (Aliquota / 100)
+          else
+            ValorISS := BaseCalculo * Aliquota ;
           ValorIss := Uteis.RoundTo(ValorISS, -2);
         end;
 
