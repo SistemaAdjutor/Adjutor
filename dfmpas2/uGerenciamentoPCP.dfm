@@ -37260,7 +37260,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Memo.UTF8W = (
             
               'Quantidade a Produzir: [frxDBBusca."IOP_QUANTIDADE"]L           ' +
-              '         [PESO] Kg.       Dens: [FormatFloat('#39'###,###.00'#39' ,<frxD' +
+              '         [PESO] Kg.       Dens: [FormatFloat('#39'###,##0.00'#39' ,<frxD' +
               'BBusca."IOP_QUANTIDADE"> / <PESO>) ]')
           ParentFont = False
           Formats = <
