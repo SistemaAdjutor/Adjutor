@@ -3023,7 +3023,7 @@ begin
             Servico.Valores.BaseCalculo :=  clone.FieldByName('NFSI_basecalculo').AsFloat;
 
          // Servico.Valores.IssRetido := stNormal;
-         If (DBInicio.Empresa.CID_IBGE = 4106902) or (DBInicio.Empresa.CID_IBGE = 4104105)  Then
+         If (DBInicio.Empresa.CID_IBGE = 4106902) Then  // or (DBInicio.Empresa.CID_IBGE = 4104105)
            // para iss curitiba dividir a aliquicota por 100, conforme o manual
             Servico.Valores.Aliquota    := clone.FieldByName('NFSI_aliquotaiss').AsFloat/100
          else
