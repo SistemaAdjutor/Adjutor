@@ -55,7 +55,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       Align = alClient
       Color = clWhite
       DataSource = dsNotaDisponivel
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
       PopupMenu = pmSelecao
       TabOrder = 0
       TitleFont.Charset = ANSI_CHARSET
@@ -67,6 +67,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       OnDrawColumnCell = dbgrdNotasDisponveisDrawColumnCell
       OnDblClick = dbgrdNotasDisponveisDblClick
       OnKeyPress = dbgrdNotasDisponveisKeyPress
+      OnTitleClick = dbgrdNotasDisponveisTitleClick
       Columns = <
         item
           Expanded = False
