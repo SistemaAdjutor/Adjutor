@@ -2,8 +2,8 @@ inherited frmNfse: TfrmNfse
   Caption = 'Nota Fiscal Servi'#231'o Curitiba'
   ClientHeight = 597
   ClientWidth = 1302
-  ExplicitWidth = 1310
-  ExplicitHeight = 624
+  ExplicitWidth = 1318
+  ExplicitHeight = 636
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter [0]
@@ -577,8 +577,10 @@ inherited frmNfse: TfrmNfse
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object chkNaoRevisado: TCheckBox
         Left = 303
@@ -1618,7 +1620,7 @@ inherited frmNfse: TfrmNfse
   end
   object frxReport1: TfrxReport
     Tag = 1
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1662,11 +1664,14 @@ inherited frmNfse: TfrmNfse
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       EndlessHeight = True
       EndlessWidth = True
       LargeDesignHeight = True
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -1680,10 +1685,13 @@ inherited frmNfse: TfrmNfse
         Child = frxReport1.TomadorPrestador
         object Shape2: TfrxShapeView
           Align = baClient
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 136.063080000000000000
+          Frame.Typ = []
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165354330000000000
           Top = 3.779527559999998000
           Width = 438.425480000000000000
@@ -1693,6 +1701,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -19
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PREFEITURA MUNICIPAL DE '
@@ -1700,6 +1709,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 158.740260000000000000
           Height = 34.015740710000000000
@@ -1716,6 +1726,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 34.015770000000010000
           Width = 158.740260000000000000
@@ -1733,6 +1744,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 68.031540000000010000
           Width = 158.740260000000000000
@@ -1750,6 +1762,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 15.118120000000000000
           Width = 151.181200000000000000
@@ -1760,12 +1773,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Identificacao."NumeroNFSe"]')
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 49.133889999999990000
           Width = 151.181200000000000000
@@ -1776,12 +1791,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Identificacao."DataEmissao"]')
           ParentFont = False
         end
         object Memo54: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 83.149660000000000000
           Width = 151.181200000000000000
@@ -1792,22 +1809,26 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Identificacao."CodigoVerificacao"]')
           ParentFont = False
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.000000000000000000
           Width = 109.606370000000000000
           Height = 98.267780000000000000
           DataField = 'LogoPrefCarregado'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 79.370130000000000000
           Width = 438.425480000000000000
@@ -1817,6 +1838,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -17
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Nota Fiscal de Servi'#231'os Eletr'#244'nica - NFS-e')
@@ -1824,6 +1846,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Top = 102.047310000000000000
           Width = 158.740260000000000000
           Height = 34.015755350000000000
@@ -1839,6 +1862,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 117.165430000000000000
           Width = 151.181200000000000000
@@ -1848,11 +1872,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Identificacao."Competencia"]')
           ParentFont = False
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 158.740260000000000000
           Top = 102.047310000000000000
           Width = 219.212740000000000000
@@ -1869,6 +1895,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 166.299320000000000000
           Top = 117.165430000000000000
           Width = 207.874150000000000000
@@ -1878,11 +1905,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Identificacao."Numero"]')
           ParentFont = False
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 102.047310000000000000
           Width = 181.417440000000000000
@@ -1899,6 +1928,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo78: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 117.165430000000000000
           Width = 173.858380000000000000
@@ -1908,11 +1938,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Identificacao."NFSeSubstituida"]')
           ParentFont = False
         end
         object Memo95: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 102.047310000000000000
           Width = 158.740260000000000000
@@ -1930,6 +1962,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 117.165430000000000000
           Width = 158.740260000000000000
@@ -1939,6 +1972,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Page] / [TotalPages#]')
@@ -1952,6 +1986,7 @@ inherited frmNfse: TfrmNfse
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -1962,6 +1997,7 @@ inherited frmNfse: TfrmNfse
         Top = 778.583180000000000000
         Width = 718.110700000000000000
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Top = 404.409710000000000000
           Width = 718.110700000000000000
           Height = 60.472480000000000000
@@ -1980,6 +2016,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo127: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Top = 101.291338580000000000
           Width = 185.196877240000000000
@@ -1997,12 +2034,15 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Shape5: TfrxShapeView
+          AllowVectorExport = True
           Left = 0.220470000000000000
           Top = 288.724489999999900000
           Width = 718.110700000000000000
           Height = 109.606370000000000000
+          Frame.Typ = []
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.000000000000000000
           Top = 310.181200000000100000
           Width = 710.551640000000000000
@@ -2013,6 +2053,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Parametros."OutrasInformacoes"]'
@@ -2021,6 +2062,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.110233780000000000
           Top = 290.283550000000000000
           Width = 714.330708660000000000
@@ -2031,6 +2073,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Fill.BackColor = clWhite
           HAlign = haCenter
@@ -2039,6 +2082,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = -0.220470000000000000
           Top = 267.944959999999900000
           Width = 718.110700000000000000
@@ -2060,6 +2104,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244094490000000000
           Top = 67.464559610000040000
           Width = 143.622047240000000000
@@ -2077,6 +2122,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Top = 67.464559610000040000
           Width = 143.622047240000000000
           Height = 34.015752910000000000
@@ -2093,6 +2139,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 143.622047240000000000
           Top = 67.464559610000040000
           Width = 143.622047240000000000
@@ -2110,6 +2157,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 574.488188980000000000
           Top = 67.464559610000040000
           Width = 143.622047240000000000
@@ -2127,6 +2175,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo87: TfrxMemoView
+          AllowVectorExport = True
           Left = 430.866141730000000000
           Top = 67.464559610000040000
           Width = 143.622047240000000000
@@ -2144,6 +2193,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo89: TfrxMemoView
+          AllowVectorExport = True
           Left = 283.464564490000000000
           Top = 84.913378500000030000
           Width = 143.622047240000000000
@@ -2156,6 +2206,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2163,6 +2214,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo90: TfrxMemoView
+          AllowVectorExport = True
           Left = -3.779530000000000000
           Top = 84.913378500000030000
           Width = 143.622047240000000000
@@ -2175,6 +2227,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2182,6 +2235,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo106: TfrxMemoView
+          AllowVectorExport = True
           Left = 139.842517240000000000
           Top = 84.913378500000030000
           Width = 143.622047240000000000
@@ -2194,6 +2248,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2201,6 +2256,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo107: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.708658980000000000
           Top = 84.913378500000030000
           Width = 143.622047240000000000
@@ -2213,6 +2269,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2220,6 +2277,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 427.086611730000000000
           Top = 84.913378500000030000
           Width = 143.622047240000000000
@@ -2232,6 +2290,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2239,6 +2298,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Top = 384.842509920000000000
           Width = 222.992270000000000000
           Height = 11.338590000000000000
@@ -2248,6 +2308,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[Parametros."Usuario"] - Data e Hora da Impress'#227'o: [Date #ddd/mm' +
@@ -2262,6 +2323,7 @@ inherited frmNfse: TfrmNfse
             end>
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = -1.110236220000000000
           Top = 13.173160000000050000
           Width = 718.110238660000000000
@@ -2271,6 +2333,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Servicos."ItemListaServico"] - [Servicos."xItemListaServico"]')
           ParentFont = False
@@ -2281,6 +2344,7 @@ inherited frmNfse: TfrmNfse
             end>
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Top = 46.677180000000020000
           Width = 718.110700000000000000
           Height = 20.787401570000000000
@@ -2299,6 +2363,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo55: TfrxMemoView
+          AllowVectorExport = True
           Top = 101.370130000000000000
           Width = 287.244187240000000000
           Height = 136.063062910000000000
@@ -2315,6 +2380,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Top = 122.267780000000000000
           Width = 188.976451180000000000
           Height = 15.118110240000000000
@@ -2323,6 +2389,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Valor dos Servi'#231'os')
@@ -2330,6 +2397,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 122.267780000000000000
           Width = 98.267731180000000000
@@ -2341,6 +2409,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2350,6 +2419,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo59: TfrxMemoView
+          AllowVectorExport = True
           Top = 141.165430000000000000
           Width = 188.976451180000000000
           Height = 15.118110240000000000
@@ -2358,6 +2428,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(-) Desconto Incondicionado')
@@ -2365,6 +2436,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 141.165430000000000000
           Width = 98.267731180000000000
@@ -2376,6 +2448,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2385,6 +2458,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo99: TfrxMemoView
+          AllowVectorExport = True
           Top = 160.063080000000000000
           Width = 188.976451180000000000
           Height = 15.118110240000000000
@@ -2393,6 +2467,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(-) Desconto Condicionado')
@@ -2400,6 +2475,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo100: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 160.063080000000000000
           Width = 98.267731180000000000
@@ -2411,6 +2487,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2420,6 +2497,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo101: TfrxMemoView
+          AllowVectorExport = True
           Top = 178.960730000000000000
           Width = 188.976451180000000000
           Height = 15.118110240000000000
@@ -2428,6 +2506,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(-) Reten'#231#245'es Federais')
@@ -2435,6 +2514,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo102: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 178.960730000000000000
           Width = 98.267731180000000000
@@ -2446,6 +2526,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2457,6 +2538,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo104: TfrxMemoView
+          AllowVectorExport = True
           Top = 197.858380000000000000
           Width = 188.976451180000000000
           Height = 15.118110240000000000
@@ -2465,6 +2547,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(-) Outras Reten'#231#245'es')
@@ -2472,6 +2555,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo105: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 197.858380000000000000
           Width = 98.267731180000000000
@@ -2483,6 +2567,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2492,6 +2577,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo108: TfrxMemoView
+          AllowVectorExport = True
           Top = 216.756030000000000000
           Width = 188.976451180000000000
           Height = 15.118110240000000000
@@ -2500,6 +2586,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(-) ISS Retido')
@@ -2507,6 +2594,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo114: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 216.756030000000000000
           Width = 98.267731180000000000
@@ -2518,6 +2606,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2527,6 +2616,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo115: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 101.370130000000000000
           Width = 245.669357240000000000
@@ -2544,6 +2634,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo116: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 122.267780000000000000
           Width = 147.401621180000000000
@@ -2553,6 +2644,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Valor dos Servi'#231'os')
@@ -2560,6 +2652,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo117: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Top = 122.267780000000000000
           Width = 98.267731180000000000
@@ -2571,6 +2664,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2580,6 +2674,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo118: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 141.165430000000000000
           Width = 147.401621180000000000
@@ -2589,6 +2684,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(-) Dedu'#231#245'es permitidas em Lei')
@@ -2596,6 +2692,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo119: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 160.063080000000000000
           Width = 147.401621180000000000
@@ -2605,6 +2702,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(-) Desconto Incondicionado')
@@ -2612,6 +2710,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo120: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 178.960730000000000000
           Width = 147.401621180000000000
@@ -2621,6 +2720,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(=) Base de C'#225'lculo')
@@ -2628,6 +2728,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo121: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 197.858380000000000000
           Width = 147.401621180000000000
@@ -2637,6 +2738,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(x) Al'#237'quota (%)')
@@ -2644,6 +2746,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo122: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 216.756030000000000000
           Width = 147.401621180000000000
@@ -2653,6 +2756,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'ISS a reter:')
@@ -2660,6 +2764,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo123: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Top = 216.756030000000000000
           Width = 98.267731180000000000
@@ -2669,6 +2774,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2678,6 +2784,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object ServicosAliquota: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842871180000000000
           Top = 197.858380000000000000
           Width = 98.267731180000000000
@@ -2690,6 +2797,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2699,6 +2807,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo124: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842871180000000000
           Top = 178.960730000000000000
           Width = 98.267731180000000000
@@ -2710,6 +2819,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2719,6 +2829,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo125: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842871180000000000
           Top = 141.165430000000000000
           Width = 98.267731180000000000
@@ -2730,6 +2841,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2739,6 +2851,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo126: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Top = 160.063080000000000000
           Width = 98.267731180000000000
@@ -2750,6 +2863,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2759,6 +2873,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo128: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Top = 122.267780000000000000
           Width = 185.196921180000000000
@@ -2768,6 +2883,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2776,6 +2892,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo129: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Top = 178.960730000000000000
           Width = 185.196921180000000000
@@ -2785,6 +2902,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -2793,6 +2911,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo130: TfrxMemoView
+          AllowVectorExport = True
           Top = 237.433210000000000000
           Width = 287.244187240000000000
           Height = 30.236222910000000000
@@ -2807,6 +2926,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo131: TfrxMemoView
+          AllowVectorExport = True
           Top = 244.212740000000100000
           Width = 188.976451180000000000
           Height = 15.118110240000000000
@@ -2815,6 +2935,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(=) Valor L'#237'quido')
@@ -2822,6 +2943,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo132: TfrxMemoView
+          AllowVectorExport = True
           Left = 188.976500000000000000
           Top = 244.212740000000100000
           Width = 98.267731180000000000
@@ -2833,6 +2955,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2842,6 +2965,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo133: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Top = 237.354330710000000000
           Width = 185.196877240000000000
@@ -2857,6 +2981,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo134: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 237.354330708661000000
           Width = 245.669357240000000000
@@ -2872,6 +2997,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo135: TfrxMemoView
+          AllowVectorExport = True
           Left = 472.441250000000000000
           Top = 244.212740000000100000
           Width = 147.401621180000000000
@@ -2881,6 +3007,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '(=) Valor ISS')
@@ -2888,6 +3015,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo136: TfrxMemoView
+          AllowVectorExport = True
           Left = 619.842920000000000000
           Top = 244.212740000000100000
           Width = 98.267731180000000000
@@ -2899,6 +3027,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -2907,6 +3036,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo137: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Top = 237.433210000000000000
           Width = 132.283501180000000000
@@ -2916,6 +3046,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Op'#231#227'o Simples Nacional')
@@ -2923,6 +3054,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo138: TfrxMemoView
+          AllowVectorExport = True
           Left = 288.023810000000000000
           Top = 251.771800000000100000
           Width = 132.283501180000000000
@@ -2932,6 +3064,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Incentivador Cultural')
@@ -2939,6 +3072,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.614100000000007700
           Width = 718.110700000000000000
           Height = 46.488188980000000000
@@ -2954,6 +3088,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 404.409710000000000000
           Width = 154.960730000000000000
@@ -2972,6 +3107,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 438.425480000000000000
           Width = 147.401670000000000000
@@ -2982,6 +3118,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -12
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Identificacao."NumeroNFSe"]')
@@ -2989,6 +3126,7 @@ inherited frmNfse: TfrmNfse
           WordWrap = False
         end
         object Memo75: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 443.866419999999900000
           Width = 151.181200000000000000
@@ -2998,12 +3136,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'DATA  _______/_______/________')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 156.960730000000000000
           Top = 443.866419999999900000
           Width = 400.630180000000000000
@@ -3013,6 +3153,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Identifica'#231#227'o e Assinatura do Recebedor ________________________' +
@@ -3021,6 +3162,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Top = 141.165430000000000000
           Width = 185.196921180000000000
@@ -3030,6 +3172,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -3039,6 +3182,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 287.244280000000000000
           Top = 197.858380000000000000
           Width = 185.196921180000000000
@@ -3048,6 +3192,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haCenter
           Memo.UTF8W = (
@@ -3057,6 +3202,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 430.866420000000000000
           Top = 237.433210000000000000
           Width = 41.574781180000000000
@@ -3066,6 +3212,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -3075,6 +3222,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 430.866420000000000000
           Top = 251.771800000000100000
           Width = 41.574781180000000000
@@ -3084,6 +3232,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -3093,6 +3242,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 224.212740000000000000
           Top = 385.512059999999900000
           Width = 491.338900000000000000
@@ -3103,6 +3253,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Parametros."Sistema"] - [Parametros."Site"]')
@@ -3116,6 +3267,7 @@ inherited frmNfse: TfrmNfse
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -3129,6 +3281,7 @@ inherited frmNfse: TfrmNfse
         Stretched = True
         object Memo13: TfrxMemoView
           Align = baClient
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 222.992270000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -3144,6 +3297,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 200.315090000000100000
           Width = 710.551640000000000000
@@ -3155,6 +3309,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -19
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[Parametros."Mensagem0"]')
@@ -3162,6 +3317,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Subreport1: TfrxSubreport
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 672.756340000000000000
           Height = 136.063080000000000000
@@ -3172,6 +3328,7 @@ inherited frmNfse: TfrmNfse
       end
       object TomadorPrestador: TfrxChild
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -13
@@ -3182,12 +3339,17 @@ inherited frmNfse: TfrmNfse
         Top = 177.637910000000000000
         Width = 718.110700000000000000
         OnBeforePrint = 'TomadorPrestadorOnBeforePrint'
+        ToNRows = 0
+        ToNRowsMode = rmCount
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 0.755871339999998700
           Width = 718.110700000000000000
           Height = 105.826840000000000000
+          Frame.Typ = []
         end
         object Memo64: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.755900630000000000
           Top = 71.810969919999990000
           Width = 283.464418030000000000
@@ -3198,17 +3360,21 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Prestador."Complemento"]')
           ParentFont = False
         end
         object Shape3: TfrxShapeView
+          AllowVectorExport = True
           Top = 106.582633230000000000
           Width = 718.110700000000000000
           Height = 105.826840000000000000
+          Frame.Typ = []
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.188976380000000000
           Top = 86.929102130000080000
           Width = 68.031491180000000000
@@ -3218,6 +3384,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Munic'#237'pio:')
@@ -3225,6 +3392,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.188976380000000000
           Top = 26.456646540000010000
           Width = 68.031491180000000000
@@ -3234,6 +3402,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Nome / Raz'#227'o:')
@@ -3241,6 +3410,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.188976380000000000
           Top = 56.692874329999990000
           Width = 68.031491180000000000
@@ -3250,6 +3420,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Endere'#231'o:')
@@ -3257,6 +3428,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.188976380000000000
           Top = 41.574778740000000000
           Width = 68.031491180000000000
@@ -3266,6 +3438,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'CPF / CNPJ:')
@@ -3273,6 +3446,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo60: TfrxMemoView
+          AllowVectorExport = True
           Top = 163.118044330000000000
           Width = 75.590551180000000000
           Height = 15.118110240000000000
@@ -3281,6 +3455,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Endere'#231'o:')
@@ -3288,6 +3463,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo61: TfrxMemoView
+          AllowVectorExport = True
           Top = 193.354274570000000000
           Width = 75.590551180000000000
           Height = 15.118110240000000000
@@ -3296,6 +3472,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Munic'#237'pio:')
@@ -3303,6 +3480,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 481.315007010000000000
           Top = 147.999943860000000000
           Width = 86.929141180000000000
@@ -3312,6 +3490,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Inscri'#231#227'o Municipal:')
@@ -3319,6 +3498,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo62: TfrxMemoView
+          AllowVectorExport = True
           Top = 147.999943860000000000
           Width = 75.590551180000000000
           Height = 15.118110240000000000
@@ -3327,6 +3507,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'CPF / CNPJ:')
@@ -3334,6 +3515,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 481.889763780000000000
           Top = 41.574778740000000000
           Width = 90.708646770000000000
@@ -3343,6 +3525,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Inscri'#231#227'o Municipal:')
@@ -3350,6 +3533,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo98: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.889763780000000000
           Top = 1.779529999999994000
           Width = 714.330708660000000000
@@ -3359,6 +3543,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -13
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Fill.BackColor = clWhite
           HAlign = haCenter
@@ -3367,16 +3552,19 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object imgPrestador: TfrxPictureView
+          AllowVectorExport = True
           Left = 4.559060000000000000
           Top = 26.456709999999990000
           Width = 109.606370000000000000
           Height = 75.590600000000000000
           DataField = 'LogoCarregado'
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.755900630000000000
           Top = 26.456646540000010000
           Width = 521.574808030000000000
@@ -3387,12 +3575,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Prestador."RazaoSocial"]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.755900630000000000
           Top = 56.692874329999990000
           Width = 521.574808030000000000
@@ -3402,6 +3592,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             
@@ -3419,6 +3610,7 @@ inherited frmNfse: TfrmNfse
             end>
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.755900630000000000
           Top = 86.929102130000080000
           Width = 238.110155670000000000
@@ -3429,12 +3621,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Prestador."xMunicipio"]')
           ParentFont = False
         end
         object Memo74: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.755900630000000000
           Top = 41.574778740000000000
           Width = 204.094620000000000000
@@ -3445,12 +3639,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Prestador."Cnpj"]')
           ParentFont = False
         end
         object Memo76: TfrxMemoView
+          AllowVectorExport = True
           Left = 574.488188980000000000
           Top = 41.574778740000000000
           Width = 139.842610000000000000
@@ -3461,12 +3657,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Prestador."InscricaoMunicipal"]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 163.118039450000000000
           Width = 634.961040000000000000
@@ -3476,6 +3674,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             
@@ -3491,6 +3690,7 @@ inherited frmNfse: TfrmNfse
             end>
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 193.354267240000000000
           Width = 351.496290000000000000
@@ -3501,12 +3701,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Tomador."xMunicipio"]')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 147.999943860000000000
           Width = 328.819110000000000000
@@ -3517,12 +3719,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Tomador."CpfCnpj"]')
           ParentFont = False
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = 571.268090000000000000
           Top = 147.999943860000000000
           Width = 143.622140000000000000
@@ -3533,6 +3737,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           HAlign = haRight
           Memo.UTF8W = (
@@ -3540,6 +3745,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 481.889763780000000000
           Top = 178.236147240000000000
           Width = 37.795260940000000000
@@ -3549,6 +3755,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Telefone:')
@@ -3556,6 +3763,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 521.354670000000000000
           Top = 178.236147240000000000
           Width = 192.756030000000000000
@@ -3566,12 +3774,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Tomador."Telefone"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 120.188976380000000000
           Top = 71.810969919999990000
           Width = 68.031491180000000000
@@ -3581,6 +3791,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Complemento:')
@@ -3588,6 +3799,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Top = 132.881814090000000000
           Width = 75.590600000000000000
           Height = 15.118110240000000000
@@ -3596,6 +3808,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Nome / Raz'#227'o:')
@@ -3603,6 +3816,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 132.881823860000000000
           Width = 634.961040000000000000
@@ -3613,12 +3827,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Tomador."RazaoSocial"]')
           ParentFont = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 481.889763780000000000
           Top = 71.810982130000010000
           Width = 45.354311180000000000
@@ -3628,6 +3844,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Telefone:')
@@ -3635,6 +3852,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 529.133828980000000000
           Top = 71.810982130000010000
           Width = 170.078850000000000000
@@ -3645,12 +3863,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Prestador."Telefone"]')
           ParentFont = False
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 481.889763780000000000
           Top = 193.354291650000000000
           Width = 30.236200940000000000
@@ -3660,6 +3880,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'E-mail:')
@@ -3667,6 +3888,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo91: TfrxMemoView
+          AllowVectorExport = True
           Left = 514.260442990000000000
           Top = 193.354291650000000000
           Width = 200.315090000000000000
@@ -3677,12 +3899,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Tomador."Email"]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Top = 178.125923230000000000
           Width = 75.590551180000000000
           Height = 15.118110240000000000
@@ -3691,6 +3915,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'Complemento:')
@@ -3698,6 +3923,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 80.125984250000000000
           Top = 178.125923230000000000
           Width = 396.850242360000000000
@@ -3707,12 +3933,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Tomador."Complemento"]')
           ParentFont = False
         end
         object Memo113: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.889763780000000000
           Top = 108.165430000000000000
           Width = 714.330708660000000000
@@ -3722,6 +3950,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -13
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Fill.BackColor = clWhite
           HAlign = haCenter
@@ -3730,6 +3959,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Left = 481.779840000000000000
           Top = 86.929189999999970000
           Width = 30.236191180000000000
@@ -3739,6 +3969,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'E-mail:')
@@ -3746,6 +3977,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 514.016080000000000000
           Top = 86.929189999999970000
           Width = 170.078850000000000000
@@ -3755,12 +3987,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Prestador."Email"]')
           ParentFont = False
         end
         object Memo92: TfrxMemoView
+          AllowVectorExport = True
           Left = 434.645950000000000000
           Top = 86.929189999999970000
           Width = 18.897601180000000000
@@ -3770,6 +4004,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'UF:')
@@ -3777,6 +4012,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object PrestadorUF: TfrxMemoView
+          AllowVectorExport = True
           Left = 456.323130000000000000
           Top = 86.929189999999970000
           Width = 22.677180000000000000
@@ -3786,6 +4022,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Prestador."UF"]')
@@ -3793,6 +4030,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 434.645950000000000000
           Top = 192.756030000000000000
           Width = 18.897601180000000000
@@ -3802,6 +4040,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Times New Roman'
           Font.Style = []
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             'UF:')
@@ -3809,6 +4048,7 @@ inherited frmNfse: TfrmNfse
           VAlign = vaCenter
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 456.323130000000000000
           Top = 192.756030000000000000
           Width = 22.677180000000000000
@@ -3818,6 +4058,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Times New Roman'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Memo.UTF8W = (
             '[Tomador."UF"]')
@@ -3827,11 +4068,13 @@ inherited frmNfse: TfrmNfse
       end
       object Header2: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 449.764070000000000000
         Width = 718.110700000000000000
         object Memo10: TfrxMemoView
           Align = baClient
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3857,16 +4100,20 @@ inherited frmNfse: TfrmNfse
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
       EndlessHeight = True
       EndlessWidth = True
       LargeDesignHeight = True
+      MirrorMode = []
       object Header1: TfrxHeader
         FillType = ftBrush
         Fill.BackColor = cl3DLight
+        Frame.Typ = []
         Height = 18.897640240000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Width = 419.527830000000000000
           Height = 18.897640240000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3882,6 +4129,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Width = 79.370130000000000000
           Height = 18.897640240000000000
@@ -3899,6 +4147,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.897960000000000000
           Width = 105.826840000000000000
           Height = 18.897640240000000000
@@ -3916,6 +4165,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 604.724800000000000000
           Width = 113.385900000000000000
           Height = 18.897640240000000000
@@ -3935,11 +4185,13 @@ inherited frmNfse: TfrmNfse
       end
       object MasterData2: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 60.472480000000000000
         Width = 718.110700000000000000
         RowCount = 0
         object ItensServicoDiscriminacaoServico: TfrxMemoView
+          AllowVectorExport = True
           Width = 419.527830000000000000
           Height = 15.118110240000000000
           Font.Charset = DEFAULT_CHARSET
@@ -3955,6 +4207,7 @@ inherited frmNfse: TfrmNfse
           ParentFont = False
         end
         object ItensServicoQuantidade: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Width = 79.370130000000000000
           Height = 15.118110240000000000
@@ -3975,6 +4228,7 @@ inherited frmNfse: TfrmNfse
           WordWrap = False
         end
         object ItensServicoValorUnitario: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.897960000000000000
           Width = 105.826840000000000000
           Height = 15.118110240000000000
@@ -3995,6 +4249,7 @@ inherited frmNfse: TfrmNfse
           WordWrap = False
         end
         object ItensServicoValorTotal: TfrxMemoView
+          AllowVectorExport = True
           Left = 604.724800000000000000
           Width = 113.385900000000000000
           Height = 15.118110240000000000
@@ -4018,7 +4273,7 @@ inherited frmNfse: TfrmNfse
     end
   end
   object frxNfse: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4054,12 +4309,16 @@ inherited frmNfse: TfrmNfse
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 85.047310000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 563.149969999999900000
           Height = 18.897650000000000000
@@ -4068,11 +4327,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Nota Servi'#231'os')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 555.590910000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -4081,11 +4342,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 608.504330000000000000
           Height = 18.897650000000000000
@@ -4094,18 +4357,22 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 59.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
           Align = baLeft
+          AllowVectorExport = True
           Top = 63.472479999999990000
           Width = 37.795275590000000000
           Height = 11.338582680000000000
@@ -4114,11 +4381,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'NFSe')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 574.488560000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -4128,12 +4397,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 574.488560000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -4144,12 +4415,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 51.472480000000000000
           Top = 63.472479999999990000
           Width = 52.913395590000000000
@@ -4159,11 +4432,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'RPS')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 116.858380000000000000
           Top = 63.472479999999990000
           Width = 49.133890000000000000
@@ -4174,12 +4449,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Situa'#231#227'o')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 184.330860000000000000
           Top = 63.472479999999990000
           Width = 60.472480000000000000
@@ -4190,12 +4467,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Emiss'#227'o')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.748300000000000000
           Top = 63.472479999999990000
           Width = 230.551330000000000000
@@ -4206,12 +4485,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 591.590910000000000000
           Top = 63.472479999999990000
           Width = 49.133848500000000000
@@ -4222,12 +4503,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 663.063390000000000000
           Top = 63.472479999999990000
           Width = 41.574788500000000000
@@ -4237,12 +4520,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ISS')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.126160000000000000
           Top = 63.472479999999990000
           Width = 102.047273390000000000
@@ -4252,20 +4537,24 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNPJ/CPF')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 81.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -4279,6 +4568,7 @@ inherited frmNfse: TfrmNfse
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1status: TfrxMemoView
+          AllowVectorExport = True
           Left = 121.063080000000000000
           Width = 64.252010000000010000
           Height = 15.118120000000000000
@@ -4290,11 +4580,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."status"]')
           ParentFont = False
         end
         object frxDBDataset1RPS_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 52.913420000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -4306,11 +4598,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."RPS_CODIGO"]')
           ParentFont = False
         end
         object frxDBDataset1NFSE_NUM_DANFSE: TfrxMemoView
+          AllowVectorExport = True
           Width = 49.133890000000000000
           Height = 15.118120000000000000
           DataField = 'NFSE_NUM_DANFSE'
@@ -4321,11 +4615,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NFSE_NUM_DANFSE"]')
           ParentFont = False
         end
         object frxDBDataset1NFSE_cnpj_cpf: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.448980000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
@@ -4337,11 +4633,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NFSE_cnpj_cpf"]')
           ParentFont = False
         end
         object frxDBDataset1NFSE_dataemissao: TfrxMemoView
+          AllowVectorExport = True
           Left = 189.315090000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -4353,11 +4651,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NFSE_dataemissao"]')
           ParentFont = False
         end
         object frxDBDataset1NFSE_razaosocial: TfrxMemoView
+          AllowVectorExport = True
           Left = 366.614410000000000000
           Width = 215.433210000000000000
           Height = 15.118120000000000000
@@ -4369,11 +4669,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NFSE_razaosocial"]')
           ParentFont = False
         end
         object frxDBDataset1NFSI_valorservicos: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -4389,12 +4691,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."NFSI_valorservicos"]')
           ParentFont = False
         end
         object frxDBDataset1NFSI_valoriss: TfrxMemoView
+          AllowVectorExport = True
           Left = 658.520100000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -4410,6 +4714,7 @@ inherited frmNfse: TfrmNfse
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."NFSI_valoriss"]')
@@ -4418,10 +4723,12 @@ inherited frmNfse: TfrmNfse
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 204.094620000000000000
         Width = 718.110700000000000000
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 546.924243330000000000
           Top = 2.572046670000000000
           Width = 103.154916670000000000
@@ -4435,12 +4742,14 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."NFSI_valorservicos">,MasterData1)]')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 475.441250000000000000
           Top = 2.572046670000000000
           Width = 42.771696670000000000
@@ -4450,11 +4759,13 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total :')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 658.520100000000000000
           Top = 2.572046670000000000
           Width = 56.692950000000000000
@@ -4467,22 +4778,27 @@ inherited frmNfse: TfrmNfse
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."NFSI_valoriss">,MasterData1)]')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object Line3: TfrxLineView
+        AllowVectorExport = True
         Left = -90.708720000000010000
         Top = -29.795300000000000000
         Width = 1046.929810000000000000
         Color = clBlack
+        Frame.Typ = []
         Diagonal = True
       end
     end
