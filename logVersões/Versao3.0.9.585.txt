@@ -1,4 +1,4 @@
-﻿Atualizado em 17/10/2023
+﻿Atualizado em 19/10/2023
 Inicio da versão: 04/10/2023
 
 principal: Netocolor, Rotor, Arkson
@@ -30,3 +30,7 @@ patch 5: Arkson, Rotor, Edge
   1676 - Tamanho de etiqueta [Rotor]
   1686 - Nota de serviço - alíquota de ISS [Rotor]
   1589 - Melhorar informações no item [Edge]
+
+patch 6: Arkson
+  1704 - Sistema alterando consulta do produtos [Arkson]
+
