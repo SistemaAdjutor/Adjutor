@@ -1385,10 +1385,11 @@ begin
         if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
         begin
           frmConclusaoOP.cbAlmoxarifado.idRetorno := BuscaUmDadoSqlAsString(
-            'SELECT a.AMX_CODIGO ' +
+            'SELECT mo.AMX_CODIGO ' +
             '  FROM ORDEMPRODUCAO o ' +
             '  JOIN ITEM_ORDEMPRODUCAO io ON (io.OPR_CODIGO = o.OPR_CODIGO) ' +
-            '  JOIN ALMOX0000 a ON a.AMX_CNPJ_PART = (SELECT c.CLI_CGC FROM CLI0000 c WHERE c.CLI_CODIGO = o.CLI_CODIGO ) ' +
+          //  '  JOIN ALMOX0000 a ON a.AMX_CNPJ_PART = (SELECT c.CLI_CGC FROM CLI0000 c WHERE c.CLI_CODIGO = o.CLI_CODIGO ) ' +
+            ' JOIN MATERIAPRIMA_ORDEMPRODUCAO mo ON ( mo.IOP_CODIGO = io.IOP_CODIGO ) ' +
             ' WHERE io.IOP_CODIGO =  ' + IntToStr(iop_codigo)
           );
           frmConclusaoOP.gbEntradaProducao.Visible := True;
@@ -1462,7 +1463,10 @@ begin
          end
          else
          begin
-           almoxarifado := DBInicio.empresa.PMT_AMX_PRODUCAO_ENTRADA;
+           if frmConclusaoOP <> nil then
+              almoxarifado := frmConclusaoOP.cbAlmoxarifado.idRetorno
+           else
+              almoxarifado := DBInicio.empresa.PMT_AMX_PRODUCAO_ENTRADA;
          end;
 
 
@@ -1832,7 +1836,11 @@ begin
   cdsMateriaPrima.Close;
   cdsMateriaPrima.sql.text :=
    'SELECT  ' +
-   ' (SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  + ' AND  fi.PRD_REFER_ITENS = pr.PRD_REFER) AS AMX_CODIGO,' +
+   ' CASE ' +
+   '   WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
+   '     THEN (SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER) ' +
+   '   ELSE (SELECT PMT_AMX_PRODUCAO_SAIDA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) +  ') ' +
+   ' END AS AMX_CODIGO, ' +
    ' MP_CODIGO_SUBST, mp.prd_codigo, mp.ped_codigo,  mp_codigo, iop_codigo, mp.MP_UCONSUMO, mp_situacao,'+
    ' pr.PRD_REFER, CAST(pr.PRD_DESCRI AS VARCHAR(100)) PRD_DESCRI , pr.prd_und,PRD_GERENCIA_LOTE,  ' +
    ' mp.MP_EMPENHADO, MP_CONSUMOTOTAL,                                  '+
@@ -1998,20 +2006,27 @@ begin
 end;
 
 procedure TfrmGerenciamentoPCP.cxgrd1Level1GetGridView(Sender: TcxGridLevel; AMasterRecord: TcxCustomGridRecord; var AGridView: TcxCustomGridView);
+var
+  prdRefer : string;
 begin
   inherited;
-
-  exit;
-
 
   if cdsBusca.IsEmpty then
     exit;
   if sender.Level = 0 then
     exit;
 
+  prdRefer := AMasterRecord.Values[cxgrd1DBBandedTableView1PRD_REFER.Index];
+
   cdsMateriaPrima.Close;
   cdsMateriaPrima.sql.text :=
-   'SELECT  MP_CODIGO_SUBST, mp.prd_codigo, mp.ped_codigo,  mp_codigo, iop_codigo, mp.MP_UCONSUMO, mp_situacao,'+
+   'SELECT  ' +
+   ' CASE ' +
+   '   WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
+   '     THEN (SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER) ' +
+   '   ELSE (SELECT PMT_AMX_PRODUCAO_SAIDA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) +  ') ' +
+   ' END AS AMX_CODIGO, ' +
+   ' MP_CODIGO_SUBST, mp.prd_codigo, mp.ped_codigo,  mp_codigo, iop_codigo, mp.MP_UCONSUMO, mp_situacao,'+
    ' pr.PRD_REFER, CAST(pr.PRD_DESCRI AS VARCHAR(100)) PRD_DESCRI,  pr.prd_und,PRD_GERENCIA_LOTE,  ' +
    ' mp.MP_EMPENHADO, MP_CONSUMOTOTAL,                                  '+
    '      (SELECT prd_descri                                            '+
