@@ -4,7 +4,8 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDBForm, Data.DBXFirebird, Data.FMTBcd, Data.DB, Data.SqlExpr, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.StdCtrls, SgDbSeachComboUnit, Vcl.Buttons,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDBForm, Data.DBXFirebird, Data.FMTBcd,
+  Data.DB, Data.SqlExpr, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.StdCtrls, SgDbSeachComboUnit, Vcl.Buttons,
   cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles,
   dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
   dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
@@ -24,7 +25,11 @@ uses
   cxDataStorage, cxEdit, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, cxDBData,
   cxGridLevel, cxClasses, cxGridCustomView, cxGridCustomTableView,
-  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, cxDropDownEdit;
+  cxGridTableView, cxGridDBTableView, cxGrid, Vcl.ExtCtrls, cxDropDownEdit,
+  cxDBLookupComboBox, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
 
 type
   TfrmSelecionaAlmoxarifado = class(TfrmBaseDB)
@@ -33,9 +38,6 @@ type
     Panel3: TPanel;
     Label1: TLabel;
     lbAtencao: TLabel;
-    Label3: TLabel;
-    edAlmoxarifado: TEdit;
-    cbAlmoxarifado: TSgDbSearchCombo;
     btCancela: TBitBtn;
     btConfirma: TBitBtn;
     cxGrid1: TcxGrid;
@@ -59,13 +61,15 @@ type
     cxGrid1DBTableView1ESTOQUEDISPONIVEL: TcxGridDBColumn;
     cxGrid1DBTableView1MP_CUSTO: TcxGridDBColumn;
     cxGrid1DBTableView1cbAlmoxarifado: TcxGridDBColumn;
-    cxGrid1DBTableView1AmxCodigo: TcxGridDBColumn;
-    procedure cbAlmoxarifadoChange(Sender: TObject);
-    procedure btConfirmaClick(Sender: TObject);
+    cxGrid1DBTableView1AMX_CODIGO: TcxGridDBColumn;
+    qAlmox: TFDQuery;
+    dsAlmox: TDataSource;
+    procedure FormShow(Sender: TObject);
+    procedure cxGrid1DBTableView1cbAlmoxarifadoPropertiesChange(
+      Sender: TObject);
   private
     { Private declarations }
   public
-      prd_codigo: string;
     { Public declarations }
   end;
 
@@ -76,33 +80,33 @@ implementation
 
 {$R *.dfm}
 
-uses uteis, uGerenciamentoPCP;
+uses uteis, uGerenciamentoPCP, InicioDB;
 
-procedure TfrmSelecionaAlmoxarifado.btConfirmaClick(Sender: TObject);
+procedure TfrmSelecionaAlmoxarifado.cxGrid1DBTableView1cbAlmoxarifadoPropertiesChange(Sender: TObject);
 var
   saldo : double;
 begin
   inherited;
   saldo := BuscaUmDadoSqlAsFloat('SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0) ' +
                            ' FROM kardex_almox_saldo kas ' +
-                           ' WHERE kas.PRD_CODIGO = ' + QuotedStr(prd_codigo) +
-                            ' AND  AMX_CODIGO = ' + QuotedStr(cbAlmoxarifado.idRetorno) );
+                           ' WHERE kas.PRD_CODIGO = ' + QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_CODIGO.AsString) +
+                            ' AND  AMX_CODIGO = ' + QuotedStr(TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue) );
   if saldo < 0 then
   begin
     Aviso('Não há saldo suficiente para este produto no almoxarifado indicado.' +
             #13 + 'Saldo Disponível ' + FormatFloat('###,###,##0,00', saldo)  );
-    ModalResult := mrNone;
+    Abort;
   end;
 
+  frmGerenciamentoPCP.cdsMateriaPrima.Edit;
+  frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString := TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue;
+  frmGerenciamentoPCP.cdsMateriaPrima.Post;
 end;
 
-procedure TfrmSelecionaAlmoxarifado.cbAlmoxarifadoChange(Sender: TObject);
+procedure TfrmSelecionaAlmoxarifado.FormShow(Sender: TObject);
 begin
   inherited;
-  if cbAlmoxarifado.CDS.Active then
-    edAlmoxarifado.Text := cbAlmoxarifado.CDS.FieldByName('AMX_CODIGO').AsString
-  else
-    edAlmoxarifado.Clear;
+  qAlmox.Open();
 end;
 
 end.

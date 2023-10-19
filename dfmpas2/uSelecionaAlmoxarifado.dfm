@@ -10,10 +10,9 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
     Left = 0
     Top = 0
     Width = 1122
-    Height = 105
+    Height = 81
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 890
     object Label1: TLabel
       Left = 16
       Top = 46
@@ -41,74 +40,27 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
       Font.Style = [fsBold]
       ParentFont = False
     end
-    object Label3: TLabel
-      Left = 14
-      Top = 80
-      Width = 63
-      Height = 13
-      Caption = 'Almoxarifado'
-    end
-    object edAlmoxarifado: TEdit
-      Left = 81
-      Top = 77
-      Width = 49
-      Height = 21
-      Enabled = False
-      TabOrder = 0
-    end
-    object cbAlmoxarifado: TSgDbSearchCombo
-      Left = 136
-      Top = 77
-      Width = 465
-      Height = 21
-      TabOrder = 1
-      OnChange = cbAlmoxarifadoChange
-      LookupSelect = 'AMX_CODIGO, AMX_DESCRI'
-      LookupOrderBy = 'AMX_DESCRI'
-      LookupTable = 'ALMOX0000'
-      LookupDispl = 'AMX_DESCRI'
-      GridAutoSize = False
-      LookupSource = qAux
-      LookupKeyField = 'AMX_CODIGO'
-      ShowButton = True
-      AutoF8WinTitulo = 'Selecione o Almoxarifado'
-      AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
-      LookupDbGridColumns = 'AMX_CODIGO, AMX_DESCRI'
-      LookupDbGridColumnsTitle = 'C'#243'digo, Descri'#231#227'o'
-      GridLeft = 0
-      GridWidth = 0
-      GridHeight = 100
-      GridTop = 0
-      GridShowWhenEnter = False
-      SelectWithDoubleClick = False
-      LimparCampoAoSair = True
-    end
   end
   object Panel2: TPanel [1]
     Left = 0
-    Top = 105
+    Top = 81
     Width = 1122
-    Height = 400
+    Height = 424
     Align = alClient
     TabOrder = 1
-    ExplicitLeft = 64
-    ExplicitTop = 280
-    ExplicitWidth = 185
-    ExplicitHeight = 41
+    ExplicitTop = 105
+    ExplicitHeight = 400
     object cxGrid1: TcxGrid
       Left = 1
       Top = 1
       Width = 1120
-      Height = 398
+      Height = 422
       Align = alClient
       TabOrder = 0
       LookAndFeel.Kind = lfStandard
-      LookAndFeel.NativeStyle = True
+      LookAndFeel.NativeStyle = False
       LookAndFeel.ScrollbarMode = sbmClassic
-      ExplicitLeft = 48
-      ExplicitTop = 92
-      ExplicitWidth = 809
-      ExplicitHeight = 89
+      ExplicitHeight = 398
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         DataController.DataSource = frmGerenciamentoPCP.dsMateriaPrima
@@ -186,10 +138,24 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
           DataBinding.FieldName = 'MP_CUSTO'
           Visible = False
         end
-        object cxGrid1DBTableView1AmxCodigo: TcxGridDBColumn
+        object cxGrid1DBTableView1AMX_CODIGO: TcxGridDBColumn
+          Caption = 'Almoxarifado'
+          DataBinding.FieldName = 'AMX_CODIGO'
+          Width = 86
         end
         object cxGrid1DBTableView1cbAlmoxarifado: TcxGridDBColumn
-          PropertiesClassName = 'TcxComboBoxProperties'
+          Caption = 'Descri'#231#227'o'
+          DataBinding.FieldName = 'AMX_CODIGO'
+          PropertiesClassName = 'TcxLookupComboBoxProperties'
+          Properties.KeyFieldNames = 'AMX_CODIGO'
+          Properties.ListColumns = <
+            item
+              FieldName = 'AMX_DESCRI'
+            end>
+          Properties.ListOptions.ShowHeader = False
+          Properties.ListSource = dsAlmox
+          Properties.OnChange = cxGrid1DBTableView1cbAlmoxarifadoPropertiesChange
+          Width = 134
         end
       end
       object cxGrid1Level1: TcxGridLevel
@@ -204,9 +170,6 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
     Height = 41
     Align = alBottom
     TabOrder = 2
-    ExplicitLeft = 408
-    ExplicitTop = 520
-    ExplicitWidth = 185
     DesignSize = (
       1122
       41)
@@ -262,7 +225,6 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
         FFFFFFFFFFFFFFFFFFFF}
       ModalResult = 2
       TabOrder = 0
-      ExplicitLeft = 692
     end
     object btConfirma: TBitBtn
       Left = 906
@@ -316,8 +278,6 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
         FFFFFFFFFFFFFFFFFFFF}
       ModalResult = 1
       TabOrder = 1
-      OnClick = btConfirmaClick
-      ExplicitLeft = 572
     end
   end
   inherited coCalcula: TACBrCalculadora
@@ -345,5 +305,17 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
   inherited qAux3: TSQLQuery
     Left = 570
     Top = 2
+  end
+  object qAlmox: TFDQuery
+    Connection = DBInicio.FDACConn
+    SQL.Strings = (
+      'SELECT * FROM ALMOX0000 ORDER BY AMX_DESCRI')
+    Left = 728
+    Top = 152
+  end
+  object dsAlmox: TDataSource
+    DataSet = qAlmox
+    Left = 728
+    Top = 209
   end
 end

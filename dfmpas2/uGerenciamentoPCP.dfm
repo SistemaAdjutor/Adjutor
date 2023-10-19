@@ -13,6 +13,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     ExplicitWidth = 1384
     ExplicitHeight = 567
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 1376
       ExplicitHeight = 539
       inherited pnlControle: TPanel
@@ -227,9 +229,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Top = 105
         Width = 1376
         Height = 434
-        LookAndFeel.Kind = lfStandard
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitTop = 105
         ExplicitWidth = 1376
         ExplicitHeight = 434
@@ -875,6 +874,10 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object tbHistorico: TTabSheet
       Caption = 'Hist'#243'rico'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Phistorico: TPanel
         Left = 0
         Top = 0
@@ -1948,6 +1951,10 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Origin = 'MP_CUSTO'
       Precision = 18
       Size = 5
+    end
+    object cdsMateriaPrimaAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
     end
   end
   object dsMateriaPrima: TDataSource
