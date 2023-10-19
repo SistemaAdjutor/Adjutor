@@ -845,6 +845,7 @@ type
     cdsMolaMMO_TOLERANCIA_DE_MENOR_MIN: TFMTBCDField;
     cdsMolaMMO_ARQUIVO_FICHA_TECNICA: TStringField;
     frxOrdemProducaoModelos: TfrxReport;
+    cdsMateriaPrimaAMX_CODIGO: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -1557,41 +1558,38 @@ begin
   if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
   begin
     ExecSQL('RECREATE TABLE PCP_TEMP (PRD_CODIGO VARCHAR(5), PRD_REFER VARCHAR(20), AMX_CODIGO VARCHAR(4) ) ' );
-    cdsMateriaPrima.First;
-    while not cdsMateriaPrima.eof do
-    begin
 
-      OpenAux4(' SELECT fi.AMX_CODIGO, op.CLI_CODIGO FROM ORDEMPRODUCAO op ' +
-                ' JOIN ITEM_ORDEMPRODUCAO iop ON (iop.OPR_CODIGO = op.OPR_CODIGO ) ' +
-                ' JOIN PRD0000 pr ON (pr.PRD_CODIGO = iop.PRD_CODIGO) ' +
-                ' LEFT JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER) ' +
-                ' LEFT JOIN FTC_IT01 fi ON ft.PRD_REFER = fi.PRD_REFER ' +
-                ' WHERE iop.IOP_CODIGO = ' + cdsBuscaIOP_CODIGO.AsString +
-                ' AND fi.PRD_REFER_ITENS = ' + QuotedStr(cdsMateriaPrimaPRD_REFER.AsString)
-                );
-      almoxarifado :=  BuscaUmDadoSqlAsString('SELECT a.AMX_CODIGO, A.AMX_CNPJ_PART  FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(qAux4.FieldByName('CLI_CODIGO').AsString) + ' ) ' );
-      if frmSelecionaAlmoxarifado = nil then
-       frmSelecionaAlmoxarifado := TfrmSelecionaAlmoxarifado.Create(Application);
-      frmSelecionaAlmoxarifado.cbAlmoxarifado.idRetorno := almoxarifado;
-      frmSelecionaAlmoxarifado.prd_codigo := cdsMateriaPrimaPRD_CODIGO.AsString;
-      frmSelecionaAlmoxarifado.lbAtencao.Caption := 'ATENÇÂO!!! ' + cdsMateriaPrimaPRD_REFER.AsString + ' - ' + BuscaUmDadoSqlAsString('SELECT PRD_DESCRI FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(cdsMateriaPrimaPRD_REFER.AsString) );
-      frmSelecionaAlmoxarifado.ShowModal;
-      if frmSelecionaAlmoxarifado.ModalResult = mrOk then
+    OpenAux4(' SELECT fi.AMX_CODIGO, op.CLI_CODIGO ' +
+              ' FROM ORDEMPRODUCAO op ' +
+              ' JOIN ITEM_ORDEMPRODUCAO iop ON (iop.OPR_CODIGO = op.OPR_CODIGO ) ' +
+              ' JOIN PRD0000 pr ON (pr.PRD_CODIGO = iop.PRD_CODIGO) ' +
+              ' LEFT JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER) ' +
+              ' LEFT JOIN FTC_IT01 fi ON ft.PRD_REFER = fi.PRD_REFER ' +
+              ' WHERE iop.IOP_CODIGO = ' + cdsBuscaIOP_CODIGO.AsString +
+              ' AND fi.PRD_REFER_ITENS = ' + QuotedStr(cdsMateriaPrimaPRD_REFER.AsString)
+              );
+    almoxarifado :=  BuscaUmDadoSqlAsString('SELECT a.AMX_CODIGO, A.AMX_CNPJ_PART  FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(qAux4.FieldByName('CLI_CODIGO').AsString) + ' ) ' );
+    if frmSelecionaAlmoxarifado = nil then
+     frmSelecionaAlmoxarifado := TfrmSelecionaAlmoxarifado.Create(Application);
+    frmSelecionaAlmoxarifado.lbAtencao.Caption := 'ATENÇÂO!!! ' + cdsBuscaPRD_REFER.AsString + ' - ' + cdsBuscaPRD_DESCRI.AsString;
+    frmSelecionaAlmoxarifado.ShowModal;
+    if frmSelecionaAlmoxarifado.ModalResult = mrOk then
+    begin
+      cdsMateriaPrima.First;
+      while not cdsMateriaPrima.eof do
       begin
-        almoxarifado := frmSelecionaAlmoxarifado.cbAlmoxarifado.idRetorno;
+        almoxarifado := cdsMateriaPrimaAMX_CODIGO.AsString;
         ExecSql('INSERT INTO PCP_TEMP VALUES (' +
                   QuotedStr(cdsMateriaPrimaPRD_CODIGO.AsString)  +  ',' +
                   QuotedStr(cdsMateriaPrimaPRD_REFER.AsString)  + ',' +
                   QuotedStr(almoxarifado)  +
                 ')'
                );
-      end
-      else
-        Abort;
-
-      cdsMateriaPrima.Next;
-
-    end;
+        cdsMateriaPrima.Next;
+      end;
+    end
+    else
+      Abort;
   end;
 
   cdsMateriaPrima.First;
@@ -1819,18 +1817,23 @@ begin
 end;
 
 procedure TfrmGerenciamentoPCP.cxgrd1DBBandedTableView1DataControllerDetailExpanding(ADataController: TcxCustomDataController; ARecordIndex: Integer; var AAllow: Boolean);
-var iop_codigo : integer;
+var
+  iop_codigo : integer;
+  prdRefer: string;
 begin
   inherited;
   ADataController.FocusedRecordIndex :=ARecordIndex;
 
   iop_codigo := ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1IOP_CODIGO.Index] ;
+  prdRefer := ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRD_REFER.Index] ;
 
   if iop_codigo = 0  then
     EXIT ;
   cdsMateriaPrima.Close;
   cdsMateriaPrima.sql.text :=
-   'SELECT  MP_CODIGO_SUBST, mp.prd_codigo, mp.ped_codigo,  mp_codigo, iop_codigo, mp.MP_UCONSUMO, mp_situacao,'+
+   'SELECT  ' +
+   ' (SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  + ' AND  fi.PRD_REFER_ITENS = pr.PRD_REFER) AS AMX_CODIGO,' +
+   ' MP_CODIGO_SUBST, mp.prd_codigo, mp.ped_codigo,  mp_codigo, iop_codigo, mp.MP_UCONSUMO, mp_situacao,'+
    ' pr.PRD_REFER, CAST(pr.PRD_DESCRI AS VARCHAR(100)) PRD_DESCRI , pr.prd_und,PRD_GERENCIA_LOTE,  ' +
    ' mp.MP_EMPENHADO, MP_CONSUMOTOTAL,                                  '+
    '      (SELECT prd_descri                                            '+
@@ -1847,7 +1850,7 @@ begin
   if dbInicio.IsDesenvolvimento then
     copyToClipboard(cdsMateriaPrima.sql.text);
   cdsMateriaPrima.Open;
-end;
+ end;
 
 procedure TfrmGerenciamentoPCP.cxgrd1DBBandedTableView1DataControllerFilterGetValueList(Sender: TcxFilterCriteria; AItemIndex: Integer; AValueList: TcxDataFilterValueList);
 begin
@@ -1997,6 +2000,10 @@ end;
 procedure TfrmGerenciamentoPCP.cxgrd1Level1GetGridView(Sender: TcxGridLevel; AMasterRecord: TcxCustomGridRecord; var AGridView: TcxCustomGridView);
 begin
   inherited;
+
+  exit;
+
+
   if cdsBusca.IsEmpty then
     exit;
   if sender.Level = 0 then
