@@ -3199,6 +3199,7 @@ procedure TFormProduto.FormActivate( Sender : tObject );
       // CdsProdutos.Refresh;
       CdsProdutos.Close;
       CdsProdutos.Open;
+      CdsProdutos.Locate('PRD_REFER', EdtPrd_Refer.Text, [] );
     end;
 
   end;
