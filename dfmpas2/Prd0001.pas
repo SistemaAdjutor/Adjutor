@@ -2636,9 +2636,13 @@ begin
 //  CdsProdutos.close;
 //  SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
 //  CdsProdutos.Open;
-  // CdsProdutos.Refresh;
-  CdsProdutos.Close;
-  CdsProdutos.Open;
+  try
+     CdsProdutos.Refresh;
+  except
+    CdsProdutos.Close;
+    CdsProdutos.Open;
+    CdsProdutos.Locate('PRD_REFER', EdtPrd_Refer.Text, [] );
+  end;
 
   if eNotaEntrada then // para otimizar
   begin
