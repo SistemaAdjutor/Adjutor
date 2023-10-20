@@ -67,6 +67,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure cxGrid1DBTableView1cbAlmoxarifadoPropertiesChange(
       Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -101,6 +102,13 @@ begin
   frmGerenciamentoPCP.cdsMateriaPrima.Edit;
   frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString := TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue;
   frmGerenciamentoPCP.cdsMateriaPrima.Post;
+end;
+
+procedure TfrmSelecionaAlmoxarifado.FormCreate(Sender: TObject);
+begin
+  inherited;
+  frmGerenciamentoPCP.cdsMateriaPrima.Close;
+  frmGerenciamentoPCP.cdsMateriaPrima.Open;
 end;
 
 procedure TfrmSelecionaAlmoxarifado.FormShow(Sender: TObject);

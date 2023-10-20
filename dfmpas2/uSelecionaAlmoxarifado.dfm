@@ -48,8 +48,6 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
     Height = 424
     Align = alClient
     TabOrder = 1
-    ExplicitTop = 105
-    ExplicitHeight = 400
     object cxGrid1: TcxGrid
       Left = 1
       Top = 1
@@ -60,9 +58,9 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
       LookAndFeel.Kind = lfStandard
       LookAndFeel.NativeStyle = False
       LookAndFeel.ScrollbarMode = sbmClassic
-      ExplicitHeight = 398
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
+        DataController.DataModeController.SmartRefresh = True
         DataController.DataSource = frmGerenciamentoPCP.dsMateriaPrima
         DataController.Summary.DefaultGroupSummaryItems = <>
         DataController.Summary.FooterSummaryItems = <>

@@ -1385,11 +1385,16 @@ begin
         if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
         begin
           frmConclusaoOP.cbAlmoxarifado.idRetorno := BuscaUmDadoSqlAsString(
-            'SELECT mo.AMX_CODIGO ' +
-            '  FROM ORDEMPRODUCAO o ' +
-            '  JOIN ITEM_ORDEMPRODUCAO io ON (io.OPR_CODIGO = o.OPR_CODIGO) ' +
-          //  '  JOIN ALMOX0000 a ON a.AMX_CNPJ_PART = (SELECT c.CLI_CGC FROM CLI0000 c WHERE c.CLI_CODIGO = o.CLI_CODIGO ) ' +
-            ' JOIN MATERIAPRIMA_ORDEMPRODUCAO mo ON ( mo.IOP_CODIGO = io.IOP_CODIGO ) ' +
+            'SELECT  ' +
+            '  CASE ' +
+            '    WHEN COALESCE(mo.AMX_CODIGO, '''') <> '''' THEN mo.AMX_CODIGO ' +
+            '    WHEN COALESCE(A.AMX_CODIGO, '''' ) <> '''' THEN A.AMX_CODIGO ' +
+            '    ELSE (SELECT PMT_AMX_PRODUCAO_SAIDA  FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.emp_Codigo) +  ')' +
+            '   END AMX_CODIGO ' +
+            ' FROM ORDEMPRODUCAO o ' +
+            '    JOIN ITEM_ORDEMPRODUCAO io ON (io.OPR_CODIGO = o.OPR_CODIGO) ' +
+            '    JOIN MATERIAPRIMA_ORDEMPRODUCAO mo ON ( mo.IOP_CODIGO = io.IOP_CODIGO ) ' +
+            '    LEFT JOIN ALMOX0000 a ON a.AMX_CNPJ_PART = (SELECT c.CLI_CGC FROM CLI0000 c WHERE c.CLI_CODIGO = o.CLI_CODIGO ) ' +
             ' WHERE io.IOP_CODIGO =  ' + IntToStr(iop_codigo)
           );
           frmConclusaoOP.gbEntradaProducao.Visible := True;
@@ -1562,7 +1567,7 @@ begin
   if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
   begin
     ExecSQL('RECREATE TABLE PCP_TEMP (PRD_CODIGO VARCHAR(5), PRD_REFER VARCHAR(20), AMX_CODIGO VARCHAR(4) ) ' );
-
+{
     OpenAux4(' SELECT fi.AMX_CODIGO, op.CLI_CODIGO ' +
               ' FROM ORDEMPRODUCAO op ' +
               ' JOIN ITEM_ORDEMPRODUCAO iop ON (iop.OPR_CODIGO = op.OPR_CODIGO ) ' +
@@ -1573,6 +1578,7 @@ begin
               ' AND fi.PRD_REFER_ITENS = ' + QuotedStr(cdsMateriaPrimaPRD_REFER.AsString)
               );
     almoxarifado :=  BuscaUmDadoSqlAsString('SELECT a.AMX_CODIGO, A.AMX_CNPJ_PART  FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(qAux4.FieldByName('CLI_CODIGO').AsString) + ' ) ' );
+}
     if frmSelecionaAlmoxarifado = nil then
      frmSelecionaAlmoxarifado := TfrmSelecionaAlmoxarifado.Create(Application);
     frmSelecionaAlmoxarifado.lbAtencao.Caption := 'ATENÇÂO!!! ' + cdsBuscaPRD_REFER.AsString + ' - ' + cdsBuscaPRD_DESCRI.AsString;
@@ -1837,6 +1843,8 @@ begin
   cdsMateriaPrima.sql.text :=
    'SELECT  ' +
    ' CASE ' +
+//   '   WHEN COALESCE((SELECT a.AMX_CODIGO FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = O.CLI_CODIGO)), '''') <> ''''   ' +
+//   '     THEN (SELECT a.AMX_CODIGO FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = O.CLI_CODIGO)) ' +
    '   WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
    '     THEN (SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER) ' +
    '   ELSE (SELECT PMT_AMX_PRODUCAO_SAIDA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) +  ') ' +
@@ -1852,6 +1860,7 @@ begin
    ' (SELECT FIRST 1 PRDL_LOTE FROM PRD_LOTE lt WHERE lt.PRD_CODIGO = pr.PRD_CODIGO '+
    ' AND PRDL_DATA_FABRICACAO  = (SELECT MIN(PRDL_DATA_FABRICACAO) FROM PRD_LOTE LT2 WHERE LT2.PRD_CODIGO = pr.PRD_CODIGO   AND LT2.PRDL_SALDO > 0 ))  LOTE '+
    ' FROM MATERIAPRIMA_ORDEMPRODUCAO mp                                 '+
+ //  ' JOIN ORDEMPRODUCAO o ON (o.OPR_CODIGO = mp.OPR_CODIGO)             ' +
    ' JOIN PRD0000 pr ON (pr.PRD_CODIGO = mp.PRD_CODIGO)                 '+
    ' where MP_CONSUMOTOTAL > 0 and iop_codigo = '+ IntToStr( iop_codigo);
 
@@ -2022,6 +2031,8 @@ begin
   cdsMateriaPrima.sql.text :=
    'SELECT  ' +
    ' CASE ' +
+//   '   WHEN COALESCE((SELECT a.AMX_CODIGO FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = O.CLI_CODIGO)), '''') <> ''''   ' +
+//   '     THEN (SELECT a.AMX_CODIGO FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = O.CLI_CODIGO)) ' +
    '   WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
    '     THEN (SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER) ' +
    '   ELSE (SELECT PMT_AMX_PRODUCAO_SAIDA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) +  ') ' +
@@ -2037,8 +2048,12 @@ begin
    ' (SELECT FIRST 1 PRDL_LOTE FROM PRD_LOTE lt WHERE lt.PRD_CODIGO = pr.PRD_CODIGO'+
    ' AND PRDL_DATA_FABRICACAO  = (SELECT MIN(PRDL_DATA_FABRICACAO) FROM PRD_LOTE LT2 WHERE LT2.PRD_CODIGO = pr.PRD_CODIGO   AND LT2.PRDL_SALDO > 0 )) LOTE '+
    ' FROM MATERIAPRIMA_ORDEMPRODUCAO mp                                 '+
+//   ' JOIN ORDEMPRODUCAO o ON (o.OPR_CODIGO = mp.OPR_CODIGO)             ' +
    ' JOIN PRD0000 pr ON (pr.PRD_CODIGO = mp.PRD_CODIGO)                 '+
    ' where MP_CONSUMOTOTAL > 0 and iop_codigo = '+ VarToStr( AMasterRecord.Values[cxgrd1DBBandedTableView1IOP_CODIGO.Index]);
+
+  if dbInicio.IsDesenvolvimento then
+    copyToClipboard(cdsMateriaPrima.sql.text);
 
   cdsMateriaPrima.Open;
 end;
