@@ -1252,7 +1252,6 @@ type
     DbeFTCvar7 : TDBEdit;
     DbeFTCvar8 : TDBEdit;
     GrpMateria : TGroupBox;
-    DBGridFichaTecnicaItem : TDBGrid;
     GroupBoxEtapasOpera : TGroupBox;
     GrpProcesso : TGroupBox;
     ScrollBox1 : TScrollBox;
@@ -2236,6 +2235,64 @@ type
     cxGrid1DBTableView1FTI_PERCENTUAL: TcxGridDBColumn;
     cxGrid1DBTableView1FTI_UTILIZAR_RETORNO: TcxGridDBColumn;
     cxGrid1DBTableView1prd_pvenda: TcxGridDBColumn;
+    cxGrid1Level2: TcxGridLevel;
+    cxGrid1DBTableView2: TcxGridDBTableView;
+    qItensFicha2: TSQLQuery;
+    dspItensFicha2: TDataSetProvider;
+    cdsItensFicha2: TClientDataSet;
+    CdsItensFicha2FTI_REGISTRO: TIntegerField;
+    CdsItensFicha2PRD_REFER: TStringField;
+    CdsItensFicha2PRD_REFER_ITENS: TStringField;
+    CdsItensFicha2PRG_REGISTRO: TIntegerField;
+    CdsItensFicha2FTI_MODIFICADA: TSQLTimeStampField;
+    CdsItensFicha2FTI_UC: TFMTBCDField;
+    CdsItensFicha2FTI_UCMODIFIC: TFMTBCDField;
+    CdsItensFicha2FTI_MODE1: TStringField;
+    CdsItensFicha2FTI_MODE2: TStringField;
+    CdsItensFicha2FTI_MODE3: TStringField;
+    CdsItensFicha2FTI_MODE4: TStringField;
+    CdsItensFicha2FTI_MODE5: TStringField;
+    CdsItensFicha2FTI_MODE6: TStringField;
+    CdsItensFicha2FTI_MODE7: TStringField;
+    CdsItensFicha2FTI_MODE8: TStringField;
+    CdsItensFicha2FTI_PRECOCUSTO: TFMTBCDField;
+    CdsItensFicha2EMP_CODIGO: TStringField;
+    CdsItensFicha2FTI_NIVEL: TIntegerField;
+    CdsItensFicha2FTI_SEQUENCIA: TIntegerField;
+    CdsItensFicha2FTI_REFER_PAI: TStringField;
+    CdsItensFicha2FTI_TIPO_PI: TStringField;
+    CdsItensFicha2PRD_DESCRI: TStringField;
+    CdsItensFicha2PRD_UND: TStringField;
+    CdsItensFicha2PRD_GRADE: TStringField;
+    CdsItensFicha2PTI_SIGLA: TStringField;
+    CdsItensFicha2PRD_PCUSTO: TFMTBCDField;
+    CdsItensFicha2PRG_DESCRICAO: TStringField;
+    CdsItensFicha2Grade_CC: TStringField;
+    CdsItensFicha2TOTALITEM: TFMTBCDField;
+    CdsItensFicha2OPE_CODIGO: TIntegerField;
+    CdsItensFicha2ope_descricao: TStringField;
+    CdsItensFicha2prd_pvenda: TFMTBCDField;
+    CdsItensFicha2FTI_PERDA: TFMTBCDField;
+    CdsItensFicha2AMX_CODIGO: TStringField;
+    CdsItensFicha2amx_Descri: TStringField;
+    CdsItensFicha2FTI_PERCENTUAL: TFMTBCDField;
+    CdsItensFicha2FTI_UTILIZAR_RETORNO: TStringField;
+    dsItensFicha2: TDataSource;
+    cxGrid1DBTableView2PRD_REFER_ITENS: TcxGridDBColumn;
+    cxGrid1DBTableView2FTI_UC: TcxGridDBColumn;
+    cxGrid1DBTableView2PRD_DESCRI: TcxGridDBColumn;
+    cxGrid1DBTableView2PRD_UND: TcxGridDBColumn;
+    cxGrid1DBTableView2PTI_SIGLA: TcxGridDBColumn;
+    cxGrid1DBTableView2PRD_PCUSTO: TcxGridDBColumn;
+    cxGrid1DBTableView2PRG_DESCRICAO: TcxGridDBColumn;
+    cxGrid1DBTableView2TOTALITEM: TcxGridDBColumn;
+    cxGrid1DBTableView2OPE_CODIGO: TcxGridDBColumn;
+    cxGrid1DBTableView2ope_descricao: TcxGridDBColumn;
+    cxGrid1DBTableView2prd_pvenda: TcxGridDBColumn;
+    cxGrid1DBTableView2FTI_PERDA: TcxGridDBColumn;
+    cxGrid1DBTableView2amx_Descri: TcxGridDBColumn;
+    cxGrid1DBTableView2FTI_PERCENTUAL: TcxGridDBColumn;
+    cxGrid1DBTableView2FTI_UTILIZAR_RETORNO: TcxGridDBColumn;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2500,6 +2557,9 @@ type
     procedure cbApenasComEstoqueClick(Sender: TObject);
     procedure cbLoteVencidoClick(Sender: TObject);
     procedure cbFiltroAlmoxarifadoChange(Sender: TObject);
+    procedure cxGrid1DBTableView1DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -2790,7 +2850,8 @@ begin
         begin
           curPercentualConsumo.Visible := True;
           lbPercentualConsumo.Visible := True;
-          GetColumn( DBGridFichaTecnicaItem, 'FTI_PERCENTUAL' ).Visible := True;
+          cxGrid1DBTableView1FTI_PERCENTUAL.Visible := True;
+          cxGrid1DBTableView2FTI_PERCENTUAL.Visible := True;
         end;
         // DbePrd_Descri.SetFocus;
 
@@ -4158,7 +4219,7 @@ begin
   HabilitaBotoesFTC;
   Tbs_Produtos.TabVisible := True;
   if ( PctrlProdutos.ActivePageIndex = 0 ) then // ficha tec
-    DBGridFichaTecnicaItem.Setfocus
+    cxGrid1.SetFocus
   else
     EdtPrd_Refer.Setfocus;
   for j := 1 to 9 do
@@ -4339,13 +4400,13 @@ begin
     if ( PctrlProdutos.ActivePageIndex = 0 ) then
       EdtRefer.Setfocus
     else
-      DBGridFichaTecnicaItem.Setfocus;
+      cxGrid1.Setfocus;
 
   end
   else
   begin
     Uteis.aviso( 'Informe uma Materia-Prima !' );
-    DBGridFichaTecnicaItem.Setfocus;
+    cxGrid1.Setfocus;
   end;
 end;
 
@@ -5726,7 +5787,7 @@ begin
     if ( PctrlProdutos.ActivePageIndex = 0 ) then
       EdtRefer.Setfocus
     else
-      DBGridFichaTecnicaItem.Setfocus;
+      cxGrid1.Setfocus;
   end;
 
 end;
@@ -7034,6 +7095,41 @@ procedure TFormProduto.curPercentualConsumoChange( Sender : tObject );
 begin
   inherited;
   CurrConsumo.Value := ( CdsProdutosPRD_PESOLIQ.AsFloat / 100 ) * curPercentualConsumo.Value;
+end;
+
+procedure TFormProduto.cxGrid1DBTableView1DataControllerDetailExpanding(ADataController: TcxCustomDataController; ARecordIndex: Integer;  var AAllow: Boolean);
+var
+  prdRefer: string;
+begin
+  inherited;
+//  CdsItensFicha2.DisableControls;
+  CdsItensFicha2.close;
+  qItensFicha2.sql.Clear;
+
+  prdRefer := ADataController.GetValue(ARecordIndex, cxGrid1DBTableView1PRD_REFER_ITENS.Index);
+
+  qItensFicha2.sql.Text :=
+    'SELECT ' +
+    ' F2.*,P1.PRD_DESCRI,P1.PRD_UND,P1.PRD_GRADE,P2.PTI_SIGLA, g1.PRG_DESCRICAO, ' +
+      'cast( ' + 'case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' + ' P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END as numeric(15,4)) AS PRD_PCUSTO, ' +
+      'cast( ' + '(case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' +  '  P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END  * F2.fti_uc) as numeric(15,5)) AS TotalItem, ' +
+      ' ope.OPE_CODIGO, ope_descricao, p1.prd_pvenda as prd_pvenda, ' + ' p1.amx_codigo, amx_Descri ' +
+      'from ftc_it01 F2 ' +
+      ' join prd0000 P1 on (f2.prd_refer_itens = p1.prd_refer ' + ConcatSE( ' and P1.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ')' +
+      ' join PRD_TIPO P2 ON P1.pti_codigo = P2.PTI_CODIGO ' +
+      ' LEFT join PRD_GRADE g1 on g1.PRG_REGISTRO = f2.PRG_REGISTRO ' +
+      ' left JOIN prmt0001 PRMT ON PRMT.emp_codigo = P1.emp_codigo ' +
+      ' LEFT join operacoes ope on (ope.ope_codigo = f2.ope_codigo )' +
+      ' left join almox0000 am on (am.amx_codigo = f2.amx_codigo ' + ConcatSE( ' and am.', DBInicio.ExclusivoSql( 'ESTOQUES' ) ) + ' )' +
+      'WHERE F2.PRD_REFER = ' + qStr( prdRefer ) + ' ' + ConcatSE( ' and f2.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ' ' +
+      'order by F2.FTI_REGISTRO, F2.PRD_REFER';
+
+  if DBInicio.IsDesenvolvimento then
+    CopyToClipBoard( qItensFicha2.sql.Text );
+  CdsItensFicha2.Open;
+
+//   CdsItensFicha2.EnableControls;
+
 end;
 
 procedure TFormProduto.CdsProdutosReferenciaBeforeInsert( DataSet : TDataSet );

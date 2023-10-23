@@ -33,6 +33,8 @@ inherited FormProduto: TFormProduto
     object Tbs_FichaTec: TTabSheet
       Caption = 'Ficha T'#233'cnica'
       ImageIndex = 1
+      ExplicitLeft = 116
+      ExplicitTop = 45
       object PAN_FTC03: TPanel
         Left = 0
         Top = 2
@@ -509,185 +511,19 @@ inherited FormProduto: TFormProduto
               Height = 14
               Caption = 'Custo Total :'
             end
-            object DBGridFichaTecnicaItem: TDBGrid
+            object cxGrid1: TcxGrid
               Left = 2
               Top = 16
               Width = 1039
-              Height = 41
-              Hint = 'D'#234' duplo clique para fazer altera'#231#227'o do item.'
-              Align = alTop
-              Color = 16776176
-              DataSource = DsItensFicha
-              Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
-              ParentShowHint = False
-              PopupMenu = PopupMenu1
-              ReadOnly = True
-              ShowHint = True
-              TabOrder = 0
-              TitleFont.Charset = ANSI_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -11
-              TitleFont.Name = 'Arial'
-              TitleFont.Style = []
-              OnDblClick = DBGridFichaTecnicaItemDblClick
-              OnKeyDown = DBGridFichaTecnicaItemKeyDown
-              Columns = <
-                item
-                  Expanded = False
-                  FieldName = 'PRD_REFER_ITENS'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Refer'#234'ncia'
-                  Title.Font.Charset = ANSI_CHARSET
-                  Title.Font.Color = clBlack
-                  Title.Font.Height = -11
-                  Title.Font.Name = 'Arial'
-                  Title.Font.Style = []
-                  Width = 71
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'PRD_DESCRI'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Descri'#231#227'o'
-                  Title.Font.Charset = ANSI_CHARSET
-                  Title.Font.Color = clBlack
-                  Title.Font.Height = -11
-                  Title.Font.Name = 'Arial'
-                  Title.Font.Style = []
-                  Width = 297
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'PRG_DESCRICAO'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Grade'
-                  Title.Font.Charset = ANSI_CHARSET
-                  Title.Font.Color = clBlack
-                  Title.Font.Height = -11
-                  Title.Font.Name = 'Arial'
-                  Title.Font.Style = []
-                  Width = 162
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'PTI_SIGLA'
-                  Title.Alignment = taCenter
-                  Title.Caption = '*'
-                  Title.Font.Charset = ANSI_CHARSET
-                  Title.Font.Color = clBlack
-                  Title.Font.Height = -11
-                  Title.Font.Name = 'Arial'
-                  Title.Font.Style = []
-                  Width = 21
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'FTI_UC'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Consumo'
-                  Title.Font.Charset = ANSI_CHARSET
-                  Title.Font.Color = clBlack
-                  Title.Font.Height = -11
-                  Title.Font.Name = 'Arial'
-                  Title.Font.Style = []
-                  Width = 89
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'FTI_PERCENTUAL'
-                  Title.Caption = 'Consumo %'
-                  Visible = False
-                end
-                item
-                  Expanded = False
-                  FieldName = 'PRD_PCUSTO'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Custo Entrada'
-                  Title.Font.Charset = ANSI_CHARSET
-                  Title.Font.Color = clBlack
-                  Title.Font.Height = -11
-                  Title.Font.Name = 'Arial'
-                  Title.Font.Style = []
-                  Width = 80
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'TOTALITEM'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Custo Total'
-                  Title.Font.Charset = ANSI_CHARSET
-                  Title.Font.Color = clBlack
-                  Title.Font.Height = -11
-                  Title.Font.Name = 'Arial'
-                  Title.Font.Style = []
-                  Width = 87
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'prd_pvenda'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'P. Venda Unit'
-                  Width = 95
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'PRD_UND'
-                  Title.Alignment = taCenter
-                  Title.Caption = 'UND'
-                  Title.Font.Charset = ANSI_CHARSET
-                  Title.Font.Color = clBlack
-                  Title.Font.Height = -11
-                  Title.Font.Name = 'Arial'
-                  Title.Font.Style = []
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'OPE_CODIGO'
-                  Title.Caption = 'C'#243'digo'
-                  Width = 41
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'ope_descricao'
-                  Title.Caption = 'Opera'#231#227'o'
-                  Width = 213
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'FTI_PERDA'
-                  Title.Caption = 'Perda'
-                  Width = 89
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'amx_Descri'
-                  Title.Caption = 'Almoxarifado'
-                  Visible = True
-                end>
-            end
-            object cxGrid1: TcxGrid
-              Left = 2
-              Top = 57
-              Width = 1039
-              Height = 114
+              Height = 155
               Align = alClient
               PopupMenu = PopupMenu1
-              TabOrder = 1
+              TabOrder = 0
               LookAndFeel.Kind = lfStandard
               LookAndFeel.NativeStyle = False
               LookAndFeel.ScrollbarMode = sbmClassic
+              ExplicitTop = 57
+              ExplicitHeight = 114
               object cxGrid1DBTableView1: TcxGridDBTableView
                 PopupMenu = PopupMenu1
                 OnDblClick = DBGridFichaTecnicaItemDblClick
@@ -697,6 +533,7 @@ inherited FormProduto: TFormProduto
                 DataController.Summary.DefaultGroupSummaryItems = <>
                 DataController.Summary.FooterSummaryItems = <>
                 DataController.Summary.SummaryGroups = <>
+                DataController.OnDetailExpanding = cxGrid1DBTableView1DataControllerDetailExpanding
                 OptionsView.GroupByBox = False
                 object cxGrid1DBTableView1PRD_REFER_ITENS: TcxGridDBColumn
                   Caption = 'Refer'#234'ncia'
@@ -789,8 +626,85 @@ inherited FormProduto: TFormProduto
                   Width = 52
                 end
               end
+              object cxGrid1DBTableView2: TcxGridDBTableView
+                PopupMenu = PopupMenu1
+                OnDblClick = DBGridFichaTecnicaItemDblClick
+                OnKeyDown = DBGridFichaTecnicaItemKeyDown
+                Navigator.Buttons.CustomButtons = <>
+                DataController.DataSource = dsItensFicha2
+                DataController.DetailKeyFieldNames = 'PRD_REFER'
+                DataController.KeyFieldNames = 'PRD_REFER_ITENS'
+                DataController.MasterKeyFieldNames = 'PRD_REFER_ITENS'
+                DataController.Summary.DefaultGroupSummaryItems = <>
+                DataController.Summary.FooterSummaryItems = <>
+                DataController.Summary.SummaryGroups = <>
+                OptionsView.GroupByBox = False
+                object cxGrid1DBTableView2PRD_REFER_ITENS: TcxGridDBColumn
+                  Caption = 'Refer'#234'ncia'
+                  DataBinding.FieldName = 'PRD_REFER_ITENS'
+                end
+                object cxGrid1DBTableView2PRD_DESCRI: TcxGridDBColumn
+                  Caption = 'Descri'#231#227'o'
+                  DataBinding.FieldName = 'PRD_DESCRI'
+                end
+                object cxGrid1DBTableView2PRG_DESCRICAO: TcxGridDBColumn
+                  Caption = 'Grade'
+                  DataBinding.FieldName = 'PRG_DESCRICAO'
+                end
+                object cxGrid1DBTableView2PTI_SIGLA: TcxGridDBColumn
+                  Caption = '*'
+                  DataBinding.FieldName = 'PTI_SIGLA'
+                end
+                object cxGrid1DBTableView2FTI_UC: TcxGridDBColumn
+                  Caption = 'Consumo'
+                  DataBinding.FieldName = 'FTI_UC'
+                end
+                object cxGrid1DBTableView2FTI_PERCENTUAL: TcxGridDBColumn
+                  DataBinding.FieldName = 'FTI_PERCENTUAL'
+                  Visible = False
+                end
+                object cxGrid1DBTableView2PRD_PCUSTO: TcxGridDBColumn
+                  Caption = 'Custo Entrada'
+                  DataBinding.FieldName = 'PRD_PCUSTO'
+                end
+                object cxGrid1DBTableView2TOTALITEM: TcxGridDBColumn
+                  Caption = 'Custo Total'
+                  DataBinding.FieldName = 'TOTALITEM'
+                end
+                object cxGrid1DBTableView2prd_pvenda: TcxGridDBColumn
+                  Caption = 'P. Venda Unit'
+                  DataBinding.FieldName = 'prd_pvenda'
+                end
+                object cxGrid1DBTableView2PRD_UND: TcxGridDBColumn
+                  Caption = 'UND'
+                  DataBinding.FieldName = 'PRD_UND'
+                end
+                object cxGrid1DBTableView2OPE_CODIGO: TcxGridDBColumn
+                  Caption = 'C'#243'digo'
+                  DataBinding.FieldName = 'OPE_CODIGO'
+                end
+                object cxGrid1DBTableView2ope_descricao: TcxGridDBColumn
+                  Caption = 'Opera'#231#227'o'
+                  DataBinding.FieldName = 'ope_descricao'
+                end
+                object cxGrid1DBTableView2FTI_PERDA: TcxGridDBColumn
+                  Caption = 'Perda'
+                  DataBinding.FieldName = 'FTI_PERDA'
+                end
+                object cxGrid1DBTableView2amx_Descri: TcxGridDBColumn
+                  Caption = 'Almoxarifado'
+                  DataBinding.FieldName = 'amx_Descri'
+                end
+                object cxGrid1DBTableView2FTI_UTILIZAR_RETORNO: TcxGridDBColumn
+                  Caption = 'Retorno'
+                  DataBinding.FieldName = 'FTI_UTILIZAR_RETORNO'
+                end
+              end
               object cxGrid1Level1: TcxGridLevel
                 GridView = cxGrid1DBTableView1
+                object cxGrid1Level2: TcxGridLevel
+                  GridView = cxGrid1DBTableView2
+                end
               end
             end
           end
@@ -17436,7 +17350,7 @@ inherited FormProduto: TFormProduto
       'select for_codigo, for_razao'
       'from for0000'
       'where for_codigo='#39'-1'#39)
-    Left = 2033
+    Left = 2201
     Top = 91
     object qForFOR_CODIGO: TStringField
       FieldName = 'FOR_CODIGO'
@@ -17451,7 +17365,7 @@ inherited FormProduto: TFormProduto
   object qCstPC: TSQLQuery [74]
     MaxBlobSize = -1
     Params = <>
-    Left = 1914
+    Left = 2082
     Top = 147
   end
   object SqlProdutos: TSQLQuery [75]
@@ -19400,19 +19314,19 @@ inherited FormProduto: TFormProduto
   object qGrupo: TSQLQuery [84]
     MaxBlobSize = -1
     Params = <>
-    Left = 2036
+    Left = 2204
     Top = 151
   end
   object qLinha: TSQLQuery [85]
     MaxBlobSize = -1
     Params = <>
-    Left = 2156
+    Left = 2324
     Top = 95
   end
   object qCest: TSQLQuery [86]
     MaxBlobSize = -1
     Params = <>
-    Left = 2092
+    Left = 2260
     Top = 151
   end
   object qItensFicha: TSQLQuery [87]
@@ -19570,7 +19484,7 @@ inherited FormProduto: TFormProduto
     Params = <>
     SQL.Strings = (
       'select ope_codigo, ope_descricao')
-    Left = 1976
+    Left = 2144
     Top = 87
   end
   object qEspecifica: TSQLQuery [95]
@@ -20162,7 +20076,7 @@ inherited FormProduto: TFormProduto
       'where PRD_STATUS = '#39'Z'#39' and'
       '      (coalesce(PD.PRD_REFER, '#39#39') <> '#39#39')'
       'order by PD.PRD_REFER  ')
-    Left = 2095
+    Left = 2263
     Top = 92
     object qProcessosPRO_CODIGO: TIntegerField
       FieldName = 'PRO_CODIGO'
@@ -20180,7 +20094,7 @@ inherited FormProduto: TFormProduto
       'from cnae'
       '')
     SQLConnection = frmBaseDB.DBConn
-    Left = 1975
+    Left = 2143
     Top = 152
   end
   object qservico: TSQLQuery [118]
@@ -20192,7 +20106,7 @@ inherited FormProduto: TFormProduto
       ''
       '')
     SQLConnection = frmBaseDB.DBConn
-    Left = 1911
+    Left = 2079
     Top = 92
   end
   object dsUnidade: TDataSource [119]
@@ -21398,7 +21312,7 @@ inherited FormProduto: TFormProduto
   end
   object qRegistroEndereco: TSQLQuery [143]
     Params = <>
-    Left = 2156
+    Left = 2324
     Top = 151
   end
   inherited qAux3: TSQLQuery
@@ -21505,5 +21419,265 @@ inherited FormProduto: TFormProduto
       FieldName = 'AMX_DESCRI'
       Size = 60
     end
+  end
+  object qItensFicha2: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQL.Strings = (
+      'Select'
+      '    F2.*,'
+      '    P1.PRD_DESCRI,'
+      '    P1.PRD_UND,'
+      '    P1.PRD_GRADE,'
+      '    P2.PTI_SIGLA,'
+      '    g1.PRG_DESCRICAO,'
+      ''
+      'case'
+      '    WHEN PRMT.pmt_custo_base_producao = '#39'CL'#39' THEN'
+      '        P1.PRD_PCUSTO'
+      '    WHEN PRMT.pmt_custo_base_producao = '#39'CE'#39' THEN'
+      '        P1.prd_custocomipi'
+      '    WHEN PRMT.pmt_custo_base_producao = '#39'CM'#39' THEN'
+      '        P1.prd_pmedio'
+      '    WHEN PRMT.pmt_custo_base_producao = '#39'SI'#39' THEN'
+      '        P1.prd_custo_credito'
+      'END AS PRD_PCUSTO,'
+      ''
+      ''
+      '('
+      'case'
+      '    WHEN PRMT.pmt_custo_base_producao = '#39'CL'#39' THEN'
+      '        P1.PRD_PCUSTO'
+      '    WHEN PRMT.pmt_custo_base_producao = '#39'CE'#39' THEN'
+      '        P1.prd_custocomipi'
+      '    WHEN PRMT.pmt_custo_base_producao = '#39'CM'#39' THEN'
+      '        P1.prd_pmedio'
+      '    WHEN PRMT.pmt_custo_base_producao = '#39'SI'#39' THEN'
+      '        P1.prd_custo_credito'
+      'END  * F2.fti_uc'
+      ') AS TotalItem,'
+      'fti_perda,'
+      'f2.amx_codigo'
+      'from ftc_it01 F2'
+      'left join prd0000 P1'
+      'on (f2.prd_refer_itens = p1.prd_refer)'
+      'left join PRD_TIPO P2'
+      'ON P1.pti_codigo = P2.PTI_CODIGO'
+      'LEFT join PRD_GRADE g1'
+      'on g1.PRG_REGISTRO = f2.PRG_REGISTRO'
+      'left JOIN prmt0001 PRMT'
+      'ON PRMT.emp_codigo = P1.emp_codigo')
+    SQLConnection = DBInicio.MainDB
+    Left = 1892
+    Top = 81
+  end
+  object dspItensFicha2: TDataSetProvider
+    DataSet = qItensFicha2
+    UpdateMode = upWhereKeyOnly
+    Left = 1892
+    Top = 128
+  end
+  object cdsItensFicha2: TClientDataSet
+    Aggregates = <>
+    AggregatesActive = True
+    AutoCalcFields = False
+    Params = <>
+    ProviderName = 'dspItensFicha2'
+    AfterInsert = CdsItensFichaAfterInsert
+    AfterScroll = CdsItensFichaAfterScroll
+    Left = 1891
+    Top = 177
+    object CdsItensFicha2FTI_REGISTRO: TIntegerField
+      FieldName = 'FTI_REGISTRO'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Required = True
+    end
+    object CdsItensFicha2PRD_REFER: TStringField
+      FieldName = 'PRD_REFER'
+      ProviderFlags = [pfInUpdate]
+    end
+    object CdsItensFicha2PRD_REFER_ITENS: TStringField
+      FieldName = 'PRD_REFER_ITENS'
+      ProviderFlags = [pfInUpdate]
+    end
+    object CdsItensFicha2PRG_REGISTRO: TIntegerField
+      FieldName = 'PRG_REGISTRO'
+      ProviderFlags = [pfInUpdate]
+    end
+    object CdsItensFicha2FTI_MODIFICADA: TSQLTimeStampField
+      FieldName = 'FTI_MODIFICADA'
+      ProviderFlags = [pfInUpdate]
+    end
+    object CdsItensFicha2FTI_UC: TFMTBCDField
+      FieldName = 'FTI_UC'
+      ProviderFlags = [pfInUpdate]
+      DisplayFormat = '#,#####0.00000'
+      Precision = 15
+    end
+    object CdsItensFicha2FTI_UCMODIFIC: TFMTBCDField
+      FieldName = 'FTI_UCMODIFIC'
+      ProviderFlags = [pfInUpdate]
+      DisplayFormat = '#,#####0.00000'
+      EditFormat = '#,#####0.00000'
+      Precision = 15
+    end
+    object CdsItensFicha2FTI_MODE1: TStringField
+      FieldName = 'FTI_MODE1'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
+    object CdsItensFicha2FTI_MODE2: TStringField
+      FieldName = 'FTI_MODE2'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
+    object CdsItensFicha2FTI_MODE3: TStringField
+      FieldName = 'FTI_MODE3'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
+    object CdsItensFicha2FTI_MODE4: TStringField
+      FieldName = 'FTI_MODE4'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
+    object CdsItensFicha2FTI_MODE5: TStringField
+      FieldName = 'FTI_MODE5'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
+    object CdsItensFicha2FTI_MODE6: TStringField
+      FieldName = 'FTI_MODE6'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
+    object CdsItensFicha2FTI_MODE7: TStringField
+      FieldName = 'FTI_MODE7'
+      ProviderFlags = [pfInUpdate]
+      Size = 12
+    end
+    object CdsItensFicha2FTI_MODE8: TStringField
+      FieldName = 'FTI_MODE8'
+      ProviderFlags = [pfInUpdate]
+      Size = 12
+    end
+    object CdsItensFicha2FTI_PRECOCUSTO: TFMTBCDField
+      FieldName = 'FTI_PRECOCUSTO'
+      ProviderFlags = [pfInUpdate]
+      DisplayFormat = '###,###,####0.0000'
+      Precision = 15
+    end
+    object CdsItensFicha2EMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      ProviderFlags = [pfInUpdate]
+      Size = 3
+    end
+    object CdsItensFicha2FTI_NIVEL: TIntegerField
+      FieldName = 'FTI_NIVEL'
+      ProviderFlags = [pfInUpdate]
+    end
+    object CdsItensFicha2FTI_SEQUENCIA: TIntegerField
+      FieldName = 'FTI_SEQUENCIA'
+      ProviderFlags = [pfInUpdate]
+    end
+    object CdsItensFicha2FTI_REFER_PAI: TStringField
+      FieldName = 'FTI_REFER_PAI'
+      ProviderFlags = [pfInUpdate]
+      Size = 11
+    end
+    object CdsItensFicha2FTI_TIPO_PI: TStringField
+      FieldName = 'FTI_TIPO_PI'
+      ProviderFlags = [pfInUpdate]
+      Size = 1
+    end
+    object CdsItensFicha2PRD_DESCRI: TStringField
+      FieldName = 'PRD_DESCRI'
+      ProviderFlags = []
+      Size = 100
+    end
+    object CdsItensFicha2PRD_UND: TStringField
+      FieldName = 'PRD_UND'
+      ProviderFlags = []
+      Size = 3
+    end
+    object CdsItensFicha2PRD_GRADE: TStringField
+      FieldName = 'PRD_GRADE'
+      ProviderFlags = []
+      Size = 1
+    end
+    object CdsItensFicha2PTI_SIGLA: TStringField
+      FieldName = 'PTI_SIGLA'
+      ProviderFlags = []
+      Size = 2
+    end
+    object CdsItensFicha2PRD_PCUSTO: TFMTBCDField
+      FieldName = 'PRD_PCUSTO'
+      ProviderFlags = []
+      DisplayFormat = '###,###,####0.0000'
+      Precision = 15
+    end
+    object CdsItensFicha2PRG_DESCRICAO: TStringField
+      FieldName = 'PRG_DESCRICAO'
+      ProviderFlags = []
+      Size = 100
+    end
+    object CdsItensFicha2Grade_CC: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'Grade_CC'
+      ProviderFlags = [pfInUpdate]
+      Calculated = True
+    end
+    object CdsItensFicha2TOTALITEM: TFMTBCDField
+      FieldName = 'TOTALITEM'
+      ProviderFlags = [pfInUpdate]
+      DisplayFormat = '###,###,####0.0000'
+      Precision = 18
+      Size = 6
+    end
+    object CdsItensFicha2OPE_CODIGO: TIntegerField
+      FieldName = 'OPE_CODIGO'
+      ProviderFlags = [pfInUpdate]
+    end
+    object CdsItensFicha2ope_descricao: TStringField
+      FieldName = 'ope_descricao'
+      ProviderFlags = []
+      Size = 60
+    end
+    object CdsItensFicha2prd_pvenda: TFMTBCDField
+      FieldName = 'prd_pvenda'
+      ProviderFlags = []
+      Precision = 18
+      Size = 5
+    end
+    object CdsItensFicha2FTI_PERDA: TFMTBCDField
+      FieldName = 'FTI_PERDA'
+      ProviderFlags = [pfInUpdate]
+      DisplayFormat = '#,###,###,##0.00 %'
+      Precision = 15
+    end
+    object CdsItensFicha2AMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      ProviderFlags = [pfInUpdate]
+      Size = 4
+    end
+    object CdsItensFicha2amx_Descri: TStringField
+      FieldName = 'amx_Descri'
+      ProviderFlags = []
+      Size = 60
+    end
+    object CdsItensFicha2FTI_PERCENTUAL: TFMTBCDField
+      FieldName = 'FTI_PERCENTUAL'
+      DisplayFormat = '##0.000'
+      EditFormat = '##0.000'
+    end
+    object CdsItensFicha2FTI_UTILIZAR_RETORNO: TStringField
+      FieldName = 'FTI_UTILIZAR_RETORNO'
+      Size = 1
+    end
+  end
+  object dsItensFicha2: TDataSource
+    DataSet = cdsItensFicha2
+    Left = 1889
+    Top = 221
   end
 end

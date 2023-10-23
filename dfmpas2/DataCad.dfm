@@ -8463,7 +8463,6 @@ object DataCadastros: TDataCadastros
     end
   end
   object dsAlmoxarifado: TDataSource
-    DataSet = cdsAlmoxarifado
     Left = 747
     Top = 696
   end
