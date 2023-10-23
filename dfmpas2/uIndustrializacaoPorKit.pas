@@ -219,6 +219,7 @@ begin
     '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
     '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
     ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
+    ' AND ft.FTI_UTILIZAR_RETORNO = ''S''   ' +
     ' AND ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
     iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') +
 //    '  order by ef.enf_emissao, ei.ENF_IT_DET_NITEM ';

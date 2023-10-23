@@ -134,7 +134,11 @@ uses
   dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, frxExportBaseDialog;
+  dxSkinXmas2008Blue, frxExportBaseDialog, cxStyles, cxCustomData, cxFilter,
+  cxData, cxDataStorage, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, cxDBData,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGrid;
 
 type
   TFormProduto = class( TfrmBaseDB )
@@ -2212,6 +2216,26 @@ type
     cbFiltroAlmoxarifado: TComboBoxRw;
     Label331: TLabel;
     Label332: TLabel;
+    cbUtilizarRetorno: TCheckBox;
+    CdsItensFichaFTI_UTILIZAR_RETORNO: TStringField;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1PRD_REFER_ITENS: TcxGridDBColumn;
+    cxGrid1DBTableView1FTI_UC: TcxGridDBColumn;
+    cxGrid1DBTableView1PRD_DESCRI: TcxGridDBColumn;
+    cxGrid1DBTableView1PRD_UND: TcxGridDBColumn;
+    cxGrid1DBTableView1PTI_SIGLA: TcxGridDBColumn;
+    cxGrid1DBTableView1PRD_PCUSTO: TcxGridDBColumn;
+    cxGrid1DBTableView1PRG_DESCRICAO: TcxGridDBColumn;
+    cxGrid1DBTableView1TOTALITEM: TcxGridDBColumn;
+    cxGrid1DBTableView1OPE_CODIGO: TcxGridDBColumn;
+    cxGrid1DBTableView1ope_descricao: TcxGridDBColumn;
+    cxGrid1DBTableView1FTI_PERDA: TcxGridDBColumn;
+    cxGrid1DBTableView1amx_Descri: TcxGridDBColumn;
+    cxGrid1DBTableView1FTI_PERCENTUAL: TcxGridDBColumn;
+    cxGrid1DBTableView1FTI_UTILIZAR_RETORNO: TcxGridDBColumn;
+    cxGrid1DBTableView1prd_pvenda: TcxGridDBColumn;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -4377,10 +4401,17 @@ begin
         CdsItensFichaFTI_PERDA.Value := CurPerda.AsFloat;
         CdsItensFichaAMX_CODIGO.AsString := CbAlmoxarifado.idRetorno;
         CdsItensFichaFTI_PERCENTUAL.AsFloat := curPercentualConsumo.AsFloat;
+        CdsItensFichaFTI_UTILIZAR_RETORNO.AsString := iif(cbUtilizarRetorno.Checked, 'S', 'N');
         // NÃO ATUALIZA...
         CdsItensFicha.Post;
         CdsItensFicha.ApplyUpdates( 0 ); // não ta funcionando direito Às vezes
-        ExecSql( ' UPDATE FTC_IT01   ' + ' SET FTI_UC = ' + FloatToSQL( CurrConsumo.AsFloat ) + ', ' + '     FTI_PERCENTUAL = ' + FloatToSQL( curPercentualConsumo.AsFloat ) + iif( edOperacao.idRetorno <> '', ', OPE_CODIGO =' + QuotedStr( edOperacao.idRetorno ), '' ) + iif( CbAlmoxarifado.idRetorno <> '', '  , AMX_CODIGO = ' + QuotedStr( CbAlmoxarifado.idRetorno ), ', amx_codigo = null' ) + ' WHERE FTI_REGISTRO = ' + CdsItensFichaFTI_REGISTRO.AsString );
+        ExecSql( ' UPDATE FTC_IT01   ' +
+                  ' SET FTI_UC = ' + FloatToSQL( CurrConsumo.AsFloat ) + ', ' +
+                  ' FTI_UTILIZAR_RETORNO = ' + QuotedStr(iif(cbUtilizarRetorno.Checked, 'S', 'N')) + ',' +
+                  ' FTI_PERCENTUAL = ' + FloatToSQL( curPercentualConsumo.AsFloat ) +
+                  iif( edOperacao.idRetorno <> '', ', OPE_CODIGO =' + QuotedStr( edOperacao.idRetorno ), '' ) +
+                  iif( CbAlmoxarifado.idRetorno <> '', '  , AMX_CODIGO = ' + QuotedStr( CbAlmoxarifado.idRetorno ), ', amx_codigo = null' ) +
+                  ' WHERE FTI_REGISTRO = ' + CdsItensFichaFTI_REGISTRO.AsString );
 
         CdsItensFicha.close;
         CdsItensFicha.Open;
@@ -4424,6 +4455,7 @@ begin
   DateModif.Text := '';
   edOperacao.idRetorno := '';
   CbAlmoxarifado.idRetorno := '';
+  cbUtilizarRetorno.Checked := False;
   EdAlmoxarifadoCodigo.Clear;
 end;
 
@@ -5433,6 +5465,7 @@ begin
   edOperacao.idRetorno := IntToStr( CdsItensFichaOPE_CODIGO.AsInteger );
   CurPerda.Value := CdsItensFichaFTI_PERDA.AsFloat;
   CbAlmoxarifado.idRetorno := CdsItensFichaAMX_CODIGO.AsString;
+  cbUtilizarRetorno.Checked := iif(CdsItensFichaFTI_UTILIZAR_RETORNO.AsString = 'S', True, False);
   // CurCustoFicha.Value := CdsItensFichaFTI_PRECOCUSTO.AsCurrency;
 
   CbGrade.Condicao := 'prd_codigo = ' + qStr( RetornaProdutoReferencia( CdsItensFichaPRD_REFER_ITENS.Text ) );

@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Lotes
+    ActivePage = Tbs_FichaTec
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -513,9 +513,9 @@ inherited FormProduto: TFormProduto
               Left = 2
               Top = 16
               Width = 1039
-              Height = 155
+              Height = 41
               Hint = 'D'#234' duplo clique para fazer altera'#231#227'o do item.'
-              Align = alClient
+              Align = alTop
               Color = 16776176
               DataSource = DsItensFicha
               Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
@@ -676,6 +676,122 @@ inherited FormProduto: TFormProduto
                   Title.Caption = 'Almoxarifado'
                   Visible = True
                 end>
+            end
+            object cxGrid1: TcxGrid
+              Left = 2
+              Top = 57
+              Width = 1039
+              Height = 114
+              Align = alClient
+              PopupMenu = PopupMenu1
+              TabOrder = 1
+              LookAndFeel.Kind = lfStandard
+              LookAndFeel.NativeStyle = False
+              LookAndFeel.ScrollbarMode = sbmClassic
+              object cxGrid1DBTableView1: TcxGridDBTableView
+                PopupMenu = PopupMenu1
+                OnDblClick = DBGridFichaTecnicaItemDblClick
+                OnKeyDown = DBGridFichaTecnicaItemKeyDown
+                Navigator.Buttons.CustomButtons = <>
+                DataController.DataSource = DsItensFicha
+                DataController.Summary.DefaultGroupSummaryItems = <>
+                DataController.Summary.FooterSummaryItems = <>
+                DataController.Summary.SummaryGroups = <>
+                OptionsView.GroupByBox = False
+                object cxGrid1DBTableView1PRD_REFER_ITENS: TcxGridDBColumn
+                  Caption = 'Refer'#234'ncia'
+                  DataBinding.FieldName = 'PRD_REFER_ITENS'
+                  Options.Editing = False
+                  Width = 83
+                end
+                object cxGrid1DBTableView1PRD_DESCRI: TcxGridDBColumn
+                  Caption = 'Descri'#231#227'o'
+                  DataBinding.FieldName = 'PRD_DESCRI'
+                  Options.Editing = False
+                  Width = 300
+                end
+                object cxGrid1DBTableView1PRG_DESCRICAO: TcxGridDBColumn
+                  Caption = 'Grade'
+                  DataBinding.FieldName = 'PRG_DESCRICAO'
+                  Options.Editing = False
+                  Width = 164
+                end
+                object cxGrid1DBTableView1PTI_SIGLA: TcxGridDBColumn
+                  Caption = '*'
+                  DataBinding.FieldName = 'PTI_SIGLA'
+                  Options.Editing = False
+                end
+                object cxGrid1DBTableView1FTI_UC: TcxGridDBColumn
+                  Caption = 'Consumo'
+                  DataBinding.FieldName = 'FTI_UC'
+                  Options.Editing = False
+                  Width = 89
+                end
+                object cxGrid1DBTableView1FTI_PERCENTUAL: TcxGridDBColumn
+                  Caption = 'Custo Entrada'
+                  DataBinding.FieldName = 'FTI_PERCENTUAL'
+                  Visible = False
+                  Options.Editing = False
+                  Width = 81
+                end
+                object cxGrid1DBTableView1PRD_PCUSTO: TcxGridDBColumn
+                  Caption = 'Custo Entrada'
+                  DataBinding.FieldName = 'PRD_PCUSTO'
+                  Options.Editing = False
+                  Width = 82
+                end
+                object cxGrid1DBTableView1TOTALITEM: TcxGridDBColumn
+                  Caption = 'Custo Total'
+                  DataBinding.FieldName = 'TOTALITEM'
+                  Options.Editing = False
+                  Width = 91
+                end
+                object cxGrid1DBTableView1prd_pvenda: TcxGridDBColumn
+                  Caption = 'P. Venda Unit'
+                  DataBinding.FieldName = 'prd_pvenda'
+                  Options.Editing = False
+                  Width = 91
+                end
+                object cxGrid1DBTableView1PRD_UND: TcxGridDBColumn
+                  Caption = 'UND'
+                  DataBinding.FieldName = 'PRD_UND'
+                  Options.Editing = False
+                  Width = 28
+                end
+                object cxGrid1DBTableView1OPE_CODIGO: TcxGridDBColumn
+                  Caption = 'C'#243'digo'
+                  DataBinding.FieldName = 'OPE_CODIGO'
+                  Options.Editing = False
+                  Width = 40
+                end
+                object cxGrid1DBTableView1ope_descricao: TcxGridDBColumn
+                  Caption = 'Opera'#231#227'o'
+                  DataBinding.FieldName = 'ope_descricao'
+                  Options.Editing = False
+                  Width = 214
+                end
+                object cxGrid1DBTableView1FTI_PERDA: TcxGridDBColumn
+                  Caption = 'Perda'
+                  DataBinding.FieldName = 'FTI_PERDA'
+                  Options.Editing = False
+                  Width = 90
+                end
+                object cxGrid1DBTableView1amx_Descri: TcxGridDBColumn
+                  Caption = 'Almoxarifado'
+                  DataBinding.FieldName = 'amx_Descri'
+                  Options.Editing = False
+                  Width = 362
+                end
+                object cxGrid1DBTableView1FTI_UTILIZAR_RETORNO: TcxGridDBColumn
+                  Caption = 'Retorno'
+                  DataBinding.FieldName = 'FTI_UTILIZAR_RETORNO'
+                  Options.Editing = False
+                  Width = 52
+                end
+              end
+              object cxGrid1Level1: TcxGridLevel
+                GridView = cxGrid1DBTableView1
+              end
             end
           end
           object GroupBoxEtapasOpera: TGroupBox
@@ -1227,6 +1343,14 @@ inherited FormProduto: TFormProduto
               TabOrder = 2
               Visible = False
               OnChange = curPercentualConsumoChange
+            end
+            object cbUtilizarRetorno: TCheckBox
+              Left = 576
+              Top = 80
+              Width = 245
+              Height = 17
+              Caption = 'Utilizar no Retorno de Industrializa'#231#227'o por Kit'
+              TabOrder = 15
             end
           end
           object BIT_FTC_RELATORIO: TBitBtn
@@ -11657,8 +11781,6 @@ inherited FormProduto: TFormProduto
         Height = 273
         Align = alBottom
         TabOrder = 1
-        ExplicitLeft = 24
-        ExplicitTop = 268
         object Label75: TLabel
           Left = 211
           Top = 75
@@ -12946,6 +13068,10 @@ inherited FormProduto: TFormProduto
       FieldName = 'FTI_PERCENTUAL'
       DisplayFormat = '##0.000'
       EditFormat = '##0.000'
+    end
+    object CdsItensFichaFTI_UTILIZAR_RETORNO: TStringField
+      FieldName = 'FTI_UTILIZAR_RETORNO'
+      Size = 1
     end
   end
   object DsItensFicha: TDataSource [14]
