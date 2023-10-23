@@ -1856,7 +1856,12 @@ begin
    '        FROM MATERIAPRIMA_ORDEMPRODUCAO mpst                        '+
    '        JOIN PRD0000 prst ON (prst.PRD_CODIGO = mpst.PRD_CODIGO)    '+
    '        WHERE mpst.MP_CODIGO = mp.mp_codigo_subst  )  subst,        '+
-   '  (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO ) EstoqueDisponivel, MP_CUSTO, '+
+//   '  (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO ) EstoqueDisponivel, '+
+   ' CASE WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  + ' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
+   '   THEN (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas JOIN FTC_IT01 fi2 ON (fi2.AMX_CODIGO = kas.AMX_CODIGO AND fi2.PRD_REFER = ' + QuotedStr(prdRefer)  +' AND fi2.PRD_REFER_ITENS  = pr.PRD_REFER) WHERE kas.PRD_CODIGO = mp.PRD_CODIGO   ) ' +
+   '   ELSE (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO )   '  +
+   ' END AS EstoqueDisponivel, ' +
+   ' MP_CUSTO, ' +
    ' (SELECT FIRST 1 PRDL_LOTE FROM PRD_LOTE lt WHERE lt.PRD_CODIGO = pr.PRD_CODIGO '+
    ' AND PRDL_DATA_FABRICACAO  = (SELECT MIN(PRDL_DATA_FABRICACAO) FROM PRD_LOTE LT2 WHERE LT2.PRD_CODIGO = pr.PRD_CODIGO   AND LT2.PRDL_SALDO > 0 ))  LOTE '+
    ' FROM MATERIAPRIMA_ORDEMPRODUCAO mp                                 '+
@@ -2044,7 +2049,12 @@ begin
    '        FROM MATERIAPRIMA_ORDEMPRODUCAO mpst                        '+
    '        JOIN PRD0000 prst ON (prst.PRD_CODIGO = mpst.PRD_CODIGO)    '+
    '        WHERE mpst.MP_CODIGO = mp.mp_codigo_subst  )  subst,        '+
-   '  (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO ) EstoqueDisponivel, MP_CUSTO, '+
+//   '  (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO ) EstoqueDisponivel, ' +
+   ' CASE WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  + ' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
+   '   THEN (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas JOIN FTC_IT01 fi2 ON (fi2.AMX_CODIGO = kas.AMX_CODIGO AND fi2.PRD_REFER = ' + QuotedStr(prdRefer)  +' AND fi2.PRD_REFER_ITENS  = pr.PRD_REFER) WHERE kas.PRD_CODIGO = mp.PRD_CODIGO   ) ' +
+   '   ELSE (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO )   '  +
+   ' END AS EstoqueDisponivel, ' +
+   '  MP_CUSTO, '+
    ' (SELECT FIRST 1 PRDL_LOTE FROM PRD_LOTE lt WHERE lt.PRD_CODIGO = pr.PRD_CODIGO'+
    ' AND PRDL_DATA_FABRICACAO  = (SELECT MIN(PRDL_DATA_FABRICACAO) FROM PRD_LOTE LT2 WHERE LT2.PRD_CODIGO = pr.PRD_CODIGO   AND LT2.PRDL_SALDO > 0 )) LOTE '+
    ' FROM MATERIAPRIMA_ORDEMPRODUCAO mp                                 '+
