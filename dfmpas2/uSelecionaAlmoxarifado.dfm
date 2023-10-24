@@ -137,12 +137,12 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
           Visible = False
         end
         object cxGrid1DBTableView1AMX_CODIGO: TcxGridDBColumn
-          Caption = 'Almoxarifado'
+          Caption = 'C'#243'digo'
           DataBinding.FieldName = 'AMX_CODIGO'
           Width = 86
         end
         object cxGrid1DBTableView1cbAlmoxarifado: TcxGridDBColumn
-          Caption = 'Descri'#231#227'o'
+          Caption = 'Almoxarifado'
           DataBinding.FieldName = 'AMX_CODIGO'
           PropertiesClassName = 'TcxLookupComboBoxProperties'
           Properties.KeyFieldNames = 'AMX_CODIGO'
@@ -153,6 +153,8 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
           Properties.ListOptions.ShowHeader = False
           Properties.ListSource = dsAlmox
           Properties.OnChange = cxGrid1DBTableView1cbAlmoxarifadoPropertiesChange
+          Properties.OnPopup = cxGrid1DBTableView1cbAlmoxarifadoPropertiesPopup
+          OnGetDisplayText = cxGrid1DBTableView1cbAlmoxarifadoGetDisplayText
           Width = 134
         end
       end
@@ -276,6 +278,7 @@ inherited frmSelecionaAlmoxarifado: TfrmSelecionaAlmoxarifado
         FFFFFFFFFFFFFFFFFFFF}
       ModalResult = 1
       TabOrder = 1
+      OnClick = btConfirmaClick
     end
   end
   inherited coCalcula: TACBrCalculadora

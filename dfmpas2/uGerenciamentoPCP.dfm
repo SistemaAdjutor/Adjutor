@@ -1936,7 +1936,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       FieldName = 'ESTOQUEDISPONIVEL'
       Origin = 'ESTOQUEDISPONIVEL'
       ProviderFlags = []
-      ReadOnly = True
       Precision = 18
       Size = 5
     end

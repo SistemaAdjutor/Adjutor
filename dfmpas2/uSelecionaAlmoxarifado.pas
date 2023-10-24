@@ -67,8 +67,14 @@ type
     procedure FormShow(Sender: TObject);
     procedure cxGrid1DBTableView1cbAlmoxarifadoPropertiesChange(
       Sender: TObject);
-    procedure FormCreate(Sender: TObject);
+    procedure cxGrid1DBTableView1cbAlmoxarifadoPropertiesPopup(Sender: TObject);
+    procedure cxGrid1DBTableView1cbAlmoxarifadoGetDisplayText(
+      Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+      var AText: string);
+    procedure btConfirmaClick(Sender: TObject);
   private
+    var
+      amxAnterior: string;
     { Private declarations }
   public
     { Public declarations }
@@ -83,38 +89,76 @@ implementation
 
 uses uteis, uGerenciamentoPCP, InicioDB;
 
+procedure TfrmSelecionaAlmoxarifado.btConfirmaClick(Sender: TObject);
+begin
+  inherited;
+  frmGerenciamentoPCP.cdsMateriaPrima.First;
+  while not frmGerenciamentoPCP.cdsMateriaPrima.eof do
+  begin
+    // almoxarifado := cdsMateriaPrimaAMX_CODIGO.AsString;
+    ExecSql('INSERT INTO PCP_TEMP VALUES (' +
+              QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_CODIGO.AsString)  +  ',' +
+              QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_REFER.AsString)  + ',' +
+              QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString)  +
+            ')'
+           );
+    frmGerenciamentoPCP.cdsMateriaPrima.Next;
+  end;
+
+end;
+
+procedure TfrmSelecionaAlmoxarifado.cxGrid1DBTableView1cbAlmoxarifadoGetDisplayText(
+  Sender: TcxCustomGridTableItem; ARecord: TcxCustomGridRecord;
+  var AText: string);
+begin
+  inherited;
+ // AText := frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString + ' - ' + DBInicio.BuscaUmDadoSqlASString('SELECT AMX_DESCRI FROM ALMOX0000 WHERE AMX_CODIGO = ' + QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString) );
+
+end;
+
 procedure TfrmSelecionaAlmoxarifado.cxGrid1DBTableView1cbAlmoxarifadoPropertiesChange(Sender: TObject);
 var
   saldo : double;
 begin
   inherited;
+  if TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue = AmxAnterior then
+    abort;
   saldo := BuscaUmDadoSqlAsFloat('SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0) ' +
                            ' FROM kardex_almox_saldo kas ' +
                            ' WHERE kas.PRD_CODIGO = ' + QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_CODIGO.AsString) +
                             ' AND  AMX_CODIGO = ' + QuotedStr(TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue) );
-  if saldo < 0 then
+  if saldo <= 0 then
   begin
     Aviso('Não há saldo suficiente para este produto no almoxarifado indicado.' +
             #13 + 'Saldo Disponível ' + FormatFloat('###,###,##0,00', saldo)  );
-    Abort;
+    TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue := amxAnterior;
+    saldo := BuscaUmDadoSqlAsFloat('SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0) ' +
+                             ' FROM kardex_almox_saldo kas ' +
+                             ' WHERE kas.PRD_CODIGO = ' + QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_CODIGO.AsString) +
+                             ' AND  AMX_CODIGO = ' + QuotedStr(TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue) );
   end;
 
   frmGerenciamentoPCP.cdsMateriaPrima.Edit;
   frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString := TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue;
+  frmGerenciamentoPCP.cdsMateriaPrimaESTOQUEDISPONIVEL.AsFloat := Saldo;
   frmGerenciamentoPCP.cdsMateriaPrima.Post;
 end;
 
-procedure TfrmSelecionaAlmoxarifado.FormCreate(Sender: TObject);
+procedure TfrmSelecionaAlmoxarifado.cxGrid1DBTableView1cbAlmoxarifadoPropertiesPopup(
+  Sender: TObject);
 begin
   inherited;
-  frmGerenciamentoPCP.cdsMateriaPrima.Close;
-  frmGerenciamentoPCP.cdsMateriaPrima.Open;
+  amxAnterior := TcxLookupComboBox(cxGrid1DBTableView1.Controller.EditingController.Edit).EditValue;
 end;
 
 procedure TfrmSelecionaAlmoxarifado.FormShow(Sender: TObject);
 begin
   inherited;
   qAlmox.Open();
+  frmGerenciamentoPCP.cdsMateriaPrima.Close;
+  frmGerenciamentoPCP.cdsMateriaPrima.Open;
+  cxGrid1DBTableView1.DataController.DataSource := frmGerenciamentoPCP.dsMateriaPrima;
+  frmGerenciamentoPCP.cdsMateriaPrima.EnableControls;
 end;
 
 end.

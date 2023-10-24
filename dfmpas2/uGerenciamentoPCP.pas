@@ -1583,25 +1583,10 @@ begin
      frmSelecionaAlmoxarifado := TfrmSelecionaAlmoxarifado.Create(Application);
     frmSelecionaAlmoxarifado.lbAtencao.Caption := 'ATENÇÂO!!! ' + cdsBuscaPRD_REFER.AsString + ' - ' + cdsBuscaPRD_DESCRI.AsString;
     frmSelecionaAlmoxarifado.ShowModal;
-    if frmSelecionaAlmoxarifado.ModalResult = mrOk then
-    begin
-      cdsMateriaPrima.First;
-      while not cdsMateriaPrima.eof do
-      begin
-        almoxarifado := cdsMateriaPrimaAMX_CODIGO.AsString;
-        ExecSql('INSERT INTO PCP_TEMP VALUES (' +
-                  QuotedStr(cdsMateriaPrimaPRD_CODIGO.AsString)  +  ',' +
-                  QuotedStr(cdsMateriaPrimaPRD_REFER.AsString)  + ',' +
-                  QuotedStr(almoxarifado)  +
-                ')'
-               );
-        cdsMateriaPrima.Next;
-      end;
-    end
-    else
+    if frmSelecionaAlmoxarifado.ModalResult <> mrOk then
       Abort;
   end;
-
+  FreeAndNil(frmSelecionaAlmoxarifado);
   cdsMateriaPrima.First;
 
    try
@@ -1845,6 +1830,7 @@ begin
    ' CASE ' +
 //   '   WHEN COALESCE((SELECT a.AMX_CODIGO FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = O.CLI_CODIGO)), '''') <> ''''   ' +
 //   '     THEN (SELECT a.AMX_CODIGO FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = O.CLI_CODIGO)) ' +
+   '   WHEN COALESCE(mp.AMX_CODIGO, '''') <> '''' THEN mp.AMX_CODIGO ' +
    '   WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
    '     THEN (SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER) ' +
    '   ELSE (SELECT PMT_AMX_PRODUCAO_SAIDA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) +  ') ' +
@@ -1857,8 +1843,11 @@ begin
    '        JOIN PRD0000 prst ON (prst.PRD_CODIGO = mpst.PRD_CODIGO)    '+
    '        WHERE mpst.MP_CODIGO = mp.mp_codigo_subst  )  subst,        '+
 //   '  (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO ) EstoqueDisponivel, '+
-   ' CASE WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  + ' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
-   '   THEN (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas JOIN FTC_IT01 fi2 ON (fi2.AMX_CODIGO = kas.AMX_CODIGO AND fi2.PRD_REFER = ' + QuotedStr(prdRefer)  +' AND fi2.PRD_REFER_ITENS  = pr.PRD_REFER) WHERE kas.PRD_CODIGO = mp.PRD_CODIGO   ) ' +
+   ' CASE ' +
+   '   WHEN COALESCE(mp.AMX_CODIGO , '''') <> ''''   ' +
+   '     THEN (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO AND kas.AMX_CODIGO = MP.AMX_CODIGO) ' +
+   '   WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  + ' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
+   '      THEN (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas JOIN FTC_IT01 fi2 ON (fi2.AMX_CODIGO = kas.AMX_CODIGO AND fi2.PRD_REFER = ' + QuotedStr(prdRefer)  +' AND fi2.PRD_REFER_ITENS  = pr.PRD_REFER) WHERE kas.PRD_CODIGO = mp.PRD_CODIGO   ) ' +
    '   ELSE (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO )   '  +
    ' END AS EstoqueDisponivel, ' +
    ' MP_CUSTO, ' +
@@ -2038,6 +2027,7 @@ begin
    ' CASE ' +
 //   '   WHEN COALESCE((SELECT a.AMX_CODIGO FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = O.CLI_CODIGO)), '''') <> ''''   ' +
 //   '     THEN (SELECT a.AMX_CODIGO FROM ALMOX0000 a WHERE a.AMX_CNPJ_PART = (SELECT c.CLI_CGC  FROM CLI0000 c WHERE CLI_CODIGO = O.CLI_CODIGO)) ' +
+   '   WHEN COALESCE(mp.AMX_CODIGO, '''') <> '''' THEN mp.AMX_CODIGO ' +
    '   WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
    '     THEN (SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = '+ QuotedStr(prdRefer)  +' AND fi.PRD_REFER_ITENS = pr.PRD_REFER) ' +
    '   ELSE (SELECT PMT_AMX_PRODUCAO_SAIDA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) +  ') ' +
@@ -2050,8 +2040,11 @@ begin
    '        JOIN PRD0000 prst ON (prst.PRD_CODIGO = mpst.PRD_CODIGO)    '+
    '        WHERE mpst.MP_CODIGO = mp.mp_codigo_subst  )  subst,        '+
 //   '  (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO ) EstoqueDisponivel, ' +
-   ' CASE WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  + ' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
-   '   THEN (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas JOIN FTC_IT01 fi2 ON (fi2.AMX_CODIGO = kas.AMX_CODIGO AND fi2.PRD_REFER = ' + QuotedStr(prdRefer)  +' AND fi2.PRD_REFER_ITENS  = pr.PRD_REFER) WHERE kas.PRD_CODIGO = mp.PRD_CODIGO   ) ' +
+   ' CASE ' +
+   '   WHEN COALESCE(mp.AMX_CODIGO , '''') <> ''''   ' +
+   '     THEN (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO AND kas.AMX_CODIGO = MP.AMX_CODIGO) ' +
+   '   WHEN COALESCE((SELECT fi.AMX_CODIGO FROM FTC_IT01 fi WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  + ' AND fi.PRD_REFER_ITENS = pr.PRD_REFER), '''') <> ''''    ' +
+   '     THEN (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas JOIN FTC_IT01 fi2 ON (fi2.AMX_CODIGO = kas.AMX_CODIGO AND fi2.PRD_REFER = ' + QuotedStr(prdRefer)  +' AND fi2.PRD_REFER_ITENS  = pr.PRD_REFER) WHERE kas.PRD_CODIGO = mp.PRD_CODIGO   ) ' +
    '   ELSE (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA), 0) FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = mp.PRD_CODIGO )   '  +
    ' END AS EstoqueDisponivel, ' +
    '  MP_CUSTO, '+
