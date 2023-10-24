@@ -768,7 +768,7 @@ end;
 procedure TFrmGimpBoletos.cdsDuplicataAfterScroll(DataSet: TDataSet);
 begin
   inherited;
-  if registro = 0 then
+//  if registro = 0 then
     BuscaHistorico(CdsDuplicataFAT_REGISTRO.AsInteger);
 end;
 
