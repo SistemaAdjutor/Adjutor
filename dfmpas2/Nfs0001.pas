@@ -768,6 +768,17 @@ begin
   inherited;
   lcnpj.CAPTION := '';
   {PARAMETRO PARA CONFIGURAR CASAS DECIMAIS DA ENTRADA DE NOTA}
+
+
+   SqlCdsGridComOCOCI_PRECO.DisplayFormat     := '###,###,##0.' + StrZero('', dbInicio.empresa.iCasaDecimaisEnf);
+   SqlCdsGridComOCOCI_PRECO.Size              := dbInicio.empresa.iCasaDecimaisEnf;
+   SqlCdsGridComOCOCI_TOTAL_CC.DisplayFormat  := '###,###,##0.' + StrZero('', dbInicio.empresa.iCasaDecimaisEnf);
+   SqlCdsGridSemOCENF_PRECO.DisplayFormat     := '###,###,##0.' + StrZero('', dbInicio.empresa.iCasaDecimaisEnf);
+   SqlCdsGridSemOCVL_TOTAL_CC.DisplayFormat   := '###,###,##0.' + StrZero('', dbInicio.empresa.iCasaDecimaisEnf);
+   CurrPreco.DisplayFormat                    := '###,###,##0.' + StrZero('', dbInicio.empresa.iCasaDecimaisEnf);
+   CurrPreco.DecimalPlaces                    := dbInicio.empresa.iCasaDecimaisEnf;
+{
+
   case dbInicio.empresa.iCasaDecimaisEnf of
      0:Begin
            SqlCdsGridComOCOCI_PRECO.DisplayFormat     := '###,###,##0.00';
@@ -824,6 +835,7 @@ begin
            CurrPreco.DecimalPlaces                    := 5;
        end;
   end;
+  }
 
   preenchaCombo;
   //Preencher_Combo_Produtos;
