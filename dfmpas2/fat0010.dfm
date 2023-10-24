@@ -483,7 +483,6 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Width = 37
         end
         object DBGridRecParceDBTableView1FAT_CODIGO: TcxGridDBColumn
-          Caption = 'Fatura'
           DataBinding.FieldName = 'FAT_CODIGO'
           Width = 59
         end
@@ -513,23 +512,18 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           DataBinding.FieldName = 'CLI_RAZAO'
         end
         object DBGridRecParceDBTableView1FRE_VALOR: TcxGridDBColumn
-          Caption = 'Valor'
           DataBinding.FieldName = 'FRE_VALOR'
         end
         object DBGridRecParceDBTableView1FRE_DESCONTO: TcxGridDBColumn
-          Caption = 'Desconto'
           DataBinding.FieldName = 'FRE_DESCONTO'
         end
         object DBGridRecParceDBTableView1FRE_JUROS: TcxGridDBColumn
-          Caption = 'Juros'
           DataBinding.FieldName = 'FRE_JUROS'
         end
         object DBGridRecParceDBTableView1FRE_MULTA: TcxGridDBColumn
-          Caption = 'Multa'
           DataBinding.FieldName = 'FRE_MULTA'
         end
         object DBGridRecParceDBTableView1FRE_RECEBIDO: TcxGridDBColumn
-          Caption = 'Recebido'
           DataBinding.FieldName = 'FRE_RECEBIDO'
         end
         object DBGridRecParceDBTableView1FPG_DESCRICAO: TcxGridDBColumn
@@ -538,11 +532,9 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Width = 255
         end
         object DBGridRecParceDBTableView1BAN_APELIDO: TcxGridDBColumn
-          Caption = 'Conta Banco'
           DataBinding.FieldName = 'BAN_APELIDO'
         end
         object DBGridRecParceDBTableView1USU_NOME: TcxGridDBColumn
-          Caption = 'Usu'#225'rio'
           DataBinding.FieldName = 'USU_NOME'
           Width = 146
         end
@@ -762,10 +754,12 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     Left = 416
     Top = 424
     object CdsReceberBaixasFRE_REGISTRO: TIntegerField
+      DisplayLabel = 'Registro'
       FieldName = 'FRE_REGISTRO'
       Required = True
     end
     object CdsReceberBaixasEMP_CODIGO: TStringField
+      DisplayLabel = 'Empresa'
       FieldName = 'EMP_CODIGO'
       Size = 3
     end
@@ -773,33 +767,39 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       FieldName = 'FAT_REGISTRO'
     end
     object CdsReceberBaixasFRE_DATA_RECEBIMENTO: TDateField
+      DisplayLabel = 'Data Recebimento'
       FieldName = 'FRE_DATA_RECEBIMENTO'
     end
     object CdsReceberBaixasFRE_VALOR: TFMTBCDField
+      DisplayLabel = 'Valor'
       FieldName = 'FRE_VALOR'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
       Size = 4
     end
     object CdsReceberBaixasFRE_DESCONTO: TFMTBCDField
+      DisplayLabel = 'Desconto'
       FieldName = 'FRE_DESCONTO'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
       Size = 4
     end
     object CdsReceberBaixasFRE_JUROS: TFMTBCDField
+      DisplayLabel = 'Juros'
       FieldName = 'FRE_JUROS'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
       Size = 4
     end
     object CdsReceberBaixasFRE_MULTA: TFMTBCDField
+      DisplayLabel = 'Multa'
       FieldName = 'FRE_MULTA'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
       Size = 4
     end
     object CdsReceberBaixasFRE_RECEBIDO: TFMTBCDField
+      DisplayLabel = 'Recebido'
       FieldName = 'FRE_RECEBIDO'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
@@ -816,14 +816,17 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       FieldName = 'USU_CODIGO'
     end
     object CdsReceberBaixasBAN_APELIDO: TStringField
+      DisplayLabel = 'Conta Banco'
       FieldName = 'BAN_APELIDO'
       Size = 25
     end
     object CdsReceberBaixasFPG_DESCRICAO: TStringField
+      DisplayLabel = 'Forma de Pagamento'
       FieldName = 'FPG_DESCRICAO'
       Size = 100
     end
     object CdsReceberBaixasUSU_NOME: TStringField
+      DisplayLabel = 'Usu'#225'rio'
       FieldName = 'USU_NOME'
       Size = 40
     end
@@ -832,23 +835,28 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       Size = 5
     end
     object CdsReceberBaixasCLI_RAZAO: TStringField
+      DisplayLabel = 'Raz'#227'o Social'
       FieldName = 'CLI_RAZAO'
       Size = 55
     end
     object CdsReceberBaixasFAT_CODIGO: TStringField
+      DisplayLabel = 'Fatura'
       FieldName = 'FAT_CODIGO'
       Required = True
       Size = 6
     end
     object CdsReceberBaixasFPC_NUMER: TStringField
+      DisplayLabel = 'N'#186' da Parcela'
       FieldName = 'FPC_NUMER'
       OnGetText = CdsReceberBaixasFPC_NUMERGetText
       Size = 2
     end
     object CdsReceberBaixasFPC_VENCTO: TSQLTimeStampField
+      DisplayLabel = 'Data do Vencimento'
       FieldName = 'FPC_VENCTO'
     end
     object CdsReceberBaixasNF_NUM_NFE: TIntegerField
+      DisplayLabel = 'N'#186' da Nota Fiscal'
       FieldName = 'NF_NUM_NFE'
     end
     object CdsReceberBaixasFPC_NPARCELAS: TSmallintField
@@ -2865,6 +2873,10 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     object ReceberAgrupadoporCentrodeCusto1: TMenuItem
       Caption = 'Receber Agrupado por Centro de Custo'
       OnClick = ReceberAgrupadoporCentrodeCusto1Click
+    end
+    object ExportarparaCSV1: TMenuItem
+      Caption = 'Exportar para CSV'
+      OnClick = ExportarparaCSV1Click
     end
   end
   object frxRecebimentosCPFCNPJ: TfrxReport

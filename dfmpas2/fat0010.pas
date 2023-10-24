@@ -183,6 +183,7 @@ type
     cdsReceberCentroCustoFPC_MULTA: TFMTBCDField;
     cdsReceberCentroCustoFPG_DESCRICAO: TStringField;
     cdsReceberCentroCustoCCPendente: TFloatField;
+    ExportarparaCSV1: TMenuItem;
     procedure Bit_SairClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure EdClienteCodigoExit(Sender: tObject);
@@ -222,6 +223,7 @@ type
     procedure CdsReceberBancoFPC_NUMERGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure ReceberAgrupadoporCentrodeCusto1Click(Sender: TObject);
     procedure cdsReceberCentroCustoCalcFields(DataSet: TDataSet);
+    procedure ExportarparaCSV1Click(Sender: TObject);
   private
     { Private declarations }
     sFiltro:WideString;
@@ -404,6 +406,30 @@ begin
                EdFormaCodigo.SelectAll;
             end;
       end;
+end;
+
+procedure TFormContasReceberBaixas.ExportarparaCSV1Click(Sender: TObject);
+var
+  lista: TStringList;
+begin
+  inherited;
+  lista := TStringList.Create;
+  lista.Add('EMP_CODIGO');
+  lista.Add('FAT_CODIGO');
+  lista.Add('FPC_NUMER');
+  lista.Add('NF_NUM_NFE');
+  lista.Add('FPC_VENCTO');
+  lista.Add('FRE_DATA_RECEBIMENTO');
+  lista.Add('CLI_RAZAO');
+  lista.Add('FRE_VALOR');
+  lista.Add('FRE_DESCONTO');
+  lista.Add('FRE_JUROS');
+  lista.Add('FRE_MULTA');
+  lista.Add('FRE_RECEBIDO');
+  lista.Add('FPG_DESCRICAO');
+  lista.Add('BAN_APELIDO');
+  lista.Add('USU_NOME');
+  CriaCSV(DsReceberBaixas, lista, Self);
 end;
 
 procedure TFormContasReceberBaixas.EdContaBancoCodigoExit(Sender: tObject);

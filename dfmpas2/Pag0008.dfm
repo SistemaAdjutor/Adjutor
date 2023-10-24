@@ -423,6 +423,11 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
           DataBinding.FieldName = 'PAG_CODIGO'
           Width = 44
         end
+        object DBGridRecParceDBTableView1PAG_NUMDOC: TcxGridDBColumn
+          Caption = 'N'#186' Documento'
+          DataBinding.FieldName = 'PAG_NUMDOC'
+          Width = 114
+        end
         object DBGridRecParceDBTableView1PPC_NUMER: TcxGridDBColumn
           Caption = '*'
           DataBinding.FieldName = 'PPC_NUMER'
@@ -759,6 +764,10 @@ inherited FormContasPagarBaixas: TFormContasPagarBaixas
     end
     object CdsPagarBaixasPPC_NPARCELAS: TSmallintField
       FieldName = 'PPC_NPARCELAS'
+    end
+    object CdsPagarBaixasPAG_NUMDOC: TStringField
+      FieldName = 'PAG_NUMDOC'
+      Size = 30
     end
   end
   object DsPagarBaixas: TDataSource
