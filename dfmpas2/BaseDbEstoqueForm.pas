@@ -618,7 +618,7 @@ begin
          DBInicio.ExecSql('UPDATE PRD_GRADE SET PRG_SALDO = PRG_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRG_REGISTRO = '+qStr(sGrade));
 
          //Se no lancamento for informado o lote o mesmo atualiza o saldo do lote
-      if (Lote <> '0') and (Self.Name <> 'FormFatPedido') and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') = 'P')  then
+      if (Lote <> '0')  and (Self.Name <> 'FormConcluirOP') and (Self.Name <> 'FormFatPedido') and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') = 'P')  then
         DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
         // DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO =  ' + FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = ' + lote );
 
