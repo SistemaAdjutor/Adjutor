@@ -346,6 +346,8 @@ inherited frmDemandaProducao: TfrmDemandaProducao
         object cxgrd1DBBandedTableView1: TcxGridDBBandedTableView [1]
           PopupMenu = mDemanda
           OnDblClick = cxgrd1DBBandedTableView1DblClick
+          OnKeyUp = cxgrd1DBBandedTableView1KeyUp
+          OnMouseUp = cxgrd1DBBandedTableView1MouseUp
           Navigator.Buttons.CustomButtons = <>
           FilterBox.CustomizeDialog = False
           OnEditing = cxgrd1DBBandedTableView1Editing
