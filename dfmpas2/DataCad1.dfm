@@ -1656,6 +1656,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_GER_AVANC_ANTECIP_DESC'
       Size = 1
     end
+    object SqlParametrosPMT_MENSAGEM_VENDAS: TStringField
+      FieldName = 'PMT_MENSAGEM_VENDAS'
+      Size = 80
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -2951,6 +2955,10 @@ object DataCadastros1: TDataCadastros1
     object CdsParametrosPMT_GER_AVANC_ANTECIP_DESC: TStringField
       FieldName = 'PMT_GER_AVANC_ANTECIP_DESC'
       Size = 1
+    end
+    object CdsParametrosPMT_MENSAGEM_VENDAS: TStringField
+      FieldName = 'PMT_MENSAGEM_VENDAS'
+      Size = 80
     end
   end
   object DsParametros: TDataSource

@@ -992,7 +992,9 @@ begin
 end;
 
 procedure TFormFatPedido.CarregaTelaNF;
-var PedidoInfor: string;
+var
+  PedidoInfor, obsPedidoVenda, opvVenda: string;
+
 begin
      CurrNumNota.Text := StrZero(CurrNumNota.Text, 6);
      if sTipoFaturamento = 'S' then // pegar da empresa  NFSE a série
@@ -1068,9 +1070,15 @@ begin
       CdsNotaFiscalNF_OBSERVACAO.asstring := CdsNotaFiscalNF_OBSERVACAO.asstring + #13#10+  PedidoInfor +'. ';
    end;
 
-   CdsNotaFiscalNF_OBSERVACAO.AsString := CdsNotaFiscalNF_OBSERVACAO.AsString + #13#10 + DBInicio.Empresa.PMT_MENSAGEM1 + ' ' + DBInicio.Empresa.PMT_MENSAGEM2 + ' ' + DBInicio.Empresa.PMT_MENSAGEM3;
+   opvVenda := dbInicio.BuscaUmDadoSqlAsString('SELECT OPV_VENDA FROM OPV0000 WHERE  OPV_CODIGO = '+QuotedStr(CdsPedidosOPV_CODIGO.AsString  ));
+   if opvVenda = 'S' then
+   begin
+       obsPedidoVenda := #13 + #10 + dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_MENSAGEM_VENDAS FROM PRMT0001 WHERE  EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO  )) + ' - ';
+   end
+   else
+      obsPedidoVenda := '';
+   CdsNotaFiscalNF_OBSERVACAO.AsString := obsPedidoVenda  + CdsNotaFiscalNF_OBSERVACAO.AsString + #13#10 + DBInicio.Empresa.PMT_MENSAGEM1 + ' ' + DBInicio.Empresa.PMT_MENSAGEM2 + ' ' + DBInicio.Empresa.PMT_MENSAGEM3;
    sObsNota := CdsNotaFiscalNF_OBSERVACAO.AsString;
-
 end;
 
 procedure TFormFatPedido.ChamaTelaQtdeFaturar;
