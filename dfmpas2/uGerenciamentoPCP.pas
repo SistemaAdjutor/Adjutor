@@ -1424,13 +1424,14 @@ begin
 
                sql:= 'INSERT INTO PRD_LOTE  (PRDL_REGISTRO, EMP_CODIGO,       '+
                      ' PRDL_DATA_FABRICACAO, PRDL_DATA_VALIDADE,              '+
-                     ' PRDL_LOTE, PRDL_SALDO, PRD_CODIGO, PRDL_CADASTRO, PRDL_DESCRICAO , IOP_CODIGO '+
+                     ' PRDL_LOTE, AMX_CODIGO, PRDL_SALDO, PRD_CODIGO, PRDL_CADASTRO, PRDL_DESCRICAO , IOP_CODIGO '+
                      '  )                                      '+
                      ' VALUES('+IntToStr(registro) +',' +
                       QuotedStr(DBInicio.Empresa.EMP_CODIGO) +',' +
                       datetoSQL(frmConclusaoOP.dtFabricacao.Date) + ','+
                       datetosql(frmConclusaoOP.dtValidade.Date) +',' +
                       QuotedStr(numlote) +','+
+                      QuotedStr(frmConclusaoOP.cbAlmoxarifado.idRetorno) +','+
                       floattosql (frmConclusaoOP.edConcluida.AsFloat) +','+
                       QuotedStr(prd_codigo) +','+
                       datetosql(date) + ','+
@@ -1444,7 +1445,9 @@ begin
             else
             begin
                 ExecSql('update prd_lote  '+
-                 ' set  prdl_lote = '+QuotedStr( frmConclusaoOP.edLote.Text)+
+                 ' set  ' +
+                 '    prdl_lote = '+QuotedStr( frmConclusaoOP.edLote.Text)+
+                 ' ,  amx_codigo = '+QuotedStr( frmConclusaoOP.cbAlmoxarifado.idRetorno)+
                  ' ,  prdl_data_fabricacao = '+DateToSQL( frmConclusaoOP.dtFabricacao.Date) +
                  ' ,  prdl_data_validade = '+DateToSQL(frmConclusaoOP.dtValidade.Date)+
                  ' ,  prdl_saldo = ' + FloatToSQL(frmConclusaoOP.edConcluida.AsFloat)+

@@ -3028,7 +3028,7 @@ procedure TDBInicio.LerVersao;
         Close;
       end;
     end;
-    vlVersao.patch := 6;
+    vlVersao.patch := 7;
     vlVersao.Issues := '';
 
     r := TIdIPWatch.Create( nil );
