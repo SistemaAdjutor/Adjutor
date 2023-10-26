@@ -6291,7 +6291,7 @@ begin
      if (not ClienteAtivo(EdClienteCodigo.Text,sMsg))and(not GBInformacoesOrcamento.Visible) then
      Begin
           uteis.erro  (Pchar(sMsg));
-          Result := False;
+          Result := True;
      end
      else    //Cliente Sem  Orçamento
      if ((EdClienteCodigo.Text = '') and (SqlCdsTipoPedidoOPV_ORCAMENTO.AsString <> 'S')) then
