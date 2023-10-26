@@ -3,14 +3,14 @@ inherited frmEditCompartilhamentoDb: TfrmEditCompartilhamentoDb
   Caption = 'frmEditCompartilhamentoDb'
   ClientHeight = 453
   ClientWidth = 1094
-  ExplicitWidth = 1102
-  ExplicitHeight = 480
+  ExplicitWidth = 1110
+  ExplicitHeight = 492
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
     Top = 421
     Width = 1094
-    ExplicitTop = 410
+    ExplicitTop = 421
     ExplicitWidth = 1094
     inherited btnOk: TSpeedButton
       Left = 794
@@ -29,6 +29,7 @@ inherited frmEditCompartilhamentoDb: TfrmEditCompartilhamentoDb
     Align = alTop
     Caption = 'Defini'#231#227'o'
     TabOrder = 1
+    ExplicitTop = 1
     object Label1: TLabel
       Left = 64
       Top = 24
@@ -175,6 +176,13 @@ inherited frmEditCompartilhamentoDb: TfrmEditCompartilhamentoDb
       Width = 97
       Height = 13
       Caption = 'Pre'#231'o dos Produtos:'
+    end
+    object Label22: TLabel
+      Left = 4
+      Top = 376
+      Width = 102
+      Height = 13
+      Caption = 'Endere'#231'o do Estoque'
     end
     object DBRadioGroup1: TDBRadioGroup
       Left = 117
@@ -510,6 +518,22 @@ inherited frmEditCompartilhamentoDb: TfrmEditCompartilhamentoDb
         'E'
         'C')
     end
+    object DBRadioGroup22: TDBRadioGroup
+      Left = 117
+      Top = 367
+      Width = 193
+      Height = 33
+      Columns = 2
+      DataField = 'ENDERECO_ESTOQUE'
+      DataSource = dsEditS
+      Items.Strings = (
+        'Exclusivo'
+        'Compartilhado')
+      TabOrder = 21
+      Values.Strings = (
+        'E'
+        'C')
+    end
   end
   inherited coCalcula: TACBrCalculadora
     Left = 856
@@ -520,8 +544,8 @@ inherited frmEditCompartilhamentoDb: TfrmEditCompartilhamentoDb
     Top = 224
   end
   inherited DBConn: TSQLConnection
-    Left = 776
-    Top = 40
+    Left = 720
+    Top = 24
   end
   inherited qAux: TSQLQuery
     Left = 850
@@ -536,11 +560,10 @@ inherited frmEditCompartilhamentoDb: TfrmEditCompartilhamentoDb
     Top = 140
   end
   inherited qEdit: TSQLQuery
-    Params = <>
     SQL.Strings = (
       'select * from sharedb')
-    Left = 828
-    Top = 63
+    Left = 708
+    Top = 79
     object qEditCLIENTES: TStringField
       FieldName = 'CLIENTES'
       Required = True
@@ -647,14 +670,18 @@ inherited frmEditCompartilhamentoDb: TfrmEditCompartilhamentoDb
       FieldName = 'PRODUTO_PRECO_EMPRESA'
       Size = 1
     end
+    object qEditENDERECO_ESTOQUE: TStringField
+      FieldName = 'ENDERECO_ESTOQUE'
+      Size = 1
+    end
   end
   inherited DspEdit: TDataSetProvider
-    Left = 864
-    Top = 39
+    Left = 760
+    Top = 79
   end
   inherited CdsEdit: TClientDataSet
-    Left = 903
-    Top = 63
+    Left = 815
+    Top = 79
     object CdsEditCLIENTES: TStringField
       FieldName = 'CLIENTES'
       Required = True
@@ -762,21 +789,25 @@ inherited frmEditCompartilhamentoDb: TfrmEditCompartilhamentoDb
       FieldName = 'PRODUTO_PRECO_EMPRESA'
       Size = 1
     end
+    object CdsEditENDERECO_ESTOQUE: TStringField
+      FieldName = 'ENDERECO_ESTOQUE'
+      Size = 1
+    end
   end
   inherited dsEditS: TDataSource
-    Left = 941
-    Top = 39
+    Left = 877
+    Top = 79
   end
   inherited qAuditoria: TSQLQuery
     Left = 720
     Top = 271
   end
   inherited dspAuditoria: TDataSetProvider
-    Left = 836
-    Top = 287
+    Left = 788
+    Top = 271
   end
   inherited cdsAuditoria: TClientDataSet
-    Left = 744
-    Top = 279
+    Left = 864
+    Top = 271
   end
 end

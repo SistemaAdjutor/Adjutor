@@ -3,7 +3,7 @@ object FormShare: TFormShare
   Top = 267
   BorderIcons = [biSystemMenu]
   Caption = 'Estrutura'#231#227'o da Base de Dados Multi-Empresa'
-  ClientHeight = 447
+  ClientHeight = 485
   ClientWidth = 698
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -19,7 +19,7 @@ object FormShare: TFormShare
   TextHeight = 14
   object SpdGravar: TSpeedButton
     Left = 353
-    Top = 390
+    Top = 430
     Width = 100
     Height = 30
     Caption = '&Gravar'
@@ -43,7 +43,7 @@ object FormShare: TFormShare
   end
   object SpdCancelar: TSpeedButton
     Left = 466
-    Top = 390
+    Top = 430
     Width = 100
     Height = 30
     Caption = '&Cancelar'
@@ -71,7 +71,7 @@ object FormShare: TFormShare
   end
   object SpeedSair: TSpeedButton
     Left = 578
-    Top = 390
+    Top = 430
     Width = 100
     Height = 30
     Caption = '&Sair'
@@ -95,7 +95,7 @@ object FormShare: TFormShare
     Left = 0
     Top = 0
     Width = 698
-    Height = 382
+    Height = 409
     Align = alTop
     Caption = 'Defini'#231#227'o'
     TabOrder = 0
@@ -238,6 +238,13 @@ object FormShare: TFormShare
       Width = 98
       Height = 14
       Caption = 'Pre'#231'o dos Produtos:'
+    end
+    object Label21: TLabel
+      Left = -1
+      Top = 373
+      Width = 106
+      Height = 14
+      Caption = 'Endere'#231'o do Estoque:'
     end
     object DBRadioGroup1: TDBRadioGroup
       Left = 117
@@ -553,6 +560,22 @@ object FormShare: TFormShare
         'Exclusivo'
         'Compartilhado')
       TabOrder = 19
+      Values.Strings = (
+        'E'
+        'C')
+    end
+    object DBRadioGroup21: TDBRadioGroup
+      Left = 117
+      Top = 366
+      Width = 193
+      Height = 33
+      Columns = 2
+      DataField = 'ENDERECO_ESTOQUE'
+      DataSource = DataCadastros.DsSharedb
+      Items.Strings = (
+        'Exclusivo'
+        'Compartilhado')
+      TabOrder = 20
       Values.Strings = (
         'E'
         'C')
