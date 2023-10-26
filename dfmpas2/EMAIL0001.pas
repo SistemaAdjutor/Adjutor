@@ -106,7 +106,7 @@ var Send: boolean;
     anexos: TStringList;
 begin
   corpo := TStringList.Create;
-  corpo.Add(MMsg.Text);
+  corpo.Add(UTF8Encode(MMsg.Text));
   Anexo := TStringList.Create;
   for i := 0 to ListBox1.Items.Count -1 do
     Anexo.Add(ListBox1.Items[i]);

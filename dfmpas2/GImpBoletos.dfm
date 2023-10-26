@@ -11,8 +11,8 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
   Font.Name = 'Arial'
   Position = poDefaultPosOnly
   Visible = True
-  ExplicitWidth = 1071
-  ExplicitHeight = 673
+  ExplicitWidth = 1079
+  ExplicitHeight = 685
   PixelsPerInch = 96
   TextHeight = 14
   object Panel5: TPanel [0]
@@ -744,8 +744,10 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object CbxCarteira: TComboBox
         Left = 486
@@ -863,8 +865,10 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
     object Panel3: TPanel
@@ -1765,6 +1769,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1781,6 +1786,14 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -1790,21 +1803,33 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -1812,14 +1837,26 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 161
     Top = 407
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBDupl'
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 280194
@@ -1838,6 +1875,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line45'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Pen.Style = psDot
         Weight = 0.750000000000000000
         mmHeight = 529
@@ -1851,6 +1889,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line47'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 3175
@@ -1873,6 +1912,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line48'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 75671
@@ -1918,6 +1958,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 
           'Reconhe'#231'o(emos) a exatid'#227'o desta DUPLICATA DE VENDA MERCANTIL/PR' +
           'ESTA'#199#195'O DE SERVI'#199'OS, na import'#226'ncia acima que pagarei(mos)'
@@ -1926,7 +1967,8 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 4763
@@ -1940,13 +1982,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = #224' ou '#224' sua ordem na pra'#231'a e vencimento indicados.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 4763
@@ -1960,13 +2004,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Em'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 9525
@@ -1980,13 +2026,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '______/______/______'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 16404
@@ -2000,13 +2048,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data do aceite'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 21696
@@ -2020,13 +2070,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '______________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 135732
@@ -2040,13 +2092,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Assinatura do Sacado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3704
@@ -2061,13 +2115,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PARA USO DA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -2082,13 +2138,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label64'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INSTITUI'#199#195'O FINANCEIRA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -2102,6 +2160,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line46'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 2381
         mmLeft = 33867
@@ -2114,6 +2173,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line49'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 11642
@@ -2127,6 +2187,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line50'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 11642
@@ -2140,6 +2201,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line501'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 11642
@@ -2153,6 +2215,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line52'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 11642
@@ -2167,13 +2230,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Duplicata'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 20
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 8467
@@ -2188,13 +2253,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label66'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data de Emiss'#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4057
@@ -2209,13 +2276,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fatura N'#186
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -2230,13 +2299,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fatura'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -2251,13 +2322,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Valor R$'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -2272,13 +2345,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label70'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Duplicata'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -2293,13 +2368,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label71'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' de Ordem'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -2314,13 +2391,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label72'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Duplicata'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -2335,13 +2414,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label73'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Valor R$'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -2356,13 +2437,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label74'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vencimento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -2377,13 +2460,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label75'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESCONTO DE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 33867
@@ -2397,13 +2482,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label76'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CONDI'#199#213'ES ESPECIAIS:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 33867
@@ -2417,13 +2504,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label77'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'AT'#201
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 114565
@@ -2436,6 +2525,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line53'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 10000
@@ -2449,6 +2539,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line54'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 33867
@@ -2462,13 +2553,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label78'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VALOR POR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -2483,13 +2576,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label79'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'EXTENSO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -2504,13 +2599,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label80'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'NOME DO SACADO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3704
@@ -2525,13 +2622,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label801'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENDERE'#199'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 46567
@@ -2545,13 +2644,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label82'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MUNIC'#205'PIO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 48154
@@ -2565,13 +2666,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label83'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRA'#199'A DE PGTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 38629
@@ -2585,13 +2688,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label84'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INSCR. NO CNPJ N'#186':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 34660
@@ -2605,13 +2710,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label85'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INSCR. EST N'#186':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -2626,13 +2733,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label86'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TELEFONE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -2647,13 +2756,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label87'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CEP:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -2670,6 +2781,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         AlignVertical = avCenter
         MaintainAspectRatio = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Picture.Data = {
           07544269746D6170FA060000424DFA0600000000000076000000280000001100
           00008B000000010004000000000084060000C40E0000C40E0000100000000000
@@ -2744,6 +2856,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         MaintainAspectRatio = False
         Stretch = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         mmHeight = 23500
         mmLeft = 7673
         mmTop = 2117
@@ -2756,13 +2869,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'LBL_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 33073
@@ -2776,13 +2891,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'LBL_FONE'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FONE / FAX'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 33073
@@ -2796,13 +2913,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'LBL_ENDERECO'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENDERECO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 33073
@@ -2816,13 +2935,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'LBL_CNPJ'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CNPJ'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 33073
@@ -2845,6 +2966,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line56'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 3175
@@ -2867,6 +2989,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line57'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 75671
@@ -2912,6 +3035,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 
           'Reconhe'#231'o(emos) a exatid'#227'o desta DUPLICATA DE VENDA MERCANTIL/PR' +
           'ESTA'#199#195'O DE SERVI'#199'OS, na import'#226'ncia acima que pagarei(mos)'
@@ -2920,7 +3044,8 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 4763
@@ -2934,13 +3059,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label201'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = #224' ou '#224' sua ordem na pra'#231'a e vencimento indicados.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 4763
@@ -2954,13 +3081,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label91'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Em'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 9525
@@ -2974,13 +3103,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label92'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '______/______/______'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 16404
@@ -2994,13 +3125,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label601'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data do aceite'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 21696
@@ -3014,13 +3147,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label94'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '______________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 135732
@@ -3034,13 +3169,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label95'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Assinatura do Sacado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3704
@@ -3055,13 +3192,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label96'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PARA USO DA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -3076,13 +3215,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label97'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INSTITUI'#199#195'O FINANCEIRA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -3096,6 +3237,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line58'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 2381
         mmLeft = 33867
@@ -3108,6 +3250,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line59'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 11642
@@ -3121,6 +3264,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line502'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 11642
@@ -3134,6 +3278,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line61'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 11642
@@ -3147,6 +3292,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line62'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 11642
@@ -3161,13 +3307,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label98'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Duplicata'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 20
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 8467
@@ -3182,13 +3330,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label99'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data de Emiss'#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3969
@@ -3203,13 +3353,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label100'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fatura N'#186
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -3224,13 +3376,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fatura'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -3245,13 +3399,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Valor R$'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -3266,13 +3422,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label701'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Duplicata'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -3287,13 +3445,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label104'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' de Ordem'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -3308,13 +3468,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label105'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Duplicata'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -3329,13 +3491,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label106'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Valor R$'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -3350,13 +3514,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label107'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vencimento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -3371,13 +3537,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label108'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESCONTO DE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 33867
@@ -3391,13 +3559,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label109'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CONDI'#199#213'ES ESPECIAIS:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 33867
@@ -3411,13 +3581,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label110'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'AT'#201
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 114565
@@ -3430,6 +3602,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line63'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 10054
@@ -3443,6 +3616,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'Line64'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 33867
@@ -3456,13 +3630,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label111'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VALOR POR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -3477,13 +3653,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label112'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'EXTENSO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -3498,13 +3676,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label802'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'NOME DO SACADO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3704
@@ -3519,13 +3699,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label114'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENDERE'#199'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 46567
@@ -3539,13 +3721,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label115'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MUNIC'#205'PIO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 48154
@@ -3559,13 +3743,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label116'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRA'#199'A DE PGTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 38629
@@ -3579,13 +3765,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label117'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INSCR. NO CNPJ N'#186':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 34660
@@ -3599,13 +3787,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label118'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INSCR. EST N'#186':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -3620,13 +3810,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label119'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TELEFONE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -3641,13 +3833,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'Label120'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CEP:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -3664,13 +3858,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_EXTENSO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 8202
@@ -3687,6 +3883,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         AlignVertical = avCenter
         MaintainAspectRatio = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Picture.Data = {
           07544269746D6170FA060000424DFA0600000000000076000000280000001100
           00008B000000010004000000000084060000C40E0000C40E0000100000000000
@@ -3760,6 +3957,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         MaintainAspectRatio = False
         Stretch = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         mmHeight = 23500
         mmLeft = 7673
         mmTop = 150284
@@ -3772,13 +3970,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'LBL_EMPRESA1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 33073
@@ -3792,13 +3992,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'LBL_FONE1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FONE / FAX'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 33073
@@ -3812,13 +4014,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'LBL_ENDERECO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENDERECO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 33073
@@ -3832,13 +4036,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'LBL_CNPJ1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CNPJ'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 33073
@@ -3852,6 +4058,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_DTEMIS'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -3874,6 +4081,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBFatura'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -3895,6 +4103,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_VLFAT'
         DataPipeline = ppDBDupl
         DisplayFormat = '#,##0.00'
@@ -3918,6 +4127,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText101'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_VLPARC'
         DataPipeline = ppDBDupl
         DisplayFormat = '#,##0.00'
@@ -3941,6 +4151,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_VENCTO'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -3962,6 +4173,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBCNPJ1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CGC'
         DataPipeline = ppDBDupl
         DisplayFormat = '99\.999\.999\/9999\-99;0;_'
@@ -3984,6 +4196,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBFONE1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_FONE'
         DataPipeline = ppDBDupl
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -4006,6 +4219,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBINSCR1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_INSC'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4027,6 +4241,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_DTEMIS'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4049,6 +4264,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBFatura2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4070,6 +4286,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText102'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_VLFAT'
         DataPipeline = ppDBDupl
         DisplayFormat = '#,##0.00'
@@ -4093,6 +4310,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText72'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_VLPARC'
         DataPipeline = ppDBDupl
         DisplayFormat = '#,##0.00'
@@ -4116,6 +4334,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText73'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_VENCTO'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4137,6 +4356,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBRAZAO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4158,6 +4378,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBCNPJ2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CGC'
         DataPipeline = ppDBDupl
         DisplayFormat = '99\.999\.999\/9999\-99;0;_'
@@ -4180,6 +4401,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBINSCR2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_INSC'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4201,6 +4423,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBFONE2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_FONE'
         DataPipeline = ppDBDupl
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -4223,6 +4446,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBRAZAO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4244,6 +4468,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBCep'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBDupl
         DisplayFormat = '99\.999\-999;0;_'
@@ -4266,6 +4491,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBCep_Fat'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEPFAT'
         DataPipeline = ppDBDupl
         DisplayFormat = '99\.999\-999;0;_'
@@ -4290,6 +4516,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4311,6 +4538,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4332,6 +4560,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4353,6 +4582,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4374,6 +4604,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4395,6 +4626,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4415,6 +4647,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DB_CEP2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBDupl
         DisplayFormat = '99\.999\-999;0;_'
@@ -4437,6 +4670,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DB_CEP2FAT'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEPFAT'
         DataPipeline = ppDBDupl
         DisplayFormat = '99\.999-999;0;_'
@@ -4462,13 +4696,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_EXTENSO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 8202
@@ -4483,6 +4719,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4504,6 +4741,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         UserName = 'DBText27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = ppDBDupl
         Font.Charset = DEFAULT_CHARSET
@@ -4524,6 +4762,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'DBMemo2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         CharWrap = True
         DataField = 'FPC_OBS'
         DataPipeline = ppDBDupl
@@ -4552,6 +4791,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer2
         UserName = 'DBMemo1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         CharWrap = True
         DataField = 'FPC_OBS'
         DataPipeline = ppDBDupl
@@ -4578,138 +4818,159 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650611
-        44424661747572614F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F7572636506C970726F63656475726520444246
-        61747572614F6E476574546578742876617220546578743A20537472696E6729
-        3B0D0A626567696E0D0A20206966202844424475706C5B274650435F4E554D45
-        52275D3C3E272729207468656E0D0A202020202054657874203A3D2044424475
-        706C5B274641545F434F4449474F275D2B272F272B44424475706C5B27465043
-        5F4E554D4552275D0D0A2020656C73650D0A202020202054657874203A3D2044
-        424475706C5B274641545F434F4449474F275D3B0D0A656E643B0D0A0D436F6D
-        706F6E656E744E616D6506084442466174757261094576656E744E616D650609
-        4F6E47657454657874074576656E7449440235084361726574506F7301020002
-        00000001060F5472614576656E7448616E646C65720B50726F6772616D4E616D
-        6506124442466174757261324F6E476574546578740B50726F6772616D547970
-        65070B747450726F63656475726506536F7572636506CA70726F636564757265
-        204442466174757261324F6E476574546578742876617220546578743A205374
-        72696E67293B0D0A626567696E0D0A20206966202844424475706C5B27465043
-        5F4E554D4552275D3C3E272729207468656E0D0A202020202054657874203A3D
-        2044424475706C5B274641545F434F4449474F275D2B272F272B44424475706C
-        5B274650435F4E554D4552275D0D0A2020656C73650D0A202020202054657874
-        203A3D2044424475706C5B274641545F434F4449474F275D3B0D0A656E643B0D
-        0A0D436F6D706F6E656E744E616D650609444246617475726132094576656E74
-        4E616D6506094F6E47657454657874074576656E744944023508436172657450
-        6F730102030203000001060F5472614576656E7448616E646C65720B50726F67
-        72616D4E616D65060C44424365704F6E5072696E740B50726F6772616D547970
-        65070B747450726F63656475726506536F757263650C7101000070726F636564
-        7572652044424365704F6E5072696E743B0D0A626567696E0D0A202020206966
-        202844424475706C5B27434C495F434944464154275D3D27272920616E642028
-        44424475706C5B27434C495F434550464154275D3D272729207468656E0D0A20
-        202020202020626567696E0D0A202020202020202020202044424365702E5669
-        7369626C6520202020203A3D20547275653B0D0A202020202020202020202044
-        424365705F4661742E56697369626C65203A3D2046616C73653B0D0A20202020
-        202020656E640D0A20202020656C73650D0A20202020202020626567696E0D0A
-        202020202020202020202044424365702E56697369626C6520202020203A3D20
-        46616C73653B0D0A202020202020202020202044424365705F4661742E546F70
-        20202020203A3D2037372E3738383B0D0A202020202020202020202044424365
-        705F4661742E56697369626C65203A3D20547275653B0D0A2020202020202065
-        6E643B0D0A656E643B0D0A0D436F6D706F6E656E744E616D6506054442436570
-        094576656E744E616D6506074F6E5072696E74074576656E7449440220084361
-        726574506F730102030203000001060F5472614576656E7448616E646C65720B
-        50726F6772616D4E616D65061044425F454E44314F6E476574546578740B5072
-        6F6772616D54797065070B747450726F63656475726506536F7572636506D870
-        726F6365647572652044425F454E44314F6E4765745465787428766172205465
-        78743A20537472696E67293B0D0A626567696E0D0A2020202069662028444244
-        75706C5B27434C495F434944464154275D3D27272920616E6420284442447570
-        6C5B27434C495F434550464154275D3D272729207468656E0D0A202020202020
-        2054657874203A3D2044424475706C5B27434C495F454E44455245275D0D0A20
-        202020656C73650D0A2020202020202054657874203A3D2044424475706C5B27
-        434C495F454E44464154275D3B20200D0A656E643B0D0A0D436F6D706F6E656E
-        744E616D65060744425F454E4431094576656E744E616D6506094F6E47657454
-        657874074576656E7449440235084361726574506F730102000200000001060F
-        5472614576656E7448616E646C65720B50726F6772616D4E616D65061044425F
-        4D554E314F6E476574546578740B50726F6772616D54797065070B747450726F
-        63656475726506536F757263650C0701000070726F6365647572652044425F4D
-        554E314F6E476574546578742876617220546578743A20537472696E67293B0D
-        0A626567696E0D0A202020206966202844424475706C5B27434C495F43494446
-        4154275D3D27272920616E64202844424475706C5B27434C495F434550464154
-        275D3D272729207468656E0D0A2020202020202054657874203A3D2044424475
-        706C5B27434C495F434944414445275D2B27202D20272B44424475706C5B2743
-        4C495F5546275D0D0A20202020656C73650D0A2020202020202054657874203A
-        3D2044424475706C5B27434C495F434944464154275D2B27202D20272B444244
-        75706C5B27434C495F5546464154275D3B0D0A656E643B0D0A0D436F6D706F6E
-        656E744E616D65060744425F4D554E31094576656E744E616D6506094F6E4765
-        7454657874074576656E7449440235084361726574506F730102000200000001
-        060F5472614576656E7448616E646C65720B50726F6772616D4E616D65061144
-        425F50524143314F6E476574546578740B50726F6772616D54797065070B7474
-        50726F63656475726506536F757263650C0801000070726F6365647572652044
-        425F50524143314F6E476574546578742876617220546578743A20537472696E
-        67293B0D0A626567696E0D0A202020206966202844424475706C5B27434C495F
-        434944464154275D3D27272920616E64202844424475706C5B27434C495F4345
-        50464154275D3D272729207468656E0D0A2020202020202054657874203A3D20
-        44424475706C5B27434C495F434944414445275D2B27202D20272B4442447570
-        6C5B27434C495F5546275D0D0A20202020656C73650D0A202020202020205465
-        7874203A3D2044424475706C5B27434C495F434944464154275D2B27202D2027
-        2B44424475706C5B27434C495F5546464154275D3B0D0A656E643B0D0A0D436F
-        6D706F6E656E744E616D65060844425F5052414331094576656E744E616D6506
-        094F6E47657454657874074576656E7449440235084361726574506F73010200
-        0200000001060F5472614576656E7448616E646C65720B50726F6772616D4E61
-        6D65061044425F4D554E324F6E476574546578740B50726F6772616D54797065
-        070B747450726F63656475726506536F757263650C0701000070726F63656475
-        72652044425F4D554E324F6E476574546578742876617220546578743A205374
-        72696E67293B0D0A626567696E0D0A202020206966202844424475706C5B2743
-        4C495F434944464154275D3D27272920616E64202844424475706C5B27434C49
-        5F434550464154275D3D272729207468656E0D0A202020202020205465787420
-        3A3D2044424475706C5B27434C495F434944414445275D2B27202D20272B4442
-        4475706C5B27434C495F5546275D0D0A20202020656C73650D0A202020202020
-        2054657874203A3D2044424475706C5B27434C495F434944464154275D2B2720
-        2D20272B44424475706C5B27434C495F5546464154275D3B0D0A656E643B0D0A
-        0D436F6D706F6E656E744E616D65060744425F4D554E32094576656E744E616D
-        6506094F6E47657454657874074576656E7449440235084361726574506F7301
-        02030203000001060F5472614576656E7448616E646C65720B50726F6772616D
-        4E616D65061144425F50524143324F6E476574546578740B50726F6772616D54
-        797065070B747450726F63656475726506536F757263650C0801000070726F63
-        65647572652044425F50524143324F6E47657454657874287661722054657874
-        3A20537472696E67293B0D0A626567696E0D0A20202020696620284442447570
-        6C5B27434C495F434944464154275D3D27272920616E64202844424475706C5B
-        27434C495F434550464154275D3D272729207468656E0D0A2020202020202054
-        657874203A3D2044424475706C5B27434C495F434944414445275D2B27202D20
-        272B44424475706C5B27434C495F5546275D0D0A20202020656C73650D0A2020
-        202020202054657874203A3D2044424475706C5B27434C495F43494446415427
-        5D2B27202D20272B44424475706C5B27434C495F5546464154275D3B0D0A656E
-        643B0D0A0D436F6D706F6E656E744E616D65060844425F505241433209457665
-        6E744E616D6506094F6E47657454657874074576656E74494402350843617265
-        74506F730102030203000001060F5472614576656E7448616E646C65720B5072
-        6F6772616D4E616D65060E44425F434550324F6E5072696E740B50726F677261
-        6D54797065070B747450726F63656475726506536F757263650C790100007072
-        6F6365647572652044425F434550324F6E5072696E743B0D0A626567696E0D0A
-        202020206966202844424475706C5B27434C495F434944464154275D3D272729
-        20616E64202844424475706C5B27434C495F434550464154275D3D2727292074
-        68656E0D0A20202020202020626567696E0D0A20202020202020202020204442
-        5F434550322E56697369626C65202020203A3D20547275653B0D0A2020202020
-        20202020202044425F436570324661742E56697369626C65203A3D2046616C73
-        653B0D0A20202020202020656E640D0A20202020656C73650D0A202020202020
-        20626567696E0D0A202020202020202020202044425F436570322E5669736962
-        6C65202020203A3D2046616C73653B0D0A202020202020202020202044425F43
-        6570324661742E546F7020202020203A3D203232352E3935353B0D0A20202020
-        2020202020202044425F436570324661742E56697369626C65203A3D20547275
-        653B0D0A20202020202020656E643B0D0A656E643B0D0A0D436F6D706F6E656E
-        744E616D65060744425F43455032094576656E744E616D6506074F6E5072696E
-        74074576656E7449440220084361726574506F730102030203000001060F5472
-        614576656E7448616E646C65720B50726F6772616D4E616D65061044425F454E
-        44324F6E476574546578740B50726F6772616D54797065070B747450726F6365
-        6475726506536F7572636506D870726F6365647572652044425F454E44324F6E
-        476574546578742876617220546578743A20537472696E67293B0D0A62656769
-        6E0D0A202020206966202844424475706C5B27434C495F434944464154275D3D
-        27272920616E64202844424475706C5B27434C495F434550464154275D3D2727
-        29207468656E0D0A2020202020202054657874203A3D2044424475706C5B2743
-        4C495F454E44455245275D0D0A20202020656C73650D0A202020202020205465
-        7874203A3D2044424475706C5B27434C495F454E44464154275D3B20200D0A65
-        6E643B0D0A0D436F6D706F6E656E744E616D65060744425F454E443209457665
-        6E744E616D6506094F6E47657454657874074576656E74494402350843617265
-        74506F730102000200000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBFaturaOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBFaturaOnGetText(var Text: String);'#13#10'begin'#13#10'  if (DBD' +
+          'upl['#39'FPC_NUMER'#39']<>'#39#39') then'#13#10'     Text := DBDupl['#39'FAT_CODIGO'#39']+'#39'/' +
+          #39'+DBDupl['#39'FPC_NUMER'#39']'#13#10'  else'#13#10'     Text := DBDupl['#39'FAT_CODIGO'#39']' +
+          ';'#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBFatura'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBFatura2OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBFatura2OnGetText(var Text: String);'#13#10'begin'#13#10'  if (DB' +
+          'Dupl['#39'FPC_NUMER'#39']<>'#39#39') then'#13#10'     Text := DBDupl['#39'FAT_CODIGO'#39']+'#39 +
+          '/'#39'+DBDupl['#39'FPC_NUMER'#39']'#13#10'  else'#13#10'     Text := DBDupl['#39'FAT_CODIGO'#39 +
+          '];'#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBFatura2'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          3
+          3)
+      end
+      object raProgramInfo3: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBCepOnPrint'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBCepOnPrint;'#13#10'begin'#13#10'    if (DBDupl['#39'CLI_CIDFAT'#39']='#39#39')' +
+          ' and (DBDupl['#39'CLI_CEPFAT'#39']='#39#39') then'#13#10'       begin'#13#10'           DB' +
+          'Cep.Visible     := True;'#13#10'           DBCep_Fat.Visible := False;' +
+          #13#10'       end'#13#10'    else'#13#10'       begin'#13#10'           DBCep.Visible  ' +
+          '   := False;'#13#10'           DBCep_Fat.Top     := 77.788;'#13#10'         ' +
+          '  DBCep_Fat.Visible := True;'#13#10'       end;'#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBCep'
+        raProgram.EventName = 'OnPrint'
+        raProgram.EventID = 32
+        raProgram.CaretPos = (
+          3
+          3)
+      end
+      object raProgramInfo4: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DB_END1OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DB_END1OnGetText(var Text: String);'#13#10'begin'#13#10'    if (DB' +
+          'Dupl['#39'CLI_CIDFAT'#39']='#39#39') and (DBDupl['#39'CLI_CEPFAT'#39']='#39#39') then'#13#10'     ' +
+          '  Text := DBDupl['#39'CLI_ENDERE'#39']'#13#10'    else'#13#10'       Text := DBDupl[' +
+          #39'CLI_ENDFAT'#39'];  '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DB_END1'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo5: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DB_MUN1OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DB_MUN1OnGetText(var Text: String);'#13#10'begin'#13#10'    if (DB' +
+          'Dupl['#39'CLI_CIDFAT'#39']='#39#39') and (DBDupl['#39'CLI_CEPFAT'#39']='#39#39') then'#13#10'     ' +
+          '  Text := DBDupl['#39'CLI_CIDADE'#39']+'#39' - '#39'+DBDupl['#39'CLI_UF'#39']'#13#10'    else'#13 +
+          #10'       Text := DBDupl['#39'CLI_CIDFAT'#39']+'#39' - '#39'+DBDupl['#39'CLI_UFFAT'#39'];'#13 +
+          #10'end;'#13#10
+        raProgram.ComponentName = 'DB_MUN1'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo6: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DB_PRAC1OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DB_PRAC1OnGetText(var Text: String);'#13#10'begin'#13#10'    if (D' +
+          'BDupl['#39'CLI_CIDFAT'#39']='#39#39') and (DBDupl['#39'CLI_CEPFAT'#39']='#39#39') then'#13#10'    ' +
+          '   Text := DBDupl['#39'CLI_CIDADE'#39']+'#39' - '#39'+DBDupl['#39'CLI_UF'#39']'#13#10'    else' +
+          #13#10'       Text := DBDupl['#39'CLI_CIDFAT'#39']+'#39' - '#39'+DBDupl['#39'CLI_UFFAT'#39'];' +
+          #13#10'end;'#13#10
+        raProgram.ComponentName = 'DB_PRAC1'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo7: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DB_MUN2OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DB_MUN2OnGetText(var Text: String);'#13#10'begin'#13#10'    if (DB' +
+          'Dupl['#39'CLI_CIDFAT'#39']='#39#39') and (DBDupl['#39'CLI_CEPFAT'#39']='#39#39') then'#13#10'     ' +
+          '  Text := DBDupl['#39'CLI_CIDADE'#39']+'#39' - '#39'+DBDupl['#39'CLI_UF'#39']'#13#10'    else'#13 +
+          #10'       Text := DBDupl['#39'CLI_CIDFAT'#39']+'#39' - '#39'+DBDupl['#39'CLI_UFFAT'#39'];'#13 +
+          #10'end;'#13#10
+        raProgram.ComponentName = 'DB_MUN2'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          3
+          3)
+      end
+      object raProgramInfo8: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DB_PRAC2OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DB_PRAC2OnGetText(var Text: String);'#13#10'begin'#13#10'    if (D' +
+          'BDupl['#39'CLI_CIDFAT'#39']='#39#39') and (DBDupl['#39'CLI_CEPFAT'#39']='#39#39') then'#13#10'    ' +
+          '   Text := DBDupl['#39'CLI_CIDADE'#39']+'#39' - '#39'+DBDupl['#39'CLI_UF'#39']'#13#10'    else' +
+          #13#10'       Text := DBDupl['#39'CLI_CIDFAT'#39']+'#39' - '#39'+DBDupl['#39'CLI_UFFAT'#39'];' +
+          #13#10'end;'#13#10
+        raProgram.ComponentName = 'DB_PRAC2'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          3
+          3)
+      end
+      object raProgramInfo9: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DB_CEP2OnPrint'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DB_CEP2OnPrint;'#13#10'begin'#13#10'    if (DBDupl['#39'CLI_CIDFAT'#39']='#39 +
+          #39') and (DBDupl['#39'CLI_CEPFAT'#39']='#39#39') then'#13#10'       begin'#13#10'           ' +
+          'DB_CEP2.Visible    := True;'#13#10'           DB_Cep2Fat.Visible := Fa' +
+          'lse;'#13#10'       end'#13#10'    else'#13#10'       begin'#13#10'           DB_Cep2.Vis' +
+          'ible    := False;'#13#10'           DB_Cep2Fat.Top     := 225.955;'#13#10'  ' +
+          '         DB_Cep2Fat.Visible := True;'#13#10'       end;'#13#10'end;'#13#10
+        raProgram.ComponentName = 'DB_CEP2'
+        raProgram.EventName = 'OnPrint'
+        raProgram.EventID = 32
+        raProgram.CaretPos = (
+          3
+          3)
+      end
+      object raProgramInfo10: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DB_END2OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DB_END2OnGetText(var Text: String);'#13#10'begin'#13#10'    if (DB' +
+          'Dupl['#39'CLI_CIDFAT'#39']='#39#39') and (DBDupl['#39'CLI_CEPFAT'#39']='#39#39') then'#13#10'     ' +
+          '  Text := DBDupl['#39'CLI_ENDERE'#39']'#13#10'    else'#13#10'       Text := DBDupl[' +
+          #39'CLI_ENDFAT'#39'];  '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DB_END2'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers2: TppDesignLayers
       object ppDesignLayer2: TppDesignLayer
@@ -4726,7 +4987,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     Left = 378
     Top = 10
     Bitmap = {
-      494C010103000500040010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005000C0010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -5248,7 +5509,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     Left = 447
     Top = 16
     Bitmap = {
-      494C010107000900040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101070009000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       00000000000000000000000000000000000000000000E0E0E0008E8E8E008E8E
       8E008E8E8E008E8E8E008E8E8E008E8E8E008E8E8E008E8E8E008E8E8E008E8E
@@ -5523,7 +5784,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     Left = 448
     Top = 64
     Bitmap = {
-      494C01010E001100040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E0011000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -6128,6 +6389,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     DataPipeline = pipeLocacao
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -6142,6 +6404,14 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -6151,20 +6421,32 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -6172,20 +6454,32 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 825
     Top = 539
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'pipeLocacao'
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 277284
       mmPrintPosition = 0
@@ -6218,6 +6512,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         MaintainAspectRatio = False
         Stretch = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         mmHeight = 23548
         mmLeft = 1852
         mmTop = 2646
@@ -6231,13 +6526,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         OnGetText = ppLabel1GetText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 47450
@@ -6252,13 +6549,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         OnGetText = ppLabel2GetText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENDERECO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 47450
@@ -6274,13 +6573,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         OnGetText = ppLabel3GetText
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TELEFONE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 105659
@@ -6295,13 +6596,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         OnGetText = ppLabel4GetText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CNPJ'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 47450
@@ -6324,13 +6627,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label5'
         CharWrap = True
+        Border.mmPadding = 0
         Caption = 'NOTA DE LOCA'#199#195'O FATURA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -6347,13 +6652,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         OnGetText = ppLabel6GetText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CEP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 47450
@@ -6368,13 +6675,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         HyperlinkEnabled = False
         OnGetText = ppLabel8GetText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CIDADE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 65178
@@ -6391,13 +6700,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         Anchors = [atTop]
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'EMAIL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 105659
@@ -6413,13 +6724,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         OnGetText = ppLabel10GetText
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INS ESTADUAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 105394
@@ -6442,13 +6755,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label11'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'N'#186' Fatura'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 7673
@@ -6460,6 +6775,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText1: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText1'
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6511,13 +6827,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label12'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'N'#186':'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 154867
@@ -6529,6 +6847,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText2: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText2'
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6550,13 +6869,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label13'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Data emiss'#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 154782
@@ -6568,6 +6889,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText3: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText3'
+        Border.mmPadding = 0
         DataField = 'FPC_DTEMIS'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6619,13 +6941,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label14'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Vencimento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 144198
@@ -6637,6 +6961,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText4: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText4'
+        Border.mmPadding = 0
         DataField = 'FPC_VENCTO'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6658,13 +6983,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label15'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Valor R$'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 69850
@@ -6676,6 +7003,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText6: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText6'
+        Border.mmPadding = 0
         DataField = 'FPC_VLPARC'
         DataPipeline = pipeLocacao
         DisplayFormat = '$  ,#,0.00;-#,0.00'
@@ -6698,13 +7026,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label16'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'SACADO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 1852
@@ -6716,6 +7046,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText7: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText7'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6737,13 +7068,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label17'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 1852
@@ -6756,6 +7089,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'DBText8'
         CharWrap = True
+        Border.mmPadding = 0
         DataField = 'CLI_ENDERE'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6808,13 +7142,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label18'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Munic'#237'pio/UF'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 1852
@@ -6826,6 +7162,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object txtCidadeUF: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'txtCidadeUF'
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6847,13 +7184,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label19'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'CEP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 57150
@@ -6866,6 +7205,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'DBText14'
         OnGetText = ppDBText14GetText
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6887,13 +7227,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label21'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'CNPJ'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 89429
@@ -6906,6 +7248,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'DBText13'
         OnGetText = ppDBText13GetText
+        Border.mmPadding = 0
         DataField = 'CLI_CGC'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6926,13 +7269,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label22'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Insc. Estadual'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 130440
@@ -6944,6 +7289,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText15: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText15'
+        Border.mmPadding = 0
         DataField = 'CLI_INSC'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -6964,13 +7310,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label23'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Insc. Municipal'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 164836
@@ -6982,6 +7330,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText16: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText16'
+        Border.mmPadding = 0
         DataField = 'CLI_INSCMUNI'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -7052,6 +7401,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Memo1'
         Border.Weight = 0.750000000000000000
+        Border.mmPadding = 0
         Caption = 'Memo1'
         CharWrap = False
         Font.Charset = DEFAULT_CHARSET
@@ -7083,13 +7433,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'Label24'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Desconto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3970
         mmLeft = 139079
@@ -7101,6 +7453,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText17: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText17'
+        Border.mmPadding = 0
         DataField = 'FPC_DESCTO'
         DataPipeline = pipeLocacao
         DisplayFormat = '$ ,#,0.00;-#,0.00'
@@ -7121,13 +7474,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel25: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label25'
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o de cobran'#231'a e pra'#231'a de pagamento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -7139,13 +7494,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel26: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label26'
+        Border.mmPadding = 0
         Caption = 'Valor por extenso'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3968
         mmLeft = 1852
@@ -7157,13 +7514,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel28: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label28'
+        Border.mmPadding = 0
         Caption = 'Discrimina'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -7175,13 +7534,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel29: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label29'
+        Border.mmPadding = 0
         Caption = 'LOCA'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -7194,6 +7555,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         DesignLayer = ppDesignLayer1
         UserName = 'DBText18'
         OnGetText = ppDBText18GetText
+        Border.mmPadding = 0
         DataField = 'FPC_VLPARC'
         DataPipeline = pipeLocacao
         Font.Charset = DEFAULT_CHARSET
@@ -7213,6 +7575,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine1: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7225,6 +7588,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine2: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7237,13 +7601,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel30: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label30'
+        Border.mmPadding = 0
         Caption = 'Qtde'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 85196
@@ -7255,13 +7621,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel31: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label31'
+        Border.mmPadding = 0
         Caption = '1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 90752
@@ -7273,13 +7641,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel32: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label32'
+        Border.mmPadding = 0
         Caption = 'Total R$'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 175419
@@ -7291,13 +7661,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel33: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label301'
+        Border.mmPadding = 0
         Caption = 'Vlr Unit'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 105040
@@ -7309,6 +7681,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine3: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7321,6 +7694,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine4: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7333,6 +7707,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine5: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line5'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7345,6 +7720,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine6: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line6'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7357,6 +7733,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine7: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line7'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7369,6 +7746,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine8: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line8'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7381,6 +7759,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText19: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText19'
+        Border.mmPadding = 0
         DataField = 'FPC_VLPARC'
         DataPipeline = pipeLocacao
         DisplayFormat = '$ ,#,0.00;-#,0.00'
@@ -7401,6 +7780,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppVariable1: TppVariable
         DesignLayer = ppDesignLayer1
         UserName = 'Variable1'
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DisplayFormat = '#,0.00;-#,0.00'
@@ -7420,6 +7800,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppVariable2: TppVariable
         DesignLayer = ppDesignLayer1
         UserName = 'Variable2'
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         DisplayFormat = '#,0.00;-#,0.00'
@@ -7439,6 +7820,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppDBText20: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText20'
+        Border.mmPadding = 0
         DataField = 'FPC_DESCTO'
         DataPipeline = pipeLocacao
         DisplayFormat = '$ ,#,0.00;-#,0.00'
@@ -7459,6 +7841,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine9: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line9'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7471,6 +7854,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLine10: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line10'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -7483,13 +7867,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel34: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label34'
+        Border.mmPadding = 0
         Caption = 'valor total da nota R$:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 87048
@@ -7501,13 +7887,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       object ppLabel35: TppLabel
         DesignLayer = ppDesignLayer1
         UserName = 'Label35'
+        Border.mmPadding = 0
         Caption = 'Label35'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3968
         mmLeft = 7144
@@ -7524,13 +7912,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         AutoSize = False
         Border.BorderPositions = [bpLeft, bpRight, bpBottom]
         Border.Visible = True
+        Border.mmPadding = 0
         Caption = 'OBS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 126835
@@ -7547,13 +7937,15 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         AutoSize = False
         Border.BorderPositions = [bpLeft, bpTop, bpRight]
         Border.Visible = True
+        Border.mmPadding = 0
         Caption = 'Observa'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 882
@@ -7564,37 +7956,51 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650612
-        5661726961626C65314F6E476574546578740B50726F6772616D54797065070B
-        747450726F63656475726506536F7572636506B070726F636564757265205661
-        726961626C65314F6E476574546578742876617220546578743A20537472696E
-        67293B0D0A626567696E0D0A0D0A202054657874203A3D20202752242027202B
-        20466F726D6174466C6F61742827232C302E30303B2D232C302E3030272C7069
-        70654C6F636163616F5B274650435F564C50415243275D202D2020706970654C
-        6F636163616F5B274650435F44455343544F275D290D0A20202020200D0A656E
-        643B0D0A0D436F6D706F6E656E744E616D6506095661726961626C6531094576
-        656E744E616D6506094F6E47657454657874074576656E744944023508436172
-        6574506F730102100204000001060F5472614576656E7448616E646C65720B50
-        726F6772616D4E616D6506125661726961626C65324F6E476574546578740B50
-        726F6772616D54797065070B747450726F63656475726506536F7572636506AC
-        70726F636564757265205661726961626C65324F6E4765745465787428766172
-        20546578743A20537472696E67293B0D0A626567696E0D0A0D0A202054657874
-        203A3D20202752242027202B20466F726D6174466C6F61742827232C302E3030
-        3B2D232C302E3030272C706970654C6F636163616F5B274650435F564C504152
-        43275D202D202020706970654C6F636163616F5B274650435F44455343544F27
-        5D290D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D65060956617269
-        61626C6532094576656E744E616D6506094F6E47657454657874074576656E74
-        49440235084361726574506F730102100204000001060F5472614576656E7448
-        616E646C65720B50726F6772616D4E616D65061474787443696461646555464F
-        6E476574546578740B50726F6772616D54797065070B747450726F6365647572
-        6506536F75726365068770726F6365647572652074787443696461646555464F
-        6E476574546578742876617220546578743A20537472696E67293B0D0A626567
-        696E0D0A0D0A202054657874203A3D202020706970654C6F636163616F5B2743
-        4C495F434944414445275D2B272D272B20706970654C6F636163616F5B27434C
-        495F5546275D3B0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D6506
-        0B7478744369646164655546094576656E744E616D6506094F6E476574546578
-        74074576656E7449440235084361726574506F730102420204000000}
+      object raProgramInfo11: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable1OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable1OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text' +
+          ' :=  '#39'R$ '#39' + FormatFloat('#39'#,0.00;-#,0.00'#39',pipeLocacao['#39'FPC_VLPAR' +
+          'C'#39'] -  pipeLocacao['#39'FPC_DESCTO'#39'])'#13#10'     '#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable1'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          16
+          4)
+      end
+      object raProgramInfo12: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable2OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable2OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text' +
+          ' :=  '#39'R$ '#39' + FormatFloat('#39'#,0.00;-#,0.00'#39',pipeLocacao['#39'FPC_VLPAR' +
+          'C'#39'] -   pipeLocacao['#39'FPC_DESCTO'#39'])'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable2'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          16
+          4)
+      end
+      object raProgramInfo13: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'txtCidadeUFOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure txtCidadeUFOnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Te' +
+          'xt :=   pipeLocacao['#39'CLI_CIDADE'#39']+'#39'-'#39'+ pipeLocacao['#39'CLI_UF'#39'];'#13#10#13 +
+          #10'end;'#13#10
+        raProgram.ComponentName = 'txtCidadeUF'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          66
+          4)
+      end
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
