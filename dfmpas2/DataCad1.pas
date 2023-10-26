@@ -1692,6 +1692,8 @@ type
     CdsParametrosPMT_BAIXA_ESTOQUE_AVANCADO: TStringField;
     SqlParametrosPMT_GER_AVANC_ANTECIP_DESC: TStringField;
     CdsParametrosPMT_GER_AVANC_ANTECIP_DESC: TStringField;
+    SqlParametrosPMT_MENSAGEM_VENDAS: TStringField;
+    CdsParametrosPMT_MENSAGEM_VENDAS: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
