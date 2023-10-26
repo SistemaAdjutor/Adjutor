@@ -331,6 +331,10 @@ uses
     procedure frxEtiquetaBeginDoc(Sender: TObject);
     procedure DemandadeMolas1Click(Sender: TObject);
     procedure cxgrd1DBBandedTableView1ACO_NOMEPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure cxgrd1DBBandedTableView1MouseUp(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure cxgrd1DBBandedTableView1KeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     NaoAtualizaHistorico : boolean;
     tcr: tProducaoDao;
@@ -658,6 +662,13 @@ procedure TfrmDemandaProducao.cdsBuscaAfterScroll(DataSet: TDataSet);
 var sql : string;
 begin
   inherited;
+
+
+
+  exit;
+
+
+
   if NaoAtualizaHistorico then
     exit;
   if DataSet.isempty then
@@ -1268,16 +1279,44 @@ begin
 //    PostMessage(Handle, UM_MYMESSAGE, Integer(AFocusedRecord), Integer(Sender));
 end;
 
-procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1MARCADOPropertiesChange(Sender: TObject);
+procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1KeyUp(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+var
+  sql: string;
 begin
   inherited;
-  cdsBuscaMARCADO.AsString
+  sql := 'SELECT dh.*, u.USU_NOME FROM DEMANDA_HISTORICO dh '+
+         ' JOIN USUARIO u ON (u.USU_CODIGO = dh.USU_CODIGO) '+
+          ' WHERE PED_CODIGO = '+QuotedStr(cdsbusca.FieldByName('ped_codigo').AsString) +
+          '   and prd_codigo = '+QuotedStr(cdsbusca.FieldByName('prd_codigo').AsString)+
+          ' order by  hde_datamvto desc ';
+  cdsHistorico.Open(sql);
+end;
+
+procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1MARCADOPropertiesChange(Sender: TObject);
+begin
+//  inherited;
+//  cdsBuscaMARCADO.AsString
 end;
 
 procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1MARCADOPropertiesEditValueChanged(Sender: TObject);
 begin
-  inherited;
+  // inherited;
   //
+end;
+
+procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  sql: string;
+begin
+  inherited;
+  sql := 'SELECT dh.*, u.USU_NOME FROM DEMANDA_HISTORICO dh '+
+         ' JOIN USUARIO u ON (u.USU_CODIGO = dh.USU_CODIGO) '+
+          ' WHERE PED_CODIGO = '+QuotedStr(cdsbusca.FieldByName('ped_codigo').AsString) +
+          '   and prd_codigo = '+QuotedStr(cdsbusca.FieldByName('prd_codigo').AsString)+
+          ' order by  hde_datamvto desc ';
+  cdsHistorico.Open(sql);
 end;
 
 procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1SelectionChanged(Sender: TcxCustomGridTableView);
@@ -1290,6 +1329,13 @@ procedure TfrmDemandaProducao.cxgrd1DBTableView1CanFocusRecord(Sender: TcxCustom
 var sql :string;
   ped_codigo , prd_codigo : string;
 begin
+
+
+  exit;
+
+
+
+
   inherited;
   prd_codigo := ARecord.Values[cxgrd1DBTableView1PRD_CODIGO.Index];
   ped_codigo := ARecord.Values[cxgrd1DBTableView1PED_CODIGO.Index];
@@ -1307,6 +1353,12 @@ var sql :string;
   ped_codigo , prd_codigo : string;
 begin
   inherited;
+
+
+  exit;
+
+
+
   prd_codigo := ARecord.Values[cxgrd1DBTableView1PRD_CODIGO.Index];
   ped_codigo := ARecord.Values[cxgrd1DBTableView1PED_CODIGO.Index];
   sql := 'SELECT dh.*, u.USU_NOME FROM DEMANDA_HISTORICO dh '+
