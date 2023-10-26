@@ -1936,7 +1936,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       FieldName = 'ESTOQUEDISPONIVEL'
       Origin = 'ESTOQUEDISPONIVEL'
       ProviderFlags = []
-      ReadOnly = True
       Precision = 18
       Size = 5
     end
@@ -1945,6 +1944,10 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Origin = 'MP_CUSTO'
       Precision = 18
       Size = 5
+    end
+    object cdsMateriaPrimaAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
     end
   end
   object dsMateriaPrima: TDataSource
@@ -37125,7 +37128,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Font.Style = []
           Frame.Typ = []
           Memo.UTF8W = (
-            'OP N'#186'.: [frxDBBusca."OPR_CODIGO"]')
+            'OP N'#186'.: [frxDBBusca."IOP_NORDEM"]')
           ParentFont = False
         end
         object Shape5: TfrxShapeView

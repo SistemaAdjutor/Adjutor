@@ -3,8 +3,8 @@ inherited frmConclusaoOP: TfrmConclusaoOP
   ClientHeight = 342
   ClientWidth = 472
   Font.Height = -13
-  ExplicitWidth = 480
-  ExplicitHeight = 369
+  ExplicitWidth = 488
+  ExplicitHeight = 381
   PixelsPerInch = 96
   TextHeight = 16
   object Label1: TLabel [0]
@@ -147,8 +147,6 @@ inherited frmConclusaoOP: TfrmConclusaoOP
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 5
-    ExplicitTop = 256
-    ExplicitWidth = 474
     object btnok: TButton
       Left = 298
       Top = 10
@@ -249,10 +247,9 @@ inherited frmConclusaoOP: TfrmConclusaoOP
       Left = 146
       Top = 23
       Width = 270
-      Height = 21
+      Height = 24
       TabOrder = 0
       OnChange = cbAlmoxarifadoChange
-      ReadOnly = True
       LookupSelect = 'AMX_CODIGO, AMX_DESCRI'
       LookupOrderBy = 'AMX_DESCRI'
       LookupTable = 'ALMOX0000'
@@ -268,14 +265,16 @@ inherited frmConclusaoOP: TfrmConclusaoOP
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edAlmoxarifado: TEdit
       Left = 91
       Top = 23
       Width = 49
-      Height = 21
+      Height = 24
       Enabled = False
       TabOrder = 1
     end
