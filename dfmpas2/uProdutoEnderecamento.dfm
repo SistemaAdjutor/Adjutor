@@ -4,8 +4,8 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Endere'#231'amento do Estoque'
-  ClientHeight = 459
-  ClientWidth = 673
+  ClientHeight = 471
+  ClientWidth = 693
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   KeyPreview = True
@@ -13,8 +13,8 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
   Position = poDesigned
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitWidth = 679
-  ExplicitHeight = 484
+  ExplicitWidth = 699
+  ExplicitHeight = 500
   PixelsPerInch = 96
   TextHeight = 14
   object Label1: TLabel [0]
@@ -31,7 +31,14 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     Height = 14
     Caption = 'Endere'#231'amento:'
   end
-  object DbeEve_descri: TDBEdit [2]
+  object Label3: TLabel [2]
+    Left = 18
+    Top = 81
+    Width = 64
+    Height = 14
+    Caption = 'Almoxarifado'
+  end
+  object DbeEve_descri: TDBEdit [3]
     Left = 88
     Top = 50
     Width = 577
@@ -41,7 +48,7 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     DataSource = dsProdutoEnderecamento
     TabOrder = 1
   end
-  object EdtEve_codigo: TEdit [3]
+  object EdtEve_codigo: TEdit [4]
     Left = 53
     Top = 10
     Width = 28
@@ -53,7 +60,7 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     OnExit = EdtEve_codigoExit
     OnKeyPress = EdtEve_codigoKeyPress
   end
-  object Panel1: TPanel [4]
+  object Panel1: TPanel [5]
     Left = 6
     Top = 40
     Width = 659
@@ -61,7 +68,7 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     Color = 12681984
     TabOrder = 2
   end
-  object DBNavigator1: TDBNavigator [5]
+  object DBNavigator1: TDBNavigator [6]
     Left = 552
     Top = 7
     Width = 120
@@ -70,9 +77,9 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     TabOrder = 3
     OnClick = DBNavigator1Click
   end
-  object Panel2: TPanel [6]
+  object Panel2: TPanel [7]
     Left = 375
-    Top = 407
+    Top = 427
     Width = 289
     Height = 33
     BevelOuter = bvNone
@@ -239,9 +246,9 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
       OnClick = Bit_GravarClick
     end
   end
-  object GroupBox1: TGroupBox [7]
-    Left = 0
-    Top = 80
+  object GroupBox1: TGroupBox [8]
+    Left = 18
+    Top = 101
     Width = 665
     Height = 321
     Caption = 'Diretivas'
@@ -266,17 +273,75 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
           FieldName = 'PRDE_ENDERECO'
           Title.Alignment = taCenter
           Title.Caption = 'Endere'#231'amento'
-          Width = 628
+          Width = 444
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'AMX_DESCRI'
+          Title.Caption = 'Almoxarifado'
+          Width = 193
           Visible = True
         end>
     end
+  end
+  object CbAlmoxarifadoDestino: TComboBoxRw [9]
+    Left = 88
+    Top = 78
+    Width = 352
+    Height = 22
+    TabOrder = 6
+    CharCase = ecUpperCase
+    LookupSelect = 'amx_CODIGO,AMX_DESCRI'
+    LookupOrderBy = 'AMX_DESCRI'
+    LookupTable = 'ALMOX0000'
+    LookupDispl = 'AMX_DESCRI'
+    OnSelect = CbAlmoxarifadoDestinoSelect
+    GridAutoSize = False
+    LookupSource = CbAlmoxarifadoDestino.InternalSource
+    DataField = 'AMX_CODIGO'
+    DataSource = dsProdutoEnderecamento
+    LookupKeyField = 'amx_CODIGO'
+    ShowButton = True
+    LookupTableShare = 'TABELAS'
+    AutoF8WinTitulo = 'Almoxarifados'
+    AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
+    GridLeft = 0
+    GridWidth = 0
+    GridHeight = 100
+    GridTop = 0
+    GridShowWhenEnter = False
+    SelectWithDoubleClick = False
+    LimparCampoAoSair = True
+    Tabela = 'ALMOX0000'
+    CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
+    CamposRetornar = 'amx_CODIGO'
+    CamposOrdernar = 'AMX_DESCRI'
+    ConexaoBanco = DataCadastros.SQLConnection1
+    Compartilhar = 'TABELAS'
+    Localizado = False
+    CodigoEmpresa = 0
+    ResetaCampos = False
+    MultiEmpresa = False
+    Localizar = False
+    CarregarCombo = False
+    itemindex = 0
+    style = csDropDown
+  end
+  inherited coCalcula: TACBrCalculadora
+    Left = 232
+    Top = 0
+  end
+  inherited ACBrEnterTab1: TACBrEnterTab
+    Left = 312
+    Top = 0
   end
   object SqlProdutoEnderecamento: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBInicio.MainDB
-    Left = 185
-    Top = 170
+    Left = 65
+    Top = 226
     object SqlProdutoEnderecamentoPRDE_REGISTRO: TIntegerField
       FieldName = 'PRDE_REGISTRO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -289,13 +354,17 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
       FieldName = 'EMP_CODIGO'
       Size = 4
     end
+    object SqlProdutoEnderecamentoAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
+    end
   end
   object DspProdutoEnderecamento: TDataSetProvider
     DataSet = SqlProdutoEnderecamento
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 268
-    Top = 218
+    Left = 212
+    Top = 226
   end
   object CdsProdutoEnderecamento: TClientDataSet
     Aggregates = <>
@@ -303,8 +372,8 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     ProviderName = 'DspProdutoEnderecamento'
     AfterPost = CdsProdutoEnderecamentoAfterPost
     AfterDelete = CdsProdutoEnderecamentoAfterDelete
-    Left = 335
-    Top = 170
+    Left = 359
+    Top = 226
     object CdsProdutoEnderecamentoPRDE_REGISTRO: TIntegerField
       FieldName = 'PRDE_REGISTRO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -317,10 +386,21 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
       FieldName = 'EMP_CODIGO'
       Size = 4
     end
+    object CdsProdutoEnderecamentoAMX_CODIGO: TStringField
+      FieldName = 'AMX_CODIGO'
+      Size = 4
+    end
+    object CdsProdutoEnderecamentoAMX_DESCRI: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'AMX_DESCRI'
+      OnGetText = CdsProdutoEnderecamentoAMX_DESCRIGetText
+      Size = 60
+      Calculated = True
+    end
   end
   object dsProdutoEnderecamento: TDataSource
     DataSet = CdsProdutoEnderecamento
-    Left = 412
-    Top = 202
+    Left = 508
+    Top = 226
   end
 end

@@ -594,7 +594,6 @@ type
     DBePrd_minimo : TDBEdit;
     Label24 : TLabel;
     DbePrd_Maximo : TDBEdit;
-    GroupBox17 : TGroupBox;
     GroupBox3 : TGroupBox;
     Label88 : TLabel;
     DBtipoSPED : TDBEdit;
@@ -680,7 +679,6 @@ type
     AbrirArquivo1 : TMenuItem;
     N1 : TMenuItem;
     btnCadastroEnderecamento : TSpeedButton;
-    dbedtPRDE_REGISTRO : TDBEdit;
     Label68 : TLabel;
     SqlCdsEnderecamento : TSQLClientDataSet;
     SqlCdsEnderecamentoPRDE_REGISTRO : TIntegerField;
@@ -1020,7 +1018,6 @@ type
     DBEdit30 : TDBEdit;
     qItensFicha : TSQLQuery;
     DspItensFicha : TDataSetProvider;
-    cxGrid2 : TDBGrid;
     CdsItensFichaFTI_REGISTRO : TIntegerField;
     CdsItensFichaPRD_REFER : TStringField;
     CdsItensFichaPRD_REFER_ITENS : TStringField;
@@ -2212,6 +2209,19 @@ type
     cbFiltroAlmoxarifado: TComboBoxRw;
     Label331: TLabel;
     Label332: TLabel;
+    prdeRegistro: TEdit;
+    PageControl1: TPageControl;
+    TabSheet12: TTabSheet;
+    TabSheet13: TTabSheet;
+    cxGrid2: TDBGrid;
+    cdsEnderecos: TClientDataSet;
+    dsEnderecos: TDataSource;
+    DBGrid8: TDBGrid;
+    cdsEnderecosPRDE_REGISTRO: TIntegerField;
+    cdsEnderecosPRDE_ENDERECO: TStringField;
+    cdsEnderecosEMP_RAZAO: TStringField;
+    dspEnderecos: TDataSetProvider;
+    qEnderecos: TSQLQuery;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2476,6 +2486,7 @@ type
     procedure cbApenasComEstoqueClick(Sender: TObject);
     procedure cbLoteVencidoClick(Sender: TObject);
     procedure cbFiltroAlmoxarifadoChange(Sender: TObject);
+    procedure sgdbEnderecamentoSelect(Sender: TObject);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -2676,6 +2687,8 @@ begin
     if PctrlProdutos.ActivePageIndex = 2 then
       MostraEstoqueDetalhe;
   end;
+
+
 end;
 
 procedure TFormProduto.FormShow( Sender : tObject );
@@ -2782,6 +2795,9 @@ begin
       // AtivaSqls;
       // BuscaVendas;
     finally
+      if dbInicio.Exclusivo('ENDERECO_ESTOQUE') then
+        sgdbEnderecamento.WherePersonalizado := ' WHERE ' + dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+
       CdsProdutos.EnableControls;
       HabilitaBotoes;
       CarregaPrecoEmpresa( );
@@ -2918,6 +2934,8 @@ begin
         end;
       end;
       CdsProdutos.ApplyUpdates( - 1 );
+
+
       if eNotaEntrada then
       begin
         Self.ModalResult := mrOk;
@@ -2931,6 +2949,24 @@ begin
       CdsProdutos.close;
       CdsProdutos.Open;
       localizado := CdsProdutos.Locate( 'PRD_REFER', sReferTmp, [ ] );
+
+      if BuscaUmDadoSqlAsInteger('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA ' +
+                                 ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +
+                                 ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  ) > 0 then
+      begin
+        ExecSQL('UPDATE PRD0000_ENDERECAMENTO_EMPRESA SET PRDE_REGISTRO = ' + sgdbEnderecamento.idRetorno +
+                ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) );
+      end
+      else
+      begin
+        ExecSQL('INSERT INTO PRD0000_ENDERECAMENTO_EMPRESA(PRD_REFER, EMP_CODIGO, PRDE_REGISTRO) ' +
+                ' VALUES(' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ', ' +
+                             QuotedStr(dbInicio.EMP_CODIGO) + ',' +
+                             sgdbEnderecamento.idRetorno +
+                         ')'
+                )
+      end;
+
 
       RecalculaIndicesGrade;
       MostraDados;
@@ -3613,6 +3649,17 @@ begin
     CdsArquivo.Open;
   end;
   CarregaPrecoEmpresa;
+  sgdbEnderecamento.idRetorno := BuscaUmDadoSqlAsString('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
+  prdeRegistro.Text := sgdbEnderecamento.idRetorno;
+  cdsEnderecos.Close;
+  qEnderecos.SQL.Text := 'SELECT pee.PRDE_REGISTRO, pe.PRDE_ENDERECO, E.EMP_RAZAO ' +
+                              ' FROM PRD0000_ENDERECAMENTO_EMPRESA pee ' +
+                              ' JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee.PRDE_REGISTRO) ' +
+                              ' JOIN EMP0000 e ON (e.EMP_CODIGO = pe.EMP_CODIGO ) ' +
+                              ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +
+                              ' ORDER BY pee.EMP_CODIGO, pe.PRDE_ENDERECO  ' ;
+  cdsEnderecos.Open;
+
 end;
 
 procedure TFormProduto.MostraFichaTecnica( pCond : Boolean );
@@ -7234,6 +7281,14 @@ end;
 procedure TFormProduto.SdCadastroGradeClick( Sender : tObject );
 begin
   CadastrarNovaGrade;
+end;
+
+procedure TFormProduto.sgdbEnderecamentoSelect(Sender: TObject);
+begin
+  inherited;
+  prdeRegistro.Text := sgdbEnderecamento.idRetorno;
+  if not ( CdsProdutos.State in dsEditModes ) then
+    CdsProdutos.Edit;
 end;
 
 procedure TFormProduto.sgDBLookupCombo1MenuPesquisaClick( Sender : tObject );

@@ -15,6 +15,7 @@ inherited FormProduto: TFormProduto
   Position = poDefaultPosOnly
   Visible = True
   OnCloseQuery = FormCloseQuery
+  ExplicitLeft = -984
   ExplicitWidth = 2506
   ExplicitHeight = 1029
   PixelsPerInch = 96
@@ -24,7 +25,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Lotes
+    ActivePage = Tbs_Produtos
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -5433,6 +5434,8 @@ inherited FormProduto: TFormProduto
     end
     object Tbs_Produtos: TTabSheet
       Caption = 'Cadastro de Produtos'
+      ExplicitLeft = 116
+      ExplicitTop = 0
       object GroupBox7: TGroupBox
         Left = 0
         Top = 0
@@ -8321,9 +8324,9 @@ inherited FormProduto: TFormProduto
       object PageControl2: TPageControl
         Left = 3
         Top = 157
-        Width = 1065
+        Width = 1059
         Height = 142
-        ActivePage = TabSheet9
+        ActivePage = TabSheet11
         TabOrder = 1
         object TabSheet9: TTabSheet
           Caption = 'Organiza'#231#227'o do Produto'
@@ -8529,7 +8532,7 @@ inherited FormProduto: TFormProduto
           object GroupBox22: TGroupBox
             Left = 556
             Top = 0
-            Width = 501
+            Width = 495
             Height = 113
             Align = alClient
             TabOrder = 1
@@ -9409,94 +9412,20 @@ inherited FormProduto: TFormProduto
             MaxLength = 15
             TabOrder = 1
           end
-          object GroupBox17: TGroupBox
-            Left = 0
-            Top = 22
-            Width = 1057
-            Height = 91
-            Align = alBottom
-            Caption = 'Estoque'
-            TabOrder = 3
-            object cxGrid2: TDBGrid
-              Left = 2
-              Top = 16
-              Width = 1053
-              Height = 73
-              Align = alClient
-              DataSource = DsSaldos
-              TabOrder = 0
-              TitleFont.Charset = ANSI_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -11
-              TitleFont.Name = 'Arial'
-              TitleFont.Style = []
-              Columns = <
-                item
-                  Expanded = False
-                  FieldName = 'AMX_CODIGO_RET'
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlack
-                  Font.Height = -11
-                  Font.Name = 'Arial'
-                  Font.Style = []
-                  Title.Alignment = taCenter
-                  Title.Caption = 'C'#243'digo'
-                  Width = 74
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'AMX_DESCRI_RET'
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlack
-                  Font.Height = -11
-                  Font.Name = 'Arial'
-                  Font.Style = []
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Nome do Almoxarifado'
-                  Width = 728
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'AMX_SALDO_RET'
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlack
-                  Font.Height = -11
-                  Font.Name = 'Arial'
-                  Font.Style = []
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Saldo'
-                  Width = 119
-                  Visible = True
-                end>
-            end
-          end
-          object dbedtPRDE_REGISTRO: TDBEdit
-            Left = 458
-            Top = 0
-            Width = 51
-            Height = 22
-            DataField = 'PRDE_REGISTRO'
-            DataSource = DsProdutos
-            TabOrder = 2
-          end
           object sgdbEnderecamento: TSgDbSearchCombo
-            Left = 515
+            Left = 516
             Top = 0
             Width = 206
             Height = 22
-            TabOrder = 4
+            TabOrder = 2
             CharCase = ecUpperCase
-            LookupSelect = 'PRDE_REGISTRO, PRDE_ENDERECO'
+            LookupSelect = 'PRDE_REGISTRO, PRDE_ENDERECO, EMP_CODIGO'
             LookupOrderBy = 'PRDE_ENDERECO'
             LookupTable = 'PRD0000_ENDERECAMENTO'
             LookupDispl = 'PRDE_ENDERECO'
-            OnSelect = PesqCNAESelect
+            OnSelect = sgdbEnderecamentoSelect
             GridAutoSize = False
             LookupSource = qRegistroEndereco
-            DataField = 'PRDE_REGISTRO'
-            DataSource = DsProdutos
             LookupKeyField = 'PRDE_REGISTRO'
             ShowButton = True
             AutoF8WinTitulo = 'Endere'#231'amento'
@@ -9509,6 +9438,117 @@ inherited FormProduto: TFormProduto
             SelectWithDoubleClick = False
             LimparCampoAoSair = True
           end
+          object prdeRegistro: TEdit
+            Left = 458
+            Top = 0
+            Width = 52
+            Height = 22
+            TabOrder = 3
+            Text = 'prdeRegistro'
+          end
+          object PageControl1: TPageControl
+            Left = 0
+            Top = 28
+            Width = 1051
+            Height = 85
+            ActivePage = TabSheet12
+            Align = alBottom
+            TabOrder = 4
+            object TabSheet12: TTabSheet
+              Caption = 'Estoque'
+              object cxGrid2: TDBGrid
+                Left = 0
+                Top = 0
+                Width = 1043
+                Height = 56
+                Align = alClient
+                DataSource = DsSaldos
+                TabOrder = 0
+                TitleFont.Charset = ANSI_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'Arial'
+                TitleFont.Style = []
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'AMX_CODIGO_RET'
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Arial'
+                    Font.Style = []
+                    Title.Alignment = taCenter
+                    Title.Caption = 'C'#243'digo'
+                    Width = 74
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'AMX_DESCRI_RET'
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Arial'
+                    Font.Style = []
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Nome do Almoxarifado'
+                    Width = 728
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'AMX_SALDO_RET'
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Arial'
+                    Font.Style = []
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Saldo'
+                    Width = 119
+                    Visible = True
+                  end>
+              end
+            end
+            object TabSheet13: TTabSheet
+              Caption = 'Endere'#231'os'
+              ImageIndex = 1
+              object DBGrid8: TDBGrid
+                Left = 0
+                Top = 0
+                Width = 1043
+                Height = 56
+                Align = alClient
+                DataSource = dsEnderecos
+                TabOrder = 0
+                TitleFont.Charset = ANSI_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'Arial'
+                TitleFont.Style = []
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'PRDE_REGISTRO'
+                    Title.Caption = 'C'#243'digo'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PRDE_ENDERECO'
+                    Title.Caption = 'Endere'#231'o'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'EMP_RAZAO'
+                    Title.Caption = 'Empresa'
+                    Visible = True
+                  end>
+              end
+            end
+          end
         end
         object TabSheet2: TTabSheet
           Caption = 'C'#243'digo Original / Cliente'
@@ -9516,7 +9556,7 @@ inherited FormProduto: TFormProduto
           object grCodCli: TJvDBGrid
             Left = 0
             Top = 0
-            Width = 1057
+            Width = 1051
             Height = 113
             Align = alClient
             DataSource = DsCodigoOriginal
@@ -11657,8 +11697,6 @@ inherited FormProduto: TFormProduto
         Height = 273
         Align = alBottom
         TabOrder = 1
-        ExplicitLeft = 24
-        ExplicitTop = 268
         object Label75: TLabel
           Left = 211
           Top = 75
@@ -13587,8 +13625,8 @@ inherited FormProduto: TFormProduto
   end
   object DataSource1: TDataSource [27]
     DataSet = SqlProdutos
-    Left = 2078
-    Top = 580
+    Left = 2190
+    Top = 564
   end
   object ppDBPipeline1: TppDBPipeline [28]
     DataSource = DsRelProduto
@@ -21379,5 +21417,46 @@ inherited FormProduto: TFormProduto
       FieldName = 'AMX_DESCRI'
       Size = 60
     end
+  end
+  object cdsEnderecos: TClientDataSet
+    Aggregates = <>
+    PacketRecords = 6
+    Params = <>
+    ProviderName = 'dspEnderecos'
+    AfterInsert = CdsProdutosAfterInsert
+    BeforeEdit = CdsProdutosBeforeEdit
+    AfterPost = CdsProdutosAfterPost
+    AfterCancel = CdsProdutosAfterCancel
+    AfterScroll = CdsProdutosAfterScroll
+    OnCalcFields = CdsProdutosCalcFields
+    OnNewRecord = CdsProdutosNewRecord
+    Left = 1952
+    Top = 373
+    object cdsEnderecosPRDE_REGISTRO: TIntegerField
+      FieldName = 'PRDE_REGISTRO'
+    end
+    object cdsEnderecosPRDE_ENDERECO: TStringField
+      FieldName = 'PRDE_ENDERECO'
+      Size = 30
+    end
+    object cdsEnderecosEMP_RAZAO: TStringField
+      FieldName = 'EMP_RAZAO'
+      Size = 70
+    end
+  end
+  object dsEnderecos: TDataSource
+    DataSet = cdsEnderecos
+    Left = 1952
+    Top = 429
+  end
+  object dspEnderecos: TDataSetProvider
+    DataSet = qEnderecos
+    Left = 1948
+    Top = 327
+  end
+  object qEnderecos: TSQLQuery
+    Params = <>
+    Left = 1948
+    Top = 279
   end
 end
