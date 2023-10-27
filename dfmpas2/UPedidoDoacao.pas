@@ -189,7 +189,7 @@ var
 implementation
 
 {$R *.dfm}
- uses uPesqtarefas, uPesqRenovacao;
+ uses uPesqtarefas, uPesqRenovacao, uClienteDao;
 { TfrmPedidoDoacao }
 
 procedure TfrmPedidoDoacao.btPesqClinteClick(Sender: TObject);
@@ -1016,10 +1016,16 @@ begin
 end;
 
 procedure TfrmPedidoDoacao.PesqClienteSelect(Sender: TObject);
+var
+  sMsg : string;
 begin
   inherited;
   if (PesqCliente.idRetorno <> '') and (cdsPedido.state = dsInsert ) then
-   BuscaPadraoCliente(PesqCliente.idRetorno);
+    BuscaPadraoCliente(PesqCliente.idRetorno);
+
+  if (PesqCliente.idRetorno <> '') and (not ClienteAtivo(PesqCliente.idRetorno,sMsg)) then
+    uteis.aviso (Pchar(sMsg));
+
 end;
 
 procedure TfrmPedidoDoacao.rgTipoChange(Sender: TObject);

@@ -13,7 +13,6 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
     Height = 97
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 564
     object Label1: TLabel
       Left = 24
       Top = 1
@@ -166,8 +165,6 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
     Height = 229
     Align = alClient
     TabOrder = 1
-    ExplicitWidth = 564
-    ExplicitHeight = 137
     object cxGrid1: TcxGrid
       Left = 1
       Top = 1
@@ -178,10 +175,6 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
       LookAndFeel.Kind = lfStandard
       LookAndFeel.NativeStyle = False
       LookAndFeel.ScrollbarMode = sbmClassic
-      ExplicitLeft = 0
-      ExplicitTop = 165
-      ExplicitWidth = 774
-      ExplicitHeight = 200
       object cxGrid1DBTableView1: TcxGridDBTableView
         Navigator.Buttons.CustomButtons = <>
         OnEditKeyUp = cxGrid1DBTableView1EditKeyUp
@@ -229,13 +222,11 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
     Height = 41
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 234
-    ExplicitWidth = 564
     DesignSize = (
       603
       41)
     object Label5: TLabel
-      Left = 217
+      Left = 114
       Top = 16
       Width = 34
       Height = 16
@@ -249,7 +240,7 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
       ParentFont = False
     end
     object lbTotal: TLabel
-      Left = 372
+      Left = 269
       Top = 16
       Width = 7
       Height = 16
@@ -263,12 +254,12 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
       ParentFont = False
     end
     object bitFinalizar: TBitBtn
-      Left = 497
-      Top = 9
+      Left = 369
+      Top = 6
       Width = 100
       Height = 25
       Anchors = [akTop, akRight]
-      Caption = '&Finalizar'
+      Caption = '&Confirmar'
       Font.Charset = ANSI_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -296,7 +287,31 @@ inherited frmVinculacaoCoresRetorno: TfrmVinculacaoCoresRetorno
       ParentFont = False
       TabOrder = 0
       OnClick = bitFinalizarClick
-      ExplicitLeft = 458
+    end
+    object Bit_Sair: TBitBtn
+      Left = 475
+      Top = 6
+      Width = 100
+      Height = 25
+      Cursor = crHandPoint
+      Caption = '&Sair'
+      Glyph.Data = {
+        76010000424D7601000000000000760000002800000020000000100000000100
+        04000000000000010000C40E0000C40E00001000000000000000000000000000
+        8000008000000080800080000000800080008080000080808000C0C0C0000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333330
+        0000333333333333777711111111000BB030377777777777337F1EEEEEEE0BBB
+        B030373333333733337F1EEEEEEE0BBBB03037F333333733337F1EEEEEEE0BBB
+        B03037F333333733337F1EEEEEEE0BBBB03037F333333733337F1EEEEEEE0BBB
+        B03037F3333337F3337F1EEEEEEE0BBB003037F3333337F3377F1EEEEEEE0BBB
+        B03037F3333337F3337F1EEEEEEE0BBBB03037F3333337F3337F1EEEEEEE0BBB
+        B03037F3333337F3337F1EEEEEEE0BBBB03037F3333337F3337F1EEEEEEE0BBB
+        B03037FFFFFF37FF337F11111111000BB030377777777777337F333333333330
+        0000333333333333777733333333333333333333333333333333}
+      ModalResult = 2
+      NumGlyphs = 2
+      TabOrder = 1
+      TabStop = False
     end
   end
   inherited coCalcula: TACBrCalculadora

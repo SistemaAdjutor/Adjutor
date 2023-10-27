@@ -8,8 +8,8 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
   Visible = True
   OnCloseQuery = FormCloseQuery
   OnResize = FormResize
-  ExplicitWidth = 1010
-  ExplicitHeight = 569
+  ExplicitWidth = 1018
+  ExplicitHeight = 581
   PixelsPerInch = 96
   TextHeight = 13
   object pacoes: TPanel [0]
@@ -19,7 +19,6 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
     Height = 41
     Align = alBottom
     TabOrder = 0
-    ExplicitTop = 461
     object BtnConsultar: TBitBtn
       Left = 6
       Top = 6
@@ -338,8 +337,10 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object btnAgenda: TBitBtn
       Left = 723
@@ -389,7 +390,6 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
     Height = 501
     Align = alClient
     TabOrder = 1
-    ExplicitHeight = 461
     object DBGrid1: TDBGrid
       Left = 1
       Top = 1
@@ -468,7 +468,6 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
     Height = 501
     Align = alLeft
     TabOrder = 2
-    ExplicitHeight = 461
     object pinforPrincipais: TPanel
       Left = 1
       Top = 121
@@ -476,7 +475,6 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
       Height = 379
       Align = alClient
       TabOrder = 0
-      ExplicitHeight = 339
       object Label7: TLabel
         Left = 39
         Top = 11
@@ -717,8 +715,10 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object edFPagto: TSgDbSearchCombo
         Left = 138
@@ -747,8 +747,10 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object EdPedidoNumero: TDBEdit
         Left = 138
@@ -843,8 +845,10 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object CbBancos: TComboBoxRw
         Left = 138
@@ -875,8 +879,10 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'ban0000'
         CamposCarregar = 'BAN_CODIGO,BAN_APELIDO,BAN_COBTIPO,BAN_COD_APELIDO, FPG_REGISTRO'
         CamposRetornar = 'BAN_CODIGO'
@@ -940,8 +946,10 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object edValorParcela: TDBEdit
         Left = 138
@@ -1004,8 +1012,10 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object rtipo: TJvDBComboBox
         Left = 138
@@ -1080,8 +1090,10 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
     object presultado: TPanel
