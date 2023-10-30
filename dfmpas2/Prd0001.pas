@@ -2222,6 +2222,7 @@ type
     cdsEnderecosEMP_RAZAO: TStringField;
     dspEnderecos: TDataSetProvider;
     qEnderecos: TSQLQuery;
+    dsRegistroEndereco: TDataSource;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2795,9 +2796,6 @@ begin
       // AtivaSqls;
       // BuscaVendas;
     finally
-      if dbInicio.Exclusivo('ENDERECO_ESTOQUE') then
-        sgdbEnderecamento.WherePersonalizado := ' WHERE ' + dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
-
       CdsProdutos.EnableControls;
       HabilitaBotoes;
       CarregaPrecoEmpresa( );
@@ -3649,15 +3647,20 @@ begin
     CdsArquivo.Open;
   end;
   CarregaPrecoEmpresa;
-  sgdbEnderecamento.idRetorno := BuscaUmDadoSqlAsString('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
+
+  sgdbEnderecamento.idRetorno := BuscaUmDadoSqlAsString('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +  ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
   prdeRegistro.Text := sgdbEnderecamento.idRetorno;
   cdsEnderecos.Close;
   qEnderecos.SQL.Text := 'SELECT pee.PRDE_REGISTRO, pe.PRDE_ENDERECO, E.EMP_RAZAO ' +
                               ' FROM PRD0000_ENDERECAMENTO_EMPRESA pee ' +
                               ' JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee.PRDE_REGISTRO) ' +
-                              ' JOIN EMP0000 e ON (e.EMP_CODIGO = pe.EMP_CODIGO ) ' +
+                              ' JOIN EMP0000 e ON (e.EMP_CODIGO = pee.EMP_CODIGO ) ' +
                               ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +
+                                ConcatSE( ' AND pee.', DBInicio.ExclusivoSql( 'ENDERECO_ESTOQUE' )) +
                               ' ORDER BY pee.EMP_CODIGO, pe.PRDE_ENDERECO  ' ;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipBoard(qEnderecos.SQL.Text);
+
   cdsEnderecos.Open;
 
 end;
@@ -7592,6 +7595,20 @@ begin
   end;
   // chkEnvase.Visible := DBInicio.Empresa.PMT_HABILITAR_MRP;
   chkEnvase.Visible := DBInicio.Empresa.PMT_HABILITA_ENVASE;
+  if dbInicio.Exclusivo('ENDERECO_ESTOQUE') then
+  begin
+    // sgdbEnderecamento.WherePersonalizado := 'WHERE' + dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+    // sgdbEnderecamento.LookupWhere := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+    // sgdbEnderecamento.CDS.Filtered := False;
+    // sgdbEnderecamento.CDS.Filter := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+    // sgdbEnderecamento.CDS.Filtered := True;
+    // nenhuma das opçoes acima funciona, funcionava, mas depois da atualização
+    // do delphi alguns componentes se tornaram instáveis
+    sgdbEnderecamento.FiltroTabela := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+
+    sgdbEnderecamento.Refresh;
+
+  end;
 end;
 
 procedure TFormProduto.FormDestroy( Sender : tObject );

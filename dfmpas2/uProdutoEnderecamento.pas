@@ -45,6 +45,8 @@ type
     SqlProdutoEnderecamentoAMX_CODIGO: TStringField;
     CdsProdutoEnderecamentoAMX_CODIGO: TStringField;
     CdsProdutoEnderecamentoAMX_DESCRI: TStringField;
+    SqlProdutoEnderecamentoEMP_RAZAO: TStringField;
+    CdsProdutoEnderecamentoEMP_RAZAO: TStringField;
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);
     procedure Bit_ExcluirClick(Sender: tObject);
@@ -294,7 +296,7 @@ begin
 //    height  := 487;
 
     CdsProdutoEnderecamento.Close;
-    SqlProdutoEnderecamento.CommandText := SQLDEF('TABELAS','SELECT * FROM PRD0000_ENDERECAMENTO',  ConcatSe('WHERE ',dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'PRDE_ENDERECO','');
+    SqlProdutoEnderecamento.CommandText := SQLDEF('TABELAS','SELECT * FROM PRD0000_ENDERECAMENTO pe JOIN PRD0000_ENDERECAMENTO_EMPRESA pee ON (pee.EMP_CODIGO = pe.EMP_CODIGO ) JOIN EMP0000 e ON (e.EMP_CODIGO = pe.EMP_CODIGO )',  ConcatSe('WHERE pee.',dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'PRDE_ENDERECO','');
     CdsProdutoEnderecamento.open;
     Habilitabotoes;
     if CdsProdutoEnderecamento.IsEmpty Then  //Evita alteração antes que se

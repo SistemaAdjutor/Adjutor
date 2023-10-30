@@ -246,46 +246,7 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
       OnClick = Bit_GravarClick
     end
   end
-  object GroupBox1: TGroupBox [8]
-    Left = 18
-    Top = 101
-    Width = 665
-    Height = 321
-    Caption = 'Diretivas'
-    TabOrder = 5
-    object dbgrdDiretivas: TDBGrid
-      Left = 2
-      Top = 16
-      Width = 661
-      Height = 303
-      Align = alClient
-      DataSource = dsProdutoEnderecamento
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
-      TabOrder = 0
-      TitleFont.Charset = ANSI_CHARSET
-      TitleFont.Color = clWindowText
-      TitleFont.Height = -11
-      TitleFont.Name = 'Arial'
-      TitleFont.Style = []
-      Columns = <
-        item
-          Expanded = False
-          FieldName = 'PRDE_ENDERECO'
-          Title.Alignment = taCenter
-          Title.Caption = 'Endere'#231'amento'
-          Width = 444
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'AMX_DESCRI'
-          Title.Caption = 'Almoxarifado'
-          Width = 193
-          Visible = True
-        end>
-    end
-  end
-  object CbAlmoxarifadoDestino: TComboBoxRw [9]
+  object CbAlmoxarifadoDestino: TComboBoxRw [8]
     Left = 88
     Top = 78
     Width = 352
@@ -328,6 +289,52 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     itemindex = 0
     style = csDropDown
   end
+  object GroupBox1: TGroupBox [9]
+    Left = 18
+    Top = 101
+    Width = 665
+    Height = 321
+    Caption = 'Diretivas'
+    TabOrder = 5
+    object dbgrdDiretivas: TDBGrid
+      Left = 2
+      Top = 16
+      Width = 661
+      Height = 303
+      Align = alClient
+      DataSource = dsProdutoEnderecamento
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
+      TabOrder = 0
+      TitleFont.Charset = ANSI_CHARSET
+      TitleFont.Color = clWindowText
+      TitleFont.Height = -11
+      TitleFont.Name = 'Arial'
+      TitleFont.Style = []
+      Columns = <
+        item
+          Expanded = False
+          FieldName = 'PRDE_ENDERECO'
+          Title.Alignment = taCenter
+          Title.Caption = 'Endere'#231'amento'
+          Width = 117
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'AMX_DESCRI'
+          Title.Caption = 'Almoxarifado'
+          Width = 193
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'EMP_RAZAO'
+          Title.Caption = 'Empresa'
+          Width = 311
+          Visible = True
+        end>
+    end
+  end
   inherited coCalcula: TACBrCalculadora
     Left = 232
     Top = 0
@@ -357,6 +364,10 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     object SqlProdutoEnderecamentoAMX_CODIGO: TStringField
       FieldName = 'AMX_CODIGO'
       Size = 4
+    end
+    object SqlProdutoEnderecamentoEMP_RAZAO: TStringField
+      FieldName = 'EMP_RAZAO'
+      Size = 70
     end
   end
   object DspProdutoEnderecamento: TDataSetProvider
@@ -396,6 +407,10 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
       OnGetText = CdsProdutoEnderecamentoAMX_DESCRIGetText
       Size = 60
       Calculated = True
+    end
+    object CdsProdutoEnderecamentoEMP_RAZAO: TStringField
+      FieldName = 'EMP_RAZAO'
+      Size = 70
     end
   end
   object dsProdutoEnderecamento: TDataSource

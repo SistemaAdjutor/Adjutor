@@ -15,7 +15,6 @@ inherited FormProduto: TFormProduto
   Position = poDefaultPosOnly
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitLeft = -984
   ExplicitWidth = 2506
   ExplicitHeight = 1029
   PixelsPerInch = 96
@@ -5434,8 +5433,6 @@ inherited FormProduto: TFormProduto
     end
     object Tbs_Produtos: TTabSheet
       Caption = 'Cadastro de Produtos'
-      ExplicitLeft = 116
-      ExplicitTop = 0
       object GroupBox7: TGroupBox
         Left = 0
         Top = 0
@@ -5443,6 +5440,8 @@ inherited FormProduto: TFormProduto
         Height = 157
         Align = alTop
         TabOrder = 0
+        ExplicitLeft = 2
+        ExplicitTop = -6
         object Label2: TLabel
           Left = 19
           Top = 37
@@ -21458,5 +21457,10 @@ inherited FormProduto: TFormProduto
     Params = <>
     Left = 1948
     Top = 279
+  end
+  object dsRegistroEndereco: TDataSource
+    DataSet = qRegistroEndereco
+    Left = 2160
+    Top = 188
   end
 end
