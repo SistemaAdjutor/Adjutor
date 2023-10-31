@@ -172,6 +172,7 @@ type
     ACBrNFSe1: TACBrNFSeX;
     ACBrNFSeDANFSeFR1: TACBrNFSeXDANFSeRL;
     CdsPesqNFSE_dataemissao: TSQLTimeStampField;
+    CdsPesqNFSI_JUSTIFICATIVA_DEDUCAO: TStringField;
     procedure FormShow(Sender: TObject);
     procedure dbnfseDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbnfseCellClick(Column: TColumn);
@@ -843,7 +844,7 @@ begin
     sql:=
    'SELECT SE.EMP_CODIGO,  rps_codigo, si.NFSE_CODIGO, SE.CLI_CODIGO, SE.NUM_LOTE, se.NFSE_serie,NFSE_razaosocial, NFSE_email, NFSE_dataemissao,      '+
    ' LSE_STATUS,NFSE_NUM_DANFSE,  NFSI_valorservicos,  NFSI_discriminacao, inderroenvio, NFSI_RETENCOESFEDERAIS,            '+
-   ' se.CNAE_Codigo, si.NFSI_VALORDEDUCOES,  si.NFSI_VALORCOFINS, si.NFSI_VALORCSLL, si.nfsi_ValorPis, si.NFSI_VALORINSS,     '+
+   ' se.CNAE_Codigo, si.NFSI_VALORDEDUCOES, si.NFSI_JUSTIFICATIVA_DEDUCAO, si.NFSI_VALORCOFINS, si.NFSI_VALORCSLL, si.nfsi_ValorPis, si.NFSI_VALORINSS,     '+
    ' si.NFSI_VALORIR, si.NFSI_VALORISSRETIDO, si.NFSI_VALORISS , NFSI_basecalculo,NFSI_aliquotaiss,NFSI_valorliquidonfse,     '+
    '  NFSI_descontoincondicionado, si.NFSI_DESCONTOCONDICIONADO, si.NFSI_outrasretencoes, NFSI_issretido, NFSE_razaosocial,   '+
    ' coalesce (NFSE_cnpj_cpf, cli_cgc) as NFSE_cnpj_cpf, NFSE_endereco, NFSE_numero_end, NFSE_complemento, NFSE_CODVERIFICACAO,                                    '+
@@ -2998,6 +2999,9 @@ begin
          Servico.Valores.ValorIr                := clone.FieldByName('NFSI_VALORIR').AsFloat;
          Servico.Valores.ValorCsll              := clone.FieldByName('NFSI_VALORCSLL').AsFloat;
 
+         Servico.Valores.JustificativaDeducao   := clone.FieldByName('NFSI_JUSTIFICATIVA_DEDUCAO').AsString;
+
+
          //1 - ISS retido na fonte,
          //2 - ISS NÃO retido na fonte.Obs.: quando for 1, os campos ValorISS e ValorIssRetido tem que ser iguais.
 
@@ -3113,6 +3117,8 @@ begin
           ValorInss              := clone.FieldByName('NFSI_VALORINSS').AsFloat;
           ValorIRRF              := clone.FieldByName('NFSI_VALORIR').AsFloat;
           ValorCsll              := clone.FieldByName('NFSI_VALORCSLL').AsFloat;
+
+
          // if (ACBrNFSe1.Configuracoes.Geral.xprovedor <> 'IPM') then
            CodServ      := clone.FieldByName('SRV_CODIGO').AsString;
           ItemListaServico := clone.FieldByName('SRV_CODIGO').AsString;

@@ -1485,6 +1485,10 @@ inherited frmNfse: TfrmNfse
       FieldName = 'NFSE_dataemissao'
       OnGetText = CdsPesqNFSE_dataemissaoGetText
     end
+    object CdsPesqNFSI_JUSTIFICATIVA_DEDUCAO: TStringField
+      FieldName = 'NFSI_JUSTIFICATIVA_DEDUCAO'
+      Size = 255
+    end
     object CdsPesqTotalServicos: TAggregateField
       DefaultExpression = 'sum(NFSI_valorservicos)'
       FieldName = 'TotalServicos'
