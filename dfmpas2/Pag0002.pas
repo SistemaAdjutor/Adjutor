@@ -95,6 +95,8 @@ type
     procedure CbxBcoSelect(Sender: TObject);
     procedure Bit_CancelarMouseEnter(Sender: TObject);
     procedure Bit_CancelarMouseLeave(Sender: TObject);
+    procedure Bit_SairMouseEnter(Sender: TObject);
+    procedure Bit_SairMouseLeave(Sender: TObject);
   private
 
     rValorParcelaAntes,
@@ -340,6 +342,18 @@ begin
     Close;
 end;
 
+procedure TFormContasPagParcelas.Bit_SairMouseEnter(Sender: TObject);
+begin
+  inherited;
+  NextControl := Bit_Cancelar;
+end;
+
+procedure TFormContasPagParcelas.Bit_SairMouseLeave(Sender: TObject);
+begin
+  inherited;
+  NextControl := Nil;
+end;
+
 procedure TFormContasPagParcelas.DBPPC_MULTAExit(Sender: tObject);
 begin
     if (DBPPC_MULTA.Field.AsCurrency >=0) then
@@ -413,7 +427,7 @@ end;
 
 procedure TFormContasPagParcelas.DbDtPPC_VENCTOExit(Sender: tObject);
 begin
-     if DbDtPPC_VENCTO.Date=0 then
+     if (DbDtPPC_VENCTO.Date = 0) and (NextControl = Nil) then
         GeraException('É necessário informar a data de vencimento!')
      Else
 
@@ -426,7 +440,7 @@ begin
               end;
        end
     else
-     if (DbDtPPC_VENCTO.Date< FormContasPagar.DbePag_DtEmis.Date) and (NextControl <> Bit_Cancelar) Then
+     if (DbDtPPC_VENCTO.Date< FormContasPagar.DbePag_DtEmis.Date) and (NextControl = Nil) Then
         begin
             uteis.aviso('Data de Vencimento Menor que a Data Emissão !');
             DbDtPPC_VENCTO.SetFocus;

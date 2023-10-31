@@ -785,7 +785,7 @@ inherited FormContasPagParcelas: TFormContasPagParcelas
       OnMouseLeave = Bit_CancelarMouseLeave
     end
     object Bit_Sair: TBitBtn
-      Left = 677
+      Left = 683
       Top = 6
       Width = 90
       Height = 25
@@ -811,6 +811,8 @@ inherited FormContasPagParcelas: TFormContasPagParcelas
       TabOrder = 3
       TabStop = False
       OnClick = Bit_SairClick
+      OnMouseEnter = Bit_SairMouseEnter
+      OnMouseLeave = Bit_SairMouseLeave
     end
   end
   inherited coCalcula: TACBrCalculadora
