@@ -7667,6 +7667,10 @@ object DataCadastros: TDataCadastros
       FieldName = 'FISCAL'
       Size = 1
     end
+    object SqlSharedbENDERECO_ESTOQUE: TStringField
+      FieldName = 'ENDERECO_ESTOQUE'
+      Size = 1
+    end
   end
   object DspSharedb: TDataSetProvider
     DataSet = SqlSharedb
@@ -7785,6 +7789,10 @@ object DataCadastros: TDataCadastros
     end
     object CdsSharedbFISCAL: TStringField
       FieldName = 'FISCAL'
+      Size = 1
+    end
+    object CdsSharedbENDERECO_ESTOQUE: TStringField
+      FieldName = 'ENDERECO_ESTOQUE'
       Size = 1
     end
   end

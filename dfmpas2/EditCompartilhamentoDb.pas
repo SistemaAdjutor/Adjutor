@@ -97,6 +97,10 @@ type
     DBRadioGroup21: TDBRadioGroup;
     qEditPRODUTO_PRECO_EMPRESA: TStringField;
     CdsEditPRODUTO_PRECO_EMPRESA: TStringField;
+    qEditENDERECO_ESTOQUE: TStringField;
+    CdsEditENDERECO_ESTOQUE: TStringField;
+    Label22: TLabel;
+    DBRadioGroup22: TDBRadioGroup;
     procedure FormCreate(Sender: tObject);
   private
     { Private declarations }

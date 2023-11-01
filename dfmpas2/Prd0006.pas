@@ -222,7 +222,8 @@ begin
          qRefer.sql.ADD( '        PRD_PVENDA5,');
          qRefer.sql.ADD( '        PRD_PVENDA6,');
          qRefer.sql.ADD( '        PRD_PENDENTE,');
-         qRefer.sql.ADD( '        t3.prde_endereco,');
+//         qRefer.sql.ADD( '        t3.prde_endereco,');
+         qRefer.sql.ADD('  (SELECT pe.prde_endereco FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO) JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) WHERE	pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + ') AS prde_endereco, ') ;
          qRefer.sql.ADD( '        t2.lin_descri, ');
          qRefer.sql.ADD( ' ( SELECT FIRST 1 cl.cli_razao FROM PRD_CODIGOORIGINAL T4  left join cli0000 cl on (cl.cli_codigo=t4.cli_codigo) WHERE T4.PRD_CODIGO = T1.PRD_CODIGO ) cli_razao ');
          qRefer.sql.ADD( 'from PRD0000 t1 ');

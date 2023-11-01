@@ -1220,7 +1220,9 @@ begin
 		 try
 
 			 wSql1 := 'Select T1.PRD_COMPL, T1.PRD_CODIGO,T1.PRD_REFER,T1.PRD_DESCRI,T1.PRD_UND,T1.PRD_CODBARRA,T5.prdco_codigo_original as PRD_CODORIGINAL,T4.PRG_DESCRICAO,T5.cli_codigo,T5.prdco_descricao,T6.cli_razao,'+
-			 ' t7.PRDL_LOTE, t8.prde_endereco, '+
+			 ' t7.PRDL_LOTE, ' +
+//       ' t8.prde_endereco, '+
+       ' (SELECT pe.prde_endereco FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO) JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) WHERE	pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + ') AS prde_endereco, ' +
        '( SELECT SUM(kas_saldo) '+
         ' FROM kardex_almox_saldo '+
          'WHERE prd_codigo = t1.prd_codigo '+
@@ -1279,7 +1281,8 @@ begin
 					ADD( '        T5.prdco_descricao,');
 					ADD( '        T6.cli_razao,');
 					ADD( '        t7.PRDL_LOTE,');
-					Add( '        t8.prde_endereco, ');
+//					Add( '        t8.prde_endereco, ');
+          Add(       ' (SELECT pe.prde_endereco FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO) JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) WHERE	pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + ') AS prde_endereco, ' );
           Add( '        0 as quantidade, ');
           aDD('( SELECT SUM(kas_saldo) '+
               ' FROM kardex_almox_saldo '+

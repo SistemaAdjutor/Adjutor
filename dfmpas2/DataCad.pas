@@ -1691,6 +1691,8 @@ type
     CdsClientesCCT_CODIGO: TStringField;
     SqlSharedbPRODUTO_PRECO_EMPRESA: TStringField;
     CdsSharedbPRODUTO_PRECO_EMPRESA: TStringField;
+    SqlSharedbENDERECO_ESTOQUE: TStringField;
+    CdsSharedbENDERECO_ESTOQUE: TStringField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);
