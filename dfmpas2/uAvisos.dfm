@@ -13,7 +13,7 @@ object FormAviSos: TFormAviSos
   Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poOwnerFormCenter
   OnClose = FormClose
   OnShow = FormShow
   PixelsPerInch = 96
