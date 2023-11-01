@@ -93,10 +93,16 @@ type
     procedure DbePpc_BancoClick(Sender: tObject);
     procedure FormCreate(Sender: TObject);
     procedure CbxBcoSelect(Sender: TObject);
+    procedure Bit_CancelarMouseEnter(Sender: TObject);
+    procedure Bit_CancelarMouseLeave(Sender: TObject);
+    procedure Bit_SairMouseEnter(Sender: TObject);
+    procedure Bit_SairMouseLeave(Sender: TObject);
   private
 
     rValorParcelaAntes,
     rValorParcelaDepois:Currency;
+
+    NextControl: TWinControl;
 
     procedure Calcular;
 
@@ -132,6 +138,18 @@ begin
     Bit_Sair.Enabled     := False;
     Bit_Gravar.Enabled   := True;
     Bit_Cancelar.Enabled := True;
+end;
+
+procedure TFormContasPagParcelas.Bit_CancelarMouseEnter(Sender: TObject);
+begin
+  inherited;
+  NextControl := Bit_Cancelar;
+end;
+
+procedure TFormContasPagParcelas.Bit_CancelarMouseLeave(Sender: TObject);
+begin
+  inherited;
+  NextControl := nil;
 end;
 
 procedure TFormContasPagParcelas.Bit_ExcluirClick(Sender: tObject);
@@ -324,6 +342,18 @@ begin
     Close;
 end;
 
+procedure TFormContasPagParcelas.Bit_SairMouseEnter(Sender: TObject);
+begin
+  inherited;
+  NextControl := Bit_Cancelar;
+end;
+
+procedure TFormContasPagParcelas.Bit_SairMouseLeave(Sender: TObject);
+begin
+  inherited;
+  NextControl := Nil;
+end;
+
 procedure TFormContasPagParcelas.DBPPC_MULTAExit(Sender: tObject);
 begin
     if (DBPPC_MULTA.Field.AsCurrency >=0) then
@@ -397,8 +427,7 @@ end;
 
 procedure TFormContasPagParcelas.DbDtPPC_VENCTOExit(Sender: tObject);
 begin
-
-     if DbDtPPC_VENCTO.Date=0 then
+     if (DbDtPPC_VENCTO.Date = 0) and (NextControl = Nil) then
         GeraException('É necessário informar a data de vencimento!')
      Else
 
@@ -411,7 +440,7 @@ begin
               end;
        end
     else
-     if (DbDtPPC_VENCTO.Date< FormContasPagar.DbePag_DtEmis.Date) Then
+     if (DbDtPPC_VENCTO.Date< FormContasPagar.DbePag_DtEmis.Date) and (NextControl = Nil) Then
         begin
             uteis.aviso('Data de Vencimento Menor que a Data Emissão !');
             DbDtPPC_VENCTO.SetFocus;

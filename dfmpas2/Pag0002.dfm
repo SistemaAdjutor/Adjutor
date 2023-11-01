@@ -10,8 +10,8 @@ inherited FormContasPagParcelas: TFormContasPagParcelas
   Font.Name = 'Arial'
   OldCreateOrder = True
   Position = poDesktopCenter
-  ExplicitWidth = 1136
-  ExplicitHeight = 340
+  ExplicitWidth = 1144
+  ExplicitHeight = 352
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox1: TGroupBox [0]
@@ -364,8 +364,10 @@ inherited FormContasPagParcelas: TFormContasPagParcelas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object DbDtPPC_VENCTO: TJvDBDateEdit
       Left = 154
@@ -512,8 +514,10 @@ inherited FormContasPagParcelas: TFormContasPagParcelas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
   end
   object GrpExclusao: TGroupBox [1]
@@ -777,9 +781,11 @@ inherited FormContasPagParcelas: TFormContasPagParcelas
       TabOrder = 2
       TabStop = False
       OnClick = Bit_CancelarClick
+      OnMouseEnter = Bit_CancelarMouseEnter
+      OnMouseLeave = Bit_CancelarMouseLeave
     end
     object Bit_Sair: TBitBtn
-      Left = 677
+      Left = 683
       Top = 6
       Width = 90
       Height = 25
@@ -805,6 +811,8 @@ inherited FormContasPagParcelas: TFormContasPagParcelas
       TabOrder = 3
       TabStop = False
       OnClick = Bit_SairClick
+      OnMouseEnter = Bit_SairMouseEnter
+      OnMouseLeave = Bit_SairMouseLeave
     end
   end
   inherited coCalcula: TACBrCalculadora
