@@ -3438,11 +3438,11 @@ var
  idseq : integer;
 
   IdHTTP1: TIdHTTP;
-//  RequestHeaders: TStringList;
   ResponseContent: string;
   Token: string;
-  URL, dados, endereco : string;
-  json, jdados, jendereco: TJSONValue;
+  URL : string;
+  cidCodigo: integer;
+  jDados, jEndereco: TJSONValue;
 
 begin
  if Msk_cnpj.Text = '' then
@@ -3461,11 +3461,71 @@ begin
 
       ResponseContent := IdHTTP1.Get(URL);
 
-      json := TJSONObject.ParseJSONValue(ResponseContent);
+      jDados := TJSONObject.ParseJSONValue(ResponseContent);
+      jEndereco := TJSONObject(jDados).GetValue('endereco');
 
-      jdados := json.GetValue< string >( 'abertura');
-      endereco := json.GetValue< string >( 'abertura')
+      if DataCadastros.DsCliente.State = dsBrowse then
+         DataCadastros.DsCliente.Edit;
 
+      dbedCLI_DTNASCIMENTO.Field.Value := StrToDate(jDados.GetValue< string >('abertura'));
+
+      DbeCli_razao.Field.Value := jDados.GetValue< string >('razao_social');
+      DbeCli_Fantasia.Field.Value := jDados.GetValue< string >('fantasia');
+      DBEmail.Field.Value := jDados.GetValue< string >('email');
+
+
+      fone1 := copy(jDados.GetValue< string >( 'telefone'),1 ,pos('/', jDados.GetValue< string >( 'telefone')) - 1);
+      if fone1 = '' then
+        fone1 := jDados.GetValue< string >('telefone');
+      if pos('/', jDados.GetValue< string >('telefone')) > 0 then
+        fone2 := copy(jDados.GetValue< string >('telefone'), pos('/', jDados.GetValue< string >('telefone')) + 1, 20 );
+      if trim(fone1) <>'' then
+      begin
+        vfone := AnsiReplaceStr(fone1,'(','');
+        vfone := AnsiReplaceStr(vfone,')','');
+        vfone := AnsiReplaceStr(vfone,'-','');
+        vfone := AnsiReplaceStr(vfone,' ','');
+        if vfone.Length = 10 then
+          vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
+
+        DbeCli_fone.Field.Value := vfone;
+      end;
+      if trim(fone2) <>'' then
+      begin
+        vfone := AnsiReplaceStr(fone2,'(','');
+        vfone := AnsiReplaceStr(vfone,')','');
+        vfone := AnsiReplaceStr(vfone,'-','');
+        vfone := AnsiReplaceStr(vfone,' ','');
+        if vfone.Length = 10 then
+          vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
+        DbeCli_fax.Field.Value := vfone;
+      end;
+
+
+
+      DbeCliCep.Field.Value :=  AnsiReplaceStr(AnsiReplaceStr(jEndereco.GetValue< string >( 'cep'),'-',''), '.', '');
+      DbeCLI_BAIRRO.Field.Value := jEndereco.GetValue< string >( 'bairro');
+      DbeCli_endere.Field.Value := jEndereco.GetValue< string >( 'logradouro') + ', ' + jEndereco.GetValue< string >( 'numero') + ' ' + iif(pos('*', jDados.GetValue< string >('complemento')) > 0, '',  jDados.GetValue< string >('complemento'));
+      if jEndereco.GetValue< string >( 'municipio') <> '' then
+      begin
+
+        cidCodigo := dbInicio.BuscaUmDadoSqlAsInteger(' SELECT CID_CODIGO FROM CID0000'+
+                ' WHERE CID_ESTADO = '+ QuotedStr(jEndereco.GetValue< string >( 'uf'))+
+                ' AND CID_CIDADE = '+ QuotedStr(jEndereco.GetValue< string >( 'municipio')));
+        if not ((cidCodigo = Null) or (cidCodigo = 0))    then
+        begin
+         if not (DataCadastros.CdsClientes.State  in dsEditModes) then
+           DataCadastros.CdsClientes.Edit;
+         DataCadastros.CdsClientesCLI_CIDADE.AsString  := jEndereco.GetValue< string >( 'municipio');
+         DataCadastros.CdsClientesCLI_UF.AsString      := jEndereco.GetValue< string >( 'uf');
+         DataCadastros.CdsClientesCID_CODIGO.AsInteger := cidCodigo;
+        end;
+      end;
+
+
+
+//      dados := jDados.GetValue< string >( 'abertura');
+//      endereco := jEndereco.GetValue< string >( 'logradouro');
 
     except
       on E: Exception do
