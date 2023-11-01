@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  RwSQLComando, IdHTTP,
+  RwSQLComando, IdHTTP, System.JSON,
   StdCtrls, DBCtrls, Mask, ExtCtrls, ComCtrls, Buttons, DB, DBTables, RwFunc,
   rxToolEdit, RXDBCtrl, Grids, DBGrids, Provider, SqlExpr, SqlClientDataSet,
   DBClient, DBLocal,
@@ -3438,46 +3438,45 @@ var
  idseq : integer;
 
   IdHTTP1: TIdHTTP;
-  RequestHeaders: TStringList;
+//  RequestHeaders: TStringList;
   ResponseContent: string;
   Token: string;
-  URL: string;
+  URL, dados, endereco : string;
+  json, jdados, jendereco: TJSONValue;
 
 begin
  if Msk_cnpj.Text = '' then
    GeraException('Não preenchido o CNPJ/CPF');
   IdHTTP1 := TIdHTTP.Create(nil);
-  RequestHeaders := TStringList.Create;
 
-  try
-    // Set the URL of the API endpoint
-    URL := 'https://api.plugnotas.com.br/cnpj/3843101500187';
+  if Length(RetiraTodaMascara(Msk_cnpj.Text)) = 14 then
+  begin
+    try
+      URL := 'https://api.plugnotas.com.br/cnpj/' + RetirarMascaraCNPJ_INSC(Msk_cnpj.Text);
 
-    // Set your access token
-    Token := '3bfeffc6-4650-40f4-b555-1412c88a688b';
+      Token := '3bfeffc6-4650-40f4-b555-1412c88a688b';
 
-    // Add the Authorization header with the token
-    // RequestHeaders.Add('Authorization: Bearer ' + Token);
-    IdHTTP1.Request.CustomHeaders.AddValue('Authorization', Token);
+      IdHTTP1.Request.CustomHeaders.AddValue('x-api-key', Token);
+      IdHTTP1.Request.CustomHeaders.AddValue('Accept', 'application/json');
+
+      ResponseContent := IdHTTP1.Get(URL);
+
+      json := TJSONObject.ParseJSONValue(ResponseContent);
+
+      jdados := json.GetValue< string >( 'abertura');
+      endereco := json.GetValue< string >( 'abertura')
 
 
-    // Send the GET request with the token in the header
-    ResponseContent := IdHTTP1.Get(URL);
-
-    // Handle the response (ResponseContent contains the server's response)
-    // You can parse or process the response as needed.
-  except
-    on E: Exception do
-    begin
-      // Handle exceptions here
+    except
+      on E: Exception do
+      begin
+        showmessage(E.Message);
+      end;
     end;
+
+    IdHTTP1.Free;
+
   end;
-
-  IdHTTP1.Free;
-  RequestHeaders.Free;
-
-
-
 
  Exit;
 
@@ -3493,6 +3492,8 @@ begin
      begin
       if DataCadastros.DsCliente.State = dsBrowse then
          DataCadastros.DsCliente.Edit;
+
+
       DbeCli_razao.Field.Value := RazaoSocial;
       if Fantasia = '********' then
         DbeCli_Fantasia.Field.Value := RazaoSocial
