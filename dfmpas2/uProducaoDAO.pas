@@ -1037,8 +1037,8 @@ begin
            0
              );
 
-   if (Lote <>  0) then
-    DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO - ' + FloatToSql(quantde) + ' WHERE PRDL_REGISTRO = ' + IntToStr(Lote) );
+//   if (Lote <>  0) then
+//    DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO - ' + FloatToSql(quantde) + ' WHERE PRDL_REGISTRO = ' + IntToStr(Lote) );
 
  finally
     FreeAndNil(kardex);
