@@ -16,7 +16,7 @@ inherited FormFornec: TFormFornec
   OnCloseQuery = FormCloseQuery
   OnKeyPress = FormKeyPress
   ExplicitWidth = 980
-  ExplicitHeight = 609
+  ExplicitHeight = 613
   PixelsPerInch = 96
   TextHeight = 14
   object Label1: TLabel [0]
@@ -703,8 +703,10 @@ inherited FormFornec: TFormFornec
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
               Tabela = 'PCL0000'
               CamposCarregar = 'PCL_NOME'
               CamposRetornar = 'PCL_CODIGO'
@@ -914,8 +916,10 @@ inherited FormFornec: TFormFornec
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             Tabela = 'TRP0000'
             CamposCarregar = 'TRP_CODIGO,TRP_RAZAO'
             CamposRetornar = 'TRP_CODIGO'

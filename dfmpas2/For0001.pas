@@ -668,6 +668,7 @@ begin
       DesabilitaBotoes;
       CbxCtaAnalise.Text := '';
       DataCadastros.CdsFornecedorFOR_DTCADASTRO.AsDateTime := date;
+      DataCadastros.CdsFornecedorFOR_ATIVO.AsString := 'A';
       uteis.HabilitaIncluir('CadastrosFornecedores',DBInicio.Usuario.CODIGO,FormFornec);
       DBeCGC.setfocus;
     except on E:EDataBaseError do
