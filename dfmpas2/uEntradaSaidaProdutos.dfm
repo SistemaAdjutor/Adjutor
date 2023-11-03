@@ -200,8 +200,10 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'PRD_TIPO'
       CamposCarregar = 'PTI_CODIGO, PTI_DESCRI, PTI_SIGLA'
       CamposRetornar = 'PTI_CODIGO'
@@ -258,8 +260,10 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
   end
   object cxButton3: TcxButton
@@ -299,7 +303,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     OnClick = cxButton2Click
   end
   object frxReport1: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -374,13 +378,17 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnAfterPrint = 'Page1OnAfterPrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 86.929189999999990000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 589.606680000000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -389,12 +397,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[empresa]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 15.118120000000000000
           Width = 589.606680000000000000
           Height = 15.118120000000000000
@@ -404,12 +414,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Hist'#243'rico de Movimenta'#231#227'o do Estoque')
           ParentFont = False
           VAlign = vaCenter
         end
         object mFiltro: TfrxMemoView
+          AllowVectorExport = True
           Top = 34.015770000000000000
           Width = 910.866730000000000000
           Height = 15.118120000000000000
@@ -420,12 +432,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
           VAlign = vaCenter
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 918.425790000000000000
           Top = 15.118120000000000000
           Width = 128.504020000000000000
@@ -435,6 +449,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[TIME]')
@@ -442,6 +457,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           VAlign = vaCenter
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 918.425790000000000000
           Top = 34.015770000000000000
           Width = 128.504020000000000000
@@ -451,6 +467,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[PAGE#] de [TOTALPAGES#]')
@@ -458,6 +475,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           VAlign = vaCenter
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 67.133890000000010000
           Width = 1046.929810000000000000
           Color = clBlack
@@ -465,6 +483,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Frame.Typ = [ftTop]
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 45.354360000000000000
           Top = 67.133890000000010000
           Width = 68.031540000000010000
@@ -475,12 +494,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data')
           ParentFont = False
           VAlign = vaCenter
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 918.425790000000000000
           Width = 128.504020000000000000
           Height = 15.118120000000000000
@@ -489,6 +510,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[DATE]')
@@ -496,6 +518,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           VAlign = vaCenter
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 82.252010000000000000
           Width = 1046.929810000000000000
           Color = clBlack
@@ -503,6 +526,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Frame.Typ = [ftTop]
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 67.133890000000010000
           Width = 86.929190000000010000
@@ -513,12 +537,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.189240000000000000
           Top = 67.133890000000010000
           Width = 124.724490000000000000
@@ -529,12 +555,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tipo')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Top = 67.133890000000010000
           Width = 90.708720000000000000
@@ -545,12 +573,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Documento')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 702.992580000000000000
           Top = 67.133890000000010000
           Width = 336.378170000000000000
@@ -561,12 +591,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Top = 67.133890000000010000
           Width = 68.031540000000010000
@@ -577,12 +609,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 207.874150000000000000
           Top = 67.133890000000010000
           Width = 196.535560000000000000
@@ -593,6 +627,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o')
           ParentFont = False
@@ -601,10 +636,12 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 3.779530000000000000
         Top = 328.819110000000000000
         Width = 1046.929810000000000000
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Style = fsDot
@@ -613,6 +650,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 249.448980000000000000
         Width = 1046.929810000000000000
@@ -620,6 +658,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1DATA_HORA: TfrxMemoView
+          AllowVectorExport = True
           Left = 45.354360000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -633,11 +672,13 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."DATA_HORA"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
@@ -649,12 +690,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 207.874150000000000000
           Width = 196.535560000000000000
           Height = 18.897650000000000000
@@ -666,12 +709,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBDataset1TIPO: TfrxMemoView
+          AllowVectorExport = True
           Left = 408.189240000000000000
           Width = 124.724490000000000000
           Height = 18.897650000000000000
@@ -683,12 +728,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."TIPO"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBDataset1KAR_DOCUMENTO: TfrxMemoView
+          AllowVectorExport = True
           Left = 536.693260000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
@@ -700,12 +747,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."KAR_DOCUMENTO"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBDataset1KAR_DESCRICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 702.992580000000000000
           Width = 343.937230000000000000
           Height = 18.897650000000000000
@@ -717,6 +766,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."KAR_DESCRICAO"]')
           ParentFont = False
@@ -724,6 +774,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Wysiwyg = False
         end
         object frxDBDataset1KAR_QUANTIDADE: TfrxMemoView
+          AllowVectorExport = True
           Left = 627.401980000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -735,6 +786,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."KAR_QUANTIDADE"]')
@@ -743,6 +795,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 166.299320000000000000
         Width = 1046.929810000000000000
@@ -750,6 +803,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
         Condition = 'frxDBDataset1."EMP_CODIGO"'
         KeepTogether = True
         object frxDBDataset1EMP_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 18.897650000000000000
           DataField = 'EMP_RAZAO'
@@ -760,6 +814,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."EMP_RAZAO"]')
           ParentFont = False
@@ -767,12 +822,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       end
       object GroupHeader2: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 207.874150000000000000
         Width = 1046.929810000000000000
         OnAfterPrint = 'GroupHeader2OnAfterPrint'
         Condition = 'frxDBDataset1."KAR_ENTRADA_SAIDA"'
         object frxDBDataset1ES: TfrxMemoView
+          AllowVectorExport = True
           Left = 30.236240000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
@@ -784,6 +841,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."ES"]')
           ParentFont = False
@@ -980,6 +1038,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     TimeOut = 60
     ConfurmReading = False
     UseMAPI = SMTP
+    MAPISendFlag = 0
     Left = 384
     Top = 96
   end
@@ -989,6 +1048,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     OverwritePrompt = False
     DataOnly = False
     PictureType = gpPNG
+    OpenAfterExport = False
     Wysiwyg = True
     Creator = 'FastReport'
     SuppressPageHeadersFooters = False
@@ -1005,6 +1065,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     Separator = ';'
     OEMCodepage = False
     UTF8 = False
+    OpenAfterExport = False
     NoSysSymbols = True
     ForcedQuotes = False
     Left = 336
@@ -1015,11 +1076,14 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -1029,6 +1093,9 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 320
     Top = 201
   end
