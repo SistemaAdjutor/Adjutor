@@ -3440,7 +3440,7 @@ var
   IdHTTP1: TIdHTTP;
   ResponseContent: string;
   Token: string;
-  URL : string;
+  URL, Complemento : string;
   cidCodigo: integer;
   jDados, jEndereco: TJSONValue;
 
@@ -3505,7 +3505,8 @@ begin
 
       DbeCliCep.Field.Value :=  AnsiReplaceStr(AnsiReplaceStr(jEndereco.GetValue< string >( 'cep'),'-',''), '.', '');
       DbeCLI_BAIRRO.Field.Value := jEndereco.GetValue< string >( 'bairro');
-      DbeCli_endere.Field.Value := jEndereco.GetValue< string >( 'logradouro') + ', ' + jEndereco.GetValue< string >( 'numero') + ' ' + iif(pos('*', jDados.GetValue< string >('complemento')) > 0, '',  jDados.GetValue< string >('complemento'));
+      jDados.TryGetValue('complemento', Complemento);
+      DbeCli_endere.Field.Value := jEndereco.GetValue< string >( 'logradouro') + ', ' + jEndereco.GetValue< string >( 'numero') + ' ' + Complemento;
       if jEndereco.GetValue< string >( 'municipio') <> '' then
       begin
 
