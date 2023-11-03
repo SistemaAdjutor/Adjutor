@@ -37263,8 +37263,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Memo.UTF8W = (
             
               'Quantidade a Produzir: [frxDBBusca."IOP_QUANTIDADE"]L           ' +
-              '         [PESO] Kg.       Dens: [FormatFloat('#39'###,##0.00'#39' ,<frxD' +
-              'BBusca."IOP_QUANTIDADE"> / <PESO>) ]')
+              '         [PESO] Kg.       Dens: [FormatFloat('#39'###,##0.00'#39' , <PES' +
+              'O> / <frxDBBusca."IOP_QUANTIDADE">) ]')
           ParentFont = False
           Formats = <
             item
@@ -37474,7 +37474,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Font.Style = []
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           Memo.UTF8W = (
-            '[frxDBMateriaPrima."LOTE"]')
+            '[frxDBMateriaPrima."Lote"]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
