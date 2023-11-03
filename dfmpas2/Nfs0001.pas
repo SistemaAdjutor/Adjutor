@@ -3669,6 +3669,8 @@ begin
              SqlCdsGridSemOC.Close;
             // SqlCdsGridSemOC.CommandText := SqlDef('ORDENSCOMPRA',wSql3+wSql1+wSql2,'where E1.ENF_IT_NOTANUMBER = '''+EdtNota.Text+''' and E1.FOR_CODIGO = '''+EdtFor_Codigo.Text+''' and E1.OCP_CODIGO = '''+'000000'+'''','E1.PRD_DESCRI','E1.');
              SqlCdsGridSemOC.CommandText := SqlDef('ORDENSCOMPRA',wSql1,'where E1.ENF_IT_NOTANUMBER = '''+EdtNota.Text+''' and E1.FOR_CODIGO = '''+EdtFor_Codigo.Text+''' ','E1.ENF_REGISTRO ','E1.');
+             if dbInicio.isDesenvolvimento then
+                CopytoClipboard(SqlCdsGridSemOC.CommandText);
              SqlCdsGridSemOC.Open;
              SqlCdsGridSemOC.Refresh;
            except on E:EDataBaseError do
@@ -4670,8 +4672,8 @@ begin
                                   '',//grade
                                   '',
                                   iif(bIndustrRetorno,'E','S'),
-                                  CbLoteProduto.text,
-                                  IIF (CbLoteProduto.EditValue = null,'',CbLoteProduto.EditValue),
+                                  '', // CbLoteProduto.text,
+                                  SqlCdsGridSemOCPRDL_registro.AsString, // IIF (CbLoteProduto.EditValue = null,'',CbLoteProduto.EditValue),
                                   'EXCLUSÃO ENTRADA DE ITEM NOTA FISCAL',
                                   Now,
                                   SqlCdsGridSemOCENF_QTDE.AsFloat,

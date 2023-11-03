@@ -692,10 +692,12 @@ begin
         FrmCadastroProdutoLote.lbAlmoxarifado.Caption := CbAlmox.Text;
         FrmCadastroProdutoLote.ShowModal;
       finally
+        CdsLoteProduto.Refresh;
+        CbLoteProduto.EditValue := FrmCadastroProdutoLote.prdlRegistro;
+        // CbLoteProduto.Text := FrmCadastroProdutoLote.edtNumeroLote.Text;
         FrmCadastroProdutoLote.Destroy;
         FrmCadastroProdutoLote := nil;
       end;
-      CdsLoteProduto.Refresh
     except
         //beep;
         uteis.erro  ('Ocorreu um erro na criação do formulário!');

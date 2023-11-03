@@ -1593,6 +1593,7 @@ begin
                                  FloatToSQL(cdsItensENF_PRECO_ORIGINAL.AsFloat)+ ','+
                                  FloatToSQL(cdsItensENF_PTOTAL_ORIGINAL.AsFloat)+  ')';
                ExecSql(wSql1 + wSql2);
+               ExecSql('UPDATE ENF_IT01 SET PRDL_REGISTRO = ' + CdsItensRegistroLote.AsString + ' WHERE ENF_REGISTRO = ' + IntToStr(iRegistro) );
 
                //Verifica se atualiza estoque
                if (cbMovimentaEstoque.Checked) then
