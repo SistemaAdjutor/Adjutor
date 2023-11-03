@@ -949,11 +949,48 @@ end;
 procedure TFormFornec.btnConsultarCNPJ_CPFClick(Sender: TObject);
 var  vfone : string;
 
+
+  IdHTTP1: TIdHTTP;
+  ResponseContent: string;
+  Token: string;
+  URL : string;
+  cidCodigo: integer;
+  jDados, jEndereco: TJSONValue;
+
+
 begin
  if DBeCGC.Text = '' then
    GeraException('Não preenchido o CNPJ/CPF');
 
 if Length(RetiraTodaMascara(DBeCGC.Text)) = 14 then
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  begin
    FrmConsultarCNPJ  := TFrmConsultarCNPJ.Create(Application);
   try
