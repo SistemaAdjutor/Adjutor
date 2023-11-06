@@ -3,7 +3,7 @@ unit For0001;
 interface
 
 uses
- Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, DB,
+ Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs, DB, IdHTTP, System.JSON,
  Mask, DBCtrls, ExtCtrls, StdCtrls, Buttons, Spin, Grids, DBGrids, ComCtrls, RwSQLComando,
  DBTables, RwFunc,Variants, Provider, SqlExpr,SqlClientDataSet, DBClient, DBLocal, DBLocalS,
   ComboBoxRw,  rxToolEdit, RXDBCtrl, Data.DBXFirebird, SimpleDS, system.StrUtils,
@@ -668,6 +668,7 @@ begin
       DesabilitaBotoes;
       CbxCtaAnalise.Text := '';
       DataCadastros.CdsFornecedorFOR_DTCADASTRO.AsDateTime := date;
+      DataCadastros.CdsFornecedorFOR_ATIVO.AsString := 'A';
       uteis.HabilitaIncluir('CadastrosFornecedores',DBInicio.Usuario.CODIGO,FormFornec);
       DBeCGC.setfocus;
     except on E:EDataBaseError do
@@ -946,14 +947,109 @@ begin
 end;
 
 procedure TFormFornec.btnConsultarCNPJ_CPFClick(Sender: TObject);
-var  vfone : string;
+var  vfone, fone1, fone2 : string;
+
+
+  IdHTTP1: TIdHTTP;
+  ResponseContent: string;
+  Token: string;
+  URL, complemento : string;
+  TemComplemento: boolean;
+  cidCodigo: integer;
+  jDados, jEndereco: TJSONValue;
+
 
 begin
  if DBeCGC.Text = '' then
    GeraException('Não preenchido o CNPJ/CPF');
 
-if Length(RetiraTodaMascara(DBeCGC.Text)) = 14 then
- begin
+  if Length(RetiraTodaMascara(DBeCGC.Text)) = 14 then
+  begin
+    try
+
+      IdHTTP1 := TIdHTTP.Create(nil);
+      URL := 'https://api.plugnotas.com.br/cnpj/' + RetirarMascaraCNPJ_INSC(DBeCGC.Text);
+
+      Token := '3bfeffc6-4650-40f4-b555-1412c88a688b';
+
+      IdHTTP1.Request.CustomHeaders.AddValue('x-api-key', Token);
+      IdHTTP1.Request.CustomHeaders.AddValue('Accept', 'application/json');
+
+      ResponseContent := IdHTTP1.Get(URL);
+
+      jDados := TJSONObject.ParseJSONValue(ResponseContent);
+      jEndereco := TJSONObject(jDados).GetValue('endereco');
+
+      url := TJSONObject(jEndereco).ToString;
+
+
+      if DataCadastros.DsFornecedor.State = dsBrowse then
+         DataCadastros.DsFornecedor.Edit;
+
+      DbeFor_dtinicio.Field.Value := StrToDate(jDados.GetValue< string >('abertura'));
+
+      DBeFor_razao.Field.Value := jDados.GetValue< string >('razao_social');
+      // DbeCli_Fantasia.Field.Value := jDados.GetValue< string >('fantasia');
+      DBeFor_email.Field.Value := jDados.GetValue< string >('email');
+
+
+      fone1 := copy(jDados.GetValue< string >( 'telefone'),1 ,pos('/', jDados.GetValue< string >( 'telefone')) - 1);
+      if fone1 = '' then
+        fone1 := jDados.GetValue< string >('telefone');
+      if pos('/', jDados.GetValue< string >('telefone')) > 0 then
+        fone2 := copy(jDados.GetValue< string >('telefone'), pos('/', jDados.GetValue< string >('telefone')) + 1, 20 );
+      if trim(fone1) <>'' then
+      begin
+        vfone := AnsiReplaceStr(fone1,'(','');
+        vfone := AnsiReplaceStr(vfone,')','');
+        vfone := AnsiReplaceStr(vfone,'-','');
+        vfone := AnsiReplaceStr(vfone,' ','');
+        if vfone.Length = 10 then
+          vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
+
+        DBeFor_fone.Field.Value := vfone;
+      end;
+      if trim(fone2) <>'' then
+      begin
+        vfone := AnsiReplaceStr(fone2,'(','');
+        vfone := AnsiReplaceStr(vfone,')','');
+        vfone := AnsiReplaceStr(vfone,'-','');
+        vfone := AnsiReplaceStr(vfone,' ','');
+        if vfone.Length = 10 then
+          vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
+        DBeFor_fax.Field.Value := vfone;
+      end;
+
+
+
+      DBeFor_cepEdit1.Field.Value :=  AnsiReplaceStr(AnsiReplaceStr(jEndereco.GetValue< string >( 'cep'),'-',''), '.', '');
+      DBEFOR_BAIRRO.Field.Value := jEndereco.GetValue< string >( 'bairro');
+      jDados.TryGetValue('complemento', Complemento);
+      DBeFor_endere.Field.Value := jEndereco.GetValue< string >( 'logradouro') + ', ' + jEndereco.GetValue< string >( 'numero') + ' ' + complemento;
+      DataCadastros.CdsFornecedorFOR_CIDADE.AsString  := jEndereco.GetValue< string >( 'municipio');
+      DataCadastros.CdsFornecedorFOR_UF.AsString      := jEndereco.GetValue< string >( 'uf');
+//      dados := jDados.GetValue< string >( 'abertura');
+//      endereco := jEndereco.GetValue< string >( 'logradouro');
+
+    except
+      on E: Exception do
+      begin
+        showmessage(E.Message);
+      end;
+    end;
+
+    IdHTTP1.Free;
+
+
+
+
+  Exit;
+
+
+
+
+
+
    FrmConsultarCNPJ  := TFrmConsultarCNPJ.Create(Application);
   try
    FrmConsultarCNPJ.CNPJ :=  DBeCGC.Text;

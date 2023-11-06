@@ -162,6 +162,7 @@ type
   tsharedb = record
     Produtos : boolean;
     ProdutoPrecoEmpresa: boolean;
+    EnderecoEstoque: boolean;
     Clientes : boolean;
     Bancos : boolean;
     Transportadora : boolean;
@@ -3028,7 +3029,7 @@ procedure TDBInicio.LerVersao;
         Close;
       end;
     end;
-    vlVersao.patch := 7;
+    vlVersao.patch := 0;
     vlVersao.Issues := '';
 
     r := TIdIPWatch.Create( nil );
@@ -3208,6 +3209,9 @@ Function TDBInicio.Exclusivo( pNomeCompartilhamento : string ) : boolean;
     else
     if pNomeCompartilhamento = 'PRODUTO_PRECO_EMPRESA' then
       compartilhado := Sharedb.ProdutoPrecoEmpresa
+    else
+    if pNomeCompartilhamento = 'ENDERECO_ESTOQUE' then
+      compartilhado := Sharedb.EnderecoEstoque
     else
     if pNomeCompartilhamento = 'CLIENTES'
     then
@@ -3474,6 +3478,7 @@ procedure TDBInicio.CarregarCompartilhamentos;
     qAux.Open;
     vlSharedb.Produtos := qAux.FieldByName( 'PRODUTOS' ).AsString = 'C';
     vlSharedb.ProdutoPrecoEmpresa := qAux.FieldByName( 'PRODUTO_PRECO_EMPRESA' ).AsString = 'C';
+    vlSharedb.EnderecoEstoque := qAux.FieldByName( 'ENDERECO_ESTOQUE' ).AsString = 'C';
     vlSharedb.Clientes := qAux.FieldByName( 'CLIENTES' ).AsString = 'C';
     vlSharedb.Bancos := qAux.FieldByName( 'BANCOS' ).AsString = 'C';
     vlSharedb.Transportadora := qAux.FieldByName( 'TRANSPORTADORAS' )

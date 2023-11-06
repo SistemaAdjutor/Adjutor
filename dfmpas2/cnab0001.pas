@@ -3701,7 +3701,8 @@ begin
            wCOD_INSTRUCAO2:= '00';
            wProtestar := 'N';
            wDIAS_PROTESTO := '00';
-           wNossoNumero:= CdSCrCduplicata.FieldByName('FPC_COBNUM').AsInteger;
+           // wNossoNumero:= CdSCrCduplicata.FieldByName('FPC_COBNUM').AsInteger;  // tava dando erro de conversão
+           wNossoNumero := StrToIntDef(CdSCrCduplicata.FieldByName('FPC_COBNUM').AsString, 0);
             {Verifica o Endereço de faturamento}
             if ((CdSCrCduplicata.FieldByname('CLI_CEPFAT').IsNull = TRUE) OR (CdSCrCduplicata.FieldByname('CLI_CEPFAT').AsString = '')) AND ((CdSCrCduplicata.FieldByname('CLI_CIDFAT').IsNull = TRUE) OR (CdSCrCduplicata.FieldByname('CLI_CIDFAT').AsString = '')) then
                begin

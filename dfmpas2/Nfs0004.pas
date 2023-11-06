@@ -187,6 +187,8 @@ type
     Label33: TLabel;
     lbNatureza: TLabel;
     CdsNfseNFSE_dataemissao: TSQLTimeStampField;
+    bitJustificativaDeducao: TBitBtn;
+    cdsNfse_itNFSI_JUSTIFICATIVA_DEDUCAO: TStringField;
     procedure Bit_SairClick(Sender: tObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
@@ -212,9 +214,12 @@ type
     procedure btnrevisadoClick(Sender: TObject);
     procedure cbNatOperClick(Sender: TObject);
     procedure DBRadioGroup1Change(Sender: TObject);
+    procedure DBEdit3Change(Sender: TObject);
+    procedure bitJustificativaDeducaoClick(Sender: TObject);
   private
     { Private declarations }
     FStatus : TStatusNF;
+    JustificativaDeducao: String;
     procedure SetStatus (const AValues : TStatusNF);
     procedure NaturezaDaOperacao(operacao: integer);
   public
@@ -235,7 +240,16 @@ implementation
 
 {$R *.dfm}
 
-uses InicioDB, Uteis, DataCad, CID0002, rwfunc;
+uses InicioDB, Uteis, DataCad, CID0002, rwfunc, uJustificativaDeducao;
+
+procedure TFrmNotaFiscalServico.bitJustificativaDeducaoClick(Sender: TObject);
+begin
+  inherited;
+  if frmJustificativaDeducao = nil then
+    frmJustificativaDeducao := TfrmJustificativaDeducao.Create(Self);
+  frmJustificativaDeducao.ShowModal;
+  FreeAndNil(frmJustificativaDeducao);
+end;
 
 procedure TFrmNotaFiscalServico.Bit_CancelarClick(Sender: TObject);
 begin
@@ -280,9 +294,12 @@ begin
     GeraException( 'Item de serviço obrigatório.');
   if cdsNfse_itdiscriminacao.IsNull then
     GeraException( 'Descrição do serviço obrigatório.');
+  if (cdsNfse_itValorDeducoes.AsFloat > 0) and (cdsNfse_itNFSI_JUSTIFICATIVA_DEDUCAO.AsString = '') then
+    GeraException('Informe a Justificativa');
+  if (cdsNfse_itValorDeducoes.AsFloat > 0) and (Length(cdsNfse_itNFSI_JUSTIFICATIVA_DEDUCAO.AsString) < 15 ) then
+    GeraException('Mínimo de 15 caracteres para a Justificativa de Devolução');
 
   Gravando;
-
   close;
 end;
 
@@ -325,54 +342,55 @@ end;
 procedure TFrmNotaFiscalServico.BuscaNotaFiscal(RPS: integer);
 var hab : boolean;
 begin
- qNfse.Close;
- hab := true;
- qNfse.CommandText :=
- 'SELECT  EMP_CODIGO ,RPS_CODIGO,  NFSE_CODIGO, fat_codigo, CLI_CODIGO, NUM_LOTE, NFSE_serie, NFSE_email, '+
- ' NFSE_dataemissao,NFSE_optantesimplesnacional, NFSE_incentivadorcultural,                              '+
- '  NFSE_razaosocial, NFSE_cnpj_cpf, NFSE_endereco, NFSE_numero_end, NFSE_complemento,                   '+
- '  NFSE_bairro, NFSE_codigomunicipio, NFSE_uf, NFSE_cep, NFSE_telefone, NFSe_naturezaoperacao,          '+
- ' SRV_CODIGO, CNAE_Codigo, NFSE_DTCANCELADO, nfse_insc_municipal, nfse_insc,                            '+
- ' NFSE_NUM_DANFSE, NFSE_CODVERIFICACAO, NFSE_VALORCREDITO ,NFS_REVISADO, USU_CODIGO                     '+
- ' FROM NFSERVICO SE                                                                                     '+
- ' WHERE  SE.NFSE_CODIGO = ' + IntToStr(RPS);
+   qNfse.Close;
+   hab := true;
+   qNfse.CommandText :=
+   'SELECT  EMP_CODIGO ,RPS_CODIGO,  NFSE_CODIGO, fat_codigo, CLI_CODIGO, NUM_LOTE, NFSE_serie, NFSE_email, '+
+   ' NFSE_dataemissao,NFSE_optantesimplesnacional, NFSE_incentivadorcultural,                              '+
+   '  NFSE_razaosocial, NFSE_cnpj_cpf, NFSE_endereco, NFSE_numero_end, NFSE_complemento,                   '+
+   '  NFSE_bairro, NFSE_codigomunicipio, NFSE_uf, NFSE_cep, NFSE_telefone, NFSe_naturezaoperacao,          '+
+   ' SRV_CODIGO, CNAE_Codigo, NFSE_DTCANCELADO, nfse_insc_municipal, nfse_insc,                            '+
+   ' NFSE_NUM_DANFSE, NFSE_CODVERIFICACAO, NFSE_VALORCREDITO ,NFS_REVISADO, USU_CODIGO                     '+
+   ' FROM NFSERVICO SE                                                                                     '+
+   ' WHERE  SE.NFSE_CODIGO = ' + IntToStr(RPS);
 
 
- CdsNfse.Open;
- if (CdsNfse.FieldByName('NFSE_codigomunicipio').AsInteger <> 0) or not (CdsNfse.FieldByName('NFSE_codigomunicipio').IsNull ) then
- begin
-   OpenAux('select CID_CIDADE from CID0000 cid where cid.CID_CODIGO = '+
-          IntToStr(CdsNfse.FieldByName('NFSE_codigomunicipio').AsInteger)  );
-   if qAux.FieldByName('CID_CIDADE').AsString <> '' then
+   CdsNfse.Open;
+   if (CdsNfse.FieldByName('NFSE_codigomunicipio').AsInteger <> 0) or not (CdsNfse.FieldByName('NFSE_codigomunicipio').IsNull ) then
    begin
-      if not (CdsNfse.State in dsEditModes) then
-        cdsnfse.Edit;
-      CdsNfse.FieldByName('CLI_CIDADE').AsString := qAux.FieldByName('CID_CIDADE').AsString;
-      CdsNfse.Post;
+     OpenAux('select CID_CIDADE from CID0000 cid where cid.CID_CODIGO = '+
+            IntToStr(CdsNfse.FieldByName('NFSE_codigomunicipio').AsInteger)  );
+     if qAux.FieldByName('CID_CIDADE').AsString <> '' then
+     begin
+        if not (CdsNfse.State in dsEditModes) then
+          cdsnfse.Edit;
+        CdsNfse.FieldByName('CLI_CIDADE').AsString := qAux.FieldByName('CID_CIDADE').AsString;
+        CdsNfse.Post;
+     end;
+
+
+
    end;
 
+   qNfse_it.Close;
+   qNfse_it.CommandText := 'SELECT '+
+    ' NFSI_CODIGO, NFSE_CODIGO, NFSI_valorservicos, NFSI_valordeducoes, NFSI_valorpis, NFSI_valorcofins, '+
+    ' NFSI_valorinss, NFSI_valorir, NFSI_valorcsll, NFSI_issretido, NFSI_valoriss, NFSI_valorissretido,  '+
+    ' NFSI_Aliqpis, NFSI_Aliqcofins , NFSI_Aliqinss, NFSI_Aliqir, NFSI_Aliqcsll ,                         '+
+    ' NFSI_outrasretencoes, NFSI_basecalculo , NFSI_aliquotaiss , NFSI_valorliquidonfse,                 '+
+    ' NFSI_descontoincondicionado, NFSI_descontocondicionado, NFSI_discriminacao,NFSI_RETENCOESFEDERAIS,        '+
+    ' NFSI_JUSTIFICATIVA_DEDUCAO ' +
+    ' FROM nfse_it '+
+    ' WHERE NFSE_CODIGO = ' + IntToStr(RPS);
+  cdsNfse_it.Open;
 
+   if not ((CdsNfse.FieldByName('NUM_LOTE').IsNull) or (CdsNfse.FieldByName('NUM_LOTE').AsInteger = 0 )) then
+   begin
+     OpenAux('select lse_status from LOTE_NFSE where num_lote = ' +IntToStr(CdsNfse.FieldByName('NUM_LOTE').AsInteger));
+     hab := (qAux.FieldByName('lse_status').AsString = 'R');
+   end;
 
- end;
-
- qNfse_it.Close;
- qNfse_it.CommandText := 'SELECT '+
-' NFSI_CODIGO, NFSE_CODIGO, NFSI_valorservicos, NFSI_valordeducoes, NFSI_valorpis, NFSI_valorcofins, '+
-' NFSI_valorinss, NFSI_valorir, NFSI_valorcsll, NFSI_issretido, NFSI_valoriss, NFSI_valorissretido,  '+
-' NFSI_Aliqpis, NFSI_Aliqcofins , NFSI_Aliqinss, NFSI_Aliqir, NFSI_Aliqcsll ,                         '+
-' NFSI_outrasretencoes, NFSI_basecalculo , NFSI_aliquotaiss , NFSI_valorliquidonfse,                 '+
-' NFSI_descontoincondicionado, NFSI_descontocondicionado, NFSI_discriminacao,NFSI_RETENCOESFEDERAIS        '+
-' FROM nfse_it '+
-' WHERE NFSE_CODIGO = ' + IntToStr(RPS);
-cdsNfse_it.Open;
-
- if not ((CdsNfse.FieldByName('NUM_LOTE').IsNull) or (CdsNfse.FieldByName('NUM_LOTE').AsInteger = 0 )) then
- begin
-   OpenAux('select lse_status from LOTE_NFSE where num_lote = ' +IntToStr(CdsNfse.FieldByName('NUM_LOTE').AsInteger));
-   hab := (qAux.FieldByName('lse_status').AsString = 'R');
- end;
-
- ControlaComp(hab);
+   ControlaComp(hab);
 
 
 end;
@@ -541,6 +559,15 @@ begin
   labCodVerif.Visible := not (CdsNfseNFSE_CODVERIFICACAO.AsString ='');
   labNFSE.Visible := not (CdsNfseNFSE_NUM_DANFSE.IsNull);
   labValorCredito.Visible := not (CdsNfseNFSE_VALORCREDITO.isnull);
+end;
+
+procedure TFrmNotaFiscalServico.DBEdit3Change(Sender: TObject);
+begin
+  inherited;
+  if DBEdit3.Text <> '' then
+    bitJustificativaDeducao.Enabled := True
+  else
+    bitJustificativaDeducao.Enabled := False;
 end;
 
 procedure TFrmNotaFiscalServico.DBMemo1Enter(Sender: TObject);

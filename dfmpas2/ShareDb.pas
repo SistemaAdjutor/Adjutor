@@ -68,6 +68,8 @@ type
     DBRadioGroup19: TDBRadioGroup;
     Label20: TLabel;
     DBRadioGroup20: TDBRadioGroup;
+    Label21: TLabel;
+    DBRadioGroup21: TDBRadioGroup;
     procedure FormShow(Sender: tObject);
     procedure FormClose(Sender: tObject; var Action: TCloseAction);
     procedure SpdGravarClick(Sender: tObject);

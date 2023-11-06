@@ -1,0 +1,10 @@
+﻿Atualizado em 01/01/2023
+Inicio da versão: 01/01/2023
+
+principal: Rotor, Bepine
+  1685 - Nota de Serviço - campo dedução [Rotor]
+  1691 - Erro ao lançar contas a pagar [Bepine]
+  1699 - Melhoria endereços de estoque [Rotor]
+  1711 - Consumo de lotes baixando duplicado - PCP new [Novi]
+  
+  

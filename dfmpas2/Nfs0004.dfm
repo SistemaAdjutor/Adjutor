@@ -588,8 +588,10 @@ object FrmNotaFiscalServico: TFrmNotaFiscalServico
     GridLeft = 0
     GridWidth = 0
     GridHeight = 100
+    GridTop = 0
     GridShowWhenEnter = False
     SelectWithDoubleClick = False
+    LimparCampoAoSair = True
   end
   object EdCnaeCodigo: TDBEdit
     Left = 45
@@ -632,8 +634,10 @@ object FrmNotaFiscalServico: TFrmNotaFiscalServico
     GridLeft = 0
     GridWidth = 0
     GridHeight = 100
+    GridTop = 0
     GridShowWhenEnter = False
     SelectWithDoubleClick = False
+    LimparCampoAoSair = True
   end
   object gbValores: TGroupBox
     Left = 8
@@ -877,6 +881,7 @@ object FrmNotaFiscalServico: TFrmNotaFiscalServico
       DataField = 'NFSI_valordeducoes'
       DataSource = dsNfse_it
       TabOrder = 2
+      OnChange = DBEdit3Change
     end
     object DBEdit4: TDBEdit
       Left = 93
@@ -1062,6 +1067,22 @@ object FrmNotaFiscalServico: TFrmNotaFiscalServico
       DataField = 'NFSI_valorissretido'
       DataSource = dsNfse_it
       TabOrder = 21
+    end
+    object bitJustificativaDeducao: TBitBtn
+      Left = 182
+      Top = 61
+      Width = 26
+      Height = 25
+      Caption = '?'
+      Enabled = False
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clRed
+      Font.Height = -15
+      Font.Name = 'MS Sans Serif'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 22
+      OnClick = bitJustificativaDeducaoClick
     end
   end
   object GroupBox1: TGroupBox
@@ -1641,6 +1662,10 @@ object FrmNotaFiscalServico: TFrmNotaFiscalServico
     object cdsNfse_itNFSI_RETENCOESFEDERAIS: TFMTBCDField
       FieldName = 'NFSI_RETENCOESFEDERAIS'
       Precision = 15
+    end
+    object cdsNfse_itNFSI_JUSTIFICATIVA_DEDUCAO: TStringField
+      FieldName = 'NFSI_JUSTIFICATIVA_DEDUCAO'
+      Size = 255
     end
   end
   object dsNfse_it: TDataSource

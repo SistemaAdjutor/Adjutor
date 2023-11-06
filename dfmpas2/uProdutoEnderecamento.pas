@@ -10,7 +10,8 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, DBCtrls, Mask, ExtCtrls, ComCtrls, Buttons, DB, DBTables, RwFunc,
   Provider, SqlExpr,  Grids, DBGrids, Data.FMTBCd, BaseForm,
-  Datasnap.DBClient, ACBrEnterTab, ACBrBase, ACBrCalculadora, ACBrETQ;
+  Datasnap.DBClient, ACBrEnterTab, ACBrBase, ACBrCalculadora, ACBrETQ,
+  SgDbSeachComboUnit, ComboBoxRW;
 
 
 type
@@ -39,6 +40,13 @@ type
     CdsProdutoEnderecamentoPRDE_ENDERECO: TStringField;
     CdsProdutoEnderecamentoEMP_CODIGO: TStringField;
     dsProdutoEnderecamento: TDataSource;
+    CbAlmoxarifadoDestino: TComboBoxRw;
+    Label3: TLabel;
+    SqlProdutoEnderecamentoAMX_CODIGO: TStringField;
+    CdsProdutoEnderecamentoAMX_CODIGO: TStringField;
+    CdsProdutoEnderecamentoAMX_DESCRI: TStringField;
+    SqlProdutoEnderecamentoEMP_RAZAO: TStringField;
+    CdsProdutoEnderecamentoEMP_RAZAO: TStringField;
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);
     procedure Bit_ExcluirClick(Sender: tObject);
@@ -59,6 +67,9 @@ type
     procedure FormDestroy(Sender: TObject);
 
     procedure FormShow(Sender: TObject);
+    procedure CdsProdutoEnderecamentoAMX_DESCRIGetText(Sender: TField;
+      var Text: string; DisplayText: Boolean);
+    procedure CbAlmoxarifadoDestinoSelect(Sender: TObject);
   private
   public
      procedure BotoesAcesso;
@@ -125,6 +136,12 @@ begin
     end;
 end;
 
+procedure TFrmProdutoEnderecamento.CbAlmoxarifadoDestinoSelect(Sender: TObject);
+begin
+  inherited;
+  DesabilitaBotoes;
+end;
+
 procedure TFrmProdutoEnderecamento.CdsProdutoEnderecamentoAfterDelete(
   DataSet: TDataSet);
 begin
@@ -135,6 +152,16 @@ procedure TFrmProdutoEnderecamento.CdsProdutoEnderecamentoAfterPost(
   DataSet: TDataSet);
 begin
      CdsProdutoEnderecamento.ApplyUpdates(0);
+end;
+
+procedure TFrmProdutoEnderecamento.CdsProdutoEnderecamentoAMX_DESCRIGetText(
+  Sender: TField; var Text: string; DisplayText: Boolean);
+begin
+  inherited;
+  if CdsProdutoEnderecamentoAMX_CODIGO.AsString <> '' then
+    Text := dbInicio.BuscaUmDadoSqlAsString('SELECT AMX_CODIGO || '' - '' || AMX_DESCRI FROM ALMOX0000 WHERE AMX_CODIGO = ' + QuotedStr(CdsProdutoEnderecamentoAMX_CODIGO.AsString)) ;
+  DisplayText := True;
+
 end;
 
 procedure TFrmProdutoEnderecamento.Bit_novoClick(Sender: tObject);
@@ -265,11 +292,11 @@ end;
 procedure TFrmProdutoEnderecamento.FormCreate(Sender: tObject);
 begin
     inherited;
-    width := 679;
-    height  := 487;
+//    width := 679;
+//    height  := 487;
 
     CdsProdutoEnderecamento.Close;
-    SqlProdutoEnderecamento.CommandText := SQLDEF('TABELAS','SELECT * FROM PRD0000_ENDERECAMENTO','','PRDE_ENDERECO','');
+    SqlProdutoEnderecamento.CommandText := SQLDEF('TABELAS','SELECT * FROM PRD0000_ENDERECAMENTO pe JOIN PRD0000_ENDERECAMENTO_EMPRESA pee ON (pee.EMP_CODIGO = pe.EMP_CODIGO ) JOIN EMP0000 e ON (e.EMP_CODIGO = pe.EMP_CODIGO )',  ConcatSe('WHERE pee.',dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'PRDE_ENDERECO','');
     CdsProdutoEnderecamento.open;
     Habilitabotoes;
     if CdsProdutoEnderecamento.IsEmpty Then  //Evita alteração antes que se
