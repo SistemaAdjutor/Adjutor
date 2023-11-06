@@ -7,7 +7,22 @@ uses
   Dialogs, ComCtrls, StdCtrls, Mask, DBCtrls, Buttons, ExtCtrls, ImgList,
   Menus,Db, CheckLst, Grids, DBGrids,Inifiles,  RWfunc, System.ImageList, dbclient, JvExMask, JvToolEdit, JvDBControls,   JvExStdCtrls, JvEdit, JvValidateEdit, cxPCdxBarPopupMenu, cxGraphics,
   cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxPC, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxButtonEdit, RegularExpressions, cxDropDownEdit, cxLookupEdit, cxDBLookupEdit,
-  cxDBLookupComboBox;
+  cxDBLookupComboBox, dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint,
+  dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, dxBarBuiltInMenu;
 
 type
   TFrmCadastroUsuario = class(TForm)
@@ -199,6 +214,7 @@ type
     chkUSP_AUTORIZA_RETIRADA_MATERIAL: TCheckBox;
     chkUSP_REALIZA_RETIRADA_MATERIAL: TCheckBox;
     chkExibeAbaInfoClientePedido: TCheckBox;
+    chkIncluiItemPedOPGerada: TCheckBox;
     procedure FormShow(Sender: tObject);
     procedure FormCloseQuery(Sender: tObject; var CanClose: Boolean);
     procedure BitInclusaoClick(Sender: tObject);
@@ -2812,6 +2828,7 @@ begin
      DataCadastros1.CdSUsaParametro.FieldByName('USP_PERMITE_EXCLUIR_ITENS').AsString := iif(chkpermite_excluir_itens.Checked,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_ESTORNAEXPEDICAO').AsString := iif(chkEstornaExpedicao.Checked,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_HABILITA_COLUNA_NF').AsString := iif(chkHabilitaColunaNF.Checked,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_INCLUI_ITEM_PED_OP_GERADA').AsString := iif(chkIncluiItemPedOPGerada.Checked,'S','N');
 
      DataCadastros1.CdSUsaParametro.FieldByName('USP_ALTERA_CUSTOS_PRODUTO').AsString     := IIF(chkAlteraCustosAutomaticos.Checked,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('PERMITE_VENDA_ABAIXO_CUSTO').AsString    := IIF(ChkAutorizaVendaAbaixo.Checked    ,'S','N');
@@ -2983,6 +3000,7 @@ begin
            chkpermite_excluir_itens.Checked := (DataCadastros1.CdSUsaParametro.FieldByName('USP_PERMITE_EXCLUIR_ITENS').AsString = 'S');
            chkEstornaExpedicao.Checked := (DataCadastros1.CdSUsaParametro.FieldByName('USP_ESTORNAEXPEDICAO').AsString = 'S');
            chkHabilitaColunaNF.Checked := (DataCadastros1.CdSUsaParametro.FieldByName('USP_HABILITA_COLUNA_NF').AsString = 'S');
+           chkIncluiItemPedOPGerada.Checked := (DataCadastros1.CdSUsaParametro.FieldByName('USP_INCLUI_ITEM_PED_OP_GERADA').AsString = 'S');
 
            chkMarkupPedido.Checked         := DataCadastros1.CdSUsaParametro.FieldByName('USP_VISUALIZA_MARKUP_PEDIDO').AsString       = 'S';
           {produtos}

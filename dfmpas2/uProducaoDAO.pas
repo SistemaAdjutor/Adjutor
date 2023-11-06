@@ -37,7 +37,7 @@ type
   public
    function EnviarDemanda (const ped_codigo , prd_codigo, situacao : string ;const fti_registro, prf_registro, iop_codigo : Integer; const dtEntrega : TDate;const  estoque : double; produzir : double = 0.0 )  : Integer;
    function DemandaHistorico (const dep_codigo : Integer; const descricao, ped_codigo,prd_codigo : string; ReenvioDemanda :  boolean = False ): Boolean;
-   function EstornoDemanda (ped_codigo: string):Boolean;
+   function EstornoDemanda (ped_codigo: string; prdCodigo: string = ''):Boolean;
    function EstornoEnvase(const iop_codigo: integer):boolean;
    function EnviaraProducao (const ped_codigo : string;const  Dt_Emissao, dt_Entrega : TDate; const cli_codigo : string): Integer;
    function EnviarItemProducao(const  prd_codigo , prd_refer, ped_codigo: string; const Dt_Emissao: TDate; dt_Entrega: TDate;
@@ -1382,14 +1382,16 @@ end;
 
 
 //function TProducaoDao.EstornoDemanda(const dep_codigo:string): Boolean;
-function TProducaoDao.EstornoDemanda(ped_codigo:string): Boolean;
+function TProducaoDao.EstornoDemanda(ped_codigo:string; prdCodigo: string = ''): Boolean;
 var sql : string;
 
 begin
    try
      //não excluir os históricos, incluir hisórico de estorno
     OpenAux('SELECT * FROM DEMANDA_PRODUCAO '+
-            ' WHERE ped_codigo = ' + QuotedStr(ped_codigo) +  ' AND emp_codigo = ' + QuotedStr(DBInicio.emp_codigo) );
+            ' WHERE ped_codigo = ' + QuotedStr(ped_codigo) +
+            iif(prdCodigo = '', '', ' AND PRD_CODIGO = ' + QuotedStr(prdCodigo)) +
+            ' AND emp_codigo = ' + QuotedStr(DBInicio.emp_codigo) );
     qAux.First;
     while not qAux.Eof do
     begin

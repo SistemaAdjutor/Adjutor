@@ -1299,8 +1299,9 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             TabOrder = 0
             Properties.ActivePage = cxTabSheet1
             Properties.CustomButtons.Buttons = <>
-            ClientRectBottom = 343
-            ClientRectRight = 1040
+            ClientRectBottom = 339
+            ClientRectLeft = 4
+            ClientRectRight = 1036
             ClientRectTop = 25
             object cxTabSheet1: TcxTabSheet
               Caption = 'Pedido de venda'
@@ -1604,6 +1605,14 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
                 Height = 17
                 Caption = 'Exibir Aba de Informa'#231#245'es do Cliente no Pedido'
                 TabOrder = 29
+              end
+              object chkIncluiItemPedOPGerada: TCheckBox
+                Left = 9
+                Top = 279
+                Width = 256
+                Height = 17
+                Caption = 'Permite incluir itens em pedidos com O.P. gerada'
+                TabOrder = 30
               end
             end
             object tabProdutos: TcxTabSheet
@@ -2366,7 +2375,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C010103000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000

@@ -7610,7 +7610,9 @@ begin
 end;
 
 procedure TFrmPedido.EnviarPedidoProducao;
-var  Tipo : uProducaoDAO.TItemProducao;
+var
+  Tipo : uProducaoDAO.TItemProducao;
+  filtroPrdCodigo: string;
 begin
   if SqlCdsPedido.IsEmpty then
    GeraException('Não há pedido');
@@ -7630,14 +7632,27 @@ begin
                               ' WHERE ORE_CODIGO IS NOT NULL  ' +
                               ' AND PED_CODIGO = '+QuotedStr(EdPedidoNumero.text) ) >0 then
     raise Exception.Create('Envase já enviada');
-
-  if BuscaUmDadoSqlAsInteger('SELECT CAST(COUNT(*) AS INTEGER) FROM DEMANDA_PRODUCAO '+
+  filtroPrdCodigo := '(';
+  if (BuscaUmDadoSqlAsInteger('SELECT CAST(COUNT(*) AS INTEGER) FROM DEMANDA_PRODUCAO '+
                               ' WHERE PED_CODIGO = '+QuotedStr(EdPedidoNumero.text) +
                               '  AND EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo)
-                               ) > 0
+                               ) - SqlCdsPedidoItem.recordcount) = 0
+    then raise Exception.Create('Demanda já enviada')
+    else
+    begin
+      SqlCdsPedidoItem.Filtered := False;
+      SqlCdsPedidoItem.Filter := '(pti_sigla = ''PA'') OR (pti_sigla = ''PI'') OR (pti_sigla =''KT'') ';
+      SqlCdsPedidoItem.Filtered := True;
+      SqlCdsPedidoItem.First;
+      while not SqlCdsPedidoItem.Eof do
+      begin
+        filtroPrdCodigo := filtroPrdCodigo + ' AND PRD_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPRD_CODIGO.AsString);
+        SqlCdsPedidoItem.Next;
+      end;
+      filtroPrdCodigo := filtroPrdCodigo + ')'
 
-                              then
-    raise Exception.Create('Demanda já enviada');
+
+    end;
 
    SqlCdsPedidoItem.Filtered := False;
    SqlCdsPedidoItem.Filter := '(pti_sigla = ''PA'') OR (pti_sigla = ''PI'') OR (pti_sigla =''KT'') ';

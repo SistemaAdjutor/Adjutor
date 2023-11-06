@@ -6152,6 +6152,10 @@ object DataCadastros1: TDataCadastros1
       FixedChar = True
       Size = 1
     end
+    object SQLUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField
+      FieldName = 'USP_INCLUI_ITEM_PED_OP_GERADA'
+      Size = 1
+    end
   end
   object DSPUsaParametro: TDataSetProvider
     DataSet = SQLUsaParametro
@@ -6574,6 +6578,10 @@ object DataCadastros1: TDataCadastros1
     object CDSUsaParametroUSP_EXIBE_ABA_INFO_CLIENTE: TStringField
       FieldName = 'USP_EXIBE_ABA_INFO_CLIENTE'
       FixedChar = True
+      Size = 1
+    end
+    object CDSUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField
+      FieldName = 'USP_INCLUI_ITEM_PED_OP_GERADA'
       Size = 1
     end
   end

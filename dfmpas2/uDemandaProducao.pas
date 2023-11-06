@@ -439,8 +439,8 @@ begin
       update := 'UPDATE ENF_IT01 SET ENF_IT_ENVIADO_PCP_DEMANDA = ' + QuotedStr(SimNaoParcial) + ' WHERE ENF_REGISTRO = ' + IntToStr(StrToIntDef(cdsBuscaENF_REGISTRO.AsString, 0))   ;
       DBInicio.ExecSql(update);
 
-      // prd_codigo := BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString));
-      tcr.EstornoDemanda(cdsBuscaPED_CODIGO.AsString);
+      prd_codigo := BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString));
+      tcr.EstornoDemanda(cdsBuscaPED_CODIGO.AsString, prd_codigo);
 
       if cdsBuscaopv_pedidointerno.AsString = 'S' then
       begin
@@ -1038,8 +1038,9 @@ end;
 procedure TfrmDemandaProducao.cdsFichaQTDEPRDChange(Sender: TField);
 begin
   inherited;
-  if  (cdsFichaUC_TOTAL.AsFloat -cdsFichaDEP_QTDE_ESTOQUE.AsFloat)< Sender.AsFloat then
-   raise Exception.Create('Quantidade a produzir não pode ser maior que a quantidade solicitada, excluindo o usado em estoque');
+  if  (cdsFichaUC_TOTAL.AsFloat - cdsFichaDEP_QTDE_ESTOQUE.AsFloat) < Sender.AsFloat then
+   uteis.aviso('Quantidade a produzir é maior que a quantidade solicitada, excluindo o usado em estoque');
+//   raise Exception.Create('Quantidade a produzir não pode ser maior que a quantidade solicitada, excluindo o usado em estoque');
 end;
 
 procedure TfrmDemandaProducao.chkNaoRecebidoClick(Sender: TObject);
