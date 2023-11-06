@@ -7,7 +7,8 @@ uses
  Mask, DBCtrls, ExtCtrls, StdCtrls, Buttons, Spin, Grids, DBGrids, ComCtrls, RwSQLComando,
  DBTables, RwFunc,Variants, Provider, SqlExpr,SqlClientDataSet, DBClient, DBLocal, DBLocalS,
   ComboBoxRw,  rxToolEdit, RXDBCtrl, Data.DBXFirebird, SimpleDS, system.StrUtils,
-  SgDbSeachComboUnit, ACBrBase, ACBrETQ, Data.FMTBcd, Vcl.Menus, JvMenus, JvExControls, JvArrowButton, basedbform, ACBrEnterTab, ACBrCalculadora;
+  SgDbSeachComboUnit, ACBrBase, ACBrETQ, Data.FMTBcd, Vcl.Menus, JvMenus, JvExControls, JvArrowButton, basedbform, ACBrEnterTab, ACBrCalculadora,
+  JvAnimatedImage, JvGIFCtrl;
 
 type
   TFormFornec = class(TfrmBaseDB)
@@ -289,6 +290,9 @@ type
     cdsFornecedoresBAN_APELIDO: TStringField;
     cdsFornecedoresCLI_UND_CONSUMIDORA: TStringField;
     cdsFornecedoresEMP_CODIGO: TStringField;
+    PanelAguarde: TPanel;
+    JvGIFAnimator1: TJvGIFAnimator;
+    pinfo: TPanel;
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);
@@ -624,6 +628,9 @@ begin
             end;
       end;
 
+    PanelAguarde.Top := (Self.Height div 2) - (PanelAguarde.Height div 2);
+    PanelAguarde.Left := (Self.Width div 2) - (PanelAguarde.Width div 2);
+
     Screen.Cursor := crdefault;
     PageControl1.ActivePageIndex := 0;
 end;
@@ -953,7 +960,11 @@ var  vfone, fone1, fone2 : string;
   IdHTTP1: TIdHTTP;
   ResponseContent: string;
   Token: string;
-  URL, complemento : string;
+  URL : string;
+
+  abertura, razaoSocial, fantasia, email, telefone, cep, bairro ,
+  complemento, logradouro, numero, municipio, uf : string;
+
   TemComplemento: boolean;
   cidCodigo: integer;
   jDados, jEndereco: TJSONValue;
@@ -966,6 +977,8 @@ begin
   if Length(RetiraTodaMascara(DBeCGC.Text)) = 14 then
   begin
     try
+      PanelAguarde.Visible := True;
+      Application.ProcessMessages;
 
       IdHTTP1 := TIdHTTP.Create(nil);
       URL := 'https://api.plugnotas.com.br/cnpj/' + RetirarMascaraCNPJ_INSC(DBeCGC.Text);
@@ -980,24 +993,37 @@ begin
       jDados := TJSONObject.ParseJSONValue(ResponseContent);
       jEndereco := TJSONObject(jDados).GetValue('endereco');
 
-      url := TJSONObject(jEndereco).ToString;
+
+      jDados.TryGetValue('abertura', abertura);
+      jDados.TryGetValue('razao_social', razaoSocial);
+      jDados.TryGetValue('fantasia', fantasia);
+      jDados.TryGetValue('email', email);
+      jDados.TryGetValue('telefone', telefone);
+      jDados.TryGetValue('complemento', complemento);
+
+      jEndereco.TryGetValue('uf', uf);
+      jEndereco.TryGetValue('numero', numero);
+      jEndereco.TryGetValue('logradouro', logradouro);
+      jEndereco.TryGetValue('bairro', bairro);
+      jEndereco.TryGetValue('municipio', municipio);
+      jEndereco.TryGetValue('cep', cep);
+
 
 
       if DataCadastros.DsFornecedor.State = dsBrowse then
          DataCadastros.DsFornecedor.Edit;
 
-      DbeFor_dtinicio.Field.Value := StrToDate(jDados.GetValue< string >('abertura'));
+      DbeFor_dtinicio.Field.Value := StrToDate(abertura);
 
-      DBeFor_razao.Field.Value := jDados.GetValue< string >('razao_social');
-      // DbeCli_Fantasia.Field.Value := jDados.GetValue< string >('fantasia');
-      DBeFor_email.Field.Value := jDados.GetValue< string >('email');
+      DBeFor_razao.Field.Value := razaoSocial;
+      DBeFor_email.Field.Value := email;
 
 
-      fone1 := copy(jDados.GetValue< string >( 'telefone'),1 ,pos('/', jDados.GetValue< string >( 'telefone')) - 1);
+      fone1 := copy(telefone,1 ,pos('/', telefone) - 1);
       if fone1 = '' then
-        fone1 := jDados.GetValue< string >('telefone');
-      if pos('/', jDados.GetValue< string >('telefone')) > 0 then
-        fone2 := copy(jDados.GetValue< string >('telefone'), pos('/', jDados.GetValue< string >('telefone')) + 1, 20 );
+        fone1 := telefone;
+      if pos('/', telefone) > 0 then
+        fone2 := copy(telefone, pos('/', telefone) + 1, 20 );
       if trim(fone1) <>'' then
       begin
         vfone := AnsiReplaceStr(fone1,'(','');
@@ -1020,25 +1046,22 @@ begin
         DBeFor_fax.Field.Value := vfone;
       end;
 
-
-
-      DBeFor_cepEdit1.Field.Value :=  AnsiReplaceStr(AnsiReplaceStr(jEndereco.GetValue< string >( 'cep'),'-',''), '.', '');
-      DBEFOR_BAIRRO.Field.Value := jEndereco.GetValue< string >( 'bairro');
-      jDados.TryGetValue('complemento', Complemento);
-      DBeFor_endere.Field.Value := jEndereco.GetValue< string >( 'logradouro') + ', ' + jEndereco.GetValue< string >( 'numero') + ' ' + complemento;
-      DataCadastros.CdsFornecedorFOR_CIDADE.AsString  := jEndereco.GetValue< string >( 'municipio');
-      DataCadastros.CdsFornecedorFOR_UF.AsString      := jEndereco.GetValue< string >( 'uf');
-//      dados := jDados.GetValue< string >( 'abertura');
-//      endereco := jEndereco.GetValue< string >( 'logradouro');
+      DBeFor_cepEdit1.Field.Value :=  AnsiReplaceStr(AnsiReplaceStr(cep,'-',''), '.', '');
+      DBEFOR_BAIRRO.Field.Value := bairro;
+      DBeFor_endere.Field.Value := logradouro + ', ' + numero + ' ' + complemento;
+      DataCadastros.CdsFornecedorFOR_CIDADE.AsString  := municipio;
+      DataCadastros.CdsFornecedorFOR_UF.AsString      := uf;
 
     except
       on E: Exception do
       begin
-        showmessage(E.Message);
+        PanelAguarde.Visible := False;
+        showmessage('Falha na Consulta. Tente Novamente' + #13 + #10 + E.Message);
       end;
     end;
 
     IdHTTP1.Free;
+    PanelAguarde.Visible := False;
 
 
 
