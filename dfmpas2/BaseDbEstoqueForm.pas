@@ -619,6 +619,7 @@ begin
 
          //Se no lancamento for informado o lote o mesmo atualiza o saldo do lote
       if ((Lote <> '0')  and (Self.Name <> 'FormConcluirOP') and (Self.Name <> 'FormFatPedido') and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') <> 'P'))
+          or ((Lote <> '0')  and (Self.Name = 'FormNfEntrada') )
           or (Self.Name = 'FrmKardexLancamentoManual')
         then
         DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
