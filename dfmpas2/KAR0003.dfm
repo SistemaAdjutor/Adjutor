@@ -535,7 +535,7 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
       OnClick = Bit_CancelarClick
     end
     object Bit_Gravar: TBitBtn
-      Left = 745
+      Left = 744
       Top = 296
       Width = 100
       Height = 25
