@@ -2488,6 +2488,7 @@ type
     procedure cbLoteVencidoClick(Sender: TObject);
     procedure cbFiltroAlmoxarifadoChange(Sender: TObject);
     procedure sgdbEnderecamentoSelect(Sender: TObject);
+    procedure sgdbEnderecamentoChange(Sender: TObject);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -2952,8 +2953,13 @@ begin
                                  ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +
                                  ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  ) > 0 then
       begin
-        ExecSQL('UPDATE PRD0000_ENDERECAMENTO_EMPRESA SET PRDE_REGISTRO = ' + sgdbEnderecamento.idRetorno +
-                ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) );
+        if sgdbEnderecamento.idRetorno = ''
+        then
+          ExecSQL('DELETE FROM PRD0000_ENDERECAMENTO_EMPRESA ' +
+                  ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) )
+        else
+          ExecSQL('UPDATE PRD0000_ENDERECAMENTO_EMPRESA SET PRDE_REGISTRO = ' + sgdbEnderecamento.idRetorno +
+                  ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) );
       end
       else
       begin
@@ -7284,6 +7290,14 @@ end;
 procedure TFormProduto.SdCadastroGradeClick( Sender : tObject );
 begin
   CadastrarNovaGrade;
+end;
+
+procedure TFormProduto.sgdbEnderecamentoChange(Sender: TObject);
+begin
+  inherited;
+  prdeRegistro.Text := sgdbEnderecamento.idRetorno;
+  if not ( CdsProdutos.State in dsEditModes ) then
+    CdsProdutos.Edit;
 end;
 
 procedure TFormProduto.sgdbEnderecamentoSelect(Sender: TObject);

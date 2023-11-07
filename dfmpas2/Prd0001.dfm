@@ -5440,8 +5440,6 @@ inherited FormProduto: TFormProduto
         Height = 157
         Align = alTop
         TabOrder = 0
-        ExplicitLeft = 2
-        ExplicitTop = -6
         object Label2: TLabel
           Left = 19
           Top = 37
@@ -9417,6 +9415,7 @@ inherited FormProduto: TFormProduto
             Width = 206
             Height = 22
             TabOrder = 2
+            OnChange = sgdbEnderecamentoChange
             CharCase = ecUpperCase
             LookupSelect = 'PRDE_REGISTRO, PRDE_ENDERECO, EMP_CODIGO'
             LookupOrderBy = 'PRDE_ENDERECO'
