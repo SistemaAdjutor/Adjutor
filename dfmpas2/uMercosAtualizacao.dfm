@@ -2,8 +2,8 @@ inherited frmAtualizaMercos: TfrmAtualizaMercos
   Caption = 'Atualiza'#231#227'o Mercos'
   ClientHeight = 461
   ClientWidth = 819
-  ExplicitWidth = 827
-  ExplicitHeight = 488
+  ExplicitWidth = 835
+  ExplicitHeight = 500
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
@@ -40,7 +40,6 @@ inherited frmAtualizaMercos: TfrmAtualizaMercos
     object cxHora: TcxTimeEdit
       Left = 295
       Top = 15
-      EditValue = 0d
       TabOrder = 2
       Visible = False
       Width = 65
@@ -169,7 +168,7 @@ inherited frmAtualizaMercos: TfrmAtualizaMercos
           AsyncDrawing = True
           Animate = True
           Center = True
-          FrameIndex = 3
+          FrameIndex = 1
           Image.Data = {
             DD0E000047494638396123013600E60000EAEAEAFFFFFFB0B0B00000005576D5
             FFC60013275F3854A34866BD304A945475D34D6CC61A316F2037785374D15171
@@ -507,7 +506,6 @@ inherited frmAtualizaMercos: TfrmAtualizaMercos
     ResourceOptions.SilentMode = True
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
-    AutoCommitUpdates = False
     StoreDefs = True
     Left = 624
     Top = 120
@@ -666,7 +664,6 @@ inherited frmAtualizaMercos: TfrmAtualizaMercos
     ResourceOptions.SilentMode = True
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
-    AutoCommitUpdates = False
     StoreDefs = True
     Left = 632
     Top = 184
@@ -871,7 +868,6 @@ inherited frmAtualizaMercos: TfrmAtualizaMercos
     ResourceOptions.SilentMode = True
     UpdateOptions.AssignedValues = [uvCheckRequired]
     UpdateOptions.CheckRequired = False
-    AutoCommitUpdates = False
     StoreDefs = True
     Left = 632
     Top = 296

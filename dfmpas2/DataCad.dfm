@@ -1692,14 +1692,16 @@ object DataCadastros: TDataCadastros
       ProviderFlags = [pfInUpdate]
     end
     object SqlFornecedorFOR_FONE: TStringField
+      DisplayWidth = 12
       FieldName = 'FOR_FONE'
       ProviderFlags = [pfInUpdate]
-      Size = 11
+      Size = 12
     end
     object SqlFornecedorFOR_FAX: TStringField
+      DisplayWidth = 12
       FieldName = 'FOR_FAX'
       ProviderFlags = [pfInUpdate]
-      Size = 11
+      Size = 12
     end
     object SqlFornecedorFOR_FONCONT: TStringField
       FieldName = 'FOR_FONCONT'
@@ -2087,16 +2089,18 @@ object DataCadastros: TDataCadastros
       ProviderFlags = [pfInUpdate]
     end
     object CdsFornecedorFOR_FONE: TStringField
+      DisplayWidth = 12
       FieldName = 'FOR_FONE'
       ProviderFlags = [pfInUpdate]
-      EditMask = '\(999\)9999\-9999;0;_'
-      Size = 11
+      EditMask = '\(99\)#9999\-9999;0;_'
+      Size = 12
     end
     object CdsFornecedorFOR_FAX: TStringField
+      DisplayWidth = 12
       FieldName = 'FOR_FAX'
       ProviderFlags = [pfInUpdate]
-      EditMask = '\(999\)9999\-9999;0;_'
-      Size = 11
+      EditMask = '\(99\)#9999\-9999;0;_'
+      Size = 12
     end
     object CdsFornecedorFOR_FONCONT: TStringField
       FieldName = 'FOR_FONCONT'
