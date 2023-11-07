@@ -504,6 +504,7 @@ begin
   ' and it.emp_codigo = ' + QuotedStr(EmpCodigo) ) ;
    if (qNota.FieldByName('NF_INTEGRADO').AsString = 'S') then
       qItemNota.SQL.add( ' AND PR.PRD_PRODSERV = '+ QuotedStr('P'));
+   qItemNota.SQL.add(' ORDER BY pid.PED_CODIGO, pid.PRF_SEQUENCIA');
 
  qItemNota.Open;
 
