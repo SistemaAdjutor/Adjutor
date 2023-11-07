@@ -1400,7 +1400,10 @@ begin
           frmConclusaoOP.gbEntradaProducao.Visible := True;
         end
         else
+        begin
           frmConclusaoOP.gbEntradaProducao.Visible := False;
+          frmConclusaoOP.cbAlmoxarifado.idRetorno := dbInicio.Empresa.PMT_AMX_PRODUCAO_ENTRADA;
+        end;
 
       end;
       if frmConclusaoOP.ShowModal = mrOk then
