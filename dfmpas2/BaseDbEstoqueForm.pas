@@ -603,9 +603,12 @@ begin
           DBInicio.ExecSql('UPDATE PRD_GRADE SET PRG_SALDO = 0 WHERE PRD_CODIGO = '+qStr(sProduto));
 
       //Se no lancamento for informado o lote o mesmo atualiza o saldo do lote
-      if (Lote <> '0') and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') <> 'P') then
+      if ((Lote <> '0') and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') <> 'P'))
+      or (Self.Name = 'FrmKardexLancamentoManual')
+      then
       begin
-              DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
+        DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO  = ' + FloatToSql(rQuantidade) + ' WHERE PRDL_REGISTRO = ' + lote );
+        // DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
       end
       // zerar todos os lotes, função de zerar estoque
       else if (Lote = '0') and (sObservacao = 'ZERAR') then
