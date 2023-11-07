@@ -3667,7 +3667,7 @@ begin
      CdsNotaFiscalNF_TOT_PROD.AsFloat := Uteis.RoundTo( wValorProd , -2 );
      total := wValorProd +
               wTotalIPITotalNF +
-              CdsNotaFiscalNF_VLFRETE.AsFloat +
+              RateioFrete + // CdsNotaFiscalNF_VLFRETE.AsFloat +
               CdsNotaFiscalNF_VLSEGURO.AsFloat +
               CdsNotaFiscalNF_DESP_ACES.AsFloat +
               wTotalValorSubs - CdsPedidosPED_DESCTOVL.AsFloat;
@@ -3883,9 +3883,9 @@ begin
   while not CdsItemPedido.Eof do // acumuladores
   begin
 
-    rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ CdsPedidosPED_VLTOTAL_BRUTO.AsFloat) ;
+    rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ (CdsPedidosPED_VLTOTAL_BRUTO.AsFloat - cdsNotaFiscalNF_VLFRETE.AsFloat)) ;
 
-    if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then // Frete
+    if (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat > 0) then // Frete
     begin
       rateioFrete := rateioFrete + Uteis.RoundTo(rt * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
     end;
@@ -4141,7 +4141,7 @@ var
 begin
      IniciaVar ;
      ObtemTotalNota; // loop item
-     wSomaDespesas := CdsNotaFiscalNF_VLFRETE.AsFloat + CdsNotaFiscalNF_VLSEGURO.AsFloat + CdsNotaFiscalNF_DESP_ACES.AsFloat;
+     wSomaDespesas := RateioFrete {CdsNotaFiscalNF_VLFRETE.AsFloat} + CdsNotaFiscalNF_VLSEGURO.AsFloat + CdsNotaFiscalNF_DESP_ACES.AsFloat;
      RateioFrete_despesas; // loop item
 
      iRegCfopPrincipal := qOperFiscOPE_CODIGO.AsString;

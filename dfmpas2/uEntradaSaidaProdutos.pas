@@ -223,7 +223,7 @@ begin
                                           'P1.prd_descri, '+
                                           't1.kar_entrada_saida, '+
                                           't1.kar_quantidade, '+
-                                          't1.data_hora, '+
+                                          'CAST(CAST(T1.data_hora AS date) AS TIMESTAMP) AS data_hora, '+ // t1.data_hora
                                           'coalesce(t1.kar_observacao,'''')||'' ''||coalesce(t1.kar_descricao,'''') as kar_descricao, '+
                                           'case '+
                                           '    when (T1.kar_tipo_registro = ''ENF'') then '+

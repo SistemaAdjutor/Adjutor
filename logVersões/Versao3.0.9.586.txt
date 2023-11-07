@@ -1,5 +1,5 @@
-﻿Atualizado em 01/01/2023
-Inicio da versão: 01/01/2023
+﻿Atualizado em 07/11/2023
+Inicio da versão: 01/11/2023
 
 principal: Rotor, Bepine
   1685 - Nota de Serviço - campo dedução [Rotor]
@@ -7,4 +7,14 @@ principal: Rotor, Bepine
   1699 - Melhoria endereços de estoque [Rotor]
   1711 - Consumo de lotes baixando duplicado - PCP new [Novi]
   
+patch 1: Rotor, Bepine, Mandibor, Yvytu, Chemsystem, Crystal Clean
+  1639 - Relatório de entradas e saídas do estoque [Rotor]
+  1654 - Consulta CNPJ troca na forma de consulta [Novi]
+  1681 - Melhoria cadastro de fornecedores [Bepine]
+  1706 - Valor do frete no pedido/faturamento [Mandibor]
+  1707 - Entrada de nota com lotes [Novi]
+  1708 - Sequencia de produtos [Yvytu]
+  1716 - Código de protesto do banco - Viacred [Chemsystem]
+  1717 - Saldo do lote - balanço [Crystal Clean]
+  1719 - Erro cadastro de produtos [Rotor]
   

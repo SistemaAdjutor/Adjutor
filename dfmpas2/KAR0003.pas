@@ -730,9 +730,10 @@ begin
                             IntToStr(cdsclone.FieldByName('PRDL_REGISTRO').AsInteger) ,//Novo esquema de lote
                             MemoObservacao.Text,
                             Now,
-                            iif( RbBalanco.Checked,
-                                 abs (cdsclone.FieldByName('PRG_QTDE').AsFloat - cdsclone.FieldByName('PRDL_SALDO').AsFloat),
-                                 cdsclone.FieldByName('PRG_QTDE').Value),
+//                            iif( RbBalanco.Checked,
+//                                 abs (cdsclone.FieldByName('PRG_QTDE').AsFloat - cdsclone.FieldByName('PRDL_SALDO').AsFloat),
+//                                 cdsclone.FieldByName('PRG_QTDE').Value),
+                            cdsclone.FieldByName('PRG_QTDE').Value,
                             EdDocumento.Text,
                             EdDocumento.Text,
                             0.00 ,'','','',SqlCdsProdutoPRD_REFER.AsString );

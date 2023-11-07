@@ -2986,7 +2986,7 @@ begin
           wLIT_REMESSA   := 'REMESSA';{LITERAL ARQUIVO}
       ACBrBoleto1.DirArqRemessa := wDIR; //  FileArqSalvar.FileName;
       {prazo para protesto}
-      if CdSCrCduplicata.FieldByname('CLI_PROTESTAR').AsString = 'N' then
+      if (CdSCrCduplicata.FieldByname('CLI_PROTESTAR').AsString = 'N') AND Rad_Protesto_Cliente.Checked then
          wDIAS_PROTESTO := '00'
       else
       if (CdSCrCduplicata.FieldByname('CLI_QTDE_DIAS_PROTESTO').AsInteger > 0) AND Rad_Protesto_Cliente.Checked then
