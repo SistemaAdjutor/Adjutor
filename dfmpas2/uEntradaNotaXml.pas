@@ -1593,7 +1593,13 @@ begin
                                  FloatToSQL(cdsItensENF_PRECO_ORIGINAL.AsFloat)+ ','+
                                  FloatToSQL(cdsItensENF_PTOTAL_ORIGINAL.AsFloat)+  ')';
                ExecSql(wSql1 + wSql2);
-               ExecSql('UPDATE ENF_IT01 SET PRDL_REGISTRO = ' + CdsItensRegistroLote.AsString + ' WHERE ENF_REGISTRO = ' + IntToStr(iRegistro) );
+               if BuscaUmDadoSqlAsString('SELECT PRD_GERENCIA_LOTE FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(CdsItensReferencia.AsString) ) = 'S' then
+               begin
+                 if CdsItensRegistroLote.AsString = '' then
+                   uteis.Aviso('O produto ' + CdsItensReferencia.AsString + ' utiliza controle de lote e o lote não foi informado!!')
+                 else
+                   ExecSql('UPDATE ENF_IT01 SET PRDL_REGISTRO = ' + CdsItensRegistroLote.AsString + ' WHERE ENF_REGISTRO = ' + IntToStr(iRegistro) );
+               end;
 
                //Verifica se atualiza estoque
                if (cbMovimentaEstoque.Checked) then

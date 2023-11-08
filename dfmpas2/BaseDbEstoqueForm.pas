@@ -513,7 +513,7 @@ begin
     else
     begin
     if sTipoRegistro = 'BAL' then
-      ValorAnomalo := KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, QuantidadeGeral , QuantidadeGeral)
+      ValorAnomalo := 0 // KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, QuantidadeGeral , QuantidadeGeral)
     else
       ValorAnomalo := KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, IIF(sTipoES = 'E',QuantidadeGeral + rSaldo, rSaldo -QuantidadeGeral) , QuantidadeGeral);
     end;
@@ -614,8 +614,8 @@ begin
       then
       begin
         DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO  = ' + FloatToSql(rQuantidade) + ' WHERE PRDL_REGISTRO = ' + lote );
-        QuantidadeGeralLote := dbInicio.BuscaUmDadoSqlAsFloat('SELECT SUM(PRDL_SALDO) FROM PRD_LOTE pl WHERE PRDL_SALDO > 0 AND PRDL_LOTE = ' + QuotedStr(sLote) + ' AND AMX_CODIGO = ' + QuotedStr(sAlmoxarifado)  );
-        KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifadoDestino, QuantidadeGeralLote , QuantidadeGeralLote);
+        QuantidadeGeralLote := dbInicio.BuscaUmDadoSqlAsFloat('SELECT SUM(PRDL_SALDO) FROM PRD_LOTE pl WHERE PRDL_SALDO > 0 AND PRD_CODIGO = ' + QuotedStr(sProduto) + ' AND AMX_CODIGO = ' + QuotedStr(sAlmoxarifado)  );
+        KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, QuantidadeGeralLote , QuantidadeGeralLote);
         // DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
       end
       // zerar todos os lotes, função de zerar estoque

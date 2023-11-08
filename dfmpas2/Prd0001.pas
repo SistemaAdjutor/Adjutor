@@ -2966,7 +2966,7 @@ begin
         ExecSQL('INSERT INTO PRD0000_ENDERECAMENTO_EMPRESA(PRD_REFER, EMP_CODIGO, PRDE_REGISTRO) ' +
                 ' VALUES(' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ', ' +
                              QuotedStr(dbInicio.EMP_CODIGO) + ',' +
-                             sgdbEnderecamento.idRetorno +
+                             iif(sgdbEnderecamento.idRetorno = '', '0', sgdbEnderecamento.idRetorno)  +
                          ')'
                 )
       end;
