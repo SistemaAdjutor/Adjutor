@@ -4387,7 +4387,7 @@ begin
 										//verifica se haverá diferenca do rateio do frete despesa e seguro
 										//Frete
 
-										rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / CdsPedidosPED_VLTOTAL_BRUTO.AsFloat {wValorProdGeral}  );
+										rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / wValorProdGeral );
 										if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then
 										begin
 												 rRateioTmp := rRateioTmp + Uteis.RoundTo(rt1 * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
