@@ -17,4 +17,4 @@ patch 1: Rotor, Bepine, Mandibor, Yvytu, Chemsystem, Crystal Clean
   1716 - Código de protesto do banco - Viacred [Chemsystem]
   1717 - Saldo do lote - balanço [Crystal Clean]
   1719 - Erro cadastro de produtos [Rotor]
-  
+  1720 - Correção conclusão da produção [Novi]
