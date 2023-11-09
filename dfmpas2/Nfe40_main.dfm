@@ -5537,8 +5537,15 @@ inherited frmNfe40: TfrmNfe40
         DataController.DataSource = dsNotas
         DataController.Filter.Active = True
         DataController.Summary.DefaultGroupSummaryItems = <>
-        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <
+          item
+            Format = 'Total: ###,###,##0.00'
+            Kind = skSum
+            FieldName = 'NF_TOT_NOTA'
+            Column = cxNotafiscalNF_TOT_NOTA
+          end>
         DataController.Summary.SummaryGroups = <>
+        OptionsView.Footer = True
         object Selecionado: TcxGridDBColumn
           Caption = 'Sel.'
           DataBinding.FieldName = 'selecionado'
@@ -5609,6 +5616,7 @@ inherited frmNfe40: TfrmNfe40
         object cxNotafiscalNF_TOT_NOTA: TcxGridDBColumn
           DataBinding.FieldName = 'NF_TOT_NOTA'
           Options.Editing = False
+          Width = 165
         end
         object cxNotafiscalNF_PESOBRU: TcxGridDBColumn
           Caption = 'Peso Bruto'
@@ -6327,7 +6335,7 @@ inherited frmNfe40: TfrmNfe40
     Left = 152
     Top = 568
     Bitmap = {
-      494C01010E001100080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E0011000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
