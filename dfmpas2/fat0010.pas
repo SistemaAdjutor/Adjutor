@@ -421,6 +421,7 @@ begin
   lista.Add('FPC_VENCTO');
   lista.Add('FRE_DATA_RECEBIMENTO');
   lista.Add('CLI_RAZAO');
+  lista.Add('CLI_CGC');
   lista.Add('FRE_VALOR');
   lista.Add('FRE_DESCONTO');
   lista.Add('FRE_JUROS');

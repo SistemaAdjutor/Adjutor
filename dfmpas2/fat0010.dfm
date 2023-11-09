@@ -863,6 +863,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       FieldName = 'FPC_NPARCELAS'
     end
     object CdsReceberBaixasCLI_CGC: TStringField
+      DisplayLabel = 'CPF/CNPJ'
       FieldName = 'CLI_CGC'
       Size = 14
     end
