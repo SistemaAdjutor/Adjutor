@@ -38,6 +38,10 @@ object FrmPedidoVelho: TFrmPedidoVelho
     OnChange = PageControl1Change
     object TabPedido: TTabSheet
       Caption = 'Pedido'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GBInformacoesOrcamento: TGroupBox
         Left = 0
         Top = 0
@@ -962,6 +966,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           LookupKeyField = 'CLI_CODIGO'
           ShowButton = True
           LookupTableShare = 'CLIENTES'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'cli0000'
           CamposCarregar = 'CLI_RAZAO'
           CamposRetornar = 'CLI_CODIGO'
@@ -969,16 +980,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           ConexaoBanco = DataCadastros.SQLConnection1
           Compartilhar = 'CLIENTES'
           Localizado = False
-          
-          
           CodigoEmpresa = 0
-          
-          
           ResetaCampos = False
-          
           MultiEmpresa = False
           Localizar = False
           CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
         end
         object PainelClienteSemCadastro: TPanel
           Left = 9
@@ -2389,6 +2397,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           LookupKeyField = 'PCL_CODIGO'
           ShowButton = True
           LookupTableShare = 'PRAZOS'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'PCL0000'
           CamposCarregar = 'PCL_NOME'
           CamposRetornar = 'PCL_CODIGO'
@@ -2396,16 +2411,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           ConexaoBanco = DataCadastros.SQLConnection1
           Compartilhar = 'PRAZOS'
           Localizado = False
-          
-          
           CodigoEmpresa = 0
-          
-          
           ResetaCampos = False
-          
           MultiEmpresa = False
           Localizar = False
           CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
         end
         object CbVendedor: TComboBoxRw
           Left = 144
@@ -2424,6 +2436,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           LookupKeyField = 'REP_CODIGO'
           ShowButton = True
           LookupTableShare = 'TABELAS'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'REP0000'
           CamposCarregar = 'REP_NOME'
           CamposRetornar = 'REP_CODIGO'
@@ -2431,16 +2450,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           ConexaoBanco = DataCadastros.SQLConnection1
           Compartilhar = 'TABELAS'
           Localizado = False
-          
-          
           CodigoEmpresa = 0
-          
-          
           ResetaCampos = False
-          
           MultiEmpresa = False
           Localizar = False
           CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
         end
         object CbTransportadora: TComboBoxRw
           Left = 144
@@ -2459,6 +2475,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           LookupKeyField = 'TRP_CODIGO'
           ShowButton = True
           LookupTableShare = 'TABELAS'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'TRP0000'
           CamposCarregar = 'TRP_RAZAO'
           CamposRetornar = 'TRP_CODIGO'
@@ -2466,16 +2489,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           ConexaoBanco = DataCadastros.SQLConnection1
           Compartilhar = 'TABELAS'
           Localizado = False
-          
-          
           CodigoEmpresa = 0
-          
-          
           ResetaCampos = False
-          
           MultiEmpresa = False
           Localizar = False
           CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
         end
         object EdProjetoObraCodigo: TEdit
           Left = 100
@@ -2506,6 +2526,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           FiltroTabela = 'PCX_TIPO = '#39'L'#39
           ShowButton = True
           LookupTableShare = 'TABELAS'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'PCX0000'
           CamposCarregar = 'PCX_DESCRI'
           CamposRetornar = 'PCX_CODIGO'
@@ -2514,16 +2541,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           ConexaoBanco = DataCadastros.SQLConnection1
           Compartilhar = 'TABELAS'
           Localizado = False
-          
-          
           CodigoEmpresa = 0
-          
-          
           ResetaCampos = False
-          
           MultiEmpresa = False
           Localizar = False
           CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
         end
         object EdOrsDiaEntrega: TCurrencyEdit
           Left = 730
@@ -2606,6 +2630,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           LookupKeyField = 'FPG_REGISTRO'
           ShowButton = True
           LookupTableShare = 'TABELAS'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'FORMA_PAGAMENTO'
           CamposCarregar = 'FPG_DESCRICAO'
           CamposRetornar = 'FPG_REGISTRO'
@@ -2613,16 +2644,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           ConexaoBanco = DataCadastros.SQLConnection1
           Compartilhar = 'TABELAS'
           Localizado = False
-         
-         
           CodigoEmpresa = 0
-         
-         
           ResetaCampos = False
-         
           MultiEmpresa = False
           Localizar = False
           CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
         end
       end
       object PageControl2: TPageControl
@@ -2634,6 +2662,10 @@ object FrmPedidoVelho: TFrmPedidoVelho
         TabOrder = 2
         object TabPedidoItem: TTabSheet
           Caption = 'Itens do Pedido'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object SpeedButton1: TSpeedButton
             Left = 860
             Top = 162
@@ -3413,6 +3445,10 @@ object FrmPedidoVelho: TFrmPedidoVelho
         object TabSheet3: TTabSheet
           Caption = 'Declara'#231#227'o de Importa'#231#227'o e suas Adi'#231#245'es'
           ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox8: TGroupBox
             Left = 563
             Top = 0
@@ -7980,6 +8016,7 @@ object FrmPedidoVelho: TFrmPedidoVelho
       AutoGenerateValue = arAutoInc
       FieldKind = fkCalculated
       FieldName = 'Sequencia'
+      Calculated = True
     end
     object SqlCdsPedidoItemID_DIRETIVAS: TIntegerField
       FieldName = 'ID_DIRETIVAS'
@@ -8105,7 +8142,7 @@ object FrmPedidoVelho: TFrmPedidoVelho
     Left = 896
     Top = 309
     Bitmap = {
-      494C010103000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -9283,7 +9320,7 @@ object FrmPedidoVelho: TFrmPedidoVelho
     end
   end
   object frxReport1: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -9342,13 +9379,17 @@ object FrmPedidoVelho: TFrmPedidoVelho
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 86.929190000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -9358,12 +9399,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 15.897650000000000000
           Width = 559.370440000000000000
           Height = 18.897650000000000000
@@ -9372,11 +9415,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Clientes - Margem de Contribui'#231#227'o')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 16.897650000000000000
           Width = 139.842610000000000000
@@ -9387,12 +9432,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -9401,11 +9448,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 33.795300000000000000
           Width = 706.772110000000000000
@@ -9416,17 +9465,21 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 62.692950000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 63.692950000000000000
           Width = 45.354360000000000000
           Height = 18.897650000000000000
@@ -9435,12 +9488,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Posi'#231#227'o')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 45.354360000000000000
           Top = 63.692950000000000000
           Width = 45.354360000000000000
@@ -9450,18 +9505,22 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'C'#243'digo')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 84.590600000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Top = 64.252010000000000000
           Width = 268.346630000000000000
@@ -9471,11 +9530,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 64.252010000000000000
           Width = 86.929190000000000000
@@ -9485,12 +9546,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Total de Vendas')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 597.165740000000000000
           Top = 64.252010000000000000
           Width = 120.944960000000000000
@@ -9500,12 +9563,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Margem de Contribui'#231#227'o')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Top = 64.252010000000000000
           Width = 102.047310000000000000
@@ -9515,12 +9580,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNPJ/CPF')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 64.252010000000000000
           Width = 45.354360000000000000
@@ -9530,6 +9597,7 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Qtde')
@@ -9538,6 +9606,7 @@ object FrmPedidoVelho: TFrmPedidoVelho
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 166.299320000000000000
         Width = 718.110700000000000000
@@ -9546,6 +9615,7 @@ object FrmPedidoVelho: TFrmPedidoVelho
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Width = 45.354360000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -9553,11 +9623,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[sequencia]')
           ParentFont = False
         end
         object frxDBDataset1CLI_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 45.354360000000000000
           Width = 45.354360000000000000
           Height = 15.118120000000000000
@@ -9569,12 +9641,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBDataset1."CLI_CODIGO"]')
           ParentFont = False
         end
         object frxDBDataset1CLI_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Width = 268.346630000000000000
           Height = 15.118120000000000000
@@ -9586,11 +9660,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."CLI_RAZAO"]')
           ParentFont = False
         end
         object frxDBDataset1TOTAL_NOTA: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
@@ -9604,12 +9680,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."TOTAL_NOTA"]')
           ParentFont = False
         end
         object frxDBDataset1CONTRIBUICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 593.386210000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -9623,12 +9701,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."CONTRIBUICAO"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 706.772110000000000000
           Width = 11.338590000000000000
           Height = 15.118120000000000000
@@ -9637,12 +9717,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '%')
           ParentFont = False
         end
         object frxDBDataset1CLI_CGC: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
@@ -9654,11 +9736,13 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."CLI_CGC"]')
           ParentFont = False
         end
         object frxDBDataset1QUANTIDADE: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Width = 45.354360000000000000
           Height = 18.897650000000000000
@@ -9670,6 +9754,7 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBDataset1."QUANTIDADE"]')
@@ -9678,10 +9763,12 @@ object FrmPedidoVelho: TFrmPedidoVelho
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 207.874150000000000000
         Width = 718.110700000000000000
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 593.386210000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -9693,17 +9780,21 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '100,00')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 706.772110000000000000
           Width = 11.338590000000000000
           Height = 15.118120000000000000
@@ -9712,12 +9803,14 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '%')
           ParentFont = False
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Width = 86.929190000000000000
           Height = 15.118120000000000000
@@ -9728,6 +9821,7 @@ object FrmPedidoVelho: TFrmPedidoVelho
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."TOTAL_NOTA">,MasterData1,3)]')

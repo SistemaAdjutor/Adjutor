@@ -273,8 +273,10 @@ object FrmPedidoWebAcao: TFrmPedidoWebAcao
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'PCL0000'
       CamposCarregar = 'PCL_NOME'
       CamposRetornar = 'PCL_CODIGO'
@@ -312,8 +314,10 @@ object FrmPedidoWebAcao: TFrmPedidoWebAcao
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'cli0000'
       CamposCarregar = 'CLI_RAZAO'
       CamposRetornar = 'CLI_CODIGO'
@@ -362,8 +366,10 @@ object FrmPedidoWebAcao: TFrmPedidoWebAcao
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'REP0000'
       CamposCarregar = 'REP_NOME'
       CamposRetornar = 'REP_CODIGO'
@@ -1032,7 +1038,7 @@ object FrmPedidoWebAcao: TFrmPedidoWebAcao
     Left = 679
     Top = 152
     Bitmap = {
-      494C010103000500040010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -29,7 +29,10 @@ uses
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, VclTee.TeeGDIPlus, System.ImageList,
   SimpleDS, JvToolEdit, Data.DBXFirebird, SgDbSeachComboUnit,
-  SgDbLookupComboUnit, SgDbAutoF8Unit;
+  SgDbLookupComboUnit, SgDbAutoF8Unit, dxSkinMetropolis, dxSkinMetropolisDark,
+  dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinTheBezier, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light;
 type
   TFrmPedidoNovo = class(TForm)
     Panel1: TPanel;
@@ -1966,6 +1969,7 @@ begin
                                       CurDespesasImportacao.Value,
                                       CurTotalIPI.Value,
                                       CurTotalST.Value,
+                                      CurTotalDifal.Value,
                                       CurTotalProduto.Value,
                                       CurTotalPedido.Value,
                                       MemoObservacaoPedido.Text,

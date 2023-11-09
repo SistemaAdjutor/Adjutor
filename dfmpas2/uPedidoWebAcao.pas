@@ -803,6 +803,7 @@ begin
                             0,
                             0,
                             0,
+                            0,
                             FrmPedidoWeb.SQLPedidosTOTAL.AsFloat,
                             FrmPedidoWeb.SQLPedidosTOTAL.AsFloat,
                             mmoObservacao.Text,
@@ -813,7 +814,8 @@ begin
                             '',
                             0 ,
                             'PEN',
-                            0,'');
+                            0,
+                            '');
 
                             
 

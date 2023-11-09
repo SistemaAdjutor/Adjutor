@@ -2236,6 +2236,12 @@ inherited FormPedidoGrid: TFormPedidoGrid
       FieldName = 'selecionado'
       OnGetText = SqlCdsPesqselecionadoGetText
     end
+    object SqlCdsPesqPED_VLDIFAL: TFMTBCDField
+      DisplayWidth = 18
+      FieldName = 'PED_VLDIFAL'
+      Precision = 5
+      Size = 18
+    end
   end
   object SqlCdsItens: TClientDataSet
     Aggregates = <>

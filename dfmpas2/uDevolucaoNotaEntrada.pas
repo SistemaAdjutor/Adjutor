@@ -670,6 +670,7 @@ begin
     0, // rValorDespesasImportacao,
     CurTotalValorIPI.Value, //  rTotalIPI,
     CurTotalValorICMSST.Value, //  rTotalST,
+    0,
     CurrTotalNota.Value, //  rTotalValorLiquido,
     Curr_Valor_Produtos.Value, //  rValorTotalBruto          :Currency;
     '', // wsObservacao,

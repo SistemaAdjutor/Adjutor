@@ -3,7 +3,7 @@
         <ProjectGuid>{8A3DBD83-53A7-4DCF-B9D2-E860EF14A76A}</ProjectGuid>
         <MainSource>Adjutor.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
@@ -1794,12 +1794,7 @@
             </Platforms>
             <Deployment Version="3">
                 <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Release" Class="ProjectFile"/>
-                <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>Adjutor.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
@@ -1820,7 +1815,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput"/>
-                <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Adjutor.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

@@ -2285,6 +2285,23 @@ begin
                     rTotalProduto := rTotalProduto + SqlCdsPedidoItemTOTAL.AsFloat;
 
                     //CurTotalDesconto.Value := CurTotalDesconto.Value + SqlCdsPedidoItemDESCONTO.AsFloat * SqlCdsPedidoItemPRF_QTDE.AsFloat;
+
+                    {
+
+  qAux2.Sql.Text := 'select ICM_ALIQ, ' +
+                    '       ICMS_SUBS, '  +
+                    '       ICMS_PROD_IMPORTADO, ' +
+                    '       SOMA_MVA_SN, ' +
+                    '       ICM_MVA, ' +
+                    '       ICM_SUB_TRI_SN, ' +
+                    '       ICMS_REDUZIDO, ' +
+                    '       FCP_PERC, ' +
+                    '       ICM_TIPO_CALCULO_DIFAL ' +
+                    'from ICM0000 WHERE ICM_DESTINO = ' + quotedstr(EdClienteUF.Text) + ConcatSe( ' AND ', dbInicio.ExclusivoSql('ICMS') )  ;
+                    }
+
+
+
                  CurTotalST.Value := CurTotalST.Value + SqlCdsPedidoItemPRF_VALOR_ST.AsFloat;
                  SqlCdsPedidoItem.Next;
            end;
@@ -3240,6 +3257,7 @@ begin
                                       CurDespesasImportacao.Value,
                                       CurTotalIPI.Value,
                                       CurTotalST.Value,
+                                      CurTotalDifal.Value,
                                       CurTotalProduto.Value,
                                       CurTotalPedido.Value,
                                       MemoObservacaoPedido.Text,
@@ -8854,8 +8872,19 @@ begin
   end;
 
   SqlCdsPedidoItem.EnableControls;
-  CurTotalDifal.Value := wIcmDifal;
-  ExecSql('UPDATE PED0000 SET PED_VLDIFAL = ' + FloatToSQL(wIcmDifal) + ' WHERE PED_CODIGO = ' + QuotedStr(EdPedidoNumero.Text) );
+  if IcmTipoCalculoDifal = 0 then // o cálculo é com base por fora
+  begin
+    CurTotalST.Value := wIcmDifal;
+    CurTotalDifal.Value := 0;
+   // ExecSql('UPDATE PED0000 SET PED_VLDIFAL = ' + FloatToSQL(wIcmDifal) + ' WHERE PED_CODIGO = ' + QuotedStr(EdPedidoNumero.Text) );
+  end
+  else // o cálculo é com base por dentro
+  begin
+    CurTotalDifal.Value := wIcmDifal;
+    CurTotalST.Value := 0;
+   // ExecSql('UPDATE PED0000 SET PED_VALOR_ST = ' + FloatToSQL(wIcmDifal) + ' WHERE PED_CODIGO = ' + QuotedStr(EdPedidoNumero.Text) );
+  end;
+
   freeandnil(FormFatPedido);
 end;
 

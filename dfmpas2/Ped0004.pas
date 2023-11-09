@@ -329,6 +329,7 @@ type
     SqlCdsItensPRF_REGISTRO: TIntegerField;
     SqlCdsItensPRD_UND: TStringField;
     cxPadrao: TcxStyle;
+    SqlCdsPesqPED_VLDIFAL: TFMTBCDField;
     procedure BtnSairClick(Sender: tObject);
     procedure Rad_ClienteClick(Sender: tObject);
     procedure Edt_ListaExit(Sender: tObject);
@@ -405,7 +406,7 @@ var
   rValorSeguro,
   rValorDespesasImportacao,
   rTotalIPI,
-  rTotalST,
+  rTotalST, rTotalDifal,
   rTotalValorLiquido,
   rValorTotalBruto, rDescontoValor  :Currency;
   obs,obsNota, obsPed, obsPedCli : string;
@@ -420,6 +421,7 @@ begin
   rValorDespesasImportacao :=0 ;
   rTotalIPI := 0;
   rTotalST := 0;
+  rTotalDifal := 0;
   rTotalValorLiquido := 0;
   rValorTotalBruto := 0;
   rDescontoValor := 0 ;
@@ -440,6 +442,7 @@ begin
     rValorDespesasImportacao := rValorDespesasImportacao + clone.FieldByName('PED_DESP_IMPOR').AsCurrency;
     rTotalIPI := rTotalIPI + clone.FieldByName('PED_VLTOTAL_IPI').AsCurrency;
     rTotalST := rTotalST + clone.FieldByName('PED_VALOR_ST').AsCurrency;
+    rTotalDifal := rTotalDifal + clone.FieldByName('PED_VLDIFAL').AsCurrency;
     rTotalValorLiquido :=  rTotalValorLiquido + clone.FieldByName('PED_VLTOTAL_LIQ').AsCurrency;
     rValorTotalBruto :=   rValorTotalBruto + clone.FieldByName('PED_VLTOTAL_BRUTO').AsCurrency;
     rDescontoValor := rDescontoValor + clone.FieldByName('PED_DESCTOVL').AsCurrency ;
@@ -488,7 +491,7 @@ begin
     IntToStr(clone.FieldByName('FPG_REGISTRO').AsInteger {forma de pagamento}),false{bAplicaDescontoNotaFiscal},Date {data entrada} ,
     date {entrega - definir pelo usuario},
     0{rComissao1},0{rComissao2},0{rComissao3},0{rComissao4}, rDescontoValor,0{rDescontoPercentual1},0{rDescontoPercentual2},
-    rValorFrete, rValorDespesas,  rValorSeguro, rValorDespesasImportacao, rTotalIPI, rTotalST, rTotalValorLiquido, rValorTotalBruto,
+    rValorFrete, rValorDespesas,  rValorSeguro, rValorDespesasImportacao, rTotalIPI, rTotalST, rTotalDifal, rTotalValorLiquido, rValorTotalBruto,
     obs  ,
     obsPed+#13+obspedcli{wsObservacaoNota} , clone.FieldByName('PED_EXP_UF').AsString, clone.FieldByName('PED_EXP_LOCAL_EXP').AsString,
     clone.FieldByName('PED_EXP_LOCAL_RECINTO').AsString,
@@ -1042,7 +1045,7 @@ begin
                             ' P1.PED_SITUACAO,P1.PED_DTLIM_ATD, '+
                              '       P1.PED_DTEMBARQUE, P1.REP_CODIGO, p1.REP_CODIGO_INTERNO,  c1.CLI_CODIGO, C1.CLI_FONE, p1.opv_codigo, OPV_DESCRICAO, '+
                              '       t4.PMT_MOTIVO,p1.PED_MOTIVO_CANCELAMENTO,c1.cli_uf, '+
-                             '       P1.PED_CODIGO_ORCAMENTO, PED_VLTOTAL_IPI,PED_VALOR_ST,  PED_VLFRETE, PED_VLSEGURO, PED_DESP_ACES, '+
+                             '       P1.PED_CODIGO_ORCAMENTO, PED_VLTOTAL_IPI,PED_VALOR_ST, PED_VLDIFAL,  PED_VLFRETE, PED_VLSEGURO, PED_DESP_ACES, '+
                              '       P1.PED_VLTOTAL_LIQ, P1.PED_DESP_IMPOR,PED_DESCTOVL, PED_NUMERO_PED_CLIENTE, '+
                              '       p1.PED_EXP_UF,PED_EXP_LOCAL_EXP, PED_EXP_LOCAL_RECINTO, SitExp, PED_PLACA,ENDERECO_ENTREGA, '+
                              '       case when (C1.CLI_RAZAO IS NULL) then p1.PED_ORS_CLIENTE ELSE C1.CLI_RAZAO end as CLI_RAZAO, '+

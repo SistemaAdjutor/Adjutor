@@ -50,6 +50,7 @@ function GravarPedido(sIE, sCliConsFinal, sCliConsuProprio,
                       rValorDespesasImportacao,
                       rTotalIPI,
                       rTotalST,
+                      rTotalDifal,
                       rTotalValorLiquido,
                       rValorTotalBruto
                       :Currency;
@@ -168,7 +169,7 @@ begin
                 ie, cliConsFinal, cliConsuProprio,
                 sPedidoCodigo,sTipoPedidoCodigo,sClienteCodigo,EmptyStr,EmptyStr,EmptyStr,EmptyStr,EmptyStr,EmptyStr,
                 EmptyStr,EmptyStr, EmptyStr,'I' ,EmptyStr ,EmptyStr,EmptyStr,EmptyStr,EmptyStr,EmptyStr,EmptyStr, EmptyStr, false,
-                dDataEntrada, dDataSaida,  0,0,0,0,0,0,0 ,0, 0,0,0,0,0,0,0, EmptyStr ,EmptyStr,EmptyStr,EmptyStr,EmptyStr, EmptyStr, vIdPedido,
+                dDataEntrada, dDataSaida,  0,0,0,0,0,0,0 ,0, 0, 0,0,0,0,0,0,0, EmptyStr ,EmptyStr,EmptyStr,EmptyStr,EmptyStr, EmptyStr, vIdPedido,
                 EmptyStr, 0, EmptyStr);
 end;
 
@@ -217,6 +218,7 @@ function GravarPedido(sIE,
                       rValorDespesasImportacao,
                       rTotalIPI,
                       rTotalST,
+                      rTotalDifal,
                       rTotalValorLiquido,
                       rValorTotalBruto
                       :Currency;
@@ -311,6 +313,7 @@ begin
                    ' PED_VLTOTAL_BRUTO = '+QuotedStr(ValorAmericano(FloatToStr(rValorTotalBruto)))+','+
                    ' PED_VLTOTAL_IPI = '+QuotedStr(ValorAmericano(FloatToStr(rTotalIPI)))+','+
                    ' PED_VALOR_ST = '+QuotedStr(ValorAmericano(FloatToStr(rTotalST)))+','+
+                   ' PED_VLDIFAL = '+QuotedStr(ValorAmericano(FloatToStr(rTotalDifal)))+','+
                    ' PED_VLFRETE = '+QuotedStr(ValorAmericano(FloatToStr(rValorFrete)))+','+
                    ' PED_DESP_ACES = '+QuotedStr(ValorAmericano(FloatToStr(rValorDespesas)))+','+
                    ' PED_VLSEGURO = '+QuotedStr(ValorAmericano(FloatToStr(rValorSeguro)))+','+
@@ -390,6 +393,7 @@ begin
                    'PED_VLTOTAL_BRUTO,'+
                    'PED_VLTOTAL_IPI,'+
                    'PED_VALOR_ST,'+
+                   'PED_VLDIFAL,'+
                    'PED_VLFRETE,'+
                    'PED_DESP_ACES,'+
                    'PED_VLSEGURO,'+
@@ -451,6 +455,7 @@ begin
                    QuotedStr(ValorAmericano(FloatToStr(rValorTotalBruto)))+','+
                    QuotedStr(ValorAmericano(FloatToStr(rTotalIPI)))+','+
                    QuotedStr(ValorAmericano(FloatToStr(rTotalST)))+','+
+                   QuotedStr(ValorAmericano(FloatToStr(rTotalDifal)))+','+
                    QuotedStr(ValorAmericano(FloatToStr(rValorFrete)))+','+
                    QuotedStr(ValorAmericano(FloatToStr(rValorDespesas)))+','+
                    QuotedStr(ValorAmericano(FloatToStr(rValorSeguro)))+','+

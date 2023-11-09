@@ -27,7 +27,11 @@ uses
   dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
   dxSkinTheAsphaltWorld, dxSkinsDefaultPainters, dxSkinValentine, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, VclTee.TeeGDIPlus, System.ImageList,
-  SimpleDS, JvToolEdit, Data.DBXFirebird, SgDbSeachComboUnit;
+  SimpleDS, JvToolEdit, Data.DBXFirebird, SgDbSeachComboUnit, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2016Colorful, dxSkinOffice2016Dark, dxSkinTheBezier,
+  dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light;
 type
   TFrmPedidoVelho = class(TForm)
     Panel1: TPanel;
@@ -2080,6 +2084,7 @@ begin
                                       CurDespesasImportacao.Value,
                                       CurTotalIPI.Value,
                                       CurTotalST.Value,
+                                      CurTotalDifal.Value,
                                       CurTotalProduto.Value,
                                       CurTotalPedido.Value,
                                       MemoObservacaoPedido.Text,
