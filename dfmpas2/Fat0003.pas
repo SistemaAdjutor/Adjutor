@@ -665,6 +665,7 @@ type
     luso: TLabel;
     Label8: TLabel;
     Label52: TLabel;
+    chkFreteProporcional: TCheckBox;
 
     procedure CurrcodBancoExit(Sender: tObject);
     procedure BitConfirmaNotaClick(Sender: tObject);
@@ -3877,19 +3878,25 @@ function  TFormFatPedido.RateioFrete: double;
 var
   rt, rateioFrete: double;
 begin
+  if not chkFreteProporcional.Checked then
+  begin
+    result := cdsNotaFiscalNF_VLFRETE.AsFloat;
+    exit;
+  end;
+
   CdsItemPedido.First;
   rt := 0;
   rateioFrete := 0;
   while not CdsItemPedido.Eof do // acumuladores
   begin
-
-    rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ (CdsPedidosPED_VLTOTAL_BRUTO.AsFloat - cdsNotaFiscalNF_VLFRETE.AsFloat)) ;
-
+    rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ CdsPedidosPED_VLTOTAL_LIQ.AsFloat) ;
     if (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat > 0) then // Frete
     begin
       rateioFrete := rateioFrete + Uteis.RoundTo(rt * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
     end;
+
     CdsItemPedido.Next;
+
   end;
   result := rateioFrete;
 end;
