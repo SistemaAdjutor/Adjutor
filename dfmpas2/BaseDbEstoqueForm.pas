@@ -615,11 +615,20 @@ begin
       begin
         DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO  = ' + FloatToSql(rQuantidade) + ' WHERE PRDL_REGISTRO = ' + lote );
         QuantidadeGeralLote := dbInicio.BuscaUmDadoSqlAsFloat('SELECT SUM(PRDL_SALDO) FROM PRD_LOTE pl WHERE PRDL_SALDO > 0 AND PRD_CODIGO = ' + QuotedStr(sProduto) + ' AND AMX_CODIGO = ' + QuotedStr(sAlmoxarifado)  );
+        if QuantidadeGeralLote = 0 then
+          QuantidadeGeralLote := rQuantidade;
         KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, QuantidadeGeralLote , QuantidadeGeralLote);
         // DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
       end
+      else
+      if ((Lote = '0') and (Self.Name = 'FrmKardexLancamentoManual'))
+      then
+      begin
+        KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, QuantidadeGeral, QuantidadeGeral);
+      end
       // zerar todos os lotes, função de zerar estoque
-      else if (Lote = '0') and (sObservacao = 'ZERAR') then
+      else
+      if (Lote = '0') and (sObservacao = 'ZERAR') then
         DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = 0 WHERE PRD_CODIGO = '+qStr(sProduto));
 
     end
