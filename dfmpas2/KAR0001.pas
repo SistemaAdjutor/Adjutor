@@ -180,9 +180,11 @@ type
     procedure RbReferenciaClick(Sender: TObject);
     procedure RbDescricaoClick(Sender: TObject);
     procedure CbAlmoxarifadoClick(Sender: TObject);
+    procedure cbprodutoEnter(Sender: TObject);
+    procedure CbAlmoxarifadoEnter(Sender: TObject);
   private
     { Private declarations }
-    FEntradaManualKardex : boolean;
+    FEntradaManualKardex, carregando : boolean;
     procedure AtualizaSaldos;
     procedure ListaProdutoAlmoxarifado;
     procedure ListaSaldoProdutoAlmoxarifado;
@@ -207,6 +209,7 @@ end;
 
 procedure TFrmKardex.FormCreate(Sender: tObject);
 begin
+  carregando := True;
   SqlCdsAlmoxarifado.Open;
 
   SqlCdsProduto.CommandText := SQLDEF('PRODUTOS','SELECT * FROM PRD0000',' where PRD_STATUS = '+QuotedStr('A'),'PRD_REFER','');
@@ -513,11 +516,21 @@ begin
         EdProdutoDescricao.Text := CbProduto.Properties.DataController.DataSet.Lookup('PRD_CODIGO',CbProduto.EditValue,'PRD_DESCRI');
 end;
 
+procedure TFrmKardex.cbprodutoEnter(Sender: TObject);
+begin
+  carregando := false;
+end;
+
 procedure TFrmKardex.CbAlmoxarifadoClick(Sender: TObject);
 begin
   if CbAlmoxarifado.EditValue <> null then
     if not AlmoxarifadoUsuario(CbAlmoxarifado.EditValue) then
       CbAlmoxarifado.SetFocus;
+end;
+
+procedure TFrmKardex.CbAlmoxarifadoEnter(Sender: TObject);
+begin
+  carregando := false;
 end;
 
 procedure TFrmKardex.CbAlmoxarifadoExit(Sender: tObject);
@@ -568,6 +581,9 @@ end;
 
 procedure TFrmKardex.cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 begin
+if not carregando then
+    showmessage('foi');
+
 //  if  AViewInfo.GridRecord.Selected then
 //    ACanvas.Brush.Color := clHighlight
 //  else

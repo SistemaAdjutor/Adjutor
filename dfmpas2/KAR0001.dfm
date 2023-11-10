@@ -130,6 +130,7 @@ object FrmKardex: TFrmKardex
           StyleHot.LookAndFeel.Kind = lfStandard
           TabOrder = 4
           OnClick = CbAlmoxarifadoClick
+          OnEnter = CbAlmoxarifadoEnter
           OnExit = CbAlmoxarifadoExit
           Width = 317
         end
@@ -289,14 +290,15 @@ object FrmKardex: TFrmKardex
           OnClick = chkInativosClick
         end
         object cbproduto: TcxExtLookupComboBox
-          Left = 8
+          Left = 12
           Top = 57
           Properties.View = cxGrid1DBTableView1
           Properties.KeyFieldNames = 'PRD_CODIGO'
           Properties.ListFieldItem = cxGrid1DBTableView1PRD_REFER
           Properties.OnChange = cbprodutoPropertiesChange
           TabOrder = 12
-          Width = 496
+          OnEnter = cbprodutoEnter
+          Width = 492
         end
       end
       object GroupBox2: TGroupBox
@@ -586,10 +588,6 @@ object FrmKardex: TFrmKardex
     object cxTabSheet2: TcxTabSheet
       Caption = 'Almoxarifado'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox5: TGroupBox
         Left = 353
         Top = 0
@@ -811,8 +809,8 @@ object FrmKardex: TFrmKardex
   end
   object DsProduto: TDataSource
     DataSet = SqlCdsProduto
-    Left = 192
-    Top = 208
+    Left = 320
+    Top = 256
   end
   object SqlCdsProduto: TSqlClientDataSet
     Aggregates = <>
@@ -826,8 +824,8 @@ object FrmKardex: TFrmKardex
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 111
-    Top = 64
+    Left = 255
+    Top = 216
     object SqlCdsProdutoPRD_CODIGO: TStringField
       FieldName = 'PRD_CODIGO'
       Required = True
@@ -1068,8 +1066,8 @@ object FrmKardex: TFrmKardex
   object DsAlmoxarifadoGeral: TDataSource
     DataSet = SqlCdsAlmoxarifadoGeral
     OnDataChange = DsAlmoxarifadoGeralDataChange
-    Left = 176
-    Top = 48
+    Left = 232
+    Top = 352
   end
   object SqlCdsProdutoGeral: TSqlClientDataSet
     Aggregates = <>
