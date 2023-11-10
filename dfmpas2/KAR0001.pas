@@ -476,8 +476,9 @@ begin
   begin
     EdProdutoDescricao.Color := $00D7D7D7 ;
   end;
-
-      //CbProduto.Properties.DataController.DataSet.Lookup('PRD_CODIGO',CbProduto.Text,'PRD_DESCRI');
+  SqlCdsKardex.Close;
+  cdsSaldos.Close;
+  //CbProduto.Properties.DataController.DataSet.Lookup('PRD_CODIGO',CbProduto.Text,'PRD_DESCRI');
 end;
 
 procedure TFrmKardex.CbAlmoxarifadoPropertiesChange(Sender: tObject);
@@ -581,9 +582,6 @@ end;
 
 procedure TFrmKardex.cxGrid1DBTableView1CustomDrawCell(Sender: TcxCustomGridTableView; ACanvas: TcxCanvas; AViewInfo: TcxGridTableDataCellViewInfo; var ADone: Boolean);
 begin
-if not carregando then
-    showmessage('foi');
-
 //  if  AViewInfo.GridRecord.Selected then
 //    ACanvas.Brush.Color := clHighlight
 //  else

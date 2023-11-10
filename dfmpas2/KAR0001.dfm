@@ -147,7 +147,7 @@ object FrmKardex: TFrmKardex
         end
         object cxButton1: TcxButton
           Left = 845
-          Top = 15
+          Top = 11
           Width = 100
           Height = 25
           Caption = '&Pesquisar'
