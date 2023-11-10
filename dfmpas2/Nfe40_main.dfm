@@ -5543,6 +5543,12 @@ inherited frmNfe40: TfrmNfe40
             Kind = skSum
             FieldName = 'NF_TOT_NOTA'
             Column = cxNotafiscalNF_TOT_NOTA
+          end
+          item
+            Format = 'Quantidade: ###,###'
+            Kind = skCount
+            FieldName = 'NF_NOTANUMBER'
+            Column = cxNotafiscalNF_NOTANUMBER
           end>
         DataController.Summary.SummaryGroups = <>
         OptionsView.Footer = True
@@ -5585,6 +5591,7 @@ inherited frmNfe40: TfrmNfe40
         object cxNotafiscalNF_NOTANUMBER: TcxGridDBColumn
           DataBinding.FieldName = 'NF_NOTANUMBER'
           Options.Editing = False
+          Width = 115
         end
         object cxNotafiscalNF_EMISSAO: TcxGridDBColumn
           Caption = 'Emiss'#227'o'
@@ -6335,7 +6342,7 @@ inherited frmNfe40: TfrmNfe40
     Left = 152
     Top = 568
     Bitmap = {
-      494C01010E0011000C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E001100100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10062,7 +10069,7 @@ inherited frmNfe40: TfrmNfe40
     CasasDecimais.MaskvUnCom = ',0.00'
     ExibeCampoFatura = False
     Left = 320
-    Top = 223
+    Top = 247
   end
   object pmSeleciona: TJvPopupMenu
     ImageMargin.Left = 0
