@@ -3876,13 +3876,28 @@ end;
 
 function  TFormFatPedido.RateioFrete: double;
 var
-  rt, rateioFrete: double;
+  rt, rateioFrete, valorTotal: double;
+  parcial: boolean;
 begin
   if not chkFreteProporcional.Checked then
   begin
     result := cdsNotaFiscalNF_VLFRETE.AsFloat;
     exit;
   end;
+
+
+  CdsItemPedido.First;
+  while not CdsItemPedido.Eof do // acumuladores
+  begin
+    parcial :=  CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat < CdsItemPedidoPRF_QTDEFAT;
+    CdsItemPedido.Next;
+  end;
+  if parcial and chkFreteProporcional.Checked then
+    valorTotal := CdsPedidosPED_VLTOTAL_LIQ.AsFloat
+  else
+    valorTotal := CdsPedidosPED_VLTOTAL_LIQ.AsFloat;
+
+
 
   CdsItemPedido.First;
   rt := 0;
