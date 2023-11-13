@@ -3069,23 +3069,41 @@ begin
                             ' WHERE PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
                             '  AND OPR_STATUS <> '+ QuotedStr('C') )>1) then
     raise Exception.Create('Ordem de produção já gerada. Não pode excluir item.');
+
     if (DBInicio.Empresa.PMT_HABILITAR_MRP) and
      (BuscaUmDadoSqlAsInteger( 'SELECT OPR_CODIGO FROM ORDEMPRODUCAO op' +
                             ' WHERE ' +
                             '    EXISTS (SELECT * FROM DEMANDA_PRODUCAO dp ' +
                             '               JOIN PRD0000 pr ON (pr.PRD_CODIGO = dp.PRD_CODIGO) ' +
-                            '            WHERE dp.PED_CODIGO = op.PED_CODIGO AND dp.EMP_CODIGO = op.EMP_CODIGO ' +
+                            '            WHERE dp.PED_CODIGO = op.PED_CODIGO AND dp.EMP_CODIGO = op.EMP_CODIGO AND dp.DEP_SITUACAO = ''R'' ' +
                             '            AND pr.PRD_refer = ' + QuotedStr(SqlCdsPedidoItemPRD_REFER.AsString) + ')' +
                             ' AND op.PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString)  ) > 1) then
     raise Exception.Create('Ordem de produção já gerada. Não pode excluir item.');
 
     if (DBInicio.BuscaUmDadoSqlAsInteger('SELECT PRF_REGISTRO FROM DEMANDA_PRODUCAO ' +
                                        ' WHERE PRF_REGISTRO = ' + SqlCdsPedidoItemPRF_REGISTRO.AsString +
+                                       ' AND DEP_SITUACAO = ''R'' ' +
                                        ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO)) > 0)
      then
      begin
-       MessageDlg('Este pedido já foi enviado para o PCP Demanda, não é possível excluir itens', mtWarning, [mbOk], 0);
-       Exit;
+       if MessageDlg('Este pedido já foi enviado para o PCP Demanda, confirma a exlusão do item?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes
+       then Exit
+       else
+       begin
+        dbInicio.ExecSql('DELETE FROM DEMANDA_PRODUCAO ' +
+                         ' WHERE PRF_REGISTRO = ' + SqlCdsPedidoItemPRF_REGISTRO.AsString +
+                         ' AND DEP_SITUACAO = ''R'' ' +
+                         ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO));
+       end;
+     end;
+    if (DBInicio.BuscaUmDadoSqlAsInteger('SELECT PRF_REGISTRO FROM DEMANDA_PRODUCAO ' +
+                                       ' WHERE PRF_REGISTRO = ' + SqlCdsPedidoItemPRF_REGISTRO.AsString +
+                                       ' AND DEP_SITUACAO = ''E'' ' +
+                                       ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO)) > 0)
+     then
+     begin
+       MessageDlg('Este item já foi enviado para a Produção. Não pode excluí-lo.', mtInformation, [mbOk], 0);
+       Exit
      end;
 
 
@@ -7635,6 +7653,8 @@ begin
   filtroPrdCodigo := '(';
   if (BuscaUmDadoSqlAsInteger('SELECT CAST(COUNT(*) AS INTEGER) FROM DEMANDA_PRODUCAO '+
                               ' WHERE PED_CODIGO = '+QuotedStr(EdPedidoNumero.text) +
+                              ' AND PRD_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPRD_CODIGO.AsString) +
+                              ' AND DEP_SITUACAO = ''R'' ' +
                               '  AND EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo)
                                ) - SqlCdsPedidoItem.recordcount) = 0
     then raise Exception.Create('Demanda já enviada')
@@ -7646,7 +7666,25 @@ begin
       SqlCdsPedidoItem.First;
       while not SqlCdsPedidoItem.Eof do
       begin
-        filtroPrdCodigo := filtroPrdCodigo + ' AND PRD_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPRD_CODIGO.AsString);
+        if SqlCdsPedidoItemPRD_CODIGO.AsString =
+          BuscaUmDadoSqlAsString (
+            SELECT PRD_CODIGO
+            FROM	PED_IT01 pi2
+            WHERE PED_CODIGO = '000164'
+            AND PRD_CODIGO NOT IN (
+              SELECT PRD_CODIGO
+              FROM
+                DEMANDA_PRODUCAO
+              WHERE
+                PED_CODIGO = '000164'
+                AND DEP_SITUACAO ='R'
+                AND EMP_CODIGO = '001'
+            )
+            AND EMP_CODIGO = '001'
+
+
+         then
+           filtroPrdCodigo := filtroPrdCodigo + ' AND PRD_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPRD_CODIGO.AsString);
         SqlCdsPedidoItem.Next;
       end;
       filtroPrdCodigo := filtroPrdCodigo + ')'
@@ -7655,7 +7693,7 @@ begin
     end;
 
    SqlCdsPedidoItem.Filtered := False;
-   SqlCdsPedidoItem.Filter := '(pti_sigla = ''PA'') OR (pti_sigla = ''PI'') OR (pti_sigla =''KT'') ';
+   SqlCdsPedidoItem.Filter := '(pti_sigla = ''PA'') OR (pti_sigla = ''PI'') OR (pti_sigla =''KT'') ' + filtroPrdCodigo;
    SqlCdsPedidoItem.Filtered := True;
    if SqlCdsPedidoItem.IsEmpty then
    Begin
