@@ -2376,7 +2376,7 @@ begin
     qAux4.ExecSQL;
     DecodeDate(date(), ano, mes, dia);
     if DBInicio.Empresa.PMT_REL_ORDEMPRODUCAO = '13' then
-      Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '/' + IntToStr(dia) + IntToStr(mes) + IntToStr(ano)
+      Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '/' +  strZero(dia, 2) + strZero(mes, 2) + strZero(ano, 4)
     else
       Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '-' + IntToStr(ano)
     ;

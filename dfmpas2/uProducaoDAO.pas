@@ -35,6 +35,8 @@ type
   private
     { Private declarations }
   public
+   numLoteEIP: string;
+
    function EnviarDemanda (const ped_codigo , prd_codigo, situacao : string ;const fti_registro, prf_registro, iop_codigo : Integer; const dtEntrega : TDate;const  estoque : double; produzir : double = 0.0 )  : Integer;
    function DemandaHistorico (const dep_codigo : Integer; const descricao, ped_codigo,prd_codigo : string; ReenvioDemanda :  boolean = False ): Boolean;
    function EstornoDemanda (ped_codigo: string):Boolean;
@@ -1119,7 +1121,7 @@ function TProducaoDao.EnviarItemProducao(const  prd_codigo , prd_refer, ped_codi
              const cli_codigo: string;  QtdePrd: Double ; const pesokg, preco: double; const prf_registro, fti_registro, dep_codigo, programa: integer ;var  Item : TItemProducao;
              const Subordens, envase: boolean; dt_ajuste: TDateTime = 0; reg_lote: Integer = 0  ): Boolean;
  var IOP, SEQ : Integer;
-  sql, numLote, Lote:string;
+  sql, Lote:string;
   controle: boolean;
   registro, chave : Integer;
   i : integer;
@@ -1277,21 +1279,31 @@ begin
          end
          else
          begin
-          Lote := '';
+           if DBInicio.Empresa.PMT_REL_ORDEMPRODUCAO = '13' then
+            Lote := numLoteEIP
+           else
+            Lote := '';
           Estoque := 0;
           QtdeLote := 0;
          end;
-         numLote := CarregaLoteAutomatico(controle, False, Lote);
+         if (DBInicio.Empresa.PMT_REL_ORDEMPRODUCAO <> '13') then
+           numLoteEIP := CarregaLoteAutomatico(controle, False, Lote)
+         else
+         if (DBInicio.Empresa.PMT_REL_ORDEMPRODUCAO = '13') and (Lote = '') then
+           numLoteEIP := CarregaLoteAutomatico(controle, False, Lote);
+
+
+
 
          sql:= 'INSERT INTO PRD_LOTE  (PRDL_REGISTRO, EMP_CODIGO,       '+
              ' PRDL_LOTE, PRD_CODIGO, PRDL_CADASTRO, PRDL_DESCRICAO , PRDL_SALDO, PRDL_QTDELOTE, IOP_CODIGO '+
              '  )                                      '+
              ' VALUES('+IntToStr(registro) +',' +
               QuotedStr(DBInicio.Empresa.EMP_CODIGO) +',' +
-              QuotedStr(numLote) +','+
+              QuotedStr(numLoteEIP) +','+
               QuotedStr(prd_codigo) +','+
               datetosql(date) + ','+
-              QuotedStr(numLote) +  ','+
+              QuotedStr(numLoteEIP) +  ','+
               FloatToSQL(Estoque) +  ','+
               iif( envase, FloatToSQL(Estoque), FloatToSQL(QtdeLote)  ) +  ','+
               IntToStr(IOP)+

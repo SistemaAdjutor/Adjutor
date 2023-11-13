@@ -527,7 +527,7 @@ begin
      cdsBusca.First;
      while not cdsBusca.eof do
      begin
-
+         tcr.numLoteEIP := '';
          Tipo.ordem := '';
          tipo.iop_codigo := 0 ;
          Tipo.opr_codigo := 0 ;

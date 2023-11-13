@@ -2533,9 +2533,10 @@ begin
   if (VarName = 'ORIENTACOES') then
   begin
     qAux4.Close;
-    qAux4.SQL.Text := 'SELECT FTC_ETAPAS FROM FTC0000 f WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString);
+    qAux4.SQL.Text := 'SELECT IOP_OBSERVACAO_PRD FROM ITEM_ORDEMPRODUCAO  WHERE IOP_CODIGO = ' + cdsBuscaIOP_CODIGO.AsString ;
+    // qAux4.SQL.Text 'SELECT FTC_ETAPAS FROM FTC0000 f WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString);
     qAux4.Open;
-    Value := qAux4.FieldByName('FTC_ETAPAS').AsString
+    Value := qAux4.FieldByName('IOP_OBSERVACAO_PRD').AsString
   end
   else
   if (VarName = 'PERCENTUAL') then
