@@ -7270,11 +7270,17 @@ begin
                                       i := i -1;
                                    end;
                              end;
+
                           //Se nao localizou tenta pelo **
                           if (not bLocalizadoRegra) then
                              begin
                                 dbInicio.qAux2.Close;
-                                dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1 JOIN REGRA_FISCAL_PROD_CAP pc ON (pc.OPR_REGISTRO = t1.OPR_REGISTRO) ','where OPR_ATIVO = ''S'' and  T1.ipi_codigo = ''**'' AND T1.opr_'+EdClienteUF.Text+' = ''S'' AND T1.ope_codigo_origem = '''+StrZero(edCfop.idRetorno,3)+''''  + ' AND pc.cap_codigo = ' + IntToStr(StrToIntDef(SqlCdsPedidoItemCAP_CODIGO.AsString, 0))      ,'','T1.');
+                                dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1 JOIN REGRA_FISCAL_PROD_CAP pc ON (pc.OPR_REGISTRO = t1.OPR_REGISTRO) ',
+                                      ' where OPR_ATIVO = ''S''   ' +
+                                      ' and  T1.ipi_codigo = ''**''   ' +
+                                      ' AND T1.opr_'+EdClienteUF.Text+' = ''S'' ' +
+                                      ' AND T1.ope_codigo_origem = '''+StrZero(edCfop.idRetorno,3)+''''  +
+                                      ' AND pc.cap_codigo = ' + IntToStr(StrToIntDef(SqlCdsPedidoItemCAP_CODIGO.AsString, 0))      ,'','T1.');
                                 dbInicio.qAux2.open;
                                 //Verifica se localizou alguma regra
                                 if (not dbInicio.qAux2.IsEmpty) then
@@ -7282,6 +7288,20 @@ begin
                                       //Encontrou a regra e sai do laço
                                       bLocalizadoRegra := True;
                                    end
+                             end;
+                             if not bLocalizadoRegra then
+                             begin
+                                dbInicio.qAux2.Close;
+                                dbInicio.qAux2.sql.text :=  'SELECT * FROM ope_regra '+
+                                        ' where ipi_codigo = ' + qStr( '**' ) +
+                                        ' AND opr_' + EdClienteUF.Text + ' = '+qStr('S')+
+                                        ' AND ope_codigo_origem = '+ qStr( StrZero(edCfop.idRetorno,3) ) +
+                                         iif(DBInicio.empresa.wPMT_FATURA_MULTIEMPRESA,
+                                          ConcatSe( ' and ', dbInicio.ExclusivoSql('FISCAL',dbInicio.EMP_CODIGO) ),
+                                          ConcatSe( ' and ', dbInicio.ExclusivoSql('FISCAL')));
+                                dbInicio.qAux2.open;
+                                if (not dbInicio.qAux2.IsEmpty) then
+                                   bLocalizadoRegra := True;
                              end;
 
                               if FrmPedido.edCliente.CdS.Active then
