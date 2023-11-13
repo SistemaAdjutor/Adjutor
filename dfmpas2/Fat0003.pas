@@ -3876,26 +3876,28 @@ end;
 
 function  TFormFatPedido.RateioFrete: double;
 var
-  rt, rateioFrete, valorTotal: double;
+  rt, rateioFrete, valorTotal, valorTotalProd: double;
   parcial: boolean;
 begin
-  if not chkFreteProporcional.Checked then
-  begin
-    result := cdsNotaFiscalNF_VLFRETE.AsFloat;
-    exit;
-  end;
+//  if not chkFreteProporcional.Checked then
+//  begin
+//    result := cdsNotaFiscalNF_VLFRETE.AsFloat;
+//    exit;
+//  end;
 
+  valorTotalProd := 0;
 
   CdsItemPedido.First;
   while not CdsItemPedido.Eof do // acumuladores
   begin
-    parcial :=  CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat < CdsItemPedidoPRF_QTDEFAT;
+    parcial :=  (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat < CdsItemPedidoPRF_QTDEFAT.AsFloat);
+    valorTotalProd := valorTotalProd + (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat * CdsItemPedidoPRF_PRECO.AsFloat);
     CdsItemPedido.Next;
   end;
   if parcial and chkFreteProporcional.Checked then
     valorTotal := CdsPedidosPED_VLTOTAL_LIQ.AsFloat
   else
-    valorTotal := CdsPedidosPED_VLTOTAL_LIQ.AsFloat;
+    valorTotal := valorTotalProd;
 
 
 
@@ -3904,7 +3906,7 @@ begin
   rateioFrete := 0;
   while not CdsItemPedido.Eof do // acumuladores
   begin
-    rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ CdsPedidosPED_VLTOTAL_LIQ.AsFloat) ;
+    rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ valorTotal {CdsPedidosPED_VLTOTAL_LIQ.AsFloat}  ) ;
     if (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat > 0) then // Frete
     begin
       rateioFrete := rateioFrete + Uteis.RoundTo(rt * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
