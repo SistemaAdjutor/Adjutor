@@ -2800,6 +2800,9 @@ begin
       CdsProdutos.EnableControls;
       HabilitaBotoes;
       CarregaPrecoEmpresa( );
+      cdsProdutos.Cancel;
+      EdtPrd_Refer.Enabled := True;
+      EdtPrd_Refer.SetFocus;
     end;
 
   except
@@ -3157,6 +3160,7 @@ begin
 
         BuscaProduto;
         AtivaSqls;
+        DesabilitaBotoes;
       end
       else
         if CdsProdutos.State in [ dsInsert, dsEdit, dsBrowse ] then
@@ -3654,7 +3658,10 @@ begin
   end;
   CarregaPrecoEmpresa;
 
-  sgdbEnderecamento.idRetorno := BuscaUmDadoSqlAsString('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +  ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
+  sgdbEnderecamento.idRetorno := dbInicio.BuscaUmDadoSqlAsString('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +  ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipBoard('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +  ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
+
   prdeRegistro.Text := sgdbEnderecamento.idRetorno;
   cdsEnderecos.Close;
   qEnderecos.SQL.Text := 'SELECT pee.PRDE_REGISTRO, pe.PRDE_ENDERECO, E.EMP_RAZAO ' +
@@ -7616,8 +7623,10 @@ begin
     // sgdbEnderecamento.CDS.Filtered := False;
     // sgdbEnderecamento.CDS.Filter := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
     // sgdbEnderecamento.CDS.Filtered := True;
+
     // nenhuma das opçoes acima funciona, funcionava, mas depois da atualização
     // do delphi alguns componentes se tornaram instáveis
+
     sgdbEnderecamento.FiltroTabela := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
 
     sgdbEnderecamento.Refresh;

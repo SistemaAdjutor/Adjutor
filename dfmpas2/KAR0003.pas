@@ -747,6 +747,30 @@ begin
 			 begin			 //Débito Origem
 			 if (RbBalanco.Checked) then
 			 begin
+         KardexLancamento('0',
+                          stipoRegistro,
+                          CbAlmoxarifadoDestino.idRetorno,
+                          '',
+                          CbProduto.idRetorno,
+                          '',//grade
+                          SqlCdsProdutoPRD_UND.AsString,
+                          'S',
+                          '',
+                          '',//Novo esquema de lote
+                          MemoObservacao.Text,
+                          Now,
+                          CurSaldoTransferir.Value,
+                          EdDocumento.Text,
+                          EdDocumento.Text,
+                          0.00);
+
+
+
+         {
+
+
+
+
 				 if (CurSaldoTransferir.Value = 0) then
 				 begin
 						 if (CurSaldoDestino.Value > 0) then
@@ -830,6 +854,16 @@ begin
 																EdDocumento.Text,
 																0.00);
 				 end;
+
+         }
+
+
+
+
+
+
+
+
 			 end
 			 else   //se for operação tipo entrada e saida
 			 begin
