@@ -3075,7 +3075,7 @@ begin
                             ' WHERE ' +
                             '    EXISTS (SELECT * FROM DEMANDA_PRODUCAO dp ' +
                             '               JOIN PRD0000 pr ON (pr.PRD_CODIGO = dp.PRD_CODIGO) ' +
-                            '            WHERE dp.PED_CODIGO = op.PED_CODIGO AND dp.EMP_CODIGO = op.EMP_CODIGO AND dp.DEP_SITUACAO = ''R'' ' +
+                            '            WHERE dp.PED_CODIGO = op.PED_CODIGO AND dp.EMP_CODIGO = op.EMP_CODIGO AND dp.DEP_SITUACAO <> ''R'' ' +
                             '            AND pr.PRD_refer = ' + QuotedStr(SqlCdsPedidoItemPRD_REFER.AsString) + ')' +
                             ' AND op.PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString)  ) > 1) then
     raise Exception.Create('Ordem de produção já gerada. Não pode excluir item.');
@@ -7650,7 +7650,7 @@ begin
                               ' WHERE ORE_CODIGO IS NOT NULL  ' +
                               ' AND PED_CODIGO = '+QuotedStr(EdPedidoNumero.text) ) >0 then
     raise Exception.Create('Envase já enviada');
-  filtroPrdCodigo := '(';
+  filtroPrdCodigo := 'AND (';
   if (BuscaUmDadoSqlAsInteger('SELECT CAST(COUNT(*) AS INTEGER) FROM DEMANDA_PRODUCAO '+
                               ' WHERE PED_CODIGO = '+QuotedStr(EdPedidoNumero.text) +
                               ' AND PRD_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPRD_CODIGO.AsString) +
@@ -7661,39 +7661,37 @@ begin
     else
     begin
       SqlCdsPedidoItem.Filtered := False;
-      SqlCdsPedidoItem.Filter := '(pti_sigla = ''PA'') OR (pti_sigla = ''PI'') OR (pti_sigla =''KT'') ';
+      SqlCdsPedidoItem.Filter := '((pti_sigla = ''PA'') OR (pti_sigla = ''PI'') OR (pti_sigla =''KT'')) ';
       SqlCdsPedidoItem.Filtered := True;
       SqlCdsPedidoItem.First;
-      while not SqlCdsPedidoItem.Eof do
+      OpenAux(
+           ' SELECT PRD_CODIGO ' +
+           ' FROM	PED_IT01 pi2 ' +
+           ' WHERE PED_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPED_CODIGO.AsString)  +
+           ' AND PRD_CODIGO NOT IN (  ' +
+           '   SELECT PRD_CODIGO  ' +
+           '   FROM  ' +
+           '     DEMANDA_PRODUCAO  ' +
+           '   WHERE  ' +
+           '     PED_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPED_CODIGO.AsString)  +
+           '     AND DEP_SITUACAO =''R''   ' +
+           '     AND EMP_CODIGO = ' + QuotedStr(dbInicio.Emp_Codigo)  +
+           ' ) ' +
+           ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.Emp_Codigo) );
+      while not qAux.Eof do
       begin
-        if SqlCdsPedidoItemPRD_CODIGO.AsString =
-          BuscaUmDadoSqlAsString (
-            SELECT PRD_CODIGO
-            FROM	PED_IT01 pi2
-            WHERE PED_CODIGO = '000164'
-            AND PRD_CODIGO NOT IN (
-              SELECT PRD_CODIGO
-              FROM
-                DEMANDA_PRODUCAO
-              WHERE
-                PED_CODIGO = '000164'
-                AND DEP_SITUACAO ='R'
-                AND EMP_CODIGO = '001'
-            )
-            AND EMP_CODIGO = '001'
-
-
-         then
-           filtroPrdCodigo := filtroPrdCodigo + ' AND PRD_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPRD_CODIGO.AsString);
-        SqlCdsPedidoItem.Next;
+        filtroPrdCodigo := filtroPrdCodigo + iif(filtroPrdCodigo = 'AND (' , '', ' OR ')   + ' PRD_CODIGO = ' + QuotedStr(qAux.FieldByName('PRD_CODIGO').AsString);
+        qAux.Next;
       end;
       filtroPrdCodigo := filtroPrdCodigo + ')'
-
-
     end;
+    if filtroPrdCodigo = 'AND ()' then
+      filtroPrdCodigo := '';
+    if qAux.IsEmpty then
+      raise Exception.Create('Demanda já enviada por completo'); // todos is itens já joram enviados à produção
 
    SqlCdsPedidoItem.Filtered := False;
-   SqlCdsPedidoItem.Filter := '(pti_sigla = ''PA'') OR (pti_sigla = ''PI'') OR (pti_sigla =''KT'') ' + filtroPrdCodigo;
+   SqlCdsPedidoItem.Filter := '((pti_sigla = ''PA'') OR (pti_sigla = ''PI'') OR (pti_sigla =''KT'')) ' + filtroPrdCodigo;
    SqlCdsPedidoItem.Filtered := True;
    if SqlCdsPedidoItem.IsEmpty then
    Begin
