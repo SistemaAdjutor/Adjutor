@@ -2800,6 +2800,9 @@ begin
       CdsProdutos.EnableControls;
       HabilitaBotoes;
       CarregaPrecoEmpresa( );
+      cdsProdutos.Cancel;
+      EdtPrd_Refer.Enabled := True;
+      EdtPrd_Refer.SetFocus;
     end;
 
   except
@@ -3157,6 +3160,7 @@ begin
 
         BuscaProduto;
         AtivaSqls;
+        DesabilitaBotoes;
       end
       else
         if CdsProdutos.State in [ dsInsert, dsEdit, dsBrowse ] then
