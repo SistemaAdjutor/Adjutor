@@ -96,7 +96,7 @@ begin
   while not frmGerenciamentoPCP.cdsMateriaPrima.eof do
   begin
     // almoxarifado := cdsMateriaPrimaAMX_CODIGO.AsString;
-    ExecSql('INSERT INTO PCP_TEMP VALUES (' +
+    ExecSql('INSERT INTO PCP_TEMP' + DBInicio.Usuario.CODIGO +  ' VALUES (' +
               QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_CODIGO.AsString)  +  ',' +
               QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_REFER.AsString)  + ',' +
               QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString)  +

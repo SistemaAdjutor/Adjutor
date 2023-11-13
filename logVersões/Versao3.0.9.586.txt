@@ -1,4 +1,4 @@
-﻿Atualizado em 07/11/2023
+﻿Atualizado em 13/11/2023
 Inicio da versão: 01/11/2023
 
 principal: Rotor, Bepine
@@ -18,3 +18,15 @@ patch 1: Rotor, Bepine, Mandibor, Yvytu, Chemsystem, Crystal Clean
   1717 - Saldo do lote - balanço [Crystal Clean]
   1719 - Erro cadastro de produtos [Rotor]
   1720 - Correção conclusão da produção [Novi]
+  
+patch 2: Rotor, Arkson, Collect
+  1670 - ST não calcula [Rotor]
+  1687 - Melhoria kardex [Rotor]
+  1703 - Melhorias ordem de produção Arkson [Arkson]
+  1714 - Totalizador de notas fiscais [Novi]
+  1715 - Ajuste relatório de recebimentos - CSV [Collect]
+  1724 - Endereçamento não lista endereços cadastrados [Rotor]
+  1725 - Erro ao fazer balanço de estoque [Rotor]
+  1727 - Erro pcp demanda [Arkson]
+
+  
