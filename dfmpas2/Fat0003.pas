@@ -3877,24 +3877,17 @@ end;
 function  TFormFatPedido.RateioFrete: double;
 var
   rt, wRateioFrete, valorTotal, valorTotalProd: double;
-  parcial: boolean;
 begin
-//  if not chkFreteProporcional.Checked then
-//  begin
-//    result := cdsNotaFiscalNF_VLFRETE.AsFloat;
-//    exit;
-//  end;
 
   valorTotalProd := 0;
 
   CdsItemPedido.First;
   while not CdsItemPedido.Eof do // acumuladores
   begin
-    parcial :=  (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat < CdsItemPedidoPRF_QTDEFAT.AsFloat);
     valorTotalProd := valorTotalProd + (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat * CdsItemPedidoPRF_PRECO.AsFloat);
     CdsItemPedido.Next;
   end;
-  if parcial and chkFreteProporcional.Checked then
+  if chkFreteProporcional.Checked then
     valorTotal := CdsPedidosPED_VLTOTAL_LIQ.AsFloat
   else
     valorTotal := valorTotalProd;
@@ -4411,7 +4404,7 @@ begin
 										//verifica se haverá diferenca do rateio do frete despesa e seguro
 										//Frete
 
-                    if (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat < CdsItemPedidoPRF_QTDEFAT.AsFloat) and chkFreteProporcional.Checked
+                    if chkFreteProporcional.Checked
                       then rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  )
                       else rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / wValorProdGeral );
 										if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then
