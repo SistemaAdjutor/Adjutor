@@ -13,8 +13,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     ExplicitWidth = 1384
     ExplicitHeight = 567
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
       ExplicitWidth = 1376
       ExplicitHeight = 539
       inherited pnlControle: TPanel
@@ -874,10 +872,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object tbHistorico: TTabSheet
       Caption = 'Hist'#243'rico'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Phistorico: TPanel
         Left = 0
         Top = 0
@@ -39883,9 +39877,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       
         '  Child2.Visible := <frxDataMola."MMO_TRATAMENTO_TERMICO"> = '#39'T'#39 +
         ';'
-      
-        '  Child2.StartNewPage := Child2.Visible;                        ' +
-        '          '
+      '  Child2.PrintChildIfInvisible := False;'
+      '  Child2.StartNewPage := False;'
       'end;'
       '    '
       'procedure Child3OnBeforePrint(Sender: TfrxComponent);'
@@ -39893,9 +39886,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       
         '  Child3.Visible := <frxDataMola."MMO_ARQUIVO_FICHA_TECNICA"> <>' +
         ' '#39#39';  '
-      
-        '  Child3.StartNewPage := Child3.Visible;                        ' +
-        '          '
+      '  Child3.PrintChildIfInvisible := False;'
+      '  Child3.StartNewPage := False;'
       'end;'
       ''
       ''
