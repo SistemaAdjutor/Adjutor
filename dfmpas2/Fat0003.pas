@@ -3876,7 +3876,7 @@ end;
 
 function  TFormFatPedido.RateioFrete: double;
 var
-  rt, rateioFrete, valorTotal, valorTotalProd: double;
+  rt, wRateioFrete, valorTotal, valorTotalProd: double;
   parcial: boolean;
 begin
 //  if not chkFreteProporcional.Checked then
@@ -3903,19 +3903,19 @@ begin
 
   CdsItemPedido.First;
   rt := 0;
-  rateioFrete := 0;
+  wRateioFrete := 0;
   while not CdsItemPedido.Eof do // acumuladores
   begin
     rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ valorTotal {CdsPedidosPED_VLTOTAL_LIQ.AsFloat}  ) ;
     if (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat > 0) then // Frete
     begin
-      rateioFrete := rateioFrete + Uteis.RoundTo(rt * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
+      wRateioFrete := wRateioFrete + Uteis.RoundTo(rt * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
     end;
 
     CdsItemPedido.Next;
 
   end;
-  result := rateioFrete;
+  result := wRateioFrete;
 end;
 
 procedure TFormFatPedido.RateioFrete_despesas;
@@ -4411,7 +4411,9 @@ begin
 										//verifica se haverá diferenca do rateio do frete despesa e seguro
 										//Frete
 
-										rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / CdsPedidosPED_VLTOTAL_LIQ.AsFloat {wValorProdGeral} );
+                    if (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat < CdsItemPedidoPRF_QTDEFAT.AsFloat) and chkFreteProporcional.Checked
+                      then rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  )
+                      else rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / wValorProdGeral );
 										if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then
 										begin
 												 rRateioTmp := rRateioTmp + Uteis.RoundTo(rt1 * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
