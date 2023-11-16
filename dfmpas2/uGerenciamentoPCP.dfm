@@ -39450,7 +39450,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44229.730457685200000000
-    ReportOptions.LastChange = 45175.385072048610000000
+    ReportOptions.LastChange = 45246.507895034720000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'VAR'
@@ -39877,7 +39877,9 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       
         '  Child2.Visible := <frxDataMola."MMO_TRATAMENTO_TERMICO"> = '#39'T'#39 +
         ';'
-      '  Child2.PrintChildIfInvisible := False;'
+      
+        '  Child2.PrintChildIfInvisible := <frxDataMola."MMO_ARQUIVO_FICH' +
+        'A_TECNICA"> <> '#39#39';;'
       '  Child2.StartNewPage := False;'
       'end;'
       '    '
