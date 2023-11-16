@@ -7674,7 +7674,7 @@ begin
            '     DEMANDA_PRODUCAO  ' +
            '   WHERE  ' +
            '     PED_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPED_CODIGO.AsString)  +
-           '     AND DEP_SITUACAO =''R''   ' +
+           '     AND DEP_SITUACAO IN (''R'', ''E'')   ' +
            '     AND EMP_CODIGO = ' + QuotedStr(dbInicio.Emp_Codigo)  +
            ' ) ' +
            ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.Emp_Codigo) );
@@ -7706,9 +7706,12 @@ begin
    if frmConfirmaDemanda.ShowModal <> mrOk then
    begin
      SqlCdsPedidoItem.Filtered := False;
-      exit;
+     exit;
    end;
+
    SqlCdsPedidoItem.Filtered := False;
+   SqlCdsPedidoItem.Filter := '( 1 = 1 ) ' + filtroPrdCodigo;
+   SqlCdsPedidoItem.Filtered := True;
 
    if not Assigned(ProducaoDao) then
      ProducaoDao := TProducaoDao.Create(self);
@@ -7761,6 +7764,7 @@ begin
        ShowMessage('Pedido enviado a demanda de produção');
    finally
      FreeAndNil(ProducaoDao);
+     SqlCdsPedidoItem.Filtered := False;
      SqlCdsPedidoItem.EnableControls;
    end;
 
