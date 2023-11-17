@@ -166,7 +166,8 @@ inherited frmDemandaProducao: TfrmDemandaProducao
         Top = 89
         Width = 1156
         Height = 244
-        ExplicitTop = 89
+        ExplicitLeft = -3
+        ExplicitTop = 87
         ExplicitWidth = 1156
         ExplicitHeight = 244
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -869,14 +870,12 @@ inherited frmDemandaProducao: TfrmDemandaProducao
     end
     inherited btnNovo: TSpeedButton
       Left = 0
-      Top = -2
       Width = 135
       Height = 41
       Hint = 'Enviar demanda para produ'#231#227'o'
       Caption = 'Enviar para Programa'#231#227'o'
       Glyph.Data = {00000000}
       ExplicitLeft = 0
-      ExplicitTop = -2
       ExplicitWidth = 135
       ExplicitHeight = 41
     end

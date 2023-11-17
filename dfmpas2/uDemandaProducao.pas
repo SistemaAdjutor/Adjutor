@@ -1039,7 +1039,10 @@ procedure TfrmDemandaProducao.cdsFichaQTDEPRDChange(Sender: TField);
 begin
   inherited;
   if  (cdsFichaUC_TOTAL.AsFloat - cdsFichaDEP_QTDE_ESTOQUE.AsFloat) < Sender.AsFloat then
-   uteis.aviso('Quantidade a produzir é maior que a quantidade solicitada, excluindo o usado em estoque');
+    uteis.aviso('Quantidade a produzir é maior que a quantidade solicitada, excluindo o usado em estoque');
+
+  cxgrd1DBTableView1.ViewData.Collapse(True);
+
 //   raise Exception.Create('Quantidade a produzir não pode ser maior que a quantidade solicitada, excluindo o usado em estoque');
 end;
 
@@ -1137,8 +1140,10 @@ begin
 
   cdsFicha.SQL.Text :=
     'SELECT ft.FTI_REGISTRO , DEP_CODIGO,  ft.PRD_REFER, PRD_REFER_ITENS, pr.PRD_DESCRI ,PR.PRD_UND, ' +
+
     ' (FTI_UC / ftc.FTC_BASEFORMULA) AS FTI_UC,  '+
 //    ' FTI_UC,  '+
+
     // PEGAR A DATA DE ENTREGA DO ITEM PRINCIPAL / SENÃO SE DATA DE ENTREGA ESTIVER PREENCHIDA, SERÁ RETORNADA ESTA
      iif( VarIsNull(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1DTENTREGA.Index]),
          ' DEP_DATA_ENTREGA DTENTREGA,',
@@ -1148,14 +1153,21 @@ begin
     ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, ' + // iop.IOP_QUANTIDADE QTDEPRD,' +
 
  //    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS QTDEPRD,  '+
-    ' CAST( ' + FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS QTDEPRD,  '+
+//    ' CAST( ' + FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS QTDEPRD,  '+
+    ' CASE ' +
+    '   WHEN dpr.DEP_QTDE_PRODUCAO > 0 THEN dpr.DEP_QTDE_PRODUCAO ' +
+    '   ELSE ((FTI_UC / ftc.FTC_BASEFORMULA) * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1QTDEPRD.Index]) +   ') ' +
+    ' END AS QTDEPRD,  '+
 
     ' iop.IOP_NORDEM,DEP_QTDE_ESTOQUE, '+
     ' (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = pr.PRD_CODIGO ) EstoqueDisponivel,  ' +
     ' pr.prd_codigo, '+QuotedStr(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PED_CODIGO.Index] ) + ' as ped_codigo, ' +
     ' pr.PTI_CODIGO, tp.PTI_DESCRI, tp.PTI_SIGLA, pr.PRD_UND, ' +
+
 //    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS UC_TOTAL,  '+
-    ' CAST( '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS UC_TOTAL,  '+
+//    ' CAST( '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS UC_TOTAL,  '+
+    '   ((FTI_UC / ftc.FTC_BASEFORMULA) * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1QTDEPRD.Index]) +   ')  AS UC_TOTAL,  '+
+
     ' DEP_GERASUBORDENS ' +
     ' FROM FTC_IT01 ft                                                                                                 '+
     ' join prd0000 Pr on (ft.prd_refer_itens = pr.prd_refer '+ ConcatSe(' and ft.', DBInicio.ExclusivoSql('PRODUTOS'))+ ')'+

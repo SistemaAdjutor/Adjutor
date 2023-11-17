@@ -129,7 +129,7 @@ var sql : string ;
    usarEstoque : double;
 begin
    sql :=
-      'SELECT dep_codigo, FT.FTI_REGISTRO, DEP_SITUACAO, ft.PRD_REFER, PRD_REFER_ITENS, ' +
+      'SELECT COALESCE(dpr.DEP_QTDE_PRODUCAO, 0) AS DEP_QTDE_PRODUCAO, dep_codigo, FT.FTI_REGISTRO, DEP_SITUACAO, ft.PRD_REFER, PRD_REFER_ITENS, ' +
       ' CAST(pr.PRD_DESCRI AS VARCHAR(100)) PRD_DESCRI , ' + //   ' pr.PRD_DESCRI , ' +
       ' FTI_UC,  DEP_DATA_ENTREGA DTENTREGA,  '+
       ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, DEP_QTDE_ESTOQUE,         '+
@@ -164,7 +164,10 @@ begin
              usarEstoque :=  clone.FieldByName('DEP_QTDE_ESTOQUE').AsFloat
           else
             usarEstoque := 0; // tem que bloquear para não usar estoque com programação, um gatilho na tela de demanda
-           produzir := (clone.FieldByName('FTI_UC').AsFloat * produzirMaster/clone.FieldByName('FTC_BASEFORMULA').AsFloat)  -  UsarEstoque; // vai produzir se não especificar tudo - o que usar no estoque
+          if clone.FieldByName('DEP_QTDE_PRODUCAO').AsFloat > 0  then
+            produzir := clone.FieldByName('DEP_QTDE_PRODUCAO').AsFloat
+          else
+            produzir := (clone.FieldByName('FTI_UC').AsFloat * produzirMaster/clone.FieldByName('FTC_BASEFORMULA').AsFloat)  -  UsarEstoque; // vai produzir se não especificar tudo - o que usar no estoque
          if (produzir>0) then
          Begin
            inc(i);
