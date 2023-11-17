@@ -1,4 +1,3 @@
-
 unit uPedido;
 
 interface
@@ -3993,6 +3992,17 @@ begin
    end
    else
     begin
+       if (BuscaUmDadoSqlAsInteger( 'SELECT COUNT(dp.PRD_CODIGO)  FROM DEMANDA_PRODUCAO dp ' +
+                              ' WHERE dp.PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
+                              iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND dp.EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '')
+                              ) >  0 )
+       then
+       begin
+          if Messagedlg('Este pedido foi lançado no PCP Demanda. ' + #13 + #10 +
+                        'O Cancelamento do Pedido apagará também o PCP Demanda.' + #13 + #10 +
+                        '  Confirma?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes
+          then Exit;
+       end;
       ExcluirPedido;
       SqlCdsPedido.Refresh;
       LimparCampos;
@@ -5890,6 +5900,13 @@ begin
             uteis.aviso( 'Pedido '+EdPedidoNumero.Text+' cancelado !!!' );
          end;
 
+
+         DBInicio.ExecSql('DELETE FROM DEMANDA_PRODUCAO' +
+                          ' WHERE PED_CODIGO = '+  QuotedStr(EdPedidoNumero.Text) +
+                          iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '')
+                         );
+
+
         LimparCampos;
         HabilitaDesabilitaEdicao( False );
 
@@ -5961,14 +5978,43 @@ procedure TFrmPedido.SpeedButton1Click(Sender: tObject);
 begin
   try
     if SqlCdsPedido.Active then
-      if (BuscaUmDadoSqlAsInteger( 'SELECT OPR_CODIGO FROM ORDEMPRODUCAO ' +
-                                ' WHERE PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
-                                iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '') +
-                                '  AND OPR_STATUS <> '+ QuotedStr('C') )>1) then
+//      if (BuscaUmDadoSqlAsInteger( 'SELECT OPR_CODIGO FROM ORDEMPRODUCAO ' +
+//                                ' WHERE PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
+//                                iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '') +
+//                                '  AND OPR_STATUS <> '+ QuotedStr('C') )>1) then
+    if (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_INCLUI_ITEM_PED_OP_GERADA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + QuotedStr(dbInicio.USUARIO.CODIGO)) = 'S') then
+    begin
+      if
+        (BuscaUmDadoSqlAsInteger( 'SELECT COUNT(dp.PRD_CODIGO) ' +
+                                 ' FROM DEMANDA_PRODUCAO dp ' +
+                                 ' WHERE dp.PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
+                                 iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND dp.EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '')
+                                 ) > 0)
+        AND
+          (BuscaUmDadoSqlAsInteger( 'SELECT COUNT(dp.PRD_CODIGO) ' +
+                                 ' FROM DEMANDA_PRODUCAO dp ' +
+                                 ' WHERE dp.PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
+                                 iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND dp.EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '') +
+                                 '  AND dp.DEP_SITUACAO = '+ QuotedStr('R') ) = 0)
+        AND
+          (SqlCdsPedidoPED_CODIGO.AsString <> '' )
+      then
       begin
-        uteis.aviso('Ordem de produção já gerada. Não pode inserir item.');
+        uteis.aviso('Ordem de produção totalmente gerada. Não pode inserir item.');
         Exit;
       end;
+    end
+    else
+    begin
+      if (BuscaUmDadoSqlAsInteger( 'SELECT OPR_CODIGO FROM ORDEMPRODUCAO ' +
+                                 ' WHERE PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
+                                 iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '') +
+                                 '  AND OPR_STATUS <> '+ QuotedStr('C') ) > 1) then
+        begin
+          uteis.aviso('Ordem de produção já gerada. Não pode inserir item.');
+          Exit;
+        end;
+    end;
 
     if (SpeedButton1.Tag = 1)  then
     begin
@@ -7674,7 +7720,7 @@ begin
            '     DEMANDA_PRODUCAO  ' +
            '   WHERE  ' +
            '     PED_CODIGO = ' + QuotedStr(SqlCdsPedidoItemPED_CODIGO.AsString)  +
-           '     AND DEP_SITUACAO IN (''R'', ''E'')   ' +
+           '     AND DEP_SITUACAO IN (''R'', ''E'', ''I'')   ' +
            '     AND EMP_CODIGO = ' + QuotedStr(dbInicio.Emp_Codigo)  +
            ' ) ' +
            ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.Emp_Codigo) );
