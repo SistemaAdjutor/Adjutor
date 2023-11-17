@@ -8323,7 +8323,7 @@ inherited FormProduto: TFormProduto
         Top = 157
         Width = 1059
         Height = 142
-        ActivePage = TabSheet11
+        ActivePage = TabSheet10
         TabOrder = 1
         object TabSheet9: TTabSheet
           Caption = 'Organiza'#231#227'o do Produto'
