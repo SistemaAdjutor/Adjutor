@@ -3152,6 +3152,9 @@ begin
   if Assigned( ActiveControl ) then
   begin
 
+    if ( ActiveControl.Name = 'Bit_novo' ) then
+      Bit_novo.Click
+    Else
     if ( ActiveControl.Name = 'Bit_Cancelar' ) then
       Bit_Cancelar.Click
     Else
