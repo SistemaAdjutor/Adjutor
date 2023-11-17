@@ -24,7 +24,8 @@ uses
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue,
-  cxDataControllerConditionalFormattingRulesManagerDialog;
+  cxDataControllerConditionalFormattingRulesManagerDialog, Data.FMTBcd,
+  Data.SqlExpr, Vcl.Buttons;
 
 type
   TfrmCotacaoCadastro = class(TfrmBaseDBFDAC)
@@ -105,6 +106,11 @@ type
     tbItemCIT_OBS_AUTORIZACAO: TStringField;
     qItemCIT_DATA_NECESSIDADE: TDateField;
     cxGrid1DBTableView1CIT_DATA_NECESSIDADE: TcxGridDBColumn;
+    tbItemPCX_CODIGO: TStringField;
+    qCentroCusto: TSQLQuery;
+    SpeedButton6: TSpeedButton;
+    cbCentroCusto: TComboBoxRw;
+    Label13: TLabel;
     function GravarSolicitacao(): boolean;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbSetorChange(Sender: TObject);
@@ -121,6 +127,7 @@ type
     procedure AtualizaItem;
     procedure HabilitaCampos;
     procedure tbItemAfterInsert(DataSet: TDataSet);
+    procedure SpeedButton6Click(Sender: TObject);
   private
     var
       nome :string;
@@ -139,7 +146,7 @@ implementation
 
 {$R *.dfm}
 
-uses InicioDB, UCotacaoPesquisa, Uteis;
+uses InicioDB, UCotacaoPesquisa, Uteis, uCadastroFrases;
 
 procedure TfrmCotacaoCadastro.btAdicionarItemClick(Sender: TObject);
 begin
@@ -158,12 +165,14 @@ begin
   btExcluitItem.Enabled := False;
   HabilitaCampos;
   cbProduto.idRetorno := '';
+  cbCentroCusto.idRetorno := '';
   edPrdRefer.SetFocus;
 end;
 
 procedure TfrmCotacaoCadastro.HabilitaCampos;
 begin
   cbProduto.Enabled := True;
+  cbCentroCusto.Enabled := True;
   dtCitDataNecessidade.Enabled := True;
   edPrdRefer.Enabled := True;
   edCitPrdDescricao.Enabled := True;
@@ -171,6 +180,23 @@ begin
   edCitQtdeMin.Enabled := True;
   edCitQtdeMax.Enabled := True;
   cbUndMedida.Enabled := True;
+end;
+
+procedure TfrmCotacaoCadastro.SpeedButton6Click(Sender: TObject);
+begin
+  inherited;
+     FrmCadastroObservacao := TFrmCadastroObservacao.Create(Application);
+   try
+      FrmCadastroObservacao.FormStyle := fsNormal;
+      FrmCadastroObservacao.Visible := false;
+      FrmCadastroObservacao.memo := DBMemo1;
+      FrmCadastroObservacao.ShowModal;
+      GravarSolicitacao();
+
+   finally
+      FrmCadastroObservacao.Destroy;
+      FrmCadastroObservacao :=Nil;
+   end;
 end;
 
 procedure TfrmCotacaoCadastro.tbItemAfterInsert(DataSet: TDataSet);
@@ -214,6 +240,7 @@ begin
   btGravarItem.Enabled := False;
   btExcluitItem.Enabled := False;
   cbProduto.Enabled := False;
+  cbCentroCusto.Enabled := False;
   dtCitDataNecessidade.Enabled := False;
   edPrdRefer.Enabled := False;
   edCitPrdDescricao.Enabled := False;
@@ -285,16 +312,20 @@ end;
 procedure TfrmCotacaoCadastro.cbProdutoChange(Sender: TObject);
 begin
   inherited;
-  if tbItem.State in [dsInactive, dsBrowse] then
-  begin
-    MessageDlg('É necessário escolher uma ação para prosseguir: Selecionar Item na grade ou Adicionar Item.', mtWarning, [mbOK], 0);
-    exit;
-  end;
+//  if tbItem.State in [dsInactive, dsBrowse] then
+//  begin
+//    MessageDlg('É necessário escolher uma ação para prosseguir: Selecionar Item na grade ou Adicionar Item.', mtWarning, [mbOK], 0);
+//    exit;
+//  end;
+
+  if not (tbItem.State in dsEditModes) then
+    exit; // tbItem.Edit;
 
   tbItemPRD_REFER.AsString := cbProduto.idRetorno;
   tbItemPRD_UNISIGLA.AsString := BuscaUmDadoSqlAsString('SELECT PRD_UND FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(cbProduto.idRetorno));
   edCitPrdDescricao.Text := cbProduto.Text;
-  edCitQuantidadeSolicitada.SetFocus;
+  if edCitQuantidadeSolicitada.canFocus then
+    edCitQuantidadeSolicitada.SetFocus;
 end;
 
 procedure TfrmCotacaoCadastro.cbSetorChange(Sender: TObject);
@@ -345,7 +376,7 @@ begin
   Action := caFree;
   frmCotacaoCadastro := nil;
   if frmCotacaoPesquisa <> nil then
-    frmCotacaoPesquisa.AbreOperacoes(1);
+    frmCotacaoPesquisa.AbreOperacoes(999);
 
 end;
 
