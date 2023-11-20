@@ -1572,7 +1572,7 @@ begin
 
   if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
   begin
-    ExecSQL('RECREATE TABLE PCP_TEMP' + DBInicio.Usuario.CODIGO +  ' (PRD_CODIGO VARCHAR(5), PRD_REFER VARCHAR(20), AMX_CODIGO VARCHAR(4) ) ' );
+    ExecSQL('RECREATE TABLE PCP_TEMP' + DBInicio.Usuario.CODIGO +  ' (PRD_CODIGO VARCHAR(5), PRD_REFER VARCHAR(20), AMX_CODIGO VARCHAR(4) ) ', false );
 {
     OpenAux4(' SELECT fi.AMX_CODIGO, op.CLI_CODIGO ' +
               ' FROM ORDEMPRODUCAO op ' +
@@ -1637,6 +1637,13 @@ begin
         cdsBuscaIOP_STATUS.AsString := 'I';
         cdsBusca.Post;
    finally
+
+     try
+
+       ExecSql('DROP TABLE PCP_TEMP' + DBInicio.Usuario.CODIGO, false);
+     except
+       // faz nada
+     end;
 
      TSpeedButton(Sender).Enabled := True;
 
