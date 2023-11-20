@@ -2,9 +2,8 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
   Caption = 'frmEtqFaturamento'
   ClientHeight = 418
   ClientWidth = 978
-  ExplicitTop = -115
-  ExplicitWidth = 986
-  ExplicitHeight = 445
+  ExplicitWidth = 994
+  ExplicitHeight = 457
   PixelsPerInch = 96
   TextHeight = 13
   object PanEtiqueta: TPanel [0]
@@ -247,6 +246,16 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         ParentShowHint = False
         ShowHint = True
         TabOrder = 10
+      end
+      object rbModelo12: TRadioButton
+        Left = 266
+        Top = 136
+        Width = 247
+        Height = 17
+        Caption = 'Modelo 12 - '#218'nica (10,00 x 5,00 cm)  c/ Logo'
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 11
       end
     end
     object grpMensagem: TGroupBox
@@ -622,6 +631,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -639,6 +649,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -648,22 +666,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -671,32 +701,44 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 138
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 98650
     DataPipelineName = 'ppDBPEtiqueta'
-    object ppColumnHeaderBand16: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+    object ppColumnHeaderBand1: TppColumnHeaderBand
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnHeaderBand2: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnHeaderBand1: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+    object ppColumnHeaderBand16: TppColumnHeaderBand
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 133000
       mmPrintPosition = 0
@@ -705,13 +747,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESTINAT'#193'RIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 18
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 7408
@@ -726,6 +770,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -747,6 +792,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -768,6 +814,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -789,6 +836,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -810,6 +858,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -831,6 +880,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_MENSAGEM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -852,13 +902,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 14
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5715
         mmLeft = 4763
@@ -872,6 +924,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -893,6 +946,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -914,13 +968,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Transportadora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 14
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5842
         mmLeft = 4763
@@ -934,13 +990,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Bairro:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 14
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5821
         mmLeft = 116417
@@ -954,13 +1012,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cidade:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 14
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5715
         mmLeft = 4763
@@ -974,6 +1034,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -997,6 +1058,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clWindowText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Data = 'BarCode'
         PrintHumanReadable = False
         AutoSize = False
@@ -1020,13 +1082,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 14
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5842
         mmLeft = 117211
@@ -1040,13 +1104,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 14
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5821
         mmLeft = 5027
@@ -1060,6 +1126,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REMETENTE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1081,13 +1148,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REMETENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 14
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5715
         mmLeft = 4763
@@ -1097,23 +1166,23 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         LayerName = Foreground
       end
     end
-    object ppColumnFooterBand16: TppColumnFooterBand
+    object ppColumnFooterBand2: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnFooterBand1: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnFooterBand2: TppColumnFooterBand
+    object ppColumnFooterBand16: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
@@ -1134,6 +1203,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1151,6 +1221,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -1160,22 +1238,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -1183,32 +1273,44 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 210
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 98650
     DataPipelineName = 'ppDBPEtiqueta'
-    object ppColumnHeaderBand4: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+    object ppColumnHeaderBand3: TppColumnHeaderBand
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnHeaderBand5: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnHeaderBand3: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+    object ppColumnHeaderBand4: TppColumnHeaderBand
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 64294
       mmPrintPosition = 0
@@ -1217,13 +1319,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESTINAT'#193'RIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4191
@@ -1238,6 +1342,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1259,6 +1364,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1280,6 +1386,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1301,6 +1408,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1322,6 +1430,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1343,6 +1452,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_MENSAGEM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1364,13 +1474,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 1058
@@ -1384,6 +1496,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1405,6 +1518,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1426,13 +1540,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TRANSP:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 529
@@ -1446,13 +1562,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 53975
@@ -1466,6 +1584,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1487,13 +1606,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REMETENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 529
@@ -1507,6 +1628,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REMETENTE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1524,23 +1646,23 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         LayerName = Foreground1
       end
     end
-    object ppColumnFooterBand4: TppColumnFooterBand
+    object ppColumnFooterBand3: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnFooterBand5: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnFooterBand3: TppColumnFooterBand
+    object ppColumnFooterBand4: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
@@ -1560,6 +1682,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
@@ -1570,7 +1693,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 130000
     PrinterSetup.mmPaperWidth = 170000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -1578,6 +1701,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -1587,22 +1718,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -1610,26 +1753,38 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 289
     Top = 176
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 98650
     DataPipelineName = 'ppDBPEtiqueta'
     object ppColumnHeaderBand7: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnHeaderBand8: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand3: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 98425
       mmPrintPosition = 0
@@ -1638,13 +1793,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESTINAT'#193'RIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 18
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 7408
@@ -1659,6 +1816,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1680,6 +1838,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1701,6 +1860,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1722,6 +1882,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1743,6 +1904,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_MENSAGEM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1764,13 +1926,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 14
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5821
         mmLeft = 2646
@@ -1784,6 +1948,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1805,6 +1970,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -1826,13 +1992,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Transportadora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4254
         mmLeft = 2646
@@ -1846,13 +2014,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cidade:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4129
         mmLeft = 2381
@@ -1868,6 +2038,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clWindowText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Data = 'BarCode'
         PrintHumanReadable = False
         AutoSize = False
@@ -1891,13 +2062,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4129
         mmLeft = 2117
@@ -1914,6 +2087,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         MaintainAspectRatio = False
         Stretch = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         mmHeight = 19050
         mmLeft = 1852
         mmTop = 1852
@@ -1927,13 +2101,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -1950,13 +2126,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -1973,13 +2151,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -1995,13 +2175,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'plblLine'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '___________________________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 18
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 7408
@@ -2016,6 +2198,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText52'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2037,13 +2220,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label40'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 96838
@@ -2057,6 +2242,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText53'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2078,13 +2264,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label41'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Bairro:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4064
         mmLeft = 58738
@@ -2106,14 +2294,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     end
     object ppColumnFooterBand8: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnFooterBand6: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
@@ -2133,6 +2321,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
@@ -2143,7 +2332,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 3000
     PrinterSetup.mmPaperHeight = 60000
     PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -2151,6 +2340,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -2160,22 +2357,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -2183,32 +2392,44 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 372
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 98000
     DataPipelineName = 'ppDBPEtiqueta'
-    object ppColumnHeaderBand9: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+    object ppColumnHeaderBand11: TppColumnHeaderBand
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnHeaderBand10: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnHeaderBand11: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+    object ppColumnHeaderBand9: TppColumnHeaderBand
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand4: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 53000
       mmPrintPosition = 0
@@ -2217,13 +2438,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESTINAT'#193'RIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 5027
@@ -2238,6 +2461,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2259,6 +2483,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2280,6 +2505,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2301,6 +2527,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2322,6 +2549,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2343,6 +2571,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_MENSAGEM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2364,13 +2593,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5027
         mmLeft = 529
@@ -2384,6 +2615,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2405,6 +2637,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2426,13 +2659,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Transportadora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 265
@@ -2446,13 +2681,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Bairro:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 24606
@@ -2466,13 +2703,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cidade:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 529
@@ -2486,6 +2725,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2507,13 +2747,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5027
         mmLeft = 265
@@ -2527,13 +2769,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 529
@@ -2547,6 +2791,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REMETENTE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2568,13 +2813,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REMETENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 265
@@ -2590,6 +2837,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clWindowText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Data = '123456789'
         PrintHumanReadable = False
         AutoSize = False
@@ -2609,23 +2857,23 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         mmWideBarRatio = 76200
       end
     end
-    object ppColumnFooterBand9: TppColumnFooterBand
+    object ppColumnFooterBand11: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnFooterBand10: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnFooterBand11: TppColumnFooterBand
+    object ppColumnFooterBand9: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
@@ -2645,6 +2893,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
@@ -2655,7 +2904,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 6350
     PrinterSetup.mmPaperHeight = 130000
     PrinterSetup.mmPaperWidth = 170000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -2663,6 +2912,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -2672,22 +2929,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -2695,26 +2964,38 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 598
     Top = 224
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 98650
     DataPipelineName = 'ppDBPEtiqueta'
     object ppColumnHeaderBand13: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnHeaderBand14: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand6: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 51065
       mmPrintPosition = 0
@@ -2724,13 +3005,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESTINAT'#193'RIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4498
@@ -2745,6 +3028,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2766,6 +3050,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2787,6 +3072,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2808,6 +3094,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2832,13 +3119,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4498
         mmLeft = 65088
@@ -2852,6 +3141,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2873,6 +3163,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -2897,13 +3188,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Transportadora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4498
         mmLeft = 2117
@@ -2919,6 +3212,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clWindowText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Data = 'BarCode'
         PrintHumanReadable = False
         AutoSize = False
@@ -2943,13 +3237,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2966,13 +3262,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2989,13 +3287,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -3009,14 +3309,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     end
     object ppColumnFooterBand14: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnFooterBand13: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
@@ -3036,6 +3336,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
@@ -3046,7 +3347,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 2000
     PrinterSetup.mmPaperHeight = 55000
     PrinterSetup.mmPaperWidth = 105000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -3054,6 +3355,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -3063,22 +3372,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -3086,26 +3407,38 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 452
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 103000
     DataPipelineName = 'ppDBPEtiqueta'
     object ppColumnHeaderBand6: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnHeaderBand12: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand5: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 48154
       mmPrintPosition = 0
@@ -3116,13 +3449,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Destinat'#225'rio:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3655
         mmLeft = 1588
@@ -3136,6 +3471,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -3157,6 +3493,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -3178,6 +3515,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -3199,6 +3537,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -3223,13 +3562,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4498
         mmLeft = 61119
@@ -3243,6 +3584,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -3264,6 +3606,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -3287,13 +3630,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Transportadora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3655
         mmLeft = 1500
@@ -3309,6 +3654,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clWindowText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Data = 'BarCode'
         PrintHumanReadable = False
         AutoSize = False
@@ -3333,13 +3679,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -3356,13 +3704,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -3379,13 +3729,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -3401,6 +3753,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_MENSAGEM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -3422,13 +3775,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label39'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 59531
@@ -3442,6 +3797,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -3461,14 +3817,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     end
     object ppColumnFooterBand12: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppColumnFooterBand7: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
@@ -3611,6 +3967,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Rdprint Preview'
     OpcoesPreview.PreviewZoom = 0
@@ -3624,15 +3981,19 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Rdprint Setup'
     TitulodoRelatorio = 'Etiquetas Padr'#227'o Matricial ou Jato/Laser'
@@ -3689,6 +4050,8 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     Left = 692
     Top = 283
   end
@@ -4052,6 +4415,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Rdprint Preview'
     OpcoesPreview.PreviewZoom = 100
@@ -4065,15 +4429,19 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Nota Fiscal'
     TitulodoRelatorio = 'Nota Fiscal'
@@ -4130,6 +4498,8 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     Left = 783
     Top = 287
   end
@@ -4361,6 +4731,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -4370,7 +4741,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 95000
     PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -4378,6 +4749,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -4387,22 +4766,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -4410,14 +4801,26 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 604
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 103000
     DataPipelineName = 'ppDBPEtiqueta'
     object ppDetailBand7: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 90000
       mmPrintPosition = 0
@@ -4428,13 +4831,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESTINAT'#193'RIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 2381
@@ -4448,6 +4853,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText54'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4470,6 +4876,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText55'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4492,6 +4899,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText56'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4515,13 +4923,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TRANSPORTADORA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 2117
@@ -4535,6 +4945,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4556,6 +4967,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4577,6 +4989,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4598,13 +5011,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 2381
@@ -4621,13 +5036,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 2381
@@ -4639,6 +5056,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLine1: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line1'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1235
         mmLeft = 181
@@ -4650,6 +5068,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLine2: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line2'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1235
         mmLeft = 93
@@ -4664,13 +5083,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 18
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -4687,13 +5108,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -4710,13 +5133,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -4730,6 +5155,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLine3: TppLine
         DesignLayer = ppDesignLayer5
         UserName = 'Line3'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1235
         mmLeft = 0
@@ -4746,6 +5172,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clBlack
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         PrintHumanReadable = False
@@ -4769,6 +5196,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppDBText58: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText58'
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4788,6 +5216,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppDBText61: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText61'
+        Border.mmPadding = 0
         DataField = 'TRP_ENDERE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4807,6 +5236,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppDBText62: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText62'
+        Border.mmPadding = 0
         DataField = 'TRP_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4839,6 +5269,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
@@ -4849,7 +5280,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 2000
     PrinterSetup.mmPaperHeight = 45000
     PrinterSetup.mmPaperWidth = 105000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -4857,6 +5288,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -4866,22 +5305,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -4889,14 +5340,26 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 532
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 103000
     DataPipelineName = 'ppDBPEtiqueta'
     object ppDetailBand8: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 41000
       mmPrintPosition = 0
@@ -4907,13 +5370,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Destinat'#225'rio:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3655
         mmLeft = 2644
@@ -4927,6 +5392,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4948,6 +5414,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4969,6 +5436,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -4990,6 +5458,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5014,13 +5483,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4498
         mmLeft = 62175
@@ -5034,6 +5505,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5055,6 +5527,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5078,13 +5551,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Transportadora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3655
         mmLeft = 2556
@@ -5100,6 +5575,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clWindowText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Data = 'BarCode'
         PrintHumanReadable = False
         AutoSize = False
@@ -5124,13 +5600,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -5147,13 +5625,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -5170,13 +5650,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -5192,13 +5674,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label39'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 60587
@@ -5212,6 +5696,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5244,6 +5729,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -5253,7 +5739,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 95000
     PrinterSetup.mmPaperWidth = 80000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -5261,6 +5747,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -5270,22 +5764,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -5293,14 +5799,26 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 660
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 103000
     DataPipelineName = 'ppDBPEtiqueta'
     object ppDetailBand9: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 90000
@@ -5310,6 +5828,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'plempresaMod8'
         HyperlinkEnabled = False
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'lFantasia'
         Color = clBlack
         Font.Charset = ANSI_CHARSET
@@ -5317,7 +5836,8 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Font.Name = 'Arial Narrow'
         Font.Size = 20
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         WordWrap = True
         VerticalAlignment = avCenter
@@ -5332,13 +5852,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         DesignLayer = ppDesignLayer9
         UserName = 'Label7'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'DESTINO/CIDADE'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial Narrow'
         Font.Size = 20
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         VerticalAlignment = avCenter
         mmHeight = 15610
@@ -5351,6 +5873,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppDBText69: TppDBText
         DesignLayer = ppDesignLayer9
         UserName = 'DBText1'
+        Border.mmPadding = 0
         Color = clBlack
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
@@ -5374,13 +5897,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         DesignLayer = ppDesignLayer9
         UserName = 'Label9'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'NOTA FISCAL'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial Narrow'
         Font.Size = 20
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         VerticalAlignment = avCenter
         mmHeight = 15610
@@ -5393,6 +5918,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppDBText71: TppDBText
         DesignLayer = ppDesignLayer9
         UserName = 'DBText71'
+        Border.mmPadding = 0
         Color = clBlack
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
@@ -5427,6 +5953,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -5436,7 +5963,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 80000
     PrinterSetup.mmPaperWidth = 60000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -5444,6 +5971,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -5453,22 +5988,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -5476,14 +6023,26 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 732
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 55000
     DataPipelineName = 'ppDBPEtiqueta'
     object ppDetailBand10: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 78000
       mmPrintPosition = 0
@@ -5494,13 +6053,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESTINAT'#193'RIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 2381
@@ -5514,6 +6075,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText54'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5536,6 +6098,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText55'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5558,6 +6121,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText56'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5581,13 +6145,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TRANSPORTADORA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 2117
@@ -5601,6 +6167,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5622,6 +6189,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5643,6 +6211,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5664,13 +6233,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 2381
@@ -5687,13 +6258,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1588
@@ -5705,6 +6278,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLine4: TppLine
         DesignLayer = ppDesignLayer10
         UserName = 'Line1'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1235
         mmLeft = 181
@@ -5716,6 +6290,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLine5: TppLine
         DesignLayer = ppDesignLayer10
         UserName = 'Line2'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1323
         mmLeft = 794
@@ -5730,13 +6305,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 18
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -5753,13 +6330,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -5776,13 +6355,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -5796,6 +6377,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLine6: TppLine
         DesignLayer = ppDesignLayer10
         UserName = 'Line3'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1235
         mmLeft = 0
@@ -5812,6 +6394,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clBlack
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         PrintHumanReadable = False
@@ -5835,6 +6418,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppDBText78: TppDBText
         DesignLayer = ppDesignLayer10
         UserName = 'DBText58'
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5854,6 +6438,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppDBText79: TppDBText
         DesignLayer = ppDesignLayer10
         UserName = 'DBText61'
+        Border.mmPadding = 0
         DataField = 'TRP_ENDERE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5873,6 +6458,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppDBText80: TppDBText
         DesignLayer = ppDesignLayer10
         UserName = 'DBText62'
+        Border.mmPadding = 0
         DataField = 'TRP_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -5905,6 +6491,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -5914,7 +6501,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 2000
     PrinterSetup.mmPaperHeight = 75000
     PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -5922,6 +6509,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -5931,22 +6526,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -5954,14 +6561,26 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 812
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 98000
     DataPipelineName = 'ppDBPEtiqueta'
     object ppDetailBand12: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 73000
@@ -5971,13 +6590,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Dest.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4762
         mmLeft = 2646
@@ -5991,6 +6612,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6012,6 +6634,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6033,6 +6656,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6054,6 +6678,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6076,13 +6701,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4498
         mmLeft = 2692
@@ -6096,6 +6723,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6117,6 +6745,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6138,13 +6767,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Transportadora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4762
         mmLeft = 2381
@@ -6158,13 +6789,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label39'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4762
         mmLeft = 51019
@@ -6178,6 +6811,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6199,6 +6833,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText88'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6218,13 +6853,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLabel59: TppLabel
         DesignLayer = ppDesignLayer12
         UserName = 'Label59'
+        Border.mmPadding = 0
         Caption = 'Bairro:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4418
         mmLeft = 2646
@@ -6236,13 +6873,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLabel60: TppLabel
         DesignLayer = ppDesignLayer12
         UserName = 'Label60'
+        Border.mmPadding = 0
         Caption = 'CEP:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 2646
@@ -6254,13 +6893,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object ppLabel61: TppLabel
         DesignLayer = ppDesignLayer12
         UserName = 'Label61'
+        Border.mmPadding = 0
         Caption = 'Cidade:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 2646
@@ -6272,13 +6913,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object lbl3: TppLabel
         DesignLayer = ppDesignLayer12
         UserName = 'Label3'
+        Border.mmPadding = 0
         Caption = 'Remetente:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 2381
@@ -6290,13 +6933,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       object Remetente: TppLabel
         DesignLayer = ppDesignLayer12
         UserName = 'Remetente'
+        Border.mmPadding = 0
         Caption = 'Remetente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4763
         mmLeft = 24871
@@ -6313,6 +6958,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         MaintainAspectRatio = False
         Stretch = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         mmHeight = 18130
         mmLeft = 29369
         mmTop = 230
@@ -6336,6 +6982,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DataPipeline = ppDBPEtiqueta
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
@@ -6346,7 +6993,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.mmMarginTop = 2000
     PrinterSetup.mmPaperHeight = 50000
     PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -6354,6 +7001,14 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -6363,22 +7018,34 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -6386,14 +7053,26 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 892
     Top = 178
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 98000
     DataPipelineName = 'ppDBPEtiqueta'
     object ppDetailBand11: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 41000
       mmPrintPosition = 0
@@ -6404,13 +7083,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Destinat'#225'rio:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold, fsUnderline]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3655
         mmLeft = 2644
@@ -6424,6 +7105,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6445,6 +7127,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6466,6 +7149,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6487,6 +7171,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6511,13 +7196,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Nota Fiscal:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4498
         mmLeft = 58473
@@ -6531,6 +7218,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_NUM'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6552,6 +7240,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TRANSP'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6575,13 +7264,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         Border.BorderPositions = [bpBottom]
         Border.Visible = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Transportadora:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3655
         mmLeft = 2556
@@ -6597,6 +7288,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         BarCodeType = bcCode39
         BarColor = clWindowText
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Data = 'BarCode'
         PrintHumanReadable = False
         AutoSize = False
@@ -6621,13 +7313,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -6644,13 +7338,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -6667,13 +7363,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBLRAZAO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -6689,13 +7387,15 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'Label39'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volumes:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 60587
@@ -6709,6 +7409,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         UserName = 'DBText51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_VOLUME'
         DataPipeline = ppDBPEtiqueta
         Font.Charset = DEFAULT_CHARSET
@@ -6734,6 +7435,457 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       end
     end
     object ppParameterList11: TppParameterList
+    end
+  end
+  object prprtModelo12: TppReport
+    AutoStop = False
+    DataPipeline = ppDBPEtiqueta
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
+    PrinterSetup.Orientation = poLandscape
+    PrinterSetup.PaperName = 'Custom'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.SaveDeviceSettings = False
+    PrinterSetup.mmMarginBottom = 2000
+    PrinterSetup.mmMarginLeft = 1000
+    PrinterSetup.mmMarginRight = 1000
+    PrinterSetup.mmMarginTop = 2000
+    PrinterSetup.mmPaperHeight = 50000
+    PrinterSetup.mmPaperWidth = 100000
+    PrinterSetup.PaperSize = 256
+    Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
+    Template.ShowBusyCursor = False
+    Units = utMillimeters
+    ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+    DeviceType = 'Screen'
+    DefaultFileDeviceType = 'PDF'
+    EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
+    LanguageID = 'Default'
+    OpenFile = False
+    OutlineSettings.CreateNode = False
+    OutlineSettings.CreatePageNodes = False
+    OutlineSettings.Enabled = False
+    OutlineSettings.Visible = False
+    ThumbnailSettings.Enabled = True
+    ThumbnailSettings.Visible = True
+    ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
+    PDFSettings.EmbedFontOptions = [efUseSubset]
+    PDFSettings.EncryptSettings.AllowCopy = True
+    PDFSettings.EncryptSettings.AllowInteract = True
+    PDFSettings.EncryptSettings.AllowModify = True
+    PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
+    PDFSettings.EncryptSettings.Enabled = False
+    PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
+    PDFSettings.FontEncoding = feAnsi
+    PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    PreviewFormSettings.WindowState = wsMaximized
+    PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
+    RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+    RTFSettings.DefaultFont.Color = clWindowText
+    RTFSettings.DefaultFont.Height = -13
+    RTFSettings.DefaultFont.Name = 'Arial'
+    RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
+    TextFileName = '($MyDocuments)\Report.pdf'
+    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.Enabled = False
+    XLSSettings.AppName = 'ReportBuilder'
+    XLSSettings.Author = 'ReportBuilder'
+    XLSSettings.Subject = 'Report'
+    XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
+    Left = 892
+    Top = 242
+    Version = '22.0'
+    mmColumnWidth = 98000
+    DataPipelineName = 'ppDBPEtiqueta'
+    object ppDetailBand13: TppDetailBand
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 41000
+      mmPrintPosition = 0
+      object ppLabel66: TppLabel
+        DesignLayer = ppDesignLayer13
+        UserName = 'Label1'
+        HyperlinkEnabled = False
+        Border.BorderPositions = [bpBottom]
+        Border.Visible = True
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Destinat'#225'rio:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold, fsUnderline]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 3655
+        mmLeft = 2644
+        mmTop = 17157
+        mmWidth = 16849
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppDBText96: TppDBText
+        DesignLayer = ppDesignLayer13
+        UserName = 'DBText1'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'CLI_RAZAO'
+        DataPipeline = ppDBPEtiqueta
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'ppDBPEtiqueta'
+        mmHeight = 3704
+        mmLeft = 2556
+        mmTop = 20775
+        mmWidth = 94721
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppDBText97: TppDBText
+        DesignLayer = ppDesignLayer13
+        UserName = 'DBText2'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'CLI_ENDE'
+        DataPipeline = ppDBPEtiqueta
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBPEtiqueta'
+        mmHeight = 3704
+        mmLeft = 2556
+        mmTop = 24334
+        mmWidth = 94721
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppDBText98: TppDBText
+        DesignLayer = ppDesignLayer13
+        UserName = 'DBText4'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'CLI_CEP'
+        DataPipeline = ppDBPEtiqueta
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBPEtiqueta'
+        mmHeight = 3704
+        mmLeft = 75669
+        mmTop = 28070
+        mmWidth = 21696
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppDBText99: TppDBText
+        DesignLayer = ppDesignLayer13
+        UserName = 'DBText5'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'CLI_CIDADE'
+        DataPipeline = ppDBPEtiqueta
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBPEtiqueta'
+        mmHeight = 3969
+        mmLeft = 2556
+        mmTop = 28070
+        mmWidth = 71173
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppLabel67: TppLabel
+        DesignLayer = ppDesignLayer13
+        UserName = 'Label2'
+        HyperlinkEnabled = False
+        AutoSize = False
+        Border.BorderPositions = [bpBottom]
+        Border.Visible = True
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'N'#186' Nota Fiscal:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4498
+        mmLeft = 75936
+        mmTop = 1058
+        mmWidth = 21167
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppDBText100: TppDBText
+        DesignLayer = ppDesignLayer13
+        UserName = 'DBText8'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'NF_NUM'
+        DataPipeline = ppDBPEtiqueta
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        TextAlignment = taCentered
+        Transparent = True
+        DataPipelineName = 'ppDBPEtiqueta'
+        mmHeight = 3704
+        mmLeft = 75936
+        mmTop = 5556
+        mmWidth = 21167
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppDBText101: TppDBText
+        DesignLayer = ppDesignLayer13
+        UserName = 'DBText16'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'TRANSP'
+        DataPipeline = ppDBPEtiqueta
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'ppDBPEtiqueta'
+        mmHeight = 3704
+        mmLeft = 3173
+        mmTop = 36218
+        mmWidth = 93927
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppLabel68: TppLabel
+        DesignLayer = ppDesignLayer13
+        UserName = 'Label5'
+        HyperlinkEnabled = False
+        Border.BorderPositions = [bpBottom]
+        Border.Visible = True
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Transportadora:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 3655
+        mmLeft = 2556
+        mmTop = 32190
+        mmWidth = 24016
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object lblRazaoMod12: TppLabel
+        DesignLayer = ppDesignLayer13
+        UserName = 'Label4'
+        HyperlinkEnabled = False
+        AutoSize = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'LBLRAZAO'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        mmHeight = 3704
+        mmLeft = 22758
+        mmTop = 1058
+        mmWidth = 52383
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object lblEnderecoMod12: TppLabel
+        DesignLayer = ppDesignLayer13
+        UserName = 'plblEndereco'
+        HyperlinkEnabled = False
+        AutoSize = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'lblEndereco'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        mmHeight = 7673
+        mmLeft = 22758
+        mmTop = 4763
+        mmWidth = 52383
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object lblTelefoneMod12: TppLabel
+        DesignLayer = ppDesignLayer13
+        UserName = 'unTelefoneMod12'
+        HyperlinkEnabled = False
+        AutoSize = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'lblTelefone'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = [fsBold]
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taCentered
+        Transparent = True
+        WordWrap = True
+        mmHeight = 3704
+        mmLeft = 22758
+        mmTop = 12700
+        mmWidth = 52118
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppLabel73: TppLabel
+        DesignLayer = ppDesignLayer13
+        UserName = 'Label39'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Volumes:'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 60587
+        mmTop = 32100
+        mmWidth = 14817
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object ppDBText102: TppDBText
+        DesignLayer = ppDesignLayer13
+        UserName = 'DBText51'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'NF_VOLUME'
+        DataPipeline = ppDBPEtiqueta
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = [fsBold]
+        Transparent = True
+        DataPipelineName = 'ppDBPEtiqueta'
+        mmHeight = 4233
+        mmLeft = 76990
+        mmTop = 31895
+        mmWidth = 20108
+        BandType = 4
+        LayerName = BandLayer14
+      end
+      object pmgLogoMod12: TppImage
+        DesignLayer = ppDesignLayer13
+        UserName = 'pmgLogoMod12'
+        AlignHorizontal = ahCenter
+        AlignVertical = avCenter
+        MaintainAspectRatio = False
+        Stretch = True
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        mmHeight = 14552
+        mmLeft = 2647
+        mmTop = 1057
+        mmWidth = 19843
+        BandType = 4
+        LayerName = BandLayer14
+      end
+    end
+    object ppDesignLayers13: TppDesignLayers
+      object ppDesignLayer13: TppDesignLayer
+        UserName = 'BandLayer14'
+        LayerType = ltBanded
+        Index = 0
+      end
+    end
+    object ppParameterList13: TppParameterList
     end
   end
 end
