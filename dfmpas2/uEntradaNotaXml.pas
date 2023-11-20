@@ -1593,13 +1593,10 @@ begin
                                  FloatToSQL(cdsItensENF_PRECO_ORIGINAL.AsFloat)+ ','+
                                  FloatToSQL(cdsItensENF_PTOTAL_ORIGINAL.AsFloat)+  ')';
                ExecSql(wSql1 + wSql2);
-               if BuscaUmDadoSqlAsString('SELECT PRD_GERENCIA_LOTE FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(CdsItensReferencia.AsString) ) = 'S' then
-               begin
-                 if CdsItensRegistroLote.AsString = '' then
-                   uteis.Aviso('O produto ' + CdsItensReferencia.AsString + ' utiliza controle de lote e o lote não foi informado!!')
-                 else
-                   ExecSql('UPDATE ENF_IT01 SET PRDL_REGISTRO = ' + CdsItensRegistroLote.AsString + ' WHERE ENF_REGISTRO = ' + IntToStr(iRegistro) );
-               end;
+
+               if CdsItensRegistroLote.AsString <> '' then
+                 ExecSql('UPDATE ENF_IT01 SET PRDL_REGISTRO = ' + CdsItensRegistroLote.AsString + ' WHERE ENF_REGISTRO = ' + IntToStr(iRegistro) );
+
 
                //Verifica se atualiza estoque
                if (cbMovimentaEstoque.Checked) then
@@ -1848,27 +1845,34 @@ begin
      CdsItens.First;
      while (not CdsItens.Eof) do
         begin
-           if (CdsItensReferencia.AsString = '') then
-           begin
-               listaErros.Add('Produto '+CdsItensReferenciaFornecedor.AsString+' não cadastrado no sistema e nem referenciado');
-           end
-           else if (cdsItensUCom.Value <> cdsItensUnidadeCadastro.Value) // SE AS UNIDADES XML E REGISTRADO NO BANCO ESTÃO DIFERENTE
-          and  (cdsItensFatorConversao.AsFloat = 0 )  then
-           begin
-               listaErros.Add('Produto '+CdsItensReferenciaFornecedor.AsString+' não definida a conversão de unidades');
-           end;
-           if (CdsItensCFOP.AsString = '') then
-           begin
-                 listaErros.Add('CFOP do produto '+CdsItensReferenciaFornecedor.AsString+' não informado ou localizado correspondência');
-           end;
-          if (cdsItensAlmoxarifadoCodigo.AsString = '') then
+          if (CdsItensReferencia.AsString = '') then
           begin
-             if MatchStr(CdsItensCFOP.AsString,['5901','5902','5903','5925', '6902','6903','6925','1901','1902','1925','2902','2925']) then
-               listaErros.Add('Retorno de mercadoria utilizada na industrialização por encomenda. Revise o almoxarifado')
-             else
-              listaErros.Add('Almoxarifado não definido');
+              listaErros.Add('Produto '+CdsItensReferenciaFornecedor.AsString+' não cadastrado no sistema e nem referenciado');
+          end
+          else if (cdsItensUCom.Value <> cdsItensUnidadeCadastro.Value) // SE AS UNIDADES XML E REGISTRADO NO BANCO ESTÃO DIFERENTE
+         and  (cdsItensFatorConversao.AsFloat = 0 )  then
+          begin
+              listaErros.Add('Produto '+CdsItensReferenciaFornecedor.AsString+' não definida a conversão de unidades');
           end;
-           CdsItens.Next;
+          if (CdsItensCFOP.AsString = '') then
+          begin
+                listaErros.Add('CFOP do produto '+CdsItensReferenciaFornecedor.AsString+' não informado ou localizado correspondência');
+          end;
+         if (cdsItensAlmoxarifadoCodigo.AsString = '') then
+         begin
+            if MatchStr(CdsItensCFOP.AsString,['5901','5902','5903','5925', '6902','6903','6925','1901','1902','1925','2902','2925']) then
+              listaErros.Add('Retorno de mercadoria utilizada na industrialização por encomenda. Revise o almoxarifado')
+            else
+             listaErros.Add('Almoxarifado não definido');
+         end;
+         if BuscaUmDadoSqlAsString('SELECT PRD_GERENCIA_LOTE FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(CdsItensReferencia.AsString) ) = 'S' then
+         begin
+           if CdsItensRegistroLote.AsString = '' then
+             listaErros.Add('O produto ' + CdsItensReferenciaFornecedor.AsString + ' utiliza controle de lote e o lote não foi informado!!')
+         end;
+
+         CdsItens.Next;
+
         end;
    end;
    if (listaErros.Count > 0) then

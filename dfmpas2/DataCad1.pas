@@ -1694,6 +1694,8 @@ type
     CdsParametrosPMT_GER_AVANC_ANTECIP_DESC: TStringField;
     SqlParametrosPMT_MENSAGEM_VENDAS: TStringField;
     CdsParametrosPMT_MENSAGEM_VENDAS: TStringField;
+    SqlParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField;
+    CdsParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

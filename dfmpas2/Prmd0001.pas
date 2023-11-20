@@ -1848,6 +1848,7 @@ type
     DBEdtPMT_MENSAGEM3: TDBEdit;
     Label674: TLabel;
     DBEditPMT_MENSAGEM_VENDAS: TDBEdit;
+    DBCheckBox97: TDBCheckBox;
 
 
     procedure FormShow(Sender: tObject);
