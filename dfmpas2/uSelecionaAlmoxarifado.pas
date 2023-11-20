@@ -90,12 +90,34 @@ implementation
 uses uteis, uGerenciamentoPCP, InicioDB;
 
 procedure TfrmSelecionaAlmoxarifado.btConfirmaClick(Sender: TObject);
+var
+  saldo : double;
 begin
   inherited;
   frmGerenciamentoPCP.cdsMateriaPrima.First;
   while not frmGerenciamentoPCP.cdsMateriaPrima.eof do
   begin
-    // almoxarifado := cdsMateriaPrimaAMX_CODIGO.AsString;
+    saldo := BuscaUmDadoSqlAsFloat('SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0) ' +
+                             ' FROM kardex_almox_saldo kas ' +
+                             ' WHERE kas.PRD_CODIGO = ' + QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_CODIGO.AsString) +
+                             ' AND  AMX_CODIGO = ' + QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString)  );
+    if (saldo <= 0) or ( saldo < frmGerenciamentoPCP.cdsMateriaPrimaMP_CONSUMOTOTAL.AsFloat ) then
+    begin
+      Aviso('Não há saldo suficiente para o produto ' +
+            frmGerenciamentoPCP.cdsMateriaPrimaPRD_REFER.AsString + ' - ' +
+            frmGerenciamentoPCP.cdsMateriaPrimaPRD_DESCRI.AsString +
+            ' no almoxarifado indicado.' +
+            #13 + 'Saldo Disponível ' + FormatFloat('###,###,##0,00', saldo)  );
+      Self.modalResult := mrNone;
+      Abort;
+    end;
+    frmGerenciamentoPCP.cdsMateriaPrima.Next;
+  end;
+
+
+  frmGerenciamentoPCP.cdsMateriaPrima.First;
+  while not frmGerenciamentoPCP.cdsMateriaPrima.eof do
+  begin
     ExecSql('INSERT INTO PCP_TEMP' + DBInicio.Usuario.CODIGO +  ' VALUES (' +
               QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_CODIGO.AsString)  +  ',' +
               QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_REFER.AsString)  + ',' +

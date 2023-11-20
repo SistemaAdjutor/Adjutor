@@ -13,8 +13,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     ExplicitWidth = 1384
     ExplicitHeight = 567
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
       ExplicitWidth = 1376
       ExplicitHeight = 539
       inherited pnlControle: TPanel
@@ -294,6 +292,11 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Options.Editing = False
             Options.Filtering = False
             Styles.OnGetContentStyle = cxgrd1DBTableView1ESTOQUEDISPONIVELStylesGetContentStyle
+          end
+          object cxgrd1DBTableView1AMX_DESCRI: TcxGridDBColumn
+            Caption = 'Almoxarifado'
+            DataBinding.FieldName = 'AMX_DESCRI'
+            Width = 150
           end
           object cxgrd1DBTableView1PercConsumido: TcxGridDBColumn
             Caption = 'Percentual consumido'
@@ -874,10 +877,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object tbHistorico: TTabSheet
       Caption = 'Hist'#243'rico'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Phistorico: TPanel
         Left = 0
         Top = 0
@@ -1954,6 +1953,12 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object cdsMateriaPrimaAMX_CODIGO: TStringField
       FieldName = 'AMX_CODIGO'
       Size = 4
+    end
+    object cdsMateriaPrimaAMX_DESCRI: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'AMX_DESCRI'
+      Size = 60
+      Calculated = True
     end
   end
   object dsMateriaPrima: TDataSource

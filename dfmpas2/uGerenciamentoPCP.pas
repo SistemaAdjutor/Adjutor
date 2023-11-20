@@ -846,6 +846,8 @@ type
     cdsMolaMMO_ARQUIVO_FICHA_TECNICA: TStringField;
     frxOrdemProducaoModelos: TfrxReport;
     cdsMateriaPrimaAMX_CODIGO: TStringField;
+    cdsMateriaPrimaAMX_DESCRI: TStringField;
+    cxgrd1DBTableView1AMX_DESCRI: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -1759,6 +1761,7 @@ begin
   if ( cdsMateriaPrimaMP_EMPENHADO.AsFloat> 0)  and (cdsMateriaPrimaMP_CONSUMOTOTAL.AsFloat>0 ) then
     cdsMateriaPrimaPercConsumido.AsFloat := cdsMateriaPrimaMP_EMPENHADO.AsFloat/cdsMateriaPrimaMP_CONSUMOTOTAL.AsFloat*100
   else cdsMateriaPrimaPercConsumido.AsFloat := 0;
+  cdsMateriaPrimaAMX_DESCRI.AsString := dbInicio.BuscaUmDadoSqlAsString('SELECT AMX_DESCRI FROM ALMOX0000 WHERE AMX_CODIGO = ' + QuotedStr(cdsMateriaPrimaAMX_CODIGO.AsString) );
 end;
 
 procedure TfrmGerenciamentoPCP.cdsMateriaPrimaMP_SITUACAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
