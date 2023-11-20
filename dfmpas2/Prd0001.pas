@@ -3510,9 +3510,25 @@ begin
   CdsCompras.DisableControls;
   if ( not CdsProdutos.isEmpty ) then
   begin
-    sql := 'select t3.emp_codigo, t3.enf_emissao, t1.ENF_ORIGEM_MERCADORIA, ' + 't3.enf_notanumber,  t1.for_codigo,  t2.for_razao, ' + 't1.ENF_CUSTO as  enf_preco, ' + 'cast(cast(coalesce(t1.ENF_CUSTO * t1.enf_qtde,0) + coalesce(t1.enf_vlsubst,0) + ' + ' coalesce(t1.enf_it_vlipi,0) + coalesce(t1.enf_it_valfrete,0) + coalesce(t1.enf_it_vlseguro,0) + ' + ' coalesce(t1.enf_it_vldesp_aces,0)as numeric(18,4)) / t1.enf_qtde as numeric(18,4)) as custo_entrada,' + 't1.enf_qtde,  t1.enf_ipialiq, ' +
-      'cast(t1.enf_vlsubst / t1.enf_qtde as numeric(18,4)) as enf_vlsubst, ' + 'cast(t1.enf_it_valfrete / t1.enf_qtde as numeric(18,4)) as enf_it_valfrete, ' + 'cast(t1.enf_it_vldesp_aces / t1.enf_qtde as numeric(18,4)) as enf_it_vldesp_aces, ' + 't1.enf_icmsaliq, t1.enf_cfop, t1.ENF_IT_DESCTO, ' + 't2.for_fone,  t2.for_contato ' + ' from enf_it01 t1 ' + 'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
-      'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' + 'where ' + ' t3.ENF_INDUSTRIALIZACAO <> ''S'' ' + ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaCompras.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
+    sql := 'select t3.emp_codigo, t3.enf_emissao, t1.ENF_ORIGEM_MERCADORIA, ' +
+           't3.enf_notanumber,  t1.for_codigo,  t2.for_razao, ' +
+           't1.ENF_CUSTO as  enf_preco, ' +
+           'cast(cast(coalesce(t1.ENF_CUSTO * t1.enf_qtde,0) + coalesce(t1.enf_vlsubst,0) + ' +
+           ' coalesce(t1.enf_it_vlipi,0) + coalesce(t1.enf_it_valfrete,0) + coalesce(t1.enf_it_vlseguro,0) + ' +
+           ' coalesce(t1.enf_it_vldesp_aces,0)as numeric(18,4)) / t1.enf_qtde as numeric(18,4)) as custo_entrada,' +
+           't1.enf_qtde,  t1.enf_ipialiq, ' +
+           'cast(t1.enf_vlsubst / t1.enf_qtde as numeric(18,4)) as enf_vlsubst, ' +
+           'cast(t1.enf_it_valfrete / t1.enf_qtde as numeric(18,4)) as enf_it_valfrete, ' +
+           'cast(t1.enf_it_vldesp_aces / t1.enf_qtde as numeric(18,4)) as enf_it_vldesp_aces, ' +
+           't1.enf_icmsaliq, t1.enf_cfop, t1.ENF_IT_DESCTO, ' +
+           't2.for_fone,  t2.for_contato ' +
+           ' from enf_it01 t1 ' +
+           'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
+           'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' +
+           ' JOIN OPE0000 o ON o.OPE_CODIGO = t1.OPE_CODIGO ' +
+           'where ' + ' t3.ENF_INDUSTRIALIZACAO <> ''S'' ' +
+           ' AND o.OPE_TIPO_OPERACAO = ''C'' ' +
+           ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaCompras.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
 
     if ( dtInicio.date > 0 ) and ( dtFim.date > 0 ) then
       sql := sql + ' and  t3.enf_emissao between ' + DateToSql( dtInicio.date ) + ' and ' + DateToSql( dtFim.date )
@@ -3710,9 +3726,25 @@ begin
   CdsIndustrializacao.DisableControls;
   if ( not CdsProdutos.isEmpty ) then
   begin
-    sql := 'select t3.emp_codigo, t3.enf_emissao, ' + 't3.enf_notanumber,  t1.for_codigo,  t2.for_razao, ' + 't1.ENF_CUSTO as  enf_preco, ' + 'cast(cast(coalesce(t1.ENF_CUSTO * t1.enf_qtde,0) + coalesce(t1.enf_vlsubst,0) + ' + ' coalesce(t1.enf_it_vlipi,0) + coalesce(t1.enf_it_valfrete,0) + coalesce(t1.enf_it_vlseguro,0) + ' + ' coalesce(t1.enf_it_vldesp_aces,0)as numeric(18,4)) / t1.enf_qtde as numeric(18,4)) as custo_entrada,' + 't1.enf_qtde,  t1.enf_ipialiq, ' +
-      'cast(t1.enf_vlsubst / t1.enf_qtde as numeric(18,4)) as enf_vlsubst, ' + 'cast(t1.enf_it_valfrete / t1.enf_qtde as numeric(18,4)) as enf_it_valfrete, ' + 'cast(t1.enf_it_vldesp_aces / t1.enf_qtde as numeric(18,4)) as enf_it_vldesp_aces, ' + 't1.enf_icmsaliq, t1.enf_cfop, t1.ENF_IT_DESCTO, ' + 't2.for_fone,  t2.for_contato ' + ' from enf_it01 t1 ' + 'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
-      'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' + 'where ' + ' t3.ENF_INDUSTRIALIZACAO = ''S'' ' + ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaIndustrializacao.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
+    sql := 'select t3.emp_codigo, t3.enf_emissao, ' +
+           't3.enf_notanumber,  t1.for_codigo,  t2.for_razao, ' +
+           't1.ENF_CUSTO as  enf_preco, ' +
+           'cast(cast(coalesce(t1.ENF_CUSTO * t1.enf_qtde,0) + coalesce(t1.enf_vlsubst,0) + ' +
+           ' coalesce(t1.enf_it_vlipi,0) + coalesce(t1.enf_it_valfrete,0) + coalesce(t1.enf_it_vlseguro,0) + ' +
+           ' coalesce(t1.enf_it_vldesp_aces,0)as numeric(18,4)) / t1.enf_qtde as numeric(18,4)) as custo_entrada,' +
+           't1.enf_qtde,  t1.enf_ipialiq, ' +
+           'cast(t1.enf_vlsubst / t1.enf_qtde as numeric(18,4)) as enf_vlsubst, ' +
+           'cast(t1.enf_it_valfrete / t1.enf_qtde as numeric(18,4)) as enf_it_valfrete, ' +
+           'cast(t1.enf_it_vldesp_aces / t1.enf_qtde as numeric(18,4)) as enf_it_vldesp_aces, ' +
+           't1.enf_icmsaliq, t1.enf_cfop, t1.ENF_IT_DESCTO, ' +
+           't2.for_fone,  t2.for_contato ' +
+           ' from enf_it01 t1 ' +
+           ' JOIN OPE0000 o ON o.OPE_CODIGO = t1.OPE_CODIGO  ' +
+           'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
+           'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' +
+           'where ' + ' t3.ENF_INDUSTRIALIZACAO = ''S'' ' +
+           ' AND o.OPE_TIPO_OPERACAO <> ''C'' ' +
+           ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaIndustrializacao.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
 
     if ( dtInicioInd.date > 0 ) and ( dtFimInd.date > 0 ) then
       sql := sql + ' and  t3.enf_emissao between ' + DateToSql( dtInicioInd.date ) + ' and ' + DateToSql( dtFimInd.date )
