@@ -13,7 +13,6 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     Height = 228
     Align = alTop
     TabOrder = 0
-    ExplicitTop = -6
     DesignSize = (
       992
       228)
@@ -54,7 +53,7 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     end
     object SpeedButton6: TSpeedButton
       Left = 55
-      Top = 56
+      Top = 54
       Width = 23
       Height = 22
       Hint = 'Adicionar Observa'#231#227'o Cadastrada'
@@ -468,6 +467,7 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
       Anchors = [akLeft, akTop, akRight]
       DataField = 'COT_OBSERVACAO'
       DataSource = dsCotacao
+      ScrollBars = ssVertical
       TabOrder = 7
     end
   end

@@ -700,10 +700,9 @@ inherited frmCotacaoPesquisa: TfrmCotacaoPesquisa
     Height = 370
     Align = alClient
     TabOrder = 1
-    LookAndFeel.Kind = lfOffice11
+    LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
     LookAndFeel.ScrollbarMode = sbmClassic
-    ExplicitTop = 67
     object cxGrid1DBTableView1: TcxGridDBTableView
       PopupMenu = pmCotacaoItem
       Navigator.Buttons.CustomButtons = <>

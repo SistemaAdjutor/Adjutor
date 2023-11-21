@@ -185,18 +185,14 @@ end;
 procedure TfrmCotacaoCadastro.SpeedButton6Click(Sender: TObject);
 begin
   inherited;
-     FrmCadastroObservacao := TFrmCadastroObservacao.Create(Application);
-   try
-      FrmCadastroObservacao.FormStyle := fsNormal;
-      FrmCadastroObservacao.Visible := false;
-      FrmCadastroObservacao.memo := DBMemo1;
-      FrmCadastroObservacao.ShowModal;
-      GravarSolicitacao();
-
-   finally
-      FrmCadastroObservacao.Destroy;
-      FrmCadastroObservacao :=Nil;
-   end;
+  if FrmCadastroObservacao = nil then
+    FrmCadastroObservacao := TFrmCadastroObservacao.Create(Application);
+  FrmCadastroObservacao.FormStyle := fsNormal;
+  FrmCadastroObservacao.Visible := false;
+  FrmCadastroObservacao.memo := DBMemo1;
+  FrmCadastroObservacao.ShowModal;
+  if not GravarSolicitacao()
+    then Abort;
 end;
 
 procedure TfrmCotacaoCadastro.tbItemAfterInsert(DataSet: TDataSet);
