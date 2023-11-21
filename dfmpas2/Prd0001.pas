@@ -3064,7 +3064,8 @@ procedure TFormProduto.FormCloseQuery(
   var CanClose : Boolean );
   begin
     inherited;
-    verificaEdicao; // procedure local
+    if Bit_Gravar.Enabled then
+      verificaEdicao; // procedure local
 //    if eNotaEntrada and not CamposObrigatorios
 //    then
 //      CanClose := False;
