@@ -2223,6 +2223,7 @@ type
     dspEnderecos: TDataSetProvider;
     qEnderecos: TSQLQuery;
     dsRegistroEndereco: TDataSource;
+    cbTipoOperacao: TComboBox;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -3526,9 +3527,17 @@ begin
            'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
            'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' +
            ' JOIN OPE0000 o ON o.OPE_CODIGO = t1.OPE_CODIGO ' +
-           'where ' + ' t3.ENF_INDUSTRIALIZACAO <> ''S'' ' +
-           ' AND o.OPE_TIPO_OPERACAO = ''C'' ' +
-           ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaCompras.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
+           'where ' + ' t3.ENF_INDUSTRIALIZACAO <> ''S'' ' ;
+    if cbTipoOperacao.ItemIndex = 0 then
+      sql := sql + ' AND o.OPE_TIPO_OPERACAO = ''C'' '
+    else
+    if cbTipoOperacao.ItemIndex = 1 then
+      sql := sql + ' AND o.OPE_TIPO_OPERACAO = ''O'' '
+    else
+    if cbTipoOperacao.ItemIndex = 0 then
+      sql := sql + ' AND o.OPE_TIPO_OPERACAO = ''D'' ';
+
+    sql := sql + ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaCompras.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
 
     if ( dtInicio.date > 0 ) and ( dtFim.date > 0 ) then
       sql := sql + ' and  t3.enf_emissao between ' + DateToSql( dtInicio.date ) + ' and ' + DateToSql( dtFim.date )

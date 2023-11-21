@@ -10643,13 +10643,13 @@ inherited FormProduto: TFormProduto
         end
         object Label146: TLabel
           Left = 29
-          Top = 19
+          Top = 18
           Width = 43
           Height = 14
           Caption = 'Emiss'#227'o:'
         end
         object btncompras: TBitBtn
-          Left = 457
+          Left = 604
           Top = 14
           Width = 99
           Height = 24
@@ -10796,6 +10796,19 @@ inherited FormProduto: TFormProduto
           Caption = 'Multiempresa'
           TabOrder = 3
           OnClick = chkMultiempresaComprasClick
+        end
+        object cbTipoOperacao: TComboBox
+          Left = 426
+          Top = 15
+          Width = 161
+          Height = 22
+          ItemIndex = 0
+          TabOrder = 4
+          Text = 'Compra'
+          Items.Strings = (
+            'Compra'
+            'Outra / Importa'#231#227'o'
+            'Devolu'#231#227'o')
         end
       end
     end
