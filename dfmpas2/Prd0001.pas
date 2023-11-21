@@ -2983,7 +2983,17 @@ begin
 
       PctrlProdutos.ActivePage := Tbs_Produtos;
       PgCtrl_Produtos.ActivePage := TabSheet3; { preços }
-      DbePrd_Descri.Setfocus;
+//      DbePrd_Descri.Setfocus;
+
+      if CdsProdutos.State in dsEditModes then
+      begin
+        CdsProdutos.Post;
+        CdsProdutos.ApplyUpdates(0);
+      end;
+      EdtPrd_Refer.Enabled := True;
+      EdtPrd_Refer.SetFocus;
+
+
 
     End;
 
