@@ -4,7 +4,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Gerenciador de Industrializa'#231#227'o'
   ClientHeight = 714
-  ClientWidth = 978
+  ClientWidth = 1070
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -24,7 +24,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object Splitter1: TSplitter
     Left = 0
     Top = 368
-    Width = 978
+    Width = 1070
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -34,7 +34,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object Splitter2: TSplitter
     Left = 0
     Top = 184
-    Width = 978
+    Width = 1070
     Height = 3
     Cursor = crVSplit
     Align = alTop
@@ -45,7 +45,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object Splitter3: TSplitter
     Left = 0
     Top = 576
-    Width = 978
+    Width = 1070
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -55,7 +55,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object grpNotaFiscalEntrada: TGroupBox
     Left = 0
     Top = 57
-    Width = 978
+    Width = 1070
     Height = 127
     Align = alTop
     Caption = 'Notas Fiscais de Entrada'
@@ -63,7 +63,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     object dbgrdNotaEntrada: TDBGrid
       Left = 2
       Top = 16
-      Width = 974
+      Width = 1066
       Height = 109
       Align = alClient
       Color = 16776176
@@ -81,6 +81,16 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       OnDblClick = dbgrdNotaEntradaDblClick
       OnMouseUp = dbgrdNotaEntradaMouseUp
       Columns = <
+        item
+          Alignment = taCenter
+          ButtonStyle = cbsNone
+          Expanded = False
+          FieldName = 'Selecao'
+          Title.Alignment = taCenter
+          Title.Caption = '*'
+          Width = 22
+          Visible = True
+        end
         item
           Expanded = False
           FieldName = 'ENF_NOTANUMBER'
@@ -235,7 +245,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object grpFiltro: TGroupBox
     Left = 0
     Top = 0
-    Width = 978
+    Width = 1070
     Height = 57
     Align = alTop
     Caption = 'Filtro'
@@ -255,22 +265,22 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       Caption = 'Fornecedor ou Cliente'
     end
     object Label3: TLabel
-      Left = 469
-      Top = 18
-      Width = 40
+      Left = 471
+      Top = 14
+      Width = 84
       Height = 14
-      Caption = 'Emiss'#227'o'
+      Caption = 'Informe o Per'#237'odo'
     end
     object Label4: TLabel
-      Left = 565
-      Top = 34
+      Left = 653
+      Top = 33
       Width = 17
       Height = 14
       Caption = 'At'#233
     end
     object Label5: TLabel
-      Left = 687
-      Top = 15
+      Left = 775
+      Top = 14
       Width = 42
       Height = 14
       Caption = 'Situa'#231#227'o'
@@ -300,8 +310,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       TabOrder = 1
     end
     object BitLocalizarNota: TBitBtn
-      Left = 864
-      Top = 26
+      Left = 952
+      Top = 25
       Width = 107
       Height = 25
       Cursor = crHandPoint
@@ -341,8 +351,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       OnClick = BitLocalizarNotaClick
     end
     object cbbSitucao: TComboBox
-      Left = 688
-      Top = 29
+      Left = 776
+      Top = 28
       Width = 169
       Height = 22
       Style = csOwnerDrawFixed
@@ -355,8 +365,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         'CONCLUIDA')
     end
     object DataDe: TJvDateEdit
-      Left = 469
-      Top = 31
+      Left = 557
+      Top = 30
       Width = 92
       Height = 22
       Glyph.Data = {
@@ -412,8 +422,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       TabOrder = 2
     end
     object DataAte: TJvDateEdit
-      Left = 589
-      Top = 30
+      Left = 677
+      Top = 29
       Width = 92
       Height = 22
       Glyph.Data = {
@@ -468,18 +478,30 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       YearDigits = dyFour
       TabOrder = 3
     end
+    object cbEmissaoEntrada: TComboBox
+      Left = 471
+      Top = 29
+      Width = 80
+      Height = 22
+      ItemIndex = 0
+      TabOrder = 6
+      Text = 'Emiss'#227'o'
+      Items.Strings = (
+        'Emiss'#227'o'
+        'Entrada')
+    end
   end
   object grpItens: TGroupBox
     Left = 0
     Top = 371
-    Width = 978
+    Width = 1070
     Height = 205
     Align = alBottom
     TabOrder = 2
     object Splitter4: TSplitter
       Left = 2
       Top = 124
-      Width = 974
+      Width = 1066
       Height = 4
       Cursor = crVSplit
       Align = alBottom
@@ -489,7 +511,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     object grpObsItem: TGroupBox
       Left = 2
       Top = 128
-      Width = 974
+      Width = 1066
       Height = 75
       Align = alBottom
       Caption = 'Observa'#231#227'o'
@@ -497,7 +519,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       object DBMemo1: TDBMemo
         Left = 2
         Top = 16
-        Width = 970
+        Width = 1062
         Height = 57
         Align = alClient
         Color = 14145495
@@ -510,7 +532,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     object pcIEOP: TPageControl
       Left = 2
       Top = 16
-      Width = 974
+      Width = 1066
       Height = 108
       ActivePage = TabSheet4
       Align = alClient
@@ -520,7 +542,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         object dbgrdItemNota: TDBGrid
           Left = 0
           Top = 0
-          Width = 966
+          Width = 1058
           Height = 79
           Align = alClient
           Color = 14680063
@@ -649,7 +671,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         object dbGridOP: TDBGrid
           Left = 0
           Top = 0
-          Width = 966
+          Width = 1058
           Height = 79
           Align = alClient
           Color = 14680063
@@ -736,7 +758,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object grpItensRetorno: TGroupBox
     Left = 0
     Top = 579
-    Width = 978
+    Width = 1070
     Height = 105
     Align = alBottom
     Caption = 'Itens de Retorno'
@@ -744,7 +766,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     object dbgrdRetorno: TDBGrid
       Left = 2
       Top = 16
-      Width = 974
+      Width = 1066
       Height = 87
       Align = alClient
       Color = 13828050
@@ -850,15 +872,15 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object Panel1: TPanel
     Left = 0
     Top = 684
-    Width = 978
+    Width = 1070
     Height = 30
     Align = alBottom
     TabOrder = 4
     DesignSize = (
-      978
+      1070
       30)
     object btnImprimir: TJvArrowButton
-      Left = 760
+      Left = 852
       Top = 4
       Width = 102
       Height = 25
@@ -889,7 +911,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       ExplicitLeft = 758
     end
     object BitBtn1: TBitBtn
-      Left = 654
+      Left = 746
       Top = 4
       Width = 100
       Height = 25
@@ -915,7 +937,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       OnClick = BitBtn1Click
     end
     object Bit_Sair: TBitBtn
-      Left = 868
+      Left = 960
       Top = 4
       Width = 100
       Height = 25
@@ -931,7 +953,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object pcObservacoes: TPageControl
     Left = 0
     Top = 187
-    Width = 978
+    Width = 1070
     Height = 181
     ActivePage = TabSheet1
     Align = alClient
@@ -941,7 +963,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       object mmEnfObsIndust: TDBMemo
         Left = 0
         Top = 0
-        Width = 970
+        Width = 1062
         Height = 152
         Align = alClient
         Color = 14145495
@@ -950,6 +972,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
+        ExplicitLeft = 2
+        ExplicitTop = 1
       end
     end
     object TabSheet2: TTabSheet
@@ -958,7 +982,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       object mmEnfDadosAdicionais: TDBMemo
         Left = 0
         Top = 0
-        Width = 970
+        Width = 1062
         Height = 152
         Align = alClient
         Color = 14145495
@@ -975,7 +999,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       object mmEnfDadosAdicionaisFisco: TDBMemo
         Left = 0
         Top = 0
-        Width = 970
+        Width = 1062
         Height = 152
         Align = alClient
         Color = 14145495
@@ -1025,6 +1049,11 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     UpdateMode = upWhereAll
     Left = 480
     Top = 193
+    object SqlCdsEntradaNotaSelecao: TBooleanField
+      FieldKind = fkInternalCalc
+      FieldName = 'Selecao'
+      OnGetText = SqlCdsEntradaNotaSelecaoGetText
+    end
     object SqlCdsEntradaNotaENF_NOTANUMBER: TStringField
       FieldName = 'ENF_NOTANUMBER'
       Size = 10
@@ -3284,8 +3313,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     Top = 454
   end
   object PopupMenuImpressao: TPopupMenu
-    Left = 808
-    Top = 520
+    Left = 880
+    Top = 632
     object Romaneio1: TMenuItem
       Caption = 'Romaneio'
       OnClick = Romaneio1Click
@@ -3305,6 +3334,10 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     object NotaFiscalporProdutoRetornado1: TMenuItem
       Caption = 'Nota Fiscal por Produto Retornado'
       OnClick = NotaFiscalporProdutoRetornado1Click
+    end
+    object GerarEtiqueta1: TMenuItem
+      Caption = 'Gerar Etiqueta'
+      OnClick = GerarEtiqueta1Click
     end
   end
   object frxRomaneioPlanilha: TfrxReport
@@ -6782,5 +6815,242 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       Caption = 'Nota Fiscal por Produto Retornado'
       OnClick = NotaFiscalporProdutoRetornado1Click
     end
+  end
+  object mtEtiqueta: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
+    Left = 596
+    Top = 257
+    object mtEtiquetaCLI_RAZAO: TStringField
+      FieldName = 'CLI_RAZAO'
+      Size = 255
+    end
+    object mtEtiquetaACO_NOME: TStringField
+      FieldName = 'ACO_NOME'
+      Size = 255
+    end
+    object mtEtiquetaDTENTREGA: TDateField
+      FieldName = 'DTENTREGA'
+    end
+    object mtEtiquetaNOTA_FISCAL: TStringField
+      FieldName = 'NOTA_FISCAL'
+      Size = 255
+    end
+    object mtEtiquetaPESO: TFMTBCDField
+      FieldName = 'PESO'
+    end
+  end
+  object mtTemp: TFDMemTable
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
+    ResourceOptions.AssignedValues = [rvSilentMode]
+    ResourceOptions.SilentMode = True
+    UpdateOptions.AssignedValues = [uvCheckRequired]
+    UpdateOptions.CheckRequired = False
+    Left = 596
+    Top = 313
+    object mtTempCLI_RAZAO: TStringField
+      FieldName = 'CLI_RAZAO'
+      Size = 255
+    end
+    object mtTempACO_NOME: TStringField
+      FieldName = 'ACO_NOME'
+      Size = 255
+    end
+    object mtTempDTENTREGA: TDateField
+      FieldName = 'DTENTREGA'
+    end
+    object mtTempNOTA_FISCAL: TStringField
+      FieldName = 'NOTA_FISCAL'
+      Size = 255
+    end
+    object mtTempPESO: TFMTBCDField
+      FieldName = 'PESO'
+    end
+  end
+  object frxEtiqueta: TfrxReport
+    Version = '6.9.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 45002.503523553240000000
+    ReportOptions.LastChange = 45002.503523553240000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'begin'
+      ''
+      'end.')
+    Left = 676
+    Top = 257
+    Datasets = <
+      item
+        DataSet = frxDBEtiqueta
+        DataSetName = 'frxDBEtiqueta'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      PaperWidth = 210.000000000000000000
+      PaperHeight = 297.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 211.653562830000000000
+        Top = 18.897650000000000000
+        Width = 718.110700000000000000
+        DataSet = frxDBEtiqueta
+        DataSetName = 'frxDBEtiqueta'
+        RowCount = 0
+        object logoEmpresa: TfrxPictureView
+          AllowVectorExport = True
+          Left = 370.393940000000000000
+          Width = 94.488250000000000000
+          Height = 26.456710000000000000
+          Frame.Typ = []
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Shape1: TfrxShapeView
+          AllowVectorExport = True
+          Width = 464.882190000000000000
+          Height = 181.417322834645700000
+          Frame.Typ = []
+        end
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Top = 22.677180000000000000
+          Width = 461.102660000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Cliente: [frxDBEtiqueta."CLI_RAZAO"]')
+        end
+        object Line1: TfrxLineView
+          AllowVectorExport = True
+          Top = 45.354360000000000000
+          Width = 464.882190000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line2: TfrxLineView
+          AllowVectorExport = True
+          Top = 90.708661417322830000
+          Width = 464.882190000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line3: TfrxLineView
+          AllowVectorExport = True
+          Left = 226.771800000000000000
+          Top = 45.354360000000000000
+          Height = 45.354360000000000000
+          Color = clBlack
+          Frame.Typ = [ftLeft]
+        end
+        object Line4: TfrxLineView
+          AllowVectorExport = True
+          Top = 136.062992125984300000
+          Width = 464.882190000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+        object Line5: TfrxLineView
+          AllowVectorExport = True
+          Left = 226.771800000000000000
+          Top = 136.063080000000000000
+          Height = 45.354360000000000000
+          Color = clBlack
+          Frame.Typ = [ftLeft]
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 56.692950000000000000
+          Width = 211.653680000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Cor: [frxDBEtiqueta."ACO_NOME"]')
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 234.330860000000000000
+          Top = 56.692950000000000000
+          Width = 222.992270000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Data: [frxDBEtiqueta."DTENTREGA"]')
+        end
+        object Memo4: TfrxMemoView
+          AllowVectorExport = True
+          Left = 11.338590000000000000
+          Top = 102.047310000000000000
+          Width = 445.984540000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'NF: [frxDBEtiqueta."NOTA_FISCAL"]')
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 7.559060000000000000
+          Top = 147.401670000000000000
+          Width = 211.653680000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Peso: [frxDBEtiqueta."PESO"]')
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 230.551330000000000000
+          Top = 139.842610000000000000
+          Width = 230.551330000000000000
+          Height = 37.795300000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'OBS:')
+        end
+      end
+    end
+  end
+  object frxDBEtiqueta: TfrxDBDataset
+    UserName = 'frxDBEtiqueta'
+    CloseDataSource = False
+    FieldAliases.Strings = (
+      'CLI_RAZAO=CLI_RAZAO'
+      'ACO_NOME=ACO_NOME'
+      'DTENTREGA=DTENTREGA'
+      'NOTA_FISCAL=NOTA_FISCAL'
+      'PESO=PESO')
+    DataSet = mtEtiqueta
+    BCDToCurrency = False
+    Left = 676
+    Top = 313
+  end
+  object qAux: TFDQuery
+    Connection = DBInicio.FDACConn
+    Left = 672
+    Top = 192
   end
 end

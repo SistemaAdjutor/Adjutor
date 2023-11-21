@@ -223,6 +223,24 @@ type
     pmImpressaoIndividual: TPopupMenu;
     NFPP: TMenuItem;
     NFPR: TMenuItem;
+    cbEmissaoEntrada: TComboBox;
+    SqlCdsEntradaNotaSelecao: TBooleanField;
+    GerarEtiqueta1: TMenuItem;
+    mtEtiqueta: TFDMemTable;
+    mtEtiquetaCLI_RAZAO: TStringField;
+    mtEtiquetaACO_NOME: TStringField;
+    mtEtiquetaDTENTREGA: TDateField;
+    mtEtiquetaNOTA_FISCAL: TStringField;
+    mtEtiquetaPESO: TFMTBCDField;
+    mtTemp: TFDMemTable;
+    mtTempCLI_RAZAO: TStringField;
+    mtTempACO_NOME: TStringField;
+    mtTempDTENTREGA: TDateField;
+    mtTempNOTA_FISCAL: TStringField;
+    mtTempPESO: TFMTBCDField;
+    frxEtiqueta: TfrxReport;
+    frxDBEtiqueta: TfrxDBDataset;
+    qAux: TFDQuery;
     procedure Bit_SairClick(Sender: tObject);
     procedure SqlCdsEntradaNotaCalcFields(DataSet: TDataSet);
     procedure SqlCdsNotaItemCalcFields(DataSet: TDataSet);
@@ -263,6 +281,9 @@ type
     procedure frxEntradaNFRetornoBeginDoc(Sender: TObject);
     procedure frxEntradaNFRetorno0BeginDoc(Sender: TObject);
     procedure frxRomaneioPlanilhaBeginDoc(Sender: TObject);
+    procedure SqlCdsEntradaNotaSelecaoGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
+    procedure GerarEtiqueta1Click(Sender: TObject);
   private
     { Private declarations }
     procedure AtualizaConsultaNotas;
@@ -270,6 +291,7 @@ type
     procedure AtualizaConsultaRetornos;
     procedure AtualizaOP;
     procedure ChamaSituacao;
+    procedure Seleciona;
   public
     { Public declarations }
     procedure BotoesAcesso;
@@ -303,6 +325,17 @@ begin
      end;
 end;
 
+procedure TFrmEnfIndustrializacao.Seleciona;
+begin
+   if (not SqlCdsEntradaNota.IsEmpty) then
+   begin
+     SqlCdsEntradaNota.Edit;
+     SqlCdsEntradaNota.FieldByName('selecao').AsBoolean := not SqlCdsEntradaNota.FieldByName('selecao').AsBoolean;
+     SqlCdsEntradaNota.Post;
+     dbgrdNotaEntrada.SelectedIndex := 1;
+   end;
+end;
+
 procedure TFrmEnfIndustrializacao.SqlCdsEntradaNotaCalcFields(DataSet: TDataSet);
 begin
   if (SqlCdsEntradaNotaQTDE_PRODUTOS_RETORNO.AsFloat > 0)and(SqlCdsEntradaNotaQTDE_PRODUTOS.AsFloat > 0) then
@@ -327,6 +360,12 @@ end;
 procedure TFrmEnfIndustrializacao.SqlCdsEntradaNotaENF_OBS_INDUSTGetText(Sender: TField; var Text: string; DisplayText: Boolean);
 begin
   Text := Sender.AsString;
+end;
+
+procedure TFrmEnfIndustrializacao.SqlCdsEntradaNotaSelecaoGetText(
+  Sender: TField; var Text: string; DisplayText: Boolean);
+begin
+  Text:= EmptyStr;
 end;
 
 procedure TFrmEnfIndustrializacao.SqlCdsNotaItemCalcFields(DataSet: TDataSet);
@@ -583,11 +622,17 @@ begin
     end;
   if (DataDe.Text <> '  /  /    ') then
     begin
-      sCondicao := sCondicao+ ' and T1.enf_emissao >= '+QuotedStr(DataAmericana(DataDe.Text));
+      if cbEmissaoEntrada.ItemIndex = 0 then
+        sCondicao := sCondicao+ ' and T1.enf_emissao >= '+QuotedStr(DataAmericana(DataDe.Text))
+      else
+        sCondicao := sCondicao+ ' and T1.ENF_ENTRADA >= '+QuotedStr(DataAmericana(DataDe.Text));
     end;
   if (DataAte.Text <> '  /  /    ') then
     begin
-      sCondicao := sCondicao+ ' and T1.enf_emissao <= '+QuotedStr(DataAmericana(DataAte.Text));
+      if cbEmissaoEntrada.ItemIndex = 0 then
+        sCondicao := sCondicao+ ' and T1.enf_emissao <= '+QuotedStr(DataAmericana(DataAte.Text))
+      else
+        sCondicao := sCondicao+ ' and T1.ENF_ENTRADA <= '+QuotedStr(DataAmericana(DataAte.Text));
     end;
   if (cbbSitucao.ItemIndex <> 0) then
     begin
@@ -659,6 +704,7 @@ begin
   ini.Free;
 
   pcObservacoes.ActivePageIndex := 0;
+  dbgrdNotaEntrada.SelectedIndex := 1;
   edtNotaFiscal.SetFocus;
 end;
  
@@ -952,6 +998,95 @@ begin
   TfrxPictureView(frxRomaneioPlanilha.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.Logo);
 end;
 
+procedure TFrmEnfIndustrializacao.GerarEtiqueta1Click(Sender: TObject);
+var
+  notaAtual, corAtual, notas, forCodigo : string;
+  soma: double;
+begin
+  inherited;
+
+  SqlCdsEntradaNota.DisableControls;
+  SqlCdsEntradaNota.Filtered := False;
+  SqlCdsEntradaNota.Filter := ' selecao = 1';
+  SqlCdsEntradaNota.Filtered := True;
+  SqlCdsEntradaNota.First;
+  notas := '';
+  forCodigo := '';
+  while not SqlCdsEntradaNota.Eof do
+  begin
+    notas := notas + QuotedStr(SqlCdsEntradaNotaENF_NOTANUMBER.AsString) + ',';
+    forCodigo := forCodigo + QuotedStr(SqlCdsEntradaNotaFOR_CODIGO.AsString) + ',';
+    SqlCdsEntradaNota.Next;
+  end;
+  notas := copy(notas, 1, notas.Length -1);
+  forCodigo := copy(forCodigo, 1, forCodigo.Length -1);
+
+  qAux.Close;
+  qAux.SQL.Text := ' SELECT  ' +
+                   ' cl.CLI_RAZAO, ' +
+                   ' ac.ACO_NOME , ' +
+                   ' CURRENT_TIMESTAMP AS DTENTREGA,' +
+                   ' ei.ENF_IT_NOTANUMBER AS NOTA_FISCAL, ' +
+                   ' ei.ENF_PESO_ENTRADA AS PESO ' +
+                   ' FROM	ENF_IT01 ei ' +
+                   ' JOIN ENF0001 ef ON (ef.ENF_NOTANUMBER = ei.ENF_IT_NOTANUMBER) ' +
+                   ' JOIN CLI0000 cl ON (cl.CLI_CODIGO = ef.CLI_CODIGO) ' +
+                   ' JOIN DEMANDA_PRODUCAO dp ON	(ei.ENF_REGISTRO=dp.ENF_REGISTRO) ' +
+                   ' JOIN PED_IT01 pit ON (dp.PRF_REGISTRO=pit.PRF_REGISTRO) ' +
+                   ' LEFT JOIN ACABAMENTO_CORES ac ON	(ac.ACO_CODIGO = pit.ACO_CODIGO) ' +
+                   ' WHERE ei.enf_it_notanumber in (' + notas + ')' +
+                   ' AND ei.for_codigo in (' + forCodigo + ')'
+                   ;
+  qAux.Open;
+  mtEtiqueta.CreateDataset;
+  mtEtiqueta.Open;
+  mtTemp.CreateDataset;
+  mtTemp.Open;
+  while not qAux.Eof do
+  begin
+    mtTemp.Insert;
+    mtTempCLI_RAZAO.AsString := qAux.FieldByName('CLI_RAZAO').AsString;
+    mtTempACO_NOME.AsString := qAux.FieldByName('ACO_NOME').AsString;
+    mtTempDTENTREGA.AsDateTime := qAux.FieldByName('DTENTREGA').AsDateTime;
+    mtTempPESO.AsFloat := qAux.FieldByName('PESO').AsFloat;
+    mtTempNOTA_FISCAL.AsString := qAux.FieldByName('NOTA_FISCAL').AsString;
+    mtTemp.Post;
+    qAux.Next;
+  end;
+  mtTemp.Addindex('temp', 'ACO_NOME;NOTA_FISCAL', '', []);
+  mtTemp.IndexName := 'temp';
+  mtTemp.First;
+  while not mtTemp.Eof do
+  begin
+    mtEtiqueta.Insert;
+    mtEtiquetaCLI_RAZAO.AsString := mtTempCLI_RAZAO.AsString;
+    mtEtiquetaACO_NOME.AsString := mtTempACO_NOME.AsString;
+    mtEtiquetaDTENTREGA.AsDateTime := mtTempDTENTREGA.AsDateTime;
+    notas := '';
+    soma := 0;
+    while not mtTemp.Eof do
+    begin
+      corAtual := mtTempACO_NOME.AsString;
+      if pos(IntToStr(mtTempNOTA_FISCAL.AsInteger), notas) = 0 then
+        notas := notas + IntToStr(mtTempNOTA_FISCAL.AsInteger) + ' - ' ;
+      soma := soma +  mtTempPESO.AsFloat;
+      mtTemp.Next;
+      if corAtual <> mtTempACO_NOME.AsString then
+        Break;
+    end;
+    mtEtiquetaNOTA_FISCAL.AsString := notas;
+    mtEtiquetaPESO.AsFloat := soma;
+    mtEtiqueta.Post;
+  end;
+
+  frxEtiqueta.ShowReport;
+
+  mtTemp.DeleteIndex('temp');
+  mtEtiqueta.Close;
+  mtTemp.Close;
+  SqlCdsEntradaNota.Filtered := False;
+  SqlCdsEntradaNota.EnableControls;
+end;
 procedure TFrmEnfIndustrializacao.NotaFiscalPorProdutoPendent1Click(Sender: TObject);
 var
   sCondicao, devolveNF, devolveFOR: string;
@@ -1349,7 +1484,7 @@ begin
   SqlCdsNotaItem.Open;
 
 
-  end;
+end;
 
 procedure TFrmEnfIndustrializacao.dbgrdItemNotaDblClick(Sender: tObject);
 begin
@@ -1406,7 +1541,7 @@ end;
 
 procedure TFrmEnfIndustrializacao.dbgrdNotaEntradaDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
 var
-  BUTTON: Integer;
+  BUTTON, Check: Integer;
   R: TRect;
   bcolor: TColor;
 begin
@@ -1425,6 +1560,22 @@ begin
       DrawText(dbgrdNotaEntrada.Canvas.Handle,'Enviar',7,R,DT_VCENTER or DT_CENTER);
     dbgrdNotaEntrada.Canvas.Brush.Color := bcolor; // devolve a cor original
   end;
+
+  if column.FieldName = 'Selecao' then
+  begin
+
+    dbgrdNotaEntrada.Canvas.FillRect(Rect);
+    Check := 0;
+    if SqlCdsEntradaNotaSelecao.AsBoolean then
+      Check := DFCS_CHECKED
+    else
+      Check := 0;
+    R:=Rect;
+    dbgrdNotaEntrada.Canvas.Font.Color :=  TDBGrid(sender).Canvas.Brush.Color;
+    InflateRect(R,-2,-2); {Diminui o tamanho do CheckBox}
+    DrawFrameControl(dbgrdNotaEntrada.Canvas.Handle,R,DFC_BUTTON, DFCS_BUTTONCHECK or Check);
+  end
+
 end;
 
 
@@ -1535,6 +1686,10 @@ begin
 
 
   end;
+
+	if Column.FieldName = 'Selecao' then
+		seleciona;
+
 end;
 
 procedure TFrmEnfIndustrializacao.dbgrdNotaEntradaMouseUp(Sender: TObject; Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
