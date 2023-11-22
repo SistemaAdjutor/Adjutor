@@ -844,8 +844,8 @@ type
     cdsMolaPRD_CODORIGINAL: TStringField;
     cdsMolaMMO_TOLERANCIA_DE_MENOR_MIN: TFMTBCDField;
     cdsMolaMMO_ARQUIVO_FICHA_TECNICA: TStringField;
-    frxOrdemProducaoModelos: TfrxReport;
     cdsMateriaPrimaAMX_CODIGO: TStringField;
+    frxOrdemProducaoModelos: TfrxReport;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);

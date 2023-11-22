@@ -13,8 +13,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     ExplicitWidth = 1384
     ExplicitHeight = 567
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
       ExplicitWidth = 1376
       ExplicitHeight = 539
       inherited pnlControle: TPanel
@@ -229,7 +227,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Top = 105
         Width = 1376
         Height = 434
-        ExplicitTop = 105
+        ExplicitLeft = -16
+        ExplicitTop = 110
         ExplicitWidth = 1376
         ExplicitHeight = 434
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -874,10 +873,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object tbHistorico: TTabSheet
       Caption = 'Hist'#243'rico'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Phistorico: TPanel
         Left = 0
         Top = 0
@@ -3841,7 +3836,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       'Lote=Lote')
     DataSet = cdsMateriaPrima2
     BCDToCurrency = False
-    Left = 708
+    Left = 612
     Top = 465
   end
   object frxDBBusca: TfrxDBDataset
@@ -10730,8 +10725,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         '   '
       'JOIN prd_lote lt ON (lt.IOP_CODIGO = MP.IOP_CODIGO)'
       ' where MP.iop_codigo = 375')
-    Left = 707
-    Top = 512
+    Left = 611
+    Top = 520
     object IntegerField1: TIntegerField
       FieldName = 'MP_CODIGO'
       Origin = 'MP_CODIGO'
@@ -39456,7 +39451,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     PrintOptions.Printer = 'Default'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 44229.730457685200000000
-    ReportOptions.LastChange = 45175.385072048610000000
+    ReportOptions.LastChange = 45246.508949814820000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'VAR'
@@ -39878,34 +39873,37 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       '  end;'
       'end;'
       ''
-      'procedure Child2OnBeforePrint(Sender: TfrxComponent);'
+      'procedure Child1OnBeforePrint(Sender: TfrxComponent);'
       'begin'
+      '  Child1.StartNewPage := False;  '
+      
+        '  Child1.PrintChildIfInvisible := <frxDataMola."MMO_ARQUIVO_FICH' +
+        'A_TECNICA"> <> '#39#39';'
+      ''
       
         '  Child2.Visible := <frxDataMola."MMO_TRATAMENTO_TERMICO"> = '#39'T'#39 +
         ';'
+      'end;'
+      ''
+      'procedure Child2OnBeforePrint(Sender: TfrxComponent);'
+      'begin'
+      '  Child2.StartNewPage := False;  '
       
-        '  Child2.StartNewPage := Child2.Visible;                        ' +
-        '          '
+        '  Child2.PrintChildIfInvisible := <frxDataMola."MMO_ARQUIVO_FICH' +
+        'A_TECNICA"> <> '#39#39';'
+      
+        '  Child3.Visible :=  <frxDataMola."MMO_ARQUIVO_FICHA_TECNICA"> <' +
+        '> '#39#39';'
+      '  Child3.StartNewPage := False;'
       'end;'
       '    '
-      'procedure Child3OnBeforePrint(Sender: TfrxComponent);'
-      'begin'
-      
-        '  Child3.Visible := <frxDataMola."MMO_ARQUIVO_FICHA_TECNICA"> <>' +
-        ' '#39#39';  '
-      
-        '  Child3.StartNewPage := Child3.Visible;                        ' +
-        '          '
-      'end;'
-      ''
-      ''
       'begin'
       ''
       'end.')
     OnBeginDoc = frxOrdemProducaoModelosBeginDoc
     OnGetValue = frxOrdemProducaoModelosGetValue
-    Left = 1131
-    Top = 529
+    Left = 747
+    Top = 533
     Datasets = <
       item
         DataSet = frxDataItensPedido
@@ -43128,6 +43126,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Height = 801.259847400000000000
         Top = 8821.423020000000000000
         Width = 718.110700000000000000
+        OnBeforePrint = 'Child1OnBeforePrint'
         Child = frxOrdemProducaoModelos.Child2
         ToNRows = 0
         ToNRowsMode = rmCount
@@ -44857,7 +44856,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Width = 718.110700000000000000
         OnBeforePrint = 'Child2OnBeforePrint'
         Child = frxOrdemProducaoModelos.Child3
-        PrintChildIfInvisible = True
         ToNRows = 0
         ToNRowsMode = rmCount
         object LinhaChild1: TfrxLineView
@@ -51715,7 +51713,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       object Modelo7: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 944.881889763779500000
+        Height = 944.881889760000000000
         Top = 5744.885600000000000000
         Visible = False
         Width = 718.110700000000000000
@@ -58013,7 +58011,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       object Modelo4: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 793.700787401574800000
+        Height = 793.700787400000000000
         Top = 3068.978360000000000000
         Visible = False
         Width = 718.110700000000000000
@@ -60604,7 +60602,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       object Modelo5: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 869.291338582677200000
+        Height = 869.291338580000000000
         Top = 3885.356840000000000000
         Visible = False
         Width = 718.110700000000000000
@@ -63324,7 +63322,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       object Modelo6: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 944.881889763779500000
+        Height = 944.881889760000000000
         Top = 4777.325920000000000000
         Visible = False
         Width = 718.110700000000000000
@@ -66441,7 +66439,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       object Modelo8: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 1020.472440944882000000
+        Height = 1020.472440940000000000
         Top = 6712.445280000000000000
         Visible = False
         Width = 718.110700000000000000
@@ -69560,18 +69558,18 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       object Child3: TfrxChild
         FillType = ftBrush
         Frame.Typ = []
-        Height = 782.362075350000000000
+        Height = 733.228185350000000000
         Top = 10329.455490000000000000
+        Visible = False
         Width = 718.110700000000000000
-        OnBeforePrint = 'Child3OnBeforePrint'
         ToNRows = 0
         ToNRowsMode = rmCount
         object ArquivoFichaTecnica: TfrxPictureView
           AllowVectorExport = True
-          Left = 13.897650000000000000
-          Top = 71.031540000000000000
-          Width = 691.653990000000000000
-          Height = 702.992580000000000000
+          Left = 35.354360000000000000
+          Top = 59.692950000000000000
+          Width = 650.079160000000000000
+          Height = 668.976810000000000000
           Center = True
           Frame.Typ = []
           HightQuality = False
