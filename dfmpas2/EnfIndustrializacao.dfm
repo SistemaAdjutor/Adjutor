@@ -972,8 +972,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitLeft = 2
-        ExplicitTop = 1
       end
     end
     object TabSheet2: TTabSheet

@@ -1009,6 +1009,13 @@ begin
   SqlCdsEntradaNota.Filtered := False;
   SqlCdsEntradaNota.Filter := ' selecao = 1';
   SqlCdsEntradaNota.Filtered := True;
+  if SqlCdsEntradaNota.RecordCount = 0 then
+  begin
+    uteis.Aviso('Nenhuma nota foi selecionada...');
+    SqlCdsEntradaNota.Filtered := False;
+    Exit;
+  end;
+
   SqlCdsEntradaNota.First;
   notas := '';
   forCodigo := '';
@@ -1688,7 +1695,12 @@ begin
   end;
 
 	if Column.FieldName = 'Selecao' then
-		seleciona;
+  begin
+    if SqlCdsEntradaNotaENF_ENVIADO_PCP_DEMANDA.AsString = 'S' then
+  		seleciona
+    else
+      uteis.Aviso('Não enviado ao PCP Demanda. Não pode gerar etiquetas');
+  end;
 
 end;
 
@@ -1755,6 +1767,9 @@ begin
       update := 'UPDATE ENF_IT01 SET ENF_IT_ENVIADO_PCP_DEMANDA = ' + QuotedStr(SimNaoParcial) + ' WHERE ENF_REGISTRO = ' + qOPENF_REGISTRO.AsString  ;
       DBInicio.ExecSql(update);
 
+
+      update := 'UPDATE ENF0001 SET ENF_ENVIADO_PCP_DEMANDA = ''N'' WHERE ENF_NOTANUMBER = ' +  QuotedStr(SqlCdsEntradaNotaENF_NOTANUMBER.AsString) + ' AND FOR_CODIGO = ' + QuotedStr(SqlCdsEntradaNotaFOR_CODIGO.AsString);
+      DBInicio.ExecSql(update);
 
       tcr.EstornoDemanda(qOPDEP_CODIGO.AsString);
 
@@ -1912,6 +1927,12 @@ begin
                ' ENF_IT_QTD_ENV_PCP_DEMANDA = COALESCE(ENF_IT_QTD_ENV_PCP_DEMANDA, 0) + ' +  FloatToSQL(frmEnfIndustrializacoEnviaDemanda.edEnviar.Value) +
                ' WHERE ENF_REGISTRO = ' + SqlCdsNotaItemENF_REGISTRO.AsString ;
      DBInicio.ExecSql(update);
+
+
+     update := 'UPDATE ENF0001 SET ENF_ENVIADO_PCP_DEMANDA = ''S'' WHERE ENF_NOTANUMBER = ' +  QuotedStr(SqlCdsEntradaNotaENF_NOTANUMBER.AsString) + ' AND FOR_CODIGO = ' + QuotedStr(SqlCdsEntradaNotaFOR_CODIGO.AsString);
+     DBInicio.ExecSql(update);
+
+
 
      update :=  'UPDATE DEMANDA_PRODUCAO ' +
                 ' SET ENF_REGISTRO = ' + SqlCdsNotaItemENF_REGISTRO.AsString +
