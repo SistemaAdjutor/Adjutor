@@ -39,7 +39,7 @@ type
 
    function EnviarDemanda (const ped_codigo , prd_codigo, situacao : string ;const fti_registro, prf_registro, iop_codigo : Integer; const dtEntrega : TDate;const  estoque : double; produzir : double = 0.0 )  : Integer;
    function DemandaHistorico (const dep_codigo : Integer; const descricao, ped_codigo,prd_codigo : string; ReenvioDemanda :  boolean = False ): Boolean;
-   function EstornoDemanda (ped_codigo: string):Boolean;
+   function EstornoDemanda (ped_codigo: string; prdCodigo: string = ''):Boolean;
    function EstornoEnvase(const iop_codigo: integer):boolean;
    function EnviaraProducao (const ped_codigo : string;const  Dt_Emissao, dt_Entrega : TDate; const cli_codigo : string): Integer;
    function EnviarItemProducao(const  prd_codigo , prd_refer, ped_codigo: string; const Dt_Emissao: TDate; dt_Entrega: TDate;
@@ -131,7 +131,7 @@ var sql : string ;
    usarEstoque : double;
 begin
    sql :=
-      'SELECT dep_codigo, FT.FTI_REGISTRO, DEP_SITUACAO, ft.PRD_REFER, PRD_REFER_ITENS, ' +
+      'SELECT COALESCE(dpr.DEP_QTDE_PRODUCAO, 0) AS DEP_QTDE_PRODUCAO, dep_codigo, FT.FTI_REGISTRO, DEP_SITUACAO, ft.PRD_REFER, PRD_REFER_ITENS, ' +
       ' CAST(pr.PRD_DESCRI AS VARCHAR(100)) PRD_DESCRI , ' + //   ' pr.PRD_DESCRI , ' +
       ' FTI_UC,  DEP_DATA_ENTREGA DTENTREGA,  '+
       ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, DEP_QTDE_ESTOQUE,         '+
@@ -166,7 +166,10 @@ begin
              usarEstoque :=  clone.FieldByName('DEP_QTDE_ESTOQUE').AsFloat
           else
             usarEstoque := 0; // tem que bloquear para não usar estoque com programação, um gatilho na tela de demanda
-           produzir := (clone.FieldByName('FTI_UC').AsFloat * produzirMaster/clone.FieldByName('FTC_BASEFORMULA').AsFloat)  -  UsarEstoque; // vai produzir se não especificar tudo - o que usar no estoque
+          if clone.FieldByName('DEP_QTDE_PRODUCAO').AsFloat > 0  then
+            produzir := clone.FieldByName('DEP_QTDE_PRODUCAO').AsFloat
+          else
+            produzir := (clone.FieldByName('FTI_UC').AsFloat * produzirMaster/clone.FieldByName('FTC_BASEFORMULA').AsFloat)  -  UsarEstoque; // vai produzir se não especificar tudo - o que usar no estoque
          if (produzir>0) then
          Begin
            inc(i);
@@ -1394,14 +1397,16 @@ end;
 
 
 //function TProducaoDao.EstornoDemanda(const dep_codigo:string): Boolean;
-function TProducaoDao.EstornoDemanda(ped_codigo:string): Boolean;
+function TProducaoDao.EstornoDemanda(ped_codigo:string; prdCodigo: string = ''): Boolean;
 var sql : string;
 
 begin
    try
      //não excluir os históricos, incluir hisórico de estorno
     OpenAux('SELECT * FROM DEMANDA_PRODUCAO '+
-            ' WHERE ped_codigo = ' + QuotedStr(ped_codigo) +  ' AND emp_codigo = ' + QuotedStr(DBInicio.emp_codigo) );
+            ' WHERE ped_codigo = ' + QuotedStr(ped_codigo) +
+            iif(prdCodigo = '', '', ' AND PRD_CODIGO = ' + QuotedStr(prdCodigo)) +
+            ' AND emp_codigo = ' + QuotedStr(DBInicio.emp_codigo) );
     qAux.First;
     while not qAux.Eof do
     begin

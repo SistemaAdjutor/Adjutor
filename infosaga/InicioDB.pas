@@ -391,6 +391,7 @@ type
     bPermitirExcluirItem : boolean;
     bPermitirEstornaExpedicao : boolean;
     bHabilitaColunaNF : boolean;
+    bIncluiItemPedOpGerada: boolean;
     sPadraoPesquisaProduto : STRING;
     bHabilitarTabelaPreco : boolean;
     fUSP_ALTERA_COMISSAO : boolean;
@@ -1872,6 +1873,8 @@ procedure TDBInicio.OpenParametrosUsuario;
           ( FieldByName( 'USP_ESTORNAEXPEDICAO' ).AsString = 'S' );
         vlEmpresa.bHabilitaColunaNF :=
           ( FieldByName( 'USP_HABILITA_COLUNA_NF' ).AsString = 'S' );
+        vlEmpresa.bIncluiItemPedOpGerada :=
+          ( FieldByName( 'USP_INCLUI_ITEM_PED_OP_GERADA' ).AsString = 'S' );
         vlEmpresa.fUSP_ALTERA_COMISSAO :=
           ( FieldByName( 'USP_ALTERA_COMISSAO' ).AsString = 'S' );
         vlEmpresa.DesctoMaximo_P :=
