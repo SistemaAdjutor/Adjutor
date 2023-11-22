@@ -294,6 +294,11 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Options.Filtering = False
             Styles.OnGetContentStyle = cxgrd1DBTableView1ESTOQUEDISPONIVELStylesGetContentStyle
           end
+          object cxgrd1DBTableView1AMX_DESCRI: TcxGridDBColumn
+            Caption = 'Almoxarifado'
+            DataBinding.FieldName = 'AMX_DESCRI'
+            Width = 150
+          end
           object cxgrd1DBTableView1PercConsumido: TcxGridDBColumn
             Caption = 'Percentual consumido'
             DataBinding.FieldName = 'PercConsumido'
@@ -1949,6 +1954,12 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object cdsMateriaPrimaAMX_CODIGO: TStringField
       FieldName = 'AMX_CODIGO'
       Size = 4
+    end
+    object cdsMateriaPrimaAMX_DESCRI: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'AMX_DESCRI'
+      Size = 60
+      Calculated = True
     end
   end
   object dsMateriaPrima: TDataSource
