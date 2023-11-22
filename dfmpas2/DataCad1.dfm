@@ -1660,6 +1660,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_MENSAGEM_VENDAS'
       Size = 80
     end
+    object SqlParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField
+      FieldName = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
+      Size = 1
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -2959,6 +2963,10 @@ object DataCadastros1: TDataCadastros1
     object CdsParametrosPMT_MENSAGEM_VENDAS: TStringField
       FieldName = 'PMT_MENSAGEM_VENDAS'
       Size = 80
+    end
+    object CdsParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField
+      FieldName = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
+      Size = 1
     end
   end
   object DsParametros: TDataSource

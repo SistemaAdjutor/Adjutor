@@ -5102,7 +5102,7 @@ inherited FormParametros: TFormParametros
             Top = 1
             Width = 765
             Height = 507
-            ActivePage = tsSaida
+            ActivePage = tsEntrada
             Align = alClient
             TabOrder = 0
             object tsEntrada: TTabSheet
@@ -5196,6 +5196,21 @@ inherited FormParametros: TFormParametros
                 DataSource = DataCadastros1.DsParametros
                 TabOrder = 5
                 OnExit = DBEdit16Exit
+              end
+              object DBCheckBox97: TDBCheckBox
+                Left = 12
+                Top = 122
+                Width = 369
+                Height = 17
+                Hint = 'Produtos que controlam lote v'#227'o obrigar a vincula'#231#227'o do lote'
+                Caption = 'Obrigat'#243'rio informar o Lote na Entrada da Nota Fiscal'
+                DataField = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
+                DataSource = DataCadastros1.DsParametros
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 6
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
             object tsSaida: TTabSheet

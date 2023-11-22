@@ -6841,6 +6841,8 @@ begin
       FrmCadastroProdutoLote := TFrmCadastroProdutoLote.Create(Application);
       try
         FrmCadastroProdutoLote.sPrdCodido := wPrdCodigo;
+        FrmCadastroProdutoLote.amxCodigo := EdtAlmox.Text;
+        FrmCadastroProdutoLote.lbAlmoxarifado.Caption := CbAlmox.Text;
         FrmCadastroProdutoLote.ShowModal;
       finally
         FreeAndNil(FrmCadastroProdutoLote);
