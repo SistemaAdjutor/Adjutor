@@ -973,6 +973,16 @@ inherited FormFatPedido: TFormFatPedido
       TabStop = False
       OnClick = btnEmpresaClick
     end
+    object chkFreteProporcional: TCheckBox
+      Left = 155
+      Top = 3
+      Width = 256
+      Height = 17
+      Caption = 'Utilizar frete proporcional '#224' quantidade faturada'
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 5
+    end
   end
   object Panel3: TPanel [3]
     Left = 0
@@ -1229,6 +1239,10 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet2: TTabSheet
         Caption = 'Transporte'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label4: TLabel
           Left = 11
           Top = 59
@@ -1415,6 +1429,10 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet4: TTabSheet
         Caption = 'Exporta'#231#227'o'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label11: TLabel
           Left = 15
           Top = 12
