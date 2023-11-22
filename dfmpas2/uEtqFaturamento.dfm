@@ -719,7 +719,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     Version = '22.0'
     mmColumnWidth = 98650
     DataPipelineName = 'ppDBPEtiqueta'
-    object ppColumnHeaderBand1: TppColumnHeaderBand
+    object ppColumnHeaderBand16: TppColumnHeaderBand
       Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
@@ -731,7 +731,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnHeaderBand16: TppColumnHeaderBand
+    object ppColumnHeaderBand1: TppColumnHeaderBand
       Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
@@ -1166,7 +1166,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         LayerName = Foreground
       end
     end
-    object ppColumnFooterBand2: TppColumnFooterBand
+    object ppColumnFooterBand16: TppColumnFooterBand
       AlignToBottom = True
       Border.mmPadding = 0
       mmBottomOffset = 0
@@ -1180,7 +1180,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnFooterBand16: TppColumnFooterBand
+    object ppColumnFooterBand2: TppColumnFooterBand
       AlignToBottom = True
       Border.mmPadding = 0
       mmBottomOffset = 0
@@ -1291,7 +1291,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     Version = '22.0'
     mmColumnWidth = 98650
     DataPipelineName = 'ppDBPEtiqueta'
-    object ppColumnHeaderBand3: TppColumnHeaderBand
+    object ppColumnHeaderBand4: TppColumnHeaderBand
       Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
@@ -1303,7 +1303,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnHeaderBand4: TppColumnHeaderBand
+    object ppColumnHeaderBand3: TppColumnHeaderBand
       Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
@@ -1646,7 +1646,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         LayerName = Foreground1
       end
     end
-    object ppColumnFooterBand3: TppColumnFooterBand
+    object ppColumnFooterBand4: TppColumnFooterBand
       AlignToBottom = True
       Border.mmPadding = 0
       mmBottomOffset = 0
@@ -1660,7 +1660,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnFooterBand4: TppColumnFooterBand
+    object ppColumnFooterBand3: TppColumnFooterBand
       AlignToBottom = True
       Border.mmPadding = 0
       mmBottomOffset = 0
@@ -2410,7 +2410,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     Version = '22.0'
     mmColumnWidth = 98000
     DataPipelineName = 'ppDBPEtiqueta'
-    object ppColumnHeaderBand11: TppColumnHeaderBand
+    object ppColumnHeaderBand9: TppColumnHeaderBand
       Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
@@ -2422,7 +2422,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnHeaderBand9: TppColumnHeaderBand
+    object ppColumnHeaderBand11: TppColumnHeaderBand
       Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
@@ -2857,7 +2857,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
         mmWideBarRatio = 76200
       end
     end
-    object ppColumnFooterBand11: TppColumnFooterBand
+    object ppColumnFooterBand9: TppColumnFooterBand
       AlignToBottom = True
       Border.mmPadding = 0
       mmBottomOffset = 0
@@ -2871,7 +2871,7 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
       mmHeight = 0
       mmPrintPosition = 0
     end
-    object ppColumnFooterBand9: TppColumnFooterBand
+    object ppColumnFooterBand11: TppColumnFooterBand
       AlignToBottom = True
       Border.mmPadding = 0
       mmBottomOffset = 0
@@ -7443,7 +7443,6 @@ inherited frmEtqFaturamento: TfrmEtqFaturamento
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
     PrinterSetup.Duplex = dpNone
-    PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False

@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = TabSheet4
     Align = alTop
     HotTrack = True
     TabOrder = 0

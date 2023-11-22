@@ -3548,7 +3548,7 @@ begin
     if cbTipoOperacao.ItemIndex = 1 then
       sql := sql + ' AND o.OPE_TIPO_OPERACAO = ''O'' '
     else
-    if cbTipoOperacao.ItemIndex = 0 then
+    if cbTipoOperacao.ItemIndex = 2 then
       sql := sql + ' AND o.OPE_TIPO_OPERACAO = ''D'' ';
 
     sql := sql + ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaCompras.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );

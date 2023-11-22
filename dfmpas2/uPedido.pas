@@ -2040,7 +2040,7 @@ begin
                    '       end as di, '+
                    '       t2.prd_pesoliq, '+
                    '       t2.prd_pesokg,'+
-                   '       T2.PRD_ORIGEM,'+
+                   '       T1.PRD_ORIGEM,'+
                    '       t1.prf_qtde_env_producao,'+
                    '       t3.PRG_DESCRICAO,'+
                    '       t3.PRG_MEDIDA_1,'+

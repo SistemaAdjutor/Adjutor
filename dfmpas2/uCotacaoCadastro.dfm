@@ -481,6 +481,7 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     LookAndFeel.Kind = lfStandard
     LookAndFeel.NativeStyle = False
     LookAndFeel.ScrollbarMode = sbmClassic
+    ExplicitLeft = -256
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True
@@ -541,6 +542,10 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
         DataBinding.FieldName = 'CIT_DATA_NECESSIDADE'
         Width = 115
       end
+      object cxGrid1DBTableView1PCX_DESCRI: TcxGridDBColumn
+        Caption = 'Centro de Custo'
+        DataBinding.FieldName = 'PCX_DESCRI'
+      end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1
@@ -555,7 +560,7 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     Top = 336
   end
   inherited qAux: TFDQuery
-    Left = 875
+    Left = 619
     Top = 416
   end
   inherited FDPhysFBDriverLink1: TFDPhysFBDriverLink
@@ -575,11 +580,11 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     Top = 336
   end
   inherited qAux2: TFDQuery
-    Left = 923
+    Left = 667
     Top = 415
   end
   inherited qAux3: TFDQuery
-    Left = 963
+    Left = 707
     Top = 415
   end
   inherited qAux4: TFDQuery
@@ -593,11 +598,11 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
       'Password=masterkey'
       'CharacterSet=ISO8859_1'
       'DriverID=FB')
-    Left = 723
+    Left = 467
     Top = 424
   end
   inherited FDStoredProc1: TFDStoredProc
-    Left = 800
+    Left = 544
     Top = 424
   end
   object tbCotacao: TFDTable
@@ -795,6 +800,10 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     object qItemCIT_DATA_NECESSIDADE: TDateField
       FieldName = 'CIT_DATA_NECESSIDADE'
       Origin = 'CIT_DATA_NECESSIDADE'
+    end
+    object qItemPCX_DESCRI: TStringField
+      FieldName = 'PCX_DESCRI'
+      Size = 25
     end
   end
   object dsqItem: TDataSource

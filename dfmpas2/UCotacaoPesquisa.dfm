@@ -762,6 +762,10 @@ inherited frmCotacaoPesquisa: TfrmCotacaoPesquisa
         Options.Editing = False
         Width = 52
       end
+      object cxGrid1DBTableView1PCX_DESCRI: TcxGridDBColumn
+        Caption = 'Centro de Custo'
+        DataBinding.FieldName = 'PCX_DESCRI'
+      end
       object cxGrid1DBTableView1COT_SOLICITANTE: TcxGridDBColumn
         Caption = 'Solicitante'
         DataBinding.FieldName = 'COT_SOLICITANTE'
@@ -1280,6 +1284,10 @@ inherited frmCotacaoPesquisa: TfrmCotacaoPesquisa
       Origin = 'EMP_CODIGO'
       ProviderFlags = []
       Size = 3
+    end
+    object qCotacaoPCX_DESCRI: TStringField
+      FieldName = 'PCX_DESCRI'
+      Size = 25
     end
   end
   object qCotacaoItem: TFDQuery

@@ -111,6 +111,8 @@ type
     SpeedButton6: TSpeedButton;
     cbCentroCusto: TComboBoxRw;
     Label13: TLabel;
+    qItemPCX_DESCRI: TStringField;
+    cxGrid1DBTableView1PCX_DESCRI: TcxGridDBColumn;
     function GravarSolicitacao(): boolean;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure cbSetorChange(Sender: TObject);
@@ -395,12 +397,14 @@ procedure TfrmCotacaoCadastro.AtualizaItem;
 begin
   qItem.Close;
   qItem.SQL.Text := 'SELECT ci.*, ' +
-    '     CASE WHEN (ci.PRD_REFER IS NULL) OR (ci.PRD_REFER = '''') ' +
+    '   CASE WHEN (ci.PRD_REFER IS NULL) OR (ci.PRD_REFER = '''') ' +
     '     THEN ci.PRD_DESCRICAO ' +
     '     ELSE pr.PRD_DESCRI ' +
-    '   END AS PRD_DESCRI ' +
+    '   END AS PRD_DESCRI, ' +
+    '   px.PCX_DESCRI ' +
     ' FROM COTACAO_ITEM ci ' +
     ' LEFT JOIN PRD0000 pr ON (pr.PRD_REFER = ci.PRD_REFER) ' +
+    ' LEFT JOIN PCX0000 px ON (px.PCX_CODIGO = ci.PCX_CODIGO) ' +
     ' WHERE ci.COT_CODIGO = ' + IntToStr(cotCodigo) +
     ' ORDER BY COT_CODIGO, CIT_CODIGO ';
   qItem.Open;
