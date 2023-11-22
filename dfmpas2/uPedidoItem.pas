@@ -2941,6 +2941,10 @@ begin
                      else
                        ExecSql( 'UPDATE PED_IT01 SET ACO_CODIGO = NULL WHERE PRF_REGISTRO = '+IntToStr(iRegistroItem) );
 
+                   ExecSql( 'UPDATE PED_IT01 SET PRD_ORIGEM = ' +
+                            BuscaUmDadoSqlAsString('SELECT PRD_ORIGEM FROM PRD0000 WHERE PRD_CODIGO = ' + QuotedStr(cbReferencia.idRetorno)  )  +
+                            ' WHERE PRF_REGISTRO = '+IntToStr(iRegistroItem) );
+
 
 
     {

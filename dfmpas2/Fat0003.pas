@@ -1725,7 +1725,7 @@ begin
     qItemPedido.Sql.Add('       P2.PRD_PCUSTO,');
     qItemPedido.Sql.Add('       P2.PRD_CUSTOIPI,');
     qItemPedido.Sql.Add('       P2.PRD_PMEDIO,');
-    qItemPedido.Sql.Add('       p2.PRD_ORIGEM,');
+    qItemPedido.Sql.Add('       p1.PRD_ORIGEM,');
     qItemPedido.Sql.Add('       P2.IPI_CODIGO,');
     qItemPedido.Sql.Add('       p2.prd_codigo as prd_produto,');
     qItemPedido.Sql.Add('       P2.PRD_PESOKG,');
