@@ -1000,8 +1000,9 @@ end;
 
 procedure TFrmEnfIndustrializacao.GerarEtiqueta1Click(Sender: TObject);
 var
-  notaAtual, corAtual, notas, forCodigo : string;
-  soma: double;
+  notaAtual, corAtual, notas, forCodigo, xml, vl : string;
+  soma, peso, pesoLDanfe, vProdItem, vProdTotal, qCom: double;
+  inicio, fim : integer;
 begin
   inherited;
 
@@ -1034,7 +1035,9 @@ begin
                    ' ac.ACO_NOME , ' +
                    ' CURRENT_TIMESTAMP AS DTENTREGA,' +
                    ' ei.ENF_IT_NOTANUMBER AS NOTA_FISCAL, ' +
-                   ' ei.ENF_PESO_ENTRADA AS PESO ' +
+                   ' ei.ENF_PESO_ENTRADA AS PESO, ' +
+                   ' ei.ENF_UCOM, ei.ENF_QTDE, ei.ENF_PRECO, ' +
+                   ' ef.ENF_PESO_TOTAL, ef.ENF_XML, ef.ENF_TOT_PROD ' +
                    ' FROM	ENF_IT01 ei ' +
                    ' JOIN ENF0001 ef ON (ef.ENF_NOTANUMBER = ei.ENF_IT_NOTANUMBER) ' +
                    ' JOIN CLI0000 cl ON (cl.CLI_CODIGO = ef.CLI_CODIGO) ' +
@@ -1044,6 +1047,8 @@ begin
                    ' WHERE ei.enf_it_notanumber in (' + notas + ')' +
                    ' AND ei.for_codigo in (' + forCodigo + ')'
                    ;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(qAux.SQL.Text);
   qAux.Open;
   mtEtiqueta.CreateDataset;
   mtEtiqueta.Open;
@@ -1051,11 +1056,42 @@ begin
   mtTemp.Open;
   while not qAux.Eof do
   begin
+
+
+
+    peso := 0;
+    if qAux.FieldByName('ENF_UCOM').AsString = 'KG' then
+    begin
+      peso := qAux.FieldByName('ENF_QTDE').AsFloat;
+    end
+    else
+    begin
+      if qAux.FieldByName('ENF_PESO_TOTAL').AsFloat > 0  then
+        pesoLDanfe := qAux.FieldByName('ENF_PESO_TOTAL').AsFloat
+      else
+      begin
+        xml := qAux.FieldByName('ENF_XML').AsString;
+        inicio := pos('<pesoL>', xml) + 7;
+        fim    := pos('</pesoL>', xml) - 1;
+        vl := StringReplace(copy(xml, inicio, fim-inicio + 1), '.', ',', []);
+        if vl = '' then
+          pesoLDanfe := qAux.FieldByName('ENF_QTDE').AsFloat
+        else
+          pesoLDanfe := StrToFloat(vl);
+      end;
+      vProdItem := qAux.FieldByName('ENF_QTDE').AsFloat * qAux.FieldByName('ENF_PRECO').AsFloat;
+      vProdTotal := qAux.FieldByName('ENF_TOT_PROD').AsFloat;
+      qCom := qAux.FieldByName('ENF_QTDE').AsFloat;
+      peso := (vProdItem / (vProdTotal / pesoLDanfe)) / qCom;
+    end;
+
+
+
     mtTemp.Insert;
     mtTempCLI_RAZAO.AsString := qAux.FieldByName('CLI_RAZAO').AsString;
     mtTempACO_NOME.AsString := qAux.FieldByName('ACO_NOME').AsString;
     mtTempDTENTREGA.AsDateTime := qAux.FieldByName('DTENTREGA').AsDateTime;
-    mtTempPESO.AsFloat := qAux.FieldByName('PESO').AsFloat;
+    mtTempPESO.AsFloat := peso;
     mtTempNOTA_FISCAL.AsString := qAux.FieldByName('NOTA_FISCAL').AsString;
     mtTemp.Post;
     qAux.Next;
