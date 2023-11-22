@@ -2983,7 +2983,17 @@ begin
 
       PctrlProdutos.ActivePage := Tbs_Produtos;
       PgCtrl_Produtos.ActivePage := TabSheet3; { preços }
-      DbePrd_Descri.Setfocus;
+//      DbePrd_Descri.Setfocus;
+
+      if CdsProdutos.State in dsEditModes then
+      begin
+        CdsProdutos.Post;
+        CdsProdutos.ApplyUpdates(0);
+      end;
+      EdtPrd_Refer.Enabled := True;
+      EdtPrd_Refer.SetFocus;
+
+
 
     End;
 
@@ -3064,7 +3074,8 @@ procedure TFormProduto.FormCloseQuery(
   var CanClose : Boolean );
   begin
     inherited;
-    verificaEdicao; // procedure local
+    if Bit_Gravar.Enabled then
+      verificaEdicao; // procedure local
 //    if eNotaEntrada and not CamposObrigatorios
 //    then
 //      CanClose := False;
@@ -3152,6 +3163,9 @@ begin
   if Assigned( ActiveControl ) then
   begin
 
+    if ( ActiveControl.Name = 'Bit_novo' ) then
+      Bit_novo.Click
+    Else
     if ( ActiveControl.Name = 'Bit_Cancelar' ) then
       Bit_Cancelar.Click
     Else
