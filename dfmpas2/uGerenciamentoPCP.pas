@@ -853,6 +853,8 @@ type
     cxgrd1DBBandedTableView1ENF_IT_NOTANUMBER: TcxGridDBBandedColumn;
     cxgrd1DBBandedTableView1ACO_NOME: TcxGridDBBandedColumn;
     cxgrd1DBBandedTableView1PESO_TOTAL: TcxGridDBBandedColumn;
+    ListagemdeOrdensporClienteeNotadeEntrada1: TMenuItem;
+    frxListaClienteNF: TfrxReport;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -928,6 +930,7 @@ type
     procedure ListadeOrdemdeProduoporCliente1Click(Sender: TObject);
     procedure frxOrdemProducaoModelosBeginDoc(Sender: TObject);
     procedure frxOrdemProducaoModelosGetValue(const VarName: string; var Value: Variant);
+    procedure ListagemdeOrdensporClienteeNotadeEntrada1Click(Sender: TObject);
   private
     NaoAtualizaHistorico : boolean;
     sPedidoTitulo:string;
@@ -2804,6 +2807,33 @@ begin
   frxListaIniciadas.ShowReport();
   btnPesquisa.Click;
 
+end;
+
+procedure TfrmGerenciamentoPCP.ListagemdeOrdensporClienteeNotadeEntrada1Click(
+  Sender: TObject);
+begin
+  inherited;
+  TfrxPictureView(frxListaClienteNF.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
+
+  if cxgrd1DBBandedTableView1.DataController.Filter.FilterText <> '' then
+  begin
+    cdsbusca.Filtered := False;
+    cdsBusca.Filter := cxgrd1DBBandedTableView1.DataController.Filter.FilterText;
+    try
+      cdsBusca.Filtered := True;
+    except
+      on e: Exception do
+      begin
+        if pos('SQL TimeStamp', e.message) > 0 then
+          MessageDlg('Utilize os filtros da Pesquisa para Filtrar por Data', mtWarning, [mbOk], 0);
+      end;
+    end;
+  end;
+  cdsBusca.AddIndex('CLIENTE_PEDIDO', 'CLI_RAZAO;PED_CODIGO', 'ASC', []);
+  cdsBusca.IndexName := 'CLIENTE_PEDIDO';
+  frxListaClienteNF.ShowReport();
+  cdsBusca.DeleteIndex('CLIENTE_PEDIDO');
+  cdsbusca.Filtered := False;
 end;
 
 procedure TfrmGerenciamentoPCP.miInformarempenhoClick(Sender: TObject);
