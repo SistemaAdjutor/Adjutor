@@ -227,8 +227,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Top = 105
         Width = 1376
         Height = 434
-        ExplicitLeft = -16
-        ExplicitTop = 110
+        ExplicitTop = 105
         ExplicitWidth = 1376
         ExplicitHeight = 434
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -467,12 +466,34 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Position.ColIndex = 2
             Position.RowIndex = 0
           end
+          object cxgrd1DBBandedTableView1ACO_NOME: TcxGridDBBandedColumn
+            Caption = 'Cor'
+            DataBinding.FieldName = 'ACO_NOME'
+            Position.BandIndex = 4
+            Position.ColIndex = 3
+            Position.RowIndex = 0
+          end
+          object cxgrd1DBBandedTableView1IOP_PESO: TcxGridDBBandedColumn
+            Caption = 'Peso Unit.'
+            DataBinding.FieldName = 'IOP_PESO'
+            Options.Editing = False
+            Position.BandIndex = 4
+            Position.ColIndex = 4
+            Position.RowIndex = 0
+          end
+          object cxgrd1DBBandedTableView1PESO_TOTAL: TcxGridDBBandedColumn
+            Caption = 'Peso Total'
+            DataBinding.FieldName = 'PESO_TOTAL'
+            Position.BandIndex = 4
+            Position.ColIndex = 5
+            Position.RowIndex = 0
+          end
           object cxgrd1DBBandedTableView1PRDL_LOTE: TcxGridDBBandedColumn
             Caption = 'Lote'
             DataBinding.FieldName = 'PRDL_LOTE'
             Width = 73
             Position.BandIndex = 4
-            Position.ColIndex = 3
+            Position.ColIndex = 6
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1OPR_DTENTREGA: TcxGridDBBandedColumn
@@ -651,20 +672,12 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Position.ColIndex = 11
             Position.RowIndex = 0
           end
-          object cxgrd1DBBandedTableView1IOP_PESO: TcxGridDBBandedColumn
-            DataBinding.FieldName = 'IOP_PESO'
-            Visible = False
-            Options.Editing = False
-            Position.BandIndex = 0
-            Position.ColIndex = 12
-            Position.RowIndex = 0
-          end
           object cxgrd1DBBandedTableView1IOP_DATA_INICIO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'IOP_DATA_INICIO'
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 13
+            Position.ColIndex = 12
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1IOP_DATA_PREVISTA: TcxGridDBBandedColumn
@@ -672,7 +685,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 14
+            Position.ColIndex = 13
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1IOP_DATA_AJUSTADA: TcxGridDBBandedColumn
@@ -716,7 +729,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 15
+            Position.ColIndex = 14
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1IOP_CUSTO: TcxGridDBBandedColumn
@@ -724,7 +737,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 16
+            Position.ColIndex = 15
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1IOP_CUSTOOPERACAO: TcxGridDBBandedColumn
@@ -768,7 +781,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 17
+            Position.ColIndex = 16
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1PRO_CODIGO: TcxGridDBBandedColumn
@@ -776,7 +789,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 18
+            Position.ColIndex = 17
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1FTI_REGISTRO: TcxGridDBBandedColumn
@@ -784,7 +797,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 19
+            Position.ColIndex = 18
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1EMP_CODIGO: TcxGridDBBandedColumn
@@ -800,7 +813,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 20
+            Position.ColIndex = 19
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1OPR_STATUS: TcxGridDBBandedColumn
@@ -817,7 +830,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Options.Editing = False
             VisibleForCustomization = False
             Position.BandIndex = 0
-            Position.ColIndex = 21
+            Position.ColIndex = 20
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1CustoSubOrdens: TcxGridDBBandedColumn
@@ -854,7 +867,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 22
+            Position.ColIndex = 21
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1PRF_QTDE: TcxGridDBBandedColumn
@@ -863,6 +876,13 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Width = 65
             Position.BandIndex = 5
             Position.ColIndex = 0
+            Position.RowIndex = 0
+          end
+          object cxgrd1DBBandedTableView1ENF_IT_NOTANUMBER: TcxGridDBBandedColumn
+            Caption = 'Nota Fiscal'
+            DataBinding.FieldName = 'ENF_IT_NOTANUMBER'
+            Position.BandIndex = 0
+            Position.ColIndex = 22
             Position.RowIndex = 0
           end
         end
@@ -1721,6 +1741,15 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       FieldName = 'REP_CODIGO'
       Origin = 'REP_CODIGO'
       Size = 3
+    end
+    object cdsBuscaACO_NOME: TStringField
+      FieldName = 'ACO_NOME'
+      Size = 100
+    end
+    object cdsBuscaPESO_TOTAL: TFMTBCDField
+      FieldKind = fkCalculated
+      FieldName = 'PESO_TOTAL'
+      Calculated = True
     end
   end
   inherited pmExportar: TPopupMenu
