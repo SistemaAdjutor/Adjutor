@@ -3888,6 +3888,7 @@ begin
     verificaEdicao;
     BuscaItens;
     try
+       PctrlProdutos.ActivePageIndex := 0;   // em alguns casos a procedure verificaEdicao muda a página ativa para 1 ...
       if EdtPrd_Refer.Text <> '' then
       begin
         EdtRefer.Color := clWindow;
