@@ -902,8 +902,8 @@ begin
               if ((CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridCCPendente.AsCurrency < CdsParcelasGridFPC_VLPARC.AsCurrency)) then
                 ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,0) // AMARELO Parcial
               else
-              if ((CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date))
-                or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date)   )
+              if ((CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date))    // cdsParcelasGridFPC_STATUS.AsString
+                or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date) and (cdsParcelasGridFPC_STATUS.AsString <> 'Liquidada')  )
               then
                 ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,4) // VERMELHO Vencida ou Descontada
               else
