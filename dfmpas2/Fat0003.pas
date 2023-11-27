@@ -1760,7 +1760,7 @@ begin
      qItemPedido.Sql.Add(' CAST(CAST(((CASE PRF_PRODUTO_AGREGADO    '+
                          'WHEN ''S'' THEN (SELECT PRF_QTDE-Coalesce( PRF_QTDEFAT,0) FROM PED_IT01 IK WHERE P1.PRF_REGISTRO_VINCULADO = IK.PRF_REGISTRO)* PRF_QTDE '+
                          'WHEN ''N'' THEN PRF_QTDE                                                                                       '+
-                         'END) -Coalesce( p1.PRF_QTDEFAT,0)) AS numeric(15,3)) *  cast(P1.PRF_PRECO as numeric(15,5)) as numeric(18,2)  ) as TOTAL_FATURAR,      ');
+                         'END) -Coalesce( p1.PRF_QTDEFAT,0)) AS numeric(15,5)) *  cast(P1.PRF_PRECO as numeric(15,5)) as numeric(18,5)  ) as TOTAL_FATURAR,      ');
 
     end
     else
@@ -1772,7 +1772,7 @@ begin
       qItemPedido.Sql.Add(' CAST(CAST(((CASE PRF_PRODUTO_AGREGADO    '+
                                'WHEN ''S'' THEN (SELECT PRF_QTDE-Coalesce( PRF_QTDEFAT,0) FROM PED_IT01 IK WHERE P1.PRF_REGISTRO_VINCULADO = IK.PRF_REGISTRO)* PRF_QTDE '+
                                'WHEN ''N'' THEN PRF_QTDE                                                                                       '+
-                               'END) -Coalesce( p1.PRF_QTDEFAT,0)-Coalesce( p1.PRF_QTDEPEND,0) ) AS numeric(15,3)) *  cast(P1.PRF_PRECO as numeric(15,5)) as numeric(18,2)  ) as TOTAL_FATURAR,      ');
+                               'END) -Coalesce( p1.PRF_QTDEFAT,0)-Coalesce( p1.PRF_QTDEPEND,0) ) AS numeric(15,3)) *  cast(P1.PRF_PRECO as numeric(15,5)) as numeric(18,5)  ) as TOTAL_FATURAR,      ');
 
 
     end;
@@ -2594,8 +2594,9 @@ begin
              CdsItemPedido.Edit;
              if (CdsItemPedidoPRF_PRODUTO_AGREGADO.AsString = 'N') then
              begin
-                 CdsItemPedidoTOTAL_FATURAR.AsFloat := Uteis.RoundTo( CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat * CdsItemPedidoPRF_PRECO.AsFloat, -2 ) ;
-               Tot := Tot + CdsItemPedidoTOTAL_FATURAR.asCurrency;
+               CdsItemPedidoTOTAL_FATURAR.AsFloat := CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat * CdsItemPedidoPRF_PRECO.AsFloat ;
+               // CdsItemPedidoTOTAL_FATURAR.AsFloat := Uteis.RoundTo( CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat * CdsItemPedidoPRF_PRECO.AsFloat, -2 ) ;
+               Tot := Tot + CdsItemPedidoTOTAL_FATURAR.asFloat;
              end;
 
              CdsItemPedido.Post;
