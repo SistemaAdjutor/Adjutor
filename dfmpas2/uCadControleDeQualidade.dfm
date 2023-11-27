@@ -1,9 +1,7 @@
 inherited frmCadControleDeQualidade: TfrmCadControleDeQualidade
   Caption = 'Controle de Qualidade'
   ClientWidth = 776
-  OnClose = FormClose
-  ExplicitWidth = 784
-  ExplicitHeight = 495
+  ExplicitWidth = 792
   PixelsPerInch = 96
   TextHeight = 13
   inherited Panel1: TPanel
