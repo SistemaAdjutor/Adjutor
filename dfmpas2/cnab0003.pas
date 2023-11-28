@@ -476,8 +476,8 @@ begin
                                                 '        '+sDataBaixa+', '+ //CNAB_DATA_BAIXA,
                                                 '        '+sHoraBaixa+', '+ //CNAB_HORA_BAIXA,
                                                 '        '+qStr(wCodigoEmpresa)+' ) '; //EMP_CODIGO ) '+
-           if delphiaberto then
-               clipbrd.clipboard.astext := DataCadastros.SqlUpdate.Sql.Text;
+           if dbinicio.IsDesenvolvimento then
+               CopyToClipboard(DataCadastros.SqlUpdate.Sql.Text);
            DataCadastros.SqlUpdate.ExecSql;
 
            BuscaRegistroCNAB;

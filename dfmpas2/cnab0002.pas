@@ -1262,8 +1262,8 @@ begin
                                +wCodigoEmpresa+''')';
 
            DataCadastros.SqlUpdate.Sql.Text := wSQL1+wSQL2+wSQL3;
-           if delphiaberto then
-               clipbrd.clipboard.astext := DataCadastros.SqlUpdate.Sql.Text;
+           if dbInicio.IsDesenvolvimento then
+               copytoclipboard(DataCadastros.SqlUpdate.Sql.Text);
 
            DataCadastros.SqlUpdate.ExecSql;
            //

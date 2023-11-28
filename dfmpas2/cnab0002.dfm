@@ -4,7 +4,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Retorno arquivo CNAB'
-  ClientHeight = 487
+  ClientHeight = 493
   ClientWidth = 964
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -31,6 +31,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     Top = 3
     Width = 959
     Height = 453
+    PageIndex = 1
     TabOrder = 0
     object TPage
       Left = 0
@@ -1634,8 +1635,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'FORMA_PAGAMENTO'
           CamposCarregar = 'FPG_DESCRICAO'
           CamposRetornar = 'FPG_REGISTRO'
@@ -2280,6 +2283,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
     OpcoesPreview.PreviewZoom = 100
@@ -2293,15 +2297,19 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
     TitulodoRelatorio = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
@@ -2358,6 +2366,8 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     OnNewPage = RDProtRetornoCNABNewPage
     OnBeforeNewPage = RDProtRetornoCNABBeforeNewPage
     Left = 427
@@ -2470,6 +2480,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
     OpcoesPreview.PreviewZoom = 100
@@ -2483,15 +2494,19 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
     TitulodoRelatorio = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
@@ -2548,6 +2563,8 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     OnNewPage = RDProtCNABNewPage
     OnBeforeNewPage = RDProtCNABBeforeNewPage
     Left = 429
@@ -2571,6 +2588,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     Banco.CasasDecimaisMoraJuros = 2
     Cedente.TipoInscricao = pJuridica
     Cedente.IdentDistribuicao = tbBancoDistribui
+    Cedente.PIX.TipoChavePIX = tchNenhuma
     NumeroArquivo = 0
     Configuracoes.Arquivos.LogRegistro = False
     Configuracoes.WebService.SSLHttpLib = httpOpenSSL
