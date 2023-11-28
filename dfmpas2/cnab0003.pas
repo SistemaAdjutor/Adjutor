@@ -1767,10 +1767,10 @@ begin
 //         else
 //           wPESQUISA_TITULO   := ' where FAT_CODIGO = '''+wDUPLICATA+'''';
          wPESQUISA_TITULO := ' WHERE FPC_SITPAG = ''P'' AND  CLI_CODIGO = ' +QuotedStr(cli_codigo);
-         wPesquisa_Titulo := wPesquisa_Titulo+' and emp_codigo = '+qStr( dbInicio.Empresa.EMP_CODIGO );
+         wPesquisa_Titulo := wPesquisa_Titulo + ' and emp_codigo = '+qStr( dbInicio.Empresa.EMP_CODIGO );
 
          DataCadastros.SqlUpdate.Close;
-         DataCadastros.SqlUpdate.Sql.Text := 'SELECT FIRST 1 * FROM FAT_PC01 '+wPESQUISA_TITULO +' ORDER BY FPC_NUMER';
+         DataCadastros.SqlUpdate.Sql.Text := 'SELECT FIRST 1 * FROM FAT_PC01 '+wPESQUISA_TITULO +' ORDER BY FPC_VENCTO';
          DataCadastros.SqlUpdate.Open;
          if not DataCadastros.SqlUpdate.IsEmpty then
          begin
