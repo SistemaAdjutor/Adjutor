@@ -69826,28 +69826,11 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           ParentFont = False
           VAlign = vaCenter
         end
-        object Memo4: TfrxMemoView
-          AllowVectorExport = True
-          Left = 233.212740000000000000
-          Top = 68.031540000000000000
-          Width = 68.031540000000000000
-          Height = 26.456710000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = [ftTop, ftBottom]
-          Memo.UTF8W = (
-            'Refer'#234'ncia')
-          ParentFont = False
-          VAlign = vaCenter
-        end
         object Memo5: TfrxMemoView
           AllowVectorExport = True
-          Left = 287.244280000000000000
+          Left = 234.244280000000000000
           Top = 68.031540000000000000
-          Width = 370.393940000000000000
+          Width = 349.606299212598400000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -69862,7 +69845,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 656.858690000000000000
+          Left = 583.858690000000000000
           Top = 68.031540000000000000
           Width = 60.472480000000000000
           Height = 26.456710000000000000
@@ -69879,7 +69862,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo7: TfrxMemoView
           AllowVectorExport = True
-          Left = 717.331170000000000000
+          Left = 644.331170000000000000
           Top = 68.031540000000000000
           Width = 68.031540000000000000
           Height = 26.456710000000000000
@@ -69896,7 +69879,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo8: TfrxMemoView
           AllowVectorExport = True
-          Left = 785.362710000000000000
+          Left = 712.362710000000000000
           Top = 68.031540000000000000
           Width = 68.031540000000000000
           Height = 26.456710000000000000
@@ -69913,9 +69896,9 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo9: TfrxMemoView
           AllowVectorExport = True
-          Left = 853.394250000000000000
+          Left = 781.394250000000000000
           Top = 68.031540000000000000
-          Width = 68.031540000000000000
+          Width = 139.842610000000000000
           Height = 26.456710000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -70081,24 +70064,9 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
               ' = '#39'I'#39','#39'Iniciado'#39','#39'Pendente'#39')))]')
           ParentFont = False
         end
-        object Memo14: TfrxMemoView
-          AllowVectorExport = True
-          Left = 233.212740000000000000
-          Width = 68.031540000000000000
-          Height = 15.118120000000000000
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Height = -11
-          Font.Name = 'Arial'
-          Font.Style = []
-          Frame.Typ = []
-          Memo.UTF8W = (
-            '[frxDBBusca."PRD_REFER"]')
-          ParentFont = False
-        end
         object Memo15: TfrxMemoView
           AllowVectorExport = True
-          Left = 309.921460000000000000
+          Left = 234.921460000000000000
           Width = 347.716760000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -70113,7 +70081,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo16: TfrxMemoView
           AllowVectorExport = True
-          Left = 656.858690000000000000
+          Left = 581.858690000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -70128,7 +70096,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo17: TfrxMemoView
           AllowVectorExport = True
-          Left = 717.331170000000000000
+          Left = 642.331170000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
           DataSet = frxDBBusca
@@ -70147,7 +70115,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo18: TfrxMemoView
           AllowVectorExport = True
-          Left = 784.362710000000000000
+          Left = 709.362710000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
           DisplayFormat.FormatStr = '%2.2n'
@@ -70164,8 +70132,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo19: TfrxMemoView
           AllowVectorExport = True
-          Left = 853.394250000000000000
-          Width = 68.031540000000000000
+          Left = 781.583180000000000000
+          Width = 139.842610000000000000
           Height = 15.118120000000000000
           DataSet = frxDBBusca
           DataSetName = 'frxDBBusca'
