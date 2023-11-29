@@ -3,8 +3,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   Top = 0
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Gerenciador de Industrializa'#231#227'o'
-  ClientHeight = 714
-  ClientWidth = 1070
+  ClientHeight = 750
+  ClientWidth = 1076
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -23,8 +23,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   TextHeight = 14
   object Splitter1: TSplitter
     Left = 0
-    Top = 368
-    Width = 1070
+    Top = 404
+    Width = 1076
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -34,7 +34,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object Splitter2: TSplitter
     Left = 0
     Top = 184
-    Width = 1070
+    Width = 1076
     Height = 3
     Cursor = crVSplit
     Align = alTop
@@ -44,8 +44,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   end
   object Splitter3: TSplitter
     Left = 0
-    Top = 576
-    Width = 1070
+    Top = 612
+    Width = 1076
     Height = 3
     Cursor = crVSplit
     Align = alBottom
@@ -55,15 +55,16 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object grpNotaFiscalEntrada: TGroupBox
     Left = 0
     Top = 57
-    Width = 1070
+    Width = 1076
     Height = 127
     Align = alTop
     Caption = 'Notas Fiscais de Entrada'
     TabOrder = 0
+    ExplicitWidth = 1070
     object dbgrdNotaEntrada: TDBGrid
       Left = 2
       Top = 16
-      Width = 1066
+      Width = 1072
       Height = 109
       Align = alClient
       Color = 16776176
@@ -245,11 +246,12 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   object grpFiltro: TGroupBox
     Left = 0
     Top = 0
-    Width = 1070
+    Width = 1076
     Height = 57
     Align = alTop
     Caption = 'Filtro'
     TabOrder = 1
+    ExplicitWidth = 1070
     object Label1: TLabel
       Left = 16
       Top = 16
@@ -493,15 +495,17 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   end
   object grpItens: TGroupBox
     Left = 0
-    Top = 371
-    Width = 1070
+    Top = 407
+    Width = 1076
     Height = 205
     Align = alBottom
     TabOrder = 2
+    ExplicitTop = 371
+    ExplicitWidth = 1070
     object Splitter4: TSplitter
       Left = 2
       Top = 124
-      Width = 1066
+      Width = 1072
       Height = 4
       Cursor = crVSplit
       Align = alBottom
@@ -511,15 +515,16 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     object grpObsItem: TGroupBox
       Left = 2
       Top = 128
-      Width = 1066
+      Width = 1072
       Height = 75
       Align = alBottom
       Caption = 'Observa'#231#227'o'
       TabOrder = 0
+      ExplicitWidth = 1066
       object DBMemo1: TDBMemo
         Left = 2
         Top = 16
-        Width = 1062
+        Width = 1068
         Height = 57
         Align = alClient
         Color = 14145495
@@ -527,22 +532,25 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         DataSource = dsNotaItem
         ReadOnly = True
         TabOrder = 0
+        ExplicitWidth = 1062
       end
     end
     object pcIEOP: TPageControl
       Left = 2
       Top = 16
-      Width = 1066
+      Width = 1072
       Height = 108
-      ActivePage = TabSheet4
+      ActivePage = TabSheet5
       Align = alClient
       TabOrder = 1
+      ExplicitWidth = 1066
       object TabSheet4: TTabSheet
         Caption = 'Itens de Entrada'
+        ExplicitWidth = 1058
         object dbgrdItemNota: TDBGrid
           Left = 0
           Top = 0
-          Width = 1058
+          Width = 1064
           Height = 79
           Align = alClient
           Color = 14680063
@@ -668,10 +676,11 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       object TabSheet5: TTabSheet
         Caption = 'O.P.'
         ImageIndex = 1
+        ExplicitWidth = 1058
         object dbGridOP: TDBGrid
           Left = 0
           Top = 0
-          Width = 1058
+          Width = 1064
           Height = 79
           Align = alClient
           Color = 14680063
@@ -757,16 +766,18 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   end
   object grpItensRetorno: TGroupBox
     Left = 0
-    Top = 579
-    Width = 1070
+    Top = 615
+    Width = 1076
     Height = 105
     Align = alBottom
     Caption = 'Itens de Retorno'
     TabOrder = 3
+    ExplicitTop = 579
+    ExplicitWidth = 1070
     object dbgrdRetorno: TDBGrid
       Left = 2
       Top = 16
-      Width = 1066
+      Width = 1072
       Height = 87
       Align = alClient
       Color = 13828050
@@ -871,16 +882,18 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
   end
   object Panel1: TPanel
     Left = 0
-    Top = 684
-    Width = 1070
+    Top = 720
+    Width = 1076
     Height = 30
     Align = alBottom
     TabOrder = 4
+    ExplicitTop = 684
+    ExplicitWidth = 1070
     DesignSize = (
-      1070
+      1076
       30)
     object btnImprimir: TJvArrowButton
-      Left = 852
+      Left = 858
       Top = 4
       Width = 102
       Height = 25
@@ -911,7 +924,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       ExplicitLeft = 758
     end
     object BitBtn1: TBitBtn
-      Left = 746
+      Left = 752
       Top = 4
       Width = 100
       Height = 25
@@ -935,9 +948,10 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       TabOrder = 0
       TabStop = False
       OnClick = BitBtn1Click
+      ExplicitLeft = 746
     end
     object Bit_Sair: TBitBtn
-      Left = 960
+      Left = 966
       Top = 4
       Width = 100
       Height = 25
@@ -948,23 +962,28 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       TabOrder = 1
       TabStop = False
       OnClick = Bit_SairClick
+      ExplicitLeft = 960
     end
   end
   object pcObservacoes: TPageControl
     Left = 0
     Top = 187
-    Width = 1070
-    Height = 181
+    Width = 1076
+    Height = 217
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 5
+    ExplicitWidth = 1070
+    ExplicitHeight = 181
     object TabSheet1: TTabSheet
       Caption = 'Observa'#231#245'es da Industrializa'#231#227'o'
+      ExplicitWidth = 1062
+      ExplicitHeight = 152
       object mmEnfObsIndust: TDBMemo
         Left = 0
         Top = 0
-        Width = 1062
-        Height = 152
+        Width = 1068
+        Height = 188
         Align = alClient
         Color = 14145495
         DataField = 'ENF_OBS_INDUST'
@@ -972,16 +991,20 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
+        ExplicitWidth = 1062
+        ExplicitHeight = 152
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'Observa'#231#245'es dos Dados Adicionais'
       ImageIndex = 1
+      ExplicitWidth = 1062
+      ExplicitHeight = 152
       object mmEnfDadosAdicionais: TDBMemo
         Left = 0
         Top = 0
-        Width = 1062
-        Height = 152
+        Width = 1068
+        Height = 188
         Align = alClient
         Color = 14145495
         DataField = 'ENF_DADOS_ADICIONAIS'
@@ -989,16 +1012,20 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
+        ExplicitWidth = 1062
+        ExplicitHeight = 152
       end
     end
     object TabSheet3: TTabSheet
       Caption = 'Observa'#231#245'es dos Dados Adicionais do Fisco'
       ImageIndex = 2
+      ExplicitWidth = 1062
+      ExplicitHeight = 152
       object mmEnfDadosAdicionaisFisco: TDBMemo
         Left = 0
         Top = 0
-        Width = 1062
-        Height = 152
+        Width = 1068
+        Height = 188
         Align = alClient
         Color = 14145495
         DataField = 'ENF_DADOS_ADICIONAIS_FISCO'
@@ -1006,6 +1033,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
+        ExplicitWidth = 1062
+        ExplicitHeight = 152
       end
     end
   end

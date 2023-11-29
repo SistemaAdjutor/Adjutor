@@ -1037,7 +1037,7 @@ begin
                    ' ei.ENF_IT_NOTANUMBER AS NOTA_FISCAL, ' +
                    ' ei.ENF_PESO_ENTRADA AS PESO, ' +
                    ' ei.ENF_UCOM, ei.ENF_QTDE, ei.ENF_PRECO, ' +
-                   ' ef.ENF_PESO_TOTAL, ef.ENF_XML, ef.ENF_TOT_PROD ' +
+                   ' ef.ENF_PESO_TOTAL, ef.ENF_XML, ef.ENF_TOT_PROD, pit.PRF_QTDE ' +
                    ' FROM	ENF_IT01 ei ' +
                    ' JOIN ENF0001 ef ON (ef.ENF_NOTANUMBER = ei.ENF_IT_NOTANUMBER) ' +
                    ' JOIN CLI0000 cl ON (cl.CLI_CODIGO = ef.CLI_CODIGO) ' +
@@ -1082,7 +1082,7 @@ begin
       vProdItem := qAux.FieldByName('ENF_QTDE').AsFloat * qAux.FieldByName('ENF_PRECO').AsFloat;
       vProdTotal := qAux.FieldByName('ENF_TOT_PROD').AsFloat;
       qCom := qAux.FieldByName('ENF_QTDE').AsFloat;
-      peso := (vProdItem / (vProdTotal / pesoLDanfe)) / qCom;
+      peso := ((vProdItem / (vProdTotal / pesoLDanfe)) / qCom) * qAux.FieldByName('PRF_QTDE').AsFloat;
     end;
 
 
