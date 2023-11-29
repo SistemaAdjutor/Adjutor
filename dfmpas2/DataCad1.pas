@@ -1698,6 +1698,10 @@ type
     CdsParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField;
     SQLUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField;
     CDSUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField;
+    SqlParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField;
+    CdsParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField;
+    SqlParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField;
+    CdsParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

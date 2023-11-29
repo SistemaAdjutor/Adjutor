@@ -1664,6 +1664,14 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
       Size = 1
     end
+    object SqlParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField
+      FieldName = 'PMT_RESP_TECNICO_QUALIDADE'
+      Size = 255
+    end
+    object SqlParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField
+      FieldName = 'PMT_CRQ_RESP_TECNICO_QUALIDADE'
+      Size = 255
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -2967,6 +2975,14 @@ object DataCadastros1: TDataCadastros1
     object CdsParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField
       FieldName = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
       Size = 1
+    end
+    object CdsParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField
+      FieldName = 'PMT_RESP_TECNICO_QUALIDADE'
+      Size = 255
+    end
+    object CdsParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField
+      FieldName = 'PMT_CRQ_RESP_TECNICO_QUALIDADE'
+      Size = 255
     end
   end
   object DsParametros: TDataSource

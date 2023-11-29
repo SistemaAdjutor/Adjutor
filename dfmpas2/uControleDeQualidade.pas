@@ -594,10 +594,20 @@ begin
      Value := DBInicio.Empresa.CNPJ_CNPF
   else
   if (VarName  = 'INSCR') then
-     Value := DBInicio.Empresa.INSC_EST;
-
-
-
+     Value := DBInicio.Empresa.INSC_EST
+  else
+  if (VarName  = 'APROVADO') then
+     Value := DBInicio.Usuario.NOME
+  else
+  if (VarName  = 'EMAIL_APROVADO') then
+     Value := DBInicio.Usuario.EMAIL_USUARIO
+  else
+  if (VarName  = 'REPONSAVEL_TECNICO') then
+     Value := BuscaUmDadoSqlAsString('SELECT PMT_RESP_TECNICO_QUALIDADE FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DbInicio.EMP_CODIGO)   )
+  else
+  if (VarName  = 'CRQ') then
+     Value := BuscaUmDadoSqlAsString('SELECT PMT_CRQ_RESP_TECNICO_QUALIDADE FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DbInicio.EMP_CODIGO)   )
+  ;
 
 end;
 

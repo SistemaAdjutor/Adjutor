@@ -1849,6 +1849,11 @@ type
     Label674: TLabel;
     DBEditPMT_MENSAGEM_VENDAS: TDBEdit;
     DBCheckBox97: TDBCheckBox;
+    TabSheet5: TTabSheet;
+    DBEdit65: TDBEdit;
+    Label675: TLabel;
+    DBEdit66: TDBEdit;
+    Label676: TLabel;
 
 
     procedure FormShow(Sender: tObject);
@@ -5744,7 +5749,10 @@ begin
       PPedido.Show
    else
    if (Node.Text = 'Produção') then
-      PProducao.Show
+   begin
+      PGProducao.ActivePageIndex := 2;
+      PProducao.Show;
+   end
    else
    if (Node.Text = 'Produto') then
    begin
