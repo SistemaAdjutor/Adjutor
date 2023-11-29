@@ -1176,7 +1176,7 @@ begin
       ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,0) // AMARELO Parcial
     else
     if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0)  and ( vencimento   < Date) AND (vencimento>0))
-      or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsReceberFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (vencimento < Date) and (cdsReceberFPC_STATUS.AsString <> 'Liquidada')  )
+      or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsReceberFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (vencimento < Date) and (AViewInfo.GridRecord.Values[cxgrdReceberFPC_STATUS.Index] <> 'Liquidada')  )
     then
       ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,4) // VERMELHO Vencida ou Descontada
     else
