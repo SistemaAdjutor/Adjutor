@@ -6930,7 +6930,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         object Shape1: TfrxShapeView
           AllowVectorExport = True
           Width = 464.882190000000000000
-          Height = 181.417322834645700000
+          Height = 181.417322830000000000
           Frame.Typ = []
         end
         object Memo1: TfrxMemoView
@@ -7013,11 +7013,11 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
           AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 147.401670000000000000
-          Width = 211.653680000000000000
+          Width = 41.574830000000000000
           Height = 18.897650000000000000
           Frame.Typ = []
           Memo.UTF8W = (
-            'Peso: [frxDBEtiqueta."PESO"]')
+            'Peso:')
         end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
@@ -7028,6 +7028,18 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
           Frame.Typ = []
           Memo.UTF8W = (
             'OBS:')
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 52.913420000000000000
+          Top = 147.401670000000000000
+          Width = 158.740260000000000000
+          Height = 18.897650000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBEtiqueta."PESO"]')
         end
       end
     end
