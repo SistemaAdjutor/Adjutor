@@ -934,6 +934,7 @@ type
     procedure InsereRequisicaoDeMaterial;
   public
     var Item: integer;
+    var pcpTemp: string;
     procedure filtro;
 
     procedure AbrirPendente ;
@@ -1574,7 +1575,8 @@ begin
 
   if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
   begin
-    ExecSQL('RECREATE TABLE PCP_TEMP' + DBInicio.Usuario.CODIGO +  ' (PRD_CODIGO VARCHAR(5), PRD_REFER VARCHAR(20), AMX_CODIGO VARCHAR(4) ) ', false );
+    pcpTemp := 'PCP_TEMP' + DBInicio.Usuario.CODIGO + FormatDateTime('ddmmyyyhhmmss', now);
+    ExecSQL('RECREATE TABLE ' + pcpTemp +  ' (PRD_CODIGO VARCHAR(5), PRD_REFER VARCHAR(20), AMX_CODIGO VARCHAR(4) ) ', false );
 {
     OpenAux4(' SELECT fi.AMX_CODIGO, op.CLI_CODIGO ' +
               ' FROM ORDEMPRODUCAO op ' +
@@ -1642,7 +1644,7 @@ begin
 
      try
 
-       ExecSql('DROP TABLE PCP_TEMP' + DBInicio.Usuario.CODIGO, false);
+       ExecSql('DROP TABLE ' + pcpTemp, false);
      except
        // faz nada
      end;

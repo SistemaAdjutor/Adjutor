@@ -118,7 +118,7 @@ begin
   frmGerenciamentoPCP.cdsMateriaPrima.First;
   while not frmGerenciamentoPCP.cdsMateriaPrima.eof do
   begin
-    ExecSql('INSERT INTO PCP_TEMP' + DBInicio.Usuario.CODIGO +  ' VALUES (' +
+    ExecSql('INSERT INTO ' + frmGerenciamentoPCP.pcpTemp +  ' VALUES (' +
               QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_CODIGO.AsString)  +  ',' +
               QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaPRD_REFER.AsString)  + ',' +
               QuotedStr(frmGerenciamentoPCP.cdsMateriaPrimaAMX_CODIGO.AsString)  +

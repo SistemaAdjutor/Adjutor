@@ -13,6 +13,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     ExplicitWidth = 1384
     ExplicitHeight = 567
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 1376
       ExplicitHeight = 539
       inherited pnlControle: TPanel
@@ -878,6 +880,10 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object tbHistorico: TTabSheet
       Caption = 'Hist'#243'rico'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Phistorico: TPanel
         Left = 0
         Top = 0
