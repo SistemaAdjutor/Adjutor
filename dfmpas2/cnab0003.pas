@@ -900,7 +900,8 @@ begin
      LerCopel(FileArqImportar.FileName)
   else if CCodigoBco1.Text = '901' then
   begin
-    if not Assigned(frmDataSimples) then
+    frmDataSimples := nil; // tava dando erro de violação de acesso...
+    // if not Assigned(frmDataSimples) then
       frmDataSimples := TfrmDataSimples.create(self);
     frmDataSimples.Caption := 'Informe a Data da Baixa';
     frmDataSimples.lbData.Caption := 'Data da Baixa';
@@ -1667,7 +1668,8 @@ begin
          wVALOR_PAGO           := IntToStr(strtoint(copy(retorno.Strings[i],15,7)))+','+copy(retorno.Strings[i],22,2);
          wVALOR_JUROS_MORA     := '0';
          wVALOR_MULTA          := '0';
-         wNOSSO_NUMERRO        := copy(Retorno.Strings[i],2,13) ;  //Identificação do cliente na COPEL
+         // wNOSSO_NUMERRO        := copy(Retorno.Strings[i],2,13) ;  //Identificação do cliente na COPEL
+         wNOSSO_NUMERRO        := copy(Retorno.Strings[i],105,121) ;  //Identificação da fatura na COPEL
          //Data do lançamento 24 31 8
          if trim(copy(Retorno.Strings[i],24,8))='' then
            wDATA_OCORRENCIA := dataArq
@@ -1800,7 +1802,10 @@ begin
                                    0,
                                    wDATA_OCORRENCIA ); //dDataRecebimento:TDateTime):Boolean;
            DataCadastros.SqlUpdate.Close;
-           DataCadastros.SqlUpdate.Sql.Text := 'update FAT_PC01 set FPC_STATUS_BAIXA = '+qStr('A')+' WHERE FAT_REGISTRO = '+ REG                 ;
+           DataCadastros.SqlUpdate.Sql.Text := 'update FAT_PC01 set ' +
+                                                ' FPC_STATUS_BAIXA = ' + qStr('A') + ', ' +
+                                                ' FPC_CODIGO_REGISTRO_RETORNO = ' + QuotedStr(wNOSSO_NUMERRO) +
+                                                ' WHERE FAT_REGISTRO = '+ REG ;
            DataCadastros.SqlUpdate.ExecSql;
          end;
          DataCadastros.SqlUpdate.Close;

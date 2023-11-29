@@ -1069,7 +1069,6 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLDupliCNAB: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'D1.*,'#13#10'F2.FAT_REGISTRO,'#13#10'F2.FAT_CODIGO,'#13#10'F2.FPC_NUMER,'#13#10 +
       'F2.FPC_VENCTO,'#13#10'F2.FPC_PAGTO,'#13#10'F2.FPC_VLPARC,'#13#10'F2.FPC_JUROS,'#13#10'F2' +
@@ -1101,7 +1100,6 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
       'B R1 ON (F2.BAN_COD_APELIDO = R1.REJ_COD_BANCO and D1.DCN_COD_RE' +
       'JEICAO = R1.REJ_COD_REJEICAO)'#13#10'where D1.DCN_COD_REMESSA = 15'#13#10'OR' +
       'DER BY'#13#10'F2.FAT_CODIGO,F2.FPC_NUMER,C1.CLI_RAZAO'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1211,12 +1209,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLConsultaArquivo: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1225,12 +1221,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLContaBanco: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1239,12 +1233,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLConsultaCRC: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1253,12 +1245,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLConsulta: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1267,12 +1257,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLRelatorio: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1281,12 +1269,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLDetalhe: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1402,7 +1388,6 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object CDSRecebimentos: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'    t1.FRE_REGISTRO,'#13#10'    T1.FRE_DATA_RECEBIMENTO,'#13#10'    ' +
       'T1.FRE_VALOR,'#13#10'    T1.FRE_DESCONTO,'#13#10'    T1.FRE_JUROS,'#13#10'    T1.F' +
@@ -1424,7 +1409,6 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
       'T2 ON (T2.BAN_CODIGO = T1.BAN_CODIGO)'#13#10'JOIN FORMA_PAGAMENTO T3 O' +
       'N (T3.FPG_REGISTRO = T1.FPG_REGISTRO)'#13#10'JOIN USUARIO T4 ON (T4.US' +
       'U_CODIGO = T1.USU_CODIGO)'#13#10'WHERE T1.FAT_REGISTRO = 0'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll

@@ -2005,13 +2005,11 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLDupliCNAB: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     BeforeOpen = SQLDupliCNABBeforeOpen
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2169,6 +2167,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
       FieldName = 'FAT_REGISTRO'
       Required = True
     end
+    object SQLDupliCNABFPC_CODIGO_REGISTRO_RETORNO: TStringField
+      FieldName = 'FPC_CODIGO_REGISTRO_RETORNO'
+      Size = 100
+    end
   end
   object DSDupliCNAB: TDataSource
     DataSet = SQLDupliCNAB
@@ -2184,12 +2186,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLConsultaArquivo: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2198,12 +2198,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLContaBanco: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2212,12 +2210,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLConsultaCRC: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2226,12 +2222,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLConsulta: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2240,12 +2234,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLRelatorio: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2254,12 +2246,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLDetalhe: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2375,7 +2365,6 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object CDSRecebimentos: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'    t1.FRE_REGISTRO,'#13#10'    T1.FRE_DATA_RECEBIMENTO,'#13#10'    ' +
       'T1.FRE_VALOR,'#13#10'    T1.FRE_DESCONTO,'#13#10'    T1.FRE_JUROS,'#13#10'    T1.F' +
@@ -2397,7 +2386,6 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
       'T2 ON (T2.BAN_CODIGO = T1.BAN_CODIGO)'#13#10'JOIN FORMA_PAGAMENTO T3 O' +
       'N (T3.FPG_REGISTRO = T1.FPG_REGISTRO)'#13#10'JOIN USUARIO T4 ON (T4.US' +
       'U_CODIGO = T1.USU_CODIGO)'#13#10'WHERE T1.FAT_REGISTRO = 0'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
