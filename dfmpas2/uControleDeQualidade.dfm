@@ -3225,7 +3225,6 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         object Shape9: TfrxShapeView
           AllowVectorExport = True
           Left = 409.189240000000000000
-          Top = 1.000000000000000000
           Width = 302.362400000000000000
           Height = 105.826840000000000000
           Frame.Typ = []
@@ -3690,7 +3689,6 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         object Shape7: TfrxShapeView
           AllowVectorExport = True
           Left = 0.779530000000000000
-          Top = 1.000000000000000000
           Width = 204.094620000000000000
           Height = 105.826840000000000000
           Frame.Typ = []
@@ -3698,7 +3696,6 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
         object Shape8: TfrxShapeView
           AllowVectorExport = True
           Left = 204.874150000000000000
-          Top = 0.779530000000000000
           Width = 204.094620000000000000
           Height = 105.826840000000000000
           Frame.Typ = []
