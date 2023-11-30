@@ -828,45 +828,8 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
     Top = 184
   end
   object DsProduto: TDataSource
-    DataSet = SqlCdsProduto
-    Left = 496
-  end
-  object SqlCdsProduto: TSqlClientDataSet
-    Aggregates = <>
-    DataSet.CommandText = 'select * from PRD0000'
-    DataSet.MaxBlobSize = -1
-    DataSet.Params = <>
-    Params = <>
-    CommandText = 'select * from PRD0000'
-    Options = [poAllowCommandText]
-    NoMetadata = False
-    UpdateMode = upWhereAll
-    Left = 439
-    object SqlCdsProdutoPRD_CODIGO: TStringField
-      FieldName = 'PRD_CODIGO'
-      Required = True
-      Size = 4
-    end
-    object SqlCdsProdutoPRD_REFER: TStringField
-      FieldName = 'PRD_REFER'
-      Size = 11
-    end
-    object SqlCdsProdutoPRD_DESCRI: TStringField
-      FieldName = 'PRD_DESCRI'
-      Size = 80
-    end
-    object SqlCdsProdutoPRD_UND: TStringField
-      FieldName = 'PRD_UND'
-      Size = 3
-    end
-    object SqlCdsProdutoPRD_GRADE_OBRIGATORIO: TStringField
-      FieldName = 'PRD_GRADE_OBRIGATORIO'
-      Size = 1
-    end
-    object SqlCdsProdutoPRD_GERENCIA_LOTE: TStringField
-      FieldName = 'PRD_GERENCIA_LOTE'
-      Size = 1
-    end
+    DataSet = sqlCdsProduto
+    Left = 360
   end
   object DsSaldos: TDataSource
     DataSet = CdsSaldos
@@ -1194,5 +1157,50 @@ inherited FrmKardexLancamentoManual: TFrmKardexLancamentoManual
     SQLConnection = DataCadastros.SQLConnection1
     Left = 739
     Top = 188
+  end
+  object sqlCdsProduto: TFDQuery
+    Connection = FDACConn
+    Left = 288
+    Top = 8
+    object sqlCdsProdutoPRD_CODIGO: TStringField
+      DisplayWidth = 5
+      FieldName = 'PRD_CODIGO'
+      Required = True
+      Size = 5
+    end
+    object sqlCdsProdutoPRD_REFER: TStringField
+      DisplayWidth = 20
+      FieldName = 'PRD_REFER'
+    end
+    object sqlCdsProdutoPRD_DESCRI: TStringField
+      DisplayWidth = 100
+      FieldName = 'PRD_DESCRI'
+      Size = 100
+    end
+    object sqlCdsProdutoPRD_UND: TStringField
+      DisplayWidth = 6
+      FieldName = 'PRD_UND'
+      Size = 6
+    end
+    object sqlCdsProdutoPRD_GRADE_OBRIGATORIO: TStringField
+      FieldName = 'PRD_GRADE_OBRIGATORIO'
+      Size = 1
+    end
+    object sqlCdsProdutoPRD_GERENCIA_LOTE: TStringField
+      FieldName = 'PRD_GERENCIA_LOTE'
+      Size = 1
+    end
+  end
+  object FDACConn: TFDConnection
+    ConnectionName = 'FDMain'
+    Params.Strings = (
+      'Database=C:\Jobdados\exemplo\EXEMPLO.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'DriverID=FB'
+      'CharacterSet=UTF8')
+    LoginPrompt = False
+    Left = 216
+    Top = 8
   end
 end
