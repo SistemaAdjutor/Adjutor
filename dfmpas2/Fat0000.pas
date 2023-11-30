@@ -473,7 +473,7 @@ begin
   if VarName = 'PESO' then
   begin
     // Value := wPesoTotal;
-    Value := BuscaUmDadoSqlAsFloat(
+    Value := Trunc( BuscaUmDadoSqlAsFloat(
        ' SELECT SUM( ' +
        '   CASE ' +
        '     WHEN pi2.PRD_UND = ''KG'' THEN pi2.PRF_QTDE ' +
@@ -489,7 +489,7 @@ begin
        '   ni.NF_IT_NOTANUMER = '  + QuotedStr(CdsNotasNF_NOTANUMBER.asstring) +
        '   AND ni.NF_QTDE > 0 ' +
        '   AND ni.EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo)
-     );
+     ) );
   end;
 
   if VarName = 'ITENS' then
