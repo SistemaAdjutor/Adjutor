@@ -4503,7 +4503,11 @@ begin
         // NÃO ATUALIZA...
         CdsItensFicha.Post;
         CdsItensFicha.ApplyUpdates( 0 ); // não ta funcionando direito Às vezes
-        ExecSql( ' UPDATE FTC_IT01   ' + ' SET FTI_UC = ' + FloatToSQL( CurrConsumo.AsFloat ) + ', ' + '     FTI_PERCENTUAL = ' + FloatToSQL( curPercentualConsumo.AsFloat ) + iif( edOperacao.idRetorno <> '', ', OPE_CODIGO =' + QuotedStr( edOperacao.idRetorno ), '' ) + iif( CbAlmoxarifado.idRetorno <> '', '  , AMX_CODIGO = ' + QuotedStr( CbAlmoxarifado.idRetorno ), ', amx_codigo = null' ) + ' WHERE FTI_REGISTRO = ' + CdsItensFichaFTI_REGISTRO.AsString );
+        ExecSql( ' UPDATE FTC_IT01   ' +
+        ' SET FTI_UC = ' + FloatToSQL( CurrConsumo.AsFloat ) + ', ' +
+        '     FTI_PERCENTUAL = ' + FloatToSQL( curPercentualConsumo.AsFloat ) + iif( edOperacao.idRetorno <> '', ', OPE_CODIGO =' + QuotedStr( edOperacao.idRetorno ), '' ) +
+        iif( CbAlmoxarifado.idRetorno <> '', '  , AMX_CODIGO = ' + QuotedStr( CbAlmoxarifado.idRetorno ), ', amx_codigo = null' ) +
+        ' WHERE FTI_REGISTRO = ' + CdsItensFichaFTI_REGISTRO.AsString );
 
         CdsItensFicha.close;
         CdsItensFicha.Open;

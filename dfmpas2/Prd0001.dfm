@@ -1427,10 +1427,6 @@ inherited FormProduto: TFormProduto
         object tsProcesso: TTabSheet
           Caption = 'Engenharia de processo'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object dbProcessos: TDBGrid
             Left = 6
             Top = 0
@@ -1723,10 +1719,6 @@ inherited FormProduto: TFormProduto
         object tsCamposTecnicos: TTabSheet
           Caption = 'Campos t'#233'cnicos'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BIT_MOLA_GRAVAR: TBitBtn
             Left = 846
             Top = 430
@@ -1799,10 +1791,6 @@ inherited FormProduto: TFormProduto
             TabOrder = 2
             object tsCampos1: TTabSheet
               Caption = 'Mat'#233'ria prima'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label148: TLabel
                 Left = 3
                 Top = 77
@@ -2235,10 +2223,6 @@ inherited FormProduto: TFormProduto
             object tsCampos2: TTabSheet
               Caption = 'Dimensionais'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label174: TLabel
                 Left = 3
                 Top = 3
@@ -3806,10 +3790,6 @@ inherited FormProduto: TFormProduto
             object tsCampos3: TTabSheet
               Caption = 'Caracter'#237'sticas'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label223: TLabel
                 Left = 241
                 Top = 1
@@ -4781,10 +4761,6 @@ inherited FormProduto: TFormProduto
             object tsCampos4: TTabSheet
               Caption = 'Informa'#231#245'es Diversas'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label267: TLabel
                 Left = 2
                 Top = 8
@@ -5091,10 +5067,6 @@ inherited FormProduto: TFormProduto
         object tsQualidade: TTabSheet
           Caption = 'Qualidade'
           ImageIndex = 3
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label323: TLabel
             Left = 35
             Top = 16
@@ -6045,10 +6017,6 @@ inherited FormProduto: TFormProduto
         OnChange = PgCtrl_ProdutosChange
         object TbS_Caract: TTabSheet
           Caption = 'Caracter'#237'sticas'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object RichDoc: TRichEdit
             Left = 0
             Top = 0
@@ -6093,10 +6061,6 @@ inherited FormProduto: TFormProduto
         object TabSheet3: TTabSheet
           Caption = 'Pre'#231'os'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel16: TPanel
             Left = 0
             Top = 0
@@ -6683,10 +6647,6 @@ inherited FormProduto: TFormProduto
         object TabSheet1: TTabSheet
           Caption = 'Custos'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox15: TGroupBox
             Left = 0
             Top = 0
@@ -6885,10 +6845,6 @@ inherited FormProduto: TFormProduto
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel7: TPanel
             Left = 0
             Top = 0
@@ -7230,10 +7186,6 @@ inherited FormProduto: TFormProduto
         end
         object TbS_FatorConv: TTabSheet
           Caption = 'Fator de Convers'#227'o'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label17: TLabel
             Left = 5
             Top = 8
@@ -7455,10 +7407,6 @@ inherited FormProduto: TFormProduto
         end
         object TbS_Variacoes: TTabSheet
           Caption = 'Varia'#231#227'o'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label28: TLabel
             Left = 22
             Top = 47
@@ -7847,10 +7795,6 @@ inherited FormProduto: TFormProduto
         object tsPrecos: TTabSheet
           Caption = 'Tabelas'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel6: TPanel
             Left = 0
             Top = 0
@@ -8383,10 +8327,6 @@ inherited FormProduto: TFormProduto
         TabOrder = 1
         object TabSheet9: TTabSheet
           Caption = 'Organiza'#231#227'o do Produto'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox21: TGroupBox
             Left = 0
             Top = 0
@@ -9288,10 +9228,6 @@ inherited FormProduto: TFormProduto
         object tsServico: TTabSheet
           Caption = 'Servi'#231'os'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label141: TLabel
             Left = 11
             Top = 11
@@ -9401,10 +9337,6 @@ inherited FormProduto: TFormProduto
         object TabSheet11: TTabSheet
           Caption = 'Estoque'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label18: TLabel
             Left = 5
             Top = 4
@@ -9522,10 +9454,6 @@ inherited FormProduto: TFormProduto
             TabOrder = 4
             object TabSheet12: TTabSheet
               Caption = 'Estoque'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object cxGrid2: TDBGrid
                 Left = 0
                 Top = 0
@@ -9584,10 +9512,6 @@ inherited FormProduto: TFormProduto
             object TabSheet13: TTabSheet
               Caption = 'Endere'#231'os'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object DBGrid8: TDBGrid
                 Left = 0
                 Top = 0
@@ -9627,10 +9551,6 @@ inherited FormProduto: TFormProduto
         object TabSheet2: TTabSheet
           Caption = 'C'#243'digo Original / Cliente'
           ImageIndex = 3
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object grCodCli: TJvDBGrid
             Left = 0
             Top = 0
@@ -9695,10 +9615,6 @@ inherited FormProduto: TFormProduto
         object TabSheet7: TTabSheet
           Caption = 'Produto Especifico'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label113: TLabel
             Left = 56
             Top = 55
@@ -9772,10 +9688,6 @@ inherited FormProduto: TFormProduto
         object tsTratamentoTermico: TTabSheet
           Caption = 'Tratamento t'#233'rmico'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label131: TLabel
             Left = 41
             Top = 37
@@ -10144,10 +10056,6 @@ inherited FormProduto: TFormProduto
     object Tbs_Detalhe: TTabSheet
       Caption = 'Produ'#231#227'o'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox10: TGroupBox
         Left = 0
         Top = 0
@@ -10263,10 +10171,6 @@ inherited FormProduto: TFormProduto
       Caption = 'Grade'
       ImageIndex = 3
       OnShow = TabGradeShow
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label110: TLabel
         Left = 695
         Top = 46
@@ -10912,10 +10816,6 @@ inherited FormProduto: TFormProduto
       Caption = 'Industrializa'#231#227'o'
       ImageIndex = 9
       OnShow = TabSheet8Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox20: TGroupBox
         Left = 0
         Top = 0
@@ -11238,10 +11138,6 @@ inherited FormProduto: TFormProduto
     object tsVendas: TTabSheet
       Caption = 'Vendas'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox18: TGroupBox
         Left = 0
         Top = 0
@@ -11579,10 +11475,6 @@ inherited FormProduto: TFormProduto
     object TabSheet6: TTabSheet
       Caption = 'Arquivos'
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox9: TGroupBox
         Left = 0
         Top = 0
@@ -11708,10 +11600,6 @@ inherited FormProduto: TFormProduto
     object Lotes: TTabSheet
       Caption = 'Lotes'
       ImageIndex = 7
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dbgrdLote: TDBGrid
         Left = 0
         Top = 33
@@ -12322,10 +12210,6 @@ inherited FormProduto: TFormProduto
       Caption = 'Usado em'
       ImageIndex = 8
       OnEnter = tsMPusadoEnter
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pUsadoem: TPanel
         Left = 0
         Top = 0
