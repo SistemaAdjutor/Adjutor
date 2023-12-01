@@ -1379,6 +1379,9 @@ begin
   begin
     ProgressBar1.Position := cloneFilho.RecNo;
 
+    precoImportado := 0;
+    percentualOrigemImportado := 0;
+    quantidadeCompradaImportado := 0;
     ParcelaImportada(cloneFilho.FieldByName('PRD_REFER_ITENS').AsString, precoImportado, percentualOrigemImportado, quantidadeCompradaImportado);  // ENTRADA DE NOTA
 
     Application.ProcessMessages;
@@ -1398,7 +1401,7 @@ begin
       if cloneFilho.FieldByName('PTI_SIGLA').AsString = 'MP' then
         Resultado := Resultado + cloneFilho.FieldByName('CONSUMO_TOTAL').AsFloat * ((precoImportado / 100) * percentualOrigemImportado);
 
-      cloneFilho.FieldByName('PARCELA_IMPORTADA').AsFloat := Resultado;
+      cloneFilho.FieldByName('PARCELA_IMPORTADA').AsFloat := cloneFilho.FieldByName('CONSUMO_TOTAL').AsFloat * ((precoImportado / 100) * percentualOrigemImportado); //Resultado ???
 
       cloneFilho.Post;
 
