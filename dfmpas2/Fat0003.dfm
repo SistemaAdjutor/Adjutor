@@ -4,21 +4,22 @@ inherited FormFatPedido: TFormFatPedido
   BorderIcons = [biSystemMenu]
   Caption = 'Faturamento do Pedido'
   ClientHeight = 589
-  ClientWidth = 1284
+  ClientWidth = 1484
   Font.Name = 'Arial'
   KeyPreview = True
-  ExplicitWidth = 1300
+  ExplicitWidth = 1500
   ExplicitHeight = 628
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox1: TGroupBox [0]
     Left = 0
     Top = 219
-    Width = 1284
+    Width = 1484
     Height = 150
     Align = alTop
     Caption = 'Nota'
     TabOrder = 2
+    ExplicitWidth = 1284
     object Label23: TLabel
       Left = 28
       Top = 49
@@ -576,10 +577,11 @@ inherited FormFatPedido: TFormFatPedido
   object GroupBox5: TGroupBox [1]
     Left = 0
     Top = 0
-    Width = 1284
+    Width = 1484
     Height = 69
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 1284
     object Label3: TLabel
       Left = 45
       Top = 19
@@ -790,11 +792,12 @@ inherited FormFatPedido: TFormFatPedido
   object Panel2: TPanel [2]
     Left = 0
     Top = 552
-    Width = 1284
+    Width = 1484
     Height = 37
     Align = alBottom
     ParentColor = True
     TabOrder = 3
+    ExplicitWidth = 1284
     object Label13: TLabel
       Left = 8
       Top = 19
@@ -987,11 +990,12 @@ inherited FormFatPedido: TFormFatPedido
   object Panel3: TPanel [3]
     Left = 0
     Top = 69
-    Width = 1284
+    Width = 1484
     Height = 150
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
+    ExplicitWidth = 1284
     object GroupBox3: TGroupBox
       Left = 0
       Top = 0
@@ -1160,10 +1164,6 @@ inherited FormFatPedido: TFormFatPedido
       TabStop = False
       object TabSheet1: TTabSheet
         Caption = 'Dados Adicionais'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ScrollBox1: TScrollBox
           Left = 0
           Top = 0
@@ -1239,10 +1239,6 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet2: TTabSheet
         Caption = 'Transporte'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label4: TLabel
           Left = 11
           Top = 59
@@ -1429,10 +1425,6 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet4: TTabSheet
         Caption = 'Exporta'#231#227'o'
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label11: TLabel
           Left = 15
           Top = 12
@@ -1542,10 +1534,6 @@ inherited FormFatPedido: TFormFatPedido
       object tsServico: TTabSheet
         Caption = 'Servi'#231'o'
         ImageIndex = 4
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label38: TLabel
           Left = 3
           Top = 9
@@ -1847,11 +1835,12 @@ inherited FormFatPedido: TFormFatPedido
   object GroupBox2: TGroupBox [4]
     Left = 0
     Top = 369
-    Width = 1284
+    Width = 1484
     Height = 183
     Align = alClient
     Caption = 'Itens do Pedido '#224' Faturar'
     TabOrder = 4
+    ExplicitWidth = 1284
     object PanOperacao: TLabel
       Left = 630
       Top = 18
@@ -1868,7 +1857,7 @@ inherited FormFatPedido: TFormFatPedido
     object GridItensNota: TDBGrid
       Left = 2
       Top = 16
-      Width = 1280
+      Width = 1480
       Height = 165
       Align = alClient
       Color = clWhite
@@ -2005,8 +1994,8 @@ inherited FormFatPedido: TFormFatPedido
     Top = 97
   end
   inherited qRecParce: TSQLQuery
-    Left = 1114
-    Top = 28
+    Left = 1194
+    Top = 4
     inherited qRecParceFAT_REGISTRO: TIntegerField
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
@@ -2180,12 +2169,13 @@ inherited FormFatPedido: TFormFatPedido
     end
   end
   inherited dspRecParce: TDataSetProvider
-    Left = 1114
+    Left = 1194
+    Top = 64
   end
   inherited CdsRecParce: TClientDataSet
     BeforeInsert = CdsRecParceBeforeInsert
-    Left = 1114
-    Top = 144
+    Left = 1194
+    Top = 120
     inherited CdsRecParceFAT_REGISTRO: TIntegerField
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
     end
@@ -2559,8 +2549,8 @@ inherited FormFatPedido: TFormFatPedido
     SQL.Strings = (
       '')
     SQLConnection = DBConn
-    Left = 1171
-    Top = 20
+    Left = 1019
+    Top = 28
   end
   object qItemPedido: TSQLQuery [15]
     MaxBlobSize = 1
@@ -2697,13 +2687,13 @@ inherited FormFatPedido: TFormFatPedido
       'Where p1.ped_codigo = '#39'-02584'#39
       '')
     SQLConnection = DBConn
-    Left = 1176
-    Top = 232
+    Left = 1104
+    Top = 128
   end
   object DspPedidos: TDataSetProvider [18]
     DataSet = qPedidos
-    Left = 1248
-    Top = 214
+    Left = 1104
+    Top = 174
   end
   object CdsPedidos: TClientDataSet [19]
     Aggregates = <>
@@ -2712,8 +2702,8 @@ inherited FormFatPedido: TFormFatPedido
     Params = <>
     ProviderName = 'DspPedidos'
     OnCalcFields = CdsItemPedidoCalcFields
-    Left = 1323
-    Top = 230
+    Left = 1107
+    Top = 222
     object CdsPedidosPED_OBSERVACAO_NOTA: TBlobField
       FieldName = 'PED_OBSERVACAO_NOTA'
       Size = 1
@@ -2932,8 +2922,8 @@ inherited FormFatPedido: TFormFatPedido
   end
   object dsPedidos: TDataSource [20]
     DataSet = CdsPedidos
-    Left = 1379
-    Top = 206
+    Left = 1107
+    Top = 278
   end
   object qCLientes: TSQLQuery [21]
     MaxBlobSize = -1
@@ -4707,8 +4697,8 @@ inherited FormFatPedido: TFormFatPedido
   end
   object dsRecParce: TDataSource
     DataSet = CdsRecParce
-    Left = 1120
-    Top = 197
+    Left = 1200
+    Top = 173
   end
   object qFPagto: TSQLQuery
     MaxBlobSize = -1
