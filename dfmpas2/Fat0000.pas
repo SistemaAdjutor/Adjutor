@@ -275,6 +275,7 @@ type
     qItens: TSQLQuery;
     dsItens: TDataSource;
     frxDBItens: TfrxDBDataset;
+    cdsNotasBOTAO: TStringField;
     procedure FormShow(Sender: tObject);
     procedure BitSairClick(Sender: tObject);
     procedure BitPesquisaClick(Sender: tObject);
@@ -379,7 +380,8 @@ var
 
 implementation
 
-uses  Fat0003, Fat0000_Romaneio, fat0007, fat0008, uteis, iniciodb,  uEtqFaturamento, uFaturamentoNotaFiscal;
+uses  Fat0003, Fat0000_Romaneio, fat0007, fat0008, uteis, iniciodb,
+      uEtqFaturamento, uFaturamentoNotaFiscal, GImpBoletos;
 
 {$R *.dfm}
 
@@ -2123,6 +2125,20 @@ end;
 procedure TFormFaturamento.SGNotaFiscalCellClick(Column: TColumn);
 begin
   inherited;
+
+  if Column.FieldName = 'BOTAO' then
+  begin
+    SGNotaFiscal.Perform(WM_KeyDown, VK_LEFT, 0);
+    if FrmGimpBoletos = nil then
+      FrmGimpBoletos := TFrmGimpBoletos.Create(Self);
+    FrmGimpBoletos.Panel2.Visible := False;
+    FrmGimpBoletos.dbHistorico.Visible := False;
+    FrmGimpBoletos.BitConfig.Visible := False;
+    FrmGimpBoletos.EdtDuplicata.Text := CdsNotasNF_NOTANUMBER.AsString;
+    FrmGimpBoletos.BitPesquisa.Click;
+    FrmGimpBoletos.Show;
+  end;
+
   if not (cdsNotas.IsEmpty) and (Column.FieldName = 'selecionado') and ((CdsNotasNF_STATUS_NFE.AsString = 'N')  or (CdsNotasNF_STATUS_NFE.AsString = 'R') or (CdsNotasNF_STATUS_NFE.AsString = 'O') )then
   begin
       if  not (cdsNotas.State in dsEditModes)  then
@@ -2156,11 +2172,26 @@ procedure TFormFaturamento.SGNotaFiscalDrawColumnCell(Sender: tObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
   State: TGridDrawState);
 var
-Check: Integer;
-R: TRect;
+  Check, button: Integer;
+  R: TRect;
+  bcolor: TColor;
 begin
   if not cdsNotas.IsEmpty then
   begin
+
+    if Column.FieldName = 'BOTAO' then
+    begin
+      SGNotaFiscal.Canvas.FillRect(Rect);
+      BUTTON := 0;
+      R:=Rect;
+      InflateRect(R,-1,-1); //Diminui o tamanho do Botão
+      DrawFrameControl(SGNotaFiscal.Canvas.Handle,R,BUTTON, BUTTON or BUTTON);
+      bcolor := SGNotaFiscal.Canvas.Brush.Color; // guarda a cor de fundo original
+      SGNotaFiscal.Canvas.Brush.Color := clBtnFace; // muda a cor de fundo
+      DrawText(SGNotaFiscal.Canvas.Handle,'Boleto',7,R,DT_VCENTER or DT_CENTER);
+      SGNotaFiscal.Canvas.Brush.Color := bcolor; // devolve a cor original
+    end
+    else
     if (Column.FieldName = 'selecionado') and ((CdsNotasNF_STATUS_NFE.AsString = 'N')  or (CdsNotasNF_STATUS_NFE.AsString = 'R') or (CdsNotasNF_STATUS_NFE.AsString = 'O')) then
     begin
       SGNotaFiscal.Canvas.FillRect(Rect);
