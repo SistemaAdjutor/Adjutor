@@ -6,7 +6,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDBForm, Data.DBXFirebird, Data.FMTBcd, Vcl.StdCtrls, Vcl.Buttons, SgDbSeachComboUnit, Vcl.Mask, Vcl.ExtCtrls, Data.DB, Data.SqlExpr,
   ACBrEnterTab, ACBrBase, ACBrCalculadora, Datasnap.DBClient, Datasnap.Provider, Vcl.Grids, Vcl.DBGrids, uteis, InicioDB, RWFUNC, System.DateUtils, Vcl.DBCtrls, JvExStdCtrls, JvEdit, JvValidateEdit,
-  JvExMask, JvToolEdit, BaseTelaRelatorioForm, frxClass, frxDBSet, Vcl.Menus, JvExControls, JvArrowButton, frxExportBIFF, frxExportPDF, frxExportXLS;
+  JvExMask, JvToolEdit, BaseTelaRelatorioForm, frxClass, frxDBSet, Vcl.Menus, JvExControls, JvArrowButton, frxExportBIFF, frxExportPDF, frxExportXLS,
+  frxExportBaseDialog;
 
 type
   TfrmPesqDoacao = class(TfrmBaseDB)

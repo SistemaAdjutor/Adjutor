@@ -2,6 +2,7 @@
 
 
 
+
 {**************************************************************************
 *  Programa...: PRM0001  - Nome formulario = FormParametros
 *  Objetivo...: Cadastrar Parametro de configuração do Sistema
@@ -1766,15 +1767,9 @@ type
     tsSaida: TTabSheet;
     Label13: TLabel;
     Label25: TLabel;
-    Label12: TLabel;
-    Label14: TLabel;
-    Label627: TLabel;
     Label672: TLabel;
     DbeQtde_Decimais: TDBEdit;
     DbeMarca: TDBEdit;
-    DBEdtPMT_MENSAGEM1: TDBEdit;
-    DBEdtPMT_MENSAGEM2: TDBEdit;
-    DBEdtPMT_MENSAGEM3: TDBEdit;
     DBCheckBox19: TDBCheckBox;
     DBCheckBox11: TDBCheckBox;
     DBEdit64: TDBEdit;
@@ -1844,6 +1839,16 @@ type
     DBCheckBox94: TDBCheckBox;
     DBCheckBox95: TDBCheckBox;
     DBCheckBox96: TDBCheckBox;
+    GroupBox43: TGroupBox;
+    Label12: TLabel;
+    Label14: TLabel;
+    Label627: TLabel;
+    DBEdtPMT_MENSAGEM1: TDBEdit;
+    DBEdtPMT_MENSAGEM2: TDBEdit;
+    DBEdtPMT_MENSAGEM3: TDBEdit;
+    Label674: TLabel;
+    DBEditPMT_MENSAGEM_VENDAS: TDBEdit;
+    DBCheckBox97: TDBCheckBox;
 
 
     procedure FormShow(Sender: tObject);

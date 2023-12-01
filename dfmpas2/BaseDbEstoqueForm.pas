@@ -34,7 +34,7 @@ implementation
 
 {$R *.dfm}
 
-uses uteis, iniciodb, rwfunc ;
+uses uteis, iniciodb, rwfunc , uConclusaoOP;
 
 function TfrmBaseDbEstoque.KardexRetornaSaldo(const sProduto, sAlmox, sEmpresa : String):Real;
 var
@@ -469,7 +469,7 @@ var rSaldo: Real;    //saldo geral no almoxarifado
    QTDEPendente, //saldo pendente quando há vários lotes
    Saldo: double; //saldo contido no lote
    SaldoProv : double ; // saldo provisório
-   QuantidadeGeral, ValorAnomalo : double; // quantidade real passada, quando não usa lote é o mesmo do rquantidade
+   QuantidadeGeral, QuantidadeGeralLote, ValorAnomalo : double; // quantidade real passada, quando não usa lote é o mesmo do rquantidade
 begin
   min := 1;
   max := 1;
@@ -512,7 +512,10 @@ begin
     end
     else
     begin
-     ValorAnomalo := KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, IIF(sTipoES = 'E',QuantidadeGeral + rSaldo, rSaldo -QuantidadeGeral) , QuantidadeGeral);
+    if sTipoRegistro = 'BAL' then
+      ValorAnomalo := 0 // KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, QuantidadeGeral , QuantidadeGeral)
+    else
+      ValorAnomalo := KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, IIF(sTipoES = 'E',QuantidadeGeral + rSaldo, rSaldo -QuantidadeGeral) , QuantidadeGeral);
     end;
   end;
   if sreferencia = '' then
@@ -540,6 +543,9 @@ begin
     end
    else
      Lote := iif(sLoteRegistro = '', '0', sLoteRegistro);
+    if sTipoRegistro = 'BAL' then
+      SaldoProv := rQuantidade
+    else
     if sTipoES = 'E' then
       SaldoProv := SaldoProv + rQuantidade
     else
@@ -572,7 +578,7 @@ begin
                                  +'('+QStr(dbInicio.Empresa.EMP_CODIGO)+','
                                  +sRegistroInterno+','
                                  +qStr(sTipoRegistro)+','
-                                 +qStr(sTipoES)+','
+                                 +qStr(  iif(sTipoRegistro = 'BAL', 'E',  sTipoES) )+','
                                  +Lote+','
                                  +qStr(sReferencia)+','
                                  +FloatToSql(rQuantidade)+','
@@ -603,12 +609,26 @@ begin
           DBInicio.ExecSql('UPDATE PRD_GRADE SET PRG_SALDO = 0 WHERE PRD_CODIGO = '+qStr(sProduto));
 
       //Se no lancamento for informado o lote o mesmo atualiza o saldo do lote
-      if (Lote <> '0') then
+      if ((Lote <> '0') and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') <> 'P'))
+      or ((Lote <> '0') and (Self.Name = 'FrmKardexLancamentoManual'))
+      then
       begin
-              DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
+        DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO  = ' + FloatToSql(rQuantidade) + ' WHERE PRDL_REGISTRO = ' + lote );
+        QuantidadeGeralLote := dbInicio.BuscaUmDadoSqlAsFloat('SELECT SUM(PRDL_SALDO) FROM PRD_LOTE pl WHERE PRDL_SALDO > 0 AND PRD_CODIGO = ' + QuotedStr(sProduto) + ' AND AMX_CODIGO = ' + QuotedStr(sAlmoxarifado)  );
+        if QuantidadeGeralLote = 0 then
+          QuantidadeGeralLote := rQuantidade;
+        KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, QuantidadeGeralLote , QuantidadeGeralLote);
+        // DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
+      end
+      else
+      if ((Lote = '0') and (Self.Name = 'FrmKardexLancamentoManual'))
+      then
+      begin
+        KardexAdicionaRetiraSaldo(sProduto, sAlmoxarifado, QuantidadeGeral, QuantidadeGeral);
       end
       // zerar todos os lotes, função de zerar estoque
-      else if (Lote = '0') and (sObservacao = 'ZERAR') then
+      else
+      if (Lote = '0') and (sObservacao = 'ZERAR') then
         DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = 0 WHERE PRD_CODIGO = '+qStr(sProduto));
 
     end
@@ -618,7 +638,13 @@ begin
          DBInicio.ExecSql('UPDATE PRD_GRADE SET PRG_SALDO = PRG_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRG_REGISTRO = '+qStr(sGrade));
 
          //Se no lancamento for informado o lote o mesmo atualiza o saldo do lote
-      if (Lote <> '0') and (Self.Name <> 'FormFatPedido') and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') = 'P')  then
+      if (
+           ((Lote <> '0')  and (Self.Name <> 'FormConcluirOP') and (Self.Name <> 'FormFatPedido') and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') <> 'P'))
+           or ((Lote <> '0')  and (Self.Name = 'FormNfEntrada') )
+           or (Self.Name = 'FrmKardexLancamentoManual')
+         )
+         and (frmConclusaoOP = nil)
+        then
         DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
         // DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO =  ' + FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = ' + lote );
 

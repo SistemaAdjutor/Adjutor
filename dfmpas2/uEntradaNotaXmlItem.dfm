@@ -4691,7 +4691,7 @@ object FrmEntradaNotaXmlItem: TFrmEntradaNotaXmlItem
   end
   object dsLoteProduto: TDataSource
     DataSet = CdsLoteProduto
-    Left = 576
+    Left = 592
     Top = 336
   end
   object CdsConversaoUnidade: TSqlClientDataSet

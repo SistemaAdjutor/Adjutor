@@ -218,12 +218,16 @@ procedure TFrmVinculacaoIndustrializacaoRetorno.dbgrdNotasDisponveisDblClick(
   Sender: tObject);
 begin
   //Vincular;
-  if multiSelecao and (DBInicio.GetParametroSistema('PMT_RETORNO_POR_CORES') = 'S') then
-  begin
-    Uteis.Aviso('Os itens foram marcados em grupo, utilize o botão confirmar para escolher a cor dos itens');
-    exit;
-  end;
-  Seleciona;
+//  if multiSelecao and (DBInicio.GetParametroSistema('PMT_RETORNO_POR_CORES') = 'S') then
+//  begin
+//    Uteis.Aviso('Os itens foram marcados em grupo, utilize o botão confirmar para escolher a cor dos itens');
+//    exit;
+//  end;
+  SqlCdsNotasDisponiveis.Edit;
+  SqlCdsNotasDisponiveisSelecao.AsBoolean := not SqlCdsNotasDisponiveisSelecao.AsBoolean;
+  SqlCdsNotasDisponiveis.Post;
+  if SqlCdsNotasDisponiveisSelecao.AsBoolean then
+    Seleciona;
 end;
 
 procedure TFrmVinculacaoIndustrializacaoRetorno.Vincular;

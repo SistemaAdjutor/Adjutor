@@ -331,6 +331,10 @@ uses
     procedure frxEtiquetaBeginDoc(Sender: TObject);
     procedure DemandadeMolas1Click(Sender: TObject);
     procedure cxgrd1DBBandedTableView1ACO_NOMEPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+    procedure cxgrd1DBBandedTableView1MouseUp(Sender: TObject;
+      Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+    procedure cxgrd1DBBandedTableView1KeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     NaoAtualizaHistorico : boolean;
     tcr: tProducaoDao;
@@ -435,8 +439,8 @@ begin
       update := 'UPDATE ENF_IT01 SET ENF_IT_ENVIADO_PCP_DEMANDA = ' + QuotedStr(SimNaoParcial) + ' WHERE ENF_REGISTRO = ' + IntToStr(StrToIntDef(cdsBuscaENF_REGISTRO.AsString, 0))   ;
       DBInicio.ExecSql(update);
 
-      // prd_codigo := BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString));
-      tcr.EstornoDemanda(cdsBuscaPED_CODIGO.AsString);
+      prd_codigo := BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString));
+      tcr.EstornoDemanda(cdsBuscaPED_CODIGO.AsString, prd_codigo);
 
       if cdsBuscaopv_pedidointerno.AsString = 'S' then
       begin
@@ -523,7 +527,7 @@ begin
      cdsBusca.First;
      while not cdsBusca.eof do
      begin
-
+         tcr.numLoteEIP := '';
          Tipo.ordem := '';
          tipo.iop_codigo := 0 ;
          Tipo.opr_codigo := 0 ;
@@ -658,6 +662,13 @@ procedure TfrmDemandaProducao.cdsBuscaAfterScroll(DataSet: TDataSet);
 var sql : string;
 begin
   inherited;
+
+
+
+  exit;
+
+
+
   if NaoAtualizaHistorico then
     exit;
   if DataSet.isempty then
@@ -1027,8 +1038,12 @@ end;
 procedure TfrmDemandaProducao.cdsFichaQTDEPRDChange(Sender: TField);
 begin
   inherited;
-  if  (cdsFichaUC_TOTAL.AsFloat -cdsFichaDEP_QTDE_ESTOQUE.AsFloat)< Sender.AsFloat then
-   raise Exception.Create('Quantidade a produzir não pode ser maior que a quantidade solicitada, excluindo o usado em estoque');
+  if  (cdsFichaUC_TOTAL.AsFloat - cdsFichaDEP_QTDE_ESTOQUE.AsFloat) < Sender.AsFloat then
+    uteis.aviso('Quantidade a produzir é maior que a quantidade solicitada, excluindo o usado em estoque');
+
+  cxgrd1DBTableView1.ViewData.Collapse(True);
+
+//   raise Exception.Create('Quantidade a produzir não pode ser maior que a quantidade solicitada, excluindo o usado em estoque');
 end;
 
 procedure TfrmDemandaProducao.chkNaoRecebidoClick(Sender: TObject);
@@ -1125,8 +1140,10 @@ begin
 
   cdsFicha.SQL.Text :=
     'SELECT ft.FTI_REGISTRO , DEP_CODIGO,  ft.PRD_REFER, PRD_REFER_ITENS, pr.PRD_DESCRI ,PR.PRD_UND, ' +
+
     ' (FTI_UC / ftc.FTC_BASEFORMULA) AS FTI_UC,  '+
 //    ' FTI_UC,  '+
+
     // PEGAR A DATA DE ENTREGA DO ITEM PRINCIPAL / SENÃO SE DATA DE ENTREGA ESTIVER PREENCHIDA, SERÁ RETORNADA ESTA
      iif( VarIsNull(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1DTENTREGA.Index]),
          ' DEP_DATA_ENTREGA DTENTREGA,',
@@ -1136,14 +1153,21 @@ begin
     ' COALESCE(DEP_SITUACAO, ''R'') DEP_SITUACAO, ' + // iop.IOP_QUANTIDADE QTDEPRD,' +
 
  //    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS QTDEPRD,  '+
-    ' CAST( ' + FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS QTDEPRD,  '+
+//    ' CAST( ' + FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS QTDEPRD,  '+
+    ' CASE ' +
+    '   WHEN dpr.DEP_QTDE_PRODUCAO > 0 THEN dpr.DEP_QTDE_PRODUCAO ' +
+    '   ELSE ((FTI_UC / ftc.FTC_BASEFORMULA) * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1QTDEPRD.Index]) +   ') ' +
+    ' END AS QTDEPRD,  '+
 
     ' iop.IOP_NORDEM,DEP_QTDE_ESTOQUE, '+
     ' (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = pr.PRD_CODIGO ) EstoqueDisponivel,  ' +
     ' pr.prd_codigo, '+QuotedStr(ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PED_CODIGO.Index] ) + ' as ped_codigo, ' +
     ' pr.PTI_CODIGO, tp.PTI_DESCRI, tp.PTI_SIGLA, pr.PRD_UND, ' +
+
 //    ' (FTI_UC * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ') AS UC_TOTAL,  '+
-    ' CAST( '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS UC_TOTAL,  '+
+//    ' CAST( '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1PRF_QTDE.Index]) +   ' as DECIMAL(18,5)) AS UC_TOTAL,  '+
+    '   ((FTI_UC / ftc.FTC_BASEFORMULA) * '+ FloatToSQL( ADataController.Values[ ARecordIndex, cxgrd1DBBandedTableView1QTDEPRD.Index]) +   ')  AS UC_TOTAL,  '+
+
     ' DEP_GERASUBORDENS ' +
     ' FROM FTC_IT01 ft                                                                                                 '+
     ' join prd0000 Pr on (ft.prd_refer_itens = pr.prd_refer '+ ConcatSe(' and ft.', DBInicio.ExclusivoSql('PRODUTOS'))+ ')'+
@@ -1268,16 +1292,44 @@ begin
 //    PostMessage(Handle, UM_MYMESSAGE, Integer(AFocusedRecord), Integer(Sender));
 end;
 
-procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1MARCADOPropertiesChange(Sender: TObject);
+procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1KeyUp(Sender: TObject;
+  var Key: Word; Shift: TShiftState);
+var
+  sql: string;
 begin
   inherited;
-  cdsBuscaMARCADO.AsString
+  sql := 'SELECT dh.*, u.USU_NOME FROM DEMANDA_HISTORICO dh '+
+         ' JOIN USUARIO u ON (u.USU_CODIGO = dh.USU_CODIGO) '+
+          ' WHERE PED_CODIGO = '+QuotedStr(cdsbusca.FieldByName('ped_codigo').AsString) +
+          '   and prd_codigo = '+QuotedStr(cdsbusca.FieldByName('prd_codigo').AsString)+
+          ' order by  hde_datamvto desc ';
+  cdsHistorico.Open(sql);
+end;
+
+procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1MARCADOPropertiesChange(Sender: TObject);
+begin
+//  inherited;
+//  cdsBuscaMARCADO.AsString
 end;
 
 procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1MARCADOPropertiesEditValueChanged(Sender: TObject);
 begin
-  inherited;
+  // inherited;
   //
+end;
+
+procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1MouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+var
+  sql: string;
+begin
+  inherited;
+  sql := 'SELECT dh.*, u.USU_NOME FROM DEMANDA_HISTORICO dh '+
+         ' JOIN USUARIO u ON (u.USU_CODIGO = dh.USU_CODIGO) '+
+          ' WHERE PED_CODIGO = '+QuotedStr(cdsbusca.FieldByName('ped_codigo').AsString) +
+          '   and prd_codigo = '+QuotedStr(cdsbusca.FieldByName('prd_codigo').AsString)+
+          ' order by  hde_datamvto desc ';
+  cdsHistorico.Open(sql);
 end;
 
 procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1SelectionChanged(Sender: TcxCustomGridTableView);
@@ -1290,6 +1342,13 @@ procedure TfrmDemandaProducao.cxgrd1DBTableView1CanFocusRecord(Sender: TcxCustom
 var sql :string;
   ped_codigo , prd_codigo : string;
 begin
+
+
+  exit;
+
+
+
+
   inherited;
   prd_codigo := ARecord.Values[cxgrd1DBTableView1PRD_CODIGO.Index];
   ped_codigo := ARecord.Values[cxgrd1DBTableView1PED_CODIGO.Index];
@@ -1307,6 +1366,12 @@ var sql :string;
   ped_codigo , prd_codigo : string;
 begin
   inherited;
+
+
+  exit;
+
+
+
   prd_codigo := ARecord.Values[cxgrd1DBTableView1PRD_CODIGO.Index];
   ped_codigo := ARecord.Values[cxgrd1DBTableView1PED_CODIGO.Index];
   sql := 'SELECT dh.*, u.USU_NOME FROM DEMANDA_HISTORICO dh '+

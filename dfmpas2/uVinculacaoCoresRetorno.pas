@@ -58,6 +58,7 @@ type
     cxGrid1DBTableView1ACO_NOME: TcxGridDBColumn;
     cxGrid1DBTableView1PEDIND_QUANTIDADE: TcxGridDBColumn;
     cxGrid1DBTableView1BOTAO: TcxGridDBColumn;
+    Bit_Sair: TBitBtn;
     procedure BitConfirmarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure cbCorSelect(Sender: TObject);

@@ -7,7 +7,6 @@ inherited FormFatPedido: TFormFatPedido
   ClientWidth = 1284
   Font.Name = 'Arial'
   KeyPreview = True
-  Position = poDesktopCenter
   ExplicitWidth = 1300
   ExplicitHeight = 628
   PixelsPerInch = 96
@@ -20,7 +19,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alTop
     Caption = 'Nota'
     TabOrder = 2
-    ExplicitWidth = 1370
     object Label23: TLabel
       Left = 28
       Top = 49
@@ -582,7 +580,6 @@ inherited FormFatPedido: TFormFatPedido
     Height = 69
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 1370
     object Label3: TLabel
       Left = 45
       Top = 19
@@ -798,7 +795,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alBottom
     ParentColor = True
     TabOrder = 3
-    ExplicitWidth = 1370
     object Label13: TLabel
       Left = 8
       Top = 19
@@ -977,6 +973,16 @@ inherited FormFatPedido: TFormFatPedido
       TabStop = False
       OnClick = btnEmpresaClick
     end
+    object chkFreteProporcional: TCheckBox
+      Left = 155
+      Top = 3
+      Width = 256
+      Height = 17
+      Caption = 'Utilizar frete proporcional '#224' quantidade faturada'
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 5
+    end
   end
   object Panel3: TPanel [3]
     Left = 0
@@ -986,7 +992,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 1370
     object GroupBox3: TGroupBox
       Left = 0
       Top = 0
@@ -1378,10 +1383,6 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet3: TTabSheet
         Caption = 'Devolu'#231#227'o'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object GroupBox7: TLabel
           Left = 7
           Top = 31
@@ -1851,7 +1852,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alClient
     Caption = 'Itens do Pedido '#224' Faturar'
     TabOrder = 4
-    ExplicitWidth = 1370
     object PanOperacao: TLabel
       Left = 630
       Top = 18
@@ -1868,7 +1868,7 @@ inherited FormFatPedido: TFormFatPedido
     object GridItensNota: TDBGrid
       Left = 2
       Top = 16
-      Width = 1366
+      Width = 1280
       Height = 165
       Align = alClient
       Color = clWhite

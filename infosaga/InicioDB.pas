@@ -162,6 +162,7 @@ type
   tsharedb = record
     Produtos : boolean;
     ProdutoPrecoEmpresa: boolean;
+    EnderecoEstoque: boolean;
     Clientes : boolean;
     Bancos : boolean;
     Transportadora : boolean;
@@ -390,6 +391,7 @@ type
     bPermitirExcluirItem : boolean;
     bPermitirEstornaExpedicao : boolean;
     bHabilitaColunaNF : boolean;
+    bIncluiItemPedOpGerada: boolean;
     sPadraoPesquisaProduto : STRING;
     bHabilitarTabelaPreco : boolean;
     fUSP_ALTERA_COMISSAO : boolean;
@@ -1871,6 +1873,8 @@ procedure TDBInicio.OpenParametrosUsuario;
           ( FieldByName( 'USP_ESTORNAEXPEDICAO' ).AsString = 'S' );
         vlEmpresa.bHabilitaColunaNF :=
           ( FieldByName( 'USP_HABILITA_COLUNA_NF' ).AsString = 'S' );
+        vlEmpresa.bIncluiItemPedOpGerada :=
+          ( FieldByName( 'USP_INCLUI_ITEM_PED_OP_GERADA' ).AsString = 'S' );
         vlEmpresa.fUSP_ALTERA_COMISSAO :=
           ( FieldByName( 'USP_ALTERA_COMISSAO' ).AsString = 'S' );
         vlEmpresa.DesctoMaximo_P :=
@@ -3028,7 +3032,7 @@ procedure TDBInicio.LerVersao;
         Close;
       end;
     end;
-    vlVersao.patch := 6;
+    vlVersao.patch := 3;
     vlVersao.Issues := '';
 
     r := TIdIPWatch.Create( nil );
@@ -3208,6 +3212,9 @@ Function TDBInicio.Exclusivo( pNomeCompartilhamento : string ) : boolean;
     else
     if pNomeCompartilhamento = 'PRODUTO_PRECO_EMPRESA' then
       compartilhado := Sharedb.ProdutoPrecoEmpresa
+    else
+    if pNomeCompartilhamento = 'ENDERECO_ESTOQUE' then
+      compartilhado := Sharedb.EnderecoEstoque
     else
     if pNomeCompartilhamento = 'CLIENTES'
     then
@@ -3474,6 +3481,7 @@ procedure TDBInicio.CarregarCompartilhamentos;
     qAux.Open;
     vlSharedb.Produtos := qAux.FieldByName( 'PRODUTOS' ).AsString = 'C';
     vlSharedb.ProdutoPrecoEmpresa := qAux.FieldByName( 'PRODUTO_PRECO_EMPRESA' ).AsString = 'C';
+    vlSharedb.EnderecoEstoque := qAux.FieldByName( 'ENDERECO_ESTOQUE' ).AsString = 'C';
     vlSharedb.Clientes := qAux.FieldByName( 'CLIENTES' ).AsString = 'C';
     vlSharedb.Bancos := qAux.FieldByName( 'BANCOS' ).AsString = 'C';
     vlSharedb.Transportadora := qAux.FieldByName( 'TRANSPORTADORAS' )

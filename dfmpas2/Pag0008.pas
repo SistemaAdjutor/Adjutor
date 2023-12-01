@@ -110,6 +110,8 @@ type
     DBGridRecParceDBTableView1FOR_RAZAO: TcxGridDBColumn;
     DBGridRecParceDBTableView1PAG_CODIGO: TcxGridDBColumn;
     DBGridRecParceDBTableView1PPC_NUMER: TcxGridDBColumn;
+    CdsPagarBaixasPAG_NUMDOC: TStringField;
+    DBGridRecParceDBTableView1PAG_NUMDOC: TcxGridDBColumn;
     procedure Bit_SairClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure EdFornecedorCodigoExit(Sender: tObject);
@@ -485,6 +487,7 @@ begin
                                                        'T6.FOR_RAZAO, '+
                                                        't5.PAG_CODIGO, '+
                                                        't5.PPC_VENCTO, '+
+                                                       't5.PAG_NUMDOC, '+
                                                        't5.PPC_NUMER,   '+
                                                        't5.PPC_NPARCELAS '+
                                                        'FROM  '+

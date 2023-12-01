@@ -10,9 +10,8 @@ inherited FormFaturar: TFormFaturar
   Font.Name = 'Arial'
   KeyPreview = True
   OldCreateOrder = True
-  Position = poDesktopCenter
   ExplicitWidth = 872
-  ExplicitHeight = 394
+  ExplicitHeight = 395
   PixelsPerInch = 96
   TextHeight = 14
   object Panel5: TPanel [0]
@@ -192,8 +191,10 @@ inherited FormFaturar: TFormFaturar
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'OPE0000_VIEW_PESQUISA'
       CamposCarregar = 'ope_codigo, cfop'
       CamposRetornar = 'ope_codigo'

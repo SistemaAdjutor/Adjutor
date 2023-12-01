@@ -768,7 +768,7 @@ end;
 procedure TFrmGimpBoletos.cdsDuplicataAfterScroll(DataSet: TDataSet);
 begin
   inherited;
-  if registro = 0 then
+//  if registro = 0 then
     BuscaHistorico(CdsDuplicataFAT_REGISTRO.AsInteger);
 end;
 
@@ -1380,10 +1380,6 @@ begin
         continue;
 
        end;
-       if NOT (clone.State IN dsEditModes) then
-        clone.Edit;
-       clone.FieldByName('FPC_ENVIOEMAIL_BOLETO').AsString := 'S';
-       clone.Post;
        ImprimirBoletoCodigoBarras(true, cloneAux);
        if dbInicio.Empresa.EmailUserNameFinanceiro = '' then
          raise Exception.Create('Não configurado email do financeiro. Preencha o envio de email no cadastro de empresa.');
@@ -1416,8 +1412,10 @@ begin
             GravaHistorico(clone.FieldByName('FAT_REGISTRO').AsInteger, msg);
             GravaHistoricoEmail(tcr.modulo, tcr.EdMail.Text, tcr.titulo, 'C', cdsDuplicataCLI_CODIGO.AsString, Now, DBInicio.Usuario.CODIGO, tcr.sCaminhoArquivo);
             AtualizaEmail(email,clone.FieldByName('cli_codigo').AsString);
-
-
+            if NOT (clone.State IN dsEditModes) then
+              clone.Edit;
+            clone.FieldByName('FPC_ENVIOEMAIL_BOLETO').AsString := 'S';
+            clone.Post;
           end;
        finally
          FreeAndNil(tcr);

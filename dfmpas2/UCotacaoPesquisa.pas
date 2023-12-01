@@ -529,6 +529,8 @@ type
     cxGrid1DBBandedTableView1CIT_CODIGO: TcxGridDBBandedColumn;
     qCotacaoFornecedorCOF_VIA_TRANSPORTE: TIntegerField;
     cxGrid1DBBandedTableView1COF_VIA_TRANSPORTE: TcxGridDBBandedColumn;
+    qCotacaoPCX_DESCRI: TStringField;
+    cxGrid1DBTableView1PCX_DESCRI: TcxGridDBColumn;
     procedure cxGrid1DBTableView1DataControllerDetailExpanding(ADataController: TcxCustomDataController; ARecordIndex: Integer; var AAllow: Boolean);
     procedure FormShow(Sender: TObject);
     procedure cxGrid1DBBandedTableView1DataControllerDetailExpanding(ADataController: TcxCustomDataController; ARecordIndex: Integer; var AAllow: Boolean);
@@ -636,13 +638,14 @@ begin
   qCotacao.SQL.Text :=
     ' SELECT DISTINCT  0 as Marcado, ' +
     ' CASE WHEN p.PRD_DESCRI IS NULL THEN ci.PRD_DESCRICAO ELSE p.PRD_DESCRI END AS prd_descricao, ' +
-    '  ct.*, ci.*, se.SET_DESCRICAO, ct.EMP_CODIGO ' +
+    '  ct.*, ci.*, se.SET_DESCRICAO, ct.EMP_CODIGO, px.PCX_DESCRI ' +
     '   FROM COTACAO ct ' +
     '     JOIN COTACAO_ITEM ci ON (ci.COT_CODIGO = ct.COT_CODIGO) ' +
     '     LEFT JOIN COTACAO_FORNECEDOR cf ON (cf.CiT_CODIGO = ci.CIT_CODIGO) ' +
     '     LEFT JOIN FOR0000 f ON (f.FOR_CODIGO = cf.FOR_CODIGO) ' +
-    '     LEFT JOIN SETOR se ON se.SET_CODIGO = ct.SET_CODIGO ' +
+    '     LEFT JOIN SETOR se ON (se.SET_CODIGO = ct.SET_CODIGO) ' +
     '     LEFT JOIN PRD0000 p ON (p.PRD_REFER = ci.PRD_REFER) ' +
+    '     LEFT JOIN PCX0000 px ON (px.PCX_CODIGO = ci.PCX_CODIGO) ' +
         where +
     '   ORDER BY ct.COT_CODIGO, ci.CIT_CODIGO ' ;
   qCotacao.Open;

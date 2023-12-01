@@ -1,0 +1,48 @@
+﻿Atualizado em 22/11/2023
+Inicio da versão: 01/11/2023
+
+principal: Rotor, Bepine
+  1685 - Nota de Serviço - campo dedução [Rotor]
+  1691 - Erro ao lançar contas a pagar [Bepine]
+  1699 - Melhoria endereços de estoque [Rotor]
+  1711 - Consumo de lotes baixando duplicado - PCP new [Novi]
+  
+patch 1: Rotor, Bepine, Mandibor, Yvytu, Chemsystem, Crystal Clean
+  1639 - Relatório de entradas e saídas do estoque [Rotor]
+  1654 - Consulta CNPJ troca na forma de consulta [Novi]
+  1681 - Melhoria cadastro de fornecedores [Bepine]
+  1706 - Valor do frete no pedido/faturamento [Mandibor]
+  1707 - Entrada de nota com lotes [Novi]
+  1708 - Sequencia de produtos [Yvytu]
+  1716 - Código de protesto do banco - Viacred [Chemsystem]
+  1717 - Saldo do lote - balanço [Crystal Clean]
+  1719 - Erro cadastro de produtos [Rotor]
+  1720 - Correção conclusão da produção [Novi]
+  
+patch 2: Rotor, Arkson, Collect
+  1670 - ST não calcula [Rotor]
+  1687 - Melhoria kardex [Rotor]
+  1703 - Melhorias ordem de produção Arkson [Arkson]
+  1714 - Totalizador de notas fiscais [Novi]
+  1715 - Ajuste relatório de recebimentos - CSV [Collect]
+  1724 - Endereçamento não lista endereços cadastrados [Rotor]
+  1725 - Erro ao fazer balanço de estoque [Rotor]
+  1727 - Erro pcp demanda [Arkson]
+ 
+patch 3: Arkson, Delta Cabos, BSC
+  1643 - Nova etiqueta modelo 12 - faturamento [Arkson]
+  1658 - Melhoria demanda - estorno [Arkson]
+  1659 - Correções solicitações de compras [Arkson]
+  1665 - Cancelamento de pedidos enviados para produção [Arkson]
+  1668 - Gravar informações no pedido [Delta Cabos]
+  1675 - Correção pcp demanda [Arkson]
+  1701 - Impressão da ordem com Imagem [Normadin]
+  1722 - Verificar calculo do frete ao faturar [Novi]
+  1723 - Erro ao importar XML [Arkson]
+  1728 - Cadastro de produto - novo [Novi]
+  1732 - Melhoria cadastro de produtos [BSC]
+  1733 - Incluir banco CRESOL [Arkson]
+  1734 - Mostrar saldo total do estoque [Arkson]
+  1735 - Parâmetro para obrigar seleção de lotes [Arkson]
+  1736 - Correção tela de produção [Arkson]
+

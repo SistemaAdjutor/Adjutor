@@ -51,6 +51,43 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
       Height = 13
       Caption = 'N'#186' Pedido Venda:'
     end
+    object SpeedButton6: TSpeedButton
+      Left = 55
+      Top = 54
+      Width = 23
+      Height = 22
+      Hint = 'Adicionar Observa'#231#227'o Cadastrada'
+      Glyph.Data = {
+        36030000424D3603000000000000360000002800000010000000100000000100
+        1800000000000003000000000000000000000000000000000000FFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFF0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E
+        0E0E0E0EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0E0E0EFFFFFF0E0E0E8F690A8F
+        690A8F690A8F690A8F690AFFFFFFFFFFFF0E0E0EFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFF0E0E0E0E0E0E0E0E0E97740B97740B97740B97740B97740B000000FFFF
+        FF0E0E0EFFFFFFFFFFFF0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0EA2
+        830DA2830DA2830DA2830DFFFFFFFFFFFF0E0E0EFFFFFFFFFFFF0E0E0EBFC7C7
+        BFC7C7BFC7C7BFC7C7BFC7C70E0E0EAF940FAF940FAF940FAF940F000000FFFF
+        FF0E0E0EFFFFFFFFFFFF0E0E0ED7DBDBD7DBDBD7DBDBD7DBDBD7DBDB0E0E0EBA
+        A411BAA411BAA411BAA411FFFFFFFFFFFF0E0E0EFFFFFFFFFFFF0E0E0EEEEFEF
+        EEEFEFEEEFEFEEEFEFEEEFEF0E0E0EC2AE12C2AE12C2AE12C2AE12000000FFFF
+        FF0E0E0EFFFFFFFFFFFF0000000000008181810000008181810000000E0E0EBA
+        A411BAA411BAA411BAA411FFFFFFFFFFFF0E0E0EFFFFFFFFFFFF000000FFFFFF
+        000000FFFFFF000000FFFFFF0E0E0EAF940FAF940FAF940FAF940F000000FFFF
+        FF0E0E0EFFFFFFFFFFFF0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0EA2
+        830DA2830DA2830DA2830DFFFFFFFFFFFF0E0E0EFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFF0E0E0E0E0E0E0E0E0E97740B97740B97740B97740B97740B000000FFFF
+        FF0E0E0EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF0E0E0EFFFFFF0E0E0E8F690A8F
+        690A8F690A8F690A8F690AFFFFFFFFFFFF0E0E0EFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFF0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E0E
+        0E0E0E0EFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = SpeedButton6Click
+    end
     object cbSetor: TComboBoxRw
       Left = 338
       Top = 13
@@ -184,10 +221,17 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
         Height = 13
         Caption = 'Qtde. Solicitada:'
       end
+      object Label13: TLabel
+        Left = 547
+        Top = 13
+        Width = 79
+        Height = 13
+        Caption = 'Centro de Custo'
+      end
       object cbProduto: TComboBoxRw
         Left = 105
         Top = 10
-        Width = 552
+        Width = 384
         Height = 21
         TabOrder = 1
         OnChange = cbProdutoChange
@@ -344,6 +388,48 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
         TabOrder = 11
         OnClick = btExcluitItemClick
       end
+      object cbCentroCusto: TComboBoxRw
+        Left = 633
+        Top = 10
+        Width = 228
+        Height = 21
+        TabOrder = 12
+        OnChange = cbProdutoChange
+        CharCase = ecUpperCase
+        Enabled = False
+        LookupSelect = 'PCX_CODIGO, PCX_DESCRI'
+        LookupOrderBy = 'PCX_DESCRI'
+        LookupTable = 'PCX0000'
+        LookupDispl = 'PCX_DESCRI'
+        GridAutoSize = False
+        LookupSource = qCentroCusto
+        DataField = 'PCX_CODIGO'
+        DataSource = dsItem
+        LookupKeyField = 'PCX_CODIGO'
+        ShowButton = True
+        AutoF8WinTitulo = 'Produtos'
+        AutoF8ColumnsTitulo = 'C'#243'digo, Descricao'
+        GridLeft = 0
+        GridWidth = 0
+        GridHeight = 100
+        GridTop = 0
+        GridShowWhenEnter = False
+        SelectWithDoubleClick = False
+        LimparCampoAoSair = True
+        Tabela = 'PCX0000'
+        CamposCarregar = 'PCX_CODIGO, PCX_DESCRI'
+        CamposRetornar = 'PCX_CODIGO'
+        CamposOrdernar = 'PCX_DESCRI'
+        ConexaoBanco = DataCadastros.SQLConnection1
+        Localizado = False
+        CodigoEmpresa = 0
+        ResetaCampos = False
+        MultiEmpresa = False
+        Localizar = False
+        CarregarCombo = False
+        itemindex = 0
+        style = csDropDown
+      end
     end
     object edCotNumero: TDBEdit
       Left = 106
@@ -381,6 +467,7 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
       Anchors = [akLeft, akTop, akRight]
       DataField = 'COT_OBSERVACAO'
       DataSource = dsCotacao
+      ScrollBars = ssVertical
       TabOrder = 7
     end
   end
@@ -394,6 +481,7 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     LookAndFeel.Kind = lfStandard
     LookAndFeel.NativeStyle = False
     LookAndFeel.ScrollbarMode = sbmClassic
+    ExplicitLeft = -256
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.First.Visible = True
@@ -454,6 +542,10 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
         DataBinding.FieldName = 'CIT_DATA_NECESSIDADE'
         Width = 115
       end
+      object cxGrid1DBTableView1PCX_DESCRI: TcxGridDBColumn
+        Caption = 'Centro de Custo'
+        DataBinding.FieldName = 'PCX_DESCRI'
+      end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1
@@ -468,7 +560,7 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     Top = 336
   end
   inherited qAux: TFDQuery
-    Left = 875
+    Left = 619
     Top = 416
   end
   inherited FDPhysFBDriverLink1: TFDPhysFBDriverLink
@@ -488,11 +580,11 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
     Top = 336
   end
   inherited qAux2: TFDQuery
-    Left = 923
+    Left = 667
     Top = 415
   end
   inherited qAux3: TFDQuery
-    Left = 963
+    Left = 707
     Top = 415
   end
   inherited qAux4: TFDQuery
@@ -506,11 +598,11 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
       'Password=masterkey'
       'CharacterSet=ISO8859_1'
       'DriverID=FB')
-    Left = 723
+    Left = 467
     Top = 424
   end
   inherited FDStoredProc1: TFDStoredProc
-    Left = 800
+    Left = 544
     Top = 424
   end
   object tbCotacao: TFDTable
@@ -619,6 +711,10 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
       Origin = 'CIT_OBS_AUTORIZACAO'
       Size = 255
     end
+    object tbItemPCX_CODIGO: TStringField
+      FieldName = 'PCX_CODIGO'
+      Size = 3
+    end
   end
   object tbUndMedida: TFDTable
     CachedUpdates = True
@@ -705,10 +801,21 @@ inherited frmCotacaoCadastro: TfrmCotacaoCadastro
       FieldName = 'CIT_DATA_NECESSIDADE'
       Origin = 'CIT_DATA_NECESSIDADE'
     end
+    object qItemPCX_DESCRI: TStringField
+      FieldName = 'PCX_DESCRI'
+      Size = 25
+    end
   end
   object dsqItem: TDataSource
     DataSet = qItem
     Left = 424
     Top = 232
+  end
+  object qCentroCusto: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = DBInicio.MainDB
+    Left = 904
+    Top = 112
   end
 end

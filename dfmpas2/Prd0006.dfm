@@ -10,8 +10,8 @@ inherited FormProdutoGrid: TFormProdutoGrid
   Position = poDesktopCenter
   ShowHint = True
   WindowState = wsMaximized
-  ExplicitWidth = 1160
-  ExplicitHeight = 629
+  ExplicitWidth = 1168
+  ExplicitHeight = 641
   PixelsPerInch = 96
   TextHeight = 14
   object pn1: TPanel [0]
@@ -103,8 +103,10 @@ inherited FormProdutoGrid: TFormProdutoGrid
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object CbGrupo: TSgDbSearchCombo
         Left = 74
@@ -130,8 +132,10 @@ inherited FormProdutoGrid: TFormProdutoGrid
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object CBLinha: TSgDbSearchCombo
         Left = 74
@@ -158,8 +162,10 @@ inherited FormProdutoGrid: TFormProdutoGrid
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
     object GroupBox1: TGroupBox
@@ -411,8 +417,10 @@ inherited FormProdutoGrid: TFormProdutoGrid
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object cbMedExterno: TSgDbSearchCombo
         Left = 49
@@ -445,8 +453,10 @@ inherited FormProdutoGrid: TFormProdutoGrid
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object cbMedAltura1: TSgDbSearchCombo
         Left = 97
@@ -479,8 +489,10 @@ inherited FormProdutoGrid: TFormProdutoGrid
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object cbMedAltura2: TSgDbSearchCombo
         Left = 145
@@ -513,8 +525,10 @@ inherited FormProdutoGrid: TFormProdutoGrid
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object EdVariacao: TEdit
         Left = 206
@@ -612,6 +626,18 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
           Width = 119
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'PRDE_ENDERECO'
+          Title.Alignment = taCenter
+          Title.Caption = 'Endere'#231'o'
+          Title.Font.Charset = ANSI_CHARSET
+          Title.Font.Color = clWindowText
+          Title.Font.Height = -11
+          Title.Font.Name = 'Arial'
+          Title.Font.Style = [fsBold]
           Visible = True
         end
         item
@@ -788,18 +814,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
           Width = 88
-          Visible = True
-        end
-        item
-          Expanded = False
-          FieldName = 'PRDE_ENDERECO'
-          Title.Alignment = taCenter
-          Title.Caption = 'Endere'#231'o'
-          Title.Font.Charset = ANSI_CHARSET
-          Title.Font.Color = clWindowText
-          Title.Font.Height = -11
-          Title.Font.Name = 'Arial'
-          Title.Font.Style = [fsBold]
           Visible = True
         end
         item

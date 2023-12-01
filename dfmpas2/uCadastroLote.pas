@@ -68,6 +68,7 @@ type
   public
     { Public declarations }
     sPrdCodido, amxCodigo : String;
+    prdlRegistro: integer;
 
   end;
 
@@ -139,7 +140,7 @@ begin
        CdsLotesEMP_CODIGO.AsString := dbInicio.Empresa.EMP_CODIGO;
        CdsLotesPRDL_DATA_FABRICACAO.AsDateTime := RxDataFabricacao.Date;
        CdsLotesPRDL_DATA_VALIDADE.AsDateTime := RxDataValidade.Date;
-       CdsLotesPRDL_LOTE.AsString := 'LT'+Trim(edtNumeroLote.Text);
+       CdsLotesPRDL_LOTE.AsString := 'LT' + Trim(edtNumeroLote.Text);
        CdsLotesPRDL_PRECO_MAXIMO.AsCurrency := CurPrecoMaximo.Value;
        CdsLotesPRD_CODIGO.AsString := sPrdCodido;
        CdsLotesPRDL_CADASTRO.AsDateTime := Date;
@@ -147,6 +148,9 @@ begin
        CdsLotesAMX_CODIGO.AsString := amxCodigo;
        CdsLotes.ApplyUpdates(0);
        CdsLotes.Refresh;
+       if (LocalizaLoteProduto(sPrdCodido, 'LT' + edtNumeroLote.Text)) then
+         CdsLotes.Locate('PRD_CODIGO; PRDL_LOTE', VarArrayOf([sPrdCodido, 'LT' + edtNumeroLote.Text]), []);
+       prdlRegistro := CdsLotesPRDL_REGISTRO.AsInteger;
        if (Assigned(FrmKardexLancamentoManual)) then
              FrmKardexLancamentoManual.CbLoteProduto.EditValue := CdsLotesPRDL_REGISTRO.AsInteger
        else

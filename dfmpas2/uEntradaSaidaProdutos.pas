@@ -9,7 +9,22 @@ uses
   cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxCalendar,
   SqlExpr,SqlClientDataSet, Provider, frxDBSet, DB, DBClient, DBLocal, DBLocalS,
   cxLookupEdit, cxDBLookupEdit, cxDBLookupComboBox, cxGraphics, cxLookAndFeels, Vcl.ComCtrls, dxCore, cxDateUtils, Vcl.Menus, Data.DBXFirebird, SimpleDS, Data.FMTBcd, SgDbSeachComboUnit, ComboBoxRW,
-  frxExportPDF, frxExportRTF, frxExportCSV, frxExportMail, frxExportXLS;
+  frxExportPDF, frxExportRTF, frxExportCSV, frxExportMail, frxExportXLS,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, frxExportBaseDialog;
 
 type
   TFrmEntradaSaidaProdutos = class(TForm)
@@ -201,14 +216,14 @@ begin
 
 
          CdsEntradasSaidas.Close;
-         CdsEntradasSaidas.CommandText := 'SELECT '+
+         CdsEntradasSaidas.CommandText := 'SELECT DISTINCT '+
                                           'T1.emp_codigo, '+
                                           'E1.emp_razao, '+
                                           'P1.prd_refer, '+
                                           'P1.prd_descri, '+
                                           't1.kar_entrada_saida, '+
                                           't1.kar_quantidade, '+
-                                          't1.data_hora, '+
+                                          'CAST(CAST(T1.data_hora AS date) AS TIMESTAMP) AS data_hora, '+ // t1.data_hora
                                           'coalesce(t1.kar_observacao,'''')||'' ''||coalesce(t1.kar_descricao,'''') as kar_descricao, '+
                                           'case '+
                                           '    when (T1.kar_tipo_registro = ''ENF'') then '+
@@ -234,6 +249,8 @@ begin
                                           ' JOIN USUARIO_ALMOXARIFADO ua ON (ua.USU_CODIGO = ' +  QuotedStr(DBInicio.Usuario.CODIGO) + ' AND ua.AMX_CODIGO = t1.AMX_CODIGO) ' +
                                           sCondicao+
                                           'order by t1.emp_codigo, t1.kar_entrada_saida,t1.data_hora   ';
+         if dbInicio.IsDesenvolvimento then
+          CopyToClipboard(CdsEntradasSaidas.CommandText);
          CdsEntradasSaidas.Open;
          relatorio := frxReport1;
          TfrxMemoView(relatorio.FindObject('mFiltro')).Text := filtro;

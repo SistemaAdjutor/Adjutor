@@ -2986,7 +2986,7 @@ begin
           wLIT_REMESSA   := 'REMESSA';{LITERAL ARQUIVO}
       ACBrBoleto1.DirArqRemessa := wDIR; //  FileArqSalvar.FileName;
       {prazo para protesto}
-      if CdSCrCduplicata.FieldByname('CLI_PROTESTAR').AsString = 'N' then
+      if (CdSCrCduplicata.FieldByname('CLI_PROTESTAR').AsString = 'N') AND Rad_Protesto_Cliente.Checked then
          wDIAS_PROTESTO := '00'
       else
       if (CdSCrCduplicata.FieldByname('CLI_QTDE_DIAS_PROTESTO').AsInteger > 0) AND Rad_Protesto_Cliente.Checked then
@@ -3701,7 +3701,8 @@ begin
            wCOD_INSTRUCAO2:= '00';
            wProtestar := 'N';
            wDIAS_PROTESTO := '00';
-           wNossoNumero:= CdSCrCduplicata.FieldByName('FPC_COBNUM').AsInteger;
+           // wNossoNumero:= CdSCrCduplicata.FieldByName('FPC_COBNUM').AsInteger;  // tava dando erro de conversão
+           wNossoNumero := StrToIntDef(CdSCrCduplicata.FieldByName('FPC_COBNUM').AsString, 0);
             {Verifica o Endereço de faturamento}
             if ((CdSCrCduplicata.FieldByname('CLI_CEPFAT').IsNull = TRUE) OR (CdSCrCduplicata.FieldByname('CLI_CEPFAT').AsString = '')) AND ((CdSCrCduplicata.FieldByname('CLI_CIDFAT').IsNull = TRUE) OR (CdSCrCduplicata.FieldByname('CLI_CIDFAT').AsString = '')) then
                begin

@@ -1656,6 +1656,14 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_GER_AVANC_ANTECIP_DESC'
       Size = 1
     end
+    object SqlParametrosPMT_MENSAGEM_VENDAS: TStringField
+      FieldName = 'PMT_MENSAGEM_VENDAS'
+      Size = 80
+    end
+    object SqlParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField
+      FieldName = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
+      Size = 1
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -2950,6 +2958,14 @@ object DataCadastros1: TDataCadastros1
     end
     object CdsParametrosPMT_GER_AVANC_ANTECIP_DESC: TStringField
       FieldName = 'PMT_GER_AVANC_ANTECIP_DESC'
+      Size = 1
+    end
+    object CdsParametrosPMT_MENSAGEM_VENDAS: TStringField
+      FieldName = 'PMT_MENSAGEM_VENDAS'
+      Size = 80
+    end
+    object CdsParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField
+      FieldName = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
       Size = 1
     end
   end
@@ -6144,6 +6160,10 @@ object DataCadastros1: TDataCadastros1
       FixedChar = True
       Size = 1
     end
+    object SQLUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField
+      FieldName = 'USP_INCLUI_ITEM_PED_OP_GERADA'
+      Size = 1
+    end
   end
   object DSPUsaParametro: TDataSetProvider
     DataSet = SQLUsaParametro
@@ -6566,6 +6586,10 @@ object DataCadastros1: TDataCadastros1
     object CDSUsaParametroUSP_EXIBE_ABA_INFO_CLIENTE: TStringField
       FieldName = 'USP_EXIBE_ABA_INFO_CLIENTE'
       FixedChar = True
+      Size = 1
+    end
+    object CDSUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField
+      FieldName = 'USP_INCLUI_ITEM_PED_OP_GERADA'
       Size = 1
     end
   end

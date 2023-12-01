@@ -34,3 +34,15 @@ patch 5: Arkson, Rotor, Edge
 patch 6: Arkson
   1704 - Sistema alterando consulta do produtos [Arkson]
 
+patch 7: Collect, Normadin, Arkson, Netocolor, Bepine, Chemsystem
+  1637 - Exportar recebimentos - Excel [Collect]
+  1641 - Mensagem padrão apenas para vendas [Normadin]
+  1649 - Ajuste em relatório de pedido de doações [Collect]
+  1657 - Melhoria baixa avançada na produção [Arkson]
+  1661 - Registro dos envios de email de emissão de boleto [Collect]
+  1677 - Lentidão PCP Demanda [Netocolor]
+  1680 - Aviso na tela de pedido [Novi]
+  1690 - Casas decimais no calculo de FKG e FKP [Bepine]
+  1693 - Problemas na entrada do lote - PCP OLD [Chemsystem]
+  1698 - Habilitar flag selecionar/desmarcar [Netocolor]
+  1702 - Correções conclusão da produção avançada [Arkson]

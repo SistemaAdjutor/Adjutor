@@ -16,7 +16,7 @@ uses
   Datasnap.Midas,
   Uteis in 'infosaga\Uteis.pas',
   BaseForm in 'infosaga\BaseForm.pas' {frmBase},
-  InicioDB in 'infosaga\InicioDB.pas' {dbInicio},
+  InicioDB in 'infosaga\InicioDB.pas' {dbInicio: Delphi\Componentes\06-infosaga_desktop\BaseDBForm.pas' {frmBaseDB},
   BaseDBForm in 'infosaga\BaseDBForm.pas' {frmBaseDB},
   BaseDBPesquisaBaseForm in 'infosaga\BaseDBPesquisaBaseForm.pas' {frmBaseDBPesquisaBase},
   BaseDBPesquisaForm in 'infosaga\BaseDBPesquisaForm.pas' {frmBaseDBPesquisa},
@@ -516,7 +516,8 @@ uses
   uSelecionaAlmoxarifado in 'dfmpas2\uSelecionaAlmoxarifado.pas' {frmSelecionaAlmoxarifado},
   fdac.SgDbAutoF8Unit in 'infosaga\Componentes\SgDb\fdac.SgDbAutoF8Unit.pas',
   OsvN0001 in 'dfmpas2\OsvN0001.pas' {FormOrdServCentroNovo},
-  testes in 'testes.pas' {Form3};
+  testes in 'testes.pas' {Form3},
+  uJustificativaDeducao in 'dfmpas2\uJustificativaDeducao.pas' {frmJustificativaDeducao};
 
 {$R *.res}
 {$D+}

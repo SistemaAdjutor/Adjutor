@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
-  RwSQLComando,
+  RwSQLComando, IdHTTP, System.JSON,
   StdCtrls, DBCtrls, Mask, ExtCtrls, ComCtrls, Buttons, DB, DBTables, RwFunc,
   rxToolEdit, RXDBCtrl, Grids, DBGrids, Provider, SqlExpr, SqlClientDataSet,
   DBClient, DBLocal,
@@ -32,7 +32,7 @@ uses
   dxSkinMetropolis, dxSkinMetropolisDark, dxSkinOffice2013DarkGray,
   dxSkinOffice2013LightGray, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
   dxSkinTheBezier, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
-  dxSkinVisualStudio2013Light;
+  dxSkinVisualStudio2013Light, JvAnimatedImage, JvGIFCtrl;
 
 type
   TFormCliente = class(TfrmBaseDB)
@@ -770,6 +770,9 @@ type
     qClientesBAN_DIGCONTA: TStringField;
     cdsClientesBAN_DIGCONTA: TStringField;
     SimpleDataSet1: TSimpleDataSet;
+    PanelAguarde: TPanel;
+    JvGIFAnimator1: TJvGIFAnimator;
+    pinfo: TPanel;
 
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
@@ -1503,6 +1506,10 @@ begin
   end;
   cbContaFinanceira.WherePersonalizado := ' WHERE CCT_CONTA = ''E'' AND CCT_STATUS = ''L''  ';
   HabilitaBotoes;
+
+  PanelAguarde.Top := (Self.Height div 2) - (PanelAguarde.Height div 2);
+  PanelAguarde.Left := (Self.Width div 2) - (PanelAguarde.Width div 2);
+
   Screen.Cursor := crDefault;
   PageCliente.ActivePageIndex := 0;
   PageControl1.ActivePageIndex := 0;
@@ -3433,12 +3440,131 @@ begin
 end;
 
 procedure TFormCliente.btnConsultarCNPJ_CPFClick(Sender: TObject);
-var vcnae, vfone, fone1, fone2 : string;
+var
+ vcnae, vfone, fone1, fone2 : string;
  idseq : integer;
+
+  IdHTTP1: TIdHTTP;
+  ResponseContent: string;
+  Token: string;
+  URL: string;
+
+  abertura, razaoSocial, fantasia, email, telefone, cep, bairro ,
+  complemento, logradouro, numero, municipio, uf : string;
+
+  cidCodigo: integer;
+  jDados, jEndereco: TJSONValue;
 
 begin
  if Msk_cnpj.Text = '' then
    GeraException('Não preenchido o CNPJ/CPF');
+  IdHTTP1 := TIdHTTP.Create(nil);
+
+  if Length(RetiraTodaMascara(Msk_cnpj.Text)) = 14 then
+  begin
+    try
+      PanelAguarde.Visible := True;
+      Application.ProcessMessages;
+      URL := 'https://api.plugnotas.com.br/cnpj/' + RetirarMascaraCNPJ_INSC(Msk_cnpj.Text);
+
+      Token := '3bfeffc6-4650-40f4-b555-1412c88a688b';
+
+      IdHTTP1.Request.CustomHeaders.AddValue('x-api-key', Token);
+      IdHTTP1.Request.CustomHeaders.AddValue('Accept', 'application/json');
+
+      ResponseContent := IdHTTP1.Get(URL);
+
+      jDados := TJSONObject.ParseJSONValue(ResponseContent);
+      jEndereco := TJSONObject(jDados).GetValue('endereco');
+
+
+      jDados.TryGetValue('abertura', abertura);
+      jDados.TryGetValue('razao_social', razaoSocial);
+      jDados.TryGetValue('fantasia', fantasia);
+      jDados.TryGetValue('email', email);
+      jDados.TryGetValue('telefone', telefone);
+      jDados.TryGetValue('complemento', complemento);
+
+      jEndereco.TryGetValue('uf', uf);
+      jEndereco.TryGetValue('numero', numero);
+      jEndereco.TryGetValue('logradouro', logradouro);
+      jEndereco.TryGetValue('bairro', bairro);
+      jEndereco.TryGetValue('municipio', municipio);
+      jEndereco.TryGetValue('cep', cep);
+
+
+
+      if DataCadastros.DsCliente.State = dsBrowse then
+         DataCadastros.DsCliente.Edit;
+
+      dbedCLI_DTNASCIMENTO.Field.Value := abertura;
+
+      DbeCli_razao.Field.Value := razaoSocial;
+      DbeCli_Fantasia.Field.Value := fantasia;
+      DBEmail.Field.Value := email;
+
+
+      fone1 := copy(telefone,1 ,pos('/', telefone) - 1);
+      if fone1 = '' then
+        fone1 := telefone;
+      if pos('/', telefone) > 0 then
+        fone2 := copy(telefone, pos('/', telefone) + 1, 20 );
+      if trim(fone1) <>'' then
+      begin
+        vfone := AnsiReplaceStr(fone1,'(','');
+        vfone := AnsiReplaceStr(vfone,')','');
+        vfone := AnsiReplaceStr(vfone,'-','');
+        vfone := AnsiReplaceStr(vfone,' ','');
+        if vfone.Length = 10 then
+          vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
+
+        DbeCli_fone.Field.Value := vfone;
+      end;
+      if trim(fone2) <>'' then
+      begin
+        vfone := AnsiReplaceStr(fone2,'(','');
+        vfone := AnsiReplaceStr(vfone,')','');
+        vfone := AnsiReplaceStr(vfone,'-','');
+        vfone := AnsiReplaceStr(vfone,' ','');
+        if vfone.Length = 10 then
+          vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
+        DbeCli_fax.Field.Value := vfone;
+      end;
+
+
+
+      DbeCliCep.Field.Value :=  AnsiReplaceStr(AnsiReplaceStr(cep,'-',''), '.', '');
+      DbeCLI_BAIRRO.Field.Value := bairro;
+      DbeCli_endere.Field.Value := logradouro + ', ' + numero + ' ' + complemento;
+      if municipio <> '' then
+      begin
+        cidCodigo := dbInicio.BuscaUmDadoSqlAsInteger(' SELECT CID_CODIGO FROM CID0000'+
+                ' WHERE CID_ESTADO = '+ QuotedStr(uf) +
+                ' AND CID_CIDADE = '+ QuotedStr(municipio)  );
+        if not ((cidCodigo = Null) or (cidCodigo = 0))    then
+        begin
+         if not (DataCadastros.CdsClientes.State  in dsEditModes) then
+           DataCadastros.CdsClientes.Edit;
+         DataCadastros.CdsClientesCLI_CIDADE.AsString  := municipio;
+         DataCadastros.CdsClientesCLI_UF.AsString      := uf;
+         DataCadastros.CdsClientesCID_CODIGO.AsInteger := cidCodigo;
+        end;
+      end;
+
+    except
+      on E: Exception do
+      begin
+        PanelAguarde.Visible := False;
+        showmessage('Falha na Consulta. Tente Novamente' + #13 + #10 + E.Message);
+      end;
+    end;
+
+    IdHTTP1.Free;
+    PanelAguarde.Visible := False;
+
+  end;
+
+ Exit;
 
  if Length(RetiraTodaMascara(Msk_cnpj.Text)) = 14 then
  begin
@@ -3452,6 +3578,8 @@ begin
      begin
       if DataCadastros.DsCliente.State = dsBrowse then
          DataCadastros.DsCliente.Edit;
+
+
       DbeCli_razao.Field.Value := RazaoSocial;
       if Fantasia = '********' then
         DbeCli_Fantasia.Field.Value := RazaoSocial

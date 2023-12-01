@@ -598,7 +598,6 @@ type
     DBePrd_minimo : TDBEdit;
     Label24 : TLabel;
     DbePrd_Maximo : TDBEdit;
-    GroupBox17 : TGroupBox;
     GroupBox3 : TGroupBox;
     Label88 : TLabel;
     DBtipoSPED : TDBEdit;
@@ -684,7 +683,6 @@ type
     AbrirArquivo1 : TMenuItem;
     N1 : TMenuItem;
     btnCadastroEnderecamento : TSpeedButton;
-    dbedtPRDE_REGISTRO : TDBEdit;
     Label68 : TLabel;
     SqlCdsEnderecamento : TSQLClientDataSet;
     SqlCdsEnderecamentoPRDE_REGISTRO : TIntegerField;
@@ -1024,7 +1022,6 @@ type
     DBEdit30 : TDBEdit;
     qItensFicha : TSQLQuery;
     DspItensFicha : TDataSetProvider;
-    cxGrid2 : TDBGrid;
     CdsItensFichaFTI_REGISTRO : TIntegerField;
     CdsItensFichaPRD_REFER : TStringField;
     CdsItensFichaPRD_REFER_ITENS : TStringField;
@@ -2215,6 +2212,7 @@ type
     cbFiltroAlmoxarifado: TComboBoxRw;
     Label331: TLabel;
     Label332: TLabel;
+<<<<<<< HEAD
     cbUtilizarRetorno: TCheckBox;
     CdsItensFichaFTI_UTILIZAR_RETORNO: TStringField;
     cxGrid1DBTableView1: TcxGridDBTableView;
@@ -2293,6 +2291,23 @@ type
     cxGrid1DBTableView2amx_Descri: TcxGridDBColumn;
     cxGrid1DBTableView2FTI_PERCENTUAL: TcxGridDBColumn;
     cxGrid1DBTableView2FTI_UTILIZAR_RETORNO: TcxGridDBColumn;
+=======
+    prdeRegistro: TEdit;
+    PageControl1: TPageControl;
+    TabSheet12: TTabSheet;
+    TabSheet13: TTabSheet;
+    cxGrid2: TDBGrid;
+    cdsEnderecos: TClientDataSet;
+    dsEnderecos: TDataSource;
+    DBGrid8: TDBGrid;
+    cdsEnderecosPRDE_REGISTRO: TIntegerField;
+    cdsEnderecosPRDE_ENDERECO: TStringField;
+    cdsEnderecosEMP_RAZAO: TStringField;
+    dspEnderecos: TDataSetProvider;
+    qEnderecos: TSQLQuery;
+    dsRegistroEndereco: TDataSource;
+    cbTipoOperacao: TComboBox;
+>>>>>>> versao_586
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2557,9 +2572,14 @@ type
     procedure cbApenasComEstoqueClick(Sender: TObject);
     procedure cbLoteVencidoClick(Sender: TObject);
     procedure cbFiltroAlmoxarifadoChange(Sender: TObject);
+<<<<<<< HEAD
     procedure cxGrid1DBTableView1DataControllerDetailExpanding(
       ADataController: TcxCustomDataController; ARecordIndex: Integer;
       var AAllow: Boolean);
+=======
+    procedure sgdbEnderecamentoSelect(Sender: TObject);
+    procedure sgdbEnderecamentoChange(Sender: TObject);
+>>>>>>> versao_586
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -2720,9 +2740,13 @@ begin
 //  CdsProdutos.close;
 //  SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
 //  CdsProdutos.Open;
-  // CdsProdutos.Refresh;
-  CdsProdutos.Close;
-  CdsProdutos.Open;
+  try
+     CdsProdutos.Refresh;
+  except
+    CdsProdutos.Close;
+    CdsProdutos.Open;
+    CdsProdutos.Locate('PRD_REFER', EdtPrd_Refer.Text, [] );
+  end;
 
   if eNotaEntrada then // para otimizar
   begin
@@ -2756,6 +2780,8 @@ begin
     if PctrlProdutos.ActivePageIndex = 2 then
       MostraEstoqueDetalhe;
   end;
+
+
 end;
 
 procedure TFormProduto.FormShow( Sender : tObject );
@@ -2866,6 +2892,9 @@ begin
       CdsProdutos.EnableControls;
       HabilitaBotoes;
       CarregaPrecoEmpresa( );
+      cdsProdutos.Cancel;
+      EdtPrd_Refer.Enabled := True;
+      EdtPrd_Refer.SetFocus;
     end;
 
   except
@@ -2999,6 +3028,8 @@ begin
         end;
       end;
       CdsProdutos.ApplyUpdates( - 1 );
+
+
       if eNotaEntrada then
       begin
         Self.ModalResult := mrOk;
@@ -3013,6 +3044,29 @@ begin
       CdsProdutos.Open;
       localizado := CdsProdutos.Locate( 'PRD_REFER', sReferTmp, [ ] );
 
+      if BuscaUmDadoSqlAsInteger('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA ' +
+                                 ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +
+                                 ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  ) > 0 then
+      begin
+        if sgdbEnderecamento.idRetorno = ''
+        then
+          ExecSQL('DELETE FROM PRD0000_ENDERECAMENTO_EMPRESA ' +
+                  ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) )
+        else
+          ExecSQL('UPDATE PRD0000_ENDERECAMENTO_EMPRESA SET PRDE_REGISTRO = ' + sgdbEnderecamento.idRetorno +
+                  ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) );
+      end
+      else
+      begin
+        ExecSQL('INSERT INTO PRD0000_ENDERECAMENTO_EMPRESA(PRD_REFER, EMP_CODIGO, PRDE_REGISTRO) ' +
+                ' VALUES(' + QuotedStr(CdsProdutosPRD_REFER.AsString) + ', ' +
+                             QuotedStr(dbInicio.EMP_CODIGO) + ',' +
+                             iif(sgdbEnderecamento.idRetorno = '', '0', sgdbEnderecamento.idRetorno)  +
+                         ')'
+                )
+      end;
+
+
       RecalculaIndicesGrade;
       MostraDados;
       HabilitaBotoes;
@@ -3021,7 +3075,17 @@ begin
 
       PctrlProdutos.ActivePage := Tbs_Produtos;
       PgCtrl_Produtos.ActivePage := TabSheet3; { preços }
-      DbePrd_Descri.Setfocus;
+//      DbePrd_Descri.Setfocus;
+
+      if CdsProdutos.State in dsEditModes then
+      begin
+        CdsProdutos.Post;
+        CdsProdutos.ApplyUpdates(0);
+      end;
+      EdtPrd_Refer.Enabled := True;
+      EdtPrd_Refer.SetFocus;
+
+
 
     End;
 
@@ -3102,7 +3166,8 @@ procedure TFormProduto.FormCloseQuery(
   var CanClose : Boolean );
   begin
     inherited;
-    verificaEdicao; // procedure local
+    if Bit_Gravar.Enabled then
+      verificaEdicao; // procedure local
 //    if eNotaEntrada and not CamposObrigatorios
 //    then
 //      CanClose := False;
@@ -3190,6 +3255,9 @@ begin
   if Assigned( ActiveControl ) then
   begin
 
+    if ( ActiveControl.Name = 'Bit_novo' ) then
+      Bit_novo.Click
+    Else
     if ( ActiveControl.Name = 'Bit_Cancelar' ) then
       Bit_Cancelar.Click
     Else
@@ -3198,6 +3266,7 @@ begin
 
         BuscaProduto;
         AtivaSqls;
+        DesabilitaBotoes;
       end
       else
         if CdsProdutos.State in [ dsInsert, dsEdit, dsBrowse ] then
@@ -3547,9 +3616,33 @@ begin
   CdsCompras.DisableControls;
   if ( not CdsProdutos.isEmpty ) then
   begin
-    sql := 'select t3.emp_codigo, t3.enf_emissao, t1.ENF_ORIGEM_MERCADORIA, ' + 't3.enf_notanumber,  t1.for_codigo,  t2.for_razao, ' + 't1.ENF_CUSTO as  enf_preco, ' + 'cast(cast(coalesce(t1.ENF_CUSTO * t1.enf_qtde,0) + coalesce(t1.enf_vlsubst,0) + ' + ' coalesce(t1.enf_it_vlipi,0) + coalesce(t1.enf_it_valfrete,0) + coalesce(t1.enf_it_vlseguro,0) + ' + ' coalesce(t1.enf_it_vldesp_aces,0)as numeric(18,4)) / t1.enf_qtde as numeric(18,4)) as custo_entrada,' + 't1.enf_qtde,  t1.enf_ipialiq, ' +
-      'cast(t1.enf_vlsubst / t1.enf_qtde as numeric(18,4)) as enf_vlsubst, ' + 'cast(t1.enf_it_valfrete / t1.enf_qtde as numeric(18,4)) as enf_it_valfrete, ' + 'cast(t1.enf_it_vldesp_aces / t1.enf_qtde as numeric(18,4)) as enf_it_vldesp_aces, ' + 't1.enf_icmsaliq, t1.enf_cfop, t1.ENF_IT_DESCTO, ' + 't2.for_fone,  t2.for_contato ' + ' from enf_it01 t1 ' + 'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
-      'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' + 'where ' + ' t3.ENF_INDUSTRIALIZACAO <> ''S'' ' + ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaCompras.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
+    sql := 'select t3.emp_codigo, t3.enf_emissao, t1.ENF_ORIGEM_MERCADORIA, ' +
+           't3.enf_notanumber,  t1.for_codigo,  t2.for_razao, ' +
+           't1.ENF_CUSTO as  enf_preco, ' +
+           'cast(cast(coalesce(t1.ENF_CUSTO * t1.enf_qtde,0) + coalesce(t1.enf_vlsubst,0) + ' +
+           ' coalesce(t1.enf_it_vlipi,0) + coalesce(t1.enf_it_valfrete,0) + coalesce(t1.enf_it_vlseguro,0) + ' +
+           ' coalesce(t1.enf_it_vldesp_aces,0)as numeric(18,4)) / t1.enf_qtde as numeric(18,4)) as custo_entrada,' +
+           't1.enf_qtde,  t1.enf_ipialiq, ' +
+           'cast(t1.enf_vlsubst / t1.enf_qtde as numeric(18,4)) as enf_vlsubst, ' +
+           'cast(t1.enf_it_valfrete / t1.enf_qtde as numeric(18,4)) as enf_it_valfrete, ' +
+           'cast(t1.enf_it_vldesp_aces / t1.enf_qtde as numeric(18,4)) as enf_it_vldesp_aces, ' +
+           't1.enf_icmsaliq, t1.enf_cfop, t1.ENF_IT_DESCTO, ' +
+           't2.for_fone,  t2.for_contato ' +
+           ' from enf_it01 t1 ' +
+           'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
+           'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' +
+           ' JOIN OPE0000 o ON o.OPE_CODIGO = t1.OPE_CODIGO ' +
+           'where ' + ' t3.ENF_INDUSTRIALIZACAO <> ''S'' ' ;
+    if cbTipoOperacao.ItemIndex = 0 then
+      sql := sql + ' AND o.OPE_TIPO_OPERACAO = ''C'' '
+    else
+    if cbTipoOperacao.ItemIndex = 1 then
+      sql := sql + ' AND o.OPE_TIPO_OPERACAO = ''O'' '
+    else
+    if cbTipoOperacao.ItemIndex = 2 then
+      sql := sql + ' AND o.OPE_TIPO_OPERACAO = ''D'' ';
+
+    sql := sql + ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaCompras.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
 
     if ( dtInicio.date > 0 ) and ( dtFim.date > 0 ) then
       sql := sql + ' and  t3.enf_emissao between ' + DateToSql( dtInicio.date ) + ' and ' + DateToSql( dtFim.date )
@@ -3694,6 +3787,25 @@ begin
     CdsArquivo.Open;
   end;
   CarregaPrecoEmpresa;
+
+  sgdbEnderecamento.idRetorno := dbInicio.BuscaUmDadoSqlAsString('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +  ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipBoard('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +  ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
+
+  prdeRegistro.Text := sgdbEnderecamento.idRetorno;
+  cdsEnderecos.Close;
+  qEnderecos.SQL.Text := 'SELECT pee.PRDE_REGISTRO, pe.PRDE_ENDERECO, E.EMP_RAZAO ' +
+                              ' FROM PRD0000_ENDERECAMENTO_EMPRESA pee ' +
+                              ' JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee.PRDE_REGISTRO) ' +
+                              ' JOIN EMP0000 e ON (e.EMP_CODIGO = pee.EMP_CODIGO ) ' +
+                              ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +
+                                ConcatSE( ' AND pee.', DBInicio.ExclusivoSql( 'ENDERECO_ESTOQUE' )) +
+                              ' ORDER BY pee.EMP_CODIGO, pe.PRDE_ENDERECO  ' ;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipBoard(qEnderecos.SQL.Text);
+
+  cdsEnderecos.Open;
+
 end;
 
 procedure TFormProduto.MostraFichaTecnica( pCond : Boolean );
@@ -3728,9 +3840,25 @@ begin
   CdsIndustrializacao.DisableControls;
   if ( not CdsProdutos.isEmpty ) then
   begin
-    sql := 'select t3.emp_codigo, t3.enf_emissao, ' + 't3.enf_notanumber,  t1.for_codigo,  t2.for_razao, ' + 't1.ENF_CUSTO as  enf_preco, ' + 'cast(cast(coalesce(t1.ENF_CUSTO * t1.enf_qtde,0) + coalesce(t1.enf_vlsubst,0) + ' + ' coalesce(t1.enf_it_vlipi,0) + coalesce(t1.enf_it_valfrete,0) + coalesce(t1.enf_it_vlseguro,0) + ' + ' coalesce(t1.enf_it_vldesp_aces,0)as numeric(18,4)) / t1.enf_qtde as numeric(18,4)) as custo_entrada,' + 't1.enf_qtde,  t1.enf_ipialiq, ' +
-      'cast(t1.enf_vlsubst / t1.enf_qtde as numeric(18,4)) as enf_vlsubst, ' + 'cast(t1.enf_it_valfrete / t1.enf_qtde as numeric(18,4)) as enf_it_valfrete, ' + 'cast(t1.enf_it_vldesp_aces / t1.enf_qtde as numeric(18,4)) as enf_it_vldesp_aces, ' + 't1.enf_icmsaliq, t1.enf_cfop, t1.ENF_IT_DESCTO, ' + 't2.for_fone,  t2.for_contato ' + ' from enf_it01 t1 ' + 'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
-      'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' + 'where ' + ' t3.ENF_INDUSTRIALIZACAO = ''S'' ' + ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaIndustrializacao.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
+    sql := 'select t3.emp_codigo, t3.enf_emissao, ' +
+           't3.enf_notanumber,  t1.for_codigo,  t2.for_razao, ' +
+           't1.ENF_CUSTO as  enf_preco, ' +
+           'cast(cast(coalesce(t1.ENF_CUSTO * t1.enf_qtde,0) + coalesce(t1.enf_vlsubst,0) + ' +
+           ' coalesce(t1.enf_it_vlipi,0) + coalesce(t1.enf_it_valfrete,0) + coalesce(t1.enf_it_vlseguro,0) + ' +
+           ' coalesce(t1.enf_it_vldesp_aces,0)as numeric(18,4)) / t1.enf_qtde as numeric(18,4)) as custo_entrada,' +
+           't1.enf_qtde,  t1.enf_ipialiq, ' +
+           'cast(t1.enf_vlsubst / t1.enf_qtde as numeric(18,4)) as enf_vlsubst, ' +
+           'cast(t1.enf_it_valfrete / t1.enf_qtde as numeric(18,4)) as enf_it_valfrete, ' +
+           'cast(t1.enf_it_vldesp_aces / t1.enf_qtde as numeric(18,4)) as enf_it_vldesp_aces, ' +
+           't1.enf_icmsaliq, t1.enf_cfop, t1.ENF_IT_DESCTO, ' +
+           't2.for_fone,  t2.for_contato ' +
+           ' from enf_it01 t1 ' +
+           ' JOIN OPE0000 o ON o.OPE_CODIGO = t1.OPE_CODIGO  ' +
+           'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
+           'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' +
+           'where ' + ' t3.ENF_INDUSTRIALIZACAO = ''S'' ' +
+           ' AND o.OPE_TIPO_OPERACAO <> ''C'' ' +
+           ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaIndustrializacao.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
 
     if ( dtInicioInd.date > 0 ) and ( dtFimInd.date > 0 ) then
       sql := sql + ' and  t3.enf_emissao between ' + DateToSql( dtInicioInd.date ) + ' and ' + DateToSql( dtFimInd.date )
@@ -3851,6 +3979,7 @@ begin
     verificaEdicao;
     BuscaItens;
     try
+       PctrlProdutos.ActivePageIndex := 0;   // em alguns casos a procedure verificaEdicao muda a página ativa para 1 ...
       if EdtPrd_Refer.Text <> '' then
       begin
         EdtRefer.Color := clWindow;
@@ -7361,6 +7490,22 @@ begin
   CadastrarNovaGrade;
 end;
 
+procedure TFormProduto.sgdbEnderecamentoChange(Sender: TObject);
+begin
+  inherited;
+  prdeRegistro.Text := sgdbEnderecamento.idRetorno;
+  if not ( CdsProdutos.State in dsEditModes ) then
+    CdsProdutos.Edit;
+end;
+
+procedure TFormProduto.sgdbEnderecamentoSelect(Sender: TObject);
+begin
+  inherited;
+  prdeRegistro.Text := sgdbEnderecamento.idRetorno;
+  if not ( CdsProdutos.State in dsEditModes ) then
+    CdsProdutos.Edit;
+end;
+
 procedure TFormProduto.sgDBLookupCombo1MenuPesquisaClick( Sender : tObject );
 var
   tcr : TFormFornecGrid;
@@ -7662,6 +7807,22 @@ begin
   end;
   // chkEnvase.Visible := DBInicio.Empresa.PMT_HABILITAR_MRP;
   chkEnvase.Visible := DBInicio.Empresa.PMT_HABILITA_ENVASE;
+  if dbInicio.Exclusivo('ENDERECO_ESTOQUE') then
+  begin
+    // sgdbEnderecamento.WherePersonalizado := 'WHERE' + dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+    // sgdbEnderecamento.LookupWhere := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+    // sgdbEnderecamento.CDS.Filtered := False;
+    // sgdbEnderecamento.CDS.Filter := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+    // sgdbEnderecamento.CDS.Filtered := True;
+
+    // nenhuma das opçoes acima funciona, funcionava, mas depois da atualização
+    // do delphi alguns componentes se tornaram instáveis
+
+    sgdbEnderecamento.FiltroTabela := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
+
+    sgdbEnderecamento.Refresh;
+
+  end;
 end;
 
 procedure TFormProduto.FormDestroy( Sender : tObject );

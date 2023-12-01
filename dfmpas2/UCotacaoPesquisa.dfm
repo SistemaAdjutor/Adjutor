@@ -700,10 +700,9 @@ inherited frmCotacaoPesquisa: TfrmCotacaoPesquisa
     Height = 370
     Align = alClient
     TabOrder = 1
-    LookAndFeel.Kind = lfOffice11
+    LookAndFeel.Kind = lfFlat
     LookAndFeel.NativeStyle = False
     LookAndFeel.ScrollbarMode = sbmClassic
-    ExplicitTop = 67
     object cxGrid1DBTableView1: TcxGridDBTableView
       PopupMenu = pmCotacaoItem
       Navigator.Buttons.CustomButtons = <>
@@ -762,6 +761,10 @@ inherited frmCotacaoPesquisa: TfrmCotacaoPesquisa
         DataBinding.FieldName = 'SET_DESCRICAO'
         Options.Editing = False
         Width = 52
+      end
+      object cxGrid1DBTableView1PCX_DESCRI: TcxGridDBColumn
+        Caption = 'Centro de Custo'
+        DataBinding.FieldName = 'PCX_DESCRI'
       end
       object cxGrid1DBTableView1COT_SOLICITANTE: TcxGridDBColumn
         Caption = 'Solicitante'
@@ -1281,6 +1284,10 @@ inherited frmCotacaoPesquisa: TfrmCotacaoPesquisa
       Origin = 'EMP_CODIGO'
       ProviderFlags = []
       Size = 3
+    end
+    object qCotacaoPCX_DESCRI: TStringField
+      FieldName = 'PCX_DESCRI'
+      Size = 25
     end
   end
   object qCotacaoItem: TFDQuery

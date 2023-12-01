@@ -665,6 +665,7 @@ type
     luso: TLabel;
     Label8: TLabel;
     Label52: TLabel;
+    chkFreteProporcional: TCheckBox;
 
     procedure CurrcodBancoExit(Sender: tObject);
     procedure BitConfirmaNotaClick(Sender: tObject);
@@ -816,6 +817,7 @@ type
     Procedure LeRegra ( pRegra:integer; cfopCodigo : string = '' );
     procedure NotaDeDevolucao;
     procedure ItensDaNotaDeDevolucao(var sNF_IPIALIQ, sNF_ICMSVALOR: Currency; sNF_SUBTRIBASE, sNF_ALIQSUBTRIB, sNF_VLSUBST: string)  ;
+    function RateioFrete: double;
   public
     procedure CarregarParametros;
     property TipoFaturamento: String Read sTipoFaturamento Write sTipoFaturamento;
@@ -992,7 +994,9 @@ begin
 end;
 
 procedure TFormFatPedido.CarregaTelaNF;
-var PedidoInfor: string;
+var
+  PedidoInfor, obsPedidoVenda, opvVenda: string;
+
 begin
      CurrNumNota.Text := StrZero(CurrNumNota.Text, 6);
      if sTipoFaturamento = 'S' then // pegar da empresa  NFSE a série
@@ -1068,9 +1072,15 @@ begin
       CdsNotaFiscalNF_OBSERVACAO.asstring := CdsNotaFiscalNF_OBSERVACAO.asstring + #13#10+  PedidoInfor +'. ';
    end;
 
-   CdsNotaFiscalNF_OBSERVACAO.AsString := CdsNotaFiscalNF_OBSERVACAO.AsString + #13#10 + DBInicio.Empresa.PMT_MENSAGEM1 + ' ' + DBInicio.Empresa.PMT_MENSAGEM2 + ' ' + DBInicio.Empresa.PMT_MENSAGEM3;
+   opvVenda := dbInicio.BuscaUmDadoSqlAsString('SELECT OPV_VENDA FROM OPV0000 WHERE  OPV_CODIGO = '+QuotedStr(CdsPedidosOPV_CODIGO.AsString  ));
+   if opvVenda = 'S' then
+   begin
+       obsPedidoVenda := #13 + #10 + dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_MENSAGEM_VENDAS FROM PRMT0001 WHERE  EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO  )) + ' - ';
+   end
+   else
+      obsPedidoVenda := '';
+   CdsNotaFiscalNF_OBSERVACAO.AsString := obsPedidoVenda  + CdsNotaFiscalNF_OBSERVACAO.AsString + #13#10 + DBInicio.Empresa.PMT_MENSAGEM1 + ' ' + DBInicio.Empresa.PMT_MENSAGEM2 + ' ' + DBInicio.Empresa.PMT_MENSAGEM3;
    sObsNota := CdsNotaFiscalNF_OBSERVACAO.AsString;
-
 end;
 
 procedure TFormFatPedido.ChamaTelaQtdeFaturar;
@@ -1715,7 +1725,7 @@ begin
     qItemPedido.Sql.Add('       P2.PRD_PCUSTO,');
     qItemPedido.Sql.Add('       P2.PRD_CUSTOIPI,');
     qItemPedido.Sql.Add('       P2.PRD_PMEDIO,');
-    qItemPedido.Sql.Add('       p2.PRD_ORIGEM,');
+    qItemPedido.Sql.Add('       p1.PRD_ORIGEM,');
     qItemPedido.Sql.Add('       P2.IPI_CODIGO,');
     qItemPedido.Sql.Add('       p2.prd_codigo as prd_produto,');
     qItemPedido.Sql.Add('       P2.PRD_PESOKG,');
@@ -1791,7 +1801,7 @@ begin
 
     qItemPedido.SQL.Add(' AND ((PRF_QTDE > PRF_QTDEFAT and coalesce(PRF_REGISTRO_VINCULADO,0) = 0)  ');
      qItemPedido.SQL.Add(' or ( PRF_REGISTRO_VINCULADO > 0 and   (SELECT cast(COUNT(1) as integer) FROM PED_IT01 it2 WHERE it2.PRF_REGISTRO = p1.PRF_REGISTRO_VINCULADO and it2.PRF_QTDE > it2.PRF_QTDEFAT) > 0)) ');
-    qItemPedido.Sql.Add(' order by P1.PED_CODIGO,P1.PRF_REGISTRO');
+    qItemPedido.Sql.Add(' order by P1.PED_CODIGO,P1.PRF_SEQUENCIA');
 
     if dbInicio.IsDesenvolvimento then
       CopyToClipBoard(qItemPedido.SQL.Text);
@@ -2105,6 +2115,7 @@ begin
 
                end;
               FinalizarTratamentoTermico;
+
               CdsPedidos.applyupdates(0);
               CdsItemPedido.EnableControls;
               CdsItemPedido.applyupdates(0);
@@ -3657,7 +3668,7 @@ begin
      CdsNotaFiscalNF_TOT_PROD.AsFloat := Uteis.RoundTo( wValorProd , -2 );
      total := wValorProd +
               wTotalIPITotalNF +
-              CdsNotaFiscalNF_VLFRETE.AsFloat +
+              RateioFrete + // CdsNotaFiscalNF_VLFRETE.AsFloat +
               CdsNotaFiscalNF_VLSEGURO.AsFloat +
               CdsNotaFiscalNF_DESP_ACES.AsFloat +
               wTotalValorSubs - CdsPedidosPED_DESCTOVL.AsFloat;
@@ -3836,9 +3847,10 @@ begin
       NotaDeDevolucao;
    end;
 
+   CdsNotaFiscalNF_VLFRETE.AsFloat := RateioFrete;
 
-     CdsNotaFiscal.Post;
-     CdsNotaFiscal.ApplyUpdates(0);
+   CdsNotaFiscal.Post;
+   CdsNotaFiscal.ApplyUpdates(0);
 end;
 
 
@@ -3860,7 +3872,46 @@ end;
          end;
     end;
 ///
-    procedure TFormFatPedido.RateioFrete_despesas;
+
+
+function  TFormFatPedido.RateioFrete: double;
+var
+  rt, wRateioFrete, valorTotal, valorTotalProd: double;
+begin
+
+  valorTotalProd := 0;
+
+  CdsItemPedido.First;
+  while not CdsItemPedido.Eof do // acumuladores
+  begin
+    valorTotalProd := valorTotalProd + (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat * CdsItemPedidoPRF_PRECO.AsFloat);
+    CdsItemPedido.Next;
+  end;
+  if chkFreteProporcional.Checked then
+    valorTotal := CdsPedidosPED_VLTOTAL_LIQ.AsFloat
+  else
+    valorTotal := valorTotalProd;
+
+
+
+  CdsItemPedido.First;
+  rt := 0;
+  wRateioFrete := 0;
+  while not CdsItemPedido.Eof do // acumuladores
+  begin
+    rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ valorTotal {CdsPedidosPED_VLTOTAL_LIQ.AsFloat}  ) ;
+    if (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat > 0) then // Frete
+    begin
+      wRateioFrete := wRateioFrete + Uteis.RoundTo(rt * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
+    end;
+
+    CdsItemPedido.Next;
+
+  end;
+  result := wRateioFrete;
+end;
+
+procedure TFormFatPedido.RateioFrete_despesas;
     begin
            rRateioFreteDiferenca := 0;
            rRateioDespesaDiferenca := 0;
@@ -3874,7 +3925,10 @@ end;
                 (CdsItemPedido.FieldByName('PRF_REGISTRO_VINCULADO').AsInteger = 0 ) then // não é itens do kit
                   if CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat>0 then
                   begin
+
                       rt1 := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ wValorProdGeral) ;
+
+
                       if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then // Frete
                       begin
                            rRateioTmp := Uteis.RoundTo(rt1 * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
@@ -4104,7 +4158,7 @@ var
 begin
      IniciaVar ;
      ObtemTotalNota; // loop item
-     wSomaDespesas := CdsNotaFiscalNF_VLFRETE.AsFloat + CdsNotaFiscalNF_VLSEGURO.AsFloat + CdsNotaFiscalNF_DESP_ACES.AsFloat;
+     wSomaDespesas := RateioFrete {CdsNotaFiscalNF_VLFRETE.AsFloat} + CdsNotaFiscalNF_VLSEGURO.AsFloat + CdsNotaFiscalNF_DESP_ACES.AsFloat;
      RateioFrete_despesas; // loop item
 
      iRegCfopPrincipal := qOperFiscOPE_CODIGO.AsString;
@@ -4350,7 +4404,9 @@ begin
 										//verifica se haverá diferenca do rateio do frete despesa e seguro
 										//Frete
 
-										rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / wValorProdGeral);
+                    if chkFreteProporcional.Checked
+                      then rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  )
+                      else rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / wValorProdGeral );
 										if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then
 										begin
 												 rRateioTmp := rRateioTmp + Uteis.RoundTo(rt1 * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);

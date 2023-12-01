@@ -1465,6 +1465,10 @@ inherited FormProduto: TFormProduto
         object tsProcesso: TTabSheet
           Caption = 'Engenharia de processo'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object dbProcessos: TDBGrid
             Left = 6
             Top = 0
@@ -1757,6 +1761,10 @@ inherited FormProduto: TFormProduto
         object tsCamposTecnicos: TTabSheet
           Caption = 'Campos t'#233'cnicos'
           ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object BIT_MOLA_GRAVAR: TBitBtn
             Left = 846
             Top = 430
@@ -1829,6 +1837,10 @@ inherited FormProduto: TFormProduto
             TabOrder = 2
             object tsCampos1: TTabSheet
               Caption = 'Mat'#233'ria prima'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label148: TLabel
                 Left = 3
                 Top = 77
@@ -2261,6 +2273,10 @@ inherited FormProduto: TFormProduto
             object tsCampos2: TTabSheet
               Caption = 'Dimensionais'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label174: TLabel
                 Left = 3
                 Top = 3
@@ -3828,6 +3844,10 @@ inherited FormProduto: TFormProduto
             object tsCampos3: TTabSheet
               Caption = 'Caracter'#237'sticas'
               ImageIndex = 2
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label223: TLabel
                 Left = 241
                 Top = 1
@@ -4799,6 +4819,10 @@ inherited FormProduto: TFormProduto
             object tsCampos4: TTabSheet
               Caption = 'Informa'#231#245'es Diversas'
               ImageIndex = 3
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object Label267: TLabel
                 Left = 2
                 Top = 8
@@ -5105,6 +5129,10 @@ inherited FormProduto: TFormProduto
         object tsQualidade: TTabSheet
           Caption = 'Qualidade'
           ImageIndex = 3
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label323: TLabel
             Left = 35
             Top = 16
@@ -6055,6 +6083,10 @@ inherited FormProduto: TFormProduto
         OnChange = PgCtrl_ProdutosChange
         object TbS_Caract: TTabSheet
           Caption = 'Caracter'#237'sticas'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object RichDoc: TRichEdit
             Left = 0
             Top = 0
@@ -6099,6 +6131,10 @@ inherited FormProduto: TFormProduto
         object TabSheet3: TTabSheet
           Caption = 'Pre'#231'os'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Panel16: TPanel
             Left = 0
             Top = 0
@@ -6685,6 +6721,10 @@ inherited FormProduto: TFormProduto
         object TabSheet1: TTabSheet
           Caption = 'Custos'
           ImageIndex = 4
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox15: TGroupBox
             Left = 0
             Top = 0
@@ -6883,6 +6923,10 @@ inherited FormProduto: TFormProduto
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Panel7: TPanel
             Left = 0
             Top = 0
@@ -7224,6 +7268,10 @@ inherited FormProduto: TFormProduto
         end
         object TbS_FatorConv: TTabSheet
           Caption = 'Fator de Convers'#227'o'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label17: TLabel
             Left = 5
             Top = 8
@@ -7445,6 +7493,10 @@ inherited FormProduto: TFormProduto
         end
         object TbS_Variacoes: TTabSheet
           Caption = 'Varia'#231#227'o'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label28: TLabel
             Left = 22
             Top = 47
@@ -7833,6 +7885,10 @@ inherited FormProduto: TFormProduto
         object tsPrecos: TTabSheet
           Caption = 'Tabelas'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Panel6: TPanel
             Left = 0
             Top = 0
@@ -8359,12 +8415,16 @@ inherited FormProduto: TFormProduto
       object PageControl2: TPageControl
         Left = 3
         Top = 157
-        Width = 1065
+        Width = 1059
         Height = 142
-        ActivePage = TabSheet9
+        ActivePage = TabSheet10
         TabOrder = 1
         object TabSheet9: TTabSheet
           Caption = 'Organiza'#231#227'o do Produto'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox21: TGroupBox
             Left = 0
             Top = 0
@@ -8567,7 +8627,7 @@ inherited FormProduto: TFormProduto
           object GroupBox22: TGroupBox
             Left = 556
             Top = 0
-            Width = 501
+            Width = 495
             Height = 113
             Align = alClient
             TabOrder = 1
@@ -9266,6 +9326,10 @@ inherited FormProduto: TFormProduto
         object tsServico: TTabSheet
           Caption = 'Servi'#231'os'
           ImageIndex = 6
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label141: TLabel
             Left = 11
             Top = 11
@@ -9375,6 +9439,10 @@ inherited FormProduto: TFormProduto
         object TabSheet11: TTabSheet
           Caption = 'Estoque'
           ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label18: TLabel
             Left = 5
             Top = 4
@@ -9447,94 +9515,21 @@ inherited FormProduto: TFormProduto
             MaxLength = 15
             TabOrder = 1
           end
-          object GroupBox17: TGroupBox
-            Left = 0
-            Top = 22
-            Width = 1057
-            Height = 91
-            Align = alBottom
-            Caption = 'Estoque'
-            TabOrder = 3
-            object cxGrid2: TDBGrid
-              Left = 2
-              Top = 16
-              Width = 1053
-              Height = 73
-              Align = alClient
-              DataSource = DsSaldos
-              TabOrder = 0
-              TitleFont.Charset = ANSI_CHARSET
-              TitleFont.Color = clWindowText
-              TitleFont.Height = -11
-              TitleFont.Name = 'Arial'
-              TitleFont.Style = []
-              Columns = <
-                item
-                  Expanded = False
-                  FieldName = 'AMX_CODIGO_RET'
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlack
-                  Font.Height = -11
-                  Font.Name = 'Arial'
-                  Font.Style = []
-                  Title.Alignment = taCenter
-                  Title.Caption = 'C'#243'digo'
-                  Width = 74
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'AMX_DESCRI_RET'
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlack
-                  Font.Height = -11
-                  Font.Name = 'Arial'
-                  Font.Style = []
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Nome do Almoxarifado'
-                  Width = 728
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'AMX_SALDO_RET'
-                  Font.Charset = ANSI_CHARSET
-                  Font.Color = clBlack
-                  Font.Height = -11
-                  Font.Name = 'Arial'
-                  Font.Style = []
-                  Title.Alignment = taCenter
-                  Title.Caption = 'Saldo'
-                  Width = 119
-                  Visible = True
-                end>
-            end
-          end
-          object dbedtPRDE_REGISTRO: TDBEdit
-            Left = 458
-            Top = 0
-            Width = 51
-            Height = 22
-            DataField = 'PRDE_REGISTRO'
-            DataSource = DsProdutos
-            TabOrder = 2
-          end
           object sgdbEnderecamento: TSgDbSearchCombo
-            Left = 515
+            Left = 516
             Top = 0
             Width = 206
             Height = 22
-            TabOrder = 4
+            TabOrder = 2
+            OnChange = sgdbEnderecamentoChange
             CharCase = ecUpperCase
-            LookupSelect = 'PRDE_REGISTRO, PRDE_ENDERECO'
+            LookupSelect = 'PRDE_REGISTRO, PRDE_ENDERECO, EMP_CODIGO'
             LookupOrderBy = 'PRDE_ENDERECO'
             LookupTable = 'PRD0000_ENDERECAMENTO'
             LookupDispl = 'PRDE_ENDERECO'
-            OnSelect = PesqCNAESelect
+            OnSelect = sgdbEnderecamentoSelect
             GridAutoSize = False
             LookupSource = qRegistroEndereco
-            DataField = 'PRDE_REGISTRO'
-            DataSource = DsProdutos
             LookupKeyField = 'PRDE_REGISTRO'
             ShowButton = True
             AutoF8WinTitulo = 'Endere'#231'amento'
@@ -9547,14 +9542,137 @@ inherited FormProduto: TFormProduto
             SelectWithDoubleClick = False
             LimparCampoAoSair = True
           end
+          object prdeRegistro: TEdit
+            Left = 458
+            Top = 0
+            Width = 52
+            Height = 22
+            TabOrder = 3
+            Text = 'prdeRegistro'
+          end
+          object PageControl1: TPageControl
+            Left = 0
+            Top = 28
+            Width = 1051
+            Height = 85
+            ActivePage = TabSheet12
+            Align = alBottom
+            TabOrder = 4
+            object TabSheet12: TTabSheet
+              Caption = 'Estoque'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
+              object cxGrid2: TDBGrid
+                Left = 0
+                Top = 0
+                Width = 1043
+                Height = 56
+                Align = alClient
+                DataSource = DsSaldos
+                TabOrder = 0
+                TitleFont.Charset = ANSI_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'Arial'
+                TitleFont.Style = []
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'AMX_CODIGO_RET'
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Arial'
+                    Font.Style = []
+                    Title.Alignment = taCenter
+                    Title.Caption = 'C'#243'digo'
+                    Width = 74
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'AMX_DESCRI_RET'
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Arial'
+                    Font.Style = []
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Nome do Almoxarifado'
+                    Width = 728
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'AMX_SALDO_RET'
+                    Font.Charset = ANSI_CHARSET
+                    Font.Color = clBlack
+                    Font.Height = -11
+                    Font.Name = 'Arial'
+                    Font.Style = []
+                    Title.Alignment = taCenter
+                    Title.Caption = 'Saldo'
+                    Width = 119
+                    Visible = True
+                  end>
+              end
+            end
+            object TabSheet13: TTabSheet
+              Caption = 'Endere'#231'os'
+              ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
+              object DBGrid8: TDBGrid
+                Left = 0
+                Top = 0
+                Width = 1043
+                Height = 56
+                Align = alClient
+                DataSource = dsEnderecos
+                TabOrder = 0
+                TitleFont.Charset = ANSI_CHARSET
+                TitleFont.Color = clWindowText
+                TitleFont.Height = -11
+                TitleFont.Name = 'Arial'
+                TitleFont.Style = []
+                Columns = <
+                  item
+                    Expanded = False
+                    FieldName = 'PRDE_REGISTRO'
+                    Title.Caption = 'C'#243'digo'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'PRDE_ENDERECO'
+                    Title.Caption = 'Endere'#231'o'
+                    Visible = True
+                  end
+                  item
+                    Expanded = False
+                    FieldName = 'EMP_RAZAO'
+                    Title.Caption = 'Empresa'
+                    Visible = True
+                  end>
+              end
+            end
+          end
         end
         object TabSheet2: TTabSheet
           Caption = 'C'#243'digo Original / Cliente'
           ImageIndex = 3
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object grCodCli: TJvDBGrid
             Left = 0
             Top = 0
-            Width = 1057
+            Width = 1051
             Height = 113
             Align = alClient
             DataSource = DsCodigoOriginal
@@ -9615,6 +9733,10 @@ inherited FormProduto: TFormProduto
         object TabSheet7: TTabSheet
           Caption = 'Produto Especifico'
           ImageIndex = 4
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label113: TLabel
             Left = 56
             Top = 55
@@ -9688,6 +9810,10 @@ inherited FormProduto: TFormProduto
         object tsTratamentoTermico: TTabSheet
           Caption = 'Tratamento t'#233'rmico'
           ImageIndex = 5
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Label131: TLabel
             Left = 41
             Top = 37
@@ -10056,6 +10182,10 @@ inherited FormProduto: TFormProduto
     object Tbs_Detalhe: TTabSheet
       Caption = 'Produ'#231#227'o'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox10: TGroupBox
         Left = 0
         Top = 0
@@ -10171,6 +10301,10 @@ inherited FormProduto: TFormProduto
       Caption = 'Grade'
       ImageIndex = 3
       OnShow = TabGradeShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label110: TLabel
         Left = 695
         Top = 46
@@ -10643,13 +10777,13 @@ inherited FormProduto: TFormProduto
         end
         object Label146: TLabel
           Left = 29
-          Top = 19
+          Top = 18
           Width = 43
           Height = 14
           Caption = 'Emiss'#227'o:'
         end
         object btncompras: TBitBtn
-          Left = 457
+          Left = 604
           Top = 14
           Width = 99
           Height = 24
@@ -10797,12 +10931,29 @@ inherited FormProduto: TFormProduto
           TabOrder = 3
           OnClick = chkMultiempresaComprasClick
         end
+        object cbTipoOperacao: TComboBox
+          Left = 426
+          Top = 15
+          Width = 161
+          Height = 22
+          ItemIndex = 0
+          TabOrder = 4
+          Text = 'Compra'
+          Items.Strings = (
+            'Compra'
+            'Outra / Importa'#231#227'o'
+            'Devolu'#231#227'o')
+        end
       end
     end
     object TabSheet8: TTabSheet
       Caption = 'Industrializa'#231#227'o'
       ImageIndex = 9
       OnShow = TabSheet8Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox20: TGroupBox
         Left = 0
         Top = 0
@@ -11125,6 +11276,10 @@ inherited FormProduto: TFormProduto
     object tsVendas: TTabSheet
       Caption = 'Vendas'
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox18: TGroupBox
         Left = 0
         Top = 0
@@ -11462,6 +11617,10 @@ inherited FormProduto: TFormProduto
     object TabSheet6: TTabSheet
       Caption = 'Arquivos'
       ImageIndex = 6
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox9: TGroupBox
         Left = 0
         Top = 0
@@ -11587,6 +11746,10 @@ inherited FormProduto: TFormProduto
     object Lotes: TTabSheet
       Caption = 'Lotes'
       ImageIndex = 7
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbgrdLote: TDBGrid
         Left = 0
         Top = 33
@@ -12197,6 +12360,10 @@ inherited FormProduto: TFormProduto
       Caption = 'Usado em'
       ImageIndex = 8
       OnEnter = tsMPusadoEnter
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pUsadoem: TPanel
         Left = 0
         Top = 0
@@ -13627,8 +13794,8 @@ inherited FormProduto: TFormProduto
   end
   object DataSource1: TDataSource [27]
     DataSet = SqlProdutos
-    Left = 2078
-    Top = 580
+    Left = 2190
+    Top = 564
   end
   object ppDBPipeline1: TppDBPipeline [28]
     DataSource = DsRelProduto
@@ -21420,6 +21587,7 @@ inherited FormProduto: TFormProduto
       Size = 60
     end
   end
+<<<<<<< HEAD
   object qItensFicha2: TSQLQuery
     MaxBlobSize = -1
     Params = <>
@@ -21679,5 +21847,52 @@ inherited FormProduto: TFormProduto
     DataSet = cdsItensFicha2
     Left = 1889
     Top = 221
+=======
+  object cdsEnderecos: TClientDataSet
+    Aggregates = <>
+    PacketRecords = 6
+    Params = <>
+    ProviderName = 'dspEnderecos'
+    AfterInsert = CdsProdutosAfterInsert
+    BeforeEdit = CdsProdutosBeforeEdit
+    AfterPost = CdsProdutosAfterPost
+    AfterCancel = CdsProdutosAfterCancel
+    AfterScroll = CdsProdutosAfterScroll
+    OnCalcFields = CdsProdutosCalcFields
+    OnNewRecord = CdsProdutosNewRecord
+    Left = 1952
+    Top = 373
+    object cdsEnderecosPRDE_REGISTRO: TIntegerField
+      FieldName = 'PRDE_REGISTRO'
+    end
+    object cdsEnderecosPRDE_ENDERECO: TStringField
+      FieldName = 'PRDE_ENDERECO'
+      Size = 30
+    end
+    object cdsEnderecosEMP_RAZAO: TStringField
+      FieldName = 'EMP_RAZAO'
+      Size = 70
+    end
+  end
+  object dsEnderecos: TDataSource
+    DataSet = cdsEnderecos
+    Left = 1952
+    Top = 429
+  end
+  object dspEnderecos: TDataSetProvider
+    DataSet = qEnderecos
+    Left = 1948
+    Top = 327
+  end
+  object qEnderecos: TSQLQuery
+    Params = <>
+    Left = 1948
+    Top = 279
+  end
+  object dsRegistroEndereco: TDataSource
+    DataSet = qRegistroEndereco
+    Left = 2160
+    Top = 188
+>>>>>>> versao_586
   end
 end

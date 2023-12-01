@@ -278,10 +278,6 @@ inherited FormParametros: TFormParametros
     object TbConverte: TTabSheet
       Caption = 'Convers'#227'o'
       ImageIndex = 10
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox13: TGroupBox
         Left = 1
         Top = 2
@@ -497,14 +493,12 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 8
+      PageIndex = 12
       TabOrder = 0
       object TPage
         Left = 0
         Top = 0
         Caption = 'Or'#195#167'amento'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object POrcaIndustrial: TPanel
           Left = 984
           Top = 56
@@ -518,8 +512,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Global'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PGlobal: TPanel
           Left = 0
           Top = 0
@@ -848,8 +840,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Estoque'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PEstoque: TPanel
           Left = 0
           Top = 0
@@ -1199,8 +1189,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Financeiro'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PFinanceiro: TPanel
           Left = 0
           Top = 0
@@ -1218,10 +1206,6 @@ inherited FormParametros: TFormParametros
             TabOrder = 0
             object tsFinanceiro: TTabSheet
               Caption = 'Financeiro'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label19: TLabel
                 Left = 413
                 Top = 36
@@ -1620,10 +1604,6 @@ inherited FormParametros: TFormParametros
             object tsTabelaPreco: TTabSheet
               Caption = 'Tabelas de Pre'#231'os'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox32: TGroupBox
                 Left = 0
                 Top = 0
@@ -2043,8 +2023,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Pedido'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PPedido: TPanel
           Left = 0
           Top = 0
@@ -2063,10 +2041,6 @@ inherited FormParametros: TFormParametros
             object TabSheet1: TTabSheet
               Caption = 'Principal'
               OnShow = TabSheet1Show
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label610: TLabel
                 Left = 12
                 Top = 42
@@ -2618,10 +2592,6 @@ inherited FormParametros: TFormParametros
             object TabSheet2: TTabSheet
               Caption = 'Mensagens'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object grp1: TGroupBox
                 Left = 0
                 Top = 0
@@ -2665,10 +2635,6 @@ inherited FormParametros: TFormParametros
             object TabSheet3: TTabSheet
               Caption = 'Item do Pedido'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label8: TLabel
                 Left = 10
                 Top = 183
@@ -2954,8 +2920,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Producao'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PProducao: TPanel
           Left = 0
           Top = 0
@@ -2973,10 +2937,6 @@ inherited FormParametros: TFormParametros
             TabOrder = 0
             object tsPCPOld: TTabSheet
               Caption = 'PCP Old'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox7: TGroupBox
                 Left = 0
                 Top = 0
@@ -3453,10 +3413,6 @@ inherited FormParametros: TFormParametros
             object tsPcpIndustrial: TTabSheet
               Caption = 'Or'#231'amento Industrial'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object LCAMINHO: TLabel
                 Left = 18
                 Top = 80
@@ -3581,10 +3537,6 @@ inherited FormParametros: TFormParametros
             object tsPCPNew: TTabSheet
               Caption = 'PCP New'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label660: TLabel
                 Left = 459
                 Top = 130
@@ -4079,8 +4031,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Produto'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PProduto: TPanel
           Left = 0
           Top = 0
@@ -4395,8 +4345,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'OrdemCompra'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object POrdemCompra: TPanel
           Left = 0
           Top = 0
@@ -4642,8 +4590,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Sintegra'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PSintegra: TPanel
           Left = 0
           Top = 0
@@ -4894,8 +4840,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Expedicao'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PEXPEDICAO: TPanel
           Left = 0
           Top = 0
@@ -4938,8 +4882,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Faturamento'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PFaturamento: TPanel
           Left = 0
           Top = 0
@@ -5148,8 +5090,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'NotaFiscal'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PNotaFiscal: TPanel
           Left = 0
           Top = 0
@@ -5162,15 +5102,11 @@ inherited FormParametros: TFormParametros
             Top = 1
             Width = 765
             Height = 507
-            ActivePage = TabSheet4
+            ActivePage = tsEntrada
             Align = alClient
             TabOrder = 0
             object tsEntrada: TTabSheet
               Caption = 'Entrada'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label616: TLabel
                 Left = 12
                 Top = 12
@@ -5261,14 +5197,25 @@ inherited FormParametros: TFormParametros
                 TabOrder = 5
                 OnExit = DBEdit16Exit
               end
+              object DBCheckBox97: TDBCheckBox
+                Left = 12
+                Top = 122
+                Width = 369
+                Height = 17
+                Hint = 'Produtos que controlam lote v'#227'o obrigar a vincula'#231#227'o do lote'
+                Caption = 'Obrigat'#243'rio informar o Lote na Entrada da Nota Fiscal'
+                DataField = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
+                DataSource = DataCadastros1.DsParametros
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 6
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
             end
             object tsSaida: TTabSheet
               Caption = 'Sa'#237'da'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label13: TLabel
                 Left = 10
                 Top = 14
@@ -5283,27 +5230,6 @@ inherited FormParametros: TFormParametros
                 Height = 14
                 Caption = 'Marca Padr'#227'o na N.F.:'
               end
-              object Label12: TLabel
-                Left = 8
-                Top = 36
-                Width = 101
-                Height = 14
-                Caption = 'Mensagem Padr'#227'o 1:'
-              end
-              object Label14: TLabel
-                Left = 6
-                Top = 61
-                Width = 101
-                Height = 14
-                Caption = 'Mensagem Padr'#227'o 2:'
-              end
-              object Label627: TLabel
-                Left = 6
-                Top = 84
-                Width = 101
-                Height = 14
-                Caption = 'Mensagem Padr'#227'o 3:'
-              end
               object Label672: TLabel
                 Left = 296
                 Top = 12
@@ -5313,7 +5239,7 @@ inherited FormParametros: TFormParametros
               end
               object Label_669: TLabel
                 Left = 10
-                Top = 371
+                Top = 401
                 Width = 101
                 Height = 14
                 Caption = 'Descri'#231#227'o 99 outros:'
@@ -5337,57 +5263,27 @@ inherited FormParametros: TFormParametros
                 DataSource = DataCadastros1.DsParametros
                 TabOrder = 1
               end
-              object DBEdtPMT_MENSAGEM1: TDBEdit
-                Left = 111
-                Top = 32
-                Width = 637
-                Height = 22
-                CharCase = ecUpperCase
-                DataField = 'PMT_MENSAGEM1'
-                DataSource = DataCadastros1.DsParametros
-                TabOrder = 2
-              end
-              object DBEdtPMT_MENSAGEM2: TDBEdit
-                Left = 111
-                Top = 56
-                Width = 637
-                Height = 22
-                CharCase = ecUpperCase
-                DataField = 'PMT_MENSAGEM2'
-                DataSource = DataCadastros1.DsParametros
-                TabOrder = 3
-              end
-              object DBEdtPMT_MENSAGEM3: TDBEdit
-                Left = 111
-                Top = 81
-                Width = 637
-                Height = 22
-                CharCase = ecUpperCase
-                DataField = 'PMT_MENSAGEM3'
-                DataSource = DataCadastros1.DsParametros
-                TabOrder = 4
-              end
               object DBCheckBox19: TDBCheckBox
                 Left = 111
-                Top = 122
+                Top = 177
                 Width = 173
                 Height = 17
                 Caption = 'Imprimir Varia'#231#227'o na Nota Fiscal'
                 DataField = 'PMT_VAR_NOTA'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 5
+                TabOrder = 2
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object DBCheckBox11: TDBCheckBox
                 Left = 111
-                Top = 106
+                Top = 161
                 Width = 162
                 Height = 17
                 Caption = 'Imprimir Complemento na N.F.'
                 DataField = 'PMT_COMPLTO_NF'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 6
+                TabOrder = 3
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
@@ -5399,23 +5295,23 @@ inherited FormParametros: TFormParametros
                 CharCase = ecUpperCase
                 DataField = 'PMT_NF_ESPECIE'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 7
+                TabOrder = 4
               end
               object DBCheckBox50: TDBCheckBox
                 Left = 111
-                Top = 153
+                Top = 208
                 Width = 369
                 Height = 17
                 Caption = 'Tributar Impostos Aproximados pelo imposto da empresa'
                 DataField = 'PMT_TRIB_NF'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 8
+                TabOrder = 5
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object DBCheckBox29: TDBCheckBox
                 Left = 111
-                Top = 138
+                Top = 193
                 Width = 369
                 Height = 17
                 Caption = 
@@ -5423,13 +5319,13 @@ inherited FormParametros: TFormParametros
                   'iscal'
                 DataField = 'PMT_COMP_ITEM_PEDIDO_IT_NF'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 9
+                TabOrder = 6
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object DBCheckBox80: TDBCheckBox
                 Left = 111
-                Top = 168
+                Top = 223
                 Width = 369
                 Height = 17
                 Hint = 
@@ -5442,13 +5338,13 @@ inherited FormParametros: TFormParametros
                 DataSource = DataCadastros1.DsParametros
                 ParentShowHint = False
                 ShowHint = True
-                TabOrder = 10
+                TabOrder = 7
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object DBCheckBox83: TDBCheckBox
                 Left = 111
-                Top = 185
+                Top = 240
                 Width = 369
                 Height = 17
                 Hint = 
@@ -5459,13 +5355,13 @@ inherited FormParametros: TFormParametros
                 DataSource = DataCadastros1.DsParametros
                 ParentShowHint = False
                 ShowHint = True
-                TabOrder = 11
+                TabOrder = 8
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object dbrgrpValorAproximado: TDBRadioGroup
                 Left = 469
-                Top = 343
+                Top = 373
                 Width = 238
                 Height = 81
                 Caption = 'Valor Aproximado dos Tributos - NFe'
@@ -5474,20 +5370,20 @@ inherited FormParametros: TFormParametros
                 Items.Strings = (
                   'Todos'
                   'Apenas Consumidor Final')
-                TabOrder = 12
+                TabOrder = 9
                 Values.Strings = (
                   'T'
                   'C')
               end
               object GroupBox38: TGroupBox
                 Left = 111
-                Top = 204
+                Top = 259
                 Width = 619
                 Height = 61
                 Caption = 
                   'Controle de N'#250'mero de Notas: ( Use somente se deseja numera'#231#227'o '#250 +
                   'nica da NFe/NFe SCAN para todas as empresas )'
-                TabOrder = 13
+                TabOrder = 10
                 object Label489: TLabel
                   Left = 32
                   Top = 36
@@ -5517,19 +5413,19 @@ inherited FormParametros: TFormParametros
               end
               object DBCheckBox49: TDBCheckBox
                 Left = 122
-                Top = 297
+                Top = 337
                 Width = 200
                 Height = 17
                 Caption = 'Incluir tag respons'#225'vel t'#233'cnico'
                 DataField = 'PMT_RESPONSAVEL_TECNICO'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 14
+                TabOrder = 11
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object DBCheckBox59: TDBCheckBox
                 Left = 122
-                Top = 320
+                Top = 353
                 Width = 450
                 Height = 17
                 Caption = 
@@ -5537,35 +5433,35 @@ inherited FormParametros: TFormParametros
                   'enten'#231'a STF'
                 DataField = 'PMT_RETIRAR_ICMS_BASECOFINSPIS'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 15
+                TabOrder = 12
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object PMT_DESCRICAO_99_OUTROS: TDBEdit
                 Left = 122
-                Top = 363
+                Top = 393
                 Width = 303
                 Height = 22
                 CharCase = ecUpperCase
                 DataField = 'PMT_DESCRICAO_99_OUTROS'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 16
+                TabOrder = 13
               end
               object DBCheckBox76: TDBCheckBox
                 Left = 122
-                Top = 340
+                Top = 370
                 Width = 178
                 Height = 17
                 Caption = 'Habilitar C'#225'lculo do DIFAL'
                 DataField = 'PMT_HABILITAR_DIFAL'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 17
+                TabOrder = 14
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object DBRadioGroup11: TDBRadioGroup
                 Left = 5
-                Top = 171
+                Top = 218
                 Width = 44
                 Height = 126
                 Caption = 'Modelo DANFE:'
@@ -5575,7 +5471,7 @@ inherited FormParametros: TFormParametros
                   'FAST-Retrato '
                   'FORTES-Retrato(novo)'
                   'FORTES-Paisagem(novo)')
-                TabOrder = 18
+                TabOrder = 15
                 Values.Strings = (
                   '1'
                   '2'
@@ -5584,25 +5480,97 @@ inherited FormParametros: TFormParametros
               end
               object DBCheckBox84: TDBCheckBox
                 Left = 122
-                Top = 274
+                Top = 321
                 Width = 333
                 Height = 17
                 Caption = ' Permitir Faturamento sem Informar Peso Nota Fiscal'
                 DataField = 'PMT_FATURA_SEM_PESO'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 19
+                TabOrder = 16
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
                 OnExit = DBCheckBox44Exit
+              end
+              object GroupBox43: TGroupBox
+                Left = 0
+                Top = 33
+                Width = 754
+                Height = 122
+                Caption = 'Mensagens Padr'#227'o'
+                TabOrder = 17
+                object Label12: TLabel
+                  Left = 57
+                  Top = 20
+                  Width = 46
+                  Height = 14
+                  Caption = 'Padr'#227'o 1:'
+                end
+                object Label14: TLabel
+                  Left = 57
+                  Top = 45
+                  Width = 46
+                  Height = 14
+                  Caption = 'Padr'#227'o 2:'
+                end
+                object Label627: TLabel
+                  Left = 57
+                  Top = 70
+                  Width = 46
+                  Height = 14
+                  Caption = 'Padr'#227'o 3:'
+                end
+                object Label674: TLabel
+                  Left = 63
+                  Top = 95
+                  Width = 40
+                  Height = 14
+                  Caption = 'Vendas:'
+                end
+                object DBEdtPMT_MENSAGEM1: TDBEdit
+                  Left = 111
+                  Top = 17
+                  Width = 637
+                  Height = 22
+                  CharCase = ecUpperCase
+                  DataField = 'PMT_MENSAGEM1'
+                  DataSource = DataCadastros1.DsParametros
+                  TabOrder = 0
+                end
+                object DBEdtPMT_MENSAGEM2: TDBEdit
+                  Left = 111
+                  Top = 42
+                  Width = 637
+                  Height = 22
+                  CharCase = ecUpperCase
+                  DataField = 'PMT_MENSAGEM2'
+                  DataSource = DataCadastros1.DsParametros
+                  TabOrder = 1
+                end
+                object DBEdtPMT_MENSAGEM3: TDBEdit
+                  Left = 111
+                  Top = 67
+                  Width = 637
+                  Height = 22
+                  CharCase = ecUpperCase
+                  DataField = 'PMT_MENSAGEM3'
+                  DataSource = DataCadastros1.DsParametros
+                  TabOrder = 2
+                end
+                object DBEditPMT_MENSAGEM_VENDAS: TDBEdit
+                  Left = 110
+                  Top = 92
+                  Width = 637
+                  Height = 22
+                  CharCase = ecUpperCase
+                  DataField = 'PMT_MENSAGEM_VENDAS'
+                  DataSource = DataCadastros1.DsParametros
+                  TabOrder = 3
+                end
               end
             end
             object TabSheet4: TTabSheet
               Caption = 'C'#225'lculo dos Valores do Faturamento'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object GroupBox42: TGroupBox
                 Left = 3
                 Top = 3
@@ -5699,8 +5667,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'NotaFiscalLayout'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PNotaFiscalLayout: TPanel
           Left = 0
           Top = 0
@@ -14745,8 +14711,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'NotaFiscalEtiqueta'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PNotaFiscalEtiqueta: TPanel
           Left = 0
           Top = 0
@@ -16566,8 +16530,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Duplicata'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PDuplicata: TPanel
           Left = 0
           Top = 0
@@ -18064,8 +18026,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Cheque'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PCheque: TPanel
           Left = 0
           Top = 0
@@ -18723,8 +18683,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Comissao'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PComissao: TPanel
           Left = 0
           Top = 0
@@ -18986,8 +18944,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'Boleto'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PBoleto: TPanel
           Left = 0
           Top = 0
@@ -19091,8 +19047,6 @@ inherited FormParametros: TFormParametros
         Left = 0
         Top = 0
         Caption = 'BoletoLayoutMatricial'
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object PBoletoLayout: TPanel
           Left = 0
           Top = 0

@@ -10,7 +10,11 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, DBCtrls, Mask, ExtCtrls, ComCtrls, Buttons, DB, DBTables, RwFunc,
   Provider, SqlExpr,  Grids, DBGrids, Data.FMTBCd, BaseForm,
-  Datasnap.DBClient, ACBrEnterTab, ACBrBase, ACBrCalculadora, ACBrETQ;
+  Datasnap.DBClient, ACBrEnterTab, ACBrBase, ACBrCalculadora, ACBrETQ,
+  SgDbSeachComboUnit, ComboBoxRW, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
 
 
 type
@@ -29,16 +33,16 @@ type
     DbeEve_descri: TDBEdit;
     GroupBox1: TGroupBox;
     dbgrdDiretivas: TDBGrid;
-    SqlProdutoEnderecamento: TSQLQuery;
-    SqlProdutoEnderecamentoPRDE_REGISTRO: TIntegerField;
-    SqlProdutoEnderecamentoPRDE_ENDERECO: TStringField;
-    SqlProdutoEnderecamentoEMP_CODIGO: TStringField;
-    DspProdutoEnderecamento: TDataSetProvider;
-    CdsProdutoEnderecamento: TClientDataSet;
-    CdsProdutoEnderecamentoPRDE_REGISTRO: TIntegerField;
-    CdsProdutoEnderecamentoPRDE_ENDERECO: TStringField;
-    CdsProdutoEnderecamentoEMP_CODIGO: TStringField;
     dsProdutoEnderecamento: TDataSource;
+    CbAlmoxarifadoDestino: TComboBoxRw;
+    Label3: TLabel;
+    cdsProdutoEnderecamento: TFDQuery;
+    cdsProdutoEnderecamentoPRDE_REGISTRO: TIntegerField;
+    cdsProdutoEnderecamentoPRDE_ENDERECO: TStringField;
+    cdsProdutoEnderecamentoEMP_CODIGO: TStringField;
+    cdsProdutoEnderecamentoAMX_CODIGO: TStringField;
+    cdsProdutoEnderecamentoAMX_DESCRI: TStringField;
+    cdsProdutoEnderecamentoEMP_RAZAO: TStringField;
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);
     procedure Bit_ExcluirClick(Sender: tObject);
@@ -52,13 +56,16 @@ type
     procedure DBNavigator1Click(Sender: tObject; Button: TNavigateBtn);
     procedure EdtEve_codigoExit(Sender: tObject);
     procedure EdtEve_codigoKeyPress(Sender: tObject; var Key: Char);
-    procedure CdsProdutoEnderecamentoAfterDelete(DataSet: TDataSet);
-    procedure CdsProdutoEnderecamentoAfterPost(DataSet: TDataSet);
     procedure FormCreate(Sender: tObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
 
     procedure FormShow(Sender: TObject);
+    procedure CdsProdutoEnderecamento1AMX_DESCRIGetText(Sender: TField;
+      var Text: string; DisplayText: Boolean);
+    procedure CbAlmoxarifadoDestinoSelect(Sender: TObject);
+    procedure cdsProdutoEnderecamentoAfterPost(DataSet: TDataSet);
+    procedure cdsProdutoEnderecamentoAfterDelete(DataSet: TDataSet);
   private
   public
      procedure BotoesAcesso;
@@ -125,16 +132,35 @@ begin
     end;
 end;
 
-procedure TFrmProdutoEnderecamento.CdsProdutoEnderecamentoAfterDelete(
-  DataSet: TDataSet);
+procedure TFrmProdutoEnderecamento.CbAlmoxarifadoDestinoSelect(Sender: TObject);
 begin
-     CdsProdutoEnderecamento.ApplyUpdates(0);
+  inherited;
+  DesabilitaBotoes;
 end;
 
-procedure TFrmProdutoEnderecamento.CdsProdutoEnderecamentoAfterPost(
+procedure TFrmProdutoEnderecamento.CdsProdutoEnderecamento1AMX_DESCRIGetText(
+  Sender: TField; var Text: string; DisplayText: Boolean);
+begin
+  inherited;
+  if CdsProdutoEnderecamentoAMX_CODIGO.AsString <> '' then
+    Text := dbInicio.BuscaUmDadoSqlAsString('SELECT AMX_CODIGO || '' - '' || AMX_DESCRI FROM ALMOX0000 WHERE AMX_CODIGO = ' + QuotedStr(CdsProdutoEnderecamentoAMX_CODIGO.AsString)) ;
+  DisplayText := True;
+
+end;
+
+procedure TFrmProdutoEnderecamento.cdsProdutoEnderecamentoAfterDelete(
   DataSet: TDataSet);
 begin
+  inherited;
      CdsProdutoEnderecamento.ApplyUpdates(0);
+
+end;
+
+procedure TFrmProdutoEnderecamento.cdsProdutoEnderecamentoAfterPost(
+  DataSet: TDataSet);
+begin
+  inherited;
+//     CdsProdutoEnderecamento.ApplyUpdates(0);
 end;
 
 procedure TFrmProdutoEnderecamento.Bit_novoClick(Sender: tObject);
@@ -179,17 +205,18 @@ begin
           screen.cursor := crDefault;
           exit;
       end;
-    try
-      Screen.Cursor := crHourGlass;
-      CdsProdutoEnderecamento.ApplyUpdates(0);
-      CdsProdutoEnderecamento.refresh;
-      dsProdutoEnderecamento.AutoEdit := true;
-      Screen.Cursor := crDefault;
-      Habilitabotoes;
-      EdtEve_codigo.Text := CdsProdutoEnderecamentoPRDE_REGISTRO.AsString;
-    except on E:EdatabaseError do
-       uteis.erro  (Pchar('Erro ao gravar registro !'+e.Message));
-    end;
+      try
+        Screen.Cursor := crHourGlass;
+        CdsProdutoEnderecamento.ApplyUpdates(0);
+        CdsProdutoEnderecamento.CommitUpdates;
+        CdsProdutoEnderecamento.refresh;
+        dsProdutoEnderecamento.AutoEdit := true;
+        Screen.Cursor := crDefault;
+        Habilitabotoes;
+        EdtEve_codigo.Text := CdsProdutoEnderecamentoPRDE_REGISTRO.AsString;
+      except on E:EdatabaseError do
+         uteis.erro  (Pchar('Erro ao gravar registro !'+e.Message));
+      end;
 end;
 
 procedure TFrmProdutoEnderecamento.Bit_CancelarClick(Sender: tObject);
@@ -265,11 +292,22 @@ end;
 procedure TFrmProdutoEnderecamento.FormCreate(Sender: tObject);
 begin
     inherited;
-    width := 679;
-    height  := 487;
+//    width := 679;
+//    height  := 487;
 
     CdsProdutoEnderecamento.Close;
-    SqlProdutoEnderecamento.CommandText := SQLDEF('TABELAS','SELECT * FROM PRD0000_ENDERECAMENTO','','PRDE_ENDERECO','');
+    if dbinicio.Exclusivo('ENDERECO_ESTOQUE') then
+      cdsProdutoEnderecamento.SQL.Text := SQLDEF('TABELAS','SELECT DISTINCT PE.PRDE_REGISTRO, PE.PRDE_ENDERECO, PE.EMP_CODIGO, PE.AMX_CODIGO, E.EMP_RAZAO  ' +
+                                                               ' FROM PRD0000_ENDERECAMENTO pe ' +
+                                                              // ' JOIN PRD0000_ENDERECAMENTO_EMPRESA pee ON (pe.PRDE_REGISTRO = pee.PRDE_REGISTRO AND pee.EMP_CODIGO = pe.EMP_CODIGO ) ' +
+                                                               ' JOIN EMP0000 e ON (e.EMP_CODIGO = pe.EMP_CODIGO )',
+                                                               ConcatSe('WHERE pe.',dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'PRDE_ENDERECO','')
+    else
+      cdsProdutoEnderecamento.SQL.Text := SQLDEF('TABELAS','SELECT DISTINCT PE.PRDE_REGISTRO, PE.PRDE_ENDERECO, PE.EMP_CODIGO, PE.AMX_CODIGO, E.EMP_RAZAO  ' +
+                                                              ' FROM PRD0000_ENDERECAMENTO pe ' +
+                                                              // ' LEFT JOIN PRD0000_ENDERECAMENTO_EMPRESA pee ON (pe.PRDE_REGISTRO = pee.PRDE_REGISTRO AND pee.EMP_CODIGO = pe.EMP_CODIGO ) ' +
+                                                              ' LEFT JOIN EMP0000 e ON (e.EMP_CODIGO = pe.EMP_CODIGO )',
+                                                              ConcatSe('WHERE pe.',dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'PRDE_ENDERECO','');
     CdsProdutoEnderecamento.open;
     Habilitabotoes;
     if CdsProdutoEnderecamento.IsEmpty Then  //Evita alteração antes que se

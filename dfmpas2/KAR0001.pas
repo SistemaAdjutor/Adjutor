@@ -180,9 +180,11 @@ type
     procedure RbReferenciaClick(Sender: TObject);
     procedure RbDescricaoClick(Sender: TObject);
     procedure CbAlmoxarifadoClick(Sender: TObject);
+    procedure cbprodutoEnter(Sender: TObject);
+    procedure CbAlmoxarifadoEnter(Sender: TObject);
   private
     { Private declarations }
-    FEntradaManualKardex : boolean;
+    FEntradaManualKardex, carregando : boolean;
     procedure AtualizaSaldos;
     procedure ListaProdutoAlmoxarifado;
     procedure ListaSaldoProdutoAlmoxarifado;
@@ -207,6 +209,7 @@ end;
 
 procedure TFrmKardex.FormCreate(Sender: tObject);
 begin
+  carregando := True;
   SqlCdsAlmoxarifado.Open;
 
   SqlCdsProduto.CommandText := SQLDEF('PRODUTOS','SELECT * FROM PRD0000',' where PRD_STATUS = '+QuotedStr('A'),'PRD_REFER','');
@@ -473,8 +476,9 @@ begin
   begin
     EdProdutoDescricao.Color := $00D7D7D7 ;
   end;
-
-      //CbProduto.Properties.DataController.DataSet.Lookup('PRD_CODIGO',CbProduto.Text,'PRD_DESCRI');
+  SqlCdsKardex.Close;
+  cdsSaldos.Close;
+  //CbProduto.Properties.DataController.DataSet.Lookup('PRD_CODIGO',CbProduto.Text,'PRD_DESCRI');
 end;
 
 procedure TFrmKardex.CbAlmoxarifadoPropertiesChange(Sender: tObject);
@@ -513,11 +517,21 @@ begin
         EdProdutoDescricao.Text := CbProduto.Properties.DataController.DataSet.Lookup('PRD_CODIGO',CbProduto.EditValue,'PRD_DESCRI');
 end;
 
+procedure TFrmKardex.cbprodutoEnter(Sender: TObject);
+begin
+  carregando := false;
+end;
+
 procedure TFrmKardex.CbAlmoxarifadoClick(Sender: TObject);
 begin
   if CbAlmoxarifado.EditValue <> null then
     if not AlmoxarifadoUsuario(CbAlmoxarifado.EditValue) then
       CbAlmoxarifado.SetFocus;
+end;
+
+procedure TFrmKardex.CbAlmoxarifadoEnter(Sender: TObject);
+begin
+  carregando := false;
 end;
 
 procedure TFrmKardex.CbAlmoxarifadoExit(Sender: tObject);

@@ -542,6 +542,27 @@ type
     ppDesignLayers11: TppDesignLayers;
     ppDesignLayer11: TppDesignLayer;
     ppParameterList11: TppParameterList;
+    rbModelo12: TRadioButton;
+    prprtModelo12: TppReport;
+    ppDetailBand13: TppDetailBand;
+    ppLabel66: TppLabel;
+    ppDBText96: TppDBText;
+    ppDBText97: TppDBText;
+    ppDBText98: TppDBText;
+    ppDBText99: TppDBText;
+    ppLabel67: TppLabel;
+    ppDBText100: TppDBText;
+    ppDBText101: TppDBText;
+    ppLabel68: TppLabel;
+    lblRazaoMod12: TppLabel;
+    lblEnderecoMod12: TppLabel;
+    lblTelefoneMod12: TppLabel;
+    ppLabel73: TppLabel;
+    ppDBText102: TppDBText;
+    ppDesignLayers13: TppDesignLayers;
+    ppDesignLayer13: TppDesignLayer;
+    ppParameterList13: TppParameterList;
+    pmgLogoMod12: TppImage;
     procedure BitImprimeEtiqClick(Sender: TObject);
     procedure BitEtiqFecharClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -1087,6 +1108,17 @@ begin
             lblTelefoneMod11.Caption := dbInicio.Empresa.FONE;
             prprtModelo11.DeviceType := 'Screen';
             prprtModelo11.Print;
+         end
+       else
+        if (rbModelo12.Checked) then
+         begin
+            //pmgLogo.Picture := FrmMenu.ImglogoMenu.Picture;
+            pmgLogoMod12.Picture := FrmMenu.ImglogoMenu.Picture;
+            lblRazaoMod12.Caption := dbInicio.Empresa.RAZAO;
+            lblEnderecoMod12.Caption := dbInicio.Empresa.ENDERECO+' '+dbInicio.Empresa.BAIRRO+' '+dbInicio.Empresa.CEP+' '+dbInicio.Empresa.CIDADE+'/'+dbInicio.Empresa.UF;
+            lblTelefoneMod12.Caption := dbInicio.Empresa.FONE;
+            prprtModelo12.DeviceType := 'Screen';
+            prprtModelo12.Print;
          end;
      finally
 
