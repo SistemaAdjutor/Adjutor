@@ -215,7 +215,7 @@ begin
     ' FROM '+
     '     enf_it01 ei '+
     '   join enf0001 ef on (ef.enf_notanumber = ei.enf_it_notanumber and ef.for_codigo = ei.for_codigo and ef.enf_industrializacao = ''S'') '+
-    '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO) ' +
+    '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO AND ft.FTI_UTILIZA_ITEM_NO_RETORNO = ''S''    ) ' +
     '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
     '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
     ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
@@ -248,7 +248,7 @@ begin
     ' FROM '+
     '     enf_it01 ei '+
     '   join enf0001 ef on (ef.enf_notanumber = ei.enf_it_notanumber and ef.for_codigo = ei.for_codigo and ef.enf_industrializacao = ''S'') '+
-    '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO) ' +
+    '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO AND ft.FTI_UTILIZA_ITEM_NO_RETORNO = ''S''     ) ' +
     '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
     '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
     ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
@@ -286,6 +286,7 @@ begin
       ' LEFT JOIN PRD_GRADE pg ON (pg.PRG_REGISTRO = fi.PRG_REGISTRO) ' +
       ' WHERE fi.PRD_REFER_ITENS = ' +  QuotedStr(SqlCdsNotasDisponiveisPRD_REFER.AsString) +
       ' AND fi.PRD_REFER = ' +  QuotedStr(prdRefer.Text) +
+      ' AND FTI_UTILIZA_ITEM_NO_RETORNO = ''S'' ' +
       ' AND pr.EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo)
     ;
     qAux.Open;

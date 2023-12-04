@@ -1228,6 +1228,14 @@ inherited FormProduto: TFormProduto
               Visible = False
               OnChange = curPercentualConsumoChange
             end
+            object cbRetorno: TCheckBox
+              Left = 584
+              Top = 80
+              Width = 237
+              Height = 17
+              Caption = 'Utiliza Item no Retorno de Industrializa'#231#227'o'
+              TabOrder = 15
+            end
           end
           object BIT_FTC_RELATORIO: TBitBtn
             Left = 3
@@ -12995,6 +13003,10 @@ inherited FormProduto: TFormProduto
       FieldName = 'FTI_PERCENTUAL'
       DisplayFormat = '##0.000'
       EditFormat = '##0.000'
+    end
+    object CdsItensFichaFTI_UTILIZA_ITEM_NO_RETORNO: TStringField
+      FieldName = 'FTI_UTILIZA_ITEM_NO_RETORNO'
+      Size = 1
     end
   end
   object DsItensFicha: TDataSource [14]
