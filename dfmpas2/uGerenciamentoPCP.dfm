@@ -227,8 +227,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Top = 105
         Width = 1376
         Height = 434
-        ExplicitLeft = -16
-        ExplicitTop = 110
+        ExplicitTop = 105
         ExplicitWidth = 1376
         ExplicitHeight = 434
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -467,12 +466,34 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Position.ColIndex = 2
             Position.RowIndex = 0
           end
+          object cxgrd1DBBandedTableView1ACO_NOME: TcxGridDBBandedColumn
+            Caption = 'Cor'
+            DataBinding.FieldName = 'ACO_NOME'
+            Position.BandIndex = 4
+            Position.ColIndex = 3
+            Position.RowIndex = 0
+          end
+          object cxgrd1DBBandedTableView1IOP_PESO: TcxGridDBBandedColumn
+            Caption = 'Peso Unit.'
+            DataBinding.FieldName = 'IOP_PESO'
+            Options.Editing = False
+            Position.BandIndex = 4
+            Position.ColIndex = 4
+            Position.RowIndex = 0
+          end
+          object cxgrd1DBBandedTableView1PESO_TOTAL: TcxGridDBBandedColumn
+            Caption = 'Peso Total'
+            DataBinding.FieldName = 'PESO_TOTAL'
+            Position.BandIndex = 4
+            Position.ColIndex = 5
+            Position.RowIndex = 0
+          end
           object cxgrd1DBBandedTableView1PRDL_LOTE: TcxGridDBBandedColumn
             Caption = 'Lote'
             DataBinding.FieldName = 'PRDL_LOTE'
             Width = 73
             Position.BandIndex = 4
-            Position.ColIndex = 3
+            Position.ColIndex = 6
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1OPR_DTENTREGA: TcxGridDBBandedColumn
@@ -651,20 +672,12 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Position.ColIndex = 11
             Position.RowIndex = 0
           end
-          object cxgrd1DBBandedTableView1IOP_PESO: TcxGridDBBandedColumn
-            DataBinding.FieldName = 'IOP_PESO'
-            Visible = False
-            Options.Editing = False
-            Position.BandIndex = 0
-            Position.ColIndex = 12
-            Position.RowIndex = 0
-          end
           object cxgrd1DBBandedTableView1IOP_DATA_INICIO: TcxGridDBBandedColumn
             DataBinding.FieldName = 'IOP_DATA_INICIO'
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 13
+            Position.ColIndex = 12
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1IOP_DATA_PREVISTA: TcxGridDBBandedColumn
@@ -672,7 +685,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 14
+            Position.ColIndex = 13
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1IOP_DATA_AJUSTADA: TcxGridDBBandedColumn
@@ -716,7 +729,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 15
+            Position.ColIndex = 14
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1IOP_CUSTO: TcxGridDBBandedColumn
@@ -724,7 +737,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 16
+            Position.ColIndex = 15
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1IOP_CUSTOOPERACAO: TcxGridDBBandedColumn
@@ -768,7 +781,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 17
+            Position.ColIndex = 16
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1PRO_CODIGO: TcxGridDBBandedColumn
@@ -776,7 +789,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 18
+            Position.ColIndex = 17
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1FTI_REGISTRO: TcxGridDBBandedColumn
@@ -784,7 +797,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 19
+            Position.ColIndex = 18
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1EMP_CODIGO: TcxGridDBBandedColumn
@@ -800,7 +813,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 20
+            Position.ColIndex = 19
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1OPR_STATUS: TcxGridDBBandedColumn
@@ -817,7 +830,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Options.Editing = False
             VisibleForCustomization = False
             Position.BandIndex = 0
-            Position.ColIndex = 21
+            Position.ColIndex = 20
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1CustoSubOrdens: TcxGridDBBandedColumn
@@ -854,7 +867,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Visible = False
             Options.Editing = False
             Position.BandIndex = 0
-            Position.ColIndex = 22
+            Position.ColIndex = 21
             Position.RowIndex = 0
           end
           object cxgrd1DBBandedTableView1PRF_QTDE: TcxGridDBBandedColumn
@@ -863,6 +876,13 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
             Width = 65
             Position.BandIndex = 5
             Position.ColIndex = 0
+            Position.RowIndex = 0
+          end
+          object cxgrd1DBBandedTableView1ENF_IT_NOTANUMBER: TcxGridDBBandedColumn
+            Caption = 'Nota Fiscal'
+            DataBinding.FieldName = 'ENF_IT_NOTANUMBER'
+            Position.BandIndex = 0
+            Position.ColIndex = 22
             Position.RowIndex = 0
           end
         end
@@ -1722,14 +1742,23 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Origin = 'REP_CODIGO'
       Size = 3
     end
+    object cdsBuscaACO_NOME: TStringField
+      FieldName = 'ACO_NOME'
+      Size = 100
+    end
+    object cdsBuscaPESO_TOTAL: TFMTBCDField
+      FieldKind = fkCalculated
+      FieldName = 'PESO_TOTAL'
+      Calculated = True
+    end
   end
   inherited pmExportar: TPopupMenu
     Left = 808
     Top = 40
   end
   inherited PopupMenu2: TPopupMenu
-    Left = 744
-    Top = 96
+    Left = 640
+    Top = 160
   end
   inherited frxPadrao: TfrxReport
     Left = 948
@@ -3912,7 +3941,12 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       'FTC_ETAPAS=FTC_ETAPAS'
       'PRDL_LOTE=PRDL_LOTE'
       'PRDL_DATA_FABRICACAO=PRDL_DATA_FABRICACAO'
-      'PRDL_DATA_VALIDADE=PRDL_DATA_VALIDADE')
+      'PRDL_DATA_VALIDADE=PRDL_DATA_VALIDADE'
+      'PRF_QTDE=PRF_QTDE'
+      'ENF_IT_NOTANUMBER=ENF_IT_NOTANUMBER'
+      'REP_CODIGO=REP_CODIGO'
+      'ACO_NOME=ACO_NOME'
+      'PESO_TOTAL=PESO_TOTAL')
     DataSet = cdsBusca
     BCDToCurrency = False
     Left = 644
@@ -5697,6 +5731,10 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Caption = 'Modelo 10 - Ordem de produ'#231#227'o Ind'#250'stria Qu'#237'mica'
       Visible = False
       OnClick = OrdemdeproduoModelo101Click
+    end
+    object ListagemdeOrdensporClienteeNotadeEntrada1: TMenuItem
+      Caption = 'Listagem de Ordens por Cliente e Nota de Entrada'
+      OnClick = ListagemdeOrdensporClienteeNotadeEntrada1Click
     end
     object miOrdemProducao: TMenuItem
       Caption = 'Ordem de produ'#231#227'o'
@@ -24789,6 +24827,10 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       FieldName = 'MMO_ARQUIVO_FICHA_TECNICA'
       Size = 1024
     end
+    object cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField
+      FieldName = 'MMO_EXTREMIDADE_MOLA_MATERIA'
+      Size = 1
+    end
   end
   object frxDataPedido: TfrxDBDataset
     UserName = 'frxDataPedido'
@@ -25171,7 +25213,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       'EMP_CODIGO=EMP_CODIGO'
       'PRD_CODORIGINAL=PRD_CODORIGINAL'
       'MMO_TOLERANCIA_DE_MENOR_MIN=MMO_TOLERANCIA_DE_MENOR_MIN'
-      'MMO_ARQUIVO_FICHA_TECNICA=MMO_ARQUIVO_FICHA_TECNICA')
+      'MMO_ARQUIVO_FICHA_TECNICA=MMO_ARQUIVO_FICHA_TECNICA'
+      'MMO_EXTREMIDADE_MOLA_MATERIA=MMO_EXTREMIDADE_MOLA_MATERIA')
     DataSet = cdsMola
     BCDToCurrency = False
     Left = 952
@@ -39453,6 +39496,647 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       end
     end
   end
+  object frxListaClienteNF: TfrxReport
+    Version = '6.9.3'
+    DotMatrixReport = False
+    IniFile = '\Software\Fast Reports'
+    PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
+    PreviewOptions.Zoom = 1.000000000000000000
+    PrintOptions.Printer = 'Default'
+    PrintOptions.PrintOnSheet = 0
+    ReportOptions.CreateDate = 44071.598095763900000000
+    ReportOptions.LastChange = 44071.598095763900000000
+    ScriptLanguage = 'PascalScript'
+    ScriptText.Strings = (
+      'var'
+      
+        '  VENDEDOR: string;                                             ' +
+        '                              '
+      'begin'
+      ''
+      'end.')
+    OnGetValue = frxListaGetValue
+    Left = 732
+    Top = 89
+    Datasets = <
+      item
+        DataSet = frxDBBusca
+        DataSetName = 'frxDBBusca'
+      end>
+    Variables = <>
+    Style = <>
+    object Data: TfrxDataPage
+      Height = 1000.000000000000000000
+      Width = 1000.000000000000000000
+    end
+    object Page1: TfrxReportPage
+      Orientation = poLandscape
+      PaperWidth = 297.000000000000000000
+      PaperHeight = 210.000000000000000000
+      PaperSize = 9
+      LeftMargin = 10.000000000000000000
+      RightMargin = 10.000000000000000000
+      TopMargin = 10.000000000000000000
+      BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
+      object ReportTitle1: TfrxReportTitle
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 94.488250000000000000
+        Top = 18.897650000000000000
+        Width = 1046.929810000000000000
+        object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
+          Width = 177.637910000000000000
+          Height = 64.252010000000000000
+          Frame.Typ = []
+          HightQuality = False
+          Transparent = False
+          TransparentColor = clWhite
+        end
+        object Memo1: TfrxMemoView
+          AllowVectorExport = True
+          Top = 68.031540000000000000
+          Width = 30.236240000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'SEQ')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo2: TfrxMemoView
+          AllowVectorExport = True
+          Left = 30.236240000000000000
+          Top = 68.031540000000000000
+          Width = 68.031540000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Nota Fiscal')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo3: TfrxMemoView
+          AllowVectorExport = True
+          Left = 165.181200000000000000
+          Top = 68.031540000000000000
+          Width = 68.031540000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Status')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo5: TfrxMemoView
+          AllowVectorExport = True
+          Left = 234.244280000000000000
+          Top = 68.031540000000000000
+          Width = 349.606299212598400000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Produto')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo6: TfrxMemoView
+          AllowVectorExport = True
+          Left = 583.858690000000000000
+          Top = 68.031540000000000000
+          Width = 60.472480000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Qtde')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo7: TfrxMemoView
+          AllowVectorExport = True
+          Left = 644.331170000000000000
+          Top = 68.031540000000000000
+          Width = 68.031540000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Peso Unit.')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo8: TfrxMemoView
+          AllowVectorExport = True
+          Left = 712.362710000000000000
+          Top = 68.031540000000000000
+          Width = 68.031540000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Peso Total')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo9: TfrxMemoView
+          AllowVectorExport = True
+          Left = 781.394250000000000000
+          Top = 68.031540000000000000
+          Width = 139.842610000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Cor')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo10: TfrxMemoView
+          AllowVectorExport = True
+          Left = 921.425790000000000000
+          Top = 68.031540000000000000
+          Width = 68.031540000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Conclus'#227'o')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo11: TfrxMemoView
+          AllowVectorExport = True
+          Left = 990.236860000000000000
+          Top = 68.031540000000000000
+          Width = 56.692950000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Qtde'
+            'Concluida')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo22: TfrxMemoView
+          AllowVectorExport = True
+          Left = 181.417440000000000000
+          Width = 861.732840000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[EMPRESA]')
+        end
+        object Memo23: TfrxMemoView
+          AllowVectorExport = True
+          Left = 181.417440000000000000
+          Top = 18.897650000000000000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Lista de Ordem de Produ'#231#227'o')
+          ParentFont = False
+        end
+        object Memo24: TfrxMemoView
+          AllowVectorExport = True
+          Left = 181.417440000000000000
+          Top = 37.795300000000000000
+          Width = 861.732840000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[FILTROS]')
+          ParentFont = False
+        end
+        object Memo31: TfrxMemoView
+          AllowVectorExport = True
+          Left = 97.149660000000000000
+          Top = 68.031540000000000000
+          Width = 68.031540000000000000
+          Height = 26.456710000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Dt. Entrada')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+      end
+      object MasterData1: TfrxMasterData
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 18.897650000000000000
+        Top = 219.212740000000000000
+        Width = 1046.929810000000000000
+        DataSet = frxDBBusca
+        DataSetName = 'frxDBBusca'
+        RowCount = 0
+        object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
+          Width = 30.236240000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[LINE#]')
+          ParentFont = False
+        end
+        object Memo12: TfrxMemoView
+          AllowVectorExport = True
+          Left = 30.236240000000000000
+          Width = 68.031540000000000000
+          Height = 15.118120000000000000
+          DataField = 'ENF_IT_NOTANUMBER'
+          DataSet = frxDBBusca
+          DataSetName = 'frxDBBusca'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBBusca."ENF_IT_NOTANUMBER"]')
+          ParentFont = False
+        end
+        object Memo13: TfrxMemoView
+          AllowVectorExport = True
+          Left = 165.181200000000000000
+          Width = 68.031540000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[IIF(<frxDBBusca."IOP_STATUS"> = '#39'F'#39','#39'Finalizado'#39',IIF(<frxDBBusc' +
+              'a."IOP_STATUS"> = '#39'C'#39','#39'Cancelado'#39', IIF(<frxDBBusca."IOP_STATUS">' +
+              ' = '#39'I'#39','#39'Iniciado'#39','#39'Pendente'#39')))]')
+          ParentFont = False
+        end
+        object Memo15: TfrxMemoView
+          AllowVectorExport = True
+          Left = 234.921460000000000000
+          Width = 347.716760000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBBusca."PRD_DESCRI"]')
+          ParentFont = False
+        end
+        object Memo16: TfrxMemoView
+          AllowVectorExport = True
+          Left = 581.858690000000000000
+          Width = 60.472480000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBBusca."IOP_QUANTIDADE"]')
+          ParentFont = False
+        end
+        object Memo17: TfrxMemoView
+          AllowVectorExport = True
+          Left = 642.331170000000000000
+          Width = 68.031540000000000000
+          Height = 15.118120000000000000
+          DataSet = frxDBBusca
+          DataSetName = 'frxDBBusca'
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBBusca."IOP_PESO"]')
+          ParentFont = False
+        end
+        object Memo18: TfrxMemoView
+          AllowVectorExport = True
+          Left = 709.362710000000000000
+          Width = 68.031540000000000000
+          Height = 15.118120000000000000
+          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.Kind = fkNumeric
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[<frxDBBusca."IOP_PESO"> * <frxDBBusca."IOP_QUANTIDADE">]')
+          ParentFont = False
+        end
+        object Memo19: TfrxMemoView
+          AllowVectorExport = True
+          Left = 781.583180000000000000
+          Width = 139.842610000000000000
+          Height = 15.118120000000000000
+          DataSet = frxDBBusca
+          DataSetName = 'frxDBBusca'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBBusca."ACO_NOME"]')
+          ParentFont = False
+        end
+        object Memo20: TfrxMemoView
+          AllowVectorExport = True
+          Left = 921.425790000000000000
+          Width = 68.031540000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[IIF(<frxDBBusca."IOP_DATA_CONCLUSAO"> = 0,'#39#39',<frxDBBusca."IOP_D' +
+              'ATA_CONCLUSAO">)]')
+          ParentFont = False
+        end
+        object Memo21: TfrxMemoView
+          AllowVectorExport = True
+          Left = 990.236860000000000000
+          Width = 56.692950000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            
+              '[IIF(<frxDBBusca."IOP_QTDE_CONCLUIDA"> = 0,'#39#39',<frxDBBusca."IOP_Q' +
+              'TDE_CONCLUIDA">)]')
+          ParentFont = False
+        end
+        object Memo32: TfrxMemoView
+          AllowVectorExport = True
+          Left = 97.149660000000000000
+          Width = 64.252010000000000000
+          Height = 15.118120000000000000
+          DataField = 'PED_DTENTRADA'
+          DataSet = frxDBBusca
+          DataSetName = 'frxDBBusca'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBBusca."PED_DTENTRADA"]')
+          ParentFont = False
+        end
+      end
+      object ReportSummary1: TfrxReportSummary
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 42.354360000000000000
+        Top = 298.582870000000000000
+        Width = 1046.929810000000000000
+        object Memo25: TfrxMemoView
+          AllowVectorExport = True
+          Top = 3.779530000000050000
+          Width = 94.488250000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Total Geral')
+          ParentFont = False
+        end
+        object Memo26: TfrxMemoView
+          AllowVectorExport = True
+          Left = 656.858690000000000000
+          Top = 3.779529999999990000
+          Width = 60.472480000000000000
+          Height = 15.118120000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[SUM(<frxDBBusca."IOP_QUANTIDADE">)]')
+          ParentFont = False
+        end
+        object Line1: TfrxLineView
+          AllowVectorExport = True
+          Top = 1.440940000000010000
+          Width = 1046.929810000000000000
+          Color = clBlack
+          Frame.Typ = []
+          Diagonal = True
+        end
+        object Memo27: TfrxMemoView
+          AllowVectorExport = True
+          Left = -1.661410000000000000
+          Top = 27.236240000000000000
+          Width = 238.110390000000000000
+          Height = 15.118120000000000000
+          Visible = False
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -12
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Total de registros: [COUNT(MasterData1)]')
+          ParentFont = False
+        end
+        object Line3: TfrxLineView
+          AllowVectorExport = True
+          Top = 24.456710000000100000
+          Width = 1046.929810000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+      end
+      object PageFooter1: TfrxPageFooter
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 26.456710000000000000
+        Top = 362.834880000000000000
+        Width = 1046.929810000000000000
+        object Memo28: TfrxMemoView
+          AllowVectorExport = True
+          Top = 3.779530000000020000
+          Width = 325.039580000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Impress'#227'o: [Date]  [Time]')
+          ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object Memo29: TfrxMemoView
+          AllowVectorExport = True
+          Left = 839.055660000000000000
+          Top = 3.779530000000020000
+          Width = 207.874150000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haRight
+          Memo.UTF8W = (
+            'P'#225'gina [Page#] de [TotalPages#]')
+          ParentFont = False
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object Line2: TfrxLineView
+          AllowVectorExport = True
+          Top = 1.779530000000020000
+          Width = 1046.929810000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+          Frame.Width = 1.500000000000000000
+        end
+      end
+      object GroupHeader1: TfrxGroupHeader
+        FillType = ftBrush
+        Frame.Typ = []
+        Height = 22.677180000000000000
+        Top = 173.858380000000000000
+        Width = 1046.929810000000000000
+        Condition = '<frxDBBusca."CLI_RAZAO">'
+        object Memo30: TfrxMemoView
+          AllowVectorExport = True
+          Left = 3.779530000000000000
+          Top = 1.000000000000000000
+          Width = 582.047620000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            'Cliente: [frxDBBusca."CLI_RAZAO"]')
+          Formats = <
+            item
+            end
+            item
+            end>
+        end
+        object Line4: TfrxLineView
+          AllowVectorExport = True
+          Width = 1046.929810000000000000
+          Color = clBlack
+          Frame.Typ = [ftTop]
+        end
+      end
+    end
+  end
   object frxOrdemProducaoModelos: TfrxReport
     Version = '6.9.3'
     DotMatrixReport = False
@@ -39914,7 +40598,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     OnBeginDoc = frxOrdemProducaoModelosBeginDoc
     OnGetValue = frxOrdemProducaoModelosGetValue
     Left = 747
-    Top = 533
+    Top = 529
     Datasets = <
       item
         DataSet = frxDataItensPedido
@@ -43135,7 +43819,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         FillType = ftBrush
         Frame.Typ = []
         Height = 801.259847400000000000
-        Top = 8821.423020000000000000
+        Top = 8844.100200000000000000
         Width = 718.110700000000000000
         OnBeforePrint = 'Child1OnBeforePrint'
         Child = frxOrdemProducaoModelos.Child2
@@ -44862,7 +45546,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         FillType = ftBrush
         Frame.Typ = []
         Height = 661.417305750000000000
-        Top = 9645.360560000000000000
+        Top = 9668.037740000000000000
         Visible = False
         Width = 718.110700000000000000
         OnBeforePrint = 'Child2OnBeforePrint'
@@ -51725,7 +52409,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         FillType = ftBrush
         Frame.Typ = []
         Height = 944.881889760000000000
-        Top = 5744.885600000000000000
+        Top = 5767.562780000000000000
         Visible = False
         Width = 718.110700000000000000
         OnBeforePrint = 'Modelo7OnBeforePrint'
@@ -54308,7 +54992,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         FillType = ftBrush
         Frame.Typ = []
         Height = 1043.149606300000000000
-        Top = 7755.595560000000000000
+        Top = 7778.272740000000000000
         Visible = False
         Width = 718.110700000000000000
         OnBeforePrint = 'completoOnBeforePrint'
@@ -58022,7 +58706,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       object Modelo4: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
-        Height = 793.700787400000000000
+        Height = 816.377967400000000000
         Top = 3068.978360000000000000
         Visible = False
         Width = 718.110700000000000000
@@ -59982,7 +60666,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         object Memo973: TfrxMemoView
           AllowVectorExport = True
           Left = 0.102350000000000000
-          Top = 593.873933980000000000
+          Top = 624.110173980000000000
           Width = 430.866141730000000000
           Height = 167.433134330000000000
           AllowHTMLTags = True
@@ -60292,10 +60976,9 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         object Memo993: TfrxMemoView
           AllowVectorExport = True
           Left = 196.637910000000000000
-          Top = 569.331015000000000000
+          Top = 567.331015000000000000
           Width = 234.330860000000000000
           Height = 18.897650000000000000
-          OnBeforePrint = 'Memo63OnBeforePrint'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -11
@@ -60609,12 +61292,47 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Transparent = False
           TransparentColor = clWhite
         end
+        object Memo1429: TfrxMemoView
+          AllowVectorExport = True
+          Top = 589.606680000000000000
+          Width = 188.976500000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Extremidade')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo1430: TfrxMemoView
+          AllowVectorExport = True
+          Left = 196.535560000000000000
+          Top = 591.386210000000000000
+          Width = 234.330860000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            
+              '[IIF(<frxDataMola."MMO_EXTREMIDADE_MOLA_MATERIA"> = '#39#39', '#39#39',    I' +
+              'IF(<frxDataMola."MMO_EXTREMIDADE_MOLA_MATERIA"> = '#39'A'#39', '#39'Aberta'#39',' +
+              ' '#39'Fechada'#39')     )]')
+          ParentFont = False
+        end
       end
       object Modelo5: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
         Height = 869.291338580000000000
-        Top = 3885.356840000000000000
+        Top = 3908.034020000000000000
         Visible = False
         Width = 718.110700000000000000
         OnBeforePrint = 'Modelo5OnBeforePrint'
@@ -62379,7 +63097,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         object Memo1098: TfrxMemoView
           AllowVectorExport = True
           Left = 0.102350000000000000
-          Top = 649.566883980000000000
+          Top = 676.023593980000000000
           Width = 430.866141730000000000
           Height = 167.433134330000000000
           AllowHTMLTags = True
@@ -63329,12 +64047,47 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           ParentFont = False
           VAlign = vaCenter
         end
+        object Memo1431: TfrxMemoView
+          AllowVectorExport = True
+          Top = 649.079160000000000000
+          Width = 188.976500000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Extremidade')
+          ParentFont = False
+          VAlign = vaCenter
+        end
+        object Memo1432: TfrxMemoView
+          AllowVectorExport = True
+          Left = 196.535560000000000000
+          Top = 650.858690000000000000
+          Width = 234.330860000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            
+              '[IIF(<frxDataMola."MMO_EXTREMIDADE_MOLA_MATERIA"> = '#39#39', '#39#39',    I' +
+              'IF(<frxDataMola."MMO_EXTREMIDADE_MOLA_MATERIA"> = '#39'A'#39', '#39'Aberta'#39',' +
+              ' '#39'Fechada'#39')     )]')
+          ParentFont = False
+        end
       end
       object Modelo6: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
         Height = 944.881889760000000000
-        Top = 4777.325920000000000000
+        Top = 4800.003100000000000000
         Visible = False
         Width = 718.110700000000000000
         OnBeforePrint = 'Modelo6OnBeforePrint'
@@ -65431,7 +66184,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         object Memo1223: TfrxMemoView
           AllowVectorExport = True
           Left = 0.322820000000000000
-          Top = 727.937013980000000000
+          Top = 754.614193980000000000
           Width = 430.866141730000000000
           Height = 171.212664330000000000
           AllowHTMLTags = True
@@ -66446,12 +67199,48 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           ParentFont = False
           VAlign = vaCenter
         end
+        object Memo1434: TfrxMemoView
+          AllowVectorExport = True
+          Left = 196.756030000000000000
+          Top = 726.449290000000000000
+          Width = 234.330860000000000000
+          Height = 18.897650000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = [fsBold]
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            
+              '[IIF(<frxDataMola."MMO_EXTREMIDADE_MOLA_MATERIA"> = '#39#39', '#39#39',    I' +
+              'IF(<frxDataMola."MMO_EXTREMIDADE_MOLA_MATERIA"> = '#39'A'#39', '#39'Aberta'#39',' +
+              ' '#39'Fechada'#39')     )]')
+          ParentFont = False
+        end
+        object Memo1433: TfrxMemoView
+          AllowVectorExport = True
+          Left = 0.220470000000000000
+          Top = 724.669760000000000000
+          Width = 188.976500000000000000
+          Height = 22.677180000000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
+          Memo.UTF8W = (
+            'Extremidade')
+          ParentFont = False
+          VAlign = vaCenter
+        end
       end
       object Modelo8: TfrxMasterData
         FillType = ftBrush
         Frame.Typ = []
         Height = 1020.472440940000000000
-        Top = 6712.445280000000000000
+        Top = 6735.122460000000000000
         Visible = False
         Width = 718.110700000000000000
         OnBeforePrint = 'Modelo8OnBeforePrint'
@@ -69570,7 +70359,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         FillType = ftBrush
         Frame.Typ = []
         Height = 733.228185350000000000
-        Top = 10329.455490000000000000
+        Top = 10352.132670000000000000
         Visible = False
         Width = 718.110700000000000000
         ToNRows = 0

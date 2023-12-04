@@ -209,6 +209,7 @@ type
   private
     { Private declarations }
     procedure AbreTabelas();
+    var RowCounter: Integer;
   public
      procedure filtro;
     { Public declarations }
@@ -536,8 +537,8 @@ end;
 procedure TfrmControleDeQualidade.frxCertificadoQualidadeBeginDoc(Sender: TObject);
 begin
   inherited;
-     TfrxPictureView(frxCertificadoQualidade.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
-
+  RowCounter := 0;
+  TfrxPictureView(frxCertificadoQualidade.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
 end;
 
 procedure TfrmControleDeQualidade.frxOP5BeginDoc(Sender: TObject);
@@ -575,7 +576,7 @@ begin
        Value := DBInicio.Empresa.CEP
   else
   if (VarName  = 'CIDADE') then
-       Value := DBInicio.Empresa.CIDADE
+       Value := DBInicio.Empresa.CIDADE + ', ' + DBInicio.Empresa.UF
   else
   if (VarName  = 'UF') then
      Value := DBInicio.Empresa.UF
@@ -587,16 +588,26 @@ begin
      Value := DBInicio.Empresa.EMAIL
   else
   if (VarName  = 'HOJE') then
-     Value :=  DataExtenso(Now)
+     Value :=  FormatDateTime('dd/mm/yyyy', Now)
   else
   if (VarName  = 'CNPJ')  then
      Value := DBInicio.Empresa.CNPJ_CNPF
   else
   if (VarName  = 'INSCR') then
-     Value := DBInicio.Empresa.INSC_EST;
-
-
-
+     Value := DBInicio.Empresa.INSC_EST
+  else
+  if (VarName  = 'APROVADO') then
+     Value := DBInicio.Usuario.NOME
+  else
+  if (VarName  = 'EMAIL_APROVADO') then
+     Value := DBInicio.Usuario.EMAIL_USUARIO
+  else
+  if (VarName  = 'REPONSAVEL_TECNICO') then
+     Value := BuscaUmDadoSqlAsString('SELECT PMT_RESP_TECNICO_QUALIDADE FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DbInicio.EMP_CODIGO)   )
+  else
+  if (VarName  = 'CRQ') then
+     Value := BuscaUmDadoSqlAsString('SELECT PMT_CRQ_RESP_TECNICO_QUALIDADE FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DbInicio.EMP_CODIGO)   )
+  ;
 
 end;
 

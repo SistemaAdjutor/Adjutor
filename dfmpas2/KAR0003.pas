@@ -28,16 +28,16 @@ uses
   dxSkinOffice2013LightGray, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
   dxSkinTheBezier, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light,
-  cxDataControllerConditionalFormattingRulesManagerDialog;
+  cxDataControllerConditionalFormattingRulesManagerDialog, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, FireDAC.UI.Intf, FireDAC.Stan.Def,
+  FireDAC.Stan.Pool, FireDAC.Phys, FireDAC.Phys.FB, FireDAC.Phys.FBDef,
+  FireDAC.VCLUI.Wait;
 
 type
   TFrmKardexLancamentoManual = class(TFrmBaseDbEstoque)
     DsProduto: TDataSource;
-    SqlCdsProduto: TSQLClientDataSet;
-    SqlCdsProdutoPRD_CODIGO: TStringField;
-    SqlCdsProdutoPRD_REFER: TStringField;
-    SqlCdsProdutoPRD_DESCRI: TStringField;
-    SqlCdsProdutoPRD_UND: TStringField;
     DsSaldos: TDataSource;
     CdsSaldos: TClientDataSet;
     CdsSaldosAMX_CODIGO_RET: TStringField;
@@ -64,7 +64,6 @@ type
     CdsLoteProdutoPRDL_PRECO_MAXIMO: TFMTBCdField;
     CdsLoteProdutoPRDL_SALDO: TFMTBCdField;
     CdsLoteProdutoPRD_CODIGO: TStringField;
-    SqlCdsProdutoPRD_GRADE_OBRIGATORIO: TStringField;
     dspGrade: TDataSetProvider;
     sGrade: TSQLQuery;
     sGradePRG_REGISTRO: TIntegerField;
@@ -91,7 +90,6 @@ type
     tslote: TTabSheet;
     dbgLancarinfo: TDBGrid;
     dgrLote: TDBGrid;
-    SqlCdsProdutoPRD_GERENCIA_LOTE: TStringField;
     Panel1: TPanel;
     chkMaiorZero: TCheckBox;
     CdsLoteProdutoPRG_QTDE: TFMTBCDField;
@@ -139,6 +137,14 @@ type
     chkTodosLotes: TCheckBox;
     CdsLoteProdutoAMX_CODIGO: TStringField;
     CdsLoteProdutoAMX_DESCRI: TStringField;
+    sqlCdsProduto: TFDQuery;
+    sqlCdsProdutoPRD_CODIGO: TStringField;
+    sqlCdsProdutoPRD_REFER: TStringField;
+    sqlCdsProdutoPRD_DESCRI: TStringField;
+    sqlCdsProdutoPRD_UND: TStringField;
+    sqlCdsProdutoPRD_GRADE_OBRIGATORIO: TStringField;
+    sqlCdsProdutoPRD_GERENCIA_LOTE: TStringField;
+    FDACConn: TFDConnection;
     procedure FormCreate(Sender: tObject);
     procedure FormClose(Sender: tObject; var Action: TCloseAction);
     procedure Bit_CancelarClick(Sender: tObject);
@@ -208,14 +214,22 @@ end;
 procedure TFrmKardexLancamentoManual.FormCreate(Sender: tObject);
 begin
    inherited;
-  cbProduto.CDS.PacketRecords := -1;
+  // cbProduto.CDS.PacketRecords := -1;
 
   KardexLancEntrada    := (dbInicio.GetParametroUsuario('USP_KARDEX_LANC_ENTRADA') = 'S');
   KardexLancSaida      := (dbInicio.GetParametroUsuario('USP_KARDEX_LANC_SAIDA') = 'S');
   KardexLancBalanco    := (dbInicio.GetParametroUsuario('USP_KARDEX_LANC_BALANCO') = 'S');
 
   SqlCdsAlmoxarifadoDestino.Open;
-  SqlCdsProduto.CommandText := SQLDEF('PRODUTOS','SELECT * FROM PRD0000','WHERE PRD_STATUS = ''A'' ','PRD_REFER','');
+
+  sqlCdsProduto.Close;
+  FDACConn := DBInicio.FDACConn;
+  FDACConn.Connected := False;
+  FDACConn.Params.Values['CharacterSet'] := 'WIN_1252';
+  FDACConn.Connected := True;
+  sqlCdsProduto.Connection := FDACConn;
+
+  sqlCdsProduto.SQL.Text := SQLDEF('PRODUTOS','SELECT * FROM PRD0000','WHERE PRD_STATUS = ''A'' ','PRD_REFER','');
   SqlCdsProduto.Open;
 	tsgrade.TabVisible := False;
   tslote.TabVisible := False;

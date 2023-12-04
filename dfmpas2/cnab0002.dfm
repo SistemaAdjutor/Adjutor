@@ -4,7 +4,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Retorno arquivo CNAB'
-  ClientHeight = 487
+  ClientHeight = 493
   ClientWidth = 964
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -31,6 +31,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     Top = 3
     Width = 959
     Height = 453
+    PageIndex = 1
     TabOrder = 0
     object TPage
       Left = 0
@@ -1634,8 +1635,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'FORMA_PAGAMENTO'
           CamposCarregar = 'FPG_DESCRICAO'
           CamposRetornar = 'FPG_REGISTRO'
@@ -2002,13 +2005,11 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLDupliCNAB: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     BeforeOpen = SQLDupliCNABBeforeOpen
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2166,6 +2167,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
       FieldName = 'FAT_REGISTRO'
       Required = True
     end
+    object SQLDupliCNABFPC_CODIGO_REGISTRO_RETORNO: TStringField
+      FieldName = 'FPC_CODIGO_REGISTRO_RETORNO'
+      Size = 100
+    end
   end
   object DSDupliCNAB: TDataSource
     DataSet = SQLDupliCNAB
@@ -2181,12 +2186,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLConsultaArquivo: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2195,12 +2198,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLContaBanco: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2209,12 +2210,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLConsultaCRC: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2223,12 +2222,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLConsulta: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2237,12 +2234,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLRelatorio: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2251,12 +2246,10 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object SQLDetalhe: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2280,6 +2273,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
     OpcoesPreview.PreviewZoom = 100
@@ -2293,15 +2287,19 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
     TitulodoRelatorio = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
@@ -2358,6 +2356,8 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     OnNewPage = RDProtRetornoCNABNewPage
     OnBeforeNewPage = RDProtRetornoCNABBeforeNewPage
     Left = 427
@@ -2365,7 +2365,6 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
   end
   object CDSRecebimentos: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'    t1.FRE_REGISTRO,'#13#10'    T1.FRE_DATA_RECEBIMENTO,'#13#10'    ' +
       'T1.FRE_VALOR,'#13#10'    T1.FRE_DESCONTO,'#13#10'    T1.FRE_JUROS,'#13#10'    T1.F' +
@@ -2387,7 +2386,6 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
       'T2 ON (T2.BAN_CODIGO = T1.BAN_CODIGO)'#13#10'JOIN FORMA_PAGAMENTO T3 O' +
       'N (T3.FPG_REGISTRO = T1.FPG_REGISTRO)'#13#10'JOIN USUARIO T4 ON (T4.US' +
       'U_CODIGO = T1.USU_CODIGO)'#13#10'WHERE T1.FAT_REGISTRO = 0'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2470,6 +2468,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
     OpcoesPreview.PreviewZoom = 100
@@ -2483,15 +2482,19 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
     TitulodoRelatorio = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
@@ -2548,6 +2551,8 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     OnNewPage = RDProtCNABNewPage
     OnBeforeNewPage = RDProtCNABBeforeNewPage
     Left = 429
@@ -2571,6 +2576,7 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     Banco.CasasDecimaisMoraJuros = 2
     Cedente.TipoInscricao = pJuridica
     Cedente.IdentDistribuicao = tbBancoDistribui
+    Cedente.PIX.TipoChavePIX = tchNenhuma
     NumeroArquivo = 0
     Configuracoes.Arquivos.LogRegistro = False
     Configuracoes.WebService.SSLHttpLib = httpOpenSSL

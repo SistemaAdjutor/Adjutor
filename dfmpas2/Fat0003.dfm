@@ -1160,10 +1160,6 @@ inherited FormFatPedido: TFormFatPedido
       TabStop = False
       object TabSheet1: TTabSheet
         Caption = 'Dados Adicionais'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ScrollBox1: TScrollBox
           Left = 0
           Top = 0
@@ -1239,10 +1235,6 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet2: TTabSheet
         Caption = 'Transporte'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label4: TLabel
           Left = 11
           Top = 59
@@ -1429,10 +1421,6 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet4: TTabSheet
         Caption = 'Exporta'#231#227'o'
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label11: TLabel
           Left = 15
           Top = 12
@@ -1542,10 +1530,6 @@ inherited FormFatPedido: TFormFatPedido
       object tsServico: TTabSheet
         Caption = 'Servi'#231'o'
         ImageIndex = 4
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label38: TLabel
           Left = 3
           Top = 9
@@ -2476,7 +2460,8 @@ inherited FormFatPedido: TFormFatPedido
       FieldName = 'TOTAL_FATURAR'
       ProviderFlags = []
       DisplayFormat = '###,###,##0.00'
-      Size = 0
+      Precision = 12
+      Size = 5
     end
     object CdsItemPedidoOpe_Natureza: TStringField
       FieldName = 'Ope_Natureza'

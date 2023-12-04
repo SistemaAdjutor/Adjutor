@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Tbs_FichaTec
+    ActivePage = Tbs_Produtos
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -147,7 +147,7 @@ inherited FormProduto: TFormProduto
         Top = 34
         Width = 1051
         Height = 483
-        ActivePage = tsGeral
+        ActivePage = tsCamposTecnicos
         Align = alCustom
         Anchors = [akLeft, akBottom]
         TabOrder = 2
@@ -1795,7 +1795,7 @@ inherited FormProduto: TFormProduto
             Top = 4
             Width = 1048
             Height = 420
-            ActivePage = tsCampos1
+            ActivePage = tsCampos2
             TabOrder = 2
             object tsCampos1: TTabSheet
               Caption = 'Mat'#233'ria prima'
@@ -2571,7 +2571,7 @@ inherited FormProduto: TFormProduto
               end
               object Label283: TLabel
                 Left = 409
-                Top = 268
+                Top = 291
                 Width = 66
                 Height = 14
                 Caption = 'Observa'#231#245'es'
@@ -2819,6 +2819,13 @@ inherited FormProduto: TFormProduto
                 Width = 91
                 Height = 14
                 Caption = 'Grau de Tol'#234'rancia'
+              end
+              object Label333: TLabel
+                Left = 408
+                Top = 266
+                Width = 59
+                Height = 14
+                Caption = 'Extremidade'
               end
               object DIAMETRO_ARAME: TDBEdit
                 Left = 153
@@ -3353,7 +3360,7 @@ inherited FormProduto: TFormProduto
               end
               object mobservacoesMola: TDBMemo
                 Left = 570
-                Top = 265
+                Top = 288
                 Width = 460
                 Height = 93
                 Hint = 'Para pular linha use Ctrl + Enter'
@@ -3690,7 +3697,7 @@ inherited FormProduto: TFormProduto
                 TabOrder = 71
               end
               object POSICAO_HASTE: TDBComboBox
-                Left = 963
+                Left = 965
                 Top = 230
                 Width = 71
                 Height = 22
@@ -3793,6 +3800,18 @@ inherited FormProduto: TFormProduto
                   D4C8D0D4C8D0D4C8D0D4}
                 TabOrder = 77
                 OnClick = BitBtn2Click
+              end
+              object MMO_EXTREMIDADE_MOLA_MATERIA: TDBComboBox
+                Left = 569
+                Top = 260
+                Width = 71
+                Height = 22
+                DataField = 'MMO_EXTREMIDADE_MOLA_MATERIA'
+                DataSource = dsMola
+                Items.Strings = (
+                  'Aberta'
+                  'Fechada')
+                TabOrder = 78
               end
             end
             object tsCampos3: TTabSheet
@@ -20972,6 +20991,11 @@ inherited FormProduto: TFormProduto
     object cdsMolaMMO_ARQUIVO_FICHA_TECNICA: TStringField
       FieldName = 'MMO_ARQUIVO_FICHA_TECNICA'
       Size = 1024
+    end
+    object cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField
+      FieldName = 'MMO_EXTREMIDADE_MOLA_MATERIA'
+      OnGetText = cdsMolaMMO_EXTREMIDADE_MOLA_MATERIAGetText
+      Size = 1
     end
   end
   object dspMola: TDataSetProvider [126]

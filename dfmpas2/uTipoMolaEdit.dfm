@@ -2,8 +2,8 @@ inherited frmTipoMola: TfrmTipoMola
   Caption = 'Habilitar campos'
   ClientHeight = 562
   ClientWidth = 1096
-  ExplicitWidth = 1104
-  ExplicitHeight = 589
+  ExplicitWidth = 1112
+  ExplicitHeight = 601
   PixelsPerInch = 96
   TextHeight = 13
   object loperacao: TLabel [0]
@@ -1102,6 +1102,18 @@ inherited frmTipoMola: TfrmTipoMola
     TabOrder = 82
     Width = 121
   end
+  object DBCheckBox80: TDBCheckBox [92]
+    Left = 401
+    Top = 148
+    Width = 170
+    Height = 17
+    Caption = 'Extremidade'
+    DataField = 'MMO_EXTREMIDADE'
+    DataSource = dsEditS
+    TabOrder = 83
+    ValueChecked = 'S'
+    ValueUnchecked = 'N'
+  end
   inherited coCalcula: TACBrCalculadora
     Left = 968
     Top = 8
@@ -1610,6 +1622,10 @@ inherited frmTipoMola: TfrmTipoMola
       EditFormat = '###0.000'
       Precision = 18
       Size = 5
+    end
+    object CdsEditMMO_EXTREMIDADE: TStringField
+      FieldName = 'MMO_EXTREMIDADE'
+      Size = 1
     end
   end
   inherited dsEditS: TDataSource

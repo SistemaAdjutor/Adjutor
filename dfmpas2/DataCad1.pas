@@ -1698,6 +1698,10 @@ type
     CdsParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField;
     SQLUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField;
     CDSUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField;
+    SqlParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField;
+    CdsParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField;
+    SqlParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField;
+    CdsParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
@@ -2008,7 +2012,7 @@ begin
                   {titulos}
                    if (CdSArquivoCNAB.FieldByName('CNAB_LITERAL_ARQUIVO').AsString = 'REMESSA') or (CdSArquivoCNAB.FieldByName('CNAB_LITERAL_ARQUIVO').AsString = 'ESTORNO REMESSA') then
                       begin
-                          wSQL1 := 'SELECT D1.*,F2.FAT_CODIGO,F2.FAT_REGISTRO,F2.FPC_NUMER,F2.FPC_VENCTO,F2.FPC_PAGTO,F2.FPC_VLPARC,F2.FPC_JUROS,F2.FPC_VLPAGO,F2.CLI_CODIGO,C1.CLI_RAZAO,F2.FPC_COBNUM,'+
+                          wSQL1 := 'SELECT D1.*,f2.FPC_CODIGO_REGISTRO_RETORNO, F2.FAT_CODIGO,F2.FAT_REGISTRO,F2.FPC_NUMER,F2.FPC_VENCTO,F2.FPC_PAGTO,F2.FPC_VLPARC,F2.FPC_JUROS,F2.FPC_VLPAGO,F2.CLI_CODIGO,C1.CLI_RAZAO,F2.FPC_COBNUM,'+
                           ' coalesce(DESCRICAOOCORRENCIA,O1.OCR_DESCRICAO) as OCR_DESCRICAO,R1.REJ_DESCRICAO FROM DUPLICAT_CNAB D1 ';
                           wSQL2 := ' LEFT JOIN FAT_PC01 F2 ON (D1.DCN_DUPLICATA = F2.FAT_CODIGO and D1.DCN_DUP_PARCELA = F2.FPC_NUMER ' +
                                     iif(DBINICIO.Exclusivo('RECEBER'),' AND F2.EMP_CODIGO = '+QuotedStr(DBInicio.Empresa.EMP_CODIGO),'') + ')'+
@@ -2019,7 +2023,7 @@ begin
                    else
                    if (CdSArquivoCNAB.FieldByName('CNAB_LITERAL_ARQUIVO').AsString = 'RETORNO') or (CdSArquivoCNAB.FieldByName('CNAB_LITERAL_ARQUIVO').AsString = 'ESTORNO RETORNO') then
                       begin
-                          wSQL1 := 'SELECT COALESCE(FPC_COBNUM,DCN_NOSSO_NUMERO) AS FPC_COBNUM, D1.*,F2.FAT_CODIGO,F2.FAT_REGISTRO,F2.FPC_NUMER,F2.FPC_VENCTO,F2.FPC_PAGTO,F2.FPC_VLPARC,F2.FPC_JUROS,'+
+                          wSQL1 := 'SELECT COALESCE(FPC_COBNUM,DCN_NOSSO_NUMERO) AS FPC_COBNUM, D1.*,f2.FPC_CODIGO_REGISTRO_RETORNO, F2.FAT_CODIGO,F2.FAT_REGISTRO,F2.FPC_NUMER,F2.FPC_VENCTO,F2.FPC_PAGTO,F2.FPC_VLPARC,F2.FPC_JUROS,'+
                                    '  COALESCE(DCN_VALOR_PAGO, F2.FPC_VLPAGO) as FPC_VLPAGO,C1.CLI_CODIGO,C1.CLI_RAZAO,F2.FPC_COBNUM, '+
                                    ' coalesce(DESCRICAOOCORRENCIA,O1.OCR_DESCRICAO) as OCR_DESCRICAO ,R1.REJ_DESCRICAO FROM DUPLICAT_CNAB D1 ';
                           wSQL2 := ' LEFT JOIN FAT_PC01 F2 ON (D1.DCN_DUPLICATA = F2.FAT_CODIGO and D1.DCN_DUP_PARCELA = F2.FPC_NUMER '+

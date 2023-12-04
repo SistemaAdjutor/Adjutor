@@ -478,6 +478,7 @@ inherited FormParametros: TFormParametros
       FFFFFFFFFFFFFF0000000000000000000000000108500072006F0064007500E7
       00E3006F002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
       00000000000107500072006F006400750074006F00}
+    ExplicitTop = 55
   end
   object PNotaFiscal_Etiqueta: TPanel [6]
     Left = 201
@@ -493,7 +494,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 12
+      PageIndex = 5
       TabOrder = 0
       object TPage
         Left = 0
@@ -2932,7 +2933,7 @@ inherited FormParametros: TFormParametros
             Top = 1
             Width = 765
             Height = 507
-            ActivePage = tsPCPNew
+            ActivePage = TabSheet5
             Align = alClient
             TabOrder = 0
             object tsPCPOld: TTabSheet
@@ -4022,6 +4023,46 @@ inherited FormParametros: TFormParametros
                 TabOrder = 18
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
+              end
+            end
+            object TabSheet5: TTabSheet
+              Caption = 'Qualidade'
+              ImageIndex = 3
+              object Label675: TLabel
+                Left = 12
+                Top = 24
+                Width = 104
+                Height = 14
+                Caption = 'Respons'#225'vel T'#233'cnico'
+              end
+              object Label676: TLabel
+                Left = 79
+                Top = 52
+                Width = 37
+                Height = 14
+                Caption = 'N'#186' CRQ'
+              end
+              object DBEdit65: TDBEdit
+                Left = 122
+                Top = 21
+                Width = 441
+                Height = 22
+                DataField = 'PMT_RESP_TECNICO_QUALIDADE'
+                DataSource = DataCadastros1.DsParametros
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 0
+              end
+              object DBEdit66: TDBEdit
+                Left = 122
+                Top = 49
+                Width = 441
+                Height = 22
+                DataField = 'PMT_CRQ_RESP_TECNICO_QUALIDADE'
+                DataSource = DataCadastros1.DsParametros
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
               end
             end
           end

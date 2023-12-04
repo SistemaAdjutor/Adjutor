@@ -845,9 +845,17 @@ type
     cdsMolaMMO_TOLERANCIA_DE_MENOR_MIN: TFMTBCDField;
     cdsMolaMMO_ARQUIVO_FICHA_TECNICA: TStringField;
     cdsMateriaPrimaAMX_CODIGO: TStringField;
-    frxOrdemProducaoModelos: TfrxReport;
     cdsMateriaPrimaAMX_DESCRI: TStringField;
     cxgrd1DBTableView1AMX_DESCRI: TcxGridDBColumn;
+    cdsBuscaACO_NOME: TStringField;
+    cdsBuscaPESO_TOTAL: TFMTBCDField;
+    cxgrd1DBBandedTableView1ENF_IT_NOTANUMBER: TcxGridDBBandedColumn;
+    cxgrd1DBBandedTableView1ACO_NOME: TcxGridDBBandedColumn;
+    cxgrd1DBBandedTableView1PESO_TOTAL: TcxGridDBBandedColumn;
+    ListagemdeOrdensporClienteeNotadeEntrada1: TMenuItem;
+    frxListaClienteNF: TfrxReport;
+    cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField;
+    frxOrdemProducaoModelos: TfrxReport;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -923,6 +931,7 @@ type
     procedure ListadeOrdemdeProduoporCliente1Click(Sender: TObject);
     procedure frxOrdemProducaoModelosBeginDoc(Sender: TObject);
     procedure frxOrdemProducaoModelosGetValue(const VarName: string; var Value: Variant);
+    procedure ListagemdeOrdensporClienteeNotadeEntrada1Click(Sender: TObject);
   private
     NaoAtualizaHistorico : boolean;
     sPedidoTitulo:string;
@@ -1697,9 +1706,15 @@ begin
   if not (cdsBuscaPRF_REGISTRO.IsNull)  and (cdsBuscaCustoTotal.AsFloat >0) then
     cdsBuscaIndicadorFinanceiro.AsFloat :=  cdsBuscaIOP_PRECO.AsFloat /  cdsBuscaCustoTotal.AsFloat *100;
 
-//  cdsBuscaENF_IT_NOTANUMBER.AsString :=
+  cdsBuscaENF_IT_NOTANUMBER.AsString := BuscaUmDadoSqlAsString(
+      'SELECT FIRST 1 EI.ENF_IT_NOTANUMBER ' +
+      ' FROM DEMANDA_PRODUCAO DPR ' +
+      ' LEFT JOIN ENF_IT01 ei ON	(ei.ENF_REGISTRO = dpr.ENF_REGISTRO) ' +
+      ' WHERE (DPR.PED_CODIGO = ' + QuotedStr(cdsBuscaPED_CODIGO.AsString) + ' AND EI.EMP_CODIGO = DPR.EMP_CODIGO		) '
+  );
 
 
+  cdsBuscaPESO_TOTAL.AsFloat := cdsBuscaIOP_PESO.AsFloat * cdsBuscaIOP_QUANTIDADE.AsFloat
 
 
 end;
@@ -2320,7 +2335,7 @@ begin
 //     end;
 
      //custos da subordem so tem com geração de subordens
-     cdsBusca.SQL.Text := 'SELECT it.PRF_QTDE, LOT.PRDL_DATA_FABRICACAO, LOT.PRDL_DATA_VALIDADE, IOP.IOP_DTENTREGA, op.*, '+colunas+
+     cdsBusca.SQL.Text := 'SELECT ac.ACO_NOME, it.PRF_QTDE, LOT.PRDL_DATA_FABRICACAO, LOT.PRDL_DATA_VALIDADE, IOP.IOP_DTENTREGA, op.*, '+colunas+
                           ' COALESCE(CLI_FANTASIA, CLI_RAZAO) CLI_RAZAO, COALESCE(IOP_DATA_AJUSTADA,PE.PED_DTSAIDA)  IOP_DATA_AJUSTADA,  '+
                           ' datediff(DAY,CURRENT_DATE, IOP_DTENTREGA) leftdays, '+
                           ' datediff(DAY,IOP_DATA_INICIO,IOP_DTENTREGA ) deadline, ' +
@@ -2330,6 +2345,7 @@ begin
                           ' pr.prd_und, IOP_CUSTOMP,  '+
                           ' IOP_CUSTOOPERACAO, IOP_CUSTOCOLABORADOR, IOP_CUSTOEQUIPAMENTO,'+
                           ' IOP_CUSTOSERVICOS, PE.PED_DTENTRADA, PE.PED_NUMERO_PED_CLIENTE, ft.FTC_ETAPAS, lot.PRDL_LOTE,   '+
+                          ' ac.ACO_NOME,  ' +
                             sqlsubordens +
                           '  FROM ORDEMPRODUCAO OP                '+
                           ' JOIN CLI0000 CL ON CL.CLI_CODIGO = OP.CLI_CODIGO  '+
@@ -2339,6 +2355,7 @@ begin
                           ' LEFT JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER) '+
                           ' JOIN PED0000 pe ON (PE.PED_CODIGO = OP.PED_CODIGO  AND OP.EMP_CODIGO = PE.EMP_CODIGO) '+
                           ' left JOIN PED_IT01 it ON (it.PED_CODIGO = op.PED_CODIGO AND it.PRD_CODIGO = iop.PRD_CODIGO AND it.PRF_REGISTRO = iop.PRF_REGISTRO) ' +
+                          ' LEFT JOIN ACABAMENTO_CORES ac ON (ac.ACO_CODIGO = it.ACO_CODIGO) ' +
                           ' WHERE EXISTS                                                     '+
                           ' (SELECT * FROM DEMANDA_PRODUCAO dpr WHERE dpr.PED_CODIGO = op.PED_CODIGO '+
                           '   AND dpr.EMP_CODIGO = op.EMP_CODIGO )' +
@@ -2791,6 +2808,33 @@ begin
   frxListaIniciadas.ShowReport();
   btnPesquisa.Click;
 
+end;
+
+procedure TfrmGerenciamentoPCP.ListagemdeOrdensporClienteeNotadeEntrada1Click(
+  Sender: TObject);
+begin
+  inherited;
+  TfrxPictureView(frxListaClienteNF.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
+
+  if cxgrd1DBBandedTableView1.DataController.Filter.FilterText <> '' then
+  begin
+    cdsbusca.Filtered := False;
+    cdsBusca.Filter := cxgrd1DBBandedTableView1.DataController.Filter.FilterText;
+    try
+      cdsBusca.Filtered := True;
+    except
+      on e: Exception do
+      begin
+        if pos('SQL TimeStamp', e.message) > 0 then
+          MessageDlg('Utilize os filtros da Pesquisa para Filtrar por Data', mtWarning, [mbOk], 0);
+      end;
+    end;
+  end;
+  cdsBusca.AddIndex('CLIENTE_PEDIDO', 'CLI_RAZAO;PED_CODIGO', 'ASC', []);
+  cdsBusca.IndexName := 'CLIENTE_PEDIDO';
+  frxListaClienteNF.ShowReport();
+  cdsBusca.DeleteIndex('CLIENTE_PEDIDO');
+  cdsbusca.Filtered := False;
 end;
 
 procedure TfrmGerenciamentoPCP.miInformarempenhoClick(Sender: TObject);
@@ -3491,7 +3535,7 @@ begin
       'MMO.MMO_ABERT_GANCHO, MMO.MMO_TOLERANCIA_ABERT_GANCHO_MAX, MMO.MMO_TOLERANCIA_ABERT_GANCHO_MIN, MMO.MMO_COMP_GANCHO, '+
       'MMO.MMO_DIAMETRO_EXT_MAIOR, MMO.MMO_DIAMETRO_EXT_MENOR, MMO.MMO_PERDA, MMO.MMO_TOLERANCIA_DE_MAIOR_MIN, MMO.MMO_TOLERANCIA_DE_MAIOR_MAX, MMO.MMO_TOLERANCIA_DE_MENOR_MAX, ' +
       'MMO.MMO_TOLERANCIA_COMP_GANCHO_MAX, MMO.MMO_TOLERANCIA_COMP_GANCHO_MIN, ARA.NOME AS ARA_NOME, ART.ART_NOME, CMO_NOME, '+
-      'MMO.MMO_TOLERANCIA_DE_MENOR_MIN,' +
+      'MMO.MMO_TOLERANCIA_DE_MENOR_MIN, MMO.MMO_EXTREMIDADE_MOLA_MATERIA,' +
       'TSU.TSU_NOME, ASU.ASU_NOME, ACO.ACO_NOME, it.PRF_PRDDESCRI as PRD_DESCRI, PRD.PRD_REFER, IT.PRF_QTDE, GA.GAN_NOME, TP.TEM_DESCRICAO '+
       'FROM MOLA_MATERIA MMO LEFT JOIN ARAME ARA ON (ARA.ARA_CODIGO = MMO.ARA_CODIGO) '+
       'LEFT JOIN ARTEFATO ART ON(ART.ART_CODIGO = MMO.ART_CODIGO) LEFT JOIN CLASSIFICACAO_MOLA CMO ON(CMO.CMO_CODIGO = MMO.CMO_CODIGO) '+
@@ -3512,9 +3556,9 @@ begin
       ' AND PRD.PRD_REFER IN (SELECT PRD_REFER FROM ped_it01 WHERE PED_CODIGO = '+ QuotedStr(VarToStr(cxgrd1DBBandedTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PED_CODIGO.Index])) +'))' +
       ' ORDER BY it.prd_refer';
     finally
-      cdsMola.Open;
       if DBInicio.IsDesenvolvimento then
         CopyToClipBoard(qMola.SQL.Text);
+      cdsMola.Open;
 
       cdsMola.EnableControls;
     end;

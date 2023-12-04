@@ -3458,105 +3458,116 @@ var
 begin
  if Msk_cnpj.Text = '' then
    GeraException('Não preenchido o CNPJ/CPF');
-  IdHTTP1 := TIdHTTP.Create(nil);
 
   if Length(RetiraTodaMascara(Msk_cnpj.Text)) = 14 then
   begin
-    try
-      PanelAguarde.Visible := True;
-      Application.ProcessMessages;
-      URL := 'https://api.plugnotas.com.br/cnpj/' + RetirarMascaraCNPJ_INSC(Msk_cnpj.Text);
+    Application.ProcessMessages;
+    IdHTTP1 := TIdHTTP.Create(nil);
+    while True do
+    begin
+      try
+        PanelAguarde.Visible := True;
+        URL := 'https://api.plugnotas.com.br/cnpj/' + RetirarMascaraCNPJ_INSC(Msk_cnpj.Text);
 
-      Token := '3bfeffc6-4650-40f4-b555-1412c88a688b';
+        Token := '3bfeffc6-4650-40f4-b555-1412c88a688b';
 
-      IdHTTP1.Request.CustomHeaders.AddValue('x-api-key', Token);
-      IdHTTP1.Request.CustomHeaders.AddValue('Accept', 'application/json');
+        IdHTTP1.Request.CustomHeaders.Clear;
+        IdHTTP1.Request.CustomHeaders.AddValue('x-api-key', Token);
+        IdHTTP1.Request.CustomHeaders.AddValue('Accept', 'application/json');
 
-      ResponseContent := IdHTTP1.Get(URL);
+        ResponseContent := IdHTTP1.Get(URL);
 
-      jDados := TJSONObject.ParseJSONValue(ResponseContent);
-      jEndereco := TJSONObject(jDados).GetValue('endereco');
-
-
-      jDados.TryGetValue('abertura', abertura);
-      jDados.TryGetValue('razao_social', razaoSocial);
-      jDados.TryGetValue('fantasia', fantasia);
-      jDados.TryGetValue('email', email);
-      jDados.TryGetValue('telefone', telefone);
-      jDados.TryGetValue('complemento', complemento);
-
-      jEndereco.TryGetValue('uf', uf);
-      jEndereco.TryGetValue('numero', numero);
-      jEndereco.TryGetValue('logradouro', logradouro);
-      jEndereco.TryGetValue('bairro', bairro);
-      jEndereco.TryGetValue('municipio', municipio);
-      jEndereco.TryGetValue('cep', cep);
+        jDados := TJSONObject.ParseJSONValue(ResponseContent);
+        jEndereco := TJSONObject(jDados).GetValue('endereco');
 
 
+        jDados.TryGetValue('abertura', abertura);
+        jDados.TryGetValue('razao_social', razaoSocial);
+        jDados.TryGetValue('fantasia', fantasia);
+        jDados.TryGetValue('email', email);
+        jDados.TryGetValue('telefone', telefone);
+        jDados.TryGetValue('complemento', complemento);
 
-      if DataCadastros.DsCliente.State = dsBrowse then
-         DataCadastros.DsCliente.Edit;
-
-      dbedCLI_DTNASCIMENTO.Field.Value := abertura;
-
-      DbeCli_razao.Field.Value := razaoSocial;
-      DbeCli_Fantasia.Field.Value := fantasia;
-      DBEmail.Field.Value := email;
-
-
-      fone1 := copy(telefone,1 ,pos('/', telefone) - 1);
-      if fone1 = '' then
-        fone1 := telefone;
-      if pos('/', telefone) > 0 then
-        fone2 := copy(telefone, pos('/', telefone) + 1, 20 );
-      if trim(fone1) <>'' then
-      begin
-        vfone := AnsiReplaceStr(fone1,'(','');
-        vfone := AnsiReplaceStr(vfone,')','');
-        vfone := AnsiReplaceStr(vfone,'-','');
-        vfone := AnsiReplaceStr(vfone,' ','');
-        if vfone.Length = 10 then
-          vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
-
-        DbeCli_fone.Field.Value := vfone;
-      end;
-      if trim(fone2) <>'' then
-      begin
-        vfone := AnsiReplaceStr(fone2,'(','');
-        vfone := AnsiReplaceStr(vfone,')','');
-        vfone := AnsiReplaceStr(vfone,'-','');
-        vfone := AnsiReplaceStr(vfone,' ','');
-        if vfone.Length = 10 then
-          vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
-        DbeCli_fax.Field.Value := vfone;
-      end;
+        jEndereco.TryGetValue('uf', uf);
+        jEndereco.TryGetValue('numero', numero);
+        jEndereco.TryGetValue('logradouro', logradouro);
+        jEndereco.TryGetValue('bairro', bairro);
+        jEndereco.TryGetValue('municipio', municipio);
+        jEndereco.TryGetValue('cep', cep);
 
 
 
-      DbeCliCep.Field.Value :=  AnsiReplaceStr(AnsiReplaceStr(cep,'-',''), '.', '');
-      DbeCLI_BAIRRO.Field.Value := bairro;
-      DbeCli_endere.Field.Value := logradouro + ', ' + numero + ' ' + complemento;
-      if municipio <> '' then
-      begin
-        cidCodigo := dbInicio.BuscaUmDadoSqlAsInteger(' SELECT CID_CODIGO FROM CID0000'+
-                ' WHERE CID_ESTADO = '+ QuotedStr(uf) +
-                ' AND CID_CIDADE = '+ QuotedStr(municipio)  );
-        if not ((cidCodigo = Null) or (cidCodigo = 0))    then
+        if DataCadastros.DsCliente.State = dsBrowse then
+           DataCadastros.DsCliente.Edit;
+
+        dbedCLI_DTNASCIMENTO.Field.Value := abertura;
+
+        DbeCli_razao.Field.Value := razaoSocial;
+        DbeCli_Fantasia.Field.Value := fantasia;
+        DBEmail.Field.Value := email;
+
+
+        fone1 := copy(telefone,1 ,pos('/', telefone) - 1);
+        if fone1 = '' then
+          fone1 := telefone;
+        if pos('/', telefone) > 0 then
+          fone2 := copy(telefone, pos('/', telefone) + 1, 20 );
+        if trim(fone1) <>'' then
         begin
-         if not (DataCadastros.CdsClientes.State  in dsEditModes) then
-           DataCadastros.CdsClientes.Edit;
-         DataCadastros.CdsClientesCLI_CIDADE.AsString  := municipio;
-         DataCadastros.CdsClientesCLI_UF.AsString      := uf;
-         DataCadastros.CdsClientesCID_CODIGO.AsInteger := cidCodigo;
+          vfone := AnsiReplaceStr(fone1,'(','');
+          vfone := AnsiReplaceStr(vfone,')','');
+          vfone := AnsiReplaceStr(vfone,'-','');
+          vfone := AnsiReplaceStr(vfone,' ','');
+          if vfone.Length = 10 then
+            vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
+
+          DbeCli_fone.Field.Value := vfone;
         end;
+        if trim(fone2) <>'' then
+        begin
+          vfone := AnsiReplaceStr(fone2,'(','');
+          vfone := AnsiReplaceStr(vfone,')','');
+          vfone := AnsiReplaceStr(vfone,'-','');
+          vfone := AnsiReplaceStr(vfone,' ','');
+          if vfone.Length = 10 then
+            vfone := Copy(vfone, 1, 2) + ' ' + Copy(vfone, 3, 8);
+          DbeCli_fax.Field.Value := vfone;
+        end;
+
+
+
+        DbeCliCep.Field.Value :=  AnsiReplaceStr(AnsiReplaceStr(cep,'-',''), '.', '');
+        DbeCLI_BAIRRO.Field.Value := bairro;
+        DbeCli_endere.Field.Value := logradouro + ', ' + numero + ' ' + complemento;
+        if municipio <> '' then
+        begin
+          cidCodigo := dbInicio.BuscaUmDadoSqlAsInteger(' SELECT CID_CODIGO FROM CID0000'+
+                  ' WHERE CID_ESTADO = '+ QuotedStr(uf) +
+                  ' AND CID_CIDADE = '+ QuotedStr(municipio)  );
+          if not ((cidCodigo = Null) or (cidCodigo = 0))    then
+          begin
+           if not (DataCadastros.CdsClientes.State  in dsEditModes) then
+             DataCadastros.CdsClientes.Edit;
+           DataCadastros.CdsClientesCLI_CIDADE.AsString  := municipio;
+           DataCadastros.CdsClientesCLI_UF.AsString      := uf;
+           DataCadastros.CdsClientesCID_CODIGO.AsInteger := cidCodigo;
+          end;
+        end;
+
+      except
+        on E: Exception do
+        begin
+          PanelAguarde.Visible := False;
+          // showmessage('Falha na Consulta. Tente Novamente' + #13 + #10 + E.Message);
+          if MessageDlg('Falha na consulta. Tentar Novamente?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+            Continue;
+        end;
+
       end;
 
-    except
-      on E: Exception do
-      begin
-        PanelAguarde.Visible := False;
-        showmessage('Falha na Consulta. Tente Novamente' + #13 + #10 + E.Message);
-      end;
+
+      Break;
+
     end;
 
     IdHTTP1.Free;

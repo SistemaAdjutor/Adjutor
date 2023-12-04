@@ -1000,9 +1000,11 @@ begin
     '  CASE WHEN ci.PRD_REFER IS NULL ' +
     '    THEN ci.PRD_DESCRICAO ' +
     '    ELSE pr.PRD_DESCRI ' +
-    '  END AS PRD_DESCRI ' +
+    '  END AS PRD_DESCRI, ' +
+    '  pc.PCX_DESCRI ' +
     '  FROM COTACAO_ITEM ci ' +
     '  LEFT JOIN PRD0000 pr ON pr.PRD_REFER = ci.PRD_REFER ' +
+    '  LEFT JOIN PCX0000 pc ON pc.PCX_CODIGO = ci.PCX_CODIGO ' +
     '  WHERE ci.COT_CODIGO = ' + qCotacaoCOT_CODIGO.AsString +
     '  ORDER BY COT_CODIGO, CIT_CODIGO ' ;
   frmCotacaoCadastro.qItem.Open;
