@@ -845,7 +845,6 @@ type
     cdsMolaMMO_TOLERANCIA_DE_MENOR_MIN: TFMTBCDField;
     cdsMolaMMO_ARQUIVO_FICHA_TECNICA: TStringField;
     cdsMateriaPrimaAMX_CODIGO: TStringField;
-    frxOrdemProducaoModelos: TfrxReport;
     cdsMateriaPrimaAMX_DESCRI: TStringField;
     cxgrd1DBTableView1AMX_DESCRI: TcxGridDBColumn;
     cdsBuscaACO_NOME: TStringField;
@@ -855,6 +854,8 @@ type
     cxgrd1DBBandedTableView1PESO_TOTAL: TcxGridDBBandedColumn;
     ListagemdeOrdensporClienteeNotadeEntrada1: TMenuItem;
     frxListaClienteNF: TfrxReport;
+    cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField;
+    frxOrdemProducaoModelos: TfrxReport;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -3534,7 +3535,7 @@ begin
       'MMO.MMO_ABERT_GANCHO, MMO.MMO_TOLERANCIA_ABERT_GANCHO_MAX, MMO.MMO_TOLERANCIA_ABERT_GANCHO_MIN, MMO.MMO_COMP_GANCHO, '+
       'MMO.MMO_DIAMETRO_EXT_MAIOR, MMO.MMO_DIAMETRO_EXT_MENOR, MMO.MMO_PERDA, MMO.MMO_TOLERANCIA_DE_MAIOR_MIN, MMO.MMO_TOLERANCIA_DE_MAIOR_MAX, MMO.MMO_TOLERANCIA_DE_MENOR_MAX, ' +
       'MMO.MMO_TOLERANCIA_COMP_GANCHO_MAX, MMO.MMO_TOLERANCIA_COMP_GANCHO_MIN, ARA.NOME AS ARA_NOME, ART.ART_NOME, CMO_NOME, '+
-      'MMO.MMO_TOLERANCIA_DE_MENOR_MIN,' +
+      'MMO.MMO_TOLERANCIA_DE_MENOR_MIN, MMO.MMO_EXTREMIDADE_MOLA_MATERIA,' +
       'TSU.TSU_NOME, ASU.ASU_NOME, ACO.ACO_NOME, it.PRF_PRDDESCRI as PRD_DESCRI, PRD.PRD_REFER, IT.PRF_QTDE, GA.GAN_NOME, TP.TEM_DESCRICAO '+
       'FROM MOLA_MATERIA MMO LEFT JOIN ARAME ARA ON (ARA.ARA_CODIGO = MMO.ARA_CODIGO) '+
       'LEFT JOIN ARTEFATO ART ON(ART.ART_CODIGO = MMO.ART_CODIGO) LEFT JOIN CLASSIFICACAO_MOLA CMO ON(CMO.CMO_CODIGO = MMO.CMO_CODIGO) '+
@@ -3555,9 +3556,9 @@ begin
       ' AND PRD.PRD_REFER IN (SELECT PRD_REFER FROM ped_it01 WHERE PED_CODIGO = '+ QuotedStr(VarToStr(cxgrd1DBBandedTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PED_CODIGO.Index])) +'))' +
       ' ORDER BY it.prd_refer';
     finally
-      cdsMola.Open;
       if DBInicio.IsDesenvolvimento then
         CopyToClipBoard(qMola.SQL.Text);
+      cdsMola.Open;
 
       cdsMola.EnableControls;
     end;

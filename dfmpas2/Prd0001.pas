@@ -2224,6 +2224,9 @@ type
     qEnderecos: TSQLQuery;
     dsRegistroEndereco: TDataSource;
     cbTipoOperacao: TComboBox;
+    Label333: TLabel;
+    MMO_EXTREMIDADE_MOLA_MATERIA: TDBComboBox;
+    cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2490,6 +2493,8 @@ type
     procedure cbFiltroAlmoxarifadoChange(Sender: TObject);
     procedure sgdbEnderecamentoSelect(Sender: TObject);
     procedure sgdbEnderecamentoChange(Sender: TObject);
+    procedure cdsMolaMMO_EXTREMIDADE_MOLA_MATERIAGetText(Sender: TField;
+      var Text: string; DisplayText: Boolean);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -5396,6 +5401,7 @@ begin
     HASTEHA.Enabled := qAux3.FieldByName( 'MMO_COMPRIMENTO_HASTE_HA' ).AsString = 'S';
     HASTEHB.Enabled := qAux3.FieldByName( 'MMO_COMPRIMENTO_HASTE_HB' ).AsString = 'S';
     POSICAO_HASTE.Enabled := qAux3.FieldByName( 'MMO_POSICAO_HASTE' ).AsString = 'S';
+    MMO_EXTREMIDADE_MOLA_MATERIA.Enabled := qAux3.FieldByName( 'MMO_EXTREMIDADE' ).AsString = 'S';
 
     {
       TIPO DA MOLA
@@ -6796,6 +6802,20 @@ begin
     cdsGancho.EnableControls;
   end;
 
+end;
+
+procedure TFormProduto.cdsMolaMMO_EXTREMIDADE_MOLA_MATERIAGetText(
+  Sender: TField; var Text: string; DisplayText: Boolean);
+begin
+  inherited;
+  if Sender.AsString = '' then
+    Text := ''
+  else
+  if Sender.AsString = 'A' then
+    Text := 'Aberta'
+  else
+  if Sender.AsString = 'F' then
+    Text := 'Fechada';
 end;
 
 procedure TFormProduto.cdsMolaMMO_POSICAO_HASTEGetText( Sender : TField; var Text : string; DisplayText : Boolean );
