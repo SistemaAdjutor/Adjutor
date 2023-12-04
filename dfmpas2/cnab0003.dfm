@@ -14,7 +14,7 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   Visible = True
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 969
-  ExplicitHeight = 522
+  ExplicitHeight = 526
   PixelsPerInch = 96
   TextHeight = 14
   object PanProcessando: TPanel [0]
@@ -1069,7 +1069,6 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLDupliCNAB: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'D1.*,'#13#10'F2.FAT_REGISTRO,'#13#10'F2.FAT_CODIGO,'#13#10'F2.FPC_NUMER,'#13#10 +
       'F2.FPC_VENCTO,'#13#10'F2.FPC_PAGTO,'#13#10'F2.FPC_VLPARC,'#13#10'F2.FPC_JUROS,'#13#10'F2' +
@@ -1101,7 +1100,6 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
       'B R1 ON (F2.BAN_COD_APELIDO = R1.REJ_COD_BANCO and D1.DCN_COD_RE' +
       'JEICAO = R1.REJ_COD_REJEICAO)'#13#10'where D1.DCN_COD_REMESSA = 15'#13#10'OR' +
       'DER BY'#13#10'F2.FAT_CODIGO,F2.FPC_NUMER,C1.CLI_RAZAO'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1211,12 +1209,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLConsultaArquivo: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1225,12 +1221,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLContaBanco: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1239,12 +1233,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLConsultaCRC: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1253,12 +1245,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLConsulta: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1267,12 +1257,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLRelatorio: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1281,12 +1269,10 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object SQLDetalhe: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1310,6 +1296,7 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
     OpcoesPreview.PreviewZoom = 100
@@ -1323,15 +1310,19 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
     TitulodoRelatorio = 'Relat'#243'rio Protocolo Retorno Arquivo CNAB 400'
@@ -1388,6 +1379,8 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     OnNewPage = RDProtRetornoCNABNewPage
     OnBeforeNewPage = RDProtRetornoCNABBeforeNewPage
     Left = 1179
@@ -1395,7 +1388,6 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
   end
   object CDSRecebimentos: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'    t1.FRE_REGISTRO,'#13#10'    T1.FRE_DATA_RECEBIMENTO,'#13#10'    ' +
       'T1.FRE_VALOR,'#13#10'    T1.FRE_DESCONTO,'#13#10'    T1.FRE_JUROS,'#13#10'    T1.F' +
@@ -1417,7 +1409,6 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
       'T2 ON (T2.BAN_CODIGO = T1.BAN_CODIGO)'#13#10'JOIN FORMA_PAGAMENTO T3 O' +
       'N (T3.FPG_REGISTRO = T1.FPG_REGISTRO)'#13#10'JOIN USUARIO T4 ON (T4.US' +
       'U_CODIGO = T1.USU_CODIGO)'#13#10'WHERE T1.FAT_REGISTRO = 0'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1500,6 +1491,7 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
     OpcoesPreview.PreviewZoom = 100
@@ -1513,15 +1505,19 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
     TitulodoRelatorio = 'Relat'#243'rio Protocolo remessa arquivo CNAB 400'
@@ -1578,6 +1574,8 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     OnNewPage = RDProtCNABNewPage
     OnBeforeNewPage = RDProtCNABBeforeNewPage
     Left = 1013
@@ -1601,6 +1599,7 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
     Banco.CasasDecimaisMoraJuros = 2
     Cedente.TipoInscricao = pJuridica
     Cedente.IdentDistribuicao = tbBancoDistribui
+    Cedente.PIX.TipoChavePIX = tchNenhuma
     NumeroArquivo = 0
     Configuracoes.Arquivos.LogRegistro = False
     Configuracoes.WebService.SSLHttpLib = httpOpenSSL
