@@ -1,0 +1,17 @@
+﻿Atualizado em 04/12/2023
+Inicio da versão: 04/12/2023
+
+principal: Arkson, Netocolor, Hospital São José, Collect, Parseals
+  1662 - Modelo de impressão da qualidade [Arkson]
+  1729 - Novos campos produção [Netocolor]
+  1730 - Novo relatório na ordem de produção [Netocolor]
+  1738 - Erro ao abrir solicitação com centro de custo [Novi]
+  1740 - Mostrando status errado [Arkson]
+  1741 - Ajuste consulta cnpj [Novi]
+  1743 - Casas decimais do produto - faturamento [Novi]
+  1745 - Erro ao estornar remessa [Hospital São José]
+  1749 - Importação do arquivo CELESC [Hospital São José]
+  1750 - Tratar mensagem de cliente inativo [Collect]
+  1751 - Lentidão na tela de entrada e saída manual [Parseals]
+  
+  
