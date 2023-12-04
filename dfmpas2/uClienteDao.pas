@@ -8,7 +8,7 @@ function RetornaClienteCnpj(sCnpj:String):String;
 implementation
 
 uses
- DataCad, SysUtils, UFuncoes, RWFunc;
+ DataCad, SysUtils, UFuncoes, RWFunc, uPedidoDoacao;
 
 
 function RetornaClienteCnpj(sCnpj:String):String;
@@ -38,7 +38,16 @@ begin
             begin
                if (dataCadastros.sqlUpdate.FieldByName('CLI_INATIVO').AsString <> 'A') then
                   begin
-                     msg := 'Cliente Inativo '+FormatDateTime('DD/MM/YYYY',dataCadastros.sqlUpdate.FieldByName('CLI_DTINATIVO').AsDateTime)+' Motivo: '+dataCadastros.sqlUpdate.FieldByName('CLI_MOTIVO').AsString;
+                    if frmPedidoDoacao = nil then
+                       msg := 'Cliente Inativo '+FormatDateTime('DD/MM/YYYY',dataCadastros.sqlUpdate.FieldByName('CLI_DTINATIVO').AsDateTime)+' Motivo: '+dataCadastros.sqlUpdate.FieldByName('CLI_MOTIVO').AsString
+                    else
+                    begin
+                      if dataCadastros.sqlUpdate.FieldByName('CLI_INATIVO').AsString = 'I' then
+                        msg := 'Cliente Inativo '
+                      else
+                      if dataCadastros.sqlUpdate.FieldByName('CLI_INATIVO').AsString = 'R' then
+                        msg := 'Cliente em Recuperação '
+                    end;
                      Result := False;
                   end
                else
