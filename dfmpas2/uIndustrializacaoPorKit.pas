@@ -7,7 +7,26 @@ uses
   Dialogs, StdCtrls, Buttons, SqlExpr,Provider, DB, DBClient, DBLocal,
   DBLocalS, Grids, DBGrids, {uProcedimentos,} Mask,  rxToolEdit, DBCtrls,
   Data.DBXFirebird, SimpleDS, Iniciodb, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.ExtCtrls, JvExMask, JvToolEdit, SgDbSeachComboUnit, RxCurrEdit, Vcl.Menus,
-  frxClass, frxDBSet;
+  frxClass, frxDBSet, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
+  cxNavigator, cxDataControllerConditionalFormattingRulesManagerDialog,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
 
 type
   TFrmIndustrializacaoPorKit = class(TfrmBaseDbEstoque)
@@ -82,6 +101,21 @@ type
     frxDBNotasDisponiveis: TfrxDBDataset;
     SqlCdsNotasDisponiveisENF_SERIE: TStringField;
     SqlCdsNotasDisponiveisENF_UCOM: TStringField;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1Selecao: TcxGridDBColumn;
+    cxGrid1DBTableView1ENF_NOTANUMBER: TcxGridDBColumn;
+    cxGrid1DBTableView1ENF_EMISSAO: TcxGridDBColumn;
+    cxGrid1DBTableView1ENF_CFOP: TcxGridDBColumn;
+    cxGrid1DBTableView1PRD_REFER: TcxGridDBColumn;
+    cxGrid1DBTableView1PRD_DESCRI: TcxGridDBColumn;
+    cxGrid1DBTableView1QuantidadeTmp: TcxGridDBColumn;
+    cxGrid1DBTableView1qtdSolicitada: TcxGridDBColumn;
+    cxGrid1DBTableView1RETORNADO: TcxGridDBColumn;
+    cxGrid1DBTableView1Saldo: TcxGridDBColumn;
+    cxGrid1DBTableView1ENF_CFOP_RETORNO: TcxGridDBColumn;
+    cxGrid1DBTableView1ENF_IT_DET_NITEM: TcxGridDBColumn;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);

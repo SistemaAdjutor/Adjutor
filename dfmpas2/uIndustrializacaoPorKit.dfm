@@ -164,6 +164,60 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
           Visible = True
         end>
     end
+    object cxGrid1: TcxGrid
+      Left = 16
+      Top = 176
+      Width = 921
+      Height = 233
+      TabOrder = 1
+      object cxGrid1DBTableView1: TcxGridDBTableView
+        Navigator.Buttons.CustomButtons = <>
+        DataController.DataSource = dsNotaDisponivel
+        DataController.Summary.DefaultGroupSummaryItems = <>
+        DataController.Summary.FooterSummaryItems = <>
+        DataController.Summary.SummaryGroups = <>
+        OptionsView.GroupByBox = False
+        object cxGrid1DBTableView1Selecao: TcxGridDBColumn
+          DataBinding.FieldName = 'Selecao'
+        end
+        object cxGrid1DBTableView1ENF_NOTANUMBER: TcxGridDBColumn
+          DataBinding.FieldName = 'ENF_NOTANUMBER'
+        end
+        object cxGrid1DBTableView1ENF_IT_DET_NITEM: TcxGridDBColumn
+          DataBinding.FieldName = 'ENF_IT_DET_NITEM'
+        end
+        object cxGrid1DBTableView1ENF_EMISSAO: TcxGridDBColumn
+          DataBinding.FieldName = 'ENF_EMISSAO'
+        end
+        object cxGrid1DBTableView1ENF_CFOP: TcxGridDBColumn
+          DataBinding.FieldName = 'ENF_CFOP'
+        end
+        object cxGrid1DBTableView1ENF_CFOP_RETORNO: TcxGridDBColumn
+          DataBinding.FieldName = 'ENF_CFOP_RETORNO'
+        end
+        object cxGrid1DBTableView1PRD_REFER: TcxGridDBColumn
+          DataBinding.FieldName = 'PRD_REFER'
+        end
+        object cxGrid1DBTableView1PRD_DESCRI: TcxGridDBColumn
+          DataBinding.FieldName = 'PRD_DESCRI'
+        end
+        object cxGrid1DBTableView1qtdSolicitada: TcxGridDBColumn
+          DataBinding.FieldName = 'qtdSolicitada'
+        end
+        object cxGrid1DBTableView1RETORNADO: TcxGridDBColumn
+          DataBinding.FieldName = 'RETORNADO'
+        end
+        object cxGrid1DBTableView1QuantidadeTmp: TcxGridDBColumn
+          DataBinding.FieldName = 'QuantidadeTmp'
+        end
+        object cxGrid1DBTableView1Saldo: TcxGridDBColumn
+          DataBinding.FieldName = 'Saldo'
+        end
+      end
+      object cxGrid1Level1: TcxGridLevel
+        GridView = cxGrid1DBTableView1
+      end
+    end
   end
   object BitConfirmar: TBitBtn [5]
     Left = 769
