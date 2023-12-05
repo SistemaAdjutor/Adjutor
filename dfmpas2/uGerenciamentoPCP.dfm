@@ -40598,7 +40598,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     OnBeginDoc = frxOrdemProducaoModelosBeginDoc
     OnGetValue = frxOrdemProducaoModelosGetValue
     Left = 747
-    Top = 529
+    Top = 528
     Datasets = <
       item
         DataSet = frxDataItensPedido
@@ -61294,7 +61294,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         end
         object Memo1429: TfrxMemoView
           AllowVectorExport = True
-          Top = 589.606680000000000000
+          Top = 591.606680000000000000
           Width = 188.976500000000000000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -61311,7 +61311,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         object Memo1430: TfrxMemoView
           AllowVectorExport = True
           Left = 196.535560000000000000
-          Top = 591.386210000000000000
+          Top = 593.386210000000000000
           Width = 234.330860000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -67202,7 +67202,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         object Memo1434: TfrxMemoView
           AllowVectorExport = True
           Left = 196.756030000000000000
-          Top = 726.449290000000000000
+          Top = 727.449290000000000000
           Width = 234.330860000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -67221,7 +67221,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         object Memo1433: TfrxMemoView
           AllowVectorExport = True
           Left = 0.220470000000000000
-          Top = 724.669760000000000000
+          Top = 725.669760000000000000
           Width = 188.976500000000000000
           Height = 22.677180000000000000
           Font.Charset = DEFAULT_CHARSET
