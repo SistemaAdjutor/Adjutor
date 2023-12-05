@@ -10,9 +10,8 @@ inherited FormGImpClie: TFormGImpClie
   OldCreateOrder = True
   Position = poDesktopCenter
   OnCloseQuery = FormCloseQuery
-  ExplicitTop = -20
-  ExplicitWidth = 1080
-  ExplicitHeight = 900
+  ExplicitWidth = 1088
+  ExplicitHeight = 912
   PixelsPerInch = 96
   TextHeight = 14
   object grb05: TGroupBox [0]
@@ -725,8 +724,10 @@ inherited FormGImpClie: TFormGImpClie
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
   end
   inherited DBConn: TSQLConnection
@@ -1013,6 +1014,7 @@ inherited FormGImpClie: TFormGImpClie
     DataPipeline = ppDB00
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1032,6 +1034,14 @@ inherited FormGImpClie: TFormGImpClie
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -1041,22 +1051,34 @@ inherited FormGImpClie: TFormGImpClie
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -1065,13 +1087,26 @@ inherited FormGImpClie: TFormGImpClie
     XLSSettings.DefaultBands = [btGroupHeader, btDetail]
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 770
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDB00'
     object pp00HeaderBand1: TppHeaderBand
       BeforePrint = pp00HeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 17992
       mmPrintPosition = 0
@@ -1079,6 +1114,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1092,13 +1128,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -1112,13 +1150,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -1132,13 +1172,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -1151,6 +1193,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1164,13 +1207,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 1323
@@ -1184,13 +1229,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 71702
@@ -1204,13 +1251,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Bairro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 134673
@@ -1224,13 +1273,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UF'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 165629
@@ -1243,6 +1294,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1256,13 +1308,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CEP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -1277,6 +1331,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1297,6 +1352,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1314,8 +1370,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object pp00DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 14552
       mmPrintPosition = 0
@@ -1324,6 +1379,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1345,13 +1401,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Contato:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 0
@@ -1365,6 +1423,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDERE'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1386,6 +1445,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1407,6 +1467,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_UF'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1429,6 +1490,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CONTATO'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1450,13 +1512,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fone:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 36777
@@ -1470,6 +1534,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_FONE'
         DataPipeline = ppDB00
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -1492,13 +1557,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fax:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 65352
@@ -1512,6 +1579,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_FAX'
         DataPipeline = ppDB00
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -1535,13 +1603,15 @@ inherited FormGImpClie: TFormGImpClie
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Ult.Compra:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 93398
@@ -1554,6 +1624,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1567,6 +1638,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_DTULTCOM'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1588,6 +1660,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDB00
         DisplayFormat = '99\.999\-999;0;_'
@@ -1610,6 +1683,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1632,6 +1706,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText66'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CODIGO'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1654,6 +1729,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_NOME'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1675,13 +1751,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Rep:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 128323
@@ -1695,6 +1773,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText42'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CORI_DESCRICAO'
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
@@ -1716,13 +1795,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Origem:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 0
@@ -1733,7 +1814,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object pp00SummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -1742,13 +1823,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Clientes Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3528
         mmLeft = 3440
@@ -1762,6 +1845,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDB00
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1792,7 +1876,7 @@ inherited FormGImpClie: TFormGImpClie
       DataPipelineName = 'ppDB00'
       NewFile = False
       object pp00GroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 3440
         mmPrintPosition = 0
@@ -1801,6 +1885,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText2'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_UF'
           DataPipeline = ppDB00
           Font.Charset = DEFAULT_CHARSET
@@ -1820,7 +1905,7 @@ inherited FormGImpClie: TFormGImpClie
         end
       end
       object ppGroupFooterBand1: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -1840,7 +1925,7 @@ inherited FormGImpClie: TFormGImpClie
       DataPipelineName = 'ppDB00'
       NewFile = False
       object ppGroupHeaderBand2: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 3440
         mmPrintPosition = 0
@@ -1849,6 +1934,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText1'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_CIDADE'
           DataPipeline = ppDB00
           Font.Charset = DEFAULT_CHARSET
@@ -1868,7 +1954,7 @@ inherited FormGImpClie: TFormGImpClie
         end
       end
       object ppGroupFooterBand2: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -1876,7 +1962,6 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object raCodeModule6: TraCodeModule
-      ProgramStream = {00}
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
@@ -1893,6 +1978,7 @@ inherited FormGImpClie: TFormGImpClie
     DataPipeline = ppDB02
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1909,6 +1995,14 @@ inherited FormGImpClie: TFormGImpClie
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -1918,22 +2012,34 @@ inherited FormGImpClie: TFormGImpClie
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -1941,14 +2047,27 @@ inherited FormGImpClie: TFormGImpClie
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 890
     Top = 40
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDB02'
     object pp02HeaderBand1: TppHeaderBand
       BeforePrint = pp02HeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 13758
       mmPrintPosition = 0
@@ -1956,6 +2075,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer2
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1968,6 +2088,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer2
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1981,13 +2102,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LABEL_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -2001,13 +2124,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LTITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -2021,13 +2146,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LTITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -2041,6 +2168,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2061,6 +2189,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2078,8 +2207,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object pp02DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3704
       mmPrintPosition = 0
@@ -2088,6 +2216,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDB02
         Font.Charset = DEFAULT_CHARSET
@@ -2109,6 +2238,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDERE'
         DataPipeline = ppDB02
         Font.Charset = DEFAULT_CHARSET
@@ -2130,6 +2260,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = ppDB02
         Font.Charset = DEFAULT_CHARSET
@@ -2151,6 +2282,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDB02
         DisplayFormat = '99\.999\-999;0;_'
@@ -2173,6 +2305,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDB02
         Font.Charset = DEFAULT_CHARSET
@@ -2194,6 +2327,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_UF'
         DataPipeline = ppDB02
         Font.Charset = DEFAULT_CHARSET
@@ -2215,6 +2349,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_FONE'
         DataPipeline = ppDB02
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -2237,6 +2372,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDB02
         Font.Charset = DEFAULT_CHARSET
@@ -2256,7 +2392,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object pp02SummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3440
       mmPrintPosition = 0
@@ -2265,13 +2401,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Clientes Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 0
@@ -2285,6 +2423,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDB02
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2316,7 +2455,7 @@ inherited FormGImpClie: TFormGImpClie
       DataPipelineName = 'ppDB02'
       NewFile = False
       object pp02GroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 3969
         mmPrintPosition = 0
@@ -2325,13 +2464,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label9'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Regi'#227'o:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3528
           mmLeft = 0
@@ -2346,6 +2487,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText9'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REG_CODIGO'
           DataPipeline = ppDB02
           Font.Charset = DEFAULT_CHARSET
@@ -2369,6 +2511,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText11'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REG_DESCRI'
           DataPipeline = ppDB02
           Font.Charset = DEFAULT_CHARSET
@@ -2390,6 +2533,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer2
           UserName = 'Line4'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -2401,7 +2545,7 @@ inherited FormGImpClie: TFormGImpClie
         end
       end
       object ppGroupFooterBand5: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -2422,7 +2566,7 @@ inherited FormGImpClie: TFormGImpClie
       DataPipelineName = 'ppDB02'
       NewFile = False
       object pp02GroupHeaderBand2: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 8467
         mmPrintPosition = 0
@@ -2431,13 +2575,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label11'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Representante:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3528
           mmLeft = 12965
@@ -2452,6 +2598,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText10'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_CODIGO'
           DataPipeline = ppDB02
           Font.Charset = DEFAULT_CHARSET
@@ -2473,6 +2620,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer2
           UserName = 'Line5'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -2487,6 +2635,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText12'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_NOME'
           DataPipeline = ppDB02
           Font.Charset = DEFAULT_CHARSET
@@ -2509,13 +2658,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label1'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Cliente'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 0
@@ -2530,13 +2681,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label2'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Endere'#231'o'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 53181
@@ -2551,13 +2704,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label3'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Bairro'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 100013
@@ -2572,13 +2727,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label4'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Cep'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 123561
@@ -2593,13 +2750,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label5'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Cidade'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 140759
@@ -2614,13 +2773,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label6'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'UF'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 168805
@@ -2635,13 +2796,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label7'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Fone'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 174890
@@ -2655,6 +2818,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer2
           UserName = 'Line7'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -2669,6 +2833,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBAtivo'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_SITUACAO'
           DataPipeline = ppDB02
           Font.Charset = DEFAULT_CHARSET
@@ -2688,7 +2853,7 @@ inherited FormGImpClie: TFormGImpClie
         end
       end
       object ppGroupFooterBand6: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 265
@@ -2697,6 +2862,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer2
           UserName = 'Line6'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -2709,17 +2875,18 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object raCodeModule3: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650610
-        4442417469766F4F6E476574546578740B50726F6772616D54797065070B7474
-        50726F63656475726506536F7572636506A470726F6365647572652044424174
-        69766F4F6E476574546578742876617220546578743A20537472696E67293B0D
-        0A626567696E0D0A20202020696620444230325B275245505F53495455414341
-        4F275D203D20274127207468656E0D0A2020202020202054657874203A3D2027
-        417469766F270D0A20202020656C73650D0A2020202020202054657874203A3D
-        2027496E617469766F273B2020200D0A656E643B0D0A0D436F6D706F6E656E74
-        4E616D6506074442417469766F094576656E744E616D6506094F6E4765745465
-        7874074576656E7449440235084361726574506F730102000200000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBAtivoOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBAtivoOnGetText(var Text: String);'#13#10'begin'#13#10'    if DB0' +
+          '2['#39'REP_SITUACAO'#39'] = '#39'A'#39' then'#13#10'       Text := '#39'Ativo'#39#13#10'    else'#13#10 +
+          '       Text := '#39'Inativo'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBAtivo'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers2: TppDesignLayers
       object ppDesignLayer2: TppDesignLayer
@@ -2736,6 +2903,7 @@ inherited FormGImpClie: TFormGImpClie
     DataPipeline = ppDB03
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -2754,6 +2922,14 @@ inherited FormGImpClie: TFormGImpClie
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -2763,22 +2939,34 @@ inherited FormGImpClie: TFormGImpClie
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -2787,14 +2975,27 @@ inherited FormGImpClie: TFormGImpClie
     XLSSettings.DefaultBands = [btHeader, btTitle, btColumnHeader, btGroupHeader, btDetail]
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 890
     Top = 88
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDB03'
     object pp03HeaderBand1: TppHeaderBand
       BeforePrint = pp03HeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 18256
       mmPrintPosition = 0
@@ -2802,6 +3003,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer3
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2815,13 +3017,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_03_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_03_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -2835,13 +3039,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_03_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_03_LTITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -2855,13 +3061,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_03_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_03_LTITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -2874,6 +3082,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer3
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2887,6 +3096,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2907,6 +3117,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2927,13 +3138,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2822
         mmLeft = 0
@@ -2947,13 +3160,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2822
         mmLeft = 55827
@@ -2967,13 +3182,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Bairro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2822
         mmLeft = 125148
@@ -2987,13 +3204,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2822
         mmLeft = 148696
@@ -3007,13 +3226,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UF'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2822
         mmLeft = 170657
@@ -3027,13 +3248,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fone'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2822
         mmLeft = 176477
@@ -3046,6 +3269,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer3
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3056,14 +3280,13 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object pp03DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object pp03SummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -3071,6 +3294,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer3
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3084,13 +3308,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Clientes Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3528
         mmLeft = 0
@@ -3104,6 +3330,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBCalc4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDB03
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3137,13 +3364,14 @@ inherited FormGImpClie: TFormGImpClie
       NewFile = False
       object ppGroupHeaderBand3: TppGroupHeaderBand
         Visible = False
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 5292
         mmPrintPosition = 0
         object Lbl_Atividade: TppDBText
           DesignLayer = ppDesignLayer3
           UserName = 'Lbl_Atividade'
+          Border.mmPadding = 0
           DataField = 'RCL_ATIVIDADE'
           DataPipeline = ppDB03
           Font.Charset = DEFAULT_CHARSET
@@ -3165,13 +3393,15 @@ inherited FormGImpClie: TFormGImpClie
         object ppLabel35: TppLabel
           DesignLayer = ppDesignLayer3
           UserName = 'Label35'
+          Border.mmPadding = 0
           Caption = 'RAMO DE ATIVIDADE:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
           mmLeft = 794
@@ -3185,6 +3415,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer3
           UserName = 'Line28'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -3198,6 +3429,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer3
           UserName = 'Line30'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -3209,7 +3441,7 @@ inherited FormGImpClie: TFormGImpClie
         end
       end
       object ppGroupFooterBand4: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 5556
@@ -3219,6 +3451,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBCalc5'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataPipeline = ppDB03
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -3242,13 +3475,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label103'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Total de Clientes Listado(s):'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3440
           mmLeft = 74
@@ -3262,6 +3497,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer3
           UserName = 'Line31'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -3275,6 +3511,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer3
           UserName = 'Line301'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -3301,7 +3538,7 @@ inherited FormGImpClie: TFormGImpClie
       DataPipelineName = 'ppDB03'
       NewFile = False
       object ppGroupHeaderBand4: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 4233
         mmPrintPosition = 0
@@ -3310,6 +3547,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText38'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_CODIGO'
           DataPipeline = ppDB03
           Font.Charset = DEFAULT_CHARSET
@@ -3333,6 +3571,7 @@ inherited FormGImpClie: TFormGImpClie
           HyperlinkEnabled = False
           BlankWhenZero = True
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_RAZAO'
           DataPipeline = ppDB03
           Font.Charset = DEFAULT_CHARSET
@@ -3355,6 +3594,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText36'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_ENDERE'
           DataPipeline = ppDB03
           Font.Charset = DEFAULT_CHARSET
@@ -3377,6 +3617,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText37'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_BAIRRO'
           DataPipeline = ppDB03
           Font.Charset = DEFAULT_CHARSET
@@ -3399,6 +3640,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText39'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_CIDADE'
           DataPipeline = ppDB03
           Font.Charset = DEFAULT_CHARSET
@@ -3421,6 +3663,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText41'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_FONE'
           DataPipeline = ppDB03
           DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -3444,6 +3687,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText40'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_UF'
           DataPipeline = ppDB03
           Font.Charset = DEFAULT_CHARSET
@@ -3463,7 +3707,7 @@ inherited FormGImpClie: TFormGImpClie
         end
       end
       object ppGroupFooterBand7: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -3471,7 +3715,6 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object raCodeModule5: TraCodeModule
-      ProgramStream = {00}
     end
     object ppDesignLayers3: TppDesignLayers
       object ppDesignLayer3: TppDesignLayer
@@ -3488,6 +3731,7 @@ inherited FormGImpClie: TFormGImpClie
     DataPipeline = ppDB01
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
@@ -3507,6 +3751,14 @@ inherited FormGImpClie: TFormGImpClie
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -3516,22 +3768,34 @@ inherited FormGImpClie: TFormGImpClie
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -3539,14 +3803,27 @@ inherited FormGImpClie: TFormGImpClie
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 770
     Top = 48
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDB01'
     object pp01HeaderBand1: TppHeaderBand
       BeforePrint = pp01HeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 18256
       mmPrintPosition = 0
@@ -3554,6 +3831,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer4
         UserName = 'Line24'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3567,13 +3845,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_01_EMPRESA1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_01_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -3586,6 +3866,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer4
         UserName = 'Line25'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3599,6 +3880,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3619,6 +3901,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3639,13 +3922,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 8996
@@ -3659,13 +3944,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label55'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fone'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 128323
@@ -3679,13 +3966,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_01_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LTITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -3699,13 +3988,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_01_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LTITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -3719,13 +4010,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 74613
@@ -3738,6 +4031,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer4
         UserName = 'Line8'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3751,13 +4045,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Email'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 156634
@@ -3771,13 +4067,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Contato'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 218017
@@ -3791,13 +4089,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Ult.Compra'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -3812,13 +4112,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label56'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UF'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 121973
@@ -3832,13 +4134,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cod'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 0
@@ -3849,8 +4153,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object pp01DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3440
       mmPrintPosition = 0
@@ -3859,6 +4162,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDB01
         Font.Charset = DEFAULT_CHARSET
@@ -3880,6 +4184,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = ppDB01
         Font.Charset = DEFAULT_CHARSET
@@ -3901,6 +4206,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_FONE'
         DataPipeline = ppDB01
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -3923,6 +4229,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDB01
         Font.Charset = DEFAULT_CHARSET
@@ -3944,6 +4251,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText201'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_EMAIL'
         DataPipeline = ppDB01
         Font.Charset = DEFAULT_CHARSET
@@ -3965,6 +4273,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CONTATO'
         DataPipeline = ppDB01
         Font.Charset = DEFAULT_CHARSET
@@ -3986,6 +4295,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText72'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_DTULTCOM'
         DataPipeline = ppDB01
         Font.Charset = DEFAULT_CHARSET
@@ -4008,6 +4318,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_UF'
         DataPipeline = ppDB01
         Font.Charset = DEFAULT_CHARSET
@@ -4026,7 +4337,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object pp01SummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -4035,13 +4346,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label101'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Clientes Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 0
@@ -4055,6 +4368,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBCalc7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDB01
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4075,6 +4389,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer4
         UserName = 'Line29'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4085,24 +4400,28 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object raCodeModule4: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650611
-        44425465787431374F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F75726365066C70726F63656475726520444254
-        65787431374F6E476574546578742876617220546578743A20537472696E6729
-        3B0D0A626567696E0D0A0D0A202054657874203A3D20636F7079202844423031
-        5B27434C495F52415A414F275D2C312C343029203B0D0A0D0A656E643B0D0A0D
-        436F6D706F6E656E744E616D6506084442546578743137094576656E744E616D
-        6506094F6E47657454657874074576656E7449440235084361726574506F7301
-        02000200000001060F5472614576656E7448616E646C65720B50726F6772616D
-        4E616D65061144425465787431394F6E476574546578740B50726F6772616D54
-        797065070B747450726F63656475726506536F75726365066B70726F63656475
-        72652044425465787431394F6E476574546578742876617220546578743A2053
-        7472696E67293B0D0A626567696E0D0A0D0A202054657874203A3D20636F7079
-        28444230315B27434C495F434944414445275D2C312C3330293B0D0A0D0A656E
-        643B0D0A0D436F6D706F6E656E744E616D650608444254657874313909457665
-        6E744E616D6506094F6E47657454657874074576656E74494402350843617265
-        74506F730102000200000000}
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText17OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText17OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text ' +
+          ':= copy (DB01['#39'CLI_RAZAO'#39'],1,40) ;'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText17'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo3: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText19OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText19OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text ' +
+          ':= copy(DB01['#39'CLI_CIDADE'#39'],1,30);'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText19'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers4: TppDesignLayers
       object ppDesignLayer4: TppDesignLayer
@@ -4119,6 +4438,7 @@ inherited FormGImpClie: TFormGImpClie
     DataPipeline = ppDB05
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -4137,6 +4457,14 @@ inherited FormGImpClie: TFormGImpClie
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -4146,22 +4474,34 @@ inherited FormGImpClie: TFormGImpClie
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -4169,14 +4509,27 @@ inherited FormGImpClie: TFormGImpClie
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 772
     Top = 287
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDB05'
     object ppHeaderBand1: TppHeaderBand
       BeforePrint = ppHeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 17992
       mmPrintPosition = 0
@@ -4184,6 +4537,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer5
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4197,13 +4551,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_00_EMPRESA1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 265
@@ -4217,13 +4573,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 265
@@ -4237,13 +4595,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 265
@@ -4256,6 +4616,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer5
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4269,13 +4630,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 0
@@ -4289,13 +4652,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'E-mail'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 116681
@@ -4309,13 +4674,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Contato'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 86784
@@ -4329,13 +4696,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fone'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 61119
@@ -4348,6 +4717,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer5
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 265
@@ -4361,13 +4731,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Home Page'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -4382,6 +4754,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4402,6 +4775,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4419,8 +4793,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3440
       mmPrintPosition = 0
@@ -4429,6 +4802,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_EMAIL'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -4450,6 +4824,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CONTATO'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -4471,6 +4846,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_HOME'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -4492,6 +4868,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_FONE'
         DataPipeline = ppDB05
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -4514,6 +4891,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -4535,6 +4913,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText71'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -4554,7 +4933,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -4563,13 +4942,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'Label102'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Clientes Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 0
@@ -4583,6 +4964,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4603,6 +4985,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer5
         UserName = 'Line26'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4627,7 +5010,7 @@ inherited FormGImpClie: TFormGImpClie
       DataPipelineName = 'ppDB05'
       NewFile = False
       object ppGroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 3440
         mmPrintPosition = 0
@@ -4636,6 +5019,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText1'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_CIDADE'
           DataPipeline = ppDB05
           Font.Charset = DEFAULT_CHARSET
@@ -4658,6 +5042,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText2'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_UF'
           DataPipeline = ppDB05
           Font.Charset = DEFAULT_CHARSET
@@ -4677,7 +5062,7 @@ inherited FormGImpClie: TFormGImpClie
         end
       end
       object ppGroupFooterBand3: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -6269,6 +6654,7 @@ inherited FormGImpClie: TFormGImpClie
     DataPipeline = ppDBEtiq
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -6286,6 +6672,14 @@ inherited FormGImpClie: TFormGImpClie
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -6295,22 +6689,34 @@ inherited FormGImpClie: TFormGImpClie
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextFileType = ftFixedLength
     TextSearchSettings.DefaultString = '<FindText>'
@@ -6319,21 +6725,33 @@ inherited FormGImpClie: TFormGImpClie
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 770
     Top = 176
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 103000
     DataPipelineName = 'ppDBEtiq'
     object ppColumnHeaderBand1: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailEtiq: TppDetailBand
       Save = True
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 1000
       mmHeight = 19579
@@ -6345,6 +6763,7 @@ inherited FormGImpClie: TFormGImpClie
         SaveOrder = 0
         Save = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBEtiq
         Font.Charset = DEFAULT_CHARSET
@@ -6368,6 +6787,7 @@ inherited FormGImpClie: TFormGImpClie
         SaveOrder = 1
         Save = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_ENDERE'
         DataPipeline = ppDBEtiq
         Font.Charset = DEFAULT_CHARSET
@@ -6391,6 +6811,7 @@ inherited FormGImpClie: TFormGImpClie
         SaveOrder = 2
         Save = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = ppDBEtiq
         Font.Charset = DEFAULT_CHARSET
@@ -6415,6 +6836,7 @@ inherited FormGImpClie: TFormGImpClie
         Save = True
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = ppDBEtiq
         DisplayFormat = '99\.999\-999;0;_'
@@ -6439,6 +6861,7 @@ inherited FormGImpClie: TFormGImpClie
         SaveOrder = 4
         Save = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         Font.Charset = DEFAULT_CHARSET
@@ -6461,6 +6884,7 @@ inherited FormGImpClie: TFormGImpClie
         SaveOrder = 5
         Save = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         Font.Charset = DEFAULT_CHARSET
@@ -6479,42 +6903,40 @@ inherited FormGImpClie: TFormGImpClie
     end
     object ppColumnFooterBand1: TppColumnFooterBand
       AlignToBottom = True
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650612
-        5661726961626C65314F6E476574546578740B50726F6772616D54797065070B
-        747450726F63656475726506536F75726365067670726F636564757265205661
-        726961626C65314F6E476574546578742876617220546578743A20537472696E
-        67293B0D0A626567696E0D0A202054657874203A3D202720272B444230355B27
-        434C495F434944414445275D2B27202D20272B444230355B27434C495F554627
-        5D3B0D0A656E643B0D0A0D436F6D706F6E656E744E616D650609566172696162
-        6C6531094576656E744E616D6506094F6E47657454657874074576656E744944
-        0235084361726574506F730102000200000001060F5472614576656E7448616E
-        646C65720B50726F6772616D4E616D6506125661726961626C65324F6E476574
-        546578740B50726F6772616D54797065070B747450726F63656475726506536F
-        757263650CD301000070726F636564757265205661726961626C65324F6E4765
-        74546578742876617220546578743A20537472696E67293B0D0A5661720D0A20
-        2077466F6E652C77436F6E743A537472696E673B0D0A626567696E0D0A202020
-        2077466F6E65203A3D2020444230355B27434C495F464F4E45275D3B0D0A2020
-        202077436F6E74203A3D2020444230355B27434C495F434F4E5441544F275D3B
-        0D0A2020202069662877466F6E65203D2027272029616E642877436F6E74203D
-        20272729207468656E0D0A2020202020202054657874203A3D27270D0A202020
-        20656C73650D0A202020202020206966202877436F6E743C3E272729616E6428
-        77436F6E743C3E272729207468656E0D0A202020202020202020205465787420
-        3A3D20274174742E3A20272B77436F6E740D0A20202020202020656C73650D0A
-        202020202020202020206966202877436F6E743D272729207468656E0D0A2020
-        202020202020202020202054657874203A3D77466F6E650D0A20202020202020
-        202020656C73650D0A202020202020202020202020206966202877466F6E653D
-        272729207468656E0D0A2020202020202020202020202020202054657874203A
-        3D20274174742E3A20272B77436F6E743B2020200D0A656E643B0D0A0D436F6D
-        706F6E656E744E616D6506095661726961626C6532094576656E744E616D6506
-        094F6E47657454657874074576656E7449440235084361726574506F73010200
-        0200000000}
+      object raProgramInfo4: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable1OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable1OnGetText(var Text: String);'#13#10'begin'#13#10'  Text :' +
+          '= '#39' '#39'+DB05['#39'CLI_CIDADE'#39']+'#39' - '#39'+DB05['#39'CLI_UF'#39'];'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable1'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo5: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable2OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable2OnGetText(var Text: String);'#13#10'Var'#13#10'  wFone,wC' +
+          'ont:String;'#13#10'begin'#13#10'    wFone :=  DB05['#39'CLI_FONE'#39'];'#13#10'    wCont :' +
+          '=  DB05['#39'CLI_CONTATO'#39'];'#13#10'    if(wFone = '#39#39' )and(wCont = '#39#39') then' +
+          #13#10'       Text :='#39#39#13#10'    else'#13#10'       if (wCont<>'#39#39')and(wCont<>'#39#39 +
+          ') then'#13#10'          Text := '#39'Att.: '#39'+wCont'#13#10'       else'#13#10'         ' +
+          ' if (wCont='#39#39') then'#13#10'             Text :=wFone'#13#10'          else'#13#10 +
+          '             if (wFone='#39#39') then'#13#10'                Text := '#39'Att.: ' +
+          #39'+wCont;   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable2'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers6: TppDesignLayers
       object ppDesignLayer6: TppDesignLayer
@@ -6532,6 +6954,7 @@ inherited FormGImpClie: TFormGImpClie
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -6550,6 +6973,14 @@ inherited FormGImpClie: TFormGImpClie
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -6559,22 +6990,34 @@ inherited FormGImpClie: TFormGImpClie
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -6582,14 +7025,27 @@ inherited FormGImpClie: TFormGImpClie
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 772
     Top = 239
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDB04'
     object pp04HeaderBand1: TppHeaderBand
       BeforePrint = pp04HeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 13758
       mmPrintPosition = 0
@@ -6597,6 +7053,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer7
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6610,13 +7067,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_04_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_04_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -6630,13 +7089,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_04_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_04_LTITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 0
@@ -6650,13 +7111,15 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'LBL_04_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_04_LTITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4498
         mmLeft = 0
@@ -6669,6 +7132,7 @@ inherited FormGImpClie: TFormGImpClie
         DesignLayer = ppDesignLayer7
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6682,6 +7146,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -6702,6 +7167,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -6719,8 +7185,7 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object pp04DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -6729,6 +7194,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_DTEMIS'
         DataPipeline = ppDB04
         Font.Charset = DEFAULT_CHARSET
@@ -6750,6 +7216,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = ppDB04
         Font.Charset = DEFAULT_CHARSET
@@ -6771,6 +7238,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDB04
         Font.Charset = DEFAULT_CHARSET
@@ -6792,6 +7260,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_QTDE'
         DataPipeline = ppDB04
         Font.Charset = DEFAULT_CHARSET
@@ -6814,6 +7283,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_PRECO'
         DataPipeline = ppDB04
         DisplayFormat = '#,##0.00'
@@ -6837,6 +7307,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'NF_IPIALIQ'
         DataPipeline = ppDB04
         DisplayFormat = '#,##0.00'
@@ -6860,6 +7331,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDB04
         Font.Charset = DEFAULT_CHARSET
@@ -6881,6 +7353,7 @@ inherited FormGImpClie: TFormGImpClie
         UserName = 'DBText17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'SUBTOTAL_CC'
         DataPipeline = ppDB04
         DisplayFormat = '#,##0.00'
@@ -6913,7 +7386,7 @@ inherited FormGImpClie: TFormGImpClie
       DataPipelineName = 'ppDB04'
       NewFile = False
       object pp04GroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 17198
         mmPrintPosition = 0
@@ -6922,6 +7395,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText2'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_RAZAO'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -6944,13 +7418,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label1'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Bairro:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 265
@@ -6965,6 +7441,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText1'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_BAIRRO'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -6987,6 +7464,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText3'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_ENDERE'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7009,13 +7487,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label3'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Ult.Compra:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3440
@@ -7031,6 +7511,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText6'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_DTULTCOM'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7053,13 +7534,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label4'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'FONE:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3440
           mmLeft = 124090
@@ -7074,6 +7557,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText7'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_FONE'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7096,13 +7580,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label5'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'FAX:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3440
           mmLeft = 157957
@@ -7117,6 +7603,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText4'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_CIDADE'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7139,6 +7626,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText8'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_FAX'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7161,13 +7649,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label2'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Estado:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 106892
@@ -7182,6 +7672,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText5'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_UF'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7203,6 +7694,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer7
           UserName = 'Line2'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -7217,6 +7709,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText16'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CLI_CODIGO'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7239,13 +7732,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label7'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Emiss'#227'o'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3440
           mmLeft = 0
@@ -7260,13 +7755,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label8'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Fatura'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3440
           mmLeft = 17727
@@ -7281,13 +7778,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label9'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Ref.'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3440
           mmLeft = 30163
@@ -7302,13 +7801,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label10'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Descri'#231#227'o do Produto'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3440
           mmLeft = 39423
@@ -7323,13 +7824,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label11'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Qtde'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3440
@@ -7345,13 +7848,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label12'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Vl.Unitario'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3440
@@ -7367,13 +7872,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label13'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Vl.Total Liquido'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3387
@@ -7389,13 +7896,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label14'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'IPI'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3440
@@ -7410,6 +7919,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer7
           UserName = 'Line27'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -7424,13 +7934,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label58'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Endere'#231'o:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 89694
@@ -7445,13 +7957,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label59'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Cidade:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3440
@@ -7467,13 +7981,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label60'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Representante:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           TextAlignment = taRightJustified
           Transparent = True
           mmHeight = 3528
@@ -7489,6 +8005,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText73'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_CODIGO'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7512,6 +8029,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBText74'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_NOME'
           DataPipeline = ppDB04
           Font.Charset = DEFAULT_CHARSET
@@ -7531,7 +8049,7 @@ inherited FormGImpClie: TFormGImpClie
         end
       end
       object pp04GroupFooterBand1: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 4498
@@ -7541,13 +8059,15 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'Label6'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TOTAL'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 6350
@@ -7562,6 +8082,7 @@ inherited FormGImpClie: TFormGImpClie
           UserName = 'DBCalc2'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'SUBTOTAL_CC'
           DataPipeline = ppDB04
           DisplayFormat = '#,##0.00'
@@ -7586,6 +8107,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer7
           UserName = 'Line4'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -7599,6 +8121,7 @@ inherited FormGImpClie: TFormGImpClie
           DesignLayer = ppDesignLayer7
           UserName = 'Line23'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -7611,15 +8134,17 @@ inherited FormGImpClie: TFormGImpClie
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65061A
-        44425465787431324F6E44726177436F6D6D616E64436C69636B0B50726F6772
-        616D54797065070B747450726F63656475726506536F75726365064D70726F63
-        65647572652044425465787431324F6E44726177436F6D6D616E64436C69636B
-        286144726177436F6D6D616E643A20544F626A656374293B0D0A626567696E0D
-        0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D65060844425465787431
-        32094576656E744E616D6506124F6E44726177436F6D6D616E64436C69636B07
-        4576656E7449440255084361726574506F730102000200000000}
+      object raProgramInfo6: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText12OnDrawCommandClick'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText12OnDrawCommandClick(aDrawCommand: TObject);'#13#10'be' +
+          'gin'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText12'
+        raProgram.EventName = 'OnDrawCommandClick'
+        raProgram.EventID = 85
+      end
     end
     object ppDesignLayers7: TppDesignLayers
       object ppDesignLayer7: TppDesignLayer
@@ -8026,7 +8551,7 @@ inherited FormGImpClie: TFormGImpClie
     end
   end
   object frx: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -8062,12 +8587,16 @@ inherited FormGImpClie: TFormGImpClie
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -8077,11 +8606,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Clientes - Servi'#231'o')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8090,11 +8621,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -8104,12 +8637,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -8120,12 +8655,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -8135,17 +8672,21 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 362.834880000000000000
           Top = 56.692950000000000000
           Width = 49.133890000000000000
@@ -8156,12 +8697,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Licen'#231'as')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 411.968770000000000000
           Top = 56.692950000000000000
           Width = 79.370130000000000000
@@ -8172,12 +8715,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Validade')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 362.834880000000000000
           Height = 18.897650000000000000
@@ -8187,17 +8732,21 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.338900000000000000
           Top = 56.692950000000000000
           Width = 79.370130000000000000
@@ -8208,12 +8757,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'In'#237'cio Contrato')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 56.692950000000000000
           Width = 79.370130000000000000
@@ -8224,12 +8775,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vcto Contrato')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 650.079160000000000000
           Top = 56.692950000000000000
           Width = 68.031540000000000000
@@ -8240,6 +8793,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'R$ Contrato')
@@ -8248,6 +8802,7 @@ inherited FormGImpClie: TFormGImpClie
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 154.960730000000000000
         Width = 718.110700000000000000
@@ -8255,6 +8810,7 @@ inherited FormGImpClie: TFormGImpClie
         DataSetName = 'frxdbServico'
         RowCount = 0
         object frxdbServicoCLI_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Width = 321.260050000000000000
           Height = 15.118120000000000000
@@ -8266,11 +8822,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbServico."CLI_RAZAO"]')
           ParentFont = False
         end
         object frxdbServicoCLI_SV_AUTORIZADAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 362.834880000000000000
           Width = 49.133890000000000000
           Height = 15.118120000000000000
@@ -8282,12 +8840,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbServico."CLI_SV_AUTORIZADAS"]')
           ParentFont = False
         end
         object frxdbServicoCLI_SV_VALIDADE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 411.968770000000000000
           Width = 79.370130000000000000
           Height = 15.118120000000000000
@@ -8302,11 +8862,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbServico."CLI_SV_VALIDADE_ATUAL"]')
           ParentFont = False
         end
         object frxdbServicoCLI_SV_INICIOCT: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.338900000000000000
           Width = 79.370130000000000000
           Height = 15.118120000000000000
@@ -8321,11 +8883,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbServico."CLI_SV_INICIOCT"]')
           ParentFont = False
         end
         object frxdbServicoCLI_SV_DATA_CANCEL_CONTRATO: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Width = 79.370130000000000000
           Height = 15.118120000000000000
@@ -8340,11 +8904,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbServico."CLI_SV_DATA_CANCEL_CONTRATO"]')
           ParentFont = False
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Width = 41.574830000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -8352,11 +8918,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[LINE#]')
           ParentFont = False
         end
         object frxdbServicoCLI_SV_VALOR_CONTRATO: TfrxMemoView
+          AllowVectorExport = True
           Left = 650.079160000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -8370,6 +8938,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxdbServico."CLI_SV_VALOR_CONTRATO"]')
@@ -8378,10 +8947,12 @@ inherited FormGImpClie: TFormGImpClie
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 192.756030000000000000
         Width = 718.110700000000000000
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -8390,12 +8961,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxdbServico."CLI_SV_VALOR_CONTRATO">,MasterData1,3)]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 491.338900000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
@@ -8405,12 +8978,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total em Contratos:')
           ParentFont = False
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -8419,12 +8994,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[COUNT(MasterData1,3)]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Width = 86.929190000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8433,21 +9010,26 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total de Clientes:')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = -3.779530000000000000
           Top = 18.897650000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
@@ -8523,7 +9105,7 @@ inherited FormGImpClie: TFormGImpClie
     end
   end
   object frxClienteOrigem: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -8559,12 +9141,16 @@ inherited FormGImpClie: TFormGImpClie
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 71.923719230000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -8573,11 +9159,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de clientes por origem')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8586,11 +9174,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -8600,12 +9190,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -8616,12 +9208,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -8630,6 +9224,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Per'#237'odo de [DataIni] a [DataFim]')
           ParentFont = False
@@ -8640,12 +9235,15 @@ inherited FormGImpClie: TFormGImpClie
             end>
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 289.819110000000000000
           Top = 56.692949999999990000
           Width = 94.488250000000000000
@@ -8655,12 +9253,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'CNPJ')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.137743850000000000
           Top = 56.692949999999990000
           Width = 79.303506150000000000
@@ -8670,12 +9270,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Cidade')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 288.988726160000000000
           Height = 15.118120000000000000
@@ -8684,11 +9286,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Raz'#227'o Social')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 483.338900000000000000
           Top = 56.692949999999990000
           Width = 79.370130000000000000
@@ -8698,12 +9302,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Data cadastro')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.709030000000000000
           Top = 56.692949999999990000
           Width = 79.370130000000000000
@@ -8713,12 +9319,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Vendedor')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 643.079160000000000000
           Top = 56.692949999999990000
           Width = 75.590600000000000000
@@ -8728,19 +9336,23 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Ultima compra')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Left = -1.000000000000000000
           Top = 71.923719230000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 463.846153850000000000
           Top = 56.692949999999990000
           Width = 18.897650000000000000
@@ -8750,6 +9362,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'UF')
           ParentFont = False
@@ -8757,12 +9370,14 @@ inherited FormGImpClie: TFormGImpClie
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 27.583202310000000000
         Top = 151.181200000000000000
         Width = 718.110700000000000000
         Condition = 'frxdbServico."CORI_DESCRICAO"'
         KeepTogether = True
         object frxdbServicoCORI_DESCRICAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779529999999994000
           Width = 400.630180000000000000
@@ -8774,6 +9389,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Origem: [frxdbServico."CORI_DESCRICAO"]')
           ParentFont = False
@@ -8781,10 +9397,12 @@ inherited FormGImpClie: TFormGImpClie
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 245.669450000000000000
         Width = 718.110700000000000000
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 608.504330000000000000
           Top = 1.000000000000000000
           Width = 94.488250000000000000
@@ -8794,11 +9412,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 504.845511540000000000
           Top = 0.561961540000000000
           Width = 89.103634620000000000
@@ -8808,19 +9428,23 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total de clientes:')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = -7.559060000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 23.846153850000000000
         Top = 200.315090000000000000
         Width = 718.110700000000000000
@@ -8828,6 +9452,7 @@ inherited FormGImpClie: TFormGImpClie
         DataSetName = 'frxdbServico'
         RowCount = 0
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 289.819110000000000000
           Top = 0.906022309999997300
           Width = 94.488250000000000000
@@ -8837,12 +9462,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbServico."CLI_CGC"]')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.137743850000000000
           Top = 0.906022309999997300
           Width = 79.303506150000000000
@@ -8852,12 +9479,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbServico."cli_cidade"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.906022309999997300
           Width = 288.988726160000000000
           Height = 15.118120000000000000
@@ -8866,11 +9495,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbServico."CLI_RAZAO"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 483.338900000000000000
           Top = 0.906022309999997300
           Width = 79.370130000000000000
@@ -8880,12 +9511,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbServico."CLI_DTINICIO"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.709030000000000000
           Top = 0.906022309999997300
           Width = 79.370130000000000000
@@ -8895,12 +9528,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxdbServico."REP_NOME"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 643.079160000000000000
           Top = 0.906022309999997300
           Width = 75.590600000000000000
@@ -8910,6 +9545,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           HideZeros = True
           Memo.UTF8W = (
@@ -8917,6 +9553,7 @@ inherited FormGImpClie: TFormGImpClie
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 463.846153850000000000
           Top = 0.906022309999997300
           Width = 18.897650000000000000
@@ -8926,6 +9563,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxdbServico."CLI_UF"]')
           ParentFont = False
@@ -8933,10 +9571,12 @@ inherited FormGImpClie: TFormGImpClie
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 287.244280000000000000
         Width = 718.110700000000000000
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 610.115838460000000000
           Top = 0.438038460000000000
           Width = 94.488250000000000000
@@ -8946,11 +9586,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[COUNT(MasterData1)]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Width = 89.103634620000000000
           Height = 15.118120000000000000
@@ -8959,15 +9601,18 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total de clientes:')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Left = -7.559060000000000000
           Top = 1.000000000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
@@ -9029,7 +9674,7 @@ inherited FormGImpClie: TFormGImpClie
     Top = 208
   end
   object frxListaContatos: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -9065,12 +9710,16 @@ inherited FormGImpClie: TFormGImpClie
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.978664290000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -9079,11 +9728,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Lista de contatos de clientes para CRM ou Email Marketing')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -9092,11 +9743,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -9106,12 +9759,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -9122,12 +9777,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -9136,17 +9793,21 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.902288570000000000
           Top = 56.692950000000000000
           Width = 75.590600000000000000
@@ -9156,11 +9817,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Nome Contato')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 295.921460000000000000
           Top = 56.692950000000000000
           Width = 249.448980000000000000
@@ -9170,11 +9833,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Email')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 219.741497140000000000
           Height = 18.897650000000000000
@@ -9183,17 +9848,21 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cliente')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 75.978664290000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 546.709030000000000000
           Top = 56.692950000000000000
           Width = 59.370130000000000000
@@ -9203,11 +9872,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cargo')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 605.520100000000000000
           Top = 56.692950000000000000
           Width = 75.174397140000000000
@@ -9217,11 +9888,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fone')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 681.857142860000000000
           Top = 56.692950000000000000
           Width = 35.680581430000000000
@@ -9231,6 +9904,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Ramal')
@@ -9239,6 +9913,7 @@ inherited FormGImpClie: TFormGImpClie
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 17.092145710000000000
         Top = 154.960730000000000000
         Width = 718.110700000000000000
@@ -9246,6 +9921,7 @@ inherited FormGImpClie: TFormGImpClie
         DataSetName = 'frxDBClienteRB'
         RowCount = 0
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.753555710000000000
           Width = 219.741497140000000000
           Height = 15.118120000000000000
@@ -9254,11 +9930,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteRB."CLI_RAZAO"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.902288570000000000
           Top = 0.753555710000000000
           Width = 75.590600000000000000
@@ -9268,11 +9946,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteRB."CC_NOME"]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 295.921460000000000000
           Top = 0.753555710000000000
           Width = 249.448980000000000000
@@ -9282,11 +9962,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteRB."CC_EMAIL"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 546.570501430000000000
           Top = 0.753555710000000000
           Width = 59.370130000000000000
@@ -9296,6 +9978,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteRB."CC_CARGO"]')
           ParentFont = False
@@ -9306,6 +9989,7 @@ inherited FormGImpClie: TFormGImpClie
             end>
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 605.520100000000000000
           Top = 0.753555710000000000
           Width = 75.174397140000000000
@@ -9315,11 +9999,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FONE]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 681.857142860000000000
           Top = 0.753555710000000000
           Width = 35.680581430000000000
@@ -9329,6 +10015,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteRB."CC_RAMAL"]')
           ParentFont = False
@@ -9336,10 +10023,12 @@ inherited FormGImpClie: TFormGImpClie
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 17.897650000000000000
         Top = 234.330860000000000000
         Width = 718.110700000000000000
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.118120000000000000
           Top = 2.779530000000000000
           Width = 238.110390000000000000
@@ -9349,11 +10038,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total de registros: [COUNT(MasterData1)]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
@@ -9366,11 +10057,14 @@ inherited FormGImpClie: TFormGImpClie
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -9380,6 +10074,9 @@ inherited FormGImpClie: TFormGImpClie
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 872
     Top = 424
   end
@@ -9389,6 +10086,7 @@ inherited FormGImpClie: TFormGImpClie
     OverwritePrompt = False
     DataOnly = False
     ChunkSize = 0
+    OpenAfterExport = False
     PictureType = gpPNG
     Left = 944
     Top = 376
@@ -9569,7 +10267,7 @@ inherited FormGImpClie: TFormGImpClie
     Top = 776
   end
   object frxClienteProdutoVendido: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -9606,22 +10304,28 @@ inherited FormGImpClie: TFormGImpClie
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Height = 73.031540000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 196.535433070000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 5.559060000000000000
           Width = 502.677490000000000000
@@ -9632,11 +10336,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
         end
         object wFrxEndereco: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.567100000000000000
           Top = 23.779530000000000000
           Width = 502.677490000000000000
@@ -9647,11 +10353,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 40.795300000000000000
           Width = 64.252010000000000000
@@ -9662,11 +10370,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CEP]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 272.464750000000000000
           Top = 40.795300000000000000
           Width = 188.976500000000000000
@@ -9677,11 +10387,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE]')
           ParentFont = False
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 462.338900000000000000
           Top = 40.795300000000000000
           Width = 18.897650000000000000
@@ -9692,11 +10404,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[UF]')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 489.016080000000000000
           Top = 40.795300000000000000
           Width = 79.370130000000000000
@@ -9707,11 +10421,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FONE]')
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.330860000000000000
           Top = 57.692950000000000000
           Width = 222.992270000000000000
@@ -9722,11 +10438,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [EMAIL]')
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 488.866420000000000000
           Top = 57.692950000000000000
           Width = 105.826840000000000000
@@ -9737,11 +10455,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CNPJ]')
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 451.323130000000000000
           Top = 57.692950000000000000
           Width = 34.015770000000000000
@@ -9752,11 +10472,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 606.929500000000000000
           Top = 57.913420000000000000
           Width = 45.354360000000000000
@@ -9767,11 +10489,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inscri'#231#227'o:')
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 654.401980000000000000
           Top = 57.692950000000000000
           Width = 60.472480000000000000
@@ -9782,6 +10506,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[INSCR]')
@@ -9790,6 +10515,7 @@ inherited FormGImpClie: TFormGImpClie
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 359.055350000000000000
         Width = 718.110700000000000000
@@ -9798,6 +10524,7 @@ inherited FormGImpClie: TFormGImpClie
         RowCount = 0
         Stretched = True
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Width = 60.472431180000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -9805,11 +10532,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteProdutoVendido."FAT_DTEMIS"]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 56.692950000000000000
           Width = 41.574781180000000000
           Height = 15.118120000000000000
@@ -9818,12 +10547,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBClienteProdutoVendido."FAT_CODIGO"]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Width = 41.574781180000000000
           Height = 15.118120000000000000
@@ -9833,12 +10564,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteProdutoVendido."PRD_REFER"]')
           ParentFont = False
           WordBreak = True
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 147.401670000000000000
           Width = 298.582870000000000000
           Height = 15.118120000000000000
@@ -9848,12 +10581,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteProdutoVendido."PRD_DESCRI"]')
           ParentFont = False
           WordBreak = True
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 449.764070000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -9864,12 +10599,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBClienteProdutoVendido."NF_QTDE"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 514.016080000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -9880,12 +10617,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBClienteProdutoVendido."NF_PRECO"]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -9898,6 +10637,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -9906,6 +10646,7 @@ inherited FormGImpClie: TFormGImpClie
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 665.197280000000000000
           Width = 49.133890000000000000
           Height = 15.118120000000000000
@@ -9919,6 +10660,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBClienteProdutoVendido."NF_IPIALIQ"]')
@@ -9927,16 +10669,19 @@ inherited FormGImpClie: TFormGImpClie
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 86.929190000000000000
         Top = 192.756030000000000000
         Width = 718.110700000000000000
         Condition = 'frxDBClienteProdutoVendido."CLI_RAZAO"'
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 718.110236220000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 710.551640000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -9944,6 +10689,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[frxDBClienteProdutoVendido."CLI_CODIGO"] - [frxDBClienteProduto' +
@@ -9951,10 +10697,12 @@ inherited FormGImpClie: TFormGImpClie
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 18.897650000000000000
           Width = 706.772110000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Endere'#231'o: [<frxDBClienteProdutoVendido."CLI_ENDERE">], [<frxDBCl' +
@@ -9971,6 +10719,7 @@ inherited FormGImpClie: TFormGImpClie
             end>
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 41.795300000000000000
           Width = 706.772110000000000000
@@ -9980,6 +10729,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -9988,6 +10738,7 @@ inherited FormGImpClie: TFormGImpClie
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 64.252010000000000000
           Width = 706.772110000000000000
@@ -9997,6 +10748,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               #218'ltima Compra: [frxDBClienteProdutoVendido."CLI_DTULTCOM"]    Re' +
@@ -10004,6 +10756,7 @@ inherited FormGImpClie: TFormGImpClie
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 86.929190000000000000
           Width = 718.110236220000000000
           Color = clBlack
@@ -10012,6 +10765,7 @@ inherited FormGImpClie: TFormGImpClie
       end
       object GroupHeader2: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
@@ -10024,6 +10778,7 @@ inherited FormGImpClie: TFormGImpClie
         Condition = 'frxDBClienteProdutoVendido."ANOMES"'
         ReprintOnNewPage = True
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Width = 151.181200000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -10031,11 +10786,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBClienteProdutoVendido."ANOMES"]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 17.897650000000000000
           Width = 49.133890000000000000
@@ -10045,11 +10802,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Emiss'#227'o')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 52.913420000000000000
           Top = 17.897650000000000000
           Width = 49.133890000000000000
@@ -10059,12 +10818,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Fatura')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 102.047310000000000000
           Top = 17.897650000000000000
           Width = 49.133890000000000000
@@ -10074,11 +10835,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Ref.')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 147.401670000000000000
           Top = 17.897650000000000000
           Width = 124.724490000000000000
@@ -10088,11 +10851,13 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 17.897650000000000000
           Width = 49.133890000000000000
@@ -10102,12 +10867,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Qtde.')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 17.897650000000000000
           Width = 56.692950000000000000
@@ -10117,12 +10884,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Vl. Unit'#225'rio')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 17.897650000000000000
           Width = 83.149660000000000000
@@ -10132,12 +10901,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Vl. Total L'#237'quido')
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 680.315400000000000000
           Top = 17.897650000000000000
           Width = 34.015770000000000000
@@ -10147,18 +10918,21 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'IPI')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 15.118120000000000000
           Width = 718.110236220000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 34.015770000000000000
           Width = 718.110236220000000000
           Color = clBlack
@@ -10167,10 +10941,12 @@ inherited FormGImpClie: TFormGImpClie
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 396.850650000000000000
         Width = 718.110700000000000000
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 415.748300000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -10181,12 +10957,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBClienteProdutoVendido."NF_QTDE">, MasterData1, 0)]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.929500000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -10199,6 +10977,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -10207,11 +10986,13 @@ inherited FormGImpClie: TFormGImpClie
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Width = 718.110236220000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -10222,6 +11003,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Totais:')
@@ -10230,10 +11012,12 @@ inherited FormGImpClie: TFormGImpClie
       end
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 113.385900000000000000
         Width = 718.110700000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 609.606680000000000000
           Top = 1.000000000000000000
           Width = 102.047310000000000000
@@ -10243,6 +11027,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P'#225'g. [Page#] de [TotalPages#]')
@@ -10254,6 +11039,7 @@ inherited FormGImpClie: TFormGImpClie
             end>
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Width = 608.504330000000000000
           Height = 18.897650000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -10261,6 +11047,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Listagem de Clientes e Produtos Vendidos por M'#234's [PERIODO]')
@@ -10269,10 +11056,12 @@ inherited FormGImpClie: TFormGImpClie
       end
       object GroupFooter2: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 49.133890000000000000
         Top = 442.205010000000000000
         Width = 718.110700000000000000
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 415.748300000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -10283,12 +11072,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBClienteProdutoVendido."NF_QTDE">, MasterData1, 0)]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.929500000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -10301,6 +11092,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -10309,6 +11101,7 @@ inherited FormGImpClie: TFormGImpClie
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Width = 128.504020000000000000
           Height = 18.897650000000000000
@@ -10319,6 +11112,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Totais do Cliente:')
@@ -10327,10 +11121,12 @@ inherited FormGImpClie: TFormGImpClie
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 551.811380000000000000
         Width = 718.110700000000000000
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.527830000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -10341,12 +11137,14 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBClienteProdutoVendido."NF_QTDE">, MasterData1, 0)]')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -10359,6 +11157,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -10367,6 +11166,7 @@ inherited FormGImpClie: TFormGImpClie
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 215.433210000000000000
           Width = 192.756030000000000000
           Height = 18.897650000000000000
@@ -10377,6 +11177,7 @@ inherited FormGImpClie: TFormGImpClie
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Totais do Relat'#243'rio:')

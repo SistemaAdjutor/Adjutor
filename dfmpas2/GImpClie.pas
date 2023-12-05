@@ -24,7 +24,7 @@ uses
   ppRelatv, ppDBPipe, ppModule, raCodMod, ppParameter, Mask,
     frxClass, frxDBSet, frxExportXLS, Data.DBXFirebird,
   ppDesignLayer, SimpleDS, Vcl.ComCtrls, JvExComCtrls, JvDateTimePicker, Data.FMTBcd,BaseDBForm, ACBrEnterTab, ACBrBase, ACBrCalculadora, frxExportPDF, frxExportXLSX, SgDbSeachComboUnit, JvExMask,
-  JvToolEdit;
+  JvToolEdit, frxExportBaseDialog;
 
 type
   TFormGImpClie = class(TfrmBaseDB)
@@ -3022,7 +3022,7 @@ begin
     ' 	ni.PRD_DESCRI,	ni.NF_QTDE,	ni.NF_IPIALIQ,	ni.NF_PRECO ' +
     ' FROM	CLI0000 cl ' +
     ' LEFT JOIN FAT0000 ft ON	(ft.CLI_CODIGO = cl.CLI_CODIGO) ' +
-    ' LEFT JOIN NF_IT01 ni ON	(ft.FAT_CODIGO = ni.NF_IT_NOTANUMER) ' +
+    ' LEFT JOIN NF_IT01 ni ON	(ft.FAT_CODIGO = ni.NF_IT_NOTANUMER AND ft.EMP_CODIGO = ni.EMP_CODIGO) ' +
     ' LEFT JOIN REP0000 rp ON	(cl.REP_CODIGO = rp.REP_CODIGO) ' +
     ' WHERE 1 = 1  ' +
     iif(sbCliente.idRetorno = '', '', ' AND cl.CLI_CODIGO = ' + QuotedStr(sbCliente.idRetorno)) +
@@ -3033,7 +3033,7 @@ begin
     iif(porte = 'T', '', ' AND cl.CLI_PORTE = ' + QuotedStr(porte)) +
     iif(inativo = '', '', ' AND cl.CLI_INATIVO = ' + QuotedStr(inativo)) +
     iif(((EditDataI.Date = 0) OR (EditDataF.Date = 0) ), '', ' AND ft.FAT_DTEMIS BETWEEN ' + DateToSQL(EditDataI.Date) + ' AND ' + DateToSQL(EditDataF.Date) ) +
-    '	AND cl.EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo) +
+    '	AND ft.EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo) +
     ' ORDER BY cl.CLI_RAZAO, AnoMes '
 	;
   if DBInicio.IsDesenvolvimento then
