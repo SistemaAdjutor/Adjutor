@@ -71,9 +71,6 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       inherited cxgrd1: TcxGrid
         Width = 1453
         Height = 437
-        LookAndFeel.Kind = lfStandard
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitWidth = 1453
         ExplicitHeight = 437
         inherited cxgrd1DBTableView1: TcxGridDBTableView
