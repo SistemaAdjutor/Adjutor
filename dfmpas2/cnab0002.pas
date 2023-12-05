@@ -3152,8 +3152,8 @@ begin
          CbBancos.Enabled     := True;
          BitCancelarB.Visible := False;
          BitPesquisar.Visible := True;
-         CbBancos.Text        := '';
-         CCodigoBco.Clear;
+        // CbBancos.Text        := '';
+        // CCodigoBco.Clear;
          CCodigoBco.SetFocus;
          CCodigoBco.SelectAll;
       end

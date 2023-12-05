@@ -31,15 +31,14 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     Top = 3
     Width = 959
     Height = 453
-    PageIndex = 1
     TabOrder = 0
     object TPage
       Left = 0
       Top = 0
       Caption = 'SelecionaBanco'
       object GbConsulta: TGroupBox
-        Left = 11
-        Top = 0
+        Left = 10
+        Top = 4
         Width = 951
         Height = 449
         Caption = 'Infor&me o Banco'
@@ -939,7 +938,9 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
             Width = 121
             Height = 22
             Style = csDropDownList
+            ItemIndex = 0
             TabOrder = 0
+            Text = 'TODOS'
             OnClick = CbFiltroClick
             Items.Strings = (
               'TODOS'
@@ -960,8 +961,8 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
           OnClick = CbBancosClick
         end
         object BitPesquisar: TBitBtn
-          Left = 850
-          Top = 13
+          Left = 849
+          Top = 15
           Width = 93
           Height = 24
           Cursor = crHandPoint
