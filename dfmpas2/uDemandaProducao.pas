@@ -1714,6 +1714,14 @@ begin
 
   cxgrd1DBTableView1DEP_GERASUBORDENS.Visible := NOT DBInicio.Empresa.Bpmt_gerarsubordens;
   //cxlevelprodutoIntermediario.Visible :=  DBInicio.Empresa.Bpmt_gerarsubordens;
+  if DBInicio.GetParametroSistema('PMT_RETORNO_POR_CORES') <> 'S' then
+  begin
+    cxgrd1DBBandedTableView1NOTA_FISCAL.Visible := False;
+    cxgrd1DBBandedTableView1ENF_ENTRADA.Visible := False;
+    cxgrd1DBBandedTableView1FOR_RAZAO.Visible := False;
+    cxgrd1DBBandedTableView1ACO_NOME.Visible := False;
+    cxgrd1DBBandedTableView1PESO.Visible := False;
+  end;
 end;
 
 procedure TfrmDemandaProducao.frxEtiquetaBeginDoc(Sender: TObject);

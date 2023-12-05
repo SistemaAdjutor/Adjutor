@@ -1954,6 +1954,7 @@ type
     procedure dbrgLancaCCVerbaChange(Sender: TObject);
     procedure cbHabilitaOrcamentoParaClienteSemCadastroClick(Sender: TObject);
     procedure TabSheet1Show(Sender: TObject);
+    procedure DBCheckBox87Click(Sender: TObject);
   private
          PathNewRel :STRING;
          bIncluir     : Boolean;
@@ -5908,6 +5909,12 @@ begin
      DataCadastros1.CdsParametrosPMT_COMIS_PROD.Value := 'N';
     end;
   end;
+end;
+
+procedure TFormParametros.DBCheckBox87Click(Sender: TObject);
+begin
+  inherited;
+  DeleteFile(dbInicio.SistemaLocal+'settings\frmDemandaProducao.cxgrd1DBBandedTableView1.grid');
 end;
 
 procedure TFormParametros.ckPMT_DIGITACAO_GRID_VENDASClick(Sender: TObject);
