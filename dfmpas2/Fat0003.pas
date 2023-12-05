@@ -1960,7 +1960,9 @@ begin
           CdsItemPedido.First;
           while not CdsItemPedido.Eof do
           begin
-            if (ProdutoGerenciaLote(CdsItemPedidoPRD_REFER.AsString)) then
+            if (ProdutoGerenciaLote(CdsItemPedidoPRD_REFER.AsString))
+              and (BuscaUmDadoSqlAsString('SELECT OPV_SEMLOTE FROM OPV0000 WHERE OPV_CODIGO = ' + CdsPedidosOPV_CODIGO.AsString ) <> 'S')
+            then
              begin
                if CdsItemPedidoPRDL_REGISTRO.AsInteger = 0  then
                 begin
