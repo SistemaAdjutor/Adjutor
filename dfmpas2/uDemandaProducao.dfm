@@ -2,15 +2,17 @@ inherited frmDemandaProducao: TfrmDemandaProducao
   Caption = 'PCP Demanda'
   ClientHeight = 582
   ClientWidth = 1164
+  ClientHeight = 676
+  ClientWidth = 1167
   WindowState = wsMaximized
   OnActivate = FormActivate
-  ExplicitWidth = 1180
-  ExplicitHeight = 621
+  ExplicitWidth = 1183
+  ExplicitHeight = 715
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
-    Width = 1164
-    Height = 505
+    Width = 1167
+    Height = 599
     ExplicitWidth = 1164
     ExplicitHeight = 505
     inherited tsNotas: TTabSheet
@@ -18,8 +20,8 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       ExplicitHeight = 477
       object spl1: TSplitter [0]
         Left = 0
-        Top = 333
-        Width = 1156
+        Top = 427
+        Width = 1159
         Height = 3
         Cursor = crVSplit
         Align = alBottom
@@ -27,29 +29,29 @@ inherited frmDemandaProducao: TfrmDemandaProducao
         ExplicitWidth = 15
       end
       inherited pnlControle: TPanel
-        Width = 1156
+        Width = 1159
         Height = 89
         ExplicitWidth = 1156
         ExplicitHeight = 89
         inherited pnlFiltro: TPanel
-          Width = 1156
+          Width = 1159
           Height = 89
           ExplicitWidth = 1156
           ExplicitHeight = 89
           inherited pnlpn1: TPanel
-            Width = 1156
+            Width = 1159
             Height = 89
             ExplicitWidth = 1156
             ExplicitHeight = 89
             DesignSize = (
-              1156
+              1159
               89)
             inherited btnPesquisa: TSpeedButton
-              Left = 1063
+              Left = 1066
               ExplicitLeft = 1011
             end
             inherited btnLimpar: TSpeedButton
-              Left = 1063
+              Left = 1066
               ExplicitLeft = 1011
             end
             object edPesquisa: TLabeledEdit
@@ -164,8 +166,8 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       end
       inherited cxgrd1: TcxGrid
         Top = 89
-        Width = 1156
-        Height = 244
+        Width = 1159
+        Height = 338
         ExplicitLeft = -3
         ExplicitTop = 87
         ExplicitWidth = 1156
@@ -770,22 +772,25 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       end
       object pnlhistorico: TPanel
         Left = 0
-        Top = 336
-        Width = 1156
+        Top = 430
+        Width = 1159
         Height = 141
         Align = alBottom
         Caption = 'pnhistorico'
         TabOrder = 2
+        ExplicitTop = 336
+        ExplicitWidth = 1156
         object cxGrid1: TcxGrid
           Left = 1
           Top = 1
-          Width = 1154
+          Width = 1157
           Height = 139
           Align = alClient
           TabOrder = 0
           LookAndFeel.Kind = lfStandard
           LookAndFeel.NativeStyle = False
           LookAndFeel.ScrollbarMode = sbmClassic
+          ExplicitWidth = 1154
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             FilterBox.CustomizeDialog = False
@@ -842,24 +847,24 @@ inherited frmDemandaProducao: TfrmDemandaProducao
     end
   end
   inherited pnl1: TPanel
-    Top = 546
-    Width = 1164
+    Top = 640
+    Width = 1167
     Visible = False
     ExplicitTop = 546
     ExplicitWidth = 1164
     DesignSize = (
-      1164
+      1167
       36)
     inherited btnSelect: TSpeedButton
-      Left = 1000
+      Left = 1003
       ExplicitLeft = 1120
     end
   end
   inherited pnlUtilTop: TPanel
-    Width = 1164
+    Width = 1167
     ExplicitWidth = 1164
     DesignSize = (
-      1164
+      1167
       41)
     inherited btnExclui: TSpeedButton
       Left = 135
@@ -889,7 +894,7 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       ExplicitLeft = 224
     end
     inherited btnFechar: TSpeedButton
-      Left = 1100
+      Left = 1103
       ExplicitLeft = 1220
     end
     inherited btnExtra: TSpeedButton
@@ -899,16 +904,16 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       ExplicitTop = 1
     end
     inherited btnMP_Expotar: TJvArrowButton
-      Left = 1000
+      Left = 1003
       ExplicitLeft = 1120
     end
     inherited btnrelatorios: TJvArrowButton
-      Left = 900
+      Left = 903
       DropDown = pmImpressao
       ExplicitLeft = 1020
     end
     object btnPrevisao: TButton
-      Left = 750
+      Left = 753
       Top = 1
       Width = 149
       Height = 38
@@ -916,9 +921,10 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       Caption = 'Previs'#227'o de compra'
       TabOrder = 0
       OnClick = btnPrevisaoClick
+      ExplicitLeft = 750
     end
     object btnIncluir: TButton
-      Left = 626
+      Left = 629
       Top = 0
       Width = 123
       Height = 39
@@ -926,9 +932,10 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       Caption = 'Incluir no PCP'
       TabOrder = 1
       OnClick = btnIncluirClick
+      ExplicitLeft = 626
     end
     object Button1: TButton
-      Left = 507
+      Left = 510
       Top = 0
       Width = 123
       Height = 39
@@ -936,6 +943,7 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       Caption = 'Programa'#231#227'o Produ'#231#227'o'
       TabOrder = 2
       OnClick = Button1Click
+      ExplicitLeft = 507
     end
   end
   inherited ACBrEnterTab1: TACBrEnterTab
