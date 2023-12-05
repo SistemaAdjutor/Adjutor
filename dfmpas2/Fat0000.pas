@@ -2135,6 +2135,16 @@ begin
     FrmGimpBoletos.dbHistorico.Visible := False;
     FrmGimpBoletos.BitConfig.Visible := False;
     FrmGimpBoletos.EdtDuplicata.Text := CdsNotasNF_NOTANUMBER.AsString;
+    FrmGimpBoletos.cbLayOut.ItemIndex := 1;
+
+    FrmGimpBoletos.BuscaDuplicatas;
+    if FrmGimpBoletos.CdsDuplicata.IsEmpty then
+    begin
+         FreeAndNil(FrmGimpBoletos);
+         uteis.aviso('Faturas(s) não encontrada(s) no período e Banco Informado ou já está liquidada(s)  !');
+         Abort;
+    end;
+
     FrmGimpBoletos.BitPesquisa.Click;
     FrmGimpBoletos.Show;
   end;

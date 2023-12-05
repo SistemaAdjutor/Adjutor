@@ -561,13 +561,13 @@ type
 
     procedure ImprimirDuplicataSist;
     procedure ImprimirLocacao;
-    procedure BuscaDuplicatas;
     function FormataNumeroConta(const pConta:string) : String;
     procedure ImprimirBoletoCodigoBarras (const Email: boolean;const Duplicatas: TClientDataSet );
     var registro : integer;
         arquivo: string;
 
   public
+    procedure BuscaDuplicatas;
     procedure BotoesAcesso;
     var wCodBanco : integer;
     function enviarEmailIndy(sPara, sAssunto: String; sMensagem: TStrings; Anexos, sReplyTo: TStrings): boolean;
@@ -581,7 +581,7 @@ var
 
 implementation
 
-uses UTEIS, RWFUNC, ufrmpreviewrb, iniciodb, Email0001, PesquisaClientesForm;
+uses UTEIS, RWFUNC, ufrmpreviewrb, iniciodb, Email0001, PesquisaClientesForm, Fat0000;
 
 {$R *.dfm}
 
@@ -866,7 +866,10 @@ begin
         SqlAdd(' C1.CLI_CODIGO = '+QuotedStr(PesqCliente.idRetorno));
 
      end;
-     qDuplicata.sql.add('ORDER BY F1.FPC_VENCTO DESC,C1.CLI_RAZAO' );
+     if FormFaturamento = nil then
+       qDuplicata.sql.add('ORDER BY F1.FPC_VENCTO DESC, C1.CLI_RAZAO' )
+     else
+       qDuplicata.sql.add('AND fp.FPG_BOLETO = ''S''   ORDER BY F1.FPC_VENCTO, C1.CLI_RAZAO' )     ;
      if DBInicio.IsDesenvolvimento then
       CopyToClipBoard(qDuplicata.SQL.Text);
      try
@@ -1369,10 +1372,12 @@ begin
      begin
        registro := clone.RecNo;
 
-       cloneAux.Filtered := False;
-       cloneAux.Filter := 'FAT_REGISTRO = '+ IntToStr(clone.FieldByName('FAT_REGISTRO').AsInteger);
-       cloneAux.Filtered := True;
-
+       if FormFaturamento = nil then
+       begin
+         cloneAux.Filtered := False;
+         cloneAux.Filter := 'FAT_REGISTRO = '+ IntToStr(clone.FieldByName('FAT_REGISTRO').AsInteger);
+         cloneAux.Filtered := True;
+       end;
        if clone.FieldByName('FPC_COBNUM').AsString = '' then
        begin
         ShowMessage('Boleto fatura '+ clone.FieldByName('FAT_CODIGO').AsString +'/'+ clone.FieldByName('FPC_NUMER').AsString+ ' ainda não impresso e sem "Nosso Número"'  );
@@ -1420,6 +1425,8 @@ begin
        finally
          FreeAndNil(tcr);
        end;
+       if FormFaturamento <> nil then
+        Break;
 
        clone.Next;
      end;
