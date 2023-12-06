@@ -60,7 +60,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     Align = alTop
     Caption = 'Notas Fiscais de Entrada'
     TabOrder = 0
-    ExplicitWidth = 1070
     object dbgrdNotaEntrada: TDBGrid
       Left = 2
       Top = 16
@@ -251,7 +250,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     Align = alTop
     Caption = 'Filtro'
     TabOrder = 1
-    ExplicitWidth = 1070
     object Label1: TLabel
       Left = 16
       Top = 16
@@ -500,8 +498,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     Height = 205
     Align = alBottom
     TabOrder = 2
-    ExplicitTop = 371
-    ExplicitWidth = 1070
     object Splitter4: TSplitter
       Left = 2
       Top = 124
@@ -520,7 +516,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       Align = alBottom
       Caption = 'Observa'#231#227'o'
       TabOrder = 0
-      ExplicitWidth = 1066
       object DBMemo1: TDBMemo
         Left = 2
         Top = 16
@@ -532,7 +527,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         DataSource = dsNotaItem
         ReadOnly = True
         TabOrder = 0
-        ExplicitWidth = 1062
       end
     end
     object pcIEOP: TPageControl
@@ -543,10 +537,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       ActivePage = TabSheet5
       Align = alClient
       TabOrder = 1
-      ExplicitWidth = 1066
       object TabSheet4: TTabSheet
         Caption = 'Itens de Entrada'
-        ExplicitWidth = 1058
         object dbgrdItemNota: TDBGrid
           Left = 0
           Top = 0
@@ -676,7 +668,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       object TabSheet5: TTabSheet
         Caption = 'O.P.'
         ImageIndex = 1
-        ExplicitWidth = 1058
         object dbGridOP: TDBGrid
           Left = 0
           Top = 0
@@ -772,8 +763,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     Align = alBottom
     Caption = 'Itens de Retorno'
     TabOrder = 3
-    ExplicitTop = 579
-    ExplicitWidth = 1070
     object dbgrdRetorno: TDBGrid
       Left = 2
       Top = 16
@@ -887,8 +876,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     Height = 30
     Align = alBottom
     TabOrder = 4
-    ExplicitTop = 684
-    ExplicitWidth = 1070
     DesignSize = (
       1076
       30)
@@ -948,7 +935,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       TabOrder = 0
       TabStop = False
       OnClick = BitBtn1Click
-      ExplicitLeft = 746
     end
     object Bit_Sair: TBitBtn
       Left = 966
@@ -962,7 +948,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       TabOrder = 1
       TabStop = False
       OnClick = Bit_SairClick
-      ExplicitLeft = 960
     end
   end
   object pcObservacoes: TPageControl
@@ -973,12 +958,8 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
     ActivePage = TabSheet1
     Align = alClient
     TabOrder = 5
-    ExplicitWidth = 1070
-    ExplicitHeight = 181
     object TabSheet1: TTabSheet
       Caption = 'Observa'#231#245'es da Industrializa'#231#227'o'
-      ExplicitWidth = 1062
-      ExplicitHeight = 152
       object mmEnfObsIndust: TDBMemo
         Left = 0
         Top = 0
@@ -991,15 +972,11 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitWidth = 1062
-        ExplicitHeight = 152
       end
     end
     object TabSheet2: TTabSheet
       Caption = 'Observa'#231#245'es dos Dados Adicionais'
       ImageIndex = 1
-      ExplicitWidth = 1062
-      ExplicitHeight = 152
       object mmEnfDadosAdicionais: TDBMemo
         Left = 0
         Top = 0
@@ -1012,15 +989,11 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitWidth = 1062
-        ExplicitHeight = 152
       end
     end
     object TabSheet3: TTabSheet
       Caption = 'Observa'#231#245'es dos Dados Adicionais do Fisco'
       ImageIndex = 2
-      ExplicitWidth = 1062
-      ExplicitHeight = 152
       object mmEnfDadosAdicionaisFisco: TDBMemo
         Left = 0
         Top = 0
@@ -1033,8 +1006,6 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
         ReadOnly = True
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitWidth = 1062
-        ExplicitHeight = 152
       end
     end
   end
@@ -6914,6 +6885,7 @@ object FrmEnfIndustrializacao: TFrmEnfIndustrializacao
       'begin'
       ''
       'end.')
+    OnBeginDoc = frxEtiquetaBeginDoc
     Left = 676
     Top = 257
     Datasets = <

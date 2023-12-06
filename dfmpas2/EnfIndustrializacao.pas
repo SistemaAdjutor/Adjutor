@@ -284,6 +284,7 @@ type
     procedure SqlCdsEntradaNotaSelecaoGetText(Sender: TField; var Text: string;
       DisplayText: Boolean);
     procedure GerarEtiqueta1Click(Sender: TObject);
+    procedure frxEtiquetaBeginDoc(Sender: TObject);
   private
     { Private declarations }
     procedure AtualizaConsultaNotas;
@@ -716,6 +717,11 @@ end;
 procedure TFrmEnfIndustrializacao.frxEntradaNFRetornoBeginDoc(Sender: TObject);
 begin
   TfrxPictureView(frxEntradaNFRetorno.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
+end;
+
+procedure TFrmEnfIndustrializacao.frxEtiquetaBeginDoc(Sender: TObject);
+begin
+  TfrxPictureView(frxEtiqueta.FindObject('logoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
 end;
 
 procedure TFrmEnfIndustrializacao.frxEntradaNFRetorno0BeginDoc(Sender: TObject);

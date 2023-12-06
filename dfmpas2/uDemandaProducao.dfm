@@ -1,7 +1,5 @@
 inherited frmDemandaProducao: TfrmDemandaProducao
   Caption = 'PCP Demanda'
-  ClientHeight = 582
-  ClientWidth = 1164
   ClientHeight = 676
   ClientWidth = 1167
   WindowState = wsMaximized
@@ -13,11 +11,11 @@ inherited frmDemandaProducao: TfrmDemandaProducao
   inherited pgc1: TPageControl
     Width = 1167
     Height = 599
-    ExplicitWidth = 1164
-    ExplicitHeight = 505
+    ExplicitWidth = 1167
+    ExplicitHeight = 599
     inherited tsNotas: TTabSheet
-      ExplicitWidth = 1156
-      ExplicitHeight = 477
+      ExplicitWidth = 1159
+      ExplicitHeight = 571
       object spl1: TSplitter [0]
         Left = 0
         Top = 427
@@ -31,17 +29,17 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       inherited pnlControle: TPanel
         Width = 1159
         Height = 89
-        ExplicitWidth = 1156
+        ExplicitWidth = 1159
         ExplicitHeight = 89
         inherited pnlFiltro: TPanel
           Width = 1159
           Height = 89
-          ExplicitWidth = 1156
+          ExplicitWidth = 1159
           ExplicitHeight = 89
           inherited pnlpn1: TPanel
             Width = 1159
             Height = 89
-            ExplicitWidth = 1156
+            ExplicitWidth = 1159
             ExplicitHeight = 89
             DesignSize = (
               1159
@@ -168,10 +166,9 @@ inherited frmDemandaProducao: TfrmDemandaProducao
         Top = 89
         Width = 1159
         Height = 338
-        ExplicitLeft = -3
-        ExplicitTop = 87
-        ExplicitWidth = 1156
-        ExplicitHeight = 244
+        ExplicitTop = 89
+        ExplicitWidth = 1159
+        ExplicitHeight = 338
         inherited cxgrd1DBTableView1: TcxGridDBTableView
           Navigator.Buttons.OnButtonClick = cxgrd1DBTableView1NavigatorButtonsButtonClick
           Navigator.Buttons.CustomButtons = <
@@ -778,8 +775,6 @@ inherited frmDemandaProducao: TfrmDemandaProducao
         Align = alBottom
         Caption = 'pnhistorico'
         TabOrder = 2
-        ExplicitTop = 336
-        ExplicitWidth = 1156
         object cxGrid1: TcxGrid
           Left = 1
           Top = 1
@@ -790,7 +785,6 @@ inherited frmDemandaProducao: TfrmDemandaProducao
           LookAndFeel.Kind = lfStandard
           LookAndFeel.NativeStyle = False
           LookAndFeel.ScrollbarMode = sbmClassic
-          ExplicitWidth = 1154
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             FilterBox.CustomizeDialog = False
@@ -850,8 +844,8 @@ inherited frmDemandaProducao: TfrmDemandaProducao
     Top = 640
     Width = 1167
     Visible = False
-    ExplicitTop = 546
-    ExplicitWidth = 1164
+    ExplicitTop = 640
+    ExplicitWidth = 1167
     DesignSize = (
       1167
       36)
@@ -862,7 +856,7 @@ inherited frmDemandaProducao: TfrmDemandaProducao
   end
   inherited pnlUtilTop: TPanel
     Width = 1167
-    ExplicitWidth = 1164
+    ExplicitWidth = 1167
     DesignSize = (
       1167
       41)
@@ -921,7 +915,6 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       Caption = 'Previs'#227'o de compra'
       TabOrder = 0
       OnClick = btnPrevisaoClick
-      ExplicitLeft = 750
     end
     object btnIncluir: TButton
       Left = 629
@@ -932,7 +925,6 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       Caption = 'Incluir no PCP'
       TabOrder = 1
       OnClick = btnIncluirClick
-      ExplicitLeft = 626
     end
     object Button1: TButton
       Left = 510
@@ -943,7 +935,6 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       Caption = 'Programa'#231#227'o Produ'#231#227'o'
       TabOrder = 2
       OnClick = Button1Click
-      ExplicitLeft = 507
     end
   end
   inherited ACBrEnterTab1: TACBrEnterTab
@@ -3905,6 +3896,12 @@ inherited frmDemandaProducao: TfrmDemandaProducao
         DataSet = frxDBEtiqueta
         DataSetName = 'frxDBEtiqueta'
         RowCount = 0
+        object Shape1: TfrxShapeView
+          AllowVectorExport = True
+          Width = 464.882190000000000000
+          Height = 181.417322830000000000
+          Frame.Typ = []
+        end
         object logoEmpresa: TfrxPictureView
           AllowVectorExport = True
           Left = 370.393940000000000000
@@ -3914,12 +3911,6 @@ inherited frmDemandaProducao: TfrmDemandaProducao
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
-        end
-        object Shape1: TfrxShapeView
-          AllowVectorExport = True
-          Width = 464.882190000000000000
-          Height = 181.417322834645700000
-          Frame.Typ = []
         end
         object Memo1: TfrxMemoView
           AllowVectorExport = True
