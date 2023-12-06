@@ -5982,7 +5982,7 @@ begin
 //                                ' WHERE PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
 //                                iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '') +
 //                                '  AND OPR_STATUS <> '+ QuotedStr('C') )>1) then
-    if (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_INCLUI_ITEM_PED_OP_GERADA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + QuotedStr(dbInicio.USUARIO.CODIGO)) = 'S') then
+    if (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_INCLUI_ITEM_PED_OP_GERADA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + QuotedStr(dbInicio.USUARIO.CODIGO)) <> 'S') then
     begin
       if
         (BuscaUmDadoSqlAsInteger( 'SELECT COUNT(dp.PRD_CODIGO) ' +
@@ -6003,10 +6003,13 @@ begin
         uteis.aviso('Ordem de produção totalmente gerada. Não pode inserir item.');
         Exit;
       end;
-    end
-    else
+    end;
+//    else
     begin
-      if (BuscaUmDadoSqlAsInteger( 'SELECT OPR_CODIGO FROM ORDEMPRODUCAO ' +
+      if
+      (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_INCLUI_ITEM_PED_OP_GERADA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + QuotedStr(dbInicio.USUARIO.CODIGO)) <> 'S')
+      AND
+      (BuscaUmDadoSqlAsInteger( 'SELECT OPR_CODIGO FROM ORDEMPRODUCAO ' +
                                  ' WHERE PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
                                  iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '') +
                                  '  AND OPR_STATUS <> '+ QuotedStr('C') ) > 1) then
