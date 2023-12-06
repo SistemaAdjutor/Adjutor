@@ -2358,7 +2358,8 @@ begin
                           ' WHERE EXISTS                                                     '+
                           ' (SELECT * FROM DEMANDA_PRODUCAO dpr WHERE dpr.PED_CODIGO = op.PED_CODIGO '+
                           '   AND dpr.EMP_CODIGO = op.EMP_CODIGO )' +
-                         iif(chkFinalizados.Checked,'',' AND ( iop_status <> ''F'' OR IOP_DATA_CONCLUSAO  BETWEEN CURRENT_DATE-7 AND CURRENT_DATE) ' ) ;
+                         iif(chkFinalizados.Checked,'',' AND ( iop_status <> ''F'' ) ' ) ;
+                         // iif(chkFinalizados.Checked,'',' AND ( iop_status <> ''F'' OR IOP_DATA_CONCLUSAO  BETWEEN CURRENT_DATE-7 AND CURRENT_DATE) ' ) ;
    Filtrados := true;
    if (DataIni.date > 0) and (DataFim.date = 0)then
     begin
