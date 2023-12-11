@@ -47,7 +47,6 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     Align = alTop
     Caption = 'Industrializa'#231#245'es Solicitadas e Dispon'#237'veis'
     TabOrder = 0
-    ExplicitWidth = 976
     object dbgrdNotasDisponveis: TDBGrid
       Left = 2
       Top = 16
@@ -247,7 +246,6 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     Align = alTop
     Caption = 'Filtro'
     TabOrder = 3
-    ExplicitWidth = 976
     object Label1: TLabel
       Left = 16
       Top = 24

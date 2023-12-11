@@ -360,7 +360,8 @@ begin
       ' LEFT JOIN PRD0000 pr ON (pr.PRD_REFER = fi.PRD_REFER_ITENS AND pr.EMP_CODIGO = fi.EMP_CODIGO ) ' +
       ' LEFT JOIN PRD_GRADE pg ON (pg.PRG_REGISTRO = fi.PRG_REGISTRO) ' +
       ' WHERE fi.PRD_REFER_ITENS = ' +  QuotedStr(SqlCdsNotasDisponiveisPRD_REFER.AsString) +
-      ' AND fi.PRD_REFER = ' +  QuotedStr(prdRefer.Text) +
+      ' AND fi.PRD_REFER = ' +  QuotedStr(SqlCdsNotasDisponiveisPRD_REFER_PAI.AsString) +
+//      ' AND fi.PRD_REFER = ' +  QuotedStr(prdRefer.Text) +
       ' AND FTI_UTILIZA_ITEM_NO_RETORNO = ''S'' ' +
       ' AND pr.EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo)
     ;
