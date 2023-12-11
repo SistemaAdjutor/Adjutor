@@ -34,9 +34,9 @@ Function DiaInicioSemestre( Date: tDateTime ): tDateTime ;
 Function DiaFinalSemestre( Date: tDateTime ): tDateTime ;
 Function DiaInicioAno( Date: tDateTime ): tDateTime ;
 Function DiaFinalAno( Date: tDateTime ): tDateTime ;
-function MessageDlg(const Msg: string; DlgType: TMsgDlgType;
-  Buttons: TMsgDlgButtons; HelpCtx: Longint): Integer;
+function UltimoDiaDoMes(mes, ano: integer): integer;
 
+function MessageDlg(const Msg: string; DlgType: TMsgDlgType;  Buttons: TMsgDlgButtons; HelpCtx: Longint): Integer;
 
 function IsCharEspec(const Str: String):Boolean;
 function MsgDlgPersonalizado (const Msg: string; DlgType: TMsgDlgType; Buttons: TMsgDlgButtons; Captions: array of string): Integer;
@@ -3059,7 +3059,27 @@ begin
   end;
 end;
 
-
+function UltimoDiaDoMes(mes, ano: integer): integer;
+begin
+  case mes of
+    1 : Result := 31; // janeiro
+    2 : // fevereiro
+    begin
+      if ano / 4 = Int(ano/4) then Result := 29 // ano bissexto
+      else Result := 28
+    end;
+    3: Result := 31; // março
+    4: Result := 30; // abril
+    5: Result := 31; // maio
+    6: Result := 30; // junho
+    7: Result := 31; // julho
+    8: Result := 31; // agosto
+    9: Result := 30; // setembro
+    10: Result := 31; // outubro
+    11: Result := 30; // novembro
+    12: Result := 31; // dezembro
+  end;
+end;
 
 
 end.

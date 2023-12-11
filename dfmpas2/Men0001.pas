@@ -661,7 +661,7 @@ uses Uteis, Rep0001, Trp0001, Ban0001, Eve0001, Pag0001,
   uPesqClassificacao, uPesqGancho, uPesqAcabamentoSup,PesqCores, upesqtratamento, uPesqTipoMola, uPesqParametrosDaQualidade, uControleDeQualidade, uPesqTipoEmbalagem,
   CustoFabricaCentroCusto, uRentabilidadeOS, uSolicitacaoCompra, uXMLSCOAManaus, uProgramacaoProcessoFabricacao, UCotacaoPesquisa, uCotacaoAutorizacao, uRegularizacaoEstoque,
   uRequisicaoMaterial, uPesqRequisicaoMaterialOri, uPesqCapacidade, uHistoricoEmail,
-  testes;
+  testes, uDashboradInteligencia;
 
 
 
@@ -4215,6 +4215,15 @@ begin
   PrevisodeConsumodeMaterial1.Visible := DBInicio.Empresa.PMT_HABILITAR_PRODU_ANTIGO;
   miApontamentos.Visible := DBInicio.Empresa.PMT_HABILITAR_PRODU_ANTIGO;
   miGerenciarApontamento.Visible := DBInicio.Empresa.PMT_HABILITAR_PRODU_ANTIGO;
+  if dbInicio.BuscaUmDadoSqlAsString('SELECT USP_DASH_INTELIGENCIA ' +
+                            ' FROM USUARIO_PARAMETRO ' +
+                            ' WHERE USP_COD_USUARIO = ' + QuotedStr(DBInicio.Usuario.CODIGO) ) = 'S' then
+  begin
+    if not Assigned(frmDashBoardInteligencia) then
+      frmDashBoardInteligencia := tfrmDashBoardInteligencia.Create(Application);
+     frmDashBoardInteligencia.ShowModal;
+  end
+  else
   if (DBInicio.Empresa.bUSP_DASH_VENDAS or DBInicio.Empresa.bUSP_DASH_FINANCEIRO)  then
   begin
     if not dbinicio.Empresa.bNaoAbrirDash then

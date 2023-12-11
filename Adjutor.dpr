@@ -517,7 +517,8 @@ uses
   fdac.SgDbAutoF8Unit in 'infosaga\Componentes\SgDb\fdac.SgDbAutoF8Unit.pas',
   OsvN0001 in 'dfmpas2\OsvN0001.pas' {FormOrdServCentroNovo},
   testes in 'testes.pas' {Form3},
-  uJustificativaDeducao in 'dfmpas2\uJustificativaDeducao.pas' {frmJustificativaDeducao};
+  uJustificativaDeducao in 'dfmpas2\uJustificativaDeducao.pas' {frmJustificativaDeducao},
+  uDashboradInteligencia in 'dfmpas2\uDashboradInteligencia.pas' {frmDashBoardInteligencia};
 
 {$R *.res}
 {$D+}

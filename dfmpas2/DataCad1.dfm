@@ -6180,6 +6180,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'USP_INCLUI_ITEM_PED_OP_GERADA'
       Size = 1
     end
+    object SQLUsaParametroUSP_DASH_INTELIGENCIA: TStringField
+      FieldName = 'USP_DASH_INTELIGENCIA'
+      Size = 1
+    end
   end
   object DSPUsaParametro: TDataSetProvider
     DataSet = SQLUsaParametro
@@ -6606,6 +6610,10 @@ object DataCadastros1: TDataCadastros1
     end
     object CDSUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField
       FieldName = 'USP_INCLUI_ITEM_PED_OP_GERADA'
+      Size = 1
+    end
+    object CDSUsaParametroUSP_DASH_INTELIGENCIA: TStringField
+      FieldName = 'USP_DASH_INTELIGENCIA'
       Size = 1
     end
   end
