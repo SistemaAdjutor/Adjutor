@@ -1363,21 +1363,26 @@ begin
      end;
  }
      cloneAux.CloneCursor(clone,false);
-     clone.Filtered := False;
-     clone.Filter := 'Selecao = true';
-     clone.Filtered := True;
+     if FormFaturamento = nil then
+     begin
+       clone.Filtered := False;
+       clone.Filter := 'Selecao = true';
+       clone.Filtered := True;
+     end;
      clone.First;
 
      while not clone.Eof do
      begin
        registro := clone.RecNo;
 
-       if FormFaturamento = nil then
+       if FormFaturamento <> nil then
        begin
-         cloneAux.Filtered := False;
-         cloneAux.Filter := 'FAT_REGISTRO = '+ IntToStr(clone.FieldByName('FAT_REGISTRO').AsInteger);
-         cloneAux.Filtered := True;
+         clone.Filtered := False;
+         clone.Filter := 'Selecao = true AND FAT_CODIGO = '+ QuotedStr(EdtDuplicata.Text);
+         clone.Filtered := True;
+         clone.First;
        end;
+
        if clone.FieldByName('FPC_COBNUM').AsString = '' then
        begin
         ShowMessage('Boleto fatura '+ clone.FieldByName('FAT_CODIGO').AsString +'/'+ clone.FieldByName('FPC_NUMER').AsString+ ' ainda não impresso e sem "Nosso Número"'  );
@@ -1385,7 +1390,8 @@ begin
         continue;
 
        end;
-       ImprimirBoletoCodigoBarras(true, cloneAux);
+//       ImprimirBoletoCodigoBarras(true, cloneAux);
+       ImprimirBoletoCodigoBarras(true, clone);
        if dbInicio.Empresa.EmailUserNameFinanceiro = '' then
          raise Exception.Create('Não configurado email do financeiro. Preencha o envio de email no cadastro de empresa.');
 
@@ -1421,12 +1427,28 @@ begin
               clone.Edit;
             clone.FieldByName('FPC_ENVIOEMAIL_BOLETO').AsString := 'S';
             clone.Post;
+
+             if FormFaturamento <> nil then
+             begin
+               clone.First;
+               while not clone.eof do
+               begin
+                 if NOT (clone.State IN dsEditModes) then
+                   clone.Edit;
+                 clone.FieldByName('FPC_ENVIOEMAIL_BOLETO').AsString := 'S'; // PARA APARECER NA TELA
+                 clone.Post;
+                 // clone.ApplyUpdates(0);     NÃO FUNCIONA...
+                 dbInicio.ExecSql('UPDATE FAT_PC01 SET FPC_ENVIOEMAIL_BOLETO = ''S'' WHERE FAT_REGISTRO = ' + clone.FieldByName('FAT_REGISTRO').AsString ); // PARA PERSISTIR NO BANCO DE DADOS
+                 clone.Next;
+               end;
+               Break;
+             end;
+
           end;
        finally
          FreeAndNil(tcr);
        end;
-       if FormFaturamento <> nil then
-        Break;
+
 
        clone.Next;
      end;

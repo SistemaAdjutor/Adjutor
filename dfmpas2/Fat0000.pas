@@ -2135,7 +2135,7 @@ begin
     FrmGimpBoletos.dbHistorico.Visible := False;
     FrmGimpBoletos.BitConfig.Visible := False;
     FrmGimpBoletos.EdtDuplicata.Text := CdsNotasNF_NOTANUMBER.AsString;
-    FrmGimpBoletos.cbLayOut.ItemIndex := 1;
+    FrmGimpBoletos.cbLayOut.ItemIndex := 3;
 
     FrmGimpBoletos.BuscaDuplicatas;
     if FrmGimpBoletos.CdsDuplicata.IsEmpty then
