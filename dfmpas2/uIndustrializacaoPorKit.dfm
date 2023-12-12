@@ -460,6 +460,8 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     object SqlCdsNotasDisponiveisQuantidadeTmp: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'QuantidadeTmp'
+      DisplayFormat = '###,##0.0000'
+      EditFormat = '###,##0.0000'
     end
     object SqlCdsNotasDisponiveisTipoIndustrializacaoCodigo: TIntegerField
       FieldKind = fkInternalCalc
@@ -487,6 +489,8 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     object SqlCdsNotasDisponiveisSaldo: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'Saldo'
+      DisplayFormat = '###,##0.0000'
+      EditFormat = '###,##0.0000'
     end
     object SqlCdsNotasDisponiveisOPE_CODIGO_RETORNO: TStringField
       FieldName = 'OPE_CODIGO_RETORNO'
