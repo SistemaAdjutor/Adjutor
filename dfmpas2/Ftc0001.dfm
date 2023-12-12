@@ -216,8 +216,8 @@ object FormFichaTecnica: TFormFichaTecnica
       Width = 95
       Height = 21
       AutoSize = False
-      DecimalPlaces = 4
-      DisplayFormat = ',0.0000;-,0.0000'
+      DecimalPlaces = 6
+      DisplayFormat = ',0.000000;-,0.000000'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -236,8 +236,8 @@ object FormFichaTecnica: TFormFichaTecnica
       Height = 21
       AutoSelect = False
       AutoSize = False
-      DecimalPlaces = 4
-      DisplayFormat = ',0.0000;-,0.0000'
+      DecimalPlaces = 6
+      DisplayFormat = ',0.000000;-,0.000000'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clBlack
       Font.Height = -11
@@ -1658,8 +1658,8 @@ object FormFichaTecnica: TFormFichaTecnica
     end
     object SqlCdsItensFichaFTI_UC: TFMTBCDField
       FieldName = 'FTI_UC'
-      DisplayFormat = '#,####0.0000'
-      EditFormat = '#,####0.0000'
+      DisplayFormat = '#,####0.000000'
+      EditFormat = '#,####0.000000'
       Precision = 15
     end
     object SqlCdsItensFichaFTI_UCMODIFIC: TFMTBCDField
@@ -1738,6 +1738,7 @@ object FormFichaTecnica: TFormFichaTecnica
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1754,6 +1755,14 @@ object FormFichaTecnica: TFormFichaTecnica
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -1763,22 +1772,34 @@ object FormFichaTecnica: TFormFichaTecnica
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -1786,13 +1807,26 @@ object FormFichaTecnica: TFormFichaTecnica
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 584
     Top = 264
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 35454
@@ -1932,13 +1966,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1323
@@ -1952,13 +1988,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1058
@@ -1972,6 +2010,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1992,6 +2031,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2012,13 +2052,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -2033,6 +2075,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2056,6 +2099,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2078,13 +2122,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Mat'#233'ria-Prima'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -2099,13 +2145,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o da Mat'#233'ria-Prima'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -2120,13 +2168,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Consumo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -2141,13 +2191,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UND'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -2162,13 +2214,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 156369
@@ -2182,13 +2236,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 161396
@@ -2202,13 +2258,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V3'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 166423
@@ -2222,13 +2280,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V4'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 171450
@@ -2242,13 +2302,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label101'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V5'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 176477
@@ -2262,13 +2324,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V6'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 181505
@@ -2282,13 +2346,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V7'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 186532
@@ -2302,13 +2368,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V8'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 191559
@@ -2322,13 +2390,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'T.U.P.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 140759
@@ -2342,6 +2412,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_TUP'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2363,6 +2434,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2376,6 +2448,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line13'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2389,6 +2462,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line14'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2402,6 +2476,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line15'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2415,6 +2490,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line16'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2428,6 +2504,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line17'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2441,6 +2518,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line18'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2454,6 +2532,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line19'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2467,6 +2546,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line20'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2480,6 +2560,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line201'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -2494,13 +2575,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VARIA'#199#213'ES'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -2515,13 +2598,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 25400
@@ -2535,6 +2620,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2557,13 +2643,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 46831
@@ -2577,6 +2665,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2599,13 +2688,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V3'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 67998
@@ -2619,6 +2710,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2641,13 +2733,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label102'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V4'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 89694
@@ -2661,6 +2755,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2683,13 +2778,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V5'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 111125
@@ -2703,6 +2800,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2725,13 +2823,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V6'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 132557
@@ -2745,6 +2845,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2767,13 +2868,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V7'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 153988
@@ -2787,6 +2890,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2809,13 +2913,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label22'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'V8'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 175419
@@ -2829,6 +2935,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR8'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2850,6 +2957,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -2863,6 +2971,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -2876,6 +2985,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -2889,6 +2999,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -2902,6 +3013,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line6'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -2915,6 +3027,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line7'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -2928,6 +3041,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line9'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -2942,13 +3056,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Item'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 2910
@@ -2973,13 +3089,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label26'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TIPO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -2994,6 +3112,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3016,6 +3135,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3037,6 +3157,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -3050,6 +3171,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line29'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -3064,13 +3186,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'GRUPO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -3084,6 +3208,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line35'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -3098,6 +3223,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PGR_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3120,6 +3246,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PGR_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3141,6 +3268,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line36'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -3155,13 +3283,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label28'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SEGMENTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -3175,6 +3305,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line37'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -3189,6 +3320,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText36'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'LIN_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3211,6 +3343,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText37'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'LIN_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3230,8 +3363,7 @@ object FormFichaTecnica: TFormFichaTecnica
       end
     end
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 5556
@@ -3241,6 +3373,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3263,6 +3396,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3285,6 +3419,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_UC'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3308,6 +3443,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3330,6 +3466,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_MODE1'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3353,6 +3490,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_MODE2'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3376,6 +3514,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_MODE3'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3399,6 +3538,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_MODE4'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3422,6 +3562,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_MODE5'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3445,6 +3586,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_MODE6'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3468,6 +3610,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_MODE7'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3491,6 +3634,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText22'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTI_MODE8'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3513,6 +3657,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line8'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3526,6 +3671,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line10'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3539,6 +3685,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3552,6 +3699,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line23'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -3565,6 +3713,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line24'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3578,6 +3727,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line25'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3591,6 +3741,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line26'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3604,6 +3755,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line27'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5821
@@ -3617,6 +3769,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line28'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3630,6 +3783,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line30'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3643,6 +3797,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line301'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3656,6 +3811,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line32'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3669,6 +3825,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line33'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3682,6 +3839,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line34'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3695,6 +3853,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBPipeline2
         DisplayFormat = '00'
         Font.Charset = DEFAULT_CHARSET
@@ -3717,6 +3876,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line102'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 6085
@@ -3728,7 +3888,7 @@ object FormFichaTecnica: TFormFichaTecnica
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 41804
       mmPrintPosition = 0
@@ -3737,13 +3897,15 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'Label18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PROCESSO DE PRODU'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4374
         mmLeft = 5027
@@ -3757,6 +3919,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3777,6 +3940,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText25'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3797,6 +3961,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText26'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC3'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3817,6 +3982,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC4'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3837,6 +4003,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText28'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC5'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3857,6 +4024,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC6'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3877,6 +4045,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC7'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3897,6 +4066,7 @@ object FormFichaTecnica: TFormFichaTecnica
         UserName = 'DBText31'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC8'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3916,6 +4086,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line38'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 41275
@@ -3929,6 +4100,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line39'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 41275
@@ -3942,6 +4114,7 @@ object FormFichaTecnica: TFormFichaTecnica
         DesignLayer = ppDesignLayer1
         UserName = 'Line40'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0

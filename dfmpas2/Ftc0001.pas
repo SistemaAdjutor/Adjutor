@@ -1173,8 +1173,8 @@ begin
       DmProducao.CdsItemFichaPRD_REFER.AsString        := EdtPRD_REFER.Text;
       DmProducao.CdsItemFichaPRD_REFER_ITENS.AsString  := EdtRefer.Text;
       DmProducao.CdsItemFichaFTI_MODIFICADA.AsDateTime := DateModif.Date;
-      DmProducao.CdsItemFichaFTI_UC.AsCurrency         := CurrConsumo.Value;
-      DmProducao.CdsItemFichaFTI_UCMODIFIC.AsCurrency  := CurrAnterior.Value;
+      DmProducao.CdsItemFichaFTI_UC.AsFloat            := CurrConsumo.Value;
+      DmProducao.CdsItemFichaFTI_UCMODIFIC.AsFloat     := CurrAnterior.Value;
       {
       if (ChkV1.Checked = False)and (ChkV2.Checked = False)and (ChkV3.Checked = False)and (ChkV4.Checked = False) and
          (ChkV5.Checked = False)and (ChkV6.Checked = False)and (ChkV7.Checked = False)and (ChkV8.Checked = False) then
@@ -1253,9 +1253,9 @@ begin
     try
       EdtRefer.Text      := SqlCdsItensFichaPRD_REFER_ITENS.AsString;
       EdtProduto.Text    := SqlCdsItensFichaPRD_DESCRI.AsString;
-      CurrConsumo.Value  := SqlCdsItensFichaFTI_UC.AsCurrency;
+      CurrConsumo.Value  := SqlCdsItensFichaFTI_UC.AsFloat;
       DateModif.Date     := SqlCdsItensFichaFTI_MODIFICADA.AsDateTime;
-      CurrAnterior.Value := SqlCdsItensFichaFTI_UCMODIFIC.AsCurrency;
+      CurrAnterior.Value := SqlCdsItensFichaFTI_UCMODIFIC.AsFloat;
       {Desabilita as variacoes e atribui os dados}
       ChkV1.Checked      := IIF(SqlCdsItensFichaFTI_MODE1.AsString = 'X','TRUE','FALSE');
       ChkV1.Enabled      := IIF(DBEdit1.Text <> '','TRUE','FALSE');

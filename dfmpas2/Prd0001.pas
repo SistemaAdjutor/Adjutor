@@ -221,8 +221,8 @@ type
     SqlItensGrade : TSQLClientDataSet;
     SqlItensGradeFTI_REGISTRO : TIntegerField;
     SqlItensGradeFTI_MODIFICADA : TSQLTimeStampField;
-    SqlItensGradeFTI_UC : TFMTBCdField;
-    SqlItensGradeFTI_UCMODIFIC : TFMTBCdField;
+    SqlItensGradeFTI_UC: TFloatField;
+    SqlItensGradeFTI_UCMODIFIC: TFloatField;
     SqlItensGradeFTI_MODE1 : TStringField;
     SqlItensGradeFTI_MODE2 : TStringField;
     SqlItensGradeFTI_MODE3 : TStringField;
@@ -247,7 +247,7 @@ type
     CdsRelItensFTI_MODE6 : TStringField;
     CdsRelItensFTI_MODE7 : TStringField;
     CdsRelItensFTI_MODE8 : TStringField;
-    CdsRelItensFTI_UC : TCurrencyField;
+    CdsRelItensFTI_UC: TFloatField;
     DsItensGrade : TDataSource;
     CdsRelItensFTI_ITEM : TStringField;
     SqlItensGradePRD_PCUSTO : TFMTBCdField;
@@ -1023,7 +1023,7 @@ type
     CdsItensFichaPRD_REFER_ITENS : TStringField;
     CdsItensFichaPRG_REGISTRO : TIntegerField;
     CdsItensFichaFTI_MODIFICADA : TSQLTimeStampField;
-    CdsItensFichaFTI_UCMODIFIC : TFMTBCdField;
+    CdsItensFichaFTI_UCMODIFIC: TFloatField;
     CdsItensFichaFTI_MODE1 : TStringField;
     CdsItensFichaFTI_MODE2 : TStringField;
     CdsItensFichaFTI_MODE3 : TStringField;
@@ -1067,7 +1067,7 @@ type
     N3 : TMenuItem;
     VeraFichaTcnicaDesteItem1 : TMenuItem;
     CdsItensFichaGrade_CC : TStringField;
-    CdsItensFichaTOTALITEM : TFMTBCdField;
+    CdsItensFichaTOTALITEM: TFloatField;
     CdsRelItensPRD_PCUSTO : TCurrencyField;
     ppHeaderBand1 : TppHeaderBand;
     ppShape4 : TppShape;
@@ -1140,7 +1140,7 @@ type
     daDataModule1 : TdaDataModule;
     ppDesignLayers1 : TppDesignLayers;
     ppDesignLayer1 : TppDesignLayer;
-    CdsRelItensTOTALITEM : TFMTBCdField;
+    CdsRelItensTOTALITEM: TFloatField;
     ppDBText4 : TppDBText;
     ppLabel24 : TppLabel;
     ppLabel8 : TppLabel;
@@ -1398,7 +1398,7 @@ type
     cdsMPusadoPRD_DESCRI : TStringField;
     cdsMPusadoPRD_UND : TStringField;
     cdsMPusadoFTC_CRIACAO : TSQLTimeStampField;
-    cdsMPusadoFTI_UC : TFMTBCdField;
+    cdsMPusadoFTI_UC: TFloatField;
     dsMPusado : TDataSource;
     qMPusado : TSQLQuery;
     dspMPusado : TDataSetProvider;
@@ -1502,7 +1502,6 @@ type
     cdsUnidadePRD_UNISIGLA : TStringField;
     cdsUnidadePRD_UNIDESCRI : TStringField;
     CurrConsumo : TJvValidateEdit;
-    CdsItensFichaFTI_UC : TFMTBCdField;
     GroupBox12 : TGroupBox;
     Label145 : TLabel;
     btncompras : TBitBtn;
@@ -2224,6 +2223,7 @@ type
     qEnderecos: TSQLQuery;
     dsRegistroEndereco: TDataSource;
     cbTipoOperacao: TComboBox;
+    CdsItensFichaFTI_UC: TFloatField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -4019,7 +4019,7 @@ begin
   qItensFicha.sql.Clear;
 
   qItensFicha.sql.Text := 'Select F2.*,P1.PRD_DESCRI,P1.PRD_UND,P1.PRD_GRADE,P2.PTI_SIGLA, g1.PRG_DESCRICAO, ' + 'cast( ' + 'case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' + '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END as numeric(15,4)) AS PRD_PCUSTO, ' + 'cast( ' + '(case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' +
-    '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END  * F2.fti_uc) as numeric(15,5)) AS TotalItem, ' + ' ope.OPE_CODIGO, ope_descricao, p1.prd_pvenda as prd_pvenda, ' + ' p1.amx_codigo, amx_Descri ' + 'from ftc_it01 F2 ' + ' join prd0000 P1 on (f2.prd_refer_itens = p1.prd_refer ' + ConcatSE( ' and P1.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ')' +
+    '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END  * F2.fti_uc) as DOUBLE PRECISION) AS TotalItem, ' + ' ope.OPE_CODIGO, ope_descricao, p1.prd_pvenda as prd_pvenda, ' + ' p1.amx_codigo, amx_Descri ' + 'from ftc_it01 F2 ' + ' join prd0000 P1 on (f2.prd_refer_itens = p1.prd_refer ' + ConcatSE( ' and P1.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ')' +
     ' join PRD_TIPO P2 ON P1.pti_codigo = P2.PTI_CODIGO ' + ' LEFT join PRD_GRADE g1 on g1.PRG_REGISTRO = f2.PRG_REGISTRO ' + ' left JOIN prmt0001 PRMT ON PRMT.emp_codigo = P1.emp_codigo ' + ' LEFT join operacoes ope on (ope.ope_codigo = f2.ope_codigo )' + ' left join almox0000 am on (am.amx_codigo = f2.amx_codigo ' + ConcatSE( ' and am.', DBInicio.ExclusivoSql( 'ESTOQUES' ) ) + ' )' + 'WHERE F2.PRD_REFER = ' + qStr( EdtPrd_Refer.Text ) + ' ' +
     ConcatSE( ' and f2.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ' ' + 'order by F2.FTI_REGISTRO, F2.PRD_REFER';
 
@@ -4104,7 +4104,7 @@ begin
     while not clone.Eof do
     begin
       custo := custo + ( clone.FieldByName( 'TOTALITEM' ).AsCurrency );
-      totalConsumo := totalConsumo + ( clone.FieldByName( 'FTI_UC' ).AsCurrency );
+      totalConsumo := totalConsumo + ( clone.FieldByName( 'FTI_UC' ).AsFloat );
       if ( clone.FieldByName( 'FTI_UC' ).AsFloat > 0 ) and ( clone.FieldByName( 'prd_pvenda' ).AsFloat > 0 ) then
         Total := Total + ( clone.FieldByName( 'FTI_UC' ).AsFloat * clone.FieldByName( 'prd_pvenda' ).AsFloat );
 
@@ -4303,7 +4303,7 @@ begin
           CdsRelItensPRD_UND.AsString := CdsItensFichaPRD_UND.AsString;
           CdsRelItensPTI_SIGLA.AsString := CdsItensFichaPTI_SIGLA.AsString;
           CdsRelItensPRD_PCUSTO.AsCurrency := CdsItensFichaPRD_PCUSTO.AsCurrency;
-          CdsRelItensFTI_UC.AsCurrency := CdsItensFichaFTI_UC.AsCurrency;
+          CdsRelItensFTI_UC.AsFloat := CdsItensFichaFTI_UC.AsFloat;
           CdsRelItensFTI_MODE1.AsString := CdsItensFichaFTI_MODE1.AsString;
           CdsRelItensFTI_MODE2.AsString := CdsItensFichaFTI_MODE2.AsString;
           CdsRelItensFTI_MODE3.AsString := CdsItensFichaFTI_MODE3.AsString;
@@ -4347,7 +4347,7 @@ begin
                 CdsRelItensPRD_UND.AsString := SqlItensGradePRD_UND.AsString;
                 CdsRelItensPTI_SIGLA.AsString := SqlItensGradePTI_SIGLA.AsString;
                 CdsRelItensPRD_PCUSTO.AsCurrency := SqlItensGradePRD_PCUSTO.AsCurrency;
-                CdsRelItensFTI_UC.AsCurrency := SqlItensGradeFTI_UC.AsCurrency;
+                CdsRelItensFTI_UC.AsFloat := SqlItensGradeFTI_UC.AsFloat;
                 CdsRelItensFTI_MODE1.AsString := SqlItensGradeFTI_MODE1.AsString;
                 CdsRelItensFTI_MODE2.AsString := SqlItensGradeFTI_MODE2.AsString;
                 CdsRelItensFTI_MODE3.AsString := SqlItensGradeFTI_MODE3.AsString;
@@ -5552,7 +5552,7 @@ begin
   CurrConsumo.AsFloat := CdsItensFichaFTI_UC.AsFloat;
   curPercentualConsumo.Value := CdsItensFichaFTI_PERCENTUAL.AsFloat;
   DateModif.date := CdsItensFichaFTI_MODIFICADA.AsDateTime;
-  CurrAnterior.Value := CdsItensFichaFTI_UCMODIFIC.AsCurrency;
+  CurrAnterior.Value := CdsItensFichaFTI_UCMODIFIC.AsFloat;
   edOperacao.idRetorno := IntToStr( CdsItensFichaOPE_CODIGO.AsInteger );
   CurPerda.Value := CdsItensFichaFTI_PERDA.AsFloat;
   CbAlmoxarifado.idRetorno := CdsItensFichaAMX_CODIGO.AsString;
@@ -8563,9 +8563,9 @@ begin
   qAuxF.First;
   While not qAuxF.Eof do
   begin
-    wConsumo := qAuxF.FieldByName( 'FTI_UC' ).AsCurrency;
-    wPrecoUnit := qAuxF.FieldByName( 'PRD_PCUSTO' ).AsCurrency * qAuxF.FieldByName( 'FTI_UC' ).AsCurrency;
-    wPreco_EntradaUnit := qAuxF.FieldByName( 'PRD_CUSTOCOMIPI' ).AsCurrency * qAuxF.FieldByName( 'FTI_UC' ).AsCurrency;
+    wConsumo := qAuxF.FieldByName( 'FTI_UC' ).AsFloat;
+    wPrecoUnit := qAuxF.FieldByName( 'PRD_PCUSTO' ).AsCurrency * qAuxF.FieldByName( 'FTI_UC' ).AsFloat;
+    wPreco_EntradaUnit := qAuxF.FieldByName( 'PRD_CUSTOCOMIPI' ).AsCurrency * qAuxF.FieldByName( 'FTI_UC' ).AsFloat;
     wPreco_Mprima := wPreco_Mprima + wPrecoUnit;
     wPrecoTotal := wPrecoTotal + wPrecoUnit;
     wPreco_EntradaTotal := wPreco_EntradaTotal + wPreco_EntradaUnit;

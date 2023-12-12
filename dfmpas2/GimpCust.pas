@@ -566,7 +566,7 @@ procedure TFormGimpCusto.SqlCdsItensCalcFields(DataSet: TDataSet);
 begin
 //    if SqlCdsItensCusto_CC.AsCurrency>0 then
        SqlCdsItensPreco_cc.AsCurrency := SqlCdsItensPRD_PCUSTO.AsCurrency;
-       SqlCdsItensCusto_CC.AsCurrency := (SqlCdsItensFTI_UC.AsCurrency * SqlCdsItensPreco_cc.AsCurrency)/wFormula;
+       SqlCdsItensCusto_CC.AsCurrency := (SqlCdsItensFTI_UC.AsFloat * SqlCdsItensPreco_cc.AsCurrency)/wFormula;
 end;
 
 procedure TFormGimpCusto.FormClose(Sender: tObject;
@@ -844,7 +844,7 @@ begin
          RdPrintFcusto.Imp(wlinha,16,SqlCdsItensPRD_REFER_ITENS.AsString);
          RdPrintFcusto.Imp(wlinha,25,SqlCdsItensPRD_DESCRI.AsString);
          RdPrintFcusto.Imp(wlinha,66,SqlCdsItensFTI_MODIFICADA.AsString);
-         RdPrintFcusto.ImpVal(wlinha,76,'###0.000',SqlCdsItensFTI_UC.AsCurrency,[]);
+         RdPrintFcusto.ImpVal(wlinha,76,'###0.000000',SqlCdsItensFTI_UC.AsFloat,[]);
          RdPrintFcusto.ImpVal(wlinha,85,'###0.000',SqlCdsItensPreco_cc.AsCurrency,[]);
          RdPrintFcusto.ImpVal(wlinha,94,'###0.000',SqlCdsItensCUSTO_CC.AsCurrency,[]);
          inc(wlinha);

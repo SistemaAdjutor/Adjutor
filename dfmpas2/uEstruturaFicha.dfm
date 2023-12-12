@@ -161,8 +161,8 @@ inherited frmEstruturaFicha: TfrmEstruturaFicha
       '  WHEN PRMT.pmt_calcularpv = '#39'2'#39' THEN '
       #9'  pr1.PRD_PMEDIO '
       
-        'END  * Ft.fti_uc) as numeric(15,4)) AS TotalItem, tipo.PTI_SIGLA' +
-        '             '
+        'END  * Ft.fti_uc) as DOUBLE PRECISION) AS TotalItem, tipo.PTI_SI' +
+        'GLA             '
       '   FROM FTC_IT01 ft '
       '   JOIN PRD0000 pr ON pr.PRD_REFER = ft.PRD_REFER'
       '   JOIN PRD0000 pr1 ON pr1.prd_refer = ft.PRD_REFER_ITENS  '
@@ -220,7 +220,7 @@ inherited frmEstruturaFicha: TfrmEstruturaFicha
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
       Precision = 18
-      Size = 5
+      Size = 6
     end
     object cdsBuscaPRD_PCUSTO: TBCDField
       FieldName = 'PRD_PCUSTO'

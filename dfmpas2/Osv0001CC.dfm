@@ -619,10 +619,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
       Font.Height = -11
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
-      ParentFont = False
-      TabOrder = 0
-      TabStop = False
-      OnClick = Bit_SairClick
       Glyph.Data = {
         CA010000424DCA01000000000000760000002800000026000000110000000100
         04000000000054010000CE0E0000D80E00001000000000000000000000000000
@@ -640,6 +636,10 @@ object FormOrdServCentroB: TFormOrdServCentroB
         FFFFFFFFFF008888888888880000088FFFFFFFFFFFFFFFFFFF00888888888888
         8888888FFFFFFFFFFFFFFFFFFF00}
       NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 0
+      TabStop = False
+      OnClick = Bit_SairClick
     end
     object BitLimpar: TBitBtn
       Left = 5
@@ -654,12 +654,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
       Font.Height = -11
       Font.Name = 'MS Sans Serif'
       Font.Style = [fsBold]
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 1
-      TabStop = False
-      OnClick = BitLimparClick
       Glyph.Data = {
         4E070000424D4E0700000000000036040000280000002B000000120000000100
         08000000000018030000C40E0000C40E00000001000000000000000000007B00
@@ -720,6 +714,12 @@ object FormOrdServCentroB: TFormOrdServCentroB
         00000909090909090909090909090909090909090909090908080B0808090909
         0909090909000909090909090909090909090909090909090909090909090909
         090909090909090909090909090909090900}
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 1
+      TabStop = False
+      OnClick = BitLimparClick
     end
   end
   object PanVariacao: TPanel
@@ -757,9 +757,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
       Font.Height = -12
       Font.Name = 'MS Sans Serif'
       Font.Style = []
-      ParentFont = False
-      TabOrder = 2
-      OnClick = BitConfirmarClick
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         0400000000006801000000000000000000001000000000000000000000000000
@@ -778,6 +775,9 @@ object FormOrdServCentroB: TFormOrdServCentroB
         333A333333333333333338330000333333333333333333333333333333333333
         0000}
       NumGlyphs = 2
+      ParentFont = False
+      TabOrder = 2
+      OnClick = BitConfirmarClick
     end
     object BitCancelItem: TBitBtn
       Left = 239
@@ -792,12 +792,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
       Font.Height = -11
       Font.Name = 'MS Sans Serif'
       Font.Style = []
-      ParentFont = False
-      ParentShowHint = False
-      ShowHint = True
-      TabOrder = 3
-      TabStop = False
-      OnClick = BitCancelItemClick
       Glyph.Data = {
         DE010000424DDE01000000000000760000002800000024000000120000000100
         04000000000068010000CE0E0000D80E00001000000000000000000000000000
@@ -816,6 +810,12 @@ object FormOrdServCentroB: TFormOrdServCentroB
         3333333333333333333888330000333333333333333333333333333333333333
         0000}
       NumGlyphs = 2
+      ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 3
+      TabStop = False
+      OnClick = BitCancelItemClick
     end
     object GroupBox5: TGroupBox
       Left = 3
@@ -1433,15 +1433,22 @@ object FormOrdServCentroB: TFormOrdServCentroB
     TabOrder = 9
     Visible = False
   end
-  object SqlCdsPsvGrupo: TSQLClientDataSet
+  object SqlCdsPsvGrupo: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT'#13#10'T1.*,'#13#10'C1.CLI_RAZAO'#13#10'FROM PSV_GRUPO T1'#13#10'LEFT JOIN CLI000' +
+      '0 C1 ON (C1.CLI_CODIGO = T1.CLI_CODIGO)'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'SELECT'#13#10'T1.*,'#13#10'C1.CLI_RAZAO'#13#10'FROM PSV_GRUPO T1'#13#10'LEFT JOIN CLI000' +
       '0 C1 ON (C1.CLI_CODIGO = T1.CLI_CODIGO)'
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 272
     Top = 390
     object SqlCdsPsvGrupoPSG_REGISTRO: TIntegerField
@@ -1470,16 +1477,23 @@ object FormOrdServCentroB: TFormOrdServCentroB
     Left = 304
     Top = 390
   end
-  object SqlCdsPs2: TSQLClientDataSet
+  object SqlCdsPs2: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT'#13#10'T2.*,'#13#10'P1.PRD_DESCRI'#13#10'FROM PSV_IT02 T2'#13#10'LEFT JOIN PRD000' +
+      '0 P1 ON (T2.PRD_REFER = P1.PRD_REFER)'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
+    OnCalcFields = SqlCdsPs2CalcFields
     CommandText = 
       'SELECT'#13#10'T2.*,'#13#10'P1.PRD_DESCRI'#13#10'FROM PSV_IT02 T2'#13#10'LEFT JOIN PRD000' +
       '0 P1 ON (T2.PRD_REFER = P1.PRD_REFER)'
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
-    OnCalcFields = SqlCdsPs2CalcFields
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 416
     Top = 107
     object SqlCdsPs2PS2_REGISTRO: TIntegerField
@@ -1503,47 +1517,38 @@ object FormOrdServCentroB: TFormOrdServCentroB
       DisplayFormat = '#,##0.000'
       EditFormat = '#,##0.000'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_QTDE1: TFMTBCDField
       FieldName = 'PS2_QTDE1'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_QTDE2: TFMTBCDField
       FieldName = 'PS2_QTDE2'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_QTDE3: TFMTBCDField
       FieldName = 'PS2_QTDE3'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_QTDE4: TFMTBCDField
       FieldName = 'PS2_QTDE4'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_QTDE5: TFMTBCDField
       FieldName = 'PS2_QTDE5'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_QTDE6: TFMTBCDField
       FieldName = 'PS2_QTDE6'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_QTDE7: TFMTBCDField
       FieldName = 'PS2_QTDE7'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_QTDE8: TFMTBCDField
       FieldName = 'PS2_QTDE8'
       Precision = 15
-      Size = 8
     end
     object SqlCdsPs2PS2_FICHA: TStringField
       FieldName = 'PS2_FICHA'
@@ -1564,16 +1569,24 @@ object FormOrdServCentroB: TFormOrdServCentroB
     Left = 448
     Top = 107
   end
-  object SqlCdsPedidos: TSQLClientDataSet
+  object SqlCdsPedidos: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT P2.EMP_CODIGO,'#13#10'P2.PED_CODIGO,'#13#10'P2.CLI_CODIGO,'#13#10'P2.PED_SI' +
+      'TUACAO,'#13#10'C1.CLI_RAZAO '#13#10'FROM PED0000 P2 '#13#10'LEFT JOIN CLI0000 C1 O' +
+      'N (P2.CLI_CODIGO = C1.CLI_CODIGO)'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'SELECT P2.EMP_CODIGO,'#13#10'P2.PED_CODIGO,'#13#10'P2.CLI_CODIGO,'#13#10'P2.PED_SI' +
       'TUACAO,'#13#10'C1.CLI_RAZAO '#13#10'FROM PED0000 P2 '#13#10'LEFT JOIN CLI0000 C1 O' +
       'N (P2.CLI_CODIGO = C1.CLI_CODIGO)'
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 208
     Top = 389
     object SqlCdsPedidosEMP_CODIGO: TStringField
@@ -1599,7 +1612,19 @@ object FormOrdServCentroB: TFormOrdServCentroB
       Size = 50
     end
   end
-  object SqlCdsItensPedido: TSQLClientDataSet
+  object SqlCdsItensPedido: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT'#13#10'P2.EMP_CODIGO,'#13#10'P2.PED_CODIGO,'#13#10'P2.PRD_REFER,'#13#10'P1.PTI_CO' +
+      'DIGO,'#13#10'P3.PTI_SIGLA,'#13#10'P2.PRF_QTDE,'#13#10'P2.PRF_VAR1,'#13#10'P2.PRF_VAR2,'#13#10 +
+      'P2.PRF_VAR3,'#13#10'P2.PRF_VAR4,'#13#10'P2.PRF_VAR5,'#13#10'P2.PRF_VAR6,'#13#10'P2.PRF_V' +
+      'AR7,'#13#10'P2.PRF_VAR8'#13#10'FROM PED_IT01 P2'#13#10'LEFT JOIN PRD0000 P1 ON (P2' +
+      '.PRD_REFER = P1.PRD_REFER)'#13#10'LEFT JOIN PRD_TIPO P3 ON (P1.PTI_COD' +
+      'IGO = P3.PTI_CODIGO)'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'SELECT'#13#10'P2.EMP_CODIGO,'#13#10'P2.PED_CODIGO,'#13#10'P2.PRD_REFER,'#13#10'P1.PTI_CO' +
       'DIGO,'#13#10'P3.PTI_SIGLA,'#13#10'P2.PRF_QTDE,'#13#10'P2.PRF_VAR1,'#13#10'P2.PRF_VAR2,'#13#10 +
@@ -1607,11 +1632,10 @@ object FormOrdServCentroB: TFormOrdServCentroB
       'AR7,'#13#10'P2.PRF_VAR8'#13#10'FROM PED_IT01 P2'#13#10'LEFT JOIN PRD0000 P1 ON (P2' +
       '.PRD_REFER = P1.PRD_REFER)'#13#10'LEFT JOIN PRD_TIPO P3 ON (P1.PTI_COD' +
       'IGO = P3.PTI_CODIGO)'
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 240
     Top = 389
     object SqlCdsItensPedidoEMP_CODIGO: TStringField
@@ -1629,47 +1653,38 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsItensPedidoPRF_QTDE: TFMTBCDField
       FieldName = 'PRF_QTDE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPRF_VAR1: TFMTBCDField
       FieldName = 'PRF_VAR1'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPRF_VAR2: TFMTBCDField
       FieldName = 'PRF_VAR2'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPRF_VAR3: TFMTBCDField
       FieldName = 'PRF_VAR3'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPRF_VAR4: TFMTBCDField
       FieldName = 'PRF_VAR4'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPRF_VAR5: TFMTBCDField
       FieldName = 'PRF_VAR5'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPRF_VAR6: TFMTBCDField
       FieldName = 'PRF_VAR6'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPRF_VAR7: TFMTBCDField
       FieldName = 'PRF_VAR7'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPRF_VAR8: TFMTBCDField
       FieldName = 'PRF_VAR8'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensPedidoPTI_CODIGO: TStringField
       FieldName = 'PTI_CODIGO'
@@ -1680,17 +1695,26 @@ object FormOrdServCentroB: TFormOrdServCentroB
       Size = 2
     end
   end
-  object SqlCdsBuscaFicha: TSQLClientDataSet
+  object SqlCdsBuscaFicha: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'Select'#13#10'F1.*,'#13#10'P1.PRD_DESCRI,'#13#10'P1.PRD_PCUSTO,'#13#10'P1.PRD_UND,'#13#10'P1.P' +
+      'RD_DCVAR1,'#13#10'P1.PRD_DCVAR2,'#13#10'P1.PRD_DCVAR3,'#13#10'P1.PRD_DCVAR4,'#13#10'P1.P' +
+      'RD_DCVAR5,'#13#10'P1.PRD_DCVAR6,'#13#10'P1.PRD_DCVAR7,'#13#10'P1.PRD_DCVAR8'#13#10'from ' +
+      'ftc0000 F1'#13#10'JOIN prd0000 P1 ON F1.PRD_REFER = P1.PRD_REFER'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'Select'#13#10'F1.*,'#13#10'P1.PRD_DESCRI,'#13#10'P1.PRD_PCUSTO,'#13#10'P1.PRD_UND,'#13#10'P1.P' +
       'RD_DCVAR1,'#13#10'P1.PRD_DCVAR2,'#13#10'P1.PRD_DCVAR3,'#13#10'P1.PRD_DCVAR4,'#13#10'P1.P' +
       'RD_DCVAR5,'#13#10'P1.PRD_DCVAR6,'#13#10'P1.PRD_DCVAR7,'#13#10'P1.PRD_DCVAR8'#13#10'from ' +
       'ftc0000 F1'#13#10'JOIN prd0000 P1 ON F1.PRD_REFER = P1.PRD_REFER'
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 609
     Top = 390
     object SqlCdsBuscaFichaPRD_REFER: TStringField
@@ -1701,7 +1725,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsBuscaFichaFTC_TUP: TFMTBCDField
       FieldName = 'FTC_TUP'
       Precision = 15
-      Size = 8
     end
     object SqlCdsBuscaFichaFTC_CRIACAO: TSQLTimeStampField
       FieldName = 'FTC_CRIACAO'
@@ -1741,22 +1764,18 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsBuscaFichaFTC_FIXO: TFMTBCDField
       FieldName = 'FTC_FIXO'
       Precision = 15
-      Size = 8
     end
     object SqlCdsBuscaFichaFTC_COMPLE: TFMTBCDField
       FieldName = 'FTC_COMPLE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsBuscaFichaFTC_INDIRETA: TFMTBCDField
       FieldName = 'FTC_INDIRETA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsBuscaFichaFTC_LUCROUNID: TFMTBCDField
       FieldName = 'FTC_LUCROUNID'
       Precision = 15
-      Size = 8
     end
     object SqlCdsBuscaFichaEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
@@ -1769,7 +1788,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsBuscaFichaPRD_PCUSTO: TFMTBCDField
       FieldName = 'PRD_PCUSTO'
       Precision = 15
-      Size = 8
     end
     object SqlCdsBuscaFichaPRD_UND: TStringField
       FieldName = 'PRD_UND'
@@ -1808,7 +1826,20 @@ object FormOrdServCentroB: TFormOrdServCentroB
       Size = 12
     end
   end
-  object SqlCdsItensFichas: TSQLClientDataSet
+  object SqlCdsItensFichas: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT'#13#10'I1.PRD_REFER,'#13#10'I1.PRD_REFER_ITENS,'#13#10'P1.PRD_DESCRI,'#13#10'P1.P' +
+      'RD_PCUSTO,'#13#10'P1.PRD_ESTOQUE,'#13#10'P1.PRD_ENTRADA,'#13#10'P1.PRD_SAIDA,'#13#10'P1.' +
+      'PRD_PENDENTE,'#13#10'P1.PRD_RESERVA,'#13#10'P1.PRD_UND,'#13#10'P2.PTI_SIGLA,'#13#10'I1.F' +
+      'TI_MODE1,'#13#10'I1.FTI_MODE2,'#13#10'I1.FTI_MODE3,'#13#10'I1.FTI_MODE4,'#13#10'I1.FTI_M' +
+      'ODE5,'#13#10'I1.FTI_MODE6,'#13#10'I1.FTI_MODE7,'#13#10'I1.FTI_MODE8,'#13#10'I1.FTI_UC '#13#10 +
+      'FROM FTC_IT01 I1'#13#10'JOIN PRD0000 P1 ON (I1.PRD_REFER_ITENS = P1.PR' +
+      'D_REFER)'#13#10'JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'SELECT'#13#10'I1.PRD_REFER,'#13#10'I1.PRD_REFER_ITENS,'#13#10'P1.PRD_DESCRI,'#13#10'P1.P' +
       'RD_PCUSTO,'#13#10'P1.PRD_ESTOQUE,'#13#10'P1.PRD_ENTRADA,'#13#10'P1.PRD_SAIDA,'#13#10'P1.' +
@@ -1816,12 +1847,11 @@ object FormOrdServCentroB: TFormOrdServCentroB
       'TI_MODE1,'#13#10'I1.FTI_MODE2,'#13#10'I1.FTI_MODE3,'#13#10'I1.FTI_MODE4,'#13#10'I1.FTI_M' +
       'ODE5,'#13#10'I1.FTI_MODE6,'#13#10'I1.FTI_MODE7,'#13#10'I1.FTI_MODE8,'#13#10'I1.FTI_UC '#13#10 +
       'FROM FTC_IT01 I1'#13#10'JOIN PRD0000 P1 ON (I1.PRD_REFER_ITENS = P1.PR' +
-      'D_REFER)'#13#10'JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'#13#10
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
+      'D_REFER)'#13#10'JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 641
     Top = 390
     object SqlCdsItensFichasPRD_REFER: TStringField
@@ -1839,32 +1869,26 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsItensFichasPRD_PCUSTO: TFMTBCDField
       FieldName = 'PRD_PCUSTO'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensFichasPRD_ESTOQUE: TFMTBCDField
       FieldName = 'PRD_ESTOQUE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensFichasPRD_ENTRADA: TFMTBCDField
       FieldName = 'PRD_ENTRADA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensFichasPRD_SAIDA: TFMTBCDField
       FieldName = 'PRD_SAIDA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensFichasPRD_PENDENTE: TFMTBCDField
       FieldName = 'PRD_PENDENTE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensFichasPRD_RESERVA: TFMTBCDField
       FieldName = 'PRD_RESERVA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsItensFichasPRD_UND: TStringField
       FieldName = 'PRD_UND'
@@ -1909,10 +1933,27 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsItensFichasFTI_UC: TFMTBCDField
       FieldName = 'FTI_UC'
       Precision = 15
-      Size = 8
     end
   end
-  object SqlCdsConsumo: TSQLClientDataSet
+  object SqlCdsConsumo: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT'#13#10'T2.EMP_CODIGO,'#13#10'T2.PRD_REFER,'#13#10'T2.PS2_FICHA,'#13#10'T2.PED_COD' +
+      'IGO,'#13#10'P1.PRD_DESCRI,'#13#10'P1.PRD_UND,'#13#10'P2.PTI_SIGLA,'#13#10'P1.PRD_PCUSTO,' +
+      #13#10'P1.PRD_DCVAR1,'#13#10'P1.PRD_DCVAR2,'#13#10'P1.PRD_DCVAR3,'#13#10'P1.PRD_DCVAR4,' +
+      #13#10'P1.PRD_DCVAR5,'#13#10'P1.PRD_DCVAR6,'#13#10'P1.PRD_DCVAR7,'#13#10'P1.PRD_DCVAR8,' +
+      #13#10'P1.PRD_ESTOQUE,'#13#10'P1.PRD_ENTRADA,'#13#10'P1.PRD_SAIDA,'#13#10'P1.PRD_PENDEN' +
+      'TE,'#13#10'P1.PRD_RESERVA,'#13#10'T2.PS2_QTDE AS WQTDE,'#13#10'T2.PS2_QTDE1 AS WQT' +
+      'DE1,'#13#10'T2.PS2_QTDE2 AS WQTDE2,'#13#10'T2.PS2_QTDE3 AS WQTDE3,'#13#10'T2.PS2_Q' +
+      'TDE4 AS WQTDE4,'#13#10'T2.PS2_QTDE5 AS WQTDE5,'#13#10'T2.PS2_QTDE6 AS WQTDE6' +
+      ','#13#10'T2.PS2_QTDE7 AS WQTDE7,'#13#10'T2.PS2_QTDE8 AS WQTDE8'#13#10'FROM PSV_IT0' +
+      '2 T2'#13#10'LEFT JOIN PRD0000 P1 ON (T2.PRD_REFER = P1.PRD_REFER)'#13#10'LEF' +
+      'T JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'#13#10'ORDER BY'#13 +
+      #10'P1.PRD_DESCRI'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'SELECT'#13#10'T2.EMP_CODIGO,'#13#10'T2.PRD_REFER,'#13#10'T2.PS2_FICHA,'#13#10'T2.PED_COD' +
       'IGO,'#13#10'P1.PRD_DESCRI,'#13#10'P1.PRD_UND,'#13#10'P2.PTI_SIGLA,'#13#10'P1.PRD_PCUSTO,' +
@@ -1926,11 +1967,10 @@ object FormOrdServCentroB: TFormOrdServCentroB
       '2 T2'#13#10'LEFT JOIN PRD0000 P1 ON (T2.PRD_REFER = P1.PRD_REFER)'#13#10'LEF' +
       'T JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'#13#10'ORDER BY'#13 +
       #10'P1.PRD_DESCRI'
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 480
     Top = 107
     object SqlCdsConsumoEMP_CODIGO: TStringField
@@ -1960,7 +2000,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsConsumoPRD_PCUSTO: TFMTBCDField
       FieldName = 'PRD_PCUSTO'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoPRD_DCVAR1: TStringField
       FieldName = 'PRD_DCVAR1'
@@ -1997,79 +2036,78 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsConsumoPRD_ESTOQUE: TFMTBCDField
       FieldName = 'PRD_ESTOQUE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoPRD_ENTRADA: TFMTBCDField
       FieldName = 'PRD_ENTRADA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoPRD_SAIDA: TFMTBCDField
       FieldName = 'PRD_SAIDA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoPRD_PENDENTE: TFMTBCDField
       FieldName = 'PRD_PENDENTE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoPRD_RESERVA: TFMTBCDField
       FieldName = 'PRD_RESERVA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE: TFMTBCDField
       FieldName = 'WQTDE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE1: TFMTBCDField
       FieldName = 'WQTDE1'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE2: TFMTBCDField
       FieldName = 'WQTDE2'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE3: TFMTBCDField
       FieldName = 'WQTDE3'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE4: TFMTBCDField
       FieldName = 'WQTDE4'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE5: TFMTBCDField
       FieldName = 'WQTDE5'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE6: TFMTBCDField
       FieldName = 'WQTDE6'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE7: TFMTBCDField
       FieldName = 'WQTDE7'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoWQTDE8: TFMTBCDField
       FieldName = 'WQTDE8'
       Precision = 15
-      Size = 8
     end
     object SqlCdsConsumoPTI_SIGLA: TStringField
       FieldName = 'PTI_SIGLA'
       Size = 2
     end
   end
-  object SqlCdsN1: TSQLClientDataSet
+  object SqlCdsN1: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT'#13#10'I1.PRD_REFER,'#13#10'I1.PRD_REFER_ITENS,'#13#10'P1.PRD_DESCRI,'#13#10'P1.P' +
+      'RD_PCUSTO,'#13#10'P1.PRD_ESTOQUE,'#13#10'P1.PRD_ENTRADA,'#13#10'P1.PRD_SAIDA,'#13#10'P1.' +
+      'PRD_PENDENTE,'#13#10'P1.PRD_RESERVA,'#13#10'P1.PRD_UND,'#13#10'P2.PTI_SIGLA,'#13#10'I1.F' +
+      'TI_MODE1,'#13#10'I1.FTI_MODE2,'#13#10'I1.FTI_MODE3,'#13#10'I1.FTI_MODE4,'#13#10'I1.FTI_M' +
+      'ODE5,'#13#10'I1.FTI_MODE6,'#13#10'I1.FTI_MODE7,'#13#10'I1.FTI_MODE8,'#13#10'I1.FTI_UC '#13#10 +
+      'FROM FTC_IT01 I1'#13#10'JOIN PRD0000 P1 ON (I1.PRD_REFER_ITENS = P1.PR' +
+      'D_REFER)'#13#10'JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'SELECT'#13#10'I1.PRD_REFER,'#13#10'I1.PRD_REFER_ITENS,'#13#10'P1.PRD_DESCRI,'#13#10'P1.P' +
       'RD_PCUSTO,'#13#10'P1.PRD_ESTOQUE,'#13#10'P1.PRD_ENTRADA,'#13#10'P1.PRD_SAIDA,'#13#10'P1.' +
@@ -2078,11 +2116,10 @@ object FormOrdServCentroB: TFormOrdServCentroB
       'ODE5,'#13#10'I1.FTI_MODE6,'#13#10'I1.FTI_MODE7,'#13#10'I1.FTI_MODE8,'#13#10'I1.FTI_UC '#13#10 +
       'FROM FTC_IT01 I1'#13#10'JOIN PRD0000 P1 ON (I1.PRD_REFER_ITENS = P1.PR' +
       'D_REFER)'#13#10'JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 64
     Top = 112
     object SqlCdsN1PRD_REFER: TStringField
@@ -2100,32 +2137,26 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsN1PRD_PCUSTO: TFMTBCDField
       FieldName = 'PRD_PCUSTO'
       Precision = 15
-      Size = 8
     end
     object SqlCdsN1PRD_ESTOQUE: TFMTBCDField
       FieldName = 'PRD_ESTOQUE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsN1PRD_ENTRADA: TFMTBCDField
       FieldName = 'PRD_ENTRADA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsN1PRD_SAIDA: TFMTBCDField
       FieldName = 'PRD_SAIDA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsN1PRD_PENDENTE: TFMTBCDField
       FieldName = 'PRD_PENDENTE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsN1PRD_RESERVA: TFMTBCDField
       FieldName = 'PRD_RESERVA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsN1PRD_UND: TStringField
       FieldName = 'PRD_UND'
@@ -2170,7 +2201,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsN1FTI_UC: TFMTBCDField
       FieldName = 'FTI_UC'
       Precision = 15
-      Size = 8
     end
   end
   object ImageList1: TImageList
@@ -2178,7 +2208,7 @@ object FormOrdServCentroB: TFormOrdServCentroB
     Left = 511
     Top = 107
     Bitmap = {
-      494C010103000400040010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000400080010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -2316,7 +2346,20 @@ object FormOrdServCentroB: TFormOrdServCentroB
       OnClick = Ativa1Click
     end
   end
-  object SqlCdsGerarOP: TSQLClientDataSet
+  object SqlCdsGerarOP: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT'#13#10'X1.PSI_REGISTRO,'#13#10'X1.PED_CODIGO,'#13#10'X1.PRD_REFER,'#13#10'X1.PRD_' +
+      'REFER_ITENS,'#13#10'P1.PRD_DESCRI,'#13#10'P1.PRD_UND,'#13#10'P2.PTI_SIGLA,'#13#10'X1.PSI' +
+      '_CONSUMO'#13#10'FROM PSV_IT01 X1'#13#10'LEFT JOIN PRD0000 P1 ON (X1.PRD_REFE' +
+      'R_ITENS = P1.PRD_REFER)'#13#10'LEFT JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO' +
+      ' = P2.PTI_CODIGO)'#13#10'WHERE X1.PED_CODIGO = '#39'000485'#39' AND ((P2.PTI_S' +
+      'IGLA = '#39'PA'#39') or (P2.PTI_SIGLA = '#39'PI'#39'))'#13#10'ORDER BY'#13#10'X1.PSI_REGISTR' +
+      'O'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'SELECT'#13#10'X1.PSI_REGISTRO,'#13#10'X1.PED_CODIGO,'#13#10'X1.PRD_REFER,'#13#10'X1.PRD_' +
       'REFER_ITENS,'#13#10'P1.PRD_DESCRI,'#13#10'P1.PRD_UND,'#13#10'P2.PTI_SIGLA,'#13#10'X1.PSI' +
@@ -2324,12 +2367,11 @@ object FormOrdServCentroB: TFormOrdServCentroB
       'R_ITENS = P1.PRD_REFER)'#13#10'LEFT JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO' +
       ' = P2.PTI_CODIGO)'#13#10'WHERE X1.PED_CODIGO = '#39'000485'#39' AND ((P2.PTI_S' +
       'IGLA = '#39'PA'#39') or (P2.PTI_SIGLA = '#39'PI'#39'))'#13#10'ORDER BY'#13#10'X1.PSI_REGISTR' +
-      'O'#13#10
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
+      'O'
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 56
     Top = 200
     object SqlCdsGerarOPPSI_REGISTRO: TIntegerField
@@ -2363,16 +2405,20 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsGerarOPPSI_CONSUMO: TFMTBCDField
       FieldName = 'PSI_CONSUMO'
       Precision = 15
-      Size = 8
     end
   end
-  object SqlCdsFicha: TSQLClientDataSet
-    CommandText = 'Select'#13#10'F1.*'#13#10'from FTC0000 F1'
+  object SqlCdsFicha: TSqlClientDataSet
     Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 'Select'#13#10'F1.*'#13#10'from FTC0000 F1'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
     Params = <>
+    CommandText = 'Select'#13#10'F1.*'#13#10'from FTC0000 F1'
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 88
     Top = 200
     object SqlCdsFichaPRD_REFER: TStringField
@@ -2383,7 +2429,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsFichaFTC_TUP: TFMTBCDField
       FieldName = 'FTC_TUP'
       Precision = 15
-      Size = 8
     end
     object SqlCdsFichaFTC_CRIACAO: TSQLTimeStampField
       FieldName = 'FTC_CRIACAO'
@@ -2423,29 +2468,38 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object SqlCdsFichaFTC_FIXO: TFMTBCDField
       FieldName = 'FTC_FIXO'
       Precision = 15
-      Size = 8
     end
     object SqlCdsFichaFTC_COMPLE: TFMTBCDField
       FieldName = 'FTC_COMPLE'
       Precision = 15
-      Size = 8
     end
     object SqlCdsFichaFTC_INDIRETA: TFMTBCDField
       FieldName = 'FTC_INDIRETA'
       Precision = 15
-      Size = 8
     end
     object SqlCdsFichaFTC_LUCROUNID: TFMTBCDField
       FieldName = 'FTC_LUCROUNID'
       Precision = 15
-      Size = 8
     end
     object SqlCdsFichaEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
       Size = 3
     end
   end
-  object SQLClientDataSet1: TSQLClientDataSet
+  object SQLClientDataSet1: TSqlClientDataSet
+    Aggregates = <>
+    Connection = DataCadastros.SQLConnection1
+    DataSet.CommandText = 
+      'SELECT'#13#10'I1.PRD_REFER,'#13#10'I1.PRD_REFER_ITENS,'#13#10'P1.PRD_DESCRI,'#13#10'P1.P' +
+      'RD_PCUSTO,'#13#10'P1.PRD_ESTOQUE,'#13#10'P1.PRD_ENTRADA,'#13#10'P1.PRD_SAIDA,'#13#10'P1.' +
+      'PRD_PENDENTE,'#13#10'P1.PRD_RESERVA,'#13#10'P1.PRD_UND,'#13#10'P2.PTI_SIGLA,'#13#10'I1.F' +
+      'TI_MODE1,'#13#10'I1.FTI_MODE2,'#13#10'I1.FTI_MODE3,'#13#10'I1.FTI_MODE4,'#13#10'I1.FTI_M' +
+      'ODE5,'#13#10'I1.FTI_MODE6,'#13#10'I1.FTI_MODE7,'#13#10'I1.FTI_MODE8,'#13#10'I1.FTI_UC '#13#10 +
+      'FROM FTC_IT01 I1'#13#10'JOIN PRD0000 P1 ON (I1.PRD_REFER_ITENS = P1.PR' +
+      'D_REFER)'#13#10'JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'
+    DataSet.MaxBlobSize = -1
+    DataSet.Params = <>
+    Params = <>
     CommandText = 
       'SELECT'#13#10'I1.PRD_REFER,'#13#10'I1.PRD_REFER_ITENS,'#13#10'P1.PRD_DESCRI,'#13#10'P1.P' +
       'RD_PCUSTO,'#13#10'P1.PRD_ESTOQUE,'#13#10'P1.PRD_ENTRADA,'#13#10'P1.PRD_SAIDA,'#13#10'P1.' +
@@ -2454,11 +2508,10 @@ object FormOrdServCentroB: TFormOrdServCentroB
       'ODE5,'#13#10'I1.FTI_MODE6,'#13#10'I1.FTI_MODE7,'#13#10'I1.FTI_MODE8,'#13#10'I1.FTI_UC '#13#10 +
       'FROM FTC_IT01 I1'#13#10'JOIN PRD0000 P1 ON (I1.PRD_REFER_ITENS = P1.PR' +
       'D_REFER)'#13#10'JOIN PRD_TIPO P2 ON (P1.PTI_CODIGO = P2.PTI_CODIGO)'
-    Aggregates = <>
-    Options = [poAllowCommandText]
-    ObjectView = True
-    Params = <>
     DBConnection = DataCadastros.SQLConnection1
+    Options = [poAllowCommandText]
+    NoMetadata = False
+    UpdateMode = upWhereAll
     Left = 64
     Top = 152
     object StringField1: TStringField
@@ -2476,32 +2529,26 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object FMTBCDField1: TFMTBCDField
       FieldName = 'PRD_PCUSTO'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField2: TFMTBCDField
       FieldName = 'PRD_ESTOQUE'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField3: TFMTBCDField
       FieldName = 'PRD_ENTRADA'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField4: TFMTBCDField
       FieldName = 'PRD_SAIDA'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField5: TFMTBCDField
       FieldName = 'PRD_PENDENTE'
       Precision = 15
-      Size = 8
     end
     object FMTBCDField6: TFMTBCDField
       FieldName = 'PRD_RESERVA'
       Precision = 15
-      Size = 8
     end
     object StringField4: TStringField
       FieldName = 'PRD_UND'
@@ -2546,7 +2593,6 @@ object FormOrdServCentroB: TFormOrdServCentroB
     object FMTBCDField7: TFMTBCDField
       FieldName = 'FTI_UC'
       Precision = 15
-      Size = 8
     end
   end
 end

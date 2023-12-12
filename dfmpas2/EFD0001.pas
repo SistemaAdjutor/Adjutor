@@ -488,7 +488,7 @@ begin
                   begin
                      informacao := '|0130|';
                      informacao := informacao+SQLProdutosComposicao.FieldByName('PRD_REFER_ITENS').AsString+'|'; //cod produto componente
-                     informacao := informacao+FormatFloat('########0.000',SQLProdutosComposicao.FieldByName('FTI_UC').AsFloat)+'|'; //quantidade
+                     informacao := informacao+FormatFloat('########0.000000',SQLProdutosComposicao.FieldByName('FTI_UC').AsFloat)+'|'; //quantidade
                      informacao := informacao+SQLProdutosComposicao.FieldByName('PRD_UND').AsString+'|'; //sigla unidade de medida
                      informacao := informacao+''+'|'; //percentual de perda
                      informacao := informacao+''+'|'; //inicio vigencia

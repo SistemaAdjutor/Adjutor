@@ -1467,7 +1467,7 @@ inherited frmDemandaProducao: TfrmDemandaProducao
     object cdsFichaFTI_UC: TFMTBCDField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      DisplayFormat = '#,###0.000'
+      DisplayFormat = '#,###0.000000'
       Precision = 18
       Size = 5
     end

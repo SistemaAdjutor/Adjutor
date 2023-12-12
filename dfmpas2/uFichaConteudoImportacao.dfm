@@ -1502,11 +1502,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ReadOnly = True
       Size = 2
     end
-    object cdsBuscaDetalhesFTI_UC: TFMTBCDField
+    object cdsBuscaDetalhesFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object cdsBuscaDetalhesCONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'
@@ -3383,11 +3381,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object cdsNivel3FTI_UC: TFMTBCDField
+    object cdsNivel3FTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object cdsNivel3CONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'
@@ -3535,11 +3531,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField10: TFMTBCDField
+    object FMTBCDField10: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object cdsNivel4CONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'
@@ -3656,11 +3650,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField19: TFMTBCDField
+    object FMTBCDField19: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object cdsNivel5CONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'
@@ -3777,11 +3769,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField28: TFMTBCDField
+    object FMTBCDField28: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object cdsNivel6CONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'
@@ -3898,11 +3888,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField37: TFMTBCDField
+    object FMTBCDField37: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object cdsNivel7CONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'
@@ -4019,11 +4007,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField46: TFMTBCDField
+    object FMTBCDField46: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object cdsNivel8CONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'
@@ -4140,11 +4126,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField55: TFMTBCDField
+    object FMTBCDField55: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object cdsNivel9CONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'
@@ -4461,11 +4445,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 13
     end
-    object mtGridFTI_UC: TFMTBCDField
+    object mtGridFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 5
     end
     object mtGridCONSUMO_TOTAL: TFMTBCDField
       DisplayLabel = 'Consumo Total'

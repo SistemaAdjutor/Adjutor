@@ -4905,7 +4905,7 @@ begin
 										end;
 
 										// Calcular o Preco da Materia-Prima
-										openaux ( 'SELECT F1.PRD_REFER, CAST(SUM(F1.FTI_UC*P1.PRD_PCUSTO) AS NUMERIC(15,4)) '+
+										openaux ( 'SELECT F1.PRD_REFER, CAST(SUM(F1.FTI_UC*P1.PRD_PCUSTO) AS DOUBLE PRECISION) '+
 															'FROM FTC_IT01 F1 '+
 															'     JOIN PRD0000 P1 ON (P1.PRD_REFER = F1.PRD_REFER_ITENS) '+
 															'WHERE F1.PRD_REFER = ' + qStr(CdsItemPedidoPRD_REFER.AsString) + ' AND F1.FTI_MODE1= '+qStr('X')+

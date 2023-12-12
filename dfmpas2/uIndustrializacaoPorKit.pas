@@ -59,7 +59,7 @@ type
     SqlCdsNotasDisponiveisTipoIndustrializacaoCodigo: TIntegerField;
     SqlCdsNotasDisponiveisTipoIndustrializacaoDescricao: TStringField;
     CurQuantidade: TCurrencyEdit;
-    SqlCdsNotasDisponiveisQUANTIDADEFT: TFMTBCDField;
+    SqlCdsNotasDisponiveisQUANTIDADEFT: TFloatField;
     SqlCdsNotasDisponiveisqtdSolicitada: TFloatField;
     SqlCdsNotasDisponiveisRETORNADO: TFloatField;
     SqlCdsNotasDisponiveisSaldo: TFloatField;

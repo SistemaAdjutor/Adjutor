@@ -509,7 +509,7 @@ begin
           ' ( SELECT SUM(kas_saldo) FROM kardex_almox_saldo KAS                                                                '+
           ' JOIN ALMOX0000 amx ON (amx.AMX_CODIGO = kas.AMX_CODIGO AND amx.AMX_FISICO =''S'')                                  '+
           '  WHERE prd_codigo = pr.prd_codigo  ) Estoque,                                                                      '+
-          '  PRD_MINIMO  , 1  AS  qtdePed, CAST(( fti_uc * (PRF_QTDE-PRF_QTDEFAT)) AS numeric(18,5)) AS Consumo  ,             '+
+          '  PRD_MINIMO  , 1  AS  qtdePed, CAST(( fti_uc * (PRF_QTDE-PRF_QTDEFAT)) AS DOUBLE PRECISION) AS Consumo  ,             '+
           '   (PRF_QTDE-PRF_QTDEFAT) vendido , PRD_PENDENTE  AS compras,                                                       '+
           ' CAST(case                                                                                                          '+
           '       WHEN PRMT.pmt_calcularpv = ''0'' THEN                                                                        '+

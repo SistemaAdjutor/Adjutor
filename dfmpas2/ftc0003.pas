@@ -207,8 +207,8 @@ begin
                            DmProducao.CdsItemFichaPRD_REFER.AsString        := EdtCopiarPa.Text;
                            DmProducao.CdsItemFichaPRD_REFER_ITENS.AsString  := SqlCdsCopiaItemFichaTecPRD_REFER_ITENS.AsString;
                            DmProducao.CdsItemFichaFTI_MODIFICADA.AsDateTime := SqlCdsCopiaItemFichaTecFTI_MODIFICADA.AsDateTime;
-                           DmProducao.CdsItemFichaFTI_UC.AsCurrency         := SqlCdsCopiaItemFichaTecFTI_UC.AsCurrency;
-                           DmProducao.CdsItemFichaFTI_UCMODIFIC.AsCurrency  := SqlCdsCopiaItemFichaTecFTI_UCMODIFIC.AsCurrency;
+                           DmProducao.CdsItemFichaFTI_UC.AsFloat            := SqlCdsCopiaItemFichaTecFTI_UC.AsFloat;
+                           DmProducao.CdsItemFichaFTI_UCMODIFIC.AsFloat     := SqlCdsCopiaItemFichaTecFTI_UCMODIFIC.AsFloat;
                            DmProducao.CdsItemFichaFTI_MODE1.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE1.AsString;
                            DmProducao.CdsItemFichaFTI_MODE2.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE2.AsString;
                            DmProducao.CdsItemFichaFTI_MODE3.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE3.AsString;

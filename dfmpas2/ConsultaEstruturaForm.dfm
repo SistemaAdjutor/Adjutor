@@ -183,8 +183,8 @@ inherited frmConsultaEstrutura: TfrmConsultaEstrutura
     object cdsBuscoFTI_UC: TFMTBCDField
       FieldName = 'FTI_UC'
       ProviderFlags = [pfInUpdate]
-      DisplayFormat = '#,####0.0000'
-      EditFormat = '#,####0.0000'
+      DisplayFormat = '#,####0.000000'
+      EditFormat = '#,####0.000000'
       Precision = 15
     end
     object cdsBuscoFTI_UCMODIFIC: TFMTBCDField

@@ -4,7 +4,7 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
   ClientWidth = 1202
   WindowState = wsMaximized
   ExplicitWidth = 1218
-  ExplicitHeight = 628
+  ExplicitHeight = 629
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtilTop: TPanel
@@ -61,8 +61,6 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
     ExplicitHeight = 513
     inherited tsNotas: TTabSheet
       Caption = 'Pedido'
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 1194
       ExplicitHeight = 485
       inherited pnControle: TPanel
@@ -222,8 +220,10 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object EdtLinha: TEdit
               Left = 55
@@ -270,8 +270,10 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object chkAtrasados: TCheckBox
               Left = 347
@@ -365,8 +367,10 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object EdtGrupo: TEdit
               Left = 54
@@ -427,8 +431,10 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object EdtTipo: TEdit
               Left = 55
@@ -538,6 +544,10 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
       Caption = 'Produ'#231#227'o'
       ImageIndex = 1
       OnShow = tsProducaoShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
