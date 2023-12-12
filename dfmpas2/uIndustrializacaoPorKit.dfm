@@ -481,6 +481,8 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     end
     object SqlCdsNotasDisponiveisRETORNADO: TFloatField
       FieldName = 'RETORNADO'
+      DisplayFormat = '###,##0.0000'
+      EditFormat = '###,##0.0000'
     end
     object SqlCdsNotasDisponiveisSaldo: TFloatField
       FieldKind = fkInternalCalc
