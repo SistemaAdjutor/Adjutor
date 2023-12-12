@@ -1849,6 +1849,7 @@ type
     Label674: TLabel;
     DBEditPMT_MENSAGEM_VENDAS: TDBEdit;
     DBCheckBox97: TDBCheckBox;
+    cbLayoutBoletoFaturamento: TDBComboBox;
 
 
     procedure FormShow(Sender: tObject);

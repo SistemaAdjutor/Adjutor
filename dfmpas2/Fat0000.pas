@@ -2135,7 +2135,7 @@ begin
     FrmGimpBoletos.dbHistorico.Visible := False;
     FrmGimpBoletos.BitConfig.Visible := False;
     FrmGimpBoletos.EdtDuplicata.Text := CdsNotasNF_NOTANUMBER.AsString;
-    FrmGimpBoletos.cbLayOut.ItemIndex := 3;
+    FrmGimpBoletos.cbLayOut.ItemIndex := StrToInt(dbInicio.GetParametroSistema('PMT_LAYOUT_BOLETO_FATURAMENTO'));
 
     FrmGimpBoletos.BuscaDuplicatas;
     if FrmGimpBoletos.CdsDuplicata.IsEmpty then

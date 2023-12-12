@@ -1698,6 +1698,8 @@ type
     CdsParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField;
     SQLUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField;
     CDSUsaParametroUSP_INCLUI_ITEM_PED_OP_GERADA: TStringField;
+    SqlParametrosPMT_LAYOUT_BOLETO_FATURAMENTO: TStringField;
+    CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
@@ -1734,6 +1736,10 @@ type
     procedure CDSUsuarioAfterScroll(DataSet: TDataSet);
     procedure CdsParametrosPMT_REL_ORDEMPRODUCAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure CdsParametrosPMT_REL_ORDEMPRODUCAOSetText(Sender: TField; const Text: string);
+    procedure CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOGetText(Sender: TField;
+      var Text: string; DisplayText: Boolean);
+    procedure CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOSetText(Sender: TField;
+      const Text: string);
   private
     { Private declarations }
   public
@@ -1788,6 +1794,56 @@ procedure TDataCadastros1.CdsParametrosBeforeEdit(DataSet: TDataSet);
 begin
     If Assigned(FormParametros) then
        FormParametros.DesabilitaBotao;
+end;
+
+procedure TDataCadastros1.CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOGetText(
+  Sender: TField; var Text: string; DisplayText: Boolean);
+begin
+  {
+    0 - Padrão
+    1 - Carnê
+    2 - Fatura
+    3 - Padrão Entrega
+    4 - com Recibo
+    5 - Padrão e Carnê
+  }
+  if Sender.AsString = '0' then
+    text:= 'Padrão'
+  else if Sender.AsString = '1' then
+    text := 'Carnê'
+  else if Sender.AsString = '2' then
+    text := 'Fatura'
+  else if Sender.AsString = '3' then
+    text := 'Padrão Entrega'
+  else if Sender.AsString = '4' then
+    text := 'com Recibo'
+  else if Sender.AsString = '5' then
+    text := 'Padrão e Carnê';
+end;
+
+procedure TDataCadastros1.CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOSetText(
+  Sender: TField; const Text: string);
+begin
+  {
+    0 - Padrão
+    1 - Carnê
+    2 - Fatura
+    3 - Padrão Entrega
+    4 - com Recibo
+    5 - Padrão e Carnê
+  }
+  if text = 'Padrão' then
+     Sender.AsString := '0'
+  else if text = 'Carnê' then
+    sender.AsString := '1'
+  else if text = 'Fatura' then
+     sender.AsString := '2'
+  else if text = 'Padrão Entrega' then
+    sender.AsString := '3'
+  else if text = 'com Recibo' then
+    sender.AsString := '4'
+  else if text = 'Padrão e Carnê' then
+    sender.AsString := '5';
 end;
 
 procedure TDataCadastros1.CdsParametrosPMT_REL_ORDEMPRODUCAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
