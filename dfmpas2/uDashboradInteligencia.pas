@@ -267,7 +267,7 @@ begin
           '                              COALESCE(CAST(gr.PRG_MEDIDA_3 AS DOUBLE PRECISION), 0) * ' +
           '                              COALESCE(CAST(prd.PRD_FATOR_PROD AS DOUBLE PRECISION), 0) )) ) * pi2.prf_preco )AS DOUBLE PRECISION ) ' +
           '                 ELSE 0 ' +
-          '               END) as "L" ' +
+          '               END) as L ' +
 
           '  FROM PED0000 p ' +
           '  JOIN PED_IT01 pi2 ON (pi2.PED_CODIGO = p.PED_CODIGO AND pi2.EMP_CODIGO = p.EMP_CODIGO) ' +
