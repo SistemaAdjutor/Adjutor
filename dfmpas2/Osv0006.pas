@@ -21,7 +21,7 @@ type
     SqlCdsEstornarPRD_REFER: TStringField;
     SqlCdsEstornarPRD_REFER_ITENS: TStringField;
     SqlCdsEstornarOSI_MODIFICADA: TSQLTimeStampField;
-    SqlCdsEstornarOSI_UC: TFMTBCdField;
+    SqlCdsEstornarOSI_UC: TFloatField;
     SqlCdsEstornarOSI_QTDE1: TFMTBCdField;
     SqlCdsEstornarOSI_QTDE2: TFMTBCdField;
     SqlCdsEstornarOSI_QTDE3: TFMTBCdField;

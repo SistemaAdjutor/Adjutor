@@ -227,7 +227,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Top = 105
         Width = 1376
         Height = 434
-        ExplicitTop = 105
+        ExplicitTop = 103
         ExplicitWidth = 1376
         ExplicitHeight = 434
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -1823,11 +1823,9 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Precision = 18
       Size = 5
     end
-    object cdsBuscaDetalhesMP_CONSUMOTOTAL: TFMTBCDField
+    object cdsBuscaDetalhesMP_CONSUMOTOTAL: TFloatField
       FieldName = 'MP_CONSUMOTOTAL'
       Origin = 'MP_CONSUMOTOTAL'
-      Precision = 18
-      Size = 5
     end
   end
   inherited dsBuscaDetalhes: TDataSource
@@ -1883,8 +1881,10 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       FieldName = 'MP_UCONSUMO'
       Origin = 'MP_UCONSUMO'
       Required = True
+      DisplayFormat = '###,##0.000000'
+      EditFormat = '###,##0.000000'
       Precision = 18
-      Size = 5
+      Size = 6
     end
     object cdsMateriaPrimaMP_SITUACAO: TStringField
       FieldName = 'MP_SITUACAO'
@@ -1914,11 +1914,12 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Precision = 18
       Size = 5
     end
-    object cdsMateriaPrimaMP_CONSUMOTOTAL: TFMTBCDField
+    object cdsMateriaPrimaMP_CONSUMOTOTAL: TFloatField
+      DisplayWidth = 15
       FieldName = 'MP_CONSUMOTOTAL'
       Origin = 'MP_CONSUMOTOTAL'
-      Precision = 18
-      Size = 5
+      DisplayFormat = '###,##0.000000'
+      EditFormat = '###,##0.000000'
     end
     object cdsMateriaPrimaPED_CODIGO: TStringField
       FieldName = 'PED_CODIGO'
@@ -2696,7 +2697,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Left = 305.464750000000000000
           Width = 79.370130000000000000
           Height = 15.118120000000000000
-          DisplayFormat.FormatStr = '%2.4n'
+          DisplayFormat.FormatStr = '%2.6n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2798,7 +2799,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Top = 0.779530000000000000
           Width = 321.260050000000000000
           Height = 15.118120000000000000
-          DisplayFormat.FormatStr = '%2.4n'
+          DisplayFormat.FormatStr = '%2.6n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4530,7 +4531,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Left = 305.464750000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          DisplayFormat.FormatStr = '%2.4n'
+          DisplayFormat.FormatStr = '%2.6n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -4616,7 +4617,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Top = 0.779530000000000000
           Width = 321.260050000000000000
           Height = 15.118120000000000000
-          DisplayFormat.FormatStr = '%2.4n'
+          DisplayFormat.FormatStr = '%2.6n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -7141,7 +7142,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Width = 75.530089220000000000
           Height = 15.051496150000000000
           DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3n'
+          DisplayFormat.FormatStr = '%2.6n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -9798,7 +9799,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Width = 99.779527560000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3f'
+          DisplayFormat.FormatStr = '%2.6f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -9838,7 +9839,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Width = 102.047310000000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
-          DisplayFormat.FormatStr = '%2.3f'
+          DisplayFormat.FormatStr = '%2.6f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -10822,11 +10823,9 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Precision = 18
       Size = 5
     end
-    object FMTBCDField3: TFMTBCDField
+    object FMTBCDField3: TFloatField
       FieldName = 'MP_CONSUMOTOTAL'
       Origin = 'MP_CONSUMOTOTAL'
-      Precision = 18
-      Size = 5
     end
     object StringField4: TStringField
       FieldName = 'PED_CODIGO'
@@ -12843,11 +12842,9 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Precision = 18
       Size = 5
     end
-    object cdsMateriaPrimaOP5MP_CONSUMOTOTAL: TFMTBCDField
+    object cdsMateriaPrimaOP5MP_CONSUMOTOTAL: TFloatField
       FieldName = 'MP_CONSUMOTOTAL'
       Origin = 'MP_CONSUMOTOTAL'
-      Precision = 18
-      Size = 5
     end
     object cdsMateriaPrimaOP5PRD_UND: TStringField
       FieldName = 'PRD_UND'

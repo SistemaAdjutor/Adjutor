@@ -2889,11 +2889,9 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       Precision = 18
       Size = 5
     end
-    object cdsMateriaPrimaOP5MP_CONSUMOTOTAL: TFMTBCDField
+    object cdsMateriaPrimaOP5MP_CONSUMOTOTAL: TFloatField
       FieldName = 'MP_CONSUMOTOTAL'
       Origin = 'MP_CONSUMOTOTAL'
-      Precision = 18
-      Size = 5
     end
     object cdsMateriaPrimaOP5PRD_UND: TStringField
       FieldName = 'PRD_UND'

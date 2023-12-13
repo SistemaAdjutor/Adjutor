@@ -12,7 +12,7 @@ inherited FormAlmoxarifado: TFormAlmoxarifado
   Visible = True
   OnResize = FormResize
   ExplicitWidth = 797
-  ExplicitHeight = 538
+  ExplicitHeight = 539
   PixelsPerInch = 96
   TextHeight = 13
   object Notebook1: TNotebook [0]
@@ -902,10 +902,9 @@ inherited FormAlmoxarifado: TFormAlmoxarifado
       ProviderFlags = [pfInUpdate]
       Size = 11
     end
-    object CdsMPOSI_UC: TFMTBCDField
+    object CdsMPOSI_UC: TFloatField
       FieldName = 'OSI_UC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
     object CdsMPOSI_QTDE2: TFMTBCDField
       FieldName = 'OSI_QTDE2'
@@ -1139,10 +1138,9 @@ inherited FormAlmoxarifado: TFormAlmoxarifado
       ProviderFlags = [pfInUpdate]
       Size = 11
     end
-    object SqlMPOSI_UC: TFMTBCDField
+    object SqlMPOSI_UC: TFloatField
       FieldName = 'OSI_UC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
     object SqlMPOSI_QTDE1: TFMTBCDField
       FieldName = 'OSI_QTDE1'

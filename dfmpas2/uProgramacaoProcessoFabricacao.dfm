@@ -2140,7 +2140,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Top = 2.000000000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
-          DisplayFormat.FormatStr = '%2.4f'
+          DisplayFormat.FormatStr = '%2.6f'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2820,7 +2820,7 @@ inherited frmProgramacaoProcessoFabricacao: TfrmProgramacaoProcessoFabricacao
           Top = 2.779542200000000000
           Width = 113.385900000000000000
           Height = 18.897637800000000000
-          DisplayFormat.FormatStr = '%2.4n'
+          DisplayFormat.FormatStr = '%2.6n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack

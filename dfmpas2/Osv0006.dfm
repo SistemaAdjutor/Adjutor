@@ -9,7 +9,7 @@ inherited FormOrdServRefazer: TFormOrdServRefazer
   Font.Name = 'MS Sans Serif'
   KeyPreview = True
   ExplicitWidth = 482
-  ExplicitHeight = 320
+  ExplicitHeight = 321
   PixelsPerInch = 96
   TextHeight = 13
   object GroupEstornar: TGroupBox [0]
@@ -428,9 +428,8 @@ inherited FormOrdServRefazer: TFormOrdServRefazer
     object SqlCdsEstornarOSI_MODIFICADA: TSQLTimeStampField
       FieldName = 'OSI_MODIFICADA'
     end
-    object SqlCdsEstornarOSI_UC: TFMTBCDField
+    object SqlCdsEstornarOSI_UC: TFloatField
       FieldName = 'OSI_UC'
-      Precision = 15
     end
     object SqlCdsEstornarOSI_QTDE1: TFMTBCDField
       FieldName = 'OSI_QTDE1'

@@ -115,7 +115,7 @@ type
     cdsMateriaPrimaPRD_REFER: TStringField;
     cdsMateriaPrimaPRD_DESCRI: TStringField;
     cdsMateriaPrimaMP_EMPENHADO: TFMTBCDField;
-    cdsMateriaPrimaMP_CONSUMOTOTAL: TFMTBCDField;
+    cdsMateriaPrimaMP_CONSUMOTOTAL: TFloatField;
     cdsMateriaPrimaPED_CODIGO: TStringField;
     cdsMateriaPrimaPRD_CODIGO: TStringField;
     cdsMateriaPrimaMP_CODIGO_SUBST: TIntegerField;

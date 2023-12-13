@@ -70,7 +70,7 @@ type
     SqlCdsN1FTI_MODE6: TStringField;
     SqlCdsN1FTI_MODE7: TStringField;
     SqlCdsN1FTI_MODE8: TStringField;
-    SqlCdsN1FTI_UC: TFMTBCdField;
+    SqlCdsN1FTI_UC: TFloatField;
     ImageList1: TImageList;
     PopMenuItens: TPopupMenu;
     Ativa1: TMenuItem;
@@ -148,7 +148,7 @@ type
     SqlCdsItensFichasFTI_MODE6: TStringField;
     SqlCdsItensFichasFTI_MODE7: TStringField;
     SqlCdsItensFichasFTI_MODE8: TStringField;
-    SqlCdsItensFichasFTI_UC: TFMTBCdField;
+    SqlCdsItensFichasFTI_UC: TFloatField;
     CdsTemp: TClientDataSet;
     CdsTempREFER: TStringField;
     CdsTempREFER_ORIGEN: TStringField;
@@ -1353,17 +1353,18 @@ begin
                        ao adicionar itens na lista - 29/07/17 marcio   }
                        ////////////////////////////////////////////////////
                            if not assigned(FormOrdServCentroNovo) then
-                           begin
+//                           begin
                              FormOrdServCentroNovo := TFormOrdServCentroNovo.Create(Application);
-                             if (MDIChildCount > 1) then
-                                 SendMessage(ClientHandle, WM_MDICASCADE, 0, 0)
-                             else
-                                 FormOrdServCentroNovo.Top := 0;
-                             end;
+//                             if (MDIChildCount > 1) then
+//                                 SendMessage(ClientHandle, WM_MDICASCADE, 0, 0)
+//                             else
+//                                 FormOrdServCentroNovo.Top := 0;
+//                             end;
+                            FormOrdServCentroGerar.Close;
                             FormOrdServCentroNovo.Show;
                             //
-                            FormOrdServCentroGerar.Release;
-                            FormOrdServCentroGerar := Nil;
+                            // FormOrdServCentroGerar.Release;
+                            // FormOrdServCentroGerar := Nil;
                        ////////////////////////////////////////////////////////
 
                      end

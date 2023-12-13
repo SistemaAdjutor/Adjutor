@@ -131,7 +131,7 @@ type
     cdsMateriaPrimaOP5MP_UCONSUMO: TFMTBCDField;
     cdsMateriaPrimaOP5MP_SITUACAO: TStringField;
     cdsMateriaPrimaOP5MP_EMPENHADO: TFMTBCDField;
-    cdsMateriaPrimaOP5MP_CONSUMOTOTAL: TFMTBCDField;
+    cdsMateriaPrimaOP5MP_CONSUMOTOTAL: TFloatField;
     cdsMateriaPrimaOP5PRD_UND: TStringField;
     cdsMateriaPrimaOP5PRD_GERENCIA_LOTE: TStringField;
     cdsMateriaPrimaOP5ESTOQUEDISPONIVEL: TFMTBCDField;

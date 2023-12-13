@@ -1355,6 +1355,10 @@ inherited FormOrdServCentroGerar: TFormOrdServCentroGerar
     Left = 234
     Top = 4
   end
+  inherited qAuxEstornaItem: TSQLQuery
+    Left = 538
+    Top = 96
+  end
   object SqlCdsPsvGrupo: TSqlClientDataSet
     Aggregates = <>
     Connection = DataCadastros.SQLConnection1
@@ -1927,9 +1931,8 @@ inherited FormOrdServCentroGerar: TFormOrdServCentroGerar
       FieldName = 'FTI_MODE8'
       Size = 12
     end
-    object SqlCdsItensFichasFTI_UC: TFMTBCDField
+    object SqlCdsItensFichasFTI_UC: TFloatField
       FieldName = 'FTI_UC'
-      Precision = 15
     end
     object SqlCdsItensFichasPRD_CODIGO: TStringField
       FieldName = 'PRD_CODIGO'
@@ -2191,9 +2194,8 @@ inherited FormOrdServCentroGerar: TFormOrdServCentroGerar
       FieldName = 'FTI_MODE8'
       Size = 12
     end
-    object SqlCdsN1FTI_UC: TFMTBCDField
+    object SqlCdsN1FTI_UC: TFloatField
       FieldName = 'FTI_UC'
-      Precision = 15
     end
   end
   object ImageList1: TImageList
@@ -2201,7 +2203,7 @@ inherited FormOrdServCentroGerar: TFormOrdServCentroGerar
     Left = 1495
     Top = 377
     Bitmap = {
-      494C010103000500080010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005001C0010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF

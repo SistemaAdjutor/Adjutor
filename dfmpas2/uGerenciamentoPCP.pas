@@ -104,7 +104,7 @@ type
     cdsBuscaDetalhesPRD_REFER: TStringField;
     cdsBuscaDetalhesPRD_DESCRI: TStringField;
     cdsBuscaDetalhesMP_EMPENHADO: TFMTBCDField;
-    cdsBuscaDetalhesMP_CONSUMOTOTAL: TFMTBCDField;
+    cdsBuscaDetalhesMP_CONSUMOTOTAL: TFloatField;
     cxgrd1DBTableView1IOP_CODIGO: TcxGridDBColumn;
     cxgrd1DBTableView1MP_UCONSUMO: TcxGridDBColumn;
     cxgrd1DBTableView1MP_SITUACAO: TcxGridDBColumn;
@@ -120,7 +120,7 @@ type
     cdsMateriaPrimaPRD_REFER: TStringField;
     cdsMateriaPrimaPRD_DESCRI: TStringField;
     cdsMateriaPrimaMP_EMPENHADO: TFMTBCDField;
-    cdsMateriaPrimaMP_CONSUMOTOTAL: TFMTBCDField;
+    cdsMateriaPrimaMP_CONSUMOTOTAL: TFloatField;
     cxgrd1DBBandedTableView1DEADLINE: TcxGridDBBandedColumn;
     cdsBuscaPrazo: TFloatField;
     cxgrd1DBBandedTableView1Prazo: TcxGridDBBandedColumn;
@@ -278,7 +278,7 @@ type
     StringField2: TStringField;
     StringField3: TStringField;
     FMTBCDField2: TFMTBCDField;
-    FMTBCDField3: TFMTBCDField;
+    FMTBCDField3: TFloatField;
     StringField4: TStringField;
     StringField5: TStringField;
     IntegerField3: TIntegerField;
@@ -336,7 +336,7 @@ type
     cdsMateriaPrimaOP5MP_UCONSUMO: TFMTBCDField;
     cdsMateriaPrimaOP5MP_SITUACAO: TStringField;
     cdsMateriaPrimaOP5MP_EMPENHADO: TFMTBCDField;
-    cdsMateriaPrimaOP5MP_CONSUMOTOTAL: TFMTBCDField;
+    cdsMateriaPrimaOP5MP_CONSUMOTOTAL: TFloatField;
     cdsMateriaPrimaOP5PRD_UND: TStringField;
     cdsMateriaPrimaOP5PRD_GERENCIA_LOTE: TStringField;
     cdsMateriaPrimaOP5ESTOQUEDISPONIVEL: TFMTBCDField;

@@ -923,12 +923,10 @@ inherited frmExecutarEnvase: TfrmExecutarEnvase
       Precision = 18
       Size = 5
     end
-    object cdsMateriaPrimaMP_CONSUMOTOTAL: TFMTBCDField
+    object cdsMateriaPrimaMP_CONSUMOTOTAL: TFloatField
       FieldName = 'MP_CONSUMOTOTAL'
       Origin = 'MP_CONSUMOTOTAL'
       ProviderFlags = [pfInUpdate]
-      Precision = 18
-      Size = 5
     end
     object cdsMateriaPrimaPED_CODIGO: TStringField
       FieldName = 'PED_CODIGO'

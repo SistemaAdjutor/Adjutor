@@ -418,10 +418,6 @@ object FormOrdServCentro: TFormOrdServCentro
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = '&Ordem de Produ'#231#227'o'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DbGridCelulas: TDBGrid
         Left = 0
         Top = 313
@@ -1777,6 +1773,7 @@ object FormOrdServCentro: TFormOrdServCentro
     object SqlCdsOPImpCC_IMPRESSO: TBooleanField
       FieldKind = fkCalculated
       FieldName = 'CC_IMPRESSO'
+      Calculated = True
     end
   end
   object DsOP: TDataSource
@@ -1909,10 +1906,9 @@ object FormOrdServCentro: TFormOrdServCentro
       FieldName = 'PRD_REFER_ITENS'
       Size = 11
     end
-    object SqlCdsItemOPOSI_UC: TFMTBCDField
+    object SqlCdsItemOPOSI_UC: TFloatField
       FieldName = 'OSI_UC'
       DisplayFormat = '#,####0.000000'
-      Precision = 15
     end
     object SqlCdsItemOPOSI_QTDE1: TFMTBCDField
       FieldName = 'OSI_QTDE1'
@@ -2102,6 +2098,7 @@ object FormOrdServCentro: TFormOrdServCentro
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -2118,6 +2115,14 @@ object FormOrdServCentro: TFormOrdServCentro
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -2127,21 +2132,33 @@ object FormOrdServCentro: TFormOrdServCentro
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -2149,13 +2166,26 @@ object FormOrdServCentro: TFormOrdServCentro
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 328
     Top = 305
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 29633
@@ -2175,13 +2205,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4092
         mmLeft = 265
@@ -2194,6 +2226,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -2206,6 +2239,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -2219,13 +2253,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FOLHA DE PESAGEM (PRODU'#199#195'O)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4092
@@ -2240,6 +2276,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_EMISSAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2264,13 +2301,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRODUTO: '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 0
@@ -2284,6 +2323,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2306,6 +2346,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2329,13 +2370,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Essencia(s)=>'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 1852
@@ -2350,13 +2393,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Volume:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 125148
@@ -2371,13 +2416,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Ordem N'#186'.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 164042
@@ -2391,6 +2438,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2413,6 +2461,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         DisplayFormat = '#,###0.000'
@@ -2437,13 +2486,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Lt'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4163
@@ -2538,6 +2589,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2560,6 +2612,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2582,6 +2635,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2604,6 +2658,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2626,6 +2681,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2648,6 +2704,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR8'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2690,13 +2747,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MAT.PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -2711,13 +2770,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PESO Kg'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -2742,13 +2803,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N.N.F/LOTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -2793,13 +2856,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QUANTIDADE EM GRAMAS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -2865,13 +2930,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P. BRUTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -2886,13 +2953,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TARA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -2908,13 +2977,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P. LIQUIDO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -2929,13 +3000,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -2950,6 +3023,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2972,6 +3046,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText101'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -2995,13 +3070,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INICIAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -3017,13 +3094,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FINAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -3038,13 +3117,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label102'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ADI'#199#195'O DE MAT.PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -3059,6 +3140,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSet
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3076,8 +3158,7 @@ object FormOrdServCentro: TFormOrdServCentro
       end
     end
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 4498
@@ -3087,6 +3168,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -3109,6 +3191,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -3132,6 +3215,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3144,6 +3228,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3157,6 +3242,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line6'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4233
@@ -3170,6 +3256,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line7'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3183,6 +3270,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line8'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3196,6 +3284,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line9'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3209,6 +3298,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line10'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3222,6 +3312,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3235,6 +3326,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line11'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3248,6 +3340,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3261,6 +3354,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4498
@@ -3272,7 +3366,7 @@ object FormOrdServCentro: TFormOrdServCentro
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 131498
       mmPrintPosition = 0
@@ -3312,13 +3406,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3246
@@ -3333,6 +3429,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,####0.0000'
@@ -3357,6 +3454,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         DisplayFormat = '#,###0.000'
@@ -3420,6 +3518,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line13'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3432,6 +3531,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line14'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3444,6 +3544,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line15'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 86519
@@ -3458,13 +3559,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N.Tq. ARMAZENADO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 30956
@@ -3479,13 +3582,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N.Tq. PREPARO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 1852
@@ -3500,13 +3605,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OBSERVA'#199#213'ES:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -3521,6 +3628,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3543,6 +3651,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3565,6 +3674,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3587,6 +3697,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3609,6 +3720,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3631,6 +3743,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText22'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3653,6 +3766,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -3685,13 +3799,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'N'#186' Lote Produzido ='
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -3706,13 +3822,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ph = '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -3727,13 +3845,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Densidade ='
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -3779,13 +3899,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[_] Aprovado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 117740
@@ -3800,13 +3922,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[_] Reprovado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 117740
@@ -3830,13 +3954,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Provid'#234'ncias:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -3851,13 +3977,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label28'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SA'#205'DA DO LABORAT'#211'RIO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 794
@@ -3871,13 +3999,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA: ____/____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 794
@@ -3891,13 +4021,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'HORA: ______:______'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 42333
@@ -3911,13 +4043,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label301'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO:__________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 73554
@@ -3931,13 +4065,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RETORNO DO LABORAT'#211'RIO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 529
@@ -3951,13 +4087,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA: ____/____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 529
@@ -3971,13 +4109,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label302'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'HORA: ______:______'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 42069
@@ -3991,13 +4131,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VISTO:__________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 73290
@@ -4010,6 +4152,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line16'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 142611
@@ -4022,6 +4165,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line17'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 142875
@@ -4034,6 +4178,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer1
         UserName = 'Line18'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 161661
@@ -4047,13 +4192,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label25'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PROCESSO DA PRODU'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3810
         mmLeft = 794
@@ -4067,6 +4214,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4089,6 +4237,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText72'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4111,6 +4260,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText73'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4133,6 +4283,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText74'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4155,6 +4306,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText75'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4177,6 +4329,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText76'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4199,6 +4352,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText77'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4221,6 +4375,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText78'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_PROC8'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4243,13 +4398,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label31'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Observa'#231#245'es da Ordem de Produ'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3810
         mmLeft = 529
@@ -4275,6 +4432,7 @@ object FormOrdServCentro: TFormOrdServCentro
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -4291,6 +4449,14 @@ object FormOrdServCentro: TFormOrdServCentro
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -4300,21 +4466,33 @@ object FormOrdServCentro: TFormOrdServCentro
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -4322,13 +4500,26 @@ object FormOrdServCentro: TFormOrdServCentro
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 360
     Top = 305
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand2: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 36248
@@ -4338,13 +4529,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 265
@@ -4357,6 +4550,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -4369,6 +4563,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -4382,6 +4577,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_EMISSAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4404,6 +4600,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4426,13 +4623,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label37'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Emiss'#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -4447,13 +4646,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'LBL_00_EMPRESA1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Ordem de Produ'#231#227'o No.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4939
         mmLeft = 0
@@ -4467,13 +4668,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label40'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'T.U.P.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4939
         mmLeft = 173567
@@ -4487,6 +4690,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText26'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FTC_TUP'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4509,13 +4713,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label39'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Produto.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 0
@@ -4529,6 +4735,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4551,6 +4758,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4573,13 +4781,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label41'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Quant.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 121444
@@ -4593,6 +4803,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4615,13 +4826,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label401'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL T.U.P.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 161925
@@ -4635,6 +4848,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'VarToTup'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -4669,13 +4883,15 @@ object FormOrdServCentro: TFormOrdServCentro
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MAT. PRIMA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -4711,13 +4927,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label44'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Quantidade ->'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3104
         mmLeft = 56621
@@ -4731,13 +4949,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label45'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Consumo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3104
@@ -4752,13 +4972,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label46'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Unit'#225'rio'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3104
@@ -4854,6 +5076,7 @@ object FormOrdServCentro: TFormOrdServCentro
         CharWrap = True
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4878,6 +5101,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4912,6 +5136,7 @@ object FormOrdServCentro: TFormOrdServCentro
         CharWrap = True
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4936,6 +5161,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText36'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4960,6 +5186,7 @@ object FormOrdServCentro: TFormOrdServCentro
         CharWrap = True
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -4984,6 +5211,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText38'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5008,6 +5236,7 @@ object FormOrdServCentro: TFormOrdServCentro
         CharWrap = True
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5032,6 +5261,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText40'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5056,6 +5286,7 @@ object FormOrdServCentro: TFormOrdServCentro
         CharWrap = True
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5080,6 +5311,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText401'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5104,6 +5336,7 @@ object FormOrdServCentro: TFormOrdServCentro
         CharWrap = True
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5128,6 +5361,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText44'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5152,6 +5386,7 @@ object FormOrdServCentro: TFormOrdServCentro
         CharWrap = True
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5176,6 +5411,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText46'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5200,6 +5436,7 @@ object FormOrdServCentro: TFormOrdServCentro
         CharWrap = True
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR8'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5224,6 +5461,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText48'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE8'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5247,13 +5485,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 7
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3104
@@ -5268,6 +5508,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText301'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_QTDE'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5291,13 +5532,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label73'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Situa'#231#227'o.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4939
@@ -5312,6 +5555,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_STATUS_CC'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5333,6 +5577,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line33'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1058
         mmLeft = 0
@@ -5346,13 +5591,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label36'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PEDIDO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -5366,6 +5613,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5388,13 +5636,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data de Entrega:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -5409,6 +5659,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_DTSAIDA'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5431,13 +5682,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label74'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CLIENTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -5452,6 +5705,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5475,6 +5729,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText64'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5494,8 +5749,7 @@ object FormOrdServCentro: TFormOrdServCentro
       end
     end
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 5292
@@ -5504,6 +5758,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5516,6 +5771,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line8'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5529,6 +5785,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line9'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5542,6 +5799,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line10'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5555,6 +5813,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line101'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5568,6 +5827,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line11'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5581,6 +5841,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line12'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5595,6 +5856,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -5615,6 +5877,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line23'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5628,6 +5891,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line24'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5641,6 +5905,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line25'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5654,6 +5919,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line39'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5667,6 +5933,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line40'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5681,6 +5948,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -5701,6 +5969,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line401'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5714,6 +5983,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line42'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5728,6 +5998,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSI_UC'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -5750,6 +6021,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE1_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5773,6 +6045,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText52'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE2_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5796,6 +6069,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText53'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE3_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5819,6 +6093,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText54'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE4_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5842,6 +6117,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText55'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE5_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5865,6 +6141,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText56'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE6_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5888,6 +6165,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE7_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5911,6 +6189,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'QTDE8_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5934,6 +6213,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTALUC_CC'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -5954,7 +6234,7 @@ object FormOrdServCentro: TFormOrdServCentro
       end
     end
     object ppSummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 66675
       mmPrintPosition = 0
@@ -5975,13 +6255,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label48'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -5996,13 +6278,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '[__________]:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -6017,13 +6301,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CORTE:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -6038,13 +6324,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MONTAGEM:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -6059,13 +6347,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label52'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -6079,13 +6369,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label501'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -6099,13 +6391,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label54'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -6119,13 +6413,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label55'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 23019
@@ -6139,13 +6435,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label56'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -6159,13 +6457,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -6179,13 +6479,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -6199,13 +6501,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 53711
@@ -6219,13 +6523,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -6239,13 +6545,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -6259,13 +6567,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -6279,13 +6589,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label601'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '__________________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 153459
@@ -6299,13 +6611,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -6319,13 +6633,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label66'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -6339,13 +6655,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -6359,13 +6677,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '_____/_____/________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 122767
@@ -6379,13 +6699,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'GERENCIA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -6400,13 +6722,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label70'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'EXPEDI'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -6421,13 +6745,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label502'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ACABAMENTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -6442,13 +6768,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label72'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DISTRIBUI'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3387
@@ -6462,6 +6790,7 @@ object FormOrdServCentro: TFormOrdServCentro
         DesignLayer = ppDesignLayer2
         UserName = 'Line102'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 32279
@@ -6486,6 +6815,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6508,6 +6838,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText66'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6530,13 +6861,15 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'Label75'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Observa'#231#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 794
@@ -6550,6 +6883,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6572,6 +6906,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6594,6 +6929,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6616,6 +6952,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText70'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6638,6 +6975,7 @@ object FormOrdServCentro: TFormOrdServCentro
         UserName = 'DBText701'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OSV_OBS7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6657,16 +6995,17 @@ object FormOrdServCentro: TFormOrdServCentro
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060E
-        566172546F5475704F6E43616C630B50726F6772616D54797065070B74745072
-        6F63656475726506536F75726365067D70726F63656475726520566172546F54
-        75704F6E43616C63287661722056616C75653A2056617269616E74293B0D0A62
-        6567696E0D0A0D0A202056616C7565203A3D20204442506970656C696E65315B
-        274F53565F51544445275D2A4442506970656C696E65315B274654435F545550
-        275D3B0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D650608566172
-        546F547570094576656E744E616D6506064F6E43616C63074576656E74494402
-        21084361726574506F730102000200000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'VarToTupOnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure VarToTupOnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value ' +
+          ':=  DBPipeline1['#39'OSV_QTDE'#39']*DBPipeline1['#39'FTC_TUP'#39'];'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'VarToTup'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
     end
     object ppDesignLayers2: TppDesignLayers
       object ppDesignLayer2: TppDesignLayer
@@ -6689,7 +7028,7 @@ object FormOrdServCentro: TFormOrdServCentro
     Left = 146
     Top = 274
     Bitmap = {
-      494C010103000500040010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500080010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -7018,6 +7357,7 @@ object FormOrdServCentro: TFormOrdServCentro
     object CdsOPCC_IMPRESSO: TBooleanField
       FieldKind = fkCalculated
       FieldName = 'CC_IMPRESSO'
+      Calculated = True
     end
     object CdsOPOSV_STATUS_CC: TStringField
       FieldKind = fkCalculated
