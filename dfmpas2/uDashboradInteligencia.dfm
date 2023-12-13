@@ -1,30 +1,28 @@
 inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
   Caption = 'Dashboard Intelig'#234'ncia Adjutor MX'
   ClientHeight = 432
-  ClientWidth = 590
+  ClientWidth = 601
   Font.Height = -16
   Position = poDesigned
   WindowState = wsMaximized
-  ExplicitWidth = 606
+  ExplicitWidth = 617
   ExplicitHeight = 471
   PixelsPerInch = 96
   TextHeight = 19
   object presumo: TPanel [0]
     Left = 0
     Top = 0
-    Width = 590
+    Width = 601
     Height = 432
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 599
     object pfinanceiro: TPanel
       Left = 1
       Top = 57
-      Width = 588
+      Width = 599
       Height = 303
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 597
       object Label1: TLabel
         Left = 25
         Top = 16
@@ -227,11 +225,10 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     object pdata: TPanel
       Left = 1
       Top = 25
-      Width = 588
+      Width = 599
       Height = 32
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 597
       object cbMes: TComboBox
         Left = 9
         Top = 2
@@ -289,11 +286,10 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     object Panel2: TPanel
       Left = 1
       Top = 360
-      Width = 588
+      Width = 599
       Height = 71
       Align = alBottom
       TabOrder = 2
-      ExplicitWidth = 597
       object Image1: TImage
         Left = 247
         Top = 2
@@ -604,11 +600,10 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     object Panel5: TPanel
       Left = 1
       Top = 1
-      Width = 588
+      Width = 599
       Height = 24
       Align = alTop
       TabOrder = 3
-      ExplicitWidth = 597
       object LinkLabel1: TLinkLabel
         Left = 6
         Top = 2
