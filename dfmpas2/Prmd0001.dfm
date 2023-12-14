@@ -478,7 +478,6 @@ inherited FormParametros: TFormParametros
       FFFFFFFFFFFFFF0000000000000000000000000108500072006F0064007500E7
       00E3006F002C0000000000000000000000FFFFFFFFFFFFFFFF00000000000000
       00000000000107500072006F006400750074006F00}
-    ExplicitTop = 55
   end
   object PNotaFiscal_Etiqueta: TPanel [6]
     Left = 201
@@ -494,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 5
+      PageIndex = 4
       TabOrder = 0
       object TPage
         Left = 0
@@ -2546,6 +2545,7 @@ inherited FormParametros: TFormParametros
                 TabOrder = 24
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
+                OnClick = DBCheckBox87Click
               end
               object cbInformacoesObrigatoriasParaClienteSemCadastro: TDBCheckBox
                 Left = 9

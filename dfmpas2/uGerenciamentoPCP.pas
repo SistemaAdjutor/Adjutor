@@ -2473,6 +2473,13 @@ begin
   cdsMateriaPrimaMP_CUSTO.DisplayFormat :=   '###,###,##0.'+StrZero('0', dbInicio.Empresa.fPMT_QTDE_DEC_PED);
   miEmpenhoAutomatico.Visible := DBInicio.Empresa.PMT_COMSUMIRINSUMO = 'M';
 
+  if DBInicio.GetParametroSistema('PMT_RETORNO_POR_CORES') <> 'S' then
+  begin
+    cxgrd1DBBandedTableView1ENF_IT_NOTANUMBER.Visible := False;
+    cxgrd1DBBandedTableView1ACO_NOME.Visible := False;
+    cxgrd1DBBandedTableView1IOP_PESO.Visible := False;
+    cxgrd1DBBandedTableView1PESO_TOTAL.Visible := False;
+  end;
   self.WindowState := wsMaximized;
 end;
 
