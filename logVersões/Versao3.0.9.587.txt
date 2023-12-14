@@ -1,4 +1,4 @@
-﻿Atualizado em 04/12/2023
+﻿Atualizado em 14/12/2023
 Inicio da versão: 04/12/2023
 
 principal: Arkson, Netocolor, Hospital São José, Collect, Parseals, Bepine, Drimec, BSC Industrial
@@ -19,4 +19,13 @@ principal: Arkson, Netocolor, Hospital São José, Collect, Parseals, Bepine, Dr
   1751 - Lentidão na tela de entrada e saída manual [Parseals]
   1752 - Relatório de clientes e produtos vendidos [BSC Industrial]
   
-  
+patch 1: Arkson, Normadin, Hospital São José
+  1644 - Melhorias para retorno do kit [Arkson]
+  1739 - Envio para produção [Arkson]
+  1753 - Novo campo produção normadin [Normadin]
+  1754 - Ordem não mostra Observação [Arkson]
+  1755 - Correção de de produção [Arkson]
+  1756 - Mostrar e ocultar colunas [Novi]
+  1757 - Correção tela de retorno de arquivo CNAB [Novi]
+  1764 - Erro ao abrir Pedido [Hospital São José]
+
