@@ -3,11 +3,11 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
   Top = 72
   Caption = 'Industrializa'#231#227'o por Kit'
   ClientHeight = 532
-  ClientWidth = 976
+  ClientWidth = 1135
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   Position = poMainFormCenter
-  ExplicitWidth = 992
+  ExplicitWidth = 1151
   ExplicitHeight = 571
   PixelsPerInch = 96
   TextHeight = 14
@@ -42,7 +42,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
   object GroupBox1: TGroupBox [4]
     Left = 0
     Top = 67
-    Width = 976
+    Width = 1135
     Height = 427
     Align = alTop
     Caption = 'Industrializa'#231#245'es Solicitadas e Dispon'#237'veis'
@@ -50,7 +50,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     object dbgrdNotasDisponveis: TDBGrid
       Left = 2
       Top = 16
-      Width = 972
+      Width = 1131
       Height = 409
       Align = alClient
       Color = clWhite
@@ -111,6 +111,13 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
           Expanded = False
           FieldName = 'ENF_CFOP_RETORNO'
           Title.Caption = 'CFOP Retorno'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'PRD_REFER_PAI'
+          Title.Caption = 'Ref. Pai'
+          Width = 90
           Visible = True
         end
         item
@@ -234,7 +241,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
   object grpFiltro: TGroupBox [7]
     Left = 0
     Top = 0
-    Width = 976
+    Width = 1135
     Height = 67
     Align = alTop
     Caption = 'Filtro'
@@ -353,31 +360,44 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     OnClick = BitBtn1Click
   end
   inherited coCalcula: TACBrCalculadora
-    Left = 96
-    Top = 120
+    Left = 56
+    Top = 104
   end
   inherited ACBrEnterTab1: TACBrEnterTab
-    Left = 176
-    Top = 128
+    Left = 96
+    Top = 104
+  end
+  inherited DBConn: TSQLConnection
+    Left = 16
+    Top = 105
   end
   inherited qAux: TSQLQuery
-    Left = 274
-    Top = 133
+    Left = 154
+    Top = 101
   end
   inherited qAux2: TSQLQuery
-    Left = 330
-    Top = 132
+    Left = 194
+    Top = 108
   end
   inherited qAux3: TSQLQuery
-    Left = 378
-    Top = 132
+    Left = 242
+    Top = 108
+  end
+  inherited qAuxEstorna: TSQLQuery
+    Left = 322
+    Top = 112
+  end
+  inherited qAuxEstornaItem: TSQLQuery
+    Left = 410
+    Top = 112
   end
   object SqlCdsNotasDisponiveis: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspSqlCdsNotasDisponiveis'
-    Left = 624
-    Top = 209
+    OnCalcFields = SqlCdsNotasDisponiveisCalcFields
+    Left = 192
+    Top = 281
     object SqlCdsNotasDisponiveisSelecao: TBooleanField
       FieldKind = fkInternalCalc
       FieldName = 'Selecao'
@@ -440,6 +460,8 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     object SqlCdsNotasDisponiveisQuantidadeTmp: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'QuantidadeTmp'
+      DisplayFormat = '###,##0.0000'
+      EditFormat = '###,##0.0000'
     end
     object SqlCdsNotasDisponiveisTipoIndustrializacaoCodigo: TIntegerField
       FieldKind = fkInternalCalc
@@ -461,10 +483,14 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     end
     object SqlCdsNotasDisponiveisRETORNADO: TFloatField
       FieldName = 'RETORNADO'
+      DisplayFormat = '###,##0.0000'
+      EditFormat = '###,##0.0000'
     end
     object SqlCdsNotasDisponiveisSaldo: TFloatField
       FieldKind = fkInternalCalc
       FieldName = 'Saldo'
+      DisplayFormat = '###,##0.0000'
+      EditFormat = '###,##0.0000'
     end
     object SqlCdsNotasDisponiveisOPE_CODIGO_RETORNO: TStringField
       FieldName = 'OPE_CODIGO_RETORNO'
@@ -485,18 +511,21 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       FieldName = 'ENF_UCOM'
       Size = 5
     end
+    object SqlCdsNotasDisponiveisPRD_REFER_PAI: TStringField
+      FieldName = 'PRD_REFER_PAI'
+    end
   end
   object dsNotaDisponivel: TDataSource
     DataSet = SqlCdsNotasDisponiveis
-    Left = 624
-    Top = 152
+    Left = 192
+    Top = 336
   end
   object SqlCdsProduto: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'DspSqlCdsProduto'
-    Left = 200
-    Top = 216
+    Left = 504
+    Top = 112
     object SqlCdsProdutoPRD_CODIGO: TStringField
       FieldName = 'PRD_CODIGO'
       Required = True
@@ -573,8 +602,8 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       'left join PRD_TIPO t3 on (t3.PTI_CODIGO = t3.PTI_CODIGO)'
       'ORDER BY T1.prd_refer')
     SQLConnection = DataCadastros.SQLConnection1
-    Left = 192
-    Top = 289
+    Left = 296
+    Top = 9
   end
   object qSqlCdsNotasDisponiveis: TSQLQuery
     MaxBlobSize = 1
@@ -613,29 +642,29 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       'WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno'
       'ORDER BY ef.enf_emissao, ef.enf_notanumber DESC')
     SQLConnection = DataCadastros.SQLConnection1
-    Left = 624
-    Top = 321
+    Left = 192
+    Top = 161
   end
   object DspSqlCdsProduto: TDataSetProvider
     DataSet = qSqlCdsProduto
-    Left = 192
-    Top = 353
+    Left = 504
+    Top = 41
   end
   object dspSqlCdsNotasDisponiveis: TDataSetProvider
     DataSet = qSqlCdsNotasDisponiveis
-    Left = 624
-    Top = 265
+    Left = 192
+    Top = 209
   end
   object qProdutos: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
-    Left = 330
-    Top = 244
+    Left = 226
+    Top = 12
   end
   object pmSelecao: TPopupMenu
-    Left = 40
-    Top = 193
+    Left = 24
+    Top = 161
     object InverteSeleo1: TMenuItem
       Caption = 'Inverte Sele'#231#227'o'
       OnClick = InverteSeleo1Click
@@ -662,8 +691,8 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       'end.')
     OnBeginDoc = frxNotasDisponiveisBeginDoc
     OnGetValue = frxNotasDisponiveisGetValue
-    Left = 488
-    Top = 264
+    Left = 56
+    Top = 280
     Datasets = <
       item
         DataSet = frxDBNotasDisponiveis
@@ -1266,7 +1295,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       'ENF_IT_DET_NITEM=ENF_IT_DET_NITEM')
     DataSet = SqlCdsNotasDisponiveis
     BCDToCurrency = False
-    Left = 488
-    Top = 323
+    Left = 56
+    Top = 339
   end
 end

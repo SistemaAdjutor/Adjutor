@@ -1,7 +1,5 @@
 inherited frmPesqTipoMola: TfrmPesqTipoMola
   Caption = 'Habilitar campos molas'
-  ExplicitWidth = 683
-  ExplicitHeight = 482
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtilTop: TPanel

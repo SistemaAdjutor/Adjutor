@@ -2224,6 +2224,11 @@ type
     qEnderecos: TSQLQuery;
     dsRegistroEndereco: TDataSource;
     cbTipoOperacao: TComboBox;
+    cbRetorno: TCheckBox;
+    CdsItensFichaFTI_UTILIZA_ITEM_NO_RETORNO: TStringField;
+    Label333: TLabel;
+    MMO_EXTREMIDADE_MOLA_MATERIA: TDBComboBox;
+    cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2490,6 +2495,8 @@ type
     procedure cbFiltroAlmoxarifadoChange(Sender: TObject);
     procedure sgdbEnderecamentoSelect(Sender: TObject);
     procedure sgdbEnderecamentoChange(Sender: TObject);
+    procedure cdsMolaMMO_EXTREMIDADE_MOLA_MATERIAGetText(Sender: TField;
+      var Text: string; DisplayText: Boolean);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -4500,10 +4507,16 @@ begin
         CdsItensFichaFTI_PERDA.Value := CurPerda.AsFloat;
         CdsItensFichaAMX_CODIGO.AsString := CbAlmoxarifado.idRetorno;
         CdsItensFichaFTI_PERCENTUAL.AsFloat := curPercentualConsumo.AsFloat;
+        cdsItensFichaFTI_UTILIZA_ITEM_NO_RETORNO.AsString := iif(cbRetorno.Checked, 'S', 'N');
         // NÃO ATUALIZA...
         CdsItensFicha.Post;
         CdsItensFicha.ApplyUpdates( 0 ); // não ta funcionando direito Às vezes
-        ExecSql( ' UPDATE FTC_IT01   ' + ' SET FTI_UC = ' + FloatToSQL( CurrConsumo.AsFloat ) + ', ' + '     FTI_PERCENTUAL = ' + FloatToSQL( curPercentualConsumo.AsFloat ) + iif( edOperacao.idRetorno <> '', ', OPE_CODIGO =' + QuotedStr( edOperacao.idRetorno ), '' ) + iif( CbAlmoxarifado.idRetorno <> '', '  , AMX_CODIGO = ' + QuotedStr( CbAlmoxarifado.idRetorno ), ', amx_codigo = null' ) + ' WHERE FTI_REGISTRO = ' + CdsItensFichaFTI_REGISTRO.AsString );
+        ExecSql( ' UPDATE FTC_IT01   ' +
+        ' SET FTI_UC = ' + FloatToSQL( CurrConsumo.AsFloat ) + ', ' +
+        '     FTI_UTILIZA_ITEM_NO_RETORNO = ' + QuotedStr( iif(cbRetorno.Checked, 'S', 'N') ) + ',' +
+        '     FTI_PERCENTUAL = ' + FloatToSQL( curPercentualConsumo.AsFloat ) + iif( edOperacao.idRetorno <> '', ', OPE_CODIGO =' + QuotedStr( edOperacao.idRetorno ), '' ) +
+        iif( CbAlmoxarifado.idRetorno <> '', '  , AMX_CODIGO = ' + QuotedStr( CbAlmoxarifado.idRetorno ), ', amx_codigo = null' ) +
+        ' WHERE FTI_REGISTRO = ' + CdsItensFichaFTI_REGISTRO.AsString );
 
         CdsItensFicha.close;
         CdsItensFicha.Open;
@@ -4548,6 +4561,7 @@ begin
   edOperacao.idRetorno := '';
   CbAlmoxarifado.idRetorno := '';
   EdAlmoxarifadoCodigo.Clear;
+  cbRetorno.Checked := False;
 end;
 
 procedure TFormProduto.DesabilitaMateria;
@@ -5396,6 +5410,7 @@ begin
     HASTEHA.Enabled := qAux3.FieldByName( 'MMO_COMPRIMENTO_HASTE_HA' ).AsString = 'S';
     HASTEHB.Enabled := qAux3.FieldByName( 'MMO_COMPRIMENTO_HASTE_HB' ).AsString = 'S';
     POSICAO_HASTE.Enabled := qAux3.FieldByName( 'MMO_POSICAO_HASTE' ).AsString = 'S';
+    MMO_EXTREMIDADE_MOLA_MATERIA.Enabled := qAux3.FieldByName( 'MMO_EXTREMIDADE' ).AsString = 'S';
 
     {
       TIPO DA MOLA
@@ -5556,6 +5571,7 @@ begin
   edOperacao.idRetorno := IntToStr( CdsItensFichaOPE_CODIGO.AsInteger );
   CurPerda.Value := CdsItensFichaFTI_PERDA.AsFloat;
   CbAlmoxarifado.idRetorno := CdsItensFichaAMX_CODIGO.AsString;
+  cbRetorno.Checked := iif(CdsItensFichaFTI_UTILIZA_ITEM_NO_RETORNO.AsString = 'S', True, False);
   // CurCustoFicha.Value := CdsItensFichaFTI_PRECOCUSTO.AsCurrency;
 
   CbGrade.Condicao := 'prd_codigo = ' + qStr( RetornaProdutoReferencia( CdsItensFichaPRD_REFER_ITENS.Text ) );
@@ -6796,6 +6812,20 @@ begin
     cdsGancho.EnableControls;
   end;
 
+end;
+
+procedure TFormProduto.cdsMolaMMO_EXTREMIDADE_MOLA_MATERIAGetText(
+  Sender: TField; var Text: string; DisplayText: Boolean);
+begin
+  inherited;
+  if Sender.AsString = '' then
+    Text := ''
+  else
+  if Sender.AsString = 'A' then
+    Text := 'Aberta'
+  else
+  if Sender.AsString = 'F' then
+    Text := 'Fechada';
 end;
 
 procedure TFormProduto.cdsMolaMMO_POSICAO_HASTEGetText( Sender : TField; var Text : string; DisplayText : Boolean );

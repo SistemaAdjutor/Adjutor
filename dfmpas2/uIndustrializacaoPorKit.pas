@@ -7,7 +7,29 @@ uses
   Dialogs, StdCtrls, Buttons, SqlExpr,Provider, DB, DBClient, DBLocal,
   DBLocalS, Grids, DBGrids, {uProcedimentos,} Mask,  rxToolEdit, DBCtrls,
   Data.DBXFirebird, SimpleDS, Iniciodb, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.ExtCtrls, JvExMask, JvToolEdit, SgDbSeachComboUnit, RxCurrEdit, Vcl.Menus,
-  frxClass, frxDBSet;
+  frxClass, frxDBSet, cxGraphics, cxControls, cxLookAndFeels,
+  cxLookAndFeelPainters, cxStyles, dxSkinsCore, dxSkinBlack, dxSkinBlue,
+  dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide,
+  dxSkinDevExpressDarkStyle, dxSkinDevExpressStyle, dxSkinFoggy,
+  dxSkinGlassOceans, dxSkinHighContrast, dxSkiniMaginary, dxSkinLilian,
+  dxSkinLiquidSky, dxSkinLondonLiquidSky, dxSkinMcSkin, dxSkinMetropolis,
+  dxSkinMetropolisDark, dxSkinMoneyTwins, dxSkinOffice2007Black,
+  dxSkinOffice2007Blue, dxSkinOffice2007Green, dxSkinOffice2007Pink,
+  dxSkinOffice2007Silver, dxSkinOffice2010Black, dxSkinOffice2010Blue,
+  dxSkinOffice2010Silver, dxSkinOffice2013DarkGray, dxSkinOffice2013LightGray,
+  dxSkinOffice2013White, dxSkinOffice2016Colorful, dxSkinOffice2016Dark,
+  dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic, dxSkinSharp, dxSkinSharpPlus,
+  dxSkinSilver, dxSkinSpringTime, dxSkinStardust, dxSkinSummer2008,
+  dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
+  dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
+  dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
+  dxSkinXmas2008Blue, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit,
+  cxNavigator, cxDataControllerConditionalFormattingRulesManagerDialog,
+  cxDBData, cxGridCustomTableView, cxGridTableView, cxGridDBTableView,
+  cxGridLevel, cxClasses, cxGridCustomView, cxGrid, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFrmIndustrializacaoPorKit = class(TfrmBaseDbEstoque)
@@ -82,6 +104,7 @@ type
     frxDBNotasDisponiveis: TfrxDBDataset;
     SqlCdsNotasDisponiveisENF_SERIE: TStringField;
     SqlCdsNotasDisponiveisENF_UCOM: TStringField;
+    SqlCdsNotasDisponiveisPRD_REFER_PAI: TStringField;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);
@@ -104,6 +127,7 @@ type
       var Value: Variant);
     procedure BitBtn1Click(Sender: TObject);
     procedure dbgrdNotasDisponveisTitleClick(Column: TColumn);
+    procedure SqlCdsNotasDisponiveisCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
     procedure ConsultaDisponiveis;
@@ -175,7 +199,7 @@ end;
 
 procedure TFrmIndustrializacaoPorKit.ConsultaDisponiveis;
 var
-  NotaFiscal: string;
+  NotaFiscal, sql: string;
   itemIndex : integer;
 begin
   if SelecionaNotaFiscal then
@@ -185,48 +209,99 @@ begin
   end;
   SqlCdsNotasDisponiveis.Close;
   // traz somente os itens da ficha tecnica
-  qSqlCdsNotasDisponiveis.sql.Text :=
-    'SELECT ' +
-    '    ft.FTI_UC as QuantidadeFT,'+
-    '    (SELECT SUM(pk.QTD_RETORNADO) ' +
-    '       FROM PED_IND_KIT pk ' +
-    '       	WHERE pk.ENF_NOTANUMBER = ef.enf_notanumber ' +
-    '  	      AND pk.PRD_REFER = ft.PRD_REFER_ITENS ' +
-    '  	      AND pk.ENF_REGISTRO = ei.ENF_REGISTRO ' +
-    '    ) AS retornado, ' +
-    '    ei.ENF_IT_DET_NITEM, ' +
-    '    ei.prd_codigo, ' +
-    '    ei.ENF_REGISTRO, ' +
-    '    ei.enf_ipialiq, ' +
-    '    ei.enf_vlsubst, '+
-    '    ef.enf_notanumber, '+
-    '    ef.ENF_SERIE, ' +
-    '    ef.enf_emissao, '+
-    '    ei.enf_cfop, '+
-    '    ei.OPE_CODIGO_RETORNO, '+
-    '    (SELECT OPE_NATUREZA FROM OPE0000 op WHERE op.OPE_CODIGO = ei.OPE_CODIGO_RETORNO) AS ENF_CFOP_RETORNO, '+
-    '    ei.prd_refer, '+
-    '    ei.prd_descri, '+
-    '    ei.enf_qtde, '+
-    '    ei.enf_ucom, '+
-    '    ei.enf_quantidade_ind_retorno, '+
-    '    ei.enf_preco, '+
-    '    ei.amx_codigo '+
-    ' FROM '+
-    '     enf_it01 ei '+
-    '   join enf0001 ef on (ef.enf_notanumber = ei.enf_it_notanumber and ef.for_codigo = ei.for_codigo and ef.enf_industrializacao = ''S'') '+
-    '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO) ' +
-    '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
-    '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
-    ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
-    ' AND ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
-    iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') +
-//    '  order by ef.enf_emissao, ei.ENF_IT_DET_NITEM ';
-    '  order by ei.prd_refer, ef.enf_emissao ';
-//    '  order by ef.enf_emissao, ef.enf_notanumber desc';
+  qAux.Close;
+  qAux.SQL.Text := 'SELECT ft.PRD_REFER_ITENS FROM FTC_IT01 ft WHERE ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) ;
+  qAux.Open;
+  sql :=       'SELECT ' +
+      '    ft.FTI_UC as QuantidadeFT,'+
+      '    (SELECT SUM(pk.QTD_RETORNADO) ' +
+      '       FROM PED_IND_KIT pk ' +
+      '       	WHERE pk.ENF_NOTANUMBER = ef.enf_notanumber ' +
+      '  	      AND pk.PRD_REFER = ft.PRD_REFER_ITENS ' +
+      '  	      AND pk.ENF_REGISTRO = ei.ENF_REGISTRO ' +
+      '    ) AS retornado, ' +
+      '    ei.ENF_IT_DET_NITEM, ' +
+      '    ei.prd_codigo, ' +
+      '    ei.ENF_REGISTRO, ' +
+      '    ei.enf_ipialiq, ' +
+      '    ei.enf_vlsubst, '+
+      '    ef.enf_notanumber, '+
+      '    ef.ENF_SERIE, ' +
+      '    ef.enf_emissao, '+
+      '    ei.enf_cfop, '+
+      '    ei.OPE_CODIGO_RETORNO, '+
+      '    (SELECT OPE_NATUREZA FROM OPE0000 op WHERE op.OPE_CODIGO = ei.OPE_CODIGO_RETORNO) AS ENF_CFOP_RETORNO, '+
+      '    ft.prd_refer AS PRD_REFER_PAI, '+
+      '    ei.prd_refer, '+
+      '    ei.prd_descri, '+
+      '    ei.enf_qtde, '+
+      '    ei.enf_ucom, '+
+      '    ei.enf_quantidade_ind_retorno, '+
+      '    ei.enf_preco, '+
+      '    ei.amx_codigo '+
+      ' FROM '+
+      '     enf_it01 ei '+
+      '   join enf0001 ef on (ef.enf_notanumber = ei.enf_it_notanumber and ef.for_codigo = ei.for_codigo and ef.enf_industrializacao = ''S'') '+
+      '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO AND ft.FTI_UTILIZA_ITEM_NO_RETORNO = ''S''    ) ' +
+      '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
+      '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
+      ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
+      ' AND ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
+      iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;
 
+  if not qAux.Eof then
+    sql := sql + ' UNION ' ;
+
+  while not qAux.eof do
+  begin
+    sql := sql +
+      'SELECT ' +
+      '    ft.FTI_UC as QuantidadeFT,'+
+      '    (SELECT SUM(pk.QTD_RETORNADO) ' +
+      '       FROM PED_IND_KIT pk ' +
+      '       	WHERE pk.ENF_NOTANUMBER = ef.enf_notanumber ' +
+      '  	      AND pk.PRD_REFER = ft.PRD_REFER_ITENS ' +
+      '  	      AND pk.ENF_REGISTRO = ei.ENF_REGISTRO ' +
+      '    ) AS retornado, ' +
+      '    ei.ENF_IT_DET_NITEM, ' +
+      '    ei.prd_codigo, ' +
+      '    ei.ENF_REGISTRO, ' +
+      '    ei.enf_ipialiq, ' +
+      '    ei.enf_vlsubst, '+
+      '    ef.enf_notanumber, '+
+      '    ef.ENF_SERIE, ' +
+      '    ef.enf_emissao, '+
+      '    ei.enf_cfop, '+
+      '    ei.OPE_CODIGO_RETORNO, '+
+      '    (SELECT OPE_NATUREZA FROM OPE0000 op WHERE op.OPE_CODIGO = ei.OPE_CODIGO_RETORNO) AS ENF_CFOP_RETORNO, '+
+      '    ft.prd_refer AS PRD_REFER_PAI, '+
+      '    ei.prd_refer, '+
+      '    ei.prd_descri, '+
+      '    ei.enf_qtde, '+
+      '    ei.enf_ucom, '+
+      '    ei.enf_quantidade_ind_retorno, '+
+      '    ei.enf_preco, '+
+      '    ei.amx_codigo '+
+      ' FROM '+
+      '     enf_it01 ei '+
+      '   join enf0001 ef on (ef.enf_notanumber = ei.enf_it_notanumber and ef.for_codigo = ei.for_codigo and ef.enf_industrializacao = ''S'') '+
+      '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO AND ft.FTI_UTILIZA_ITEM_NO_RETORNO = ''S''    ) ' +
+      '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
+      '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
+      ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
+      ' AND ft.PRD_REFER = ' + QuotedStr(qAux.FieldByName('PRD_REFER_ITENS').AsString) +
+      iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;
+    qAux.Next;
+    if not qAux.Eof then
+      sql := sql + ' UNION ' ;
+
+  end;
+  // sql := sql +  '  order by ei.prd_refer, ef.enf_emissao ';
+  sql := sql +  '  order by 15,10'; // o firebird não aceitou o nome das colunas...
+
+  qSqlCdsNotasDisponiveis.sql.Text := sql;
   if DBInicio.IsDesenvolvimento then
-    CopyToClipboard(qSqlCdsNotasDisponiveis.sql.text);
+    CopyToClipboard(sql);
   SqlCdsNotasDisponiveis.Open;
 
   SqlCdsNotasDisponiveis.DisableControls;
@@ -248,7 +323,7 @@ begin
     ' FROM '+
     '     enf_it01 ei '+
     '   join enf0001 ef on (ef.enf_notanumber = ei.enf_it_notanumber and ef.for_codigo = ei.for_codigo and ef.enf_industrializacao = ''S'') '+
-    '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO) ' +
+    '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO AND ft.FTI_UTILIZA_ITEM_NO_RETORNO = ''S''     ) ' +
     '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
     '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
     ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
@@ -285,7 +360,9 @@ begin
       ' LEFT JOIN PRD0000 pr ON (pr.PRD_REFER = fi.PRD_REFER_ITENS AND pr.EMP_CODIGO = fi.EMP_CODIGO ) ' +
       ' LEFT JOIN PRD_GRADE pg ON (pg.PRG_REGISTRO = fi.PRG_REGISTRO) ' +
       ' WHERE fi.PRD_REFER_ITENS = ' +  QuotedStr(SqlCdsNotasDisponiveisPRD_REFER.AsString) +
-      ' AND fi.PRD_REFER = ' +  QuotedStr(prdRefer.Text) +
+      ' AND fi.PRD_REFER = ' +  QuotedStr(SqlCdsNotasDisponiveisPRD_REFER_PAI.AsString) +
+//      ' AND fi.PRD_REFER = ' +  QuotedStr(prdRefer.Text) +
+      ' AND FTI_UTILIZA_ITEM_NO_RETORNO = ''S'' ' +
       ' AND pr.EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo)
     ;
     qAux.Open;
@@ -301,6 +378,7 @@ begin
   SqlCdsNotasDisponiveis.First;
   SqlCdsNotasDisponiveis.EnableControls;
 end;
+
 
 procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisCellClick(Column: TColumn);
 var
@@ -486,6 +564,18 @@ begin
                 FreeAndNil(tcr) ;
           end;
       end;
+end;
+
+
+procedure TFrmIndustrializacaoPorKit.SqlCdsNotasDisponiveisCalcFields(
+  DataSet: TDataSet);
+begin
+  inherited;
+  if SqlCdsNotasDisponiveisQuantidadeTmp.asFloat = 0 then
+    SqlCdsNotasDisponiveisQuantidadeTmp.asFloat := 0;      // para não aparecer NAN no grid
+  if SqlCdsNotasDisponiveisqtdSolicitada.AsFloat = 0 then
+    SqlCdsNotasDisponiveisqtdSolicitada.AsFloat := 0;      // para não aparecer NAN no grid
+  
 end;
 
 procedure TFrmIndustrializacaoPorKit.BitBtn1Click(Sender: TObject);
