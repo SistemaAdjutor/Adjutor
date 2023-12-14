@@ -408,6 +408,7 @@ begin
      //
      VerificaAtualizaCredito;
      PageControl1.ActivePage := tabusu;
+     cxPageControl1.ActivePageIndex := 0;
      //EdPesquisa.SetFocus;
     // EdPesquisa.SelectAll;
      HabilitaBotoes;

@@ -106,7 +106,7 @@ procedure TfrmDashBoardInteligencia.chkNaoAbrirMaisClick(Sender: TObject);
 begin
   inherited;
   ExecSql('UPDATE USUARIO_PARAMETRO ' +
-         ' SET USP_DASH_INTELIGENCIA = ' + QuotedStr(IIF(chkNaoAbrirMais.Checked, 'S', 'N')) +
+         ' SET USP_DASH_INTELIGENCIA = ' + QuotedStr(IIF(chkNaoAbrirMais.Checked, 'N', 'S')) +
          ' WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO);
 end;
 
