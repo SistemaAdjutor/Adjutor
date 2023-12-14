@@ -1405,7 +1405,8 @@ begin
           tcr.ssenha := Trim(dbInicio.Empresa.EmailPassworldFinanceiro);
           tcr.nome_envio := DBInicio.Empresa.RAZAO;
           tcr.sEmailCliente   := clone.FieldByName('EMAIL').AsString+';'+DBInicio.Empresa.EmailInterno;
-          tcr.sAssunto        := 'Boleto  de '+dbInicio.Empresa.FANTASIA + ' para ' +clone.FieldByName('CLI_RAZAO').asstring + ' - Vcto '+ DateToStr(clone.FieldByName('FPC_VENCTO').AsDateTime)  ;
+          tcr.sAssunto        := 'Boleto  de '+dbInicio.Empresa.FANTASIA + ' para ' +clone.FieldByName('CLI_RAZAO').asstring +
+                                 iif(FormFaturamento = nil,  ' - Vcto '+ DateToStr(clone.FieldByName('FPC_VENCTO').AsDateTime)  , '') ;
 
           tcr.MMsg.Lines.Add('');
           tcr.MMsg.Lines.Add('Prezado cliente, ');
