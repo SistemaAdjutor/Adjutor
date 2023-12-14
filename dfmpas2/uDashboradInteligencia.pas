@@ -165,7 +165,7 @@ begin
   v220000 := 220000;
   v240000 := 240000;
   v35000 := 35000;
-  whereEmissao := ' WHERE  n.NF_EMISSAO BETWEEN  ' + QuotedStr(IntToStr(ano) + '-' + IntToStr(mes) + '-01') +
+  whereEmissao := ' WHERE  n.NF_EMISSAO BETWEEN  ' + QuotedStr(IntToStr(ano) + '-' + IntToStr(mesAtual) + '-01') +
            ' AND '  + QuotedStr(IntToStr(ano) + '-' + IntToStr(mesAtual) + '-' + IntToStr(diaAtual) );
 
 
@@ -183,7 +183,7 @@ begin
           whereEmissao
   );
   totalVendasFaturadas := BuscaUmDadoSqlAsFloat(
-        'SELECT SUM(p.PED_VLTOTAL_BRUTO)' +    // ou seria o n.NF_TOT_NOTA, se for um pedido faturado parcial... verificar
+        'SELECT SUM(n.NF_TOT_PROD)' +
         ' FROM PED0000 p' +
         ' JOIN NF0001 n ON (n.PED_CODIGO = p.Ped_codigo AND n.emp_codigo = p.emp_codigo AND n.NF_STATUS_NFE NOT IN (''C'', ''R'') ) ' +
           whereEmissao +
@@ -197,12 +197,12 @@ begin
   FKG.Value := TotalVendasFaturadas / totalKilosVendidos;
   if mesAtual <> mes then
     // percentual
-    texto17.Value := ((totalKilosVendidos / DiaAtual) * (v220000 / FKG.Value) / ultimoDia) / 100
+    texto17.Value := (totalKilosVendidos / DiaAtual) / (((v220000 / FKG.Value)) / ultimoDia) * 100
   else
     // percentual
-    texto17.Value := ((totalKilosVendidos / DiaAtual) * (v240000 / FKG.Value) / ultimoDia) / 100;
+    texto17.Value := (totalKilosVendidos / DiaAtual) / (((v240000 / FKG.Value)) / ultimoDia) * 100;
 
-  Faturamento2.Value := v240000 / Texto17.Value;
+  Faturamento2.Value := v240000 / (Texto17.Value / 100);
 
   if mesAtual <> mes then
     MetaKilosVendidos.Value := totalKilosVendidos
