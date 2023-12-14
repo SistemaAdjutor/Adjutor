@@ -610,7 +610,7 @@ begin
             '  FROM PED0000 p'+
             '  JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
             '  WHERE  PED_SITUACAO <> ''C'' '+
-            ConcatSe(' AND ', 'p.' + dbinicio.ExclusivoSql('PEDIDOS')) +
+            ConcatSe(' AND p.', dbinicio.ExclusivoSql('PEDIDOS')) +
             '  AND CAST(PED_DTENTRADA AS DATE)   = ' + DateToSQL(DATE));
 
     edQtdeHoje.Text := IntToStr(qAux.FieldByName('quantde').AsInteger);
@@ -621,7 +621,7 @@ begin
             ' FROM PED0000 p'+
             ' JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
             ' WHERE PED_SITUACAO <> ''C'' '+
-               ConcatSe(' AND ', 'p.' + dbinicio.ExclusivoSql('PEDIDOS')) +
+               ConcatSe(' AND p.', dbinicio.ExclusivoSql('PEDIDOS')) +
             ' AND EXTRACT (month FROM PED_DTENTRADA ) = ' + IntToStr(MonthOfTheYear(date)) +
             ' AND EXTRACT (YEAR FROM PED_DTENTRADA ) =  '+ IntToStr(YearOf(date))        );
     edQtdeMes.Text := IntToStr(qAux.FieldByName('quantde').AsInteger);
