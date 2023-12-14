@@ -1124,7 +1124,7 @@ function TProducaoDao.EnviarItemProducao(const  prd_codigo , prd_refer, ped_codi
              const cli_codigo: string;  QtdePrd: Double ; const pesokg, preco: double; const prf_registro, fti_registro, dep_codigo, programa: integer ;var  Item : TItemProducao;
              const Subordens, envase: boolean; dt_ajuste: TDateTime = 0; reg_lote: Integer = 0  ): Boolean;
  var IOP, SEQ : Integer;
-  sql, Lote:string;
+  sql, Lote, iopObservacaoPrd :string;
   controle: boolean;
   registro, chave : Integer;
   i : integer;
@@ -1209,9 +1209,18 @@ begin
          if envase then
           ore_envase := GetNextSequence('GEN_ORDEM_ENVASE');
 
-         SQL:='INSERT INTO ITEM_ORDEMPRODUCAO (iop_codigo, PRD_CODIGO, OPR_CODIGO, IOP_SEQUENCIA, IOP_NORDEM,IOP_PREFIXO, IOP_QUANTIDADE, IOP_PESO, IOP_STATUS,'+
+
+         DBInicio.qAux.Close;
+         DBInicio.qAux.SQL.Text := 'SELECT FTC_ETAPAS FROM FTC0000 WHERE PRD_REFER = ' + QuotedStr(prd_refer) ;
+         DBInicio.qAux.Open;
+         iopObservacaoPrd := DBInicio.qAux.FieldByName('FTC_ETAPAS').AsString;
+
+         SQL:='INSERT INTO ITEM_ORDEMPRODUCAO (iop_codigo, PRD_CODIGO, OPR_CODIGO, IOP_SEQUENCIA, ' +
+                  ' IOP_NORDEM,IOP_PREFIXO, IOP_QUANTIDADE, IOP_PESO, IOP_STATUS,'+
                   // IOP_DATA_INICIO, IOP_DATA_CONCLUSAO, IOP_DATA_PREVISTA,  IOP_CUSTO,'+
-                  ' IOP_PRECO, PRF_REGISTRO, fti_registro, IOP_DATALIBERACAO,IOP_DTENTREGA, iop_seq_prg, IOP_STATUS_ENVASE, ORE_CODIGO, IOP_DATA_AJUSTADA, PRDL_REGISTRO) '+
+                  ' IOP_PRECO, PRF_REGISTRO, fti_registro, IOP_DATALIBERACAO,' +
+                  ' IOP_DTENTREGA, iop_seq_prg, IOP_STATUS_ENVASE, ORE_CODIGO, ' +
+                  ' IOP_DATA_AJUSTADA, PRDL_REGISTRO, IOP_OBSERVACAO_PRD) '+
                   ' VALUES( '+
                   IntToStr(iop) +','+
                   QuotedStr(prd_codigo)+','+
@@ -1231,7 +1240,8 @@ begin
                   Iif(envase, QuotedStr('P'), 'NULL') +','+
                   IIF(envase,IntToStr(ore_envase),'null') +   ','+
                   DateTimeToSQL(dt_ajuste)+ ','  +
-                  iif(reg_lote = 0,'NULL',IntToStr(reg_lote) )+
+                  iif(reg_lote = 0,'NULL',IntToStr(reg_lote) ) + ',' +
+                  QuotedStr(iopObservacaoPrd) +
                      ')';
 
          ExecSql(sql);
