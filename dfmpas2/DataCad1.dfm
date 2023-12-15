@@ -1664,6 +1664,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
       Size = 1
     end
+    object SqlParametrosPMT_LAYOUT_BOLETO_FATURAMENTO: TStringField
+      FieldName = 'PMT_LAYOUT_BOLETO_FATURAMENTO'
+      Size = 2
+    end
     object SqlParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField
       FieldName = 'PMT_RESP_TECNICO_QUALIDADE'
       Size = 255
@@ -2975,6 +2979,12 @@ object DataCadastros1: TDataCadastros1
     object CdsParametrosPMT_INFORMA_LOTE_NOTA_ENTRADA: TStringField
       FieldName = 'PMT_INFORMA_LOTE_NOTA_ENTRADA'
       Size = 1
+    end
+    object CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTO: TStringField
+      FieldName = 'PMT_LAYOUT_BOLETO_FATURAMENTO'
+      OnGetText = CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOGetText
+      OnSetText = CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOSetText
+      Size = 2
     end
     object CdsParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField
       FieldName = 'PMT_RESP_TECNICO_QUALIDADE'

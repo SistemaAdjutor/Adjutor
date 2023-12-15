@@ -19082,6 +19082,22 @@ inherited FormParametros: TFormParametros
             DataSource = DataCadastros1.DsParametros
             TabOrder = 2
           end
+          object cbLayoutBoletoFaturamento: TDBComboBox
+            Left = 379
+            Top = 67
+            Width = 126
+            Height = 22
+            DataField = 'PMT_LAYOUT_BOLETO_FATURAMENTO'
+            DataSource = DataCadastros1.DsParametros
+            Items.Strings = (
+              'Padr'#227'o'
+              'Carn'#234
+              'Fatura'
+              'Padr'#227'o Entrega'
+              'com Recibo'
+              'Padr'#227'o e Carn'#234)
+            TabOrder = 3
+          end
         end
       end
       object TPage
