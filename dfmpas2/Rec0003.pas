@@ -1177,13 +1177,16 @@ begin
     else
     if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0)  and ( vencimento   < Date) AND (vencimento>0))
       or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsReceberFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (vencimento < Date)   )
-      and (AViewInfo.GridRecord.Values[cxgrdReceberFPC_VLPAGO.Index] = 0)
     then
       ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,4) // VERMELHO Vencida ou Descontada
     else
     if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] =  AViewInfo.GridRecord.Values[cxgrdReceberFPC_VLPARC.Index] )
       and (  vencimento   >= Date) AND (vencimento>0)) then
       ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,5) // VERDE Pendente
+    else
+    if ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsReceberFPC_ANTECIPACAO_CONCLUIDA.AsString = 'S')    )
+    then
+      ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,1) // AZUL Liquidado pelo flag de antecipação concluida na menutenção
     else
     if ( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] = 0) then
       ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,1); // AZUL Liquidado
