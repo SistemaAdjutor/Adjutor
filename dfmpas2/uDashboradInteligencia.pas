@@ -48,8 +48,6 @@ type
     Faturamento: TJvValidateEdit;
     Label2: TLabel;
     Faturamento2: TJvValidateEdit;
-    Label3: TLabel;
-    texto17: TJvValidateEdit;
     Label4: TLabel;
     FKG: TJvValidateEdit;
     Label5: TLabel;
@@ -60,10 +58,6 @@ type
     LMais: TJvValidateEdit;
     Label8: TLabel;
     MetaKilosVendidos: TJvValidateEdit;
-    Label9: TLabel;
-    Media1: TJvValidateEdit;
-    Label10: TLabel;
-    Media2: TJvValidateEdit;
     Label11: TLabel;
     L: TJvValidateEdit;
     procedure FormCreate(Sender: TObject);
@@ -150,7 +144,7 @@ var
   dia, mes, ano: Word;
   totalKilosVendidos, totalVendasFaturadas,
   v220000, v240000, v35000,
-  pesos: double;
+  pesos, texto17: double;
   whereEmissao: string;
 begin
 
@@ -196,21 +190,21 @@ begin
   Faturamento.Value := TotalVendasFaturadas;
   FKG.Value := TotalVendasFaturadas / totalKilosVendidos;
   if mesAtual <> mes then
-    // percentual
-    texto17.Value := (totalKilosVendidos / DiaAtual) / (((v220000 / FKG.Value)) / ultimoDia) * 100
+    // percentual, ficou texto 17 para não se perder na planilha de origem do cálculo...
+    texto17 := (totalKilosVendidos / DiaAtual) / (((v220000 / FKG.Value)) / ultimoDia) * 100
   else
     // percentual
-    texto17.Value := (totalKilosVendidos / DiaAtual) / (((v240000 / FKG.Value)) / ultimoDia) * 100;
+    texto17 := (totalKilosVendidos / DiaAtual) / (((v240000 / FKG.Value)) / ultimoDia) * 100;
 
-  Faturamento2.Value := v240000 / (Texto17.Value / 100);
+  Faturamento2.Value := v240000 / (Texto17 / 100);
 
   if mesAtual <> mes then
     MetaKilosVendidos.Value := totalKilosVendidos
   else
     MetaKilosVendidos.Value := (totalKilosVendidos / diaAtual) * UltimoDia;
 
-  media1.Value := (v35000 / UltimoDia) * DiaAtual;
-  media2.Value := DiaAtual * (v240000 / FKG.Value) / diaAtual;
+  // media1.Value := (v35000 / UltimoDia) * DiaAtual;
+  // media2.Value := DiaAtual * (v240000 / FKG.Value) / diaAtual;
 
   OpenAux(
           '  SELECT ' +

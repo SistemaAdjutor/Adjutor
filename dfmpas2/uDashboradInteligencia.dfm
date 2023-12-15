@@ -1,108 +1,90 @@
 inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
   Caption = 'Dashboard Intelig'#234'ncia Adjutor MX'
-  ClientHeight = 432
-  ClientWidth = 601
+  ClientHeight = 579
+  ClientWidth = 773
   Font.Height = -16
   Position = poDesigned
   WindowState = wsMaximized
-  ExplicitWidth = 617
-  ExplicitHeight = 471
+  ExplicitWidth = 789
+  ExplicitHeight = 618
   PixelsPerInch = 96
   TextHeight = 19
   object presumo: TPanel [0]
     Left = 0
     Top = 0
-    Width = 601
-    Height = 432
+    Width = 773
+    Height = 579
     Align = alClient
     TabOrder = 0
+    ExplicitWidth = 601
+    ExplicitHeight = 432
     object pfinanceiro: TPanel
       Left = 1
       Top = 57
-      Width = 599
-      Height = 303
+      Width = 771
+      Height = 450
       Align = alClient
       TabOrder = 0
+      ExplicitLeft = 0
       object Label1: TLabel
-        Left = 25
-        Top = 16
+        Left = 417
+        Top = 19
         Width = 89
         Height = 19
         Caption = 'Faturamento'
       end
       object Label2: TLabel
-        Left = 307
-        Top = 16
-        Width = 103
+        Left = 445
+        Top = 52
+        Width = 61
         Height = 19
-        Caption = 'Faturamento 2'
-      end
-      object Label3: TLabel
-        Left = 41
-        Top = 49
-        Width = 73
-        Height = 19
-        Caption = 'Percentual'
+        Caption = 'Proje'#231#227'o'
       end
       object Label4: TLabel
-        Left = 86
-        Top = 82
-        Width = 28
+        Left = 136
+        Top = 101
+        Width = 74
         Height = 19
-        Caption = 'FKG'
+        Caption = 'M'#233'dia FKG'
       end
       object Label5: TLabel
-        Left = 11
-        Top = 115
+        Left = 107
+        Top = 19
         Width = 103
         Height = 19
         Caption = 'Kilos Vendidos'
       end
       object Label6: TLabel
-        Left = 352
-        Top = 82
+        Left = 152
+        Top = 154
         Width = 58
         Height = 19
         Caption = 'L Menos'
       end
       object Label7: TLabel
-        Left = 366
-        Top = 115
+        Left = 166
+        Top = 187
         Width = 44
         Height = 19
         Caption = 'L Mais'
       end
       object Label8: TLabel
-        Left = 7
-        Top = 148
-        Width = 163
+        Left = 19
+        Top = 52
+        Width = 191
         Height = 19
-        Caption = 'Meta de Kilos Vendidos'
-      end
-      object Label9: TLabel
-        Left = 59
-        Top = 200
-        Width = 55
-        Height = 19
-        Caption = 'Media 1'
-      end
-      object Label10: TLabel
-        Left = 59
-        Top = 230
-        Width = 55
-        Height = 19
-        Caption = 'Media 2'
+        Caption = 'Proje'#231#227'o de Kilos Vendidos'
       end
       object Label11: TLabel
-        Left = 402
-        Top = 148
+        Left = 202
+        Top = 220
         Width = 8
         Height = 19
         Caption = 'L'
       end
       object Faturamento: TJvValidateEdit
-        Left = 120
-        Top = 13
+        Left = 512
+        Top = 16
         Width = 161
         Height = 27
         CriticalPoints.MaxValueIncluded = False
@@ -112,8 +94,8 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
         TabOrder = 0
       end
       object Faturamento2: TJvValidateEdit
-        Left = 416
-        Top = 13
+        Left = 512
+        Top = 49
         Width = 161
         Height = 27
         CriticalPoints.MaxValueIncluded = False
@@ -122,9 +104,9 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
         DecimalPlaces = 2
         TabOrder = 1
       end
-      object texto17: TJvValidateEdit
-        Left = 120
-        Top = 46
+      object FKG: TJvValidateEdit
+        Left = 216
+        Top = 98
         Width = 161
         Height = 27
         CriticalPoints.MaxValueIncluded = False
@@ -133,9 +115,9 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
         DecimalPlaces = 2
         TabOrder = 2
       end
-      object FKG: TJvValidateEdit
-        Left = 120
-        Top = 79
+      object kilosVendidos: TJvValidateEdit
+        Left = 216
+        Top = 16
         Width = 161
         Height = 27
         CriticalPoints.MaxValueIncluded = False
@@ -144,9 +126,9 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
         DecimalPlaces = 2
         TabOrder = 3
       end
-      object kilosVendidos: TJvValidateEdit
-        Left = 120
-        Top = 112
+      object LMenos: TJvValidateEdit
+        Left = 216
+        Top = 151
         Width = 161
         Height = 27
         CriticalPoints.MaxValueIncluded = False
@@ -155,9 +137,9 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
         DecimalPlaces = 2
         TabOrder = 4
       end
-      object LMenos: TJvValidateEdit
-        Left = 416
-        Top = 79
+      object LMais: TJvValidateEdit
+        Left = 216
+        Top = 184
         Width = 161
         Height = 27
         CriticalPoints.MaxValueIncluded = False
@@ -166,9 +148,9 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
         DecimalPlaces = 2
         TabOrder = 5
       end
-      object LMais: TJvValidateEdit
-        Left = 416
-        Top = 112
+      object MetaKilosVendidos: TJvValidateEdit
+        Left = 216
+        Top = 49
         Width = 161
         Height = 27
         CriticalPoints.MaxValueIncluded = False
@@ -177,9 +159,9 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
         DecimalPlaces = 2
         TabOrder = 6
       end
-      object MetaKilosVendidos: TJvValidateEdit
-        Left = 176
-        Top = 145
+      object L: TJvValidateEdit
+        Left = 216
+        Top = 217
         Width = 161
         Height = 27
         CriticalPoints.MaxValueIncluded = False
@@ -188,47 +170,15 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
         DecimalPlaces = 2
         TabOrder = 7
       end
-      object Media1: TJvValidateEdit
-        Left = 120
-        Top = 197
-        Width = 161
-        Height = 27
-        CriticalPoints.MaxValueIncluded = False
-        CriticalPoints.MinValueIncluded = False
-        DisplayFormat = dfFloat
-        DecimalPlaces = 2
-        TabOrder = 8
-      end
-      object Media2: TJvValidateEdit
-        Left = 120
-        Top = 230
-        Width = 161
-        Height = 27
-        CriticalPoints.MaxValueIncluded = False
-        CriticalPoints.MinValueIncluded = False
-        DisplayFormat = dfFloat
-        DecimalPlaces = 2
-        TabOrder = 9
-      end
-      object L: TJvValidateEdit
-        Left = 416
-        Top = 145
-        Width = 161
-        Height = 27
-        CriticalPoints.MaxValueIncluded = False
-        CriticalPoints.MinValueIncluded = False
-        DisplayFormat = dfFloat
-        DecimalPlaces = 2
-        TabOrder = 10
-      end
     end
     object pdata: TPanel
       Left = 1
       Top = 25
-      Width = 599
+      Width = 771
       Height = 32
       Align = alTop
       TabOrder = 1
+      ExplicitWidth = 599
       object cbMes: TComboBox
         Left = 9
         Top = 2
@@ -285,11 +235,13 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     end
     object Panel2: TPanel
       Left = 1
-      Top = 360
-      Width = 599
+      Top = 507
+      Width = 771
       Height = 71
       Align = alBottom
       TabOrder = 2
+      ExplicitTop = 360
+      ExplicitWidth = 599
       object Image1: TImage
         Left = 247
         Top = 2
@@ -600,10 +552,11 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     object Panel5: TPanel
       Left = 1
       Top = 1
-      Width = 599
+      Width = 771
       Height = 24
       Align = alTop
       TabOrder = 3
+      ExplicitWidth = 599
       object LinkLabel1: TLinkLabel
         Left = 6
         Top = 2
