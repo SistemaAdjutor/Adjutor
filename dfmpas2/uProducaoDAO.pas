@@ -81,7 +81,7 @@ var
 implementation
 
 {$R *.dfm}
- uses InicioDB, uteis, uSelProduto, uDemandaProducao;
+ uses InicioDB, uteis, uSelProduto, uDemandaProducao, uGerenciamentoPCP;
 { TProducaoDao }
 
 procedure TProducaoDao.FazerReserva(const prd_codigo: string; UsarEstoque: double);
@@ -1013,7 +1013,7 @@ begin
    begin
      if DBInicio.GetParametroSistema('PMT_BAIXA_ESTOQUE_AVANCADO')  = 'S' then
      begin
-       almoxarifado :=  BuscaUmDadoSqlAsString('SELECT AMX_CODIGO FROM PCP_TEMP' + DBInicio.Usuario.CODIGO +  ' WHERE PRD_CODIGO =  ' + QuotedStr(PRD_CODIGO) );
+       almoxarifado :=  BuscaUmDadoSqlAsString('SELECT AMX_CODIGO FROM ' + frmGerenciamentoPCP.pcpTemp +  ' WHERE PRD_CODIGO =  ' + QuotedStr(PRD_CODIGO) );
        ExecSql(' UPDATE MATERIAPRIMA_ORDEMPRODUCAO MP   '+
                ' SET AMX_CODIGO = ' + QuotedStr(almoxarifado)+
                ' WHERE MP_CODIGO = '+ IntToStr(mp_codigo) )   ;
