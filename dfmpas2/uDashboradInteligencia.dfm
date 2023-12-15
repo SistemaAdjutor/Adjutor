@@ -1,31 +1,31 @@
 inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
   Caption = 'Dashboard Intelig'#234'ncia Adjutor MX'
-  ClientHeight = 579
-  ClientWidth = 773
+  ClientHeight = 385
+  ClientWidth = 687
   Font.Height = -16
-  Position = poDesigned
-  WindowState = wsMaximized
-  ExplicitWidth = 789
-  ExplicitHeight = 618
+  Position = poMainFormCenter
+  ExplicitWidth = 703
+  ExplicitHeight = 424
   PixelsPerInch = 96
   TextHeight = 19
   object presumo: TPanel [0]
     Left = 0
     Top = 0
-    Width = 773
-    Height = 579
+    Width = 687
+    Height = 385
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 601
-    ExplicitHeight = 432
+    ExplicitWidth = 773
+    ExplicitHeight = 579
     object pfinanceiro: TPanel
       Left = 1
       Top = 57
-      Width = 771
-      Height = 450
+      Width = 685
+      Height = 256
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 0
+      ExplicitWidth = 771
+      ExplicitHeight = 450
       object Label1: TLabel
         Left = 417
         Top = 19
@@ -174,11 +174,11 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     object pdata: TPanel
       Left = 1
       Top = 25
-      Width = 771
+      Width = 685
       Height = 32
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 599
+      ExplicitWidth = 771
       object cbMes: TComboBox
         Left = 9
         Top = 2
@@ -235,13 +235,13 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     end
     object Panel2: TPanel
       Left = 1
-      Top = 507
-      Width = 771
+      Top = 313
+      Width = 685
       Height = 71
       Align = alBottom
       TabOrder = 2
-      ExplicitTop = 360
-      ExplicitWidth = 599
+      ExplicitTop = 507
+      ExplicitWidth = 771
       object Image1: TImage
         Left = 247
         Top = 2
@@ -552,11 +552,11 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     object Panel5: TPanel
       Left = 1
       Top = 1
-      Width = 771
+      Width = 685
       Height = 24
       Align = alTop
       TabOrder = 3
-      ExplicitWidth = 599
+      ExplicitWidth = 771
       object LinkLabel1: TLinkLabel
         Left = 6
         Top = 2
