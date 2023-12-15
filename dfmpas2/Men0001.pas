@@ -661,7 +661,7 @@ uses Uteis, Rep0001, Trp0001, Ban0001, Eve0001, Pag0001,
   uPesqClassificacao, uPesqGancho, uPesqAcabamentoSup,PesqCores, upesqtratamento, uPesqTipoMola, uPesqParametrosDaQualidade, uControleDeQualidade, uPesqTipoEmbalagem,
   CustoFabricaCentroCusto, uRentabilidadeOS, uSolicitacaoCompra, uXMLSCOAManaus, uProgramacaoProcessoFabricacao, UCotacaoPesquisa, uCotacaoAutorizacao, uRegularizacaoEstoque,
   uRequisicaoMaterial, uPesqRequisicaoMaterialOri, uPesqCapacidade, uHistoricoEmail,
-  testes;
+  testes, uDashboradInteligencia;
 
 
 
@@ -1752,7 +1752,9 @@ begin
   finally
     FreeAndNil(FrmCadastroUsuario);
   end;
-  imgDashboard.Visible := DBInicio.Empresa.bUSP_DASH_VENDAS or DBInicio.Empresa.bUSP_DASH_FINANCEIRO ;
+  imgDashboard.Visible := DBInicio.Empresa.bUSP_DASH_VENDAS
+                          or DBInicio.Empresa.bUSP_DASH_FINANCEIRO
+                          or (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_DASH_INTELIGENCIA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO) = 'S');
   imgSuporte.Visible := DBInicio.Empresa.bUSP_ABRICHAMADO;
 end;
 
@@ -1829,7 +1831,9 @@ begin
   ChamaLogin;
   imgSuporte.Visible := DBInicio.Empresa.bUSP_ABRICHAMADO;
   Status.Panels[0].Text := 'Usuário: ' + DBInicio.Usuario.NOME;
-  imgDashboard.Visible := DBInicio.Empresa.bUSP_DASH_VENDAS or DBInicio.Empresa.bUSP_DASH_FINANCEIRO ;
+  imgDashboard.Visible := DBInicio.Empresa.bUSP_DASH_VENDAS
+                          or DBInicio.Empresa.bUSP_DASH_FINANCEIRO
+                          or (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_DASH_INTELIGENCIA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO) = 'S');
 end;
 
 procedure TFrmMenu.SpBClientesClick(Sender: tObject);
@@ -2642,9 +2646,18 @@ end;
 procedure TFrmMenu.imgDashboardClick(Sender: TObject);
 begin
   lbFechaPainelInformativoClick(Sender);
- if not Assigned(frmDashBoardComecialFin) then
-   frmDashBoardComecialFin := tfrmDashBoardComecialFin.Create(Application);
- frmDashBoardComecialFin.ShowModal;
+  if (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_DASH_INTELIGENCIA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO) = 'S') then
+  begin
+    if not Assigned(frmDashBoardInteligencia) then
+      frmDashBoardInteligencia := TfrmDashBoardInteligencia.Create(Application);
+    frmDashBoardInteligencia.ShowModal;
+  end
+  else
+  begin
+    if not Assigned(frmDashBoardComecialFin) then
+      frmDashBoardComecialFin := tfrmDashBoardComecialFin.Create(Application);
+    frmDashBoardComecialFin.ShowModal;
+  end;
 end;
 
 procedure TFrmMenu.imgFacebookClick(Sender: TObject);
@@ -4215,7 +4228,18 @@ begin
   PrevisodeConsumodeMaterial1.Visible := DBInicio.Empresa.PMT_HABILITAR_PRODU_ANTIGO;
   miApontamentos.Visible := DBInicio.Empresa.PMT_HABILITAR_PRODU_ANTIGO;
   miGerenciarApontamento.Visible := DBInicio.Empresa.PMT_HABILITAR_PRODU_ANTIGO;
-  if (DBInicio.Empresa.bUSP_DASH_VENDAS or DBInicio.Empresa.bUSP_DASH_FINANCEIRO)  then
+  if dbInicio.BuscaUmDadoSqlAsString('SELECT USP_DASH_INTELIGENCIA ' +
+                            ' FROM USUARIO_PARAMETRO ' +
+                            ' WHERE USP_COD_USUARIO = ' + QuotedStr(DBInicio.Usuario.CODIGO) ) = 'S' then
+  begin
+    if not Assigned(frmDashBoardInteligencia) then
+      frmDashBoardInteligencia := tfrmDashBoardInteligencia.Create(Application);
+     frmDashBoardInteligencia.ShowModal;
+  end
+  else
+  if (DBInicio.Empresa.bUSP_DASH_VENDAS
+    or DBInicio.Empresa.bUSP_DASH_FINANCEIRO)
+    or (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_DASH_INTELIGENCIA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO) = 'S') then
   begin
     if not dbinicio.Empresa.bNaoAbrirDash then
     begin

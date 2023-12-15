@@ -3,8 +3,8 @@ object FrmMenu: TFrmMenu
   Top = 115
   BorderWidth = 1
   Caption = 'Adjutor - Sistema de Gest'#227'o Empresarial'
-  ClientHeight = 394
-  ClientWidth = 1134
+  ClientHeight = 557
+  ClientWidth = 1364
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clBlack
@@ -22,15 +22,15 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   DesignSize = (
-    1134
-    394)
+    1364
+    557)
   PixelsPerInch = 96
   TextHeight = 14
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1134
-    Height = 355
+    Width = 1364
+    Height = 518
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676596260200FFD8FFE000104A46494600010101006000
@@ -4552,7 +4552,7 @@ object FrmMenu: TFrmMenu
   end
   object imgLogoNovi: TImage
     Left = 32
-    Top = 352
+    Top = 515
     Width = 249
     Height = 83
     Anchors = [akLeft, akBottom]
@@ -6902,7 +6902,7 @@ object FrmMenu: TFrmMenu
   object imgSuporte: TImage
     AlignWithMargins = True
     Left = 956
-    Top = 270
+    Top = 433
     Width = 128
     Height = 139
     Anchors = [akLeft, akBottom]
@@ -7494,7 +7494,7 @@ object FrmMenu: TFrmMenu
   object imgDashboard: TImage
     AlignWithMargins = True
     Left = 1062
-    Top = 5
+    Top = 2
     Width = 116
     Height = 69
     Picture.Data = {
@@ -7697,8 +7697,8 @@ object FrmMenu: TFrmMenu
   end
   object Status: TStatusBar
     Left = 0
-    Top = 377
-    Width = 1134
+    Top = 540
+    Width = 1364
     Height = 17
     Panels = <
       item
@@ -7711,16 +7711,20 @@ object FrmMenu: TFrmMenu
       end>
     ParentFont = True
     UseSystemFont = False
+    ExplicitTop = 373
+    ExplicitWidth = 1130
   end
   object Pan_Versao: TPanel
     Left = 0
-    Top = 355
-    Width = 1134
+    Top = 518
+    Width = 1364
     Height = 22
     Align = alBottom
     BevelOuter = bvNone
     Color = 12615680
     TabOrder = 1
+    ExplicitTop = 351
+    ExplicitWidth = 1130
     object RxLEmpresa: TJvLabel
       Left = 668
       Top = 2

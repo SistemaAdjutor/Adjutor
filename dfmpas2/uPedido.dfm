@@ -29,6 +29,10 @@ inherited FrmPedido: TFrmPedido
     OnChange = PageControl1Change
     object TabPedido: TTabSheet
       Caption = 'Pedido'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GBInformacoesPedido: TGroupBox
         Left = 0
         Top = 105
@@ -672,6 +676,10 @@ inherited FrmPedido: TFrmPedido
           TabStop = False
           object tsoutros: TTabSheet
             Caption = 'Outras'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object poutros: TPanel
               Left = 0
               Top = 0
@@ -1466,10 +1474,6 @@ inherited FrmPedido: TFrmPedido
           object tsPPAC: TTabSheet
             Caption = 'Cabe'#231'alho do PPAC'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pPPAC: TPanel
               Left = 0
               Top = 0
@@ -1949,6 +1953,10 @@ inherited FrmPedido: TFrmPedido
         TabOrder = 2
         object TabSheet5: TTabSheet
           Caption = 'Informa'#231#245'es'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GBInformacoesOrcamento: TGroupBox
             Left = 3
             Top = -2
@@ -3662,6 +3670,10 @@ inherited FrmPedido: TFrmPedido
           TabOrder = 0
           object TabPedidoItem: TTabSheet
             Caption = 'Itens do Pedido'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object Panel4: TPanel
               Left = 0
               Top = 238
@@ -5211,10 +5223,6 @@ inherited FrmPedido: TFrmPedido
           object TabObservacoes: TTabSheet
             Caption = 'OBSERVA'#199#195'O no Pedido / Nota'
             ImageIndex = 5
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Splitter6: TSplitter
               Left = 481
               Top = 0
@@ -10060,7 +10068,7 @@ inherited FrmPedido: TFrmPedido
     Left = 1192
     Top = 389
     Bitmap = {
-      494C0101030005001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11838,7 +11846,7 @@ inherited FrmPedido: TFrmPedido
     Left = 64
     Top = 123
     Bitmap = {
-      494C0101040009001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

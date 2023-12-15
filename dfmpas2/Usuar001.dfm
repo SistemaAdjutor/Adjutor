@@ -14,7 +14,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
   Font.Style = []
   KeyPreview = True
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -1297,7 +1297,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             Height = 343
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = cxTabSheet1
+            Properties.ActivePage = tabGerencial
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 339
             ClientRectLeft = 4
@@ -1722,6 +1722,8 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             object tabGerencial: TcxTabSheet
               Caption = 'Gerencial'
               ImageIndex = 3
+              ExplicitLeft = 5
+              ExplicitTop = 33
               object ChkAlteraComissao: TCheckBox
                 Left = 9
                 Top = 13
@@ -1769,6 +1771,14 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
                 Height = 17
                 Caption = 'Transfer'#234'ncia de t'#237'tulos para outros bancos'
                 TabOrder = 5
+              end
+              object chkDashInteligencia: TCheckBox
+                Left = 521
+                Top = 30
+                Width = 200
+                Height = 17
+                Caption = 'Ativar Dashboard Ind'#250'stria Pl'#225'stica'
+                TabOrder = 6
               end
             end
             object tabKardex: TcxTabSheet
@@ -2375,7 +2385,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C010103000500080010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000

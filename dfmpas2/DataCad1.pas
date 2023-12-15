@@ -1702,6 +1702,8 @@ type
     CdsParametrosPMT_RESP_TECNICO_QUALIDADE: TStringField;
     SqlParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField;
     CdsParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField;
+    SQLUsaParametroUSP_DASH_INTELIGENCIA: TStringField;
+    CDSUsaParametroUSP_DASH_INTELIGENCIA: TStringField;
     SqlParametrosPMT_LAYOUT_BOLETO_FATURAMENTO: TStringField;
     CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
