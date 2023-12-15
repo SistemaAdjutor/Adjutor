@@ -29,3 +29,10 @@ patch 1: Arkson, Normadin, Hospital São José
   1757 - Correção tela de retorno de arquivo CNAB [Novi]
   1764 - Erro ao abrir Pedido [Hospital São José]
 
+patch 2: Bepine, Arkson
+  1612 - Melhoria envio dos boletos [Bepine]
+  1748 - Erro ao iniciar produção ainda continua [Arkson]  
+  1758 - Inteligência bepine [Bepine]
+  1766 - Cor do status no financeiro alterando [Arkson]
+  1767 - Corrigir lista de produtos para venda [Arkson]
+  
