@@ -1368,7 +1368,8 @@ begin
                begin
                 clear;
                 Add( 'Select ITP.AMX_CODIGO_DESTINO, ITP.PED_CODIGO, IIF(ITP.PRD_REFER='+qStr('')+', ITP.prdco_codigo_original, ITP.PRD_REFER) AS PRD_REFER, ITP.prf_produto_agregado, NF.NF_IT_NOTANUMER,');
-                Add( '       NF.NF_QTDE, ITP.PRF_QTDEFAT, ITP.PRD_REFER, ');
+                Add( '       CASE WHEN NF.NF_QTDE > 0 THEN NF.NF_QTDE ELSE ITP.PRF_QTDEFAT END AS NF_QTDE,  ');
+                Add( '       ITP.PRF_QTDEFAT, ITP.PRD_REFER, ');
                 Add( '       ITP.PRF_REGISTRO, PD.PRD_CODIGO,');
                 Add( '       NF.PRG_REGISTRO, ITP.PRG_REGISTRO,');
                 Add( '       NF.PRDL_REGISTRO, ITP.PRDL_REGISTRO,');
@@ -1414,6 +1415,8 @@ begin
                 Add( 'order by NF.NF_IT_NOTANUMER,NF.NF_REGISTRO');
                end;
 
+               if dbInicio.IsDesenvolvimento then
+                CopyToClipboard(qAuxEstornaItem.SQL.Text);
                qAuxEstornaItem.Open ;
 
                While not qAuxEstornaItem.Eof do
@@ -1543,7 +1546,8 @@ begin
                end;
 
                 //Atualizando a situacao do Pedido
-                ExecSql( 'Update PED0000 SET PED_VLFATURADO = coalesce(PED_VLFATURADO,0) - '+FloatToSql( CdsNotasNF_TOT_PROD.AsCurrency+
+                ExecSql( 'Update PED0000 SET ' +
+                        'PED_VLFATURADO = coalesce(PED_VLFATURADO,0) - '+FloatToSql( CdsNotasNF_TOT_PROD.AsCurrency+
                            CdsNotasNF_VLFRETE.AsFloat + CdsNotasNF_VLSEGURO.AsFloat+ CdsNotasNF_DESP_ACES.AsFloat+CdsNotasNF_VL_SUBTRIB.AsFloat -CdsNotasNF_VL_DESCTO.AsCurrency )+
                         ' where PED_CODIGO = '+qStr(CdsNotasPED_CODIGO.AsString)+ ' and emp_codigo = ' + QuotedStr(cdsNotasEMP_CODIGO.AsString),false  );
 
