@@ -902,8 +902,12 @@ begin
               if ((CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridCCPendente.AsCurrency < CdsParcelasGridFPC_VLPARC.AsCurrency)) then
                 ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,0) // AMARELO Parcial
               else
-              if ((CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date))
-                or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date)   )
+              if ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and ( CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA.ASString  = 'S')    )
+              then
+                ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,1)  // AZUL Liquidado pelo flag de antecipação concluida na manutenção
+              else
+              if ( (CdsParcelasGridCCPendente.AsCurrency > 0) and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date) and (CdsParcelasGridCCPendente.AsFloat > 0) )
+                or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA.AsString <> 'S') and (CdsParcelasGridFPC_VENCTO.AsDateTime < Date) and (CdsParcelasGridCCPendente.AsFloat > 0)  )
               then
                 ImageList1.Draw(DbGridRecParc.Canvas,Rect.Left+03,Rect.Top+1,4) // VERMELHO Vencida ou Descontada
               else

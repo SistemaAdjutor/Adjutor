@@ -2151,6 +2151,10 @@ inherited FormContasReceber: TFormContasReceber
     end
     object TabSheet2: TTabSheet
       Caption = 'Vls.&Fiscais'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox1: TGroupBox
         Left = 0
         Top = 0
@@ -2442,6 +2446,10 @@ inherited FormContasReceber: TFormContasReceber
     object tsRateioCentroCusto: TTabSheet
       Caption = 'Rateio Centro de Custo'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbgrdRateio: TDBGrid
         Left = 0
         Top = 0
@@ -3009,7 +3017,7 @@ inherited FormContasReceber: TFormContasReceber
     Left = 311
     Top = 312
     Bitmap = {
-      494C010107000900100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010107000900140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       00000000000000000000000000000000000000000000D8D8F2007272D0007272
       D0007272D0007272D0007272D0007272D0007272D0007272D0007272D0007272
