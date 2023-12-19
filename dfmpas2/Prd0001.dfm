@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = Tbs_FichaTec
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -147,7 +147,7 @@ inherited FormProduto: TFormProduto
         Top = 34
         Width = 1051
         Height = 483
-        ActivePage = tsCamposTecnicos
+        ActivePage = tsGeral
         Align = alCustom
         Anchors = [akLeft, akBottom]
         TabOrder = 2
@@ -521,7 +521,6 @@ inherited FormProduto: TFormProduto
               Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
               ParentShowHint = False
               PopupMenu = PopupMenu1
-              ReadOnly = True
               ShowHint = True
               TabOrder = 0
               TitleFont.Charset = ANSI_CHARSET
@@ -534,7 +533,15 @@ inherited FormProduto: TFormProduto
               Columns = <
                 item
                   Expanded = False
+                  FieldName = 'FTI_SEQUENCIA'
+                  Title.Caption = 'Seq.'
+                  Width = 28
+                  Visible = True
+                end
+                item
+                  Expanded = False
                   FieldName = 'PRD_REFER_ITENS'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = 'Refer'#234'ncia'
                   Title.Font.Charset = ANSI_CHARSET
@@ -548,6 +555,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'PRD_DESCRI'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = 'Descri'#231#227'o'
                   Title.Font.Charset = ANSI_CHARSET
@@ -561,6 +569,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'PRG_DESCRICAO'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = 'Grade'
                   Title.Font.Charset = ANSI_CHARSET
@@ -574,6 +583,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'PTI_SIGLA'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = '*'
                   Title.Font.Charset = ANSI_CHARSET
@@ -587,6 +597,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'FTI_UC'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = 'Consumo'
                   Title.Font.Charset = ANSI_CHARSET
@@ -600,12 +611,14 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'FTI_PERCENTUAL'
+                  ReadOnly = True
                   Title.Caption = 'Consumo %'
                   Visible = False
                 end
                 item
                   Expanded = False
                   FieldName = 'PRD_PCUSTO'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = 'Custo Entrada'
                   Title.Font.Charset = ANSI_CHARSET
@@ -619,6 +632,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'TOTALITEM'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = 'Custo Total'
                   Title.Font.Charset = ANSI_CHARSET
@@ -632,6 +646,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'prd_pvenda'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = 'P. Venda Unit'
                   Width = 95
@@ -640,6 +655,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'PRD_UND'
+                  ReadOnly = True
                   Title.Alignment = taCenter
                   Title.Caption = 'UND'
                   Title.Font.Charset = ANSI_CHARSET
@@ -652,6 +668,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'OPE_CODIGO'
+                  ReadOnly = True
                   Title.Caption = 'C'#243'digo'
                   Width = 41
                   Visible = True
@@ -659,6 +676,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'ope_descricao'
+                  ReadOnly = True
                   Title.Caption = 'Opera'#231#227'o'
                   Width = 213
                   Visible = True
@@ -666,6 +684,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'FTI_PERDA'
+                  ReadOnly = True
                   Title.Caption = 'Perda'
                   Width = 89
                   Visible = True
@@ -673,6 +692,7 @@ inherited FormProduto: TFormProduto
                 item
                   Expanded = False
                   FieldName = 'amx_Descri'
+                  ReadOnly = True
                   Title.Caption = 'Almoxarifado'
                   Visible = True
                 end>
@@ -717,20 +737,20 @@ inherited FormProduto: TFormProduto
           end
           object GrpMateriaPrima: TGroupBox
             Left = -4
-            Top = 320
+            Top = 319
             Width = 1044
             Height = 104
             TabOrder = 3
             TabStop = True
             object Label57: TLabel
-              Left = 5
+              Left = 52
               Top = 4
               Width = 33
               Height = 14
               Caption = 'C'#243'digo'
             end
             object SpProduto: TSpeedButton
-              Left = 408
+              Left = 455
               Top = 18
               Width = 24
               Height = 21
@@ -761,42 +781,42 @@ inherited FormProduto: TFormProduto
               OnClick = SpProdutoClick
             end
             object Label58: TLabel
-              Left = 738
+              Left = 785
               Top = 4
               Width = 45
               Height = 14
               Caption = 'Consumo'
             end
             object Label59: TLabel
-              Left = 929
+              Left = 955
               Top = 4
               Width = 83
               Height = 14
               Caption = 'Data Modifica'#231#227'o'
             end
             object Label60: TLabel
-              Left = 833
+              Left = 866
               Top = 4
               Width = 86
               Height = 14
               Caption = 'Consumo Anterior'
             end
             object Label61: TLabel
-              Left = 114
+              Left = 161
               Top = 4
               Width = 132
               Height = 14
               Caption = 'Descri'#231#227'o da mat'#233'ria-prima'
             end
             object Label107: TLabel
-              Left = 565
+              Left = 612
               Top = 4
               Width = 30
               Height = 14
               Caption = 'Grade'
             end
             object SdCadastroGrade: TSpeedButton
-              Left = 580
+              Left = 627
               Top = 17
               Width = 23
               Height = 22
@@ -869,15 +889,22 @@ inherited FormProduto: TFormProduto
               ParentFont = False
             end
             object lbPercentualConsumo: TLabel
-              Left = 606
+              Left = 653
               Top = 20
               Width = 61
               Height = 14
               Caption = '% Consumo:'
               Visible = False
             end
+            object Label334: TLabel
+              Left = 9
+              Top = 4
+              Width = 22
+              Height = 14
+              Caption = 'Seq.'
+            end
             object EdtRefer: TEdit
-              Left = 6
+              Left = 53
               Top = 17
               Width = 100
               Height = 22
@@ -888,7 +915,7 @@ inherited FormProduto: TFormProduto
               OnExit = EdtReferExit
             end
             object EdtProduto: TEdit
-              Left = 112
+              Left = 159
               Top = 17
               Width = 286
               Height = 22
@@ -901,9 +928,9 @@ inherited FormProduto: TFormProduto
               TabOrder = 1
             end
             object CurrAnterior: TCurrencyEdit
-              Left = 833
+              Left = 866
               Top = 18
-              Width = 95
+              Width = 80
               Height = 21
               AutoSelect = False
               AutoSize = False
@@ -998,7 +1025,7 @@ inherited FormProduto: TFormProduto
               OnClick = Bit_CancelarMateriaClick
             end
             object CbGrade: TComboBoxRw
-              Left = 439
+              Left = 486
               Top = 17
               Width = 117
               Height = 22
@@ -1073,9 +1100,9 @@ inherited FormProduto: TFormProduto
               LimparCampoAoSair = True
             end
             object DateModif: TJvDateEdit
-              Left = 929
+              Left = 955
               Top = 17
-              Width = 95
+              Width = 82
               Height = 22
               Glyph.Data = {
                 76050000424D760500000000000036000000280000001C0000000C0000000100
@@ -1142,9 +1169,9 @@ inherited FormProduto: TFormProduto
               TabOrder = 9
             end
             object CurrConsumo: TJvValidateEdit
-              Left = 737
+              Left = 784
               Top = 18
-              Width = 95
+              Width = 80
               Height = 21
               AutoSize = False
               CriticalPoints.MaxValueIncluded = False
@@ -1215,7 +1242,7 @@ inherited FormProduto: TFormProduto
               OnExit = EdAlmoxarifadoCodigoExit
             end
             object curPercentualConsumo: TJvValidateEdit
-              Left = 671
+              Left = 718
               Top = 17
               Width = 60
               Height = 22
@@ -1235,6 +1262,16 @@ inherited FormProduto: TFormProduto
               Height = 17
               Caption = 'Utiliza Item no Retorno de Industrializa'#231#227'o'
               TabOrder = 15
+            end
+            object edSequencia: TSpinEdit
+              Left = 8
+              Top = 18
+              Width = 38
+              Height = 23
+              MaxValue = 0
+              MinValue = 0
+              TabOrder = 16
+              Value = 0
             end
           end
           object BIT_FTC_RELATORIO: TBitBtn
@@ -1795,7 +1832,7 @@ inherited FormProduto: TFormProduto
             Top = 4
             Width = 1048
             Height = 420
-            ActivePage = tsCampos2
+            ActivePage = tsCampos1
             TabOrder = 2
             object tsCampos1: TTabSheet
               Caption = 'Mat'#233'ria prima'

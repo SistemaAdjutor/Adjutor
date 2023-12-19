@@ -134,7 +134,7 @@ uses
   dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, frxExportBaseDialog;
+  dxSkinXmas2008Blue, frxExportBaseDialog, Vcl.Samples.Spin;
 
 type
   TFormProduto = class( TfrmBaseDB )
@@ -2229,6 +2229,8 @@ type
     Label333: TLabel;
     MMO_EXTREMIDADE_MOLA_MATERIA: TDBComboBox;
     cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField;
+    Label334: TLabel;
+    edSequencia: TSpinEdit;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2811,6 +2813,7 @@ begin
       cdsProdutos.Cancel;
       EdtPrd_Refer.Enabled := True;
       EdtPrd_Refer.SetFocus;
+      DBGridFichaTecnicaItem.ReadOnly := False;
     end;
 
   except
@@ -4025,10 +4028,19 @@ begin
   CdsItensFicha.close;
   qItensFicha.sql.Clear;
 
-  qItensFicha.sql.Text := 'Select F2.*,P1.PRD_DESCRI,P1.PRD_UND,P1.PRD_GRADE,P2.PTI_SIGLA, g1.PRG_DESCRICAO, ' + 'cast( ' + 'case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' + '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END as numeric(15,4)) AS PRD_PCUSTO, ' + 'cast( ' + '(case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' +
-    '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END  * F2.fti_uc) as numeric(15,5)) AS TotalItem, ' + ' ope.OPE_CODIGO, ope_descricao, p1.prd_pvenda as prd_pvenda, ' + ' p1.amx_codigo, amx_Descri ' + 'from ftc_it01 F2 ' + ' join prd0000 P1 on (f2.prd_refer_itens = p1.prd_refer ' + ConcatSE( ' and P1.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ')' +
-    ' join PRD_TIPO P2 ON P1.pti_codigo = P2.PTI_CODIGO ' + ' LEFT join PRD_GRADE g1 on g1.PRG_REGISTRO = f2.PRG_REGISTRO ' + ' left JOIN prmt0001 PRMT ON PRMT.emp_codigo = P1.emp_codigo ' + ' LEFT join operacoes ope on (ope.ope_codigo = f2.ope_codigo )' + ' left join almox0000 am on (am.amx_codigo = f2.amx_codigo ' + ConcatSE( ' and am.', DBInicio.ExclusivoSql( 'ESTOQUES' ) ) + ' )' + 'WHERE F2.PRD_REFER = ' + qStr( EdtPrd_Refer.Text ) + ' ' +
-    ConcatSE( ' and f2.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ' ' + 'order by F2.FTI_REGISTRO, F2.PRD_REFER';
+  qItensFicha.sql.Text := 'Select F2.*,P1.PRD_DESCRI,P1.PRD_UND,P1.PRD_GRADE,P2.PTI_SIGLA, g1.PRG_DESCRICAO, ' +
+                          'cast( ' + 'case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' + '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END as numeric(15,4)) AS PRD_PCUSTO, ' + 'cast( ' + '(case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' +
+    '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END  * F2.fti_uc) as numeric(15,5)) AS TotalItem, ' + ' ope.OPE_CODIGO, ope_descricao, p1.prd_pvenda as prd_pvenda, ' + ' p1.amx_codigo, amx_Descri ' +
+    'from ftc_it01 F2 ' +
+    ' join prd0000 P1 on (f2.prd_refer_itens = p1.prd_refer ' + ConcatSE( ' and P1.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ')' +
+    ' join PRD_TIPO P2 ON P1.pti_codigo = P2.PTI_CODIGO ' +
+    ' LEFT join PRD_GRADE g1 on g1.PRG_REGISTRO = f2.PRG_REGISTRO ' +
+    ' left JOIN prmt0001 PRMT ON PRMT.emp_codigo = P1.emp_codigo ' +
+    ' LEFT join operacoes ope on (ope.ope_codigo = f2.ope_codigo )' +
+    ' left join almox0000 am on (am.amx_codigo = f2.amx_codigo ' + ConcatSE( ' and am.', DBInicio.ExclusivoSql( 'ESTOQUES' ) ) + ' )' +
+    'WHERE F2.PRD_REFER = ' + qStr( EdtPrd_Refer.Text ) + ' ' +
+    ConcatSE( ' and f2.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ' ' +
+     'order by F2.FTI_SEQUENCIA';
 
   if DBInicio.IsDesenvolvimento then
     CopyToClipBoard( qItensFicha.sql.Text );
@@ -4176,6 +4188,7 @@ begin
     DmProducao.CdsFichaTec.Edit;
     DesabilitaBotoesFTC;
     LimparDadosFTC;
+    edSequencia.Value := BuscaUmDadoSqlAsInteger('SELECT MAX(FTI_SEQUENCIA) + 1 FROM FTC_IT01 WHERE PRD_REFER = ' + QuotedStr(EdtPrd_Refer.Text) ) ;
     DbDtFTC_CRIACAO.Setfocus;
 
   end
@@ -4414,7 +4427,10 @@ begin
         if CdsItensFicha.Locate( 'PRD_REFER_ITENS', EdtRefer.Text, [ ] ) then
           AlterarItensFTC
         Else
+        begin
           wIncluirItem := True;
+          edSequencia.Value := BuscaUmDadoSqlAsInteger('SELECT MAX(FTI_SEQUENCIA) + 1 FROM FTC_IT01 WHERE PRD_REFER = ' + QuotedStr(EdtPrd_Refer.Text) ) ;
+        end;
       end;
     finally
       FreeAndNil( FormProdutoGrid );
@@ -4506,6 +4522,7 @@ begin
 
         CdsItensFichaFTI_PERDA.Value := CurPerda.AsFloat;
         CdsItensFichaAMX_CODIGO.AsString := CbAlmoxarifado.idRetorno;
+        CdsItensFichaFTI_SEQUENCIA.AsInteger := edSequencia.Value;
         CdsItensFichaFTI_PERCENTUAL.AsFloat := curPercentualConsumo.AsFloat;
         cdsItensFichaFTI_UTILIZA_ITEM_NO_RETORNO.AsString := iif(cbRetorno.Checked, 'S', 'N');
         // NÃO ATUALIZA...
@@ -4513,6 +4530,7 @@ begin
         CdsItensFicha.ApplyUpdates( 0 ); // não ta funcionando direito Às vezes
         ExecSql( ' UPDATE FTC_IT01   ' +
         ' SET FTI_UC = ' + FloatToSQL( CurrConsumo.AsFloat ) + ', ' +
+        '     FTI_SEQUENCIA = ' + IntToStr(edSequencia.Value) + ',' +
         '     FTI_UTILIZA_ITEM_NO_RETORNO = ' + QuotedStr( iif(cbRetorno.Checked, 'S', 'N') ) + ',' +
         '     FTI_PERCENTUAL = ' + FloatToSQL( curPercentualConsumo.AsFloat ) + iif( edOperacao.idRetorno <> '', ', OPE_CODIGO =' + QuotedStr( edOperacao.idRetorno ), '' ) +
         iif( CbAlmoxarifado.idRetorno <> '', '  , AMX_CODIGO = ' + QuotedStr( CbAlmoxarifado.idRetorno ), ', amx_codigo = null' ) +
@@ -4560,6 +4578,7 @@ begin
   DateModif.Text := '';
   edOperacao.idRetorno := '';
   CbAlmoxarifado.idRetorno := '';
+  edSequencia.Value := 0;
   EdAlmoxarifadoCodigo.Clear;
   cbRetorno.Checked := False;
 end;
@@ -5579,6 +5598,8 @@ begin
   CbGrade.TextoLocalizar := CdsItensFichaPRG_REGISTRO.AsString;
   CbGrade.Localizar := True;
   CbAlmoxarifado.idRetorno := CdsItensFichaAMX_CODIGO.AsString;
+
+  edSequencia.Value := CdsItensFichaFTI_SEQUENCIA.AsInteger;
 
   EdtRefer.Color := $00D7D7D7;
   EdtRefer.TabStop := False;
