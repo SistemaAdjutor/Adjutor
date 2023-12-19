@@ -410,9 +410,7 @@ type
     ppDBCalc29: TppDBCalc;
     ppLabel54: TppLabel;
     ppDBText22: TppDBText;
-    ppDBCalc30: TppDBCalc;
-    ppDBCalc31: TppDBCalc;
-    ppDBCalc32: TppDBCalc;
+    ppDBText39: TppDBText;
     procedure FormCreate(Sender: TObject);
     procedure acaoImprimirDANFEClick(Sender: TObject);
     procedure cdsNotasAfterScroll(DataSet: TDataSet);
