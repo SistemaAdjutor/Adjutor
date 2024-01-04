@@ -4,8 +4,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
   ClientWidth = 1262
   Constraints.MinWidth = 1268
   WindowState = wsMaximized
-  ExplicitWidth = 1270
-  ExplicitHeight = 605
+  ExplicitWidth = 1278
+  ExplicitHeight = 617
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
@@ -14,6 +14,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     ExplicitWidth = 1262
     ExplicitHeight = 542
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 1254
       ExplicitHeight = 514
       inherited pnControle: TPanel
@@ -175,8 +177,10 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object GbPesquisaData: TGroupBox
               Left = 580
@@ -379,8 +383,10 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object cbOrigem: TSgDbSearchCombo
               Left = 988
@@ -402,8 +408,10 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
           end
         end
@@ -495,7 +503,6 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
             Font.Name = 'Arial'
             Font.Style = []
             Title.Alignment = taCenter
-            Title.Caption = 'Cidade'
             Title.Font.Charset = ANSI_CHARSET
             Title.Font.Color = clBlack
             Title.Font.Height = -11
@@ -535,6 +542,17 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
           end
           item
             Expanded = False
+            FieldName = 'CLI_DTNASCIMENTO'
+            Title.Font.Charset = DEFAULT_CHARSET
+            Title.Font.Color = clWindowText
+            Title.Font.Height = -11
+            Title.Font.Name = 'Tahoma'
+            Title.Font.Style = [fsBold]
+            Width = 109
+            Visible = True
+          end
+          item
+            Expanded = False
             FieldName = 'CLI_DTULTCOM'
             Font.Charset = ANSI_CHARSET
             Font.Color = clBlack
@@ -553,7 +571,6 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
           item
             Expanded = False
             FieldName = 'RCL_ATIVIDADE'
-            Title.Caption = 'Atividade'
             Title.Font.Charset = ANSI_CHARSET
             Title.Font.Color = clWindowText
             Title.Font.Height = -11
@@ -564,20 +581,17 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
           item
             Expanded = False
             FieldName = 'CLI_FAX'
-            Title.Caption = 'Fax'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'cli_celular'
-            Title.Caption = 'Celular'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CLI_BAIRRO'
             Title.Alignment = taCenter
-            Title.Caption = 'Bairro'
             Title.Font.Charset = ANSI_CHARSET
             Title.Font.Color = clWindowText
             Title.Font.Height = -11
@@ -588,7 +602,6 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
           item
             Expanded = False
             FieldName = 'CLI_CEP'
-            Title.Caption = 'CEP'
             Title.Font.Charset = DEFAULT_CHARSET
             Title.Font.Color = clWindowText
             Title.Font.Height = -11
@@ -605,7 +618,6 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
             Font.Name = 'Arial'
             Font.Style = []
             Title.Alignment = taCenter
-            Title.Caption = 'Endere'#231'o'
             Title.Font.Charset = ANSI_CHARSET
             Title.Font.Color = clBlack
             Title.Font.Height = -11
@@ -789,87 +801,107 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
   end
   inherited cdsBusco: TClientDataSet
     object cdsBuscoCLI_CODIGO: TStringField
+      DisplayLabel = 'C'#243'digo'
       FieldName = 'CLI_CODIGO'
       Required = True
       Size = 5
     end
     object cdsBuscoCLI_RAZAO: TStringField
+      DisplayLabel = 'Raz'#227'o Social'
       FieldName = 'CLI_RAZAO'
       OnGetText = cdsBuscoCLI_RAZAOGetText
       Size = 70
     end
     object cdsBuscoCLI_FANTASIA: TStringField
+      DisplayLabel = 'Nome de Fantasia'
       FieldName = 'CLI_FANTASIA'
       Size = 55
     end
     object cdsBuscoCLI_CGC: TStringField
+      DisplayLabel = 'CNPJ'
       FieldName = 'CLI_CGC'
       OnGetText = cdsBuscoCLI_CGCGetText
       Size = 14
     end
     object cdsBuscoCLI_FONE: TStringField
+      DisplayLabel = 'Telefone'
       FieldName = 'CLI_FONE'
       OnGetText = cdsBuscoCLI_FONEGetText
       Size = 11
     end
     object cdsBuscoCLI_DTULTCOM: TSQLTimeStampField
+      DisplayLabel = #218'ltima Compra'
       FieldName = 'CLI_DTULTCOM'
     end
     object cdsBuscoCLI_CIDADE: TStringField
+      DisplayLabel = 'Cidade'
       FieldName = 'CLI_CIDADE'
       Size = 30
     end
     object cdsBuscoCLI_UF: TStringField
+      DisplayLabel = 'Estado'
       FieldName = 'CLI_UF'
       Size = 2
     end
     object cdsBuscoCLI_BAIRRO: TStringField
+      DisplayLabel = 'Bairro'
       FieldName = 'CLI_BAIRRO'
       Size = 25
     end
     object cdsBuscoCLI_ENDERE: TStringField
+      DisplayLabel = 'Endere'#231'o'
       FieldName = 'CLI_ENDERE'
       Size = 50
     end
     object cdsBuscoCLI_CONTATO: TStringField
+      DisplayLabel = 'Contato'
       FieldName = 'CLI_CONTATO'
       Size = 25
     end
     object cdsBuscoCLI_EMAIL_ALTERNATIVO: TStringField
+      DisplayLabel = 'E-mail Alternativo'
       FieldName = 'CLI_EMAIL_ALTERNATIVO'
       Size = 150
     end
     object cdsBuscoCLI_EMAIL: TStringField
+      DisplayLabel = 'E-mail'
       FieldName = 'CLI_EMAIL'
       Size = 150
     end
     object cdsBuscoRCL_ATIVIDADE: TStringField
+      DisplayLabel = 'Atividade'
       FieldName = 'RCL_ATIVIDADE'
     end
     object cdsBuscoCLI_INSC: TStringField
+      DisplayLabel = 'I.E.'
       FieldName = 'CLI_INSC'
       Size = 18
     end
     object cdsBuscoCLI_CEP: TStringField
+      DisplayLabel = 'CEP'
       FieldName = 'CLI_CEP'
       Size = 8
     end
     object cdsBuscocli_celular: TStringField
+      DisplayLabel = 'Celular'
       DisplayWidth = 16
       FieldName = 'cli_celular'
       OnGetText = cdsBuscoCLI_FONEGetText
       Size = 11
     end
     object cdsBuscoCLI_FAX: TStringField
+      DisplayLabel = 'Fax'
       DisplayWidth = 16
       FieldName = 'CLI_FAX'
       OnGetText = cdsBuscoCLI_FONEGetText
       Size = 11
     end
     object cdsBuscoCLI_UND_CONSUMIDORA: TIntegerField
+      DisplayLabel = 'Unidade Consumidora'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end
     object cdsBuscoREP_NOME: TStringField
+      DisplayLabel = 'Representante'
       FieldName = 'REP_NOME'
       Size = 35
     end
@@ -877,6 +909,14 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
       DisplayLabel = 'Origem'
       FieldName = 'CORI_DESCRICAO'
       Size = 150
+    end
+    object cdsBuscoCLI_DTNASCIMENTO: TSQLTimeStampField
+      DisplayLabel = 'Data Nascimento'
+      FieldName = 'CLI_DTNASCIMENTO'
+    end
+    object cdsBuscoEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
     end
   end
   object mnuListar: TPopupMenu
