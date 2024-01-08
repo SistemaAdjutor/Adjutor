@@ -427,6 +427,13 @@ procedure TfrmCte.CarregaXML( const scaminho : string );
           edtCST.text := '41';
           edtAliquotaICMS.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS00.pICMS;
         end;
+      cst40 :
+        begin
+          edtBaseIcms.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS00.vBC;
+          edtValorIcms.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS00.vICMS;
+          edtCST.text := '40';
+          edtAliquotaICMS.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS00.pICMS;
+        end;
       cst00 :
         begin
           edtBaseIcms.Value := ACBrCTe1.Conhecimentos.items[ 0 ]

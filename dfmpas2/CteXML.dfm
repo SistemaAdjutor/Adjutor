@@ -1,11 +1,11 @@
 inherited frmCte: TfrmCte
   AutoSize = True
   Caption = 'importar XML Ct-e'
-  ClientHeight = 419
+  ClientHeight = 461
   ClientWidth = 984
-  Constraints.MinWidth = 1000
+  Constraints.MinHeight = 500
   ExplicitWidth = 1000
-  ExplicitHeight = 458
+  ExplicitHeight = 500
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox [0]
@@ -16,7 +16,6 @@ inherited frmCte: TfrmCte
     Align = alTop
     Caption = 'Informa'#231#245'es Da Nota Fiscal'
     TabOrder = 0
-    ExplicitWidth = 304
     object lblNrNota: TLabel
       Left = 23
       Top = 26
@@ -321,7 +320,6 @@ inherited frmCte: TfrmCte
     Align = alTop
     Caption = 'Fornecedor'
     TabOrder = 1
-    ExplicitWidth = 304
     object Label7: TLabel
       Left = 68
       Top = 24
@@ -1078,7 +1076,6 @@ inherited frmCte: TfrmCte
     Align = alTop
     Caption = 'Totais'
     TabOrder = 2
-    ExplicitWidth = 304
     object Label18: TLabel
       Left = 33
       Top = 16
@@ -1263,12 +1260,12 @@ inherited frmCte: TfrmCte
   end
   object Panel1: TPanel [3]
     Left = 0
-    Top = 359
+    Top = 401
     Width = 984
     Height = 60
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 304
+    ExplicitTop = 299
     object btnFornecedor: TBitBtn
       Left = 11
       Top = 15
@@ -1403,11 +1400,11 @@ inherited frmCte: TfrmCte
     Left = 0
     Top = 307
     Width = 984
-    Height = 52
+    Height = 94
     Align = alClient
     Caption = 'Panel2'
     TabOrder = 4
-    ExplicitWidth = 304
+    ExplicitHeight = 52
     object Label29: TLabel
       Left = 5
       Top = 7
@@ -1417,12 +1414,12 @@ inherited frmCte: TfrmCte
     end
     object mobservacao: TMemo
       Left = 1
-      Top = -38
+      Top = 4
       Width = 982
       Height = 89
       Align = alBottom
       TabOrder = 0
-      ExplicitWidth = 302
+      ExplicitTop = -38
     end
   end
   inherited coCalcula: TACBrCalculadora
