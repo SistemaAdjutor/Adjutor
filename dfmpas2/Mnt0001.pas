@@ -255,6 +255,7 @@ type
     Label5: TLabel;
     Button31: TButton;
     cbAlmoxarifado: TComboBoxRw;
+    Button32: TButton;
     procedure Button3Click(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure BtnCancelaClick(Sender: tObject);
@@ -291,6 +292,7 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure Button30Click(Sender: TObject);
     procedure Button31Click(Sender: TObject);
+    procedure Button32Click(Sender: TObject);
   private
     { Private declarations }
     wCancela :Boolean;
@@ -449,6 +451,41 @@ begin
 
 
   uteis.Aviso('Processo Executado com Sucesso.');
+end;
+
+procedure TFrmManutencao.Button32Click(Sender: TObject);
+var
+  rec, cont : integer;
+begin
+  if MessageDlg('Confirma a reordenação dos itens das Fichas Técnicas?', mtConfirmation, [mbYes, mbNo],0) <> mrYes then
+    exit;
+  Application.ProcessMessages;
+  qAux.Close;
+  qAux.SQL.Text := 'SELECT PRD_REFER, EMP_CODIGO FROM PRD0000 ORDER BY PRD_REFER';
+  qAux.Open;
+  PrBar.Max := qAux.RecordCount;
+  cont := 0;
+  while not qAux.Eof do
+  begin
+    Inc(cont);
+    if (cont / 100) = Int(Cont / 100) then
+      PrBar.Position := cont;
+    qAux2.Close;
+    qAux2.SQL.Text := 'SELECT FTI_REGISTRO FROM FTC_IT01 ' +
+                      ' WHERE PRD_REFER = ' + QuotedStr(qAux.FieldByName('PRD_REFER').AsString) + ' AND EMP_CODIGO = ' + QuotedStr(qAux.FieldByName('EMP_CODIGO').AsString );
+    qAux2.Open;
+    rec := 0;
+    while not qAux2.Eof do
+    begin
+      Inc(rec);
+      ExecSql('UPDATE FTC_IT01 SET FTI_SEQUENCIA = ' + IntToStr(rec) + ' WHERE FTI_REGISTRO =  ' + qAux2.FieldByName('FTI_REGISTRO').AsString );
+      qAux2.Next;
+    end;
+    qAux.Next;
+  end;
+  PrBar.Max := 0;
+  PrBar.Position := 0;
+  MessageDlg('Processo Concluído.', mtInformation, [mbOk], 0);
 end;
 
 procedure TFrmManutencao.Button3Click(Sender: tObject);

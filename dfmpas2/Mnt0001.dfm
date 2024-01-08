@@ -3,19 +3,19 @@ inherited FrmManutencao: TFrmManutencao
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Manuten'#231#227'o T'#233'cnica Novi'
-  ClientHeight = 573
-  ClientWidth = 748
+  ClientHeight = 615
+  ClientWidth = 770
   Font.Name = 'MS Sans Serif'
   FormStyle = fsMDIChild
   Position = poDesktopCenter
   Visible = True
-  ExplicitWidth = 756
-  ExplicitHeight = 600
+  ExplicitWidth = 786
+  ExplicitHeight = 654
   PixelsPerInch = 96
   TextHeight = 13
   object Label5: TLabel [0]
     Left = 448
-    Top = 526
+    Top = 544
     Width = 210
     Height = 13
     Caption = 'OS COMPONENTES EST'#195'O ABAIXO'
@@ -50,12 +50,13 @@ inherited FrmManutencao: TFrmManutencao
   object Panel1: TPanel [2]
     Left = 0
     Top = 0
-    Width = 748
+    Width = 770
     Height = 41
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     TabOrder = 16
+    ExplicitWidth = 748
     object Label1: TLabel
       Left = 8
       Top = 8
@@ -86,7 +87,7 @@ inherited FrmManutencao: TFrmManutencao
   end
   object Button3: TButton [3]
     Left = 324
-    Top = 521
+    Top = 539
     Width = 75
     Height = 25
     Caption = '&Sair'
@@ -102,11 +103,13 @@ inherited FrmManutencao: TFrmManutencao
   end
   object PrBar: TProgressBar [4]
     Left = 0
-    Top = 555
-    Width = 748
+    Top = 597
+    Width = 770
     Height = 18
     Align = alBottom
     TabOrder = 15
+    ExplicitTop = 555
+    ExplicitWidth = 748
   end
   object Button17: TButton [5]
     Left = 16
@@ -448,7 +451,7 @@ inherited FrmManutencao: TFrmManutencao
   end
   object GroupBox1: TGroupBox [28]
     Left = 367
-    Top = 353
+    Top = 371
     Width = 345
     Height = 153
     Caption = 'Importa'#231#227'o Produtos e Grades Adjutor Produ'#231#227'o Web'
@@ -534,24 +537,9 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 29
     OnClick = Button29Click
   end
-  object Button30: TButton [31]
-    Left = 368
-    Top = 283
-    Width = 345
-    Height = 25
-    Caption = 'Atualizar Sequ'#234'ncia dos Itens no Pedido'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 30
-    OnClick = Button30Click
-  end
-  object cbAlmoxarifado: TComboBoxRw [32]
+  object cbAlmoxarifado: TComboBoxRw [31]
     Left = 589
-    Top = 314
+    Top = 336
     Width = 99
     Height = 21
     TabOrder = 32
@@ -570,8 +558,10 @@ inherited FrmManutencao: TFrmManutencao
     GridLeft = 0
     GridWidth = 0
     GridHeight = 100
+    GridTop = 0
     GridShowWhenEnter = False
     SelectWithDoubleClick = False
+    LimparCampoAoSair = True
     Tabela = 'ALMOX0000'
     CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
     CamposRetornar = 'amx_CODIGO'
@@ -587,14 +577,44 @@ inherited FrmManutencao: TFrmManutencao
     itemindex = 0
     style = csDropDown
   end
-  object Button31: TButton [33]
+  object Button31: TButton [32]
     Left = 368
-    Top = 311
+    Top = 333
     Width = 217
     Height = 25
     Caption = 'Refaz Saldos dos Lotes de Produtos'
     TabOrder = 31
     OnClick = Button31Click
+  end
+  object Button30: TButton [33]
+    Left = 368
+    Top = 283
+    Width = 345
+    Height = 25
+    Caption = 'Atualizar Sequ'#234'ncia dos Itens no Pedido'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 30
+    OnClick = Button30Click
+  end
+  object Button32: TButton [34]
+    Left = 368
+    Top = 308
+    Width = 345
+    Height = 25
+    Caption = 'Atualizar Sequ'#234'ncia dos Itens na Ficha T'#233'cnica'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 33
+    OnClick = Button32Click
   end
   inherited coCalcula: TACBrCalculadora
     Top = 624
