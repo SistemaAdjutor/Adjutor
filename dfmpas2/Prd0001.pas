@@ -4033,7 +4033,7 @@ begin
 
   qItensFicha.sql.Text := 'Select F2.*,P1.PRD_DESCRI,P1.PRD_UND,P1.PRD_GRADE,P2.PTI_SIGLA, g1.PRG_DESCRICAO, ' +
                           'cast( ' + 'case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' + '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END as numeric(15,4)) AS PRD_PCUSTO, ' + 'cast( ' + '(case ' + '     WHEN PRMT.pmt_calcularpv = ''0'' THEN ' +
-    '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END  * F2.fti_uc) as numeric(15,5)) AS TotalItem, ' + ' ope.OPE_CODIGO, ope_descricao, p1.prd_pvenda as prd_pvenda, ' + ' p1.amx_codigo, amx_Descri ' +
+    '         P1.PRD_PCUSTO ' + '     WHEN PRMT.pmt_calcularpv = ''1'' THEN ' + '         P1.prd_custocomipi ' + '     WHEN PRMT.pmt_calcularpv = ''2'' THEN ' + '         P1.PRD_PMEDIO ' + 'END  * F2.fti_uc) as DOUBLE PRECISION) AS TotalItem, ' + ' ope.OPE_CODIGO, ope_descricao, p1.prd_pvenda as prd_pvenda, ' + ' p1.amx_codigo, amx_Descri ' +
     'from ftc_it01 F2 ' +
     ' join prd0000 P1 on (f2.prd_refer_itens = p1.prd_refer ' + ConcatSE( ' and P1.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ')' +
     ' join PRD_TIPO P2 ON P1.pti_codigo = P2.PTI_CODIGO ' +

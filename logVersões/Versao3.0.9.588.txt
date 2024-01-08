@@ -1,0 +1,14 @@
+﻿Atualizado em 08/01/2024
+Inicio da versão: 08/01/2024
+
+principal: Quimi Sani, Arkson, Chemvet, Rotor, Bepine, Hospital São José, Collect
+  1759 - Casas decimais da ficha técnica [Quimi Sani]
+  1761 - Criar sequencia dos itens na ficha técnica [Arkson]
+  1762 - Relatório de notas fiscais de saída [Chemvet]
+  1768 - Pedido não estorna no faturamento [Novi]
+  1769 - Erro ao importar CTe [Rotor]
+  1771 - Altererar cadastro do fornecedor [Bepine]
+  1772 - Erro em usuários - dashboard [Hospital São José]
+  1773 - Botão de relatório [Arkson]
+  1775 - Incluir data de nascimento no relatório [Collect]
+
