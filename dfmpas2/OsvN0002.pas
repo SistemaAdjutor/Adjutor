@@ -70,7 +70,7 @@ type
     SqlCdsN1FTI_MODE6: TStringField;
     SqlCdsN1FTI_MODE7: TStringField;
     SqlCdsN1FTI_MODE8: TStringField;
-    SqlCdsN1FTI_UC: TFMTBCdField;
+    SqlCdsN1FTI_UC: TFloatField;
     ImageList1: TImageList;
     PopMenuItens: TPopupMenu;
     Ativa1: TMenuItem;
@@ -148,7 +148,7 @@ type
     SqlCdsItensFichasFTI_MODE6: TStringField;
     SqlCdsItensFichasFTI_MODE7: TStringField;
     SqlCdsItensFichasFTI_MODE8: TStringField;
-    SqlCdsItensFichasFTI_UC: TFMTBCdField;
+    SqlCdsItensFichasFTI_UC: TFloatField;
     CdsTemp: TClientDataSet;
     CdsTempREFER: TStringField;
     CdsTempREFER_ORIGEN: TStringField;
@@ -1353,17 +1353,18 @@ begin
                        ao adicionar itens na lista - 29/07/17 marcio   }
                        ////////////////////////////////////////////////////
                            if not assigned(FormOrdServCentroNovo) then
-                           begin
+//                           begin
                              FormOrdServCentroNovo := TFormOrdServCentroNovo.Create(Application);
-                             if (MDIChildCount > 1) then
-                                 SendMessage(ClientHandle, WM_MDICASCADE, 0, 0)
-                             else
-                                 FormOrdServCentroNovo.Top := 0;
-                             end;
+//                             if (MDIChildCount > 1) then
+//                                 SendMessage(ClientHandle, WM_MDICASCADE, 0, 0)
+//                             else
+//                                 FormOrdServCentroNovo.Top := 0;
+//                             end;
+                            FormOrdServCentroGerar.Close;
                             FormOrdServCentroNovo.Show;
                             //
-                            FormOrdServCentroGerar.Release;
-                            FormOrdServCentroGerar := Nil;
+                            // FormOrdServCentroGerar.Release;
+                            // FormOrdServCentroGerar := Nil;
                        ////////////////////////////////////////////////////////
 
                      end
@@ -2779,7 +2780,7 @@ begin
     end
     else
     begin
-         wXQtde  := (pQtdeProduzir * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wXQtde  := (pQtdeProduzir * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
 
          wXQtdeOrigem  := wXQtde;
          if (wConsiderar='S') then
@@ -2793,14 +2794,14 @@ begin
                      wXQtde:=0;
               end;
          end;
-         wx1     := (CdsTempVAR1.AsCurrency * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
-         wx2     := (CdsTempVAR2.AsCurrency * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
-         wx3     := (CdsTempVAR3.AsCurrency * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
-         wx4     := (CdsTempVAR4.AsCurrency * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
-         wx5     := (CdsTempVAR5.AsCurrency * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
-         wx6     := (CdsTempVAR6.AsCurrency * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
-         wx7     := (CdsTempVAR7.AsCurrency * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
-         wx8     := (CdsTempVAR8.AsCurrency * SqlCdsItensFichasFTI_UC.AsCurrency) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wx1     := (CdsTempVAR1.AsCurrency * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wx2     := (CdsTempVAR2.AsCurrency * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wx3     := (CdsTempVAR3.AsCurrency * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wx4     := (CdsTempVAR4.AsCurrency * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wx5     := (CdsTempVAR5.AsCurrency * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wx6     := (CdsTempVAR6.AsCurrency * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wx7     := (CdsTempVAR7.AsCurrency * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
+         wx8     := (CdsTempVAR8.AsCurrency * SqlCdsItensFichasFTI_UC.AsFloat) / SqlCdsItensFichasFTC_BASEFORMULA.AsInteger;
     end;
     //
     wOP_Pai := CdsTempNUM_OP.AsString;
@@ -2823,7 +2824,7 @@ begin
     CdsTempVAR7.AsCurrency            := wX7;
     CdsTempVAR8.AsCurrency            := wX8;
     CdsTempSIGLA.AsString             := SqlCdsItensFichasPTI_SIGLA.AsString;
-    CdsTempUC.AsCurrency              := (SqlCdsItensFichasFTI_UC.AsCurrency/SqlCdsItensFichasFTC_BASEFORMULA.AsInteger);
+    CdsTempUC.AsCurrency              := (SqlCdsItensFichasFTI_UC.AsFloat/SqlCdsItensFichasFTC_BASEFORMULA.AsInteger);
     CdsTempGERAR_PI.AsBoolean         := True;
     CdsTempSTATUS_PREV.AsString       := 'N';
     CdsTemp.Post;

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Grids, DBGrids, Mask,  rxToolEdit, Buttons, ComCtrls,
   ExtCtrls, DBCtrls,  rxCurrEdit, Provider, SqlExpr,SqlClientDataSet, DB, DBClient, DBLocal,
-  DBLocalS, ImgList, Menus;
+  DBLocalS, ImgList, Menus, Data.DBXFirebird, System.ImageList, SimpleDS;
 
 type
   TFormOrdServCentroB = class(TForm)
@@ -1825,26 +1825,26 @@ begin
                     if (FrmMenu.wVariacoes = 'S') then
                        begin
                            if SqlCdsN1FTI_MODE1.AsString = 'X' then
-                              wConsumo := SqlCdsConsumoWQTDE1.AsCurrency * SqlCdsN1FTI_UC.AsCurrency;
+                              wConsumo := SqlCdsConsumoWQTDE1.AsCurrency * SqlCdsN1FTI_UC.AsFloat;
                            if SqlCdsN1FTI_MODE2.AsString = 'X' then
-                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE2.AsCurrency * SqlCdsN1FTI_UC.AsCurrency);
+                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE2.AsCurrency * SqlCdsN1FTI_UC.AsFloat);
                            if SqlCdsN1FTI_MODE3.AsString = 'X' then
-                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE3.AsCurrency * SqlCdsN1FTI_UC.AsCurrency);
+                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE3.AsCurrency * SqlCdsN1FTI_UC.AsFloat);
                            if SqlCdsN1FTI_MODE4.AsString = 'X' then
-                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE4.AsCurrency * SqlCdsN1FTI_UC.AsCurrency);
+                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE4.AsCurrency * SqlCdsN1FTI_UC.AsFloat);
                            if SqlCdsN1FTI_MODE5.AsString = 'X' then
-                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE5.AsCurrency * SqlCdsN1FTI_UC.AsCurrency);
+                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE5.AsCurrency * SqlCdsN1FTI_UC.AsFloat);
                            if SqlCdsN1FTI_MODE6.AsString = 'X' then
-                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE6.AsCurrency * SqlCdsN1FTI_UC.AsCurrency);
+                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE6.AsCurrency * SqlCdsN1FTI_UC.AsFloat);
                            if SqlCdsN1FTI_MODE7.AsString = 'X' then
-                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE7.AsCurrency * SqlCdsN1FTI_UC.AsCurrency);
+                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE7.AsCurrency * SqlCdsN1FTI_UC.AsFloat);
                            if SqlCdsN1FTI_MODE8.AsString = 'X' then
-                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE8.AsCurrency * SqlCdsN1FTI_UC.AsCurrency);
+                              wConsumo := wConsumo+(SqlCdsConsumoWQTDE8.AsCurrency * SqlCdsN1FTI_UC.AsFloat);
                        end
                     else
                        begin
 //                           wConsumo := (SqlCdsConsumoWQTDE.AsCurrency * SqlCdsN1FTI_UC.AsCurrency);
-                           wConsumo := (wQtdeProduzir * SqlCdsN1FTI_UC.AsCurrency);
+                           wConsumo := (wQtdeProduzir * SqlCdsN1FTI_UC.AsFloat);
                        end;
                     if wConsumo>0 then
                        begin
@@ -1971,27 +1971,27 @@ begin
                   if (FrmMenu.wVariacoes = 'S') then
                      begin
                          if tSqlNivel[iNivelTabela].FieldByName('FTI_MODE1').AsString = 'X' then
-//                            wConsumo := SqlCdsConsumoWQTDE1.AsCurrency * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency;
-                            wConsumo := wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency;
+//                            wConsumo := SqlCdsConsumoWQTDE1.AsCurrency * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat;
+                            wConsumo := wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat;
                          if tSqlNivel[iNivelTabela].FieldByName('FTI_MODE2').AsString = 'X' then
 //                            wConsumo := wConsumo+(SqlCdsConsumoWQTDE2.AsCurrency * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
-                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
+                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat);
                          if tSqlNivel[iNivelTabela].FieldByName('FTI_MODE3').AsString = 'X' then
-                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
+                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat);
                          if tSqlNivel[iNivelTabela].FieldByName('FTI_MODE4').AsString = 'X' then
-                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
+                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat);
                          if tSqlNivel[iNivelTabela].FieldByName('FTI_MODE5').AsString = 'X' then
-                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
+                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat);
                          if tSqlNivel[iNivelTabela].FieldByName('FTI_MODE6').AsString = 'X' then
-                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
+                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat);
                          if tSqlNivel[iNivelTabela].FieldByName('FTI_MODE7').AsString = 'X' then
-                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
+                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat);
                          if tSqlNivel[iNivelTabela].FieldByName('FTI_MODE8').AsString = 'X' then
-                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
+                            wConsumo := wConsumo+(wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat);
                      end
                   else
                      begin
-                         wConsumo := (wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency);
+                         wConsumo := (wQtdes * tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat);
                      end;
                   if wConsumo>0 then
                      begin
@@ -2429,7 +2429,7 @@ begin
                     {Inserir os Itens da OP}
                     wM1:=0;wM2:=0;wM3:=0;wM4:=0;wM5:=0;wM6:=0;wM7:=0;wM8:=0;
                     //
-                    xConsumo      := SqlCdsN1FTI_UC.AsCurrency;
+                    xConsumo      := SqlCdsN1FTI_UC.AsFloat;
                     xRefer        := SqlCdsN1PRD_REFER.AsString;
                     xRefer_itens  := SqlCdsN1PRD_REFER_ITENS.AsString;
                     xOrdemProducao:= EdtORDEM.Text;
@@ -2459,7 +2459,7 @@ begin
                        end;
                     //
                     wConsumo := 0;
-                    wConsumo := SqlCdsN1FTI_UC.AsCurrency;
+                    wConsumo := SqlCdsN1FTI_UC.AsFloat;
                     //
                     if wConsumo>0 then
                        begin
@@ -2900,7 +2900,7 @@ begin
                     {Inserir os Itens da OP}
                     wM1:=0;wM2:=0;wM3:=0;wM4:=0;wM5:=0;wM6:=0;wM7:=0;wM8:=0;
                     //
-                    xConsumo                := tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency;
+                    xConsumo                := tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat;
                     xRefer                  := tSqlNivel[iNivelTabela].FieldByName('PRD_REFER').AsString;
                     xRefer_itens            := tSqlNivel[iNivelTabela].FieldByName('PRD_REFER_ITENS').AsString;
                     tCodigoOP[iNivelTabela] := Edit1.Text;
@@ -2946,7 +2946,7 @@ begin
                        end;
                     //
                     wConsumo := 0;
-                    wConsumo := tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency;
+                    wConsumo := tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat;
                     //
                     if wConsumo>0 then
                        begin
@@ -3189,7 +3189,7 @@ begin
                               end
                            else
                               begin
-                                  xConsumo                := tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsCurrency;
+                                  xConsumo                := tSqlNivel[iNivelTabela].FieldByName('FTI_UC').AsFloat;
                                   xRefer                  := tSqlNivel[iNivelTabela].FieldByName('PRD_REFER').AsString;
                                   xRefer_itens            := tSqlNivel[iNivelTabela].FieldByName('PRD_REFER_ITENS').AsString;
                                   tCodigoOP[iNivelTabela] := Edit1.Text;

@@ -2929,9 +2929,8 @@ object DmProducao: TDmProducao
       ProviderFlags = [pfInUpdate]
       Size = 1
     end
-    object SqlOsvItOSI_UC: TFMTBCDField
+    object SqlOsvItOSI_UC: TFloatField
       FieldName = 'OSI_UC'
-      Precision = 15
     end
     object SqlOsvItOSI_QTDE1: TFMTBCDField
       FieldName = 'OSI_QTDE1'
@@ -3103,9 +3102,8 @@ object DmProducao: TDmProducao
       ProviderFlags = [pfInUpdate]
       Calculated = True
     end
-    object CdsOsvItOSI_UC: TFMTBCDField
+    object CdsOsvItOSI_UC: TFloatField
       FieldName = 'OSI_UC'
-      Precision = 15
     end
     object CdsOsvItOSI_QTDE1: TFMTBCDField
       FieldName = 'OSI_QTDE1'

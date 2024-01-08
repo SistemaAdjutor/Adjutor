@@ -12,9 +12,8 @@ inherited FormPrevConsumo: TFormPrevConsumo
   Position = poDesktopCenter
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitTop = -246
   ExplicitWidth = 783
-  ExplicitHeight = 558
+  ExplicitHeight = 559
   PixelsPerInch = 96
   TextHeight = 14
   object Panel1: TPanel [0]

@@ -453,8 +453,8 @@ object FormFichaCusto: TFormFichaCusto
     end
     object TbFichaCustoItemFTI_UC: TFloatField
       FieldName = 'FTI_UC'
-      DisplayFormat = '#,##0.000'
-      EditFormat = '#,##0.000'
+      DisplayFormat = '#,##0.000000'
+      EditFormat = '#,##0.000000'
     end
     object TbFichaCustoItemFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'

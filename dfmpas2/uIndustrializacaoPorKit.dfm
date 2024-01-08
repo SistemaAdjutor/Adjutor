@@ -472,10 +472,8 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       FieldName = 'TipoIndustrializacaoDescricao'
       Size = 255
     end
-    object SqlCdsNotasDisponiveisQUANTIDADEFT: TFMTBCDField
+    object SqlCdsNotasDisponiveisQUANTIDADEFT: TFloatField
       FieldName = 'QUANTIDADEFT'
-      Precision = 18
-      Size = 5
     end
     object SqlCdsNotasDisponiveisqtdSolicitada: TFloatField
       FieldKind = fkInternalCalc

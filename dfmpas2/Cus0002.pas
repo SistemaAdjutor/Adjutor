@@ -199,9 +199,9 @@ begin
                      //wReferItens   := SqlCdsItensFichaPRD_REFER_ITENS.AsString;
                      //wPcusto       := SqlCdsItensFichaPRD_PCUSTO.AsCurrency;
                      //wCustoEntrada := SqlCdsItensFichaPRD_CUSTOCOMIPI.AsCurrency;
-                     wConsumo      := SqlCdsItensFichaFTI_UC.AsCurrency;
-                     wPrecoUnit    := SqlCdsItensFichaPRD_PCUSTO.AsCurrency * SqlCdsItensFichaFTI_UC.AsCurrency;
-                     wPreco_EntradaUnit := SqlCdsItensFichaPRD_CUSTOCOMIPI.AsCurrency *  SqlCdsItensFichaFTI_UC.AsCurrency;
+                     wConsumo      := SqlCdsItensFichaFTI_UC.AsFloat;
+                     wPrecoUnit    := SqlCdsItensFichaPRD_PCUSTO.AsCurrency * SqlCdsItensFichaFTI_UC.AsFloat;
+                     wPreco_EntradaUnit := SqlCdsItensFichaPRD_CUSTOCOMIPI.AsCurrency *  SqlCdsItensFichaFTI_UC.AsFloat;
                      wPreco_Mprima := wPreco_Mprima + wPrecoUnit;
                      wPrecoTotal := wPrecoTotal + wPrecoUnit;
                      wPreco_EntradaTotal := wPreco_EntradaTotal + wPreco_EntradaUnit ;

@@ -8,7 +8,10 @@ inherited FrmPrevisaoCompras: TFrmPrevisaoCompras
     Width = 1286
     ExplicitWidth = 1286
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 1278
+      ExplicitHeight = 0
       inherited pnlControle: TPanel
         Width = 1278
         Visible = False
@@ -33,9 +36,6 @@ inherited FrmPrevisaoCompras: TFrmPrevisaoCompras
       end
       inherited cxgrd1: TcxGrid
         Width = 1278
-        LookAndFeel.Kind = lfStandard
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitWidth = 1278
         inherited cxgrd1DBTableView1: TcxGridDBTableView
           DataController.DataSource = dsSumarizado

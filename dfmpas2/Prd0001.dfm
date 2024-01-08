@@ -33,6 +33,10 @@ inherited FormProduto: TFormProduto
     object Tbs_FichaTec: TTabSheet
       Caption = 'Ficha T'#233'cnica'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PAN_FTC03: TPanel
         Left = 0
         Top = 2
@@ -154,6 +158,10 @@ inherited FormProduto: TFormProduto
         OnChange = pcFichaTecnicaChange
         object tsGeral: TTabSheet
           Caption = 'Composi'#231#227'o'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object Total: TLabel
             Left = 593
             Top = 183
@@ -907,8 +915,8 @@ inherited FormProduto: TFormProduto
               Height = 21
               AutoSelect = False
               AutoSize = False
-              DecimalPlaces = 4
-              DisplayFormat = ',0.0000;-,0.0000'
+              DecimalPlaces = 6
+              DisplayFormat = ',0.000000;-,0.000000'
               MaxLength = 15
               TabOrder = 5
             end
@@ -1150,7 +1158,7 @@ inherited FormProduto: TFormProduto
               CriticalPoints.MaxValueIncluded = False
               CriticalPoints.MinValueIncluded = False
               DisplayFormat = dfFloat
-              DecimalPlaces = 5
+              DecimalPlaces = 6
               EditText = '0'
               MaxLength = 15
               TabOrder = 4
@@ -1421,7 +1429,7 @@ inherited FormProduto: TFormProduto
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             DisplayFormat = dfFloat
-            DecimalPlaces = 5
+            DecimalPlaces = 6
             Font.Charset = ANSI_CHARSET
             Font.Color = clWhite
             Font.Height = -11
@@ -6038,7 +6046,7 @@ inherited FormProduto: TFormProduto
         Width = 875
         Height = 188
         Cursor = crHandPoint
-        ActivePage = TabSheet5
+        ActivePage = TbS_FatorConv
         HotTrack = True
         TabOrder = 2
         OnChange = PgCtrl_ProdutosChange
@@ -10501,6 +10509,10 @@ inherited FormProduto: TFormProduto
       Caption = 'Compras'
       ImageIndex = 4
       OnShow = TabSheet4Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbgrdCompras: TDBGrid
         Left = 0
         Top = 49
@@ -12861,18 +12873,11 @@ inherited FormProduto: TFormProduto
       FieldName = 'FTI_MODIFICADA'
       ProviderFlags = [pfInUpdate]
     end
-    object CdsItensFichaFTI_UC: TFMTBCDField
-      FieldName = 'FTI_UC'
-      ProviderFlags = [pfInUpdate]
-      DisplayFormat = '#,#####0.00000'
-      Precision = 15
-    end
-    object CdsItensFichaFTI_UCMODIFIC: TFMTBCDField
+    object CdsItensFichaFTI_UCMODIFIC: TFloatField
       FieldName = 'FTI_UCMODIFIC'
       ProviderFlags = [pfInUpdate]
-      DisplayFormat = '#,#####0.00000'
-      EditFormat = '#,#####0.00000'
-      Precision = 15
+      DisplayFormat = '#,#####0.000000'
+      EditFormat = '#,#####0.000000'
     end
     object CdsItensFichaFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -12980,12 +12985,10 @@ inherited FormProduto: TFormProduto
       ProviderFlags = [pfInUpdate]
       Calculated = True
     end
-    object CdsItensFichaTOTALITEM: TFMTBCDField
+    object CdsItensFichaTOTALITEM: TFloatField
       FieldName = 'TOTALITEM'
       ProviderFlags = [pfInUpdate]
       DisplayFormat = '###,###,####0.0000'
-      Precision = 18
-      Size = 6
     end
     object CdsItensFichaOPE_CODIGO: TIntegerField
       FieldName = 'OPE_CODIGO'
@@ -13022,6 +13025,11 @@ inherited FormProduto: TFormProduto
       FieldName = 'FTI_PERCENTUAL'
       DisplayFormat = '##0.000'
       EditFormat = '##0.000'
+    end
+    object CdsItensFichaFTI_UC: TFloatField
+      FieldName = 'FTI_UC'
+      DisplayFormat = '###,##0.000000'
+      EditFormat = '###,##0.000000'
     end
     object CdsItensFichaFTI_UTILIZA_ITEM_NO_RETORNO: TStringField
       FieldName = 'FTI_UTILIZA_ITEM_NO_RETORNO'
@@ -13227,15 +13235,13 @@ inherited FormProduto: TFormProduto
     object SqlItensGradeFTI_MODIFICADA: TSQLTimeStampField
       FieldName = 'FTI_MODIFICADA'
     end
-    object SqlItensGradeFTI_UC: TFMTBCDField
+    object SqlItensGradeFTI_UC: TFloatField
       FieldName = 'FTI_UC'
-      DisplayFormat = '#,####0.0000'
-      EditFormat = '#,####0.0000'
-      Precision = 15
+      DisplayFormat = '#,####0.000000'
+      EditFormat = '#,####0.000000'
     end
-    object SqlItensGradeFTI_UCMODIFIC: TFMTBCDField
+    object SqlItensGradeFTI_UCMODIFIC: TFloatField
       FieldName = 'FTI_UCMODIFIC'
-      Precision = 15
     end
     object SqlItensGradeFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -13368,11 +13374,10 @@ inherited FormProduto: TFormProduto
       FieldName = 'PTI_SIGLA'
       Size = 2
     end
-    object CdsRelItensFTI_UC: TCurrencyField
+    object CdsRelItensFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       ProviderFlags = [pfInUpdate]
-      DisplayFormat = '#,###0.000'
-      currency = False
+      DisplayFormat = '#,###0.000000'
     end
     object CdsRelItensFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -13423,10 +13428,8 @@ inherited FormProduto: TFormProduto
     object CdsRelItensPRD_PCUSTO: TCurrencyField
       FieldName = 'PRD_PCUSTO'
     end
-    object CdsRelItensTOTALITEM: TFMTBCDField
+    object CdsRelItensTOTALITEM: TFloatField
       FieldName = 'TOTALITEM'
-      Precision = 18
-      Size = 6
     end
     object CdsRelItensTOTAL: TCurrencyField
       FieldName = 'TOTAL'
@@ -15130,7 +15133,7 @@ inherited FormProduto: TFormProduto
         Border.mmPadding = 0
         DataField = 'FTI_UC'
         DataPipeline = ppDBPipeline2
-        DisplayFormat = '#,####0.0000'
+        DisplayFormat = '#,####0.000000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
@@ -19370,7 +19373,7 @@ inherited FormProduto: TFormProduto
     Top = 151
   end
   object qItensFicha: TSQLQuery [87]
-    MaxBlobSize = -1
+    MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
       'Select'
@@ -19416,6 +19419,7 @@ inherited FormProduto: TFormProduto
       'on g1.PRG_REGISTRO = f2.PRG_REGISTRO'
       'left JOIN prmt0001 PRMT'
       'ON PRMT.emp_codigo = P1.emp_codigo')
+    SQLConnection = DBConn
     Left = 1788
     Top = 81
   end
@@ -19717,12 +19721,11 @@ inherited FormProduto: TFormProduto
       FieldName = 'FTC_CRIACAO'
       ProviderFlags = []
     end
-    object cdsMPusadoFTI_UC: TFMTBCDField
+    object cdsMPusadoFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       ProviderFlags = [pfInUpdate]
-      DisplayFormat = '#,####0.0000'
-      EditFormat = '#,####0.0000'
-      Precision = 15
+      DisplayFormat = '#,####0.000000'
+      EditFormat = '#,####0.000000'
     end
     object cdsMPusadoFTI_PERDA: TFMTBCDField
       FieldName = 'FTI_PERDA'

@@ -540,13 +540,11 @@ object FormProdutosOPs: TFormProdutosOPs
       Precision = 15
       Size = 4
     end
-    object SqlCdsEstoqueFALTA_EMPENHAR: TFMTBCDField
+    object SqlCdsEstoqueFALTA_EMPENHAR: TFloatField
       FieldName = 'FALTA_EMPENHAR'
-      DisplayFormat = '#,##0.0000'
-      Precision = 15
-      Size = 4
+      DisplayFormat = '#,##0.000000'
     end
-    object SqlCdsEstoqueConsumo: TFMTBCDField
+    object SqlCdsEstoqueConsumo: TFloatField
       FieldName = 'Consumo'
     end
     object SqlCdsEstoquePRD_REFER: TStringField
@@ -671,6 +669,7 @@ object FormProdutosOPs: TFormProdutosOPs
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -687,6 +686,14 @@ object FormProdutosOPs: TFormProdutosOPs
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -696,22 +703,34 @@ object FormProdutosOPs: TFormProdutosOPs
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -719,13 +738,26 @@ object FormProdutosOPs: TFormProdutosOPs
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 572
     Top = 187
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBOps'
     object ppHeaderBand3: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 19315
@@ -734,6 +766,7 @@ object FormProdutosOPs: TFormProdutosOPs
         DesignLayer = ppDesignLayer2
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -748,13 +781,15 @@ object FormProdutosOPs: TFormProdutosOPs
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 265
@@ -769,13 +804,15 @@ object FormProdutosOPs: TFormProdutosOPs
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RELA'#199#195'O DE MAT'#201'RIA-PRIMA EM FALTA NA PRODU'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -790,13 +827,15 @@ object FormProdutosOPs: TFormProdutosOPs
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -810,6 +849,7 @@ object FormProdutosOPs: TFormProdutosOPs
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -830,6 +870,7 @@ object FormProdutosOPs: TFormProdutosOPs
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -849,6 +890,7 @@ object FormProdutosOPs: TFormProdutosOPs
         DesignLayer = ppDesignLayer2
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -861,6 +903,7 @@ object FormProdutosOPs: TFormProdutosOPs
         DesignLayer = ppDesignLayer2
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -875,13 +918,15 @@ object FormProdutosOPs: TFormProdutosOPs
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Refer'#234'ncia'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 1058
@@ -896,13 +941,15 @@ object FormProdutosOPs: TFormProdutosOPs
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o do Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 31485
@@ -917,13 +964,15 @@ object FormProdutosOPs: TFormProdutosOPs
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Quantidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -939,13 +988,15 @@ object FormProdutosOPs: TFormProdutosOPs
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Und'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 161925
@@ -956,8 +1007,7 @@ object FormProdutosOPs: TFormProdutosOPs
       end
     end
     object ppDetailBand4: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3969
@@ -967,6 +1017,7 @@ object FormProdutosOPs: TFormProdutosOPs
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBOps
         Font.Charset = DEFAULT_CHARSET
@@ -989,6 +1040,7 @@ object FormProdutosOPs: TFormProdutosOPs
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBOps
         Font.Charset = DEFAULT_CHARSET
@@ -1011,6 +1063,7 @@ object FormProdutosOPs: TFormProdutosOPs
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CQTDE'
         DataPipeline = ppDBOps
         DisplayFormat = '#,##0.000'
@@ -1035,6 +1088,7 @@ object FormProdutosOPs: TFormProdutosOPs
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBOps
         Font.Charset = DEFAULT_CHARSET
@@ -1064,7 +1118,7 @@ object FormProdutosOPs: TFormProdutosOPs
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 4233
@@ -1092,6 +1146,7 @@ object FormProdutosOPs: TFormProdutosOPs
           DataPipeline = ppDBEstoque
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.Duplex = dpNone
           PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.SaveDeviceSettings = False
@@ -1103,11 +1158,11 @@ object FormProdutosOPs: TFormProdutosOPs
           PrinterSetup.mmPaperWidth = 216000
           PrinterSetup.PaperSize = 1
           Units = utMillimeters
-          Version = '16.02'
+          Version = '22.0'
           mmColumnWidth = 0
           DataPipelineName = 'ppDBEstoque'
           object ppTitleBand1: TppTitleBand
-            Background.Brush.Style = bsClear
+            Border.mmPadding = 0
             mmBottomOffset = 0
             mmHeight = 9525
             mmPrintPosition = 0
@@ -1116,13 +1171,15 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'Label7'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Caption = 'Refer'#234'ncia'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Name = 'Arial'
               Font.Size = 9
               Font.Style = []
-              FormField = False
+              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+              FormFieldSettings.FormFieldType = fftNone
               Transparent = True
               mmHeight = 3704
               mmLeft = 794
@@ -1136,13 +1193,15 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'Label8'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Caption = 'Descri'#231#227'o da Mat'#233'ria-Prima'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Name = 'Arial'
               Font.Size = 9
               Font.Style = []
-              FormField = False
+              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+              FormFieldSettings.FormFieldType = fftNone
               Transparent = True
               mmHeight = 3704
               mmLeft = 27517
@@ -1156,13 +1215,15 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'Label9'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Caption = 'Qtde '#224' Comprar'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Name = 'Arial'
               Font.Size = 9
               Font.Style = []
-              FormField = False
+              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+              FormFieldSettings.FormFieldType = fftNone
               Transparent = True
               mmHeight = 3704
               mmLeft = 141023
@@ -1176,13 +1237,15 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'Label10'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Caption = 'Und'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Name = 'Arial'
               Font.Size = 9
               Font.Style = []
-              FormField = False
+              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+              FormFieldSettings.FormFieldType = fftNone
               Transparent = True
               mmHeight = 3704
               mmLeft = 164571
@@ -1195,6 +1258,7 @@ object FormProdutosOPs: TFormProdutosOPs
               DesignLayer = ppDesignLayer1
               UserName = 'Line1'
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Weight = 0.750000000000000000
               mmHeight = 265
               mmLeft = 0
@@ -1207,6 +1271,7 @@ object FormProdutosOPs: TFormProdutosOPs
               DesignLayer = ppDesignLayer1
               UserName = 'Line5'
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Weight = 0.750000000000000000
               mmHeight = 265
               mmLeft = 0
@@ -1220,13 +1285,15 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'Label6'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Caption = 'MATERIA-PRIMA '#192' COMPRAR (REFERENTA AS O.P'#39'S ACIMA)'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Name = 'Arial'
               Font.Size = 9
               Font.Style = []
-              FormField = False
+              FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+              FormFieldSettings.FormFieldType = fftNone
               TextAlignment = taCentered
               Transparent = True
               mmHeight = 3704
@@ -1240,6 +1307,7 @@ object FormProdutosOPs: TFormProdutosOPs
               DesignLayer = ppDesignLayer1
               UserName = 'Line3'
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Weight = 0.750000000000000000
               mmHeight = 265
               mmLeft = 265
@@ -1250,8 +1318,7 @@ object FormProdutosOPs: TFormProdutosOPs
             end
           end
           object ppDetailBand1: TppDetailBand
-            Background1.Brush.Style = bsClear
-            Background2.Brush.Style = bsClear
+            Border.mmPadding = 0
             mmBottomOffset = 0
             mmHeight = 3969
             mmPrintPosition = 0
@@ -1260,6 +1327,7 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'DBText6'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_REFER_ITENS'
               DataPipeline = ppDBEstoque
               Font.Charset = DEFAULT_CHARSET
@@ -1282,6 +1350,7 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'DBText7'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DESCRI'
               DataPipeline = ppDBEstoque
               Font.Charset = DEFAULT_CHARSET
@@ -1304,9 +1373,10 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'DBText8'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'FALTA_EMPENHAR'
               DataPipeline = ppDBEstoque
-              DisplayFormat = '#,##0.000'
+              DisplayFormat = '#,##0.000000'
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clBlack
               Font.Name = 'Arial'
@@ -1328,6 +1398,7 @@ object FormProdutosOPs: TFormProdutosOPs
               UserName = 'DBText9'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_UND'
               DataPipeline = ppDBEstoque
               Font.Charset = DEFAULT_CHARSET
@@ -1349,6 +1420,7 @@ object FormProdutosOPs: TFormProdutosOPs
               DesignLayer = ppDesignLayer1
               UserName = 'Line6'
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Weight = 0.750000000000000000
               mmHeight = 265
               mmLeft = 174625
@@ -1359,7 +1431,7 @@ object FormProdutosOPs: TFormProdutosOPs
             end
           end
           object ppSummaryBand2: TppSummaryBand
-            Background.Brush.Style = bsClear
+            Border.mmPadding = 0
             mmBottomOffset = 0
             mmHeight = 529
             mmPrintPosition = 0
@@ -1367,6 +1439,7 @@ object FormProdutosOPs: TFormProdutosOPs
               DesignLayer = ppDesignLayer1
               UserName = 'Line2'
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               Weight = 0.750000000000000000
               mmHeight = 265
               mmLeft = 0

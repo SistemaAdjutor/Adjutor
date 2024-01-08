@@ -735,8 +735,8 @@ type
     CdsFichaTecFTC_PROC6: TStringField;
     CdsFichaTecFTC_PROC7: TStringField;
     CdsFichaTecFTC_PROC8: TStringField;
-    SqlOsvItOSI_UC: TFMTBCdField;
-    CdsOsvItOSI_UC: TFMTBCdField;
+    SqlOsvItOSI_UC: TFloatField;
+    CdsOsvItOSI_UC: TFloatField;
     SqlOsvItOSI_QTDE1: TFMTBCdField;
     SqlOsvItOSI_QTDE2: TFMTBCdField;
     SqlOsvItOSI_QTDE3: TFMTBCdField;

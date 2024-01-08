@@ -61,9 +61,6 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       inherited cxgrd1: TcxGrid
         Width = 1362
         Height = 171
-        LookAndFeel.Kind = lfStandard
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitWidth = 1362
         ExplicitHeight = 171
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -785,11 +782,9 @@ inherited frmEnvaseProdutos: TfrmEnvaseProdutos
       Precision = 18
       Size = 5
     end
-    object cdsMateriaPrimaMP_CONSUMOTOTAL: TFMTBCDField
+    object cdsMateriaPrimaMP_CONSUMOTOTAL: TFloatField
       FieldName = 'MP_CONSUMOTOTAL'
       Origin = 'MP_CONSUMOTOTAL'
-      Precision = 18
-      Size = 5
     end
     object cdsMateriaPrimaPED_CODIGO: TStringField
       FieldName = 'PED_CODIGO'

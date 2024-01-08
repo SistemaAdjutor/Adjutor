@@ -58,7 +58,7 @@ type
     cxgrd1DBTableView1VALOR_TOTAL: TcxGridDBColumn;
     cxgrd1DBTableView1CONTEUDO_IMPORTACAO: TcxGridDBColumn;
     cdsBuscaCI: TFMTBCDField;
-    cdsBuscaDetalhesFTI_UC: TFMTBCDField;
+    cdsBuscaDetalhesFTI_UC: TFloatField;
     cxgrd1DBTableView2FTI_UC: TcxGridDBColumn;
     cdsBuscaDetalhesPRD_UND: TStringField;
     cxgrd1DBTableView2PRD_UND: TcxGridDBColumn;
@@ -99,7 +99,7 @@ type
     StringField7: TStringField;
     StringField8: TStringField;
     StringField9: TStringField;
-    FMTBCDField10: TFMTBCDField;
+    FMTBCDField10: TFloatField;
     StringField10: TStringField;
     FMTBCDField11: TFMTBCDField;
     FMTBCDField12: TFMTBCDField;
@@ -115,7 +115,7 @@ type
     StringField12: TStringField;
     StringField13: TStringField;
     StringField14: TStringField;
-    FMTBCDField19: TFMTBCDField;
+    FMTBCDField19: TFloatField;
     StringField15: TStringField;
     FMTBCDField20: TFMTBCDField;
     FMTBCDField21: TFMTBCDField;
@@ -131,7 +131,7 @@ type
     StringField17: TStringField;
     StringField18: TStringField;
     StringField19: TStringField;
-    FMTBCDField28: TFMTBCDField;
+    FMTBCDField28: TFloatField;
     StringField20: TStringField;
     FMTBCDField29: TFMTBCDField;
     FMTBCDField30: TFMTBCDField;
@@ -147,7 +147,7 @@ type
     StringField22: TStringField;
     StringField23: TStringField;
     StringField24: TStringField;
-    FMTBCDField37: TFMTBCDField;
+    FMTBCDField37: TFloatField;
     StringField25: TStringField;
     FMTBCDField38: TFMTBCDField;
     FMTBCDField39: TFMTBCDField;
@@ -163,7 +163,7 @@ type
     StringField27: TStringField;
     StringField28: TStringField;
     StringField29: TStringField;
-    FMTBCDField46: TFMTBCDField;
+    FMTBCDField46: TFloatField;
     StringField30: TStringField;
     FMTBCDField47: TFMTBCDField;
     FMTBCDField48: TFMTBCDField;
@@ -179,7 +179,7 @@ type
     StringField32: TStringField;
     StringField33: TStringField;
     StringField34: TStringField;
-    FMTBCDField55: TFMTBCDField;
+    FMTBCDField55: TFloatField;
     StringField35: TStringField;
     FMTBCDField56: TFMTBCDField;
     FMTBCDField57: TFMTBCDField;
@@ -196,7 +196,7 @@ type
     cdsNivel3PRD_REFER_ITENS: TStringField;
     cdsNivel3PRD_DESCRI: TStringField;
     cdsNivel3PTI_SIGLA: TStringField;
-    cdsNivel3FTI_UC: TFMTBCDField;
+    cdsNivel3FTI_UC: TFloatField;
     cdsNivel3PRD_UND: TStringField;
     cdsNivel3PARCELA_IMPORTADA: TFMTBCDField;
     cdsNivel3VALOR_TOTAL_ITEM: TFMTBCDField;
@@ -365,7 +365,7 @@ type
     mtGridPRD_REFER_ITENS: TStringField;
     mtGridPRD_DESCRI: TStringField;
     mtGridPTI_SIGLA: TStringField;
-    mtGridFTI_UC: TFMTBCDField;
+    mtGridFTI_UC: TFloatField;
     mtGridCONSUMO_TOTAL: TFMTBCDField;
     mtGridPRD_UND: TStringField;
     mtGridPRECO_COMPRA_MEDIO: TFMTBCDField;

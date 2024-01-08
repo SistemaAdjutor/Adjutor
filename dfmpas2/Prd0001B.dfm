@@ -4707,6 +4707,7 @@ object FormProduto: TFormProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -4723,6 +4724,14 @@ object FormProduto: TFormProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Portuguese (Brazil)'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -4732,22 +4741,34 @@ object FormProduto: TFormProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -4755,13 +4776,26 @@ object FormProduto: TFormProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 406
     Top = 65535
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeline2'
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 35454
@@ -4900,13 +4934,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1323
@@ -4919,13 +4955,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1058
@@ -4938,6 +4976,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4957,6 +4996,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4976,13 +5016,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label1'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -4996,6 +5038,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText1'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5018,6 +5061,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText2'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5039,13 +5083,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label3'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'Mat'#233'ria-Prima'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -5059,13 +5105,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label4'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o da Mat'#233'ria-Prima'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -5079,13 +5127,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label5'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'Consumo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -5099,13 +5149,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label6'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'UND'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -5119,13 +5171,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label7'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 156369
@@ -5138,13 +5192,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label8'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 161396
@@ -5157,13 +5213,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label9'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V3'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 166423
@@ -5176,13 +5234,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label10'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V4'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 171450
@@ -5195,13 +5255,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label101'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V5'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 176477
@@ -5214,13 +5276,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label12'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V6'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 181505
@@ -5233,13 +5297,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label13'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V7'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 186532
@@ -5252,13 +5318,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label14'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V8'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 191559
@@ -5271,13 +5339,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label11'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'T.U.P.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 140759
@@ -5290,6 +5360,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText23'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_TUP'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5310,6 +5381,7 @@ object FormProduto: TFormProduto
       object ppLine10: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line12'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5322,6 +5394,7 @@ object FormProduto: TFormProduto
       object ppLine11: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line13'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5334,6 +5407,7 @@ object FormProduto: TFormProduto
       object ppLine12: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line14'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5346,6 +5420,7 @@ object FormProduto: TFormProduto
       object ppLine13: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line15'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5358,6 +5433,7 @@ object FormProduto: TFormProduto
       object ppLine15: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line16'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5370,6 +5446,7 @@ object FormProduto: TFormProduto
       object ppLine16: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line17'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5382,6 +5459,7 @@ object FormProduto: TFormProduto
       object ppLine17: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line18'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5394,6 +5472,7 @@ object FormProduto: TFormProduto
       object ppLine18: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line19'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5406,6 +5485,7 @@ object FormProduto: TFormProduto
       object ppLine19: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line20'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5418,6 +5498,7 @@ object FormProduto: TFormProduto
       object ppLine20: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line201'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5431,13 +5512,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label2'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'VARIA'#199#213'ES'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -5451,13 +5534,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label15'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 25400
@@ -5470,6 +5555,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText3'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5491,13 +5577,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label16'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 46831
@@ -5510,6 +5598,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText4'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5531,13 +5620,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label17'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V3'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 67998
@@ -5550,6 +5641,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText5'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5571,13 +5663,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label102'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V4'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 89694
@@ -5590,6 +5684,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText6'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5611,13 +5706,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label19'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V5'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 111125
@@ -5630,6 +5727,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText7'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5651,13 +5749,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label20'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V6'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 132557
@@ -5670,6 +5770,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText8'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5691,13 +5792,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label21'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V7'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 153988
@@ -5710,6 +5813,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText9'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5731,13 +5835,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label22'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'V8'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 175419
@@ -5750,6 +5856,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText10'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR8'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5770,6 +5877,7 @@ object FormProduto: TFormProduto
       object ppLine1: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5782,6 +5890,7 @@ object FormProduto: TFormProduto
       object ppLine3: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -5794,6 +5903,7 @@ object FormProduto: TFormProduto
       object ppLine4: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -5806,6 +5916,7 @@ object FormProduto: TFormProduto
       object ppLine7: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line5'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5818,6 +5929,7 @@ object FormProduto: TFormProduto
       object ppLine14: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line6'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5830,6 +5942,7 @@ object FormProduto: TFormProduto
       object ppLine5: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line7'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5842,6 +5955,7 @@ object FormProduto: TFormProduto
       object ppLine9: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line9'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -5855,13 +5969,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label23'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'Item'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -5885,13 +6001,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label26'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'TIPO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -5905,6 +6023,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText32'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PTI_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5926,6 +6045,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText33'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PTI_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -5946,6 +6066,7 @@ object FormProduto: TFormProduto
       object ppLine2: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -5958,6 +6079,7 @@ object FormProduto: TFormProduto
       object ppLine29: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line29'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -5971,13 +6093,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label27'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'GRUPO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -5990,6 +6114,7 @@ object FormProduto: TFormProduto
       object ppLine35: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line35'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 4763
@@ -6003,6 +6128,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText34'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PGR_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6024,6 +6150,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText35'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PGR_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6044,6 +6171,7 @@ object FormProduto: TFormProduto
       object ppLine36: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line36'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -6057,13 +6185,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label28'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'SEGMENTO:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -6076,6 +6206,7 @@ object FormProduto: TFormProduto
       object ppLine37: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line37'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -6089,6 +6220,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText36'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'LIN_CODIGO'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6110,6 +6242,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText37'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'LIN_DESCRI'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6130,6 +6263,7 @@ object FormProduto: TFormProduto
       object ppLine41: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line41'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5027
@@ -6143,13 +6277,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label29'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'P.Custo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -6161,8 +6297,7 @@ object FormProduto: TFormProduto
       end
     end
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 5556
@@ -6171,6 +6306,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText11'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_REFER_ITENS'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6192,9 +6328,10 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText13'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_UC'
         DataPipeline = ppDBPipeline2
-        DisplayFormat = '#,###0.000'
+        DisplayFormat = '#,###0.000000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
@@ -6215,6 +6352,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText14'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6236,6 +6374,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText15'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_MODE1'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6258,6 +6397,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText16'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_MODE2'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6280,6 +6420,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText17'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_MODE3'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6302,6 +6443,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText18'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_MODE4'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6324,6 +6466,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText19'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_MODE5'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6346,6 +6489,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText20'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_MODE6'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6368,6 +6512,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText21'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_MODE7'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6390,6 +6535,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText22'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_MODE8'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6411,6 +6557,7 @@ object FormProduto: TFormProduto
       object ppLine6: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line8'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6423,6 +6570,7 @@ object FormProduto: TFormProduto
       object ppLine8: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line10'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6435,6 +6583,7 @@ object FormProduto: TFormProduto
       object ppLine22: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line101'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6447,6 +6596,7 @@ object FormProduto: TFormProduto
       object ppLine23: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line23'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6459,6 +6609,7 @@ object FormProduto: TFormProduto
       object ppLine24: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line24'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6471,6 +6622,7 @@ object FormProduto: TFormProduto
       object ppLine25: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line25'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6483,6 +6635,7 @@ object FormProduto: TFormProduto
       object ppLine26: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line26'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6495,6 +6648,7 @@ object FormProduto: TFormProduto
       object ppLine27: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line27'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6507,6 +6661,7 @@ object FormProduto: TFormProduto
       object ppLine28: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line28'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6519,6 +6674,7 @@ object FormProduto: TFormProduto
       object ppLine30: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line30'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6531,6 +6687,7 @@ object FormProduto: TFormProduto
       object ppLine31: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line301'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5292
@@ -6543,6 +6700,7 @@ object FormProduto: TFormProduto
       object ppLine32: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line32'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6555,6 +6713,7 @@ object FormProduto: TFormProduto
       object ppLine33: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line33'
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6567,6 +6726,7 @@ object FormProduto: TFormProduto
       object ppLine34: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line34'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6578,6 +6738,7 @@ object FormProduto: TFormProduto
       object ppLine21: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line102'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6591,6 +6752,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText12'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6612,6 +6774,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText38'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTI_ITEM'
         DataPipeline = ppDBPipeline2
         Font.Charset = DEFAULT_CHARSET
@@ -6631,6 +6794,7 @@ object FormProduto: TFormProduto
       object ppLine42: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line42'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 5556
@@ -6644,6 +6808,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText39'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'PRD_PCUSTO'
         DataPipeline = ppDBPipeline2
         DisplayFormat = '#,###0.000'
@@ -6664,7 +6829,7 @@ object FormProduto: TFormProduto
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 41804
       mmPrintPosition = 0
@@ -6672,13 +6837,15 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Label18'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         Caption = 'PROCESSO DE PRODU'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4374
         mmLeft = 5027
@@ -6691,6 +6858,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText24'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_PROC1'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6712,6 +6880,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText25'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_PROC2'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6733,6 +6902,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText26'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_PROC3'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6754,6 +6924,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText27'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_PROC4'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6775,6 +6946,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText28'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_PROC5'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6796,6 +6968,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText29'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_PROC6'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6817,6 +6990,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText30'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_PROC7'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6838,6 +7012,7 @@ object FormProduto: TFormProduto
         DesignLayer = ppDesignLayer1
         UserName = 'DBText31'
         HyperlinkEnabled = False
+        Border.mmPadding = 0
         DataField = 'FTC_PROC8'
         DataPipeline = ppDBPipeline1
         Font.Charset = DEFAULT_CHARSET
@@ -6858,6 +7033,7 @@ object FormProduto: TFormProduto
       object ppLine38: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line38'
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 41275
@@ -6870,6 +7046,7 @@ object FormProduto: TFormProduto
       object ppLine39: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line39'
+        Border.mmPadding = 0
         Position = lpRight
         Weight = 0.750000000000000000
         mmHeight = 41275
@@ -6882,6 +7059,7 @@ object FormProduto: TFormProduto
       object ppLine40: TppLine
         DesignLayer = ppDesignLayer1
         UserName = 'Line40'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0

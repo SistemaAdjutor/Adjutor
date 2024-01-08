@@ -563,7 +563,7 @@ begin
                                         wM1 := CurrQtdeOP.AsInteger;
                                  end;
                               wConsumo := 0;
-                              wConsumo := SqlCdsItensFichaFTI_UC.AsCurrency;
+                              wConsumo := SqlCdsItensFichaFTI_UC.AsFloat;
                               {Inclui o item na tabela item da op}
                               IncluirItensOP(1,EdtORDEM.Text,EdtPRD_REFER.Text,SqlCdsItensFichaPRD_REFER_ITENS.AsString);
                             except on E:EdataBaseError do
@@ -614,7 +614,7 @@ begin
                                                wM1 := CurrQtdeOP.AsInteger;
                                         end;
                                      wConsumo := 0;
-                                     wConsumo := SqlCdsItensFichaFTI_UC.AsCurrency;
+                                     wConsumo := SqlCdsItensFichaFTI_UC.AsFloat;
                                      Edit1.Text := EdtORDEM.Text + AtribuirLetra();
                                      BuscaFicha(SqlCdsItensFichaPRD_REFER_ITENS.AsString);
                                      IncluirOP(Edit1.Text,SqlCdsItensFichaPRD_REFER_ITENS.AsString);
@@ -996,7 +996,7 @@ begin
                                        wM1 := CurrQtdeOP.AsInteger;
                                 end;
                              wConsumo := 0;
-                             wConsumo := SqlCdsItensFicha2.FieldByName('FTI_UC').AsCurrency;
+                             wConsumo := SqlCdsItensFicha2.FieldByName('FTI_UC').AsFloat;
                              IncluirItensOP(1,Edit1.Text,SqlCdsItensFicha2PRD_REFER.AsString,SqlCdsItensFicha2PRD_REFER_ITENS.AsString);
                            except on E:EDataBaseError do
                               uteis.erro  (pchar('Erro ao inserir os itens na tabela OSV_IT02 ! '+E.MESSAGE));
@@ -1043,7 +1043,7 @@ begin
                                               wM1 := CurrQtdeOP.AsInteger;
                                        end;
                                     wConsumo := 0;
-                                    wConsumo := SqlCdsItensFicha2.FieldByName('FTI_UC').AsCurrency;
+                                    wConsumo := SqlCdsItensFicha2.FieldByName('FTI_UC').AsFloat;
                                     Edit1.Text := EdtORDEM.Text + AtribuirLetra();
                                     BuscaFicha(SqlCdsItensFicha2PRD_REFER_ITENS.AsString);
                                     IncluirOP(Edit1.Text,SqlCdsItensFicha2PRD_REFER_ITENS.AsString);
@@ -1106,7 +1106,7 @@ begin
                                        wM1 := CurrQtdeOP.AsInteger;
                                 end;
                              wConsumo := 0;
-                             wConsumo := SqlCdsItensFicha3.FieldByName('FTI_UC').AsCurrency;
+                             wConsumo := SqlCdsItensFicha3.FieldByName('FTI_UC').AsFloat;
                              IncluirItensOP(1,Edit1.Text,SqlCdsItensFicha3PRD_REFER.AsString,SqlCdsItensFicha3PRD_REFER_ITENS.AsString);
                            except on E:EDataBaseError do
                               uteis.erro  (pchar('Erro ao inserir os itens na tabela OSV_IT02 ! '+E.MESSAGE));
@@ -1152,7 +1152,7 @@ begin
                                               wM1 := CurrQtdeOP.AsInteger;
                                        end;
                                     wConsumo := 0;
-                                    wConsumo := SqlCdsItensFicha3.FieldByName('FTI_UC').AsCurrency;
+                                    wConsumo := SqlCdsItensFicha3.FieldByName('FTI_UC').AsFloat;
                                     Edit1.Text := EdtORDEM.Text + AtribuirLetra();
                                     BuscaFicha(SqlCdsItensFicha3PRD_REFER_ITENS.AsString);
                                     IncluirOP(Edit1.Text,SqlCdsItensFicha3PRD_REFER_ITENS.AsString);
@@ -1215,7 +1215,7 @@ begin
                                        wM1 := CurrQtdeOP.AsInteger;
                                 end;
                              wConsumo := 0;
-                             wConsumo := SqlCdsItensFicha4.FieldByName('FTI_UC').AsCurrency;
+                             wConsumo := SqlCdsItensFicha4.FieldByName('FTI_UC').AsFloat;
                              IncluirItensOP(1,Edit1.Text,SqlCdsItensFicha4PRD_REFER.AsString,SqlCdsItensFicha4PRD_REFER_ITENS.AsString);
                            except on E:EDataBaseError do
                               uteis.erro  (pchar('Erro ao inserir os itens na tabela OSV_IT02 ! '+E.MESSAGE));
@@ -1261,7 +1261,7 @@ begin
                                               wM1 := CurrQtdeOP.AsInteger;
                                        end;
                                     wConsumo := 0;
-                                    wConsumo := SqlCdsItensFicha4.FieldByName('FTI_UC').AsCurrency;
+                                    wConsumo := SqlCdsItensFicha4.FieldByName('FTI_UC').AsFloat;
                                     Edit1.Text := EdtORDEM.Text + AtribuirLetra();
                                     BuscaFicha(SqlCdsItensFicha4PRD_REFER_ITENS.AsString);
                                     IncluirOP(Edit1.Text,SqlCdsItensFicha4PRD_REFER_ITENS.AsString);
@@ -1323,7 +1323,7 @@ begin
                                        wM1 := CurrQtdeOP.AsInteger;
                                 end;
                              wConsumo := 0;
-                             wConsumo := SqlCdsItensFicha5.FieldByName('FTI_UC').AsCurrency;
+                             wConsumo := SqlCdsItensFicha5.FieldByName('FTI_UC').AsFloat;
 
                              wSql1 := 'INSERT INTO OSV_IT02 ('+
                                       'OSV_CODIGO,'+

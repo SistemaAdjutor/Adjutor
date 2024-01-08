@@ -30,7 +30,7 @@ type
     DsMP: TDataSource;
     SqlMPOSV_CODIGO: TStringField;
     SqlMPPRD_REFER_ITENS: TStringField;
-    SqlMPOSI_UC: TFMTBCdField;
+    SqlMPOSI_UC: TFloatField;
     SqlMPOSI_QTDE1: TFMTBCdField;
     SqlMPOSI_QTDE2: TFMTBCdField;
     SqlMPOSI_QTDE3: TFMTBCdField;
@@ -56,7 +56,7 @@ type
     SqlMPOSI_STATUSEMPENHO: TStringField;
     CdsMPOSV_CODIGO: TStringField;
     CdsMPPRD_REFER_ITENS: TStringField;
-    CdsMPOSI_UC: TFMTBCdField;
+    CdsMPOSI_UC: TFloatField;
     CdsMPOSI_QTDE1: TFMTBCdField;
     CdsMPOSI_QTDE2: TFMTBCdField;
     CdsMPOSI_QTDE3: TFMTBCdField;

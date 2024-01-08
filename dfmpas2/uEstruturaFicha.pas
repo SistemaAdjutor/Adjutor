@@ -190,7 +190,7 @@ begin
         ' 	  pr1.prd_custocomipi  '+
         '   WHEN PRMT.pmt_calcularpv = ''2'' THEN  '+
         ' 	  pr1.PRD_PMEDIO  '+
-        ' END  * Ft.fti_uc) as numeric(15,4)) AS TotalItem, tipo.PTI_SIGLA              '+
+        ' END  * Ft.fti_uc) as DOUBLE PRECISION) AS TotalItem, tipo.PTI_SIGLA              '+
         '    FROM FTC_IT01 ft  '+
               '    JOIN PRD0000 pr1 ON pr1.prd_refer = ft.PRD_REFER_ITENS '+
         '    join PRD_TIPO tipo ON Pr1.pti_codigo = tipo.PTI_CODIGO  '+

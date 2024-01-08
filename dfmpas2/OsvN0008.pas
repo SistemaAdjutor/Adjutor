@@ -29,7 +29,7 @@ type
     SqlCdsEstoquePRD_UND: TStringField;
     SqlCdsEstoquePTI_SIGLA: TStringField;
     SqlCdsEstoqueWSALDO: TFMTBCdField;
-    SqlCdsEstoqueFALTA_EMPENHAR: TFMTBCdField;
+    SqlCdsEstoqueFALTA_EMPENHAR: TFloatField;
     SqlCdsOps: TSQLClientDataSet;
     DsOps: TDataSource;
     SqlCdsEstoquePRD_MINIMO: TFMTBCdField;
@@ -90,7 +90,7 @@ type
     SqlCdsOpsOSV_QTDE: TFMTBCdField;
     Bit_Imprimir: TBitBtn;
     Bit_Sair: TBitBtn;
-    SqlCdsEstoqueConsumo: TFMTBCDField;
+    SqlCdsEstoqueConsumo: TFloatField;
     SqlCdsIOP: TSqlClientDataSet;
     dsIOP: TDataSource;
     SqlCdsEstoquePRD_REFER: TStringField;
@@ -640,7 +640,11 @@ begin
            LBL_00_LTITULO1.Caption := 'RELAÇÃO DE MATÉRIA-PRIMA EM FALTA NA PRODUÇÃO';
            LBL_00_LTITULO2.Caption := '';
            ppRelFalta.DeviceType:='Screen';
+           SqlCdsEstoque.DisableControls;
+           SqlCdsOps.DisableControls;
            RBuilderPreview(ppRelFalta);
+           SqlCdsEstoque.EnableControls;
+           SqlCdsOps.EnableControls;
         end;
 
 end;

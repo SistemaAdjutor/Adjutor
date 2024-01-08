@@ -147,7 +147,7 @@ type
     ppRelOSP02: TppReport;
     SqlCdsItemOPOSV_CODIGO: TStringField;
     SqlCdsItemOPPRD_REFER_ITENS: TStringField;
-    SqlCdsItemOPOSI_UC: TFMTBCdField;
+    SqlCdsItemOPOSI_UC: TFloatField;
     SqlCdsItemOPOSI_QTDE1: TFMTBCdField;
     SqlCdsItemOPOSI_QTDE2: TFMTBCdField;
     SqlCdsItemOPOSI_QTDE3: TFMTBCdField;

@@ -684,7 +684,7 @@ type
     cdsOpPRD_GERENCIA_LOTE: TStringField;
    // sqlOpPRD_GERENCIA_LOTE: TStringField;
     cdsOpOSV_QTDE_CONCLUIDA: TFMTBCDField;
-    SqlCdsItemOPOSI_UC: TFMTBCDField;
+    SqlCdsItemOPOSI_UC: TFloatField;
     cdsOpPRD_UND: TStringField;
     sqlOpPRD_UND: TStringField;
     ppHeaderBand2: TppHeaderBand;
@@ -798,7 +798,7 @@ type
     ppLine31: TppLine;
     ppDBText31: TppDBText;
     frxOP2: TfrxReport;
-    SqlCdsFichaTecnicaOSI_UC: TFMTBCDField;
+    SqlCdsFichaTecnicaOSI_UC: TFloatField;
     SqlCdsFichaTecnicaOSI_QTDE_TOTAL_cc: TCurrencyField;
     SqlCdsFichaTecnicaPTI_SIGLA: TStringField;
     sqlOpOSV_DTENTREGA: TSQLTimeStampField;
@@ -1127,6 +1127,7 @@ type
     procedure tsitemOSShow(Sender: TObject);
     procedure BitBtn1Click(Sender: TObject);
     procedure frxListaOrdemGetValue(const VarName: string; var Value: Variant);
+    procedure FormActivate(Sender: TObject);
   private
 
          wPmt_Amx_Producao_Entrada: string;
@@ -1194,6 +1195,12 @@ begin
    //mostraItensOrdem;
     miGerarEngenhariaProcessos.Visible := (DBInicio.Usuario.username = 'ADM');
     Bit_Imprimir.Enabled := Uteis.AcessoUsuario('ProduçãoPCP-Ordens de Produção',DBInicio.Usuario.CODIGO,self).Relatorio or (DBInicio.Usuario.USERNAME = 'ADM');
+end;
+
+procedure TFormOrdServCentroNovo.FormActivate(Sender: TObject);
+begin
+  inherited;
+  application.processmessages;
 end;
 
 procedure TFormOrdServCentroNovo.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -3039,9 +3046,13 @@ end;
 
 procedure TFormOrdServCentroNovo.Edt_NomeEnter(Sender: tObject);
 begin
+  try
     Edt_Nome.Text := '';
     Edt_Nome.SelectAll;
     Edt_nome.Color := $0080FFFF;
+  except
+    // faz nada
+  end;
 end;
 
 procedure TFormOrdServCentroNovo.BitPesquisarClick(Sender: tObject);
