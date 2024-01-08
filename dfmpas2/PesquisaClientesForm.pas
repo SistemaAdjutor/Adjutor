@@ -62,6 +62,8 @@ type
     cbOrigem: TSgDbSearchCombo;
     Label6: TLabel;
     cdsBuscoCORI_DESCRICAO: TStringField;
+    cdsBuscoCLI_DTNASCIMENTO: TSQLTimeStampField;
+    cdsBuscoEMP_CODIGO: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure CdsBuscoCLI_RAZAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure CdsBuscoCLI_CGCGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -74,6 +76,7 @@ type
     procedure cdsBuscoCLI_FONEGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure rgTipoPessoaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure btnExcelClick(Sender: TObject);
   private
     procedure FiltraCli;
     var
@@ -256,6 +259,35 @@ begin
   end;
 end;
 
+procedure TfrmPesquisaClientes.btnExcelClick(Sender: TObject);
+var
+  lista: TStringList;
+begin
+//  inherited;
+  lista := TStringList.Create;
+  lista.Add('CLI_RAZAO');
+  lista.Add('CLI_FANTASIA');
+  lista.Add('CLI_CGC');
+  lista.Add('CLI_FONE');
+  lista.Add('CLI_CIDADE');
+  lista.Add('CLI_UF');
+  lista.Add('CLI_INSC');
+  lista.Add('CLI_DTNASCIMENTO');
+  lista.Add('CLI_DTULTCOM');
+  lista.Add('RCL_ATIVIDADE');
+  lista.Add('CLI_FAX');
+  lista.Add('CLI_CELULAR');
+  lista.Add('CLI_BAIRRO');
+  lista.Add('CLI_CEP');
+  lista.Add('CLI_ENDERE');
+  lista.Add('CLI_EMAIL_ALTERNATIVO');
+  lista.Add('CLI_EMAIL');
+  lista.Add('CLI_CONTATO');
+  lista.Add('REP_NOME');
+  lista.Add('CORI_DESCRICAO');
+  CriaCSV(dsBusca, lista, Self);
+end;
+
 procedure TfrmPesquisaClientes.btnImprimeClick(Sender: TObject);
 var Ponto : TPoint;
 begin
@@ -295,11 +327,13 @@ begin
      begin
           Clear;
           add('select CL.CLI_CODIGO, ');
+          add('       CL.EMP_CODIGO,  ');
           add('       CL.CLI_RAZAO,  ');
           add('       CL.CLI_FANTASIA, ');
           add('       CL.CLI_CGC, ');
           add('       CL.CLI_FONE, ');
           add('       CL.CLI_DTULTCOM, ');
+          add('       CL.CLI_DTNASCIMENTO,  ');
           add('       CL.CLI_CIDADE, ');
           add('       CL.CLI_UF, ');
           add('       CL.CLI_BAIRRO, ');

@@ -2452,9 +2452,9 @@ end;
 
 procedure TFrmMenu.FormClose(Sender: tObject; var Action: TCloseAction);
 begin
+ DBInicio.MainDB.CloneConnection;
  Application.Free;
  Application := NIL;
- DBInicio.MainDB.CloneConnection;
  ExitProcess(0);
 
 end;
