@@ -348,11 +348,11 @@ inherited FormFornec: TFormFornec
           Caption = 'Fone:'
         end
         object Label8: TLabel
-          Left = 840
+          Left = 824
           Top = 100
-          Width = 21
+          Width = 36
           Height = 14
-          Caption = 'Fax:'
+          Caption = 'Celular:'
         end
         object Label18: TLabel
           Left = 36
