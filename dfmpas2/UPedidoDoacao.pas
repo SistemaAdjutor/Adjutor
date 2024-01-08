@@ -546,9 +546,9 @@ begin
     //mes
     OpenAux(' SELECT cast(COUNT (*) as integer) quantde, sum(PED_VLTOTAL_BRUTO) valor  ' +
             ' FROM PED0000 p '+
-            '  JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
+            '  LEFT JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
             '  WHERE REP_CODIGO = '+ QuotedStr(DBInicio.Empresa.fCODIGO_REPRES) +
-            ConcatSe(' AND ', 'p.' + dbinicio.ExclusivoSql('PEDIDOS')) +
+            ConcatSe(' AND p.', dbinicio.ExclusivoSql('PEDIDOS')) +
             ' AND PED_SITUACAO <> ''C'' '+
             '  AND CAST(PED_DTENTRADA AS DATE)   = ' + DateToSQL(DATE));
 
@@ -558,10 +558,10 @@ begin
     //mes
     OpenAux(' SELECT cast(COUNT (*) as integer) quantde, sum(PED_VLTOTAL_BRUTO) valor  ' +
             ' FROM PED0000 p '+
-            '  JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
+            ' LEFT JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
             ' WHERE REP_CODIGO = '+ QuotedStr(DBInicio.Empresa.fCODIGO_REPRES) +
             ' AND PED_SITUACAO <> ''C'' '+
-              ConcatSe(' AND ', 'p.' + dbinicio.ExclusivoSql('PEDIDOS')) +
+              ConcatSe(' AND p.',  dbinicio.ExclusivoSql('PEDIDOS')) +
             ' AND EXTRACT (month FROM PED_DTENTRADA ) = ' + IntToStr(MonthOfTheYear(date)) +
             ' AND EXTRACT (YEAR FROM PED_DTENTRADA ) =  '+ IntToStr(YearOf(date))        );
     edQtdeMes.Text := IntToStr(qAux.FieldByName('quantde').AsInteger);
@@ -569,9 +569,9 @@ begin
     //mes PASSADO
     OpenAux(' SELECT cast(COUNT (*) as integer) quantde, sum(PED_VLTOTAL_BRUTO) valor  ' +
             ' FROM PED0000 p '+
-            '  JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
+            ' LEFT JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
             ' WHERE REP_CODIGO = '+ QuotedStr(DBInicio.Empresa.fCODIGO_REPRES) +
-              ConcatSe(' AND ', 'p.' + dbinicio.ExclusivoSql('PEDIDOS')) +
+              ConcatSe(' AND p.',  dbinicio.ExclusivoSql('PEDIDOS')) +
             ' AND PED_SITUACAO <> ''C'' '+
             ' AND EXTRACT (month FROM PED_DTENTRADA ) = ' + IntToStr(MonthOf(IncMonth(date,-1))) +
             ' AND EXTRACT (YEAR FROM PED_DTENTRADA ) =  '+ IntToStr(YearOf(IncMonth(date,-1))) );
@@ -608,7 +608,7 @@ begin
     //mes
     OpenAux(' SELECT cast(COUNT (*) as integer) quantde, sum(PED_VLTOTAL_BRUTO) valor ' +
             '  FROM PED0000 p'+
-            '  JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
+            '  LEFT JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
             '  WHERE  PED_SITUACAO <> ''C'' '+
             ConcatSe(' AND p.', dbinicio.ExclusivoSql('PEDIDOS')) +
             '  AND CAST(PED_DTENTRADA AS DATE)   = ' + DateToSQL(DATE));
@@ -619,7 +619,7 @@ begin
     //mes
     OpenAux(' SELECT cast(COUNT (*) as integer) quantde, sum(PED_VLTOTAL_BRUTO) valor  ' +
             ' FROM PED0000 p'+
-            ' JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
+            ' LEFT JOIN OPV0000 o ON (o.OPV_CODIGO = p.OPV_CODIGO AND o.OPV_META_VENDEDOR = ''S'') ' +
             ' WHERE PED_SITUACAO <> ''C'' '+
                ConcatSe(' AND p.', dbinicio.ExclusivoSql('PEDIDOS')) +
             ' AND EXTRACT (month FROM PED_DTENTRADA ) = ' + IntToStr(MonthOfTheYear(date)) +
@@ -742,6 +742,12 @@ begin
   if (dbInicio.Empresa.fCODIGO_REPRES <> '000') and (dbInicio.Empresa.fCODIGO_REPRES <> EmptyStr) then
      PesqCliente.LookupWhere := 'REP_CODIGO = '+QuotedStr(dbInicio.Empresa.fCODIGO_REPRES);
   HabilitaCampos(False, topNulo);
+  edQtdeMes.Visible := BuscaUmDadoSqlAsString('SELECT USU_TIPO_USUARIO FROM USUARIO WHERE usu_codigo = ' + DBInicio.Usuario.CODIGO) = 'A';
+  edQtdeHoje.Visible := edQtdeMes.Visible;
+  edVlrMes.Visible := edQtdeMes.Visible;
+  edVlrHoje.Visible := edQtdeMes.Visible;
+  label13.Visible := edQtdeMes.Visible;
+  label14.Visible := edQtdeMes.Visible;
   Estatistica;
 end;
 
