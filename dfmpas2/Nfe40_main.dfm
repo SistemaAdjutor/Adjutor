@@ -6281,6 +6281,14 @@ inherited frmNfe40: TfrmNfe40
       FieldName = 'EMP_CODIGO'
       Size = 3
     end
+    object cdsNotasNF_BASEICMS: TFMTBCDField
+      FieldName = 'NF_BASEICMS'
+      Size = 5
+    end
+    object cdsNotasNF_ALIQ_ICMS: TFMTBCDField
+      FieldName = 'NF_ALIQ_ICMS'
+      Size = 5
+    end
   end
   object dspNotas: TDataSetProvider
     DataSet = qNotas
@@ -6342,7 +6350,7 @@ inherited frmNfe40: TfrmNfe40
     Left = 152
     Top = 568
     Bitmap = {
-      494C01010E001100100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E0011001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7255,6 +7263,26 @@ inherited frmNfe40: TfrmNfe40
       Searchable = False
       Sortable = False
     end
+    object pipNotasppField32: TppField
+      FieldAlias = 'NF_BASEICMS'
+      FieldName = 'NF_BASEICMS'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 31
+      Searchable = False
+      Sortable = False
+    end
+    object pipNotasppField33: TppField
+      FieldAlias = 'NF_ALIQ_ICMS'
+      FieldName = 'NF_ALIQ_ICMS'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 32
+      Searchable = False
+      Sortable = False
+    end
   end
   object RpNotasMod1: TppReport
     AutoStop = False
@@ -7609,7 +7637,7 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 100567
+        mmLeft = 107722
         mmTop = 1956
         mmWidth = 11984
         BandType = 0
@@ -7630,9 +7658,9 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 126334
+        mmLeft = 130574
         mmTop = 1956
-        mmWidth = 6608
+        mmWidth = 9523
         BandType = 0
         LayerName = Foreground
       end
@@ -7651,9 +7679,9 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 141788
+        mmLeft = 158770
         mmTop = 1956
-        mmWidth = 13723
+        mmWidth = 8465
         BandType = 0
         LayerName = Foreground
       end
@@ -7672,9 +7700,9 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 162190
-        mmTop = 1956
-        mmWidth = 15081
+        mmLeft = 183357
+        mmTop = 1852
+        mmWidth = 8731
         BandType = 0
         LayerName = Foreground
       end
@@ -7693,7 +7721,7 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 180221
+        mmLeft = 195856
         mmTop = 1956
         mmWidth = 19831
         BandType = 0
@@ -7766,6 +7794,48 @@ inherited frmNfe40: TfrmNfe40
         BandType = 0
         LayerName = Foreground
       end
+      object ppLabel46: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label46'
+        Border.mmPadding = 0
+        Caption = 'B. ICMS'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 142362
+        mmTop = 1852
+        mmWidth = 15352
+        BandType = 0
+        LayerName = Foreground
+      end
+      object ppLabel47: TppLabel
+        DesignLayer = ppDesignLayer1
+        UserName = 'Label47'
+        Border.mmPadding = 0
+        Caption = 'Aliq.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 171468
+        mmTop = 1852
+        mmWidth = 8205
+        BandType = 0
+        LayerName = Foreground
+      end
     end
     object ppDetailBand1: TppDetailBand
       Border.mmPadding = 0
@@ -7782,11 +7852,11 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3355
+        mmHeight = 3704
         mmLeft = 10497
         mmTop = 0
         mmWidth = 5027
@@ -7802,11 +7872,11 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3351
+        mmHeight = 3704
         mmLeft = 16673
         mmTop = 0
         mmWidth = 17639
@@ -7822,14 +7892,14 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3440
+        mmHeight = 3704
         mmLeft = 35190
         mmTop = 0
-        mmWidth = 57487
+        mmWidth = 63582
         BandType = 4
         LayerName = Foreground
       end
@@ -7843,13 +7913,13 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3440
-        mmLeft = 177396
+        mmHeight = 3704
+        mmLeft = 193031
         mmTop = 0
         mmWidth = 24681
         BandType = 4
@@ -7865,13 +7935,13 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3440
-        mmLeft = 93823
+        mmHeight = 3704
+        mmLeft = 100978
         mmTop = 0
         mmWidth = 24418
         BandType = 4
@@ -7887,15 +7957,15 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3440
-        mmLeft = 119836
+        mmHeight = 3704
+        mmLeft = 127256
         mmTop = 0
-        mmWidth = 17561
+        mmWidth = 12705
         BandType = 4
         LayerName = Foreground
       end
@@ -7909,15 +7979,15 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3440
-        mmLeft = 137468
+        mmHeight = 3704
+        mmLeft = 158770
         mmTop = 0
-        mmWidth = 21923
+        mmWidth = 12434
         BandType = 4
         LayerName = Foreground
       end
@@ -7931,15 +8001,15 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3440
-        mmLeft = 160675
+        mmHeight = 3704
+        mmLeft = 181237
         mmTop = 0
-        mmWidth = 17078
+        mmWidth = 10848
         BandType = 4
         LayerName = Foreground
       end
@@ -7952,14 +8022,14 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3440
-        mmLeft = 203024
+        mmHeight = 3704
+        mmLeft = 219605
         mmTop = 0
-        mmWidth = 81492
+        mmWidth = 65088
         BandType = 4
         LayerName = Foreground
       end
@@ -7971,16 +8041,60 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
-        mmHeight = 3441
-        mmLeft = 794
+        mmHeight = 3704
+        mmLeft = -1588
         mmTop = 0
-        mmWidth = 8467
+        mmWidth = 10848
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText18: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText18'
+        Border.mmPadding = 0
+        DataField = 'NF_BASEICMS'
+        DataPipeline = pipNotas
+        DisplayFormat = '#,####0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'pipNotas'
+        mmHeight = 3704
+        mmLeft = 141037
+        mmTop = 0
+        mmWidth = 16677
+        BandType = 4
+        LayerName = Foreground
+      end
+      object ppDBText19: TppDBText
+        DesignLayer = ppDesignLayer1
+        UserName = 'DBText19'
+        Border.mmPadding = 0
+        DataField = 'NF_ALIQ_ICMS'
+        DataPipeline = pipNotas
+        DisplayFormat = '#,####0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'pipNotas'
+        mmHeight = 3704
+        mmLeft = 171998
+        mmTop = 0
+        mmWidth = 8469
         BandType = 4
         LayerName = Foreground
       end
@@ -8030,16 +8144,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3175
-        mmLeft = 177396
-        mmTop = 643
-        mmWidth = 24681
+        mmHeight = 3704
+        mmLeft = 193146
+        mmTop = 1270
+        mmWidth = 24606
         BandType = 7
         LayerName = Foreground
       end
@@ -8055,16 +8169,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3175
-        mmLeft = 160434
-        mmTop = 643
-        mmWidth = 16837
+        mmHeight = 3704
+        mmLeft = 174361
+        mmTop = 1270
+        mmWidth = 17992
         BandType = 7
         LayerName = Foreground
       end
@@ -8080,16 +8194,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3175
-        mmLeft = 138877
-        mmTop = 643
-        mmWidth = 20338
+        mmHeight = 3704
+        mmLeft = 140230
+        mmTop = 1270
+        mmWidth = 18520
         BandType = 7
         LayerName = Foreground
       end
@@ -8105,16 +8219,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3175
-        mmLeft = 120279
-        mmTop = 642
-        mmWidth = 17472
+        mmHeight = 3704
+        mmLeft = 125678
+        mmTop = 1323
+        mmWidth = 14552
         BandType = 7
         LayerName = Foreground
       end
@@ -8130,16 +8244,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotas'
-        mmHeight = 3175
-        mmLeft = 93282
-        mmTop = 643
-        mmWidth = 25742
+        mmHeight = 3704
+        mmLeft = 99751
+        mmTop = 1270
+        mmWidth = 25665
         BandType = 7
         LayerName = Foreground
       end
@@ -8148,10 +8262,10 @@ inherited frmNfe40: TfrmNfe40
         UserName = 'Line3'
         Border.mmPadding = 0
         Weight = 0.750000000000000000
-        mmHeight = 1681
-        mmLeft = 2662
-        mmTop = 0
-        mmWidth = 200907
+        mmHeight = 1588
+        mmLeft = 2646
+        mmTop = -793
+        mmWidth = 282046
         BandType = 7
         LayerName = Foreground
       end
@@ -8542,9 +8656,9 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 109512
-        mmTop = 5337
-        mmWidth = 7144
+        mmLeft = 96294
+        mmTop = 5867
+        mmWidth = 8731
         BandType = 0
         LayerName = Foreground1
       end
@@ -8563,9 +8677,9 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 130149
-        mmTop = 5601
-        mmWidth = 7576
+        mmLeft = 114779
+        mmTop = 6131
+        mmWidth = 8371
         BandType = 0
         LayerName = Foreground1
       end
@@ -8584,7 +8698,7 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 152929
+        mmLeft = 155844
         mmTop = 6350
         mmWidth = 7673
         BandType = 0
@@ -8605,9 +8719,9 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 163513
+        mmLeft = 180208
         mmTop = 6085
-        mmWidth = 13494
+        mmWidth = 12169
         BandType = 0
         LayerName = Foreground1
       end
@@ -8626,7 +8740,7 @@ inherited frmNfe40: TfrmNfe40
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
-        mmLeft = 186271
+        mmLeft = 201641
         mmTop = 6021
         mmWidth = 14023
         BandType = 0
@@ -8660,7 +8774,7 @@ inherited frmNfe40: TfrmNfe40
         Position = lpBottom
         Weight = 0.750000000000000000
         mmHeight = 1852
-        mmLeft = 0
+        mmLeft = -9010
         mmTop = 8336
         mmWidth = 301110
         BandType = 0
@@ -8737,6 +8851,48 @@ inherited frmNfe40: TfrmNfe40
         BandType = 0
         LayerName = Foreground1
       end
+      object ppLabel48: TppLabel
+        DesignLayer = ppDesignLayer2
+        UserName = 'Label48'
+        Border.mmPadding = 0
+        Caption = 'B. ICMS'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 127787
+        mmTop = 6350
+        mmWidth = 18267
+        BandType = 0
+        LayerName = Foreground1
+      end
+      object ppLabel54: TppLabel
+        DesignLayer = ppDesignLayer2
+        UserName = 'Label54'
+        Border.mmPadding = 0
+        Caption = 'Aliq.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 9
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 168824
+        mmTop = 6350
+        mmWidth = 8736
+        BandType = 0
+        LayerName = Foreground1
+      end
     end
     object ppDetailBand2: TppDetailBand
       Visible = False
@@ -8775,7 +8931,7 @@ inherited frmNfe40: TfrmNfe40
         Transparent = True
         mmHeight = 3969
         mmLeft = 9260
-        mmTop = 265
+        mmTop = 795
         mmWidth = 15346
         BandType = 7
         LayerName = Foreground1
@@ -8792,16 +8948,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotasCFOP'
-        mmHeight = 3175
-        mmLeft = 92398
-        mmTop = 0
-        mmWidth = 24322
+        mmHeight = 3704
+        mmLeft = 81756
+        mmTop = 530
+        mmWidth = 24342
         BandType = 7
         LayerName = Foreground1
       end
@@ -8817,16 +8973,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotasCFOP'
-        mmHeight = 3175
-        mmLeft = 117812
-        mmTop = 0
-        mmWidth = 19578
+        mmHeight = 3704
+        mmLeft = 107212
+        mmTop = 530
+        mmWidth = 16133
         BandType = 7
         LayerName = Foreground1
       end
@@ -8842,16 +8998,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotasCFOP'
-        mmHeight = 3175
-        mmLeft = 138835
-        mmTop = 0
-        mmWidth = 21908
+        mmHeight = 3704
+        mmLeft = 148110
+        mmTop = 530
+        mmWidth = 15283
         BandType = 7
         LayerName = Foreground1
       end
@@ -8867,16 +9023,16 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotasCFOP'
-        mmHeight = 3175
-        mmLeft = 161537
-        mmTop = 0
-        mmWidth = 15285
+        mmHeight = 3704
+        mmLeft = 178232
+        mmTop = 530
+        mmWidth = 13960
         BandType = 7
         LayerName = Foreground1
       end
@@ -8892,15 +9048,15 @@ inherited frmNfe40: TfrmNfe40
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 9
+        Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'pipNotasCFOP'
-        mmHeight = 3175
-        mmLeft = 177161
-        mmTop = 0
+        mmHeight = 3704
+        mmLeft = 192531
+        mmTop = 530
         mmWidth = 25245
         BandType = 7
         LayerName = Foreground1
@@ -8912,8 +9068,8 @@ inherited frmNfe40: TfrmNfe40
         Weight = 0.750000000000000000
         mmHeight = 801
         mmLeft = 0
-        mmTop = 0
-        mmWidth = 202597
+        mmTop = 530
+        mmWidth = 283369
         BandType = 7
         LayerName = Foreground1
       end
@@ -8933,7 +9089,7 @@ inherited frmNfe40: TfrmNfe40
         Transparent = True
         mmHeight = 3704
         mmLeft = 9260
-        mmTop = 6350
+        mmTop = 6880
         mmWidth = 21960
         BandType = 7
         LayerName = Foreground1
@@ -8954,7 +9110,7 @@ inherited frmNfe40: TfrmNfe40
         Transparent = True
         mmHeight = 3704
         mmLeft = 9260
-        mmTop = 11113
+        mmTop = 11643
         mmWidth = 12700
         BandType = 7
         LayerName = Foreground1
@@ -8975,7 +9131,7 @@ inherited frmNfe40: TfrmNfe40
         Transparent = True
         mmHeight = 3704
         mmLeft = 9260
-        mmTop = 15875
+        mmTop = 16405
         mmWidth = 15611
         BandType = 7
         LayerName = Foreground1
@@ -8996,7 +9152,7 @@ inherited frmNfe40: TfrmNfe40
         Transparent = True
         mmHeight = 3704
         mmLeft = 9260
-        mmTop = 20638
+        mmTop = 21168
         mmWidth = 20638
         BandType = 7
         LayerName = Foreground1
@@ -9082,17 +9238,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = GroupNatureza
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 92398
+          mmHeight = 3704
+          mmLeft = 83388
           mmTop = 0
-          mmWidth = 24321
+          mmWidth = 21671
           BandType = 5
           GroupNo = 0
           LayerName = Foreground1
@@ -9148,7 +9304,7 @@ inherited frmNfe40: TfrmNfe40
           mmHeight = 801
           mmLeft = 0
           mmTop = 0
-          mmWidth = 199209
+          mmWidth = 283369
           BandType = 5
           GroupNo = 0
           LayerName = Foreground1
@@ -9165,17 +9321,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = GroupNatureza
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 117812
+          mmHeight = 3704
+          mmLeft = 107212
           mmTop = 0
-          mmWidth = 19490
+          mmWidth = 16045
           BandType = 5
           GroupNo = 0
           LayerName = Foreground1
@@ -9192,17 +9348,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = GroupNatureza
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 138835
+          mmHeight = 3704
+          mmLeft = 148110
           mmTop = 0
-          mmWidth = 21908
+          mmWidth = 15283
           BandType = 5
           GroupNo = 0
           LayerName = Foreground1
@@ -9219,17 +9375,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = GroupNatureza
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 161362
+          mmHeight = 3704
+          mmLeft = 178057
           mmTop = 0
-          mmWidth = 15197
+          mmWidth = 13872
           BandType = 5
           GroupNo = 0
           LayerName = Foreground1
@@ -9246,17 +9402,44 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = GroupNatureza
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 177252
+          mmHeight = 3704
+          mmLeft = 192622
           mmTop = 0
           mmWidth = 25153
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground1
+        end
+        object ppDBCalc29: TppDBCalc
+          DesignLayer = ppDesignLayer2
+          UserName = 'DBCalc29'
+          HyperlinkEnabled = False
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
+          DataField = 'NF_BASEICMS'
+          DataPipeline = pipNotasCFOP
+          DisplayFormat = '#,##0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          ResetGroup = GroupNatureza
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'pipNotasCFOP'
+          mmHeight = 3704
+          mmLeft = 124345
+          mmTop = 0
+          mmWidth = 22236
           BandType = 5
           GroupNo = 0
           LayerName = Foreground1
@@ -9322,17 +9505,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = groupStatus
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3417
-          mmLeft = 92398
-          mmTop = 484
-          mmWidth = 24321
+          mmHeight = 3704
+          mmLeft = 83388
+          mmTop = 529
+          mmWidth = 21671
           BandType = 5
           GroupNo = 1
           LayerName = Foreground1
@@ -9388,7 +9571,7 @@ inherited frmNfe40: TfrmNfe40
           mmHeight = 801
           mmLeft = 0
           mmTop = 0
-          mmWidth = 199209
+          mmWidth = 283369
           BandType = 5
           GroupNo = 1
           LayerName = Foreground1
@@ -9405,17 +9588,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = groupStatus
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3417
-          mmLeft = 117812
-          mmTop = 484
-          mmWidth = 19490
+          mmHeight = 3704
+          mmLeft = 107212
+          mmTop = 529
+          mmWidth = 16045
           BandType = 5
           GroupNo = 1
           LayerName = Foreground1
@@ -9432,17 +9615,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = groupStatus
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3417
-          mmLeft = 138835
-          mmTop = 484
-          mmWidth = 21908
+          mmHeight = 3704
+          mmLeft = 148110
+          mmTop = 529
+          mmWidth = 15283
           BandType = 5
           GroupNo = 1
           LayerName = Foreground1
@@ -9459,17 +9642,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = groupStatus
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3417
-          mmLeft = 161272
-          mmTop = 484
-          mmWidth = 15197
+          mmHeight = 3704
+          mmLeft = 177967
+          mmTop = 529
+          mmWidth = 13872
           BandType = 5
           GroupNo = 1
           LayerName = Foreground1
@@ -9486,16 +9669,16 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = groupStatus
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3417
-          mmLeft = 177161
-          mmTop = 484
+          mmHeight = 3704
+          mmLeft = 192531
+          mmTop = 529
           mmWidth = 25153
           BandType = 5
           GroupNo = 1
@@ -9540,6 +9723,33 @@ inherited frmNfe40: TfrmNfe40
           mmLeft = 33602
           mmTop = 1323
           mmWidth = 1058
+          BandType = 5
+          GroupNo = 1
+          LayerName = Foreground1
+        end
+        object ppDBCalc28: TppDBCalc
+          DesignLayer = ppDesignLayer2
+          UserName = 'DBCalc28'
+          HyperlinkEnabled = False
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
+          DataField = 'NF_BASEICMS'
+          DataPipeline = pipNotasCFOP
+          DisplayFormat = '#,##0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          ResetGroup = groupStatus
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'pipNotasCFOP'
+          mmHeight = 3704
+          mmLeft = 124348
+          mmTop = 529
+          mmWidth = 22236
           BandType = 5
           GroupNo = 1
           LayerName = Foreground1
@@ -9622,7 +9832,7 @@ inherited frmNfe40: TfrmNfe40
           mmHeight = 3440
           mmLeft = 33695
           mmTop = 287
-          mmWidth = 58090
+          mmWidth = 50800
           BandType = 3
           GroupNo = 2
           LayerName = Foreground1
@@ -9637,15 +9847,15 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3440
-          mmLeft = 92398
+          mmHeight = 3704
+          mmLeft = 83388
           mmTop = 0
-          mmWidth = 24234
+          mmWidth = 21584
           BandType = 3
           GroupNo = 2
           LayerName = Foreground1
@@ -9660,15 +9870,15 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3440
-          mmLeft = 117812
+          mmHeight = 3704
+          mmLeft = 107212
           mmTop = 0
-          mmWidth = 19667
+          mmWidth = 16222
           BandType = 3
           GroupNo = 2
           LayerName = Foreground1
@@ -9683,15 +9893,15 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3440
-          mmLeft = 138835
+          mmHeight = 3704
+          mmLeft = 148110
           mmTop = 0
-          mmWidth = 21908
+          mmWidth = 15283
           BandType = 3
           GroupNo = 2
           LayerName = Foreground1
@@ -9706,15 +9916,15 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3440
-          mmLeft = 161537
+          mmHeight = 3704
+          mmLeft = 178232
           mmTop = 0
-          mmWidth = 15197
+          mmWidth = 13872
           BandType = 3
           GroupNo = 2
           LayerName = Foreground1
@@ -9729,13 +9939,13 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3440
-          mmLeft = 177161
+          mmHeight = 3704
+          mmLeft = 192531
           mmTop = 0
           mmWidth = 25155
           BandType = 3
@@ -9751,14 +9961,60 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3440
-          mmLeft = 203465
+          mmHeight = 3704
+          mmLeft = 219100
           mmTop = 0
-          mmWidth = 80078
+          mmWidth = 65088
+          BandType = 3
+          GroupNo = 2
+          LayerName = Foreground1
+        end
+        object ppDBText20: TppDBText
+          DesignLayer = ppDesignLayer2
+          UserName = 'DBText301'
+          Border.mmPadding = 0
+          DataField = 'NF_BASEICMS'
+          DataPipeline = pipNotasCFOP
+          DisplayFormat = '#,####0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 9
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'pipNotasCFOP'
+          mmHeight = 3440
+          mmLeft = 126201
+          mmTop = 0
+          mmWidth = 20381
+          BandType = 3
+          GroupNo = 2
+          LayerName = Foreground1
+        end
+        object ppDBText22: TppDBText
+          DesignLayer = ppDesignLayer2
+          UserName = 'DBText22'
+          Border.mmPadding = 0
+          DataField = 'NF_ALIQ_ICMS'
+          DataPipeline = pipNotasCFOP
+          DisplayFormat = '#,####0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'pipNotasCFOP'
+          mmHeight = 3704
+          mmLeft = 165369
+          mmTop = 0
+          mmWidth = 12282
           BandType = 3
           GroupNo = 2
           LayerName = Foreground1
@@ -9782,17 +10038,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = ppGroup1
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 92398
+          mmHeight = 3704
+          mmLeft = 83388
           mmTop = 0
-          mmWidth = 24322
+          mmWidth = 21672
           BandType = 5
           GroupNo = 2
           LayerName = Foreground1
@@ -9809,17 +10065,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = ppGroup1
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 117812
+          mmHeight = 3704
+          mmLeft = 107212
           mmTop = 0
-          mmWidth = 19578
+          mmWidth = 16133
           BandType = 5
           GroupNo = 2
           LayerName = Foreground1
@@ -9836,17 +10092,17 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = ppGroup1
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 161272
+          mmHeight = 3704
+          mmLeft = 177967
           mmTop = 0
-          mmWidth = 15285
+          mmWidth = 13960
           BandType = 5
           GroupNo = 2
           LayerName = Foreground1
@@ -9863,15 +10119,15 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = ppGroup1
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 177161
+          mmHeight = 3704
+          mmLeft = 192531
           mmTop = 0
           mmWidth = 25245
           BandType = 5
@@ -9936,7 +10192,7 @@ inherited frmNfe40: TfrmNfe40
           mmHeight = 3440
           mmLeft = 33695
           mmTop = 287
-          mmWidth = 58090
+          mmWidth = 48550
           BandType = 5
           GroupNo = 2
           LayerName = Foreground1
@@ -9955,9 +10211,9 @@ inherited frmNfe40: TfrmNfe40
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
           mmHeight = 3440
-          mmLeft = 203465
+          mmLeft = 219100
           mmTop = 0
-          mmWidth = 80430
+          mmWidth = 65088
           BandType = 5
           GroupNo = 2
           LayerName = Foreground1
@@ -9995,17 +10251,67 @@ inherited frmNfe40: TfrmNfe40
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
-          Font.Size = 9
+          Font.Size = 8
           Font.Style = []
           ParentDataPipeline = False
           ResetGroup = ppGroup1
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'pipNotasCFOP'
-          mmHeight = 3175
-          mmLeft = 138835
+          mmHeight = 3704
+          mmLeft = 148110
           mmTop = 0
-          mmWidth = 21908
+          mmWidth = 15283
+          BandType = 5
+          GroupNo = 2
+          LayerName = Foreground1
+        end
+        object ppDBCalc27: TppDBCalc
+          DesignLayer = ppDesignLayer2
+          UserName = 'DBCalc27'
+          HyperlinkEnabled = False
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
+          DataField = 'NF_BASEICMS'
+          DataPipeline = pipNotasCFOP
+          DisplayFormat = '#,##0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          ParentDataPipeline = False
+          ResetGroup = ppGroup1
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'pipNotasCFOP'
+          mmHeight = 3704
+          mmLeft = 124345
+          mmTop = 0
+          mmWidth = 22236
+          BandType = 5
+          GroupNo = 2
+          LayerName = Foreground1
+        end
+        object ppDBText39: TppDBText
+          DesignLayer = ppDesignLayer2
+          UserName = 'DBText39'
+          Border.mmPadding = 0
+          DataField = 'NF_ALIQ_ICMS'
+          DataPipeline = pipNotasCFOP
+          DisplayFormat = '#,####0.00'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          TextAlignment = taRightJustified
+          Transparent = True
+          DataPipelineName = 'pipNotasCFOP'
+          mmHeight = 3704
+          mmLeft = 165365
+          mmTop = 0
+          mmWidth = 12282
           BandType = 5
           GroupNo = 2
           LayerName = Foreground1
@@ -10161,14 +10467,14 @@ inherited frmNfe40: TfrmNfe40
   end
   object dspNOTAcfop: TDataSetProvider
     DataSet = qNotaCFOP
-    Left = 1157
+    Left = 1093
     Top = 350
   end
   object cdsNOTACFOP: TClientDataSet
     Aggregates = <>
     Params = <>
     ProviderName = 'dspNOTAcfop'
-    Left = 1093
+    Left = 997
     Top = 350
     object cdsNOTACFOPNF_STATUS_NFE: TStringField
       FieldName = 'NF_STATUS_NFE'
@@ -10301,25 +10607,33 @@ inherited frmNfe40: TfrmNfe40
       FieldName = 'OPE_TIPO_OPERACAO'
       Size = 1
     end
+    object cdsNOTACFOPNF_BASEICMS: TFMTBCDField
+      FieldName = 'NF_BASEICMS'
+      Size = 5
+    end
+    object cdsNOTACFOPNF_ALIQ_ICMS: TFMTBCDField
+      FieldName = 'NF_ALIQ_ICMS'
+      Size = 5
+    end
   end
   object qNotaCFOP: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
-    Left = 1213
+    Left = 1181
     Top = 350
   end
   object dsNotaCFOP: TDataSource
     DataSet = cdsNOTACFOP
-    Left = 1277
+    Left = 1261
     Top = 350
   end
   object pipNotasCFOP: TppDBPipeline
     DataSource = dsNotaCFOP
     CloseDataSource = True
     UserName = 'pipNotasCFOP'
-    Left = 992
-    Top = 343
+    Left = 904
+    Top = 351
     object pipNotasCFOPppField1: TppField
       FieldAlias = 'NF_STATUS_NFE'
       FieldName = 'NF_STATUS_NFE'
@@ -10607,6 +10921,26 @@ inherited frmNfe40: TfrmNfe40
       DataType = dtNotKnown
       DisplayWidth = 0
       Position = 28
+      Searchable = False
+      Sortable = False
+    end
+    object pipNotasCFOPppField30: TppField
+      FieldAlias = 'NF_BASEICMS'
+      FieldName = 'NF_BASEICMS'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 29
+      Searchable = False
+      Sortable = False
+    end
+    object pipNotasCFOPppField31: TppField
+      FieldAlias = 'NF_ALIQ_ICMS'
+      FieldName = 'NF_ALIQ_ICMS'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 30
       Searchable = False
       Sortable = False
     end

@@ -395,6 +395,22 @@ type
     raCodeModule2: TraCodeModule;
     ppDesignLayers1: TppDesignLayers;
     ppDesignLayer1: TppDesignLayer;
+    cdsNotasNF_BASEICMS: TFMTBCDField;
+    cdsNotasNF_ALIQ_ICMS: TFMTBCDField;
+    cdsNOTACFOPNF_BASEICMS: TFMTBCDField;
+    cdsNOTACFOPNF_ALIQ_ICMS: TFMTBCDField;
+    ppLabel46: TppLabel;
+    ppDBText18: TppDBText;
+    ppLabel47: TppLabel;
+    ppDBText19: TppDBText;
+    ppLabel48: TppLabel;
+    ppDBText20: TppDBText;
+    ppDBCalc27: TppDBCalc;
+    ppDBCalc28: TppDBCalc;
+    ppDBCalc29: TppDBCalc;
+    ppLabel54: TppLabel;
+    ppDBText22: TppDBText;
+    ppDBText39: TppDBText;
     procedure FormCreate(Sender: TObject);
     procedure acaoImprimirDANFEClick(Sender: TObject);
     procedure cdsNotasAfterScroll(DataSet: TDataSet);
@@ -842,7 +858,7 @@ begin
   qNotas.CommandText := 'SELECT DISTINCT nf.EMP_CODIGO, nf_status_nfe,nf_enviado_nfe_email, NF.ped_codigo,NF_NUM_NFE, NF.NF_REGISTRO, NF_NOTANUMBER, NF_EMISSAO, NF.OPE_NATUREZA,cl.CLI_CODIGO, cl.CLI_RAZAO, '+
                         'cl.CLI_CIDADE, cl.CLI_UF, nf.NF_TOT_NOTA, nf.nf_vl_icms, nf.nf_vl_subtrib,nf.nf_vl_ipi, nf.nf_tot_prod, nf_chave_nfe, NF_PROTOCOLO_AUTORIZACAO, '+
                         ' NF_PROTOCOLO_NFE_CANC, NF_PROTOCOLO_NFE, NF_SEQ_CCE, nf.NF_VL_DESCTO, nf.ope_codigo, CLI_EMAIL, NF_NUM_NFCE, NF_PESOBRU, NF_PESOLIQ, ' +
-                        ' pd.PED_CAMINHO_XML ' +
+                        ' pd.PED_CAMINHO_XML, NF_BASEICMS, NF_ALIQ_ICMS ' +
                         ' FROM NF0001 nf ' +
                         ' JOIN CLI0000 cl on (nf.CLI_CODIGO = cl.CLI_CODIGO) '+
                         ' JOIN PED0000 pd on (pd.PED_CODIGO = NF.PED_CODIGO) '+
@@ -2560,7 +2576,7 @@ begin
    cdsNOTACFOP.Close;
    qNotaCFOP.CommandText :=  ' SELECT CAST(it.NTP_CFOP AS varchar(4))  as OPE_NATUREZA, Nf_status_nfe, COALESCE (NF_NUM_NFCE,NF_NUM_NFE) NOTA,OPE_TIPO_OPERACAO,      '+
                              '     nf_enviado_nfe_email,NF.ped_codigo,NF_NUM_NFE, '+
-                             ' NF.NF_REGISTRO, NF_NOTANUMBER, NF_EMISSAO, '+
+                             ' NF.NF_REGISTRO, NF_NOTANUMBER, NF_EMISSAO, NF_BASEICMS, NF_ALIQ_ICMS, '+
                              ' cl.CLI_CODIGO, cl.CLI_RAZAO, ' +
                              ' cl.CLI_CIDADE, cl.CLI_UF,NF_IFRETE,NF_ISEGURO,'+
                              ' ((it.NF_QTDE * COALESCE(it.NF_PRECO,0))+  COALESCE( it.NF_VLSUBST,0) +it.NF_IPIVALOR+NF_IFRETE +NF_ISEGURO+NF_IDESP_ACES-NF_IDESCTO1   ) AS NF_TOT_NOTA, '+
