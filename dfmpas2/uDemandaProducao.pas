@@ -70,10 +70,10 @@ uses
     IntegerField1: TIntegerField;
     cdsFichaPRD_REFER_ITENS: TStringField;
     cdsFichaPRD_DESCRI: TStringField;
-    cdsFichaFTI_UC: TFMTBCDField;
+    cdsFichaFTI_UC: TFloatField;
     cdsFichaDTENTREGA: TDateField;
     cdsFichaDEP_SITUACAO: TStringField;
-    cdsFichaQTDEPRD: TFMTBCDField;
+    cdsFichaQTDEPRD: TFloatField;
     cdsFichaIOP_NORDEM: TStringField;
     cdsFichaDEP_QTDE_ESTOQUE: TFMTBCDField;
     cdsFichaESTOQUEDISPONIVEL: TFMTBCDField;
@@ -132,7 +132,7 @@ uses
     cdsBuscaPRF_PESOKG: TFMTBCDField;
     cdsBuscaPRF_PRECO: TFMTBCDField;
     FDMemTable1: TFDMemTable;
-    cdsFichaUC_TOTAL: TFMTBCDField;
+    cdsFichaUC_TOTAL: TFloatField;
     cxgrd1DBTableView1UC_TOTAL: TcxGridDBColumn;
     cdsFichaDEP_CODIGO: TIntegerField;
     cdsFichaFTI_REGISTRO: TIntegerField;

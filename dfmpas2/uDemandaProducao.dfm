@@ -1464,12 +1464,10 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       ReadOnly = True
       Size = 100
     end
-    object cdsFichaFTI_UC: TFMTBCDField
+    object cdsFichaFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
       DisplayFormat = '#,###0.000000'
-      Precision = 18
-      Size = 5
     end
     object cdsFichaDTENTREGA: TDateField
       AutoGenerateValue = arDefault
@@ -1488,15 +1486,13 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       Precision = 18
       Size = 5
     end
-    object cdsFichaQTDEPRD: TFMTBCDField
+    object cdsFichaQTDEPRD: TFloatField
       AutoGenerateValue = arDefault
       FieldName = 'QTDEPRD'
       Origin = 'IOP_QUANTIDADE'
       ProviderFlags = [pfInWhere]
       OnChange = cdsFichaQTDEPRDChange
       DisplayFormat = '#,###0.000'
-      Precision = 18
-      Size = 5
     end
     object cdsFichaDEP_SITUACAO: TStringField
       AutoGenerateValue = arDefault
@@ -1572,7 +1568,7 @@ inherited frmDemandaProducao: TfrmDemandaProducao
       ReadOnly = True
       Size = 6
     end
-    object cdsFichaUC_TOTAL: TFMTBCDField
+    object cdsFichaUC_TOTAL: TFloatField
       FieldName = 'UC_TOTAL'
     end
     object cdsFichaDEP_CODIGO: TIntegerField
