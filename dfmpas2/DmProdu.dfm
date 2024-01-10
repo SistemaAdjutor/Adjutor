@@ -2221,15 +2221,13 @@ object DmProducao: TDmProducao
       FieldName = 'FTI_MODIFICADA'
       ProviderFlags = [pfInUpdate]
     end
-    object SqlCdsItemFichaFTI_UC: TFMTBCDField
+    object SqlCdsItemFichaFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
-    object SqlCdsItemFichaFTI_UCMODIFIC: TFMTBCDField
+    object SqlCdsItemFichaFTI_UCMODIFIC: TFloatField
       FieldName = 'FTI_UCMODIFIC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
     object SqlCdsItemFichaFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -2332,15 +2330,13 @@ object DmProducao: TDmProducao
       FieldName = 'FTI_MODIFICADA'
       ProviderFlags = [pfInUpdate]
     end
-    object CdsItemFichaFTI_UC: TFMTBCDField
+    object CdsItemFichaFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
-    object CdsItemFichaFTI_UCMODIFIC: TFMTBCDField
+    object CdsItemFichaFTI_UCMODIFIC: TFloatField
       FieldName = 'FTI_UCMODIFIC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
     object CdsItemFichaFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -2929,9 +2925,8 @@ object DmProducao: TDmProducao
       ProviderFlags = [pfInUpdate]
       Size = 1
     end
-    object SqlOsvItOSI_UC: TFMTBCDField
+    object SqlOsvItOSI_UC: TFloatField
       FieldName = 'OSI_UC'
-      Precision = 15
     end
     object SqlOsvItOSI_QTDE1: TFMTBCDField
       FieldName = 'OSI_QTDE1'
@@ -3103,9 +3098,8 @@ object DmProducao: TDmProducao
       ProviderFlags = [pfInUpdate]
       Calculated = True
     end
-    object CdsOsvItOSI_UC: TFMTBCDField
+    object CdsOsvItOSI_UC: TFloatField
       FieldName = 'OSI_UC'
-      Precision = 15
     end
     object CdsOsvItOSI_QTDE1: TFMTBCDField
       FieldName = 'OSI_QTDE1'

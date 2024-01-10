@@ -684,7 +684,7 @@ type
     cdsOpPRD_GERENCIA_LOTE: TStringField;
    // sqlOpPRD_GERENCIA_LOTE: TStringField;
     cdsOpOSV_QTDE_CONCLUIDA: TFMTBCDField;
-    SqlCdsItemOPOSI_UC: TFMTBCDField;
+    SqlCdsItemOPOSI_UC: TFloatField;
     cdsOpPRD_UND: TStringField;
     sqlOpPRD_UND: TStringField;
     ppHeaderBand2: TppHeaderBand;
@@ -798,7 +798,7 @@ type
     ppLine31: TppLine;
     ppDBText31: TppDBText;
     frxOP2: TfrxReport;
-    SqlCdsFichaTecnicaOSI_UC: TFMTBCDField;
+    SqlCdsFichaTecnicaOSI_UC: TFloatField;
     SqlCdsFichaTecnicaOSI_QTDE_TOTAL_cc: TCurrencyField;
     SqlCdsFichaTecnicaPTI_SIGLA: TStringField;
     sqlOpOSV_DTENTREGA: TSQLTimeStampField;

@@ -70,7 +70,7 @@ type
     SqlCdsN1FTI_MODE6: TStringField;
     SqlCdsN1FTI_MODE7: TStringField;
     SqlCdsN1FTI_MODE8: TStringField;
-    SqlCdsN1FTI_UC: TFMTBCdField;
+    SqlCdsN1FTI_UC: TFloatField;
     ImageList1: TImageList;
     PopMenuItens: TPopupMenu;
     Ativa1: TMenuItem;
@@ -148,7 +148,7 @@ type
     SqlCdsItensFichasFTI_MODE6: TStringField;
     SqlCdsItensFichasFTI_MODE7: TStringField;
     SqlCdsItensFichasFTI_MODE8: TStringField;
-    SqlCdsItensFichasFTI_UC: TFMTBCdField;
+    SqlCdsItensFichasFTI_UC: TFloatField;
     CdsTemp: TClientDataSet;
     CdsTempREFER: TStringField;
     CdsTempREFER_ORIGEN: TStringField;

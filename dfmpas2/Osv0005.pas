@@ -193,11 +193,12 @@ begin
 //               sloteregistro:= CbLoteProduto.Properties.DataController.DataSet.Lookup('PRDL_REGISTRO',CbLoteProduto.EditValue,'PRDL_LOTE')
           begin
             sloteregistro:= CbLoteProduto.EditValue;
-            ExecSQL('UPDATE PRD_LOTE SET ' +
-                    ' PRDL_QTDELOTE = COALESCE(PRDL_QTDELOTE, 0) + ' + FloatToSQL(CurQtdeConcluida.value)  + ',' +
-                    ' PRDL_SALDO = COALESCE(PRDL_SALDO, 0) + ' + FloatToSQL(CurQtdeConcluida.value)  +
-                    ' WHERE PRDL_REGISTRO = ' + sLoteRegistro
-                    );
+//          JÁ ESTÁ SENDO AJUSTADO NA TRIGGER KARDEX_AI0 DA TABELA KARDEX...
+//            ExecSQL('UPDATE PRD_LOTE SET ' +
+//                    ' PRDL_QTDELOTE = COALESCE(PRDL_QTDELOTE, 0) + ' + FloatToSQL(CurQtdeConcluida.value)  + ',' +
+//                    ' PRDL_SALDO = COALESCE(PRDL_SALDO, 0) + ' + FloatToSQL(CurQtdeConcluida.value)  +
+//                    ' WHERE PRDL_REGISTRO = ' + sLoteRegistro
+//                    );
           end
           else
           if FormOrdServCentroNovo.CdsOPPRD_GERENCIA_LOTE.AsString = 'S' then

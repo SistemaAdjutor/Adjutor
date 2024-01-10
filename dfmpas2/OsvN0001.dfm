@@ -3307,12 +3307,11 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       FieldName = 'GRADE'
       Size = 100
     end
-    object SqlCdsItemOPOSI_UC: TFMTBCDField
+    object SqlCdsItemOPOSI_UC: TFloatField
       FieldName = 'OSI_UC'
       ProviderFlags = [pfInUpdate]
       DisplayFormat = '#,##0.000000'
       Precision = 9
-      Size = 18
     end
     object SqlCdsItemOPTOTALUC_CC: TFloatField
       FieldKind = fkCalculated
@@ -8564,7 +8563,7 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
     Left = 210
     Top = 90
     Bitmap = {
-      494C010103000500080010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500100010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -19200,10 +19199,9 @@ inherited FormOrdServCentroNovo: TFormOrdServCentroNovo
       FieldName = 'PRD_UND'
       Size = 2
     end
-    object SqlCdsFichaTecnicaOSI_UC: TFMTBCDField
+    object SqlCdsFichaTecnicaOSI_UC: TFloatField
       FieldName = 'OSI_UC'
       DisplayFormat = '#,##0.000000'
-      Precision = 18
     end
     object SqlCdsFichaTecnicaOSI_QTDE_TOTAL_cc: TCurrencyField
       FieldKind = fkCalculated

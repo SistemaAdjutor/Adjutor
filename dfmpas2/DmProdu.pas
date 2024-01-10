@@ -342,8 +342,8 @@ type
     DsItemFicha: TDataSource;
     SqlCdsItemFichaFTI_REGISTRO: TIntegerField;
     SqlCdsItemFichaFTI_MODIFICADA: TSQLTimeStampField;
-    SqlCdsItemFichaFTI_UC: TFMTBCdField;
-    SqlCdsItemFichaFTI_UCMODIFIC: TFMTBCdField;
+    SqlCdsItemFichaFTI_UC: TFloatField;
+    SqlCdsItemFichaFTI_UCMODIFIC: TFloatField;
     SqlCdsItemFichaFTI_MODE1: TStringField;
     SqlCdsItemFichaFTI_MODE2: TStringField;
     SqlCdsItemFichaFTI_MODE3: TStringField;
@@ -356,8 +356,8 @@ type
     SqlCdsItemFichaEMP_CODIGO: TStringField;
     CdsItemFichaFTI_REGISTRO: TIntegerField;
     CdsItemFichaFTI_MODIFICADA: TSQLTimeStampField;
-    CdsItemFichaFTI_UC: TFMTBCdField;
-    CdsItemFichaFTI_UCMODIFIC: TFMTBCdField;
+    CdsItemFichaFTI_UC: TFloatField;
+    CdsItemFichaFTI_UCMODIFIC: TFloatField;
     CdsItemFichaFTI_MODE1: TStringField;
     CdsItemFichaFTI_MODE2: TStringField;
     CdsItemFichaFTI_MODE3: TStringField;
@@ -735,8 +735,8 @@ type
     CdsFichaTecFTC_PROC6: TStringField;
     CdsFichaTecFTC_PROC7: TStringField;
     CdsFichaTecFTC_PROC8: TStringField;
-    SqlOsvItOSI_UC: TFMTBCdField;
-    CdsOsvItOSI_UC: TFMTBCdField;
+    SqlOsvItOSI_UC: TFloatField;
+    CdsOsvItOSI_UC: TFloatField;
     SqlOsvItOSI_QTDE1: TFMTBCdField;
     SqlOsvItOSI_QTDE2: TFMTBCdField;
     SqlOsvItOSI_QTDE3: TFMTBCdField;
