@@ -276,7 +276,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       AutoSize = False
       DecimalPlaces = 5
       DisplayFormat = '###,###,###.#####'
-      TabOrder = 1
+      TabOrder = 3
       OnExit = CurQuantidadeExit
     end
     object prdDescricao: TEdit
@@ -284,7 +284,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       Top = 21
       Width = 378
       Height = 22
-      TabOrder = 2
+      TabOrder = 1
     end
     object Bit_Lista: TBitBtn
       Left = 551
@@ -310,7 +310,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
         8888888888808000000000000000088888888888888888888880888888888888
         8888888888888888888888888880}
       NumGlyphs = 2
-      TabOrder = 3
+      TabOrder = 2
       TabStop = False
       OnClick = Bit_ListaClick
     end

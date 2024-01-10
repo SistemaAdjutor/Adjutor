@@ -348,6 +348,8 @@ var
 begin
 
   inherited;
+  if not SqlCdsNotasDisponiveis.Active then
+    Exit;
   SqlCdsNotasDisponiveis.DisableControls;
   SqlCdsNotasDisponiveis.First;
   while not SqlCdsNotasDisponiveis.Eof do
@@ -504,11 +506,13 @@ end;
 procedure TFrmIndustrializacaoPorKit.prdReferExit(Sender: TObject);
 begin
   inherited;
+  if ActiveControl.Name = 'Bit_Lista' then
+    Exit;
   prdDescricao.Text := BuscaUmDadoSqlAsString(
     'SELECT PRD_DESCRI FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(prdRefer.Text)
   );
   if prdDescricao.Text = '' then
-    MessageDlg('Referência não encontrada', mtError, [mbOk], 0)
+    Exit // MessageDlg('Referência não encontrada', mtError, [mbOk], 0)
   else
     ConsultaDisponiveis;
   lbNItensFichaTecnica.Caption := BuscaUmDadoSqlAsString('SELECT COUNT(FTI_REGISTRO) FROM FTC_IT01 fi WHERE PRD_REFER = '  + QuotedStr(prdRefer.Text) );
