@@ -334,7 +334,7 @@ var
   hif : integer;
   DEP_CODIGO : integer;
   Kardex : TfrmBaseDbEstoque;
-  prefixoSQL, lote : string;
+  prefixoSQL, lote, loteOriginal : string;
   controlaLote: boolean;
 begin
   if prefixo = '' then
@@ -465,10 +465,13 @@ begin
     end;
     if controlaLote and (DBInicio.Empresa.PMT_LOTE_AUTOMATICO = 'A' ) then
     begin
-      lote := BuscaUmDadoSqlAsString(' SELECT lot.PRDL_LOTE FROM ITEM_ORDEMPRODUCAO iop JOIN PRD_LOTE lot ON (lot.IOP_CODIGO = iop.IOP_CODIGO) WHERE lot.IOP_CODIGO  = ' + qAux.FieldByName('IOP_CODIGO').AsString);
-      lote := copy(lote, 1,  pos('/', lote) - 1 );
+      loteOriginal := BuscaUmDadoSqlAsString(' SELECT lot.PRDL_LOTE FROM ITEM_ORDEMPRODUCAO iop JOIN PRD_LOTE lot ON (lot.IOP_CODIGO = iop.IOP_CODIGO) WHERE lot.IOP_CODIGO  = ' + qAux.FieldByName('IOP_CODIGO').AsString);
+      lote := copy(loteOriginal, 1,  pos('/', loteOriginal) - 1 );
       if lote <> '' then
+      begin
+        ExecSql(' DELETE FROM PRD_LOTE WHERE PRDL_LOTE = ' + QuotedStr(loteOriginal) ) ;
         ExecSql(' INSERT INTO LOTE_ESTORNADO VALUES (' + QuotedStr(lote)+ ',' + QuotedStr(dbInicio.EMP_CODIGO) + ')');
+      end;
     end;
 
     ExecSql(' INSERT INTO IOP_RESERVA_PREFIXO VALUES (' + QuotedStr(prefixo) + ')');
