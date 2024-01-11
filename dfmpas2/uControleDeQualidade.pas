@@ -182,6 +182,7 @@ type
     qQualidadePRDL_DATA_VALIDADE: TStringField;
     qQualidadeIOP_QUANTIDADE: TFMTBCDField;
     qQualidadePRD_UNIDESCRI: TStringField;
+    qQualidadePAR_OBSERVACAO: TStringField;
     procedure edPesquisaChange(Sender: TObject);
     procedure btnPesquisaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -271,7 +272,7 @@ begin
       '         WHEN COALESCE(pl.PRDL_DATA_VALIDADE, '''') = '''' THEN '' 24 meses '' ' +
       '         ELSE DATEDIFF (MONTH FROM pl.PRDL_DATA_FABRICACAO TO pl.PRDL_DATA_VALIDADE) || '' meses'' ' +
       '       END AS PRDL_DATA_VALIDADE, ' +
-      '       pr.PRD_REFER, pr.PRD_DESCRI, PQ.PAR_DESCRICAO, CQP.CQP_VALOR_MIN, CQP.CQP_VALOR_MAX, ' +
+      '       pr.PRD_REFER, pr.PRD_DESCRI, PQ.PAR_DESCRICAO, PQ.PAR_OBSERVACAO, CQP.CQP_VALOR_MIN, CQP.CQP_VALOR_MAX, ' +
       '       CQ.CQUA_RESULTADO, CQ.CQUA_PRDL_LOTE, iop.IOP_DATA_CONCLUSAO, iop.iop_nordem, ' +
       '       CQ.CQUA_DATA_CONCLUSAO, CQ.CQUA_OBSERVACAO, CQP.CQP_ESPERADO ' +
       ' FROM CONTROLE_DE_QUALIDADE CQ ' +

@@ -2949,7 +2949,8 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       'PRDL_DATA_FABRICACAO=PRDL_DATA_FABRICACAO'
       'PRDL_DATA_VALIDADE=PRDL_DATA_VALIDADE'
       'IOP_QUANTIDADE=IOP_QUANTIDADE'
-      'PRD_UNIDESCRI=PRD_UNIDESCRI')
+      'PRD_UNIDESCRI=PRD_UNIDESCRI'
+      'PAR_OBSERVACAO=PAR_OBSERVACAO')
     DataSet = qQualidade
     BCDToCurrency = False
     Left = 569
@@ -3117,6 +3118,10 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
       FieldName = 'PRD_UNIDESCRI'
       Origin = 'PRD_UNIDESCRI'
       Size = 30
+    end
+    object qQualidadePAR_OBSERVACAO: TStringField
+      FieldName = 'PAR_OBSERVACAO'
+      Size = 100
     end
   end
   object qSoma: TFDQuery
@@ -3939,6 +3944,16 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Memo.UTF8W = (
             '[frxDBQualidade."PAR_DESCRICAO"]')
           ParentFont = False
+        end
+        object Memo43: TfrxMemoView
+          AllowVectorExport = True
+          Left = 636.740570000000000000
+          Top = 3.779530000000000000
+          Width = 71.811070000000000000
+          Height = 18.897650000000000000
+          Frame.Typ = []
+          Memo.UTF8W = (
+            '[frxDBQualidade."PAR_OBSERVACAO"]')
         end
       end
       object PageFooter1: TfrxPageFooter
