@@ -219,9 +219,6 @@ inherited frmApontamentosCargas: TfrmApontamentosCargas
         Width = 1046
         Height = 380
         LevelTabs.CaptionAlignment = taLeftJustify
-        LookAndFeel.Kind = lfStandard
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmClassic
         RootLevelOptions.DetailTabsPosition = dtpTop
         OnActiveTabChanged = cxgrd1ActiveTabChanged
         ExplicitTop = 89
