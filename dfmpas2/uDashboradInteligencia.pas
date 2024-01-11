@@ -150,6 +150,7 @@ begin
 
   DecodeDate(Now, ano, mes, dia);
   mesAtual := cbMes.ItemIndex + 1;
+  ano := StrToInt(cbAno.Text);
   if mesAtual <> mes then
     diaAtual := UltimoDiaDoMes(mesAtual, cbAno.ItemIndex)
   else
