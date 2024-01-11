@@ -274,11 +274,11 @@ object FrmRecibo: TFrmRecibo
     StrMoedas = 'Reais'
     StrCentavo = 'Centavo'
     StrCentavos = 'Centavos'
-    Left = 475
-    Top = 80
+    Left = 283
+    Top = 72
   end
   object frxRecibo: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -320,8 +320,8 @@ object FrmRecibo: TFrmRecibo
       ''
       'end.')
     OnGetValue = frxReciboGetValue
-    Left = 507
-    Top = 80
+    Left = 371
+    Top = 72
     Datasets = <>
     Variables = <>
     Style = <>
@@ -337,38 +337,45 @@ object FrmRecibo: TFrmRecibo
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnAfterPrint = 'Page1OnAfterPrint'
       OnBeforePrint = 'Page1OnBeforePrint'
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
         Font.Name = 'Arial'
         Font.Style = []
-        Height = 1028.032160000000000000
+        Height = 498.897960000000000000
         ParentFont = False
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         OnAfterPrint = 'ReportTitle1OnAfterPrint'
         OnBeforePrint = 'ReportTitle1OnBeforePrint'
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 2.779530000000000000
           Width = 120.944960000000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 75.370130000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 129.960730000000000000
           Top = 2.779530000000000000
           Width = 585.827150000000000000
@@ -379,11 +386,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
         end
         object wFrxEndereco: TfrxMemoView
+          AllowVectorExport = True
           Left = 129.976500000000000000
           Top = 20.000000000000000000
           Width = 585.827150000000000000
@@ -394,11 +403,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 129.960730000000000000
           Top = 40.795300000000000000
           Width = 86.929190000000000000
@@ -409,11 +420,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CEP]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.551330000000000000
           Top = 40.795300000000000000
           Width = 283.464750000000000000
@@ -424,11 +437,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE]')
           ParentFont = False
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 515.472790000000000000
           Top = 40.795300000000000000
           Width = 26.456710000000000000
@@ -439,11 +454,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[UF]')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 549.488560000000000000
           Top = 40.795300000000000000
           Width = 166.299320000000000000
@@ -454,11 +471,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FONE]')
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 180.622140000000000000
           Top = 56.692950000000000000
           Width = 245.669450000000000000
@@ -469,11 +488,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CNPJ]')
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 128.960730000000000000
           Top = 56.692950000000000000
           Width = 45.354360000000000000
@@ -484,11 +505,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 482.882190000000000000
           Top = 56.913420000000000000
           Width = 60.472480000000000000
@@ -499,11 +522,13 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inscri'#231#227'o:')
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.575140000000000000
           Top = 56.692950000000000000
           Width = 166.299320000000000000
@@ -514,17 +539,20 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[INSCR]')
           ParentFont = False
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Top = 105.826840000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 113.385900000000000000
           Width = 714.331170000000000000
@@ -535,12 +563,14 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TERMO] : [RECEBIDO]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 136.063080000000000000
           Width = 714.331170000000000000
@@ -551,18 +581,22 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'A import'#226'ncia de [VALOREXTENSO]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 718.110700000000000000
           Height = 30.236240000000000000
           Fill.BackColor = 15724527
+          Frame.Typ = []
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 283.464750000000000000
           Height = 30.236240000000000000
@@ -572,12 +606,14 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RECIBO]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 75.590600000000000000
           Width = 200.315090000000000000
@@ -590,6 +626,7 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'VALOR: [VALOR]')
@@ -597,12 +634,15 @@ object FrmRecibo: TFrmRecibo
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Top = 170.078850000000000000
           Width = 718.110700000000000000
           Height = 30.236240000000000000
           Fill.BackColor = 15724527
+          Frame.Typ = []
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 170.078850000000000000
           Width = 434.645950000000000000
           Height = 30.236240000000000000
@@ -612,12 +652,14 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'REFERENTE')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 75.590600000000000000
           Width = 200.315090000000000000
@@ -629,6 +671,7 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'N'#218'MERO: [NUMERO]')
@@ -636,8 +679,9 @@ object FrmRecibo: TFrmRecibo
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 861.732840000000000000
+          AllowVectorExport = True
+          Left = 7.559060000000000000
+          Top = 385.512060000000000000
           Width = 714.331170000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -646,14 +690,16 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[LOCAL]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 994.016390000000000000
+          AllowVectorExport = True
+          Left = 7.559060000000000000
+          Top = 472.441250000000000000
           Width = 714.331170000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -662,6 +708,7 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[EMITENTE]')
@@ -669,8 +716,9 @@ object FrmRecibo: TFrmRecibo
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
-          Left = 3.779530000000000000
-          Top = 971.339210000000000000
+          AllowVectorExport = True
+          Left = 7.559060000000000000
+          Top = 449.764070000000000000
           Width = 714.331170000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -679,6 +727,7 @@ object FrmRecibo: TFrmRecibo
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Assinatura:  _____________________________________________')
@@ -686,22 +735,26 @@ object FrmRecibo: TFrmRecibo
           VAlign = vaCenter
         end
         object Shape3: TfrxShapeView
+          AllowVectorExport = True
           Top = 200.315090000000000000
           Width = 718.110700000000000000
-          Height = 650.079160000000000000
+          Height = 181.417440000000000000
           Fill.BackColor = clWhite
+          Frame.Typ = []
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 204.094620000000000000
           Width = 714.331170000000000000
-          Height = 642.520100000000000000
+          Height = 173.858380000000000000
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[REFERENTE]')
           ParentFont = False
@@ -714,11 +767,14 @@ object FrmRecibo: TFrmRecibo
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -729,8 +785,11 @@ object FrmRecibo: TFrmRecibo
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
-    Left = 539
-    Top = 80
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
+    Left = 451
+    Top = 72
   end
   object frxXLSExport1: TfrxXLSExport
     UseFileCache = True
@@ -744,8 +803,8 @@ object FrmRecibo: TFrmRecibo
     PageBreaks = True
     EmptyLines = True
     SuppressPageHeadersFooters = False
-    Left = 571
-    Top = 80
+    Left = 531
+    Top = 72
   end
   object frxRTFExport1: TfrxRTFExport
     UseFileCache = True
@@ -753,12 +812,13 @@ object FrmRecibo: TFrmRecibo
     OverwritePrompt = False
     DataOnly = False
     PictureType = gpPNG
+    OpenAfterExport = False
     Wysiwyg = True
     Creator = 'FastReport http://www.fast-report.com'
     SuppressPageHeadersFooters = False
     HeaderFooterMode = hfText
     AutoSize = False
-    Left = 603
-    Top = 80
+    Left = 611
+    Top = 72
   end
 end

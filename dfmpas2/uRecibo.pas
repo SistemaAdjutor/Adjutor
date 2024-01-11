@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Mask,  rxToolEdit,  rxCurrEdit, Buttons, ACBrBase,
-  ACBrExtenso, frxClass, jpeg, DB, frxExportRTF, frxExportXLS, frxExportPDF;
+  ACBrExtenso, frxClass, jpeg, DB, frxExportRTF, frxExportXLS, frxExportPDF,
+  frxExportBaseDialog;
 
 type
   TFrmRecibo = class(TForm)
