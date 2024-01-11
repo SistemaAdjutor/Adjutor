@@ -798,20 +798,20 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       'WaitOnLocks=True'
       'IsolationLevel=ReadCommitted'
       'Trim Char=True')
-    Left = 248
-    Top = 145
+    Left = 600
+    Top = 425
   end
   inherited qAux: TSQLQuery
-    Left = 330
-    Top = 149
+    Left = 682
+    Top = 429
   end
   inherited qAux2: TSQLQuery
-    Left = 386
-    Top = 148
+    Left = 738
+    Top = 428
   end
   inherited qAux3: TSQLQuery
-    Left = 442
-    Top = 148
+    Left = 794
+    Top = 428
   end
   object qSqlCdsPesq: TSQLQuery
     MaxBlobSize = -1
@@ -851,7 +851,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Size = 7
     end
     object qSqlCdsPesqCLI_RAZAO: TStringField
-      DisplayLabel = 'Cliente'
+      DisplayLabel = 'Nome'
       DisplayWidth = 48
       FieldName = 'CLI_RAZAO'
       Size = 49
@@ -883,14 +883,14 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Precision = 15
     end
     object qSqlCdsPesqPED_PARCELA: TIntegerField
-      DisplayLabel = 'Parcela'
+      DisplayLabel = 'Qtde. de Parcelas'
       DisplayWidth = 8
       FieldName = 'PED_PARCELA'
       ProviderFlags = [pfInUpdate]
       Visible = False
     end
     object qSqlCdsPesqPED_INICIOPAG: TDateField
-      DisplayLabel = '1 parcela'
+      DisplayLabel = '1'#170' Parcela'
       DisplayWidth = 10
       FieldName = 'PED_INICIOPAG'
       ProviderFlags = [pfInUpdate]
@@ -932,6 +932,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Size = 3
     end
     object qSqlCdsPesqCLI_CGC: TStringField
+      DisplayLabel = 'CPF'
       FieldName = 'CLI_CGC'
       Visible = False
       EditMask = '99.999.999/9999-99;0;_'
@@ -1004,13 +1005,29 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object qSqlCdsPesqPED_DTENTRADA: TSQLTimeStampField
+      DisplayLabel = 'Data'
       FieldName = 'PED_DTENTRADA'
+    end
+    object qSqlCdsPesqCLI_ENDERE: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      FieldName = 'CLI_ENDERE'
+      Size = 60
+    end
+    object qSqlCdsPesqCLI_BAIRRO: TStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'CLI_BAIRRO'
+      Size = 25
+    end
+    object qSqlCdsPesqCLI_CEP: TStringField
+      DisplayLabel = 'CEP'
+      FieldName = 'CLI_CEP'
+      Size = 8
     end
   end
   object dspSqlCdsPesq: TDataSetProvider
     DataSet = qSqlCdsPesq
     Options = [poAllowCommandText, poUseQuoteChar]
-    Left = 363
+    Left = 387
     Top = 278
   end
   object SqlCdsPesq: TClientDataSet
@@ -1157,8 +1174,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
   end
   object DsPedidos: TDataSource
     DataSet = SqlCdsPesq
-    Left = 144
-    Top = 144
+    Left = 304
+    Top = 328
   end
   object SqlCdsClie: TSQLQuery
     MaxBlobSize = -1
@@ -1894,6 +1911,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Caption = 'Lista'
       OnClick = Lista2Click
     end
+    object ExportarparaCSV1: TMenuItem
+      Caption = 'Exportar para CSV'
+      OnClick = ExportarparaCSV1Click
+    end
   end
   object frxPedidosLista: TfrxReport
     Version = '6.9.3'
@@ -2473,5 +2494,140 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     SuppressPageHeadersFooters = False
     Left = 152
     Top = 352
+  end
+  object dsCdsqSqlCdsPesq: TDataSource
+    DataSet = cdsqSqlCdsPesq
+    Left = 344
+    Top = 144
+  end
+  object dspqSqlCdsPesq: TDataSetProvider
+    DataSet = qSqlCdsPesq
+    Left = 152
+    Top = 144
+  end
+  object cdsqSqlCdsPesq: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspqSqlCdsPesq'
+    OnCalcFields = cdsqSqlCdsPesqCalcFields
+    Left = 248
+    Top = 144
+    object cdsqSqlCdsPesqPED_CODIGO: TStringField
+      DisplayLabel = 'Pedido'
+      FieldName = 'PED_CODIGO'
+      Size = 7
+    end
+    object cdsqSqlCdsPesqPED_DTENTRADA: TSQLTimeStampField
+      DisplayLabel = 'Data'
+      FieldName = 'PED_DTENTRADA'
+    end
+    object cdsqSqlCdsPesqCLI_CGC: TStringField
+      DisplayLabel = 'CPF'
+      FieldName = 'CLI_CGC'
+      Visible = False
+      EditMask = '99.999.999/9999-99;0;_'
+      Size = 14
+    end
+    object cdsqSqlCdsPesqcli_cidade: TStringField
+      DisplayLabel = 'Cidade'
+      DisplayWidth = 23
+      FieldName = 'cli_cidade'
+      Size = 30
+    end
+    object cdsqSqlCdsPesqcli_uf: TStringField
+      DisplayLabel = 'UF'
+      DisplayWidth = 4
+      FieldName = 'cli_uf'
+      Size = 2
+    end
+    object cdsqSqlCdsPesqBANCO: TStringField
+      DisplayLabel = 'Banco'
+      DisplayWidth = 17
+      FieldName = 'BANCO'
+      Size = 34
+    end
+    object cdsqSqlCdsPesqPED_VLPARCELA: TFMTBCDField
+      DisplayLabel = 'Valor Parcela'
+      DisplayWidth = 10
+      FieldName = 'PED_VLPARCELA'
+      ProviderFlags = [pfInUpdate]
+      OnGetText = qSqlCdsPesqPED_VLPARCELAGetText
+      Precision = 15
+    end
+    object cdsqSqlCdsPesqPED_PARCELA: TIntegerField
+      DisplayLabel = 'Qtde. de Parcelas'
+      DisplayWidth = 8
+      FieldName = 'PED_PARCELA'
+      ProviderFlags = [pfInUpdate]
+      Visible = False
+    end
+    object cdsqSqlCdsPesqPED_INICIOPAG: TDateField
+      DisplayLabel = '1'#170' Parcela'
+      DisplayWidth = 10
+      FieldName = 'PED_INICIOPAG'
+      ProviderFlags = [pfInUpdate]
+    end
+    object cdsqSqlCdsPesqPED_VLTOTAL_BRUTO: TFMTBCDField
+      DisplayLabel = 'Valor Total'
+      DisplayWidth = 8
+      FieldName = 'PED_VLTOTAL_BRUTO'
+      OnGetText = qSqlCdsPesqPED_VLTOTAL_BRUTOGetText
+      DisplayFormat = '###,###,###,##0.00'
+      currency = True
+      Precision = 18
+    end
+    object cdsqSqlCdsPesqREP_NOME: TStringField
+      DisplayLabel = 'Vendedor'
+      FieldName = 'REP_NOME'
+      Size = 35
+    end
+    object cdsqSqlCdsPesqCLI_FONE: TStringField
+      DisplayLabel = 'Fone'
+      FieldName = 'CLI_FONE'
+      Size = 11
+    end
+    object cdsqSqlCdsPesqCLI_CELULAR: TStringField
+      DisplayLabel = 'Celular'
+      FieldName = 'CLI_CELULAR'
+      Size = 11
+    end
+    object cdsqSqlCdsPesqCLI_ENDERE: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      FieldName = 'CLI_ENDERE'
+      Size = 60
+    end
+    object cdsqSqlCdsPesqCLI_BAIRRO: TStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'CLI_BAIRRO'
+      Size = 25
+    end
+    object cdsqSqlCdsPesqCLI_CEP: TStringField
+      DisplayLabel = 'CEP'
+      FieldName = 'CLI_CEP'
+      Size = 8
+    end
+    object cdsqSqlCdsPesqEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Visible = False
+      Size = 3
+    end
+    object cdsqSqlCdsPesqCLI_RAZAO: TStringField
+      DisplayLabel = 'Nome'
+      DisplayWidth = 48
+      FieldName = 'CLI_RAZAO'
+      Size = 49
+    end
+    object cdsqSqlCdsPesqPED_SITUACAO: TStringField
+      DisplayLabel = 'Situa'#231#227'o!!!'
+      FieldName = 'PED_SITUACAO'
+      OnGetText = cdsqSqlCdsPesqPED_SITUACAOGetText
+      Size = 1
+    end
+    object cdsqSqlCdsPesqPED_SITUACAO2: TStringField
+      DisplayLabel = 'Situa'#231#227'o'
+      FieldKind = fkCalculated
+      FieldName = 'PED_SITUACAO2'
+      Calculated = True
+    end
   end
 end

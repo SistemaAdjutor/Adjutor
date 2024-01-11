@@ -123,6 +123,33 @@ type
     frxXLSExport1: TfrxXLSExport;
     qSqlCdsPesqPED_DTENTRADA: TSQLTimeStampField;
     SqlCdsPesqPED_DTENTRADA: TSQLTimeStampField;
+    ExportarparaCSV1: TMenuItem;
+    dsCdsqSqlCdsPesq: TDataSource;
+    qSqlCdsPesqCLI_ENDERE: TStringField;
+    qSqlCdsPesqCLI_BAIRRO: TStringField;
+    qSqlCdsPesqCLI_CEP: TStringField;
+    dspqSqlCdsPesq: TDataSetProvider;
+    cdsqSqlCdsPesq: TClientDataSet;
+    cdsqSqlCdsPesqPED_CODIGO: TStringField;
+    cdsqSqlCdsPesqPED_DTENTRADA: TSQLTimeStampField;
+    cdsqSqlCdsPesqCLI_RAZAO: TStringField;
+    cdsqSqlCdsPesqCLI_CGC: TStringField;
+    cdsqSqlCdsPesqcli_cidade: TStringField;
+    cdsqSqlCdsPesqcli_uf: TStringField;
+    cdsqSqlCdsPesqBANCO: TStringField;
+    cdsqSqlCdsPesqPED_VLPARCELA: TFMTBCDField;
+    cdsqSqlCdsPesqPED_PARCELA: TIntegerField;
+    cdsqSqlCdsPesqPED_INICIOPAG: TDateField;
+    cdsqSqlCdsPesqPED_VLTOTAL_BRUTO: TFMTBCDField;
+    cdsqSqlCdsPesqREP_NOME: TStringField;
+    cdsqSqlCdsPesqCLI_FONE: TStringField;
+    cdsqSqlCdsPesqCLI_CELULAR: TStringField;
+    cdsqSqlCdsPesqCLI_ENDERE: TStringField;
+    cdsqSqlCdsPesqCLI_BAIRRO: TStringField;
+    cdsqSqlCdsPesqCLI_CEP: TStringField;
+    cdsqSqlCdsPesqEMP_CODIGO: TStringField;
+    cdsqSqlCdsPesqPED_SITUACAO: TStringField;
+    cdsqSqlCdsPesqPED_SITUACAO2: TStringField;
     procedure Rad_ClienteClick(Sender: TObject);
     procedure BitPesquisarClick(Sender: TObject);
     procedure SqlCdsPesqPED_SITUACAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -146,6 +173,10 @@ type
     procedure qSqlCdsPesqPED_VLPARCELAGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure qSqlCdsPesqPED_VLTOTAL_BRUTOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure Lista2Click(Sender: TObject);
+    procedure ExportarparaCSV1Click(Sender: TObject);
+    procedure cdsqSqlCdsPesqPED_SITUACAOGetText(Sender: TField;
+      var Text: string; DisplayText: Boolean);
+    procedure cdsqSqlCdsPesqCalcFields(DataSet: TDataSet);
 
   private
    procedure BuscaPedido(ordem: string);
@@ -214,7 +245,8 @@ begin
         'PE.PED_CONTATO_CLIENTE, PED_SITUACAO, PE.PED_OBSERVACAO, PE.BAN_CODIGO, PE.PED_PARCELA,  '+
         'PE.PED_INICIOPAG, PE.PED_TIPOPARCELA, PED_VLTOTAL_BRUTO,pe.FPG_REGISTRO, CLI_CELULAR,    '+
         'pe.emp_codigo, pe.PED_VLTOTAL_LIQ, PED_VLPARCELA, pe.PCX_CODIGO, RP.REP_NOME, CLI_FONE,  '+
-        ' cl.cli_cgc, trim(cl.cli_razao) as cli_razao, cl.cli_fantasia,op.opv_descricao, ped_contato_cliente, CLI_UF, '+
+        ' cl.cli_cgc, trim(cl.cli_razao) as cli_razao, cl.cli_fantasia, CL.CLI_ENDERE, CL.CLI_BAIRRO, CL.CLI_CEP, ' +
+        ' op.opv_descricao, ped_contato_cliente, CLI_UF, '+
         ' ((PED_COMIS1 * PED_VLTOTAL_LIQ)/100) AS VL_COMISSAO, cli_cidade,                        '+
         ' CASE WHEN PED_UND_CONSUMIDORA IS NOT NULL THEN BAN_APELIDO|| ''-'' || PED_UND_CONSUMIDORA '+
         ' ELSE BAN_APELIDO END BANCO, BAN_APELIDO, PED_UND_CONSUMIDORA '+
@@ -359,6 +391,57 @@ begin
   BuscaPedido('');
 end;
 
+procedure TfrmPesqDoacao.cdsqSqlCdsPesqCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  if cdsqSqlCdsPesqPED_SITUACAO.AsString = 'C' then
+  begin
+    cdsqSqlCdsPesqPED_SITUACAO2.AsString := 'CANCELADO'
+  end
+  else
+  if cdsqSqlCdsPesqPED_SITUACAO.AsString = 'P' then
+  begin
+    cdsqSqlCdsPesqPED_SITUACAO2.AsString := 'FATURADO';
+  end
+  else
+  if cdsqSqlCdsPesqPED_SITUACAO.AsString = 'F' then
+  begin
+    cdsqSqlCdsPesqPED_SITUACAO2.AsString := 'À FATURAR';
+  end
+  else
+  if cdsqSqlCdsPesqPED_SITUACAO.AsString = 'T' then
+  begin
+    cdsqSqlCdsPesqPED_SITUACAO2.AsString := 'FATURADO';
+  end
+
+end;
+
+procedure TfrmPesqDoacao.cdsqSqlCdsPesqPED_SITUACAOGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+  inherited;
+  if Sender.AsString = 'C' then
+  begin
+    Text := 'CANCELADO'
+  end
+  else
+  if sender.AsString = 'P' then
+  begin
+    Text := 'FATURADO';
+  end
+  else
+  if sender.AsString = 'F' then
+  begin
+    Text := 'À FATURAR';
+  end
+  else
+  if sender.AsString = 'T' then
+  begin
+    Text := 'FATURADO';
+  end
+
+end;
+
 procedure TfrmPesqDoacao.dbGrPedidoDblClick(Sender: TObject);
 begin
  // inherited;
@@ -417,6 +500,37 @@ begin
     end;
     if Edt_Lista.Text <> '' then
        BitPesquisar.Click;
+end;
+
+procedure TfrmPesqDoacao.ExportarparaCSV1Click(Sender: TObject);
+var
+  lista: TStringList;
+begin
+  inherited;
+  lista := TStringList.Create;
+  lista.Add('PED_CODIGO');
+  lista.Add('PED_DTENTRADA');
+  lista.Add('CLI_RAZAO');
+  lista.Add('CLI_CGC');
+  lista.Add('CLI_ENDERE');
+  lista.Add('CLI_BAIRRO');
+  lista.Add('CLI_CIDADE');
+  lista.Add('CLI_CEP');
+  lista.Add('CLI_UF');
+  lista.Add('BANCO');
+  lista.Add('PED_VLPARCELA');
+  lista.Add('PED_INICIOPAG');
+  lista.Add('PED_PARCELA');
+  lista.Add('PED_VLTOTAL_BRUTO');
+  lista.Add('REP_NOME');
+  lista.Add('CLI_FONE');
+  lista.Add('CLI_CELULAR');
+  lista.Add('PED_SITUACAO2');
+  qSqlCdsPesq.Close;
+  cdsqSqlCdsPesq.Close;
+  cdsqSqlCdsPesq.Open;
+  CriaCSV(dsCdsqSqlCdsPesq, lista, Self);
+
 end;
 
 procedure TfrmPesqDoacao.FormCreate(Sender: TObject);
