@@ -241,7 +241,9 @@ begin
         ' JOIN PED_IT01 it ON (it.PED_CODIGO = op.PED_CODIGO) ' +
         ' WHERE EXISTS ' +
         '  (SELECT * FROM DEMANDA_PRODUCAO dpr WHERE dpr.PED_CODIGO = op.PED_CODIGO AND dpr.EMP_CODIGO = op.EMP_CODIGO ) ' +
-        ' and op.PED_CODIGO = ' + QuotedStr(VarToStr(cxgrd1DBBandedTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PED_CODIGO.Index]));
+        ' and op.PED_CODIGO = ' + QuotedStr(VarToStr(cxgrd1DBBandedTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PED_CODIGO.Index])) +
+        ' and iop.IOP_NORDEM = ' + QuotedStr(VarToStr(cxgrd1DBBandedTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1IOP_NORDEM.Index]))
+        ;
       if DBInicio.IsDesenvolvimento then
         CopyToClipBoard(cdsProdutoOP5.SQL.Text);
       cdsProdutoOP5.Open;
@@ -641,7 +643,10 @@ procedure TfrmControleDeQualidade.ImpressodoCertificadodeQualidade1Click(Sender:
 begin
   inherited;
   AbreTabelas;
-  frxCertificadoQualidade.ShowReport();
+  if qQualidade.IsEmpty then
+    uteis.Aviso('Não existem dados do controle de qualidade cadastrados.')
+  else
+    frxCertificadoQualidade.ShowReport();
 end;
 
 end.
