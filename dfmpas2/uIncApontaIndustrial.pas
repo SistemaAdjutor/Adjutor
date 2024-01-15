@@ -523,6 +523,9 @@ begin
     FinalizacaoUltimaOperacao(carga,operacao,item,situacao, DataHoraF );
 
     dbConn.Commit;
+    dbConn.close;   // só o commit não basta para liberar a transação...
+    dbConn.Open(DBInicio.FDACConn.ConnectionString);
+
     ShowMessage('Registrado com sucesso');
 
     //visualizar relatório
@@ -545,8 +548,6 @@ begin
 
 
 
-    dbConn.close;
-    dbConn.Open(DBInicio.FDACConn.ConnectionString);
     LimparCampos;
     edBusca.Clear;
     if edBusca.CanFocus then
