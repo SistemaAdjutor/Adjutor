@@ -1722,8 +1722,6 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             object tabGerencial: TcxTabSheet
               Caption = 'Gerencial'
               ImageIndex = 3
-              ExplicitLeft = 5
-              ExplicitTop = 33
               object ChkAlteraComissao: TCheckBox
                 Left = 9
                 Top = 13
@@ -1734,7 +1732,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
               end
               object chkDashVendas: TCheckBox
                 Left = 9
-                Top = 31
+                Top = 54
                 Width = 192
                 Height = 17
                 Caption = 'Ativar Dashboard de vendas'
@@ -1750,7 +1748,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
               end
               object chkDashFin: TCheckBox
                 Left = 281
-                Top = 30
+                Top = 53
                 Width = 192
                 Height = 17
                 Caption = 'Ativar Dashboard financeiro'
@@ -1774,11 +1772,19 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
               end
               object chkDashInteligencia: TCheckBox
                 Left = 521
-                Top = 30
+                Top = 53
                 Width = 200
                 Height = 17
                 Caption = 'Ativar Dashboard Ind'#250'stria Pl'#225'stica'
                 TabOrder = 6
+              end
+              object chkPermiteVendaClienteFaturaAtraso: TCheckBox
+                Left = 9
+                Top = 33
+                Width = 266
+                Height = 17
+                Caption = 'Permite Venda a Cliente com Fatura em Atraso'
+                TabOrder = 7
               end
             end
             object tabKardex: TcxTabSheet
@@ -2385,7 +2391,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C010103000500100010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000

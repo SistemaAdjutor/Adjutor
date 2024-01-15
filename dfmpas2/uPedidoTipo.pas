@@ -74,7 +74,8 @@ var
 
 implementation
 
-uses uPedido, DataCad, {uProcedimentos,} Men0001, RWFunc, uPedidoDAO, uteis, iniciodb;
+uses uPedido, DataCad, {uProcedimentos,} Men0001, RWFunc, uPedidoDAO, uteis, iniciodb,
+  AutorizaForm, uAvisos;
 
 {$R *.dfm}
 
@@ -143,7 +144,27 @@ procedure TFrmPedidoTipo.CbNovoTipoChange(Sender: TObject);
 var gerenciaLote: boolean;
 begin
 
-  EdPedidoNovoNumero.Text := CbNovoTipo.idRetorno;
+  // EdPedidoNovoNumero.Text := CbNovoTipo.idRetorno;
+  EdPedidoNovoNumero.Text :=  PreenchezeroEsquerda(CbNovoTipo.idRetorno,3);
+
+
+
+
+  if dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) ) = 'S' then
+  begin
+    if BloqueiaPedidoVendaFaturaAtraso(frmPedido.edCliente.idRetorno, frmPedido.EdPrazoCodigo.Text) then
+    begin
+      // frmPedido.LimparCampos(False);
+      Abort;
+    end
+    else
+      uAvisos.ClientePossuiFaturasAtrasadas(frmPedido.edCliente.idRetorno,'CLIM_VENDA');
+  end
+  else
+    uAvisos.ClientePossuiFaturasAtrasadas(frmPedido.edCliente.idRetorno,'CLIM_VENDA');
+
+
+
   if CbNovoTipo.Text <> EmptyStr then
     CbNovoTipo.WherePersonalizado :=  ' WHERE OPV_INATIVAR_TIPO_PEDIDO <> ' + QuotedStr('S')+ ' AND OPV_DESCRICAO CONTAINING '+ QuotedStr(CbNovoTipo.Text ) + ' AND (OPV_PEDIDOINTERNO ='+ QuotedStr('N')+ ' OR OPV_PEDIDOINTERNO IS NULL )' +
                                   iif(NOT DBInicio.Empresa.USP_PERMITE_ALTER_TIPO,
@@ -153,7 +174,6 @@ begin
                                    iif(NOT DBInicio.Empresa.USP_PERMITE_ALTER_TIPO,
                                    ' AND (OPV_ORCAMENTO =  ''S'' OR OPV_CODIGO = '+IntToStr(DBInicio.Empresa.USP_OPV_CODIGO)+')','' ) ;
 
-  //EdPedidoNovoNumero.Text :=  PreenchezeroEsquerda(CbNovoTipo.idRetorno,3);
   AtualizaLabel;
   CalculaPerda;
   Bit_Gravar.Enabled := True;

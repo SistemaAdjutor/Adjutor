@@ -493,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 4
+      PageIndex = 3
       TabOrder = 0
       object TPage
         Left = 0
@@ -1206,6 +1206,7 @@ inherited FormParametros: TFormParametros
             TabOrder = 0
             object tsFinanceiro: TTabSheet
               Caption = 'Financeiro'
+              ExplicitTop = 31
               object Label19: TLabel
                 Left = 413
                 Top = 36
@@ -1219,6 +1220,32 @@ inherited FormParametros: TFormParametros
                 Width = 210
                 Height = 14
                 Caption = 'Empresa Padr'#227'o para emiss'#227'o dos Boletos:'
+              end
+              object Label677: TLabel
+                Left = 426
+                Top = 253
+                Width = 56
+                Height = 14
+                Caption = 'a partir de'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = [fsBold]
+                ParentFont = False
+              end
+              object Label678: TLabel
+                Left = 524
+                Top = 253
+                Width = 111
+                Height = 14
+                Caption = 'dias do vencimento.'
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = [fsBold]
+                ParentFont = False
               end
               object GroupBox14: TGroupBox
                 Left = 13
@@ -1597,6 +1624,34 @@ inherited FormParametros: TFormParametros
                 Font.Style = [fsBold]
                 ParentFont = False
                 TabOrder = 18
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
+              object DBEdit67: TDBEdit
+                Left = 488
+                Top = 250
+                Width = 30
+                Height = 22
+                DataField = 'PMT_BLOQ_PED_VENDA_FAT_ATRASO_D'
+                DataSource = DataCadastros1.DsParametros
+                TabOrder = 19
+                OnExit = DBEdit16Exit
+              end
+              object DBCheckBox98: TDBCheckBox
+                Left = 408
+                Top = 232
+                Width = 339
+                Height = 17
+                Caption = 'Bloquear venda para cliente com faturas em atraso'
+                DataField = 'PMT_BLOQ_PED_VENDA_FAT_ATRASO'
+                DataSource = DataCadastros1.DsParametros
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clWindowText
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = [fsBold]
+                ParentFont = False
+                TabOrder = 20
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end

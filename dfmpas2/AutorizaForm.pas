@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, Mask;
 type
-  TValidacao = (vPrecoAbaixoCusto, vDescontoMaximo);
+  TValidacao = (vPrecoAbaixoCusto, vDescontoMaximo, vDesbloqueiaVendaEmAtraso);
 
 type
   TFrmAutoriza = class(TForm)
@@ -57,7 +57,23 @@ begin
      Else
          GeraException('Usuário não encontrado ou não autorizado!');
 
+  end
+  else if TipoValidacao = vDesbloqueiaVendaEmAtraso then
+  begin
+    if dbInicio.BuscaUmDadoSqlAsString(  ' SELECT USP_PERMITE_VENDA_FATURA_ATRASO ' +
+                                         '   FROM USUARIO_PARAMETRO up ' +
+                                         '   JOIN USUARIO u ON u.USU_CODIGO = up.USP_COD_USUARIO ' +
+                                         '   WHERE u.USU_LOGIN = ' + QuotedStr(edUsuario.Text) +
+                                         '   AND u.USU_SENHA = ' + QuotedStr(mskSenha.Text)
+                                       ) = 'S'
+    then
+      ModalResult := mrOk
+    else
+      GeraException('Usuário não encontrado ou não autorizado!');;
   end;
+
+
+
 end;
 
 procedure TFrmAutoriza.SetDescontoMax(const value: Double);

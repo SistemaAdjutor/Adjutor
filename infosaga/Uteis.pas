@@ -195,6 +195,7 @@ function Estados(sigla: string): string;
 procedure GravaHistoricoEmail(modulo: string; destinatário: string; titulo: string; CliFor: string; CliForCodigo: string; DataEnvio: TDateTime; Usuario: string; Anexo: string);
 procedure ExecSql2(const pSql: string);
 function RealMod (x: double; MaxInteger: Integer) : double;
+function BloqueiaPedidoVendaFaturaAtraso(cliCodigo, prazoCodigo: string) : Boolean;
 
 
 Const
@@ -265,7 +266,7 @@ var
 
 implementation
 
-uses DataCad, DataCad1, IniFiles, SqlExpr, uConclusaoOP, uEnvaseProdutos, uEmpresaExportacao;
+uses DataCad, DataCad1, IniFiles, SqlExpr, uConclusaoOP, uEnvaseProdutos, uEmpresaExportacao, AutorizaForm, uPedido;
 
 
 procedure GravaIni(arquivo, secao, nome, aTexto: string);
@@ -3079,6 +3080,53 @@ begin
     11: Result := 30; // novembro
     12: Result := 31; // dezembro
   end;
+end;
+
+
+function BloqueiaPedidoVendaFaturaAtraso(cliCodigo, prazoCodigo: string) : Boolean;
+var
+  tcr : TFrmAutoriza;
+  dias: integer;
+  atrasado, prazo, aVista: boolean;
+begin
+  atrasado := dbInicio.BuscaUmDadoSqlAsInteger ( 'SELECT CAST(COUNT(FAT_REGISTRO) as INTEGER) '+
+                                         'FROM FAT_PC01 WHERE CLI_CODIGO = ' + QuotedStr(cliCodigo)+
+                                         ' AND FPC_SITPAG = ' + QuotedStr('P') + ' AND FPC_VENCTO < CURRENT_DATE') > 0;
+  if prazoCodigo <> '' then
+    prazo := dbInicio.BuscaUmDadoSqlAsString('SELECT c.PCL_CODIGO FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(cliCodigo) + ' AND PCL_CODIGO = ' + QuotedStr(prazoCodigo) ) <> ''
+  else
+    prazo := false;
+
+  if prazoCodigo <> '' then
+    aVista := dbInicio.BuscaUmDadoSqlAsInteger('SELECT PCL_MODALIDADE FROM PCL0000 c WHERE PCL_CODIGO = ' + prazoCodigo) <> 1
+  else
+    aVista := True;
+//  if frmPedido <> nil then
+//    frmPedido.edPrazoCodigo.Text := prazoCodigo;
+
+  if  atrasado and prazo and not aVista then
+  begin
+    Result := True;
+    dias := dbInicio.BuscaUmDadoSqlAsInteger('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO_D FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) );
+
+    tcr := TFrmAutoriza.Create(nil) ;
+    try
+      tcr.TipoValidacao := vDesbloqueiaVendaEmAtraso;
+      tcr.lbAviso.Caption := 'Cliente possui faturas em atraso a mais de ' + IntToStr(dias) + ' dias! Venda não liberada! ' + #13+#10 + 'Favor entrar em contato com o financeiro!';
+      tcr.lbAviso.Top := tcr.lbAviso.Top - 10;
+      tcr.ShowModal;
+      if tcr.modalresult <> mrOk then
+      begin
+         Result := True
+      end
+      else
+         Result := False;
+    finally
+      FreeAndNil( tcr ) ;
+    end;
+  end
+  else
+    Result := False;
 end;
 
 

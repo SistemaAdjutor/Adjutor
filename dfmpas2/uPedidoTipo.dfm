@@ -7,8 +7,8 @@ inherited FrmPedidoTipo: TFrmPedidoTipo
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   Position = poDesigned
-  ExplicitWidth = 838
-  ExplicitHeight = 495
+  ExplicitWidth = 846
+  ExplicitHeight = 507
   PixelsPerInch = 96
   TextHeight = 14
   object LblAlteracao: TLabel [0]
@@ -162,8 +162,10 @@ inherited FrmPedidoTipo: TFrmPedidoTipo
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'OPV0000'
         CamposCarregar = 'OPV_DESCRICAO'
         CamposRetornar = 'OPV_CODIGO'
@@ -211,8 +213,10 @@ inherited FrmPedidoTipo: TFrmPedidoTipo
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'EMP0000'
         CamposCarregar = 'EMP_RAZAO'
         CamposRetornar = 'EMP_CODIGO'
@@ -252,8 +256,10 @@ inherited FrmPedidoTipo: TFrmPedidoTipo
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
   end

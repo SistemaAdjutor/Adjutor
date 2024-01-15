@@ -1373,7 +1373,6 @@ type
     function NumeracaoRepetida: Boolean;
     procedure RemoverInfoNumeracaoPedido;
     procedure AbreGraficoVendas;
-    procedure LimparCampos;
     procedure MontaFiltroCfop;
     procedure SituacaoPedido;
     procedure BuscaEnderecoEntrega(const pCodigo:string);
@@ -1413,6 +1412,7 @@ type
     wAdcProdKit : boolean;
     ChecaNFC: boolean;
 
+    procedure LimparCampos(Habilita: boolean = True);
     procedure BuscaItensNota;
     procedure BuscaPedido (sPedidoCodigo:String );
     procedure BuscaTipoPedido(sTipoCodigo:Integer);
@@ -1514,7 +1514,8 @@ begin
         SqlCdsPedidoItem.FreeBookmark(regAtual);
       ReordenarItens(SqlCdsPedidoItem);
       SqlCdsPedidoItem.EnableControls;
-      DbGradeItemPedido.SetFocus;
+      if DbGradeItemPedido.CanFocus then
+        DbGradeItemPedido.SetFocus;
 
    end;
 end;
@@ -1620,10 +1621,10 @@ begin
 
 end;
 
-procedure TFrmPedido.LimparCampos;
+procedure TFrmPedido.LimparCampos(Habilita: boolean = True);
 begin
    if ActiveControl<>nil then
-     if (ActiveControl.name <> 'SpeedButton1') or (ActiveControl.name <> 'btAdicionaXML') then
+     if ((ActiveControl.name <> 'SpeedButton1') or (ActiveControl.name <> 'btAdicionaXML')) and Habilita then
         HabilitaDesabilitaEdicao(false);
    cbExped.ItemIndex:=0;
    EdCnpj.Clear;
@@ -1638,7 +1639,8 @@ begin
    edCliente.Clear;
    wCodigoEndereco := 0 ;
    edPrazoCodigo.Clear;
-   edPrazo.Clear;
+   if Habilita then
+     edPrazo.Clear;
    cbOrigem.Clear;
    edVendedorCodigo.Clear;
    edVendedor.Clear;
@@ -1650,8 +1652,11 @@ begin
    edCCustoCodigo.Clear;
    edCCusto.Clear;
    edCfop.Clear;
-   EdPedidoNumero.Clear;
-   EdPedidoTipo.Clear;
+   if Habilita then
+   begin
+     EdPedidoNumero.Clear;
+     EdPedidoTipo.Clear;
+   end;
    DteEntrada.Clear;
    DteEntrega.Clear;
    EntregaHoras.Clear;
@@ -1704,7 +1709,8 @@ begin
    edtExportacaoDescricaoRecinto.Clear;
    cbbClienteEstado.Text := dbInicio.EMPRESA.UF;
 
-   BuscaPedido( '' );
+   if Habilita then
+     BuscaPedido( '' );
    CurTotalPedido.Clear;
    CurTotalProduto.Clear;
    edtPercentStProduto.Clear;
@@ -1716,7 +1722,8 @@ begin
    CurTotalDifal.Clear;
 
    SqlCdsPedidoItem.Close;
-   CalcutaTotalItens;
+   if Habilita then
+     CalcutaTotalItens;
 
 end;
 
@@ -2340,11 +2347,12 @@ begin
           Key := 0;
           if BuscaUmDadoSqlAsString('SELECT PMT_IMPORTA_ITENS_XML FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO)) = 'S'  then
           begin
-            SpeedButton1Click(Sender);            
+            SpeedButton1Click(Sender);
           end
           else
           begin
-            SpeedButton1.SetFocus;
+            if SpeedButton1.CanFocus then
+              SpeedButton1.SetFocus;
             SpeedButton1.Click;
             if frmPedido = nil then
               Abort;
@@ -3359,7 +3367,24 @@ begin
 end;
 
 Function TFrmPedido.GetTipoPedidoPadrao:integer;
+var
+  pedidoPadraoUsuario: integer;
 begin
+  pedidoPadraoUsuario := dbInicio.BuscaUmDadoSqlAsInteger('SELECT USP_OPV_CODIGO FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + dbInicio.Usuario.CODIGO);
+  if pedidoPadraoUsuario <> 0 then
+    result := pedidoPadraoUsuario
+  else
+    result := dbInicio.BuscaUmDadoSqlAsInteger('Select min(OPV_CODIGO) from OPV0000 Where OPV_TIPOPADRAO = '+qStr('S')+ConcatSe(' and ',dbInicio.ExclusivoSql('TABELAS')));
+  if result = 0 then
+    uteis.Aviso('Não existe tipo padrão de pedido cadastrado');
+  Exit;
+
+
+
+
+
+
+
   if DBInicio.Empresa.USP_PERMITE_ALTER_TIPO then
      result := dbInicio.BuscaUmDadoSqlAsInteger('Select min(OPV_CODIGO) from OPV0000 Where OPV_TIPOPADRAO = '+qStr('S')+ConcatSe(' and ',dbInicio.ExclusivoSql('TABELAS')))
   else
@@ -3447,7 +3472,8 @@ begin
 
         HabilitaDesabilitaEdicao(True);
         uteis.HabilitaIncluir('ComercialPedidos',DBInicio.Usuario.CODIGO,FrmPedido);
-        EdClienteCodigo.SetFocus;
+        if EdClienteCodigo.CanFocus then
+          EdClienteCodigo.SetFocus;
 
 
    end;
@@ -3456,7 +3482,6 @@ begin
   edVendInternoCodigo.Enabled := NOT DBInicio.Empresa.USP_BLOQUEIO_ALTERA_VENDEDOR;
   edVendInterno.Enabled := NOT DBInicio.Empresa.USP_BLOQUEIO_ALTERA_VENDEDOR;
   btLiberaPedidoMinimo.Enabled := BtnGravar.Enabled;
-
 end;
 
 procedure TFrmPedido.btnOrdemProducaoClick(Sender: TObject);
@@ -3521,7 +3546,7 @@ begin
           IntToStr(s)+','+
           QuotedStr(strzero(SqlCdsPedidoPED_CODIGO.AsString,6)+'-'+strzero( s,2))+','+
           FloatToSQL(SqlCdsPedidoItemPRF_QTDE.AsFloat)+','+
-          FloatToSQL(SqlCdsPedidoItemPRF_PESOKG.AsFloat) + ',' +  // FloatToSQL(SqlCdsPedidoItemPRD_PESOLIQ.AsFloat) + ',' +  // FloatToSQL(SqlCdsPedidoItemPesoLiquido.AsFloat) + ','
+          FloatToSQL(SqlCdsPedidoItemPRF_PESOKG.AsFloat) + ',' +
           QuotedStr('L')+','+
           FloatToSQL( SqlCdsPedidoItemPRF_PRECO.AsFloat)+','+
           IntToStr(SqlCdsPedidoItemPRF_REGISTRO.AsInteger)+ ','+
@@ -3962,7 +3987,6 @@ begin
 
   btLiberaPedidoMinimo.Enabled := BtnGravar.Enabled;
   PanelAguarde.Visible := False;
-
 end;
 
 procedure TFrmPedido.BtnExcluirClick(Sender: tObject);
@@ -4622,7 +4646,8 @@ begin
                CdSPedidoDI.Post;
             end;
       end;
-  DBEdit1.SetFocus;
+  if DBEdit1.CanFocus then
+    DBEdit1.SetFocus;
   DBEdit1.SelectAll;
 end;
 procedure TFrmPedido.CdSPedidoDIAfterDelete(DataSet: TDataSet);
@@ -5157,42 +5182,53 @@ end;
 procedure TFrmPedido.edClienteSelect(Sender: tObject);
 var amx_destino : string;
 begin
- if edCliente.idRetorno<>'' then
- begin
-   dbInicio.ValidaLimiteCredito(edCliente.idRetorno,dbInicio.EMPRESA.EMP_CODIGO,False);
+  if edCliente.idRetorno<>'' then
+  begin
+    dbInicio.ValidaLimiteCredito(edCliente.idRetorno,dbInicio.EMPRESA.EMP_CODIGO,False);
 
-   if (edCliente.idRetorno <>  SqlCdsPedidoCLI_CODIGO.AsString) and 
+    if (edCliente.idRetorno <>  SqlCdsPedidoCLI_CODIGO.AsString) and
       (BuscaUmDadoSqlAsInteger( 'SELECT OPR_CODIGO FROM ORDEMPRODUCAO ' +
                       ' WHERE PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
                       '  AND EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo) +
                       '  AND OPR_STATUS <> '+ QuotedStr('C') )>1) then
-   begin
+    begin
      edCliente.idRetorno :=  SqlCdsPedidoCLI_CODIGO.AsString  ;
      raise Exception.Create('Ordem de produção já gerada. Não pode mudar cliente.');
-   end;
-   
-   edClienteCodigo.Text:=edCliente.idRetorno;
-//   if  (pOldId<>edCliente.idRetorno) then
-//   begin
-      ClientePossuiFaturasAtrasadas(edCliente.idRetorno,'CLIM_VENDA');
-      OpenAux('SELECT codigo FROM ENDERECO '+
-              ' WHERE  padrao = ''1'''+
-              ' AND COD_CLIENTE = '+QuotedStr(edCliente.idRetorno) );
-      if not qAux.IsEmpty then
-         wCodigoEndereco :=  qAux.FieldByName('codigo').AsInteger
+    end;
+
+    edClienteCodigo.Text:=edCliente.idRetorno;
+
+    OpenAux('SELECT codigo FROM ENDERECO '+
+            ' WHERE  padrao = ''1'''+
+            ' AND COD_CLIENTE = '+QuotedStr(edCliente.idRetorno) );
+    if not qAux.IsEmpty then
+       wCodigoEndereco :=  qAux.FieldByName('codigo').AsInteger
+    else
+      wCodigoEndereco := 0;
+    pOldId:=edCliente.idRetorno;
+
+    BuscaCliente(edCliente.idRetorno);
+
+    if dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) ) = 'S' then
+    begin
+      if BloqueiaPedidoVendaFaturaAtraso(edCliente.idRetorno, EdPrazoCodigo.Text) then
+      begin
+        LimparCampos(False);
+        Abort;
+      end
       else
-        wCodigoEndereco := 0;
-        pOldId:=edCliente.idRetorno;
-//   end;
-     BuscaCliente(edCliente.idRetorno);
-      if (EdPrazoCodigo.CanFocus) then
-         EdPrazoCodigo.SetFocus;
- end
+        ClientePossuiFaturasAtrasadas(edCliente.idRetorno,'CLIM_VENDA');
+    end
+    else
+      ClientePossuiFaturasAtrasadas(edCliente.idRetorno,'CLIM_VENDA');
 
- Else
-      edClienteCodigo.clear;
 
-end;
+    if (EdPrazoCodigo.CanFocus) then
+       EdPrazoCodigo.SetFocus;
+  end
+  Else
+    edClienteCodigo.clear;
+ end;
 
 procedure TFrmPedido.edClienteVendasExit(Sender: TObject);
 begin
@@ -5231,7 +5267,8 @@ procedure TFrmPedido.EdPrazoCodigoExit(Sender: tObject);
 begin
   if edPrazo.Text = '' then
   begin
-      edPrazo.SetFocus;
+      if edPrazo.CanFocus then
+        edPrazo.SetFocus;
       Exit;
   end;
 
@@ -5285,10 +5322,24 @@ end;
 
 procedure TFrmPedido.edPrazoSelect(Sender: tObject);
 begin
-     if edPrazo.idRetorno<>'' then
-        edPrazoCodigo.Text:=edPrazo.idRetorno
-     Else
-         edPrazoCodigo.clear;
+     edPrazoCodigo.Text := edPrazo.idRetorno;
+     if ActiveControl <> nil then
+       if (edPrazo.idRetorno <> '') and (ActiveControl.Name = 'edPrazo') then
+       begin
+          if dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) ) = 'S' then
+          begin
+            if BloqueiaPedidoVendaFaturaAtraso(edCliente.idRetorno, EdPrazoCodigo.Text) then
+            begin
+              if edPrazo.CanFocus then
+              begin
+                edPrazo.SetFocus;
+                Exit;
+              end;
+            end;
+          end;
+       end;
+//     Else
+//         edPrazoCodigo.clear;
      if edPrazoCodigo.Text = '' then
        PedidoMinimo('-1')
      else
@@ -6033,7 +6084,8 @@ begin
           Application.ProcessMessages;
           if DbGradeItemPedido = nil then
             abort;
-          DbGradeItemPedido.SetFocus;
+          if DbGradeItemPedido.CanFocus then
+            DbGradeItemPedido.SetFocus;
       finally
         FrmPedidoItem.Close;
         PanelAguarde.Visible := False;
@@ -6089,7 +6141,8 @@ begin
       if numeracaorepetida then
       begin
          EdPedidoNumero.Clear;
-         EdPedidoNumero.SetFocus;
+         if EdPedidoNumero.CanFocus then
+           EdPedidoNumero.SetFocus;
          Abort;
       end;
    end;
@@ -6260,7 +6313,8 @@ begin
     TabSheet5.Caption := 'Informações';
     GBInformacoesOrcamento.BringToFront;
     GBInformacoesCliente.Visible := False;
-    EdOrsCliente.SetFocus;
+    if EdOrsCliente.CanFocus then
+      EdOrsCliente.SetFocus;
     if DBInicio.Empresa.PMT_VINCULAR_VENDEDOR AND (DBInicio.Empresa.fCODIGO_REPRES <> '') then
       edVendedor.idRetorno := DBInicio.Empresa.fCODIGO_REPRES;
   end
@@ -6375,7 +6429,8 @@ begin
           uteis.aviso('Informe o Número do Pedido');
           if EdPedidoNumero.CanFocus then
           begin
-            EdPedidoNumero.SetFocus;
+            if EdPedidoNumero.CanFocus then
+              EdPedidoNumero.SetFocus;
             EdPedidoNumero.SelectAll;
           end;
           Result := False;
@@ -7023,7 +7078,8 @@ begin
    DbeCli_cepentr.Color := clWhite;
    btnEditarEndEntrega.Visible := False;
    btnGravarEndEntrega.Visible := True;
-   DbeCli_Endentr.SetFocus;
+   if DbeCli_Endentr.CanFocus then
+     DbeCli_Endentr.SetFocus;
 end;
 procedure TFrmPedido.btnGravarEndEntregaClick(Sender: tObject);
 begin
@@ -7189,7 +7245,8 @@ begin
   if (EdPrazoCodigo.Text = '') and (pedido <> '-1') then
   begin
      MessageDlg('Escolha um prazo de pagamento', mtWarning, [mbOK], 0);
-     edPrazo.SetFocus;
+     if edPrazo.CanFocus then
+      edPrazo.SetFocus;
      Exit;
   end;
   if SqlCdsTipoPedidoOPV_CODIGO.AsString = '' then
@@ -8992,7 +9049,8 @@ begin
   gbAlterarPeso.BringToFront;
   curPeso.Value := SqlCdsPedidoItemPRF_PESO.AsFloat;
   gbAlterarPeso.Visible := True;
-  curPeso.SetFocus;
+  if curPeso.CanFocus then
+    curPeso.SetFocus;
 end;
 
 procedure TFrmPedido.btSalvaPesoClick(Sender: TObject);
@@ -9013,7 +9071,8 @@ procedure TFrmPedido.curPesoExit(Sender: TObject);
 begin
   inherited;
   if not (btSalvaPeso.Focused or btCancelaPeso.Focused)  then
-    curPeso.SetFocus;
+    if curPeso.CanFocus then
+      curPeso.SetFocus;
 end;
 
 end.
