@@ -3089,9 +3089,10 @@ var
   dias: integer;
   atrasado, prazo, aVista: boolean;
 begin
+  dias := dbInicio.BuscaUmDadoSqlAsInteger('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO_D FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) );
   atrasado := dbInicio.BuscaUmDadoSqlAsInteger ( 'SELECT CAST(COUNT(FAT_REGISTRO) as INTEGER) '+
                                          'FROM FAT_PC01 WHERE CLI_CODIGO = ' + QuotedStr(cliCodigo)+
-                                         ' AND FPC_SITPAG = ' + QuotedStr('P') + ' AND FPC_VENCTO < CURRENT_DATE') > 0;
+                                         ' AND FPC_SITPAG = ' + QuotedStr('P') + ' AND FPC_VENCTO < CURRENT_DATE') >= dias;
   if prazoCodigo <> '' then
     prazo := dbInicio.BuscaUmDadoSqlAsString('SELECT c.PCL_CODIGO FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(cliCodigo) + ' AND PCL_CODIGO = ' + QuotedStr(prazoCodigo) ) <> ''
   else
@@ -3107,7 +3108,6 @@ begin
   if  atrasado and prazo and not aVista then
   begin
     Result := True;
-    dias := dbInicio.BuscaUmDadoSqlAsInteger('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO_D FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) );
 
     tcr := TFrmAutoriza.Create(nil) ;
     try
