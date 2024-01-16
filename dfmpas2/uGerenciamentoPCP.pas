@@ -856,6 +856,8 @@ type
     frxListaClienteNF: TfrxReport;
     cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField;
     frxOrdemProducaoModelos: TfrxReport;
+    cdsBuscaTEM_DESCRICAO: TStringField;
+    cdsBuscaTEM_CAPACIDADE: TFloatField;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -2342,7 +2344,7 @@ begin
                           ' datediff(DAY,CURRENT_DATE, IOP_DTENTREGA) leftdays, '+
                           ' datediff(DAY,IOP_DATA_INICIO,IOP_DTENTREGA ) deadline, ' +
                           ' pr.prd_und, IOP_CUSTOMP,  '+
-                          ' pr.PRD_REFER, ' +
+                          ' pr.PRD_REFER, te.TEM_DESCRICAO, te.TEM_CAPACIDADE, ' +
                           ' COALESCE(it.PRF_PRDDESCRI, pr.PRD_DESCRI) as PRD_DESCRI, ' +
                           ' pr.prd_und, IOP_CUSTOMP,  '+
                           ' IOP_CUSTOOPERACAO, IOP_CUSTOCOLABORADOR, IOP_CUSTOEQUIPAMENTO,'+
@@ -2354,6 +2356,8 @@ begin
                           ' JOIN ITEM_ORDEMPRODUCAO iop ON (Iop.OPR_CODIGO = OP.OPR_CODIGO ) '+
                           ' LEFT JOIN PRD_LOTE lot ON (lot.IOP_CODIGO = iop.IOP_CODIGO)'+
                           ' JOIN PRD0000 pr ON (pr.PRD_CODIGO = iop.PRD_CODIGO) '+
+                          ' LEFT JOIN MOLA_MATERIA mm ON (mm.PRD_CODIGO = pr.PRD_CODIGO) '+
+                          ' LEFT JOIN TIPO_EMBALAGEM te ON (te.TEM_CODIGO = mm.TEM_CODIGO) '+
                           ' LEFT JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER) '+
                           ' JOIN PED0000 pe ON (PE.PED_CODIGO = OP.PED_CODIGO  AND OP.EMP_CODIGO = PE.EMP_CODIGO) '+
                           ' left JOIN PED_IT01 it ON (it.PED_CODIGO = op.PED_CODIGO AND it.PRD_CODIGO = iop.PRD_CODIGO AND it.PRF_REGISTRO = iop.PRF_REGISTRO) ' +

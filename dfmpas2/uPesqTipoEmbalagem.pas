@@ -5,7 +5,10 @@ interface
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDBPesquisaForm, Data.DB, Data.DBXFirebird, Data.FMTBcd, Vcl.Menus, Datasnap.DBClient, Datasnap.Provider, Vcl.ExtCtrls, Data.SqlExpr, ACBrEnterTab, ACBrBase,
-  ACBrCalculadora, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons;
+  ACBrCalculadora, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TfrmPesquisaTipoEmbalagem = class(TfrmBaseDBPesquisa)
@@ -16,11 +19,14 @@ type
     qBuscoTEM_CODIGO: TIntegerField;
     qBuscoTEM_DESCRICAO: TStringField;
     qBuscoEMP_CODIGO: TStringField;
+    qBuscoTEM_CAPACIDADE: TFloatField;
+    cdsBuscoTEM_CAPACIDADE: TFloatField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
+    procedure cdsBuscoCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -71,6 +77,12 @@ begin
     cdsBusco.Refresh;
 	end;
 
+end;
+
+procedure TfrmPesquisaTipoEmbalagem.cdsBuscoCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  cdsBuscoTEM_CAPACIDADE.AsInteger := 20;
 end;
 
 procedure TfrmPesquisaTipoEmbalagem.Filtro;

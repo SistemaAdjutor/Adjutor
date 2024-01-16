@@ -2,8 +2,8 @@ inherited fmTipoEmbalagem: TfmTipoEmbalagem
   Caption = 'Cadastro de Tipo de Embalagem'
   ClientHeight = 175
   ClientWidth = 659
-  ExplicitWidth = 667
-  ExplicitHeight = 202
+  ExplicitWidth = 675
+  ExplicitHeight = 214
   PixelsPerInch = 96
   TextHeight = 13
   object lbl1: TLabel [0]
@@ -22,21 +22,28 @@ inherited fmTipoEmbalagem: TfmTipoEmbalagem
     Caption = 'Descri'#231#227'o:'
     FocusControl = edDescricao
   end
+  object Label1: TLabel [2]
+    Left = 14
+    Top = 94
+    Width = 56
+    Height = 13
+    Caption = 'Capacidade'
+  end
   inherited pnUtil: TPanel
     Top = 143
     Width = 659
     ExplicitTop = 143
     ExplicitWidth = 659
     inherited btnOk: TSpeedButton
-      Left = 359
-      ExplicitLeft = 359
+      Left = 355
+      ExplicitLeft = 355
     end
     inherited btnCancelar: TSpeedButton
       Left = 508
       ExplicitLeft = 508
     end
   end
-  object edID: TDBEdit [3]
+  object edID: TDBEdit [4]
     Left = 14
     Top = 33
     Width = 95
@@ -47,7 +54,7 @@ inherited fmTipoEmbalagem: TfmTipoEmbalagem
     ReadOnly = True
     TabOrder = 1
   end
-  object edDescricao: TDBEdit [4]
+  object edDescricao: TDBEdit [5]
     Left = 14
     Top = 69
     Width = 430
@@ -55,6 +62,15 @@ inherited fmTipoEmbalagem: TfmTipoEmbalagem
     DataField = 'TEM_DESCRICAO'
     DataSource = dsEditS
     TabOrder = 2
+  end
+  object edCapacidade: TDBEdit [6]
+    Left = 14
+    Top = 108
+    Width = 121
+    Height = 21
+    DataField = 'TEM_CAPACIDADE'
+    DataSource = dsEditS
+    TabOrder = 3
   end
   inherited coCalcula: TACBrCalculadora
     Left = 128
@@ -122,6 +138,9 @@ inherited fmTipoEmbalagem: TfmTipoEmbalagem
       ProviderFlags = [pfInUpdate]
       Size = 3
     end
+    object qEditTEM_CAPACIDADE: TFloatField
+      FieldName = 'TEM_CAPACIDADE'
+    end
   end
   inherited CdsEdit: TClientDataSet
     object CdsEditTEM_CODIGO: TIntegerField
@@ -134,6 +153,9 @@ inherited fmTipoEmbalagem: TfmTipoEmbalagem
     object CdsEditEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
       Size = 3
+    end
+    object CdsEditTEM_CAPACIDADE: TFloatField
+      FieldName = 'TEM_CAPACIDADE'
     end
   end
 end
