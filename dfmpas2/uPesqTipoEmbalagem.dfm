@@ -4,10 +4,6 @@ inherited frmPesquisaTipoEmbalagem: TfrmPesquisaTipoEmbalagem
   TextHeight = 13
   inherited PageControl1: TPageControl
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
-      ExplicitWidth = 667
-      ExplicitHeight = 0
       inherited pnControle: TPanel
         Height = 73
         ExplicitHeight = 73
@@ -65,12 +61,19 @@ inherited frmPesquisaTipoEmbalagem: TfrmPesquisaTipoEmbalagem
             Expanded = False
             FieldName = 'TEM_DESCRICAO'
             Title.Caption = 'Tipo de Embalagem'
+            Width = 395
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'EMP_CODIGO'
             Visible = False
+          end
+          item
+            Expanded = False
+            FieldName = 'TEM_CAPACIDADE'
+            Title.Caption = 'Capacidade'
+            Visible = True
           end>
       end
     end
@@ -137,8 +140,12 @@ inherited frmPesquisaTipoEmbalagem: TfrmPesquisaTipoEmbalagem
       FieldName = 'EMP_CODIGO'
       Size = 3
     end
+    object qBuscoTEM_CAPACIDADE: TFloatField
+      FieldName = 'TEM_CAPACIDADE'
+    end
   end
   inherited cdsBusco: TClientDataSet
+    OnCalcFields = cdsBuscoCalcFields
     object cdsBuscoTEM_CODIGO: TIntegerField
       FieldName = 'TEM_CODIGO'
       Required = True
@@ -150,6 +157,9 @@ inherited frmPesquisaTipoEmbalagem: TfrmPesquisaTipoEmbalagem
     object cdsBuscoEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
       Size = 3
+    end
+    object cdsBuscoTEM_CAPACIDADE: TFloatField
+      FieldName = 'TEM_CAPACIDADE'
     end
   end
 end
