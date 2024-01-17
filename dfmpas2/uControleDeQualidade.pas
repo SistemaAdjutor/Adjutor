@@ -182,6 +182,7 @@ type
     qQualidadePRDL_DATA_VALIDADE: TStringField;
     qQualidadeIOP_QUANTIDADE: TFMTBCDField;
     qQualidadePRD_UNIDESCRI: TStringField;
+    qQualidadePAR_OBSERVACAO: TStringField;
     procedure edPesquisaChange(Sender: TObject);
     procedure btnPesquisaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
@@ -240,7 +241,9 @@ begin
         ' JOIN PED_IT01 it ON (it.PED_CODIGO = op.PED_CODIGO) ' +
         ' WHERE EXISTS ' +
         '  (SELECT * FROM DEMANDA_PRODUCAO dpr WHERE dpr.PED_CODIGO = op.PED_CODIGO AND dpr.EMP_CODIGO = op.EMP_CODIGO ) ' +
-        ' and op.PED_CODIGO = ' + QuotedStr(VarToStr(cxgrd1DBBandedTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PED_CODIGO.Index]));
+        ' and op.PED_CODIGO = ' + QuotedStr(VarToStr(cxgrd1DBBandedTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PED_CODIGO.Index])) +
+        ' and iop.IOP_NORDEM = ' + QuotedStr(VarToStr(cxgrd1DBBandedTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1IOP_NORDEM.Index]))
+        ;
       if DBInicio.IsDesenvolvimento then
         CopyToClipBoard(cdsProdutoOP5.SQL.Text);
       cdsProdutoOP5.Open;
@@ -271,7 +274,7 @@ begin
       '         WHEN COALESCE(pl.PRDL_DATA_VALIDADE, '''') = '''' THEN '' 24 meses '' ' +
       '         ELSE DATEDIFF (MONTH FROM pl.PRDL_DATA_FABRICACAO TO pl.PRDL_DATA_VALIDADE) || '' meses'' ' +
       '       END AS PRDL_DATA_VALIDADE, ' +
-      '       pr.PRD_REFER, pr.PRD_DESCRI, PQ.PAR_DESCRICAO, CQP.CQP_VALOR_MIN, CQP.CQP_VALOR_MAX, ' +
+      '       pr.PRD_REFER, pr.PRD_DESCRI, PQ.PAR_DESCRICAO, PQ.PAR_OBSERVACAO, CQP.CQP_VALOR_MIN, CQP.CQP_VALOR_MAX, ' +
       '       CQ.CQUA_RESULTADO, CQ.CQUA_PRDL_LOTE, iop.IOP_DATA_CONCLUSAO, iop.iop_nordem, ' +
       '       CQ.CQUA_DATA_CONCLUSAO, CQ.CQUA_OBSERVACAO, CQP.CQP_ESPERADO ' +
       ' FROM CONTROLE_DE_QUALIDADE CQ ' +
@@ -640,7 +643,10 @@ procedure TfrmControleDeQualidade.ImpressodoCertificadodeQualidade1Click(Sender:
 begin
   inherited;
   AbreTabelas;
-  frxCertificadoQualidade.ShowReport();
+  if qQualidade.IsEmpty then
+    uteis.Aviso('Não existem dados do controle de qualidade cadastrados.')
+  else
+    frxCertificadoQualidade.ShowReport();
 end;
 
 end.
