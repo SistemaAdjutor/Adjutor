@@ -2348,7 +2348,7 @@ end;
 
 function CarregaLoteAutomatico(controle, envase: Boolean;lote: string): string;
 Var
- qAux, qAux4: TSQLQuery;
+ qAux, qAux4, qAuxSemente: TSQLQuery;
  ano, mes, dia: Word;
  registro: integer;
 begin
@@ -2362,24 +2362,50 @@ begin
 
     qAux4 := TSQLQuery.Create(Nil);
     qAux4.SQLConnection := DataCadastros.SQLConnection1;
+    qAuxSemente := TSQLQuery.Create(Nil);
+    qAuxSemente.SQLConnection := DataCadastros.SQLConnection1;
 
-    qAux.Close;
-    qAux.SQL.Clear;
-    qAux.SQL.Text := 'SELECT PMT_LOTE_SEMENTE, PMT_LOTE_PREFIXO, PMT_LOTE_SEMENTE ' +
-      ' FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO);
-    qAux.Open;
-    Lote := IntToStr(qAux.FieldByName('PMT_LOTE_SEMENTE').AsInteger + 1);
-    qAux4.Close;
-    qAux4.SQL.Clear;
-    qAux4.SQL.Text := 'UPDATE PRMT0001 SET PMT_LOTE_SEMENTE = ' + lote +
-        ' WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO);
-    qAux4.ExecSQL;
+    qAuxSemente.Close;
+    qAuxSemente.SQL.Clear;
+    qAuxSemente.SQL.Text := 'SELECT FIRST 1 PMT_LOTE_SEMENTE, EMP_CODIGO ' +
+      ' FROM LOTE_ESTORNADO ' +
+      ' WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
+      ' ORDER BY PMT_LOTE_SEMENTE' ;
+    qAuxSemente.Open;
+
     DecodeDate(date(), ano, mes, dia);
-    if DBInicio.Empresa.PMT_REL_ORDEMPRODUCAO = '13' then
-      Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '/' +  strZero(dia, 2) + strZero(mes, 2) + strZero(ano, 4)
+
+    if qAuxSemente.IsEmpty then
+    begin
+      qAux.Close;
+      qAux.SQL.Clear;
+      qAux.SQL.Text := 'SELECT PMT_LOTE_SEMENTE, PMT_LOTE_PREFIXO ' +
+        ' FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO);
+      qAux.Open;
+      Lote := IntToStr(qAux.FieldByName('PMT_LOTE_SEMENTE').AsInteger + 1);
+      qAux4.Close;
+      qAux4.SQL.Clear;
+      qAux4.SQL.Text := 'UPDATE PRMT0001 SET PMT_LOTE_SEMENTE = ' + lote +
+          ' WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO);
+      qAux4.ExecSQL;
+      if DBInicio.Empresa.PMT_REL_ORDEMPRODUCAO = '13' then
+        Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '/' +  strZero(dia, 2) + strZero(mes, 2) + strZero(ano, 4)
+      else
+        Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '-' + IntToStr(ano) ;
+    end
     else
-      Result := qAux.FieldByName('PMT_LOTE_PREFIXO').AsString + Lote + '-' + IntToStr(ano)
-    ;
+    begin
+      Lote := qAuxSemente.FieldByName('PMT_LOTE_SEMENTE').AsString;
+      if DBInicio.Empresa.PMT_REL_ORDEMPRODUCAO = '13' then
+        Result := Lote + '/' +  strZero(dia, 2) + strZero(mes, 2) + strZero(ano, 4)
+      else
+        Result := Lote + '-' + IntToStr(ano) ;
+      dbInicio.ExecSQL('DELETE FROM LOTE_ESTORNADO  ' +
+              ' WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
+              ' AND PMT_LOTE_SEMENTE = ' + Lote 
+              );
+    end;
+
   end
   else
   if lote <> '' then
