@@ -1638,9 +1638,11 @@ begin
    edClienteCodigo.Clear;
    edCliente.Clear;
    wCodigoEndereco := 0 ;
-   edPrazoCodigo.Clear;
    if Habilita then
+   begin
+     edPrazoCodigo.Clear;
      edPrazo.Clear;
+   end;
    cbOrigem.Clear;
    edVendedorCodigo.Clear;
    edVendedor.Clear;
