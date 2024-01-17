@@ -1706,6 +1706,12 @@ type
     CDSUsaParametroUSP_DASH_INTELIGENCIA: TStringField;
     SqlParametrosPMT_LAYOUT_BOLETO_FATURAMENTO: TStringField;
     CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTO: TStringField;
+    SqlParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO: TStringField;
+    SqlParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO_D: TIntegerField;
+    CdsParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO: TStringField;
+    CdsParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO_D: TIntegerField;
+    SQLUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField;
+    CDSUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

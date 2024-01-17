@@ -216,6 +216,7 @@ type
     chkExibeAbaInfoClientePedido: TCheckBox;
     chkIncluiItemPedOPGerada: TCheckBox;
     chkDashInteligencia: TCheckBox;
+    chkPermiteVendaClienteFaturaAtraso: TCheckBox;
     procedure FormShow(Sender: tObject);
     procedure FormCloseQuery(Sender: tObject; var CanClose: Boolean);
     procedure BitInclusaoClick(Sender: tObject);
@@ -2821,6 +2822,9 @@ begin
      DataCadastros1.CdSUsaParametro.FieldByName('USP_DASH_FINANCEIRO').AsString           := IIF(chkDashFin.Checked ,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_DASH_INTELIGENCIA').AsString           := IIF(chkDashInteligencia.Checked ,'S','N');
 
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_PERMITE_VENDA_FATURA_ATRASO').AsString := IIF(chkPermiteVendaClienteFaturaAtraso.Checked ,'S','N');
+
+
 
      DataCadastros1.CdSUsaParametro.FieldByName('USP_LIBERA_ANALISE_CREDITO').AsString    := IIF(ChkLiberaAnaliseCredito.Checked ,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_LIBERA_ANALISE_PRODUCAO').AsString   := IIF(ChkLiberaAnaliseProducao.Checked,'S','N');
@@ -2979,6 +2983,9 @@ begin
            chkDashVendas.Checked := iif (DataCadastros1.CdSUsaParametro.FieldByName('USP_DASH_VENDAS').AsString = 'S',true, false);
            chkDashFin.Checked :=  IIF( DataCadastros1.CdSUsaParametro.FieldByName('USP_DASH_FINANCEIRO').AsString= 'S',true,false);
            chkDashInteligencia.Checked :=  IIF( DataCadastros1.CdSUsaParametro.FieldByName('USP_DASH_INTELIGENCIA').AsString= 'S',true,false);
+
+
+           chkPermiteVendaClienteFaturaAtraso.Checked :=  IIF( DataCadastros1.CdSUsaParametro.FieldByName('USP_PERMITE_VENDA_FATURA_ATRASO').AsString= 'S',true,false);
 
            ChkCadastroProduto.Checked           := IIF(DataCadastros1.CdSUsaParametro.FieldByName('USP_VENDA_CADASTRO_PRODUTO').AsString         = 'S',True,False);
            ChkFuncaoReajuste.Checked            := IIF(DataCadastros1.CdSUsaParametro.FieldByName('USP_VENDA_REAJUSTE').AsString       = 'S',True,False);

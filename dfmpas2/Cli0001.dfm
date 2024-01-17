@@ -265,7 +265,7 @@ inherited FormCliente: TFormCliente
         Top = 304
         Width = 1744
         Height = 130
-        ActivePage = tsFaturamento
+        ActivePage = tsVenda
         Align = alBottom
         MultiLine = True
         TabOrder = 25

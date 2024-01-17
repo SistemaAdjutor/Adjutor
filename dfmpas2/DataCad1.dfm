@@ -1676,6 +1676,13 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_CRQ_RESP_TECNICO_QUALIDADE'
       Size = 255
     end
+    object SqlParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO: TStringField
+      FieldName = 'PMT_BLOQ_PED_VENDA_FAT_ATRASO'
+      Size = 1
+    end
+    object SqlParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO_D: TIntegerField
+      FieldName = 'PMT_BLOQ_PED_VENDA_FAT_ATRASO_D'
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -2993,6 +3000,13 @@ object DataCadastros1: TDataCadastros1
     object CdsParametrosPMT_CRQ_RESP_TECNICO_QUALIDADE: TStringField
       FieldName = 'PMT_CRQ_RESP_TECNICO_QUALIDADE'
       Size = 255
+    end
+    object CdsParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO: TStringField
+      FieldName = 'PMT_BLOQ_PED_VENDA_FAT_ATRASO'
+      Size = 1
+    end
+    object CdsParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO_D: TIntegerField
+      FieldName = 'PMT_BLOQ_PED_VENDA_FAT_ATRASO_D'
     end
   end
   object DsParametros: TDataSource
@@ -6194,6 +6208,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'USP_DASH_INTELIGENCIA'
       Size = 1
     end
+    object SQLUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField
+      FieldName = 'USP_PERMITE_VENDA_FATURA_ATRASO'
+      Size = 1
+    end
   end
   object DSPUsaParametro: TDataSetProvider
     DataSet = SQLUsaParametro
@@ -6624,6 +6642,10 @@ object DataCadastros1: TDataCadastros1
     end
     object CDSUsaParametroUSP_DASH_INTELIGENCIA: TStringField
       FieldName = 'USP_DASH_INTELIGENCIA'
+      Size = 1
+    end
+    object CDSUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField
+      FieldName = 'USP_PERMITE_VENDA_FATURA_ATRASO'
       Size = 1
     end
   end

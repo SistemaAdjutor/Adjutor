@@ -51,7 +51,7 @@ var
 implementation
 
 uses
-  uPedido, RWFunc,  Uteis, InicioDb, uPedidoWebAcao;
+  uPedido, RWFunc,  Uteis, InicioDb, uPedidoWebAcao, uAvisos;
 
 {$R *.dfm}
 
@@ -92,6 +92,27 @@ end;
 
 procedure TFrmPedidoTipoInicial.Seleciona;
 begin
+
+
+
+  if dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) ) = 'S' then
+  begin
+    if BloqueiaPedidoVendaFaturaAtraso(frmPedido.edCliente.idRetorno, frmPedido.EdPrazoCodigo.Text) then
+    begin
+      frmPedido.LimparCampos(False);
+      Abort;
+    end
+    else
+      uAvisos.ClientePossuiFaturasAtrasadas(frmPedido.edCliente.idRetorno,'CLIM_VENDA');
+  end
+  else
+    uAvisos.ClientePossuiFaturasAtrasadas(frmPedido.edCliente.idRetorno,'CLIM_VENDA');
+
+
+
+
+
+
   if (BuscaUmDadoSqlAsString('SELECT OPV_ESTOQUE_REMESSAINDUS FROM opv0000 o WHERE opv_codigo = ' + CdsTipoPedidoOPV_CODIGO.AsString) = 'S')
   and (BuscaUmDadoSqlAsString('SELECT OPV_VENDA FROM opv0000 o WHERE opv_codigo = ' + CdsTipoPedidoOPV_CODIGO.AsString) = 'N')
   and (BuscaUmDadoSqlAsString('SELECT AMX_DESCRI FROM ALMOX0000 WHERE AMX_CNPJ_PART = ' + QuotedStr(RetirarMascaraCNPJ_INSC(FrmPedido.EdCnpj.Text))) = '')

@@ -74,7 +74,8 @@ var
 
 implementation
 
-uses uPedido, DataCad, {uProcedimentos,} Men0001, RWFunc, uPedidoDAO, uteis, iniciodb;
+uses uPedido, DataCad, {uProcedimentos,} Men0001, RWFunc, uPedidoDAO, uteis, iniciodb,
+  AutorizaForm, uAvisos;
 
 {$R *.dfm}
 
@@ -143,7 +144,9 @@ procedure TFrmPedidoTipo.CbNovoTipoChange(Sender: TObject);
 var gerenciaLote: boolean;
 begin
 
-  EdPedidoNovoNumero.Text := CbNovoTipo.idRetorno;
+  // EdPedidoNovoNumero.Text := CbNovoTipo.idRetorno;
+  EdPedidoNovoNumero.Text :=  PreenchezeroEsquerda(CbNovoTipo.idRetorno,3);
+
   if CbNovoTipo.Text <> EmptyStr then
     CbNovoTipo.WherePersonalizado :=  ' WHERE OPV_INATIVAR_TIPO_PEDIDO <> ' + QuotedStr('S')+ ' AND OPV_DESCRICAO CONTAINING '+ QuotedStr(CbNovoTipo.Text ) + ' AND (OPV_PEDIDOINTERNO ='+ QuotedStr('N')+ ' OR OPV_PEDIDOINTERNO IS NULL )' +
                                   iif(NOT DBInicio.Empresa.USP_PERMITE_ALTER_TIPO,
@@ -153,7 +156,6 @@ begin
                                    iif(NOT DBInicio.Empresa.USP_PERMITE_ALTER_TIPO,
                                    ' AND (OPV_ORCAMENTO =  ''S'' OR OPV_CODIGO = '+IntToStr(DBInicio.Empresa.USP_OPV_CODIGO)+')','' ) ;
 
-  //EdPedidoNovoNumero.Text :=  PreenchezeroEsquerda(CbNovoTipo.idRetorno,3);
   AtualizaLabel;
   CalculaPerda;
   Bit_Gravar.Enabled := True;
@@ -235,6 +237,18 @@ var
    stipoKardesES, amx_destino, PRF_PRAZO_ENTREGA :string;
 begin
   CbNovoTipoChange(Sender);
+
+
+  if dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) ) = 'S' then
+  begin
+    if BloqueiaPedidoVendaFaturaAtraso(frmPedido.edCliente.idRetorno, frmPedido.EdPrazoCodigo.Text) then
+      Abort;
+  end
+  else
+    uAvisos.ClientePossuiFaturasAtrasadas(frmPedido.edCliente.idRetorno,'CLIM_VENDA');
+
+
+
   if BuscaUmDadoSqlAsFloat('SELECT CLI_LIMITECRED FROM CLI0000 WHERE CLI_CODIGO = ' + QuotedStr(FrmPedido.edCliente.idRetorno)) > 0 then
     if BuscaUmDadoSqlAsString('SELECT o.OPV_VENDA FROM OPV0000 o WHERE o.OPV_CODIGO = ' + CbNovoTipo.idRetorno) = 'S' then
       if BuscaUmDadoSqlAsInteger('SELECT p.PCL_MODALIDADE FROM PCL0000 p WHERE p.PCL_CODIGO = ' + QuotedStr(FrmPedido.edPrazo.idRetorno) ) > 0 then
