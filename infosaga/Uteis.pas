@@ -2807,7 +2807,7 @@ begin
           DBInicio.ExecSql('UPDATE PEDIDO_ITEM_LOTE SET PIL_UTILIZADO = PIL_UTILIZADO - '  + FloatToSql(saldoPIL) + ' WHERE PRF_REGISTRO = ' + IntToStr(prfRegistro) );
           DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = ' + FloatToSql(saldo) + ' WHERE PRDL_REGISTRO = ' + IntToStr(prdlRegistro) );
         end;
-        if PILutilizado < quantidade then
+        if (PILutilizado < quantidade) and (PRDLSaldo > 0) then
         begin
           saldoPIL := quantidade;
           saldo := PRDLsaldo - (quantidade - PILutilizado);

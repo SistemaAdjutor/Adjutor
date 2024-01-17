@@ -1832,7 +1832,7 @@ begin
       begin
         Lote := VarArrayGet(Lotes, [i,1] ); // numero do lote
         saldo := VarArrayGet(Lotes, [i,2] ); // saldo do lote
-        if (QTDEPendente > Saldo) and (CurQuantidade.Value > (Saldo + CurQuantidadeAnterior) ) then
+        if (QTDEPendente > Saldo) and (CurQuantidade.Value > (CurQuantidade.Value - Saldo) ) then
          begin
            QTDEPendente := QTDEPendente - Saldo;
            qtde := Saldo;
@@ -1888,6 +1888,10 @@ var
    margem: double;
    iRegistroLote : variant;
    aliquotaICMS, valorICMS : double;
+
+   I,Max, Min: Integer;
+   Lote : String;
+   Saldo: double;
 begin
 
    Bit_Gravar.Enabled := False;
@@ -2439,7 +2443,7 @@ begin
 									 else
 									 begin  // para alteração de produto
 										iRegistro := FrmPedido.SqlCdsPedidoItemPRF_REGISTRO.AsInteger;
-										//iRegistroItemAnterior := iRegistro;
+										iRegistroItemAnterior := iRegistro;
 										{alterou de produto na alteração
 										obs: para produto com grade multipla não permite alteração. somente quando for
 										"sem grade" ou grade simples}
@@ -2786,6 +2790,7 @@ begin
                             if kardexSaldo < curQuantidade.Value then
                               ExecSQL('update PED_IT01 set PRF_QTDEPEND  = '+FloatToSQL(CurQuantidade.Value-kardexSaldo) +' , PRF_DTPENDENCIA = CURRENT_TIMESTAMP ' + 'where PRF_REGISTRO =  '+ IntToStr(iRegistroItem) );
                           end;
+
          {
                            if VarIsNull(VariosLote) or VarIsEmpty( VariosLote) then
                            begin
@@ -2949,6 +2954,10 @@ begin
                             ' WHERE PRF_REGISTRO = '+IntToStr(iRegistroItem) );
 
 
+
+
+                    // CONTROLE ESPECIAL DE LOTE
+                     AlteraLoteProduto(VariosLote, iRegistroItem);
 
     {
 
