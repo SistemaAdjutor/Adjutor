@@ -4,8 +4,8 @@ inherited frmApontamentoIndustrial: TfrmApontamentoIndustrial
   ClientWidth = 1081
   Position = poMainFormCenter
   OnResize = FormResize
-  ExplicitWidth = 1089
-  ExplicitHeight = 331
+  ExplicitWidth = 1097
+  ExplicitHeight = 343
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
@@ -70,7 +70,6 @@ inherited frmApontamentoIndustrial: TfrmApontamentoIndustrial
     object HoraApontamento: TcxTimeEdit
       Left = 195
       Top = 12
-      EditValue = 0d
       TabOrder = 1
       Width = 121
     end
@@ -218,8 +217,10 @@ inherited frmApontamentoIndustrial: TfrmApontamentoIndustrial
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edColaborador: TSgDbSearchCombo
       Left = 117
@@ -247,8 +248,10 @@ inherited frmApontamentoIndustrial: TfrmApontamentoIndustrial
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edSenha: TEdit
       Left = 526

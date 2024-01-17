@@ -10,7 +10,22 @@ uses
   Vcl.Buttons, Vcl.ExtCtrls, SgDbSeachComboUnit, cxGraphics, cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxLookupEdit,
   cxDBLookupEdit, cxDBLookupComboBox, Data.FMTBcd, Vcl.DBCtrls, Data.SqlExpr, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView, cxGridTableView,
   cxGridDBTableView, cxGridLevel, cxGridCustomView, cxGrid, cxDBExtLookupComboBox, System.StrUtils, uresultadoinspecao, Vcl.ComCtrls, dxCore, cxDateUtils, cxSpinEdit, cxTimeEdit, cxCalendar,
-  System.DateUtils, BaseDbEstoqueForm, uPesqPedidoIndus;
+  System.DateUtils, BaseDbEstoqueForm, uPesqPedidoIndus, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue;
 
 type
   TfrmApontamentoIndustrial = class(TfrmBaseDBEditFDAC)
@@ -507,8 +522,11 @@ begin
 
     FinalizacaoUltimaOperacao(carga,operacao,item,situacao, DataHoraF );
 
-    ShowMessage('Registrado com sucesso');
     dbConn.Commit;
+    dbConn.close;   // só o commit não basta para liberar a transação...
+    dbConn.Open(DBInicio.FDACConn.ConnectionString);
+
+    ShowMessage('Registrado com sucesso');
 
     //visualizar relatório
     if relatorio and NOT AbandonoResultado then
@@ -530,8 +548,6 @@ begin
 
 
 
-    dbConn.close;
-    dbConn.Open(DBInicio.FDACConn.ConnectionString);
     LimparCampos;
     edBusca.Clear;
     if edBusca.CanFocus then
