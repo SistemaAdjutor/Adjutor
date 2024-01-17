@@ -1,4 +1,4 @@
-﻿Atualizado em 08/01/2024
+﻿Atualizado em 17/01/2024
 Inicio da versão: 08/01/2024
 
 principal: Quimi Sani, Arkson, Chemvet, Rotor, Bepine, Hospital São José, Collect
@@ -12,3 +12,16 @@ principal: Quimi Sani, Arkson, Chemvet, Rotor, Bepine, Hospital São José, Coll
   1773 - Botão de relatório [Arkson]
   1775 - Incluir data de nascimento no relatório [Collect]
 
+patch 1: Arkson, Embraterm, Collect, Bepine, Normadin, LF EPIS
+  1760 - Sequencia dos lotes [Arkson]
+  1777 - Correção antecipação avançada [Arkson]
+  1778 - Correção F4 tela de pedidos [Arkson]
+  1780 - Ajustar Ordem de produção Arkson [Arkson]
+  1781 - Controle de qualidade não imprime [Arkson]
+  1783 - Conclusão do apontamento bloqueando faturamento [Embraterm]
+  1784 - Relatório analítico de doações [Collect]
+  1785 - Diminuir impressão de recibos [Novi]
+  1786 - Dashboard de inteligência Plastica [Bepine]
+  1787 - Correção casas decimais aba campos técnicos [Normadin]
+  1788 - Bloquear venda de cliente com atraso [LF EPIS]
+  
