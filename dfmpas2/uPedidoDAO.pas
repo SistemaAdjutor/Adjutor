@@ -1207,7 +1207,10 @@ begin
              if (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') = 'P')
              and (frmPedido.SqlCdsTipoPedidoOPV_ATESTOQUE.Asstring = 'S')
              then
-               movimentaLote(iRetorno, Lote, screen.ActiveForm.Name, 'S', rQuantidade, saldo);
+               movimentaLote(iRetorno, Lote, screen.ActiveForm.Name, 'S', rQuantidade, saldo)
+             else
+              if Lote <> 0 then
+                DBInicio.ExecSql('INSERT INTO PEDIDO_ITEM_LOTE VALUES (' + IntToStr(iRetorno) + ',' + IntToStr(Lote) + ',' + FloatToSql(rQuantidade) + ')' );
            end
            else
            if not frmPedidoItem.ExisteLote then
@@ -1216,10 +1219,16 @@ begin
              and (frmPedido.SqlCdsTipoPedidoOPV_ATESTOQUE.Asstring = 'S')
              then
              begin
-              movimentaLote(iRetorno, Lote, screen.ActiveForm.Name, 'S', rQuantidade, saldo );
-             end;
-           end;
+               movimentaLote(iRetorno, Lote, screen.ActiveForm.Name, 'S', rQuantidade, saldo );
+             end
+             else
+              if Lote <> 0 then
+                DBInicio.ExecSql('INSERT INTO PEDIDO_ITEM_LOTE VALUES (' + IntToStr(iRetorno) + ',' + IntToStr(Lote) + ',' + FloatToSql(rQuantidade) + ')' );
 
+           end
+           else
+           if (FrmPedido.SqlCdsPedidoItemPRDL_REGISTRO.AsInteger <> Lote) and (Lote > 0) then
+             dbInicio.ExecSql('UPDATE PEDIDO_ITEM_LOTE SET PRDL_REGISTRO = ' + IntToStr(Lote) + ' WHERE PRF_REGISTRO = ' + IntToStr(iRetorno) );
          end;
 
          if QTDEPendente <= 0 then

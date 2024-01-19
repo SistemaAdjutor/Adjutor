@@ -1,8 +1,7 @@
 inherited frmPesqSelecaoLote: TfrmPesqSelecaoLote
   Caption = 'Pesquisa de Lote do Produto'
   ClientWidth = 528
-  ExplicitWidth = 536
-  ExplicitHeight = 482
+  ExplicitWidth = 544
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtilTop: TPanel
@@ -37,8 +36,6 @@ inherited frmPesqSelecaoLote: TfrmPesqSelecaoLote
     Width = 528
     ExplicitWidth = 528
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 520
       inherited pnControle: TPanel
         Width = 520

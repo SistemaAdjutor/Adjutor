@@ -2956,8 +2956,6 @@ begin
 
 
 
-                    // CONTROLE ESPECIAL DE LOTE
-                     AlteraLoteProduto(VariosLote, iRegistroItem);
 
     {
 
@@ -3484,9 +3482,27 @@ begin
   frmPesqSelecaoLote := nil;
 //  if not Assigned(frmPesqSelecaoLote) then
   frmPesqSelecaoLote := TfrmPesqSelecaoLote.Create(Self);
- clone := TClientDataSet.Create(self);
  try
   frmPesqSelecaoLote.PRD_CODIGO := qaux.FieldByName('prd_codigo').AsString;
+  frmPesqSelecaoLote.Filtra;
+  frmPesqSelecaoLote.cdsBusco.Open;
+  while not frmPesqSelecaoLote.cdsBusco.Eof do
+  begin
+    saldo := saldo + frmPesqSelecaoLote.cdsBusco.FieldByName('PRDL_SALDO').AsCurrency;
+    frmPesqSelecaoLote.cdsBusco.Next;
+  end;
+
+  if CurTotalEstoqueEmpresa.Value < saldo then
+  begin
+    uteis.Aviso(
+                'Inconsistência na base de dados, a quantidade em estoque é menor que o saldo dos lotes' + #13 + #10 +
+                'Por gentileza, faça a correção pelo Kardex (Entrada ou Balanço)'
+               );
+    Abort
+  end;
+
+  clone := TClientDataSet.Create(self);
+
   if frmPesqSelecaoLote.ShowModal = mrok then
   begin
     clone.CloneCursor(frmPesqSelecaoLote.cdsBusco,false);
@@ -3525,6 +3541,11 @@ begin
      inc(registro);
       clone.Next;
 
+    end;
+    if saldo < CurQuantidade.Value then
+    begin
+      uteis.Aviso('Quantidade Selecionada no lote não atende à quantidade informada.' + #13 + #10 + 'Favor Alterar a Quantidade Solicitada ou selecionar mais de um lote');
+      Abort;
     end;
     if clone.RecordCount >1 then
     begin

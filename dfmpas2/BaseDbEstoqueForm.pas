@@ -644,8 +644,9 @@ begin
            or (Self.Name = 'FrmKardexLancamentoManual')
          )
          and (frmConclusaoOP = nil)
+         and ((Lote <> '0')  and (Self.Name = 'FrmPedido')  and (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') = 'P') and (sObservacao = 'EXCLUSÃO OU CANCELAMENTO DO ITEM NO PEDIDO')    )
         then
-        DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
+          DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO '+IIF(sTipoES = 'E',' + ',' - ')+FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = '+lote );
         // DBInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO =  ' + FloatToSql(rQuantidade)+' WHERE PRDL_REGISTRO = ' + lote );
 
 

@@ -88,9 +88,11 @@ begin
 	with qBusco do
 	begin
 		sql.Clear;
-		SQL.Add('select PRDL_REGISTRO, PRDL_LOTE, PRDL_DATA_FABRICACAO, PRDL_DATA_VALIDADE, PRDL_SALDO');
+		SQL.Add('select DISTINCT pd.PRDL_REGISTRO, pd.PRDL_LOTE, pd.PRDL_DATA_FABRICACAO, pd.PRDL_DATA_VALIDADE,');
+    SQL.Add('COALESCE ((SELECT pd.PRDL_SALDO - sum(pil2.PIL_UTILIZADO) FROM PEDIDO_ITEM_LOTE pil2 WHERE pil2.PRDL_REGISTRO = pil.PRDL_REGISTRO) , pd.PRDL_SALDO) AS PRDL_SALDO');
     SQL.Add(' FROM PRD_LOTE pd ');
-    SQL.Add('Where prdl_saldo > 0  AND prd_codigo = '+QuotedStr(PRD_CODIGO));
+    SQL.Add(' LEFT JOIN PEDIDO_ITEM_LOTE pil ON pil.PRDL_REGISTRO = pd.PRDL_REGISTRO ') ;
+    SQL.Add('Where pd.PRDL_SALDO - COALESCE(pil.PIL_UTILIZADO, 0)  > 0  AND pd.prd_codigo = '+QuotedStr(PRD_CODIGO));
 
   end;
 end;

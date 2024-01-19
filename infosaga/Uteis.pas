@@ -2823,7 +2823,8 @@ begin
   if (tipoES = 'E') then
   begin
     dbInicio.ExecSql('UPDATE PRD_LOTE SET PRDL_SALDO = PRDL_SALDO + ' + FloatToSql(quantidade) + ' WHERE PRDL_REGISTRO = ' + InttoStr(prdlRegistro));
-    dbInicio.ExecSql('DELETE FROM PEDIDO_ITEM_LOTE WHERE PRF_REGISTRO = ' + IntToStr(prfRegistro));
+    if (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') = 'P') then
+      dbInicio.ExecSql('DELETE FROM PEDIDO_ITEM_LOTE WHERE PRF_REGISTRO = ' + IntToStr(prfRegistro));
   end;
   if  (copy(Form, 1, 13) = 'FrmPedidoTipo') and (tipoES = 'S') then
   begin

@@ -2063,8 +2063,8 @@ begin
                    '     END) AS PRF_PESOKG, ' +
                    '     PRF_MARGEM_PRODUTO, PRF_ICMSALIQ, PRF_VALOR_ICMS, ' +
 
-                   // '     COALESCE(prf_qtdePend,0) AS prf_qtdePend , ' +
-                    '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = t1.ped_codigo),0) as prf_qtdePend,  '+
+                    '     COALESCE(prf_qtdePend,0) AS prf_qtdePend , ' +
+                   // '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = t1.ped_codigo),0) as prf_qtdePend,  '+
 
                    '     PRF_PRODUTO_SEMVALOR, ' +
                    ' (SELECT CAST(COUNT(1) AS INTEGER) FROM PED_IT01 it2 WHERE T1.PRF_REGISTRO = IT2.PRF_REGISTRO_VINCULADO)  KIT_VIRTUAL, '+
@@ -4241,7 +4241,11 @@ begin
                       screen.ActiveForm.Name,
                       'E',
                       SqlCdsPedidoItemPRF_QTDE.AsFloat,
-                      0);
+                      0)
+                  else
+                    if (SqlCdsPedidoItemPRDL_REGISTRO.AsInteger > 0) then
+                      dbInicio.ExecSql('DELETE FROM PEDIDO_ITEM_LOTE WHERE PRF_REGISTRO = ' + SqlCdsPedidoItemPRF_REGISTRO.AsString);
+
 //                        dbInicio.ExecSql('update prd_lote set prdl_saldo=prdl_saldo+'+FloatToSql( SqlCdsPedidoItemPRF_QTDE.AsFloat)+'  WHERE PRDL_REGISTRO='+InttoStr(SqlCdsPedidoItemPRDL_REGISTRO.AsInteger));
 
                   //Limpa Agregados
