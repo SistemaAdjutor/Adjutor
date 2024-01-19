@@ -4578,18 +4578,22 @@ begin
           stipo :=  AnsiReplaceStr(sTipo,'Resumido','');
           resumido := True;
         end;
-        tcr.OrsCliente:=edOrsCliente.text;
         tcr.ClienteTelefone:=EdClienteTelefone.Text;
         tcr.DiaEntrega:=EdOrsDiaEntrega.Text;
-        tcr.OrsEmail:=EdOrsEmail.Text;
-        tcr.OrsDiaValidade:=EdOrsDiaValidade.Text;
         tcr.PedidoTipo:=EdPedidoTipo.Text;
         tcr.PedidoSemItemKit:=bPedidoSemItemKit;
         tcr.MemoPedido:=MemoObservacaoPedido.Text;
         tcr.MemoProducao:=MemoObservacaoProducao.Text;
         tcr.MemoMsgAdicional:=MemoMensagemAdicionalNotaFiscal.Text;
         tcr.clientecodigo := EdClienteCodigo.Text;
+
+        tcr.OrsCliente:=edOrsCliente.text;
+        tcr.OrsEmail:=EdOrsEmail.Text;
+        tcr.CliUF:=cbbClienteEstado.Text;
+        tcr.OrsDiaValidade:=EdOrsDiaValidade.Text;
         tcr.OrsFone:=edOrsFone.text;
+        tcr.OrsFax :=edOrsFax.Text;
+
         tcr.CabecalhoResumido := resumido;
         tcr.ImprimePedido( bVisualiza, sTipo, EdPedidoNumero.Text, EdVendedorCodigo.Text);
      finally

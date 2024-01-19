@@ -540,6 +540,7 @@ type
     fClienteTelefone: string;
     fDiaEntrega: string;
     fOrsEmail: string;
+    fCliUF: string;
     fOrsDiaValidade: string;
     fPedidoTipo: string;
     sOrcamentoObs:String;
@@ -555,6 +556,7 @@ type
     fMemoMsgAdicional:string;
     fclientecodigo:string;
     fOrsFone:string;
+    fOrsFax:string;
     fCabecalhoResumido: boolean;
     function TemKit:boolean;
   public
@@ -562,8 +564,10 @@ type
     procedure GravarFotos;
     procedure GravarFotosMola;
     property OrsFone:string write fOrsFone;
+    property OrsFax:string write fOrsFax;
     property clientecodigo:string write fclientecodigo;
     property OrsCliente:string Write fOrsCliente;
+    property CliUF:string Write fCliUF;
     property clientetelefone:string write fClienteTelefone;
     Property DiaEntrega:string write fDiaEntrega;
     Property OrsEmail:string write fOrsEmail;
@@ -1565,12 +1569,33 @@ begin
          Value := cdspedidoCLI_EMAIL.AsString;
   end
   else
+  if (VarName  = 'CLI_UF') then
+  begin
+      if (fCliUF <> '') then
+         Value := fCliUF
+      else
+         Value := cdspedidoCLI_UF.AsString;
+  end
+  else
+  if (VarName  = 'CFOP') then
+  begin
+    Value := frmPedido.edCfop.Text;
+  end
+  else
   if (VarName  = 'FONECLI') then
   begin
       if (fOrsCliente <> '') then
          Value := MascaraFone(fOrsFone)
       else
-         Value := fClienteTelefone;
+         Value := MascaraFone(cdsPedidoCLI_FONE.AsString)
+  end
+  else
+  if (VarName  = 'CLI_FAX') then
+  begin
+      if (fOrsFax <> '') then
+         Value := MascaraFone(fOrsFax)
+      else
+         Value := MascaraFone(cdspedidoCLI_FAX.AsString);
   end
   else
   if (VarName  = 'ENTREGA') then
