@@ -373,6 +373,18 @@ procedure TfrmCte.CarregaXML( const scaminho : string );
         GeraException( 'Não foi possível carregar a Nota de conhecimento' );
     scam := scaminho;
 
+
+    if ACBrCTe1.Conhecimentos.items[ 0 ].CTe.ide.toma03.Toma = tmRemetente then
+      if ACBrCTe1.Conhecimentos.items[ 0 ].CTe.rem.CNPJCPF <> RetirarMascaraCNPJ_INSC(dbInicio.Empresa.CNPJ_CNPF) then
+      begin
+        uteis.Aviso('CNPJ do tomador diverge da empresa');
+        Abort;
+      end;
+
+
+
+
+
     edtFornecedorCnpj.text := MascaraCNPJ_CPF( ACBrCTe1.Conhecimentos.items[ 0 ]
       .CTe.emit.CNPJ );
     edtFornecedorRazao.text := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.emit.xNome;
