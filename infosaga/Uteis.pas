@@ -3116,7 +3116,7 @@ var
   atrasado, prazo, aVista: boolean;
 begin
   dias := dbInicio.BuscaUmDadoSqlAsInteger('SELECT PMT_BLOQ_PED_VENDA_FAT_ATRASO_D FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.Empresa.EMP_CODIGO) );
-  atrasado := dbInicio.BuscaUmDadoSqlAsInteger ( 'SELECT CAST(COUNT(FAT_REGISTRO) as INTEGER) '+
+  atrasado := dbInicio.BuscaUmDadoSqlAsInteger ( 'SELECT CAST(MAX(DATEDIFF(DAY FROM FPC_VENCTO TO CURRENT_DATE)) AS INTEGER) '+
                                          'FROM FAT_PC01 WHERE CLI_CODIGO = ' + QuotedStr(cliCodigo)+
                                          ' AND FPC_SITPAG = ' + QuotedStr('P') + ' AND FPC_VENCTO < CURRENT_DATE') >= dias;
   if prazoCodigo <> '' then
