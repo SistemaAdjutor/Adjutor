@@ -265,6 +265,7 @@ var
 begin
 //  inherited;
   lista := TStringList.Create;
+  lista.Add('CLI_CODIGO');
   lista.Add('CLI_RAZAO');
   lista.Add('CLI_FANTASIA');
   lista.Add('CLI_CGC');
