@@ -1,5 +1,5 @@
-inherited frmPesqCapacidade: TfrmPesqCapacidade
-  Caption = 'Capacidade do Item do Pedido'
+inherited frmPesqSecuritizadora: TfrmPesqSecuritizadora
+  Caption = 'Cadastro de Securitizadoras'
   PixelsPerInch = 96
   TextHeight = 13
   inherited PageControl1: TPageControl
@@ -52,21 +52,15 @@ inherited frmPesqCapacidade: TfrmPesqCapacidade
         Columns = <
           item
             Expanded = False
-            FieldName = 'CAP_CODIGO'
+            FieldName = 'SEC_CODIGO'
             Title.Caption = 'C'#243'digo'
             Visible = True
           end
           item
             Expanded = False
-            FieldName = 'CAP_DESCRICAO'
-            Title.Caption = 'Descricao'
+            FieldName = 'SEC_DESCRICAO'
+            Title.Caption = 'Nome'
             Width = 520
-            Visible = True
-          end
-          item
-            Expanded = False
-            FieldName = 'CAP_SUBSTITUICAO_TRIBUTARIA'
-            Title.Caption = 'Tem ST'
             Visible = True
           end>
       end
@@ -119,17 +113,13 @@ inherited frmPesqCapacidade: TfrmPesqCapacidade
   end
   inherited cdsBusco: TClientDataSet
     object cdsBuscoCAP_CODIGO: TIntegerField
-      FieldName = 'CAP_CODIGO'
+      DisplayWidth = 3
+      FieldName = 'SEC_CODIGO'
       Required = True
     end
     object cdsBuscoCAP_DESCRICAO: TStringField
-      FieldName = 'CAP_DESCRICAO'
+      FieldName = 'SEC_DESCRICAO'
       Size = 255
-    end
-    object cdsBuscoCAP_SUBSTITUICAO_TRIBUTARIA: TStringField
-      FieldName = 'CAP_SUBSTITUICAO_TRIBUTARIA'
-      OnGetText = cdsBuscoCAP_SUBSTITUICAO_TRIBUTARIAGetText
-      Size = 1
     end
   end
 end

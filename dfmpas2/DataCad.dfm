@@ -49,6 +49,7 @@ object DataCadastros: TDataCadastros
       'WaitOnLocks=True'
       'IsolationLevel=ReadCommitted'
       'Trim Char=False')
+    Connected = True
     Left = 399
     Top = 1
   end
@@ -7975,7 +7976,7 @@ object DataCadastros: TDataCadastros
       'select * from CONV0000')
     SQLConnection = SQLConnection1
     Left = 28
-    Top = 594
+    Top = 562
     object SQLConversaoMedidaCONV_REGISTRO: TIntegerField
       FieldName = 'CONV_REGISTRO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -8009,8 +8010,8 @@ object DataCadastros: TDataCadastros
     BeforeEdit = CdsConversaoMedidaBeforeEdit
     BeforePost = CdsConversaoMedidaBeforePost
     OnCalcFields = CdsConversaoMedidaCalcFields
-    Left = 300
-    Top = 593
+    Left = 220
+    Top = 561
     object CdsConversaoMedidaCONV_REGISTRO: TIntegerField
       FieldName = 'CONV_REGISTRO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -8046,13 +8047,13 @@ object DataCadastros: TDataCadastros
     DataSet = SQLConversaoMedida
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 156
-    Top = 594
+    Left = 124
+    Top = 562
   end
   object dsConversaoMedida: TDataSource
     DataSet = CdsConversaoMedida
-    Left = 308
-    Top = 544
+    Left = 316
+    Top = 560
   end
   object DsPrdClassIPIICMS: TDataSource
     DataSet = CdsPrdClassIPIICMS
@@ -8206,8 +8207,8 @@ object DataCadastros: TDataCadastros
   object dsCnae: TDataSource
     DataSet = CdsCnae
     OnStateChange = dsCnaeStateChange
-    Left = 244
-    Top = 650
+    Left = 316
+    Top = 618
   end
   object CdsCnae: TClientDataSet
     Aggregates = <>
@@ -8216,8 +8217,8 @@ object DataCadastros: TDataCadastros
     ProviderName = 'DspCnae'
     AfterPost = CdsCnaeAfterPost
     AfterDelete = CdsCnaeAfterDelete
-    Left = 175
-    Top = 650
+    Left = 215
+    Top = 618
     object CdsCnaeCNAE_REGISTRO: TIntegerField
       FieldName = 'CNAE_REGISTRO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -8254,8 +8255,8 @@ object DataCadastros: TDataCadastros
     DataSet = SqlCnae
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
-    Left = 100
-    Top = 650
+    Left = 124
+    Top = 618
   end
   object SqlCnae: TSQLQuery
     MaxBlobSize = -1
@@ -8264,7 +8265,7 @@ object DataCadastros: TDataCadastros
       'select * from CNAE')
     SQLConnection = SQLConnection1
     Left = 25
-    Top = 650
+    Top = 626
     object SqlCnaeCNAE_REGISTRO: TIntegerField
       FieldName = 'CNAE_REGISTRO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -8483,5 +8484,40 @@ object DataCadastros: TDataCadastros
     Connection = DBInicio.FDACConn
     Left = 936
     Top = 120
+  end
+  object sqlSecuritizadora: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = SQLConnection1
+    Left = 32
+    Top = 504
+  end
+  object dspSecuritizadora: TDataSetProvider
+    DataSet = sqlSecuritizadora
+    Left = 128
+    Top = 504
+  end
+  object cdsSecuritizadora: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspSecuritizadora'
+    Left = 224
+    Top = 504
+    object cdsSecuritizadoraSEC_CODIGO: TIntegerField
+      FieldName = 'SEC_CODIGO'
+    end
+    object cdsSecuritizadoraSEC_DESCRICAO: TStringField
+      FieldName = 'SEC_DESCRICAO'
+      Size = 255
+    end
+    object cdsSecuritizadoraEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
+    end
+  end
+  object dsSecuritizadora: TDataSource
+    DataSet = cdsSecuritizadora
+    Left = 312
+    Top = 504
   end
 end

@@ -3,8 +3,8 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Antecipa'#231#227'o de Receb'#237'veis (Desconto)'
-  ClientHeight = 602
-  ClientWidth = 964
+  ClientHeight = 631
+  ClientWidth = 968
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -421,9 +421,9 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
     end
     object PanRemessa: TPanel
       Left = 255
-      Top = 61
+      Top = 2
       Width = 442
-      Height = 304
+      Height = 386
       AutoSize = True
       TabOrder = 1
       Visible = False
@@ -464,11 +464,12 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
       end
       object GrpBanco: TGroupBox
         Left = 1
-        Top = 97
+        Top = 179
         Width = 440
         Height = 74
         Align = alTop
         TabOrder = 2
+        ExplicitTop = 97
         object Label8: TLabel
           Left = 5
           Top = 8
@@ -565,7 +566,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
       end
       object GrpCobranca: TGroupBox
         Left = 1
-        Top = 171
+        Top = 253
         Width = 440
         Height = 74
         Align = alTop
@@ -577,6 +578,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
         Font.Style = []
         ParentFont = False
         TabOrder = 3
+        ExplicitTop = 171
         object Label5: TLabel
           Left = 9
           Top = 47
@@ -660,6 +662,8 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
         Font.Style = []
         ParentFont = False
         TabOrder = 0
+        ExplicitLeft = 4
+        ExplicitTop = -5
         object BitBtn2: TBitBtn
           Left = 418
           Top = 2
@@ -679,7 +683,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
       end
       object PanBotao: TPanel
         Left = 1
-        Top = 271
+        Top = 353
         Width = 440
         Height = 32
         Align = alTop
@@ -691,6 +695,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
         Font.Style = []
         ParentFont = False
         TabOrder = 4
+        ExplicitTop = 271
         object BitImprimeEtiq: TBitBtn
           Left = 276
           Top = 4
@@ -726,7 +731,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
       end
       object PanValor: TPanel
         Left = 1
-        Top = 245
+        Top = 327
         Width = 440
         Height = 26
         Align = alTop
@@ -738,6 +743,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
         Font.Style = []
         ParentFont = False
         TabOrder = 5
+        ExplicitTop = 245
         object lbl_transf: TLabel
           Left = 193
           Top = 6
@@ -775,12 +781,12 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
         Left = 1
         Top = 57
         Width = 440
-        Height = 40
+        Height = 122
         Align = alTop
         Caption = 'Forma Pagamento'
         TabOrder = 6
         object Sb_FormaPagamento: TSpeedButton
-          Left = 410
+          Left = 412
           Top = 14
           Width = 22
           Height = 21
@@ -802,6 +808,68 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
           ParentShowHint = False
           ShowHint = True
           OnClick = Sb_FormaPagamentoClick
+        end
+        object Label16: TLabel
+          Left = 9
+          Top = 38
+          Width = 70
+          Height = 14
+          Caption = 'Securitizadora'
+        end
+        object Label17: TLabel
+          Left = 9
+          Top = 75
+          Width = 31
+          Height = 14
+          Caption = 'Banco'
+        end
+        object SpeedButton1: TSpeedButton
+          Left = 411
+          Top = 51
+          Width = 22
+          Height = 21
+          Hint = 'Cadastro de Forma de Pagamento'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            0400000000000001000000000000000000001000000000000000000000000000
+            8000008000000080800080000000800080008080000080808000C0C0C0000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            33333333333FFFFFFFFF333333000000000033333377777777773333330FFFFF
+            FFF03333337F333333373333330FFFFFFFF03333337F3FF3FFF73333330F00F0
+            00F03333F37F773777373330330FFFFFFFF03337FF7F3F3FF3F73339030F0800
+            F0F033377F7F737737373339900FFFFFFFF03FF7777F3FF3FFF70999990F00F0
+            00007777777F7737777709999990FFF0FF0377777777FF37F3730999999908F0
+            F033777777777337F73309999990FFF0033377777777FFF77333099999000000
+            3333777777777777333333399033333333333337773333333333333903333333
+            3333333773333333333333303333333333333337333333333333}
+          NumGlyphs = 2
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = SpeedButton1Click
+        end
+        object SpeedButton2: TSpeedButton
+          Left = 411
+          Top = 87
+          Width = 22
+          Height = 21
+          Hint = 'Cadastro de Forma de Pagamento'
+          Glyph.Data = {
+            76010000424D7601000000000000760000002800000020000000100000000100
+            0400000000000001000000000000000000001000000000000000000000000000
+            8000008000000080800080000000800080008080000080808000C0C0C0000000
+            FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00333333333333
+            33333333333FFFFFFFFF333333000000000033333377777777773333330FFFFF
+            FFF03333337F333333373333330FFFFFFFF03333337F3FF3FFF73333330F00F0
+            00F03333F37F773777373330330FFFFFFFF03337FF7F3F3FF3F73339030F0800
+            F0F033377F7F737737373339900FFFFFFFF03FF7777F3FF3FFF70999990F00F0
+            00007777777F7737777709999990FFF0FF0377777777FF37F3730999999908F0
+            F033777777777337F73309999990FFF0033377777777FFF77333099999000000
+            3333777777777777333333399033333333333337773333333333333903333333
+            3333333773333333333333303333333333333337333333333333}
+          NumGlyphs = 2
+          ParentShowHint = False
+          ShowHint = True
+          OnClick = SpeedButton2Click
         end
         object CBFormaPagamento: TComboBoxRw
           Left = 50
@@ -854,6 +922,110 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
           MaxLength = 5
           TabOrder = 1
           OnExit = EdFormaPagamentoExit
+        end
+        object cbSecuritizadora: TComboBoxRw
+          Left = 51
+          Top = 51
+          Width = 335
+          Height = 22
+          TabOrder = 2
+          OnExit = cbSecuritizadoraExit
+          OnChange = cbSecuritizadoraChange
+          CharCase = ecUpperCase
+          LookupSelect = 'SEC_DESCRICAO'
+          LookupOrderBy = 'SEC_DESCRICAO'
+          LookupTable = 'SECURITIZADORA'
+          GridAutoSize = False
+          LookupSource = CBFormaPagamento.InternalSource
+          LookupKeyField = 'SEC_CODIGO'
+          ShowButton = True
+          LookupTableShare = 'TABELAS'
+          AutoF8WinTitulo = 'Securitizadoras'
+          AutoF8ColumnsTitulo = 'C'#243'digo, Nome'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
+          Tabela = 'SECURITIZADORA'
+          CamposCarregar = 'SEC_DESCRICAO'
+          CamposRetornar = 'SEC_CODIGO'
+          CamposOrdernar = 'SEC_DESCRICAO'
+          ConexaoBanco = DataCadastros.SQLConnection1
+          Compartilhar = 'TABELAS'
+          Localizado = False
+          CodigoEmpresa = 0
+          ResetaCampos = False
+          MultiEmpresa = False
+          Localizar = False
+          CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
+        end
+        object edSecuritizadora: TEdit
+          Left = 5
+          Top = 50
+          Width = 43
+          Height = 22
+          CharCase = ecUpperCase
+          Color = clWhite
+          MaxLength = 5
+          TabOrder = 3
+          OnExit = edSecuritizadoraExit
+        end
+        object cbBanco: TComboBoxRw
+          Left = 51
+          Top = 87
+          Width = 335
+          Height = 22
+          TabOrder = 4
+          OnExit = cbBancoExit
+          OnChange = cbBancoChange
+          CharCase = ecUpperCase
+          LookupSelect = 'BAN_APELIDO'
+          LookupOrderBy = 'BAN_APELIDO'
+          LookupTable = 'BAN0000'
+          GridAutoSize = False
+          LookupSource = CBFormaPagamento.InternalSource
+          LookupKeyField = 'BAN_CODIGO'
+          ShowButton = True
+          LookupTableShare = 'BANCOS'
+          AutoF8WinTitulo = 'Bancos'
+          AutoF8ColumnsTitulo = 'C'#243'digo, Nome'
+          GridLeft = 0
+          GridWidth = 0
+          GridHeight = 100
+          GridTop = 0
+          GridShowWhenEnter = False
+          SelectWithDoubleClick = False
+          LimparCampoAoSair = True
+          Tabela = 'BAN0000'
+          CamposCarregar = 'BAN_APELIDO'
+          CamposRetornar = 'BAN_CODIGO'
+          CamposOrdernar = 'BAN_APELIDO'
+          ConexaoBanco = DataCadastros.SQLConnection1
+          Compartilhar = 'BANCOS'
+          Localizado = False
+          CodigoEmpresa = 0
+          ResetaCampos = False
+          MultiEmpresa = False
+          Localizar = False
+          CarregarCombo = False
+          itemindex = 0
+          style = csDropDown
+        end
+        object edBanco: TEdit
+          Left = 6
+          Top = 87
+          Width = 43
+          Height = 22
+          CharCase = ecUpperCase
+          Color = clWhite
+          MaxLength = 5
+          TabOrder = 5
+          OnExit = edBancoExit
         end
       end
     end
@@ -1311,13 +1483,15 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
   end
   object Pn_Relatorio: TPanel
     Left = 0
-    Top = 567
-    Width = 964
+    Top = 596
+    Width = 968
     Height = 35
     Align = alBottom
     BevelInner = bvLowered
     BevelOuter = bvLowered
     TabOrder = 8
+    ExplicitTop = 567
+    ExplicitWidth = 964
     object Bit_Gerar: TBitBtn
       Left = 560
       Top = 6
@@ -1434,7 +1608,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 600
+    Left = 728
     Top = 154
     object SqlCdsClienteCLI_CODIGO: TStringField
       FieldName = 'CLI_CODIGO'
@@ -1479,8 +1653,8 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 160
-    Top = 226
+    Left = 32
+    Top = 162
     object SqlCdsRemessaFAT_REGISTRO: TIntegerField
       FieldName = 'FAT_REGISTRO'
       Required = True
@@ -1636,15 +1810,15 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
   end
   object DsRemessa: TDataSource
     DataSet = SqlCdsRemessa
-    Left = 189
-    Top = 226
+    Left = 29
+    Top = 210
   end
   object ImageList1: TImageList
     Height = 15
-    Left = 218
-    Top = 226
+    Left = 26
+    Top = 258
     Bitmap = {
-      494C0101030005000C0010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500100010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -1775,8 +1949,8 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
       0000FFFFFFFF000000000000000000000000000000000000000000000000}
   end
   object PopupMenu1: TPopupMenu
-    Left = 247
-    Top = 226
+    Left = 23
+    Top = 314
     object SelecionarTodos1: TMenuItem
       Caption = 'Marcar &Todos'
       OnClick = SelecionarTodos1Click
@@ -1804,7 +1978,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 629
+    Left = 797
     Top = 154
     object SqlCdsBcoEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
@@ -1854,7 +2028,7 @@ object FrmRemessaDescontar: TFrmRemessaDescontar
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 504
+    Left = 728
     Top = 200
     object SqlCdsTransfBcoBAN_CODIGO: TStringField
       FieldName = 'BAN_CODIGO'

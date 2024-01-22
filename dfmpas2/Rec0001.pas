@@ -259,6 +259,8 @@ type
     qCli: TSQLQuery;
     cbClientes: TSgDbSearchCombo;
     CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA: TStringField;
+    CDSRecebimentosSEC_DESCRICAO: TStringField;
+    qRecebimentosSEC_DESCRICAO: TStringField;
     procedure HabilitaBotoes;
     procedure DesabilitaBotoes;
     procedure AplicaParcelamento;
@@ -2364,6 +2366,7 @@ begin
                        '     T1.FRE_RECEBIDO,'+
                        '     T1.BAN_CODIGO, '+
                        '     T2.BAN_APELIDO as BAN_RAZAO,'+
+                       '     sec.SEC_DESCRICAO, ' +
                        '     T1.FPG_REGISTRO,'+
                        '     T3.FPG_DESCRICAO,'+
                        '     T1.USU_CODIGO,'+
@@ -2372,6 +2375,7 @@ begin
                        ' FAT_RECEBIMENTO T1 '+
                        ' JOIN BAN0000 T2 ON (T2.BAN_CODIGO = T1.BAN_CODIGO) '+
                        ' JOIN FORMA_PAGAMENTO T3 ON (T3.FPG_REGISTRO = T1.FPG_REGISTRO) '+
+                       ' LEFT JOIN SECURITIZADORA sec ON (sec.SEC_CODIGO = T1.SEC_CODIGO) ' +
                        ' JOIN USUARIO T4 ON (T4.USU_CODIGO = T1.USU_CODIGO)';
          wSeleciona := 'WHERE T1.FAT_REGISTRO = '+CdsParcelasGridFAT_REGISTRO.AsString;
          wOrdem     := 'T1.FRE_DATA_RECEBIMENTO';

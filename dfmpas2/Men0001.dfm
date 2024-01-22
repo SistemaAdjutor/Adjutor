@@ -3,8 +3,8 @@ object FrmMenu: TFrmMenu
   Top = 115
   BorderWidth = 1
   Caption = 'Adjutor - Sistema de Gest'#227'o Empresarial'
-  ClientHeight = 557
-  ClientWidth = 1364
+  ClientHeight = 555
+  ClientWidth = 1362
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clBlack
@@ -22,15 +22,15 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   DesignSize = (
-    1364
-    557)
+    1362
+    555)
   PixelsPerInch = 96
   TextHeight = 14
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1364
-    Height = 518
+    Width = 1362
+    Height = 516
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676596260200FFD8FFE000104A46494600010101006000
@@ -4552,7 +4552,7 @@ object FrmMenu: TFrmMenu
   end
   object imgLogoNovi: TImage
     Left = 32
-    Top = 515
+    Top = 513
     Width = 249
     Height = 83
     Anchors = [akLeft, akBottom]
@@ -6902,7 +6902,7 @@ object FrmMenu: TFrmMenu
   object imgSuporte: TImage
     AlignWithMargins = True
     Left = 956
-    Top = 433
+    Top = 431
     Width = 128
     Height = 139
     Anchors = [akLeft, akBottom]
@@ -7697,8 +7697,8 @@ object FrmMenu: TFrmMenu
   end
   object Status: TStatusBar
     Left = 0
-    Top = 540
-    Width = 1364
+    Top = 538
+    Width = 1362
     Height = 17
     Panels = <
       item
@@ -7711,20 +7711,16 @@ object FrmMenu: TFrmMenu
       end>
     ParentFont = True
     UseSystemFont = False
-    ExplicitTop = 373
-    ExplicitWidth = 1130
   end
   object Pan_Versao: TPanel
     Left = 0
-    Top = 518
-    Width = 1364
+    Top = 516
+    Width = 1362
     Height = 22
     Align = alBottom
     BevelOuter = bvNone
     Color = 12615680
     TabOrder = 1
-    ExplicitTop = 351
-    ExplicitWidth = 1130
     object RxLEmpresa: TJvLabel
       Left = 668
       Top = 2
@@ -8250,6 +8246,10 @@ object FrmMenu: TFrmMenu
         object Capacidade1: TMenuItem
           Caption = 'Capacidade'
           OnClick = Capacidade1Click
+        end
+        object Securitizadora1: TMenuItem
+          Caption = 'Securitizadora'
+          OnClick = Securitizadora1Click
         end
       end
       object fISCAL1: TMenuItem
