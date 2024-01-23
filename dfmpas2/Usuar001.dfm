@@ -28,7 +28,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Top = 0
     Width = 1052
     Height = 540
-    ActivePage = TabParametro
+    ActivePage = tabusu
     Align = alTop
     TabOrder = 0
     object tabusu: TTabSheet
@@ -187,6 +187,17 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
               Title.Font.Style = [fsBold]
               Width = 116
               Visible = True
+            end
+            item
+              Expanded = False
+              FieldName = 'USU_ATIVO'
+              Title.Caption = 'Ativo '
+              Title.Font.Charset = ANSI_CHARSET
+              Title.Font.Color = clBlack
+              Title.Font.Height = -11
+              Title.Font.Name = 'Arial'
+              Title.Font.Style = [fsBold]
+              Visible = True
             end>
         end
       end
@@ -204,6 +215,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
         Color = clBtnFace
         ParentColor = False
         TabOrder = 0
+        ExplicitTop = 2
         object Label2: TLabel
           Left = 48
           Top = 19
@@ -394,7 +406,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             OnExit = chkRelatorioExit
           end
         end
-        object GroupBox5: TGroupBox
+        object gbNivelAcesso: TGroupBox
           Left = 6
           Top = 188
           Width = 228
@@ -963,6 +975,20 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
           ShowNullDate = False
           YearDigits = dyFour
           TabOrder = 3
+        end
+        object cbAtivo: TDBCheckBox
+          Left = 598
+          Top = 64
+          Width = 43
+          Height = 17
+          Alignment = taLeftJustify
+          Caption = 'Ativo:'
+          DataField = 'USU_ATIVO'
+          DataSource = DataCadastros1.DsUsuario
+          TabOrder = 15
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+          OnClick = cbAtivoClick
         end
       end
       object Pn_Botoes: TPanel
@@ -2391,7 +2417,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C010103000500140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000

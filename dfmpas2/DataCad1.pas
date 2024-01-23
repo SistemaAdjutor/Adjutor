@@ -1712,6 +1712,8 @@ type
     CdsParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO_D: TIntegerField;
     SQLUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField;
     CDSUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField;
+    SQLUsuarioUSU_ATIVO: TStringField;
+    CDSUsuarioUSU_ATIVO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
@@ -1752,6 +1754,9 @@ type
       var Text: string; DisplayText: Boolean);
     procedure CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOSetText(Sender: TField;
       const Text: string);
+    procedure DsUsuarioDataChange(Sender: TObject; Field: TField);
+    procedure CDSUsuarioUSU_ATIVOGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
   private
     { Private declarations }
   public
@@ -2018,6 +2023,34 @@ begin
          if Copy(E.message,1,34) = 'violation of PRIMARY or UNIQUE KEY' then
            DataCadastros.IncrementaRegistro('USUARIO',CdSUsuarioUSU_CODIGO);
       end;
+end;
+
+procedure TDataCadastros1.CDSUsuarioUSU_ATIVOGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+  if Sender.AsString = 'S' then
+    Text := 'Sim'
+  else
+    Text := 'Não';
+end;
+
+procedure TDataCadastros1.DsUsuarioDataChange(Sender: TObject; Field: TField);
+begin
+  if FrmCadastroUsuario <> nil then
+  begin
+    if CDSUsuarioUSU_ATIVO.AsString = 'S' then
+    begin
+      FrmCadastroUsuario.gbNivelAcesso.Enabled := True;
+      FrmCadastroUsuario.boxAcesso.Enabled := True;
+      FrmCadastroUsuario.boxOperacao.Enabled := True;
+    end
+    else
+    begin
+      FrmCadastroUsuario.gbNivelAcesso.Enabled := False;
+      FrmCadastroUsuario.boxAcesso.Enabled := False;
+      FrmCadastroUsuario.boxOperacao.Enabled := False;
+    end;
+  end;
 end;
 
 procedure TDataCadastros1.CdSUsaParametroAfterInsert(DataSet: TDataSet);

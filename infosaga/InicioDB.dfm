@@ -26794,6 +26794,7 @@ inherited DBInicio: TDBInicio
       ParentFont = False
       TabOrder = 0
       OnChange = EdUsuarioChange
+      OnExit = EdUsuarioExit
     end
     object edSenha: TMaskEdit
       AlignWithMargins = True
