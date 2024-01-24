@@ -1023,6 +1023,9 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'CLI_CEP'
       Size = 8
     end
+    object qSqlCdsPesqCLI_DTNASCIMENTO: TSQLTimeStampField
+      FieldName = 'CLI_DTNASCIMENTO'
+    end
   end
   object dspSqlCdsPesq: TDataSetProvider
     DataSet = qSqlCdsPesq
@@ -2628,6 +2631,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldKind = fkCalculated
       FieldName = 'PED_SITUACAO2'
       Calculated = True
+    end
+    object cdsqSqlCdsPesqCLI_DTNASCIMENTO: TSQLTimeStampField
+      DisplayLabel = 'Data do Nascimento'
+      FieldName = 'CLI_DTNASCIMENTO'
     end
   end
 end
