@@ -2521,6 +2521,15 @@ procedure TDBInicio.btOKClick( Sender : TObject );
       raise Exception.Create( 'Senha inválida' )
 
     end
+    else
+    if (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_ATIVO FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> 'S')
+    and (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_LOGIN FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> '')
+    then
+    begin
+      uteis.Aviso('Usuário Inativo.');
+      edUsuario.SetFocus;
+      Abort;
+    end
     else if EdUsuario.text = vlUsuario.USUARIOPADRAO
     THEN
     begin
@@ -3203,7 +3212,9 @@ procedure TDBInicio.EdUsuarioChange( Sender : TObject );
 procedure TDBInicio.EdUsuarioExit(Sender: TObject);
 begin
   inherited;
-  if dbInicio.BuscaUmDadoSqlAsString('SELECT USU_ATIVO FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> 'S' then
+  if (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_ATIVO FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> 'S')
+  and (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_LOGIN FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> '')
+  then
   begin
     uteis.Aviso('Usuário Inativo.');
     edUsuario.SetFocus;

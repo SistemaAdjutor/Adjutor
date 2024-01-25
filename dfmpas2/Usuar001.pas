@@ -718,6 +718,8 @@ begin
 end;
 
 procedure TFrmCadastroUsuario.BitConfirmarClick(Sender: tObject);
+var
+  rec : integer;
 begin
   if chkAbrirChamado.Checked then
      if DBInicio.BuscaUmDadoSqlAsInteger('SELECT COUNT (*) FROM USUARIO_PARAMETRO WHERE USP_ABRICHAMADO =''S'' AND USP_COD_USUARIO <> ' + DBECodigo.Field.AsString) >= 2 then
@@ -728,11 +730,11 @@ begin
   try
      VerificaAtualizaCredito;
      GravaNivelAcessos;
-     if DataCadastros1.CdSUsuario.changecount> 0 then
-     begin
-       DataCadastros1.CdSUsuarioREP_CODIGO.AsString := EditCodigoRep.Text;
-       DataCadastros1.CdSUsuario.ApplyUpdates(0);
-     end;
+//     if DataCadastros1.CdSUsuario.changecount> 0 then
+//     begin
+     DataCadastros1.CdSUsuarioREP_CODIGO.AsString := EditCodigoRep.Text;
+     DataCadastros1.CdSUsuario.ApplyUpdates(0);
+//     end;
      DataCadastros1.cdsEmpUsu.ApplyUpdates(0);
      GravaParametrosUsuario(DBECodigo.Field.AsString);
     {chama a rotina habilita botoes}
@@ -744,10 +746,10 @@ begin
      if PageControl1.ActivePage = TabParametro then
         DBEdit1.SetFocus;      }
      fAlterou:=True;
-
+     rec := DataCadastros1.CdSUsuario.RecNo;
      DataCadastros1.CdSUsuario.Close;
      DataCadastros1.CdSUsuario.Open;
-
+     DataCadastros1.CdSUsuario.RecNo := rec;
      Aviso('Gravado com sucesso');
 
       BitConfirmar.Enabled := False;

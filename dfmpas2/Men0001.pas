@@ -3163,11 +3163,14 @@ begin
   ImglogoMenu.Picture.Bitmap := nil;
   ImglogoMenu.Picture.assign(DBInicio.Empresa.Logo);
   ImglogoMenu.Visible := true;
-
-  if FileExists(ExtractFileDir(Application.ExeName) + '\logo\fundo\' +
-    sEmp_Codigo + '.jpg') then
-    Image1.Picture.LoadFromFile(ExtractFileDir(Application.ExeName) +
-      '\logo\fundo\' + sEmp_Codigo + '.jpg');
+  try
+    if FileExists(ExtractFileDir(Application.ExeName) + '\logo\fundo\' +
+      sEmp_Codigo + '.jpg') then
+      Image1.Picture.LoadFromFile(ExtractFileDir(Application.ExeName) +
+        '\logo\fundo\' + sEmp_Codigo + '.jpg');
+  Except
+     // às vezes dá erro...
+  end;
 
   if pShowMsg then
     Uteis.aviso(PChar('Empresa Alterada para: ' + #13 + #13 +

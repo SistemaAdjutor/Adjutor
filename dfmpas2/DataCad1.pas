@@ -1714,6 +1714,7 @@ type
     CDSUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField;
     SQLUsuarioUSU_ATIVO: TStringField;
     CDSUsuarioUSU_ATIVO: TStringField;
+    CDSUsuarioUSUARIO_ATIVO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
@@ -1755,8 +1756,6 @@ type
     procedure CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOSetText(Sender: TField;
       const Text: string);
     procedure DsUsuarioDataChange(Sender: TObject; Field: TField);
-    procedure CDSUsuarioUSU_ATIVOGetText(Sender: TField; var Text: string;
-      DisplayText: Boolean);
   private
     { Private declarations }
   public
@@ -2011,7 +2010,15 @@ begin
       CdSUsuariowTIPO_USUARIO.AsString := 'Administrador'
    else
    if CdSUsuarioUSU_TIPO_USUARIO.AsString = 'U' then
-      CdSUsuariowTIPO_USUARIO.AsString := 'Usuário';
+      CdSUsuariowTIPO_USUARIO.AsString := 'Usuário'
+   else
+   if CdSUsuarioUSU_TIPO_USUARIO.AsString = 'G' then
+      CdSUsuariowTIPO_USUARIO.AsString := 'Gerencial';
+
+   if CdSUsuarioUSU_ATIVO.AsString = 'S' then
+     CdSUsuarioUSUARIO_ATIVO.AsString := 'Sim'
+   else
+     CdSUsuarioUSUARIO_ATIVO.AsString := 'Não';
 end;
 
 procedure TDataCadastros1.CdSUsuarioReconcileError(
@@ -2023,15 +2030,6 @@ begin
          if Copy(E.message,1,34) = 'violation of PRIMARY or UNIQUE KEY' then
            DataCadastros.IncrementaRegistro('USUARIO',CdSUsuarioUSU_CODIGO);
       end;
-end;
-
-procedure TDataCadastros1.CDSUsuarioUSU_ATIVOGetText(Sender: TField;
-  var Text: string; DisplayText: Boolean);
-begin
-  if Sender.AsString = 'S' then
-    Text := 'Sim'
-  else
-    Text := 'Não';
 end;
 
 procedure TDataCadastros1.DsUsuarioDataChange(Sender: TObject; Field: TField);

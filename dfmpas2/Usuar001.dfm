@@ -190,7 +190,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             end
             item
               Expanded = False
-              FieldName = 'USU_ATIVO'
+              FieldName = 'USUARIO_ATIVO'
               Title.Caption = 'Ativo '
               Title.Font.Charset = ANSI_CHARSET
               Title.Font.Color = clBlack
@@ -215,7 +215,6 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
         Color = clBtnFace
         ParentColor = False
         TabOrder = 0
-        ExplicitTop = 2
         object Label2: TLabel
           Left = 48
           Top = 19
@@ -2417,7 +2416,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C010103000500180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000
