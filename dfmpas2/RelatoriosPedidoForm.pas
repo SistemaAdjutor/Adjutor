@@ -692,7 +692,7 @@ begin
    qPedidos.Sql.Add('       ( select coalesce(sum(t1.prf_qtde * t2.prd_pesokg),0) FROM ped_it01 T1 JOIN prd0000 T2 ON (t2.prd_refer = t1.prd_refer) WHERE T1.ped_codigo = ped.ped_codigo) as peso,');
    qPedidos.Sql.Add('       case ' );
    qPedidos.Sql.Add('          when (PED.ENDERECO_ENTREGA > 0) ' );
-   qPedidos.Sql.Add('          then '+qStr('ENDEREÇO DE ENTREGA: ')+'||ENDER.descricao||'+qStr(' BAIRRO: ')+'||coalesce(ENDER.BAIRRO,'+qStr('')+')||'+qStr(' CIDADE: ')+'||coalesce(ENDER.CIDADE,CLI.cli_cidade)||'+qStr(' CEP: ')+'||coalesce(ENDER.CEP,'+qStr('')+') ' );
+   qPedidos.Sql.Add('          then '+qStr('ENDEREÇO DE ENTREGA: ')+'||CAST(ENDER.DESCRICAO AS VARCHAR(30) CHARACTER SET WIN1252)||'+qStr(' BAIRRO: ')+'||coalesce(CAST(ENDER.BAIRRO AS VARCHAR(30) CHARACTER SET WIN1252),'+qStr('')+')||'+qStr(' CIDADE: ')+'||coalesce(ENDER.CIDADE,CLI.cli_cidade)||'+qStr(' CEP: ')+'||coalesce(ENDER.CEP,'+qStr('')+') ' );
    qPedidos.Sql.Add('          else '+qStr('') );
    qPedidos.Sql.Add('       end AS CIDADE_ENTREGA,');
    qPedidos.Sql.Add('       PED.PED_DESCTONF,');
