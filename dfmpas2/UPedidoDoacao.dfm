@@ -504,7 +504,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object Label9: TLabel
-        Left = 38
+        Left = 35
         Top = 247
         Width = 97
         Height = 16
@@ -518,7 +518,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object Label10: TLabel
-        Left = 76
+        Left = 74
         Top = 42
         Width = 58
         Height = 16
@@ -546,7 +546,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object Label5: TLabel
-        Left = 14
+        Left = 12
         Top = 127
         Width = 120
         Height = 16
@@ -560,7 +560,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object Label6: TLabel
-        Left = 20
+        Left = 19
         Top = 187
         Width = 113
         Height = 16
@@ -574,7 +574,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object Label11: TLabel
-        Left = 93
+        Left = 91
         Top = 220
         Width = 41
         Height = 16
@@ -588,7 +588,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object Label12: TLabel
-        Left = 37
+        Left = 35
         Top = 98
         Width = 97
         Height = 16
@@ -630,7 +630,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object Label4: TLabel
-        Left = 42
+        Left = 40
         Top = 159
         Width = 92
         Height = 16
@@ -672,12 +672,12 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object Label18: TLabel
-        Left = 21
+        Left = 28
         Top = 303
-        Width = 109
+        Width = 102
         Height = 16
         Alignment = taRightJustify
-        Caption = 'Conta Fiananceira:'
+        Caption = 'Conta Financeira:'
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
         Font.Height = -13

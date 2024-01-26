@@ -150,6 +150,11 @@ type
     cdsqSqlCdsPesqEMP_CODIGO: TStringField;
     cdsqSqlCdsPesqPED_SITUACAO: TStringField;
     cdsqSqlCdsPesqPED_SITUACAO2: TStringField;
+    rdCFinanceira: TRadioButton;
+    gbCFinanceira: TGroupBox;
+    edCFinanceira: TEdit;
+    qContafinanceira: TSQLQuery;
+    cbContaFinanceira: TSgDbSearchCombo;
     procedure Rad_ClienteClick(Sender: TObject);
     procedure BitPesquisarClick(Sender: TObject);
     procedure SqlCdsPesqPED_SITUACAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -177,6 +182,7 @@ type
     procedure cdsqSqlCdsPesqPED_SITUACAOGetText(Sender: TField;
       var Text: string; DisplayText: Boolean);
     procedure cdsqSqlCdsPesqCalcFields(DataSet: TDataSet);
+    procedure cbContaFinanceiraSelect(Sender: TObject);
 
   private
    procedure BuscaPedido(ordem: string);
@@ -288,7 +294,13 @@ begin
              sqlAdd( camposql( 'Pe.REP_CODIGO', cbVendedor.idRetorno ) )
           Else
           if (rdCCusto.Checked) then
-             sqlAdd( camposql( 'Pe.pcx_codigo', CbProjetoObra.idRetorno ));
+             sqlAdd( camposql( 'Pe.pcx_codigo', CbProjetoObra.idRetorno ))
+          Else
+          if (rdCFinanceira.Checked) then
+             sqlAdd( camposql( 'Pe.cct_codigo', CbContaFinanceira.idRetorno ));
+
+
+
            //A FATURAR = F , CANCELADO = C , FATURADO TOTAL = T, PARCIAL = P , FATURADO AGRUPADO  = A
           case cbbFaturamento.ItemIndex of
           1:sqladd('Pe.PED_SITUACAO not in (''F'',''C'')');     //FATURADO
@@ -355,6 +367,13 @@ procedure TfrmPesqDoacao.cbbFaturamentoChange(Sender: TObject);
 begin
   inherited;
   buscapedido('');
+end;
+
+procedure TfrmPesqDoacao.cbContaFinanceiraSelect(Sender: TObject);
+begin
+  inherited;
+   EdCFinanceira.Text := CbContaFinanceira.idRetorno;
+   BuscaPedido('');
 end;
 
 procedure TfrmPesqDoacao.CbFantasiaSelect(Sender: TObject);
@@ -547,11 +566,14 @@ begin
   end;
  gbcliente.Parent := Panel1;
  gbCCusto.Parent := Panel1;
+ gbCFinanceira.Parent := Panel1;
 
  GbCliente.Left := 394;
  GbCliente.top := gbData.Top;
  gbCCusto.Left := 394;
  gbCCusto.top := gbData.Top;
+ gbCFinanceira.Left := 394;
+ gbCFinanceira.top := gbData.Top;
 
  gbCliente.Height:= gbData.Height;
 
@@ -625,7 +647,9 @@ begin
    Edt_Lista.Width       := 38;
    Edt_Lista.MaxLength   := 5;
 
- gbCCusto.Visible := False;
+   gbCCusto.Visible := False;
+   gbCFinanceira.Visible := False;
+
     if (Rad_Pedido_Compra.checked ) then
     begin
            GbCliente.Caption     := 'Informe a Ordem do Cliente';
@@ -672,6 +696,13 @@ begin
     begin
            gbCCusto.Visible := True;
            gbCCusto.TabOrder    := 1;
+           BitPesquisar.TabOrder := 2;
+    end
+    else
+    if (rdCFinanceira.checked ) then
+    begin
+           gbCFinanceira.Visible := True;
+           gbCFinanceira.TabOrder    := 1;
            BitPesquisar.TabOrder := 2;
     end;
 
