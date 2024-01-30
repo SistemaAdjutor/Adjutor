@@ -2579,6 +2579,7 @@ type
       procedure PrecoEmpresaCorDBEdit( );
       procedure CarregaPrecoEmpresa( );
       procedure GravaPrecoEmpresa( );
+      function ItemRedundante(prdRefer, prdReferItem: string; Retorna: boolean): boolean;
   end;
 
 var
@@ -4418,6 +4419,12 @@ begin
       FormProdutoGrid.ShowModal;
       if FormProdutoGrid.ModalResult = mrOk then
       begin
+        if ItemRedundante(EdtPrd_Refer.Text, FormProdutoGrid.ReferRetorno, False) then
+        begin
+          FreeAndNil( FormProdutoGrid );
+          Exit;
+        end
+        else
         if ( FormProdutoGrid.ReferRetorno = EdtPrd_Refer.Text ) then
         begin
           Uteis.aviso( Pchar( 'Impossível inserir este material.' + #13 + 'Este material é a própria ficha técnica !' ) );
@@ -5510,6 +5517,43 @@ begin
   cdsMolaMMO_ARQUIVO_FICHA_TECNICA.AsString := IncluirArquivoFichaTecnica.FileName;
 end;
 
+// função recursiva
+function TFormProduto.ItemRedundante(prdRefer, prdReferItem: string; Retorna: boolean): boolean;
+var
+  Aux: TSQLQuery;
+begin
+  if Retorna then
+  begin
+    Result := Retorna;
+    Exit;
+  end;
+  Result := False;
+  Aux := TSQLQuery.Create(Self);
+  Aux.SQLConnection := DBInicio.MainDB;
+  Aux.Sql.Text :=
+           ' SELECT fi.PRD_REFER, fi.PRD_REFER_ITENS ' +
+           ' FROM FTC0000 ft ' +
+           ' JOIN FTC_IT01 fi ON ft.PRD_REFER = fi.PRD_REFER ' +
+           ' WHERE ft.PRD_REFER = ' + QuotedStr(prdReferItem);
+  Aux.Open;
+  while not Aux.eof do
+  begin
+    if Aux.FieldByName('PRD_REFER_ITENS').AsString =  prdRefer then
+    begin
+      uteis.Aviso('O Item ' + prdRefer + ' que está na ficha técnica do item ' + prdReferItem + ',' +  #13 + #10 + ' já existe em um item pai desta ficha técnica');
+      Result := True;
+      ItemRedundante('','', True);
+    end
+    else
+    begin
+      if ItemRedundante(Aux.FieldByName('PRD_REFER').AsString, Aux.FieldByName('PRD_REFER_ITENS').AsString, False)
+        then ItemRedundante('','', True);
+    end;
+    Aux.Next;
+  end;
+
+end;
+
 procedure TFormProduto.verificaEdicao;
 begin
   if CdsProdutos.State in [ dsEdit, dsInsert ] then
@@ -5666,6 +5710,13 @@ begin
     Exit;
   if ( EdtRefer.Text <> '' ) then
   begin
+    if ItemRedundante(EdtPrd_Refer.Text, EdtRefer.Text, False) then
+    begin
+      LimparDadosFTC;
+      EdtRefer.Setfocus;
+      Abort;
+    end;
+
     if ( EdtRefer.Text <> EdtPrd_Refer.Text ) then
     begin
       if ( DmProducao.CdsFichaTec.isEmpty ) then
