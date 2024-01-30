@@ -1750,7 +1750,7 @@ begin
     { Seleciona Prazos }
     SqlCdsCentroCusto.close;
     SqlCdsCentroCusto.CommandText := Sqldef('TABELAS', 'SELECT * FROM PCX0000',
-      'WHERE PCX_TIPO = ''L''', 'PCX_NIVEL', '');
+      'WHERE PCX_TIPO = ''L'' AND PCX_TERMINADO = ''N'' ', 'PCX_NIVEL', '');
     SqlCdsCentroCusto.Open;
     while not SqlCdsCentroCusto.Eof do
     begin
