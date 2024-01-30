@@ -540,6 +540,7 @@ type
     fClienteTelefone: string;
     fDiaEntrega: string;
     fOrsEmail: string;
+    fCliUF: string;
     fOrsDiaValidade: string;
     fPedidoTipo: string;
     sOrcamentoObs:String;
@@ -555,6 +556,7 @@ type
     fMemoMsgAdicional:string;
     fclientecodigo:string;
     fOrsFone:string;
+    fOrsFax:string;
     fCabecalhoResumido: boolean;
     function TemKit:boolean;
   public
@@ -562,8 +564,10 @@ type
     procedure GravarFotos;
     procedure GravarFotosMola;
     property OrsFone:string write fOrsFone;
+    property OrsFax:string write fOrsFax;
     property clientecodigo:string write fclientecodigo;
     property OrsCliente:string Write fOrsCliente;
+    property CliUF:string Write fCliUF;
     property clientetelefone:string write fClienteTelefone;
     Property DiaEntrega:string write fDiaEntrega;
     Property OrsEmail:string write fOrsEmail;
@@ -688,7 +692,7 @@ begin
    qPedidos.Sql.Add('       ( select coalesce(sum(t1.prf_qtde * t2.prd_pesokg),0) FROM ped_it01 T1 JOIN prd0000 T2 ON (t2.prd_refer = t1.prd_refer) WHERE T1.ped_codigo = ped.ped_codigo) as peso,');
    qPedidos.Sql.Add('       case ' );
    qPedidos.Sql.Add('          when (PED.ENDERECO_ENTREGA > 0) ' );
-   qPedidos.Sql.Add('          then '+qStr('ENDEREÇO DE ENTREGA: ')+'||ENDER.descricao||'+qStr(' BAIRRO: ')+'||coalesce(ENDER.BAIRRO,'+qStr('')+')||'+qStr(' CIDADE: ')+'||coalesce(ENDER.CIDADE,CLI.cli_cidade)||'+qStr(' CEP: ')+'||coalesce(ENDER.CEP,'+qStr('')+') ' );
+   qPedidos.Sql.Add('          then '+qStr('ENDEREÇO DE ENTREGA: ')+'||CAST(ENDER.DESCRICAO AS VARCHAR(30) CHARACTER SET WIN1252)||'+qStr(' BAIRRO: ')+'||coalesce(CAST(ENDER.BAIRRO AS VARCHAR(30) CHARACTER SET WIN1252),'+qStr('')+')||'+qStr(' CIDADE: ')+'||coalesce(ENDER.CIDADE,CLI.cli_cidade)||'+qStr(' CEP: ')+'||coalesce(ENDER.CEP,'+qStr('')+') ' );
    qPedidos.Sql.Add('          else '+qStr('') );
    qPedidos.Sql.Add('       end AS CIDADE_ENTREGA,');
    qPedidos.Sql.Add('       PED.PED_DESCTONF,');
@@ -1565,12 +1569,33 @@ begin
          Value := cdspedidoCLI_EMAIL.AsString;
   end
   else
+  if (VarName  = 'CLI_UF') then
+  begin
+      if (fCliUF <> '') then
+         Value := fCliUF
+      else
+         Value := cdspedidoCLI_UF.AsString;
+  end
+  else
+  if (VarName  = 'CFOP') then
+  begin
+    Value := frmPedido.edCfop.Text;
+  end
+  else
   if (VarName  = 'FONECLI') then
   begin
       if (fOrsCliente <> '') then
          Value := MascaraFone(fOrsFone)
       else
-         Value := fClienteTelefone;
+         Value := MascaraFone(cdsPedidoCLI_FONE.AsString)
+  end
+  else
+  if (VarName  = 'CLI_FAX') then
+  begin
+      if (fOrsFax <> '') then
+         Value := MascaraFone(fOrsFax)
+      else
+         Value := MascaraFone(cdspedidoCLI_FAX.AsString);
   end
   else
   if (VarName  = 'ENTREGA') then
