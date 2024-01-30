@@ -124,7 +124,7 @@
         <VerInfo_Build>588</VerInfo_Build>
         <VerInfo_MajorVer>3</VerInfo_MajorVer>
         <VerInfo_Release>9</VerInfo_Release>
-        <VerInfo_Keys>CompanyName=Novi Sistemas;FileDescription=sistema Adjutor ERP;FileVersion=3.0.9.588;InternalName=adjutor.exe;LegalCopyright=Novi sistemas;LegalTrademarks=Novi sistemas;OriginalFilename=adjutor;ProductName=Adjutor;ProductVersion=3.0.9.588;Comments=sistema Adjutor http://www.novisistemas.com.br/;SpecialBuild=patch 1;PrivateBuild=;patch=0;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Novi Sistemas;FileDescription=sistema Adjutor ERP;FileVersion=3.0.9.588;InternalName=adjutor.exe;LegalCopyright=Novi sistemas;LegalTrademarks=Novi sistemas;OriginalFilename=adjutor;ProductName=Adjutor;ProductVersion=3.0.9.588;Comments=sistema Adjutor http://www.novisistemas.com.br/;SpecialBuild=patch 2;PrivateBuild=;patch=0;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <BT_BuildType>Debug</BT_BuildType>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
     </PropertyGroup>
@@ -1798,12 +1798,7 @@
             </Platforms>
             <Deployment Version="3">
                 <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Release" Class="ProjectFile"/>
-                <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>Adjutor.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Debug" Class="ProjectFile"/>
                 <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
@@ -1824,7 +1819,12 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput"/>
-                <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Adjutor.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

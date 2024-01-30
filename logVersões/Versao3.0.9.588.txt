@@ -1,4 +1,4 @@
-﻿Atualizado em 17/01/2024
+﻿Atualizado em 30/01/2024
 Inicio da versão: 08/01/2024
 
 principal: Quimi Sani, Arkson, Chemvet, Rotor, Bepine, Hospital São José, Collect
@@ -25,3 +25,16 @@ patch 1: Arkson, Embraterm, Collect, Bepine, Normadin, LF EPIS
   1787 - Correção casas decimais aba campos técnicos [Normadin]
   1788 - Bloquear venda de cliente com atraso [LF EPIS]
   
+patch 2: Metalúrgica Água, Collect, Arkson, LForja
+   609 - Validar cnpj ao importar cte [Metalúrgica Água]
+  1790 - Informações no orçamento [Novi]
+  1792 - Cadastro de cliente - exportar excel [Collect]
+  1793 - Erro ao faturar pedido com frete [Novi]
+  1794 - Melhoria no cadastro de usuários [Novi]
+  1795 - Tela de pedido de doação - alterações [Collect]
+  1796 - Relatório analítico de doações - data de nascimento [Collect]
+  1797 - Centro de custo no cadastro de cliente [Collect]
+  1798 - Incluir novo filtro de conta financeira [Collect]
+  1799 - MP triplicando [Arkson]
+  1800 - Ordem de produção - apontamentos [LForja]
+ 
