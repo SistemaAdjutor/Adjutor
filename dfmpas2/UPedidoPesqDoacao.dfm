@@ -1,21 +1,22 @@
 inherited frmPesqDoacao: TfrmPesqDoacao
   Caption = 'Pesquisa de Vendas Doa'#231#227'o'
   ClientHeight = 557
-  ClientWidth = 1029
+  ClientWidth = 1114
   Position = poMainFormCenter
   OnResize = FormResize
-  ExplicitWidth = 1045
+  ExplicitWidth = 1130
   ExplicitHeight = 596
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
     Left = 0
     Top = 0
-    Width = 1029
+    Width = 1114
     Height = 91
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
+    ExplicitWidth = 1029
     object Lb_Lista: TLabel
       Left = 319
       Top = 7
@@ -23,8 +24,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Height = 13
     end
     object BtnImprimir: TJvArrowButton
-      Left = 815
-      Top = 51
+      Left = 906
+      Top = 54
       Width = 80
       Height = 40
       DropDown = relatorios
@@ -245,7 +246,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     object GroupBox1: TGroupBox
       Left = 5
       Top = 0
-      Width = 460
+      Width = 540
       Height = 40
       Caption = 'Pesquisa'
       Font.Charset = ANSI_CHARSET
@@ -350,10 +351,25 @@ inherited frmPesqDoacao: TfrmPesqDoacao
         TabOrder = 5
         OnClick = Rad_ClienteClick
       end
+      object rdCFinanceira: TRadioButton
+        Left = 454
+        Top = 17
+        Width = 83
+        Height = 17
+        Caption = 'Ct Financeira'
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clBlack
+        Font.Height = -11
+        Font.Name = 'Arial'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 6
+        OnClick = Rad_ClienteClick
+      end
     end
     object GroupBox2: TGroupBox
-      Left = 471
-      Top = -1
+      Left = 562
+      Top = 2
       Width = 170
       Height = 41
       Caption = 'Tipo'
@@ -367,8 +383,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       ShowHint = True
       TabOrder = 2
       object cbTipo: TSgDbSearchCombo
-        Left = 3
-        Top = 14
+        Left = 8
+        Top = 15
         Width = 134
         Height = 22
         EmptyText = 'TODOS OS TIPOS'
@@ -396,8 +412,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       end
     end
     object name: TGroupBox
-      Left = 647
-      Top = 0
+      Left = 738
+      Top = 3
       Width = 162
       Height = 40
       Caption = 'Faturamento'
@@ -421,8 +437,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       end
     end
     object BtnSair: TBitBtn
-      Left = 815
-      Top = 3
+      Left = 906
+      Top = 6
       Width = 83
       Height = 24
       Hint = 'Sair'
@@ -431,8 +447,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       OnClick = BtnSairClick
     end
     object BitPesquisar: TBitBtn
-      Left = 815
-      Top = 27
+      Left = 906
+      Top = 30
       Width = 83
       Height = 24
       Hint = 'Pesquisar'
@@ -443,8 +459,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       OnClick = BitPesquisarClick
     end
     object rgSaida: TRadioGroup
-      Left = 904
-      Top = 3
+      Left = 992
+      Top = 7
       Width = 97
       Height = 88
       Caption = 'Sa'#237'da'
@@ -458,7 +474,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
   object dbGrPedido: TDBGrid [1]
     Left = 0
     Top = 91
-    Width = 1029
+    Width = 1114
     Height = 434
     Align = alClient
     DataSource = DsPedidos
@@ -733,10 +749,11 @@ inherited frmPesqDoacao: TfrmPesqDoacao
   object Panel2: TPanel [4]
     Left = 0
     Top = 525
-    Width = 1029
+    Width = 1114
     Height = 32
     Align = alBottom
     TabOrder = 4
+    ExplicitWidth = 1029
     object Label3: TLabel
       Left = 13
       Top = 9
@@ -772,6 +789,60 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       ReadOnly = True
       TabOrder = 1
       ZeroEmpty = True
+    end
+  end
+  object gbCFinanceira: TGroupBox [5]
+    Left = 558
+    Top = 304
+    Width = 400
+    Height = 44
+    Caption = 'Informe a Conta Financeira'
+    Font.Charset = ANSI_CHARSET
+    Font.Color = clBlack
+    Font.Height = -11
+    Font.Name = 'Arial'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 5
+    TabStop = True
+    Visible = False
+    object edCFinanceira: TEdit
+      Left = 5
+      Top = 14
+      Width = 43
+      Height = 22
+      CharCase = ecUpperCase
+      Color = clWhite
+      MaxLength = 5
+      TabOrder = 0
+      OnClick = EdProjetoObraCodigoClick
+    end
+    object cbContaFinanceira: TSgDbSearchCombo
+      Left = 54
+      Top = 14
+      Width = 320
+      Height = 22
+      TabOrder = 1
+      CharCase = ecUpperCase
+      LookupSelect = 'CCT_CODIGO, CCT_NIVEL, CCT_DESCRI'
+      LookupOrderBy = 'CCT_DESCRI'
+      LookupTable = 'CCT_0000'
+      LookupDispl = 'CCT_DESCRI'
+      OnSelect = cbContaFinanceiraSelect
+      GridAutoSize = False
+      LookupSource = qContafinanceira
+      DataField = 'CCT_CODIGO'
+      LookupKeyField = 'CCT_CODIGO'
+      ShowButton = True
+      AutoF8WinTitulo = 'Conta Fiananceira'
+      AutoF8ColumnsTitulo = 'C'#243'digo, N'#237'vel, Descri'#231#227'o'
+      GridLeft = 0
+      GridWidth = 0
+      GridHeight = 100
+      GridTop = 0
+      GridShowWhenEnter = False
+      SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
   end
   inherited coCalcula: TACBrCalculadora
@@ -2636,5 +2707,12 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       DisplayLabel = 'Data do Nascimento'
       FieldName = 'CLI_DTNASCIMENTO'
     end
+  end
+  object qContafinanceira: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = DBConn
+    Left = 960
+    Top = 316
   end
 end
