@@ -150,6 +150,8 @@ type
     cdsqSqlCdsPesqEMP_CODIGO: TStringField;
     cdsqSqlCdsPesqPED_SITUACAO: TStringField;
     cdsqSqlCdsPesqPED_SITUACAO2: TStringField;
+    qSqlCdsPesqCLI_DTNASCIMENTO: TSQLTimeStampField;
+    cdsqSqlCdsPesqCLI_DTNASCIMENTO: TSQLTimeStampField;
     procedure Rad_ClienteClick(Sender: TObject);
     procedure BitPesquisarClick(Sender: TObject);
     procedure SqlCdsPesqPED_SITUACAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -246,6 +248,7 @@ begin
         'PE.PED_INICIOPAG, PE.PED_TIPOPARCELA, PED_VLTOTAL_BRUTO,pe.FPG_REGISTRO, CLI_CELULAR,    '+
         'pe.emp_codigo, pe.PED_VLTOTAL_LIQ, PED_VLPARCELA, pe.PCX_CODIGO, RP.REP_NOME, CLI_FONE,  '+
         ' cl.cli_cgc, trim(cl.cli_razao) as cli_razao, cl.cli_fantasia, CL.CLI_ENDERE, CL.CLI_BAIRRO, CL.CLI_CEP, ' +
+        ' cl.CLI_DTNASCIMENTO, ' +
         ' op.opv_descricao, ped_contato_cliente, CLI_UF, '+
         ' ((PED_COMIS1 * PED_VLTOTAL_LIQ)/100) AS VL_COMISSAO, cli_cidade,                        '+
         ' CASE WHEN PED_UND_CONSUMIDORA IS NOT NULL THEN BAN_APELIDO|| ''-'' || PED_UND_CONSUMIDORA '+
@@ -512,6 +515,7 @@ begin
   lista.Add('PED_DTENTRADA');
   lista.Add('CLI_RAZAO');
   lista.Add('CLI_CGC');
+  lista.Add('CLI_DTNASCIMENTO');
   lista.Add('CLI_ENDERE');
   lista.Add('CLI_BAIRRO');
   lista.Add('CLI_CIDADE');
