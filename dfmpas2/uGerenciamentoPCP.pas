@@ -2315,7 +2315,7 @@ begin
 end;
 
 procedure TfrmGerenciamentoPCP.filtro;
-var  sqlsubordens, colunas : string ;
+var  sqlsubordens, colunas, empPesq : string ;
 i : int64;
 begin
 
@@ -2337,6 +2337,24 @@ begin
 //     begin
 //       sqlsubordens := ' cast(0.0 as numeric(18,5)) as CustoSubOrdens  ' ;
 //     end;
+
+
+      if (edPesquisa.Text <> '') then
+      begin
+        empPesq := BuscaUmDadoSqlAsString(
+                                   ' SELECT opr.EMP_CODIGO  ' +
+                                   ' FROM	FABRICACAO FB ' +
+                                   ' INNER JOIN PRD0000 P1 ON	(P1.PRD_CODIGO = fb.PRD_CODIGO) '  +
+                                   ' INNER JOIN ITEM_ORDEMPRODUCAO OS ON	(OS.iop_CODIGO = CAST(FB.iop_CODIGO AS integer)		AND P1.PRD_codigo = os.PRD_codigo) ' +
+                                   ' INNER JOIN ORDEMPRODUCAO OPR ON	(OPR.OPR_CODIGO = OS.OPR_CODIGO) ' +
+                                   ' WHERE iop_nordem = ' +  QuotedStr(edPesquisa.Text)
+                                  ) ;
+        if (empPesq <> dbInicio.Emp_Codigo) and (empPesq <> '') then
+          uteis.Aviso('A OP ' + edPesquisa.Text + ' pertence à Empresa ' + EmpPesq);
+      end;
+
+
+
 
      //custos da subordem so tem com geração de subordens
      cdsBusca.SQL.Text := 'SELECT ac.ACO_NOME, it.PRF_QTDE, LOT.PRDL_DATA_FABRICACAO, LOT.PRDL_DATA_VALIDADE, IOP.IOP_DTENTREGA, op.*, '+colunas+
@@ -2368,6 +2386,9 @@ begin
                          iif(chkFinalizados.Checked,'',' AND ( iop_status <> ''F'' ) ' ) ;
                          // iif(chkFinalizados.Checked,'',' AND ( iop_status <> ''F'' OR IOP_DATA_CONCLUSAO  BETWEEN CURRENT_DATE-7 AND CURRENT_DATE) ' ) ;
    Filtrados := true;
+
+   SqlAdd(' op.EMP_CODIGO = ' + QuotedStr(dbInicio.Emp_Codigo) );
+
    if (DataIni.date > 0) and (DataFim.date = 0)then
     begin
       SqlAdd(' OP.OPR_EMISSAO >='+DateToSQL(DataIni.Date) )
