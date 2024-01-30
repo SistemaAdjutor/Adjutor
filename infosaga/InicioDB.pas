@@ -695,6 +695,7 @@ type
       const AMail   : TACBrMail;
       const aStatus : TMailStatus );
     procedure EdUsuarioChange( Sender : TObject );
+    procedure EdUsuarioExit(Sender: TObject);
 
     private
       vlUsuario : tUsuario;
@@ -2520,6 +2521,15 @@ procedure TDBInicio.btOKClick( Sender : TObject );
       raise Exception.Create( 'Senha inválida' )
 
     end
+    else
+    if (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_ATIVO FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> 'S')
+    and (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_LOGIN FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> '')
+    then
+    begin
+      uteis.Aviso('Usuário Inativo.');
+      edUsuario.SetFocus;
+      Abort;
+    end
     else if EdUsuario.text = vlUsuario.USUARIOPADRAO
     THEN
     begin
@@ -3198,6 +3208,25 @@ procedure TDBInicio.EdUsuarioChange( Sender : TObject );
     EdUsuario.text := RetiraAcentos( EdUsuario.text );
     EdUsuario.Perform( WM_KeyDown, VK_END, 0 );
   end;
+
+procedure TDBInicio.EdUsuarioExit(Sender: TObject);
+begin
+  inherited;
+  if (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_ATIVO FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> 'S')
+  and (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_LOGIN FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> '')
+  then
+  begin
+    uteis.Aviso('Usuário Inativo.');
+    edUsuario.SetFocus;
+    Abort;
+  end;
+  if dbInicio.BuscaUmDadoSqlAsString('SELECT USU_LOGIN FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) = '' then
+  begin
+    uteis.Aviso('Usuário Inexistente.');
+    edUsuario.SetFocus;
+    Abort;
+  end;
+end;
 
 Function TDBInicio.Exclusivo( pNomeCompartilhamento : string ) : boolean;
   var

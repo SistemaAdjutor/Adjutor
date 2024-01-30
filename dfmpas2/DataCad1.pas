@@ -1712,6 +1712,9 @@ type
     CdsParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO_D: TIntegerField;
     SQLUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField;
     CDSUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField;
+    SQLUsuarioUSU_ATIVO: TStringField;
+    CDSUsuarioUSU_ATIVO: TStringField;
+    CDSUsuarioUSUARIO_ATIVO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
@@ -1752,6 +1755,7 @@ type
       var Text: string; DisplayText: Boolean);
     procedure CdsParametrosPMT_LAYOUT_BOLETO_FATURAMENTOSetText(Sender: TField;
       const Text: string);
+    procedure DsUsuarioDataChange(Sender: TObject; Field: TField);
   private
     { Private declarations }
   public
@@ -2006,7 +2010,15 @@ begin
       CdSUsuariowTIPO_USUARIO.AsString := 'Administrador'
    else
    if CdSUsuarioUSU_TIPO_USUARIO.AsString = 'U' then
-      CdSUsuariowTIPO_USUARIO.AsString := 'Usuário';
+      CdSUsuariowTIPO_USUARIO.AsString := 'Usuário'
+   else
+   if CdSUsuarioUSU_TIPO_USUARIO.AsString = 'G' then
+      CdSUsuariowTIPO_USUARIO.AsString := 'Gerencial';
+
+   if CdSUsuarioUSU_ATIVO.AsString = 'S' then
+     CdSUsuarioUSUARIO_ATIVO.AsString := 'Sim'
+   else
+     CdSUsuarioUSUARIO_ATIVO.AsString := 'Não';
 end;
 
 procedure TDataCadastros1.CdSUsuarioReconcileError(
@@ -2018,6 +2030,25 @@ begin
          if Copy(E.message,1,34) = 'violation of PRIMARY or UNIQUE KEY' then
            DataCadastros.IncrementaRegistro('USUARIO',CdSUsuarioUSU_CODIGO);
       end;
+end;
+
+procedure TDataCadastros1.DsUsuarioDataChange(Sender: TObject; Field: TField);
+begin
+  if FrmCadastroUsuario <> nil then
+  begin
+    if CDSUsuarioUSU_ATIVO.AsString = 'S' then
+    begin
+      FrmCadastroUsuario.gbNivelAcesso.Enabled := True;
+      FrmCadastroUsuario.boxAcesso.Enabled := True;
+      FrmCadastroUsuario.boxOperacao.Enabled := True;
+    end
+    else
+    begin
+      FrmCadastroUsuario.gbNivelAcesso.Enabled := False;
+      FrmCadastroUsuario.boxAcesso.Enabled := False;
+      FrmCadastroUsuario.boxOperacao.Enabled := False;
+    end;
+  end;
 end;
 
 procedure TDataCadastros1.CdSUsaParametroAfterInsert(DataSet: TDataSet);

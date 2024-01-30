@@ -5461,6 +5461,10 @@ object DataCadastros1: TDataCadastros1
       FixedChar = True
       Size = 1
     end
+    object SQLUsuarioUSU_ATIVO: TStringField
+      FieldName = 'USU_ATIVO'
+      Size = 1
+    end
   end
   object DSPUsuario: TDataSetProvider
     DataSet = SQLUsuario
@@ -5471,7 +5475,6 @@ object DataCadastros1: TDataCadastros1
   end
   object CDSUsuario: TClientDataSet
     Aggregates = <>
-    PacketRecords = 10
     Params = <>
     ProviderName = 'DSPUsuario'
     AfterInsert = CDSUsuarioAfterInsert
@@ -5665,9 +5668,20 @@ object DataCadastros1: TDataCadastros1
       FixedChar = True
       Size = 1
     end
+    object CDSUsuarioUSU_ATIVO: TStringField
+      FieldName = 'USU_ATIVO'
+      Size = 1
+    end
+    object CDSUsuarioUSUARIO_ATIVO: TStringField
+      FieldKind = fkCalculated
+      FieldName = 'USUARIO_ATIVO'
+      Size = 3
+      Calculated = True
+    end
   end
   object DsUsuario: TDataSource
     DataSet = CDSUsuario
+    OnDataChange = DsUsuarioDataChange
     Left = 729
     Top = 106
   end

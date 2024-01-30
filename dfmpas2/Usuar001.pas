@@ -72,7 +72,7 @@ type
     ChkExclusao: TCheckBox;
     ChkAlteracao: TCheckBox;
     chkRelatorio: TCheckBox;
-    GroupBox5: TGroupBox;
+    gbNivelAcesso: TGroupBox;
     SpBSemAcess: TSpeedButton;
     SpBAcessTot: TSpeedButton;
     SpBAcessPar: TSpeedButton;
@@ -217,6 +217,7 @@ type
     chkIncluiItemPedOPGerada: TCheckBox;
     chkDashInteligencia: TCheckBox;
     chkPermiteVendaClienteFaturaAtraso: TCheckBox;
+    cbAtivo: TDBCheckBox;
     procedure FormShow(Sender: tObject);
     procedure FormCloseQuery(Sender: tObject; var CanClose: Boolean);
     procedure BitInclusaoClick(Sender: tObject);
@@ -293,6 +294,7 @@ type
     procedure btnCancelaAlmoxarifadoClick(Sender: TObject);
     procedure chkUSP_PROD_SEM_ALMOXClick(Sender: TObject);
     procedure DBEdit3Change(Sender: TObject);
+    procedure cbAtivoClick(Sender: TObject);
   private
     { Private declarations }
      NodePrincipal:TTreeNode;
@@ -716,6 +718,8 @@ begin
 end;
 
 procedure TFrmCadastroUsuario.BitConfirmarClick(Sender: tObject);
+var
+  rec : integer;
 begin
   if chkAbrirChamado.Checked then
      if DBInicio.BuscaUmDadoSqlAsInteger('SELECT COUNT (*) FROM USUARIO_PARAMETRO WHERE USP_ABRICHAMADO =''S'' AND USP_COD_USUARIO <> ' + DBECodigo.Field.AsString) >= 2 then
@@ -726,11 +730,11 @@ begin
   try
      VerificaAtualizaCredito;
      GravaNivelAcessos;
-     if DataCadastros1.CdSUsuario.changecount> 0 then
-     begin
-       DataCadastros1.CdSUsuarioREP_CODIGO.AsString := EditCodigoRep.Text;
-       DataCadastros1.CdSUsuario.ApplyUpdates(0);
-     end;
+//     if DataCadastros1.CdSUsuario.changecount> 0 then
+//     begin
+     DataCadastros1.CdSUsuarioREP_CODIGO.AsString := EditCodigoRep.Text;
+     DataCadastros1.CdSUsuario.ApplyUpdates(0);
+//     end;
      DataCadastros1.cdsEmpUsu.ApplyUpdates(0);
      GravaParametrosUsuario(DBECodigo.Field.AsString);
     {chama a rotina habilita botoes}
@@ -742,7 +746,12 @@ begin
      if PageControl1.ActivePage = TabParametro then
         DBEdit1.SetFocus;      }
      fAlterou:=True;
+     rec := DataCadastros1.CdSUsuario.RecNo;
+     DataCadastros1.CdSUsuario.Close;
+     DataCadastros1.CdSUsuario.Open;
+     DataCadastros1.CdSUsuario.RecNo := rec;
      Aviso('Gravado com sucesso');
+
       BitConfirmar.Enabled := False;
   except
     aviso('Não gravado');
@@ -818,6 +827,22 @@ begin
   btnConfirmaAlmoxarifado.Enabled := False;
   btnCancelaAlmoxarifado.Enabled := False;
 
+end;
+
+procedure TFrmCadastroUsuario.cbAtivoClick(Sender: TObject);
+begin
+  if cbAtivo.Checked then
+  begin
+    FrmCadastroUsuario.gbNivelAcesso.Enabled := True;
+    FrmCadastroUsuario.boxAcesso.Enabled := True;
+    FrmCadastroUsuario.boxOperacao.Enabled := True;
+  end
+  else
+  begin
+    FrmCadastroUsuario.gbNivelAcesso.Enabled := False;
+    FrmCadastroUsuario.boxAcesso.Enabled := False;
+    FrmCadastroUsuario.boxOperacao.Enabled := False;
+  end;
 end;
 
 procedure TFrmCadastroUsuario.BitDuplicarClick(Sender: TObject);
