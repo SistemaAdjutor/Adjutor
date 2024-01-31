@@ -3,11 +3,11 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Relat'#243'rio das Entradas e Saidas do Estoque'
-  ClientHeight = 400
+  ClientHeight = 435
   ClientWidth = 450
   Color = clBtnFace
-  Constraints.MinHeight = 368
-  Constraints.MinWidth = 458
+  Constraints.MinHeight = 474
+  Constraints.MinWidth = 466
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
@@ -51,7 +51,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     Left = 0
     Top = 113
     Width = 450
-    Height = 224
+    Height = 280
     Align = alTop
     Caption = 'Ope'#231#245'es'
     TabOrder = 1
@@ -91,18 +91,32 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       Caption = 'Almoxarifado'
     end
     object Label6: TLabel
-      Left = 10
-      Top = 153
+      Left = 59
+      Top = 152
       Width = 23
       Height = 14
       Caption = 'Tipo:'
     end
     object Label7: TLabel
-      Left = 11
-      Top = 181
+      Left = 20
+      Top = 180
       Width = 62
       Height = 14
       Caption = 'Colaborador:'
+    end
+    object Label8: TLabel
+      Left = 42
+      Top = 208
+      Width = 40
+      Height = 14
+      Caption = 'Produto:'
+    end
+    object Label9: TLabel
+      Left = 49
+      Top = 236
+      Width = 33
+      Height = 14
+      Caption = 'Grupo:'
     end
     object cxDateInicial: TcxDateEdit
       Left = 8
@@ -178,9 +192,9 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       Width = 425
     end
     object cbTipoProduto: TComboBoxRw
-      Left = 84
+      Left = 139
       Top = 149
-      Width = 324
+      Width = 269
       Height = 22
       TabOrder = 5
       CharCase = ecUpperCase
@@ -221,9 +235,9 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       style = csDropDown
     end
     object EdTipoCodigo: TEdit
-      Left = 40
+      Left = 88
       Top = 149
-      Width = 41
+      Width = 50
       Height = 22
       CharCase = ecUpperCase
       Color = clWhite
@@ -234,13 +248,13 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     object EdColaboradorCodigo: TEdit
       Left = 88
       Top = 177
-      Width = 51
+      Width = 50
       Height = 22
       TabOrder = 7
       OnExit = EdColaboradorCodigoExit
     end
     object edColaborador: TSgDbSearchCombo
-      Left = 140
+      Left = 139
       Top = 177
       Width = 268
       Height = 22
@@ -265,10 +279,116 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       SelectWithDoubleClick = False
       LimparCampoAoSair = True
     end
+    object chkManual: TCheckBox
+      Left = 102
+      Top = 63
+      Width = 107
+      Height = 17
+      Caption = 'Movimento Manual'
+      TabOrder = 9
+    end
+    object cbProduto: TComboBoxRw
+      Left = 139
+      Top = 205
+      Width = 269
+      Height = 22
+      TabOrder = 10
+      CharCase = ecUpperCase
+      LookupSelect = 'PRD_REFER,PRD_DESCRI'
+      LookupOrderBy = 'PRD_DESCRI'
+      LookupTable = 'PRD0000'
+      LookupDispl = 'PRD_DESCRI'
+      OnSelect = cbProdutoSelect
+      GridAutoSize = False
+      LookupSource = cbProduto.InternalSource
+      LookupKeyField = 'PRD_REFER'
+      ShowButton = True
+      LookupTableShare = 'PRODUTOS'
+      AutoF8WinTitulo = 'Produtos'
+      AutoF8ColumnsTitulo = 'C'#243'digo, Descricao'
+      GridLeft = 0
+      GridWidth = 0
+      GridHeight = 100
+      GridTop = 0
+      GridShowWhenEnter = False
+      SelectWithDoubleClick = False
+      LimparCampoAoSair = True
+      Tabela = 'PRD0000'
+      CamposCarregar = 'PRD_REFER,PRD_DESCRI'
+      CamposRetornar = 'PRD_REFER'
+      CamposOrdernar = 'PRD_DESCRI'
+      ConexaoBanco = DataCadastros.SQLConnection1
+      Compartilhar = 'PRODUTOS'
+      Localizado = False
+      CodigoEmpresa = 0
+      ResetaCampos = False
+      MultiEmpresa = False
+      Localizar = False
+      CarregarCombo = False
+      itemindex = 0
+      style = csDropDown
+    end
+    object edProduto: TEdit
+      Left = 88
+      Top = 205
+      Width = 50
+      Height = 22
+      TabOrder = 11
+      OnExit = edProdutoExit
+    end
+    object cbGrupo: TComboBoxRw
+      Left = 138
+      Top = 233
+      Width = 269
+      Height = 22
+      TabOrder = 12
+      CharCase = ecUpperCase
+      LookupSelect = 'PGR_CODIGO,PGR_DESCRI'
+      LookupOrderBy = 'PGR_DESCRI'
+      LookupTable = 'PRD_GRUPO'
+      LookupDispl = 'PGR_DESCRI'
+      OnSelect = cbGrupoSelect
+      GridAutoSize = False
+      LookupSource = cbProduto.InternalSource
+      LookupKeyField = 'PGR_CODIGO'
+      ShowButton = True
+      LookupTableShare = 'GRUPOS'
+      AutoF8WinTitulo = 'Produtos'
+      AutoF8ColumnsTitulo = 'C'#243'digo, Descricao'
+      GridLeft = 0
+      GridWidth = 0
+      GridHeight = 100
+      GridTop = 0
+      GridShowWhenEnter = False
+      SelectWithDoubleClick = False
+      LimparCampoAoSair = True
+      Tabela = 'PRD_GRUPO'
+      CamposCarregar = 'PGR_CODIGO,PGR_DESCRI'
+      CamposRetornar = 'PGR_CODIGO'
+      CamposOrdernar = 'PGR_DESCRI'
+      ConexaoBanco = DataCadastros.SQLConnection1
+      Compartilhar = 'GRUPOS'
+      Localizado = False
+      CodigoEmpresa = 0
+      ResetaCampos = False
+      MultiEmpresa = False
+      Localizar = False
+      CarregarCombo = False
+      itemindex = 0
+      style = csDropDown
+    end
+    object edGrupo: TEdit
+      Left = 88
+      Top = 233
+      Width = 50
+      Height = 22
+      TabOrder = 13
+      OnExit = edGrupoExit
+    end
   end
   object cxButton3: TcxButton
-    Left = 228
-    Top = 357
+    Left = 236
+    Top = 399
     Width = 100
     Height = 25
     Caption = '&Impress'#227'o'
@@ -285,8 +405,8 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     OnClick = cxButton3Click
   end
   object cxButton2: TcxButton
-    Left = 334
-    Top = 357
+    Left = 342
+    Top = 399
     Width = 100
     Height = 25
     Caption = '&Sair'
@@ -892,8 +1012,8 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 160
-    Top = 88
+    Left = 104
+    Top = 64
     object CdsEntradasSaidasEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
       Size = 3

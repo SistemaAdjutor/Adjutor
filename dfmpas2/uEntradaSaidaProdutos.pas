@@ -76,6 +76,13 @@ type
     EdColaboradorCodigo: TEdit;
     edColaborador: TSgDbSearchCombo;
     qColaborador: TSQLQuery;
+    chkManual: TCheckBox;
+    cbProduto: TComboBoxRw;
+    Label8: TLabel;
+    edProduto: TEdit;
+    cbGrupo: TComboBoxRw;
+    Label9: TLabel;
+    edGrupo: TEdit;
     procedure frxReport1Preview(Sender: tObject);
     procedure btnBit_CancelarClick(Sender: tObject);
     procedure cxButton2Click(Sender: tObject);
@@ -92,6 +99,10 @@ type
     procedure edColaboradorSelect(Sender: TObject);
     procedure EdColaboradorCodigoExit(Sender: TObject);
     procedure CbAlmoxarifadoExit(Sender: TObject);
+    procedure cbProdutoSelect(Sender: TObject);
+    procedure edProdutoExit(Sender: TObject);
+    procedure edGrupoExit(Sender: TObject);
+    procedure cbGrupoSelect(Sender: TObject);
   private
     { Private declarations }
     sEmpresaList: String;
@@ -203,10 +214,28 @@ begin
                filtro := filtro + '. Almoxarifado : ' + CbAlmoxarifado.EditText;
             end;
 
+         if edProduto.Text <> ''  then
+         begin
+            scondicao := scondicao + ' and P1.prd_refer = ' + QuotedStr(edProduto.Text);
+            filtro := filtro + '. Produto: '+ cbProduto.Text;
+         end;
+
+         if edGrupo.Text <> ''  then
+         begin
+            scondicao := scondicao + ' and P1.pgr_codigo = ' + QuotedStr(edGrupo.Text);
+            filtro := filtro + '. Grupo: '+ cbGrupo.Text;
+         end;
+
+
          if EdTipoCodigo.Text <> ''  then
          begin
             scondicao := scondicao + ' and p1.PTI_CODIGO = ' +QuotedStr(EdTipoCodigo.Text);
             filtro := filtro + '. Tipo produto: '+ cbTipoProduto.Text;
+         end;
+         if chkManual.Checked then
+         begin
+            scondicao := scondicao + ' and T1.kar_tipo_registro = ''MAN''  ' ;
+            filtro := filtro + '. Movimento Manual do Estoque ';
          end;
          if edColaborador.idRetorno <> '' then
          begin
@@ -271,6 +300,16 @@ begin
     EdColaboradorCodigo.Clear;
 end;
 
+procedure TFrmEntradaSaidaProdutos.edGrupoExit(Sender: TObject);
+begin
+  cbGrupo.idRetorno := edGrupo.Text;
+end;
+
+procedure TFrmEntradaSaidaProdutos.edProdutoExit(Sender: TObject);
+begin
+  cbProduto.idRetorno := edProduto.Text;
+end;
+
 procedure TFrmEntradaSaidaProdutos.EdTipoCodigoExit(Sender: TObject);
 begin
  if EdTipoCodigo.Text <> '' then
@@ -325,6 +364,16 @@ begin
     CbAlmoxarifado.SetFocus;
     Exit;
   end;
+end;
+
+procedure TFrmEntradaSaidaProdutos.cbGrupoSelect(Sender: TObject);
+begin
+  edGrupo.Text :=  cbGrupo.idRetorno;
+end;
+
+procedure TFrmEntradaSaidaProdutos.cbProdutoSelect(Sender: TObject);
+begin
+  edProduto.Text :=  cbProduto.idRetorno;
 end;
 
 procedure TFrmEntradaSaidaProdutos.cbTipoProdutoSelect(Sender: TObject);
