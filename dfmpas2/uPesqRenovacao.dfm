@@ -5,8 +5,8 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
   FormStyle = fsMDIChild
   Visible = True
   WindowState = wsMaximized
-  ExplicitWidth = 1176
-  ExplicitHeight = 514
+  ExplicitWidth = 1184
+  ExplicitHeight = 526
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtilTop: TPanel
@@ -198,8 +198,10 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object chkVenda30: TCheckBox
             Left = 13
@@ -355,8 +357,10 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             Tabela = 'ban0000'
             CamposCarregar = 'BAN_CODIGO,BAN_APELIDO,BAN_COBTIPO,BAN_COD_APELIDO'
             CamposRetornar = 'ban_apelido'
@@ -432,8 +436,10 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object edtAtrasos: TEdit
             Left = 552
@@ -745,6 +751,10 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
       FieldName = 'FPC_NUMER'
       Size = 2
     end
+    object cdsBuscoFAT_CODIGO: TStringField
+      FieldName = 'FAT_CODIGO'
+      Size = 15
+    end
   end
   inherited dsBusca: TDataSource
     Left = 332
@@ -813,7 +823,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
     end
   end
   object frxCartaCobranca: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -849,12 +859,16 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 476.220780000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Width = 359.055350000000000000
           Height = 18.897650000000000000
@@ -863,12 +877,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Top = 22.677180000000000000
           Width = 359.055350000000000000
@@ -878,12 +894,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'INSC.EST [INSCEST] CNPJ:[CNPJ]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Top = 49.133889999999990000
           Width = 359.055350000000000000
@@ -893,6 +911,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[ENDERECO]')
@@ -904,6 +923,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
             end>
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Top = 71.811070000000000000
           Width = 359.055350000000000000
@@ -913,12 +933,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[CEP] - [CIDADE]-[ESTADO]')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Top = 98.267780000000000000
           Width = 359.055350000000000000
@@ -928,6 +950,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'FONE: [FONE] FAX: [FAX]')
@@ -941,6 +964,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
             end>
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Top = 120.944960000000000000
           Width = 359.055350000000000000
@@ -950,6 +974,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'EMAIL: [EMAIL] HOMEPAGE [HOME]')
@@ -961,21 +986,26 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
             end>
         end
         object Logoempresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 3.779530000000001000
           Width = 328.819110000000000000
           Height = 136.063080000000000000
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 143.622140000000000000
           Width = 718.110700000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Top = 151.181200000000000000
           Width = 359.055350000000000000
@@ -985,6 +1015,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[CIDADE] [ESTADO]. [DataExtenso]')
@@ -998,41 +1029,46 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
             end>
         end
         object Rich1: TfrxRichView
+          AllowVectorExport = True
           Left = 43.354360000000000000
           Top = 260.787570000000000000
           Width = 665.197280000000000000
           Height = 136.063080000000000000
+          Frame.Typ = []
           GapX = 2.000000000000000000
           GapY = 1.000000000000000000
           RichEdit = {
-            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6465
-            666C616E67313034367B5C666F6E7474626C7B5C66305C666E696C5C66636861
-            727365743020417269616C3B7D7B5C66315C666E696C5C666368617273657430
-            205461686F6D613B7D7D0D0A7B5C2A5C67656E657261746F72204D7366746564
-            697420352E34312E32312E323531303B7D5C766965776B696E64345C7563315C
-            706172645C66733230205072657A61646F2861292053656E686F722861292C5C
-            7061720D0A5C7061720D0A20436F6E73746120656D206E6F73736F7320726567
-            697374726F7320717565206F28732920745C27656474756C6F28732920616261
-            69786F207265666572656E74652873292061287329204E6F7461287329204669
-            7363616C28616973292061626169786F206573745C276531285C2765336F2920
-            636F6D20706167616D656E746F2022656D2061626572746F222E5C7061720D0A
-            5C7061720D0A456D206361736F20646520745C27656474756C6F287329206A5C
-            276531207061676F2873292C206661766F7220646573636F6E73696465726172
-            206F20617669736F2065206E6F7320656E76696172206F28732920636F6D7072
-            6F76616E74652873292062616E635C27653172696F2070617261206261697861
-            20646F28732920745C27656474756C6F2873292E5C7061720D0A5C7061720D0A
-            446570617274616D656E746F2046696E616E636569726F5C66315C667331365C
-            7061720D0A7D0D0A00}
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
+            7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
+            305C666E696C5C66636861727365743020417269616C3B7D7B5C66315C666E69
+            6C5C666368617273657430205461686F6D613B7D7D0D0A7B5C2A5C67656E6572
+            61746F722052696368656432302031302E302E31393034317D5C766965776B69
+            6E64345C756331200D0A5C706172645C66733230205072657A61646F28612920
+            53656E686F722861292C5C7061720D0A5C7061720D0A20436F6E73746120656D
+            206E6F73736F7320726567697374726F7320717565206F28732920745C276564
+            74756C6F2873292061626169786F207265666572656E74652873292061287329
+            204E6F74612873292046697363616C28616973292061626169786F206573745C
+            276531285C2765336F2920636F6D20706167616D656E746F2022656D20616265
+            72746F222E5C7061720D0A5C7061720D0A456D206361736F20646520745C2765
+            6474756C6F287329206A5C276531207061676F2873292C206661766F72206465
+            73636F6E73696465726172206F20617669736F2065206E6F7320656E76696172
+            206F28732920636F6D70726F76616E74652873292062616E635C27653172696F
+            207061726120626169786120646F28732920745C27656474756C6F2873292E5C
+            7061720D0A5C7061720D0A446570617274616D656E746F2046696E616E636569
+            726F5C66315C667331365C7061720D0A7D0D0A00}
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 38.958232310000000000
           Top = 171.369583080000000000
           Width = 17.443984620000000000
           Height = 15.990319230000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             #192)
         end
         object frxDBDataset1CLI_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 42.354360000000000000
           Top = 192.756030000000000000
           Width = 400.630180000000000000
@@ -1040,26 +1076,31 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           DataField = 'CLI_RAZAO'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."CLI_RAZAO"]')
         end
         object frxDBDataset1CLI_ENDERE: TfrxMemoView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Top = 215.212740000000000000
           Width = 400.630180000000000000
           Height = 18.897650000000000000
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."CLI_ENDERE"]- [frxDBDataset1."CLI_BAIRRO"]')
         end
         object frxDBDataset1CLI_CEP: TfrxMemoView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Top = 235.330860000000000000
           Width = 423.307360000000000000
           Height = 18.897650000000000000
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '[frxDBDataset1."CLI_CEP"] - [frxDBDataset1."CLI_CIDADE"] - [frxD' +
@@ -1073,6 +1114,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
             end>
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Top = 396.850650000000000000
           Width = 359.055350000000000000
@@ -1082,28 +1124,33 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[EMPRESA]')
           ParentFont = False
         end
         object Rich2: TfrxRichView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Top = 420.732530000000000000
           Width = 665.197280000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           GapX = 2.000000000000000000
           GapY = 1.000000000000000000
           RichEdit = {
-            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6465
-            666C616E67313034367B5C666F6E7474626C7B5C66305C666E696C5C66636861
-            7273657430205461686F6D613B7D7D0D0A7B5C2A5C67656E657261746F72204D
-            7366746564697420352E34312E32312E323531303B7D5C766965776B696E6434
-            5C7563315C706172645C66305C66733136203D3D3D3D3D3D3D3D3D3D3D3D3D3D
-            3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D2A2A204D454E534147454D204155544F
-            4D5C27633154494341202A2A3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D
-            3D3D3D3D3D3D3D3D3D3D3D3D3D5C7061720D0A7D0D0A00}
+            7B5C727466315C616E73695C616E7369637067313235325C64656666305C6E6F
+            7569636F6D7061745C6465666C616E67313034367B5C666F6E7474626C7B5C66
+            305C666E696C5C666368617273657430205461686F6D613B7D7D0D0A7B5C2A5C
+            67656E657261746F722052696368656432302031302E302E31393034317D5C76
+            6965776B696E64345C756331200D0A5C706172645C66305C66733136203D3D3D
+            3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D2A2A204D45
+            4E534147454D204155544F4D5C27633154494341202A2A3D3D3D3D3D3D3D3D3D
+            3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D3D5C7061720D0A7D0D
+            0A00}
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.338590000000000000
           Top = 450.968770000000000000
           Width = 94.488250000000000000
@@ -1113,11 +1160,13 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Vencimento')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 450.968770000000000000
           Width = 71.811070000000030000
@@ -1127,11 +1176,13 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Emiss'#227'o')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 195.212740000000000000
           Top = 450.968770000000000000
           Width = 79.370130000000000000
@@ -1141,11 +1192,13 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Documento')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.260050000000000000
           Top = 450.968770000000000000
           Width = 34.015770000000000000
@@ -1155,11 +1208,13 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Parc')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 409.984540000000000000
           Top = 450.968770000000000000
           Width = 60.472480000000000000
@@ -1169,12 +1224,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 474.354670000000000000
           Top = 450.968770000000000000
           Width = 75.590600000000000000
@@ -1184,12 +1241,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Juros')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 555.590910000000000000
           Top = 450.968770000000000000
           Width = 68.031540000000000000
@@ -1199,12 +1258,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Multa')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 629.181510000000000000
           Top = 450.968770000000000000
           Width = 83.149660000000000000
@@ -1214,19 +1275,23 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Total')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Left = 1.779530000000000000
           Top = 473.645950000000000000
           Width = 714.331170000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 277.023810000000000000
           Top = 451.764070000000000000
           Width = 56.692950000000000000
@@ -1236,12 +1301,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'NFE')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 336.378170000000000000
           Top = 451.543600000000000000
           Width = 37.795300000000000000
@@ -1251,6 +1318,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'NFSE')
@@ -1259,6 +1327,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 26.456710000000000000
         Top = 555.590910000000000000
         Width = 718.110700000000000000
@@ -1266,6 +1335,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1FPC_VENCTO: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000022000
           Width = 102.047310000000000000
@@ -1273,10 +1343,12 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           DataField = 'FPC_VENCTO'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."FPC_VENCTO"]')
         end
         object frxDBDataset1FPC_DTEMIS: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 3.779530000000022000
           Width = 75.590600000000030000
@@ -1284,10 +1356,12 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           DataField = 'FPC_DTEMIS'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."FPC_DTEMIS"]')
         end
         object frxDBDataset1FPC_COBNUM: TfrxMemoView
+          AllowVectorExport = True
           Left = 195.212740000000000000
           Top = 3.779530000000000000
           Width = 75.590600000000000000
@@ -1295,20 +1369,24 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           DataField = 'FPC_COBNUM'
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."FPC_COBNUM"]')
         end
         object frxDBDataset1FPC_VLPARC: TfrxMemoView
+          AllowVectorExport = True
           Left = 376.039580000000000000
           Top = 3.779530000000000000
           Width = 30.236240000000000000
           Height = 18.897650000000000000
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."FPC_NUMER"]')
         end
         object frxDBDataset1FPC_VLPARC1: TfrxMemoView
+          AllowVectorExport = True
           Left = 405.071120000000000000
           Top = 3.779530000000000000
           Width = 64.252010000000000000
@@ -1325,12 +1403,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."FPC_VLPARC"]')
           ParentFont = False
         end
         object frxDBDataset1FPC_JUROS: TfrxMemoView
+          AllowVectorExport = True
           Left = 476.220780000000000000
           Top = 3.779530000000022000
           Width = 64.252010000000000000
@@ -1345,12 +1425,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."FPC_JUROS"]')
           ParentFont = False
         end
         object frxDBDataset1FPC_MULTA: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031849999999900000
           Top = 3.779530000000022000
           Width = 68.031540000000010000
@@ -1367,12 +1449,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."FPC_MULTA"]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 3.779530000000022000
           Width = 94.488250000000000000
@@ -1386,6 +1470,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -1394,40 +1479,48 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.244280000000000000
           Top = 4.000000000000000000
           Width = 52.913420000000000000
           Height = 18.897650000000000000
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NF_NUM_NFE"]')
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 330.598640000000000000
           Top = 3.779530000000000000
           Width = 45.354360000000000000
           Height = 18.897650000000000000
           DataSet = frxDBDataset1
           DataSetName = 'frxDBDataset1'
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."NFSE"]')
         end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 30.236240000000000000
         Top = 604.724800000000000000
         Width = 718.110700000000000000
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 32.772893850000000000
           Top = 2.721992310000019000
           Width = 133.737215380000000000
           Height = 17.734717690000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total Geral ==>')
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 3.779530000000022000
           Width = 86.929190000000000000
@@ -1441,20 +1534,24 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."FPC_VLPARC">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 211.653680000000000000
           Top = 3.779530000000022000
           Width = 154.960730000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'T'#237'tulos: [COUNT(MasterData1)]')
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 480.000310000000000000
           Top = 3.779530000000022000
           Width = 60.472480000000000000
@@ -1468,12 +1565,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."FPC_JUROS">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo4: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 548.031849999999900000
           Top = 3.779530000000022000
           Width = 68.031540000000010000
@@ -1487,12 +1586,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."FPC_MULTA">,MasterData1)]')
           ParentFont = False
         end
         object SysMemo5: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 623.622450000000000000
           Top = 3.779530000000022000
           Width = 94.488250000000000000
@@ -1506,6 +1607,7 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -1514,9 +1616,11 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = -3.779530000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
@@ -1527,11 +1631,14 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -1541,6 +1648,9 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 844
     Top = 281
   end

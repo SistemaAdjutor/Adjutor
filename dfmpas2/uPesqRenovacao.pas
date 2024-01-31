@@ -6,7 +6,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDBPesquisaForm, Data.DB, Data.DBXFirebird, Data.FMTBcd, Vcl.Menus, Datasnap.DBClient, Datasnap.Provider, Vcl.ExtCtrls, Data.SqlExpr, ACBrEnterTab, ACBrBase,
   ACBrCalculadora, Vcl.StdCtrls, Vcl.Grids, Vcl.DBGrids, Vcl.ComCtrls, Vcl.Buttons, SgDbSeachComboUnit, JvExStdCtrls, JvCombobox, JvDBSearchComboBox, Vcl.DBCtrls, ComboBoxRW, frxExportDOCX, frxClass,
-  frxExportPDF, frxDBSet, frxRich;
+  frxExportPDF, frxDBSet, frxRich, frxExportBaseDialog;
 
 type
   TFrmPesqRenovacao = class(TfrmBaseDBPesquisa)
@@ -85,6 +85,7 @@ type
     lblCobranca: TLabel;
     chkClientesCadastradosSemCompras: TCheckBox;
     cdsCartaFAT_REGISTRO: TIntegerField;
+    cdsBuscoFAT_CODIGO: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -142,6 +143,32 @@ begin
   inherited;
   ValidarTarefas;
   tcr := TFrmRenovar.Create(self);
+
+  if chkClienteAtrasos.Checked then
+  begin
+    tcr.mAssunto.Lines.Clear;
+    tcr.mAssunto.Lines.Add('INICIADO PROCESSO DE COBRANÇA');
+    tcr.mAssunto.Lines.Add('');
+    tcr.mAssunto.Lines.Add('FATURAS');
+    cdsBusco.DisableControls;
+    cdsBusco.Filtered:= False;
+    cdsBusco.Filter:= 'NovaTarefa =true';
+    cdsBusco.Filtered:= true  ;
+    if cdsBusco.RecordCount = 0  then
+    begin
+      cdsBusco.Filtered:= False;
+      GeraException('Selecione ao menos um cliente');
+    end;
+
+    cdsBusco.First;
+    while not cdsBusco.eof do
+    begin
+      tcr.mAssunto.Lines.Add(cdsBuscoFAT_CODIGO.AsString + ' - VENCIMENTO: ' + cdsBuscoULTVENCIMENTO.AsString );
+      cdsBusco.Next;
+    end;
+
+  end;
+
   try
      if tcr.ShowModal = mrOk then
      begin
@@ -151,6 +178,8 @@ begin
        except
          raise;
        end;
+       cdsBusco.Filtered:= False;
+       cdsbusco.EnableControls;
        btnPesquisa.Click;
      end;
 
@@ -581,7 +610,7 @@ begin
         DiasAtrasos := edtAtrasos.Text;
     end;
     sql.Clear;
-    sql.Add('SELECT cl.CLI_CODIGO, CLI_RAZAO, CLI_DTULTCOM ,      '+
+    sql.Add('SELECT ' + iif(chkClienteAtrasos.Checked, 'PC.FAT_CODIGO', ' ''0'' AS FAT_CODIGO')  + ', cl.CLI_CODIGO, CLI_RAZAO, CLI_DTULTCOM ,      '+
             '(SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc        ' +
             ' WHERE pc.CLI_CODIGO = cl.CLI_CODIGO '             +
              ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
@@ -660,6 +689,8 @@ begin
         SqlAdd('CL.CLI_CODIGO = '+QuotedStr(PesqCliente.idRetorno));
      SqlAdd(ConcatSe(' CL.', dbinicio.ExclusivoSql('CLIENTES')) );
   end;
+  if dbInicio.IsDesenvolvimento then
+    copyToClipboard(qBusco.Sql.Text);
 end;
 
 procedure TFrmPesqRenovacao.FormClose(Sender: TObject; var Action: TCloseAction);
