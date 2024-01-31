@@ -8,7 +8,6 @@ inherited FormGImpClie: TFormGImpClie
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   OldCreateOrder = True
-  Position = poDesktopCenter
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 1088
   ExplicitHeight = 912
@@ -104,29 +103,29 @@ inherited FormGImpClie: TFormGImpClie
     end
   end
   object grb03: TGroupBox [2]
-    Left = 0
+    Left = -1
     Top = 411
     Width = 520
     Height = 38
     Caption = 'Filtro de Compras'
     TabOrder = 5
     object Label5: TLabel
-      Left = 299
+      Left = 224
       Top = 17
-      Width = 8
+      Width = 12
       Height = 14
-      Caption = #192
+      Caption = 'h'#225
     end
     object Label6: TLabel
-      Left = 360
+      Left = 283
       Top = 17
       Width = 21
       Height = 14
       Caption = 'Dias'
     end
     object EdtDias: TEdit
-      Left = 316
-      Top = 11
+      Left = 239
+      Top = 14
       Width = 37
       Height = 22
       TabOrder = 0
@@ -144,12 +143,20 @@ inherited FormGImpClie: TFormGImpClie
       TabStop = True
     end
     object RadClientesInativos: TRadioButton
-      Left = 132
+      Left = 128
       Top = 16
-      Width = 100
+      Width = 95
       Height = 17
       Caption = 'N'#227'o compraram'
       TabOrder = 2
+    end
+    object rbNuncaCompraram: TRadioButton
+      Left = 352
+      Top = 16
+      Width = 113
+      Height = 17
+      Caption = 'Nunca Compraram'
+      TabOrder = 3
     end
   end
   object grb02: TGroupBox [3]

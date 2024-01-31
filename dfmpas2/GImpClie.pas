@@ -502,6 +502,7 @@ type
     qClienteProdutoVendidoNF_QTDE: TFMTBCDField;
     qClienteProdutoVendidoNF_IPIALIQ: TFMTBCDField;
     qClienteProdutoVendidoNF_PRECO: TFMTBCDField;
+    rbNuncaCompraram: TRadioButton;
     procedure MudaCorCampos(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure BitOkClick(Sender: tObject);
@@ -1709,6 +1710,40 @@ begin
                      end;
                   LBL_01_LTITULO2.Caption := 'Cliente que não compram a mais de '+Edtdias.Text+' Dias';
               end;
+           if rbNuncaCompraram.checked  then
+              begin
+                  if CbRepre.ItemIndex = 0 then
+                     begin
+                         try
+                           SqlCdsClienteRB.Close;
+                           SqlCdsClienteRB.CommandText := SQLDEF('CLIENTES',wSql1+wSql2+wSql3,' WHERE coalesce(C1.CLI_DTULTCOM, '''') = ''''    ' + sClienteAtivoSql,'C1.CLI_RAZAO','C1.'); //'C1.CLI_DTULTCOM,C1.CLI_UF,C1.CLI_CIDADE,C1.CLI_RAZAO','C1.');
+                           if dbInicio.IsDesenvolvimento then
+                             copyToClipboard(SqlCdsClienteRB.CommandText);
+                           SqlCdsClienteRB.Open;
+                           LBL_01_LTITULO1.Caption := 'RELAÇÃO GERAL CLIENTES';
+                         except on E:EdatabaseError do
+                             begin
+                                 uteis.erro  (Pchar('Erro ao abrir tabela CLIENTES !'+e.message));
+                             end;
+                         end;
+                     end
+                  else
+                     begin
+                         {Foi selecionado um representante}
+                         try
+                           SqlCdsClienteRB.Close;
+                           SqlCdsClienteRB.CommandText := SQLDEF('CLIENTES',wSql1+wSql2+wSql3,'WHERE C1.REP_CODIGO='''+wrep_codigo+''' AND coalesce(C1.CLI_DTULTCOM, '''') = ''''    ' + sClienteAtivoSql,'C1.CLI_RAZAO','C1.');//'C1.CLI_DTULTCOM,C1.CLI_UF,C1.CLI_CIDADE,C1.CLI_RAZAO','C1.');
+                           SqlCdsClienteRB.Open;
+                           LBL_01_LTITULO1.Caption := 'RELAÇÃO DE CLIENTES DO REPRES.: '+wrep_codigo+' - '+SqlCdsRepresentanteREP_NOME.AsString;
+                         except on E:EdatabaseError do
+                             begin
+                                 uteis.erro  (Pchar('Erro ao abrir tabela CLIENTES !'+e.message));
+                             end;
+                         end;
+                     end;
+                  LBL_01_LTITULO2.Caption := 'Cliente que nunca compraram';
+              end;
+
            screen.cursor := crDefault;
            //relatorio Listagem
            if ChekMalaDireta.checked  then // enviar como mala direta
