@@ -3212,6 +3212,9 @@ procedure TDBInicio.EdUsuarioChange( Sender : TObject );
 procedure TDBInicio.EdUsuarioExit(Sender: TObject);
 begin
   inherited;
+  if ActiveControl.Name = 'btCancel' then
+    Exit;
+
   if (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_ATIVO FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> 'S')
   and (dbInicio.BuscaUmDadoSqlAsString('SELECT USU_LOGIN FROM USUARIO WHERE USU_LOGIN = ' + QuotedStr(EdUsuario.Text)) <> '')
   then
