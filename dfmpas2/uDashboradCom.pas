@@ -401,11 +401,15 @@ begin
   if DBInicio.Empresa.PMT_DESCOSIDERAR_FATURA then
     SQL := ' SELECT SUM(NF_TOT_NOTA-COALESCE(NF_VL_DESCTO_FAT,0) ) AS NF_TOT_NOTA FROM NF0001 NF '+
            ' JOIN OPE0000 OPE ON (OPE.OPE_CODIGO = NF.OPE_CODIGO AND OPE_TIPO_OPERACAO = ''V'') '+
-           '  WHERE NF_CANCELADA = ''N''  '+ empresa
+           '  WHERE NF_CANCELADA = ''N''  ' +
+           '  AND NF_STATUS_NFE <> ''R'' ' +
+           empresa
 
   else
     SQL := ' SELECT SUM(NF_TOT_NOTA-COALESCE(NF_VL_DESCTO_FAT,0) ) AS NF_TOT_NOTA FROM NF0001 NF '+
-           '  WHERE NF_CANCELADA = ''N'' '+ empresa+
+           '  WHERE NF_CANCELADA = ''N'' ' +
+           '  AND NF_STATUS_NFE <> ''R'' ' +
+           empresa +
            '  AND EXISTS (SELECT 1 FROM FAT0000 fat WHERE NF_NOTANUMBER = fat.FAT_CODIGO AND nf.EMP_CODIGO = fat.EMP_CODIGO) ';
 
 
