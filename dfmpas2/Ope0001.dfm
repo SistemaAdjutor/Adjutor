@@ -542,7 +542,7 @@ object FormOperFisc: TFormOperFisc
     Top = 192
     Width = 897
     Height = 332
-    ActivePage = tsPisCofins
+    ActivePage = TabSheet2
     TabOrder = 7
     object tsPrincipal: TTabSheet
       Caption = 'Principal'
@@ -1496,8 +1496,10 @@ object FormOperFisc: TFormOperFisc
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
         end
       end
       object GroupBox11: TGroupBox
@@ -1588,6 +1590,37 @@ object FormOperFisc: TFormOperFisc
           DataField = 'OPE_AVISOLEGAL2'
           DataSource = DataCadastros.DsOperFisc
           TabOrder = 2
+        end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'DIFAL'
+      ImageIndex = 5
+      object GroupBox12: TGroupBox
+        Left = 14
+        Top = 3
+        Width = 267
+        Height = 41
+        Caption = 'Regras DIFAL'
+        TabOrder = 0
+        object DBCheckBox12: TDBCheckBox
+          Left = 6
+          Top = 16
+          Width = 251
+          Height = 17
+          Caption = ' Incluir al'#237'quota na base de C'#225'lculo DIFAL Partilha'
+          Color = clBtnFace
+          Ctl3D = True
+          DataField = 'OPE_DIFAL_NA_BASE'
+          DataSource = DataCadastros.DsOperFisc
+          ParentColor = False
+          ParentCtl3D = False
+          ParentShowHint = False
+          ShowHint = False
+          TabOrder = 0
+          ValueChecked = 'S'
+          ValueUnchecked = 'N'
+          OnClick = ChkTribPISCOFINSClick
         end
       end
     end
@@ -1766,6 +1799,7 @@ object FormOperFisc: TFormOperFisc
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
@@ -1783,6 +1817,14 @@ object FormOperFisc: TFormOperFisc
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -1792,22 +1834,34 @@ object FormOperFisc: TFormOperFisc
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -1815,13 +1869,26 @@ object FormOperFisc: TFormOperFisc
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 826
     Top = 402
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBRelOperFiscal01'
     object pp00HeaderBand2: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 19844
       mmPrintPosition = 0
@@ -1829,6 +1896,7 @@ object FormOperFisc: TFormOperFisc
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1842,13 +1910,15 @@ object FormOperFisc: TFormOperFisc
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3302
         mmLeft = 0
@@ -1862,13 +1932,15 @@ object FormOperFisc: TFormOperFisc
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -1882,13 +1954,15 @@ object FormOperFisc: TFormOperFisc
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -1901,6 +1975,7 @@ object FormOperFisc: TFormOperFisc
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1914,6 +1989,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1934,6 +2010,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1956,13 +2033,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'COD CFOP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -1979,13 +2058,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESCRI'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 8731
@@ -2000,13 +2081,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CFOP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3387
@@ -2022,13 +2105,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Redu'#231#227'o IPI'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2045,13 +2130,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Redu'#231#227'o ICMS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2066,6 +2153,7 @@ object FormOperFisc: TFormOperFisc
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2080,13 +2168,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ICMS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -2102,13 +2192,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'IPI'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3387
@@ -2124,13 +2216,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'IPI na Base'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2147,13 +2241,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Aviso NF'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2170,13 +2266,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Estoque'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3387
         mmLeft = 212196
@@ -2192,13 +2290,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Frete Base'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2216,13 +2316,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Subt. Tributaria'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2240,13 +2342,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Servi'#231'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3387
@@ -2262,13 +2366,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Tipo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2285,13 +2391,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Dentro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2309,13 +2417,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'NF Compl.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2332,13 +2442,15 @@ object FormOperFisc: TFormOperFisc
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Sem Vl. Com'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         WordWrap = True
@@ -2351,8 +2463,7 @@ object FormOperFisc: TFormOperFisc
       end
     end
     object pp00DetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -2362,6 +2473,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_CODIGO'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2384,6 +2496,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_DESCRI'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2405,6 +2518,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_NATUREZA'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2426,6 +2540,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_REDU_IPI'
         DataPipeline = ppDBRelOperFiscal01
         DisplayFormat = '#,##0.00'
@@ -2449,6 +2564,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_REDU_ICM'
         DataPipeline = ppDBRelOperFiscal01
         DisplayFormat = '#,##0.00'
@@ -2472,6 +2588,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_SEMVLCOM'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2494,6 +2611,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_TRIBICMS'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2515,6 +2633,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_TRIBIPI'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2536,6 +2655,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_IPINABASEICMS'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2557,6 +2677,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_IMP_AVISO'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2578,6 +2699,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_ESTOQUE'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2599,6 +2721,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_FRETENABASE'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2620,6 +2743,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_SUBTRIBUTARIA'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2641,6 +2765,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_SERVICO'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2662,6 +2787,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_TIPO'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2683,6 +2809,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_DENTRO'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2704,6 +2831,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBText17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'OPE_NOTA_COMPLEMENTAR'
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
@@ -2722,7 +2850,7 @@ object FormOperFisc: TFormOperFisc
       end
     end
     object pp00SummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -2730,6 +2858,7 @@ object FormOperFisc: TFormOperFisc
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2743,13 +2872,15 @@ object FormOperFisc: TFormOperFisc
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Opera'#231#227'o Fiscal Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -2763,6 +2894,7 @@ object FormOperFisc: TFormOperFisc
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBRelOperFiscal01
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2781,151 +2913,175 @@ object FormOperFisc: TFormOperFisc
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650610
-        444254657874354F6E476574546578740B50726F6772616D54797065070B7474
-        50726F63656475726506536F7572636506A470726F6365647572652044425465
-        7874354F6E476574546578742876617220546578743A20537472696E67293B0D
-        0A5661720D0A202077546573746569636D3A537472696E673B0D0A626567696E
-        0D0A2020202077546573746569636D3A3D444252656C4F70657246697363616C
-        30315B274F50455F524544555F49434D275D3B0D0A2020202054657874203A3D
-        77546573746569636D2B2725273B0D0A656E643B0D0A0D436F6D706F6E656E74
-        4E616D65060744425465787435094576656E744E616D6506094F6E4765745465
-        7874074576656E7449440235084361726574506F730102000200000001060F54
-        72614576656E7448616E646C65720B50726F6772616D4E616D65061044425465
-        7874344F6E476574546578740B50726F6772616D54797065070B747450726F63
-        656475726506536F7572636506A570726F63656475726520444254657874344F
-        6E476574546578742876617220546578743A20537472696E67293B0D0A566172
-        0D0A20207754657374654970693A537472696E673B0D0A626567696E0D0A2020
-        20207754657374654970693A3D444252656C4F70657246697363616C30315B27
-        4F50455F524544555F495049275D3B0D0A2020202054657874203A3D20775465
-        7374654970692B2725273B0D0A656E643B0D0A0D436F6D706F6E656E744E616D
-        65060744425465787434094576656E744E616D6506094F6E4765745465787407
-        4576656E7449440235084361726574506F730102000200000001060F54726145
-        76656E7448616E646C65720B50726F6772616D4E616D65061044425465787436
-        4F6E476574546578740B50726F6772616D54797065070B747450726F63656475
-        726506536F7572636514A800000070726F63656475726520444254657874364F
-        6E476574546578742876617220546578743A20537472696E67293B0D0A626567
-        696E0D0A20202020696620444252656C4F70657246697363616C30315B274F50
-        455F53454D564C434F4D275D3D275327207468656E0D0A202020202020205465
-        7874203A3D202753494D270D0A20202020656C73650D0A202020092054657874
-        203A3D20274EC3A34F273B2020200D0A656E643B0D0A0D436F6D706F6E656E74
-        4E616D65060744425465787436094576656E744E616D6506094F6E4765745465
-        7874074576656E7449440235084361726574506F730102000200000001060F54
-        72614576656E7448616E646C65720B50726F6772616D4E616D65061044425465
-        7874374F6E476574546578740B50726F6772616D54797065070B747450726F63
-        656475726506536F7572636514A500000070726F636564757265204442546578
-        74374F6E476574546578742876617220546578743A20537472696E67293B0D0A
-        626567696E0D0A20202020494620444252656C4F70657246697363616C30315B
-        274F50455F5452494249434D53275D3D275327207468656E0D0A202020202020
-        2054657874203A3D202753494D270D0A20202020656C73650D0A092054657874
-        203A3D20274EC3A34F273B2020200D0A656E643B0D0A0D436F6D706F6E656E74
-        4E616D65060744425465787437094576656E744E616D6506094F6E4765745465
-        7874074576656E7449440235084361726574506F730102000200000001060F54
-        72614576656E7448616E646C65720B50726F6772616D4E616D65061044425465
-        7874384F6E476574546578740B50726F6772616D54797065070B747450726F63
-        656475726506536F75726365149F00000070726F636564757265204442546578
-        74384F6E476574546578742876617220546578743A20537472696E67293B0D0A
-        626567696E0D0A20202020696620444252656C4F70657246697363616C30315B
-        274F50455F54524942495049275D3D275327207468656E0D0A09205465787420
-        3A3D202753494D270D0A20202020656C73650D0A092054657874203A3D20274E
-        C3A34F273B090D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D650607
-        44425465787438094576656E744E616D6506094F6E4765745465787407457665
-        6E7449440235084361726574506F730102000200000001060F5472614576656E
-        7448616E646C65720B50726F6772616D4E616D650610444254657874394F6E47
-        6574546578740B50726F6772616D54797065070B747450726F63656475726506
-        536F7572636514AA00000070726F63656475726520444254657874394F6E4765
-        74546578742876617220546578743A20537472696E67293B0D0A626567696E0D
-        0A20202020696620444252656C4F70657246697363616C30315B274F50455F49
-        50494E414241534549434D53275D3D275327207468656E0D0A20202020202020
-        54657874203A3D202753494D270D0A20202020656C73650D0A09205465787420
-        3A3D20274EC3A34F273B2020200D0A656E643B0D0A0D436F6D706F6E656E744E
-        616D65060744425465787439094576656E744E616D6506094F6E476574546578
-        74074576656E7449440235084361726574506F730102000200000001060F5472
-        614576656E7448616E646C65720B50726F6772616D4E616D6506114442546578
-        7431304F6E476574546578740B50726F6772616D54797065070B747450726F63
-        656475726506536F7572636514A800000070726F636564757265204442546578
-        7431304F6E476574546578742876617220546578743A20537472696E67293B0D
-        0A626567696E0D0A20202020696620444252656C4F70657246697363616C3031
-        5B274F50455F494D505F415649534F275D3D275327207468656E0D0A20202020
-        20202054657874203A3D202753494D270D0A20202020656C73650D0A20092054
-        657874203A3D20274EC3A34F273B2020200D0A656E643B0D0A0D436F6D706F6E
-        656E744E616D6506084442546578743130094576656E744E616D6506094F6E47
-        657454657874074576656E7449440235084361726574506F7301020002000000
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650611
-        44425465787431314F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F7572636514A500000070726F63656475726520
-        44425465787431314F6E476574546578742876617220546578743A2053747269
-        6E67293B0D0A626567696E0D0A20202020696620444252656C4F706572466973
-        63616C30315B274F50455F4553544F515545275D3D275327207468656E0D0A20
-        20202020202054657874203A3D202753494D270D0A20202020656C73650D0A09
-        2054657874203A3D20274EC3A34F273B2020200D0A656E643B0D0A0D436F6D70
-        6F6E656E744E616D6506084442546578743131094576656E744E616D6506094F
-        6E47657454657874074576656E7449440235084361726574506F730102000200
-        000001060F5472614576656E7448616E646C65720B50726F6772616D4E616D65
-        061144425465787431324F6E476574546578740B50726F6772616D5479706507
-        0B747450726F63656475726506536F7572636514A900000070726F6365647572
-        652044425465787431324F6E476574546578742876617220546578743A205374
-        72696E67293B0D0A626567696E0D0A20202020696620444252656C4F70657246
-        697363616C30315B274F50455F46524554454E4142415345275D3D2753272074
-        68656E0D0A2020202020202054657874203A3D202753494D270D0A2020202065
-        6C73650D0A092054657874203A3D20274EC3A34F273B2020200D0A656E643B0D
-        0A0D436F6D706F6E656E744E616D6506084442546578743132094576656E744E
-        616D6506094F6E47657454657874074576656E7449440235084361726574506F
-        730102000200000001060F5472614576656E7448616E646C65720B50726F6772
-        616D4E616D65061144425465787431334F6E476574546578740B50726F677261
-        6D54797065070B747450726F63656475726506536F7572636514AB0000007072
-        6F6365647572652044425465787431334F6E4765745465787428766172205465
-        78743A20537472696E67293B0D0A626567696E0D0A2020202069662044425265
-        6C4F70657246697363616C30315B274F50455F53554254524942555441524941
-        275D3D275327207468656E0D0A2020202020202054657874203A3D202753494D
-        270D0A20202020656C73650D0A092054657874203A3D20274EC3A34F273B2020
-        200D0A656E643B0D0A0D436F6D706F6E656E744E616D65060844425465787431
-        33094576656E744E616D6506094F6E47657454657874074576656E7449440235
-        084361726574506F730102000200000001060F5472614576656E7448616E646C
-        65720B50726F6772616D4E616D65061144425465787431344F6E476574546578
-        740B50726F6772616D54797065070B747450726F63656475726506536F757263
-        6514A500000070726F6365647572652044425465787431344F6E476574546578
-        742876617220546578743A20537472696E67293B0D0A626567696E0D0A202020
-        20696620444252656C4F70657246697363616C30315B274F50455F5345525649
-        434F275D3D275327207468656E0D0A2020202020202054657874203A3D202753
-        494D270D0A20202020656C73650D0A092054657874203A3D20274EC3A34F273B
-        2020200D0A656E643B0D0A0D436F6D706F6E656E744E616D6506084442546578
-        743134094576656E744E616D6506094F6E47657454657874074576656E744944
-        0235084361726574506F730102000200000001060F5472614576656E7448616E
-        646C65720B50726F6772616D4E616D65061144425465787431374F6E47657454
-        6578740B50726F6772616D54797065070B747450726F63656475726506536F75
-        72636514AF00000070726F6365647572652044425465787431374F6E47657454
-        6578742876617220546578743A20537472696E67293B0D0A626567696E0D0A20
-        202020696620444252656C4F70657246697363616C30315B274F50455F4E4F54
-        415F434F4D504C454D454E544152275D3D275327207468656E0D0A2020202020
-        202054657874203A3D202753494D270D0A20202020656C73650D0A0920546578
-        74203A3D20274EC3A34F273B2020200D0A656E643B0D0A0D436F6D706F6E656E
-        744E616D6506084442546578743137094576656E744E616D6506094F6E476574
-        54657874074576656E7449440235084361726574506F73010200020000000106
-        0F5472614576656E7448616E646C65720B50726F6772616D4E616D6506114442
-        5465787431364F6E476574546578740B50726F6772616D54797065070B747450
-        726F63656475726506536F7572636506FA70726F636564757265204442546578
-        7431364F6E476574546578742876617220546578743A20537472696E67293B0D
-        0A626567696E0D0A20202020696620444252656C4F70657246697363616C3031
-        5B274F50455F44454E54524F275D3D274427207468656E0D0A20202020202020
-        54657874203A3D202744454E54524F270D0A20202020656C73650D0A20202020
-        696620444252656C4F70657246697363616C30315B274F50455F44454E54524F
-        275D3D274627207468656E0D0A2020202020202054657874203A3D2027464F52
-        41270D0A20202020656C73650D0A092054657874203A3D2027494E444550273B
-        2020200D0A656E643B0D0A0D436F6D706F6E656E744E616D6506084442546578
-        743136094576656E744E616D6506094F6E47657454657874074576656E744944
-        0235084361726574506F730102000200000001060F5472614576656E7448616E
-        646C65720B50726F6772616D4E616D65061144425465787431354F6E47657454
-        6578740B50726F6772616D54797065070B747450726F63656475726506536F75
-        72636506A770726F6365647572652044425465787431354F6E47657454657874
-        2876617220546578743A20537472696E67293B0D0A626567696E0D0A20202020
-        696620444252656C4F70657246697363616C30315B274F50455F5449504F275D
-        3D275327207468656E0D0A2020202020202054657874203A3D20275341494441
-        270D0A20202020656C73650D0A092054657874203A3D2027454E545241444127
-        3B2020200D0A656E643B0D0A0D436F6D706F6E656E744E616D65060844425465
-        78743135094576656E744E616D6506094F6E47657454657874074576656E7449
-        440235084361726574506F730102000200000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText5OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText5OnGetText(var Text: String);'#13#10'Var'#13#10'  wTesteicm:' +
+          'String;'#13#10'begin'#13#10'    wTesteicm:=DBRelOperFiscal01['#39'OPE_REDU_ICM'#39']' +
+          ';'#13#10'    Text :=wTesteicm+'#39'%'#39';'#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText5'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText4OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText4OnGetText(var Text: String);'#13#10'Var'#13#10'  wTesteIpi:' +
+          'String;'#13#10'begin'#13#10'    wTesteIpi:=DBRelOperFiscal01['#39'OPE_REDU_IPI'#39']' +
+          ';'#13#10'    Text := wTesteIpi+'#39'%'#39';'#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText4'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo3: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText6OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText6OnGetText(var Text: String);'#13#10'begin'#13#10'    if DBR' +
+          'elOperFiscal01['#39'OPE_SEMVLCOM'#39']='#39'S'#39' then'#13#10'       Text := '#39'SIM'#39#13#10' ' +
+          '   else'#13#10'   '#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText6'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo4: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText7OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText7OnGetText(var Text: String);'#13#10'begin'#13#10'    IF DBR' +
+          'elOperFiscal01['#39'OPE_TRIBICMS'#39']='#39'S'#39' then'#13#10'       Text := '#39'SIM'#39#13#10' ' +
+          '   else'#13#10#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText7'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo5: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText8OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText8OnGetText(var Text: String);'#13#10'begin'#13#10'    if DBR' +
+          'elOperFiscal01['#39'OPE_TRIBIPI'#39']='#39'S'#39' then'#13#10#9' Text := '#39'SIM'#39#13#10'    els' +
+          'e'#13#10#9' Text := '#39'N'#227'O'#39';'#9#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText8'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo6: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText9OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText9OnGetText(var Text: String);'#13#10'begin'#13#10'    if DBR' +
+          'elOperFiscal01['#39'OPE_IPINABASEICMS'#39']='#39'S'#39' then'#13#10'       Text := '#39'SI' +
+          'M'#39#13#10'    else'#13#10#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText9'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo7: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText10OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText10OnGetText(var Text: String);'#13#10'begin'#13#10'    if DB' +
+          'RelOperFiscal01['#39'OPE_IMP_AVISO'#39']='#39'S'#39' then'#13#10'       Text := '#39'SIM'#39#13 +
+          #10'    else'#13#10' '#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText10'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo8: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText11OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText11OnGetText(var Text: String);'#13#10'begin'#13#10'    if DB' +
+          'RelOperFiscal01['#39'OPE_ESTOQUE'#39']='#39'S'#39' then'#13#10'       Text := '#39'SIM'#39#13#10' ' +
+          '   else'#13#10#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText11'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo9: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText12OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText12OnGetText(var Text: String);'#13#10'begin'#13#10'    if DB' +
+          'RelOperFiscal01['#39'OPE_FRETENABASE'#39']='#39'S'#39' then'#13#10'       Text := '#39'SIM' +
+          #39#13#10'    else'#13#10#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText12'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo10: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText13OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText13OnGetText(var Text: String);'#13#10'begin'#13#10'    if DB' +
+          'RelOperFiscal01['#39'OPE_SUBTRIBUTARIA'#39']='#39'S'#39' then'#13#10'       Text := '#39'S' +
+          'IM'#39#13#10'    else'#13#10#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText13'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo11: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText14OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText14OnGetText(var Text: String);'#13#10'begin'#13#10'    if DB' +
+          'RelOperFiscal01['#39'OPE_SERVICO'#39']='#39'S'#39' then'#13#10'       Text := '#39'SIM'#39#13#10' ' +
+          '   else'#13#10#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText14'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo12: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText17OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText17OnGetText(var Text: String);'#13#10'begin'#13#10'    if DB' +
+          'RelOperFiscal01['#39'OPE_NOTA_COMPLEMENTAR'#39']='#39'S'#39' then'#13#10'       Text :' +
+          '= '#39'SIM'#39#13#10'    else'#13#10#9' Text := '#39'N'#227'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText17'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo13: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText16OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText16OnGetText(var Text: String);'#13#10'begin'#13#10'    if DB' +
+          'RelOperFiscal01['#39'OPE_DENTRO'#39']='#39'D'#39' then'#13#10'       Text := '#39'DENTRO'#39#13 +
+          #10'    else'#13#10'    if DBRelOperFiscal01['#39'OPE_DENTRO'#39']='#39'F'#39' then'#13#10'    ' +
+          '   Text := '#39'FORA'#39#13#10'    else'#13#10#9' Text := '#39'INDEP'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText16'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo14: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText15OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText15OnGetText(var Text: String);'#13#10'begin'#13#10'    if DB' +
+          'RelOperFiscal01['#39'OPE_TIPO'#39']='#39'S'#39' then'#13#10'       Text := '#39'SAIDA'#39#13#10'  ' +
+          '  else'#13#10#9' Text := '#39'ENTRADA'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText15'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer

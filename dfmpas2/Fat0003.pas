@@ -3253,7 +3253,16 @@ begin
            ' WHERE EMP_CODIGO =' + QuotedStr(DBInicio.Emp_Codigo) +
            ' AND OPE_CODIGO = ' +  QuotedStr(cboper.idretorno)
           ) = 'S' then
-         wBaseProduto := wBaseProduto + wFreteIndividual + wDespesaIndividual + wSeguroIndividual;
+          begin
+            if BuscaUmDadoSqlAsString('SELECT OPE_DIFAL_NA_BASE FROM OPE0000 ' + ' WHERE EMP_CODIGO =' + QuotedStr(DBInicio.Emp_Codigo) + ' AND OPE_CODIGO = ' +  QuotedStr(cboper.idretorno)          ) = 'S'  then
+            begin
+              wBaseProduto := wBaseProduto + wFreteIndividual + wSeguroIndividual;
+              // wBaseProduto := wBaseProduto + ((wBaseProduto / 100) * wALiqICmsInterno)
+            end
+            else
+              wBaseProduto := wBaseProduto + wFreteIndividual + wDespesaIndividual + wSeguroIndividual ;
+          end;
+         // wBaseProduto := wBaseProduto + wFreteIndividual + wDespesaIndividual + wSeguroIndividual;
        if BuscaUmDadoSqlAsString
           ('SELECT OPE_ICMS_TOTALNOTA FROM OPE0000 ' +
            ' WHERE EMP_CODIGO =' + QuotedStr(DBInicio.Emp_Codigo) +
@@ -3303,15 +3312,21 @@ begin
                b := a / (1 -(wALiqICmsInterno / 100));
                wIcmDifal := ((b * (wALiqICmsInterno / 100) )- sNF_ICMSVALOR); // wIcmDifal valor do difal
             end
-            else // o cálculo é com base por fora
+            else // o cálculo é com base por fora (Base Simples)
             begin
-              wIcmDifal := wBaseProduto * (wDifal / 100) // wIcmDifal valor do difal
+              if BuscaUmDadoSqlAsString('SELECT OPE_DIFAL_NA_BASE FROM OPE0000 ' + ' WHERE EMP_CODIGO =' + QuotedStr(DBInicio.Emp_Codigo) + ' AND OPE_CODIGO = ' +  QuotedStr(cboper.idretorno)          ) = 'S'  then
+                wIcmDifal := (wBaseProduto + ((wBaseProduto / 100) * wALiqICmsInterno)) * wDifal / 100
+              else
+                wIcmDifal := wBaseProduto * (wDifal / 100); // wIcmDifal valor do difal
             end;
            end
            else
              wIcmDifal := ( wBaseProduto / 100 ) * wDifal;  // wIcmDifal valor do difal
 
+              // wBaseProduto := wBaseProduto + ((wBaseProduto / 100) * wALiqICmsInterno)
            wPartDest := (( wIcmDifal / 100 ) * wPercentPartilha)  ;
+
+
            wPartOrig := ( wIcmDifal / 100 )* ( 100 - wPercentPartilha );
 
            if (cdsPedidosCLI_CONSFINAL.AsString = 'S') and (dbInicio.Empresa.UF <> cdsPedidosCLI_UF.AsString) then

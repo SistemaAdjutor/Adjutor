@@ -581,7 +581,6 @@ inherited FormFatPedido: TFormFatPedido
     Height = 69
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 1284
     object Label3: TLabel
       Left = 45
       Top = 19
@@ -995,7 +994,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 1284
     object GroupBox3: TGroupBox
       Left = 0
       Top = 0

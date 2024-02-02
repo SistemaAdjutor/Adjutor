@@ -1693,6 +1693,8 @@ type
     CdsSharedbPRODUTO_PRECO_EMPRESA: TStringField;
     SqlSharedbENDERECO_ESTOQUE: TStringField;
     CdsSharedbENDERECO_ESTOQUE: TStringField;
+    SqlOperFiscOPE_DIFAL_NA_BASE: TStringField;
+    CdsOperFiscOPE_DIFAL_NA_BASE: TStringField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);

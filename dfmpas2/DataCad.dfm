@@ -6005,6 +6005,10 @@ object DataCadastros: TDataCadastros
       FieldName = 'OPE_ARTIGO_REDUCAO'
       Size = 255
     end
+    object CdsOperFiscOPE_DIFAL_NA_BASE: TStringField
+      FieldName = 'OPE_DIFAL_NA_BASE'
+      Size = 1
+    end
   end
   object DsOperFisc: TDataSource
     DataSet = CdsOperFisc
@@ -6329,6 +6333,10 @@ object DataCadastros: TDataCadastros
     object SqlOperFiscOPE_ARTIGO_REDUCAO: TStringField
       FieldName = 'OPE_ARTIGO_REDUCAO'
       Size = 255
+    end
+    object SqlOperFiscOPE_DIFAL_NA_BASE: TStringField
+      FieldName = 'OPE_DIFAL_NA_BASE'
+      Size = 1
     end
   end
   object SqlEmpresa: TSQLQuery
