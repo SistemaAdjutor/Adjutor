@@ -16,7 +16,6 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 1029
     object Lb_Lista: TLabel
       Left = 319
       Top = 7
@@ -559,6 +558,12 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       end
       item
         Expanded = False
+        FieldName = 'CCT_DESCRI'
+        Title.Caption = 'Conta Financeira'
+        Visible = True
+      end
+      item
+        Expanded = False
         FieldName = 'CLI_FONE'
         Title.Caption = 'Fone'
         Visible = True
@@ -753,7 +758,6 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     Height = 32
     Align = alBottom
     TabOrder = 4
-    ExplicitWidth = 1029
     object Label3: TLabel
       Left = 13
       Top = 9
@@ -1097,6 +1101,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     object qSqlCdsPesqCLI_DTNASCIMENTO: TSQLTimeStampField
       FieldName = 'CLI_DTNASCIMENTO'
     end
+    object qSqlCdsPesqCCT_DESCRI: TStringField
+      FieldName = 'CCT_DESCRI'
+      Size = 80
+    end
   end
   object dspSqlCdsPesq: TDataSetProvider
     DataSet = qSqlCdsPesq
@@ -1244,6 +1252,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     end
     object SqlCdsPesqPED_DTENTRADA: TSQLTimeStampField
       FieldName = 'PED_DTENTRADA'
+    end
+    object SqlCdsPesqCCT_DESCRI: TStringField
+      FieldName = 'CCT_DESCRI'
+      Size = 80
     end
   end
   object DsPedidos: TDataSource
