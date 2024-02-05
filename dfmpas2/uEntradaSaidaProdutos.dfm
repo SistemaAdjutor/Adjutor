@@ -160,13 +160,12 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       Width = 425
       Height = 22
       Style = csDropDownList
-      ItemIndex = 0
       TabOrder = 3
-      Text = 'TODOS'
       Items.Strings = (
         'TODOS'
         'TRANSFER'#202'NCIAS'
-        'MOVIMENTO NORMAL')
+        'MOVIMENTO NORMAL'
+        'MOVIMENTO MANUAL')
     end
     object CbAlmoxarifado: TcxLookupComboBox
       Left = 8
@@ -279,20 +278,12 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       SelectWithDoubleClick = False
       LimparCampoAoSair = True
     end
-    object chkManual: TCheckBox
-      Left = 102
-      Top = 63
-      Width = 107
-      Height = 17
-      Caption = 'Movimento Manual'
-      TabOrder = 9
-    end
     object cbProduto: TComboBoxRw
       Left = 139
       Top = 205
       Width = 269
       Height = 22
-      TabOrder = 10
+      TabOrder = 9
       CharCase = ecUpperCase
       LookupSelect = 'PRD_REFER,PRD_DESCRI'
       LookupOrderBy = 'PRD_DESCRI'
@@ -333,7 +324,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       Top = 205
       Width = 50
       Height = 22
-      TabOrder = 11
+      TabOrder = 10
       OnExit = edProdutoExit
     end
     object cbGrupo: TComboBoxRw
@@ -341,7 +332,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       Top = 233
       Width = 269
       Height = 22
-      TabOrder = 12
+      TabOrder = 11
       CharCase = ecUpperCase
       LookupSelect = 'PGR_CODIGO,PGR_DESCRI'
       LookupOrderBy = 'PGR_DESCRI'
@@ -382,7 +373,7 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       Top = 233
       Width = 50
       Height = 22
-      TabOrder = 13
+      TabOrder = 12
       OnExit = edGrupoExit
     end
   end
@@ -971,7 +962,6 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
   end
   object CdsEntradasSaidas: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'T1.emp_codigo,'#13#10'E1.emp_razao,'#13#10'P1.prd_refer,'#13#10'P1.prd_des' +
       'cri,'#13#10't1.kar_entrada_saida,'#13#10't1.kar_quantidade,'#13#10't1.data_hora,'#13#10 +
@@ -1008,7 +998,6 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
       '.prd_codigo = T1.prd_codigo)'#13#10'JOIN emp0000 E1 ON (T1.emp_codigo ' +
       '= E1.emp_codigo)'#13#10'order by t1.emp_codigo, t1.kar_entrada_saida,t' +
       '1.data_hora'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1089,7 +1078,6 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
   end
   object SqlCdsAlmoxarifado: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'select * from ALMOX0000 WHERE AMX_ATIVO = '#39'S'#39'  order by AMX_DESC' +
       'RI'
@@ -1099,7 +1087,6 @@ object FrmEntradaSaidaProdutos: TFrmEntradaSaidaProdutos
     CommandText = 
       'select * from ALMOX0000 WHERE AMX_ATIVO = '#39'S'#39'  order by AMX_DESC' +
       'RI'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll

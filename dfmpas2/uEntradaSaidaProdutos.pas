@@ -76,7 +76,6 @@ type
     EdColaboradorCodigo: TEdit;
     edColaborador: TSgDbSearchCombo;
     qColaborador: TSQLQuery;
-    chkManual: TCheckBox;
     cbProduto: TComboBoxRw;
     Label8: TLabel;
     edProduto: TEdit;
@@ -195,15 +194,23 @@ begin
             sCondicao := sCondicao+ ' and t1.kar_entrada_saida = ''E'' '
          else
          if (cbbTipoES.ItemIndex = 2) then
-            sCondicao := sCondicao+ ' and t1.kar_entrada_saida = ''S'' ';
+            sCondicao := sCondicao+ ' and t1.kar_entrada_saida = ''S'' ' ;
 
          filtro := filtro + '. Tipo mov.: '+ cbbTipoES.Text;
 
          if (cbbListar.ItemIndex = 1) then
             sCondicao := sCondicao+ ' and T1.kar_tipo_registro = ''TRA'''
          else
-         if (cbbListar.ItemIndex = 1) then
-            sCondicao := sCondicao+ ' and T1.kar_tipo_registro <> ''TRA''';
+         if (cbbListar.ItemIndex = 2) then
+            sCondicao := sCondicao+ ' and T1.kar_tipo_registro <> ''TRA''    and T1.kar_tipo_registro <> ''MAN''   '
+         else
+         if (cbbListar.ItemIndex = 3) then
+         begin
+            scondicao := scondicao + ' and T1.kar_tipo_registro = ''MAN''  ' ;
+            filtro := filtro + '. Movimento Manual do Estoque ';
+         end;
+
+            ;
 
          filtro := filtro + '. Tipo operação: '+ cbbListar.Text;
 
@@ -232,11 +239,7 @@ begin
             scondicao := scondicao + ' and p1.PTI_CODIGO = ' +QuotedStr(EdTipoCodigo.Text);
             filtro := filtro + '. Tipo produto: '+ cbTipoProduto.Text;
          end;
-         if chkManual.Checked then
-         begin
-            scondicao := scondicao + ' and T1.kar_tipo_registro = ''MAN''  ' ;
-            filtro := filtro + '. Movimento Manual do Estoque ';
-         end;
+
          if edColaborador.idRetorno <> '' then
          begin
            scondicao := scondicao + ' and COL_CODIGO = ' +edColaborador.idRetorno;
