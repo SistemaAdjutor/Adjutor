@@ -1,0 +1,7 @@
+CREATE TRIGGER PED0000_BU0 FOR PED0000 BEFORE UPDATE
+as
+begin
+  if (new.PED_SITUACAO not in ('C','A','I')) then
+    new.PED_SITUACAO = (select VSIT
+    from PRD_AJUSTA_SITUACAO_PEDIDO(new.PED_CODIGO, new.EMP_CODIGO));
+end;
