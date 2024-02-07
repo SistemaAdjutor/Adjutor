@@ -1914,12 +1914,20 @@ begin
         1: wOCORRENCIA_DESC := 'Cobrança cancelada depois de emitida a fatura de energia';
         2: wOCORRENCIA_DESC := 'Cobrança cancelada antes de emitir a fatura de energia';
         3: wOCORRENCIA_DESC :=  'Cobrança cancelada - consumidor desligado';
-        4..88,90..98:
+        4..21,23..88,90,91,93..98:
          begin
            wOCORRENCIA_DESC :=  'Inconsistências do registro de remessa - Vide tabela de códigos de retorno';
            wCOD_REJEICAO := copy(retorno.Strings[i],71,2);
          end;
+        22:
+         begin
+           wOCORRENCIA_DESC :=  'Troca de titularidade';
+         end;
         89 : wOCORRENCIA_DESC := 'Cobrança só faturada';
+        92:
+         begin
+           wOCORRENCIA_DESC :=  'Penalidade por manutenção de faturas';
+         end;
         99 : wOCORRENCIA_DESC := 'Confirmação de registro recebido com sucesso';
        end;
 

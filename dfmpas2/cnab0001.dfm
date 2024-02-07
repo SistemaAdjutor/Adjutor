@@ -5,7 +5,7 @@ object FormGeradorCNAB: TFormGeradorCNAB
   BorderStyle = bsSingle
   Caption = 'Gerador de Arquivo  [CNAB]'
   ClientHeight = 629
-  ClientWidth = 1370
+  ClientWidth = 1526
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -132,9 +132,9 @@ object FormGeradorCNAB: TFormGeradorCNAB
     OnClick = BitCancelarClick
   end
   object PanVisualizar: TPanel
-    Left = 754
-    Top = 133
-    Width = 769
+    Left = 703
+    Top = 72
+    Width = 658
     Height = 466
     BevelInner = bvLowered
     BevelWidth = 2
@@ -145,14 +145,14 @@ object FormGeradorCNAB: TFormGeradorCNAB
     object Bevel3: TBevel
       Left = 8
       Top = 427
-      Width = 748
+      Width = 641
       Height = 6
       Shape = bsTopLine
     end
     object PanCaptionV: TPanel
       Left = 4
       Top = 4
-      Width = 757
+      Width = 646
       Height = 18
       Align = alTop
       Alignment = taLeftJustify
@@ -166,11 +166,16 @@ object FormGeradorCNAB: TFormGeradorCNAB
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 645
+      DesignSize = (
+        646
+        18)
       object ButFecha: TButton
-        Left = 739
-        Top = 3
+        Left = 626
+        Top = 2
         Width = 16
         Height = 14
+        Anchors = [akTop, akRight]
         Caption = 'X'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWindowText
@@ -180,15 +185,16 @@ object FormGeradorCNAB: TFormGeradorCNAB
         ParentFont = False
         TabOrder = 0
         OnClick = ButFechaClick
+        ExplicitLeft = 738
       end
     end
     object BitFechaVisual: TBitBtn
-      Left = 650
-      Top = 432
-      Width = 100
+      Left = 248
+      Top = 431
+      Width = 130
       Height = 25
       Cursor = crHandPoint
-      Caption = '&Sair'
+      Caption = '&Fechar Visualiza'#231#227'o'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clNavy
       Font.Height = -12
@@ -201,7 +207,7 @@ object FormGeradorCNAB: TFormGeradorCNAB
     object Status: TStatusBar
       Left = 6
       Top = 405
-      Width = 754
+      Width = 643
       Height = 20
       Align = alNone
       Panels = <
@@ -210,9 +216,9 @@ object FormGeradorCNAB: TFormGeradorCNAB
         end>
     end
     object TVisualizar: TRxRichEdit
-      Left = 5
-      Top = 23
-      Width = 755
+      Left = 4
+      Top = 27
+      Width = 645
       Height = 382
       DrawEndPage = False
       AutoURLDetect = False
@@ -231,13 +237,14 @@ object FormGeradorCNAB: TFormGeradorCNAB
   object Panel5: TPanel
     Left = 0
     Top = 0
-    Width = 1370
+    Width = 1526
     Height = 66
     Align = alTop
     BevelInner = bvRaised
     BevelOuter = bvLowered
     Color = clWhite
     TabOrder = 5
+    ExplicitWidth = 1370
     object LblMensagem: TLabel
       Left = 198
       Top = 6
@@ -3313,7 +3320,7 @@ object FormGeradorCNAB: TFormGeradorCNAB
     Left = 722
     Top = 106
     Bitmap = {
-      494C010103000500100010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500140010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
