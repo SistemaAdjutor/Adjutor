@@ -1350,6 +1350,12 @@ begin
       raise Exception.Create('Produção ainda não iniciada');
     If DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1IOP_STATUS.Index] = 'F' then
       raise Exception.Create('Produção já concluida');
+    // o usuário não selecionou a linha, só expandiu o grupo
+    if (DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PRD_CODIGO.Index] = 'I')
+    and (DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PRD_REFER.Index] = 'I')
+    then
+      raise Exception.Create('Favor Selecionar uma Ordem de Produção na Grade para Concluir a produção');
+
     registro := 0 ;
     prd_codigo := DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PRD_CODIGO.Index];
     prd_Refer  := DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1PRD_REFER.Index];
@@ -1367,7 +1373,7 @@ begin
       ordemPrg := DataController.Controller.SelectedRecords[0].Values[cxgrd1DBBandedTableView1IOP_SEQ_PRG.Index]
     else
       ordemPrg := 0;
-//    if DBInicio.Empresa.Bpmt_gerarsubordens then
+    if DBInicio.Empresa.Bpmt_gerarsubordens then
       if not ConcluioSubOrdens(nordem,ordemPrg) then
         raise Exception.Create('Não concluido todos as subordens');
 
