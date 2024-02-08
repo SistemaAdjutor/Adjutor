@@ -10,7 +10,10 @@ uses
   ppPrnabl, ppCache, ppModule, raCodMod, ppStrtch, ppSubRpt, DBCtrls,
   ppParameter, frxClass, frxDBSet, Math, ComboBoxRw, Data.DBXFirebird,
   ppDesignLayer, SgDbSeachComboUnit, Data.FMTBcd,BaseForm, BaseDBForm, ACBrEnterTab, ACBrBase, ACBrCalculadora, JvExMask, JvToolEdit, cxGraphics, cxControls, cxLookAndFeels,
-  cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxDBLookupComboBox, Vcl.ExtCtrls, ppTableGrid, JvExControls, JvAnimatedImage, JvGIFCtrl;
+  cxLookAndFeelPainters, cxContainer, cxEdit, cxTextEdit, cxMaskEdit, cxDropDownEdit, cxDBLookupComboBox, Vcl.ExtCtrls, ppTableGrid, JvExControls, JvAnimatedImage, JvGIFCtrl,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFormGImpPedido = class(TfrmBaseDB)
@@ -346,18 +349,6 @@ type
     ppSystemVariable14: TppSystemVariable;
     ppLine39: TppLine;
     ppDetailBand6: TppDetailBand;
-    SqlCdsRel05: TSQLQuery;
-    SqlCdsRel05PED_CODIGO: TStringField;
-    SqlCdsRel05OPV_CODIGO: TIntegerField;
-    SqlCdsRel05OPV_DESCRICAO: TStringField;
-    SqlCdsRel05PED_DTENTRADA: TSQLTimeStampField;
-    SqlCdsRel05PED_DTSAIDA: TSQLTimeStampField;
-    SqlCdsRel05PED_SITUACAO: TStringField;
-    SqlCdsRel05PED_VLTOTAL_LIQ: TFMTBCdField;
-    SqlCdsRel05PED_VLTOTAL_BRUTO: TFMTBCdField;
-    SqlCdsRel05PED_VLFATURADO: TFMTBCdField;
-    SqlCdsRel05CLI_CODIGO: TStringField;
-    SqlCdsRel05CLI_RAZAO: TStringField;
     ppDBRel05: TppDBPipeline;
     ppGroup3: TppGroup;
     ppGroupHeaderBand3: TppGroupHeaderBand;
@@ -388,7 +379,6 @@ type
     ppLine43: TppLine;
     ppLabel55: TppLabel;
     ppDBCalc16: TppDBCalc;
-    SqlCdsRel05PED_STATUS_CC: TStringField;
     ppDBText55: TppDBText;
     SqlCdsItenPediPTI_SIGLA: TStringField;
     SqlCdsVendaSeg: TSQLQuery;
@@ -434,9 +424,6 @@ type
     Rad_Todos: TRadioButton;
     Rad_Faturado: TRadioButton;
     Rad_Faturar: TRadioButton;
-    SqlCdsRel05NF_NOTANUMBER: TStringField;
-    SqlCdsRel05NF_EMISSAO: TDateField;
-    SqlCdsRel05NF_TOT_NOTA: TFMTBCdField;
     SqlCdsItenPediPRF_REGISTRO: TIntegerField;
     SqlCdsItenPediPRF_QTDEFAT: TFMTBCdField;
     SqlCdsItenPediPRF_SITUACAO: TStringField;
@@ -457,9 +444,7 @@ type
     SqlCdsItenPediPRF_ORIGEM_ITEM: TStringField;
     SqlCdsItenPediPRF_PRODUTO_AGREGADO: TStringField;
     ppLabel56: TppLabel;
-    ppDBText53: TppDBText;
     ppDBCalc15: TppDBCalc;
-    SqlCdsRel05VLRFATURAR: TCurrencyField;
     EditFinal: TEdit;
     Label2: TLabel;
     SqlCdsRel02PED_COMIS1: TFMTBCdField;
@@ -519,7 +504,6 @@ type
     SqlCdsPedidoPED_OBSNOTA: TBlobField;
     SqlCdsPedidoPED_OBSG1: TBlobField;
     ppLabel66: TppLabel;
-    SqlCdsRel05NF_NUM_NFE: TIntegerField;
     ppDBText62: TppDBText;
     RDprintPedidos2: TRDprint;
     SqlCdsPedidoPED_VLFRETE: TFMTBCdField;
@@ -618,8 +602,6 @@ type
     dspRel3: TDataSetProvider;
     cdsRel4: TClientDataSet;
     dspRel4: TDataSetProvider;
-    cdsRel5: TClientDataSet;
-    dspRel5: TDataSetProvider;
     cdsRel41: TClientDataSet;
     dspRel41: TDataSetProvider;
     cdsTransporte: TClientDataSet;
@@ -641,8 +623,6 @@ type
     EdtRep: TEdit;
     Label5: TLabel;
     CbRepCod: TComboBox;
-    SqlCdsRel05REP_CODIGO: TStringField;
-    SqlCdsRel05REP_RAZAO: TStringField;
     ppRRel09: TppReport;
     ppHeaderBand8: TppHeaderBand;
     ppLine54: TppLine;
@@ -696,7 +676,6 @@ type
     SqlCdsRel041EMP_CODIGO: TStringField;
     SqlCdsRel03EMP_CODIGO: TStringField;
     SqlCdsRel01EMP_CODIGO: TStringField;
-    SqlCdsRel05emp_codigo: TStringField;
     ppDBText85: TppDBText;
     ppHeaderBand1: TppHeaderBand;
     ppLine14: TppLine;
@@ -852,7 +831,6 @@ type
     ppDesignLayers11: TppDesignLayers;
     ppDesignLayer11: TppDesignLayer;
     ppParameterList10: TppParameterList;
-    SqlCdsRel05FPG_DESCRICAO: TStringField;
     ppDBText30: TppDBText;
     ppDBText96: TppDBText;
     ppLine62: TppLine;
@@ -905,31 +883,34 @@ type
     cdsOrcMesQTDEFATURADO: TLargeintField;
     cdsOrcMesFATURADO: TFMTBCDField;
     frxOrcMes: TfrxReport;
-    SqlCdsRel05PCL_NOME: TStringField;
     ppLabel113: TppLabel;
     ppDBText102: TppDBText;
-    cdsRel5PED_CODIGO: TStringField;
-    cdsRel5OPV_CODIGO: TIntegerField;
-    cdsRel5OPV_DESCRICAO: TStringField;
-    cdsRel5PED_DTENTRADA: TSQLTimeStampField;
-    cdsRel5PED_DTSAIDA: TSQLTimeStampField;
-    cdsRel5PED_SITUACAO: TStringField;
-    cdsRel5PED_VLTOTAL_LIQ: TFMTBCDField;
-    cdsRel5PED_VLTOTAL_BRUTO: TFMTBCDField;
-    cdsRel5PED_VLFATURADO: TFMTBCDField;
-    cdsRel5CLI_CODIGO: TStringField;
-    cdsRel5CLI_RAZAO: TStringField;
-    cdsRel5NF_NOTANUMBER: TStringField;
-    cdsRel5NF_EMISSAO: TDateField;
-    cdsRel5NF_TOT_NOTA: TFMTBCDField;
-    cdsRel5PED_STATUS_CC: TStringField;
-    cdsRel5VLRFATURAR: TCurrencyField;
-    cdsRel5NF_NUM_NFE: TIntegerField;
-    cdsRel5REP_CODIGO: TStringField;
-    cdsRel5REP_RAZAO: TStringField;
-    cdsRel5emp_codigo: TStringField;
-    cdsRel5FPG_DESCRICAO: TStringField;
-    cdsRel5PCL_NOME: TStringField;
+    ppDBText53: TppDBText;
+    ppDBRel05ppField23: TppField;
+    qRel05: TFDQuery;
+    qRel05PED_CODIGO: TStringField;
+    qRel05OPV_CODIGO: TIntegerField;
+    qRel05OPV_DESCRICAO: TStringField;
+    qRel05PED_DTENTRADA: TSQLTimeStampField;
+    qRel05PED_DTSAIDA: TSQLTimeStampField;
+    qRel05PED_SITUACAO: TStringField;
+    qRel05PED_VLTOTAL_LIQ: TFMTBCDField;
+    qRel05PED_VLTOTAL_BRUTO: TFMTBCDField;
+    qRel05PED_VLFATURADO: TFMTBCDField;
+    qRel05CLI_CODIGO: TStringField;
+    qRel05CLI_RAZAO: TStringField;
+    qRel05NF_NOTANUMBER: TStringField;
+    qRel05NF_EMISSAO: TDateField;
+    qRel05NF_TOT_NOTA: TFMTBCDField;
+    qRel05PED_STATUS_CC: TStringField;
+    qRel05NF_NUM_NFE: TIntegerField;
+    qRel05REP_CODIGO: TStringField;
+    qRel05REP_RAZAO: TStringField;
+    qRel05emp_codigo: TStringField;
+    qRel05FPG_DESCRICAO: TStringField;
+    qRel05PCL_NOME: TStringField;
+    qRel05VLRFATURAR: TFMTBCDField;
+    qRel05VALOR_A_FATURAR: TFMTBCDField;
     procedure BitOkClick(Sender: tObject);
     procedure BitConfigClick(Sender: tObject);
     procedure BitCancelarClick(Sender: tObject);
@@ -959,7 +940,6 @@ type
     procedure Edt_TipoExit(Sender: tObject);
     procedure Cb_TipoClick(Sender: tObject);
     procedure Cb_TipoExit(Sender: tObject);
-    procedure SqlCdsRel05CalcFields(DataSet: TDataSet);
     procedure EdProjetoObraCodigoExit(Sender: tObject);
     procedure CbProjetoObraChange(Sender: tObject);
     procedure CbProjetoObraExit(Sender: tObject);
@@ -974,6 +954,7 @@ type
     procedure ppLabel100GetText(Sender: TObject; var Text: string);
     procedure ppOrigemGetText(Sender: TObject; var Text: string);
     procedure frxRelOrdemGetValue(const VarName: string; var Value: Variant);
+    procedure qRel05CalcFields(DataSet: TDataSet);
   private
     { Private declarations }
     fListaEmpresas : TStringList;
@@ -1425,6 +1406,8 @@ begin
                     '(SELECT first 1 F1.NF_EMISSAO  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_EMISSAO,'+
                     '(SELECT first 1 F1.NF_NUM_NFE  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_NUM_NFE,'+
                     '(SELECT SUM(F1.NF_TOT_NOTA)  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_TOT_NOTA,'+
+                    ' COALESCE(P1.PED_VLTOTAL_BRUTO - P1.PED_VLFATURADO, 0) AS VLRFATURAR, ' +
+                    ' COALESCE(P1.PED_VLTOTAL_BRUTO - P1.PED_VLFATURADO, 0) AS VALOR_A_FATURAR, ' +
                     'COALESCE(P1.PED_VLTOTAL_LIQ,0) AS PED_VLTOTAL_LIQ, ';
            wSql2 := 'COALESCE(P1.PED_VLTOTAL_BRUTO,0) AS PED_VLTOTAL_BRUTO,COALESCE(P1.PED_VLFATURADO,0) AS PED_VLFATURADO, FP.FPG_DESCRICAO FROM PED0000 P1   '+
                     ' LEFT JOIN CLI0000 C1 ON (P1.CLI_CODIGO = C1.CLI_CODIGO) ';
@@ -1473,6 +1456,8 @@ begin
                   ' F1.NF_EMISSAO,'+
                   ' F1.NF_NUM_NFE,'+
                   ' F1.NF_TOT_NOTA,'+
+                  ' COALESCE(P1.PED_VLTOTAL_BRUTO - P1.PED_VLFATURADO, 0) AS VLRFATURAR, ' +
+                  ' COALESCE(P1.PED_VLTOTAL_BRUTO - P1.PED_VLFATURADO, 0) AS VALOR_A_FATURAR, ' +
                   'COALESCE(P1.PED_VLTOTAL_LIQ,0) AS PED_VLTOTAL_LIQ, ';
               wSql2 := 'COALESCE(P1.PED_VLTOTAL_BRUTO,0) AS PED_VLTOTAL_BRUTO,COALESCE(P1.PED_VLFATURADO,0) AS PED_VLFATURADO, FP.FPG_DESCRICAO '+
                        'FROM PED0000 P1 '+
@@ -1525,16 +1510,17 @@ begin
            if (Rad_Faturar.Checked) then
                   wSeleciona := wSeleciona + ' AND ((P1.PED_SITUACAO = ''F'') OR (P1.PED_SITUACAO = ''P''))';
            try
-             CdsRel5.Close;
-             SqlCdsRel05.SQL.Clear;
+             qRel05.Close;
+             qRel05.SQL.Clear;
              if chkMultiempresa.Checked then
                  wSeleciona := wSeleciona + ' AND p1.emp_codigo in ('+fListaEmpresas.commatext+')';
-             SqlCdsRel05.SQL.Text := wSql1+wSql2+wSql3+wSeleciona +IIF(wOrdem   <>'',' ORDER BY '+wordem,'');
+             qRel05.SQL.Text := wSql1+wSql2+wSql3+wSeleciona +IIF(wOrdem   <>'',' ORDER BY '+wordem,'');
              if dbInicio.IsDesenvolvimento then
-              copytoClipboard(SqlCdsRel05.SQL.Text);
-             CdsRel5.Open;
+              copytoClipboard(qRel05.SQL.Text);
+             qRel05.Open;
+             // CdsRel5.Open;
              ppDBRel05.AutocreateFields := True;
-             if CdsRel5.IsEmpty then
+             if qRel05.IsEmpty then
               GeraException('Não foi encontrado informações');
              LBL_05_EMPRESA.Caption  := DBINICIO.EMPRESA.RAZAO;
              if (Rad_Todos.Checked) then
@@ -2909,6 +2895,17 @@ begin
     text:= StringReplace(text,'of','de',[rfReplaceAll]);
 end;
 
+procedure TFormGImpPedido.qRel05CalcFields(DataSet: TDataSet);
+begin
+  inherited;
+    if (qRel05PED_SITUACAO.AsString = 'F') then
+       qRel05PED_STATUS_CC.AsString := 'À FATURAR';
+    if (qRel05PED_SITUACAO.AsString = 'P') then
+       qRel05PED_STATUS_CC.AsString := 'PARCIAL';
+    if (qRel05PED_SITUACAO.AsString = 'T') then
+       qRel05PED_STATUS_CC.AsString := 'FATURADO';
+end;
+
 procedure TFormGImpPedido.PaginaGetText(Sender: TObject; var Text: string);
 begin
   inherited;
@@ -3156,17 +3153,6 @@ procedure TFormGImpPedido.cdsVendaSegCalcFields(DataSet: TDataSet);
 begin
   inherited;
   cdsVendaSegCC_REPRES.AsCurrency :=  ((CdsVendaSegTOTAL_FAT.AsCurrency * 100)/CdsVendaSegTOTAL_GERAL_FAT.value);
-end;
-
-procedure TFormGImpPedido.SqlCdsRel05CalcFields(DataSet: TDataSet);
-begin
-    if (SqlCdsRel05PED_SITUACAO.AsString = 'F') then
-       SqlCdsRel05PED_STATUS_CC.AsString := 'À FATURAR';
-    if (SqlCdsRel05PED_SITUACAO.AsString = 'P') then
-       SqlCdsRel05PED_STATUS_CC.AsString := 'PARCIAL';
-    if (SqlCdsRel05PED_SITUACAO.AsString = 'T') then
-       SqlCdsRel05PED_STATUS_CC.AsString := 'FATURADO';
-  SqlCdsRel05VLRFATURAR.AsCurrency := SqlCdsRel05PED_VLTOTAL_BRUTO.AsCurrency - SqlCdsRel05PED_VLFATURADO.AsCurrency; 
 end;
 
 procedure TFormGImpPedido.ImprimiVendasSegmento;
