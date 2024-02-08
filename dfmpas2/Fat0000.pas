@@ -2226,22 +2226,22 @@ begin
     begin
          SGNotaFiscal.Canvas.FillRect(Rect);
          if (CDSNotasnf_status_nfe.AsString = 'N')or(CDSNotasnf_status_nfe.AsString = 'G') then
-           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,0)
+           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,0)    // cinza
          else
          if (CDSNotasnf_status_nfe.AsString = 'R') then
-           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,1)
+           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,1) // amarelo
          else
          if (CDSNotasnf_status_nfe.AsString = 'T') then
-           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,2)
+           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,2) // verde
          else
          if (CDSNotasnf_status_nfe.AsString = 'A') then
-           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,3)
+           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,3) // azul
          else
          if (CDSNotasnf_status_nfe.AsString = 'C') then
-           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,4)
+           Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,4) // vermelho
          else
           if (CDSNotasnf_status_nfe.AsString = 'O') then
-          Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,5);
+          Imagens.Draw(SGNotaFiscal.Canvas,Rect.Left+03,Rect.Top+1,5); // preto
     end;
 
 
