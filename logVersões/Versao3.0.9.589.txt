@@ -1,0 +1,11 @@
+﻿Atualizado em 08/02/2024
+Inicio da versão: 08/02/2024
+
+principal: Conforto Ambiental, LF EPIS, Embraterm, Collect
+    69 - Adicionar novos filtros na tela Relatório das Entradas e Saídas do estoque [Conforto Ambiental]
+   233 - Modificação para crm pós-vendas (clientes em atraso) [Novi]
+   892 - Relatório de clientes que nunca compraram [LF EPIS]
+  1803 - Mensagem de usuário inexistente [Novi]
+  1804 - Relatório de pedido á faturar [Embraterm]
+  1805 - Dashboard faturamento - nota denegada [Conforto Ambiental]
+  1806 - Incluir conta financeira na tela de consulta [Collect]
