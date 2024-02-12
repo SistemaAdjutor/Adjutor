@@ -21,7 +21,7 @@ uses
   ppClass, ppBands, ppCache, ppProd, ppReport, ppDB, ppComm, ppRelatv, clipbrd,
   ppDBPipe, ppModule, raCodMod, ppStrtch, ppSubRpt, daDataModule, MIDASLIB,
   ppParameter, frxClass, frxDBSet, frxExportPDF, frxExportXLS, Data.DBXFirebird,
-  ppDesignLayer, SimpleDS, JvExMask, JvToolEdit;
+  ppDesignLayer, SimpleDS, JvExMask, JvToolEdit, frxExportBaseDialog;
 
 type
   TFormGImpProduto = class(TForm)
@@ -967,14 +967,14 @@ begin
     LTBoxProdu.Items.Add('Relatório do Estoque Físico+Compras em Aberto (novo)'); //01 PPRP01
     LTBoxProdu.Items.Add('Relatório do Estoque Físico por Grade'); //02 PPRP01
     LTBoxProdu.Items.Add('Relatório Financeiro do Estoque (novo)');               //03 frxRelatorioFinanceiroEstoque
-    LTBoxProdu.Items.Add('----------------------------------------------------------------------Rel.Financeiro do Estoque por Período'); //04 PPRP09
-    LTBoxProdu.Items.Add('----------------------------------------------------------------------Rel.do Estoque com Variações'); //05 PPRP04
+    LTBoxProdu.Items.Add('Rel.Financeiro do Estoque por Período'); //04 PPRP09
+    LTBoxProdu.Items.Add('Rel.do Estoque com Variações'); //05 PPRP04
     LTBoxProdu.Items.Add('Tabela de Preços por Linha');                         //06 PPRP05
     LTBoxProdu.Items.Add('Tabela de Preços por Linha - Multi-Preços');           //07 ppRPTabMulti
-    LTBoxProdu.Items.Add('----------------------------------------------------------------------Código de Barras - Etiquetas');                        //08 nao tem
+    LTBoxProdu.Items.Add('Código de Barras - Etiquetas');                        //08 nao tem
     LTBoxProdu.Items.Add('Relatório de Produtos por Fornecedor');                //09 PPRP07
-    LTBoxProdu.Items.Add('----------------------------------------------------------------------Rel.Descrição das Variações');  //10 PPRP08
-    LTBoxProdu.Items.Add('----------------------------------------------------------------------Rel.produto acabado e semi-acabado'); //11 PPRP08
+    LTBoxProdu.Items.Add('Rel.Descrição das Variações');  //10 PPRP08
+    LTBoxProdu.Items.Add('Rel.produto acabado e semi-acabado'); //11 PPRP08
     LTBoxProdu.Items.Add('Relatório de Inventário de Estoque (novo)');            //12 frxInventarioEstoque
     LTBoxProdu.Items.Add('Relatório de Inventário de Estoque - NCM');            //13
     LTBoxProdu.Items.Add('Relatório de Estoque Físico com Código de barras');    //14
@@ -1002,6 +1002,7 @@ end;
 
 procedure TFormGImpProduto.BitOkClick(Sender: tObject);
 begin
+   wSeleciona := '';
    if LTBoxProdu.ItemIndex in [0,1,2,3,4,12,13,14]  then
    begin
 
@@ -2214,7 +2215,7 @@ begin
               end;
            if (CbTipo.ItemIndex <> 0)and(CbGrupo.ItemIndex <> 0)then
               begin
-                  wSeleciona:='AND P1.PTI_CODIGO = '''+wPTICOD+'''AND PRD0000.PGR_CODIGO = '''+wGRUCOD+'''';
+                  wSeleciona:='AND P1.PTI_CODIGO = '''+wPTICOD+'''AND P1.PGR_CODIGO = '''+wGRUCOD+'''';
                   LBL_07_LTITULO2.Caption := ' TIPO : '+wPTICOD+' - '+wPTIDES+' GRUPO : '+wGRUCOD+' - '+wGRUDES;
               end;
            if (CbTipo.ItemIndex <> 0)and(CbGrupo.ItemIndex = 0)then
@@ -2638,14 +2639,19 @@ begin
                                  '    (SELECT saldo_anterior FROM PCd_KARDEX_SALDO_FULL('+QuotedStr(PreencheEsquerda(dbInicio.Empresa.EMP_CODIGO,3))+', prd0000.prd_codigo, '+dataInicial+', '+dataFinal+', '+AlmoxSaldo+')) AS estoque_anterior, '+
                                  '    (SELECT entradas FROM PCd_KARDEX_SALDO_FULL('+QuotedStr(PreencheEsquerda(dbInicio.Empresa.EMP_CODIGO,3))+', prd0000.prd_codigo, '+dataInicial+', '+dataFinal+', '+AlmoxSaldo+')) AS estoque_entradas, '+
                                  '    (SELECT saidas FROM PCd_KARDEX_SALDO_FULL('+QuotedStr(PreencheEsquerda(dbInicio.Empresa.EMP_CODIGO,3))+', prd0000.prd_codigo, '+dataInicial+', '+dataFinal+', '+AlmoxSaldo+')) AS estoque_saidas, '+
-                                 '    (SELECT saldo FROM PCd_KARDEX_SALDO_FULL('+QuotedStr(PreencheEsquerda(dbInicio.Empresa.EMP_CODIGO,3))+',prd0000.prd_codigo, '+dataInicial+', '+dataFinal+', '+AlmoxSaldo+')) AS estoque_atual '+
-
-
-                                 'from prd0000 '+
+                                 '    CASE ' +
+                                 '      WHEN (SELECT COUNT(PRDL_REGISTRO) FROM PRD_LOTE pl WHERE pl.PRD_CODIGO = prd0000.prd_codigo ' +  iif(AlmoxSaldo = '''9999''', '', ' AND pl.AMX_CODIGO = ' + AlmoxSaldo + ' AND pl.EMP_CODIGO = ' + QuotedStr(PreencheEsquerda(dbInicio.Empresa.EMP_CODIGO,3))) +  ') > 0 ' +
+                                 '        THEN (SELECT sum(PRDL_SALDO) FROM PRD_LOTE pl WHERE pl.PRD_CODIGO = prd0000.prd_codigo ' +  iif(AlmoxSaldo = '''9999''', '', ' AND pl.AMX_CODIGO = ' + AlmoxSaldo + ' AND pl.EMP_CODIGO = ' + QuotedStr(PreencheEsquerda(dbInicio.Empresa.EMP_CODIGO,3))) +  ') ' +
+                                 '      ELSE (SELECT saldo FROM PCd_KARDEX_SALDO_FULL('+QuotedStr(PreencheEsquerda(dbInicio.Empresa.EMP_CODIGO,3))+',prd0000.prd_codigo, '+dataInicial+', '+dataFinal+', '+AlmoxSaldo+'))  ' +
+                                 '    END AS estoque_atual ' +
+                                 ' from prd0000 '+
                                  '         left join PRD0000_ENDERECAMENTO en on en.prde_registro=prd0000.prde_registro '+
                                  '         left join prd_linha ln on ln.lin_codigo=prd0000.lin_codigo  '+
                                  sleftGrade +
                                  condicao+' '+condicaoAdicional+' '+AlmoxGeral+' '+ordenacao;
+
+   if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(CdsEstoqueNovo.CommandText);
 
    CdsEstoqueNovo.Open;
    CdsEstoqueNovo.First;
