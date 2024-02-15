@@ -6,7 +6,10 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StdCtrls, Buttons, Provider, SqlExpr,SqlClientDataSet, DB, DBClient, DBLocal,
   DBLocalS, Grids, DBGrids, RwFunc, FMTBCd, Mask,  rxToolEdit,  rxCurrEdit,
-  ComCtrls, SimpleDS, Data.DBXFirebird;
+  ComCtrls, SimpleDS, Data.DBXFirebird, System.ImageList, Vcl.ImgList, Vcl.Menus,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFormTransfClie = class(TForm)
@@ -31,22 +34,52 @@ type
     Dsclie: TDataSource;
     SqlClientes: TSQLDataSet;
     DspClientes: TDataSetProvider;
-    CdsClientes: TClientDataSet;
+    CdsClientesO: TClientDataSet;
     SqlClientesCLI_CODIGO: TStringField;
     SqlClientesCLI_RAZAO: TStringField;
     SqlClientesREP_CODIGO: TStringField;
     SqlClientesREP_NOME: TStringField;
-    CdsClientesCLI_CODIGO: TStringField;
-    CdsClientesCLI_RAZAO: TStringField;
-    CdsClientesREP_CODIGO: TStringField;
-    CdsClientesREP_NOME: TStringField;
-    CdsClientesREP_NOVO: TStringField;
-    CdsClientesREP_NVNOME: TStringField;
+    CdsClientesOCLI_CODIGO: TStringField;
+    CdsClientesOCLI_RAZAO: TStringField;
+    CdsClientesOREP_CODIGO: TStringField;
+    CdsClientesOREP_NOME: TStringField;
+    CdsClientesOREP_NOVO: TStringField;
+    CdsClientesOREP_NVNOME: TStringField;
     EditRepInativo: TCurrencyEdit;
     EditRepAtivo: TCurrencyEdit;
     StatusBar1: TStatusBar;
     lbl1: TLabel;
     edtEnumInativos: TEdit;
+    ImageList1: TImageList;
+    CdsClientesImageList: TImageList;
+    CdsClientesImageList2: TImageList;
+    CdsClientesOSelecao: TBooleanField;
+    PopupMenu1: TPopupMenu;
+    SelecionarTodos1: TMenuItem;
+    DesmarcarTodos1: TMenuItem;
+    GroupBox2: TGroupBox;
+    GroupBox3: TGroupBox;
+    CbSituacao: TComboBox;
+    CdsClientesOValor: TFMTBCDField;
+    CdsClientesOStatus: TStringField;
+    SqlClientesValor: TFMTBCDField;
+    SqlClientesStatus: TStringField;
+    CdsClientesOUltimoVencimento: TSQLTimeStampField;
+    CdsClientesOUltimaVenda: TSQLTimeStampField;
+    SqlClientesUltimoVencimento: TSQLTimeStampField;
+    SqlClientesUltimaVenda: TSQLTimeStampField;
+    cdsClientes: TFDQuery;
+    cdsClientesSelecao: TBooleanField;
+    cdsClientesCLI_CODIGO: TStringField;
+    cdsClientesCLI_RAZAO: TStringField;
+    cdsClientesREP_CODIGO: TStringField;
+    cdsClientesREP_NOME: TStringField;
+    cdsClientesREP_NOVO: TStringField;
+    cdsClientesREP_NVNOME: TStringField;
+    cdsClientesValor: TFMTBCDField;
+    cdsClientesStatus: TStringField;
+    cdsClientesUltimoVencimento: TSQLTimeStampField;
+    cdsClientesUltimaVenda: TSQLTimeStampField;
     procedure FormShow(Sender: tObject);
     procedure CbxRepInativoClick(Sender: tObject);
     procedure CbxRepAtivoClick(Sender: tObject);
@@ -63,6 +96,11 @@ type
     procedure dbgridClientesKeyPress(Sender: tObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormDestroy(Sender: TObject);
+    procedure dbgridClientesDrawColumnCell(Sender: TObject; const Rect: TRect;
+      DataCol: Integer; Column: TColumn; State: TGridDrawState);
+    procedure SelecionarTodos1Click(Sender: TObject);
+    procedure DesmarcarTodos1Click(Sender: TObject);
+    procedure CbSituacaoChange(Sender: TObject);
   private
     { Private declarations }
     procedure BuscaClientes;
@@ -135,6 +173,15 @@ begin
        end;
 end;
 
+procedure TFormTransfClie.CbSituacaoChange(Sender: TObject);
+begin
+  cdsClientes.Filtered := False;
+  if CbSituacao.Text = 'TODAS' then
+    Exit;
+  cdsClientes.Filter :=  'STATUS = ' + QuotedStr(cbSituacao.Text);
+  cdsClientes.Filtered := True;
+end;
+
 procedure TFormTransfClie.CbxRepAtivoClick(Sender: tObject);
 begin
     if CbxRepAtivo.ItemIndex <> 0 then
@@ -148,7 +195,24 @@ end;
 
 procedure TFormTransfClie.dbgridClientesDblClick(Sender: tObject);
 begin
+   CdsClientes.Edit;
+   CdsClientesSelecao.AsBoolean := not CdsClientesSelecao.AsBoolean;
+   CdsClientes.Post;
    AtribuirRepresentanteAtivo;
+end;
+
+procedure TFormTransfClie.dbgridClientesDrawColumnCell(Sender: TObject;
+  const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
+begin
+   if Column.Field = (CdsClientesSelecao) then
+   begin
+        DBGridClientes.Canvas.FillRect(Rect);
+        ImageList1.Draw(DBGridClientes.Canvas,Rect.Left+03,Rect.Top+1,0);
+        if (CdsClientesSelecao.AsBoolean) then
+           ImageList1.Draw(DBGridClientes.Canvas,Rect.Left+03,Rect.Top+1,2)
+        else
+           ImageList1.Draw(DBGridClientes.Canvas,Rect.Left+03,Rect.Top+1,0);
+   end;
 end;
 
 procedure TFormTransfClie.Bit_SairClick(Sender: tObject);
@@ -185,12 +249,19 @@ begin
       CdsClientes.DisableControls;
       while not CdsClientes.Eof do
         begin
+          if not CdsClientesSelecao.AsBoolean then
+          begin
+            CdsClientes.Next;
+            Continue;
+          end;
+
           CdsClientes.Edit;
           if CdsCLientesREP_NOVO.AsString <> '' then
              CdsCLientesREP_CODIGO.AsString := CdsCLientes.FieldByName('REP_NOVO').AsString
           else
             CdsCLientesREP_CODIGO.AsString := StrZero(EditRepAtivo.Text,3);
 
+          CdsClientes.Post;
           CdsClientes.ApplyUpdates(0);
           CdsClientes.Next;
         end;
@@ -206,6 +277,7 @@ begin
     uteis.aviso('Transferência Efetuada com Sucesso !');
     CbxRepInativo.ItemIndex := 0;
     CbxRepAtivo.ItemIndex   := 0;
+    CbSituacao.ItemIndex    := 0;
     EditRepInativo.Text     := '000';
     EditRepAtivo.Text       := '000';
 end;
@@ -214,8 +286,16 @@ procedure TFormTransfClie.BuscaClientes;
 begin
     try
       CdsClientes.Close;
-      CdsClientes.CommandText := SQLDEF('CLIENTES','Select C1.CLI_CODIGO,C1.CLI_RAZAO,C1.REP_CODIGO,R1.REP_NOME from CLI0000 C1 '+
-                                                   'JOIN REP0000 R1 ON C1.REP_CODIGO = R1.REP_CODIGO','WHERE R1.REP_CODIGO = '''+StrZero(EditRepInativo.Text,3)+'''','C1.CLI_RAZAO','C1.');
+      CdsClientes.SQL.Text := SQLDEF('CLIENTES',
+                                   'Select C1.CLI_CODIGO,C1.CLI_RAZAO,C1.REP_CODIGO,R1.REP_NOME,' +
+                                   ' (SELECT FIRST 1 FP.FPC_VLPARC FROM FAT_PC01 fp WHERE FP.CLI_CODIGO = c1.CLI_CODIGO ORDER BY fp.FPC_VENCTO DESC ) AS Valor, ' +
+                                   ' (SELECT FIRST 1 FP.FPC_STATUS FROM FAT_PC01 fp WHERE FP.CLI_CODIGO = c1.CLI_CODIGO ORDER BY fp.FPC_VENCTO DESC ) AS Status, ' +
+                                   ' (SELECT FIRST 1 FP.FPC_VENCTO FROM FAT_PC01 fp WHERE FP.CLI_CODIGO = c1.CLI_CODIGO ORDER BY fp.FPC_VENCTO DESC ) AS UltimoVencimento, ' +
+                                   ' (SELECT MAX(FAT_DTEMIS) FROM FAT0000 f WHERE F.CLI_CODIGO = c1.CLI_CODIGO) AS UltimaVenda ' +
+                                   '  from CLI0000 C1 '+
+                                   'JOIN REP0000 R1 ON C1.REP_CODIGO = R1.REP_CODIGO','WHERE R1.REP_CODIGO = '''+StrZero(EditRepInativo.Text,3)+'''','C1.CLI_RAZAO','C1.');
+      if dbInicio.IsDesenvolvimento then
+        CopyToClipBoard(CdsClientes.SQL.Text);
       CdsClientes.open;
       if CdsClientes.IsEmpty then
          begin
@@ -284,6 +364,26 @@ begin
    DataCadastros.sqlUpdate.Close;
 end;
 
+procedure TFormTransfClie.SelecionarTodos1Click(Sender: TObject);
+begin
+  if EditRepAtivo.Text = '' then
+  begin
+    Uteis.Aviso('Escolha um representante Ativo');
+    Exit;
+  end;
+  CdsClientes.First;
+  CdsClientes.DisableControls;
+  while not CdsClientes.Eof do
+  begin
+    CdsClientes.Edit;
+    CdsClientesSelecao.AsBoolean := True;
+    CdsClientes.Post;
+    AtribuirRepresentanteAtivo;
+    CdsClientes.Next;
+  end;
+  CdsClientes.EnableControls;
+end;
+
 procedure TFormTransfClie.CbxRepInativoEnter(Sender: tObject);
 begin
     CbxRepInativo.SelectAll;
@@ -335,6 +435,23 @@ begin
            AtribuirRepresentanteAtivo;
            Key := #0;
        end;
+end;
+
+procedure TFormTransfClie.DesmarcarTodos1Click(Sender: TObject);
+begin
+  CdsClientes.First;
+  CdsClientes.DisableControls;
+  while not CdsClientes.Eof do
+  begin
+    CdsClientes.Edit;
+    CdsClientesSelecao.AsBoolean := False;
+    CdsClientes.Post;
+    if EditRepAtivo.Text <> '' then
+      AtribuirRepresentanteAtivo;
+    CdsClientes.Next;
+    CdsClientes.EnableControls;
+  end;
+
 end;
 
 end.
