@@ -2748,6 +2748,8 @@ begin
   edVendedor.WherePersonalizado := ' WHERE REP_SITUACAO = ''A'' ' ;
   edVendInterno.WherePersonalizado := ' WHERE REP_SITUACAO = ''A'' ' ;
 
+  tsObsProducao.TabVisible := dbInicio.Empresa.PMT_HABILITAR_MRP;
+
 
 
 
