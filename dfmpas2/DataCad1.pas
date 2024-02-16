@@ -2131,7 +2131,8 @@ begin
                    FrmRetornoCNAB.SQLDupliCNAB.Close;
                    FrmRetornoCNAB.SQLDupliCNAB.PacketRecords := 10;
                    FrmRetornoCNAB.SQLDupliCNAB.CommandText := wSQL1+wSQL2+wSQL3+' WHERE D1.DCN_COD_REMESSA = '''+CdSArquivoCNABCNAB_REGISTRO.AsString+'''' +
-                                                            iif(Share('RECEBER')= 'E',' AND D1.EMP_CODIGO = '+QuotedStr(DBInicio.Empresa.EMP_CODIGO),'');
+                                                            iif(Share('RECEBER')= 'E',' AND D1.EMP_CODIGO = '+QuotedStr(DBInicio.Empresa.EMP_CODIGO),'') +
+                                                            ' ORDER BY F2.FPC_VENCTO ' ;
                    FrmRetornoCNAB.SQLDupliCNAB.Open;
                finally
                    CdSArquivoCNAB.EnableControls;
