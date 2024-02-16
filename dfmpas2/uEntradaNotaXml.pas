@@ -246,6 +246,7 @@ type
     function ConverterPISCOFINS( const CST : string ; const Base: Currency) : string;
     function ValidaFornecedor:Boolean;
     procedure CadastraFornecedor;
+    procedure AtualizaFornecedor;
     procedure BuscaOperacaoCFOP(const pNat: String);
     procedure AtualizarTabelaPrecos (const prd_codigo : string);
 
@@ -877,6 +878,35 @@ begin
          // CdsItens.GotoBookmark(point);
          CdsItens.RecNo := registro;
       end;
+end;
+
+procedure TFrmEntradaNotaXml.AtualizaFornecedor;
+var
+  sCodigoCidade: string;
+begin
+
+     DataCadastros.CdsFornecedor.Close;
+     DataCadastros.CdsFornecedor.CommandText := SQLDEF('FORNECEDORES','SELECT F1.* FROM FOR0000 F1',' where FOR_CODIGO = ' + QuotedStr(sRegistroFornecedor),'F1.FOR_CODIGO','F1.');
+     DataCadastros.CdsFornecedor.Open;
+
+     //Localiza cidade tabela
+     DataCadastros.sqlUpdate.Close;
+     DataCadastros.SqlUpdate.sql.text :='SELECT T1.CID_CODIGO FROM CID0000 T1 WHERE T1.CID_COD_IBGE = '+IntToStr(FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Emit.EnderEmit.cMun) ;
+     DataCadastros.sqlUpdate.open;
+     if (not DataCadastros.sqlUpdate.IsEmpty) then
+        sCodigoCidade := DataCadastros.sqlUpdate.FieldByName('CID_CODIGO').AsString;
+     DataCadastros.sqlUpdate.Close;
+
+     //Cadastra Fornecedor
+     DataCadastros.CdsFornecedor.Edit;
+     DataCadastros.CdsFornecedorFOR_ENDERE.AsString := UpperCase(edtFornecedorEndereco.Text+','+edtFornecedorNumero.Text);
+     DataCadastros.CdsFornecedorFOR_CIDADE.AsString := UpperCase(edtFornecedorCidade.Text);
+     DataCadastros.CdsFornecedorFOR_UF.AsString := UpperCase(edtFornecedorUF.Text);
+     DataCadastros.CdsFornecedorFOR_CEP.AsString := ExtrairNumeros(edtFornecedorCEP.Text);
+     DataCadastros.CdsFornecedorFOR_BAIRRO.AsString := UpperCase(edtFornecedorBairro.Text);
+     DataCadastros.CdsFornecedorCID_CODIGO.AsString := sCodigoCidade;
+     DataCadastros.CdsFornecedor.ApplyUpdates(0);
+
 end;
 
 procedure TFrmEntradaNotaXml.AtualizarTabelaPrecos(const prd_codigo: string);
@@ -1803,6 +1833,7 @@ begin
             end;
          FormNfEntrada.sFornecedorImportado := sRegistroFornecedor;
          FormNfEntrada.EdtNota.Text := NumeroNota;
+         AtualizaFornecedor; // Atualiza endereço do fornecedor
          CommitTransaction;
          Commit;
          FormNfEntrada.CommitTransaction;
