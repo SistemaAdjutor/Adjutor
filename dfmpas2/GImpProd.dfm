@@ -13,7 +13,7 @@ object FormGImpProduto: TFormGImpProduto
   Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
@@ -1075,6 +1075,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1093,6 +1094,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -1102,22 +1111,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -1125,13 +1146,26 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1074
     Top = 117
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBProdutos'
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 22754
       mmPrintPosition = 0
@@ -1139,6 +1173,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1152,13 +1187,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -1172,13 +1209,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -1192,13 +1231,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -1211,6 +1252,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1224,6 +1266,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1244,6 +1287,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1264,13 +1308,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -1284,13 +1330,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESCRI'#199#195'O DO PRODUTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 21960
@@ -1304,13 +1352,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UND'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 91546
@@ -1324,13 +1374,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENTRADA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -1345,13 +1397,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SAIDA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -1366,13 +1420,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE MINIMO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -1388,13 +1444,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE ATUAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -1410,13 +1468,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OBS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -1430,6 +1490,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1443,13 +1504,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RESERVA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3260
@@ -1461,8 +1524,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -1472,6 +1534,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -1493,6 +1556,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -1514,6 +1578,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -1536,6 +1601,7 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_ENTRADA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -1560,6 +1626,7 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_SAIDA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -1584,6 +1651,7 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_MINIMO'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -1607,6 +1675,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -1630,13 +1699,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label101'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '______________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 173567
@@ -1651,6 +1722,7 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_RESERVA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -1671,7 +1743,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -1679,6 +1751,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1692,13 +1765,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Itens Listados:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 529
@@ -1712,6 +1787,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1733,6 +1809,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -1754,30 +1831,31 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060F
-        5661726961626C65314F6E43616C630B50726F6772616D54797065070B747450
-        726F63656475726506536F7572636506B570726F636564757265205661726961
-        626C65314F6E43616C63287661722056616C75653A2056617269616E74293B0D
-        0A626567696E0D0A202056616C7565203A3D2028444250726F6475746F735B27
-        5052445F4553544F515545275D2B444250726F6475746F735B275052445F454E
-        5452414441275D292D28444250726F6475746F735B275052445F534149444127
-        5D2B20444250726F6475746F735B275052445F52455345525641275D293B0D0A
-        656E643B0D0A0D436F6D706F6E656E744E616D6506095661726961626C653109
-        4576656E744E616D6506064F6E43616C63074576656E74494402210843617265
-        74506F730102000200000001060F5472614576656E7448616E646C65720B5072
-        6F6772616D4E616D65060F5661726961626C65344F6E43616C630B50726F6772
-        616D54797065070B747450726F63656475726506536F7572636506ED70726F63
-        6564757265205661726961626C65344F6E43616C63287661722056616C75653A
-        2056617269616E74293B0D0A5661720D0A202077546F74616C3A43757272656E
-        63793B0D0A626567696E0D0A202077546F74616C3A3D77546F74616C202B2028
-        444250726F6475746F735B275052445F4553544F515545275D202B2044425072
-        6F6475746F735B275052445F454E5452414441275D29202D2028444250726F64
-        75746F735B275052445F5341494441275D2B444250726F6475746F735B275052
-        445F52455345525641275D293B0D0A202056616C7565203A3D2077546F74616C
-        3B0D0A656E643B0D0A0D436F6D706F6E656E744E616D6506095661726961626C
-        6534094576656E744E616D6506064F6E43616C63074576656E74494402210843
-        61726574506F730102000200000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable1OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable1OnCalc(var Value: Variant);'#13#10'begin'#13#10'  Value :' +
+          '= (DBProdutos['#39'PRD_ESTOQUE'#39']+DBProdutos['#39'PRD_ENTRADA'#39'])-(DBProdu' +
+          'tos['#39'PRD_SAIDA'#39']+ DBProdutos['#39'PRD_RESERVA'#39']);'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable1'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable4OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable4OnCalc(var Value: Variant);'#13#10'Var'#13#10'  wTotal:Cu' +
+          'rrency;'#13#10'begin'#13#10'  wTotal:=wTotal + (DBProdutos['#39'PRD_ESTOQUE'#39'] + ' +
+          'DBProdutos['#39'PRD_ENTRADA'#39']) - (DBProdutos['#39'PRD_SAIDA'#39']+DBProdutos' +
+          '['#39'PRD_RESERVA'#39']);'#13#10'  Value := wTotal;'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable4'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
@@ -1795,6 +1873,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1811,6 +1890,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -1820,22 +1907,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -1843,13 +1942,26 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1074
     Top = 256
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBProdutos'
     object ppHeaderBand2: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 22754
       mmPrintPosition = 0
@@ -1857,6 +1969,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer3
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1870,13 +1983,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -1890,13 +2005,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -1910,13 +2027,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -1929,6 +2048,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer3
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1942,6 +2062,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1962,6 +2083,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1982,13 +2104,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -2002,13 +2126,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRODUTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 19315
@@ -2022,13 +2148,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UND'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 89694
@@ -2042,13 +2170,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SALDO INICIAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2064,13 +2194,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENTRADA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2085,13 +2217,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SAIDA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2106,13 +2240,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RESERVA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2128,13 +2264,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE ATUAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -2150,13 +2288,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OBS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -2170,6 +2310,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer3
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2180,8 +2321,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppDVariacao: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 10848
@@ -2191,6 +2331,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -2212,6 +2353,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -2233,6 +2375,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -2255,6 +2398,7 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_ESTOQUE'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -2279,6 +2423,7 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_ENTRADA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -2303,6 +2448,7 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_SAIDA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -2327,6 +2473,7 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_RESERVA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -2350,6 +2497,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -2373,13 +2521,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '________________'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 170657
@@ -2411,6 +2561,7 @@ object FormGImpProduto: TFormGImpProduto
           DataPipeline = ppDBProdutos
           PrinterSetup.BinName = 'Default'
           PrinterSetup.DocumentName = 'Report'
+          PrinterSetup.Duplex = dpNone
           PrinterSetup.PaperName = 'Carta'
           PrinterSetup.PrinterName = 'Default'
           PrinterSetup.SaveDeviceSettings = False
@@ -2422,12 +2573,11 @@ object FormGImpProduto: TFormGImpProduto
           PrinterSetup.mmPaperWidth = 216000
           PrinterSetup.PaperSize = 1
           Units = utMillimeters
-          Version = '16.02'
+          Version = '22.0'
           mmColumnWidth = 0
           DataPipelineName = 'ppDBProdutos'
           object ppDetailBand4: TppDetailBand
-            Background1.Brush.Style = bsClear
-            Background2.Brush.Style = bsClear
+            Border.mmPadding = 0
             mmBottomOffset = 0
             mmHeight = 6879
             mmPrintPosition = 0
@@ -2436,6 +2586,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText1'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DCVAR1'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2457,6 +2608,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText9'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_VAR1'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2478,6 +2630,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText10'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DCVAR2'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2499,6 +2652,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText2'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_VAR2'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2520,6 +2674,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText12'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DCVAR3'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2541,6 +2696,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText13'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_VAR3'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2562,6 +2718,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText14'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DCVAR4'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2583,6 +2740,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText3'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_VAR4'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2604,6 +2762,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText4'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DCVAR5'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2625,6 +2784,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText17'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_VAR5'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2646,6 +2806,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText18'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DCVAR6'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2667,6 +2828,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText19'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_VAR6'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2688,6 +2850,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText20'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DCVAR7'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2709,6 +2872,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText21'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_VAR7'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2730,6 +2894,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText22'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_DCVAR8'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2751,6 +2916,7 @@ object FormGImpProduto: TFormGImpProduto
               UserName = 'DBText23'
               HyperlinkEnabled = False
               Border.Weight = 1.000000000000000000
+              Border.mmPadding = 0
               DataField = 'PRD_VAR8'
               DataPipeline = ppDBProdutos
               Font.Charset = DEFAULT_CHARSET
@@ -2779,7 +2945,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppSummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 3969
@@ -2788,6 +2954,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer3
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2801,13 +2968,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Itens Listados:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 529
@@ -2821,6 +2990,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2842,6 +3012,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -2863,30 +3034,31 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060F
-        5661726961626C65314F6E43616C630B50726F6772616D54797065070B747450
-        726F63656475726506536F7572636506B470726F636564757265205661726961
-        626C65314F6E43616C63287661722056616C75653A2056617269616E74293B0D
-        0A626567696E0D0A202056616C7565203A3D2028444250726F6475746F735B27
-        5052445F4553544F515545275D2B444250726F6475746F735B275052445F454E
-        5452414441275D292D28444250726F6475746F735B275052445F534149444127
-        5D2B444250726F6475746F735B275052445F52455345525641275D293B0D0A65
-        6E643B0D0A0D436F6D706F6E656E744E616D6506095661726961626C65310945
-        76656E744E616D6506064F6E43616C63074576656E7449440221084361726574
-        506F730102000200000001060F5472614576656E7448616E646C65720B50726F
-        6772616D4E616D65060F5661726961626C65324F6E43616C630B50726F677261
-        6D54797065070B747450726F63656475726506536F7572636506EE70726F6365
-        64757265205661726961626C65324F6E43616C63287661722056616C75653A20
-        56617269616E74293B0D0A7661720D0A202077546F74616C3A43757272656E63
-        793B0D0A626567696E0D0A2020202077546F74616C3A3D2077546F74616C202B
-        2028444250726F6475746F735B275052445F4553544F515545275D2B44425072
-        6F6475746F735B275052445F454E5452414441275D292D28444250726F647574
-        6F735B275052445F5341494441275D2B444250726F6475746F735B275052445F
-        52455345525641275D293B0D0A2020202056616C7565203A3D2077546F74616C
-        3B0D0A656E643B0D0A0D436F6D706F6E656E744E616D6506095661726961626C
-        6532094576656E744E616D6506064F6E43616C63074576656E74494402210843
-        61726574506F730102000200000000}
+      object raProgramInfo3: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable1OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable1OnCalc(var Value: Variant);'#13#10'begin'#13#10'  Value :' +
+          '= (DBProdutos['#39'PRD_ESTOQUE'#39']+DBProdutos['#39'PRD_ENTRADA'#39'])-(DBProdu' +
+          'tos['#39'PRD_SAIDA'#39']+DBProdutos['#39'PRD_RESERVA'#39']);'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable1'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo4: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable2OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable2OnCalc(var Value: Variant);'#13#10'var'#13#10'  wTotal:Cu' +
+          'rrency;'#13#10'begin'#13#10'    wTotal:= wTotal + (DBProdutos['#39'PRD_ESTOQUE'#39']' +
+          '+DBProdutos['#39'PRD_ENTRADA'#39'])-(DBProdutos['#39'PRD_SAIDA'#39']+DBProdutos[' +
+          #39'PRD_RESERVA'#39']);'#13#10'    Value := wTotal;'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable2'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
     end
     object ppDesignLayers3: TppDesignLayers
       object ppDesignLayer3: TppDesignLayer
@@ -2904,6 +3076,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -2922,6 +3095,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -2931,22 +3112,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -2954,13 +3147,26 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1074
     Top = 208
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBProdutos'
     object ppHeaderBand3: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 21696
       mmPrintPosition = 0
@@ -2968,6 +3174,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer4
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2981,13 +3188,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -3001,13 +3210,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -3021,13 +3232,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -3040,6 +3253,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer4
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3053,6 +3267,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3073,6 +3288,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3093,13 +3309,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -3113,13 +3331,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRODUTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 19844
@@ -3133,13 +3353,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UND'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 96044
@@ -3153,13 +3375,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CUSTO UNITARIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -3175,13 +3399,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE ATUAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -3197,13 +3423,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P.CUSTO TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -3218,6 +3446,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer4
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3231,13 +3460,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CUSTO M'#201'DIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -3253,13 +3484,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label59'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P.M'#201'DIO TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -3272,8 +3505,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppDetailBand3: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -3283,6 +3515,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -3304,6 +3537,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -3325,6 +3559,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -3346,6 +3581,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -3369,6 +3605,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PCUSTO'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,##0.00'
@@ -3392,6 +3629,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         DataType = dtCurrency
@@ -3415,6 +3653,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PMEDIO'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,##0.00'
@@ -3438,6 +3677,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 2
         DataType = dtCurrency
@@ -3458,7 +3698,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppSummaryBand3: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -3466,6 +3706,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer4
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3479,13 +3720,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Itens Listados:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 529
@@ -3499,6 +3742,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3520,6 +3764,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -3544,6 +3789,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         DataType = dtCurrency
@@ -3568,6 +3814,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 2
         DataType = dtCurrency
@@ -3589,76 +3836,84 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object raCodeModule3: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060F
-        5661726961626C65314F6E43616C630B50726F6772616D54797065070B747450
-        726F63656475726506536F7572636506CE70726F636564757265205661726961
-        626C65314F6E43616C63287661722056616C75653A2056617269616E74293B0D
-        0A626567696E0D0A202056616C7565203A3D2028444250726F6475746F735B27
-        5052445F4553544F515545275D2B444250726F6475746F735B275052445F454E
-        5452414441275D292D28444250726F6475746F735B275052445F534149444127
-        5D2B444250726F6475746F735B275052445F52455345525641275D2B44425072
-        6F6475746F735B275052445F454D50454E484F275D293B0D0A656E643B0D0A0D
-        436F6D706F6E656E744E616D6506095661726961626C6531094576656E744E61
-        6D6506064F6E43616C63074576656E7449440221084361726574506F73010200
-        0200000001060F5472614576656E7448616E646C65720B50726F6772616D4E61
-        6D65060F5661726961626C65324F6E43616C630B50726F6772616D5479706507
-        0B747450726F63656475726506536F7572636506D270726F6365647572652056
-        61726961626C65324F6E43616C63287661722056616C75653A2056617269616E
-        74293B0D0A7661720D0A202077546F74616C3A43757272656E63793B0D0A6265
-        67696E0D0A2020202077546F74616C3A3D2077546F74616C202B202844425072
-        6F6475746F735B275052445F4553544F515545275D2B444250726F6475746F73
-        5B275052445F454E5452414441275D292D444250726F6475746F735B27505244
-        5F5341494441275D3B0D0A2020202056616C7565203A3D2077546F74616C3B0D
-        0A656E643B0D0A0D436F6D706F6E656E744E616D6506095661726961626C6532
-        094576656E744E616D6506064F6E43616C63074576656E744944022108436172
-        6574506F730102000200000001060F5472614576656E7448616E646C65720B50
-        726F6772616D4E616D65060F5661726961626C65374F6E43616C630B50726F67
-        72616D54797065070B747450726F63656475726506536F7572636506B570726F
-        636564757265205661726961626C65374F6E43616C63287661722056616C7565
-        3A2056617269616E74293B0D0A626567696E0D0A2020202056616C7565203A3D
-        202828444250726F6475746F735B275052445F4553544F515545275D2B444250
-        726F6475746F735B275052445F454E5452414441275D292D444250726F647574
-        6F735B275052445F5341494441275D292A444250726F6475746F735B27505244
-        5F50435553544F275D3B0D0A656E643B0D0A0D436F6D706F6E656E744E616D65
-        06095661726961626C6537094576656E744E616D6506064F6E43616C63074576
-        656E7449440221084361726574506F730102000200000001060F547261457665
-        6E7448616E646C65720B50726F6772616D4E616D65060F5661726961626C6539
-        4F6E43616C630B50726F6772616D54797065070B747450726F63656475726506
-        536F757263650C0301000070726F636564757265205661726961626C65394F6E
-        43616C63287661722056616C75653A2056617269616E74293B0D0A7661720D0A
-        202077546F74616C437573746F3A43757272656E63793B0D0A626567696E0D0A
-        2020202077546F74616C437573746F3A3D2077546F74616C437573746F202B20
-        282828444250726F6475746F735B275052445F4553544F515545275D2B444250
-        726F6475746F735B275052445F454E5452414441275D292D444250726F647574
-        6F735B275052445F5341494441275D292A444250726F6475746F735B27505244
-        5F50435553544F275D293B0D0A2020202056616C7565203A3D2077546F74616C
-        437573746F3B0D0A656E643B0D0A0D436F6D706F6E656E744E616D6506095661
-        726961626C6539094576656E744E616D6506064F6E43616C63074576656E7449
-        440221084361726574506F730102000200000001060F5472614576656E744861
-        6E646C65720B50726F6772616D4E616D65060F5661726961626C65334F6E4361
-        6C630B50726F6772616D54797065070B747450726F63656475726506536F7572
-        636506B770726F636564757265205661726961626C65334F6E43616C63287661
-        722056616C75653A2056617269616E74293B0D0A626567696E0D0A0D0A202056
-        616C7565203A3D202828444250726F6475746F735B275052445F4553544F5155
-        45275D2B444250726F6475746F735B275052445F454E5452414441275D292D44
-        4250726F6475746F735B275052445F5341494441275D292A444250726F647574
-        6F735B275052445F504D4544494F275D3B0D0A0D0A656E643B0D0A0D436F6D70
-        6F6E656E744E616D6506095661726961626C6533094576656E744E616D650606
-        4F6E43616C63074576656E7449440221084361726574506F7301020002000000
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650610
-        5661726961626C6531314F6E43616C630B50726F6772616D54797065070B7474
-        50726F63656475726506536F757263650C0401000070726F6365647572652056
-        61726961626C6531314F6E43616C63287661722056616C75653A205661726961
-        6E74293B0D0A7661720D0A202077546F74616C4D6564696F3A43757272656E63
-        793B0D0A626567696E0D0A2020202077546F74616C4D6564696F3A3D2077546F
-        74616C4D6564696F202B20282828444250726F6475746F735B275052445F4553
-        544F515545275D2B444250726F6475746F735B275052445F454E545241444127
-        5D292D444250726F6475746F735B275052445F5341494441275D292A44425072
-        6F6475746F735B275052445F504D4544494F275D293B0D0A2020202056616C75
-        65203A3D2077546F74616C4D6564696F3B0D0A656E643B0D0A0D436F6D706F6E
-        656E744E616D65060A5661726961626C653131094576656E744E616D6506064F
-        6E43616C63074576656E7449440221084361726574506F730102000200000000}
+      object raProgramInfo5: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable1OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable1OnCalc(var Value: Variant);'#13#10'begin'#13#10'  Value :' +
+          '= (DBProdutos['#39'PRD_ESTOQUE'#39']+DBProdutos['#39'PRD_ENTRADA'#39'])-(DBProdu' +
+          'tos['#39'PRD_SAIDA'#39']+DBProdutos['#39'PRD_RESERVA'#39']+DBProdutos['#39'PRD_EMPEN' +
+          'HO'#39']);'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable1'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo6: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable2OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable2OnCalc(var Value: Variant);'#13#10'var'#13#10'  wTotal:Cu' +
+          'rrency;'#13#10'begin'#13#10'    wTotal:= wTotal + (DBProdutos['#39'PRD_ESTOQUE'#39']' +
+          '+DBProdutos['#39'PRD_ENTRADA'#39'])-DBProdutos['#39'PRD_SAIDA'#39'];'#13#10'    Value ' +
+          ':= wTotal;'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable2'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo7: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable7OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable7OnCalc(var Value: Variant);'#13#10'begin'#13#10'    Value' +
+          ' := ((DBProdutos['#39'PRD_ESTOQUE'#39']+DBProdutos['#39'PRD_ENTRADA'#39'])-DBPro' +
+          'dutos['#39'PRD_SAIDA'#39'])*DBProdutos['#39'PRD_PCUSTO'#39'];'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable7'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo8: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable9OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable9OnCalc(var Value: Variant);'#13#10'var'#13#10'  wTotalCus' +
+          'to:Currency;'#13#10'begin'#13#10'    wTotalCusto:= wTotalCusto + (((DBProdut' +
+          'os['#39'PRD_ESTOQUE'#39']+DBProdutos['#39'PRD_ENTRADA'#39'])-DBProdutos['#39'PRD_SAI' +
+          'DA'#39'])*DBProdutos['#39'PRD_PCUSTO'#39']);'#13#10'    Value := wTotalCusto;'#13#10'end' +
+          ';'#13#10
+        raProgram.ComponentName = 'Variable9'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo9: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable3OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable3OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+          ' := ((DBProdutos['#39'PRD_ESTOQUE'#39']+DBProdutos['#39'PRD_ENTRADA'#39'])-DBPro' +
+          'dutos['#39'PRD_SAIDA'#39'])*DBProdutos['#39'PRD_PMEDIO'#39'];'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable3'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo10: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable11OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable11OnCalc(var Value: Variant);'#13#10'var'#13#10'  wTotalMe' +
+          'dio:Currency;'#13#10'begin'#13#10'    wTotalMedio:= wTotalMedio + (((DBProdu' +
+          'tos['#39'PRD_ESTOQUE'#39']+DBProdutos['#39'PRD_ENTRADA'#39'])-DBProdutos['#39'PRD_SA' +
+          'IDA'#39'])*DBProdutos['#39'PRD_PMEDIO'#39']);'#13#10'    Value := wTotalMedio;'#13#10'en' +
+          'd;'#13#10
+        raProgram.ComponentName = 'Variable11'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
     end
     object ppDesignLayers4: TppDesignLayers
       object ppDesignLayer4: TppDesignLayer
@@ -3687,6 +3942,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -3703,6 +3959,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -3712,22 +3976,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -3735,14 +4011,27 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1073
     Top = 361
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBProdForn'
     object pp07HeaderBand1: TppHeaderBand
       BeforePrint = pp07HeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 15610
       mmPrintPosition = 0
@@ -3750,6 +4039,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer5
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3763,13 +4053,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_04_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_07_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -3783,13 +4075,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_04_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_07_LTITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -3803,13 +4097,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_04_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_07_LTITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -3822,6 +4118,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer5
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3835,6 +4132,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3855,6 +4153,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3872,8 +4171,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object pp07DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 6879
       mmPrintPosition = 0
@@ -3882,6 +4180,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FOR_CODIGO'
         DataPipeline = ppDBProdForn
         Font.Charset = DEFAULT_CHARSET
@@ -3904,6 +4203,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FOR_RAZAO'
         DataPipeline = ppDBProdForn
         Font.Charset = DEFAULT_CHARSET
@@ -3926,13 +4226,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cidade.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 85196
@@ -3946,6 +4248,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FOR_CIDADE'
         DataPipeline = ppDBProdForn
         Font.Charset = DEFAULT_CHARSET
@@ -3968,13 +4271,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fone.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 140494
@@ -3988,6 +4293,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FOR_FONE'
         DataPipeline = ppDBProdForn
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -4011,13 +4317,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fax.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 173832
@@ -4031,6 +4339,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FOR_FAX'
         DataPipeline = ppDBProdForn
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -4054,13 +4363,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Contato.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -4074,6 +4385,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FOR_CONTATO'
         DataPipeline = ppDBProdForn
         Font.Charset = DEFAULT_CHARSET
@@ -4096,13 +4408,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'E-mail:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 51594
@@ -4116,6 +4430,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FOR_EMAIL'
         DataPipeline = ppDBProdForn
         Font.Charset = DEFAULT_CHARSET
@@ -4138,13 +4453,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cod:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -4155,7 +4472,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppSummaryBand4: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3440
       mmPrintPosition = 0
@@ -4164,13 +4481,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Produtos Listados.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -4184,6 +4503,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBProdForn
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4215,7 +4535,7 @@ object FormGImpProduto: TFormGImpProduto
       DataPipelineName = 'ppDBProdForn'
       NewFile = False
       object pp07GroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 4233
         mmPrintPosition = 0
@@ -4223,6 +4543,7 @@ object FormGImpProduto: TFormGImpProduto
           DesignLayer = ppDesignLayer5
           UserName = 'Line13'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -4237,6 +4558,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText3'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'PRD_REFER'
           DataPipeline = ppDBProdForn
           Font.Charset = DEFAULT_CHARSET
@@ -4260,6 +4582,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText5'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'PRD_DESCRI'
           DataPipeline = ppDBProdForn
           Font.Charset = DEFAULT_CHARSET
@@ -4283,13 +4606,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label34'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Ref.:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3175
           mmLeft = 111919
@@ -4304,13 +4629,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label31'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Produto.:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3175
           mmLeft = 0
@@ -4322,7 +4649,7 @@ object FormGImpProduto: TFormGImpProduto
         end
       end
       object pp07GroupFooterBand1: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 265
@@ -4331,6 +4658,7 @@ object FormGImpProduto: TFormGImpProduto
           DesignLayer = ppDesignLayer5
           UserName = 'Line3'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -4343,7 +4671,6 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object raCodeModule4: TraCodeModule
-      ProgramStream = {00}
     end
     object ppDesignLayers5: TppDesignLayers
       object ppDesignLayer5: TppDesignLayer
@@ -4427,6 +4754,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -4443,6 +4771,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -4452,22 +4788,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -4475,13 +4823,26 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1074
     Top = 162
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBProdutos'
     object pp01HeaderBand4: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 23019
       mmPrintPosition = 0
@@ -4489,6 +4850,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer6
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4502,13 +4864,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -4522,13 +4886,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -4542,13 +4908,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -4561,6 +4929,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer6
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4574,6 +4943,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4594,6 +4964,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -4614,13 +4985,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -4634,13 +5007,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRODUTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 20638
@@ -4654,13 +5029,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UND'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 89959
@@ -4674,13 +5051,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'COMPRAS EM ABERTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -4696,13 +5075,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE+ COMPRAS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -4717,6 +5098,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer6
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -4730,13 +5112,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ENTRADAS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -4751,13 +5135,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SAIDAS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -4772,13 +5158,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label37'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE ATUAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -4794,13 +5182,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label45'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RESERVA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3260
@@ -4812,8 +5202,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object pp01DetailBand4: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -4823,6 +5212,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -4844,6 +5234,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -4865,6 +5256,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -4886,6 +5278,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -4909,6 +5302,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_ENTRADA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -4932,6 +5326,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_SAIDA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -4955,6 +5350,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PENDENTE'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -4978,6 +5374,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_RESERVA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -5001,6 +5398,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Variable12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         DataType = dtCurrency
@@ -5021,7 +5419,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object pp01SummaryBand5: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -5029,6 +5427,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer6
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5042,13 +5441,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Itens Listados:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 529
@@ -5062,6 +5463,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -5080,30 +5482,31 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object raCodeModule5: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060F
-        5661726961626C65374F6E43616C630B50726F6772616D54797065070B747450
-        726F63656475726506536F7572636506D970726F636564757265205661726961
-        626C65374F6E43616C63287661722056616C75653A2056617269616E74293B0D
-        0A626567696E0D0A2020202056616C7565203A3D202828444250726F6475746F
-        735B275052445F4553544F515545275D202B20444250726F6475746F735B2750
-        52445F454E5452414441275D202B20444250726F6475746F735B275052445F50
-        454E44454E5445275D29202D2028444250726F6475746F735B275052445F5341
-        494441275D2B444250726F6475746F735B275052445F52455345525641275D29
-        293B0D0A656E643B0D0A0D436F6D706F6E656E744E616D650609566172696162
-        6C6537094576656E744E616D6506064F6E43616C63074576656E744944022108
-        4361726574506F730102000200000001060F5472614576656E7448616E646C65
-        720B50726F6772616D4E616D6506105661726961626C6531324F6E43616C630B
-        50726F6772616D54797065070B747450726F63656475726506536F7572636506
-        BF70726F636564757265205661726961626C6531324F6E43616C632876617220
-        56616C75653A2056617269616E74293B0D0A626567696E0D0A0D0A2056616C75
-        65203A3D202828444250726F6475746F735B275052445F4553544F515545275D
-        202B20444250726F6475746F735B275052445F454E5452414441275D29202D20
-        28444250726F6475746F735B275052445F5341494441275D2B444250726F6475
-        746F735B275052445F52455345525641275D29293B0D0A200D0A656E643B0D0A
-        0D436F6D706F6E656E744E616D65060A5661726961626C653132094576656E74
-        4E616D6506064F6E43616C63074576656E7449440221084361726574506F7301
-        02000200000000}
+      object raProgramInfo11: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable7OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable7OnCalc(var Value: Variant);'#13#10'begin'#13#10'    Value' +
+          ' := ((DBProdutos['#39'PRD_ESTOQUE'#39'] + DBProdutos['#39'PRD_ENTRADA'#39'] + DB' +
+          'Produtos['#39'PRD_PENDENTE'#39']) - (DBProdutos['#39'PRD_SAIDA'#39']+DBProdutos[' +
+          #39'PRD_RESERVA'#39']));'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable7'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo12: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable12OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable12OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10' Value' +
+          ' := ((DBProdutos['#39'PRD_ESTOQUE'#39'] + DBProdutos['#39'PRD_ENTRADA'#39']) - (' +
+          'DBProdutos['#39'PRD_SAIDA'#39']+DBProdutos['#39'PRD_RESERVA'#39']));'#13#10' '#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable12'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
     end
     object daDataModule1: TdaDataModule
     end
@@ -5123,6 +5526,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -5139,6 +5543,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -5148,22 +5560,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -5171,14 +5595,27 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1074
     Top = 308
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDB05'
     object pp05HeaderBand4: TppHeaderBand
       BeforePrint = pp05HeaderBand4BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 30000
       mmPrintPosition = 0
@@ -5186,6 +5623,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer7
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5199,13 +5637,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5080
         mmLeft = 0
@@ -5219,13 +5659,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_05_END1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3598
         mmLeft = 0
@@ -5238,6 +5680,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer7
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5251,6 +5694,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -5271,6 +5715,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -5291,13 +5736,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TABELA DE PRE'#199'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 5080
@@ -5312,13 +5759,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data da Ving'#234'ncia:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 0
@@ -5332,13 +5781,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_05_DATAVI'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_05_DATAVI'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 28310
@@ -5352,13 +5803,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_05_HOME'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_05_HOME'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 0
@@ -5372,13 +5825,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'PMT_CAB_TABPRECO'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PMT_CAB_TABPRECO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 5080
@@ -5390,8 +5845,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object pp05DetailBand4: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3440
@@ -5401,6 +5855,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -5422,6 +5877,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -5443,6 +5899,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText48'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_COMPL'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -5464,6 +5921,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PVENDA'
         DataPipeline = ppDB05
         DisplayFormat = '#,###0.000'
@@ -5487,6 +5945,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PESOKG'
         DataPipeline = ppDB05
         DisplayFormat = '#,###0.000'
@@ -5510,6 +5969,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText53'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_EMBALA'
         DataPipeline = ppDB05
         Font.Charset = DEFAULT_CHARSET
@@ -5531,6 +5991,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'IPI_ALIQ'
         DataPipeline = ppDB05
         DisplayFormat = '#,##0.00'
@@ -5564,7 +6025,7 @@ object FormGImpProduto: TFormGImpProduto
       DataPipelineName = 'ppDB05'
       NewFile = False
       object ppGroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 8202
         mmPrintPosition = 0
@@ -5573,6 +6034,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText1'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'LIN_DESCRI'
           DataPipeline = ppDB05
           Font.Charset = DEFAULT_CHARSET
@@ -5594,6 +6056,7 @@ object FormGImpProduto: TFormGImpProduto
           DesignLayer = ppDesignLayer7
           UserName = 'Line22'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -5608,13 +6071,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label51'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Refer'#234'ncia'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 0
@@ -5629,13 +6094,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label52'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Descri'#231#227'o do Produto'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 19844
@@ -5650,13 +6117,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label53'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Medida'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 100806
@@ -5671,13 +6140,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label54'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Pre'#231'o Unit'#225'rio'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 132557
@@ -5693,13 +6164,15 @@ object FormGImpProduto: TFormGImpProduto
           HyperlinkEnabled = False
           AutoSize = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Peso Kg'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 152400
@@ -5715,13 +6188,15 @@ object FormGImpProduto: TFormGImpProduto
           HyperlinkEnabled = False
           AutoSize = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Embalagem'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 169863
@@ -5736,13 +6211,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label57'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'IPI'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 189177
@@ -5756,6 +6233,7 @@ object FormGImpProduto: TFormGImpProduto
           DesignLayer = ppDesignLayer7
           UserName = 'Line25'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -5767,7 +6245,7 @@ object FormGImpProduto: TFormGImpProduto
         end
       end
       object ppGroupFooterBand1: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 265
@@ -5776,6 +6254,7 @@ object FormGImpProduto: TFormGImpProduto
           DesignLayer = ppDesignLayer7
           UserName = 'Line26'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -5883,6 +6362,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
@@ -5902,6 +6382,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -5911,22 +6399,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -5934,13 +6434,26 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1073
     Top = 414
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBProdutos'
     object pp08HeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 19315
       mmPrintPosition = 0
@@ -5948,6 +6461,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer8
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5961,13 +6475,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_04_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_08_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -5981,13 +6497,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_04_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_08_LTITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -6001,13 +6519,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_04_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_08_LTITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -6020,6 +6540,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer8
         UserName = 'Line5'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6033,6 +6554,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -6053,6 +6575,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -6073,13 +6596,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Referencia'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -6093,13 +6618,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o do Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 21431
@@ -6113,13 +6640,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label64'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Var1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6134,13 +6663,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Var2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6155,13 +6686,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label66'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Var3'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6176,13 +6709,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Var4'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6197,13 +6732,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Var5'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6218,13 +6755,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Var6'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6239,13 +6778,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label70'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Var7'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6260,13 +6801,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label701'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Var8'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3175
@@ -6280,6 +6823,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer8
         UserName = 'Line28'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6290,8 +6834,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object pp08DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3175
       mmPrintPosition = 0
@@ -6300,6 +6843,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6322,6 +6866,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6344,6 +6889,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR1'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6365,6 +6911,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR2'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6386,6 +6933,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText64'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR3'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6407,6 +6955,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText65'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR4'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6428,6 +6977,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText67'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR5'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6449,6 +6999,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText68'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR6'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6470,6 +7021,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText69'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR7'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6491,6 +7043,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText70'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR8'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -6509,7 +7062,6 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object raCodeModule7: TraCodeModule
-      ProgramStream = {00}
     end
     object ppDesignLayers8: TppDesignLayers
       object ppDesignLayer8: TppDesignLayer
@@ -6527,6 +7079,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -6545,6 +7098,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -6554,22 +7115,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -6577,13 +7150,26 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 968
     Top = 30
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBEstoque'
     object ppHeaderBand4: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 27252
       mmPrintPosition = 0
@@ -6591,6 +7177,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer9
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6605,13 +7192,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -6626,13 +7215,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -6647,13 +7238,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -6666,6 +7259,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer9
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6679,6 +7273,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -6699,6 +7294,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -6720,13 +7316,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -6741,13 +7339,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PRODUTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 22490
@@ -6762,13 +7362,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UND'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 100806
@@ -6783,13 +7385,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CUSTO UNITARIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -6806,13 +7410,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P.CUSTO TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -6827,6 +7433,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer9
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6841,13 +7448,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CUSTO M'#201'DIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -6864,13 +7473,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'P.M'#201'DIO TOTAL'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         WordWrap = True
@@ -6887,13 +7498,15 @@ object FormGImpProduto: TFormGImpProduto
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO3'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -6907,13 +7520,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ESTOQUE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -6925,8 +7540,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -6936,6 +7550,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBEstoque
         Font.Charset = DEFAULT_CHARSET
@@ -6957,6 +7572,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRICAO'
         DataPipeline = ppDBEstoque
         Font.Charset = DEFAULT_CHARSET
@@ -6978,6 +7594,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBEstoque
         Font.Charset = DEFAULT_CHARSET
@@ -6999,6 +7616,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PCUSTO'
         DataPipeline = ppDBEstoque
         DisplayFormat = '#,##0.00'
@@ -7022,6 +7640,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText63'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PMEDIO'
         DataPipeline = ppDBEstoque
         DisplayFormat = '#,##0.00'
@@ -7045,6 +7664,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText75'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'ESTOQUE_ATUAL'
         DataPipeline = ppDBEstoque
         DisplayFormat = '#,##0.000'
@@ -7068,6 +7688,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText76'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTAL_PCUSTO'
         DataPipeline = ppDBEstoque
         DisplayFormat = '#,##0.00'
@@ -7091,6 +7712,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText77'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTAL_PMEDIO'
         DataPipeline = ppDBEstoque
         DisplayFormat = '#,##0.00'
@@ -7111,7 +7733,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppSummaryBand5: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -7119,6 +7741,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer9
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -7132,13 +7755,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Itens Listados:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 529
@@ -7152,6 +7777,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBEstoque
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -7173,6 +7799,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTAL_PCUSTO'
         DataPipeline = ppDBEstoque
         DisplayFormat = '#,##0.00'
@@ -7196,6 +7823,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTAL_PMEDIO'
         DataPipeline = ppDBEstoque
         DisplayFormat = '#,##0.00'
@@ -7534,6 +8162,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -7549,6 +8178,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -7558,22 +8195,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -7581,13 +8230,26 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 992
     Top = 288
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBEstoquePA'
     object ppHeaderBand5: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 24342
       mmPrintPosition = 0
@@ -7596,13 +8258,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label_empresaEstPA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Label_empresaEstPA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 1058
@@ -7616,13 +8280,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Refer'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Refer'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 1852
@@ -7636,13 +8302,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DEscricao'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Descricao'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 39158
@@ -7656,13 +8324,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Saldo'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Saldo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 112448
@@ -7676,13 +8346,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Reserva'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 126207
@@ -7696,13 +8368,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label72'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Disposnivel'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 174361
@@ -7716,13 +8390,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label77'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Minimo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 160338
@@ -7736,13 +8412,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label82'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Produ'#231#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 143140
@@ -7755,6 +8433,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer10
         UserName = 'Line34'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -7768,6 +8447,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -7787,6 +8467,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -7806,13 +8487,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label83'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Relat'#243'rio de conferencia de saldo do estoque'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1058
@@ -7826,13 +8509,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LblTipo'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'lblTipo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1058
@@ -7846,13 +8531,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LblGrupo'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LblGrupo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1058
@@ -7865,6 +8552,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer10
         UserName = 'Line35'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -7875,8 +8563,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppDetailBand5: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 12700
       mmPrintPosition = 0
@@ -7885,6 +8572,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText78'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -7906,6 +8594,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText79'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -7927,6 +8616,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText80'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_SALDO'
         DataPipeline = ppDBEstoquePA
         DisplayFormat = '#00'
@@ -7950,6 +8640,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText81'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_RESERVA'
         DataPipeline = ppDBEstoquePA
         DisplayFormat = '#00'
@@ -7973,6 +8664,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText82'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISPONIVEL'
         DataPipeline = ppDBEstoquePA
         DisplayFormat = '#00'
@@ -7996,6 +8688,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText83'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR1'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8017,6 +8710,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText84'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR2'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8038,6 +8732,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText85'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR3'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8059,6 +8754,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText86'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR4'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8080,6 +8776,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText87'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR5'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8101,6 +8798,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText88'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISP_VAR1'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8122,6 +8820,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText90'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISP_VAR3'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8143,6 +8842,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText91'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISP_VAR4'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8164,6 +8864,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText92'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISP_VAR5'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8185,6 +8886,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText93'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_SALDOPRODUCAO'
         DataPipeline = ppDBEstoquePA
         DisplayFormat = '#00'
@@ -8208,6 +8910,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText94'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_MINIMO'
         DataPipeline = ppDBEstoquePA
         DisplayFormat = '#00'
@@ -8231,6 +8934,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText95'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR6'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8252,6 +8956,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText96'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR7'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8273,6 +8978,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText97'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DCVAR8'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8294,6 +9000,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText98'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISP_VAR6'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8315,6 +9022,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText99'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISP_VAR7'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8336,6 +9044,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText100'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISP_VAR8'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8356,6 +9065,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer10
         UserName = 'Line33'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -8369,6 +9079,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText89'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_DISP_VAR2'
         DataPipeline = ppDBEstoquePA
         Font.Charset = DEFAULT_CHARSET
@@ -8387,7 +9098,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppFooterBand1: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 4498
       mmPrintPosition = 0
@@ -8396,13 +9107,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label84'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde produtos :'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 529
@@ -8416,6 +9129,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBEstoquePA
         DisplayFormat = '00'
@@ -8449,7 +9163,7 @@ object FormGImpProduto: TFormGImpProduto
       DataPipelineName = 'ppDBEstoquePA'
       NewFile = False
       object ppGroupHeaderBand2: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 3440
         mmPrintPosition = 0
@@ -8458,6 +9172,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText101'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'PTI_DESCRI'
           DataPipeline = ppDBEstoquePA
           Font.Charset = DEFAULT_CHARSET
@@ -8480,6 +9195,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText102'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'PTI_CODIGO'
           DataPipeline = ppDBEstoquePA
           Font.Charset = DEFAULT_CHARSET
@@ -8502,6 +9218,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText103'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'PTI_SIGLA'
           DataPipeline = ppDBEstoquePA
           Font.Charset = DEFAULT_CHARSET
@@ -8521,7 +9238,7 @@ object FormGImpProduto: TFormGImpProduto
         end
       end
       object ppGroupFooterBand2: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -8543,7 +9260,7 @@ object FormGImpProduto: TFormGImpProduto
       DataPipelineName = 'ppDBEstoquePA'
       NewFile = False
       object ppGroupHeaderBand3: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 3175
         mmPrintPosition = 0
@@ -8552,6 +9269,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText104'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'PGR_CODIGO'
           DataPipeline = ppDBEstoquePA
           Font.Charset = DEFAULT_CHARSET
@@ -8574,6 +9292,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText105'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'PGR_DESCRI'
           DataPipeline = ppDBEstoquePA
           Font.Charset = DEFAULT_CHARSET
@@ -8593,7 +9312,7 @@ object FormGImpProduto: TFormGImpProduto
         end
       end
       object ppGroupFooterBand3: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -9473,6 +10192,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
@@ -9490,6 +10210,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -9499,23 +10227,35 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
-    PreviewFormSettings.ZoomSetting = zsPercentage
     PreviewFormSettings.ZoomPercentage = 75
+    PreviewFormSettings.ZoomSetting = zsPercentage
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -9523,14 +10263,27 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1154
     Top = 482
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBPipeTabMulti'
     object ppHeaderBand6: TppHeaderBand
       BeforePrint = ppHeaderBand6BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 22000
       mmPrintPosition = 0
@@ -9538,6 +10291,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer11
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -9551,13 +10305,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5080
         mmLeft = 6085
@@ -9571,13 +10327,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_05_END1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3598
         mmLeft = 6085
@@ -9590,6 +10348,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer11
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -9603,6 +10362,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9623,6 +10383,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -9643,13 +10404,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TABELA DE PRE'#199'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4995
@@ -9664,13 +10427,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Data da Ving'#234'ncia:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 6085
@@ -9684,13 +10449,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_05_DATAVI'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_05_DATAVI'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 34396
@@ -9704,13 +10471,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_05_HOME'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_05_HOME'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3316
         mmLeft = 6085
@@ -9721,8 +10490,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppDetailBand6: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3440
@@ -9732,6 +10500,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBPipeTabMulti
         Font.Charset = DEFAULT_CHARSET
@@ -9753,6 +10522,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBPipeTabMulti
         Font.Charset = DEFAULT_CHARSET
@@ -9774,6 +10544,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PVENDA'
         DataPipeline = ppDBPipeTabMulti
         DisplayFormat = '#,###0.000'
@@ -9797,6 +10568,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PESOKG'
         DataPipeline = ppDBPipeTabMulti
         DisplayFormat = '#,###0.000'
@@ -9820,6 +10592,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'IPI_ALIQ'
         DataPipeline = ppDBPipeTabMulti
         DisplayFormat = '#,##0.00'
@@ -9843,6 +10616,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText108'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PVENDA2'
         DataPipeline = ppDBPipeTabMulti
         DisplayFormat = '#,###0.000'
@@ -9866,6 +10640,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText111'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PVENDA3'
         DataPipeline = ppDBPipeTabMulti
         DisplayFormat = '#,###0.000'
@@ -9889,6 +10664,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText114'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PVENDA4'
         DataPipeline = ppDBPipeTabMulti
         DisplayFormat = '#,###0.000'
@@ -9912,6 +10688,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText115'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PVENDA5'
         DataPipeline = ppDBPipeTabMulti
         DisplayFormat = '#,###0.000'
@@ -9935,6 +10712,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText116'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PVENDA6'
         DataPipeline = ppDBPipeTabMulti
         DisplayFormat = '#,###0.000'
@@ -9958,6 +10736,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText117'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_UND'
         DataPipeline = ppDBPipeTabMulti
         Font.Charset = DEFAULT_CHARSET
@@ -9990,7 +10769,7 @@ object FormGImpProduto: TFormGImpProduto
       DataPipelineName = 'ppDBPipeTabMulti'
       NewFile = False
       object ppGroupHeaderBand4: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 8202
         mmPrintPosition = 0
@@ -9999,6 +10778,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText1'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'LIN_DESCRI'
           DataPipeline = ppDBPipeTabMulti
           Font.Charset = DEFAULT_CHARSET
@@ -10020,6 +10800,7 @@ object FormGImpProduto: TFormGImpProduto
           DesignLayer = ppDesignLayer11
           UserName = 'Line22'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -10034,13 +10815,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label51'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'REFER'#202'NCIA'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 6085
@@ -10055,13 +10838,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label52'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'DESCRI'#199#195'O DO PRODUTO'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 25929
@@ -10076,13 +10861,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label54'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TABELA 1'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 132292
@@ -10098,13 +10885,15 @@ object FormGImpProduto: TFormGImpProduto
           HyperlinkEnabled = False
           AutoSize = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Peso Kg'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 248973
@@ -10119,13 +10908,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label57'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'IPI'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3246
           mmLeft = 263261
@@ -10139,6 +10930,7 @@ object FormGImpProduto: TFormGImpProduto
           DesignLayer = ppDesignLayer11
           UserName = 'Line25'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -10153,13 +10945,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label95'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TABELA 2'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 151871
@@ -10174,13 +10968,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label98'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TABELA 3'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 171980
@@ -10195,13 +10991,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label100'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TABELA 4'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 192088
@@ -10216,13 +11014,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label1001'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TABELA 5'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 211667
@@ -10237,13 +11037,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label102'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TABELA 6'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 230982
@@ -10258,13 +11060,15 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'Label103'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'UND'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 119327
@@ -10279,6 +11083,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText118'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'MKP_COMIS1'
           DataPipeline = ppDBPipeTabMulti
           DisplayFormat = '00%'
@@ -10303,6 +11108,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText119'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'MKP_COMIS2'
           DataPipeline = ppDBPipeTabMulti
           DisplayFormat = '00%'
@@ -10327,6 +11133,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText120'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'MKP_COMIS3'
           DataPipeline = ppDBPipeTabMulti
           DisplayFormat = '00%'
@@ -10351,6 +11158,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText1201'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'MKP_COMIS4'
           DataPipeline = ppDBPipeTabMulti
           DisplayFormat = '00%'
@@ -10375,6 +11183,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText122'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'MKP_COMIS5'
           DataPipeline = ppDBPipeTabMulti
           DisplayFormat = '00%'
@@ -10399,6 +11208,7 @@ object FormGImpProduto: TFormGImpProduto
           UserName = 'DBText123'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'MKP_COMIS6'
           DataPipeline = ppDBPipeTabMulti
           DisplayFormat = '00%'
@@ -10420,7 +11230,7 @@ object FormGImpProduto: TFormGImpProduto
         end
       end
       object ppGroupFooterBand4: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 265
@@ -10429,6 +11239,7 @@ object FormGImpProduto: TFormGImpProduto
           DesignLayer = ppDesignLayer11
           UserName = 'Line26'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -10702,7 +11513,7 @@ object FormGImpProduto: TFormGImpProduto
     end
   end
   object frxInventarioEstoque: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -10752,12 +11563,16 @@ object FormGImpProduto: TFormGImpProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 90.811070000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -10767,12 +11582,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 15.897650000000000000
           Width = 559.370440000000000000
           Height = 18.897650000000000000
@@ -10782,11 +11599,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Invent'#225'rio de Estoque')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 16.897650000000000000
           Width = 139.842610000000000000
@@ -10797,12 +11616,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -10811,11 +11632,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.000000000000000000
           Top = 37.574830000000000000
           Width = 714.331170000000000000
@@ -10826,17 +11649,21 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 67.692950000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 68.692950000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
@@ -10846,11 +11673,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Top = 68.692950000000000000
           Width = 188.976500000000000000
@@ -10861,11 +11690,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Top = 68.692950000000000000
           Width = 26.456710000000000000
@@ -10876,12 +11707,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Und')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 68.692950000000000000
           Width = 71.811070000000000000
@@ -10892,12 +11725,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo Anterior')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Top = 68.692950000000000000
           Width = 71.811070000000000000
@@ -10908,12 +11743,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Entrada')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 445.984540000000000000
           Top = 68.692950000000000000
           Width = 71.811070000000000000
@@ -10924,12 +11761,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Sa'#237'da')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 68.692950000000000000
           Width = 71.811070000000000000
@@ -10940,12 +11779,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Estoque')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 68.692950000000000000
           Width = 64.252010000000000000
@@ -10956,12 +11797,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P.M'#233'dio')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Top = 68.692950000000000000
           Width = 64.252010000000000000
@@ -10972,20 +11815,24 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Vlr.Estoque')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 89.590600000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 170.078850000000000000
         Width = 718.110700000000000000
@@ -10994,6 +11841,7 @@ object FormGImpProduto: TFormGImpProduto
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 86.929190000000000000
           Height = 15.118120000000000000
           DataField = 'PRD_REFER'
@@ -11004,11 +11852,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Width = 188.976500000000000000
           Height = 15.118120000000000000
@@ -11020,11 +11870,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -11036,12 +11888,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_UND"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ANTERIOR: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -11056,12 +11910,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ANTERIOR"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ENTRADAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -11076,12 +11932,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ENTRADAS"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_SAIDAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 445.984540000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -11096,12 +11954,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_SAIDAS"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -11116,12 +11976,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ATUAL"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_PMEDIO: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -11136,12 +11998,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_PMEDIO"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -11153,6 +12017,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalPreco]')
@@ -11161,10 +12026,12 @@ object FormGImpProduto: TFormGImpProduto
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 207.874150000000000000
         Width = 718.110700000000000000
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 597.165740000000000000
           Width = 120.944960000000000000
           Height = 18.897650000000000000
@@ -11176,12 +12043,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalPrecoGeral]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Width = 64.252010000000000000
           Height = 18.897650000000000000
@@ -11190,17 +12059,21 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Totais:')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 484.559370000000000000
           Top = 0.779530000000000000
           Width = 105.826840000000000000
@@ -11215,6 +12088,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."ESTOQUE_ATUAL">, Masterdata1,0)]')
@@ -11254,7 +12128,7 @@ object FormGImpProduto: TFormGImpProduto
     Top = 160
   end
   object frxEstoqueAtual: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -11319,13 +12193,17 @@ object FormGImpProduto: TFormGImpProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 76.370130000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 903.307670000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -11335,12 +12213,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -11350,11 +12230,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Estoque Atual')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 903.307670000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -11365,12 +12247,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -11379,11 +12263,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -11393,11 +12279,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 56.692950000000000000
           Width = 291.023810000000000000
@@ -11408,11 +12296,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 617.598640000000000000
           Top = 56.692950000000000000
           Width = 26.456710000000000000
@@ -11423,11 +12313,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Und')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 888.252320000000000000
           Top = 56.692950000000000000
           Width = 56.692950000000000000
@@ -11438,12 +12330,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Estoque')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 817.441250000000000000
           Top = 56.692950000000000000
           Width = 52.913420000000000000
@@ -11454,12 +12348,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'E.M'#237'nimo')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 649.590482830000000000
           Top = 57.472480000000000000
           Width = 117.165354330000000000
@@ -11469,11 +12365,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Endere'#231'o')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -11483,23 +12381,29 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929133860000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 772.425480000000000000
           Top = 56.692950000000000000
           Width = 34.015770000000000000
@@ -11510,11 +12414,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'NCM')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 948.662030000000000000
           Top = 56.692950000000000000
           Width = 98.267780000000000000
@@ -11524,11 +12430,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Contagem')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 388.291590000000000000
           Top = 56.692950000000000000
           Width = 226.771800000000000000
@@ -11538,6 +12446,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Marca')
           ParentFont = False
@@ -11545,6 +12454,7 @@ object FormGImpProduto: TFormGImpProduto
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
@@ -11554,6 +12464,7 @@ object FormGImpProduto: TFormGImpProduto
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 94.488250000000000000
           Height = 15.118120000000000000
           DataSet = frxDBDataset1
@@ -11563,6 +12474,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
           Highlight.Font.Height = -11
@@ -11573,11 +12485,13 @@ object FormGImpProduto: TFormGImpProduto
             'UE_ATUAL"> < <frxDBDataset1."PRD_MINIMO">))'
           Highlight.FillType = ftBrush
           Highlight.Fill.ForeColor = clRed
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Width = 291.023810000000000000
           Height = 15.118120000000000000
@@ -11588,6 +12502,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
           Highlight.Font.Height = -11
@@ -11598,11 +12513,13 @@ object FormGImpProduto: TFormGImpProduto
             'UE_ATUAL"> < <frxDBDataset1."PRD_MINIMO">))'
           Highlight.FillType = ftBrush
           Highlight.Fill.ForeColor = clRed
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 616.819110000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -11613,6 +12530,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
           Highlight.Font.Height = -11
@@ -11623,11 +12541,13 @@ object FormGImpProduto: TFormGImpProduto
             'UE_ATUAL"> < <frxDBDataset1."PRD_MINIMO">))'
           Highlight.FillType = ftBrush
           Highlight.Fill.ForeColor = clRed
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_UND"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 877.693260000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -11641,6 +12561,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
@@ -11652,11 +12573,13 @@ object FormGImpProduto: TFormGImpProduto
             'UE_ATUAL"> < <frxDBDataset1."PRD_MINIMO">))'
           Highlight.FillType = ftBrush
           Highlight.Fill.ForeColor = clRed
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ATUAL"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 817.441250000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -11670,6 +12593,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
@@ -11681,11 +12605,13 @@ object FormGImpProduto: TFormGImpProduto
             'UE_ATUAL"> < <frxDBDataset1."PRD_MINIMO">))'
           Highlight.FillType = ftBrush
           Highlight.Fill.ForeColor = clRed
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_MINIMO"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.205010000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -11696,6 +12622,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
           Highlight.Font.Height = -11
@@ -11706,11 +12633,13 @@ object FormGImpProduto: TFormGImpProduto
             'UE_ATUAL"> < <frxDBDataset1."PRD_MINIMO">))'
           Highlight.FillType = ftBrush
           Highlight.Fill.ForeColor = clRed
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."IPI_CODIGO"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 649.590482830000000000
           Width = 105.826764330000000000
           Height = 15.118120000000000000
@@ -11721,6 +12650,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
           Highlight.Font.Height = -11
@@ -11731,11 +12661,13 @@ object FormGImpProduto: TFormGImpProduto
             'UE_ATUAL"> < <frxDBDataset1."PRD_MINIMO">))'
           Highlight.FillType = ftBrush
           Highlight.Fill.ForeColor = clRed
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRDE_ENDERECO"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Width = 230.551330000000000000
           Height = 15.118120000000000000
@@ -11746,6 +12678,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
           Highlight.Font.Height = -11
@@ -11756,35 +12689,41 @@ object FormGImpProduto: TFormGImpProduto
             'UE_ATUAL"> < <frxDBDataset1."PRD_MINIMO">))'
           Highlight.FillType = ftBrush
           Highlight.Fill.ForeColor = clRed
+          Highlight.Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."lin_descri"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 949.102970000000000000
           Top = 14.338590000000000000
           Width = 98.267103860000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 230.551330000000000000
         Width = 1046.929810000000000000
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 3.779529999999990000
           Width = 185.196970000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'Memo9OnBeforePrint'
+          Frame.Typ = []
         end
       end
     end
   end
   object frxRelatorioFinanceiroEstoqueGeral: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -11833,12 +12772,16 @@ object FormGImpProduto: TFormGImpProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -11848,12 +12791,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -11863,11 +12808,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio Financeiro do Estoque (Geral)')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -11878,12 +12825,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -11892,11 +12841,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -11906,17 +12857,21 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
@@ -11926,11 +12881,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Top = 56.692950000000000000
           Width = 188.976500000000000000
@@ -11941,11 +12898,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Top = 56.692950000000000000
           Width = 26.456710000000000000
@@ -11956,11 +12915,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Und')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -11971,11 +12932,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Saldo Anterior')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -11986,11 +12949,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Entrada')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 445.984540000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -12001,11 +12966,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Sa'#237'da')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -12016,11 +12983,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Estoque')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 56.692950000000000000
           Width = 64.252010000000000000
@@ -12031,11 +13000,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Custo')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Top = 56.692950000000000000
           Width = 64.252010000000000000
@@ -12046,19 +13017,23 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Vlr.Estoque')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590599999999990000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 154.960730000000000000
         Width = 718.110700000000000000
@@ -12067,6 +13042,7 @@ object FormGImpProduto: TFormGImpProduto
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 86.929190000000000000
           Height = 15.118120000000000000
           DataField = 'PRD_REFER'
@@ -12077,11 +13053,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Width = 188.976500000000000000
           Height = 15.118120000000000000
@@ -12093,11 +13071,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -12109,11 +13089,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_UND"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ANTERIOR: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -12128,12 +13110,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ANTERIOR"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ENTRADAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -12148,12 +13132,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ENTRADAS"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_SAIDAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 445.984540000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -12168,12 +13154,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_SAIDAS"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -12188,12 +13176,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ATUAL"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_PMEDIO: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -12208,12 +13198,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_PCUSTO"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -12225,6 +13217,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalPreco]')
@@ -12234,7 +13227,7 @@ object FormGImpProduto: TFormGImpProduto
     end
   end
   object frxEstoqueCompras: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -12283,12 +13276,16 @@ object FormGImpProduto: TFormGImpProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -12298,12 +13295,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -12313,11 +13312,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Estoque + Compras em Aberto')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -12328,6 +13329,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]'
@@ -12335,6 +13337,7 @@ object FormGImpProduto: TFormGImpProduto
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -12343,11 +13346,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -12357,17 +13362,21 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
@@ -12377,11 +13386,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Top = 56.692950000000000000
           Width = 188.976500000000000000
@@ -12392,11 +13403,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Top = 56.692950000000000000
           Width = 26.456710000000000000
@@ -12407,11 +13420,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Und')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -12422,11 +13437,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Saldo Anterior')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -12437,11 +13454,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Entrada')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 445.984540000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -12452,11 +13471,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Sa'#237'da')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 56.692950000000000000
           Width = 71.811070000000000000
@@ -12467,11 +13488,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Estoque')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 56.692950000000000000
           Width = 64.252010000000000000
@@ -12482,11 +13505,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Compras')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Top = 56.692950000000000000
           Width = 64.252010000000000000
@@ -12497,19 +13522,23 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Est.+Comp.')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590599999999990000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 154.960730000000000000
         Width = 718.110700000000000000
@@ -12518,6 +13547,7 @@ object FormGImpProduto: TFormGImpProduto
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 86.929190000000000000
           Height = 15.118120000000000000
           DataField = 'PRD_REFER'
@@ -12528,11 +13558,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Width = 188.976500000000000000
           Height = 15.118120000000000000
@@ -12544,11 +13576,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -12560,11 +13594,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_UND"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ANTERIOR: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -12579,12 +13615,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ANTERIOR"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ENTRADAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -12599,12 +13637,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ENTRADAS"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_SAIDAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 445.984540000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -12619,12 +13659,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_SAIDAS"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -12639,12 +13681,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ATUAL"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_PENDENTE: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -12659,12 +13703,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_PENDENTE"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -12676,6 +13722,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalPreco]')
@@ -12685,7 +13732,7 @@ object FormGImpProduto: TFormGImpProduto
     end
   end
   object frxRelatorioFinanceiroEstoque: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -12749,12 +13796,16 @@ object FormGImpProduto: TFormGImpProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -12764,12 +13815,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -12779,11 +13832,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio Financeiro do Estoque')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 907.087200000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -12794,12 +13849,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -12808,11 +13865,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 1050.709340000000000000
           Height = 18.897650000000000000
@@ -12822,17 +13881,21 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 90.708720000000000000
           Height = 18.897650000000000000
@@ -12842,11 +13905,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Top = 56.692949999999990000
           Width = 264.567100000000000000
@@ -12857,11 +13922,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Top = 56.692949999999990000
           Width = 26.456710000000000000
@@ -12872,12 +13939,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Und')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Top = 56.692949999999990000
           Width = 83.149660000000000000
@@ -12888,18 +13957,22 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Venda - Custo')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 880.630490000000000000
           Top = 56.692949999999990000
           Width = 83.149660000000000000
@@ -12910,12 +13983,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P. Venda Total')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Top = 56.692949999999990000
           Width = 83.149660000000000000
@@ -12926,12 +14001,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P. M'#233'dio')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Top = 56.692949999999990000
           Width = 83.149660000000000000
@@ -12942,12 +14019,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P. Venda')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Top = 56.692949999999990000
           Width = 83.149660000000000000
@@ -12958,12 +14037,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P. M'#233'dio Total')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031849999999900000
           Top = 56.692949999999990000
           Width = 83.149660000000000000
@@ -12974,12 +14055,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Custo Total')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 464.882190000000000000
           Top = 56.692949999999990000
           Width = 83.149660000000000000
@@ -12990,12 +14073,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Custo')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 56.692949999999990000
           Width = 83.149660000000000000
@@ -13006,6 +14091,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Estoque')
@@ -13014,6 +14100,7 @@ object FormGImpProduto: TFormGImpProduto
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
@@ -13022,6 +14109,7 @@ object FormGImpProduto: TFormGImpProduto
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 90.708720000000000000
           Height = 15.118120000000000000
           DataField = 'PRD_REFER'
@@ -13032,11 +14120,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 90.708720000000000000
           Width = 264.567100000000000000
           Height = 15.118120000000000000
@@ -13048,11 +14138,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.275820000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -13064,12 +14156,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_UND"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13084,12 +14178,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ATUAL"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_PMEDIO: TfrxMemoView
+          AllowVectorExport = True
           Left = 464.882190000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13104,12 +14200,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_PCUSTO"]')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13124,12 +14222,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_PMEDIO"]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 797.480830000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13144,12 +14244,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_PVENDA"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031849999999900000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13161,12 +14263,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[custototal]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13178,12 +14282,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[mediototal]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 880.630490000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13195,12 +14301,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[vendatotal]')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13212,6 +14320,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[vendacusto]')
@@ -13220,10 +14329,12 @@ object FormGImpProduto: TFormGImpProduto
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 192.756030000000000000
         Width = 1046.929810000000000000
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 548.031849999999900000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13235,12 +14346,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[custototalAC]')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 714.331170000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13252,12 +14365,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[mediototalAC]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 880.630490000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13269,12 +14384,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[vendatotalAC]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 963.780150000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -13286,12 +14403,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[vendacustoAC]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Width = 83.149660000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -13300,19 +14419,24 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'TOTAIS:')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
@@ -13323,11 +14447,14 @@ object FormGImpProduto: TFormGImpProduto
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -13338,6 +14465,9 @@ object FormGImpProduto: TFormGImpProduto
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 759
     Top = 419
   end
@@ -13357,7 +14487,7 @@ object FormGImpProduto: TFormGImpProduto
     Top = 424
   end
   object frxInventarioNCM: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -13420,12 +14550,16 @@ object FormGImpProduto: TFormGImpProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 86.929190000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -13435,12 +14569,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -13450,11 +14586,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Invent'#225'rio de Estoque - Por Classifica'#231#227'o Fiscal')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -13465,12 +14603,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -13479,11 +14619,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 26.456710000000000000
@@ -13493,17 +14635,21 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 66.692950000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 67.692950000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
@@ -13513,11 +14659,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Top = 67.692950000000000000
           Width = 188.976500000000000000
@@ -13528,11 +14676,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Top = 67.692950000000000000
           Width = 26.456710000000000000
@@ -13543,12 +14693,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Und')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 67.692950000000000000
           Width = 71.811070000000000000
@@ -13559,12 +14711,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo Anterior')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Top = 67.692950000000000000
           Width = 71.811070000000000000
@@ -13575,12 +14729,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Entrada')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 445.984540000000000000
           Top = 67.692950000000000000
           Width = 71.811070000000000000
@@ -13591,12 +14747,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Sa'#237'da')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 67.692950000000000000
           Width = 71.811070000000000000
@@ -13607,12 +14765,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Estoque')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Top = 67.692950000000000000
           Width = 64.252010000000000000
@@ -13623,12 +14783,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'P.M'#233'dio')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Top = 67.692950000000000000
           Width = 64.252010000000000000
@@ -13639,20 +14801,24 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Vlr.Estoque')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 86.590600000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 207.874150000000000000
         Width = 718.110700000000000000
@@ -13661,6 +14827,7 @@ object FormGImpProduto: TFormGImpProduto
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 86.929190000000000000
           Height = 15.118120000000000000
           DataField = 'PRD_REFER'
@@ -13671,11 +14838,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Width = 188.976500000000000000
           Height = 15.118120000000000000
@@ -13687,11 +14856,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 275.905690000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -13703,12 +14874,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_UND"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ANTERIOR: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -13723,12 +14896,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ANTERIOR"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ENTRADAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -13743,12 +14918,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ENTRADAS"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_SAIDAS: TfrxMemoView
+          AllowVectorExport = True
           Left = 445.984540000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -13763,12 +14940,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_SAIDAS"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -13783,12 +14962,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ATUAL"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_PMEDIO: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -13803,12 +14984,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_PMEDIO"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 653.858690000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -13820,6 +15003,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalPreco]')
@@ -13828,10 +15012,12 @@ object FormGImpProduto: TFormGImpProduto
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 287.244280000000000000
         Width = 718.110700000000000000
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 128.504020000000000000
           Height = 18.897650000000000000
@@ -13843,12 +15029,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalPrecoGeral]')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Width = 128.504020000000000000
           Height = 18.897650000000000000
@@ -13859,19 +15047,23 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Valor Total do Estoque:')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 166.299320000000000000
         Width = 718.110700000000000000
@@ -13879,6 +15071,7 @@ object FormGImpProduto: TFormGImpProduto
         Condition = 'frxDBDataset1."IPI_CODIGO"'
         KeepTogether = True
         object frxDBDataset1PTI_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 124.724490000000000000
           Width = 222.992270000000000000
           Height = 18.897650000000000000
@@ -13890,11 +15083,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."IPI_CODIGO"]')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Width = 124.724490000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -13903,23 +15098,28 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Classifica'#231#227'o Fiscal:')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 245.669450000000000000
         Width = 718.110700000000000000
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
@@ -13931,12 +15131,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[totalPrecoGeralNCM]')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -13948,12 +15150,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[QuantidadeNCM]')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Width = 200.315090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -13962,11 +15166,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Total da Classifica'#231#227'o Fiscal')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Width = 132.283550000000000000
           Height = 18.897650000000000000
@@ -13976,11 +15182,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Quantidade em Estoque:')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 41.574830000000000000
           Height = 18.897650000000000000
@@ -13990,15 +15198,18 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Valor:')
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897649999999970000
           Width = 721.890230000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
@@ -14031,7 +15242,7 @@ object FormGImpProduto: TFormGImpProduto
     end
   end
   object frxEstoqueAtualGrade: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -14097,13 +15308,17 @@ object FormGImpProduto: TFormGImpProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 76.370130000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -14113,12 +15328,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -14128,11 +15345,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Estoque Atual')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 899.528140000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -14143,12 +15362,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -14157,11 +15378,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -14171,11 +15394,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 56.692949999999990000
           Width = 291.023810000000000000
@@ -14186,11 +15411,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 617.598640000000000000
           Top = 56.692949999999990000
           Width = 26.456710000000000000
@@ -14201,11 +15428,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Und')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 888.252320000000000000
           Top = 56.692949999999990000
           Width = 56.692950000000000000
@@ -14216,12 +15445,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Estoque')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 817.441250000000000000
           Top = 56.692949999999990000
           Width = 52.913420000000000000
@@ -14232,12 +15463,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'E.M'#237'nimo')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 649.590482830000000000
           Top = 57.472480000000010000
           Width = 117.165354330000000000
@@ -14247,11 +15480,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Endere'#231'o')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 1031.811690000000000000
           Height = 18.897650000000000000
@@ -14261,23 +15496,29 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929133860000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 772.425480000000000000
           Top = 56.692949999999990000
           Width = 34.015770000000000000
@@ -14288,11 +15529,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'NCM')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 948.662030000000000000
           Top = 56.692949999999990000
           Width = 98.267780000000000000
@@ -14302,11 +15545,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Contagem')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 388.291590000000000000
           Top = 56.692949999999990000
           Width = 226.771800000000000000
@@ -14316,6 +15561,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Grade')
           ParentFont = False
@@ -14323,6 +15569,7 @@ object FormGImpProduto: TFormGImpProduto
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
@@ -14332,6 +15579,7 @@ object FormGImpProduto: TFormGImpProduto
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 94.488250000000000000
           Height = 15.118120000000000000
           DataField = 'PRD_REFER'
@@ -14342,11 +15590,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Width = 291.023810000000000000
           Height = 15.118120000000000000
@@ -14358,11 +15608,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 616.819110000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -14374,11 +15626,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_UND"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 877.693260000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -14389,6 +15643,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -14405,6 +15660,7 @@ object FormGImpProduto: TFormGImpProduto
             end>
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 817.441250000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -14419,12 +15675,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_MINIMO"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.205010000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -14436,11 +15694,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."IPI_CODIGO"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 649.590482830000000000
           Width = 105.826764330000000000
           Height = 15.118120000000000000
@@ -14451,11 +15711,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRDE_ENDERECO"]')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Width = 230.551330000000000000
           Height = 15.118120000000000000
@@ -14467,35 +15729,41 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRG_DESCRICAO"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 949.102970000000000000
           Top = 14.338589999999980000
           Width = 98.267103860000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 230.551330000000000000
         Width = 1046.929810000000000000
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 3.779529999999994000
           Width = 185.196970000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'Memo9OnBeforePrint'
+          Frame.Typ = []
         end
       end
     end
   end
   object frxEstoqueCodBarra: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -14561,13 +15829,17 @@ object FormGImpProduto: TFormGImpProduto
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 76.370130000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Date: TfrxMemoView
+          AllowVectorExport = True
           Left = 903.307670000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -14576,6 +15848,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [FormatDateTime('#39'hh:m'#39',Time)]')
@@ -14587,6 +15860,7 @@ object FormGImpProduto: TFormGImpProduto
             end>
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -14596,11 +15870,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Relat'#243'rio de Estoque Atual')
           ParentFont = False
         end
         object Page: TfrxMemoView
+          AllowVectorExport = True
           Left = 903.307670000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -14611,12 +15887,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -14625,11 +15903,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -14639,11 +15919,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Refer'#234'ncia')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Top = 56.692949999999990000
           Width = 286.241201310000000000
@@ -14654,11 +15936,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Descri'#231#227'o do Produto')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 617.598640000000000000
           Top = 56.692949999999990000
           Width = 26.456710000000000000
@@ -14669,11 +15953,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Und')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 888.252320000000000000
           Top = 56.692949999999990000
           Width = 56.692950000000000000
@@ -14684,12 +15970,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Estoque')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 817.441250000000000000
           Top = 56.692949999999990000
           Width = 52.913420000000000000
@@ -14700,12 +15988,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'E.M'#237'nimo')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 649.590482830000000000
           Top = 57.472480000000010000
           Width = 117.165354330000000000
@@ -14715,11 +16005,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Endere'#231'o')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 778.583180000000000000
           Height = 18.897650000000000000
@@ -14729,23 +16021,29 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692949999999990000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929133860000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 772.425480000000000000
           Top = 56.692949999999990000
           Width = 34.015770000000000000
@@ -14756,11 +16054,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'NCM')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 948.662030000000000000
           Top = 56.692949999999990000
           Width = 98.267780000000000000
@@ -14770,11 +16070,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Contagem')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 388.291590000000000000
           Top = 56.692949999999990000
           Width = 226.771800000000000000
@@ -14784,6 +16086,7 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'C'#243'd. Barra Refer'#234'ncia')
           ParentFont = False
@@ -14791,6 +16094,7 @@ object FormGImpProduto: TFormGImpProduto
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.451453330000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
@@ -14800,6 +16104,7 @@ object FormGImpProduto: TFormGImpProduto
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1PRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 94.488250000000000000
           Height = 15.118120000000000000
           DataField = 'PRD_REFER'
@@ -14810,11 +16115,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_REFER"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 94.488250000000000000
           Width = 286.241201310000000000
           Height = 15.118120000000000000
@@ -14826,11 +16133,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_DESCRI"]')
           ParentFont = False
         end
         object frxDBDataset1PRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 616.819110000000000000
           Width = 26.456710000000000000
           Height = 15.118120000000000000
@@ -14842,11 +16151,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_UND"]')
           ParentFont = False
         end
         object frxDBDataset1ESTOQUE_ATUAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 877.693260000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -14861,12 +16172,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."ESTOQUE_ATUAL"]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 817.441250000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -14881,12 +16194,14 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."PRD_MINIMO"]')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 762.205010000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -14898,11 +16213,13 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."IPI_CODIGO"]')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 649.590482830000000000
           Width = 105.826764330000000000
           Height = 15.118120000000000000
@@ -14913,26 +16230,32 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."PRDE_ENDERECO"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Left = 949.102970000000000000
           Top = 14.338590000000010000
           Width = 98.267103860000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object BarCode1: TfrxBarCodeView
+          AllowVectorExport = True
           Left = 390.600414060000000000
           Top = 0.289787600000011000
           Width = 129.000000000000000000
           Height = 15.564316670000000000
           BarType = bcCode39
           Expression = '<frxDBDataset1."PRD_REFER">'
+          Frame.Typ = []
           Rotation = 0
           ShowText = False
+          TestLine = False
           Text = '12345678'
           WideBarRatio = 2.000000000000000000
           Zoom = 1.000000000000000000
@@ -14941,19 +16264,23 @@ object FormGImpProduto: TFormGImpProduto
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          ColorBar = clBlack
         end
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.677180000000000000
         Top = 234.330860000000000000
         Width = 1046.929810000000000000
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 26.456710000000000000
           Top = 3.779529999999994000
           Width = 185.196970000000000000
           Height = 18.897650000000000000
           OnBeforePrint = 'Memo9OnBeforePrint'
+          Frame.Typ = []
         end
       end
     end
@@ -14964,6 +16291,7 @@ object FormGImpProduto: TFormGImpProduto
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
@@ -14983,6 +16311,14 @@ object FormGImpProduto: TFormGImpProduto
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -14992,22 +16328,34 @@ object FormGImpProduto: TFormGImpProduto
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zsPageWidth
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -15015,13 +16363,26 @@ object FormGImpProduto: TFormGImpProduto
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 1074
     Top = 69
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBProdutos'
     object ppHeaderBand7: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 30427
       mmPrintPosition = 0
@@ -15029,6 +16390,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer12
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -15041,6 +16403,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer12
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -15054,13 +16417,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'REFERENCIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -15074,13 +16439,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESCRI'#199#195'O DO PRODUTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 21960
@@ -15094,13 +16461,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CUSTO L'#205'QUIDO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15114,6 +16483,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer12
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -15126,6 +16496,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer12
         UserName = 'Line45'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -15139,13 +16510,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_15_EMPRESA1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_15_EMPRESA1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 5027
@@ -15160,6 +16533,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -15180,6 +16554,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'SystemVariable22'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -15200,13 +16575,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_15_RELATORIO'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_15_RELATORIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 5027
@@ -15221,13 +16598,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label85'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'M'#201'DIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15242,13 +16621,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label86'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FRETE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15263,13 +16644,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label87'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'IPI'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15284,13 +16667,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label92'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VENDA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15305,13 +16690,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label105'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SUBS. TRIB.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15326,13 +16713,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label106'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CUSTO ENTR.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15347,13 +16736,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label107'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'MARGEM %'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15370,6 +16761,7 @@ object FormGImpProduto: TFormGImpProduto
         AlignVertical = avCenter
         MaintainAspectRatio = False
         Stretch = True
+        Border.mmPadding = 0
         mmHeight = 19131
         mmLeft = 1588
         mmTop = 4498
@@ -15382,13 +16774,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'LBL_15_FILTRO'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_15_FILTRO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 3969
@@ -15400,8 +16794,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppDetailBand7: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3704
@@ -15411,6 +16804,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -15432,6 +16826,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
@@ -15455,6 +16850,7 @@ object FormGImpProduto: TFormGImpProduto
         OnGetText = ppDBText127GetText
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PCUSTO'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -15480,6 +16876,7 @@ object FormGImpProduto: TFormGImpProduto
         OnGetText = ppDBText126GetText
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PMEDIO'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -15505,6 +16902,7 @@ object FormGImpProduto: TFormGImpProduto
         OnGetText = ppDBText128GetText
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_CUSTOFRETE'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -15530,6 +16928,7 @@ object FormGImpProduto: TFormGImpProduto
         OnGetText = ppDBText129GetText
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_CUSTOIPI'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -15555,6 +16954,7 @@ object FormGImpProduto: TFormGImpProduto
         OnGetText = ppDBText130GetText
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_PVENDA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -15580,6 +16980,7 @@ object FormGImpProduto: TFormGImpProduto
         OnGetText = ppDBText131GetText
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_CUSTOSUBTRIB'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -15605,6 +17006,7 @@ object FormGImpProduto: TFormGImpProduto
         OnGetText = ppDBText132GetText
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_CUSTOCOMIPI'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -15630,6 +17032,7 @@ object FormGImpProduto: TFormGImpProduto
         OnGetText = ppDBText133GetText
         AutoSize = True
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_MARGEMVENDA'
         DataPipeline = ppDBProdutos
         DisplayFormat = '#,###0.000'
@@ -15653,13 +17056,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label108'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = '%'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -15671,7 +17076,7 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object ppSummaryBand6: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -15679,6 +17084,7 @@ object FormGImpProduto: TFormGImpProduto
         DesignLayer = ppDesignLayer12
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 204
         mmLeft = 0
@@ -15692,13 +17098,15 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Itens Listados:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 529
@@ -15712,6 +17120,7 @@ object FormGImpProduto: TFormGImpProduto
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBProdutos
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -15730,7 +17139,6 @@ object FormGImpProduto: TFormGImpProduto
       end
     end
     object raCodeModule6: TraCodeModule
-      ProgramStream = {00}
     end
     object ppDesignLayers12: TppDesignLayers
       object ppDesignLayer12: TppDesignLayer
