@@ -7,9 +7,9 @@ inherited FormGimpRepr: TFormGimpRepr
   ClientHeight = 693
   ClientWidth = 1056
   Font.Name = 'MS Sans Serif'
-  Position = poDesktopCenter
+  Position = poMainFormCenter
   ExplicitWidth = 1062
-  ExplicitHeight = 718
+  ExplicitHeight = 722
   PixelsPerInch = 96
   TextHeight = 13
   object GroupPeriodo: TGroupBox [0]
@@ -779,8 +779,10 @@ inherited FormGimpRepr: TFormGimpRepr
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edProduto: TEdit
       Left = 11
@@ -964,6 +966,7 @@ inherited FormGimpRepr: TFormGimpRepr
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -980,6 +983,14 @@ inherited FormGimpRepr: TFormGimpRepr
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -989,22 +1000,34 @@ inherited FormGimpRepr: TFormGimpRepr
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -1012,14 +1035,27 @@ inherited FormGimpRepr: TFormGimpRepr
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 856
     Top = 240
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBRepresentantes'
     object pp00HeaderBand2: TppHeaderBand
       BeforePrint = pp00HeaderBand2BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 19844
       mmPrintPosition = 0
@@ -1027,6 +1063,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1040,13 +1077,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_03_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -1060,13 +1099,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_03_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -1080,13 +1121,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_03_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -1099,6 +1142,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1112,6 +1156,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1131,6 +1176,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1150,13 +1196,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'COD'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -1170,13 +1218,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VENDEDOR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 6879
@@ -1190,13 +1240,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FUN'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 62706
@@ -1210,13 +1262,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CIDADE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 93398
@@ -1230,13 +1284,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'UF'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 126736
@@ -1250,13 +1306,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FONE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 134938
@@ -1269,6 +1327,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1282,13 +1341,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FAX'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 156634
@@ -1302,13 +1363,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SITUA'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 178594
@@ -1322,13 +1385,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TIPO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 196586
@@ -1339,8 +1404,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object pp00DetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -1350,6 +1414,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CODIGO'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -1373,6 +1438,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_NOME'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -1395,6 +1461,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CIDADE'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -1417,6 +1484,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_UF'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -1439,6 +1507,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_FONE'
         DataPipeline = ppDBRepresentantes
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -1462,6 +1531,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_FAX'
         DataPipeline = ppDBRepresentantes
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -1485,6 +1555,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_TIPO'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -1508,6 +1579,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Variable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         Font.Charset = DEFAULT_CHARSET
@@ -1528,6 +1600,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Variable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         Font.Charset = DEFAULT_CHARSET
@@ -1545,7 +1618,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object pp00SummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -1554,13 +1627,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Vendedores Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 0
@@ -1574,6 +1649,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1605,7 +1681,7 @@ inherited FormGimpRepr: TFormGimpRepr
       DataPipelineName = 'ppDBRepresentantes'
       NewFile = False
       object ppGroupHeaderBand2: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 3969
         mmPrintPosition = 0
@@ -1614,13 +1690,15 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label101'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Grupo:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3175
           mmLeft = 0
@@ -1634,6 +1712,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer1
           UserName = 'Line19'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -1648,6 +1727,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBText38'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_GRUPO'
           DataPipeline = ppDBRepresentantes
           Font.Charset = DEFAULT_CHARSET
@@ -1667,7 +1747,7 @@ inherited FormGimpRepr: TFormGimpRepr
         end
       end
       object ppGroupFooterBand2: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 265
@@ -1676,6 +1756,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer1
           UserName = 'Line21'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -1688,34 +1769,33 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650612
-        5661726961626C65314F6E476574546578740B50726F6772616D54797065070B
-        747450726F63656475726506536F757263650C2101000070726F636564757265
-        205661726961626C65314F6E476574546578742876617220546578743A205374
-        72696E67293B0D0A5661720D0A2020775469706F3A537472696E673B0D0A6265
-        67696E0D0A20202020775469706F3A3D4442526570726573656E74616E746573
-        5B275245505F46554E43414F275D3B0D0A2020202069662028775469706F3D27
-        522729207468656E0D0A2020202020202054657874203A3D2752455052455345
-        4E54414E5445273B0D0A2020202069662028775469706F3D2747272920746865
-        6E0D0A2020202020202054657874203A3D27474552454E5445273B0D0A202020
-        2069662028775469706F3D27532729207468656E0D0A20202020202020546578
-        743A3D2753555045525649534F52273B0D0A656E643B0D0A0D436F6D706F6E65
-        6E744E616D6506095661726961626C6531094576656E744E616D6506094F6E47
-        657454657874074576656E7449440235084361726574506F7301020002000000
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650612
-        5661726961626C65324F6E476574546578740B50726F6772616D54797065070B
-        747450726F63656475726506536F7572636506F170726F636564757265205661
-        726961626C65324F6E476574546578742876617220546578743A20537472696E
-        67293B0D0A5661720D0A202077417469766F3A537472696E673B0D0A62656769
-        6E0D0A2020202077417469766F3A3D4442526570726573656E74616E7465735B
-        275245505F534954554143414F275D3B0D0A202020206966202877417469766F
-        3D27412729207468656E0D0A2020202020202054657874203A3D202741544956
-        4F273B0D0A202020206966202877417469766F3D27492729207468656E0D0A20
-        20202020202054657874203A3D2027494E415449564F273B2020200D0A0D0A65
-        6E643B0D0A0D436F6D706F6E656E744E616D6506095661726961626C65320945
-        76656E744E616D6506094F6E47657454657874074576656E7449440235084361
-        726574506F730102000200000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable1OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable1OnGetText(var Text: String);'#13#10'Var'#13#10'  wTipo:St' +
+          'ring;'#13#10'begin'#13#10'    wTipo:=DBRepresentantes['#39'REP_FUNCAO'#39'];'#13#10'    if' +
+          ' (wTipo='#39'R'#39') then'#13#10'       Text :='#39'REPRESENTANTE'#39';'#13#10'    if (wTipo' +
+          '='#39'G'#39') then'#13#10'       Text :='#39'GERENTE'#39';'#13#10'    if (wTipo='#39'S'#39') then'#13#10' ' +
+          '      Text:='#39'SUPERVISOR'#39';'#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable1'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable2OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable2OnGetText(var Text: String);'#13#10'Var'#13#10'  wAtivo:S' +
+          'tring;'#13#10'begin'#13#10'    wAtivo:=DBRepresentantes['#39'REP_SITUACAO'#39'];'#13#10'  ' +
+          '  if (wAtivo='#39'A'#39') then'#13#10'       Text := '#39'ATIVO'#39';'#13#10'    if (wAtivo=' +
+          #39'I'#39') then'#13#10'       Text := '#39'INATIVO'#39';   '#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable2'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
@@ -2029,6 +2109,7 @@ inherited FormGimpRepr: TFormGimpRepr
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -2046,6 +2127,14 @@ inherited FormGimpRepr: TFormGimpRepr
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -2055,22 +2144,34 @@ inherited FormGimpRepr: TFormGimpRepr
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -2078,13 +2179,26 @@ inherited FormGimpRepr: TFormGimpRepr
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 992
     Top = 272
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBRepresentantes'
     object pp04HeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 15610
       mmPrintPosition = 0
@@ -2092,6 +2206,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer2
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2105,13 +2220,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_04_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4057
         mmLeft = 0
@@ -2125,13 +2242,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_04_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -2145,13 +2264,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_04_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -2164,6 +2285,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer2
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2177,6 +2299,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2196,6 +2319,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2212,8 +2336,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object pp04DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 36777
@@ -2223,13 +2346,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CIDADE.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -2243,6 +2368,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CIDADE'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -2264,13 +2390,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Estado:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 100806
@@ -2284,6 +2412,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_UF'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -2305,13 +2434,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SITUA'#199#195'O.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 171980
@@ -2325,6 +2456,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'VSituacao'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         Font.Charset = DEFAULT_CHARSET
@@ -2345,13 +2477,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vendedor:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3260
@@ -2366,13 +2500,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Empresa.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2387,13 +2523,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fone.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2408,13 +2546,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'E-mail.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2429,13 +2569,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OBS/SETOR:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2450,13 +2592,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'C'#243'digo.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2471,13 +2615,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LblCgcCpf'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CNPJ/CPF.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2492,13 +2638,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CEP.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2513,13 +2661,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label22'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Celular.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2534,13 +2684,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fax.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2555,6 +2707,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText10'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_NOME'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -2576,6 +2729,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_RAZAO'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -2597,6 +2751,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText12'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_FONE'
         DataPipeline = ppDBRepresentantes
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -2619,6 +2774,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText13'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_FAX'
         DataPipeline = ppDBRepresentantes
         DisplayFormat = '\(999\)9999\-9999;0;_'
@@ -2641,6 +2797,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText14'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_EMAIL'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -2662,6 +2819,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText16'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CODIGO'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -2683,6 +2841,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText18'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CEP'
         DataPipeline = ppDBRepresentantes
         DisplayFormat = '99\.999\-999;0;_'
@@ -2705,6 +2864,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText19'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CELULAR'
         DataPipeline = ppDBRepresentantes
         DisplayFormat = '\(99\)99999\-9999;0;_'
@@ -2726,6 +2886,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer2
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -2738,6 +2899,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer2
         UserName = 'DBMemo1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         CharWrap = False
         DataField = 'REP_OBS'
         DataPipeline = ppDBRepresentantes
@@ -2767,6 +2929,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBTextCgcCpf'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CGC'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -2788,13 +2951,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FUN'#199#195'O.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 128852
@@ -2808,6 +2973,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'VarFuncao'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         Font.Charset = DEFAULT_CHARSET
@@ -2828,13 +2994,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -2849,6 +3017,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText41'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_ENDERE'
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
@@ -2869,6 +3038,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer2
         UserName = 'Line20'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 1588
@@ -2879,7 +3049,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object pp04SummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -2888,13 +3058,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Vendedores Listados:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 0
@@ -2908,6 +3080,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBRepresentantes
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -2939,7 +3112,7 @@ inherited FormGimpRepr: TFormGimpRepr
       DataPipelineName = 'ppDBRepresentantes'
       NewFile = False
       object ppGroupHeaderBand3: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 4233
         mmPrintPosition = 0
@@ -2948,13 +3121,15 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label56'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'GRUPO:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3175
           mmLeft = 0
@@ -2969,6 +3144,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBText39'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_GRUPO'
           DataPipeline = ppDBRepresentantes
           Font.Charset = DEFAULT_CHARSET
@@ -2988,7 +3164,7 @@ inherited FormGimpRepr: TFormGimpRepr
         end
       end
       object ppGroupFooterBand3: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -2996,53 +3172,49 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650612
-        56536974756163616F4F6E476574546578740B50726F6772616D54797065070B
-        747450726F63656475726506536F7572636506EF70726F636564757265205653
-        6974756163616F4F6E476574546578742876617220546578743A20537472696E
-        67293B0D0A5661720D0A20207753697475613A537472696E673B0D0A62656769
-        6E0D0A202020207753697475613A3D4442526570726573656E74616E7465735B
-        275245505F534954554143414F275D3B0D0A2020202069662028775369747561
-        3D27412729207468656E0D0A2020202020202054657874203A3D202741544956
-        4F273B0D0A20202020696620287753697475613D27492729207468656E0D0A20
-        20202020202054657874203A3D2027494E415449564F273B2020200D0A656E64
-        3B0D0A0D436F6D706F6E656E744E616D65060956536974756163616F09457665
-        6E744E616D6506094F6E47657454657874074576656E74494402350843617265
-        74506F730102000200000001060F5472614576656E7448616E646C65720B5072
-        6F6772616D4E616D6506134442546578744367634370664F6E5072696E740B50
-        726F6772616D54797065070B747450726F63656475726506536F757263650CB3
-        01000070726F636564757265204442546578744367634370664F6E5072696E74
-        3B0D0A5661720D0A2020774367633A737472696E673B0D0A626567696E0D0A20
-        202020774367633A3D5472696D5269676874284442526570726573656E74616E
-        7465735B275245505F434743275D293B0D0A202020206966206C656E67746828
-        77436763293D3134207468656E0D0A20202020202020626567696E0D0A202020
-        20202020202020204C626C4367634370662E43617074696F6E3A3D27434E504A
-        2E3A273B0D0A20202020202020202020204442546578744367634370662E4469
-        73706C6179466F726D61743A3D2739395C2E3939395C2E3939395C2F39393939
-        2D39393B303B5F270D0A20202020202020656E64202020200D0A20202020656C
-        73650D0A20202020202020626567696E0D0A20202020202020202020204C626C
-        4367634370662E43617074696F6E3A3D274350462E3A273B0D0A202020202020
-        20202020204442546578744367634370662E446973706C6179466F726D61743A
-        3D273939395C2E3939395C2E3939395C2D39393B303B5F273B0D0A2020202020
-        2020656E643B202020200D0A20202020656E643B0D0A0D436F6D706F6E656E74
-        4E616D65060C444254657874436763437066094576656E744E616D6506074F6E
-        5072696E74074576656E7449440220084361726574506F730102000200000001
-        060F5472614576656E7448616E646C65720B50726F6772616D4E616D65061256
-        617246756E63616F4F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F757263650C3001000070726F63656475726520
-        56617246756E63616F4F6E476574546578742876617220546578743A20537472
-        696E67293B0D0A5661720D0A20207746756E63616F3A537472696E673B0D0A62
-        6567696E0D0A202020207746756E63616F3A3D204442526570726573656E7461
-        6E7465735B275245505F46554E43414F275D3B0D0A2020202069662028774675
-        6E63616F3D27522729207468656E0D0A2020202020202054657874203A3D2027
-        524550524553454E54414E5445273B0D0A20202020696620287746756E63616F
-        3D27532729207468656E0D0A2020202020202054657874203A3D202753555045
-        525649534F52273B0D0A20202020696620287746756E63616F3D274727292074
-        68656E0D0A2020202020202054657874203A3D2027474552454E5445273B0D0A
-        656E643B0D0A0D436F6D706F6E656E744E616D65060956617246756E63616F09
-        4576656E744E616D6506094F6E47657454657874074576656E74494402350843
-        61726574506F730102000200000000}
+      object raProgramInfo3: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'VSituacaoOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure VSituacaoOnGetText(var Text: String);'#13#10'Var'#13#10'  wSitua:S' +
+          'tring;'#13#10'begin'#13#10'    wSitua:=DBRepresentantes['#39'REP_SITUACAO'#39'];'#13#10'  ' +
+          '  if (wSitua='#39'A'#39') then'#13#10'       Text := '#39'ATIVO'#39';'#13#10'    if (wSitua=' +
+          #39'I'#39') then'#13#10'       Text := '#39'INATIVO'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'VSituacao'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo4: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBTextCgcCpfOnPrint'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBTextCgcCpfOnPrint;'#13#10'Var'#13#10'  wCgc:string;'#13#10'begin'#13#10'    ' +
+          'wCgc:=TrimRight(DBRepresentantes['#39'REP_CGC'#39']);'#13#10'    if length(wCg' +
+          'c)=14 then'#13#10'       begin'#13#10'           LblCgcCpf.Caption:='#39'CNPJ.:'#39 +
+          ';'#13#10'           DBTextCgcCpf.DisplayFormat:='#39'99\.999\.999\/9999-99' +
+          ';0;_'#39#13#10'       end    '#13#10'    else'#13#10'       begin'#13#10'           LblCgc' +
+          'Cpf.Caption:='#39'CPF.:'#39';'#13#10'           DBTextCgcCpf.DisplayFormat:='#39'9' +
+          '99\.999\.999\-99;0;_'#39';'#13#10'       end;    '#13#10'    end;'#13#10
+        raProgram.ComponentName = 'DBTextCgcCpf'
+        raProgram.EventName = 'OnPrint'
+        raProgram.EventID = 32
+      end
+      object raProgramInfo5: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'VarFuncaoOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure VarFuncaoOnGetText(var Text: String);'#13#10'Var'#13#10'  wFuncao:' +
+          'String;'#13#10'begin'#13#10'    wFuncao:= DBRepresentantes['#39'REP_FUNCAO'#39'];'#13#10' ' +
+          '   if (wFuncao='#39'R'#39') then'#13#10'       Text := '#39'REPRESENTANTE'#39';'#13#10'    i' +
+          'f (wFuncao='#39'S'#39') then'#13#10'       Text := '#39'SUPERVISOR'#39';'#13#10'    if (wFun' +
+          'cao='#39'G'#39') then'#13#10'       Text := '#39'GERENTE'#39';'#13#10'end;'#13#10
+        raProgram.ComponentName = 'VarFuncao'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers2: TppDesignLayers
       object ppDesignLayer2: TppDesignLayer
@@ -3652,6 +3824,7 @@ inherited FormGimpRepr: TFormGimpRepr
       GuidCollationType = gcString
       DetailFieldName = 'REP_CODIGO'
       DetailSortOrder = soAscending
+      IgnoreTrailingSpaces = False
     end
   end
   object ppRepTmp_Rcom: TppReport
@@ -3660,6 +3833,7 @@ inherited FormGimpRepr: TFormGimpRepr
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -3680,6 +3854,14 @@ inherited FormGimpRepr: TFormGimpRepr
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -3689,22 +3871,34 @@ inherited FormGimpRepr: TFormGimpRepr
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -3712,14 +3906,26 @@ inherited FormGimpRepr: TFormGimpRepr
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 920
     Top = 224
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBTmp_RCom'
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 98690
@@ -3749,13 +3955,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4868
@@ -3770,13 +3978,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RECIBO DE PAGAMENTO DE COMISS'#213'ES'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4163
@@ -3791,13 +4001,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_REPRESENTANTE'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_REPRESENTANTE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -3812,13 +4024,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_PERIODO'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_PERIODO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1058
@@ -3832,13 +4046,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_QUINZENA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_QUINZENA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4233
@@ -3853,13 +4069,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label26'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'FATURAMENTO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -3874,13 +4092,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label27'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CR'#201'DITOS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -3895,13 +4115,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label28'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'D'#201'BITOS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -3915,6 +4137,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer4
         UserName = 'Line7'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 65088
@@ -3928,6 +4151,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer4
         UserName = 'Line8'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Position = lpLeft
         Weight = 0.750000000000000000
         mmHeight = 20638
@@ -3942,13 +4166,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label29'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VENDAS(Produtos)'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 794
@@ -3962,6 +4188,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText15'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'RCOM_VENDAS'
         DataPipeline = ppDBTmp_RCom
         DisplayFormat = '#,##0.00'
@@ -3986,13 +4213,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label30'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'COMISS'#213'ES S/VENDAS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 62706
@@ -4006,13 +4235,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label301'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OUTROS CR'#201'DITOS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 62706
@@ -4026,6 +4257,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText17'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'RCOM_COMISSOES'
         DataPipeline = ppDBTmp_RCom
         DisplayFormat = '#,##0.00'
@@ -4050,6 +4282,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText20'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'RCOM_CREDITOS'
         DataPipeline = ppDBTmp_RCom
         DisplayFormat = '#,##0.00'
@@ -4074,13 +4307,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label302'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'I.R.R.F.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 138377
@@ -4094,13 +4329,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OUTROS DEBITOS'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 138377
@@ -4114,6 +4351,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText21'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'RCOM_IRRF'
         DataPipeline = ppDBTmp_RCom
         DisplayFormat = '#,##0.00'
@@ -4138,6 +4376,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText22'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'RCOM_DEBITOS'
         DataPipeline = ppDBTmp_RCom
         DisplayFormat = '#,##0.00'
@@ -4162,13 +4401,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_LIN01'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_LIN01'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 63500
@@ -4182,13 +4423,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_LIN02'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_LIN02'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 63500
@@ -4202,13 +4445,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_LIN03'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_LIN03'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 63500
@@ -4222,13 +4467,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_LIN04'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_LIN04'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 63500
@@ -4242,6 +4489,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_LIN05'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 
           'comiss'#245'es sobre vendas efetuadas durante o m'#234's de    ___________' +
           '___ de _________.'
@@ -4250,7 +4498,8 @@ inherited FormGimpRepr: TFormGimpRepr
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3598
         mmLeft = 63500
@@ -4264,6 +4513,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 
           '______/______/__________      Ass. Vendedor: ___________________' +
           '_______________'
@@ -4272,7 +4522,8 @@ inherited FormGimpRepr: TFormGimpRepr
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 63500
@@ -4286,13 +4537,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Cr'#233'ditos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1058
@@ -4306,13 +4559,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label36'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RESUMO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taCentered
         Transparent = True
         mmHeight = 4233
@@ -4327,13 +4582,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label37'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de D'#233'bitos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1058
@@ -4347,13 +4604,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label38'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'L'#237'quido '#224' Pagar'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 1058
@@ -4368,6 +4627,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -4392,6 +4652,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         DataType = dtCurrency
@@ -4416,6 +4677,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 2
         DataType = dtCurrency
@@ -4449,13 +4711,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label39'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'AG.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5027
         mmLeft = 1058
@@ -4469,6 +4733,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText23'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_AGENCIA'
         DataPipeline = ppDBTmp_RCom
         Font.Charset = DEFAULT_CHARSET
@@ -4491,13 +4756,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label40'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CONTA:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5027
         mmLeft = 37306
@@ -4511,6 +4778,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText24'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CONTA'
         DataPipeline = ppDBTmp_RCom
         Font.Charset = DEFAULT_CHARSET
@@ -4533,6 +4801,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText25'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_BANCO'
         DataPipeline = ppDBTmp_RCom
         Font.Charset = DEFAULT_CHARSET
@@ -4555,13 +4824,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label401'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CREDOR:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 5027
         mmLeft = 124619
@@ -4575,6 +4846,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText26'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_BANCOFAVOR'
         DataPipeline = ppDBTmp_RCom
         Font.Charset = DEFAULT_CHARSET
@@ -4594,7 +4866,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object ppFooterBand1: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 13758
       mmPrintPosition = 0
@@ -4613,13 +4885,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label43'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'OBSERVA'#199#195'O:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 2117
@@ -4633,13 +4907,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_OBS01'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_OBS01'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 28575
@@ -4653,13 +4929,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_OBS02'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_OBS01'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 28575
@@ -4685,13 +4963,13 @@ inherited FormGimpRepr: TFormGimpRepr
       DataPipelineName = 'ppDBTmp_RCom'
       NewFile = False
       object ppGroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 0
         mmPrintPosition = 0
       end
       object ppGroupFooterBand1: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         PrintHeight = phDynamic
         HideWhenOneDetail = False
         mmBottomOffset = 0
@@ -4722,6 +5000,7 @@ inherited FormGimpRepr: TFormGimpRepr
             DataPipeline = ppDBEventos
             PrinterSetup.BinName = 'Default'
             PrinterSetup.DocumentName = 'Report'
+            PrinterSetup.Duplex = dpNone
             PrinterSetup.PaperName = 'A4'
             PrinterSetup.PrinterName = 'Default'
             PrinterSetup.SaveDeviceSettings = False
@@ -4733,12 +5012,12 @@ inherited FormGimpRepr: TFormGimpRepr
             PrinterSetup.mmPaperWidth = 210000
             PrinterSetup.PaperSize = 9
             Units = utMillimeters
-            Version = '16.02'
+            Version = '22.0'
             mmColumnWidth = 0
             DataPipelineName = 'ppDBEventos'
             object ppHeaderBand1: TppHeaderBand
               BeforePrint = ppHeaderBand1BeforePrint
-              Background.Brush.Style = bsClear
+              Border.mmPadding = 0
               mmBottomOffset = 0
               mmHeight = 7673
               mmPrintPosition = 0
@@ -4747,13 +5026,15 @@ inherited FormGimpRepr: TFormGimpRepr
                 UserName = 'Label42'
                 HyperlinkEnabled = False
                 Border.Weight = 1.000000000000000000
+                Border.mmPadding = 0
                 Caption = 'DISCRIMINA'#199#195'O DOS CR'#201'DITOS E D'#201'BITOS DO PER'#205'ODO'
                 Font.Charset = DEFAULT_CHARSET
                 Font.Color = clBlack
                 Font.Name = 'Arial'
                 Font.Size = 10
                 Font.Style = []
-                FormField = False
+                FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+                FormFieldSettings.FormFieldType = fftNone
                 TextAlignment = taCentered
                 Transparent = True
                 mmHeight = 4163
@@ -4767,6 +5048,7 @@ inherited FormGimpRepr: TFormGimpRepr
                 DesignLayer = ppDesignLayer3
                 UserName = 'Line10'
                 Border.Weight = 1.000000000000000000
+                Border.mmPadding = 0
                 Weight = 0.750000000000000000
                 mmHeight = 265
                 mmLeft = 0
@@ -4779,6 +5061,7 @@ inherited FormGimpRepr: TFormGimpRepr
                 DesignLayer = ppDesignLayer3
                 UserName = 'Line11'
                 Border.Weight = 1.000000000000000000
+                Border.mmPadding = 0
                 Position = lpLeft
                 Weight = 0.750000000000000000
                 mmHeight = 7408
@@ -4792,6 +5075,7 @@ inherited FormGimpRepr: TFormGimpRepr
                 DesignLayer = ppDesignLayer3
                 UserName = 'Line12'
                 Border.Weight = 1.000000000000000000
+                Border.mmPadding = 0
                 Position = lpLeft
                 Weight = 0.750000000000000000
                 mmHeight = 7408
@@ -4803,8 +5087,7 @@ inherited FormGimpRepr: TFormGimpRepr
               end
             end
             object ppDetailBand2: TppDetailBand
-              Background1.Brush.Style = bsClear
-              Background2.Brush.Style = bsClear
+              Border.mmPadding = 0
               mmBottomOffset = 0
               mmHeight = 4233
               mmPrintPosition = 0
@@ -4813,6 +5096,7 @@ inherited FormGimpRepr: TFormGimpRepr
                 UserName = 'DBText27'
                 HyperlinkEnabled = False
                 Border.Weight = 1.000000000000000000
+                Border.mmPadding = 0
                 DataField = 'EVE_DESCRI'
                 DataPipeline = ppDBEventos
                 Font.Charset = DEFAULT_CHARSET
@@ -4834,6 +5118,7 @@ inherited FormGimpRepr: TFormGimpRepr
                 UserName = 'DBText28'
                 HyperlinkEnabled = False
                 Border.Weight = 1.000000000000000000
+                Border.mmPadding = 0
                 DataField = 'ERP_COMPL'
                 DataPipeline = ppDBEventos
                 Font.Charset = DEFAULT_CHARSET
@@ -4855,6 +5140,7 @@ inherited FormGimpRepr: TFormGimpRepr
                 UserName = 'DBText29'
                 HyperlinkEnabled = False
                 Border.Weight = 1.000000000000000000
+                Border.mmPadding = 0
                 DataField = 'ERP_VALOR'
                 DataPipeline = ppDBEventos
                 DisplayFormat = '#,##0.00'
@@ -4878,6 +5164,7 @@ inherited FormGimpRepr: TFormGimpRepr
                 UserName = 'DBText30'
                 HyperlinkEnabled = False
                 Border.Weight = 1.000000000000000000
+                Border.mmPadding = 0
                 DataField = 'ERP_TIPO'
                 DataPipeline = ppDBEventos
                 Font.Charset = DEFAULT_CHARSET
@@ -4896,7 +5183,6 @@ inherited FormGimpRepr: TFormGimpRepr
               end
             end
             object raCodeModule4: TraCodeModule
-              ProgramStream = {00}
             end
             object ppDesignLayers3: TppDesignLayers
               object ppDesignLayer3: TppDesignLayer
@@ -4910,98 +5196,101 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object raCodeModule3: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650614
-        546F74616C5F4372656469746F734F6E43616C630B50726F6772616D54797065
-        070B747450726F63656475726506536F75726365068C70726F63656475726520
-        546F74616C5F4372656469746F734F6E43616C63287661722056616C75653A20
-        56617269616E74293B0D0A626567696E0D0A0D0A202056616C7565203A3D2044
-        42546D705F52636F6D5B2752434F4D5F434F4D4953534F4553275D2B4442546D
-        705F52636F6D5B2752434F4D5F4352454449544F53275D3B0D0A0D0A656E643B
-        0D0A0D436F6D706F6E656E744E616D65060E546F74616C5F4372656469746F73
-        094576656E744E616D6506064F6E43616C63074576656E744944022108436172
-        6574506F730102000200000001060F5472614576656E7448616E646C65720B50
-        726F6772616D4E616D650613546F74616C5F44656269746F734F6E43616C630B
-        50726F6772616D54797065070B747450726F63656475726506536F7572636506
-        8870726F63656475726520546F74616C5F44656269746F734F6E43616C632876
-        61722056616C75653A2056617269616E74293B0D0A626567696E0D0A0D0A2020
-        56616C7565203A3D20284442546D705F52636F6D5B2752434F4D5F4445424954
-        4F53275D2B204442546D705F52636F6D5B2752434F4D5F49525246275D293B0D
-        0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D65060D546F74616C5F44
-        656269746F73094576656E744E616D6506064F6E43616C63074576656E744944
-        0221084361726574506F730102000200000001060F5472614576656E7448616E
-        646C65720B50726F6772616D4E616D6506134C69717569646F5F50616761724F
-        6E43616C630B50726F6772616D54797065070B747450726F6365647572650653
-        6F75726365067E70726F636564757265204C69717569646F5F50616761724F6E
-        43616C63287661722056616C75653A2056617269616E74293B0D0A626567696E
-        0D0A0D0A202056616C7565203A3D2028546F74616C5F4372656469746F732E56
-        616C75652D546F74616C5F44656269746F732E56616C7565293B200D0A0D0A65
-        6E643B0D0A0D436F6D706F6E656E744E616D65060D4C69717569646F5F506167
-        6172094576656E744E616D6506064F6E43616C63074576656E74494402210843
-        61726574506F730102000200000001060F5472614576656E7448616E646C6572
-        0B50726F6772616D4E616D6506124C424C5F4C494E30344F6E47657454657874
-        0B50726F6772616D54797065070B747450726F63656475726506536F75726365
-        14C500000070726F636564757265204C424C5F4C494E30344F6E476574546578
-        742876617220546578743A20537472696E67293B0D0A626567696E0D0A0D0A20
-        2054657874203A3D20276120696D706F7274C3A26E6369612064652052242027
-        2B466F726D6174466C6F61742827232C2323302E3030272C4C69717569646F5F
-        50616761722E56616C7565292B2720636F6D6F20C3A020696D706F7274C3A26E
-        636961206CC3AD717569646120646F20706167616D656E746F7320646173273B
-        0D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D6506094C424C5F4C49
-        4E3034094576656E744E616D6506094F6E47657454657874074576656E744944
-        0235084361726574506F730102000200000001060F5472614576656E7448616E
-        646C65720B50726F6772616D4E616D65061A4C424C5F524550524553454E5441
-        4E54454F6E476574546578740B50726F6772616D54797065070B747450726F63
-        656475726506536F757263650C4D03000070726F636564757265204C424C5F52
-        4550524553454E54414E54454F6E476574546578742876617220546578743A20
-        537472696E67293B0D0A5661720D0A202077436743203A20537472696E673B0D
-        0A626567696E0D0A202020206966204C656E677468284442544D505F52636F6D
-        5B275245505F434743275D293E30207468656E0D0A2020202020202062656769
-        6E200D0A20202020202020202020206966204C656E677468284442544D505F52
-        636F6D5B275245505F434743275D293D3134207468656E0D0A20202020202020
-        20202020202020626567696E0D0A202020202020202020202020202020202020
-        77436743203A3D2027434E504A2E3A20272B636F7079284442544D505F52636F
-        6D5B275245505F434743275D2C312C32292B272E272B636F7079284442544D50
-        5F52636F6D5B275245505F434743275D2C332C33292B272E272B636F70792844
-        42544D505F52636F6D5B275245505F434743275D2C362C33292B272F272B636F
-        7079284442544D505F52636F6D5B275245505F434743275D2C392C34292B272D
-        272B636F7079284442544D505F52636F6D5B275245505F434743275D2C31332C
-        32293B0D0A2020202020202020202020202020656E640D0A2020202020202020
-        202020656C73650D0A2020202020202020202020202020626567696E0D0A2020
-        2020202020202020202020202020202077436743203A3D20274350462E3A2027
-        2B636F7079284442544D505F52636F6D5B275245505F434743275D2C312C3329
-        2B272E272B636F7079284442544D505F52636F6D5B275245505F434743275D2C
-        342C33292B272E272B636F7079284442544D505F52636F6D5B275245505F4347
-        43275D2C372C33292B272D272B636F7079284442544D505F52636F6D5B275245
-        505F434743275D2C31302C32293B0D0A2020202020202020202020202020656E
-        643B0D0A20202020202020656E643B200D0A20202020200D0A20202020546578
-        74203A3D27526570726573656E74616E74653A20272B4442546D705F52636F6D
-        5B275245505F434F4449474F275D2B272D272B4442546D705F52636F6D5B2752
-        45505F475255504F275D2B2720272B4442546D705F52636F6D5B275245505F52
-        415A414F275D2B27202D20272B774367433B0D0A20200D0A656E643B0D0A0D43
-        6F6D706F6E656E744E616D6506114C424C5F524550524553454E54414E544509
-        4576656E744E616D6506094F6E47657454657874074576656E74494402350843
-        61726574506F730102000200000001060F5472614576656E7448616E646C6572
-        0B50726F6772616D4E616D6506124C424C5F4C494E30324F6E47657454657874
-        0B50726F6772616D54797065070B747450726F63656475726506536F75726365
-        068970726F636564757265204C424C5F4C494E30324F6E476574546578742876
-        617220546578743A20537472696E67293B0D0A626567696E0D0A0D0A20205465
-        7874203A3D202745752C20272B4442544D505F52636F6D5B275245505F52415A
-        414F275D2B272E204465636C617261207175652072656365626575206465273B
-        200D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D6506094C424C5F4C
-        494E3032094576656E744E616D6506094F6E47657454657874074576656E7449
-        440235084361726574506F730102000200000001060F5472614576656E744861
-        6E646C65720B50726F6772616D4E616D6506124C424C5F4C494E30314F6E4765
-        74546578740B50726F6772616D54797065070B747450726F6365647572650653
-        6F7572636514B700000070726F636564757265204C424C5F4C494E30314F6E47
-        6574546578742876617220546578743A20537472696E67293B0D0A626567696E
-        0D0A0D0A202054657874203A3D202750656469646F7320656E74726567756573
-        20636F6E666F726D652072656C6174C3B372696F2065737465206DC3AA732052
-        2420272B20466F726D6174466C6F61742827232C2323302E3030272C4442544D
-        505F52636F6D5B2752434F4D5F56454E444153275D293B0D0A0D0A656E643B0D
-        0A0D436F6D706F6E656E744E616D6506094C424C5F4C494E3031094576656E74
-        4E616D6506094F6E47657454657874074576656E744944023508436172657450
-        6F730102000200000000}
+      object raProgramInfo6: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Total_CreditosOnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Total_CreditosOnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  ' +
+          'Value := DBTmp_Rcom['#39'RCOM_COMISSOES'#39']+DBTmp_Rcom['#39'RCOM_CREDITOS'#39 +
+          '];'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Total_Creditos'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo7: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Total_DebitosOnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Total_DebitosOnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  V' +
+          'alue := (DBTmp_Rcom['#39'RCOM_DEBITOS'#39']+ DBTmp_Rcom['#39'RCOM_IRRF'#39']);'#13#10 +
+          #13#10'end;'#13#10
+        raProgram.ComponentName = 'Total_Debitos'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo8: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Liquido_PagarOnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Liquido_PagarOnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  V' +
+          'alue := (Total_Creditos.Value-Total_Debitos.Value); '#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Liquido_Pagar'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo9: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'LBL_LIN04OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure LBL_LIN04OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text' +
+          ' := '#39'a import'#226'ncia de R$ '#39'+FormatFloat('#39'#,##0.00'#39',Liquido_Pagar.' +
+          'Value)+'#39' como '#224' import'#226'ncia l'#237'quida do pagamentos das'#39';'#13#10#13#10'end;'#13 +
+          #10
+        raProgram.ComponentName = 'LBL_LIN04'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo10: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'LBL_REPRESENTANTEOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure LBL_REPRESENTANTEOnGetText(var Text: String);'#13#10'Var'#13#10'  ' +
+          'wCgC : String;'#13#10'begin'#13#10'    if Length(DBTMP_Rcom['#39'REP_CGC'#39'])>0 th' +
+          'en'#13#10'       begin '#13#10'           if Length(DBTMP_Rcom['#39'REP_CGC'#39'])=1' +
+          '4 then'#13#10'              begin'#13#10'                  wCgC := '#39'CNPJ.: '#39 +
+          '+copy(DBTMP_Rcom['#39'REP_CGC'#39'],1,2)+'#39'.'#39'+copy(DBTMP_Rcom['#39'REP_CGC'#39'],' +
+          '3,3)+'#39'.'#39'+copy(DBTMP_Rcom['#39'REP_CGC'#39'],6,3)+'#39'/'#39'+copy(DBTMP_Rcom['#39'RE' +
+          'P_CGC'#39'],9,4)+'#39'-'#39'+copy(DBTMP_Rcom['#39'REP_CGC'#39'],13,2);'#13#10'            ' +
+          '  end'#13#10'           else'#13#10'              begin'#13#10'                  w' +
+          'CgC := '#39'CPF.: '#39'+copy(DBTMP_Rcom['#39'REP_CGC'#39'],1,3)+'#39'.'#39'+copy(DBTMP_R' +
+          'com['#39'REP_CGC'#39'],4,3)+'#39'.'#39'+copy(DBTMP_Rcom['#39'REP_CGC'#39'],7,3)+'#39'-'#39'+copy' +
+          '(DBTMP_Rcom['#39'REP_CGC'#39'],10,2);'#13#10'              end;'#13#10'       end; '#13 +
+          #10'     '#13#10'    Text :='#39'Representante: '#39'+DBTmp_Rcom['#39'REP_CODIGO'#39']+'#39'-' +
+          #39'+DBTmp_Rcom['#39'REP_GRUPO'#39']+'#39' '#39'+DBTmp_Rcom['#39'REP_RAZAO'#39']+'#39' - '#39'+wCgC' +
+          ';'#13#10'  '#13#10'end;'#13#10
+        raProgram.ComponentName = 'LBL_REPRESENTANTE'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo11: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'LBL_LIN02OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure LBL_LIN02OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text' +
+          ' := '#39'Eu, '#39'+DBTMP_Rcom['#39'REP_RAZAO'#39']+'#39'. Declara que recebeu de'#39'; '#13 +
+          #10#13#10'end;'#13#10
+        raProgram.ComponentName = 'LBL_LIN02'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
+      object raProgramInfo12: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'LBL_LIN01OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure LBL_LIN01OnGetText(var Text: String);'#13#10'begin'#13#10#13#10'  Text' +
+          ' := '#39'Pedidos entregues conforme relat'#243'rio este m'#234's R$ '#39'+ FormatF' +
+          'loat('#39'#,##0.00'#39',DBTMP_Rcom['#39'RCOM_VENDAS'#39']);'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'LBL_LIN01'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+      end
     end
     object ppDesignLayers4: TppDesignLayers
       object ppDesignLayer4: TppDesignLayer
@@ -5105,6 +5394,7 @@ inherited FormGimpRepr: TFormGimpRepr
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -5122,6 +5412,14 @@ inherited FormGimpRepr: TFormGimpRepr
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -5131,22 +5429,34 @@ inherited FormGimpRepr: TFormGimpRepr
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -5154,13 +5464,26 @@ inherited FormGimpRepr: TFormGimpRepr
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 920
     Top = 296
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBTmpEquip'
     object ppHeaderBand2: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 25135
@@ -5169,6 +5492,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer5
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5183,13 +5507,15 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -5204,13 +5530,15 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -5224,6 +5552,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -5244,6 +5573,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -5265,13 +5595,15 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO3'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -5284,6 +5616,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer5
         UserName = 'Line13'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5296,6 +5629,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer5
         UserName = 'Line14'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5309,13 +5643,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label44'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'COD'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 0
@@ -5329,13 +5665,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label45'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'GRP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 8467
@@ -5349,13 +5687,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label46'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VENDEDOR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 21431
@@ -5369,13 +5709,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SUP.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 94721
@@ -5389,13 +5731,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label48'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'GER.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 103717
@@ -5409,13 +5753,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TOTAL VENDIDO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4163
@@ -5430,13 +5776,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'COMISS'#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4163
@@ -5451,13 +5799,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label501'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'VL.COMISS'#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4163
@@ -5472,13 +5822,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label52'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'QTDE'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4163
@@ -5494,13 +5846,15 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_02_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -5514,13 +5868,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_02_QUINZENA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_02_QUINZENA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 4163
@@ -5532,8 +5888,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object ppDetailBand3: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 5292
@@ -5543,6 +5898,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText31'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CODIGO'
         DataPipeline = ppDBTmpEquip
         Font.Charset = DEFAULT_CHARSET
@@ -5564,6 +5920,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText32'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_GRUPO'
         DataPipeline = ppDBTmpEquip
         Font.Charset = DEFAULT_CHARSET
@@ -5585,6 +5942,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText33'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_FUNCAO'
         DataPipeline = ppDBTmpEquip
         Font.Charset = DEFAULT_CHARSET
@@ -5606,6 +5964,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText34'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_RAZAO'
         DataPipeline = ppDBTmpEquip
         Font.Charset = DEFAULT_CHARSET
@@ -5627,6 +5986,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText35'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_SUPERVISOR'
         DataPipeline = ppDBTmpEquip
         Font.Charset = DEFAULT_CHARSET
@@ -5648,6 +6008,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText36'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_GERENTE'
         DataPipeline = ppDBTmpEquip
         Font.Charset = DEFAULT_CHARSET
@@ -5669,6 +6030,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'TotVendido'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PER_COMISSAO_CC'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0.00'
@@ -5692,6 +6054,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'VlComissao'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TMP_COMISSAO'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0.00'
@@ -5715,6 +6078,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText40'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TMP_TOTLITROS'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0'
@@ -5738,6 +6102,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'TotVendido1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TMP_TOTVENDAS'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0.00'
@@ -5758,7 +6123,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object ppFooterBand2: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 11113
       mmPrintPosition = 0
@@ -5767,13 +6132,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_02_OBS1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_02_OBS1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 0
@@ -5786,6 +6153,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer5
         UserName = 'Line15'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5799,13 +6167,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_02_OBS2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_02_OBS2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 0
@@ -5816,7 +6186,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object ppSummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 14817
       mmPrintPosition = 0
@@ -5825,13 +6195,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label53'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Vendas de toda a equipe'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -5845,6 +6217,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBCalc3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TMP_TOTVENDAS'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0.00'
@@ -5868,6 +6241,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBCalc4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TMP_COMISSAO'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0.00'
@@ -5891,6 +6265,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBCalc5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TMP_TOTLITROS'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0'
@@ -5913,6 +6288,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer5
         UserName = 'Line16'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5925,6 +6301,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer5
         UserName = 'Line17'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5938,13 +6315,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label54'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Vendas dos Supervisionados'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4163
         mmLeft = 0
@@ -5957,6 +6336,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer5
         UserName = 'Line18'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -5970,6 +6350,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBCalc6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'WTOTALVENDIDO_CC'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0.00'
@@ -5993,6 +6374,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBCalc7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'WVALORCOMISSAO_CC'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0.00'
@@ -6016,6 +6398,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBCalc8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'WQTDE_CC'
         DataPipeline = ppDBTmpEquip
         DisplayFormat = '#,##0'
@@ -6227,6 +6610,7 @@ inherited FormGimpRepr: TFormGimpRepr
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = True
@@ -6245,6 +6629,14 @@ inherited FormGimpRepr: TFormGimpRepr
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -6254,22 +6646,34 @@ inherited FormGimpRepr: TFormGimpRepr
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -6277,13 +6681,26 @@ inherited FormGimpRepr: TFormGimpRepr
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 928
     Top = 352
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBComissaoTipo'
     object ppHeaderBand3: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 21696
@@ -6292,6 +6709,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer6
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6306,13 +6724,15 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -6326,6 +6746,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -6346,6 +6767,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -6365,6 +6787,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer6
         UserName = 'Line13'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6377,6 +6800,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer6
         UserName = 'Line14'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -6390,13 +6814,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label46'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vendedor'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 9525
@@ -6410,13 +6836,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label49'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total Faturado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -6431,13 +6859,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Media Comiss'#227'o '
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -6452,13 +6882,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label501'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vl.Comiss'#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -6474,13 +6906,15 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'lblComissaoTipoEmp'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -6494,13 +6928,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'ppLblQuinzenaTipo'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ppLblQuinzenaTipo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3969
@@ -6516,13 +6952,15 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         AutoSize = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Relat'#243'rio de comiss'#227'o por tipo de produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -6533,8 +6971,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object ppDetailBand4: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 5027
@@ -6544,6 +6981,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText44'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_CODIGO'
         DataPipeline = ppDBComissaoTipo
         Font.Charset = DEFAULT_CHARSET
@@ -6565,6 +7003,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText45'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PTI_DESCRI'
         DataPipeline = ppDBComissaoTipo
         Font.Charset = DEFAULT_CHARSET
@@ -6586,6 +7025,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText46'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'TOTAL_FAT'
         DataPipeline = ppDBComissaoTipo
         DisplayFormat = '#0.00'
@@ -6609,6 +7049,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText47'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'MEDIA_COMIS'
         DataPipeline = ppDBComissaoTipo
         DisplayFormat = '#0.00'
@@ -6632,6 +7073,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText48'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CC_VALOR_COMIS'
         DataPipeline = ppDBComissaoTipo
         DisplayFormat = '#0.00'
@@ -6665,7 +7107,7 @@ inherited FormGimpRepr: TFormGimpRepr
       DataPipelineName = 'ppDBComissaoTipo'
       NewFile = False
       object ppGroupHeaderBand4: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 5027
         mmPrintPosition = 0
@@ -6674,6 +7116,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBText31'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_CODIGO'
           DataPipeline = ppDBComissaoTipo
           Font.Charset = DEFAULT_CHARSET
@@ -6697,6 +7140,7 @@ inherited FormGimpRepr: TFormGimpRepr
           HyperlinkEnabled = False
           AutoSize = True
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_NOME'
           DataPipeline = ppDBComissaoTipo
           Font.Charset = DEFAULT_CHARSET
@@ -6716,7 +7160,7 @@ inherited FormGimpRepr: TFormGimpRepr
         end
       end
       object ppGroupFooterBand4: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 6350
@@ -6726,13 +7170,15 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label72'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Total Comiss'#227'o Vendedor :'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 10
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 4022
           mmLeft = 794
@@ -6747,6 +7193,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBCalc15'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CC_VALOR_COMIS'
           DataPipeline = ppDBComissaoTipo
           DisplayFormat = '##0.00'
@@ -6771,6 +7218,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer6
           UserName = 'Line24'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -6785,6 +7233,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBCalc9'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'TOTAL_FAT'
           DataPipeline = ppDBComissaoTipo
           DisplayFormat = '#0.00'
@@ -6808,7 +7257,6 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object raCodeModule6: TraCodeModule
-      ProgramStream = {00}
     end
     object ppDesignLayers6: TppDesignLayers
       object ppDesignLayer6: TppDesignLayer
@@ -7094,6 +7542,7 @@ inherited FormGimpRepr: TFormGimpRepr
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.Orientation = poLandscape
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
@@ -7113,6 +7562,14 @@ inherited FormGimpRepr: TFormGimpRepr
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -7122,22 +7579,34 @@ inherited FormGimpRepr: TFormGimpRepr
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -7145,14 +7614,27 @@ inherited FormGimpRepr: TFormGimpRepr
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 976
     Top = 144
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 287000
     DataPipelineName = 'DBComissaoProd'
     object ppHeaderBand4: TppHeaderBand
       BeforePrint = pp00HeaderBand2BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 20108
       mmPrintPosition = 0
@@ -7160,6 +7642,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer7
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -7173,13 +7656,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_CP_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 0
@@ -7193,13 +7678,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LBL_03_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_CP_LTITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 0
@@ -7213,13 +7700,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'LB_TITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LBL_CP_LTITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4022
         mmLeft = 0
@@ -7232,6 +7721,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer7
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -7245,6 +7735,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -7264,6 +7755,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -7283,13 +7775,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Emiss'#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 4498
@@ -7303,13 +7797,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Fatura'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 21696
@@ -7323,13 +7819,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 46831
@@ -7343,13 +7841,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 113771
@@ -7362,6 +7862,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer7
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -7375,13 +7876,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label7'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Pre'#231'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 171450
@@ -7395,13 +7898,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label8'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Qtde'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 189971
@@ -7415,13 +7920,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label9'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vencimento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 247386
@@ -7435,13 +7942,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label76'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Com.%'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 216959
@@ -7455,13 +7964,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label77'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Vl.Comiss'#227'o'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 227807
@@ -7475,13 +7986,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label78'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Pre'#231'o Bruto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 200290
@@ -7495,13 +8008,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label79'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Pagamento'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 265642
@@ -7515,13 +8030,15 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Label58'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Pedido'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3260
         mmLeft = 87048
@@ -7532,8 +8049,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object ppDetailBand5: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3704
@@ -7543,6 +8059,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_DTEMIS'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7566,6 +8083,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText50'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7588,6 +8106,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText52'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7610,6 +8129,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText53'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_DESCRI'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7632,6 +8152,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText51'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FIT_PRECO'
         DataPipeline = DBComissaoProd
         DisplayFormat = '#,##0.00'
@@ -7656,6 +8177,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText54'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FIT_QTDE'
         DataPipeline = DBComissaoProd
         DisplayFormat = '#,##0.000'
@@ -7680,6 +8202,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Variable4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 0
         DataType = dtCurrency
@@ -7703,6 +8226,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBREP_CODIGO'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'REP_CODIGO'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7726,6 +8250,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText57'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'LIN_CODIGO'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7750,6 +8275,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText60'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FIT_COMIS'
         DataPipeline = DBComissaoProd
         DisplayFormat = '##0.00'
@@ -7774,6 +8300,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'Variable5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         BlankWhenZero = False
         CalcOrder = 1
         DataType = dtCurrency
@@ -7797,6 +8324,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_VENCTO'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7820,6 +8348,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText62'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FPC_PAGTO'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7843,6 +8372,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText501'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7865,6 +8395,7 @@ inherited FormGimpRepr: TFormGimpRepr
         UserName = 'DBText64'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
@@ -7898,7 +8429,7 @@ inherited FormGimpRepr: TFormGimpRepr
       DataPipelineName = ''
       NewFile = False
       object ppGroupHeaderBand5: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 5027
         mmPrintPosition = 0
@@ -7907,6 +8438,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBText55'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_CODIGO'
           DataPipeline = DBComissaoProd
           Font.Charset = DEFAULT_CHARSET
@@ -7930,13 +8462,15 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label65'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'VENDEDOR :'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
           mmLeft = 3175
@@ -7951,6 +8485,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBText56'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'REP_NOME'
           DataPipeline = DBComissaoProd
           Font.Charset = DEFAULT_CHARSET
@@ -7973,6 +8508,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer7
           UserName = 'Line6'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 265
@@ -7984,7 +8520,7 @@ inherited FormGimpRepr: TFormGimpRepr
         end
       end
       object ppGroupFooterBand5: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 4763
@@ -7994,13 +8530,15 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label80'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TOTAL GERAL'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 3175
@@ -8015,6 +8553,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBCalc13'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'FIT_QTDE'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.000'
@@ -8040,6 +8579,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBCalc14'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CC_TOTAL_VENDA'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.00'
@@ -8065,6 +8605,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBCalc16'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CC_TOTAL_COMIS'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.00'
@@ -8089,6 +8630,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer7
           UserName = 'Line5'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -8114,7 +8656,7 @@ inherited FormGimpRepr: TFormGimpRepr
       DataPipelineName = 'DBComissaoProd'
       NewFile = False
       object ppGroupHeaderBand6: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 3440
         mmPrintPosition = 0
@@ -8123,13 +8665,15 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label75'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'LINHA :'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 3175
@@ -8144,6 +8688,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBText58'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'LIN_CODIGO'
           DataPipeline = DBComissaoProd
           Font.Charset = DEFAULT_CHARSET
@@ -8167,6 +8712,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBText59'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'LIN_DESCRI'
           DataPipeline = DBComissaoProd
           Font.Charset = DEFAULT_CHARSET
@@ -8187,7 +8733,7 @@ inherited FormGimpRepr: TFormGimpRepr
         end
       end
       object ppGroupFooterBand6: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 5027
@@ -8197,6 +8743,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBCalc10'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'FIT_QTDE'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.000'
@@ -8222,6 +8769,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBCalc101'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CC_TOTAL_VENDA'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.00'
@@ -8247,6 +8795,7 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'DBCalc12'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           DataField = 'CC_TOTAL_COMIS'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.00'
@@ -8272,13 +8821,15 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label70'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'TOTAL DA LINHA'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = [fsBold]
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3387
           mmLeft = 3175
@@ -8292,6 +8843,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer7
           UserName = 'Line4'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -8304,26 +8856,30 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object raCodeModule5: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D65060F
-        5661726961626C65344F6E43616C630B50726F6772616D54797065070B747450
-        726F63656475726506536F75726365068570726F636564757265205661726961
-        626C65344F6E43616C63287661722056616C75653A2056617269616E74293B0D
-        0A626567696E0D0A0D0A202056616C7565203A3D20284442436F6D697373616F
-        50726F645B274649545F51544445275D2A204442436F6D697373616F50726F64
-        5B274649545F505245434F275D290D0A656E643B0D0A0D436F6D706F6E656E74
-        4E616D6506095661726961626C6534094576656E744E616D6506064F6E43616C
-        63074576656E7449440221084361726574506F730102000200000001060F5472
-        614576656E7448616E646C65720B50726F6772616D4E616D65060F5661726961
-        626C65354F6E43616C630B50726F6772616D54797065070B747450726F636564
-        75726506536F7572636506A670726F636564757265205661726961626C65354F
-        6E43616C63287661722056616C75653A2056617269616E74293B0D0A62656769
-        6E0D0A0D0A202056616C7565203A3D284442436F6D697373616F50726F645B27
-        4649545F51544445275D2A204442436F6D697373616F50726F645B274649545F
-        505245434F275D292A4442436F6D697373616F50726F645B274649545F434F4D
-        4953275D2F3130300D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D65
-        06095661726961626C6535094576656E744E616D6506064F6E43616C63074576
-        656E7449440221084361726574506F730102000200000000}
+      object raProgramInfo13: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable4OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable4OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+          ' := (DBComissaoProd['#39'FIT_QTDE'#39']* DBComissaoProd['#39'FIT_PRECO'#39'])'#13#10'e' +
+          'nd;'#13#10
+        raProgram.ComponentName = 'Variable4'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
+      object raProgramInfo14: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'Variable5OnCalc'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure Variable5OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
+          ' :=(DBComissaoProd['#39'FIT_QTDE'#39']* DBComissaoProd['#39'FIT_PRECO'#39'])*DBC' +
+          'omissaoProd['#39'FIT_COMIS'#39']/100'#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'Variable5'
+        raProgram.EventName = 'OnCalc'
+        raProgram.EventID = 33
+      end
     end
     object ppDesignLayers7: TppDesignLayers
       object ppDesignLayer7: TppDesignLayer
@@ -8558,6 +9114,7 @@ inherited FormGimpRepr: TFormGimpRepr
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Rdprint Preview'
     OpcoesPreview.PreviewZoom = 75
@@ -8571,15 +9128,19 @@ inherited FormGimpRepr: TFormGimpRepr
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Rdprint Setup'
     TitulodoRelatorio = 'Gerado por RDprint'
@@ -8636,6 +9197,8 @@ inherited FormGimpRepr: TFormGimpRepr
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     Left = 808
     Top = 312
   end
@@ -8644,6 +9207,7 @@ inherited FormGimpRepr: TFormGimpRepr
     DataPipeline = pipeComissao
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'A4'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -8658,6 +9222,14 @@ inherited FormGimpRepr: TFormGimpRepr
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -8667,20 +9239,32 @@ inherited FormGimpRepr: TFormGimpRepr
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -8688,13 +9272,26 @@ inherited FormGimpRepr: TFormGimpRepr
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 976
     Top = 80
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'pipeComissao'
     object ppHeaderBand5: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 15610
       mmPrintPosition = 0
@@ -8702,13 +9299,15 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer8
         UserName = 'lempresa'
         OnGetText = lempresaGetText
+        Border.mmPadding = 0
         Caption = 'lempresa'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 12
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4762
         mmLeft = 3704
@@ -8721,13 +9320,15 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer8
         UserName = 'ltitulo'
         OnGetText = ltituloGetText
+        Border.mmPadding = 0
         Caption = 'ltitulo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 3969
@@ -8740,13 +9341,15 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer8
         UserName = 'lperiodo'
         OnGetText = lperiodoGetText
+        Border.mmPadding = 0
         Caption = 'lperiodo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 3969
@@ -8758,6 +9361,7 @@ inherited FormGimpRepr: TFormGimpRepr
       object ppSystemVariable9: TppSystemVariable
         DesignLayer = ppDesignLayer8
         UserName = 'SystemVariable9'
+        Border.mmPadding = 0
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -8775,13 +9379,15 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer8
         UserName = 'lquinzena'
         OnGetText = lquinzenaGetText
+        Border.mmPadding = 0
         Caption = 'lquinzena'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 179123
@@ -8792,8 +9398,7 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object ppDetailBand6: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3704
       mmPrintPosition = 0
@@ -8801,6 +9406,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer8
         UserName = 'DBText68'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'FPC_DTEMIS'
         DataPipeline = pipeComissao
         DisplayFormat = 'dd/mm/yyyy'
@@ -8812,7 +9418,7 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 2646
+        mmLeft = 1056
         mmTop = 0
         mmWidth = 12700
         BandType = 4
@@ -8821,6 +9427,7 @@ inherited FormGimpRepr: TFormGimpRepr
       object ppDBText69: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText69'
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = pipeComissao
         Font.Charset = DEFAULT_CHARSET
@@ -8831,7 +9438,7 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 18256
+        mmLeft = 15871
         mmTop = 0
         mmWidth = 10054
         BandType = 4
@@ -8840,6 +9447,7 @@ inherited FormGimpRepr: TFormGimpRepr
       object ppDBText70: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText70'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipeComissao
         Font.Charset = DEFAULT_CHARSET
@@ -8850,7 +9458,7 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 28671
+        mmLeft = 26286
         mmTop = 0
         mmWidth = 31750
         BandType = 4
@@ -8859,6 +9467,7 @@ inherited FormGimpRepr: TFormGimpRepr
       object ppDBText71: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText701'
+        Border.mmPadding = 0
         DataField = 'CLI_UF'
         DataPipeline = pipeComissao
         Font.Charset = DEFAULT_CHARSET
@@ -8869,7 +9478,7 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 61113
+        mmLeft = 58728
         mmTop = 0
         mmWidth = 3528
         BandType = 4
@@ -8878,6 +9487,7 @@ inherited FormGimpRepr: TFormGimpRepr
       object ppDBText72: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText702'
+        Border.mmPadding = 0
         DataField = 'FAT_CODIGO'
         DataPipeline = pipeComissao
         Font.Charset = DEFAULT_CHARSET
@@ -8888,7 +9498,7 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 65617
+        mmLeft = 62702
         mmTop = 0
         mmWidth = 10054
         BandType = 4
@@ -8898,6 +9508,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer8
         UserName = 'DBText75'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'FPC_VENCTO'
         DataPipeline = pipeComissao
         DisplayFormat = 'dd/mm/yyyy'
@@ -8909,7 +9520,7 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 165277
+        mmLeft = 139837
         mmTop = 0
         mmWidth = 15875
         BandType = 4
@@ -8919,6 +9530,7 @@ inherited FormGimpRepr: TFormGimpRepr
         DesignLayer = ppDesignLayer8
         UserName = 'DBText76'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'FPC_PAGTO'
         DataPipeline = pipeComissao
         DisplayFormat = 'dd/mm/yyyy'
@@ -8930,15 +9542,16 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 183006
+        mmLeft = 156771
         mmTop = 0
-        mmWidth = 12267
+        mmWidth = 12532
         BandType = 4
         LayerName = Foreground7
       end
       object ppDBText78: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText78'
+        Border.mmPadding = 0
         DataField = 'FAT_COMIS1'
         DataPipeline = pipeComissao
         DisplayFormat = '###,##0.00%'
@@ -8950,15 +9563,16 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3704
-        mmLeft = 128583
+        mmLeft = 117188
         mmTop = 0
-        mmWidth = 9802
+        mmWidth = 8742
         BandType = 4
         LayerName = Foreground7
       end
       object ppDBText79: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText79'
+        Border.mmPadding = 0
         DataField = 'Parcelas'
         DataPipeline = pipeComissao
         Font.Charset = DEFAULT_CHARSET
@@ -8969,15 +9583,16 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 76001
+        mmLeft = 73616
         mmTop = 0
-        mmWidth = 9172
+        mmWidth = 7582
         BandType = 4
         LayerName = Foreground7
       end
       object ppDBText73: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText73'
+        Border.mmPadding = 0
         DataField = 'VLNCOMIS'
         DataPipeline = pipeComissao
         DisplayFormat = '###,##0.00'
@@ -8990,7 +9605,7 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3704
-        mmLeft = 108744
+        mmLeft = 103179
         mmTop = 0
         mmWidth = 13229
         BandType = 4
@@ -8999,6 +9614,7 @@ inherited FormGimpRepr: TFormGimpRepr
       object ppDBText77: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText77'
+        Border.mmPadding = 0
         DataField = 'comissao'
         DataPipeline = pipeComissao
         DisplayFormat = '###,##0.000'
@@ -9011,15 +9627,16 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3704
-        mmLeft = 138995
+        mmLeft = 126805
         mmTop = 0
-        mmWidth = 23989
+        mmWidth = 12329
         BandType = 4
         LayerName = Foreground7
       end
       object ppDBText74: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText74'
+        Border.mmPadding = 0
         DataField = 'VL_LIQ'
         DataPipeline = pipeComissao
         DisplayFormat = '###,##0.00'
@@ -9032,27 +9649,49 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 3663
-        mmLeft = 86431
+        mmLeft = 82191
         mmTop = 0
-        mmWidth = 19579
+        mmWidth = 19844
+        BandType = 4
+        LayerName = Foreground7
+      end
+      object ppDBText82: TppDBText
+        DesignLayer = ppDesignLayer8
+        UserName = 'DBText2'
+        AutoSize = True
+        Border.mmPadding = 0
+        DataField = 'REP_NOME'
+        DataPipeline = pipeComissao
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'pipeComissao'
+        mmHeight = 3704
+        mmLeft = 171980
+        mmTop = 0
+        mmWidth = 14287
         BandType = 4
         LayerName = Foreground7
       end
     end
     object ppFooterBand3: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppSummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 5292
       mmPrintPosition = 0
       object ppDBCalc18: TppDBCalc
         DesignLayer = ppDesignLayer8
         UserName = 'DBCalc18'
+        Border.mmPadding = 0
         DataField = 'VL_LIQ'
         DataPipeline = pipeComissao
         DisplayFormat = '###,##0.00'
@@ -9067,13 +9706,14 @@ inherited FormGimpRepr: TFormGimpRepr
         mmHeight = 4498
         mmLeft = 48154
         mmTop = 265
-        mmWidth = 57944
+        mmWidth = 53969
         BandType = 7
         LayerName = Foreground7
       end
       object ppDBCalc20: TppDBCalc
         DesignLayer = ppDesignLayer8
         UserName = 'DBCalc20'
+        Border.mmPadding = 0
         DataField = 'comissao'
         DataPipeline = pipeComissao
         DisplayFormat = '###,##0.000'
@@ -9086,22 +9726,24 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'pipeComissao'
         mmHeight = 4498
-        mmLeft = 118534
+        mmLeft = 104489
         mmTop = 265
-        mmWidth = 44450
+        mmWidth = 34645
         BandType = 7
         LayerName = Foreground7
       end
       object ppLabel92: TppLabel
         DesignLayer = ppDesignLayer8
         UserName = 'Label92'
+        Border.mmPadding = 0
         Caption = 'Total M'#234's :'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 3969
@@ -9125,13 +9767,14 @@ inherited FormGimpRepr: TFormGimpRepr
       DataPipelineName = 'pipeComissao'
       NewFile = False
       object ppGroupHeaderBand7: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 16140
         mmPrintPosition = 0
         object ppDBText65: TppDBText
           DesignLayer = ppDesignLayer8
           UserName = 'DBText65'
+          Border.mmPadding = 0
           DataField = 'REP_CODIGO'
           DataPipeline = pipeComissao
           Font.Charset = DEFAULT_CHARSET
@@ -9153,6 +9796,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer8
           UserName = 'DBText67'
           AutoSize = True
+          Border.mmPadding = 0
           DataField = 'REP_NOME'
           DataPipeline = pipeComissao
           Font.Charset = DEFAULT_CHARSET
@@ -9174,6 +9818,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer8
           UserName = 'Line32'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -9188,16 +9833,18 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label59'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Cliente'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3175
-          mmLeft = 28671
+          mmLeft = 26286
           mmTop = 11778
           mmWidth = 8731
           BandType = 3
@@ -9208,6 +9855,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer8
           UserName = 'Line33'
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Weight = 0.750000000000000000
           mmHeight = 265
           mmLeft = 0
@@ -9222,16 +9870,18 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label60'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Emiss'#227'o'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3260
-          mmLeft = 2562
+          mmLeft = 972
           mmTop = 11735
           mmWidth = 10964
           BandType = 3
@@ -9243,16 +9893,18 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label81'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Pedido'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3175
-          mmLeft = 18256
+          mmLeft = 15871
           mmTop = 11778
           mmWidth = 10054
           BandType = 3
@@ -9264,16 +9916,18 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label82'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'UF'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 61113
+          mmLeft = 58728
           mmTop = 11513
           mmWidth = 3440
           BandType = 3
@@ -9285,16 +9939,18 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label83'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Fatura'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 65617
+          mmLeft = 62702
           mmTop = 11513
           mmWidth = 8202
           BandType = 3
@@ -9306,16 +9962,18 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label84'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'PC'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 77876
+          mmLeft = 75491
           mmTop = 11513
           mmWidth = 3440
           BandType = 3
@@ -9327,18 +9985,20 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label85'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Valor liq.'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 86431
+          mmLeft = 82191
           mmTop = 11377
-          mmWidth = 19579
+          mmWidth = 12689
           BandType = 3
           GroupNo = 0
           LayerName = Foreground7
@@ -9348,18 +10008,20 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label86'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
-          Caption = 'Valor s/comiss'#227'o'
+          Border.mmPadding = 0
+          Caption = 'Vl s/comis.'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 106892
-          mmTop = 11513
-          mmWidth = 22225
+          mmLeft = 101327
+          mmTop = 11642
+          mmWidth = 14023
           BandType = 3
           GroupNo = 0
           LayerName = Foreground7
@@ -9369,18 +10031,20 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label87'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = '%'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 132557
+          mmLeft = 121162
           mmTop = 11513
-          mmWidth = 2645
+          mmWidth = 1585
           BandType = 3
           GroupNo = 0
           LayerName = Foreground7
@@ -9390,18 +10054,20 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label88'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
-          Caption = 'Comiss'#227'o pagar'
+          Border.mmPadding = 0
+          Caption = 'Comis Pg.'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 138907
-          mmTop = 11513
-          mmWidth = 23989
+          mmLeft = 126736
+          mmTop = 11642
+          mmWidth = 12435
           BandType = 3
           GroupNo = 0
           LayerName = Foreground7
@@ -9411,16 +10077,18 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label89'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Venc'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 166952
+          mmLeft = 141512
           mmTop = 11513
           mmWidth = 6879
           BandType = 3
@@ -9432,18 +10100,20 @@ inherited FormGimpRepr: TFormGimpRepr
           UserName = 'Label90'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
           Caption = 'Pagamento'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3704
-          mmLeft = 182563
+          mmLeft = 156328
           mmTop = 11513
-          mmWidth = 14023
+          mmWidth = 14288
           BandType = 3
           GroupNo = 0
           LayerName = Foreground7
@@ -9452,13 +10122,15 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer8
           UserName = 'Label93'
           AutoSize = False
+          Border.mmPadding = 0
           Caption = 'Banco Pag:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3355
           mmLeft = 108744
@@ -9472,13 +10144,15 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer8
           UserName = 'Label94'
           AutoSize = False
+          Border.mmPadding = 0
           Caption = 'Conta :'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3440
           mmLeft = 143404
@@ -9492,13 +10166,15 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer8
           UserName = 'Label95'
           AutoSize = False
+          Border.mmPadding = 0
           Caption = 'Ag'#234'ncia:'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 8
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3355
           mmLeft = 108744
@@ -9512,6 +10188,7 @@ inherited FormGimpRepr: TFormGimpRepr
           DesignLayer = ppDesignLayer8
           UserName = 'DBText83'
           AutoSize = True
+          Border.mmPadding = 0
           DataField = 'REP_RAZAO'
           DataPipeline = pipeComissao
           Font.Charset = DEFAULT_CHARSET
@@ -9532,6 +10209,7 @@ inherited FormGimpRepr: TFormGimpRepr
         object ppDBText66: TppDBText
           DesignLayer = ppDesignLayer8
           UserName = 'DBText81'
+          Border.mmPadding = 0
           DataField = 'REP_CONTA'
           DataPipeline = pipeComissao
           Font.Charset = DEFAULT_CHARSET
@@ -9553,6 +10231,7 @@ inherited FormGimpRepr: TFormGimpRepr
         object ppDBText80: TppDBText
           DesignLayer = ppDesignLayer8
           UserName = 'DBText82'
+          Border.mmPadding = 0
           DataField = 'REP_AGENCIA'
           DataPipeline = pipeComissao
           Font.Charset = DEFAULT_CHARSET
@@ -9574,6 +10253,7 @@ inherited FormGimpRepr: TFormGimpRepr
         object ppDBText81: TppDBText
           DesignLayer = ppDesignLayer8
           UserName = 'DBText1'
+          Border.mmPadding = 0
           DataField = 'REP_BANCO'
           DataPipeline = pipeComissao
           Font.Charset = DEFAULT_CHARSET
@@ -9591,9 +10271,32 @@ inherited FormGimpRepr: TFormGimpRepr
           GroupNo = 0
           LayerName = Foreground7
         end
+        object ppLabel96: TppLabel
+          DesignLayer = ppDesignLayer8
+          UserName = 'Label901'
+          HyperlinkEnabled = False
+          Border.Weight = 1.000000000000000000
+          Border.mmPadding = 0
+          Caption = 'Vendedor'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 171450
+          mmTop = 11642
+          mmWidth = 12700
+          BandType = 3
+          GroupNo = 0
+          LayerName = Foreground7
+        end
       end
       object ppGroupFooterBand7: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 4498
@@ -9601,13 +10304,15 @@ inherited FormGimpRepr: TFormGimpRepr
         object ppLabel91: TppLabel
           DesignLayer = ppDesignLayer8
           UserName = 'Label91'
+          Border.mmPadding = 0
           Caption = 'Total :'
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Name = 'Arial'
           Font.Size = 9
           Font.Style = []
-          FormField = False
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
           Transparent = True
           mmHeight = 3969
           mmLeft = 11113
@@ -9620,6 +10325,7 @@ inherited FormGimpRepr: TFormGimpRepr
         object ppDBCalc19: TppDBCalc
           DesignLayer = ppDesignLayer8
           UserName = 'DBCalc19'
+          Border.mmPadding = 0
           DataField = 'comissao'
           DataPipeline = pipeComissao
           DisplayFormat = '###,##0.000'
@@ -9633,9 +10339,9 @@ inherited FormGimpRepr: TFormGimpRepr
           Transparent = True
           DataPipelineName = 'pipeComissao'
           mmHeight = 4498
-          mmLeft = 118534
+          mmLeft = 104489
           mmTop = 0
-          mmWidth = 44450
+          mmWidth = 34645
           BandType = 5
           GroupNo = 0
           LayerName = Foreground7
@@ -9643,6 +10349,7 @@ inherited FormGimpRepr: TFormGimpRepr
         object ppDBCalc17: TppDBCalc
           DesignLayer = ppDesignLayer8
           UserName = 'DBCalc17'
+          Border.mmPadding = 0
           DataField = 'VL_LIQ'
           DataPipeline = pipeComissao
           DisplayFormat = '###,##0.00'
@@ -9658,7 +10365,7 @@ inherited FormGimpRepr: TFormGimpRepr
           mmHeight = 4498
           mmLeft = 47890
           mmTop = 0
-          mmWidth = 58208
+          mmWidth = 54233
           BandType = 5
           GroupNo = 0
           LayerName = Foreground7

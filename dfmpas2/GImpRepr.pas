@@ -645,6 +645,8 @@ type
     qProduto: TSQLQuery;
     edProduto: TEdit;
     rbExcel: TRadioButton;
+    ppLabel96: TppLabel;
+    ppDBText82: TppDBText;
 
     procedure FormShow(Sender: tObject);
     procedure BitOkClick(Sender: tObject);
