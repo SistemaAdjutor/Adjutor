@@ -3286,7 +3286,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           AllowVectorExport = True
           Left = 535.386210000000000000
           Top = 260.791161530000000000
-          Width = 75.590600000000000000
+          Width = 166.299320000000000000
           Height = 18.897650000000000000
           DataSet = frxDBQualidadeOLD
           DataSetName = 'frxDBQualidade'
@@ -3615,7 +3615,7 @@ inherited frmControleDeQualidade: TfrmControleDeQualidade
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'Par'#226'metros')
+            'Faixa Limite')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
