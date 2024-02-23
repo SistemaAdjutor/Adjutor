@@ -3425,6 +3425,7 @@ end;
 
 procedure TFormGeradorCNAB.GerarRemessaCELESC;
 Var wMovCelesc, contrato, contaGerencial, nomeCliente: string;
+  mesSub: TDateTime;
 begin
   try
      try
@@ -3496,8 +3497,9 @@ begin
       begin
 
         Application.ProcessMessages;
-       { REGISTRO 2 - detail, VALOR A SER LANÇADO NA FATURA}
+        { REGISTRO 2 - detail, VALOR A SER LANÇADO NA FATURA}
 
+        mesSub := PrimeiroDiadoMesSubsequente(Date);
         Writeln(wREGISTRO,'2'
                          +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsInteger),13)
                          +PreencheZeroEsquerda(ExtrairNumeros(FormatFloat('#,###,##0.00',CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency)),9){valor da parcela}
@@ -3511,9 +3513,9 @@ begin
                          +PreenchezeroEsquerda('0',10)
                          +PreenchezeroEsquerda(CdSCrCduplicata.FieldByname('CLI_CODIGO').AsString,6)
                          +PreencheDireita( COPY(CdSCrCduplicata.FieldByname('CLI_CGC').AsString,1,12),12)
-                         +copy(DateToStr(CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime),1,2) {data de emissao DD}
-                         +copy(DateToStr(CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime),4,2) {data de emissao mes MM}
-                         +copy(DateToStr(CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime),7,4) {data de emissao ano AAAA}
+                         +copy(DateToStr(mesSub),1,2) {data de emissao DD}
+                         +copy(DateToStr(mesSub),4,2) {data de emissao mes MM}
+                         +copy(DateToStr(mesSub),7,4) {data de emissao ano AAAA   era  CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime; }
                          +'00000000' //FIM DA VIGENCIA
                          +IIF(Length(CdSCrCduplicata.FieldByname('CLI_CGC').AsString)=14,
                                   Copy(CdSCrCduplicata.FieldByname('CLI_CGC').AsString,13,2),PreencheDireita('',2) )

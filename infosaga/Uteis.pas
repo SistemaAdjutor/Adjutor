@@ -154,6 +154,7 @@ function RetiraTodaMascara(const pStr: string): string;
 function ConcatSe(p1,p2:string):string; // concatena strings se ambas não forem vazias;
 
 function PrimeiroDiadoMes(Data : TDateTime) : TDateTime;
+function PrimeiroDiadoMesSubsequente(Data : TDateTime) : TDateTime;
 function MascaraCNPJ_CPF(wpCnpf_Cpf:string):string;
 function MascaraFone(const wpFone:string):string;   // ANTIGO
 
@@ -1580,6 +1581,23 @@ end;
 function PrimeiroDiadoMes(Data : TDateTime) : TDateTime;
 begin
      PrimeiroDiadoMes := StartOfTheMonth( data );
+end;
+
+function PrimeiroDiadoMesSubsequente(Data : TDateTime) : TDateTime;
+var
+  dia, mes, ano: word;
+begin
+  DecodeDate(Data, ano, mes, dia);
+  dia := 1;
+  if mes < 12 then
+    mes := mes + 1
+  else
+  begin
+    mes := 1;
+    ano := ano + 1
+  end;
+
+  Result := EncodeDate(ano, mes, dia)
 end;
 
 function MascaraCNPJ_CPF(wpCnpf_Cpf:string):string;
