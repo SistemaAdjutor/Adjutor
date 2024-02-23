@@ -1,4 +1,4 @@
-﻿Atualizado em 08/02/2024
+﻿Atualizado em 23/02/2024
 Inicio da versão: 08/02/2024
 
 principal: Conforto Ambiental, LF EPIS, Embraterm, Collect
@@ -9,3 +9,18 @@ principal: Conforto Ambiental, LF EPIS, Embraterm, Collect
   1804 - Relatório de pedido á faturar [Embraterm]
   1805 - Dashboard faturamento - nota denegada [Conforto Ambiental]
   1806 - Incluir conta financeira na tela de consulta [Collect]
+  
+patch 1: BSC Industrial Aços Ltda, Hospital São José, Embraterm, Arkson, Chemvet, Rotor
+    65 - atualizar endereço do fornecedor ou cliente [Novi]
+   266 - Sistema com problema para atualizar custos [BSC Industrial Aços Ltda]
+   480 - Adicionar coluna nome do vendedor para exportação em excel [Hospital São José]
+   602 - Adicionar coluna com o vendedor [Hospital São José]
+   604 - Ajustar ordenação do relatório [Embraterm]
+   634 - Melhoria na transferência de clientes [Hospital São José]
+   675 - Observação da produção não deve aparecer [Novi]
+  1779 - Ajustar estorno do recebimento [Arkson] 
+  1807 - Alteração layout da Celesc [Hospital São José]
+  1810 - Relatório de controle de qualidade [Arkson]
+  1811 - Relatório de produtos não considera soma dos lotes [Chemvet]
+  1813 - Erro ao importar CTe [Rotor]
+  
