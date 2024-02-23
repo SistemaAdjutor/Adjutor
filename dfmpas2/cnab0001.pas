@@ -1780,7 +1780,8 @@ begin
   if FileExists(wARQUIVO_LIMPAR) then
   begin
     a := ExtractFileName(wARQUIVO_LIMPAR);
-    a := a.Substring(0, Length(a) -4);
+    // a := a.Substring(0, Length(a) - pos('.', a) );
+    a := copy(a, 0,  pos('.', a ) - 1);
     e := ExtractFileExt(wARQUIVO_LIMPAR);
     p := ExtractFilePath(wARQUIVO_LIMPAR);
     arquivo.Add(a);
@@ -1791,7 +1792,8 @@ begin
     for Path in TDirectory.GetFiles(wARQUIVO_LIMPAR)  do
     begin
       a := ExtractFileName(path);
-      a := a.Substring(0, Length(a) -4);
+      // a := a.Substring(0, Length(a) - pos('.', a));
+      a := copy(a, 0,  pos('.', a ) - 1);
       e := ExtractFileExt(path);
       p := ExtractFilePath(wARQUIVO_LIMPAR);
       arquivo.Add(a);
@@ -1802,10 +1804,12 @@ begin
   for j := 0 to arquivo.Count -1  do
   begin
 
-    AssignFile(crm, p + '\' + arquivo[j] + extensao[j]);
+    // AssignFile(crm, p + '\' + arquivo[j] + extensao[j]);
+    AssignFile(crm, p + arquivo[j] + extensao[j]);
     Reset(crm);
 
-    AssignFile(bak, p + '\' + arquivo[j] + '.bak');
+//    AssignFile(bak, p + '\' + arquivo[j] + '.bak');
+    AssignFile(bak, p + arquivo[j] + '.bak');
     ReWrite(bak);
 
     while(not eof(crm)) do
@@ -1988,7 +1992,7 @@ begin
 
   // FileArqSalvar.FileName := 'C:\00229\COBRANCA\SICREDI\REMESSA\SICRE156.TXT';
 
-  exit;
+  // exit;
 
    try
       TVisualizar.Clear;
@@ -2004,6 +2008,7 @@ begin
       PanVisualizar.Top     := 2;
       PanVisualizar.Left    := 2;
       PanVisualizar.Visible := True;
+      PanVisualizar.BringToFront;
 
    finally
        closeFile(wREGISTRO);
@@ -2280,14 +2285,15 @@ begin
           if RetirarMascaraCNPJ_INSC(DBInicio.Empresa.CNPJ_CNPF) = '60982352000111' then
              wARQUIVO := 'ECEL'+FormatFloat('0000',wSEQ_REMESSA)+'.ABE'
           else
-             wARQUIVO := 'ECEL'+FormatFloat('00',wSEQ_REMESSA)+'.TST';
+             wARQUIVO := 'ECEL'+FormatFloat('0000',wSEQ_REMESSA)+'.TST';
         end
         else
         begin
           if RetirarMascaraCNPJ_INSC(DBInicio.Empresa.CNPJ_CNPF) = '60982352000111' then
              wARQUIVO := 'ECEL'+FormatFloat('0000',wSEQ_REMESSA)+'.ABE'
           else
-             wARQUIVO := 'ECEL'+FormatFloat('00',wSEQ_REMESSA)+'.TXT';
+             wARQUIVO := 'ECEL'+FormatFloat('0000',wSEQ_REMESSA) + '.' + sBanco_CONVENIO;
+//             wARQUIVO := 'ECEL'+FormatFloat('00',wSEQ_REMESSA)+'.TXT';
         end;
 
 
@@ -3419,6 +3425,7 @@ end;
 
 procedure TFormGeradorCNAB.GerarRemessaCELESC;
 Var wMovCelesc, contrato, contaGerencial, nomeCliente: string;
+  mesSub: TDateTime;
 begin
   try
      try
@@ -3490,8 +3497,9 @@ begin
       begin
 
         Application.ProcessMessages;
-       { REGISTRO 2 - detail, VALOR A SER LANÇADO NA FATURA}
+        { REGISTRO 2 - detail, VALOR A SER LANÇADO NA FATURA}
 
+        mesSub := PrimeiroDiadoMesSubsequente(Date);
         Writeln(wREGISTRO,'2'
                          +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsInteger),13)
                          +PreencheZeroEsquerda(ExtrairNumeros(FormatFloat('#,###,##0.00',CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency)),9){valor da parcela}
@@ -3505,9 +3513,9 @@ begin
                          +PreenchezeroEsquerda('0',10)
                          +PreenchezeroEsquerda(CdSCrCduplicata.FieldByname('CLI_CODIGO').AsString,6)
                          +PreencheDireita( COPY(CdSCrCduplicata.FieldByname('CLI_CGC').AsString,1,12),12)
-                         +copy(DateToStr(CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime),1,2) {data de emissao DD}
-                         +copy(DateToStr(CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime),4,2) {data de emissao mes MM}
-                         +copy(DateToStr(CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime),7,4) {data de emissao ano AAAA}
+                         +copy(DateToStr(mesSub),1,2) {data de emissao DD}
+                         +copy(DateToStr(mesSub),4,2) {data de emissao mes MM}
+                         +copy(DateToStr(mesSub),7,4) {data de emissao ano AAAA   era  CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime; }
                          +'00000000' //FIM DA VIGENCIA
                          +IIF(Length(CdSCrCduplicata.FieldByname('CLI_CGC').AsString)=14,
                                   Copy(CdSCrCduplicata.FieldByname('CLI_CGC').AsString,13,2),PreencheDireita('',2) )
