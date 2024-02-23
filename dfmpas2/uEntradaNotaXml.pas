@@ -458,7 +458,7 @@ begin
                if (sCFOPRegistro <> '') then
                   begin
                      DataCadastros.sqlUpdate.Close;
-                     DataCadastros.SqlUpdate.sql.text :=SQLDEF('OPERACAOFISCAL','SELECT OPE_CODIGO,OPE_NATUREZA_ENTRADA,OPE_DESCRI,OPE_RETORNO_INDUST ,OPE_RETORNO_INDUST_SOBRA  FROM OPE0000','WHERE OPE_CODIGO = '+QuotedStr(sCFOPRegistro),'OPE_CODIGO','');
+                     DataCadastros.SqlUpdate.sql.text :=SQLDEF('OPERACAOFISCAL','SELECT OPE_CODIGO,OPE_NATUREZA_ENTRADA,OPE_DESCRI,OPE_RETORNO_INDUST ,OPE_RETORNO_INDUST_SOBRA  FROM OPE0000','WHERE OPE_CODIGO = '+QuotedStr(sCFOPRegistro) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  ,'OPE_CODIGO','');
                      DataCadastros.sqlUpdate.Open;
                      if (not DataCadastros.sqlUpdate.IsEmpty) then
                         begin
@@ -472,7 +472,7 @@ begin
                            CdsItensCFOP.AsString := DataCadastros.sqlUpdate.FieldByName('OPE_NATUREZA_ENTRADA').AsString;
                            CdsItensCFOPDescricao.AsString := DataCadastros.sqlUpdate.FieldByName('OPE_DESCRI').AsString;
                            sCFOP := DataCadastros.sqlUpdate.FieldByName('OPE_NATUREZA_ENTRADA').AsString;
-                           sCFOPRegistro:= BuscaUmDadoSqlAsString(SqlDef('OPERACAOFISCAL','select first 1 t1.OPE_CODIGO from OPE0000 T1 ','WHERE T1.OPE_NATUREZA = '+QuotedStr(sCFOP),'','T1.'));
+                           sCFOPRegistro:= BuscaUmDadoSqlAsString(SqlDef('OPERACAOFISCAL','select first 1 t1.OPE_CODIGO from OPE0000 T1 ','WHERE T1.OPE_NATUREZA = '+QuotedStr(sCFOP)  + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO),'','T1.'));
                            cdsItensOPE_CODIGO.AsString :=  sCFOPRegistro;
                            cdsItensamx_terceiro_retorno.AsBoolean := False;
                            // retorno de industrialização
@@ -733,7 +733,10 @@ begin
     SqlCdsAlmox.Locate('EMI_CODIGO', FormNfEntrada.dblcInscricaoEstadual.KeyValue,[])
   else
     SqlCdsAlmox.Locate('AMX_CODIGO',dbInicio.Empresa.wPmt_Amx_EntradaNota,[]);
+
+  SqlCdsOP.CommandText := 'select O1.* from OPE0000 O1 where O1.OPE_TIPO = ''E'' and O1.EMP_CODIGO = ' + QuotedStr(dbInicio.emp_codigo);
   SqlCdsOP.Open;
+
   CarregaInformacoesXML;
   VarrerDuplicatas;
   cbMovimentaEstoque.Visible := FormNfEntrada.cbMovimentaEstoque.Visible;
@@ -1633,7 +1636,7 @@ begin
                begin
                      bIndustrRetorno :=  DBInicio.BuscaUmDadoSqlAsString
                                    ('SELECT OPE_RETORNO_INDUST  FROM OPE0000  '+
-                                    ' WHERE OPE_CODIGO = '+QuotedStr(cdsItensOPE_CODIGO.AsString)) = 'S' ;
+                                    ' WHERE OPE_CODIGO = '+QuotedStr(cdsItensOPE_CODIGO.AsString)  + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  ) = 'S' ;
                      if CdsItensAlmoxarifadoCodigo.AsString = '' then
                      begin
                        if cdsItens.State = dsBrowse then
@@ -1660,9 +1663,9 @@ begin
 
                      NaturezaEntrada :=  DBInicio.BuscaUmDadoSqlAsString
                                    ('SELECT OPE_NATUREZA_ENTRADA  FROM OPE0000  '+
-                                    ' WHERE OPE_CODIGO = '+QuotedStr(cdsItensOPE_CODIGO.AsString))  ;
+                                    ' WHERE OPE_CODIGO = '+QuotedStr(cdsItensOPE_CODIGO.AsString)  + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) )  ;
                      Sobra := DBInicio.BuscaUmDadoSqlAsString('SELECT FIRST 1 OPE_RETORNO_INDUST_SOBRA FROM OPE0000  '+
-                                    ' WHERE OPE_NATUREZA = '+ QuotedStr(NaturezaEntrada)) = 'S' ;
+                                    ' WHERE OPE_NATUREZA = '+ QuotedStr(NaturezaEntrada) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'S' ;
                      if Sobra then
                      begin
 
@@ -1725,7 +1728,7 @@ begin
 
          //Contas a Pagar
 
-         if (BuscaUmDadoSqlAsString('SELECT OPE_SEMVLCOM FROM OPE0000 WHERE OPE_CODIGO = '+QuotedStr( DataMovimento.CdsEnfOPE_CODIGO.AsString ) ) = 'N') and
+         if (BuscaUmDadoSqlAsString('SELECT OPE_SEMVLCOM FROM OPE0000 WHERE OPE_CODIGO = '+QuotedStr( DataMovimento.CdsEnfOPE_CODIGO.AsString )  + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'N') and
             (FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Cobr.Dup.Count > 0) then
             begin
                sCodigoFaturaPagar := SequenciadorPRC(DataCadastros.SQLConnection1,dbInicio.Empresa.EMP_CODIGO, 'PAG0000', 'PAG_CODIGO', 0);
@@ -1780,7 +1783,7 @@ begin
                      CdsItens.Next;
                   end;
             end
-            else if (BuscaUmDadoSqlAsString('SELECT OPE_SEMVLCOM FROM OPE0000 WHERE OPE_CODIGO = '+QuotedStr( DataMovimento.CdsEnfOPE_CODIGO.AsString ) ) = 'N') then
+            else if (BuscaUmDadoSqlAsString('SELECT OPE_SEMVLCOM FROM OPE0000 WHERE OPE_CODIGO = '+QuotedStr( DataMovimento.CdsEnfOPE_CODIGO.AsString ) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'N') then
             begin
               forCodigo := StrZero(sRegistroFornecedor, FormNfEntrada.EdtFor_Codigo.MaxLength);
               if BuscaUmDadoSqlAsInteger(
