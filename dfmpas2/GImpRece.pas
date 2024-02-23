@@ -977,6 +977,8 @@ type
     ppLabel178: TppLabel;
     ppDBCalc35: TppDBCalc;
     ppLabel79: TppLabel;
+    ppLabel83: TppLabel;
+    ppDBText132: TppDBText;
     procedure MudaCorCampos(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure BitOkClick(Sender: tObject);
