@@ -317,6 +317,8 @@ begin
          sQuery := 'UPDATE FAT_PC01 SET FPC_PAGTO = ' + sDataPgtoUpdate + ', ' +
                    'FPC_DESCTO = FPC_DESCTO - ' + ValorAmericano(FloatToStr(rDesconto))+','+
                    'FPC_JUROS = 0, ' +
+                   'FPC_DESCONTADO = ''N'', ' +
+                   'FPC_DATADESCTO = NULL, ' +
                    'FPC_MULTA = FPC_MULTA - ' + ValorAmericano(FloatToStr(rMulta))+','+
                    iif
                    (   DBInicio.Empresa.wPmt_TelaPedidoDoacao ,
