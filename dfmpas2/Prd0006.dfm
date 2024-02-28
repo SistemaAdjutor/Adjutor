@@ -638,6 +638,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -712,6 +713,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -725,6 +727,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -748,6 +751,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -758,6 +762,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -768,6 +773,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -778,6 +784,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -788,6 +795,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
+          Width = 64
           Visible = True
         end
         item
@@ -820,6 +828,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Expanded = False
           FieldName = 'CLI_RAZAO'
           Title.Caption = 'Cliente (Relativo ao C'#243'digo Original)'
+          Width = 64
           Visible = True
         end>
     end
@@ -1009,27 +1018,18 @@ inherited FormProdutoGrid: TFormProdutoGrid
     Left = 1056
     Top = 319
   end
-  object qRefer: TSQLQuery
+  object sqlSaldos: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
-    Left = 80
-    Top = 167
+    Left = 552
+    Top = 375
   end
-  object dspRfer: TDataSetProvider
-    DataSet = qRefer
-    Options = [poAllowCommandText]
-    UpdateMode = upWhereKeyOnly
-    Left = 134
-    Top = 169
-  end
-  object cdsRefer: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspRfer'
+  object cdsRefer: TFDQuery
     AfterScroll = cdsReferAfterScroll
-    Left = 184
-    Top = 168
+    Connection = DBInicio.FDACConn
+    Left = 168
+    Top = 170
     object cdsReferPTI_CODIGO: TStringField
       FieldName = 'PTI_CODIGO'
       Size = 3
@@ -1138,12 +1138,5 @@ inherited FormProdutoGrid: TFormProdutoGrid
       DisplayFormat = '#,##0.0000'
       Precision = 15
     end
-  end
-  object sqlSaldos: TSQLQuery
-    MaxBlobSize = -1
-    Params = <>
-    SQLConnection = DBConn
-    Left = 552
-    Top = 375
   end
 end

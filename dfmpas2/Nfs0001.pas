@@ -7097,7 +7097,7 @@ begin
                     if porFora then
                       wSql5 := ', PRD_MARGEMVENDA =  ((PRD_PVENDA/ '+ValorAmericano(FloatToStr(wVLR_AGREGADO))+ ') - 1)*100 '
                     else
-                      wSql5 := ', PRD_MARGEMVENDA =  (('+ValorAmericano(FloatToStr(wVLR_AGREGADO))+ ' / PRD_PVEND))*100 '
+                      wSql5 := ', PRD_MARGEMVENDA =  (('+ValorAmericano(FloatToStr(wVLR_AGREGADO))+ ' / PRD_PVENDA))*100 '
                        // wsql5 := '';
                   end
                   else if wCalcularPV = 2 then // PRD_PMEDIO

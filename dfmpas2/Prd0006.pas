@@ -8,7 +8,10 @@ uses
   RwFunc, Provider, SqlExpr, SqlClientDataSet, DBClient, DBLocal, DBLocalS,
   FMTBCd,
   JvExDBGrids, JvDBGrid, Data.DBXFirebird, SimpleDS, ACBrEnterTab,
-  ACBrBase, ACBrCalculadora, SgDbSeachComboUnit, SgDbLookupComboUnit, ACBrETQ, JvExComCtrls, JvDateTimePicker, JvExMask, JvToolEdit;
+  ACBrBase, ACBrCalculadora, SgDbSeachComboUnit, SgDbLookupComboUnit, ACBrETQ, JvExComCtrls, JvDateTimePicker, JvExMask, JvToolEdit,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFormProdutoGrid = class(TfrmBaseDB)
@@ -51,30 +54,8 @@ type
     qTipoProduto: TSQLQuery;
     qGrupo: TSQLQuery;
     qLinha: TSQLQuery;
-    qRefer: TSQLQuery;
-    dspRfer: TDataSetProvider;
-    CdsRefer: TClientDataSet;
-    CdsReferPTI_CODIGO: TStringField;
-    CdsReferPRD_REFER: TStringField;
-    CdsReferPRD_ESTOQUE: TFMTBCdField;
-    CdsReferPRD_ENTRADA: TFMTBCdField;
-    CdsReferPRD_SAIDA: TFMTBCdField;
-    CdsReferPRD_PENDENTE: TFMTBCdField;
-    CdsReferPRD_PCUSTO: TFMTBCdField;
-    CdsReferPRD_PVENDA: TFMTBCdField;
-    CdsReferPRD_RESERVA: TFMTBCdField;
-    CdsReferPRD_EMPENHO: TFMTBCdField;
-    CdsReferPRD_DESCRI: TStringField;
-    CdsReferPRD_UND: TStringField;
-    CdsReferPRD_CODIGO: TStringField;
-    CdsReferPRD_CODORIGINAL: TStringField;
-    CdsReferPRD_STATUS: TStringField;
-    CdsReferLIN_DESCRI: TStringField;
-    CdsReferIPI_CODIGO: TStringField;
-    CdsReferPRDE_ENDERECO: TStringField;
     sqlSaldos: TSQLQuery;
     cbFicha: TCheckBox;
-    cdsReferCLI_RAZAO: TStringField;
     pMedidas: TPanel;
     lbDesc1: TLabel;
     cbMedInterno: TSgDbSearchCombo;
@@ -86,19 +67,39 @@ type
     cbMedAltura2: TSgDbSearchCombo;
     Label7: TLabel;
     EdVariacao: TEdit;
-    cdsReferPRD_PVENDA2: TFMTBCDField;
-    cdsReferPRD_PVENDA3: TFMTBCDField;
-    cdsReferPRD_PVENDA4: TFMTBCDField;
-    cdsReferPRD_PVENDA5: TFMTBCDField;
-    cdsReferPRD_PVENDA6: TFMTBCDField;
     btnLimpar: TBitBtn;
     RadPRD_CODIGO: TRadioButton;
-    cdsReferPRD_MARGEMVENDA: TFMTBCDField;
     GroupBox3: TGroupBox;
     Label4: TLabel;
     Label5: TLabel;
     dtInicial: TJvDateEdit;
     dtFinal: TJvDateEdit;
+    cdsRefer: TFDQuery;
+    cdsReferPTI_CODIGO: TStringField;
+    cdsReferPRD_REFER: TStringField;
+    cdsReferPRD_ESTOQUE: TFMTBCDField;
+    cdsReferPRD_ENTRADA: TFMTBCDField;
+    cdsReferPRD_SAIDA: TFMTBCDField;
+    cdsReferPRD_PENDENTE: TFMTBCDField;
+    cdsReferPRD_PCUSTO: TFMTBCDField;
+    cdsReferPRD_PVENDA: TFMTBCDField;
+    cdsReferPRD_RESERVA: TFMTBCDField;
+    cdsReferPRD_EMPENHO: TFMTBCDField;
+    cdsReferPRD_DESCRI: TStringField;
+    cdsReferPRD_UND: TStringField;
+    cdsReferPRD_CODIGO: TStringField;
+    cdsReferPRD_CODORIGINAL: TStringField;
+    cdsReferPRD_STATUS: TStringField;
+    cdsReferLIN_DESCRI: TStringField;
+    cdsReferIPI_CODIGO: TStringField;
+    cdsReferPRDE_ENDERECO: TStringField;
+    cdsReferCLI_RAZAO: TStringField;
+    cdsReferPRD_PVENDA2: TFMTBCDField;
+    cdsReferPRD_PVENDA3: TFMTBCDField;
+    cdsReferPRD_PVENDA4: TFMTBCDField;
+    cdsReferPRD_PVENDA5: TFMTBCDField;
+    cdsReferPRD_PVENDA6: TFMTBCDField;
+    cdsReferPRD_MARGEMVENDA: TFMTBCDField;
     procedure BuscaProduto;
     procedure RadNomeClick(Sender: tObject);
     procedure RadCodigoClick(Sender: tObject);
@@ -124,7 +125,6 @@ type
     procedure cbTipoSelect(Sender: TObject);
     procedure CbGrupoSelect(Sender: TObject);
     procedure CBLinhaSelect(Sender: TObject);
-    procedure CdsReferAfterScroll(DataSet: TDataSet);
     procedure CBLinhakeyPress(Sender: TObject; var Key: Char);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnLimparClick(Sender: TObject);
@@ -133,6 +133,7 @@ type
     procedure Edt_NomeKeyPress(Sender: TObject; var Key: Char);
     procedure Edt_NomeEnter(Sender: TObject);
     procedure Edt_NomeExit(Sender: TObject);
+    procedure cdsReferAfterScroll(DataSet: TDataSet);
   privaTe
 
 
@@ -184,9 +185,9 @@ var whe : boolean;
         if stt<>'' then
         begin
             if whe then
-               qRefer.sql.add( ' where '+stt )
+               cdsRefer.sql.add( ' where '+stt )
             Else
-               qRefer.sql.add( ' and '+stt );
+               cdsRefer.sql.add( ' and '+stt );
             whe := False;
         end;
    end;
@@ -197,45 +198,45 @@ begin
      try
          CdsRefer.Close;
 
-         qRefer.sql.text := '';
-         qRefer.sql.ADD( 'Select  PRD_STATUS,');
-         qRefer.sql.ADD( '        T1.PRD_MARGEMVENDA,');
-         qRefer.sql.ADD( '        T1.PTI_CODIGO,');
-         qRefer.sql.ADD( '        IPI_CODIGO,');
-         qRefer.sql.ADD( '        ( SELECT FIRST 1 T4.PRDCO_CODIGO_ORIGINAL FROM PRD_CODIGOORIGINAL T4 WHERE T4.PRD_CODIGO = T1.PRD_CODIGO  ) as PRD_CODORIGINAL,');
-         qRefer.sql.ADD( '        PRD_REFER,');
-         qRefer.sql.ADD( '        t1.PRD_CODIGO,');
-         qRefer.sql.ADD( '        PRD_DESCRI,');
-         qRefer.sql.ADD( '        PRD_UND,');
-         // qRefer.sql.ADD( '        PRD_ESTOQUE,');
-         qRefer.sql.ADD( '        (SELECT SUM(KAS_SALDO) - COALESCE(sum(KAS_RESERVA),0) FROM KARDEX_ALMOX_SALDO kas WHERE kas.PRD_CODIGO = T1.PRD_CODIGO AND (kas.AMX_CODIGO <> '''')  ' +
+         cdsRefer.sql.text := '';
+         cdsRefer.sql.ADD( 'Select  PRD_STATUS,');
+         cdsRefer.sql.ADD( '        T1.PRD_MARGEMVENDA,');
+         cdsRefer.sql.ADD( '        T1.PTI_CODIGO,');
+         cdsRefer.sql.ADD( '        IPI_CODIGO,');
+         cdsRefer.sql.ADD( '        ( SELECT FIRST 1 T4.PRDCO_CODIGO_ORIGINAL FROM PRD_CODIGOORIGINAL T4 WHERE T4.PRD_CODIGO = T1.PRD_CODIGO  ) as PRD_CODORIGINAL,');
+         cdsRefer.sql.ADD( '        PRD_REFER,');
+         cdsRefer.sql.ADD( '        t1.PRD_CODIGO,');
+         cdsRefer.sql.ADD( '        PRD_DESCRI,');
+         cdsRefer.sql.ADD( '        PRD_UND,');
+         // cdsRefer.sql.ADD( '        PRD_ESTOQUE,');
+         cdsRefer.sql.ADD( '        (SELECT SUM(KAS_SALDO) - COALESCE(sum(KAS_RESERVA),0) FROM KARDEX_ALMOX_SALDO kas WHERE kas.PRD_CODIGO = T1.PRD_CODIGO AND (kas.AMX_CODIGO <> '''')  ' +
            iif(dbInicio.Exclusivo('ESTOQUES') , ' AND kas.EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo) ,'') + ' ) as PRD_ESTOQUE,');
-         qRefer.sql.ADD( '        PRD_ENTRADA,');
-         qRefer.sql.ADD( '        PRD_SAIDA,');
-         qRefer.sql.ADD( '        PRD_RESERVA,');
-         qRefer.sql.ADD( '        PRD_EMPENHO,');
-         qRefer.sql.ADD( '        PRD_PCUSTO,');
-         qRefer.sql.ADD( '        PRD_PVENDA,');
-         qRefer.sql.ADD( '        PRD_PVENDA2,');
-         qRefer.sql.ADD( '        PRD_PVENDA3,');
-         qRefer.sql.ADD( '        PRD_PVENDA4,');
-         qRefer.sql.ADD( '        PRD_PVENDA5,');
-         qRefer.sql.ADD( '        PRD_PVENDA6,');
-         qRefer.sql.ADD( '        PRD_PENDENTE,');
-//         qRefer.sql.ADD( '        t3.prde_endereco,');
-         qRefer.sql.ADD('  (SELECT pe.prde_endereco FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO) JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) WHERE	pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + ') AS prde_endereco, ') ;
-         qRefer.sql.ADD( '        t2.lin_descri, ');
-         qRefer.sql.ADD( ' ( SELECT FIRST 1 cl.cli_razao FROM PRD_CODIGOORIGINAL T4  left join cli0000 cl on (cl.cli_codigo=t4.cli_codigo) WHERE T4.PRD_CODIGO = T1.PRD_CODIGO ) cli_razao ');
-         qRefer.sql.ADD( 'from PRD0000 t1 ');
+         cdsRefer.sql.ADD( '        PRD_ENTRADA,');
+         cdsRefer.sql.ADD( '        PRD_SAIDA,');
+         cdsRefer.sql.ADD( '        PRD_RESERVA,');
+         cdsRefer.sql.ADD( '        PRD_EMPENHO,');
+         cdsRefer.sql.ADD( '        PRD_PCUSTO,');
+         cdsRefer.sql.ADD( '        PRD_PVENDA,');
+         cdsRefer.sql.ADD( '        PRD_PVENDA2,');
+         cdsRefer.sql.ADD( '        PRD_PVENDA3,');
+         cdsRefer.sql.ADD( '        PRD_PVENDA4,');
+         cdsRefer.sql.ADD( '        PRD_PVENDA5,');
+         cdsRefer.sql.ADD( '        PRD_PVENDA6,');
+         cdsRefer.sql.ADD( '        PRD_PENDENTE,');
+//         cdsRefer.sql.ADD( '        t3.prde_endereco,');
+         cdsRefer.sql.ADD('  (SELECT pe.prde_endereco FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO) JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) WHERE	pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + ') AS prde_endereco, ') ;
+         cdsRefer.sql.ADD( '        t2.lin_descri, ');
+         cdsRefer.sql.ADD( ' ( SELECT FIRST 1 cl.cli_razao FROM PRD_CODIGOORIGINAL T4  left join cli0000 cl on (cl.cli_codigo=t4.cli_codigo) WHERE T4.PRD_CODIGO = T1.PRD_CODIGO ) cli_razao ');
+         cdsRefer.sql.ADD( 'from PRD0000 t1 ');
          if DisponivelVendas then
-          qRefer.sql.ADD( '    inner JOIN PRD_TIPO pt ON (T1.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = '+ QuotedStr('S')+')');
-         qRefer.sql.ADD( '     left join prd_linha t2 on (t2.lin_codigo = t1.lin_codigo) ');
-         qRefer.sql.ADD( '     '+IIF(RbEnderecamento.checked,'','left ')+'join prd0000_enderecamento t3 on (t3.prde_registro = t1.prde_registro)');
-//         qRefer.sql.ADD( '     left join prd_codigooriginal t4 on (t4.prd_codigo = t1.prd_codigo)');
-         qRefer.sql.ADD( '     ');
+          cdsRefer.sql.ADD( '    inner JOIN PRD_TIPO pt ON (T1.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = '+ QuotedStr('S')+')');
+         cdsRefer.sql.ADD( '     left join prd_linha t2 on (t2.lin_codigo = t1.lin_codigo) ');
+         cdsRefer.sql.ADD( '     '+IIF(RbEnderecamento.checked,'','left ')+'join prd0000_enderecamento t3 on (t3.prde_registro = t1.prde_registro)');
+//         cdsRefer.sql.ADD( '     left join prd_codigooriginal t4 on (t4.prd_codigo = t1.prd_codigo)');
+         cdsRefer.sql.ADD( '     ');
 
          if rbCodigoFornecedor.checked or RadDescricaoFornecedor.checked then
-            qRefer.sql.ADD( '     join prd0000_codigo cf on cf.prd_codigo=t1.prd_codigo');
+            cdsRefer.sql.ADD( '     join prd0000_codigo cf on cf.prd_codigo=t1.prd_codigo');
 
          wOrdem := 'PRD_REFER';
          if cbFicha.checked then
@@ -332,11 +333,11 @@ begin
 
          sqladd( ConcatSE( 't1.',dbInicio.ExclusivoSql( 'PRODUTOS') ) );
 
-         qRefer.sql.ADD( 'order by '+wordem );
+         cdsRefer.sql.ADD( 'order by '+wordem );
          if DBInicio.IsDesenvolvimento then
-            CopyToClipBoard(qRefer.sql.text);
-         CdsRefer.Open;
+            CopyToClipBoard(cdsRefer.sql.text);
 //         if CdsRefer.RecordCount = 0 then
+         CdsRefer.Open;
 //           MessageDlg('Nenhuma movimentação para este produto foi encontrada. Nada Será apresentado', mtWarning, [mbOK], 0 );
      Finally
             CdsRefer.EnableControls;
@@ -460,9 +461,9 @@ begin
 
 end;
 
-procedure TFormProdutoGrid.CdsReferAfterScroll(DataSet: TDataSet);
+procedure TFormProdutoGrid.cdsReferAfterScroll(DataSet: TDataSet);
 begin
-     inherited;
+  inherited;
      MostraSaldoAlmox;
 end;
 

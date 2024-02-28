@@ -1,7 +1,5 @@
 unit BaseForm;
 
-{$D-}
-
 interface
 
 uses
