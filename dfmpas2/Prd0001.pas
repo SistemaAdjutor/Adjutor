@@ -2231,6 +2231,9 @@ type
     cdsMolaMMO_EXTREMIDADE_MOLA_MATERIA: TStringField;
     Label334: TLabel;
     edSequencia: TSpinEdit;
+    DBCheckBox6: TDBCheckBox;
+    SqlProdutosPRD_AGRONEGOCIO: TStringField;
+    CdsProdutosPRD_AGRONEGOCIO: TStringField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -7729,6 +7732,8 @@ begin
   wCalcularPV := DBInicio.Empresa.wCalcularPV;
   DecodeDate( date, ano, mes, dia );
 
+  if (ano / 4 = int(ano / 4) ) and (dia = 29)  and (mes = 2) then
+    dia := 28;
   EditDataI.date := EncodeDate( ano - 1, mes, dia );
   EditDataF.date := date;
   PctrlProdutos.ActivePageIndex := 1;

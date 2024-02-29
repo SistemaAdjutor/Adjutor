@@ -265,7 +265,7 @@ inherited FormCliente: TFormCliente
         Top = 304
         Width = 1744
         Height = 130
-        ActivePage = tsVenda
+        ActivePage = tsFiscal
         Align = alBottom
         MultiLine = True
         TabOrder = 25
@@ -935,7 +935,7 @@ inherited FormCliente: TFormCliente
             end
             object Label46: TLabel
               Left = 696
-              Top = 22
+              Top = 18
               Width = 83
               Height = 14
               Caption = 'Codigo Suframa :'
@@ -1002,7 +1002,7 @@ inherited FormCliente: TFormCliente
             end
             object dbedtCLI_SUFRAMA: TDBEdit
               Left = 781
-              Top = 18
+              Top = 14
               Width = 142
               Height = 22
               CharCase = ecUpperCase
@@ -1085,6 +1085,18 @@ inherited FormCliente: TFormCliente
               CarregarCombo = True
               itemindex = 0
               style = csDropDown
+            end
+            object DBCheckBox5: TDBCheckBox
+              Left = 544
+              Top = 17
+              Width = 134
+              Height = 17
+              Caption = 'Cliente do Agroneg'#243'cio'
+              DataField = 'CLI_AGRONEGOCIO'
+              DataSource = DataCadastros.DsCliente
+              TabOrder = 5
+              ValueChecked = 'S'
+              ValueUnchecked = 'N'
             end
           end
         end

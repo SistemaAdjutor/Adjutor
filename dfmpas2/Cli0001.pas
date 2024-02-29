@@ -773,6 +773,7 @@ type
     PanelAguarde: TPanel;
     JvGIFAnimator1: TJvGIFAnimator;
     pinfo: TPanel;
+    DBCheckBox5: TDBCheckBox;
 
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);

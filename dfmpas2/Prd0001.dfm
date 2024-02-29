@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Tbs_FichaTec
+    ActivePage = Tbs_Produtos
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -147,7 +147,7 @@ inherited FormProduto: TFormProduto
         Top = 34
         Width = 1051
         Height = 483
-        ActivePage = tsCamposTecnicos
+        ActivePage = tsGeral
         Align = alCustom
         Anchors = [akLeft, akBottom]
         TabOrder = 2
@@ -2125,7 +2125,7 @@ inherited FormProduto: TFormProduto
               end
               object SgDbSearchCombo2: TSgDbSearchCombo
                 Left = 154
-                Top = 5
+                Top = 3
                 Width = 183
                 Height = 22
                 TabOrder = 0
@@ -9064,8 +9064,8 @@ inherited FormProduto: TFormProduto
             OnExit = DbcLkPrd_IPIExit
           end
           object DBEdit16: TDBEdit
-            Left = 528
-            Top = 18
+            Left = 639
+            Top = 82
             Width = 15
             Height = 22
             CharCase = ecUpperCase
@@ -9099,8 +9099,8 @@ inherited FormProduto: TFormProduto
             TabOrder = 5
           end
           object DBE_SITRIBUT: TDBEdit
-            Left = 484
-            Top = 20
+            Left = 581
+            Top = 87
             Width = 19
             Height = 22
             CharCase = ecUpperCase
@@ -9287,6 +9287,20 @@ inherited FormProduto: TFormProduto
             ShowHint = True
             TabOrder = 1
             Width = 107
+          end
+          object DBCheckBox6: TDBCheckBox
+            Left = 484
+            Top = 26
+            Width = 121
+            Height = 17
+            Caption = 'Produto Agroneg'#243'cio'
+            DataField = 'PRD_AGRONEGOCIO'
+            DataSource = DsProdutos
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 15
+            ValueChecked = 'S'
+            ValueUnchecked = 'N'
           end
         end
         object tsServico: TTabSheet
@@ -18292,6 +18306,10 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRD_CAPACIDADE_OBRIGATORIA'
       Size = 1
     end
+    object SqlProdutosPRD_AGRONEGOCIO: TStringField
+      FieldName = 'PRD_AGRONEGOCIO'
+      Size = 1
+    end
   end
   object DspProdutos: TDataSetProvider [76]
     DataSet = SqlProdutos
@@ -19300,6 +19318,10 @@ inherited FormProduto: TFormProduto
     end
     object CdsProdutosPRD_CAPACIDADE_OBRIGATORIA: TStringField
       FieldName = 'PRD_CAPACIDADE_OBRIGATORIA'
+      Size = 1
+    end
+    object CdsProdutosPRD_AGRONEGOCIO: TStringField
+      FieldName = 'PRD_AGRONEGOCIO'
       Size = 1
     end
   end

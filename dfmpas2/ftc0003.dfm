@@ -299,8 +299,8 @@ object FormCopiaFichaTec: TFormCopiaFichaTec
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 40
-    Top = 168
+    Left = 48
+    Top = 112
     object SqlCdsCopiaFichaTecPRD_REFER: TStringField
       FieldName = 'PRD_REFER'
       Required = True
@@ -378,8 +378,8 @@ object FormCopiaFichaTec: TFormCopiaFichaTec
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 72
-    Top = 168
+    Left = 200
+    Top = 112
     object SqlCdsCopiaItemFichaTecFTI_REGISTRO: TIntegerField
       FieldName = 'FTI_REGISTRO'
       Required = True
@@ -394,14 +394,6 @@ object FormCopiaFichaTec: TFormCopiaFichaTec
     end
     object SqlCdsCopiaItemFichaTecFTI_MODIFICADA: TSQLTimeStampField
       FieldName = 'FTI_MODIFICADA'
-    end
-    object SqlCdsCopiaItemFichaTecFTI_UC: TFMTBCDField
-      FieldName = 'FTI_UC'
-      Precision = 15
-    end
-    object SqlCdsCopiaItemFichaTecFTI_UCMODIFIC: TFMTBCDField
-      FieldName = 'FTI_UCMODIFIC'
-      Precision = 15
     end
     object SqlCdsCopiaItemFichaTecFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -443,5 +435,22 @@ object FormCopiaFichaTec: TFormCopiaFichaTec
       FieldName = 'EMP_CODIGO'
       Size = 3
     end
+    object SqlCdsCopiaItemFichaTecFTI_UC: TFloatField
+      FieldName = 'FTI_UC'
+    end
+    object SqlCdsCopiaItemFichaTecFTI_UCMODIFIC: TFloatField
+      FieldName = 'FTI_UCMODIFIC'
+    end
+  end
+  object Origem: TFDQuery
+    Connection = DBInicio.FDACConn
+    Left = 80
+    Top = 168
+  end
+  object Destino: TFDQuery
+    CachedUpdates = True
+    Connection = DBInicio.FDACConn
+    Left = 152
+    Top = 168
   end
 end

@@ -467,6 +467,10 @@ object DataCadastros: TDataCadastros
       FieldName = 'CCT_CODIGO'
       Size = 3
     end
+    object SqlCLientesCLI_AGRONEGOCIO: TStringField
+      FieldName = 'CLI_AGRONEGOCIO'
+      Size = 1
+    end
   end
   object DspClientes: TDataSetProvider
     DataSet = SqlCLientes
@@ -906,6 +910,10 @@ object DataCadastros: TDataCadastros
     object CdsClientesCCT_CODIGO: TStringField
       FieldName = 'CCT_CODIGO'
       Size = 3
+    end
+    object CdsClientesCLI_AGRONEGOCIO: TStringField
+      FieldName = 'CLI_AGRONEGOCIO'
+      Size = 1
     end
   end
   object DsCliente: TDataSource
@@ -3104,6 +3112,10 @@ object DataCadastros: TDataCadastros
       ProviderFlags = [pfInUpdate]
       Size = 2
     end
+    object SqlProdutosPRD_AGRONEGOCIO: TStringField
+      FieldName = 'PRD_AGRONEGOCIO'
+      Size = 1
+    end
   end
   object DspProdutos: TDataSetProvider
     DataSet = SqlProdutos
@@ -3805,6 +3817,10 @@ object DataCadastros: TDataCadastros
       FieldName = 'PRD_CSTPISCOFINS'
       ProviderFlags = [pfInUpdate]
       Size = 2
+    end
+    object CdsProdutosPRD_AGRONEGOCIO: TStringField
+      FieldName = 'PRD_AGRONEGOCIO'
+      Size = 1
     end
   end
   object DsProdutos: TDataSource

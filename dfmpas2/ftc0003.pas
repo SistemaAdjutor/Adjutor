@@ -16,7 +16,10 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   StdCtrls, Buttons, DBCtrls, ExtCtrls, Mask, Db, DBTables,  rxToolEdit,
   RXDBCtrl,RwFunc, ComCtrls, Provider, SqlExpr,SqlClientDataSet, DBClient, DBLocal, DBLocalS,
-  Data.DBXFirebird, SimpleDS;
+  Data.DBXFirebird, SimpleDS, FireDAC.Comp.Client, FireDAC.Stan.Intf,
+  FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
+  FireDAC.Comp.DataSet;
 
 type
   TFormCopiaFichaTec = class(TForm)
@@ -59,8 +62,6 @@ type
     SqlCdsCopiaItemFichaTecPRD_REFER: TStringField;
     SqlCdsCopiaItemFichaTecPRD_REFER_ITENS: TStringField;
     SqlCdsCopiaItemFichaTecFTI_MODIFICADA: TSQLTimeStampField;
-    SqlCdsCopiaItemFichaTecFTI_UC: TFMTBCdField;
-    SqlCdsCopiaItemFichaTecFTI_UCMODIFIC: TFMTBCdField;
     SqlCdsCopiaItemFichaTecFTI_MODE1: TStringField;
     SqlCdsCopiaItemFichaTecFTI_MODE2: TStringField;
     SqlCdsCopiaItemFichaTecFTI_MODE3: TStringField;
@@ -73,6 +74,10 @@ type
     SqlCdsCopiaItemFichaTecEMP_CODIGO: TStringField;
     GroupBox3: TGroupBox;
     PanFicha: TPanel;
+    SqlCdsCopiaItemFichaTecFTI_UC: TFloatField;
+    SqlCdsCopiaItemFichaTecFTI_UCMODIFIC: TFloatField;
+    Origem: TFDQuery;
+    Destino: TFDQuery;
     procedure FormShow(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_CopiarClick(Sender: tObject);
@@ -84,6 +89,9 @@ type
   private
     { Private declarations }
     procedure CopiarFichaTec;
+    procedure CopiarCamposTecnicos;
+    procedure CopiarEngenhariaDeProcessos;
+    procedure CopiarQualidade;
   public
     { Public declarations }
   end;
@@ -93,7 +101,7 @@ var
 
 implementation
 
-USES  Uteis, Ftc0001, DataCad, Prd0006, DmProdu, Prd0001;
+USES  Uteis, Ftc0001, DataCad, Prd0006, DmProdu, Prd0001, InicioDB;
 
 {$R *.DFM}
 
@@ -132,6 +140,136 @@ begin
            uteis.aviso('Informe a Referência !');
            EdtCopiarPa.SetFocus;
        end;
+end;
+
+procedure TFormCopiaFichaTec.CopiarCamposTecnicos;
+var
+  prdCodigo : string;
+  mmoCodigo, I : integer;
+begin
+  prdCodigo := dbInicio.BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 p WHERE PRD_REFER = ' + QuotedStr(EdtCopiarPa.Text) );
+  mmoCodigo := dbInicio.GetNextSequence( 'GEN_MOLA_MATERIA_ID' );
+  try
+    origem.SQL.Text := 'SELECT * FROM MOLA_MATERIA WHERE PRD_CODIGO = ' + dbInicio.BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 p WHERE PRD_REFER = ' + QuotedStr(EdtCopiarDe.Text) );
+    origem.Open;
+    if origem.IsEmpty then
+    begin
+      origem.Close;
+      destino.Close;
+      exit;
+    end;
+
+    destino.SQL.Text := 'SELECT * FROM MOLA_MATERIA ';
+    destino.Open;
+
+    destino.Insert;
+    for I := 0 to origem.FieldCount - 1 do
+    begin
+      if (origem.Fields[I].FieldName = 'MMO_CODIGO') then
+        destino.Fields[I].Value := mmoCodigo
+      else
+      if (origem.Fields[I].FieldName = 'PRD_CODIGO')  then
+        destino.Fields[I].Value := prdCodigo
+      else
+        destino.Fields[I].Value := origem.Fields[I].Value;
+    end;
+
+    destino.Post;
+    destino.ApplyUpdates(0);
+
+  finally
+    origem.Close;
+    destino.Close;
+  end;
+end;
+
+procedure TFormCopiaFichaTec.CopiarEngenhariaDeProcessos;
+var
+  prdCodigo : string;
+  engCodigo, I : integer;
+begin
+  prdCodigo := dbInicio.BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 p WHERE PRD_REFER = ' + QuotedStr(EdtCopiarPa.Text) );
+  try
+    origem.SQL.Text := 'SELECT * FROM ENGENHARIA_PROCESSO WHERE PRD_CODIGO = ' +  dbInicio.BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 p WHERE PRD_REFER = ' + QuotedStr(EdtCopiarDe.Text) );
+    origem.Open;
+    if origem.IsEmpty then
+    begin
+      origem.Close;
+      destino.Close;
+      exit;
+    end;
+
+    destino.SQL.Text := 'SELECT * FROM ENGENHARIA_PROCESSO ';
+    destino.Open;
+
+    while not Origem.Eof do
+    begin
+      engCodigo := dbInicio.GetNextSequence( 'GEN_ENGENHARIA_PROCESSO' );
+      destino.Insert;
+      for I := 0 to origem.FieldCount - 1 do
+      begin
+        if (origem.Fields[I].FieldName = 'ENG_CODIGO') then
+          destino.Fields[I].Value := engCodigo
+        else
+        if (origem.Fields[I].FieldName = 'PRD_CODIGO')  then
+          destino.Fields[I].Value := prdCodigo
+        else
+          destino.Fields[I].Value := origem.Fields[I].Value;
+      end;
+
+      try
+        destino.Post;
+      except on e:Exception do
+        begin
+          uteis.erro(e.message)
+        end;
+      end;
+
+      Origem.Next;
+    end;
+    destino.ApplyUpdates(0);
+  finally
+    origem.Close;
+    destino.Close;
+  end;
+end;
+
+procedure TFormCopiaFichaTec.CopiarQualidade;
+var
+  I : integer;
+begin
+  try
+    origem.SQL.Text := 'SELECT * FROM CONTROLE_DE_QUALIDADE_PRODUTO WHERE PRD_REFER = ' + QuotedStr(EdtCopiarDe.Text);
+    origem.Open;
+    if origem.IsEmpty then
+    begin
+      origem.Close;
+      destino.Close;
+      exit;
+    end;
+
+    destino.SQL.Text := 'SELECT * FROM CONTROLE_DE_QUALIDADE_PRODUTO ';
+    destino.Open;
+
+    while not Origem.Eof do
+    begin
+      destino.Insert;
+      for I := 0 to origem.FieldCount - 1 do
+      begin
+        if (origem.Fields[I].FieldName = 'PRD_REFER')  then
+          destino.Fields[I].Value := EdtCopiarPa.Text
+        else
+          destino.Fields[I].Value := origem.Fields[I].Value;
+      end;
+      destino.Post;
+
+      Origem.Next;
+    end;
+    destino.ApplyUpdates(0);
+  finally
+    origem.Close;
+    destino.Close;
+  end;
 end;
 
 procedure TFormCopiaFichaTec.CopiarFichaTec;
@@ -229,6 +367,11 @@ begin
                uteis.erro  (pchar('Erro ao inserir o registro na tabela FTC_IT01 ! '+E.message));
              end;
              SqlCdsCopiaItemFichaTec.Close;
+
+             CopiarEngenhariaDeProcessos;
+             CopiarCamposTecnicos;
+             CopiarQualidade;
+
              uteis.aviso('Ficha Técnica copia com sucesso !');
              PanFicha.Caption := EdtCopiarPa.Text +' - '+EdtDescCopiarPa.Text;
              EdtCopiarPa.Text     := '';
@@ -249,6 +392,7 @@ begin
     end;
     Screen.Cursor := crDefault;
 end;
+
 
 procedure TFormCopiaFichaTec.EdtCopiarPaChange(Sender: tObject);
 begin
