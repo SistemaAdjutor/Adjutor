@@ -2766,7 +2766,7 @@ begin
    produto.Imposto.ICMS.CST  := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
  if qnota.FieldByName('nf_export_local_embarque').AsString <> '' then  //exportação seta cst 41
    produto.Imposto.ICMS.CST := cst41
- else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( NOT MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['51','20']) )  then    //DIFERIMENTO
+ else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( NOT MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['51','20', '10']) )  then    //DIFERIMENTO
   produto.Imposto.ICMS.CST := cst51 ; //diferimento
 
 
