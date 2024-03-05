@@ -150,10 +150,8 @@ type
     RadEntrada: TRadioButton;
     RadEntrega: TRadioButton;
     ppDBRel01: TppDBPipeline;
-    SqlCdsRel02: TSQLQuery;
     DsRel02: TDataSource;
     RadFaturamento: TRadioButton;
-    SqlCdsRel02PED_PENDENTE_CC: TCurrencyField;
     SqlCdsRel01PED_CODIGO: TStringField;
     SqlCdsRel01WQTDE: TFMTBCdField;
     SqlCdsRel01PED_DTENTRADA: TSQLTimeStampField;
@@ -164,20 +162,6 @@ type
     SqlCdsRel01CLI_UF: TStringField;
     SqlCdsRel01REP_CODIGO: TStringField;
     SqlCdsRel01REP_NOME: TStringField;
-    SqlCdsRel02EMP_CODIGO: TStringField;
-    SqlCdsRel02PED_DTSAIDA: TSQLTimeStampField;
-    SqlCdsRel02PED_DTENTRADA: TSQLTimeStampField;
-    SqlCdsRel02CLI_CODIGO: TStringField;
-    SqlCdsRel02CLI_RAZAO: TStringField;
-    SqlCdsRel02CLI_UF: TStringField;
-    SqlCdsRel02REP_NOME: TStringField;
-    SqlCdsRel02REP_CODIGO: TStringField;
-    SqlCdsRel02PED_CODIGO: TStringField;
-    SqlCdsRel02PED_DESCTOVL: TFMTBCdField;
-    SqlCdsRel02WVALOR_FATURADO: TFMTBCdField;
-    SqlCdsRel02WVALOR_PEDIDO_LIQUIDO: TFMTBCdField;
-    SqlCdsRel02WVALOR_FATURADO_LIQUIDO: TFMTBCdField;
-    SqlCdsRel02WVALOR_FATURADO_IPI: TFMTBCdField;
     ppDBRel02: TppDBPipeline;
     ppRRel03: TppReport;
     SqlCdsRel03: TSQLQuery;
@@ -328,9 +312,7 @@ type
     ppDBText43: TppDBText;
     ppDBText44: TppDBText;
     ppDBText45: TppDBText;
-    SqlCdsRel02PED_VLTUPS: TFMTBCdField;
     SqlCdsParamPMT_TUPPEDIDO: TStringField;
-    SqlCdsRel02PED_TOTUPS: TFMTBCdField;
     SqlCdsPedidoPED_TOTUPS: TFMTBCdField;
     SqlCdsPedidoPED_VLTUPS: TFMTBCdField;
     SqlCdsPedidoCLI_RAZAO: TStringField;
@@ -447,7 +429,6 @@ type
     ppDBCalc15: TppDBCalc;
     EditFinal: TEdit;
     Label2: TLabel;
-    SqlCdsRel02PED_COMIS1: TFMTBCdField;
     ppParameterList1: TppParameterList;
     ppHeaderBand2: TppHeaderBand;
     ppLine2: TppLine;
@@ -497,7 +478,6 @@ type
     ppDBCalc7: TppDBCalc;
     ppDBCalc9: TppDBCalc;
     raCodeModule1: TraCodeModule;
-    SqlCdsRel02Comissao_CC: TCurrencyField;
     ppDBText5: TppDBText;
     SqlCdsRel01PED_VLTOTAL_LIQ: TFMTBCdField;
     SqlCdsPedidoCLI_EMAIL_ALTERNATIVO: TStringField;
@@ -594,8 +574,6 @@ type
     ppLabel84: TppLabel;
     dspItemPedi: TDataSetProvider;
     cdsItemPedi: TClientDataSet;
-    dspRel2: TDataSetProvider;
-    cdsRel2: TClientDataSet;
     cdsRel1: TClientDataSet;
     dspRel1: TDataSetProvider;
     cdsRel3: TClientDataSet;
@@ -911,6 +889,26 @@ type
     qRel05PCL_NOME: TStringField;
     qRel05VLRFATURAR: TFMTBCDField;
     qRel05VALOR_A_FATURAR: TFMTBCDField;
+    cdsRel02: TFDQuery;
+    cdsRel02PED_DTSAIDA: TSQLTimeStampField;
+    cdsRel02PED_DTENTRADA: TSQLTimeStampField;
+    cdsRel02CLI_CODIGO: TStringField;
+    cdsRel02CLI_RAZAO: TStringField;
+    cdsRel02CLI_UF: TStringField;
+    cdsRel02REP_NOME: TStringField;
+    cdsRel02REP_CODIGO: TStringField;
+    cdsRel02PED_CODIGO: TStringField;
+    cdsRel02PED_DESCTOVL: TFMTBCDField;
+    cdsRel02WVALOR_FATURADO: TFMTBCDField;
+    cdsRel02WVALOR_PEDIDO_LIQUIDO: TFMTBCDField;
+    cdsRel02WVALOR_FATURADO_LIQUIDO: TFMTBCDField;
+    cdsRel02WVALOR_FATURADO_IPI: TFMTBCDField;
+    cdsRel02PED_PENDENTE_CC: TCurrencyField;
+    cdsRel02PED_VLTUPS: TFMTBCDField;
+    cdsRel02PED_TOTUPS: TFMTBCDField;
+    cdsRel02PED_COMIS1: TFMTBCDField;
+    cdsRel02Comissao_CC: TCurrencyField;
+    cdsRel02EMP_CODIGO: TStringField;
     procedure BitOkClick(Sender: tObject);
     procedure BitConfigClick(Sender: tObject);
     procedure BitCancelarClick(Sender: tObject);
@@ -936,7 +934,6 @@ type
     procedure ppHeaderBand2BeforePrint(Sender: tObject);
     procedure EdtTipoExit(Sender: tObject);
     procedure CbTipoClick(Sender: tObject);
-    procedure SqlCdsRel02CalcFields(DataSet: TDataSet);
     procedure Edt_TipoExit(Sender: tObject);
     procedure Cb_TipoClick(Sender: tObject);
     procedure Cb_TipoExit(Sender: tObject);
@@ -955,6 +952,7 @@ type
     procedure ppOrigemGetText(Sender: TObject; var Text: string);
     procedure frxRelOrdemGetValue(const VarName: string; var Value: Variant);
     procedure qRel05CalcFields(DataSet: TDataSet);
+    procedure cdsRel02CalcFields(DataSet: TDataSet);
   private
     { Private declarations }
     fListaEmpresas : TStringList;
@@ -1268,10 +1266,12 @@ begin
                     wSql3 := 'JOIN PED0000 P1 ON (P1.PED_CODIGO = N1.PED_CODIGO) AND (N1.EMP_CODIGO =P1.EMP_CODIGO) LEFT JOIN CLI0000 C1 ON P1.CLI_CODIGO = C1.CLI_CODIGO LEFT JOIN REP0000 R1 ON (P1.REP_CODIGO = R1.REP_CODIGO) ';
                     wSql4 := 'GROUP BY 1,2,3,4,5,6 ,C1.CLI_UF,R1.REP_NOME,P1.REP_CODIGO,P1.PED_CODIGO,P1.PED_DESCTOVL,P1.PED_TOTUPS,P1.PED_VLTUPS,P1.PED_VLTOTAL_LIQ ';
                 end;
-             CdsRel2.Close;
-             SqlCdsRel02.SQL.Text := wSql1+wSql2+wSql3+wSeleciona+wSql4+ wOrdem ;
-             cdsRel2.Open;
-             if cdsRel2.IsEmpty then
+             CdsRel02.Close;
+             CdsRel02.SQL.Text := wSql1+wSql2+wSql3+wSeleciona+wSql4+ wOrdem ;
+             if dbInicio.isDesenvolvimento then
+               copyToClipboard(CdsRel02.SQL.Text);
+             cdsRel02.Open;
+             if cdsRel02.IsEmpty then
               GeraException('Não foi encontrado informações');
              if RadVideo.Checked then
                 begin
@@ -2969,13 +2969,6 @@ begin
   cbTransp.SelectAll;
 end;
 
-procedure TFormGImpPedido.SqlCdsRel02CalcFields(DataSet: TDataSet);
-begin
-    SqlCdsRel02PED_PENDENTE_CC.AsCurrency := (SqlCdsRel02WVALOR_PEDIDO_LIQUIDO.AsCurrency -(SqlCdsRel02WVALOR_FATURADO_LIQUIDO.AsCurrency));
-    SqlCdsRel02Comissao_CC.AsCurrency     := ((SqlCdsRel02PED_COMIS1.AsCurrency/100) * SqlCdsRel02WVALOR_PEDIDO_LIQUIDO.AsCurrency);
-end;
-
-
 procedure TFormGImpPedido.Rel_Contagem_Orcamentos;
 var condicao:string;
  Const
@@ -3147,6 +3140,14 @@ begin
            Edt_Tipo.Text := '999';
            Cb_Tipo.Text  := 'TODOS OS TIPOS';
        end;
+end;
+
+procedure TFormGImpPedido.cdsRel02CalcFields(DataSet: TDataSet);
+begin
+  inherited;
+    CdsRel02PED_PENDENTE_CC.AsCurrency := (CdsRel02WVALOR_PEDIDO_LIQUIDO.AsCurrency -(CdsRel02WVALOR_FATURADO_LIQUIDO.AsCurrency));
+    CdsRel02Comissao_CC.AsCurrency     := ((CdsRel02PED_COMIS1.AsCurrency/100) * CdsRel02WVALOR_PEDIDO_LIQUIDO.AsCurrency);
+
 end;
 
 procedure TFormGImpPedido.cdsVendaSegCalcFields(DataSet: TDataSet);

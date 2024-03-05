@@ -2747,8 +2747,8 @@ inherited FormGImpPedido: TFormGImpPedido
     CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
     CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
     CloudDriveSettings.OneDriveSettings.DirectorySupport = True
-    Left = 960
-    Top = 208
+    Left = 952
+    Top = 216
     Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBRel02'
@@ -3954,102 +3954,17 @@ inherited FormGImpPedido: TFormGImpPedido
     Left = 896
     Top = 160
   end
-  object SqlCdsRel02: TSQLQuery
-    OnCalcFields = SqlCdsRel02CalcFields
-    MaxBlobSize = -1
-    Params = <>
-    SQLConnection = DBConn
-    Left = 752
-    Top = 208
-    object SqlCdsRel02PED_DTSAIDA: TSQLTimeStampField
-      FieldName = 'PED_DTSAIDA'
-    end
-    object SqlCdsRel02PED_DTENTRADA: TSQLTimeStampField
-      FieldName = 'PED_DTENTRADA'
-    end
-    object SqlCdsRel02CLI_CODIGO: TStringField
-      FieldName = 'CLI_CODIGO'
-      Size = 5
-    end
-    object SqlCdsRel02CLI_RAZAO: TStringField
-      FieldName = 'CLI_RAZAO'
-      Size = 50
-    end
-    object SqlCdsRel02CLI_UF: TStringField
-      FieldName = 'CLI_UF'
-      Size = 2
-    end
-    object SqlCdsRel02REP_NOME: TStringField
-      FieldName = 'REP_NOME'
-      Size = 35
-    end
-    object SqlCdsRel02REP_CODIGO: TStringField
-      FieldName = 'REP_CODIGO'
-      Size = 3
-    end
-    object SqlCdsRel02PED_CODIGO: TStringField
-      FieldName = 'PED_CODIGO'
-      Required = True
-      Size = 6
-    end
-    object SqlCdsRel02PED_DESCTOVL: TFMTBCDField
-      FieldName = 'PED_DESCTOVL'
-      Precision = 15
-    end
-    object SqlCdsRel02WVALOR_FATURADO: TFMTBCDField
-      FieldName = 'WVALOR_FATURADO'
-      Precision = 15
-    end
-    object SqlCdsRel02WVALOR_PEDIDO_LIQUIDO: TFMTBCDField
-      FieldName = 'WVALOR_PEDIDO_LIQUIDO'
-      Precision = 15
-    end
-    object SqlCdsRel02WVALOR_FATURADO_LIQUIDO: TFMTBCDField
-      FieldName = 'WVALOR_FATURADO_LIQUIDO'
-      Precision = 15
-    end
-    object SqlCdsRel02WVALOR_FATURADO_IPI: TFMTBCDField
-      FieldName = 'WVALOR_FATURADO_IPI'
-      Precision = 15
-    end
-    object SqlCdsRel02PED_PENDENTE_CC: TCurrencyField
-      FieldKind = fkCalculated
-      FieldName = 'PED_PENDENTE_CC'
-      Calculated = True
-    end
-    object SqlCdsRel02PED_VLTUPS: TFMTBCDField
-      FieldName = 'PED_VLTUPS'
-      Precision = 15
-    end
-    object SqlCdsRel02PED_TOTUPS: TFMTBCDField
-      FieldName = 'PED_TOTUPS'
-      Precision = 15
-    end
-    object SqlCdsRel02PED_COMIS1: TFMTBCDField
-      FieldName = 'PED_COMIS1'
-      Precision = 15
-    end
-    object SqlCdsRel02Comissao_CC: TCurrencyField
-      FieldKind = fkCalculated
-      FieldName = 'Comissao_CC'
-      Calculated = True
-    end
-    object SqlCdsRel02EMP_CODIGO: TStringField
-      FieldName = 'EMP_CODIGO'
-      Size = 3
-    end
-  end
   object DsRel02: TDataSource
-    DataSet = cdsRel2
-    Left = 824
-    Top = 208
+    DataSet = cdsRel02
+    Left = 816
+    Top = 216
   end
   object ppDBRel02: TppDBPipeline
     DataSource = DsRel02
     CloseDataSource = True
     UserName = 'DBRel02'
-    Left = 896
-    Top = 208
+    Left = 880
+    Top = 216
   end
   object ppRRel03: TppReport
     AutoStop = False
@@ -5066,7 +4981,6 @@ inherited FormGImpPedido: TFormGImpPedido
     end
   end
   object SqlCdsRel03: TSQLQuery
-    OnCalcFields = SqlCdsRel02CalcFields
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
@@ -6339,7 +6253,6 @@ inherited FormGImpPedido: TFormGImpPedido
     end
   end
   object SqlCdsRel04: TSQLQuery
-    OnCalcFields = SqlCdsRel02CalcFields
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
@@ -6403,7 +6316,6 @@ inherited FormGImpPedido: TFormGImpPedido
     Top = 320
   end
   object SqlCdsRel041: TSQLQuery
-    OnCalcFields = SqlCdsRel02CalcFields
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
@@ -9897,18 +9809,6 @@ inherited FormGImpPedido: TFormGImpPedido
     ProviderName = 'dspItemPedi'
     Left = 480
     Top = 200
-  end
-  object dspRel2: TDataSetProvider
-    DataSet = SqlCdsRel02
-    Left = 696
-    Top = 208
-  end
-  object cdsRel2: TClientDataSet
-    Aggregates = <>
-    Params = <>
-    ProviderName = 'dspRel2'
-    Left = 624
-    Top = 208
   end
   object cdsRel1: TClientDataSet
     Aggregates = <>
@@ -14334,6 +14234,89 @@ inherited FormGImpPedido: TFormGImpPedido
     object qRel05VALOR_A_FATURAR: TFMTBCDField
       FieldName = 'VALOR_A_FATURAR'
       Size = 5
+    end
+  end
+  object cdsRel02: TFDQuery
+    OnCalcFields = cdsRel02CalcFields
+    Connection = DBInicio.FDACConn
+    Left = 752
+    Top = 216
+    object cdsRel02PED_DTSAIDA: TSQLTimeStampField
+      FieldName = 'PED_DTSAIDA'
+    end
+    object cdsRel02PED_DTENTRADA: TSQLTimeStampField
+      FieldName = 'PED_DTENTRADA'
+    end
+    object cdsRel02CLI_CODIGO: TStringField
+      FieldName = 'CLI_CODIGO'
+      Size = 5
+    end
+    object cdsRel02CLI_RAZAO: TStringField
+      FieldName = 'CLI_RAZAO'
+      Size = 50
+    end
+    object cdsRel02CLI_UF: TStringField
+      FieldName = 'CLI_UF'
+      Size = 2
+    end
+    object cdsRel02REP_NOME: TStringField
+      FieldName = 'REP_NOME'
+      Size = 35
+    end
+    object cdsRel02REP_CODIGO: TStringField
+      FieldName = 'REP_CODIGO'
+      Size = 3
+    end
+    object cdsRel02PED_CODIGO: TStringField
+      FieldName = 'PED_CODIGO'
+      Required = True
+      Size = 6
+    end
+    object cdsRel02PED_DESCTOVL: TFMTBCDField
+      FieldName = 'PED_DESCTOVL'
+      Precision = 15
+    end
+    object cdsRel02WVALOR_FATURADO: TFMTBCDField
+      FieldName = 'WVALOR_FATURADO'
+      Precision = 15
+    end
+    object cdsRel02WVALOR_PEDIDO_LIQUIDO: TFMTBCDField
+      FieldName = 'WVALOR_PEDIDO_LIQUIDO'
+      Precision = 15
+    end
+    object cdsRel02WVALOR_FATURADO_LIQUIDO: TFMTBCDField
+      FieldName = 'WVALOR_FATURADO_LIQUIDO'
+      Precision = 15
+    end
+    object cdsRel02WVALOR_FATURADO_IPI: TFMTBCDField
+      FieldName = 'WVALOR_FATURADO_IPI'
+      Precision = 15
+    end
+    object cdsRel02PED_PENDENTE_CC: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'PED_PENDENTE_CC'
+      Calculated = True
+    end
+    object cdsRel02PED_VLTUPS: TFMTBCDField
+      FieldName = 'PED_VLTUPS'
+      Precision = 15
+    end
+    object cdsRel02PED_TOTUPS: TFMTBCDField
+      FieldName = 'PED_TOTUPS'
+      Precision = 15
+    end
+    object cdsRel02PED_COMIS1: TFMTBCDField
+      FieldName = 'PED_COMIS1'
+      Precision = 15
+    end
+    object cdsRel02Comissao_CC: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'Comissao_CC'
+      Calculated = True
+    end
+    object cdsRel02EMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
     end
   end
 end
