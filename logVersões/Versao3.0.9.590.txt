@@ -1,0 +1,7 @@
+﻿Atualizado em 05/03/2024
+Inicio da versão: 05/03/2024
+
+principal: Arkson, Normadin
+  1815 - ERRO NA ENTRADA DE NOTA [Arkson]
+  1818 - Erro emissão de NF com regra fiscal [Normadin]
+  
