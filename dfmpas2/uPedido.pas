@@ -2073,7 +2073,7 @@ begin
                    '     PRF_MARGEM_PRODUTO, PRF_ICMSALIQ, PRF_VALOR_ICMS, ' +
 
                    // '     COALESCE(prf_qtdePend,0) AS prf_qtdePend , ' +
-                    '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = t1.ped_codigo),0) as prf_qtdePend,  '+
+                    '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = t1.ped_codigo AND it.prd_refer = t1.prd_refer),0) as prf_qtdePend,  '+
 
                    '     PRF_PRODUTO_SEMVALOR, ' +
                    ' (SELECT CAST(COUNT(1) AS INTEGER) FROM PED_IT01 it2 WHERE T1.PRF_REGISTRO = IT2.PRF_REGISTRO_VINCULADO)  KIT_VIRTUAL, '+
