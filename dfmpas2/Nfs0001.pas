@@ -6903,6 +6903,7 @@ procedure TFormNfEntrada.RealizaAtualizacaoCustosEntrada;
       sFornecedor:string;
   ValorImpostosRetirados : Double;
   porFora: boolean;
+  msg: string;
 begin
      //Rateia frete Custo e Despesas nos itens
      porFora := DBInicio.GetParametroSistema('PMT_METODO_CALCULO_PRECO') = '0';  // o cálculo é feito por fora? True   por dentro? False
@@ -7133,7 +7134,18 @@ begin
                //
                DataCadastros.sqlUpdate.Close;
                DataCadastros.SqlUpdate.sql.text :=SQLDEF('PRODUTOS',wSql1,'WHERE PRD_REFER = '''+SqlCdsGridSemOCPRD_REFER.AsString+'''','','');
-               DataCadastros.sqlUpdate.Execsql;
+               try
+                 DataCadastros.sqlUpdate.Execsql;
+               except on e: Exception do
+                 begin
+                    wSql1 := 'SELECT PRD_PVENDA FROM PRD0000';
+                    if BuscaUmDadoSqlAsFloat(SQLDEF('PRODUTOS',wSql1,'WHERE PRD_REFER = '''+SqlCdsGridSemOCPRD_REFER.AsString+'''','','') ) = 0 then
+                      msg := 'Preço de venda do produto ' + SqlCdsGridSemOCPRD_REFER.AsString + ' não definido no cadastro de produtos, favor revisar'
+                    else
+                      msg := e.Message;
+                    uteis.Aviso(msg);
+                 end;
+               end;
                // Atualizar preço de venda conforme fornecedor
 
          end
