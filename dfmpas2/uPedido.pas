@@ -7441,7 +7441,7 @@ begin
                           end;
 
                           //Se nao localizou tenta pelo **
-                          if (not bLocalizadoRegra) then
+                          if (not bLocalizadoRegra) and (SqlCdsPedidoItemCAP_CODIGO.AsString <> '') then
                              begin
                                 dbInicio.qAux2.Close;
                                 dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1 JOIN REGRA_FISCAL_PROD_CAP pc ON (pc.OPR_REGISTRO = t1.OPR_REGISTRO) ',
