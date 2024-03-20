@@ -2073,7 +2073,7 @@ begin
                    '     PRF_MARGEM_PRODUTO, PRF_ICMSALIQ, PRF_VALOR_ICMS, ' +
 
                    // '     COALESCE(prf_qtdePend,0) AS prf_qtdePend , ' +
-                    '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = t1.ped_codigo),0) as prf_qtdePend,  '+
+                    '      COALESCE((SELECT sum(PRF_QTDEPEND) FROM PED_IT01 it WHERE it.ped_codigo = t1.ped_codigo AND it.prd_refer = t1.prd_refer),0) as prf_qtdePend,  '+
 
                    '     PRF_PRODUTO_SEMVALOR, ' +
                    ' (SELECT CAST(COUNT(1) AS INTEGER) FROM PED_IT01 it2 WHERE T1.PRF_REGISTRO = IT2.PRF_REGISTRO_VINCULADO)  KIT_VIRTUAL, '+
@@ -6064,6 +6064,8 @@ begin
       end;
     end;
 //    else
+    // begin
+    if SqlCdsPedido.Active then
     begin
       if
       (dbInicio.BuscaUmDadoSqlAsString('SELECT USP_INCLUI_ITEM_PED_OP_GERADA FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + QuotedStr(dbInicio.USUARIO.CODIGO)) <> 'S')
@@ -6077,6 +6079,7 @@ begin
           Exit;
         end;
     end;
+    // end;
 
     if (SpeedButton1.Tag = 1)  then
     begin
@@ -6121,7 +6124,7 @@ begin
     end;
 
   Except on e:Exception do
-    // frmPedido := nil;
+    showmessage(e.Message); // frmPedido := nil;
   end;
 
 end;
