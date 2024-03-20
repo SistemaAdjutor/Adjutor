@@ -1693,6 +1693,10 @@ type
     CdsSharedbPRODUTO_PRECO_EMPRESA: TStringField;
     SqlSharedbENDERECO_ESTOQUE: TStringField;
     CdsSharedbENDERECO_ESTOQUE: TStringField;
+    SqlCLientesCLI_AGRONEGOCIO: TStringField;
+    CdsClientesCLI_AGRONEGOCIO: TStringField;
+    SqlProdutosPRD_AGRONEGOCIO: TStringField;
+    CdsProdutosPRD_AGRONEGOCIO: TStringField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);

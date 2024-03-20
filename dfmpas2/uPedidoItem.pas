@@ -582,6 +582,7 @@ type
     property ProdutoOrigCodigo :string read FProdutoOrigCodigo write SetProdutoOrigCodigo;
     procedure AtualizaUltimoPreco;
     function BuscaPrecoVenda(pCodigoProduto: string): double;
+    function ValidaAgronegocio: boolean;
 
 public
     wDescontoAnt: double;
@@ -3663,13 +3664,45 @@ begin
     CurQuantidade.SetFocus;
 end;
 
+function TFrmPedidoItem.ValidaAgronegocio: boolean;
+var
+  clienteAgronegocio, produtoAgronegocio: boolean;
+begin
+  Result := True;
+  produtoAgronegocio := BuscaUmDadoSqlAsString('SELECT PRD_AGRONEGOCIO FROM PRD0000 WHERE PRD_CODIGO = ' + QuotedStr(cbReferencia.idRetorno) ) = 'S';
+  if (FrmPedido.EdClienteCodigo.Text <> '') then
+    clienteAgronegocio := BuscaUmDadoSqlAsString('SELECT CLI_AGRONEGOCIO FROM CLI0000 WHERE CLI_CODIGO = ' + QuotedStr(FrmPedido.EdClienteCodigo.Text) ) = 'S'
+  else
+    clienteAgronegocio := False;
+
+  if clienteAgronegocio and not produtoAgronegocio then
+  begin
+    uteis.Aviso('Cliente é do Agronegócio mas o Produto não foi configurado como Agronegócio.');
+    Result := False
+  end;
+  if not clienteAgronegocio and produtoAgronegocio then
+  begin
+    uteis.Aviso('Não permite vender produto do Agronegócio para cliente que não é do Agronegócio.');
+    Result := False;
+  end;
+  if not Result then
+  begin
+    cbReferencia.idRetorno := '';
+    cbDescricao.Text := '';
+    cbReferencia.SetFocus;
+  end;
+end;
+
 procedure TFrmPedidoItem.cbReferenciaSelect(Sender: TObject);
+
 begin
   inherited;
   if cbReferencia.idRetorno<>'' then
   begin
-
     limpaBufferTeclado;
+    if not ValidaAgronegocio then
+      abort;
+
     try
      BuscaProduto( cbReferencia.idRetorno );
      Focar;
@@ -5788,16 +5821,17 @@ begin
                                      '  ( SELECT FIRST 1 pc.PRDCO_CODIGO_ORIGINAL FROM PRD_CODIGOORIGINAL pc WHERE pc.PRD_CODIGO = pd.PRD_CODIGO  and pc.cli_codigo = '+qStr(cliente)+' ) PRDCO_CODIGO_ORIGINAL , '+
                                      ' interno, externo, altura1, altura2';
           // CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
-          CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO and pt.PTI_DISPONIVEL_VENDAS = ''S'' )'+
+          CbReferencia.LookupTable:= 'prd0000 PD ' +
+                                     '  inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO and pt.PTI_DISPONIVEL_VENDAS = ''S'' )'+
                                      ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) '+
                                      ' Join precos0000 TB on TB.cli_codigo = '+qStr(cliente)+
                                      ' Join precos0001 PR on PR.PRE_ID=TB.PRE_ID AND PR.PRD_CODIGO=PD.PRD_CODIGO ';
                                  //    ' left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO;
-          cbCodigos.LookupSelect:= 'distinct PD.PRD_EMBALA, PD.PRD_CODIGO, PD.PRD_REFER, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.PRD_PRODSERV, PD.PRD_UND, T3.PRDC_REFERENCIA , t5.PRDCO_CODIGO_ORIGINAL, '+
 
+
+          cbCodigos.LookupSelect:= 'distinct PD.PRD_EMBALA, PD.PRD_CODIGO, PD.PRD_REFER, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.PRD_PRODSERV, PD.PRD_UND, T3.PRDC_REFERENCIA , t5.PRDCO_CODIGO_ORIGINAL, '+
                                    // PRD_PVENDA
                                    ' CASE WHEN PRD_INICIOOFERTA <= CURRENT_DATE AND PRD_FIMOFERTA>= CURRENT_DATE AND PRD_PRECOOFERTA >0 THEN PRD_PRECOOFERTA else PR.pre_preco end AS PRD_PVENDA, '+
-
                                    '0.00 AS PRD_PVENDA2, 0.00 AS PRD_PVENDA3, 0.00 AS PRD_PVENDA4, 0.00 AS PRD_PVENDA5, 0.00 AS PRD_PVENDA6, '+
                                    'T2.LIN_DESCRI , interno, externo, altura1, altura2,' +
                                    '( SELECT SUM(kas_saldo) '+
@@ -5805,16 +5839,17 @@ begin
                                        'WHERE prd_codigo = pd.prd_codigo '+
                                       ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque ';
           // cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
-          cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO  and pt.PTI_DISPONIVEL_VENDAS = ''S'' )'+
+          cbCodigos.LookupTable:= 'PRD0000 PD ' +
+                                  ' inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO  and pt.PTI_DISPONIVEL_VENDAS = ''S'' )'+
                                   ' left join PRD0000_CODIGO T3 on (T3.PRD_CODIGO = PD.PRD_CODIGO) left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO) '+
                                   ' Join precos0000 TB on TB.cli_codigo = '+qStr(cliente)+
                                   ' Join precos0001 PR on PR.PRE_ID=TB.PRE_ID AND PR.PRD_CODIGO=PD.PRD_CODIGO '+
                                   ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) ';
-          cbEndereco.LookupSelect:='PD.PRD_EMBALA, PD.PRD_CODIGO, PD.PRD_REFER, t4.PRDE_ENDERECO, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.PRD_PRODSERV, PD.PRD_UND, T2.LIN_DESCRI, '+
 
+
+          cbEndereco.LookupSelect:='PD.PRD_EMBALA, PD.PRD_CODIGO, PD.PRD_REFER, t4.PRDE_ENDERECO, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.PRD_PRODSERV, PD.PRD_UND, T2.LIN_DESCRI, '+
                                     // PRD_PVENDA
                                    ' CASE WHEN PRD_INICIOOFERTA <= CURRENT_DATE AND PRD_FIMOFERTA>= CURRENT_DATE AND PRD_PRECOOFERTA >0 THEN PRD_PRECOOFERTA else PR.pre_preco end AS PRD_PVENDA, '+
-
                                    '0.00 AS PRD_PVENDA2, 0.00 AS PRD_PVENDA3, 0.00 AS PRD_PVENDA4, 0.00 AS PRD_PVENDA5, 0.00 AS PRD_PVENDA6, '+
                                    ' T5.PRDCO_CODIGO_ORIGINAL, interno, externo, altura1, altura2,' +
                                    '( SELECT SUM(kas_saldo) '+
@@ -5871,14 +5906,16 @@ begin
                                         ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque, '+
                                          ' interno, externo, altura1, altura2';
              // CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
-             CbReferencia.LookupTable:= 'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO and pt.PTI_DISPONIVEL_VENDAS = ''S'' )'+
-                                        'left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO)';
+             CbReferencia.LookupTable:= 'prd0000 PD ' +
+                                        ' inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO and pt.PTI_DISPONIVEL_VENDAS = ''S'' )'+
+                                        ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO)';
                                    //     ' left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO  )';
 
              cbCodigos.LookupSelect:= 'distinct PD.PRD_EMBALA, PD.PRD_CODIGO, PD.PRD_REFER, PD.PRD_DESCRI, PD.PRD_CODBARRA, PD.PRD_PRODSERV, PD.PRD_UND, T3.PRDC_REFERENCIA , T5.PRDCO_CODIGO_ORIGINAL, '+
                                        lCampoTabela+', T2.LIN_DESCRI, interno, externo, altura1, altura2';
              // cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
-             cbCodigos.LookupTable:= 'PRD0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO)  and pt.PTI_DISPONIVEL_VENDAS = ''S'''+
+             cbCodigos.LookupTable:= 'PRD0000 PD ' +
+                                     ' inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO)  and pt.PTI_DISPONIVEL_VENDAS = ''S'''+
                                      ' left join PRD0000_CODIGO T3 on (T3.PRD_CODIGO = PD.PRD_CODIGO) left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO) '+
                                      ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) ';
 
@@ -5889,7 +5926,8 @@ begin
                                         'WHERE prd_codigo = pd.prd_codigo '+
                                         ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque ';
              // cbEndereco.LookupTable:=  'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO AND pti_disponivel_vendas = ''S'')'+
-             cbEndereco.LookupTable:=  'prd0000 PD inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO and pt.PTI_DISPONIVEL_VENDAS = ''S'')'+
+             cbEndereco.LookupTable:=  'prd0000 PD ' +
+                                       ' inner JOIN PRD_TIPO pt ON (pd.PTI_CODIGO = pt.PTI_CODIGO and pt.PTI_DISPONIVEL_VENDAS = ''S'')'+
                                        ' left join PRD_LINHA T2 on (T2.LIN_CODIGO = PD.LIN_CODIGO) join PRD0000_ENDERECAMENTO T4 on (t4.PRDE_REGISTRO=PD.PRDE_REGISTRO) '+
                                        ' left join PRD_CODIGOORIGINAL T5 on (T5.PRD_CODIGO = PD.PRD_CODIGO )';
 

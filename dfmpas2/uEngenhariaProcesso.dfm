@@ -1,7 +1,7 @@
 inherited fmEngenhariaProcesso: TfmEngenhariaProcesso
   Caption = 'Engenharia de Processo'
   ClientHeight = 358
-  ExplicitHeight = 385
+  ExplicitHeight = 397
   PixelsPerInch = 96
   TextHeight = 13
   object Label2: TLabel [0]
@@ -48,15 +48,7 @@ inherited fmEngenhariaProcesso: TfmEngenhariaProcesso
     Height = 13
     Caption = 'Descri'#231#227'o da opera'#231#227'o:'
   end
-  object cxDBSpinEdit2: TcxDBSpinEdit [6]
-    Left = 83
-    Top = 198
-    DataBinding.DataField = 'SEQUENCIA'
-    DataBinding.DataSource = dsEditS
-    TabOrder = 3
-    Width = 125
-  end
-  object edPesquisaEquipamento: TSgDbSearchCombo [7]
+  object edPesquisaEquipamento: TSgDbSearchCombo [6]
     Left = 134
     Top = 225
     Width = 224
@@ -78,19 +70,12 @@ inherited fmEngenhariaProcesso: TfmEngenhariaProcesso
     GridLeft = 0
     GridWidth = 0
     GridHeight = 100
+    GridTop = 0
     GridShowWhenEnter = False
     SelectWithDoubleClick = False
+    LimparCampoAoSair = True
   end
-  object edObs: TDBMemo [8]
-    Left = 8
-    Top = 76
-    Width = 377
-    Height = 89
-    DataField = 'ENG_OBSERVACAO'
-    DataSource = dsEditS
-    TabOrder = 8
-  end
-  object edOperacao: TSgDbSearchCombo [9]
+  object edOperacao: TSgDbSearchCombo [7]
     Left = 134
     Top = 32
     Width = 224
@@ -112,10 +97,12 @@ inherited fmEngenhariaProcesso: TfmEngenhariaProcesso
     GridLeft = 0
     GridWidth = 0
     GridHeight = 100
+    GridTop = 0
     GridShowWhenEnter = False
     SelectWithDoubleClick = False
+    LimparCampoAoSair = True
   end
-  object DBEdit1: TDBEdit [10]
+  object DBEdit1: TDBEdit [8]
     Left = 83
     Top = 171
     Width = 125
@@ -124,7 +111,7 @@ inherited fmEngenhariaProcesso: TfmEngenhariaProcesso
     DataSource = dsEditS
     TabOrder = 2
   end
-  object Panel1: TPanel [11]
+  object Panel1: TPanel [9]
     Left = 432
     Top = 8
     Width = 377
@@ -230,7 +217,7 @@ inherited fmEngenhariaProcesso: TfmEngenhariaProcesso
       OnClick = btnAddImageClick
     end
   end
-  object edEquipamento: TEdit [12]
+  object edEquipamento: TEdit [10]
     Left = 82
     Top = 225
     Width = 51
@@ -238,13 +225,30 @@ inherited fmEngenhariaProcesso: TfmEngenhariaProcesso
     TabOrder = 6
     OnExit = edEquipamentoExit
   end
-  object EdOperacaoCodigo: TEdit [13]
+  object EdOperacaoCodigo: TEdit [11]
     Left = 82
     Top = 32
     Width = 51
     Height = 21
     TabOrder = 0
     OnExit = EdOperacaoCodigoExit
+  end
+  object edObs: TDBMemo [12]
+    Left = 8
+    Top = 76
+    Width = 377
+    Height = 89
+    DataField = 'ENG_OBSERVACAO'
+    DataSource = dsEditS
+    TabOrder = 8
+  end
+  object cxDBSpinEdit2: TcxDBSpinEdit [13]
+    Left = 83
+    Top = 198
+    DataBinding.DataField = 'SEQUENCIA'
+    DataBinding.DataSource = dsEditS
+    TabOrder = 3
+    Width = 125
   end
   inherited pnUtil: TPanel
     Top = 326
