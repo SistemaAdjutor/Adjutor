@@ -268,6 +268,7 @@ type
     procedure qROrdemServicoCalcFields(DataSet: TDataSet);
     procedure cxgrd1DBTableView1DataControllerSortingChanged(Sender: TObject);
     procedure EnviarPedidodeTratamentoporemail1Click(Sender: TObject);
+    procedure frxPedidoTratGetValue(const VarName: string; var Value: Variant);
   private
    procedure filtro;
    procedure filtroDetalhe;
@@ -784,6 +785,26 @@ begin
       cdsEspecificacao.Next;
       Inc(i);
     end;
+  end;
+end;
+
+procedure TfrmPedidoIndustrializacao.frxPedidoTratGetValue(
+  const VarName: string; var Value: Variant);
+begin
+  inherited;
+  if dbInicio.EMP_CODIGO = '001' then
+  begin
+    if VarName = 'LINHA1' then
+      Value := 'EMBRATERM EMPRESA BRASILEIRA DE TRATAMENTOS TÉRMICOS LTDA';
+    if VarName = 'LINHA2' then
+      Value := 'R. Cezinando Dias Paredes, nº 1154 - Boqueirão, Curitiba - PR - CEP 81730-090 CNPJ: 19.795.424.0001/18 IE: 90668156-06';
+  end;
+  if dbInicio.EMP_CODIGO = '002' then
+  begin
+    if VarName = 'LINHA1' then
+      Value := 'EMPRESA BRASILEIRA DE SERVIÇOS E ASSESSORIA TÉCNICA LTDA';
+    if VarName = 'LINHA2' then
+      Value := 'R. Cezinando Dias Paredes, nº 1154 - Boqueirão, Curitiba - PR - CEP 81730-090 CNPJ: 31.524.743/0001-94 IM: 14010810479-0';
   end;
 end;
 

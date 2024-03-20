@@ -1,14 +1,14 @@
 ﻿inherited frmPedidoIndustrializacao: TfrmPedidoIndustrializacao
   Caption = 'Pedido de industrializa'#231#227'o'
-  ClientHeight = 723
-  ClientWidth = 950
-  ExplicitWidth = 966
-  ExplicitHeight = 762
+  ClientHeight = 722
+  ClientWidth = 928
+  ExplicitWidth = 944
+  ExplicitHeight = 761
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
-    Width = 950
-    Height = 646
+    Width = 928
+    Height = 645
     ExplicitWidth = 950
     ExplicitHeight = 646
     inherited tsNotas: TTabSheet
@@ -29,20 +29,20 @@
         ParentFont = False
       end
       inherited pnlControle: TPanel
-        Width = 942
+        Width = 920
         ExplicitWidth = 942
         inherited pnlFiltro: TPanel
-          Width = 942
+          Width = 920
           ExplicitWidth = 942
           inherited pnlpn1: TPanel
-            Width = 942
+            Width = 920
             ExplicitWidth = 942
             inherited btnPesquisa: TSpeedButton
-              Left = 849
+              Left = 827
               ExplicitLeft = 849
             end
             inherited btnLimpar: TSpeedButton
-              Left = 849
+              Left = 827
               ExplicitLeft = 849
             end
             object Label4: TLabel
@@ -147,11 +147,8 @@
         end
       end
       inherited cxgrd1: TcxGrid
-        Width = 942
-        Height = 539
-        LookAndFeel.Kind = lfStandard
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmClassic
+        Width = 920
+        Height = 538
         ExplicitWidth = 942
         ExplicitHeight = 539
         inherited cxgrd1DBTableView1: TcxGridDBTableView
@@ -372,17 +369,17 @@
     end
   end
   inherited pnl1: TPanel
-    Top = 687
-    Width = 950
+    Top = 686
+    Width = 928
     ExplicitTop = 687
     ExplicitWidth = 950
     inherited btnSelect: TSpeedButton
-      Left = 802
+      Left = 780
       ExplicitLeft = 802
     end
   end
   inherited pnlUtilTop: TPanel
-    Width = 950
+    Width = 928
     ExplicitWidth = 950
     inherited btnExclui: TSpeedButton
       Left = 4
@@ -400,15 +397,15 @@
       Visible = False
     end
     inherited btnFechar: TSpeedButton
-      Left = 886
+      Left = 864
       ExplicitLeft = 886
     end
     inherited btnMP_Expotar: TJvArrowButton
-      Left = 785
+      Left = 763
       ExplicitLeft = 785
     end
     inherited btnrelatorios: TJvArrowButton
-      Left = 684
+      Left = 662
       DropDown = PopupMenu2
       ExplicitLeft = 684
     end
@@ -563,10 +560,10 @@
     end
   end
   inherited pmExportar: TPopupMenu
-    Left = 1160
+    Left = 784
   end
   inherited PopupMenu2: TPopupMenu
-    Left = 1056
+    Left = 672
     Top = 48
     object miOrdemdeservico: TMenuItem
       Caption = 'Ordem de servi'#231'o'
@@ -9262,6 +9259,7 @@
       'begin'
       ''
       'end.')
+    OnGetValue = frxPedidoTratGetValue
     Left = 588
     Top = 438
     Datasets = <
@@ -17171,14 +17169,14 @@
           Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
-            'EMBRATERM EMPRESA BRASILEIRA DE TRATAMENTOS T'#201'RMICOS LTDA')
+            '[LINHA1]')
           ParentFont = False
         end
         object Memo51: TfrxMemoView
           AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 14.677180000000000000
-          Width = 472.441250000000000000
+          Width = 502.677490000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -17187,9 +17185,7 @@
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            
-              'R. Cezinando Dias Paredes, n'#186' 1154 - Boqueir'#227'o, Curitiba - PR - ' +
-              'CEP 81730-090 CNPJ: 19.795.424.0001/18 IE: 90668156-06')
+            '[LINHA2]')
           ParentFont = False
         end
         object Memo52: TfrxMemoView
