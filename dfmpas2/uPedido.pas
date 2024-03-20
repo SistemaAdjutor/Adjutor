@@ -4408,7 +4408,7 @@ begin
   try
     AlterarItem;
   except on e:exception do
-
+    // showmessage(e.message); // aqui
   end;
 end;
 
@@ -7321,7 +7321,7 @@ var
    wUfAliqIcmsForaEst, rValorST, wALiqICmsCliente, wUfAliqIcmsSubCliRegra,wUFAliqInterRegra, wReducaoBaseST :Currency;
    wCST_CODIGO, wCST_CODIGOProduto, wClassificacaoFiscal, wTemSubs, wExterior, wSeleciona:string;
    wFator, wDifalSt,  rateio, wUfResultMVA, wValorSubs : Currency ;
-   sOrigem : string;
+   sOrigem, opeCodigo : string;
    bLocalizadoRegra, bisentaICMS,
    CLI_CONSFINAL, CLI_CONSU_PROPRIO, CLI_REGIME_TRIBUTARIO,CLI_MODO_TRIB_ST, CNAE_CARGA_TRIB_MEDIA, opeIpiBaseIcms :Boolean;
    i:Integer;
@@ -7335,6 +7335,24 @@ begin
         SqlCdsPedidoItem.Close;
         SqlCdsPedidoItem.Open;
         SqlCdsPedidoItem.First;
+
+
+        DataCadastros.CdsOperFisc.Close;
+        with DataCadastros.CdsOperFisc.IndexDefs.AddIndexDef do
+        begin
+          Name   := 'operacaofiscal';
+          Fields := 'OPE_CODIGO';
+          Options := [];
+        end;
+        DataCadastros.CdsOperFisc.IndexName :=  'operacaofiscal';
+
+        try
+          DataCadastros.CdsOperFisc.Open;
+        except
+          on e:exception do
+            showmessage(e.message);
+        end;
+
         while (not SqlCdsPedidoItem.Eof) do
         begin
               rRetorno := 0;
@@ -7376,38 +7394,57 @@ begin
                           dbInicio.qAux2.Close;
 
 
-                          i := 8;
-                          while (i >= 2) do
-                             begin
-                                dbInicio.qAux2.Close;
-                                dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1',
-                                                              'where OPR_ATIVO = ''S'' and  T1.ipi_codigo = '''+copy(wClassificacaoFiscal,1,I)+''' AND T1.opr_'+EdClienteUF.Text+' = ''S'' AND T1.ope_codigo_origem = '''+StrZero(edCfop.idRetorno,3)+''''
-                                                              + iif( sOrigem <> '', ' and OPR_ORIGEM = ' +QuotedStr(sOrigem),'')  ,'','T1.');
-                                dbInicio.qAux2.open;
-                                if ( dbInicio.qAux2.IsEmpty) then
-                                begin
-                                   dbInicio.qAux2.Close;
-                                   dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1','where OPR_ATIVO = ''S'' and T1.ipi_codigo = '''+copy(wClassificacaoFiscal,1,I)+
-                                   ''' AND T1.opr_'+EdClienteUF.Text+' = ''S'' AND T1.ope_codigo_origem = '''+StrZero(edCfop.idRetorno,3)+'''' + ' and OPR_ORIGEM = ' +QuotedStr('I'),'','T1.');
-                                   dbInicio.qAux2.open;
-                                end;
-                                //Verifica se localizou alguma regra
-                                if (not dbInicio.qAux2.IsEmpty) then
-                                   begin
-                                      //Encontrou a regra e sai do laço
-                                      wCST_CODIGOProduto := dbInicio.qAux2.FieldByName('STB_TRIBUTACAO').AsString;
-                                      bLocalizadoRegra := True;
-                                      i := 0;
-                                   end
-                                else
-                                   begin
+                          dbInicio.qAux2.Close;
+                          dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1',
+                                                        'where OPR_ATIVO = ''S''  ' +
+                                                        ' and  T1.ipi_codigo = '''+copy(wClassificacaoFiscal,1,2)+''' ' +
+                                                        ' AND T1.opr_'+EdClienteUF.Text+' = ''S''  ' +
+                                                        ' AND T1.ope_codigo_origem = '''+StrZero(edCfop.idRetorno,3)+''''
+                                                        + iif( sOrigem <> '', ' and OPR_ORIGEM = ' +QuotedStr(sOrigem),'')  ,'','T1.');
+                          dbInicio.qAux2.open;
 
-                                      i := i -1;
-                                   end;
-                             end;
+                          if not dbInicio.qAux2.IsEmpty then
+                          begin
+                            i := 8;
+                            while (i >= 2) do
+                               begin
+                                  dbInicio.qAux2.Close;
+                                  dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1',
+                                                                'where OPR_ATIVO = ''S''  ' +
+                                                                ' and  T1.ipi_codigo = '''+copy(wClassificacaoFiscal,1,I)+''' ' +
+                                                                ' AND T1.opr_'+EdClienteUF.Text+' = ''S''  ' +
+                                                                ' AND T1.ope_codigo_origem = '''+StrZero(edCfop.idRetorno,3)+''''
+                                                                + iif( sOrigem <> '', ' and OPR_ORIGEM = ' +QuotedStr(sOrigem),'')  ,'','T1.');
+                                  dbInicio.qAux2.open;
+                                  if ( dbInicio.qAux2.IsEmpty) then
+                                  begin
+                                     dbInicio.qAux2.Close;
+                                     dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1',
+                                     'where OPR_ATIVO = ''S'' ' +
+                                     ' and T1.ipi_codigo = '''+copy(wClassificacaoFiscal,1,I)+
+                                     ''' AND T1.opr_'+EdClienteUF.Text+' = ''S''  ' +
+                                     ' AND T1.ope_codigo_origem = '''+StrZero(edCfop.idRetorno,3)+'''' +
+                                     ' and OPR_ORIGEM = ' +QuotedStr('I'),'','T1.');
+                                     dbInicio.qAux2.open;
+                                  end;
+                                  //Verifica se localizou alguma regra
+                                  if (not dbInicio.qAux2.IsEmpty) then
+                                     begin
+                                        //Encontrou a regra e sai do laço
+                                        wCST_CODIGOProduto := dbInicio.qAux2.FieldByName('STB_TRIBUTACAO').AsString;
+                                        bLocalizadoRegra := True;
+                                        i := 0;
+                                     end
+                                  else
+                                     begin
+
+                                        i := i -1;
+                                     end;
+                               end;
+                          end;
 
                           //Se nao localizou tenta pelo **
-                          if (not bLocalizadoRegra) then
+                          if (not bLocalizadoRegra) and (SqlCdsPedidoItemCAP_CODIGO.AsString <> '') then
                              begin
                                 dbInicio.qAux2.Close;
                                 dbInicio.qAux2.sql.text:= SQLDEF('FISCAL','SELECT t1.* FROM ope_regra T1 JOIN REGRA_FISCAL_PROD_CAP pc ON (pc.OPR_REGISTRO = t1.OPR_REGISTRO) ',
@@ -7454,8 +7491,9 @@ begin
 
                           if (bLocalizadoRegra)and not (CLI_CONSFINAL) then
                             begin
-                                DataCadastros.CdsOperFisc.Open;
-                                DataCadastros.CdsOperFisc.Locate('OPE_CODIGO',StrZero(dbInicio.qAux2.FieldByName('OPE_DESTINO').AsString,3),[]);
+                                // DataCadastros.CdsOperFisc.Open;
+                                // DataCadastros.CdsOperFisc.Locate('OPE_CODIGO',StrZero(dbInicio.qAux2.FieldByName('OPE_DESTINO').AsString,3),[]);
+                                opeCodigo := StrZero(dbInicio.qAux2.FieldByName('OPE_DESTINO').AsString,3);
                                 // pega ST da regra
                                 bisentaICMS :=   dbInicio.qAux2.FieldByName('OPR_ISENTARICIMS').AsString = 'S';
                                 wCST_CODIGO := dbInicio.qAux2.FieldByName('STB_TRIBUTACAO').AsString;
@@ -7524,8 +7562,9 @@ begin
 
                             else
                             begin
-                               DataCadastros.CdsOperFisc.Open;
-                               DataCadastros.CdsOperFisc.Locate('OPE_CODIGO',StrZero(edCfop.idRetorno,3),[]);
+                               // DataCadastros.CdsOperFisc.Open;
+                               // DataCadastros.CdsOperFisc.Locate('OPE_CODIGO',StrZero(edCfop.idRetorno,3),[]);
+                               opeCodigo := StrZero(edCfop.idRetorno,3);
                                // pega ST do cadastro do produto
                                wCST_CODIGO := wCST_CODIGOProduto;
                             end;
@@ -7711,7 +7750,8 @@ begin
                                        rBaseIcmsST := StrToFloat(FormatFloat('#############0.00',rBaseIcmsST - (rBaseIcmsST * (wReducaoBaseST/100))));
 
 
-                                    OpeIpiBaseIcms := DataCadastros.CdsOperFisc.FieldByName('OPE_IPINABASEICMS').AsString = 'S';
+                                    // OpeIpiBaseIcms := DataCadastros.CdsOperFisc.FieldByName('OPE_IPINABASEICMS').AsString = 'S';
+                                    OpeIpiBaseICMS := BuscaUmDadoSqlAsString('SELECT OPE_IPINABASEICMS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(opeCodigo) ) = 'S';
                                     // OPE_IPINABASEICMS
                                     if opeIpiBaseIcms then
                                       rValorIcms :=  uteis.roundto( rBaseIcmsST * (wIcmsAliq/100), -2)
@@ -7755,6 +7795,7 @@ begin
               SqlCdsPedidoItem.Next;
         end;
     finally
+      DataCadastros.CdsOperFisc.IndexDefs.Clear;
       SqlCdsPedidoItem.Refresh;
       // SqlCdsPedidoItem.GotoBookmark(point);
       SqlCdsPedidoItem.EnableControls;
