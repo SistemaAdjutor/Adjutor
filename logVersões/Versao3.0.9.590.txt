@@ -1,7 +1,16 @@
-﻿Atualizado em 05/03/2024
+﻿Atualizado em 20/03/2024
 Inicio da versão: 05/03/2024
 
 principal: Arkson, Normadin
   1815 - ERRO NA ENTRADA DE NOTA [Arkson]
   1818 - Erro emissão de NF com regra fiscal [Normadin]
+
+patch 1: Normadin, Conforto Ambiental, Parseals Industrial, Arkson, LF EPIS, Embraterm
+  1816 - ajustes para copiar ficha e campos técnicos [Normadin]
+  1817 - regras de vendas para produto do agronegócio [Normadin]
+  1819 - Relatório de pedidos por vendedor [Conforto Ambiental]
+  1821 - Pedido com itens em falta [Parseals Industrial]
+  1822 - Erro ao importar XML [Arkson]
+  1823 - Lentidão na tela de pedidos [LF EPIS]
+  1824 - Alterar imagem rodapé [Embraterm]
   
