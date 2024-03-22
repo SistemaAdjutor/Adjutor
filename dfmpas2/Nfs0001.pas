@@ -3376,10 +3376,12 @@ begin
 
                     //Verifica se atualiza Custo
                     if BuscaUmDadoSqlAsString('SELECT OPE_ATUALIZA_CUSTO FROM OPE0000 WHERE OPE_CODIGO = '+QuotedStr(ope_codigo)) = 'S' then
-                       begin
+                    begin
                       //wAtualiza_pvenda = 'N' // SE NÃO ATUALIZA PREÇO DE VENDA, ATUALIZA OS CUSTOS E A MARGEM
                       // CASO CONTRÁRIO ATUALIZA PREÇO DE VENDA E MARGEM
-                      if wAtualiza_pvenda = 'N'  then
+                      if (wAtualiza_pvenda = 'N')
+                        and (BuscaUmDadoSqlAsFloat(SQLDEF('PRODUTOS','SELECT PRD_PVENDA FROM PRD0000','WHERE PRD_REFER = '''+SqlCdsGridSemOCPRD_REFER.AsString+'''','','') ) > 0)
+                      then
                       begin
                         if porFora then
                         begin
