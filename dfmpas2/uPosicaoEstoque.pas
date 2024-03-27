@@ -110,9 +110,12 @@ type
     procedure CbGrupoSelect(Sender: TObject);
     procedure tsProducaoShow(Sender: TObject);
     procedure DBGridDblClick(Sender: TObject);
+    procedure DBGridTitleClick(Column: TColumn);
+    procedure btnLimparClick(Sender: TObject);
 
   private
-    fCabFiltro : string;
+    fCabFiltro, ordenar : string;
+
   public
     PROCEDURE FILTRO;
   end;
@@ -170,6 +173,13 @@ begin
 
   end;
 
+
+end;
+
+procedure TfrmPosicaoEstoque.btnLimparClick(Sender: TObject);
+begin
+  ordenar := 'PRD_REFER';
+  inherited;
 
 end;
 
@@ -248,6 +258,14 @@ begin
     frmPesqOCP.Produto := cdsProducaoPRD_REFER.AsString;
     frmPesqOCP.Show;
   end;
+end;
+
+procedure TfrmPosicaoEstoque.DBGridTitleClick(Column: TColumn);
+begin
+  inherited;
+  ordenar := Column.FieldName;
+  Filtro;
+  btnPesquisa.Click;
 end;
 
 procedure TfrmPosicaoEstoque.edDiasAtrasosChange(Sender: TObject);
@@ -429,6 +447,7 @@ begin
 
     //AGRUPAR
     SQL.ADD (')  GROUP BY  1,2,3,4,5,6,7 ');
+    SQL.ADD (' ORDER BY ' + Ordenar);
 
 	end;
 
@@ -474,6 +493,7 @@ begin
   try
     //PadroesPesquisa;
     AbreTabela:=True;
+    ordenar := 'PRD_REFER';
     Filtro; // abre tabelas
     btnPesquisa.Click;
   //  DBGrid.OnDrawColumnCell := DBGridDrawColumnCell;
