@@ -154,6 +154,14 @@ type
     DataRemessa: TJvDateEdit;
     RxDataFinal: TJvDateEdit;
     RxDataInicial: TJvDateEdit;
+    Label16: TLabel;
+    Label17: TLabel;
+    SpeedButton1: TSpeedButton;
+    cbSecuritizadora: TComboBoxRw;
+    edSecuritizadora: TEdit;
+    SpeedButton2: TSpeedButton;
+    cbBanco: TComboBoxRw;
+    edBanco: TEdit;
     procedure Rad_FaturaClick(Sender: tObject);
     procedure BitSairClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
@@ -202,6 +210,14 @@ type
     procedure FormDestroy(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure SqlCdsRemessaSELECAO_ICGetText(Sender: TField; var Text: string; DisplayText: Boolean);
+    procedure edSecuritizadoraExit(Sender: TObject);
+    procedure edBancoExit(Sender: TObject);
+    procedure cbSecuritizadoraChange(Sender: TObject);
+    procedure cbBancoChange(Sender: TObject);
+    procedure cbSecuritizadoraExit(Sender: TObject);
+    procedure cbBancoExit(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
 
   private
     { Private declarations }
@@ -258,7 +274,7 @@ var
 implementation
 
 uses DataCad, RWFunc, Men0001, Rec0006, GImpRece, DataMov, uFinanceiroDao,
-   uCadastroFormaPagamento, uteis, iniciodb;
+   uCadastroFormaPagamento, uteis, iniciodb, uSecuritizadora, Ban0001 ;
 
 {$R *.dfm}
 
@@ -391,6 +407,25 @@ begin
     except on E:EDataBaseError do
        uteis.erro  (pchar('Erro ao carregar a Combo ! '+e.message));
     end;
+end;
+
+procedure TFrmRemessaDescontar.cbBancoChange(Sender: TObject);
+begin
+   EdBanco.Text := cbBanco.CodigoLista;
+end;
+
+procedure TFrmRemessaDescontar.cbBancoExit(Sender: TObject);
+begin
+   if (cbBanco.CodigoLista = '') or (cbBanco.Text = '') then
+      begin
+         cbBanco.Text := '';
+         edBanco.Text := '';
+      end
+   else
+      begin
+         edBanco.Text := cbBanco.CodigoLista;
+      end;
+
 end;
 
 procedure TFrmRemessaDescontar.SqlCdsRemessaCalcFields(DataSet: TDataSet);
@@ -1549,6 +1584,11 @@ begin
                                 0,
                                 SqlCdsRemessaFPC_VLPARC.asCurrency,
                                 DataRemessa.Date);
+             dbInicio.ExecSQL('UPDATE FAT_RECEBIMENTO SET ' +
+                              ' SEC_CODIGO = ' + edSecuritizadora.Text + ', ' +
+                              ' BAN_CODIGO = ' + QuotedStr(edBanco.Text) +
+                              ' WHERE FAT_REGISTRO = ' + pRegistro );
+
          end;
       if (pTipo = 'E') then
          begin
@@ -2003,6 +2043,30 @@ begin
     end;
 end;
 
+procedure TFrmRemessaDescontar.SpeedButton1Click(Sender: TObject);
+begin
+   try
+      FrmSecuritizadora := TFrmSecuritizadora.Create(Application);
+      FrmSecuritizadora.ShowModal;
+   finally
+      FrmSecuritizadora.Destroy;
+      FrmSecuritizadora := Nil;
+   end;
+   cbSecuritizadora.CarregarCombo := True;
+end;
+
+procedure TFrmRemessaDescontar.SpeedButton2Click(Sender: TObject);
+begin
+   try
+      FormBanco := TFormBanco.Create(Application);
+      FormBanco.ShowModal;
+   finally
+      FormBanco.Destroy;
+      FormBanco := Nil;
+   end;
+   cbBanco.CarregarCombo := True;
+end;
+
 procedure TFrmRemessaDescontar.FormCloseQuery(Sender: tObject;
   var CanClose: Boolean);
 begin
@@ -2309,6 +2373,31 @@ begin
     end;
 end;
 
+procedure TFrmRemessaDescontar.edBancoExit(Sender: TObject);
+begin
+   if (EdBanco.Text = '') then
+      begin
+         EdBanco.Clear;
+         cbBanco.Text := '';
+      end
+   else
+      begin
+         cbBanco.TextoLocalizar := edBanco.Text;
+         cbBanco.Localizar := True;
+         if (cbBanco.Localizado) then
+            begin
+
+            end
+         else
+            begin
+               uteis.aviso('Banco não localizado com o código informado');
+               cbBanco.Text := '';
+               edBanco.SetFocus;
+               edBanco.SelectAll;
+            end;
+      end;
+end;
+
 procedure TFrmRemessaDescontar.Objetos_Default;
 begin
       if (Rad_aDescontar.Checked) then
@@ -2382,6 +2471,31 @@ begin
       end;
 end;
 
+procedure TFrmRemessaDescontar.edSecuritizadoraExit(Sender: TObject);
+begin
+   if (EdSecuritizadora.Text = '') then
+      begin
+         EdSecuritizadora.Clear;
+         cbSecuritizadora.Text := '';
+      end
+   else
+      begin
+         cbSecuritizadora.TextoLocalizar := edSecuritizadora.Text;
+         cbSecuritizadora.Localizar := True;
+         if (cbSecuritizadora.Localizado) then
+            begin
+
+            end
+         else
+            begin
+               uteis.aviso('Securitizadora não localizada com o código informado');
+               cbSecuritizadora.Text := '';
+               edSecuritizadora.SetFocus;
+               edSecuritizadora.SelectAll;
+            end;
+      end;
+end;
+
 procedure TFrmRemessaDescontar.CBFormaPagamentoChange(Sender: tObject);
 begin
    EdFormaPagamento.Text := CBFormaPagamento.CodigoLista;
@@ -2398,6 +2512,25 @@ begin
       begin
          EdFormaPagamento.Text := CBFormaPagamento.CodigoLista;
       end;
+end;
+
+procedure TFrmRemessaDescontar.cbSecuritizadoraChange(Sender: TObject);
+begin
+   EdSecuritizadora.Text := cbSecuritizadora.CodigoLista;
+end;
+
+procedure TFrmRemessaDescontar.cbSecuritizadoraExit(Sender: TObject);
+begin
+   if (cbSecuritizadora.CodigoLista = '') or (cbSecuritizadora.Text = '') then
+      begin
+         cbSecuritizadora.Text := '';
+         edSecuritizadora.Text := '';
+      end
+   else
+      begin
+         edSecuritizadora.Text := cbSecuritizadora.CodigoLista;
+      end;
+
 end;
 
 procedure TFrmRemessaDescontar.FormClose(Sender: tObject;

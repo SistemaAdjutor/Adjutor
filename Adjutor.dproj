@@ -1762,6 +1762,14 @@
             <Form>frmDashBoardInteligencia</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="dfmpas2\uSecuritizadora.pas">
+            <Form>frmSecuritizadora</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="dfmpas2\uPesqSecuritizadora.pas">
+            <Form>frmPesqSecuritizadora</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

@@ -1917,6 +1917,13 @@ inherited FormContasReceber: TFormContasReceber
             end
             item
               Expanded = False
+              FieldName = 'SEC_DESCRICAO'
+              Title.Caption = 'Securitizadora'
+              Width = 139
+              Visible = True
+            end
+            item
+              Expanded = False
               FieldName = 'FPG_DESCRICAO'
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
@@ -2532,8 +2539,8 @@ inherited FormContasReceber: TFormContasReceber
     end
   end
   object PanVaria: TPanel [4]
-    Left = 493
-    Top = 288
+    Left = 700
+    Top = 50
     Width = 420
     Height = 313
     TabOrder = 2
@@ -3343,6 +3350,10 @@ inherited FormContasReceber: TFormContasReceber
       FieldName = 'USU_NOME'
       Size = 40
     end
+    object CDSRecebimentosSEC_DESCRICAO: TStringField
+      FieldName = 'SEC_DESCRICAO'
+      Size = 255
+    end
     object CDSRecebimentosFRE_REGISTRO: TIntegerField
       FieldName = 'FRE_REGISTRO'
       Required = True
@@ -3569,6 +3580,10 @@ inherited FormContasReceber: TFormContasReceber
     object qRecebimentosFRE_REGISTRO: TIntegerField
       FieldName = 'FRE_REGISTRO'
       Required = True
+    end
+    object qRecebimentosSEC_DESCRICAO: TStringField
+      FieldName = 'SEC_DESCRICAO'
+      Size = 255
     end
   end
   object qRateioCentroCusto: TSQLQuery

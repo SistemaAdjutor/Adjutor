@@ -305,6 +305,7 @@ type
     Capacidade1: TMenuItem;
     FichadecontedodeImportao1: TMenuItem;
     Histricodoenviodeemail1: TMenuItem;
+    Securitizadora1: TMenuItem;
     procedure Clientes1Click(Sender: tObject);
     procedure Representantes1Click(Sender: tObject);
     procedure Transportadoras1Click(Sender: tObject);
@@ -553,6 +554,7 @@ type
     procedure Histricodoenviodeemail1Click(Sender: TObject);
     procedure MainMenuChange(Sender: TObject; Source: TMenuItem; Rebuild: Boolean);
     procedure Button1000Click(Sender: TObject);
+    procedure Securitizadora1Click(Sender: TObject);
   private
     LastActiveForm: String;
     empCodigo: string;
@@ -661,7 +663,7 @@ uses Uteis, Rep0001, Trp0001, Ban0001, Eve0001, Pag0001,
   uPesqClassificacao, uPesqGancho, uPesqAcabamentoSup,PesqCores, upesqtratamento, uPesqTipoMola, uPesqParametrosDaQualidade, uControleDeQualidade, uPesqTipoEmbalagem,
   CustoFabricaCentroCusto, uRentabilidadeOS, uSolicitacaoCompra, uXMLSCOAManaus, uProgramacaoProcessoFabricacao, UCotacaoPesquisa, uCotacaoAutorizacao, uRegularizacaoEstoque,
   uRequisicaoMaterial, uPesqRequisicaoMaterialOri, uPesqCapacidade, uHistoricoEmail,
-  testes, uDashboradInteligencia;
+  testes, uDashboradInteligencia, uPesqSecuritizadora;
 
 
 
@@ -2245,9 +2247,17 @@ end;
 
 procedure TFrmMenu.Capacidade1Click(Sender: TObject);
 begin
-   if not assigned(frmPesqCapacidade) then
-    frmPesqCapacidade := TfrmPesqCapacidade.Create(Application);
-  frmPesqCapacidade.Show;
+   if not assigned(frmPesqSecuritizadora) then
+    frmPesqSecuritizadora := TfrmPesqSecuritizadora.Create(Application);
+  frmPesqSecuritizadora.Show;
+
+end;
+
+procedure TFrmMenu.Securitizadora1Click(Sender: TObject);
+begin
+   if not assigned(frmPesqSecuritizadora) then
+    frmPesqSecuritizadora := TfrmPesqSecuritizadora.Create(Application);
+  frmPesqSecuritizadora.Show;
 
 end;
 

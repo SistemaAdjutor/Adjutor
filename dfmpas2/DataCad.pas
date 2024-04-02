@@ -1697,6 +1697,13 @@ type
     CdsClientesCLI_AGRONEGOCIO: TStringField;
     SqlProdutosPRD_AGRONEGOCIO: TStringField;
     CdsProdutosPRD_AGRONEGOCIO: TStringField;
+    sqlSecuritizadora: TSQLQuery;
+    dspSecuritizadora: TDataSetProvider;
+    cdsSecuritizadora: TClientDataSet;
+    dsSecuritizadora: TDataSource;
+    cdsSecuritizadoraSEC_CODIGO: TIntegerField;
+    cdsSecuritizadoraSEC_DESCRICAO: TStringField;
+    cdsSecuritizadoraEMP_CODIGO: TStringField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);

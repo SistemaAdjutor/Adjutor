@@ -8247,6 +8247,10 @@ object FrmMenu: TFrmMenu
           Caption = 'Capacidade'
           OnClick = Capacidade1Click
         end
+        object Securitizadora1: TMenuItem
+          Caption = 'Securitizadora'
+          OnClick = Securitizadora1Click
+        end
       end
       object fISCAL1: TMenuItem
         Caption = 'Fiscal'
