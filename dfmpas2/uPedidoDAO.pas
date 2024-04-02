@@ -424,7 +424,8 @@ begin
                    QuotedStr(sVendedorInternoCodigo)+','+
                    QuotedStr(sCFOPCodigo)+','+
                    QuotedStr(sProjetoObraCodigo)+','+
-                   QuotedStr(DataAmericana(DateToStr(dDataEntrada)))+','+
+//                   QuotedStr(DataAmericana(DateToStr(dDataEntrada)))+','+
+                   DateToSql(dDataEntrada)+','+
                    DateTimeToSQL(dDataSaida)+','+
                    QuotedStr(sOrsCliente)+','+
                    RetornaNull(sOrsDiasEntrega)+','+
@@ -477,6 +478,8 @@ begin
                    IntToStr(scbOrsCliRegimeTributario)+
                    ')';
          dataCadastros.sqlUpdate.Close;
+         if dbInicio.IsDesenvolvimento then
+          copyToClipboard(sQuery);
          DataCadastros.SqlUpdate.sql.text :=sQuery;
          dataCadastros.sqlUpdate.Execsql;
          dataCadastros.sqlUpdate.Close;

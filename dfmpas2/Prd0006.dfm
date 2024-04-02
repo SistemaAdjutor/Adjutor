@@ -638,7 +638,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -713,7 +712,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -727,7 +725,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -751,7 +748,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -762,7 +758,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -773,7 +768,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -784,7 +778,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -795,7 +788,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Title.Font.Height = -11
           Title.Font.Name = 'Arial'
           Title.Font.Style = [fsBold]
-          Width = 64
           Visible = True
         end
         item
@@ -828,7 +820,6 @@ inherited FormProdutoGrid: TFormProdutoGrid
           Expanded = False
           FieldName = 'CLI_RAZAO'
           Title.Caption = 'Cliente (Relativo ao C'#243'digo Original)'
-          Width = 64
           Visible = True
         end>
     end
@@ -1085,9 +1076,10 @@ inherited FormProdutoGrid: TFormProdutoGrid
       Size = 3
     end
     object cdsReferPRD_CODIGO: TStringField
+      DisplayWidth = 5
       FieldName = 'PRD_CODIGO'
       Required = True
-      Size = 4
+      Size = 5
     end
     object cdsReferPRD_CODORIGINAL: TStringField
       FieldName = 'PRD_CODORIGINAL'
