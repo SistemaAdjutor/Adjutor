@@ -474,6 +474,7 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
         Top = 89
         Width = 1194
         Height = 396
+        OnTitleClick = DBGridTitleClick
         Columns = <
           item
             Expanded = False
@@ -544,10 +545,6 @@ inherited frmPosicaoEstoque: TfrmPosicaoEstoque
       Caption = 'Produ'#231#227'o'
       ImageIndex = 1
       OnShow = tsProducaoShow
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0

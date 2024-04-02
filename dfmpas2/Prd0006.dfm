@@ -603,7 +603,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
       Align = alClient
       Color = 16776176
       DataSource = DsRefer
-      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit]
+      Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgAlwaysShowSelection, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
       ReadOnly = True
       TabOrder = 0
       TitleFont.Charset = ANSI_CHARSET
@@ -614,6 +614,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
       OnDrawColumnCell = DbProdutoGridDrawColumnCell
       OnDblClick = DbProdutoGridDblClick
       OnKeyDown = DbProdutoGridKeyDown
+      OnTitleClick = DbProdutoGridTitleClick
       Columns = <
         item
           Expanded = False
@@ -1018,6 +1019,7 @@ inherited FormProdutoGrid: TFormProdutoGrid
   end
   object cdsRefer: TFDQuery
     AfterScroll = cdsReferAfterScroll
+    CachedUpdates = True
     Connection = DBInicio.FDACConn
     Left = 168
     Top = 170

@@ -100,7 +100,7 @@ type
     cdsReferPRD_PVENDA5: TFMTBCDField;
     cdsReferPRD_PVENDA6: TFMTBCDField;
     cdsReferPRD_MARGEMVENDA: TFMTBCDField;
-    procedure BuscaProduto;
+    procedure BuscaProduto(ordenar: string = '');
     procedure RadNomeClick(Sender: tObject);
     procedure RadCodigoClick(Sender: tObject);
     procedure DbProdutoGridDblClick(Sender: tObject);
@@ -134,6 +134,7 @@ type
     procedure Edt_NomeEnter(Sender: TObject);
     procedure Edt_NomeExit(Sender: TObject);
     procedure cdsReferAfterScroll(DataSet: TDataSet);
+    procedure DbProdutoGridTitleClick(Column: TColumn);
   privaTe
 
 
@@ -173,7 +174,7 @@ implementation
 
 uses Uteis, InicioDB;
 
-procedure TFormProdutoGrid.BuscaProduto;
+procedure TFormProdutoGrid.BuscaProduto(ordenar: string = '');
 var whe : boolean;
     wOrdem: string;
    varperc : double;
@@ -332,7 +333,8 @@ begin
 
 
          sqladd( ConcatSE( 't1.',dbInicio.ExclusivoSql( 'PRODUTOS') ) );
-
+         if ordenar <> '' then
+           wordem := ordenar;
          cdsRefer.sql.ADD( 'order by '+wordem );
          if DBInicio.IsDesenvolvimento then
             CopyToClipBoard(cdsRefer.sql.text);
@@ -636,6 +638,12 @@ begin
           RetornaProduto;
           key := 0;
      end;
+end;
+
+procedure TFormProdutoGrid.DbProdutoGridTitleClick(Column: TColumn);
+begin
+  inherited;
+  BuscaProduto(Column.FieldName);
 end;
 
 procedure TFormProdutoGrid.EdtLinhaExit(Sender: tObject);
