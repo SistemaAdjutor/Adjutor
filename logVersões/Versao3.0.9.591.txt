@@ -1,0 +1,10 @@
+﻿Atualizado em 02/04/2024
+Inicio da versão: 02/04/2024
+
+principal: Arkson, Embraterm
+  1782 - Melhoria antecipação [Arkson]
+  1827 - Incluir PCP demanda não salva [Arkson]
+  1828 - Centro de custo na entrada de nota [Arkson]
+  1830 - Classificar por ordem numérica a coluna referência gerar um erro. [Embraterm]
+  1831 - Alterar Logo e Rodapé Pedido de Tratamento Térmico e Ordem de Serviço da empresa cnpj 31.524.743/0001-94 [Embraterm]
+  
