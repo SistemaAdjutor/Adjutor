@@ -1180,8 +1180,16 @@ begin
     then
       ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,1) // AZUL Liquidado pelo flag de antecipação concluida na manutenção
     else
-    if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0)  and ( vencimento   < Date) AND (vencimento>0) and ( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0))
-      or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')  and (( AViewInfo.GridRecord.Values[cxgrdReceberFPC_ANTECIPACAO_CONCLUIDA.Index]  <> 'S') and (vencimento < Date) { and  ( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0) } ) )
+    if (( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0)
+          and ( vencimento   < Date) AND (vencimento > 0)
+          and ( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0)
+          and ( AViewInfo.GridRecord.Values[cxgrdReceberFPC_PAGTO.Index] = Null)
+          and ( AViewInfo.GridRecord.Values[cxgrdReceberFPC_VLPAGO.Index] = 0)
+       )
+       or ( (DBInicio.GetParametroSistema('PMT_GER_AVANC_ANTECIP_DESC') = 'S')
+             and (( AViewInfo.GridRecord.Values[cxgrdReceberFPC_ANTECIPACAO_CONCLUIDA.Index]  <> 'S')
+             and (situacao <> 'L')
+             and (vencimento < Date) { and  ( AViewInfo.GridRecord.Values[cxgrdReceberCCPendente.Index] > 0) } ) )
     then
       ImageList1.Draw(ACanvas.Canvas,AViewInfo.ClientBounds.Left,AViewInfo.ClientBounds.Top+1,4) // VERMELHO Vencida ou Descontada
     else
