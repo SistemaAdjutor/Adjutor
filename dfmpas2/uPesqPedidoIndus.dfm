@@ -1624,7 +1624,7 @@
       object Footer1: TfrxFooter
         FillType = ftBrush
         Frame.Typ = []
-        Height = 83.831230000000000000
+        Height = 41.831230000000000000
         Top = 393.071120000000000000
         Width = 718.110700000000000000
         KeepChild = True
@@ -1804,10 +1804,10 @@
         object centroCusto: TfrxMemoView
           AllowVectorExport = True
           ShiftMode = smDontShift
-          Left = 124.245161290000000000
-          Top = 1.511750000000010000
+          Left = 63.772681290000000000
+          Top = 1.511750000000000000
           Width = 15.117875910000000000
-          Height = 76.562412590000000000
+          Height = 38.767112590000000000
           Visible = False
           StretchMode = smMaxHeight
           DataSet = dsOperacoes
@@ -1826,7 +1826,7 @@
         end
         object Line7: TfrxLineView
           AllowVectorExport = True
-          Top = 83.831230000000000000
+          Top = 41.831230000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = []
@@ -1837,7 +1837,7 @@
         FillType = ftBrush
         Frame.Typ = []
         Height = 108.488250000000000000
-        Top = 684.094930000000000000
+        Top = 642.520100000000000000
         Width = 718.110700000000000000
         object Shape20: TfrxShapeView
           AllowVectorExport = True
@@ -8347,7 +8347,7 @@
         FillType = ftBrush
         Frame.Typ = []
         Height = 123.784333330000000000
-        Top = 498.897960000000000000
+        Top = 457.323130000000000000
         Width = 718.110700000000000000
         DataSet = dsOrdemServico
         DataSetName = 'dsOrdemServico'
