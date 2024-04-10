@@ -641,13 +641,15 @@ end;
 procedure TfrmPedidoIndustrializacao.FormCreate(Sender: TObject);
 begin
   inherited;
-  cdsbusca.Close;
-  cdsbusca.Open();
   Self.ProcedureFiltro := filtro;
   self.ProcedureFiltroDetalhe := filtroDetalhe;
   self.Constraints.MinHeight:= 612;;
   self.Constraints.MinWidth:=1175;
   self.Constraints.MaxHeight:= 0;
+  if dbInicio.Isdesenvolvimento then
+    copyToClipboard(cdsBusca.sql.text);
+//  cdsbusca.Close;
+//  cdsbusca.Open();
 //  self.width:=1175;
 //  self.height:=612;
   //Menu := 'ProduçãoPCP';
