@@ -1,4 +1,4 @@
-﻿Atualizado em 02/04/2024
+﻿Atualizado em 10/04/2024
 Inicio da versão: 02/04/2024
 
 principal: Arkson, Embraterm
@@ -8,3 +8,8 @@ principal: Arkson, Embraterm
   1830 - Classificar por ordem numérica a coluna referência gerar um erro. [Embraterm]
   1831 - Alterar Logo e Rodapé Pedido de Tratamento Térmico e Ordem de Serviço da empresa cnpj 31.524.743/0001-94 [Embraterm]
   
+ patch 1: Arkson, Embraterm
+   1833 - "Status em vermelho" com clientes sem faturas [Arkson]
+   1834 - Alterar Logo e Rodapé Pedido de Tratamento Térmico - 002 [Embraterm]
+
+   
