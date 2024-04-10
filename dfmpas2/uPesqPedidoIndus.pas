@@ -269,6 +269,8 @@ type
     procedure cxgrd1DBTableView1DataControllerSortingChanged(Sender: TObject);
     procedure EnviarPedidodeTratamentoporemail1Click(Sender: TObject);
     procedure frxPedidoTratGetValue(const VarName: string; var Value: Variant);
+    procedure frxOrdemServicoBeginDoc(Sender: TObject);
+    procedure frxPedidoTratBeginDoc(Sender: TObject);
   private
    procedure filtro;
    procedure filtroDetalhe;
@@ -639,13 +641,15 @@ end;
 procedure TfrmPedidoIndustrializacao.FormCreate(Sender: TObject);
 begin
   inherited;
-  cdsbusca.Close;
-  cdsbusca.Open();
   Self.ProcedureFiltro := filtro;
   self.ProcedureFiltroDetalhe := filtroDetalhe;
   self.Constraints.MinHeight:= 612;;
   self.Constraints.MinWidth:=1175;
   self.Constraints.MaxHeight:= 0;
+  if dbInicio.Isdesenvolvimento then
+    copyToClipboard(cdsBusca.sql.text);
+//  cdsbusca.Close;
+//  cdsbusca.Open();
 //  self.width:=1175;
 //  self.height:=612;
   //Menu := 'ProduçãoPCP';
@@ -788,6 +792,18 @@ begin
   end;
 end;
 
+procedure TfrmPedidoIndustrializacao.frxOrdemServicoBeginDoc(Sender: TObject);
+begin
+  inherited;
+  TfrxPictureView(frxOrdemServico.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
+end;
+
+procedure TfrmPedidoIndustrializacao.frxPedidoTratBeginDoc(Sender: TObject);
+begin
+  inherited;
+  TfrxPictureView(frxPedidoTrat.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
+end;
+
 procedure TfrmPedidoIndustrializacao.frxPedidoTratGetValue(
   const VarName: string; var Value: Variant);
 begin
@@ -817,7 +833,7 @@ var
  prd_codigo : string;
  Itens, produtos : Variant;
  i : integer;
- logo : tbitmap;
+// logo : tbitmap;
  ok : boolean;
   searchResult : TSearchRec;
   Task: ITask;
@@ -937,22 +953,22 @@ begin
       end);
       Task.Start;
 
-      LOGO :=tBitMap.Create;
+      // LOGO :=tBitMap.Create;
       try
-       OpenAux('select EMP_LOGO from EMP0000 where EMP_CODIGO ='+qStr(qROrdemServico.ParamByName('emp_codigo').AsString));
-       Le_Imagem_JPEG_toBMP( (qaux.Fields[0] as tBlobField) , logo );
-       TfrxPictureView(frxOrdemServico.FindObject('LogoEmpresa')).Picture.Assign(LOGO);
+       // OpenAux('select EMP_LOGO from EMP0000 where EMP_CODIGO ='+qStr(qROrdemServico.ParamByName('emp_codigo').AsString));
+       // Le_Imagem_JPEG_toBMP( (qaux.Fields[0] as tBlobField) , logo );
+       // TfrxPictureView(frxOrdemServico.FindObject('LogoEmpresa')).Picture.Assign(LOGO);
 
        frxOrdemServico.ShowReport();
        if DBInicio.Empresa.sPMT_CAMINHO_PEDIN <> '' then
        begin
          frxPDFExport1.FileName := DBInicio.Empresa.sPMT_CAMINHO_PEDIN + '\pdfs\OrdemServico'+ nordem+'.pdf';
          frxOrdemServico.Export(frxPDFExport1);
-         TfrxPictureView(frxOrdemServico.FindObject('FotoProduto')).Picture.SaveToFile(DBInicio.Empresa.sPMT_CAMINHO_PEDIN + '\fotos\'+ nordem+'.jpg');
+         // TfrxPictureView(frxOrdemServico.FindObject('FotoProduto')).Picture.SaveToFile(DBInicio.Empresa.sPMT_CAMINHO_PEDIN + '\fotos\'+ nordem+'.jpg');
        end;
 
       finally
-        FreeAndNil(logo);
+        // FreeAndNil(logo);
       end;
      end;
   end;
