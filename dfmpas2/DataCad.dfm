@@ -27,16 +27,14 @@ object DataCadastros: TDataCadastros
       'GetDriverFunc=getSQLDriverINTERBASE'
       'LibraryName=dbxfb.dll'
       'LibraryNameOsx=libsqlfb.dylib'
-      ''
       'VendorLib=C:\Developer\adjutor\fbclient.dll'
       'VendorLibWin64=C:\Developer\adjutor\fbclient.dll'
-      ''
       'VendorLibOsx=/Library/Frameworks/Firebird.framework/Firebird'
       'Role=RoleName'
       'MaxBlobSize=-1'
       'TrimChar=False'
       'DriverName=Firebird'
-      'Database=C:\JobDados\CHEMVET1104.FDB'
+      'Database='
       'RoleName=RoleName'
       'User_Name=sysdba'
       'Password=masterkey'
@@ -49,7 +47,6 @@ object DataCadastros: TDataCadastros
       'WaitOnLocks=True'
       'IsolationLevel=ReadCommitted'
       'Trim Char=False')
-    Connected = True
     Left = 399
     Top = 1
   end
