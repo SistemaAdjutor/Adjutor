@@ -246,15 +246,16 @@ begin
       '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
       '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
       ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
-      ' AND ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
+      ' AND (ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
       iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;
 
-  if not qAux.Eof then
-    sql := sql + ' UNION ' ;
+  if qAux.Eof then
+    sql := sql + ')' ;
 
   while not qAux.eof do
   begin
-    sql := sql +
+{    sql := sql +
+
       'SELECT ' +
       '    ft.FTI_UC as QuantidadeFT,'+
       '    (SELECT SUM(pk.QTD_RETORNADO) ' +
@@ -290,10 +291,14 @@ begin
       '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
       ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
       ' AND ft.PRD_REFER = ' + QuotedStr(qAux.FieldByName('PRD_REFER_ITENS').AsString) +
-      iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;
+      iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;        }
+
+      sql := sql + ' OR ft.PRD_REFER = ' + QuotedStr(qAux.FieldByName('PRD_REFER_ITENS').AsString) +
+                     iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;
+
     qAux.Next;
-    if not qAux.Eof then
-      sql := sql + ' UNION ' ;
+    if qAux.Eof then
+      sql := sql + ')' ;
 
   end;
   // sql := sql +  '  order by ei.prd_refer, ef.enf_emissao ';
