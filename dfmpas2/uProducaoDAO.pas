@@ -138,7 +138,7 @@ begin
       ' (SELECT sum(KAS_SALDO)- COALESCE(sum(KAS_RESERVA),0)  FROM kardex_almox_saldo kas WHERE kas.PRD_CODIGO = pr.PRD_CODIGO ) EstoqueDisponivel,  ' +
       ' pr.prd_codigo, '+QuotedStr(ped_codigo ) + ' as ped_codigo, ' +
       ' pr.PTI_CODIGO, tp.PTI_DESCRI, tp.PTI_SIGLA, pr.PRD_UND, '+
-      ' (SELECT coalesce(FTC_BASEFORMULA,1) FROM FTC0000 ftc WHERE ftc.PRD_REFER =ft.PRD_REFER) FTC_BASEFORMULA, ft.ope_codigo, DEP_GERASUBORDENS ' +
+      ' (SELECT FIRST 1 coalesce(FTC_BASEFORMULA,1) FROM FTC0000 ftc WHERE ftc.PRD_REFER =ft.PRD_REFER) FTC_BASEFORMULA, ft.ope_codigo, DEP_GERASUBORDENS ' +
       ' FROM FTC_IT01 ft                                                                                                 '+
       ' join prd0000 Pr on (ft.prd_refer_itens = pr.prd_refer '+ ConcatSe(' and ft.', DBInicio.ExclusivoSql('PRODUTOS'))+ ')'+
       ' JOIN PRD_TIPO tp ON (tp.PTI_CODIGO = pr.PTI_CODIGO ) '+
