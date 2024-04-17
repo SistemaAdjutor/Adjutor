@@ -14,8 +14,6 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     ExplicitWidth = 1262
     ExplicitHeight = 542
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 1254
       ExplicitHeight = 514
       inherited pnControle: TPanel
@@ -830,7 +828,7 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
       Size = 11
     end
     object cdsBuscoCLI_DTULTCOM: TSQLTimeStampField
-      DisplayLabel = #218'ltima Compra'
+      DisplayLabel = #218'ltima Parcela'
       FieldName = 'CLI_DTULTCOM'
     end
     object cdsBuscoCLI_CIDADE: TStringField

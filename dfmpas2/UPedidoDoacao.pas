@@ -1035,7 +1035,11 @@ begin
     BuscaPadraoCliente(PesqCliente.idRetorno);
 
   if (PesqCliente.idRetorno <> '') and (not ClienteAtivo(PesqCliente.idRetorno,sMsg)) then
+  begin
     uteis.aviso (Pchar(sMsg));
+    PesqCliente.idRetorno := '';
+    PesqCliente.SetFocus;
+  end;
 
 end;
 

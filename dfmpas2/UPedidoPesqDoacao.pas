@@ -159,6 +159,10 @@ type
     cdsqSqlCdsPesqCLI_DTNASCIMENTO: TSQLTimeStampField;
     SqlCdsPesqCCT_DESCRI: TStringField;
     qSqlCdsPesqCCT_DESCRI: TStringField;
+    qSqlCdsPesqPCX_DESCRI: TStringField;
+    SqlCdsPesqPCX_DESCRI: TStringField;
+    cdsqSqlCdsPesqCCT_DESCRI: TStringField;
+    cdsqSqlCdsPesqPCX_DESCRI: TStringField;
     procedure Rad_ClienteClick(Sender: TObject);
     procedure BitPesquisarClick(Sender: TObject);
     procedure SqlCdsPesqPED_SITUACAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -260,13 +264,14 @@ begin
         ' op.opv_descricao, ped_contato_cliente, CLI_UF, '+
         ' ((PED_COMIS1 * PED_VLTOTAL_LIQ)/100) AS VL_COMISSAO, cli_cidade,                        '+
         ' CASE WHEN PED_UND_CONSUMIDORA IS NOT NULL THEN BAN_APELIDO|| ''-'' || PED_UND_CONSUMIDORA '+
-        ' ELSE BAN_APELIDO END BANCO, BAN_APELIDO, PED_UND_CONSUMIDORA, cf.cct_descri '+
+        ' ELSE BAN_APELIDO END BANCO, BAN_APELIDO, PED_UND_CONSUMIDORA, cf.cct_descri, pc.PCX_DESCRI '+
         ' FROM PED0000 PE                                                                         '+
         ' JOIN CLI0000 CL ON (CL.CLI_CODIGO = PE.CLI_CODIGO)                                      '+
         ' JOIN OPV0000 OP ON (OP.OPV_CODIGO = PE.OPV_CODIGO)                                      '+
         ' JOIN REP0000 RP ON (RP.REP_CODIGO = PE.REP_CODIGO)                                      '+
         ' JOIN BAN0000 BA ON (BA.BAN_CODIGO = PE.BAN_CODIGO)                                      ' +
-        ' LEFT JOIN CCT_0000 cf ON (cf.CCT_CODIGO = PE.CCT_CODIGO)                                ';
+        ' LEFT JOIN CCT_0000 cf ON (cf.CCT_CODIGO = PE.CCT_CODIGO)                                ' +
+        ' LEFT JOIN PCX0000 pc ON (pc.PCX_CODIGO = PE.PCX_CODIGO)                                ';
 
 
       if (DataTipo.ItemIndex = 1) then
@@ -552,6 +557,8 @@ begin
   lista.Add('CLI_FONE');
   lista.Add('CLI_CELULAR');
   lista.Add('PED_SITUACAO2');
+  lista.Add('CCT_DESCRI');
+  lista.Add('PCX_DESCRI');
   qSqlCdsPesq.Close;
   cdsqSqlCdsPesq.Close;
   cdsqSqlCdsPesq.Open;
