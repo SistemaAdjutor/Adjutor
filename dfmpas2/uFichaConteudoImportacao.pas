@@ -976,6 +976,8 @@ begin
              iif(edDescricao.Text = '', '', ' AND PR.PRD_DESCRI LIKE ' + QuotedStr('%' + edDescricao.Text + '%')) +
              '   ORDER BY pr.PRD_REFER ';
   cdsBusca.SQL.Text := sqltext;
+  if dbInicio.isDesenvolvimento then
+    copyToClipboard(sqlText);
   cdsBusca.Open;
 end;
 
@@ -1202,7 +1204,6 @@ begin
 
       quantidadePai := ConsumoTotal(Auxiliar, False);
 
-      // CI := precoImportado * quantidadePai;
       CI := quantidadePai * ((precoImportado / 100) * percentualOrigemImportado) ;
 
       if CI = 0 then
@@ -1217,8 +1218,6 @@ begin
         71..10000: prdOrigem := 8
         else prdOrigem := 0;
       end;
-      // quantidadePai := BuscaUmDadoSqlAsfloat('SELECT FTI_UC FROM FTC_IT01 FI WHERE PRD_REFER = ' + QuotedStr(prdReferPai) +  ' AND PRD_REFER_itens = ' + QuotedStr(prdRefer) ) ;
-;
       ExecSql('UPDATE PRD0000 SET ' +
               ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL(CI) + ', ' +
               ' PRD_FCI_VALOR_PARCELA_IMPORTADA = ' + FloatToSQL(  (vlParcelaImportadaLocal *  Auxiliar.FieldByName('FTI_UC').AsFloat) * quantidadePai ) + ', ' +
@@ -1226,33 +1225,12 @@ begin
               ' PRD_ORIGEM = ' + IntToStr(prdOrigem) +
               ' WHERE PRD_REFER = ' + QuotedStr(prdReferItem));
 
-      // vlParcelaImportadaTotal := vlParcelaImportadaTotal + (vlParcelaImportadaLocal * quantidadePai * Auxiliar.FieldByName('FTI_UC').AsFloat  );
       vlParcelaImportadaTotal := vlParcelaImportadaTotal + (CI);
     end
     else
     if Auxiliar.FieldByName('PTI_SIGLA').AsString = 'PI' then
     begin
       resFCI := AtualizaFCI(prdReferItem, prdRefer);
-      {
-      ParcelaImportada(prdReferItem, precoImportado, percentualOrigemImportado, quantidadeCompradaImportado);  // ENTRADA DE NOTA
-      quantidadePai := ConsumoTotal(Auxiliar, False);
-      CI := quantidadePai * ((precoImportado / 100) * percentualOrigemImportado) ;
-      if (CI > 0) and (CI < 1) then
-        CI := 1;
-      case Round(CI) of
-        1..40 : prdOrigem := 5;
-        41..70: prdOrigem := 3;
-        71..10000: prdOrigem := 8
-        else prdOrigem := 0;
-      end;
-      ExecSql('UPDATE PRD0000 SET ' +
-              ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL(CI) + ', ' +
-              ' PRD_FCI_VALOR_PARCELA_IMPORTADA = ' + FloatToSQL( ResFCI ) + ', ' +
-              ' PRD_FCI_DATA_GERACAO = ' + DateTimeToSQL(Now) + ', ' +
-              ' PRD_ORIGEM = ' + IntToStr(prdOrigem) +
-              ' WHERE PRD_REFER = ' + QuotedStr(prdRefer ));
-      }
-
     end;
     Auxiliar.Next;
   end;
@@ -1289,6 +1267,12 @@ var
 
 
 begin
+
+    pnBuscando.Caption := 'Atualizando Tabela Local...';
+    Application.ProcessMessages;
+
+
+
   CI := 0;
   pnBuscando.Visible := True;
 
@@ -1384,7 +1368,7 @@ begin
     quantidadeCompradaImportado := 0;
     ParcelaImportada(cloneFilho.FieldByName('PRD_REFER_ITENS').AsString, precoImportado, percentualOrigemImportado, quantidadeCompradaImportado);  // ENTRADA DE NOTA
 
-    Application.ProcessMessages;
+    // Application.ProcessMessages;
 
     if tabelaTemp.Name = 'mtGrid' then       // Qualquer alteração no cálculo deve ser replicado em cloneFilho e tabelaTemp
     begin
@@ -1442,8 +1426,8 @@ begin
     end;
     cloneFilho.Next;
 
-    pnBuscando.Caption := 'Atualizando Tabela Local...';
-    Application.ProcessMessages;
+//    pnBuscando.Caption := 'Atualizando Tabela Local...';
+//    Application.ProcessMessages;
 
 
   end;
