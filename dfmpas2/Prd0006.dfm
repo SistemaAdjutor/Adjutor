@@ -1028,8 +1028,8 @@ inherited FormProdutoGrid: TFormProdutoGrid
       Size = 3
     end
     object cdsReferPRD_REFER: TStringField
+      DisplayWidth = 20
       FieldName = 'PRD_REFER'
-      Size = 11
     end
     object cdsReferPRD_ESTOQUE: TFMTBCDField
       DisplayLabel = 'Estoque'
