@@ -897,6 +897,12 @@ end;
 
 procedure TfrmFichaConteudoImportacao.btnPesquisaClick(Sender: TObject);
 begin
+  if (edReferencia.Text = '') and (edDescricao.Text = '') then
+  begin
+    uteis.aviso('Informe a Referência ou Descrição do Produto para pesquisa');
+    Exit;
+  end;
+
   DisableControls;
   PanelAguarde.Visible := True;
   inherited;
@@ -963,6 +969,7 @@ end;
 procedure TfrmFichaConteudoImportacao.filtro;
 var sqltext : string;
 begin
+
   cdsBusca.Close;
   sqltext := ' SELECT pr.PRD_REFER, pr.PRD_DESCRI, pt.PTI_SIGLA, IPI_CODIGO AS NCM, ' +
              '        pr.PRD_CODBARRA AS GTIN, pr.PRD_UND, pr.PRD_ORIGEM, ' +
