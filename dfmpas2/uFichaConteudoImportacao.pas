@@ -1161,7 +1161,6 @@ begin
   end;
 
   ExecSql('UPDATE PRD0000 SET ' +
-          // ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL((CI / cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency) * 100) + ', ' +
           ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL((vlParcelaImportadaTotal / cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency) * 100) + ', ' +
           ' PRD_FCI_VALOR_PARCELA_IMPORTADA = ' + FloatToSQL(vlParcelaImportadaTotal) + ', ' +
           ' PRD_FCI_DATA_GERACAO = ' + DateTimeToSQL(Now) + ', ' +
