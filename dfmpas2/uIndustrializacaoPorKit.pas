@@ -254,48 +254,8 @@ begin
 
   while not qAux.eof do
   begin
-{    sql := sql +
-
-      'SELECT ' +
-      '    ft.FTI_UC as QuantidadeFT,'+
-      '    (SELECT SUM(pk.QTD_RETORNADO) ' +
-      '       FROM PED_IND_KIT pk ' +
-      '       	WHERE pk.ENF_NOTANUMBER = ef.enf_notanumber ' +
-      '  	      AND pk.PRD_REFER = ft.PRD_REFER_ITENS ' +
-      '  	      AND pk.ENF_REGISTRO = ei.ENF_REGISTRO ' +
-      '    ) AS retornado, ' +
-      '    ei.ENF_IT_DET_NITEM, ' +
-      '    ei.prd_codigo, ' +
-      '    ei.ENF_REGISTRO, ' +
-      '    ei.enf_ipialiq, ' +
-      '    ei.enf_vlsubst, '+
-      '    ef.enf_notanumber, '+
-      '    ef.ENF_SERIE, ' +
-      '    ef.enf_emissao, '+
-      '    ei.enf_cfop, '+
-      '    ei.OPE_CODIGO_RETORNO, '+
-      '    (SELECT OPE_NATUREZA FROM OPE0000 op WHERE op.OPE_CODIGO = ei.OPE_CODIGO_RETORNO) AS ENF_CFOP_RETORNO, '+
-      '    ft.prd_refer AS PRD_REFER_PAI, '+
-      '    ei.prd_refer, '+
-      '    ei.prd_descri, '+
-      '    ei.enf_qtde, '+
-      '    ei.enf_ucom, '+
-      '    ei.enf_quantidade_ind_retorno, '+
-      '    ei.enf_preco, '+
-      '    ei.amx_codigo '+
-      ' FROM '+
-      '     enf_it01 ei '+
-      '   join enf0001 ef on (ef.enf_notanumber = ei.enf_it_notanumber and ef.for_codigo = ei.for_codigo and ef.enf_industrializacao = ''S'') '+
-      '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO AND ft.FTI_UTILIZA_ITEM_NO_RETORNO = ''S''    ) ' +
-      '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
-      '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
-      ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
-      ' AND ft.PRD_REFER = ' + QuotedStr(qAux.FieldByName('PRD_REFER_ITENS').AsString) +
-      iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;        }
-
-      sql := sql + ' OR ft.PRD_REFER = ' + QuotedStr(qAux.FieldByName('PRD_REFER_ITENS').AsString) +
+    sql := sql + ' OR ft.PRD_REFER = ' + QuotedStr(qAux.FieldByName('PRD_REFER_ITENS').AsString) +
                      iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;
-
     qAux.Next;
     if qAux.Eof then
       sql := sql + ')' ;
