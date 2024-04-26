@@ -723,7 +723,7 @@ begin
     OpenAux('SELECT	AVG(ni.NF_PRECO -  (ni.NF_ICMSVALOR / ni.NF_QTDE )) AS VALOR_SAIDA ' +
                      ' FROM NF_IT01 ni ' +
                      ' JOIN NF0001 nf ON (ni.NF_IT_NOTANUMER = nf.NF_NOTANUMBER AND ni.PED_CODIGO = nf.PED_CODIGO) ' +
-                     ' WHERE  ni.PRD_REFER = ' + QuotedStr(prdRefer)
+                     ' WHERE ni.NF_QTDE > 0 AND ni.PRD_REFER = ' + QuotedStr(prdRefer)
             );
     existeNotaSaida := qAux.FieldByName('VALOR_SAIDA').AsCurrency > 0;
     if existeNotaSaida then
@@ -734,7 +734,7 @@ begin
         OpenAux('SELECT	AVG(ni.NF_PRECO -  (ni.NF_ICMSVALOR / ni.NF_QTDE )) AS VALOR_SAIDA ' +
                          ' FROM NF_IT01 ni ' +
                          ' JOIN NF0001 nf ON (ni.NF_IT_NOTANUMER = nf.NF_NOTANUMBER AND ni.PED_CODIGO = nf.PED_CODIGO) ' +
-                         ' WHERE  ni.PRD_REFER = ' + QuotedStr(prdRefer) +
+                         ' WHERE ni.NF_QTDE > 0 AND ni.PRD_REFER = ' + QuotedStr(prdRefer) +
                          '   AND nf.NF_EMISSAO >= ' + DateToSQL(data)
                 );
         if not qAux.IsEmpty and (qAux.FieldByName('VALOR_SAIDA').AsFloat > 0) then
@@ -1284,6 +1284,13 @@ begin
 
   if not cloneFilho.Active then
     cloneFilho.Open;
+
+  pnBuscando.Visible := False;
+  exit;
+
+
+
+
   cloneFilho.Filtered := False;
   cloneFilho.Filter := 'PRD_REFER = ' + QuotedStr(prdRefer);
   cloneFilho.Filtered := True;
@@ -1488,9 +1495,9 @@ begin
             , ' where pt.pti_sigla = ' + QuotedStr('MP') + '  AND filhos = ' + QuotedStr(prdFilho)
           ) +
        ' ORDER BY item_pai ';
-  qAux.Open;
   if DBInicio.IsDesenvolvimento then
     copyToClipboard(qAux.SQL.Text);
+  qAux.Open;
   if (qAux.FieldByName('CTOTAL').AsFloat > 0) and Post then
     cds.FieldByName('CONSUMO_TOTAL').AsFloat := qAux.FieldByName('CTOTAL').AsFloat;
 
