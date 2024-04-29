@@ -559,7 +559,6 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       item
         Expanded = False
         FieldName = 'CCT_DESCRI'
-        Title.Caption = 'Conta Financeira'
         Visible = True
       end
       item
@@ -1105,12 +1104,16 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'CCT_DESCRI'
       Size = 80
     end
+    object qSqlCdsPesqPCX_DESCRI: TStringField
+      FieldName = 'PCX_DESCRI'
+      Size = 25
+    end
   end
   object dspSqlCdsPesq: TDataSetProvider
     DataSet = qSqlCdsPesq
     Options = [poAllowCommandText, poUseQuoteChar]
-    Left = 387
-    Top = 278
+    Left = 67
+    Top = 206
   end
   object SqlCdsPesq: TClientDataSet
     Aggregates = <>
@@ -1127,8 +1130,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     Params = <>
     ProviderName = 'dspSqlCdsPesq'
     StoreDefs = True
-    Left = 304
-    Top = 280
+    Left = 64
+    Top = 264
     object SqlCdsPesqPED_CODIGO: TStringField
       DisplayLabel = 'Pedido'
       FieldName = 'PED_CODIGO'
@@ -1254,14 +1257,20 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'PED_DTENTRADA'
     end
     object SqlCdsPesqCCT_DESCRI: TStringField
+      DisplayLabel = 'Conta Financeira'
       FieldName = 'CCT_DESCRI'
       Size = 80
+    end
+    object SqlCdsPesqPCX_DESCRI: TStringField
+      DisplayLabel = 'Centro de Custo'
+      FieldName = 'PCX_DESCRI'
+      Size = 25
     end
   end
   object DsPedidos: TDataSource
     DataSet = SqlCdsPesq
-    Left = 304
-    Top = 328
+    Left = 64
+    Top = 320
   end
   object SqlCdsClie: TSQLQuery
     MaxBlobSize = -1
@@ -1306,8 +1315,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       'PED_UND_CONSUMIDORA=PED_UND_CONSUMIDORA')
     DataSet = SqlCdsPesq
     BCDToCurrency = False
-    Left = 240
-    Top = 280
+    Left = 392
+    Top = 272
   end
   object frxpedidosBanco: TfrxReport
     Version = '6.9.3'
@@ -1325,8 +1334,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       ''
       'end.')
     OnGetValue = frxpedidosBancoGetValue
-    Left = 72
-    Top = 280
+    Left = 224
+    Top = 272
     Datasets = <
       item
         DataSet = frxpesquisa
@@ -2018,8 +2027,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       ''
       'end.')
     OnGetValue = frxpedidosBancoGetValue
-    Left = 168
-    Top = 280
+    Left = 320
+    Top = 272
     Datasets = <
       item
         DataSet = frxpesquisa
@@ -2559,12 +2568,12 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     PdfA = False
     PDFStandard = psNone
     PDFVersion = pv17
-    Left = 67
-    Top = 352
+    Left = 219
+    Top = 344
   end
   object SaveDialog1: TSaveDialog
-    Left = 240
-    Top = 352
+    Left = 392
+    Top = 344
   end
   object frxXLSExport1: TfrxXLSExport
     UseFileCache = True
@@ -2578,8 +2587,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     PageBreaks = True
     EmptyLines = True
     SuppressPageHeadersFooters = False
-    Left = 152
-    Top = 352
+    Left = 304
+    Top = 344
   end
   object dsCdsqSqlCdsPesq: TDataSource
     DataSet = cdsqSqlCdsPesq
@@ -2718,6 +2727,16 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     object cdsqSqlCdsPesqCLI_DTNASCIMENTO: TSQLTimeStampField
       DisplayLabel = 'Data do Nascimento'
       FieldName = 'CLI_DTNASCIMENTO'
+    end
+    object cdsqSqlCdsPesqCCT_DESCRI: TStringField
+      DisplayLabel = 'Conta Financeira'
+      FieldName = 'CCT_DESCRI'
+      Size = 80
+    end
+    object cdsqSqlCdsPesqPCX_DESCRI: TStringField
+      DisplayLabel = 'Centro de Custo'
+      FieldName = 'PCX_DESCRI'
+      Size = 25
     end
   end
   object qContafinanceira: TSQLQuery
