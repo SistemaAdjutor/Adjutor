@@ -1580,7 +1580,7 @@ begin
                                  CdsItensENF_ORIGEM_MERCADORIA.AsString + ''',''' +
                                  '000000'','''+
                                  CdsItensReferencia.AsString+''','+
-                                 QuotedStr(COPY(CdsItensDescricao.AsString,1,80)) +  ','''+
+                                 QuotedStr(COPY(CdsItensDescricao.AsString,1,100)) +  ','''+
                                  ValorAmericano(FloatToStr(CdsItensValorICMS.AsCurrency))+''','''+
                                  ValorAmericano(FloatToStr(rQuantidade))+''','''+
                                  ValorAmericano(CurrToStr(rQuantidade))+''','''+
