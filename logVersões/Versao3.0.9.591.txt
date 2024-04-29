@@ -1,4 +1,4 @@
-﻿Atualizado em 12/04/2024
+﻿Atualizado em 29/04/2024
 Inicio da versão: 02/04/2024
 
 principal: Arkson, Embraterm
@@ -15,5 +15,13 @@ patch 1: Arkson, Embraterm
 patch 2: EDGE
   1838 - Erro retorno de industrialização [EDGE]
   
-
-   
+patch 3: EDGE, Arkson, Collect, Conforto Ambiental, Embraterm, Parseals Industrial
+  1838 - Erro retorno de industrialização [EDGE]
+  1841 - Enviar para programação com erro no PCP [Arkson]
+  1842 - Não deixar salvar pedidos de clientes inativos [Collect]
+  1844 - Exportar - Cadastro Do Cliente [Collect]
+  1848 - Erro ao consultar produtos [Conforto Ambiental]
+  1849 - Pedido - Roda Pé Tratamento Térmico [Embraterm]
+  1850 - Erro na entrada de notas [Parseals Industrial]
+  1851 - BUG Visual no estoque de produtos [Parseals Industrial]
+  

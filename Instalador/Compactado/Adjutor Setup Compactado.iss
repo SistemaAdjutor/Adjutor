@@ -4,7 +4,7 @@
 #define NomeAplicacao "Adjutor"
 #define VersaoBuild "591"
 #define VersaoSistema "3.0.9.591"
-#define PatchSistema   "patch 2"
+#define PatchSistema   "patch 3"
 #define Patch StringChange(PatchSistema," ","")
 #define MyAppPublisher "NOVI SISTEMAS"
 #define AppURL "http://www.novisistemas.com.br"
