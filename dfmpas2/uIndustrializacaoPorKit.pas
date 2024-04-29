@@ -29,7 +29,7 @@ uses
   cxGridLevel, cxClasses, cxGridCustomView, cxGrid, FireDAC.Stan.Intf,
   FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
   FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt,
-  FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Comp.DataSet, FireDAC.Comp.Client, System.ImageList, Vcl.ImgList;
 
 type
   TFrmIndustrializacaoPorKit = class(TfrmBaseDbEstoque)
@@ -106,6 +106,7 @@ type
     SqlCdsNotasDisponiveisENF_UCOM: TStringField;
     SqlCdsNotasDisponiveisPRD_REFER_PAI: TStringField;
     chkSaldo: TCheckBox;
+    ImageList1: TImageList;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);
@@ -130,6 +131,8 @@ type
     procedure dbgrdNotasDisponveisTitleClick(Column: TColumn);
     procedure SqlCdsNotasDisponiveisCalcFields(DataSet: TDataSet);
     procedure chkSaldoClick(Sender: TObject);
+    procedure dbgrdNotasDisponveisMouseMove(Sender: TObject; Shift: TShiftState;
+      X, Y: Integer);
   private
     { Private declarations }
     procedure ConsultaDisponiveis;
@@ -209,6 +212,7 @@ begin
     chkSaldo.Caption := 'Mostra Apenas Produtos com Saldo Zerado'
   else if chkSaldo.State = cbGrayed then
     chkSaldo.Caption := 'Mostra Todos os Produtos Com e Sem Saldo' ;
+  prdReferExit(Sender);
 
 end;
 
@@ -229,7 +233,7 @@ begin
   qAux.Open;
   sql :=       'SELECT ' +
       '    ft.FTI_UC as QuantidadeFT,'+
-      '    (SELECT SUM(pk.QTD_RETORNADO) ' +
+      '    (SELECT SUM(CAST(ROUND(pk.QTD_RETORNADO, 4) AS double precision) ) ' +
       '       FROM PED_IND_KIT pk ' +
       '       	WHERE pk.ENF_NOTANUMBER = ef.enf_notanumber ' +
       '  	      AND pk.PRD_REFER = ft.PRD_REFER_ITENS ' +
@@ -260,9 +264,9 @@ begin
       '   JOIN FTC_IT01 ft ON (ft.PRD_REFER_ITENS = ei.PRD_REFER AND ft.EMP_CODIGO = ei.EMP_CODIGO AND ft.FTI_UTILIZA_ITEM_NO_RETORNO = ''S''    ) ' +
       '   JOIN for0000 fo ON (fo.for_codigo = ef.for_codigo ) '+
       '   left join almox0000 al on (al.amx_codigo = ei.amx_codigo) '+
-      ' WHERE ei.enf_qtde > ei.enf_quantidade_ind_retorno '+
-      ' AND (ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
-      iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '') ;
+      ' WHERE (ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) +
+      iif(SelecionaNotaFiscal, ' AND ef.enf_notanumber = ' + QuotedStr(NotaFiscal), '')  ;
+
 
   if qAux.Eof then
     sql := sql + ')' ;
@@ -276,7 +280,16 @@ begin
       sql := sql + ')' ;
 
   end;
-  // sql := sql +  '  order by ei.prd_refer, ef.enf_emissao ';
+
+  if chkSaldo.Checked then
+      sql := sql + ' AND ei.enf_qtde > ei.enf_quantidade_ind_retorno '
+  else
+  if chkSaldo.State = cbUnchecked then
+      sql := sql + ' AND ei.enf_qtde = ei.enf_quantidade_ind_retorno '
+  else if chkSaldo.State = cbGrayed then
+    sql := sql + '';
+
+
   sql := sql +  '  order by 15,10'; // o firebird não aceitou o nome das colunas...
 
   qSqlCdsNotasDisponiveis.sql.Text := sql;
@@ -290,7 +303,10 @@ begin
   begin
     SqlCdsNotasDisponiveis.Edit;
     SqlCdsNotasDisponiveisSaldo.AsFloat := SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat;
-    SqlCdsNotasDisponiveisSelecao.AsBoolean := True;
+    if SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat > 0 then
+      SqlCdsNotasDisponiveisSelecao.AsBoolean := True
+    else
+      SqlCdsNotasDisponiveisSelecao.AsBoolean := False;
     SqlCdsNotasDisponiveis.Post;
     SqlCdsNotasDisponiveis.Next;
   end;
@@ -368,6 +384,9 @@ var
 
 begin
   inherited;
+  if ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) = 0) then
+    Exit;
+
   if Column.FieldName = 'Selecao' then
   begin
     SqlCdsNotasDisponiveis.Edit;
@@ -393,7 +412,8 @@ procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisDblClick(
   Sender: tObject);
 begin
   //Vincular;
-  Seleciona;
+  if ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) > 0) then
+    Seleciona;
 end;
 
 
@@ -405,6 +425,18 @@ begin
       Key := #0;
       Seleciona;
     end;
+end;
+
+procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisMouseMove(
+  Sender: TObject; Shift: TShiftState; X, Y: Integer);
+begin
+  inherited;
+  { não funciona direito, tem que clicar para mudar o cursor do mouse....
+  if  ((dbgrdNotasDisponveis.DataSource.DataSet.FieldByName('ENF_QTDE').AsFloat - dbgrdNotasDisponveis.DataSource.DataSet.FieldByName('ENF_QUANTIDADE_IND_RETORNO').AsFloat) = 0) then
+    dbgrdNotasDisponveis.Cursor := crNo
+  else
+    dbgrdNotasDisponveis.Cursor := crDefault;
+}
 end;
 
 procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisTitleClick(
@@ -423,7 +455,8 @@ begin
                                  'as  PRD_PRODSERV  FROM prd0000 T1 left join prd_linha t2 on (t2.lin_codigo = t1.lin_codigo) left join PRD_TIPO t3 on (t3.PTI_CODIGO = t1.PTI_CODIGO)','WHERE T1.PRD_STATUS = ''A''','','t1.')+' ORDER BY T1.prd_refer';
   SqlCdsProduto.Open;
   AlterarCFOPdeRetorno1.Visible := (DBInicio.GetParametroSistema('PMT_NAT_OPER_RETORNO') = 'S');
-
+  if prdRefer.CanFocus then
+    prdRefer.SetFocus;
 end;
 
 procedure TFrmIndustrializacaoPorKit.frxNotasDisponiveisBeginDoc(
@@ -464,9 +497,12 @@ begin
   SqlCdsNotasDisponiveis.First;
   while not SqlCdsNotasDisponiveis.Eof do
   begin
-    SqlCdsNotasDisponiveis.Edit;
-    SqlCdsNotasDisponiveisSelecao.AsBoolean := not SqlCdsNotasDisponiveisSelecao.AsBoolean;
-    SqlCdsNotasDisponiveis.Post;
+    if (SqlCdsNotasDisponiveisENF_QTDE.AsFloat > SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) then
+    begin
+      SqlCdsNotasDisponiveis.Edit;
+      SqlCdsNotasDisponiveisSelecao.AsBoolean := not SqlCdsNotasDisponiveisSelecao.AsBoolean;
+      SqlCdsNotasDisponiveis.Post;
+    end;
     SqlCdsNotasDisponiveis.Next;
   end;
   SqlCdsNotasDisponiveis.First;
@@ -505,9 +541,11 @@ var
    Check: Integer;
    R: TRect;
 begin
+
+
     if (not SqlCdsNotasDisponiveis.IsEmpty) then
       begin
-         if Column.FieldName = 'Selecao' then
+         if (Column.FieldName = 'Selecao') and (SqlCdsNotasDisponiveisENF_QTDE.AsFloat > SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) then
             begin
                dbgrdNotasDisponveis.Canvas.FillRect(Rect);
                Check := 0;
@@ -518,7 +556,20 @@ begin
                R:=Rect;
                InflateRect(R,-2,-2); {Diminue o tamanho do CheckBox}
                DrawFrameControl(dbgrdNotasDisponveis.Canvas.Handle,R,DFC_BUTTON, DFCS_BUTTONCHECK or Check);
-            end;
+            end
+         else
+         if  ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) = 0) then
+         begin
+              dbgrdNotasDisponveis.Canvas.Brush.Color := clRed;
+              dbgrdNotasDisponveis.Canvas.FillRect(Rect);
+              if (Column.FieldName = 'Selecao')  then
+              begin
+                dbgrdNotasDisponveis.Canvas.TextOut(Rect.Left + 2, Rect.Top + 2, '');
+                ImageList1.Draw(dbgrdNotasDisponveis.Canvas, Rect.Left + 2, Rect.Top + 2, 0);
+              end
+              else
+                dbgrdNotasDisponveis.Canvas.TextOut(Rect.Left + 2, Rect.Top + 2, Column.Field.AsString);;
+         end;
       end;
 
 end;
@@ -617,6 +668,7 @@ begin
 
       end;
 
+      SqlCdsNotasDisponiveis.DisableControls;
       SqlCdsNotasDisponiveis.First;
       while (not SqlCdsNotasDisponiveis.Eof) do
         begin
@@ -748,6 +800,7 @@ begin
           SqlCdsNotasDisponiveis.Next;
         end;
        SqlCdsNotasDisponiveis.Filtered := False;
+       SqlCdsNotasDisponiveis.EnableControls;
        Close;
     end;
 end;
