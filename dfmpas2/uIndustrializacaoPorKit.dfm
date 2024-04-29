@@ -335,6 +335,18 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       TabOrder = 5
       OnClick = cbSelecionadosClick
     end
+    object chkSaldo: TCheckBox
+      Left = 272
+      Top = 46
+      Width = 241
+      Height = 17
+      AllowGrayed = True
+      Caption = 'Mostra Apenas Produtos com Saldo Positivo'
+      Checked = True
+      State = cbChecked
+      TabOrder = 6
+      OnClick = chkSaldoClick
+    end
   end
   object BitBtn1: TBitBtn [8]
     Left = 664
@@ -601,7 +613,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       'ORDER BY T1.prd_refer')
     SQLConnection = DataCadastros.SQLConnection1
     Left = 296
-    Top = 9
+    Top = 1
   end
   object qSqlCdsNotasDisponiveis: TSQLQuery
     MaxBlobSize = 1
@@ -646,7 +658,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
   object DspSqlCdsProduto: TDataSetProvider
     DataSet = qSqlCdsProduto
     Left = 504
-    Top = 41
+    Top = 161
   end
   object dspSqlCdsNotasDisponiveis: TDataSetProvider
     DataSet = qSqlCdsNotasDisponiveis
@@ -658,7 +670,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     Params = <>
     SQLConnection = DBConn
     Left = 226
-    Top = 12
+    Top = 4
   end
   object pmSelecao: TPopupMenu
     Left = 24

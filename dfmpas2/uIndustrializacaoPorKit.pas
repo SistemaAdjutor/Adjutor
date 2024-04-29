@@ -105,6 +105,7 @@ type
     SqlCdsNotasDisponiveisENF_SERIE: TStringField;
     SqlCdsNotasDisponiveisENF_UCOM: TStringField;
     SqlCdsNotasDisponiveisPRD_REFER_PAI: TStringField;
+    chkSaldo: TCheckBox;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);
@@ -128,6 +129,7 @@ type
     procedure BitBtn1Click(Sender: TObject);
     procedure dbgrdNotasDisponveisTitleClick(Column: TColumn);
     procedure SqlCdsNotasDisponiveisCalcFields(DataSet: TDataSet);
+    procedure chkSaldoClick(Sender: TObject);
   private
     { Private declarations }
     procedure ConsultaDisponiveis;
@@ -194,6 +196,19 @@ begin
   end
   else
     SqlCdsNotasDisponiveis.Filtered := False;
+
+end;
+
+procedure TFrmIndustrializacaoPorKit.chkSaldoClick(Sender: TObject);
+begin
+  inherited;
+  if chkSaldo.Checked then
+    chkSaldo.Caption := 'Mostra Apenas Produtos com Saldo Positivo'
+  else
+  if chkSaldo.State = cbUnchecked then
+    chkSaldo.Caption := 'Mostra Apenas Produtos com Saldo Zerado'
+  else if chkSaldo.State = cbGrayed then
+    chkSaldo.Caption := 'Mostra Todos os Produtos Com e Sem Saldo' ;
 
 end;
 
