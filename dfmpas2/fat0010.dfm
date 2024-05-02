@@ -6,7 +6,6 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
   ClientWidth = 964
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
-  Position = poDesktopCenter
   ExplicitWidth = 980
   ExplicitHeight = 641
   PixelsPerInch = 96
@@ -4655,7 +4654,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[totalRecebido]')
+            '[SUM(<frxDBReceberBanco."FPC_VLPAGO">,MasterData1)]')
           ParentFont = False
         end
         object Line6: TfrxLineView
@@ -5087,7 +5086,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
     PrintOptions.Printer = 'Padr'#227'o'
     PrintOptions.PrintOnSheet = 0
     ReportOptions.CreateDate = 41163.478694791700000000
-    ReportOptions.LastChange = 45112.559586875000000000
+    ReportOptions.LastChange = 45414.577181157410000000
     ScriptLanguage = 'PascalScript'
     ScriptText.Strings = (
       'var'
@@ -5124,7 +5123,10 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
         'C_MULTA">;    '
       
         '         totalRecebido := totalRecebido + <frxDBReceberCentroCus' +
-        'to."FPC_VLPAGO">;       '
+        'to."FPC_VLPAGO">;'
+      
+        '//         totalRecebido := totalRecebido + <frxDBReceberCentroC' +
+        'usto."FRE_RECEBIDO">;    '
       
         '         totalPendente := totalPendente + <frxDBReceberCentroCus' +
         'to."CCPendente">;                    '
@@ -6040,7 +6042,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[totalRecebido]')
+            '[SUM(<frxDBReceberCentroCusto."FPC_VLPAGO">,MasterData1)]')
           ParentFont = False
         end
         object Line6: TfrxLineView
