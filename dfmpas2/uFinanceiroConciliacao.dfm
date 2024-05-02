@@ -4,7 +4,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
   BorderIcons = [biSystemMenu, biMaximize]
   Caption = 'Concilia'#231#227'o Financeira e Banc'#225'ria'
   ClientHeight = 602
-  ClientWidth = 1175
+  ClientWidth = 1163
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -26,7 +26,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
   object Panel3: TPanel
     Left = 0
     Top = 0
-    Width = 1175
+    Width = 1163
     Height = 65
     Align = alTop
     BevelOuter = bvNone
@@ -88,8 +88,10 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
         Tabela = 'BAN0000'
         CamposCarregar = 'BAN_CODIGO,BAN_APELIDO'
         CamposRetornar = 'BAN_CODIGO'
@@ -254,6 +256,17 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         TabOrder = 2
         OnEnter = RxDataInicialEnter
       end
+      object chkSaldoAnterior: TCheckBox
+        Left = 475
+        Top = 38
+        Width = 206
+        Height = 17
+        Caption = 'Considera Saldo Anterior'
+        Checked = True
+        State = cbChecked
+        TabOrder = 7
+        OnClick = chkSaldoAnteriorClick
+      end
     end
     object BitPesquisar: TBitBtn
       Left = 717
@@ -369,7 +382,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
   object pna: TPanel
     Left = 0
     Top = 65
-    Width = 1175
+    Width = 1163
     Height = 537
     Align = alClient
     BevelOuter = bvNone
@@ -378,7 +391,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
     object pnc: TPanel
       Left = 0
       Top = 264
-      Width = 1175
+      Width = 1163
       Height = 273
       Align = alBottom
       BevelOuter = bvNone
@@ -386,7 +399,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       object GroupBox3: TGroupBox
         Left = 0
         Top = 0
-        Width = 972
+        Width = 960
         Height = 273
         Align = alClient
         Caption = 'Lan'#231'amentos Conciliados com Extrato Banc'#225'rio'
@@ -394,7 +407,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         object DbGradeConciliado: TRxDBGrid
           Left = 2
           Top = 16
-          Width = 968
+          Width = 956
           Height = 255
           Align = alClient
           Color = 13303807
@@ -490,7 +503,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         end
       end
       object Panel2: TPanel
-        Left = 972
+        Left = 960
         Top = 0
         Width = 203
         Height = 273
@@ -550,12 +563,12 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Caption = 'Saldo:'
         end
         object lblSaldoAnteriorS: TLabel
-          Left = 110
+          Left = 98
           Top = 37
-          Width = 89
+          Width = 96
           Height = 14
           Alignment = taRightJustify
-          Caption = 'lblSaldoAnterior'
+          Caption = 'lblSaldoAnteriorS'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -564,12 +577,12 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           ParentFont = False
         end
         object lblCreditoS: TLabel
-          Left = 145
+          Left = 133
           Top = 56
-          Width = 54
+          Width = 61
           Height = 14
           Alignment = taRightJustify
-          Caption = 'lblCredito'
+          Caption = 'lblCreditoS'
           Font.Charset = ANSI_CHARSET
           Font.Color = clBlue
           Font.Height = -11
@@ -578,12 +591,12 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           ParentFont = False
         end
         object lblDebitoS: TLabel
-          Left = 151
+          Left = 139
           Top = 74
-          Width = 48
+          Width = 55
           Height = 14
           Alignment = taRightJustify
-          Caption = 'lblDebito'
+          Caption = 'lblDebitoS'
           Font.Charset = ANSI_CHARSET
           Font.Color = clMaroon
           Font.Height = -11
@@ -592,12 +605,12 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           ParentFont = False
         end
         object lblSaldoS: TLabel
-          Left = 156
+          Left = 144
           Top = 91
-          Width = 43
+          Width = 50
           Height = 14
           Alignment = taRightJustify
-          Caption = 'lblSaldo'
+          Caption = 'lblSaldoS'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -606,12 +619,12 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           ParentFont = False
         end
         object lblSaldoLimiteS: TLabel
-          Left = 121
+          Left = 109
           Top = 109
-          Width = 78
+          Width = 85
           Height = 14
           Alignment = taRightJustify
-          Caption = 'lblSaldoLimite'
+          Caption = 'lblSaldoLimiteS'
           Font.Charset = ANSI_CHARSET
           Font.Color = clWindowText
           Font.Height = -11
@@ -690,7 +703,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
     object pnb: TPanel
       Left = 0
       Top = 0
-      Width = 1175
+      Width = 1163
       Height = 264
       Align = alClient
       BevelOuter = bvNone
@@ -698,7 +711,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       object GroupBox5: TGroupBox
         Left = 0
         Top = 0
-        Width = 972
+        Width = 960
         Height = 264
         Align = alClient
         Caption = 'Fechamento Financeiro - sem concilia'#231#227'o'
@@ -706,7 +719,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         object DbGradeConciliadoN: TRxDBGrid
           Left = 2
           Top = 16
-          Width = 968
+          Width = 956
           Height = 246
           Align = alClient
           DataSource = DsConciliacaoN
@@ -796,7 +809,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         end
       end
       object Panel1: TPanel
-        Left = 972
+        Left = 960
         Top = 0
         Width = 203
         Height = 264
@@ -970,7 +983,6 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
   object SQLCdsConciliacaoS: TSqlClientDataSet
     Aggregates = <>
     AutoCalcFields = False
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT CASE WHEN (1=1) THEN '#39'P'#39' END AS LOCAL, PAG.PAP_REGISTRO a' +
       's PAG_REGISTRO, CASE WHEN (PAG.PAG_CONCILIADO = '#39'S'#39') THEN PAG.PA' +
@@ -1059,7 +1071,6 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       'OR, USR.USU_NOME FROM  BAN_TRANSFERENCIA TR  LEFT JOIN USUARIO U' +
       'SR ON (USR.USU_CODIGO = tr.USU_CODIGO)'#13#10' WHERE TR.BCO_CODIGO = '#39 +
       '0002'#39' AND tr.BTR_DATA BETWEEN '#39'09/19/2012'#39' AND '#39'10/19/2012'#39
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1156,7 +1167,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
     Top = 411
   end
   object frxExtratoAnaliticoN: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1281,14 +1292,18 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 76.542980950000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         OnBeforePrint = 'PageHeader1OnBeforePrint'
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -1298,11 +1313,13 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Extrato de Movimenta'#231#227'o Financeira - Sem Concilia'#231#227'o')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -1311,11 +1328,13 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -1325,23 +1344,29 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.180129490000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 76.542980950000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 905.378480000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -1351,12 +1376,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 905.378480000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -1367,12 +1394,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 87.729190000000000000
           Top = 56.692950000000000000
           Width = 79.370130000000000000
@@ -1383,12 +1412,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Documento')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.488188980000000000
           Top = 56.692950000000000000
           Width = 241.889775980000000000
@@ -1399,12 +1430,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Informa'#231#227'o')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.882190000000000000
           Top = 56.692950000000000000
           Width = 94.488250000000000000
@@ -1415,12 +1448,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.149970000000000000
           Top = 56.692950000000000000
           Width = 136.063080000000000000
@@ -1431,12 +1466,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Usu'#225'rio')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 86.929190000000000000
           Height = 18.897650000000000000
@@ -1446,12 +1483,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Data')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 169.519685040000000000
           Top = 56.692950000000000000
           Width = 75.590556060000000000
@@ -1461,12 +1500,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Nro.NF')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 743.697650000000000000
           Top = 57.102350000000000000
           Width = 299.590600000000000000
@@ -1476,6 +1517,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Observa'#231#245'es')
@@ -1484,6 +1526,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 19.166790000000000000
         Top = 238.110390000000000000
         Width = 1046.929810000000000000
@@ -1494,6 +1537,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         RowCount = 0
         Stretched = True
         object frxDBDataset1DOCUMENTO: TfrxMemoView
+          AllowVectorExport = True
           Left = 86.929190000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -1505,12 +1549,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoN."DOCUMENTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 249.488188980000000000
           Width = 241.889775980000000000
           Height = 18.897650000000000000
@@ -1522,12 +1568,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoN."RAZAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 496.482190000000000000
           Top = 0.200000000000000000
           Width = 79.370130000000000000
@@ -1541,6 +1589,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBAnaliticoN."PAG_PAGO"]')
@@ -1548,6 +1597,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           WordWrap = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 600.149970000000000000
           Width = 136.063080000000000000
           Height = 18.897650000000000000
@@ -1559,12 +1609,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoN."USU_NOME"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.252320000000000000
           Width = 15.118120000000000000
           Height = 18.897650000000000000
@@ -1577,6 +1629,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBAnaliticoN."TIPO"]')
@@ -1584,6 +1637,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           WordWrap = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Width = 86.929190000000000000
           Height = 18.897650000000000000
           DataSet = frxDBAnaliticoN
@@ -1594,12 +1648,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoN."BAN_APELIDO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 169.519685040000000000
           Width = 75.590556060000000000
           Height = 18.897650000000000000
@@ -1610,12 +1666,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoN."NF_NUM_NFE"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 743.697650000000000000
           Top = 0.489610000000000000
           Width = 299.590600000000000000
@@ -1626,6 +1684,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoN."pag_observacao"]')
           ParentFont = False
@@ -1633,6 +1692,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 196.535560000000000000
         Width = 1046.929810000000000000
@@ -1640,6 +1700,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         Condition = 'frxDBAnaliticoN."PAG_DATA_PAGAMENTO"'
         KeepTogether = True
         object frxDBDataset1PAG_DATA_PAGAMENTO: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DataField = 'PAG_DATA_PAGAMENTO'
@@ -1650,26 +1711,31 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoN."PAG_DATA_PAGAMENTO"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Style = fsDot
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 34.015770000000000000
         Top = 325.039580000000000000
         Width = 1046.929810000000000000
         OnBeforePrint = 'Footer1OnBeforePrint'
         PrintChildIfInvisible = True
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Top = 7.559060000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -1679,12 +1745,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Cr'#233'ditos:')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Top = 7.559060000000000000
           Width = 94.488250000000000000
@@ -1695,12 +1763,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'D'#233'bitos:')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 362.834880000000000000
           Top = 7.559060000000000000
           Width = 94.488250000000000000
@@ -1711,12 +1781,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo:')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.472790000000000000
           Top = 7.559060000000000000
           Width = 94.488250000000000000
@@ -1727,12 +1799,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo + Limite:')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 7.559060000000000000
           Width = 68.031540000000000000
@@ -1745,12 +1819,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sCredito]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 291.023810000000000000
           Top = 7.559060000000000000
           Width = 68.031540000000000000
@@ -1763,12 +1839,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sDebito]')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 7.559060000000000000
           Width = 79.370130000000000000
@@ -1779,12 +1857,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sSaldo]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 7.559060000000000000
           Width = 79.370130000000000000
@@ -1797,30 +1877,37 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sSaldoLimite]')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 34.015770000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 22.097650000000000000
         Top = 279.685220000000000000
         Width = 1046.929810000000000000
         OnBeforePrint = 'GroupFooter1OnBeforePrint'
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -1830,12 +1917,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo do Dia:')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -1849,12 +1938,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoDia]')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -1868,12 +1959,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoP]')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Width = 90.708720000000000000
           Height = 18.897650000000000000
@@ -1883,12 +1976,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo Acumulado:')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -1897,12 +1992,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Cr'#233'ditos:')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -1912,12 +2009,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'D'#233'bitos:')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -1929,12 +2028,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoDiaCredito]')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 291.023810000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -1946,6 +2047,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoDiaDebito]')
@@ -1954,10 +2056,12 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 464.882190000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -1971,12 +2075,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoP]')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -1986,6 +2092,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo Anterior:')
@@ -2022,7 +2129,6 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
   object SQLCdsConciliacaoN: TSqlClientDataSet
     Aggregates = <>
     AutoCalcFields = False
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'    CASE WHEN (1=1) THEN '#39'P'#39' END AS LOCAL,'#13#10'    PAG.PAP_' +
       'REGISTRO as PAG_REGISTRO,'#13#10'    CASE WHEN (PAG.PAG_CONCILIADO = '#39 +
@@ -2134,7 +2240,6 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       'BAN ON (CAST(BAN.BAN_CODIGO AS INTEGER)= TR.BCO_CODIGO)'#13#10'WHERE T' +
       'R.BCO_CODIGO = '#39'0002'#39' AND tr.BTR_DATA BETWEEN '#39'09/19/2012'#39' AND '#39 +
       '10/19/2012'#39
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -2229,7 +2334,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
     Top = 131
   end
   object frxExtratoAnaliticoS: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2353,14 +2458,18 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnBeforePrint = 'Page1OnBeforePrint'
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         OnBeforePrint = 'PageHeader1OnBeforePrint'
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 578.268090000000000000
           Height = 18.897650000000000000
@@ -2370,11 +2479,13 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Extrato de Movimenta'#231#227'o Financeira - Conciliado Anal'#237'tico')
           ParentFont = False
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 578.268090000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -2383,11 +2494,13 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Empresa]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 37.795300000000000000
           Width = 718.110700000000000000
           Height = 18.897650000000000000
@@ -2397,23 +2510,29 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[Filtro]')
           ParentFont = False
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 139.842610000000000000
           Height = 18.897650000000000000
@@ -2423,12 +2542,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Date] '#224's [Time]')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Top = 18.897650000000000000
           Width = 139.842610000000000000
@@ -2439,12 +2560,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[Page#] de [TotalPages#]')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 242.267716540000000000
           Top = 56.692950000000000000
           Width = 83.149613620000000000
@@ -2455,12 +2578,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Documento')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 389.952758350000000000
           Top = 56.692950000000000000
           Width = 162.519694800000000000
@@ -2471,12 +2596,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Informa'#231#227'o')
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 555.575140000000000000
           Top = 56.692950000000000000
           Width = 94.488250000000000000
@@ -2487,12 +2614,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Valor')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 654.063390000000000000
           Top = 56.692950000000000000
           Width = 83.149660000000000000
@@ -2503,12 +2632,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Usu'#225'rio')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Top = 56.692950000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
@@ -2518,12 +2649,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Data')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811023622047210000
           Top = 56.692950000000000000
           Width = 166.299212598425000000
@@ -2534,12 +2667,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Hist'#243'rico')
           ParentFont = False
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 328.480314960000000000
           Top = 56.692950000000000000
           Width = 60.472445830000000000
@@ -2549,12 +2684,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Nro.NF')
           ParentFont = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 740.200000000000000000
           Top = 56.302350000000000000
           Width = 301.990600000000000000
@@ -2564,6 +2701,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Observa'#231#245'es')
@@ -2572,6 +2710,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 19.248670000000000000
         Top = 238.110390000000000000
         Width = 1046.929810000000000000
@@ -2581,6 +2720,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         DataSetName = 'frxDBAnaliticoS'
         RowCount = 0
         object frxDBDataset1DOCUMENTO: TfrxMemoView
+          AllowVectorExport = True
           Left = 242.267716540000000000
           Width = 83.149613620000000000
           Height = 18.897650000000000000
@@ -2592,12 +2732,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoS."DOCUMENTO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 389.952758350000000000
           Width = 162.519694800000000000
           Height = 18.897650000000000000
@@ -2609,12 +2751,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoS."RAZAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 555.575140000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -2627,6 +2771,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBAnaliticoS."PAG_PAGO"]')
@@ -2634,6 +2779,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           WordWrap = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 654.063390000000000000
           Width = 83.149660000000000000
           Height = 18.897650000000000000
@@ -2645,12 +2791,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoS."USU_NOME"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.945270000000000000
           Width = 15.118120000000000000
           Height = 18.897650000000000000
@@ -2663,6 +2811,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBAnaliticoS."TIPO"]')
@@ -2670,6 +2819,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           WordWrap = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 71.811023620000000000
           Width = 166.299212600000000000
           Height = 18.897650000000000000
@@ -2681,12 +2831,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoS."HCO_DESCRICAO"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 328.480314960000000000
           Width = 60.472445830000000000
           Height = 18.897650000000000000
@@ -2697,12 +2849,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoS."NF_NUM_NFE"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 741.000000000000000000
           Top = 0.351020000000000000
           Width = 301.990600000000000000
@@ -2712,6 +2866,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoS."pag_observacao"]')
           ParentFont = False
@@ -2719,6 +2874,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       end
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 196.535560000000000000
         Width = 1046.929810000000000000
@@ -2726,6 +2882,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         Condition = 'frxDBAnaliticoS."PAG_DATA_PAGAMENTO"'
         KeepTogether = True
         object frxDBDataset1PAG_DATA_PAGAMENTO: TfrxMemoView
+          AllowVectorExport = True
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DataField = 'PAG_DATA_PAGAMENTO'
@@ -2736,26 +2893,31 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBAnaliticoS."PAG_DATA_PAGAMENTO"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Style = fsDot
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 34.015770000000000000
         Top = 321.260050000000000000
         Width = 1046.929810000000000000
         OnBeforePrint = 'Footer1OnBeforePrint'
         PrintChildIfInvisible = True
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Top = 7.559060000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2765,12 +2927,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Cr'#233'ditos:')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Top = 7.559060000000000000
           Width = 94.488250000000000000
@@ -2781,12 +2945,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'D'#233'bitos:')
           ParentFont = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 362.834880000000000000
           Top = 7.559060000000000000
           Width = 94.488250000000000000
@@ -2797,12 +2963,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo:')
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 540.472790000000000000
           Top = 7.559060000000000000
           Width = 94.488250000000000000
@@ -2813,12 +2981,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo + Limite:')
           ParentFont = False
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Top = 7.559060000000000000
           Width = 68.031540000000000000
@@ -2829,12 +2999,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sCredito]')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 291.023810000000000000
           Top = 7.559060000000000000
           Width = 68.031540000000000000
@@ -2845,12 +3017,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sDebito]')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 7.559060000000000000
           Width = 79.370130000000000000
@@ -2861,12 +3035,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sSaldo]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Top = 8.359060000000000000
           Width = 79.370130000000000000
@@ -2879,30 +3055,37 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[sSaldoLimite]')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Top = 34.015770000000000000
           Width = 1046.929810000000000000
           Color = clBlack
+          Frame.Typ = []
           Diagonal = True
         end
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 20.277180000000000000
         Top = 279.685220000000000000
         Width = 1046.929810000000000000
         OnBeforePrint = 'GroupFooter1OnBeforePrint'
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 359.055350000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2912,12 +3095,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo do Dia:')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -2931,12 +3116,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoDia]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 638.740570000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -2950,12 +3137,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoP]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 544.252320000000000000
           Width = 90.708720000000000000
           Height = 18.897650000000000000
@@ -2965,12 +3154,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo Acumulado:')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -2979,12 +3170,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Cr'#233'ditos:')
           ParentFont = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 181.417440000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -2994,12 +3187,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'D'#233'bitos:')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.606370000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -3011,12 +3206,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoDiaCredito]')
           ParentFont = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 291.023810000000000000
           Width = 68.031540000000000000
           Height = 18.897650000000000000
@@ -3028,6 +3225,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoDiaDebito]')
@@ -3036,10 +3234,12 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
       end
       object Header1: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 423.307360000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
@@ -3049,12 +3249,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Saldo Anterior:')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 521.575140000000000000
           Width = 79.370130000000000000
           Height = 18.897650000000000000
@@ -3068,6 +3270,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[saldoP]')
@@ -3106,11 +3309,14 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -3121,6 +3327,9 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 760
     Top = 229
   end
@@ -3146,6 +3355,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
     CreationTime = 0.000000000000000000
     DataOnly = False
     PictureType = gpPNG
+    OpenAfterExport = False
     Background = True
     Creator = 'FastReport'
     Language = 'en'

@@ -7,7 +7,8 @@ uses
   Dialogs, StdCtrls,  rxToolEdit, ComboBoxRw, Mask,  rxCurrEdit, Buttons, Grids,
   DBGrids, SqlExpr,SqlClientDataSet, Provider, DB, DBClient, DBLocal, DBLocalS, ExtCtrls,
   frxClass, frxDBSet, frxExportODF, frxExportXLS, frxExportPDF, RXDBCtrl,
-  Data.DBXFirebird, SimpleDS, SgDbSeachComboUnit, JvExMask, JvToolEdit;
+  Data.DBXFirebird, SimpleDS, SgDbSeachComboUnit, JvExMask, JvToolEdit,
+  frxExportBaseDialog;
 
 type
   TFrmFinanceiroConciliacao = class(TForm)
@@ -105,6 +106,7 @@ type
     SQLCdsConciliacaoNpag_observacao: TStringField;
     SQLCdsConciliacaoSpag_observacao: TStringField;
     BitBtn2: TBitBtn;
+    chkSaldoAnterior: TCheckBox;
     procedure Bit_SairClick(Sender: tObject);
     procedure BitPesquisarClick(Sender: tObject);
     procedure EdContaBancoEnter(Sender: tObject);
@@ -138,6 +140,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure chkMultiEmpresaClick(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
+    procedure chkSaldoAnteriorClick(Sender: TObject);
   private
     { Private declarations }
     sFiltro:String;
@@ -185,8 +188,8 @@ var
    dDataSaldo:TDate;
    wsel, pl: string;
 begin
-   rSaldoAnteriorS := 0;
-   rSaldoAnteriorN := 0;
+   rSaldoAnteriorS := 0;      // conciliado
+   rSaldoAnteriorN := 0;      // lançado no sistema
    rLimite := 0;
 
    if (RxDataInicial.Text = '  /  /    ') then
@@ -223,6 +226,8 @@ begin
 
          DataCadastros.sqlUpdate.Close;
          DataCadastros.SqlUpdate.sql.text :='SELECT BAN_CONCILIACAO_DATA, BAN_CONCILIACAO_SALDO,BAN_LIMITECREDITO FROM BAN0000 '+wSEl;
+         if dbInicio.IsDesenvolvimento then
+          copyToClipboard(DataCadastros.SqlUpdate.sql.text);
          DataCadastros.sqlUpdate.open;
          if (not DataCadastros.sqlUpdate.IsEmpty) then
          begin
@@ -272,7 +277,10 @@ begin
                       'JOIN PAG_PC01 PPC ON (PPC.PAG_REGISTRO = PAG.PAG_REGISTRO) '+
                       'LEFT JOIN FOR0000 FRN ON (FRN.FOR_CODIGO = (SELECT FIRST 1 T3.FOR_CODIGO FROM PAG0000 T3 WHERE T3.PAG_CODIGO = PPC.PAG_CODIGO) ) '+
                       'LEFT JOIN USUARIO USR ON (USR.USU_CODIGO = PAG.USU_CODIGO) '+
-                      'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'PAG.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+'PAG.PAG_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and PAG.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND PAG.PAG_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
+                      iif(chkSaldoAnterior.Checked,
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'PAG.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+'PAG.PAG_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and PAG.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND PAG.PAG_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '       , // vírgula do iif chkSaldoAnterior
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'PAG.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+'PAG.PAG_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and PAG.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND PAG.PAG_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataFinal.Date -1)))+' '
+                      ) +
                       'UNION '+
                       'SELECT '+
                       ' ''C''  AS TIPO, SUM(FAT.FRE_RECEBIDO) '+
@@ -281,16 +289,25 @@ begin
                       'JOIN FAT_PC01 FPC ON (FPC.FAT_REGISTRO = FAT.FAT_REGISTRO) '+
                       'LEFT JOIN CLI0000 CLI ON (CLI.CLI_CODIGO = (SELECT FIRST 1 T3.CLI_CODIGO FROM FAT0000 T3 WHERE T3.FAT_CODIGO = FPC.FAT_CODIGO)) '+
                       'LEFT JOIN USUARIO USR ON (USR.USU_CODIGO = FAT.USU_CODIGO) '+
-                      'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'FAT.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+' FAT.FRE_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and FAT.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND FAT.FRE_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
+                      iif(chkSaldoAnterior.Checked,
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'FAT.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+' FAT.FRE_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and FAT.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND FAT.FRE_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '      , // virgula do iif chaSaldoAnterior
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'FAT.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+' FAT.FRE_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and FAT.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND FAT.FRE_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataFinal.Date -1)))+' '
+                      ) +
+
                       'UNION '+
                       'SELECT cast(tr.BTR_TIPO as char(1)),SUM(tr.BTR_VALOR) '+
                       'FROM  BAN_TRANSFERENCIA TR '+
                       'LEFT JOIN USUARIO USR ON (USR.USU_CODIGO = tr.USU_CODIGO) '+
-                      'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'TR.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+' TR.BTR_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and TR.BCO_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND tr.BTR_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
+                      iif(chkSaldoAnterior.Checked,
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'TR.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+' TR.BTR_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and TR.BCO_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND tr.BTR_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '      , // virgula do iif chaSaldoAnterior
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'TR.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+' TR.BTR_CONCILIADO = ''S'' '+IIF(EdContaBanco.Text = '9999','',' and TR.BCO_CODIGO = '+QuotedStr(EdContaBanco.Text))+' AND tr.BTR_DATA_LANCAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataFinal.Date -1)))+' '
+                      ) +
                       'group by tr.BTR_TIPO';
 
          DataCadastros.sqlUpdate.Close;
          DataCadastros.SqlUpdate.sql.text :=sCondicao;
+         if dbInicio.IsDesenvolvimento then
+           copyToClipboard(DataCadastros.SqlUpdate.sql.text);
          DataCadastros.sqlUpdate.open;
          if (not DataCadastros.sqlUpdate.IsEmpty) then
             begin
@@ -314,8 +331,10 @@ begin
                       'JOIN PAG_PC01 PPC ON (PPC.PAG_REGISTRO = PAG.PAG_REGISTRO) '+
                       'LEFT JOIN FOR0000 FRN ON (FRN.FOR_CODIGO = (SELECT FIRST 1 T3.FOR_CODIGO FROM PAG0000 T3 WHERE T3.PAG_CODIGO = PPC.PAG_CODIGO  and t3.EMP_CODIGO = ppc.EMP_CODIGO) ) '+
                       'LEFT JOIN USUARIO USR ON (USR.USU_CODIGO = PAG.USU_CODIGO) '+
-                      //'WHERE ((PAG.PAG_CONCILIADO <> ''S'')or(PAG.PAG_CONCILIADO IS NULL)) and PAG.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND PAG.PAG_DATA_PAGAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
-                      'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'PAG.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' PAG.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+'  PAG.PAG_DATA_PAGAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
+                      iif(chkSaldoAnterior.Checked,
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'PAG.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' PAG.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+'  PAG.PAG_DATA_PAGAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '      , // virgula do iif chaSaldoAnterior
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'PAG.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' PAG.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+'  PAG.PAG_DATA_PAGAMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataFinal.Date -1)))+' '
+                      ) +
                       'UNION '+
                       'SELECT '+
                       'CASE WHEN (1=1) THEN ''C'' END AS TIPO, SUM(FAT.FRE_RECEBIDO) '+
@@ -324,18 +343,25 @@ begin
                       'JOIN FAT_PC01 FPC ON (FPC.FAT_REGISTRO = FAT.FAT_REGISTRO) '+
                       'LEFT JOIN CLI0000 CLI ON (CLI.CLI_CODIGO = (SELECT FIRST 1 T3.CLI_CODIGO FROM FAT0000 T3 WHERE T3.FAT_CODIGO = FPC.FAT_CODIGO   and t3.EMP_CODIGO = FPC.EMP_CODIGO)) '+
                       'LEFT JOIN USUARIO USR ON (USR.USU_CODIGO = FAT.USU_CODIGO) '+
-                      //'WHERE ((FAT.FRE_CONCILIADO <> ''S'')OR(FAT.FRE_CONCILIADO IS NULL)) AND FAT.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND FAT.FRE_DATA_RECEBIMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
-                      'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'FAT.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' FAT.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+' FAT.FRE_DATA_RECEBIMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
+                      iif(chkSaldoAnterior.Checked,
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'FAT.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' FAT.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+' FAT.FRE_DATA_RECEBIMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '      , // virgula do iif chaSaldoAnterior
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'FAT.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' FAT.BAN_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+' FAT.FRE_DATA_RECEBIMENTO BETWEEN '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataFinal.Date -1)))+' '
+                      ) +
                       'UNION '+
                       'SELECT cast(tr.BTR_TIPO as char(1)),SUM(tr.BTR_VALOR) '+
                       'FROM  BAN_TRANSFERENCIA TR '+
                       'LEFT JOIN USUARIO USR ON (USR.USU_CODIGO = tr.USU_CODIGO) '+
-                      //'WHERE ((TR.BTR_CONCILIADO <> ''S'')OR(TR.BTR_CONCILIADO IS NULL)) AND TR.BCO_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND tr.BTR_DATA BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
-                      'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'TR.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' TR.BCO_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+' tr.BTR_DATA BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '+
+                      iif(chkSaldoAnterior.Checked,
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'TR.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' TR.BCO_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+' tr.BTR_DATA BETWEEN '+QuotedStr(DataAmericana(DateToStr(dDataSaldo)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date -1)))+' '      , // virgula do iif chaSaldoAnterior
+                        'WHERE '+iif(NOT chkMultiEmpresa.Checked, 'TR.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+ ' AND ','')+''+IIF(EdContaBanco.Text = '9999','',' TR.BCO_CODIGO = '+QuotedStr(EdContaBanco.Text)+' AND ')+' tr.BTR_DATA BETWEEN '+QuotedStr(DataAmericana(DateToStr(RxDataInicial.Date)))+' AND '+QuotedStr(DataAmericana(DateToStr(RxDataFinal.Date -1)))+' '
+                      ) +
                       'group by tr.BTR_TIPO';
 
          DataCadastros.sqlUpdate.Close;
          DataCadastros.SqlUpdate.sql.text :=sCondicao;
+         if dbInicio.IsDesenvolvimento then
+           copyToClipboard(DataCadastros.SqlUpdate.sql.text);
+
          DataCadastros.sqlUpdate.open;
          if (not DataCadastros.sqlUpdate.IsEmpty) then
             begin
@@ -887,6 +913,15 @@ end;
 
 procedure TFrmFinanceiroConciliacao.chkMultiEmpresaClick(Sender: TObject);
 begin
+  Localizar;
+end;
+
+procedure TFrmFinanceiroConciliacao.chkSaldoAnteriorClick(Sender: TObject);
+begin
+  if chkSaldoAnterior.Checked then
+    chkSaldoAnterior.Caption := 'Considera Saldo Anterior'
+  else
+    chkSaldoAnterior.Caption := 'Considera Período Informado';
   Localizar;
 end;
 
