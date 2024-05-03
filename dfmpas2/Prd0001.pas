@@ -864,131 +864,131 @@ type
     SqlProdutosCEST_REVISAR : TStringField;
     SqlProdutosPRD_CSTPISCOFINS : TStringField;
     DspProdutos : TDataSetProvider;
-    CdsProdutos : TClientDataSet;
-    CdsProdutosPRD_CODIGO : TStringField;
-    CdsProdutosPRD_DESCRI_RES : TStringField;
-    CdsProdutosPRD_UND : TStringField;
-    CdsProdutosPRD_EMBALA : TStringField;
-    CdsProdutosPGR_CODIGO : TStringField;
-    CdsProdutosPTI_CODIGO : TStringField;
-    CdsProdutosIPI_CODIGO : TStringField;
-    CdsProdutosPRD_ALIQICM : TFMTBCdField;
-    CdsProdutosPRD_CARACT : TMemoField;
-    CdsProdutosPRD_MAXIMO : TFMTBCdField;
-    CdsProdutosPRD_MINIMO : TFMTBCdField;
-    CdsProdutosPRD_PCUSTO : TFMTBCdField;
-    CdsProdutosPRD_PVENDA : TFMTBCdField;
-    CdsProdutosPRD_PMEDIO : TFMTBCdField;
-    CdsProdutosPRD_PMATPRI : TFMTBCdField;
-    CdsProdutosPRD_MAOOBRA : TFMTBCdField;
-    CdsProdutosPRD_ESTOQUE : TFMTBCdField;
-    CdsProdutosPRD_SAIDA : TFMTBCdField;
-    CdsProdutosPRD_PENDENTE : TFMTBCdField;
-    CdsProdutosPRD_ENTRADA : TFMTBCdField;
-    CdsProdutosFOR_CODIGO : TStringField;
-    CdsProdutosPRD_TEMSUB : TStringField;
-    CdsProdutosPRD_SITRIBUT : TStringField;
-    CdsProdutosPRD_ICMSUBS : TFMTBCdField;
-    CdsProdutosPRD_UTILCONV : TStringField;
-    CdsProdutosPRD_UNDCOMP : TStringField;
-    CdsProdutosPRD_PESOKG : TFMTBCdField;
-    CdsProdutosPRD_FATORC : TFMTBCdField;
-    CdsProdutosPRD_DIVMULT : TStringField;
-    CdsProdutosEMP_CODIGO : TStringField;
-    CdsProdutosPRD_DTPCUSTO : TSQLTimeStampField;
-    CdsProdutosPRD_TABPRECO : TStringField;
-    CdsProdutosPRD_GARANTIA : TStringField;
-    CdsProdutosPRD_FAMILIA : TStringField;
-    CdsProdutosPRD_VAR1 : TFMTBCdField;
-    CdsProdutosPRD_VAR2 : TFMTBCdField;
-    CdsProdutosPRD_VAR3 : TFMTBCdField;
-    CdsProdutosPRD_VAR4 : TFMTBCdField;
-    CdsProdutosPRD_VAR5 : TFMTBCdField;
-    CdsProdutosPRD_VAR6 : TFMTBCdField;
-    CdsProdutosPRD_VAR7 : TFMTBCdField;
-    CdsProdutosPRD_VAR8 : TFMTBCdField;
-    CdsProdutosPRD_DCVAR1 : TStringField;
-    CdsProdutosPRD_DCVAR2 : TStringField;
-    CdsProdutosPRD_DCVAR3 : TStringField;
-    CdsProdutosPRD_DCVAR4 : TStringField;
-    CdsProdutosPRD_DCVAR5 : TStringField;
-    CdsProdutosPRD_DCVAR6 : TStringField;
-    CdsProdutosPRD_DCVAR7 : TStringField;
-    CdsProdutosPRD_DCVAR8 : TStringField;
-    CdsProdutosPRD_FISICO_CC : TCurrencyField;
-    CdsProdutosPRD_ANTECIPADO_CC : TCurrencyField;
-    CdsProdutosPRD_DTCADASTRO : TDateField;
-    CdsProdutosPRD_CURVA : TStringField;
-    CdsProdutosPRD_CODMERCOSUL : TStringField;
-    CdsProdutosPRD_DTPVENDA : TDateField;
-    CdsProdutosAMX_CODIGO : TStringField;
-    CdsProdutosPRD_CODBARRA : TStringField;
-    CdsProdutosPRD_GRADE : TStringField;
-    CdsProdutosLIN_CODIGO : TStringField;
-    CdsProdutosPRD_CUSTOCOMIPI : TFMTBCdField;
-    CdsProdutosPRD_RESERVA : TFMTBCdField;
-    CdsProdutosPRD_EMPENHO : TFMTBCdField;
-    CdsProdutosPRD_SALDOPRODUCAO : TFMTBCdField;
-    CdsProdutosPRD_COMISSAO : TFMTBCdField;
-    CdsProdutosPRD_RESERVA_VAR1 : TFMTBCdField;
-    CdsProdutosPRD_RESERVA_VAR2 : TFMTBCdField;
-    CdsProdutosPRD_RESERVA_VAR3 : TFMTBCdField;
-    CdsProdutosPRD_RESERVA_VAR4 : TFMTBCdField;
-    CdsProdutosPRD_RESERVA_VAR5 : TFMTBCdField;
-    CdsProdutosPRD_RESERVA_VAR6 : TFMTBCdField;
-    CdsProdutosPRD_RESERVA_VAR7 : TFMTBCdField;
-    CdsProdutosPRD_RESERVA_VAR8 : TFMTBCdField;
-    CdsProdutosPRD_SIMULACAO : TFMTBCdField;
-    CdsProdutosPRD_DT_ULT_COMPRA : TDateField;
-    CdsProdutosPRD_VL_ULT_COMPRA : TFMTBCdField;
-    CdsProdutosPRD_NF_ULT_COMPRA : TStringField;
-    CdsProdutosFOR_CODIGO_ANT : TStringField;
-    CdsProdutosPRD_DT_ULT_COMPRA_ANT : TDateField;
-    CdsProdutosPRD_VL_ULT_COMPRA_ANT : TFMTBCdField;
-    CdsProdutosPRD_NF_ULT_COMPRA_ANT : TStringField;
-    CdsProdutosPRD_LOTE : TStringField;
-    CdsProdutosPRD_FATOR_PROD : TFMTBCdField;
-    CdsProdutosPRD_DIV_MULT_PROD : TStringField;
-    CdsProdutosSTB_TRIBUTACAO : TStringField;
-    CdsProdutosPRD_ORIGEM : TIntegerField;
-    CdsProdutosPRD_MARGEMVENDA : TFMTBCdField;
-    CdsProdutosPRD_MARGEMOFERTA : TFMTBCdField;
-    CdsProdutosPRD_PRECOOFERTA : TFMTBCdField;
-    CdsProdutosPRD_INICIOOFERTA : TDateField;
-    CdsProdutosPRD_FIMOFERTA : TDateField;
-    CdsProdutosPRD_CUSTO_CREDITO : TFMTBCdField;
-    CdsProdutosPRD_PVENDA2 : TFMTBCdField;
-    CdsProdutosPRD_PVENDA3 : TFMTBCdField;
-    CdsProdutosPRD_PVENDA4 : TFMTBCdField;
-    CdsProdutosPRD_PVENDA5 : TFMTBCdField;
-    CdsProdutosPRD_PVENDA6 : TFMTBCdField;
-    CdsProdutosUSU_CODIGO_ATUAL_TAB : TIntegerField;
-    CdsProdutosUSU_LOGIN_ATUAL_TAB : TStringField;
-    CdsProdutosPRD_DATA_ATUAL_TAB : TSQLTimeStampField;
-    CdsProdutosPRD_PESOLIQ : TFMTBCdField;
-    CdsProdutosSPED_GENCODIGO : TStringField;
-    CdsProdutosSPED_TIPCODIGO : TStringField;
-    CdsProdutosPRD_UNICODIGO : TIntegerField;
-    CdsProdutosPRD_PRODSERV : TStringField;
-    CdsProdutosPRD_DESCRI : TStringField;
-    CdsProdutosPRD_COMPL : TStringField;
-    CdsProdutosPRD_CODORIGINAL : TStringField;
-    CdsProdutosPRD_CUSTOFRETE : TFMTBCdField;
-    CdsProdutosPRD_CUSTOIPI : TFMTBCdField;
-    CdsProdutosPRD_CUSTOSUBTRIB : TFMTBCdField;
-    CdsProdutosPRD_CUSTOADCIONAL : TFMTBCdField;
-    CdsProdutosPRD_MGDESPFIXAS : TFMTBCdField;
-    CdsProdutosPRD_INDICESOBMARGEM : TFMTBCdField;
-    CdsProdutosSRV_REGISTRO : TIntegerField;
-    CdsProdutosPRD_STATUS : TStringField;
-    CdsProdutosPRD_GERENCIA_LOTE : TStringField;
-    CdsProdutosPRD_REFER : TStringField;
-    CdsProdutosPRD_UND_GRADE_CALCULO : TStringField;
-    CdsProdutosPRD_GRADE_OBRIGATORIO : TStringField;
-    CdsProdutosPRDE_REGISTRO : TIntegerField;
-    CdsProdutosCEST_COD : TStringField;
-    CdsProdutosCEST_REVISAR : TStringField;
-    CdsProdutosPRD_CSTPISCOFINS : TStringField;
+    CdsProdutos: TClientDataSet;
+    CdsProdutosPRD_CODIGO: TStringField;
+    CdsProdutosPRD_DESCRI_RES: TStringField;
+    CdsProdutosPRD_UND: TStringField;
+    CdsProdutosPRD_EMBALA: TStringField;
+    CdsProdutosPGR_CODIGO: TStringField;
+    CdsProdutosPTI_CODIGO: TStringField;
+    CdsProdutosIPI_CODIGO: TStringField;
+    CdsProdutosPRD_ALIQICM: TFMTBCDField;
+    CdsProdutosPRD_CARACT: TMemoField;
+    CdsProdutosPRD_MAXIMO: TFMTBCDField;
+    CdsProdutosPRD_MINIMO: TFMTBCDField;
+    CdsProdutosPRD_PCUSTO: TFMTBCDField;
+    CdsProdutosPRD_PVENDA: TFMTBCDField;
+    CdsProdutosPRD_PMEDIO: TFMTBCDField;
+    CdsProdutosPRD_PMATPRI: TFMTBCDField;
+    CdsProdutosPRD_MAOOBRA: TFMTBCDField;
+    CdsProdutosPRD_ESTOQUE: TFMTBCDField;
+    CdsProdutosPRD_SAIDA: TFMTBCDField;
+    CdsProdutosPRD_PENDENTE: TFMTBCDField;
+    CdsProdutosPRD_ENTRADA: TFMTBCDField;
+    CdsProdutosFOR_CODIGO: TStringField;
+    CdsProdutosPRD_TEMSUB: TStringField;
+    CdsProdutosPRD_SITRIBUT: TStringField;
+    CdsProdutosPRD_ICMSUBS: TFMTBCDField;
+    CdsProdutosPRD_UTILCONV: TStringField;
+    CdsProdutosPRD_UNDCOMP: TStringField;
+    CdsProdutosPRD_PESOKG: TFMTBCDField;
+    CdsProdutosPRD_FATORC: TFMTBCDField;
+    CdsProdutosPRD_DIVMULT: TStringField;
+    CdsProdutosEMP_CODIGO: TStringField;
+    CdsProdutosPRD_DTPCUSTO: TSQLTimeStampField;
+    CdsProdutosPRD_TABPRECO: TStringField;
+    CdsProdutosPRD_GARANTIA: TStringField;
+    CdsProdutosPRD_FAMILIA: TStringField;
+    CdsProdutosPRD_VAR1: TFMTBCDField;
+    CdsProdutosPRD_VAR2: TFMTBCDField;
+    CdsProdutosPRD_VAR3: TFMTBCDField;
+    CdsProdutosPRD_VAR4: TFMTBCDField;
+    CdsProdutosPRD_VAR5: TFMTBCDField;
+    CdsProdutosPRD_VAR6: TFMTBCDField;
+    CdsProdutosPRD_VAR7: TFMTBCDField;
+    CdsProdutosPRD_VAR8: TFMTBCDField;
+    CdsProdutosPRD_DCVAR1: TStringField;
+    CdsProdutosPRD_DCVAR2: TStringField;
+    CdsProdutosPRD_DCVAR3: TStringField;
+    CdsProdutosPRD_DCVAR4: TStringField;
+    CdsProdutosPRD_DCVAR5: TStringField;
+    CdsProdutosPRD_DCVAR6: TStringField;
+    CdsProdutosPRD_DCVAR7: TStringField;
+    CdsProdutosPRD_DCVAR8: TStringField;
+    CdsProdutosPRD_FISICO_CC: TCurrencyField;
+    CdsProdutosPRD_ANTECIPADO_CC: TCurrencyField;
+    CdsProdutosPRD_DTCADASTRO: TDateField;
+    CdsProdutosPRD_CURVA: TStringField;
+    CdsProdutosPRD_CODMERCOSUL: TStringField;
+    CdsProdutosPRD_DTPVENDA: TDateField;
+    CdsProdutosAMX_CODIGO: TStringField;
+    CdsProdutosPRD_CODBARRA: TStringField;
+    CdsProdutosPRD_GRADE: TStringField;
+    CdsProdutosLIN_CODIGO: TStringField;
+    CdsProdutosPRD_CUSTOCOMIPI: TFMTBCDField;
+    CdsProdutosPRD_RESERVA: TFMTBCDField;
+    CdsProdutosPRD_EMPENHO: TFMTBCDField;
+    CdsProdutosPRD_SALDOPRODUCAO: TFMTBCDField;
+    CdsProdutosPRD_COMISSAO: TFMTBCDField;
+    CdsProdutosPRD_RESERVA_VAR1: TFMTBCDField;
+    CdsProdutosPRD_RESERVA_VAR2: TFMTBCDField;
+    CdsProdutosPRD_RESERVA_VAR3: TFMTBCDField;
+    CdsProdutosPRD_RESERVA_VAR4: TFMTBCDField;
+    CdsProdutosPRD_RESERVA_VAR5: TFMTBCDField;
+    CdsProdutosPRD_RESERVA_VAR6: TFMTBCDField;
+    CdsProdutosPRD_RESERVA_VAR7: TFMTBCDField;
+    CdsProdutosPRD_RESERVA_VAR8: TFMTBCDField;
+    CdsProdutosPRD_SIMULACAO: TFMTBCDField;
+    CdsProdutosPRD_DT_ULT_COMPRA: TDateField;
+    CdsProdutosPRD_VL_ULT_COMPRA: TFMTBCDField;
+    CdsProdutosPRD_NF_ULT_COMPRA: TStringField;
+    CdsProdutosFOR_CODIGO_ANT: TStringField;
+    CdsProdutosPRD_DT_ULT_COMPRA_ANT: TDateField;
+    CdsProdutosPRD_VL_ULT_COMPRA_ANT: TFMTBCDField;
+    CdsProdutosPRD_NF_ULT_COMPRA_ANT: TStringField;
+    CdsProdutosPRD_LOTE: TStringField;
+    CdsProdutosPRD_FATOR_PROD: TFMTBCDField;
+    CdsProdutosPRD_DIV_MULT_PROD: TStringField;
+    CdsProdutosSTB_TRIBUTACAO: TStringField;
+    CdsProdutosPRD_ORIGEM: TIntegerField;
+    CdsProdutosPRD_MARGEMVENDA: TFMTBCDField;
+    CdsProdutosPRD_MARGEMOFERTA: TFMTBCDField;
+    CdsProdutosPRD_PRECOOFERTA: TFMTBCDField;
+    CdsProdutosPRD_INICIOOFERTA: TDateField;
+    CdsProdutosPRD_FIMOFERTA: TDateField;
+    CdsProdutosPRD_CUSTO_CREDITO: TFMTBCDField;
+    CdsProdutosPRD_PVENDA2: TFMTBCDField;
+    CdsProdutosPRD_PVENDA3: TFMTBCDField;
+    CdsProdutosPRD_PVENDA4: TFMTBCDField;
+    CdsProdutosPRD_PVENDA5: TFMTBCDField;
+    CdsProdutosPRD_PVENDA6: TFMTBCDField;
+    CdsProdutosUSU_CODIGO_ATUAL_TAB: TIntegerField;
+    CdsProdutosUSU_LOGIN_ATUAL_TAB: TStringField;
+    CdsProdutosPRD_DATA_ATUAL_TAB: TSQLTimeStampField;
+    CdsProdutosPRD_PESOLIQ: TFMTBCDField;
+    CdsProdutosSPED_GENCODIGO: TStringField;
+    CdsProdutosSPED_TIPCODIGO: TStringField;
+    CdsProdutosPRD_UNICODIGO: TIntegerField;
+    CdsProdutosPRD_PRODSERV: TStringField;
+    CdsProdutosPRD_DESCRI: TStringField;
+    CdsProdutosPRD_COMPL: TStringField;
+    CdsProdutosPRD_CODORIGINAL: TStringField;
+    CdsProdutosPRD_CUSTOFRETE: TFMTBCDField;
+    CdsProdutosPRD_CUSTOIPI: TFMTBCDField;
+    CdsProdutosPRD_CUSTOSUBTRIB: TFMTBCDField;
+    CdsProdutosPRD_CUSTOADCIONAL: TFMTBCDField;
+    CdsProdutosPRD_MGDESPFIXAS: TFMTBCDField;
+    CdsProdutosPRD_INDICESOBMARGEM: TFMTBCDField;
+    CdsProdutosSRV_REGISTRO: TIntegerField;
+    CdsProdutosPRD_STATUS: TStringField;
+    CdsProdutosPRD_GERENCIA_LOTE: TStringField;
+    CdsProdutosPRD_REFER: TStringField;
+    CdsProdutosPRD_UND_GRADE_CALCULO: TStringField;
+    CdsProdutosPRD_GRADE_OBRIGATORIO: TStringField;
+    CdsProdutosPRDE_REGISTRO: TIntegerField;
+    CdsProdutosCEST_COD: TStringField;
+    CdsProdutosCEST_REVISAR: TStringField;
+    CdsProdutosPRD_CSTPISCOFINS: TStringField;
     DsProdutos : TDataSource;
     DsPrdClassIPI : TDataSource;
     CdsPrdClassIPI_OLD : TClientDataSet;
@@ -1003,10 +1003,10 @@ type
     DspPrdClassIPI : TDataSetProvider;
     SqlProdutosprd_especifico : TStringField;
     SqlProdutosid_prd_especifico : TIntegerField;
-    CdsProdutosPRD_ESPECIFICO : TStringField;
-    CdsProdutosID_PRD_ESPECIFICO : TIntegerField;
+    CdsProdutosPRD_ESPECIFICO: TStringField;
+    CdsProdutosID_PRD_ESPECIFICO: TIntegerField;
     SqlProdutosPRD_ESPECIFICO_REDST : TSingleField;
-    CdsProdutosPRD_ESPECIFICO_REDST : TSingleField;
+    CdsProdutosPRD_ESPECIFICO_REDST: TSingleField;
     dsTipoProduto : TDataSource;
     edSigla : TDBEdit;
     qTipoProduto : TSQLQuery;
@@ -1172,22 +1172,22 @@ type
     SqlProdutosPRD_PERC_VENDA3 : TFMTBCdField;
     SqlProdutosPRD_PERC_COMISSAO4 : TFMTBCdField;
     SqlProdutosPRD_PERC_VENDA4 : TFMTBCdField;
-    CdsProdutosPRD_PERC_COMISSAO : TFMTBCdField;
-    CdsProdutosPRD_PERC_VENDA : TFMTBCdField;
-    CdsProdutosPRD_PERC_COMISSAO2 : TFMTBCdField;
-    CdsProdutosPRD_PERC_VENDA2 : TFMTBCdField;
-    CdsProdutosPRD_PERC_COMISSAO3 : TFMTBCdField;
-    CdsProdutosPRD_PERC_VENDA3 : TFMTBCdField;
-    CdsProdutosPRD_PERC_COMISSAO4 : TFMTBCdField;
-    CdsProdutosPRD_PERC_VENDA4 : TFMTBCdField;
+    CdsProdutosPRD_PERC_COMISSAO: TFMTBCDField;
+    CdsProdutosPRD_PERC_VENDA: TFMTBCDField;
+    CdsProdutosPRD_PERC_COMISSAO2: TFMTBCDField;
+    CdsProdutosPRD_PERC_VENDA2: TFMTBCDField;
+    CdsProdutosPRD_PERC_COMISSAO3: TFMTBCDField;
+    CdsProdutosPRD_PERC_VENDA3: TFMTBCDField;
+    CdsProdutosPRD_PERC_COMISSAO4: TFMTBCDField;
+    CdsProdutosPRD_PERC_VENDA4: TFMTBCDField;
     SqlProdutosPRD_PERC_COMISSAO5 : TFMTBCdField;
     SqlProdutosPRD_PERC_VENDA5 : TFMTBCdField;
     SqlProdutosPRD_PERC_COMISSAO6 : TFMTBCdField;
     SqlProdutosPRD_PERC_VENDA6 : TFMTBCdField;
-    CdsProdutosPRD_PERC_COMISSAO5 : TFMTBCdField;
-    CdsProdutosPRD_PERC_VENDA5 : TFMTBCdField;
-    CdsProdutosPRD_PERC_COMISSAO6 : TFMTBCdField;
-    CdsProdutosPRD_PERC_VENDA6 : TFMTBCdField;
+    CdsProdutosPRD_PERC_COMISSAO5: TFMTBCDField;
+    CdsProdutosPRD_PERC_VENDA5: TFMTBCDField;
+    CdsProdutosPRD_PERC_COMISSAO6: TFMTBCDField;
+    CdsProdutosPRD_PERC_VENDA6: TFMTBCDField;
     DBEdit31 : TDBEdit;
     DBEdit32 : TDBEdit;
     DBEdit34 : TDBEdit;
@@ -1324,10 +1324,10 @@ type
     DBEdit54 : TDBEdit;
     lbDesc4 : TLabel;
     DBEdit55 : TDBEdit;
-    CdsProdutosInterno : TFMTBCdField;
-    CdsProdutosEXTERNO : TFMTBCdField;
-    CdsProdutosALTURA1 : TFMTBCdField;
-    CdsProdutosALTURA2 : TFMTBCdField;
+    CdsProdutosInterno: TFMTBCDField;
+    CdsProdutosEXTERNO: TFMTBCDField;
+    CdsProdutosALTURA1: TFMTBCDField;
+    CdsProdutosALTURA2: TFMTBCDField;
     SqlProdutosInterno : TFMTBCdField;
     SqlProdutosEXTERNO : TFMTBCdField;
     SqlProdutosALTURA1 : TFMTBCdField;
@@ -1343,12 +1343,12 @@ type
     Label119 : TLabel;
     Label120 : TLabel;
     btnConfirmarMargem : TButton;
-    CdsProdutosPRD_PER_ICMS : TFMTBCdField;
-    CdsProdutosPRD_PER_PISCONFINS : TFMTBCdField;
-    CdsProdutosPRD_PER_IPI : TFMTBCdField;
-    CdsProdutosPRD_PER_FRETE : TFMTBCdField;
-    CdsProdutosPRD_PER_OUTROS : TFMTBCdField;
-    CdsProdutosPRD_PER_LUCRO : TFMTBCdField;
+    CdsProdutosPRD_PER_ICMS: TFMTBCDField;
+    CdsProdutosPRD_PER_PISCONFINS: TFMTBCDField;
+    CdsProdutosPRD_PER_IPI: TFMTBCDField;
+    CdsProdutosPRD_PER_FRETE: TFMTBCDField;
+    CdsProdutosPRD_PER_OUTROS: TFMTBCDField;
+    CdsProdutosPRD_PER_LUCRO: TFMTBCDField;
     DBEdit63 : TDBEdit;
     DBEdit64 : TDBEdit;
     DBEdit65 : TDBEdit;
@@ -1367,7 +1367,7 @@ type
     spMargemVenda : TSpeedButton;
     Label124 : TLabel;
     ppDBMemo1 : TppDBMemo;
-    CdsProdutosPRD_OUTROSCUSTOS : TFMTBCdField;
+    CdsProdutosPRD_OUTROSCUSTOS: TFMTBCDField;
     Label125 : TLabel;
     DBEdit69 : TDBEdit;
     SqlProdutosPRD_OUTROSCUSTOS : TFMTBCdField;
@@ -1423,7 +1423,7 @@ type
     cdsMPusadoFTI_PERDA : TFMTBCdField;
     Button1 : TButton;
     ppDBCalc1 : TppDBCalc;
-    CdsProdutosPRD_CBENEF : TStringField;
+    CdsProdutosPRD_CBENEF: TStringField;
     SqlProdutosPRD_CBENEF : TStringField;
     SqlProdutosPRD_TIPOPECA_TERM : TStringField;
     SqlProdutosPRD_MATERIAL_TERM : TStringField;
@@ -1433,14 +1433,14 @@ type
     SqlProdutosPRD_TAMANHOGRAO_TERM : TStringField;
     SqlProdutosPRD_EHT_TERM : TStringField;
     SqlProdutosPRD_DESENHO_TERM : TStringField;
-    CdsProdutosPRD_TIPOPECA_TERM : TStringField;
-    CdsProdutosPRD_MATERIAL_TERM : TStringField;
-    CdsProdutosPRD_DUREZASUPERFICIAL_TERM : TStringField;
-    CdsProdutosPRD_DUREZANUCLEO_TERM : TStringField;
-    CdsProdutosPRD_PROFUNDIDADE_TERM : TStringField;
-    CdsProdutosPRD_TAMANHOGRAO_TERM : TStringField;
-    CdsProdutosPRD_EHT_TERM : TStringField;
-    CdsProdutosPRD_DESENHO_TERM : TStringField;
+    CdsProdutosPRD_TIPOPECA_TERM: TStringField;
+    CdsProdutosPRD_MATERIAL_TERM: TStringField;
+    CdsProdutosPRD_DUREZASUPERFICIAL_TERM: TStringField;
+    CdsProdutosPRD_DUREZANUCLEO_TERM: TStringField;
+    CdsProdutosPRD_PROFUNDIDADE_TERM: TStringField;
+    CdsProdutosPRD_TAMANHOGRAO_TERM: TStringField;
+    CdsProdutosPRD_EHT_TERM: TStringField;
+    CdsProdutosPRD_DESENHO_TERM: TStringField;
     tsTratamentoTermico : TTabSheet;
     Label130 : TLabel;
     DBEdit70 : TDBEdit;
@@ -1468,9 +1468,9 @@ type
     qProcessosPRO_DESCRICAO : TStringField;
     Label139 : TLabel;
     cbProcesso : TSgDbSearchCombo;
-    CdsProdutosPRO_CODIGO : TIntegerField;
+    CdsProdutosPRO_CODIGO: TIntegerField;
     SqlProdutosPRO_CODIGO : TIntegerField;
-    CdsProdutosprd_und_trib : TStringField;
+    CdsProdutosprd_und_trib: TStringField;
     SqlProdutosprd_und_trib : TStringField;
     tsServico : TTabSheet;
     qCnae : TSQLQuery;
@@ -1483,11 +1483,11 @@ type
     PesqServico : TSgDbSearchCombo;
     SqlProdutosCNAE_CODIGO : TStringField;
     SqlProdutosSRV_CODIGO : TStringField;
-    CdsProdutosCNAE_CODIGO : TStringField;
-    CdsProdutosSRV_CODIGO : TStringField;
+    CdsProdutosCNAE_CODIGO: TStringField;
+    CdsProdutosSRV_CODIGO: TStringField;
     chkmultiempresa : TCheckBox;
     Label143 : TLabel;
-    CdsProdutosPRD_IMPOSTOS_RETIRADOS : TFMTBCdField;
+    CdsProdutosPRD_IMPOSTOS_RETIRADOS: TFMTBCDField;
     SqlProdutosPRD_IMPOSTOS_RETIRADOS : TFMTBCdField;
     Label144 : TLabel;
     dbedtPRD_DTPCUSTO1 : TDBEdit;
@@ -1512,18 +1512,17 @@ type
     Label146 : TLabel;
 
     mDescricaoEtapas : TDBMemo;
-
-    CdsProdutosPRD_VAIXML : TStringField;
+    CdsProdutosPRD_VAIXML: TStringField;
     SqlProdutosPRD_VAIXML : TStringField;
     DBCheckBox4 : TDBCheckBox;
     DBEprecoOferta : TDBEdit;
     Label85 : TLabel;
     DBEMultiplicador : TDBEdit;
     lmultiplicador : TLabel;
-    CdsProdutosPRD_MULTIPLICADOR : TFMTBCdField;
+    CdsProdutosPRD_MULTIPLICADOR: TFMTBCDField;
     SqlProdutosPRD_MULTIPLICADOR : TFMTBCdField;
     chkEnvase : TDBCheckBox;
-    CdsProdutosPRD_ENVASE : TStringField;
+    CdsProdutosPRD_ENVASE: TStringField;
     SqlProdutosPRD_ENVASE : TStringField;
     SqlRelProdutosFTC_ETAPAS : TBlobField;
     ppDBMemo2 : TppDBMemo;
@@ -2129,7 +2128,7 @@ type
     DBEdit23 : TDBEdit;
     Label100 : TLabel;
     SqlProdutosPRD_DESCONTO : TFMTBCdField;
-    CdsProdutosPRD_DESCONTO : TFMTBCdField;
+    CdsProdutosPRD_DESCONTO: TFMTBCDField;
     EditarFicha1 : TMenuItem;
     DBEdit61 : TDBEdit;
     Label101 : TLabel;
@@ -2348,7 +2347,6 @@ type
     procedure cdsLotesPRDL_DATA_FABRICACAOGetText( Sender : TField; var Text : string; DisplayText : Boolean );
     procedure CdsProdutosAfterInsert( DataSet : TDataSet );
     procedure CdsProdutosBeforeEdit( DataSet : TDataSet );
-    procedure CdsProdutosCalcFields( DataSet : TDataSet );
     procedure CdsProdutosAfterScroll( DataSet : TDataSet );
     procedure CbTipoMenuNovoClick( Sender : tObject );
     procedure CbTipoSelect( Sender : tObject );
@@ -2502,6 +2500,7 @@ type
     procedure sgdbEnderecamentoChange(Sender: TObject);
     procedure cdsMolaMMO_EXTREMIDADE_MOLA_MATERIAGetText(Sender: TField;
       var Text: string; DisplayText: Boolean);
+    procedure CdsProdutosCalcFields(DataSet: TDataSet);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -2660,16 +2659,17 @@ end;
 
 procedure TFormProduto.BuscaProduto;
 begin
-//  CdsProdutos.close;
-//  SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
-//  CdsProdutos.Open;
-  try
-     CdsProdutos.Refresh;
-  except
-    CdsProdutos.Close;
-    CdsProdutos.Open;
-    CdsProdutos.Locate('PRD_REFER', EdtPrd_Refer.Text, [] );
-  end;
+  // otimização de performance
+  CdsProdutos.close;
+  SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
+  CdsProdutos.Open;
+//  try
+//     CdsProdutos.Refresh;
+//  except
+//    CdsProdutos.Close;
+//    CdsProdutos.Open;
+//    CdsProdutos.Locate('PRD_REFER', EdtPrd_Refer.Text, [] );
+//  end;
 
   if eNotaEntrada then // para otimizar
   begin
@@ -2687,10 +2687,11 @@ begin
 
   end;
 
-  if not CdsProdutos.Locate( 'PRD_REFER', EdtPrd_Refer.Text, [ ] ) then
+  // if not CdsProdutos.Locate( 'PRD_REFER', EdtPrd_Refer.Text, [ ] ) then
+  if CdsProdutos.RecordCount = 0 then
   begin
     Uteis.aviso( 'Código do Produto não encontrado!' );
-    EdtPrd_Refer.Text := CdsProdutosPRD_REFER.AsString;
+    EdtPrd_Refer.Text := '';
     EdtPrd_Refer.Setfocus;
     Abort;
   end
@@ -2740,17 +2741,17 @@ begin
           if ( eNotaEntrada ) then
           begin
 
-            SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
+            sqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
 
           end
           else
             if ( Assigned( FrmEntradaNotaXml ) ) then
             begin
               EdtPrd_Refer.Text := FrmEntradaNotaXml.CdsItensReferencia.AsString;
-              SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
+              sqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
             end
             else
-              SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', '', 'PRD_REFER', '' );
+              sqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT first 1 * FROM PRD0000', '', 'PRD_REFER', '' );
         CdsProdutos.Open;
         // CdsProdutos.Addindex('idxPRD_REFER', 'PRD_REFER', []);  demora mais ainda para abrir o form....
         // CdsProdutos.IndexName := '';
@@ -2811,13 +2812,16 @@ begin
       // AtivaSqls;
       // BuscaVendas;
     finally
-      CdsProdutos.EnableControls;
       HabilitaBotoes;
       CarregaPrecoEmpresa( );
-      cdsProdutos.Cancel;
+//      cdsProdutos.Cancel;
       EdtPrd_Refer.Enabled := True;
       EdtPrd_Refer.SetFocus;
       DBGridFichaTecnicaItem.ReadOnly := False;
+      // otimização da tela de entrada
+      CDSProdutos.OnCalcFields := CdsProdutosCalcFields;
+      CDSProdutos.AfterScroll := CdsProdutosAfterScroll;
+      CdsProdutos.EnableControls;
     end;
 
   except
@@ -2960,12 +2964,11 @@ begin
       end;
       DsProdutos.AutoEdit := True;
       // CdsProdutos.Refresh;
-
-      SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', '', 'PRD_REFER', '' );
-      // SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000',  'WHERE PRD_REFER = ' + qStr( sReferTmp ), 'PRD_REFER', '' );
+      // sqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', '', 'PRD_REFER', '' );
+      SqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000',  'WHERE PRD_REFER = ' + qStr( sReferTmp ), 'PRD_REFER', '' );
       CdsProdutos.close;
       CdsProdutos.Open;
-      localizado := CdsProdutos.Locate( 'PRD_REFER', sReferTmp, [ ] );
+      localizado := CdsProdutos.RecordCount > 0;
 
       if BuscaUmDadoSqlAsInteger('SELECT PRDE_REGISTRO FROM PRD0000_ENDERECAMENTO_EMPRESA ' +
                                  ' WHERE PRD_REFER = ' + QuotedStr(CdsProdutosPRD_REFER.AsString) +
@@ -3187,15 +3190,15 @@ begin
     if ( ActiveControl.Name = 'Bit_Cancelar' ) then
       Bit_Cancelar.Click
     Else
-      if ( CdsProdutos.State in [ dsBrowse ] ) and not ( CdsProdutos.isEmpty ) and not eNotaEntrada then
+//      if ( CdsProdutos.State in [ dsBrowse ] ) and not ( CdsProdutos.isEmpty ) and not eNotaEntrada then
+      if ( CdsProdutos.State in [ dsBrowse ] ) and not eNotaEntrada then
       begin
-
         BuscaProduto;
         AtivaSqls;
         DesabilitaBotoes;
       end
       else
-        if CdsProdutos.State in [ dsInsert, dsEdit, dsBrowse ] then
+        if CdsProdutos.State in [ dsInsert, dsEdit ] then
           if BuscaUmDadoSqlAsInteger( 'Select cast(count(*) as integer) as conta from    PRD0000 where prd_codigo <> ' + QuotedStr( CdsProdutosPRD_CODIGO.AsString ) + ' and PRD_REFER = ' + qStr( EdtPrd_Refer.Text ) + ConcatSE( ' and ', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) ) > 0 THEN
           begin
             Uteis.aviso( 'Este produto já existe...' );
@@ -6548,9 +6551,10 @@ begin
   EdtPrd_Refer.TabStop := eNotaEntrada;
 end;
 
-procedure TFormProduto.CdsProdutosCalcFields( DataSet : TDataSet );
+procedure TFormProduto.CdsProdutosCalcFields(DataSet: TDataSet);
 begin
   inherited;
+  
   CdsProdutosPRD_FISICO_CC.AsCurrency := ( CdsProdutosPRD_ESTOQUE.AsCurrency + CdsProdutosPRD_ENTRADA.AsCurrency ) - ( CdsProdutosPRD_SAIDA.AsCurrency + CdsProdutosPRD_RESERVA.AsCurrency + CdsProdutosPRD_EMPENHO.AsCurrency );
   CdsProdutosPRD_ANTECIPADO_CC.AsCurrency := ( CdsProdutosPRD_ESTOQUE.AsCurrency + CdsProdutosPRD_ENTRADA.AsCurrency + CdsProdutosPRD_PENDENTE.AsCurrency ) - ( CdsProdutosPRD_SAIDA.AsCurrency + CdsProdutosPRD_RESERVA.AsCurrency + CdsProdutosPRD_EMPENHO.AsCurrency );
 end;
