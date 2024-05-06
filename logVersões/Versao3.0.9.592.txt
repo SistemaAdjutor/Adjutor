@@ -1,0 +1,9 @@
+﻿Atualizado em 06/05/2024
+Inicio da versão: 06/05/2024
+
+principal: EDGE, PARSEALS INDUSTRIAL, Collect
+  1852 - Produto marcado como retorno não aparece no Industrialização por Kit [EDGE]
+  1855 - Otimização Banco de dados PARSEALS [PARSEALS INDUSTRIAL]
+  1856 - RELATÓRIO FINANCEIRO - Erro [Collect]
+  
+  
