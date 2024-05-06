@@ -18326,8 +18326,6 @@ inherited FormProduto: TFormProduto
     BeforeEdit = CdsProdutosBeforeEdit
     AfterPost = CdsProdutosAfterPost
     AfterCancel = CdsProdutosAfterCancel
-    AfterScroll = CdsProdutosAfterScroll
-    OnCalcFields = CdsProdutosCalcFields
     OnNewRecord = CdsProdutosNewRecord
     Left = 1384
     Top = 181
@@ -21533,7 +21531,6 @@ inherited FormProduto: TFormProduto
     AfterPost = CdsProdutosAfterPost
     AfterCancel = CdsProdutosAfterCancel
     AfterScroll = CdsProdutosAfterScroll
-    OnCalcFields = CdsProdutosCalcFields
     OnNewRecord = CdsProdutosNewRecord
     Left = 1952
     Top = 373
