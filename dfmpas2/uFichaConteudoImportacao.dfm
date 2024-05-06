@@ -1429,6 +1429,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       Precision = 18
       Size = 5
     end
+    object cdsBuscaFTC_BASEFORMULA: TIntegerField
+      FieldName = 'FTC_BASEFORMULA'
+    end
   end
   inherited pmExportar: TPopupMenu
     Left = 856
@@ -1560,6 +1563,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       ReadOnly = True
       Size = 8
+    end
+    object cdsBuscaDetalhesFTC_BASEFORMULA: TIntegerField
+      FieldName = 'FTC_BASEFORMULA'
     end
     object cdsBuscaDetalhesGTIN: TStringField
       AutoGenerateValue = arDefault

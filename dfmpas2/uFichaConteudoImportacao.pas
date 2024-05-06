@@ -379,6 +379,8 @@ type
     mtGridNCM: TStringField;
     mtGridGTIN: TStringField;
     SalvarFicha: TSaveDialog;
+    cdsBuscaFTC_BASEFORMULA: TIntegerField;
+    cdsBuscaDetalhesFTC_BASEFORMULA: TIntegerField;
     procedure btnMP_ExpotarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -421,6 +423,7 @@ type
    procedure Bloco0;
    procedure Bloco5;
    procedure Bloco9;
+   function cTotal(prdRefer, prdFilho, ptiSigla: string; var ftiUC: double; var nivel: integer): double;
    function ConsumoTotal(cds: TFDQuery; Post: Boolean): double;
    procedure EnableControls;
    procedure DisableControls;
@@ -920,7 +923,7 @@ end;
 procedure TfrmFichaConteudoImportacao.cdsBuscaDetalhesCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsBuscaDetalhes, True);
+  // ConsumoTotal(cdsBuscaDetalhes, True);
 end;
 
 
@@ -972,6 +975,7 @@ begin
 
   cdsBusca.Close;
   sqltext := ' SELECT pr.PRD_REFER, pr.PRD_DESCRI, pt.PTI_SIGLA, IPI_CODIGO AS NCM, ' +
+             '        ft.FTC_BASEFORMULA, ' +
              '        pr.PRD_CODBARRA AS GTIN, pr.PRD_UND, pr.PRD_ORIGEM, ' +
              '        pr.PRD_FCI_CONTEUDO_IMPORTACAO AS CI, ' +
              '        pr.PRD_FCI_VALOR_PARCELA_IMPORTADA ' +
@@ -991,7 +995,7 @@ end;
 function TfrmFichaConteudoImportacao.sqlText(prdRefer: string): string;
 begin
 
-  result := 'SELECT fi.PRD_REFER,  fi.PRD_REFER_ITENS , pr.PRD_DESCRI, ' +
+  result := 'SELECT fi.PRD_REFER,  fi.PRD_REFER_ITENS , pr.PRD_DESCRI, 0 as FTC_BASEFORMULA,' +
              ' pr.IPI_CODIGO AS NCM, pr.PRD_CODBARRA as GTIN, ' +
              ' pt.PTI_SIGLA, fi.FTI_UC, pr.PRD_UND, ' +
              ' COALESCE(PRD_FCI_VALOR_PARCELA_IMPORTADA, 0) AS PARCELA_IMPORTADA, ' +
@@ -1026,6 +1030,8 @@ var
 begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView1PRD_REFER.Index);
+  vlParcelaImportada := ConsumoTotal(cdsBusca, True);
+  exit;
   cdsBuscaDetalhes.SQL.Text := sqlText(prdRefer);
   AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsBusca, cdsBuscaDetalhes, mtGrid);
 end;
@@ -1038,7 +1044,8 @@ begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView2PRD_REFER_ITENS.Index);
   cdsNivel3.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsBuscaDetalhes, cdsNivel3, mtGrid);
+  ConsumoTotal(cdsBuscaDetalhes, True);
+  // AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsBuscaDetalhes, cdsNivel3, mtGrid);
 end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView3DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
@@ -1456,13 +1463,71 @@ begin
   pnBuscando.Visible := False;
 end;
 
+function TfrmFichaConteudoImportacao.cTotal(prdRefer, prdFilho, ptiSigla: string; var ftiUC: double; var nivel: integer): double;
+var
+  prdReferL, prdFilhoL, ptiSiglaL : string;
+begin
+  qAux.Close;
+  qAux.SQL.Text :=
+                   ' SELECT ' +
+                   '   fi.FTI_REGISTRO, ' +
+                   '   fi.PRD_REFER, ' +
+                   '   fi.PRD_REFER_ITENS, ' +
+                   '   fi.FTI_UC, ' +
+                   '   pt.PTI_SIGLA, ' +
+                   '   ft.FTC_BASEFORMULA ' +
+                   ' FROM FTC_IT01 fi ' +
+                   ' JOIN PRD0000 p ON (p.PRD_REFER = fi.PRD_REFER_ITENS) ' +
+                   ' JOIN PRD_TIPO pt ON (pt.PTI_CODIGO = p.PTI_CODIGO) ' +
+                   ' JOIN FTC0000 ft ON (ft.PRD_REFER = fi.PRD_REFER) ' +
+                   ' WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer) +
+                   ' ORDER BY fi.PRD_REFER_ITENS';
+  if DBInicio.IsDesenvolvimento then
+    copyToClipboard(qAux.SQL.Text);
+  qAux.Open;
+  while not qAux.Eof do
+  begin
+    ftiUC := qAux.FieldByName('FTI_UC').AsFloat * ftiUC;
+    prdReferL := qAux.FieldByName('PRD_REFER').AsString;
+    prdFilhoL := qAux.FieldByName('PRD_REFER_ITENS').AsString;
+    ptiSiglaL := qAux.FieldByName('PTI_SIGLA').AsString;
+    if ptiSiglaL = 'MP' then
+    begin
+      result := ftiUC;
+      Exit;
+    end
+    else
+    begin
+      Inc(nivel);
+      ftiUC := cTotal(prdReferL, prdFilhoL, ptiSiglaL, ftiUC, nivel);
+    end;
+    qAux.Next;
+  end;
+  result := ftiUC;
+end;
+
+
 function TfrmFichaConteudoImportacao.ConsumoTotal(cds: TFDQuery; Post: Boolean): double;
 var
   prdRefer, prdFilho, ptiSigla: string;
+  ftBaseFormula : double;
+  nivel: integer;
 begin
-  prdRefer := UpperCase(cdsBuscaPRD_REFER.AsString); // UpperCase(edReferencia.Text); //  cds.FieldByName('PRD_REFER').AsString;
+  prdRefer := UpperCase(cdsBuscaPRD_REFER.AsString);
   prdFilho := cds.FieldByName('PRD_REFER_ITENS').AsString;
   ptiSigla := cds.FieldByName('PTI_SIGLA').AsString;
+  ftBaseFormula := cdsBuscaFTC_BASEFORMULA.AsFloat;
+  nivel := 2;
+  result := 0;
+  while not cds.eof do
+  begin
+    result := ctotal(prdRefer, prdFilho, ptiSigla, ftBaseFormula, nivel);
+    cds.Next;
+  end;
+  Exit;
+
+
+
   qAux.Close;
   qAux.SQL.Text :=
        ' WITH RECURSIVE ficha (id, item_pai, filhos, nivel, caminho, consumo, ctotal) ' +
