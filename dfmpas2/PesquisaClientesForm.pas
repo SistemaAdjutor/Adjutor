@@ -7,7 +7,10 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Data.DB, Data.DBXFirebird, Data.FMTBCd, BaseDBPesquisaSimplesForm,
   Vcl.Menus, Datasnap.DBClient, Datasnap.Provider, Vcl.ExtCtrls, Data.SqlExpr, ACBrEnterTab, ACBrBase,
   ACBrCalculadora, Vcl.Grids, Vcl.DBGrids, JvExDBGrids, JvDBGrid, Vcl.Buttons, Vcl.ComCtrls, Vcl.StdCtrls, SgDbSeachComboUnit,
-  cli0001, Vcl.Mask,  JvExMask, JvToolEdit, JvExComCtrls, JvDateTimePicker  ;
+  cli0001, Vcl.Mask,  JvExMask, JvToolEdit, JvExComCtrls, JvDateTimePicker,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client  ;
 
 type
  TfrmPesquisaClientes = class(TfrmBaseDBPesquisaSimples)
@@ -64,6 +67,33 @@ type
     cdsBuscoCORI_DESCRICAO: TStringField;
     cdsBuscoCLI_DTNASCIMENTO: TSQLTimeStampField;
     cdsBuscoEMP_CODIGO: TStringField;
+    cdsBuscoFPC_VENCTO: TDateField;
+    qExport: TFDQuery;
+    dsExport: TDataSource;
+    qExportCLI_CODIGO: TStringField;
+    qExportCLI_RAZAO: TStringField;
+    qExportCLI_FANTASIA: TStringField;
+    qExportCLI_CGC: TStringField;
+    qExportCLI_FONE: TStringField;
+    qExportCLI_DTULTCOM: TSQLTimeStampField;
+    qExportCLI_CIDADE: TStringField;
+    qExportCLI_UF: TStringField;
+    qExportCLI_BAIRRO: TStringField;
+    qExportCLI_ENDERE: TStringField;
+    qExportCLI_CONTATO: TStringField;
+    qExportCLI_EMAIL_ALTERNATIVO: TStringField;
+    qExportCLI_EMAIL: TStringField;
+    qExportRCL_ATIVIDADE: TStringField;
+    qExportCLI_INSC: TStringField;
+    qExportCLI_CEP: TStringField;
+    qExportcli_celular: TStringField;
+    qExportCLI_FAX: TStringField;
+    qExportCLI_UND_CONSUMIDORA: TIntegerField;
+    qExportREP_NOME: TStringField;
+    qExportCORI_DESCRICAO: TStringField;
+    qExportCLI_DTNASCIMENTO: TSQLTimeStampField;
+    qExportEMP_CODIGO: TStringField;
+    qExportFPC_VENCTO: TDateField;
     procedure FormCreate(Sender: TObject);
     procedure CdsBuscoCLI_RAZAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure CdsBuscoCLI_CGCGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -264,6 +294,9 @@ var
   lista: TStringList;
 begin
 //  inherited;
+  qExport.Close;
+  qExport.SQL.Text := qBusco.SQL.Text;
+  qExport.Open;
   lista := TStringList.Create;
   lista.Add('CLI_CODIGO');
   lista.Add('CLI_RAZAO');
@@ -274,7 +307,7 @@ begin
   lista.Add('CLI_UF');
   lista.Add('CLI_INSC');
   lista.Add('CLI_DTNASCIMENTO');
-  lista.Add('CLI_DTULTCOM');
+  lista.Add('FPC_VENCTO');
   lista.Add('RCL_ATIVIDADE');
   lista.Add('CLI_FAX');
   lista.Add('CLI_CELULAR');
@@ -286,7 +319,7 @@ begin
   lista.Add('CLI_CONTATO');
   lista.Add('REP_NOME');
   lista.Add('CORI_DESCRICAO');
-  CriaCSV(dsBusca, lista, Self);
+  CriaCSV(dsExport, lista, Self);
 end;
 
 procedure TfrmPesquisaClientes.btnImprimeClick(Sender: TObject);
@@ -342,7 +375,14 @@ begin
           Add('       CL.CLI_CONTATO, CL.CLI_EMAIL_ALTERNATIVO, CL.CLI_EMAIL, ');
           Add('       ATV.RCL_ATIVIDADE,' );
           Add('       CL.CLI_INSC, rp.REP_NOME, ' );
-          Add('       VEND_INTERNO_CODIGO, CLI_CEP, cli_fax, cli_celular, CLI_UND_CONSUMIDORA, co.CORI_DESCRICAO');
+          Add('       VEND_INTERNO_CODIGO, CLI_CEP, cli_fax, cli_celular, CLI_UND_CONSUMIDORA, co.CORI_DESCRICAO,');
+          Add('       CAST((SELECT MAX(F1.FPC_VENCTO) ' +
+                      '   FROM FAT_PC01 F1 ' +
+                      '   WHERE F1.FPC_SITPAG = ''L''  ' +
+                      '     AND F1.emp_codigo = CL.EMP_CODIGO  ' +
+                      '     AND F1.CLI_CODIGO = CL.CLI_CODIGO ' +
+                      '     AND F1.FPC_VENCTO = (SELECT MAX(F2.FPC_VENCTO) FROM FAT_PC01 F2 WHERE F2.emp_codigo = F1.EMP_CODIGO  AND F2.CLI_CODIGO = f1.CLI_CODIGO AND F2.FPC_SITPAG = F1.FPC_SITPAG ) ' +
+                      '  ) AS DATE) AS FPC_VENCTO ' );
           add('FROM CLI0000 CL');
           add('     LEFT JOIN CLI_ATV1 ATV ON ATV.RCL_CODIGO=CL.CLI_ATIVIDADE ');
           add('     LEFT JOIN REP0000 rp ON (rp.REP_CODIGO = cl.REP_CODIGO) ');
@@ -421,6 +461,8 @@ begin
           sql.Add( 'order by '+wOrd );
 
      end;
+     if dbInicio.isDesenvolvimento then
+       copyToClipboard(qBusco.SQL.Text);
 end;
 
 end.
