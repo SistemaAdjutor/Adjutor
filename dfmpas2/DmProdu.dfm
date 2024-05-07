@@ -2221,15 +2221,13 @@ object DmProducao: TDmProducao
       FieldName = 'FTI_MODIFICADA'
       ProviderFlags = [pfInUpdate]
     end
-    object SqlCdsItemFichaFTI_UC: TFMTBCDField
+    object SqlCdsItemFichaFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
-    object SqlCdsItemFichaFTI_UCMODIFIC: TFMTBCDField
+    object SqlCdsItemFichaFTI_UCMODIFIC: TFloatField
       FieldName = 'FTI_UCMODIFIC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
     object SqlCdsItemFichaFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -2332,15 +2330,13 @@ object DmProducao: TDmProducao
       FieldName = 'FTI_MODIFICADA'
       ProviderFlags = [pfInUpdate]
     end
-    object CdsItemFichaFTI_UC: TFMTBCDField
+    object CdsItemFichaFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
-    object CdsItemFichaFTI_UCMODIFIC: TFMTBCDField
+    object CdsItemFichaFTI_UCMODIFIC: TFloatField
       FieldName = 'FTI_UCMODIFIC'
       ProviderFlags = [pfInUpdate]
-      Precision = 15
     end
     object CdsItemFichaFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -4117,12 +4113,10 @@ object DmProducao: TDmProducao
   end
   object sqlPrd_lote: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
