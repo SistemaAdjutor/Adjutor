@@ -1301,6 +1301,8 @@ begin
   ProgressBar1.Min := 0;
   ProgressBar1.Max := cloneFilho.RecordCount;
   Resultado := 0;
+
+        {
   if tabelaTemp.Name <> 'mtGrid' then
   begin
     tabelaTemp.Close;
@@ -1373,7 +1375,7 @@ begin
     tabelaTemp.CreateDataSet;
     tabelaTemp.Open;
   end;
-
+                 }
 
   while not cloneFilho.eof do
   begin
@@ -1386,8 +1388,8 @@ begin
 
     Application.ProcessMessages;
 
-    if tabelaTemp.Name = 'mtGrid' then       // Qualquer alteração no cálculo deve ser replicado em cloneFilho e tabelaTemp
-    begin
+//    if tabelaTemp.Name = 'mtGrid' then       // Qualquer alteração no cálculo deve ser replicado em cloneFilho e tabelaTemp
+//    begin
       cloneFilho.Edit;
       cloneFilho.FieldByName('QUANTIDADE_COMPRADA').AsFloat := quantidadeCompradaImportado;
       cloneFilho.FieldByName('VALOR_UNITARIO').AsFloat := precoImportado;
@@ -1405,9 +1407,9 @@ begin
 
       cloneFilho.Post;
 
-    end
-    else
-    begin
+//    end
+//    else
+{    begin
       tabelaTemp.Insert;
 
       tabelaTemp.FieldByName('PRD_REFER').AsString := cloneFilho.FieldByName('PRD_REFER').AsString;
@@ -1439,7 +1441,7 @@ begin
       tabelaTemp.Post;
 
 
-    end;
+    end;      }
     cloneFilho.Next;
 
     pnBuscando.Caption := 'Atualizando Tabela Local...';
