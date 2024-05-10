@@ -422,6 +422,7 @@ type
    procedure Bloco5;
    procedure Bloco9;
    function ConsumoTotal(cds: TFDQuery; Post: Boolean): double;
+   function CalcularConsumoTotal(referencia, referenciaFilha: string): Double;
    procedure EnableControls;
    procedure DisableControls;
    procedure GravaArquivoFCI(prdReferPai: string; nivel: integer);
@@ -1459,13 +1460,76 @@ begin
   pnBuscando.Visible := False;
 end;
 
+function TfrmFichaConteudoImportacao.CalcularConsumoTotal(referencia, referenciaFilha: string): Double;
+var
+  query: TFDQuery;
+  consumoTotal, consumoFilha: Double;
+
+begin
+  consumoTotal := 0;
+
+  query := TFDQuery.Create(nil);
+  try
+    query.Connection := dbConn;
+    query.SQL.Text :=
+                   ' SELECT ' +
+                   '   fi.FTI_REGISTRO, ' +
+                   '   fi.PRD_REFER, ' +
+                   '   fi.PRD_REFER_ITENS, ' +
+                   '   fi.FTI_UC, ' +
+                   '   pt.PTI_SIGLA, ' +
+                   '   ft.FTC_BASEFORMULA ' +
+                   ' FROM FTC_IT01 fi ' +
+                   ' JOIN PRD0000 p ON (p.PRD_REFER = fi.PRD_REFER_ITENS) ' +
+                   ' JOIN PRD_TIPO pt ON (pt.PTI_CODIGO = p.PTI_CODIGO) ' +
+                   ' JOIN FTC0000 ft ON (ft.PRD_REFER = fi.PRD_REFER) ' +
+                   ' WHERE fi.PRD_REFER = ' + QuotedStr(referencia) +
+                   ' AND   fi.PRD_REFER_ITENS = ' + QuotedStr(referenciaFilha) +
+                   ' ORDER BY fi.PRD_REFER_ITENS';
+    query.Open;
+
+
+    while not query.Eof do
+    begin
+      referenciaFilha := query.FieldByName('PRD_REFER_ITENS').AsString;
+      consumoFilha := query.FieldByName('FTI_UC').AsFloat;
+
+    if query.FieldByName('PTI_SIGLA').AsString = 'MP' then
+    begin
+      result := consumoTotal;
+      query.Close;
+      query.Free;
+      Exit;
+    end
+    else
+      consumoTotal := consumoTotal + consumoFilha * CalcularConsumoTotal(referencia, referenciaFilha);
+
+      query.Next;
+    end;
+  finally
+    // Feche a query e libere a memória
+    query.Close;
+    query.Free;
+  end;
+
+  // Retorne o consumo total
+  Result := consumoTotal;
+end;
+
 function TfrmFichaConteudoImportacao.ConsumoTotal(cds: TFDQuery; Post: Boolean): double;
 var
   prdRefer, prdFilho, ptiSigla: string;
+  ConsumoTotal: double;
 begin
   prdRefer := UpperCase(cdsBuscaPRD_REFER.AsString); // UpperCase(edReferencia.Text); //  cds.FieldByName('PRD_REFER').AsString;
   prdFilho := cds.FieldByName('PRD_REFER_ITENS').AsString;
   ptiSigla := cds.FieldByName('PTI_SIGLA').AsString;
+  consumoTotal := CalcularConsumoTotal(prdRefer, prdFilho)   ;
+  if Post then
+    cds.FieldByName('CONSUMO_TOTAL').AsFloat := consumoTotal;
+  exit;
+
+
   qAux.Close;
   qAux.SQL.Text :=
        ' WITH RECURSIVE ficha (id, item_pai, filhos, nivel, caminho, consumo, ctotal) ' +
@@ -1474,7 +1538,7 @@ begin
        '  FROM ftc_it01 ce ' +
        '  WHERE ce.prd_refer = ' + QuotedStr(prdRefer) +
        ' UNION ALL ' +
-       ' SELECT e.fti_registro, e.prd_refer, e.prd_refer_itens, fc.nivel + 1, CAST(fc.caminho || ' + QuotedStr('->') + ' || e.prd_refer AS VARCHAR(1000)) ' +
+       ' SELECT e.fti_registro, e.prd_refer, e.prd_refer_itens, fc.nivel + 1, CAST(fc.caminho || ' + QuotedStr('->') + ' || e.prd_refer AS VARCHAR(32000)) ' +
        '  ,fc.consumo, fc.ctotal * e.fti_uc ' +
        ' FROM ficha fc ' +
        ' JOIN ftc_it01 e ON fc.filhos = e.prd_refer ' +

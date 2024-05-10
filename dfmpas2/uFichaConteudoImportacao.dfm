@@ -13,6 +13,8 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
     ExplicitWidth = 1461
     ExplicitHeight = 544
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 1453
       ExplicitHeight = 516
       inherited pnlControle: TPanel
