@@ -11,4 +11,3 @@ patch 1:
   1857 - Exportar - Cadastro Do Cliente [Collect]
   1859 - Falha - Cadastro de Produtos e Serviços [LForja]
 
-
