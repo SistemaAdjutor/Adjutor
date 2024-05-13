@@ -14,6 +14,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     ExplicitWidth = 1262
     ExplicitHeight = 542
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 1254
       ExplicitHeight = 514
       inherited pnControle: TPanel
@@ -916,6 +918,14 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
       FieldName = 'EMP_CODIGO'
       Size = 3
     end
+    object cdsBuscoFPC_VENCTO: TDateField
+      DisplayLabel = #218'ltima Parcela'
+      FieldName = 'FPC_VENCTO'
+    end
+  end
+  inherited mnuGridPesquisa: TPopupMenu
+    Left = 564
+    Top = 264
   end
   object mnuListar: TPopupMenu
     Left = 652
@@ -950,5 +960,137 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     SQLConnection = DataCadastros.SQLConnection1
     Left = 562
     Top = 333
+  end
+  object qExport: TFDQuery
+    Connection = DBInicio.FDACConn
+    Left = 380
+    Top = 224
+    object qExportCLI_CODIGO: TStringField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'CLI_CODIGO'
+      Required = True
+      Size = 5
+    end
+    object qExportCLI_RAZAO: TStringField
+      DisplayLabel = 'Raz'#227'o Social'
+      FieldName = 'CLI_RAZAO'
+      OnGetText = cdsBuscoCLI_RAZAOGetText
+      Size = 70
+    end
+    object qExportCLI_FANTASIA: TStringField
+      DisplayLabel = 'Nome de Fantasia'
+      FieldName = 'CLI_FANTASIA'
+      Size = 55
+    end
+    object qExportCLI_CGC: TStringField
+      DisplayLabel = 'CNPJ'
+      FieldName = 'CLI_CGC'
+      OnGetText = cdsBuscoCLI_CGCGetText
+      Size = 14
+    end
+    object qExportCLI_FONE: TStringField
+      DisplayLabel = 'Telefone'
+      FieldName = 'CLI_FONE'
+      OnGetText = cdsBuscoCLI_FONEGetText
+      Size = 11
+    end
+    object qExportCLI_DTULTCOM: TSQLTimeStampField
+      DisplayLabel = #218'ltima Parcela'
+      FieldName = 'CLI_DTULTCOM'
+    end
+    object qExportCLI_CIDADE: TStringField
+      DisplayLabel = 'Cidade'
+      FieldName = 'CLI_CIDADE'
+      Size = 30
+    end
+    object qExportCLI_UF: TStringField
+      DisplayLabel = 'Estado'
+      FieldName = 'CLI_UF'
+      Size = 2
+    end
+    object qExportCLI_BAIRRO: TStringField
+      DisplayLabel = 'Bairro'
+      FieldName = 'CLI_BAIRRO'
+      Size = 25
+    end
+    object qExportCLI_ENDERE: TStringField
+      DisplayLabel = 'Endere'#231'o'
+      FieldName = 'CLI_ENDERE'
+      Size = 50
+    end
+    object qExportCLI_CONTATO: TStringField
+      DisplayLabel = 'Contato'
+      FieldName = 'CLI_CONTATO'
+      Size = 25
+    end
+    object qExportCLI_EMAIL_ALTERNATIVO: TStringField
+      DisplayLabel = 'E-mail Alternativo'
+      FieldName = 'CLI_EMAIL_ALTERNATIVO'
+      Size = 150
+    end
+    object qExportCLI_EMAIL: TStringField
+      DisplayLabel = 'E-mail'
+      FieldName = 'CLI_EMAIL'
+      Size = 150
+    end
+    object qExportRCL_ATIVIDADE: TStringField
+      DisplayLabel = 'Atividade'
+      FieldName = 'RCL_ATIVIDADE'
+    end
+    object qExportCLI_INSC: TStringField
+      DisplayLabel = 'I.E.'
+      FieldName = 'CLI_INSC'
+      Size = 18
+    end
+    object qExportCLI_CEP: TStringField
+      DisplayLabel = 'CEP'
+      FieldName = 'CLI_CEP'
+      Size = 8
+    end
+    object qExportcli_celular: TStringField
+      DisplayLabel = 'Celular'
+      DisplayWidth = 16
+      FieldName = 'cli_celular'
+      OnGetText = cdsBuscoCLI_FONEGetText
+      Size = 11
+    end
+    object qExportCLI_FAX: TStringField
+      DisplayLabel = 'Fax'
+      DisplayWidth = 16
+      FieldName = 'CLI_FAX'
+      OnGetText = cdsBuscoCLI_FONEGetText
+      Size = 11
+    end
+    object qExportCLI_UND_CONSUMIDORA: TIntegerField
+      DisplayLabel = 'Unidade Consumidora'
+      FieldName = 'CLI_UND_CONSUMIDORA'
+    end
+    object qExportREP_NOME: TStringField
+      DisplayLabel = 'Representante'
+      FieldName = 'REP_NOME'
+      Size = 35
+    end
+    object qExportCORI_DESCRICAO: TStringField
+      DisplayLabel = 'Origem'
+      FieldName = 'CORI_DESCRICAO'
+      Size = 150
+    end
+    object qExportCLI_DTNASCIMENTO: TSQLTimeStampField
+      DisplayLabel = 'Data Nascimento'
+      FieldName = 'CLI_DTNASCIMENTO'
+    end
+    object qExportEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
+    end
+    object qExportFPC_VENCTO: TDateField
+      DisplayLabel = #218'ltima Parcela'
+      FieldName = 'FPC_VENCTO'
+    end
+  end
+  object dsExport: TDataSource
+    DataSet = qExport
+    Left = 436
+    Top = 224
   end
 end
