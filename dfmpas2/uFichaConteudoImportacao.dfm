@@ -1567,9 +1567,6 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ReadOnly = True
       Size = 8
     end
-    object cdsBuscaDetalhesFTC_BASEFORMULA: TIntegerField
-      FieldName = 'FTC_BASEFORMULA'
-    end
     object cdsBuscaDetalhesGTIN: TStringField
       AutoGenerateValue = arDefault
       FieldName = 'GTIN'

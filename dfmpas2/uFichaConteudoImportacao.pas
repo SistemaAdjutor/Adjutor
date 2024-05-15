@@ -920,56 +920,56 @@ end;
 procedure TfrmFichaConteudoImportacao.cdsBuscaCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  cdsBuscaVALOR_TOTAL.AsFloat := valorSaida(cdsBuscaPRD_REFER.AsString);
+//  cdsBuscaVALOR_TOTAL.AsFloat := valorSaida(cdsBuscaPRD_REFER.AsString);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsBuscaDetalhesCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotalDetalhes(cdsBusca, cdsBuscaDetalhes, True);
+//  ConsumoTotalDetalhes(cdsBusca, cdsBuscaDetalhes, True);
 end;
 
 
 procedure TfrmFichaConteudoImportacao.cdsNivel3CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotalNivel3(cdsBusca, cdsBuscaDetalhes, cdsNivel3, True);
+//  ConsumoTotalNivel3(cdsBusca, cdsBuscaDetalhes, cdsNivel3, True);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel4CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotalNivel4(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, True);
+//  ConsumoTotalNivel4(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, True);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel5CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotalNivel5(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, True);
+//  ConsumoTotalNivel5(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, True);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel6CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotalNivel6(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, cdsNivel6, True);
+//  ConsumoTotalNivel6(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, cdsNivel6, True);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel7CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotalNivel7(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, cdsNivel6, cdsNivel7, True);
+//  ConsumoTotalNivel7(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, cdsNivel6, cdsNivel7, True);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel8CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotalNivel8(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, cdsNivel6, cdsNivel7, cdsNivel8, True);
+//  ConsumoTotalNivel8(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, cdsNivel6, cdsNivel7, cdsNivel8, True);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel9CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotalNivel9(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, cdsNivel6, cdsNivel7, cdsNivel8, cdsNivel9, True);
+//  ConsumoTotalNivel9(cdsBusca, cdsBuscaDetalhes, cdsNivel3, cdsNivel4, cdsNivel5, cdsNivel6, cdsNivel7, cdsNivel8, cdsNivel9, True);
 end;
 
 procedure TfrmFichaConteudoImportacao.filtro;
@@ -1031,9 +1031,9 @@ var
   prdRefer : string;
 begin
   inherited;
-  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView2FTI_UC.Index);
-  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView2FTI_UC.Index, base * UCDetalhe);
+//  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+//  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView2FTI_UC.Index);
+//  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView2FTI_UC.Index, base * UCDetalhe);
 
 
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView2PRD_REFER_ITENS.Index);
@@ -1050,9 +1050,9 @@ var
   prdRefer : string;
 begin
   inherited;
-  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView3FTI_UC.Index);
-  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView3FTI_UC.Index, base * UCDetalhe);
+//  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+//  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView3FTI_UC.Index);
+//  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView3FTI_UC.Index, base * UCDetalhe);
 
 
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView3PRD_REFER_ITENS.Index);
@@ -1070,9 +1070,9 @@ var
   prdRefer : string;
 begin
   inherited;
-  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView4FTI_UC.Index);
-  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView4FTI_UC.Index, base * UCDetalhe);
+//  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+//  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView4FTI_UC.Index);
+//  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView4FTI_UC.Index, base * UCDetalhe);
 
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView4PRD_REFER_ITENS.Index);
   cdsNivel5.SQL.Text := sqlText(prdRefer);
@@ -1086,9 +1086,9 @@ var
   prdRefer : string;
 begin
   inherited;
-  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView5FTI_UC.Index);
-  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView5FTI_UC.Index, base * UCDetalhe);
+//  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+//  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView5FTI_UC.Index);
+//  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView5FTI_UC.Index, base * UCDetalhe);
 
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView5PRD_REFER_ITENS.Index);
   cdsNivel6.SQL.Text := sqlText(prdRefer);
@@ -1102,9 +1102,9 @@ var
   prdRefer : string;
 begin
   inherited;
-  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView6FTI_UC.Index);
-  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView6FTI_UC.Index, base * UCDetalhe);
+//  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+//  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView6FTI_UC.Index);
+//  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView6FTI_UC.Index, base * UCDetalhe);
 
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView6PRD_REFER_ITENS.Index);
   cdsNivel7.SQL.Text := sqlText(prdRefer);
@@ -1118,9 +1118,9 @@ var
   prdRefer : string;
 begin
   inherited;
-  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView7FTI_UC.Index);
-  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView7FTI_UC.Index, base * UCDetalhe);
+//  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+//  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView7FTI_UC.Index);
+//  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView7FTI_UC.Index, base * UCDetalhe);
 
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView7PRD_REFER_ITENS.Index);
   cdsNivel8.SQL.Text := sqlText(prdRefer);
@@ -1134,9 +1134,9 @@ var
   prdRefer : string;
 begin
   inherited;
-  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView8FTI_UC.Index);
-  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView8FTI_UC.Index, base * UCDetalhe);
+//  base := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+//  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView8FTI_UC.Index);
+//  ADataController.SetValue(ARecordIndex, cxgrd1DBTableView8FTI_UC.Index, base * UCDetalhe);
 
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView8PRD_REFER_ITENS.Index);
   cdsNivel9.SQL.Text := sqlText(prdRefer);
