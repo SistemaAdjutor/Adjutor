@@ -13,8 +13,6 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
     ExplicitWidth = 1461
     ExplicitHeight = 544
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
       ExplicitWidth = 1453
       ExplicitHeight = 516
       inherited pnlControle: TPanel
@@ -76,7 +74,6 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         ExplicitWidth = 1453
         ExplicitHeight = 437
         inherited cxgrd1DBTableView1: TcxGridDBTableView
-          DataController.OnDetailExpanded = cxgrd1DBTableView1DataControllerDetailExpanded
           OptionsView.ShowEditButtons = gsebAlways
           OptionsView.GroupByBox = False
           object cxgrd1DBTableView1PRD_REFER: TcxGridDBColumn
@@ -139,6 +136,10 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           object cxgrd1DBTableView1Botao: TcxGridDBColumn
             Caption = 'Gerar FCI'
             RepositoryItem = Botao
+          end
+          object cxgrd1DBTableView1FTC_BASEFORMULA: TcxGridDBColumn
+            DataBinding.FieldName = 'FTC_BASEFORMULA'
+            Visible = False
           end
         end
         object cxgrd1DBTableView2: TcxGridDBTableView [1]
@@ -1430,6 +1431,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       Origin = 'PRD_FCI_CONTEUDO_IMPORTACAO'
       Precision = 18
       Size = 5
+    end
+    object cdsBuscaFTC_BASEFORMULA: TIntegerField
+      FieldName = 'FTC_BASEFORMULA'
     end
   end
   inherited pmExportar: TPopupMenu
@@ -3533,7 +3537,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField10: TFloatField
+    object cdsNivel4FTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
     end
@@ -3652,7 +3656,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField19: TFloatField
+    object cdsNivel5FTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
     end
@@ -3771,7 +3775,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField28: TFloatField
+    object cdsNivel6FTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
     end
@@ -3890,7 +3894,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField37: TFloatField
+    object cdsNivel7FTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
     end
@@ -4009,7 +4013,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField46: TFloatField
+    object cdsNivel8FTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
     end
@@ -4128,7 +4132,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       ProviderFlags = []
       Size = 2
     end
-    object FMTBCDField55: TFloatField
+    object cdsNivel9FTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
     end
