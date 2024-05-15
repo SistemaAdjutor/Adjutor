@@ -920,7 +920,7 @@ end;
 procedure TfrmFichaConteudoImportacao.cdsBuscaCalcFields(DataSet: TDataSet);
 begin
   inherited;
-//  cdsBuscaVALOR_TOTAL.AsFloat := valorSaida(cdsBuscaPRD_REFER.AsString);
+  cdsBuscaVALOR_TOTAL.AsFloat := valorSaida(cdsBuscaPRD_REFER.AsString);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsBuscaDetalhesCalcFields(DataSet: TDataSet);
@@ -1189,6 +1189,7 @@ begin
     Exit;
   vlParcelaImportadaTotal := 0;
   prdRefer := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index];
+//  valorTotal := StrToFloatDef(cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1VALOR_TOTAL.Index], 0);
   valorTotal := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1VALOR_TOTAL.Index];
   quantidadePai  := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
 
