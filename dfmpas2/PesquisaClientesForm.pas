@@ -376,13 +376,16 @@ begin
           Add('       ATV.RCL_ATIVIDADE,' );
           Add('       CL.CLI_INSC, rp.REP_NOME, ' );
           Add('       VEND_INTERNO_CODIGO, CLI_CEP, cli_fax, cli_celular, CLI_UND_CONSUMIDORA, co.CORI_DESCRICAO,');
-          Add('       CAST((SELECT MAX(F1.FPC_VENCTO) ' +
-                      '   FROM FAT_PC01 F1 ' +
-                      '   WHERE F1.FPC_SITPAG = ''L''  ' +
-                      '     AND F1.emp_codigo = CL.EMP_CODIGO  ' +
-                      '     AND F1.CLI_CODIGO = CL.CLI_CODIGO ' +
-                      '     AND F1.FPC_VENCTO = (SELECT MAX(F2.FPC_VENCTO) FROM FAT_PC01 F2 WHERE F2.emp_codigo = F1.EMP_CODIGO  AND F2.CLI_CODIGO = f1.CLI_CODIGO AND F2.FPC_SITPAG = F1.FPC_SITPAG ) ' +
-                      '  ) AS DATE) AS FPC_VENCTO ' );
+
+          Add(       'CAST (((SELECT MAX(T1.FRE_DATA_RECEBIMENTO) ' +
+                     '   FROM FAT_RECEBIMENTO T1 ' +
+                     '     JOIN FAT_PC01 f ON f.fat_registro = t1.fat_registro ' +
+                     '   WHERE T1.FAT_REGISTRO = f.fat_registro ' +
+                     '   	AND T1.EMP_CODIGO = CL.EMP_CODIGO ' +
+                     '   	AND CLI_CODIGO  = CL.CLI_CODIGO'  +
+                     '  )) AS DATE) AS FPC_VENCTO ' );
+
+
           add('FROM CLI0000 CL');
           add('     LEFT JOIN CLI_ATV1 ATV ON ATV.RCL_CODIGO=CL.CLI_ATIVIDADE ');
           add('     LEFT JOIN REP0000 rp ON (rp.REP_CODIGO = cl.REP_CODIGO) ');
