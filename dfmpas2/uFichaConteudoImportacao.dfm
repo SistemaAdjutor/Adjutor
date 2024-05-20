@@ -38,32 +38,59 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
             object Label1: TLabel
               Left = 32
               Top = 24
-              Width = 52
+              Width = 38
               Height = 13
-              Caption = 'Refer'#234'ncia'
+              Caption = 'Produto'
             end
-            object Label2: TLabel
-              Left = 230
-              Top = 24
-              Width = 46
-              Height = 13
-              Caption = 'Descri'#231#227'o'
+            object cbProduto: TComboBoxRw
+              Left = 179
+              Top = 20
+              Width = 384
+              Height = 21
+              TabOrder = 0
+              OnChange = cbProdutoChange
+              CharCase = ecUpperCase
+              LookupSelect = 'PRD_REFER,PRD_DESCRI'
+              LookupOrderBy = 'PRD_DESCRI'
+              LookupTable = 'PRD0000'
+              LookupDispl = 'PRD_DESCRI'
+              GridAutoSize = False
+              LookupSource = cbProduto.InternalSource
+              LookupKeyField = 'PRD_REFER'
+              ShowButton = True
+              LookupTableShare = 'PRODUTOS'
+              AutoF8WinTitulo = 'Produtos'
+              AutoF8ColumnsTitulo = 'C'#243'digo, Descricao'
+              GridLeft = 0
+              GridWidth = 0
+              GridHeight = 100
+              GridTop = 0
+              GridShowWhenEnter = False
+              SelectWithDoubleClick = False
+              LimparCampoAoSair = True
+              Tabela = 'PRD0000'
+              CamposCarregar = 'PRD_REFER,PRD_DESCRI'
+              CamposRetornar = 'PRD_REFER'
+              CamposOrdernar = 'PRD_DESCRI'
+              ConexaoBanco = DataCadastros.SQLConnection1
+              Compartilhar = 'PRODUTOS'
+              Localizado = False
+              CodigoEmpresa = 0
+              ResetaCampos = False
+              MultiEmpresa = False
+              Localizar = False
+              CarregarCombo = False
+              itemindex = 0
+              style = csDropDown
             end
             object edReferencia: TEdit
-              Left = 90
+              Left = 76
               Top = 21
               Width = 97
               Height = 21
-              TabOrder = 0
-              OnKeyPress = edReferenciaKeyPress
-            end
-            object edDescricao: TEdit
-              Left = 282
-              Top = 21
-              Width = 207
-              Height = 21
               TabOrder = 1
-              OnKeyPress = edDescricaoKeyPress
+              OnExit = edReferenciaExit
+              OnKeyPress = edReferenciaKeyPress
             end
           end
         end
@@ -74,6 +101,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         ExplicitWidth = 1453
         ExplicitHeight = 437
         inherited cxgrd1DBTableView1: TcxGridDBTableView
+          DataController.OnDetailExpanding = cxgrd1DBTableView1DataControllerDetailExpanding
           OptionsView.ShowEditButtons = gsebAlways
           OptionsView.GroupByBox = False
           object cxgrd1DBTableView1PRD_REFER: TcxGridDBColumn
@@ -167,6 +195,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          DataController.OnDetailExpanding = cxgrd1DBTableView2DataControllerDetailExpanding
           DataController.OnDetailExpanded = cxgrd1DBTableView2DataControllerDetailExpanded
           OptionsView.GroupByBox = False
           Styles.OnGetContentStyle = cxgrd1DBTableView2StylesGetContentStyle
@@ -285,6 +314,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          DataController.OnDetailExpanding = cxgrd1DBTableView3DataControllerDetailExpanding
           DataController.OnDetailExpanded = cxgrd1DBTableView3DataControllerDetailExpanded
           OptionsView.GroupByBox = False
           Styles.OnGetContentStyle = cxgrd1DBTableView2StylesGetContentStyle
@@ -387,6 +417,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          DataController.OnDetailExpanding = cxgrd1DBTableView4DataControllerDetailExpanding
           DataController.OnDetailExpanded = cxgrd1DBTableView4DataControllerDetailExpanded
           OptionsView.GroupByBox = False
           Styles.OnGetContentStyle = cxgrd1DBTableView2StylesGetContentStyle
@@ -489,6 +520,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          DataController.OnDetailExpanding = cxgrd1DBTableView5DataControllerDetailExpanding
           DataController.OnDetailExpanded = cxgrd1DBTableView5DataControllerDetailExpanded
           OptionsView.GroupByBox = False
           Styles.OnGetContentStyle = cxgrd1DBTableView2StylesGetContentStyle
@@ -591,6 +623,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          DataController.OnDetailExpanding = cxgrd1DBTableView6DataControllerDetailExpanding
           DataController.OnDetailExpanded = cxgrd1DBTableView6DataControllerDetailExpanded
           OptionsView.GroupByBox = False
           Styles.OnGetContentStyle = cxgrd1DBTableView2StylesGetContentStyle
@@ -693,6 +726,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          DataController.OnDetailExpanding = cxgrd1DBTableView7DataControllerDetailExpanding
           DataController.OnDetailExpanded = cxgrd1DBTableView7DataControllerDetailExpanded
           OptionsView.GroupByBox = False
           Styles.OnGetContentStyle = cxgrd1DBTableView2StylesGetContentStyle
@@ -795,6 +829,7 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          DataController.OnDetailExpanding = cxgrd1DBTableView8DataControllerDetailExpanding
           DataController.OnDetailExpanded = cxgrd1DBTableView8DataControllerDetailExpanded
           OptionsView.GroupByBox = False
           Styles.OnGetContentStyle = cxgrd1DBTableView2StylesGetContentStyle
@@ -1317,7 +1352,8 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
     Top = 400
   end
   inherited qAux: TFDQuery
-    Top = 112
+    Left = 243
+    Top = 280
   end
   inherited FDPhysFBDriverLink1: TFDPhysFBDriverLink
     Left = 1336
@@ -1336,13 +1372,16 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
     Top = 128
   end
   inherited qAux2: TFDQuery
-    Top = 111
+    Left = 291
+    Top = 279
   end
   inherited qAux3: TFDQuery
-    Top = 95
+    Left = 339
+    Top = 279
   end
   inherited qAux4: TFDQuery
-    Top = 103
+    Left = 387
+    Top = 279
   end
   inherited dbConn: TFDConnection
     Params.Strings = (
@@ -1351,8 +1390,8 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       'Password=masterkey'
       'CharacterSet=ISO8859_1'
       'DriverID=FB')
-    Left = 43
-    Top = 104
+    Left = 51
+    Top = 272
   end
   inherited FDStoredProc1: TFDStoredProc
     Left = 1240
