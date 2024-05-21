@@ -176,9 +176,10 @@ procedure GravaIni(arquivo, secao, nome, aTexto: string);
 function LeIni(arquivo, secao, nome: string; var aTexto: string): string;
 function CarregaLoteAutomatico(controle, envase: Boolean; lote: string): string;
 function minutosParaHms(d: integer): string;
-procedure CriaCSV(ds: TDataSource; lista: TStringList; Form: TForm; empCodigo: boolean = True);
+procedure CriaCSV(ds: TDataSource; lista: TStringList; Form: TForm; empCodigo: boolean = True; titulo: string = '');
 function LastPos(const pesq: string; const S: string): integer;
 function retiraPontoEVirgula(str: string): string;
+function retiraCRLF(str: string): string;
 
 
 procedure PreparaACBR(usuario: string);
@@ -2473,6 +2474,23 @@ begin
   end;
 end;
 
+function retiraCRLF(str: string): string;
+var
+  i: Integer;
+begin
+  result := '';
+  for i := 0 to length(str)  do
+  begin
+    if (str.Substring(i, 1) = #13)  then
+      result := result + '\n'
+    else
+    if (str.Substring(i, 1) = #10)  then
+      result := result + ''
+    else
+      result := result + str.Substring(i, 1);
+  end;
+end;
+
 function LastPos(const pesq: string; const S: string): integer;
 var
   i: Integer;
@@ -2995,7 +3013,7 @@ begin
 end;
 
 // Os nomes das colunas é o displayLabel do Campo inserido no ClientDataSet
-procedure CriaCSV(ds: TDataSource; lista: TStringList; Form: TForm; empCodigo: boolean = True);
+procedure CriaCSV(ds: TDataSource; lista: TStringList; Form: TForm; empCodigo: boolean = True; titulo: string = '');
 var j : integer;
     linhas: TStringList;
     gravar: TStreamWriter;
@@ -3046,7 +3064,13 @@ begin
 
   SaveDialog := TSaveDialog.Create(ds);
   SaveDialog.Filter := 'Dados Separados por Ponto e Vírgula|*.csv';
-  SaveDialog.title := 'Exportar Dados';
+  if titulo = '' then
+    SaveDialog.title := 'Exportar Dados'
+  else
+  begin
+    SaveDialog.title := titulo;
+    SaveDialog.FileName := titulo;
+  end;
   SaveDialog.DefaultExt := 'csv';
   if SaveDialog.Execute then
   begin
@@ -3076,7 +3100,7 @@ begin
           if ds.DataSet.FieldByName(lista[j]).FieldName = 'TEMPO_EM_MINUTOS' then
             linha := linha + minutosParaHms(ds.DataSet.FieldByName(lista[j]).AsInteger)
           else
-            linha := linha + RetiraPontoEVirgula(ds.DataSet.FieldByName(lista[j]).AsAnsiString);
+            linha := linha + retiraCRLF(RetiraPontoEVirgula(ds.DataSet.FieldByName(lista[j]).AsAnsiString));
           if j <> lista.Count -1 then
             linha := linha + ';';
         end;
