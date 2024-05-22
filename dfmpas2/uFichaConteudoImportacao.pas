@@ -1264,6 +1264,16 @@ begin
   cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency := valorSaida(prdRefer);
   cdsBusca.Post;
 
+
+  if cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency = 0 then
+  begin
+    cdsBusca.EnableControls;
+    panelAguarde.Visible := False;
+    uteis.Aviso('Não existe Nota Fiscal de Saída deste Produto, e também não está cadastrado o Preço de venda.' + #13 + 'Impossível Prosseguir');
+    Exit;
+  end;
+
+
   if (CI > 0) and (CI < 1) then
     CI := 1;
   case Round(CI) of
@@ -1272,6 +1282,7 @@ begin
     71..10000: prdOrigem := 8
     else prdOrigem := 0;
   end;
+
 
   ExecSql('UPDATE PRD0000 SET ' +
           ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL((vlParcelaImportadaTotal / valorTotal) * 100) + ', ' +
