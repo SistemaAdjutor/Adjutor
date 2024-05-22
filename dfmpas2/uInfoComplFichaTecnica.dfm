@@ -1,11 +1,11 @@
 inherited frmInfoComplFichaTecnica: TfrmInfoComplFichaTecnica
-  Caption = 'Informa'#231#245'es Complemetares da Ficha T'#233'cnica'
+  Caption = 'Informa'#231#245'es Complementares da Ficha T'#233'cnica'
   ClientHeight = 577
   ClientWidth = 916
   FormStyle = fsMDIChild
   Visible = True
-  ExplicitWidth = 924
-  ExplicitHeight = 604
+  ExplicitWidth = 932
+  ExplicitHeight = 616
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
