@@ -610,7 +610,9 @@ begin
         DiasAtrasos := edtAtrasos.Text;
     end;
     sql.Clear;
-    sql.Add('SELECT ' + iif(chkClienteAtrasos.Checked, 'PC.FAT_CODIGO', ' ''0'' AS FAT_CODIGO')  + ', cl.CLI_CODIGO, CLI_RAZAO, CLI_DTULTCOM ,      '+
+    sql.Add('SELECT ' + iif(chkClienteAtrasos.Checked, 'PC.FAT_CODIGO', ' ''0'' AS FAT_CODIGO')  + ', cl.CLI_CODIGO, CLI_RAZAO, ' +
+           // ' CLI_DTULTCOM ,      '+
+           '(SELECT MAX(PED_DTENTRADA)  FROM PED0000 p WHERE p.EMP_CODIGO = cl.EMP_CODIGO AND p.CLI_CODIGO = cl.CLI_CODIGO) AS CLI_DTULTCOM,' +
             '(SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc        ' +
             ' WHERE pc.CLI_CODIGO = cl.CLI_CODIGO '             +
              ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
