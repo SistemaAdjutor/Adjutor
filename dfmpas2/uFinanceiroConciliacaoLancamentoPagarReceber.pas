@@ -248,6 +248,7 @@ begin
                    'EMP_CODIGO,'+
                    'FAT_REGISTRO,'+
                    'FRE_DATA_RECEBIMENTO,'+
+                   'FRE_DATA_LANCAMENTO,'+
                    'FRE_VALOR,'+
                    'FRE_RECEBIDO,'+
                    'BAN_CODIGO,'+
@@ -258,6 +259,7 @@ begin
                    '('+
                    QuotedStr(dbInicio.Empresa.EMP_CODIGO)+','+
                    QuotedStr(fatRegistro) + ', ' +
+                   DateToSQL(edDataCompensacao.Date) + ', ' +
                    DateToSQL(edDataCompensacao.Date) + ', ' +
                    FloatToSQL(edValor.Value) + ', ' +
                    FloatToSQL(edValor.Value) + ', ' +
