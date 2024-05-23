@@ -2482,7 +2482,7 @@ begin
   for i := 0 to length(str)  do
   begin
     if (str.Substring(i, 1) = #13)  then
-      result := result + '\n'
+      result := result + '/n'
     else
     if (str.Substring(i, 1) = #10)  then
       result := result + ''
