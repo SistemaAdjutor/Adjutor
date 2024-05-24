@@ -366,7 +366,8 @@ begin
           add('       CL.CLI_FANTASIA, ');
           add('       CL.CLI_CGC, ');
           add('       CL.CLI_FONE, ');
-          add('       CL.CLI_DTULTCOM, ');
+          // add('       CL.CLI_DTULTCOM, ');
+          add('(SELECT MAX(PED_DTENTRADA)  FROM PED0000 p WHERE p.EMP_CODIGO = CL.EMP_CODIGO AND p.CLI_CODIGO = CL.CLI_CODIGO) AS CLI_DTULTCOM,');
           add('       CL.CLI_DTNASCIMENTO,  ');
           add('       CL.CLI_CIDADE, ');
           add('       CL.CLI_UF, ');
