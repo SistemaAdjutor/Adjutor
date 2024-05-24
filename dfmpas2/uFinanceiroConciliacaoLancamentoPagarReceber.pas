@@ -248,6 +248,7 @@ begin
                    'EMP_CODIGO,'+
                    'FAT_REGISTRO,'+
                    'FRE_DATA_RECEBIMENTO,'+
+                   'FRE_DATA_LANCAMENTO,'+
                    'FRE_VALOR,'+
                    'FRE_RECEBIDO,'+
                    'BAN_CODIGO,'+
@@ -258,6 +259,7 @@ begin
                    '('+
                    QuotedStr(dbInicio.Empresa.EMP_CODIGO)+','+
                    QuotedStr(fatRegistro) + ', ' +
+                   DateToSQL(edDataCompensacao.Date) + ', ' +
                    DateToSQL(edDataCompensacao.Date) + ', ' +
                    FloatToSQL(edValor.Value) + ', ' +
                    FloatToSQL(edValor.Value) + ', ' +
@@ -378,6 +380,7 @@ begin
                    'EMP_CODIGO,'+
                    'PAG_REGISTRO,'+
                    'PAG_DATA_PAGAMENTO,'+
+                   'PAG_DATA_LANCAMENTO,'+
                    'PAG_VALOR,'+
                    'PAG_PAGO,'+
                    'BAN_CODIGO,'+
@@ -389,6 +392,7 @@ begin
                    '('+
                    QuotedStr(dbInicio.Empresa.EMP_CODIGO) + ','+
                    pgPCRegistro + ','+
+                   DateToSQL(edDataCompensacao.Date) + ', ' +
                    DateToSQL(edDataCompensacao.Date) + ', ' +
                    FloatToSQL(edValor.Value) + ', ' +
                    FloatToSQL(edValor.Value) + ', ' +

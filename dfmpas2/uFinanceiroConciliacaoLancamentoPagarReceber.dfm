@@ -2,16 +2,16 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
   Caption = 'Concilia'#231#227'o: Lan'#231'amento Contas a Receber/Pagar'
   ClientHeight = 393
   ClientWidth = 608
-  ExplicitWidth = 616
-  ExplicitHeight = 420
+  ExplicitWidth = 624
+  ExplicitHeight = 432
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
     Top = 361
     Width = 608
     TabOrder = 1
-    ExplicitTop = 380
-    ExplicitWidth = 688
+    ExplicitTop = 361
+    ExplicitWidth = 608
     DesignSize = (
       608
       32)
@@ -48,7 +48,6 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
     Height = 43
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 688
     object rgReceitaDespesa: TRadioGroup
       Left = 3
       Top = 0
@@ -75,8 +74,6 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
     Align = alClient
     Caption = 'Informa'#231#245'es do Lan'#231'amento'
     TabOrder = 2
-    ExplicitWidth = 688
-    ExplicitHeight = 337
     object Panel2: TPanel
       Left = 2
       Top = 15
@@ -84,9 +81,6 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
       Height = 301
       Align = alClient
       TabOrder = 0
-      ExplicitLeft = 3
-      ExplicitTop = 20
-      ExplicitHeight = 268
       object lbCliFor: TLabel
         Left = 27
         Top = 9
@@ -235,8 +229,10 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object sbFormaPagamento: TSgDbSearchCombo
         Left = 40
@@ -260,8 +256,10 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object edDataVencimento: TJvDateEdit
         Left = 37
@@ -318,8 +316,10 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object sbCategoriaConta: TSgDbSearchCombo
         Left = 230
@@ -341,8 +341,10 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object sbCentroCusto: TSgDbSearchCombo
         Left = 230
@@ -364,8 +366,10 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object GroupBox1: TGroupBox
         Left = 1
@@ -375,8 +379,6 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
         Align = alBottom
         Caption = 'Observa'#231#227'o'
         TabOrder = 9
-        ExplicitTop = 234
-        ExplicitWidth = 682
         object edObservacao: TMemo
           Left = 2
           Top = 15
@@ -384,7 +386,6 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
           Height = 68
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 678
         end
       end
       object sbVendedor: TSgDbSearchCombo
@@ -409,8 +410,10 @@ inherited frmFinanceiroConciliacaoLancamentoPagarReceber: TfrmFinanceiroConcilia
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
     end
   end

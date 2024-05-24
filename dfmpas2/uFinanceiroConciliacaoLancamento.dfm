@@ -11,7 +11,7 @@ object FrmFinanceiroConciliacaoLancamento: TFrmFinanceiroConciliacaoLancamento
   Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poOwnerFormCenter
   OnCreate = FormCreate
   OnShow = FormShow
   PixelsPerInch = 96
@@ -105,7 +105,10 @@ object FrmFinanceiroConciliacaoLancamento: TFrmFinanceiroConciliacaoLancamento
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
+      SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'HIST_CONCILIACAO'
       CamposCarregar = 'HCO_DESCRICAO'
       CamposRetornar = 'HCO_REGISTRO'

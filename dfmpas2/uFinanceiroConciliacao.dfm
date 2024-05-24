@@ -112,7 +112,7 @@ object FrmFinanceiroConciliacao: TFrmFinanceiroConciliacao
         Top = 38
         Width = 173
         Height = 17
-        Caption = 'Considerar Saldo Anterior'
+        Caption = 'Zerar Saldo Anterior'
         Checked = True
         State = cbChecked
         TabOrder = 4
