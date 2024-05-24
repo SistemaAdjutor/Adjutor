@@ -2233,6 +2233,25 @@ type
     DBCheckBox6: TDBCheckBox;
     SqlProdutosPRD_AGRONEGOCIO: TStringField;
     CdsProdutosPRD_AGRONEGOCIO: TStringField;
+    bit_ExportaC9: TBitBtn;
+    qFichaTecnica: TFDQuery;
+    qFichaTecnicaItens: TFDQuery;
+    dsFichaTecnica: TDataSource;
+    dsFichaTecnicaItens: TDataSource;
+    qFichaTecnicaPRD_REFER: TStringField;
+    qFichaTecnicaFTC_CRIACAO: TSQLTimeStampField;
+    qFichaTecnicaFTC_TUP: TFMTBCDField;
+    qFichaTecnicaFTC_BASEFORMULA: TIntegerField;
+    qFichaTecnicaFTC_ETAPAS: TStringField;
+    qFichaTecnicaItensPRD_REFER: TStringField;
+    qFichaTecnicaItensPRD_REFER_ITENS: TStringField;
+    qFichaTecnicaItensFTI_MODIFICADA: TSQLTimeStampField;
+    qFichaTecnicaItensAMX_CODIGO: TStringField;
+    qFichaTecnicaItensFTI_UC: TFloatField;
+    qFichaTecnicaEMP_CODIGO: TStringField;
+    qFichaTecnicaItensEMP_CODIGO: TStringField;
+    N4: TMenuItem;
+    ExportarFichaTcnicaparaoC91: TMenuItem;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2501,6 +2520,7 @@ type
     procedure cdsMolaMMO_EXTREMIDADE_MOLA_MATERIAGetText(Sender: TField;
       var Text: string; DisplayText: Boolean);
     procedure CdsProdutosCalcFields(DataSet: TDataSet);
+    procedure bit_ExportaC9Click(Sender: TObject);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -3337,6 +3357,37 @@ procedure TFormProduto.BitBtn5Click(Sender: TObject);
 begin
   inherited;
   ShellExecute( Self.Handle, 'open', Pchar( IncluirArquivoFichaTecnica.FileName ), nil, nil, SW_SHOWNORMAL )
+end;
+
+procedure TFormProduto.bit_ExportaC9Click(Sender: TObject);
+var
+  lista: TStringList;
+begin
+  inherited;
+  qFichaTecnica.Close;
+  qFichaTecnicaItens.Close;
+  qFichaTecnica.SQL.Text := 'SELECT EMP_CODIGO, PRD_REFER, FTC_CRIACAO, FTC_TUP, FTC_BASEFORMULA, CAST(FTC_ETAPAS AS varchar(32000) ) AS FTC_ETAPAS FROM FTC0000';
+  qFichaTecnica.Open;
+  lista := TStringList.Create;
+  lista.Add('EMP_CODIGO');
+  lista.Add('PRD_REFER');
+  lista.Add('FTC_CRIACAO');
+  lista.Add('FTC_TUP');
+  lista.Add('FTC_BASEFORMULA');
+  lista.Add('FTC_ETAPAS');
+  CriaCSV(dsFichaTecnica, lista, Self, true, 'Cabeçalho da Ficha de Composição' );
+
+
+  qFichaTecnicaItens.SQL.Text := 'SELECT EMP_CODIGO, PRD_REFER, PRD_REFER_ITENS, FTI_MODIFICADA, AMX_CODIGO, FTI_UC FROM FTC_IT01';
+  qFichaTecnicaItens.Open;
+  lista.Clear;
+  lista.Add('PRD_REFER');
+  lista.Add('PRD_REFER_ITENS');
+  lista.Add('FTI_MODIFICADA');
+  lista.Add('AMX_CODIGO');
+  lista.Add('FTI_UC');
+  CriaCSV(dsFichaTecnicaItens, lista, Self, true, 'Itens da Ficha de Composição');
+
 end;
 
 procedure TFormProduto.bbCancelarParametroClick( Sender : tObject );

@@ -33,6 +33,8 @@ inherited FormProduto: TFormProduto
     object Tbs_FichaTec: TTabSheet
       Caption = 'Ficha T'#233'cnica'
       ImageIndex = 1
+      ExplicitLeft = 2
+      ExplicitTop = 29
       object PAN_FTC03: TPanel
         Left = 0
         Top = 2
@@ -1467,6 +1469,42 @@ inherited FormProduto: TFormProduto
             ParentFont = False
             ReadOnly = True
             TabOrder = 13
+          end
+          object bit_ExportaC9: TBitBtn
+            Left = 395
+            Top = 427
+            Width = 140
+            Height = 25
+            Caption = 'Exportar Para o C9'
+            Glyph.Data = {
+              36030000424D3603000000000000360000002800000010000000100000000100
+              1800000000000003000000000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000000000000000000000000000
+              000000000000002222220000000000003366996699CC6699CC6699CC6699CC66
+              99CC6699CC6699CC6699CC6699CC6699CC336699000000222222000000336699
+              3366996699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699
+              CC3366990000002222220000006699CC3366996699CC6699CC6699CC6699CC66
+              99CC6699CC6699CC6699CC6699CC6699CC336699000000FFFFFF0000006699CC
+              3366996699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699
+              CC336699000000FFFFFF0000006699CC3366996699CC6699CC6699CC6699CC66
+              99CC6699CC6699CC6699CC6699CC6699CC336699000000FFFFFF0000006699CC
+              3366996699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699
+              CC336699000000FFFFFF0000006699CC33669933669933669933669933669933
+              6699336699336699336699336699336699336699000000FFFFFF0000006699CC
+              6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699CC6699
+              CC336699000000FFFFFF0000006699CC3366996699CC6699CC33669933669933
+              66993366993366993366995555556699CC336699000000FFFFFF0000006699CC
+              3366996699CC33669999CCFF99CCFF99CCFF99CCFF99CCFF99CCFF3366996699
+              CC336699000000FFFFFF0000003366993366996699CC33669999CCFF99CCFF33
+              336633669933669999CCFF3366996699CC336699000000FFFFFF000000336699
+              3366996699CC33669999CCFF99CCFF33336633669933669999CCFF3366996699
+              CC336699000000FFFFFF0000003366993366996699CC33669999CCFF99CCFF33
+              336633336633336699CCFF3366996699CC336699000000FFFFFF00000099CCFF
+              3366996699CC22222299CCFF99CCFF99CCFF99CCFF99CCFF99CCFF22222299CC
+              FF336699000000FFFFFF00000000000000000000000000000000000000000000
+              0000000000000000000000000000000000000000FFFFFFFFFFFF}
+            TabOrder = 14
+            OnClick = bit_ExportaC9Click
           end
         end
         object tsProcesso: TTabSheet
@@ -17373,8 +17411,15 @@ inherited FormProduto: TFormProduto
       OnClick = N2CdigosdoFornecedor1Click
     end
     object N3Mesmoleaiutedeimportao1: TMenuItem
-      Caption = '3 - Mesmo leaiute de importa'#231#227'o'
+      Caption = '&3 - Mesmo leaiute de importa'#231#227'o'
       OnClick = N3Mesmoleaiutedeimportao1Click
+    end
+    object N4: TMenuItem
+      Caption = '-'
+    end
+    object ExportarFichaTcnicaparaoC91: TMenuItem
+      Caption = '&4 - Exportar Fichas T'#233'cnicas Para o C9'
+      OnClick = bit_ExportaC9Click
     end
   end
   object SqlCodCli: TSQLQuery [71]
@@ -21565,5 +21610,77 @@ inherited FormProduto: TFormProduto
     DataSet = qRegistroEndereco
     Left = 2160
     Top = 188
+  end
+  object qFichaTecnica: TFDQuery
+    Connection = DBInicio.FDACConn
+    Left = 1060
+    Top = 687
+    object qFichaTecnicaPRD_REFER: TStringField
+      DisplayLabel = 'Cod comercial'
+      FieldName = 'PRD_REFER'
+    end
+    object qFichaTecnicaFTC_CRIACAO: TSQLTimeStampField
+      DisplayLabel = 'Data cria'#231#227'o'
+      FieldName = 'FTC_CRIACAO'
+    end
+    object qFichaTecnicaFTC_TUP: TFMTBCDField
+      DisplayLabel = 'Tempo produ'#231#227'o'
+      FieldName = 'FTC_TUP'
+    end
+    object qFichaTecnicaFTC_BASEFORMULA: TIntegerField
+      DisplayLabel = 'Base da composi'#231#227'o'
+      FieldName = 'FTC_BASEFORMULA'
+    end
+    object qFichaTecnicaFTC_ETAPAS: TStringField
+      DisplayLabel = 'Etapas do processo'
+      FieldName = 'FTC_ETAPAS'
+      Size = 32000
+    end
+    object qFichaTecnicaEMP_CODIGO: TStringField
+      DisplayLabel = 'Empresa'
+      FieldName = 'EMP_CODIGO'
+      Size = 3
+    end
+  end
+  object qFichaTecnicaItens: TFDQuery
+    Connection = DBInicio.FDACConn
+    Left = 1148
+    Top = 687
+    object qFichaTecnicaItensPRD_REFER: TStringField
+      DisplayLabel = 'Cod comercial'
+      FieldName = 'PRD_REFER'
+    end
+    object qFichaTecnicaItensPRD_REFER_ITENS: TStringField
+      DisplayLabel = 'Cod itens dentro'
+      FieldName = 'PRD_REFER_ITENS'
+    end
+    object qFichaTecnicaItensFTI_MODIFICADA: TSQLTimeStampField
+      DisplayLabel = 'Data modifica'#231#227'o'
+      FieldName = 'FTI_MODIFICADA'
+    end
+    object qFichaTecnicaItensAMX_CODIGO: TStringField
+      DisplayLabel = 'Almoxarifado item'
+      FieldName = 'AMX_CODIGO'
+      Size = 4
+    end
+    object qFichaTecnicaItensFTI_UC: TFloatField
+      DisplayLabel = 'Qtde de consumo'
+      FieldName = 'FTI_UC'
+    end
+    object qFichaTecnicaItensEMP_CODIGO: TStringField
+      DisplayLabel = 'Empresa'
+      FieldName = 'EMP_CODIGO'
+      Size = 3
+    end
+  end
+  object dsFichaTecnica: TDataSource
+    DataSet = qFichaTecnica
+    Left = 1064
+    Top = 752
+  end
+  object dsFichaTecnicaItens: TDataSource
+    DataSet = qFichaTecnicaItens
+    Left = 1152
+    Top = 752
   end
 end

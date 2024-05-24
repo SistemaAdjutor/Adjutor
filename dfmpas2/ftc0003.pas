@@ -92,6 +92,7 @@ type
     procedure CopiarCamposTecnicos;
     procedure CopiarEngenhariaDeProcessos;
     procedure CopiarQualidade;
+    procedure CopiarFichaTecnica;
   public
     { Public declarations }
   end;
@@ -273,8 +274,11 @@ begin
 end;
 
 procedure TFormCopiaFichaTec.CopiarFichaTec;
+var
+  I : integer;
 begin
-    Screen.Cursor := crHourGlass;
+
+
     try
       wSql1      := 'select F1.*,P2.PTI_SIGLA,P1.PRD_DESCRI,P1.PRD_DCVAR1,P1.PRD_DCVAR2,P1.PRD_DCVAR3,P1.PRD_DCVAR4,P1.PRD_DCVAR5,P1.PRD_DCVAR6,P1.PRD_DCVAR7,P1.PRD_DCVAR8 ';
       wSql2      := 'from ftc_it01 F1 LEFT JOIN PRD0000 P1 ON (F1.PRD_REFER = P1.PRD_REFER) LEFT JOIN prd_tipo P2 ON (P2.pti_codigo = P1.pti_codigo) ';
@@ -287,87 +291,88 @@ begin
       DataCadastros.sqlUpdate.Open;
       if DataCadastros.sqlUpdate.IsEmpty = true then
          begin
-             wSql2      := 'from FTC0000 F1 LEFT JOIN PRD0000 P1 ON (F1.PRD_REFER = P1.PRD_REFER) LEFT JOIN prd_tipo P2 ON (P2.pti_codigo = P1.pti_codigo) ';
-             DataCadastros.sqlUpdate.close;
-             try
-               wSeleciona := 'where F1.PRD_REFER = '''+EdtCopiarDe.Text+'''';
-               wOrdem     := 'F1.PRD_REFER';
-               //
-               SqlCdsCopiaFichaTec.Close;
-               SqlCdsCopiaFichaTec.CommandText := SQLDEF('PRODUTOS',wSql1+wSql2,wSeleciona,wOrdem,'F1.');
-               SqlCdsCopiaFichaTec.Open;
-               if SqlCdsCopiaFichaTec.IsEmpty = false then
-                  begin
-                      wSeleciona := 'where F1.PRD_REFER = '''+EdtCopiarPa.Text+'''';
-                      wOrdem     := 'F1.PRD_REFER';
-                      //
-                      DmProducao.CdsFichaTec.Close;
-                      DmProducao.CdsFichaTec.CommandText := SQLDEF('PRODUTOS',wSql1+wSql2,wSeleciona,wOrdem,'F1.');
-                      DmProducao.CdsFichaTec.Open;
-                      if (DmProducao.CdsFichaTec.IsEmpty = true) then
-                         DmProducao.CdsFichaTec.Insert
-                      else
-                         DmProducao.CdsFichaTec.Edit;
-                      DmProducao.CdsFichaTecPRD_REFER.AsString     := EdtCopiarPa.Text;
-                      DmProducao.CdsFichaTecFTC_TUP.AsCurrency     := SqlCdsCopiaFichaTecFTC_TUP.AsCurrency;
-                      DmProducao.CdsFichaTecFTC_CRIACAO.AsDateTime := now;
-                      DmProducao.CdsFichaTecFTC_PROC1.AsString     := SqlCdsCopiaFichaTecFTC_PROC1.AsString;
-                      DmProducao.CdsFichaTecFTC_PROC2.AsString     := SqlCdsCopiaFichaTecFTC_PROC2.AsString;
-                      DmProducao.CdsFichaTecFTC_PROC3.AsString     := SqlCdsCopiaFichaTecFTC_PROC3.AsString;
-                      DmProducao.CdsFichaTecFTC_PROC4.AsString     := SqlCdsCopiaFichaTecFTC_PROC4.AsString;
-                      DmProducao.CdsFichaTecFTC_PROC5.AsString     := SqlCdsCopiaFichaTecFTC_PROC5.AsString;
-                      DmProducao.CdsFichaTecFTC_PROC6.AsString     := SqlCdsCopiaFichaTecFTC_PROC6.AsString;
-                      DmProducao.CdsFichaTecFTC_PROC7.AsString     := SqlCdsCopiaFichaTecFTC_PROC7.AsString;
-                      DmProducao.CdsFichaTecFTC_PROC8.AsString     := SqlCdsCopiaFichaTecFTC_PROC8.AsString;
-                      DmProducao.CdsFichaTecEMP_CODIGO.AsString    := SqlCdsCopiaFichaTecEMP_CODIGO.AsString;
-                      DmProducao.CdsFichaTec.ApplyUpdates(0);
-                      DmProducao.CdsFichaTec.Close;
-                  end;
-             except on E:EDataBaseError do
-               uteis.erro  (pchar('Erro ao inserir o registro na tabela FTC0000 ! '+E.message));
-             end;
-             SqlCdsCopiaFichaTec.Close;
-             try
-               SqlCdsCopiaItemFichaTec.Close;
-               SqlCdsCopiaItemFichaTec.CommandText := SQLDEF('PRODUTOS','Select F2.* from FTC_IT01 F2 ','where F2.PRD_REFER = '''+EdtCopiarDe.Text+'''','F2.PRD_REFER','F2.');
-               SqlCdsCopiaItemFichaTec.Open;
-               SqlCdsCopiaItemFichaTec.First;
-               ProgressBar1.Max := SqlCdsCopiaItemFichaTec.RecordCount;
-               ProgressBar1.Position := 0;
-               if SqlCdsCopiaItemFichaTec.IsEmpty = false then
-                  begin
-                      DmProducao.CdsItemFicha.Close;
-                      DmProducao.CdsItemFicha.CommandText := SQLDEF('PRODUTOS','Select F3.* from FTC_IT01 F3 ','where F3.PRD_REFER = '''+EdtCopiarPa.Text+'''','F3.PRD_REFER','F3.');
-                      DmProducao.CdsItemFicha.Open;
-                      while not SqlCdsCopiaItemFichaTec.Eof do
-                       begin
-                           DmProducao.CdsItemFicha.Insert;
-                           DmProducao.CdsItemFichaPRD_REFER.AsString        := EdtCopiarPa.Text;
-                           DmProducao.CdsItemFichaPRD_REFER_ITENS.AsString  := SqlCdsCopiaItemFichaTecPRD_REFER_ITENS.AsString;
-                           DmProducao.CdsItemFichaFTI_MODIFICADA.AsDateTime := SqlCdsCopiaItemFichaTecFTI_MODIFICADA.AsDateTime;
-                           DmProducao.CdsItemFichaFTI_UC.AsFloat            := SqlCdsCopiaItemFichaTecFTI_UC.AsFloat;
-                           DmProducao.CdsItemFichaFTI_UCMODIFIC.AsFloat     := SqlCdsCopiaItemFichaTecFTI_UCMODIFIC.AsFloat;
-                           DmProducao.CdsItemFichaFTI_MODE1.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE1.AsString;
-                           DmProducao.CdsItemFichaFTI_MODE2.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE2.AsString;
-                           DmProducao.CdsItemFichaFTI_MODE3.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE3.AsString;
-                           DmProducao.CdsItemFichaFTI_MODE4.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE4.AsString;
-                           DmProducao.CdsItemFichaFTI_MODE5.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE5.AsString;
-                           DmProducao.CdsItemFichaFTI_MODE6.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE6.AsString;
-                           DmProducao.CdsItemFichaFTI_MODE7.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE7.AsString;
-                           DmProducao.CdsItemFichaFTI_MODE8.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE8.AsString;
-                           DmProducao.CdsItemFichaFTI_PRECOCUSTO.AsCurrency := SqlCdsCopiaItemFichaTecFTI_PRECOCUSTO.AsCurrency;
-                           DmProducao.CdsItemFichaEMP_CODIGO.AsString       := SqlCdsCopiaItemFichaTecEMP_CODIGO.AsString;
-                           DmProducao.CdsItemFicha.ApplyUpdates(0);
-                           SqlCdsCopiaItemFichaTec.Next;
-                           ProgressBar1.Position := ProgressBar1.Position + 1;
-                       end;
-                      DmProducao.CdsItemFicha.Close;
-                  end;
-             except on E:EdataBaseError do
-               uteis.erro  (pchar('Erro ao inserir o registro na tabela FTC_IT01 ! '+E.message));
-             end;
-             SqlCdsCopiaItemFichaTec.Close;
+//             wSql2      := 'from FTC0000 F1 LEFT JOIN PRD0000 P1 ON (F1.PRD_REFER = P1.PRD_REFER) LEFT JOIN prd_tipo P2 ON (P2.pti_codigo = P1.pti_codigo) ';
+//             DataCadastros.sqlUpdate.close;
+//             try
+//               wSeleciona := 'where F1.PRD_REFER = '''+EdtCopiarDe.Text+'''';
+//               wOrdem     := 'F1.PRD_REFER';
+//               //
+//               SqlCdsCopiaFichaTec.Close;
+//               SqlCdsCopiaFichaTec.CommandText := SQLDEF('PRODUTOS',wSql1+wSql2,wSeleciona,wOrdem,'F1.');
+//               SqlCdsCopiaFichaTec.Open;
+//               if SqlCdsCopiaFichaTec.IsEmpty = false then
+//                  begin
+//                      wSeleciona := 'where F1.PRD_REFER = '''+EdtCopiarPa.Text+'''';
+//                      wOrdem     := 'F1.PRD_REFER';
+//                      //
+//                      DmProducao.CdsFichaTec.Close;
+//                      DmProducao.CdsFichaTec.CommandText := SQLDEF('PRODUTOS',wSql1+wSql2,wSeleciona,wOrdem,'F1.');
+//                      DmProducao.CdsFichaTec.Open;
+//                      if (DmProducao.CdsFichaTec.IsEmpty = true) then
+//                         DmProducao.CdsFichaTec.Insert
+//                      else
+//                         DmProducao.CdsFichaTec.Edit;
+//                      DmProducao.CdsFichaTecPRD_REFER.AsString     := EdtCopiarPa.Text;
+//                      DmProducao.CdsFichaTecFTC_TUP.AsCurrency     := SqlCdsCopiaFichaTecFTC_TUP.AsCurrency;
+//                      DmProducao.CdsFichaTecFTC_CRIACAO.AsDateTime := now;
+//                      DmProducao.CdsFichaTecFTC_PROC1.AsString     := SqlCdsCopiaFichaTecFTC_PROC1.AsString;
+//                      DmProducao.CdsFichaTecFTC_PROC2.AsString     := SqlCdsCopiaFichaTecFTC_PROC2.AsString;
+//                      DmProducao.CdsFichaTecFTC_PROC3.AsString     := SqlCdsCopiaFichaTecFTC_PROC3.AsString;
+//                      DmProducao.CdsFichaTecFTC_PROC4.AsString     := SqlCdsCopiaFichaTecFTC_PROC4.AsString;
+//                      DmProducao.CdsFichaTecFTC_PROC5.AsString     := SqlCdsCopiaFichaTecFTC_PROC5.AsString;
+//                      DmProducao.CdsFichaTecFTC_PROC6.AsString     := SqlCdsCopiaFichaTecFTC_PROC6.AsString;
+//                      DmProducao.CdsFichaTecFTC_PROC7.AsString     := SqlCdsCopiaFichaTecFTC_PROC7.AsString;
+//                      DmProducao.CdsFichaTecFTC_PROC8.AsString     := SqlCdsCopiaFichaTecFTC_PROC8.AsString;
+//                      DmProducao.CdsFichaTecEMP_CODIGO.AsString    := SqlCdsCopiaFichaTecEMP_CODIGO.AsString;
+//                      DmProducao.CdsFichaTec.ApplyUpdates(0);
+//                      DmProducao.CdsFichaTec.Close;
+//                  end;
+//             except on E:EDataBaseError do
+//               uteis.erro  (pchar('Erro ao inserir o registro na tabela FTC0000 ! '+E.message));
+//             end;
+//             SqlCdsCopiaFichaTec.Close;
+//             try
+//               SqlCdsCopiaItemFichaTec.Close;
+//               SqlCdsCopiaItemFichaTec.CommandText := SQLDEF('PRODUTOS','Select F2.* from FTC_IT01 F2 ','where F2.PRD_REFER = '''+EdtCopiarDe.Text+'''','F2.PRD_REFER','F2.');
+//               SqlCdsCopiaItemFichaTec.Open;
+//               SqlCdsCopiaItemFichaTec.First;
+//               ProgressBar1.Max := SqlCdsCopiaItemFichaTec.RecordCount;
+//               ProgressBar1.Position := 0;
+//               if SqlCdsCopiaItemFichaTec.IsEmpty = false then
+//                  begin
+//                      DmProducao.CdsItemFicha.Close;
+//                      DmProducao.CdsItemFicha.CommandText := SQLDEF('PRODUTOS','Select F3.* from FTC_IT01 F3 ','where F3.PRD_REFER = '''+EdtCopiarPa.Text+'''','F3.PRD_REFER','F3.');
+//                      DmProducao.CdsItemFicha.Open;
+//                      while not SqlCdsCopiaItemFichaTec.Eof do
+//                       begin
+//                           DmProducao.CdsItemFicha.Insert;
+//                           DmProducao.CdsItemFichaPRD_REFER.AsString        := EdtCopiarPa.Text;
+//                           DmProducao.CdsItemFichaPRD_REFER_ITENS.AsString  := SqlCdsCopiaItemFichaTecPRD_REFER_ITENS.AsString;
+//                           DmProducao.CdsItemFichaFTI_MODIFICADA.AsDateTime := SqlCdsCopiaItemFichaTecFTI_MODIFICADA.AsDateTime;
+//                           DmProducao.CdsItemFichaFTI_UC.AsFloat            := SqlCdsCopiaItemFichaTecFTI_UC.AsFloat;
+//                           DmProducao.CdsItemFichaFTI_UCMODIFIC.AsFloat     := SqlCdsCopiaItemFichaTecFTI_UCMODIFIC.AsFloat;
+//                           DmProducao.CdsItemFichaFTI_MODE1.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE1.AsString;
+//                           DmProducao.CdsItemFichaFTI_MODE2.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE2.AsString;
+//                           DmProducao.CdsItemFichaFTI_MODE3.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE3.AsString;
+//                           DmProducao.CdsItemFichaFTI_MODE4.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE4.AsString;
+//                           DmProducao.CdsItemFichaFTI_MODE5.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE5.AsString;
+//                           DmProducao.CdsItemFichaFTI_MODE6.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE6.AsString;
+//                           DmProducao.CdsItemFichaFTI_MODE7.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE7.AsString;
+//                           DmProducao.CdsItemFichaFTI_MODE8.AsString        := SqlCdsCopiaItemFichaTecFTI_MODE8.AsString;
+//                           DmProducao.CdsItemFichaFTI_PRECOCUSTO.AsCurrency := SqlCdsCopiaItemFichaTecFTI_PRECOCUSTO.AsCurrency;
+//                           DmProducao.CdsItemFichaEMP_CODIGO.AsString       := SqlCdsCopiaItemFichaTecEMP_CODIGO.AsString;
+//                           DmProducao.CdsItemFicha.ApplyUpdates(0);
+//                           SqlCdsCopiaItemFichaTec.Next;
+//                           ProgressBar1.Position := ProgressBar1.Position + 1;
+//                       end;
+//                      DmProducao.CdsItemFicha.Close;
+//                  end;
+//             except on E:EdataBaseError do
+//               uteis.erro  (pchar('Erro ao inserir o registro na tabela FTC_IT01 ! '+E.message));
+//             end;
+//             SqlCdsCopiaItemFichaTec.Close;
 
+             CopiarFichaTecnica;
              CopiarEngenhariaDeProcessos;
              CopiarCamposTecnicos;
              CopiarQualidade;
@@ -379,7 +384,7 @@ begin
              EdtCopiarPa.SetFocus;
              ProgressBar1.Position := 0;
          end
-      else
+         else
          begin
              uteis.aviso('Ficha Técnica já cadastrada !');
              DataCadastros.sqlUpdate.close;
@@ -393,6 +398,94 @@ begin
     Screen.Cursor := crDefault;
 end;
 
+
+procedure TFormCopiaFichaTec.CopiarFichaTecnica;
+var
+  I  : integer;
+
+begin
+  try
+    origem.SQL.Text := 'SELECT * FROM FTC0000 WHERE PRD_REFER = ' + QuotedStr(EdtCopiarDe.Text);
+    origem.Open;
+    if origem.IsEmpty then
+    begin
+      origem.Close;
+      destino.Close;
+      exit;
+    end;
+
+    destino.SQL.Text := 'SELECT * FROM FTC0000 ';
+    destino.Open;
+
+//    while not Origem.Eof do
+//    begin
+      destino.Insert;
+      for I := 0 to origem.FieldCount - 1 do
+      begin
+        if (origem.Fields[I].FieldName = 'PRD_REFER')  then
+          destino.Fields[I].Value := EdtCopiarPa.Text
+        else
+        if (origem.Fields[I].FieldName = 'FTC_REGISTRO')  then
+          destino.Fields[I].Value := dbInicio.GetNextSequence( 'gen_ftc0000')
+        else
+          destino.Fields[I].Value := origem.Fields[I].Value;
+      end;
+      destino.Post;
+
+//      Origem.Next;
+//    end;
+    destino.ApplyUpdates(0);
+  except
+    on e: Exception do
+    begin
+      uteis.Aviso(e.Message);
+    end;
+  end;
+  origem.Close;
+  destino.Close;
+
+
+  try
+    origem.SQL.Text := 'SELECT * FROM FTC_IT01 WHERE PRD_REFER = ' + QuotedStr(EdtCopiarDe.Text);
+    origem.Open;
+    if origem.IsEmpty then
+    begin
+      origem.Close;
+      destino.Close;
+      exit;
+    end;
+
+    destino.SQL.Text := 'SELECT * FROM FTC_IT01 ';
+    destino.Open;
+
+    while not Origem.Eof do
+    begin
+      destino.Insert;
+      for I := 0 to origem.FieldCount - 1 do
+      begin
+        if (origem.Fields[I].FieldName = 'PRD_REFER')  then
+          destino.Fields[I].Value := EdtCopiarPa.Text
+        else
+        if (origem.Fields[I].FieldName = 'FTI_REGISTRO')  then
+          destino.Fields[I].Value := dbInicio.GetNextSequence('GEN_FTC_IT01_REGISTRO')
+        else
+          destino.Fields[I].Value := origem.Fields[I].Value;
+      end;
+      destino.Post;
+
+      Origem.Next;
+    end;
+    destino.ApplyUpdates(0);
+  except
+    on e: Exception do
+    begin
+      uteis.Aviso(e.Message);
+    end;
+  end;
+  origem.Close;
+  destino.Close;
+
+end;
 
 procedure TFormCopiaFichaTec.EdtCopiarPaChange(Sender: tObject);
 begin
