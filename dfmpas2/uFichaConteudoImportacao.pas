@@ -1255,8 +1255,16 @@ begin
   vlParcelaImportadaTotal := 0;
   prdRefer := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index];
   valorTotal := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1VALOR_TOTAL.Index];
+  if (cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index] = null)
+  or (cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index] = 0)
+  then
+    begin
+      cdsBusca.EnableControls;
+      panelAguarde.Visible := False;
+      uteis.Aviso('A Base da Composição não está cadastrada na Ficha Técnica deste produto.' + #13 + 'Impossível Prosseguir');
+      Exit;
+    end;
   quantidadePai  := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-
   tPI := 0;
   AtualizaFCI(prdRefer, '', quantidadePai, tPI);
   CI := (vlParcelaImportadaTotal / valorTotal) * 100;
