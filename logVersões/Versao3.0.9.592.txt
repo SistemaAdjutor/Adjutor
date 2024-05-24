@@ -1,4 +1,4 @@
-﻿Atualizado em 15/05/2024
+﻿Atualizado em 24/05/2024
 Inicio da versão: 06/05/2024
 
 principal: EDGE, PARSEALS INDUSTRIAL, Collect
@@ -15,4 +15,11 @@ patch 2: Embraterm, Collect
   1863 - Duplicidade de quantidade no pedido de tratamento [Embraterm]
   1864 - Exportar - Cadastro Do Cliente [Collect]
   
-
+patch 3: LForja, Vedseals, Collect, Arkson
+  1865 - Atualizar ACBR [Novi]
+  1867 - Falha - Cadastro de Produtos e Serviços [LForja]
+  1868 - Migração de Ficha técnica para o C9 [Vedseals]
+  1869 - Ajuste: Cadastro de cliente [Collect]
+  1870 - Modificação - Conciliação Financeira e Bancaria [Arkson]
+  1871 - ERRO: Tela renovação [Collect]
+  
