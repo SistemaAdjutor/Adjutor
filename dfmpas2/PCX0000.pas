@@ -78,6 +78,7 @@ type
     ppDesignLayers1: TppDesignLayers;
     ppDesignLayer1: TppDesignLayer;
     cbCentroCustoEncerrado: TCheckBox;
+    btTransfere: TBitBtn;
     procedure BuscaProjetoCx;
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_RelatorioClick(Sender: tObject);
@@ -106,6 +107,7 @@ type
     procedure FormCreate(Sender: tObject);
     procedure FormDestroy(Sender: TObject);
     procedure cbCentroCustoEncerradoClick(Sender: TObject);
+    procedure btTransfereClick(Sender: TObject);
 
   private
     CampoEdit    :TEdit;
@@ -131,7 +133,7 @@ var
 
 implementation
 
-uses Uteis, DataCad, RWFunc, DataCad1, uPlanoContasCentroCusto, uPlanoContasCentroCustoManual, ufrmpreviewrb, iniciodb;
+uses Uteis, DataCad, RWFunc, DataCad1, uPlanoContasCentroCusto, uPlanoContasCentroCustoManual, ufrmpreviewrb, iniciodb, uTransfereCentroCusto;
 
 {$R *.DFM}
 
@@ -384,6 +386,17 @@ begin
            ModalResult := mrOk;
       end;
 
+end;
+
+procedure TFormProjCaixa.btTransfereClick(Sender: TObject);
+begin
+  try
+    if frmTransfereCentroCusto = nil then
+      frmTransfereCentroCusto := tfrmTransfereCentroCusto.Create(Self);
+    frmTransfereCentroCusto.ShowModal;
+  finally
+    frmTransfereCentroCusto := nil;
+  end;
 end;
 
 procedure TFormProjCaixa.Bit_CancelarClick(Sender: tObject);

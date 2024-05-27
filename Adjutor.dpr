@@ -520,7 +520,8 @@ uses
   uJustificativaDeducao in 'dfmpas2\uJustificativaDeducao.pas' {frmJustificativaDeducao},
   uDashboradInteligencia in 'dfmpas2\uDashboradInteligencia.pas' {frmDashBoardInteligencia},
   uSecuritizadora in 'dfmpas2\uSecuritizadora.pas' {frmSecuritizadora},
-  uPesqSecuritizadora in 'dfmpas2\uPesqSecuritizadora.pas' {frmPesqSecuritizadora};
+  uPesqSecuritizadora in 'dfmpas2\uPesqSecuritizadora.pas' {frmPesqSecuritizadora},
+  uTransfereCentroCusto in 'dfmpas2\uTransfereCentroCusto.pas' {frmTransfereCentroCusto};
 
 {$R *.res}
 {$D+}
@@ -552,6 +553,7 @@ begin
   Application.CreateForm(TDmCfg, DmCfg);
   Application.CreateForm(TFrmMenu, FrmMenu);
   Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TfrmTransfereCentroCusto, frmTransfereCentroCusto);
   if dbInicio.ModulosComoAplicacao then
   begin
      Application.CreateForm(TfrmBaseDBFDAC, frmBaseDBFDAC);

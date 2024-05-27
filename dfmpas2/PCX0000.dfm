@@ -4,8 +4,8 @@ object FormProjCaixa: TFormProjCaixa
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Centro de Custo'
-  ClientHeight = 602
-  ClientWidth = 736
+  ClientHeight = 603
+  ClientWidth = 803
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clWindowText
@@ -95,15 +95,15 @@ object FormProjCaixa: TFormProjCaixa
     TabOrder = 0
   end
   object Panel1: TPanel
-    Left = 401
-    Top = 567
-    Width = 335
+    Left = 386
+    Top = 565
+    Width = 418
     Height = 33
     BevelOuter = bvNone
     TabOrder = 4
     object Bit_Cancelar: TBitBtn
-      Left = 244
-      Top = 4
+      Left = 329
+      Top = 3
       Width = 80
       Height = 25
       Cursor = crHandPoint
@@ -140,7 +140,7 @@ object FormProjCaixa: TFormProjCaixa
       OnClick = Bit_CancelarClick
     end
     object Bit_Sair: TBitBtn
-      Left = 246
+      Left = 330
       Top = 4
       Width = 80
       Height = 25
@@ -168,8 +168,8 @@ object FormProjCaixa: TFormProjCaixa
       OnClick = Bit_SairClick
     end
     object Bit_Excluir: TBitBtn
-      Left = 83
-      Top = 4
+      Left = 168
+      Top = 3
       Width = 80
       Height = 25
       Cursor = crHandPoint
@@ -191,8 +191,8 @@ object FormProjCaixa: TFormProjCaixa
       OnClick = Bit_ExcluirClick
     end
     object Bit_Gravar: TBitBtn
-      Left = 163
-      Top = 4
+      Left = 248
+      Top = 3
       Width = 80
       Height = 25
       Cursor = crHandPoint
@@ -219,8 +219,8 @@ object FormProjCaixa: TFormProjCaixa
       OnClick = Bit_GravarClick
     end
     object Bit_novo: TBitBtn
-      Left = 0
-      Top = 4
+      Left = 87
+      Top = 3
       Width = 80
       Height = 25
       Cursor = crHandPoint
@@ -238,11 +238,55 @@ object FormProjCaixa: TFormProjCaixa
       TabStop = False
       OnClick = Bit_novoClick
     end
+    object btTransfere: TBitBtn
+      Left = 0
+      Top = 3
+      Width = 81
+      Height = 25
+      Caption = 'Transferir'
+      Glyph.Data = {
+        36040000424D3604000000000000360000002800000010000000100000000100
+        2000000000000004000000000000000000000000000000000000FEFEFEFFFFFF
+        FFFFFEFEFEFFFDFDFDFFFFFFFFFF1A1A1AFFC9C9C9FFFFFFFFFFFCFCFCFFFFFF
+        FFFFFEFEFEFFFEFEFEFFFFFFFFFFFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+        FFFFFEFEFEFFF1F1F1FF000000FF525252FFD3D3D3FFFCFCFCFFFFFFFFFFFCFC
+        FCFFFFFFFFFFFEFEFEFFFFFFFFFFFCFCFCFFFEFEFEFFFCFCFCFFFFFFFFFFFCFC
+        FCFFC2C2C2FF030303FFFFFFFFFFB4B4B4FF111111FF262626FF222222FF2626
+        26FF212121FF111111FF595959FFFFFFFFFFFEFEFEFFFFFFFFFFFCFCFCFF9494
+        94FF2B2B2BFFFDFDFDFFFEFEFEFFFFFFFFFFFEFEFEFFFDFDFDFFFFFFFFFFF9F9
+        F9FFFEFEFEFFFFFFFFFFBABABAFF000000FFFFFFFFFFFFFFFFFFFEFEFEFFF0F0
+        F0FF050505FFE2E2E2FFFEFEFEFFFFFFFFFFFCFCFCFFFFFFFFFFFFFFFFFFFEFE
+        FEFFFFFFFFFFFFFFFFFFFFFFFFFF9B9B9BFF848484FFFEFEFEFFFBFBFBFFFDFD
+        FDFFFFFFFFFF070707FFB2B2B2FFC2C2C2FF141414FF222222FF1E1E1EFF2222
+        22FF1F1F1FFF1B1B1BFF9C9C9CFFFFFFFFFF404040FFFFFFFFFFFFFFFFFFFDFD
+        FDFFFFFFFFFFFFFFFFFF474747FF000000FFD1D1D1FFFFFFFFFFFFFFFFFFFBFB
+        FBFFFFFFFFFFFFFFFFFF6E6E6EFF464646FF4F4F4FFFFFFFFFFFFEFEFEFF3535
+        35FFEAEAEAFFFFFFFFFFFFFFFFFF8A8A8AFFDDDDDDFFFEFEFEFFFCFCFCFFFFFF
+        FFFFFBFBFBFFFFFFFFFFFFFFFFFF505050FF525252FFFCFCFCFFFCFCFCFF5151
+        51FF505050FFFFFFFFFFFFFFFFFFFCFCFCFFFFFFFFFFFDFDFDFFFFFFFFFFFFFF
+        FFFF646464FFFDFDFDFFFFFFFFFFEBEBEBFF333333FFFFFFFFFFFFFFFFFF4E4E
+        4EFF454545FF6E6E6EFFFFFFFFFFFFFFFFFFFBFBFBFFFFFFFFFFFFFFFFFFFEFE
+        FEFF000000FF101010FFFFFFFFFFFDFDFDFFFFFFFFFFFFFFFFFFFFFFFFFF4040
+        40FFFFFFFFFF9C9C9CFF1B1B1BFF1F1F1FFF232323FF1E1E1EFF202020FF2323
+        23FF535353FFF7F7F7FF020202FFFFFFFFFFFCFCFCFFFEFEFEFFFEFEFEFF8484
+        84FF9B9B9BFFFFFFFFFFFFFFFFFFFFFFFFFFFEFEFEFFFFFFFFFFFDFDFDFFFEFE
+        FEFFFFFFFFFFFEFEFEFFF8F8F8FF030303FFE7E7E7FFFFFFFFFFFFFFFFFFFFFF
+        FFFF000000FFBABABAFFFFFFFFFFFEFEFEFFFAFAFAFFFFFFFFFFFFFFFFFFFCFC
+        FCFFFFFFFFFFFFFFFFFFFFFFFFFF3B3B3BFF8F8F8FFFFCFCFCFFFFFFFFFFFEFE
+        FEFFFFFFFFFF595959FF111111FF212121FF262626FF222222FF212121FF1E1E
+        1EFF4F4F4FFFFFFFFFFF141414FFA5A5A5FFFEFEFEFFFFFFFFFFFCFCFCFFFEFE
+        FEFFFCFCFCFFFFFFFFFFFEFEFEFFFFFFFFFFFCFCFCFFFFFFFFFFFFFFFFFFFDFD
+        FDFF252525FF1D1D1DFFC5C5C5FFFFFFFFFFFCFCFCFFFDFDFDFFFFFFFFFFFFFF
+        FFFFFDFDFDFFFFFFFFFFFEFEFEFFFEFEFEFFFFFFFFFFFCFCFCFFFCFCFCFFFFFF
+        FFFF020202FFE7E7E7FFFEFEFEFFFFFFFFFFFFFFFFFFFFFFFFFF}
+      TabOrder = 5
+      OnClick = btTransfereClick
+    end
   end
   object Panel3: TPanel
     Left = 5
     Top = 567
-    Width = 109
+    Width = 92
     Height = 33
     BevelOuter = bvNone
     Caption = 'Panel3'
@@ -319,14 +363,14 @@ object FormProjCaixa: TFormProjCaixa
   object GroupBox1: TGroupBox
     Left = 1
     Top = 108
-    Width = 732
+    Width = 795
     Height = 451
     Caption = 'Centros de Custos'
     TabOrder = 10
     object dbgrdCentros: TDBGrid
       Left = 2
       Top = 16
-      Width = 728
+      Width = 791
       Height = 433
       Align = alClient
       Color = 16776176
@@ -587,6 +631,7 @@ object FormProjCaixa: TFormProjCaixa
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -603,6 +648,14 @@ object FormProjCaixa: TFormProjCaixa
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -612,22 +665,34 @@ object FormProjCaixa: TFormProjCaixa
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -635,13 +700,26 @@ object FormProjCaixa: TFormProjCaixa
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 528
     Top = 272
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBRelProjCaixa'
     object pp00HeaderBand2: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 15346
       mmPrintPosition = 0
@@ -649,6 +727,7 @@ object FormProjCaixa: TFormProjCaixa
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -662,13 +741,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3302
         mmLeft = 0
@@ -682,13 +763,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -702,13 +785,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -721,6 +806,7 @@ object FormProjCaixa: TFormProjCaixa
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -734,6 +820,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -754,6 +841,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -774,13 +862,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'COD'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3302
         mmLeft = 0
@@ -794,13 +884,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DESCRI'#199#195'O'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 8467
@@ -813,6 +905,7 @@ object FormProjCaixa: TFormProjCaixa
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -826,13 +919,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'INICIO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 74348
@@ -846,13 +941,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TERMINO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 92604
@@ -866,13 +963,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TERMINADO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3302
         mmLeft = 120386
@@ -886,13 +985,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PART.CUSTO OPER.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 139965
@@ -903,8 +1004,7 @@ object FormProjCaixa: TFormProjCaixa
       end
     end
     object pp00DetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -914,6 +1014,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PCX_CODIGO'
         DataPipeline = ppDBRelProjCaixa
         Font.Charset = DEFAULT_CHARSET
@@ -937,6 +1038,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PCX_DESCRI'
         DataPipeline = ppDBRelProjCaixa
         Font.Charset = DEFAULT_CHARSET
@@ -959,6 +1061,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PCX_INICIO'
         DataPipeline = ppDBRelProjCaixa
         Font.Charset = DEFAULT_CHARSET
@@ -980,6 +1083,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PCX_FIM'
         DataPipeline = ppDBRelProjCaixa
         Font.Charset = DEFAULT_CHARSET
@@ -1001,6 +1105,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PCX_TERMINADO'
         DataPipeline = ppDBRelProjCaixa
         Font.Charset = DEFAULT_CHARSET
@@ -1022,6 +1127,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'PCX_PARTICIPA_CUSTO_OPERACIONAL'
         DataPipeline = ppDBRelProjCaixa
         Font.Charset = DEFAULT_CHARSET
@@ -1040,7 +1146,7 @@ object FormProjCaixa: TFormProjCaixa
       end
     end
     object pp00SummaryBand2: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 3969
       mmPrintPosition = 0
@@ -1048,6 +1154,7 @@ object FormProjCaixa: TFormProjCaixa
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -1061,13 +1168,15 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'Label11'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'Total de Contas do Projeto Listado(s):'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -1081,6 +1190,7 @@ object FormProjCaixa: TFormProjCaixa
         UserName = 'DBCalc1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataPipeline = ppDBRelProjCaixa
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -1099,28 +1209,36 @@ object FormProjCaixa: TFormProjCaixa
       end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650610
-        444254657874354F6E476574546578740B50726F6772616D54797065070B7474
-        50726F63656475726506536F7572636514A800000070726F6365647572652044
-        4254657874354F6E476574546578742876617220546578743A20537472696E67
-        293B0D0A626567696E0D0A20202020696620444252656C50726F6A4361697861
-        5B275043585F5445524D494E41444F275D3D275327207468656E0D0A20202020
-        20202054657874203A3D202753494D270D0A20202020656C73650D0A20202020
-        20202054657874203A3D20274EC3834F273B2020200D0A656E643B0D0A0D436F
-        6D706F6E656E744E616D65060744425465787435094576656E744E616D650609
-        4F6E47657454657874074576656E7449440235084361726574506F7301020802
-        07000001060F5472614576656E7448616E646C65720B50726F6772616D4E616D
-        650610444254657874364F6E476574546578740B50726F6772616D5479706507
-        0B747450726F63656475726506536F7572636514BA00000070726F6365647572
-        6520444254657874364F6E476574546578742876617220546578743A20537472
-        696E67293B0D0A626567696E0D0A20202020696620444252656C50726F6A4361
-        6978615B275043585F5041525449434950415F435553544F5F4F504552414349
-        4F4E414C275D3D275327207468656E0D0A2020202020202054657874203A3D20
-        2753494D270D0A20202020656C73650D0A2020202020202054657874203A3D20
-        274EC3834F273B200D0A0D0A656E643B0D0A0D436F6D706F6E656E744E616D65
-        060744425465787436094576656E744E616D6506094F6E476574546578740745
-        76656E7449440235084361726574506F7301021C0203000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText5OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText5OnGetText(var Text: String);'#13#10'begin'#13#10'    if DBR' +
+          'elProjCaixa['#39'PCX_TERMINADO'#39']='#39'S'#39' then'#13#10'       Text := '#39'SIM'#39#13#10'   ' +
+          ' else'#13#10'       Text := '#39'N'#195'O'#39';   '#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText5'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          8
+          7)
+      end
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'DBText6OnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure DBText6OnGetText(var Text: String);'#13#10'begin'#13#10'    if DBR' +
+          'elProjCaixa['#39'PCX_PARTICIPA_CUSTO_OPERACIONAL'#39']='#39'S'#39' then'#13#10'       ' +
+          'Text := '#39'SIM'#39#13#10'    else'#13#10'       Text := '#39'N'#195'O'#39'; '#13#10#13#10'end;'#13#10
+        raProgram.ComponentName = 'DBText6'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          28
+          3)
+      end
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer

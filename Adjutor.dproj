@@ -1770,6 +1770,10 @@
             <Form>frmPesqSecuritizadora</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="dfmpas2\uTransfereCentroCusto.pas">
+            <Form>frmTransfereCentroCusto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
