@@ -2,8 +2,8 @@ inherited frmPesquisaInadimplencia: TfrmPesquisaInadimplencia
   Caption = 'inadimpl'#234'ncia'
   ClientHeight = 513
   ClientWidth = 1009
-  ExplicitWidth = 1017
-  ExplicitHeight = 540
+  ExplicitWidth = 1025
+  ExplicitHeight = 552
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtilTop: TPanel
@@ -54,6 +54,8 @@ inherited frmPesquisaInadimplencia: TfrmPesquisaInadimplencia
     ExplicitWidth = 1108
     ExplicitHeight = 423
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 1100
       ExplicitHeight = 395
       inherited pnControle: TPanel
@@ -150,8 +152,10 @@ inherited frmPesquisaInadimplencia: TfrmPesquisaInadimplencia
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object edDias: TEdit
               Left = 729
@@ -223,8 +227,10 @@ inherited frmPesquisaInadimplencia: TfrmPesquisaInadimplencia
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object edVendedor: TEdit
               Left = 324
@@ -482,7 +488,7 @@ inherited frmPesquisaInadimplencia: TfrmPesquisaInadimplencia
     Cedente.IdentDistribuicao = tbBancoDistribui
     Cedente.PIX.TipoChavePIX = tchNenhuma
     NumeroArquivo = 0
-    Configuracoes.Arquivos.LogRegistro = False
+    Configuracoes.Arquivos.LogNivel = logNenhum
     Configuracoes.WebService.SSLHttpLib = httpOpenSSL
     Configuracoes.WebService.StoreName = 'My'
     Configuracoes.WebService.Ambiente = taHomologacao

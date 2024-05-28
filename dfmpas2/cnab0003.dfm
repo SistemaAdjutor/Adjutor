@@ -1601,7 +1601,7 @@ inherited FrmRetornoCNAB_Novo: TFrmRetornoCNAB_Novo
     Cedente.IdentDistribuicao = tbBancoDistribui
     Cedente.PIX.TipoChavePIX = tchNenhuma
     NumeroArquivo = 0
-    Configuracoes.Arquivos.LogRegistro = False
+    Configuracoes.Arquivos.LogNivel = logNenhum
     Configuracoes.WebService.SSLHttpLib = httpOpenSSL
     Configuracoes.WebService.StoreName = 'My'
     Configuracoes.WebService.Ambiente = taHomologacao
