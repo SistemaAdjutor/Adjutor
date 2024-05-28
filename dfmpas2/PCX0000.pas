@@ -447,6 +447,7 @@ begin
      fEdita:=False;
      fNovo:=False;
      cbCentroCustoEncerrado.State := cbGrayed;
+     btTransfere.Visible := DBInicio.BuscaUmDadoSqlAsString('SELECT USP_ATIVAR_TROCA_CENTRO_CUSTO FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO ) = 'S';
 end;
 
 procedure TFormProjCaixa.FormDestroy(Sender: TObject);

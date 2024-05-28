@@ -24,7 +24,7 @@ type
     Label1: TLabel;
     Label2: TLabel;
     Bit_Sair: TBitBtn;
-    BtnGravar: TBitBtn;
+    btTransfere: TBitBtn;
     PanelAguarde: TPanel;
     JvGIFAnimator1: TJvGIFAnimator;
     pinfo: TPanel;
@@ -48,7 +48,7 @@ type
     OPERACOES: TCheckBox;
     MarcarTodos: TCheckBox;
     procedure FormCreate(Sender: TObject);
-    procedure BtnGravarClick(Sender: TObject);
+    procedure btTransfereClick(Sender: TObject);
     procedure Bit_SairClick(Sender: TObject);
     procedure MarcarTodosClick(Sender: TObject);
   private
@@ -70,7 +70,7 @@ begin
   Close;
 end;
 
-procedure TfrmTransfereCentroCusto.BtnGravarClick(Sender: TObject);
+procedure TfrmTransfereCentroCusto.btTransfereClick(Sender: TObject);
 begin
   inherited;
   if ccOrigem.idRetorno = ''  then

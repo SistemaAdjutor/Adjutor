@@ -553,7 +553,6 @@ begin
   Application.CreateForm(TDmCfg, DmCfg);
   Application.CreateForm(TFrmMenu, FrmMenu);
   Application.CreateForm(TForm3, Form3);
-  Application.CreateForm(TfrmTransfereCentroCusto, frmTransfereCentroCusto);
   if dbInicio.ModulosComoAplicacao then
   begin
      Application.CreateForm(TfrmBaseDBFDAC, frmBaseDBFDAC);

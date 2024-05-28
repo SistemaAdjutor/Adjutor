@@ -23,59 +23,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Height = 13
     Caption = 'Destino'
   end
-  object ccOrigem: TSgDbSearchCombo [2]
-    Left = 116
-    Top = 34
-    Width = 345
-    Height = 21
-    TabOrder = 0
-    CharCase = ecUpperCase
-    LookupSelect = 'PCX_CODIGO, PCX_DESCRI'
-    LookupOrderBy = 'PCX_DESCRI'
-    LookupTable = 'pcx0000'
-    LookupDispl = 'PCX_DESCRI'
-    GridAutoSize = False
-    LookupSource = qCentroCustoOrigen
-    LookupKeyField = 'PCX_CODIGO'
-    FiltroTabela = 'PCX_TIPO = '#39'L'#39
-    ShowButton = True
-    AutoF8WinTitulo = 'Centros de Custos'
-    AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
-    GridLeft = 0
-    GridWidth = 0
-    GridHeight = 100
-    GridTop = 0
-    GridShowWhenEnter = False
-    SelectWithDoubleClick = False
-    LimparCampoAoSair = True
-  end
-  object ccDestino: TSgDbSearchCombo [3]
-    Left = 116
-    Top = 69
-    Width = 345
-    Height = 21
-    TabOrder = 1
-    CharCase = ecUpperCase
-    LookupSelect = 'PCX_CODIGO, PCX_DESCRI'
-    LookupOrderBy = 'PCX_DESCRI'
-    LookupTable = 'pcx0000'
-    LookupDispl = 'PCX_DESCRI'
-    GridAutoSize = False
-    LookupSource = qCentroCustoDestino
-    LookupKeyField = 'PCX_CODIGO'
-    FiltroTabela = 'PCX_TIPO = '#39'L'#39
-    ShowButton = True
-    AutoF8WinTitulo = 'Centros de Custos'
-    AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
-    GridLeft = 0
-    GridWidth = 0
-    GridHeight = 100
-    GridTop = 0
-    GridShowWhenEnter = False
-    SelectWithDoubleClick = False
-    LimparCampoAoSair = True
-  end
-  object Bit_Sair: TBitBtn [4]
+  object Bit_Sair: TBitBtn [2]
     Left = 301
     Top = 408
     Width = 85
@@ -100,13 +48,15 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     TabStop = False
     OnClick = Bit_SairClick
   end
-  object BtnGravar: TBitBtn [5]
+  object btTransfere: TBitBtn [3]
     Left = 197
     Top = 408
     Width = 85
     Height = 25
     Cursor = crHandPoint
-    Hint = '|Grava registro...'
+    Hint = 
+      'Efetua a Transfer'#234'ncia do Centro de Custo de Origem para o Desti' +
+      'no'
     Caption = '&Transferir'
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
@@ -132,9 +82,9 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     ShowHint = True
     TabOrder = 3
     TabStop = False
-    OnClick = BtnGravarClick
+    OnClick = btTransfereClick
   end
-  object PanelAguarde: TPanel [6]
+  object PanelAguarde: TPanel [4]
     Left = 519
     Top = 8
     Width = 293
@@ -289,7 +239,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
       TabOrder = 0
     end
   end
-  object FIN_RATEIO: TCheckBox [7]
+  object FIN_RATEIO: TCheckBox [5]
     Left = 24
     Top = 165
     Width = 189
@@ -297,7 +247,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Rateio do Financeiro (FIN_RATEIO)'
     TabOrder = 5
   end
-  object PED0000: TCheckBox [8]
+  object PED0000: TCheckBox [6]
     Left = 24
     Top = 188
     Width = 113
@@ -305,7 +255,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Pedidos (PED0000)'
     TabOrder = 6
   end
-  object PCX0000_PLANO: TCheckBox [9]
+  object PCX0000_PLANO: TCheckBox [7]
     Left = 24
     Top = 211
     Width = 265
@@ -313,7 +263,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Rateio das Contas Financeiras (PCX0000_PLANO)'
     TabOrder = 7
   end
-  object ENF_IT01_PROJETO_OBRA: TCheckBox [10]
+  object ENF_IT01_PROJETO_OBRA: TCheckBox [8]
     Left = 24
     Top = 346
     Width = 441
@@ -323,7 +273,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
       '1_PROJETO_OBRA)'
     TabOrder = 8
   end
-  object CLI0000: TCheckBox [11]
+  object CLI0000: TCheckBox [9]
     Left = 24
     Top = 142
     Width = 113
@@ -333,7 +283,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     State = cbChecked
     TabOrder = 9
   end
-  object NF_PC01: TCheckBox [12]
+  object NF_PC01: TCheckBox [10]
     Left = 24
     Top = 232
     Width = 209
@@ -341,7 +291,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Parcelamento da Nota Fiscal (NF_PC01)'
     TabOrder = 10
   end
-  object ENF_IT01: TCheckBox [13]
+  object ENF_IT01: TCheckBox [11]
     Left = 24
     Top = 278
     Width = 209
@@ -349,7 +299,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Itens da Nota de Entrada (ENF_IT01)'
     TabOrder = 11
   end
-  object ENF0001: TCheckBox [14]
+  object ENF0001: TCheckBox [12]
     Left = 24
     Top = 255
     Width = 209
@@ -357,7 +307,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Nota de Entrada (ENF0001)'
     TabOrder = 12
   end
-  object FAT_PC01: TCheckBox [15]
+  object FAT_PC01: TCheckBox [13]
     Left = 24
     Top = 324
     Width = 209
@@ -365,7 +315,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Parcela da Fatura (FAT_PC01)'
     TabOrder = 13
   end
-  object SETOR: TCheckBox [16]
+  object SETOR: TCheckBox [14]
     Left = 352
     Top = 142
     Width = 209
@@ -373,7 +323,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Setor (SETOR)'
     TabOrder = 14
   end
-  object FAT0000: TCheckBox [17]
+  object FAT0000: TCheckBox [15]
     Left = 24
     Top = 301
     Width = 209
@@ -381,7 +331,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Faturamento (FAT0000)'
     TabOrder = 15
   end
-  object PAG0000: TCheckBox [18]
+  object PAG0000: TCheckBox [16]
     Left = 352
     Top = 165
     Width = 189
@@ -389,7 +339,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Contas a Pagar (PAG0000)'
     TabOrder = 16
   end
-  object PAG_PC01: TCheckBox [19]
+  object PAG_PC01: TCheckBox [17]
     Left = 352
     Top = 188
     Width = 225
@@ -397,7 +347,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Parcelas do Contas a Pagar (PAG_PC01)'
     TabOrder = 17
   end
-  object PRD0000: TCheckBox [20]
+  object PRD0000: TCheckBox [18]
     Left = 352
     Top = 211
     Width = 225
@@ -405,7 +355,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Produtos (PRD0000)'
     TabOrder = 18
   end
-  object COTACAO_ITEM: TCheckBox [21]
+  object COTACAO_ITEM: TCheckBox [19]
     Left = 352
     Top = 234
     Width = 225
@@ -413,7 +363,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Item da Cota'#231#227'o (COTACAO_ITEM)'
     TabOrder = 19
   end
-  object PCX0000_PERFIL_COLABORADOR: TCheckBox [22]
+  object PCX0000_PERFIL_COLABORADOR: TCheckBox [20]
     Left = 24
     Top = 369
     Width = 425
@@ -423,7 +373,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
       'BORADOR)'
     TabOrder = 20
   end
-  object EQUIPAMENTO: TCheckBox [23]
+  object EQUIPAMENTO: TCheckBox [21]
     Left = 352
     Top = 257
     Width = 225
@@ -431,7 +381,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Equipamento (EQUIPAMENTO)'
     TabOrder = 21
   end
-  object OPERACOES: TCheckBox [24]
+  object OPERACOES: TCheckBox [22]
     Left = 352
     Top = 278
     Width = 225
@@ -439,7 +389,7 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     Caption = 'Opera'#231#245'es (OPERACOES)'
     TabOrder = 22
   end
-  object MarcarTodos: TCheckBox [25]
+  object MarcarTodos: TCheckBox [23]
     Left = 24
     Top = 104
     Width = 113
@@ -453,6 +403,58 @@ inherited frmTransfereCentroCusto: TfrmTransfereCentroCusto
     ParentFont = False
     TabOrder = 23
     OnClick = MarcarTodosClick
+  end
+  object ccDestino: TSgDbSearchCombo [24]
+    Left = 116
+    Top = 69
+    Width = 345
+    Height = 21
+    TabOrder = 1
+    CharCase = ecUpperCase
+    LookupSelect = 'PCX_CODIGO, PCX_DESCRI'
+    LookupOrderBy = 'PCX_DESCRI'
+    LookupTable = 'pcx0000'
+    LookupDispl = 'PCX_DESCRI'
+    GridAutoSize = False
+    LookupSource = qCentroCustoDestino
+    LookupKeyField = 'PCX_CODIGO'
+    FiltroTabela = 'PCX_TIPO = '#39'L'#39
+    ShowButton = True
+    AutoF8WinTitulo = 'Centros de Custos'
+    AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
+    GridLeft = 0
+    GridWidth = 0
+    GridHeight = 100
+    GridTop = 0
+    GridShowWhenEnter = False
+    SelectWithDoubleClick = False
+    LimparCampoAoSair = True
+  end
+  object ccOrigem: TSgDbSearchCombo [25]
+    Left = 116
+    Top = 34
+    Width = 345
+    Height = 21
+    TabOrder = 0
+    CharCase = ecUpperCase
+    LookupSelect = 'PCX_CODIGO, PCX_DESCRI'
+    LookupOrderBy = 'PCX_DESCRI'
+    LookupTable = 'pcx0000'
+    LookupDispl = 'PCX_DESCRI'
+    GridAutoSize = False
+    LookupSource = qCentroCustoOrigen
+    LookupKeyField = 'PCX_CODIGO'
+    FiltroTabela = 'PCX_TIPO = '#39'L'#39
+    ShowButton = True
+    AutoF8WinTitulo = 'Centros de Custos'
+    AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
+    GridLeft = 0
+    GridWidth = 0
+    GridHeight = 100
+    GridTop = 0
+    GridShowWhenEnter = False
+    SelectWithDoubleClick = False
+    LimparCampoAoSair = True
   end
   inherited ACBrEnterTab1: TACBrEnterTab
     Left = 664

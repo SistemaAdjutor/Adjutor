@@ -6226,6 +6226,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'USP_PERMITE_VENDA_FATURA_ATRASO'
       Size = 1
     end
+    object SQLUsaParametroUSP_ATIVAR_TROCA_CENTRO_CUSTO: TStringField
+      FieldName = 'USP_ATIVAR_TROCA_CENTRO_CUSTO'
+      Size = 1
+    end
   end
   object DSPUsaParametro: TDataSetProvider
     DataSet = SQLUsaParametro
@@ -6660,6 +6664,10 @@ object DataCadastros1: TDataCadastros1
     end
     object CDSUsaParametroUSP_PERMITE_VENDA_FATURA_ATRASO: TStringField
       FieldName = 'USP_PERMITE_VENDA_FATURA_ATRASO'
+      Size = 1
+    end
+    object CDSUsaParametroUSP_ATIVAR_TROCA_CENTRO_CUSTO: TStringField
+      FieldName = 'USP_ATIVAR_TROCA_CENTRO_CUSTO'
       Size = 1
     end
   end

@@ -218,6 +218,7 @@ type
     chkDashInteligencia: TCheckBox;
     chkPermiteVendaClienteFaturaAtraso: TCheckBox;
     cbAtivo: TDBCheckBox;
+    chkAtivarTrocaCentroCusto: TCheckBox;
     procedure FormShow(Sender: tObject);
     procedure FormCloseQuery(Sender: tObject; var CanClose: Boolean);
     procedure BitInclusaoClick(Sender: tObject);
@@ -2895,14 +2896,15 @@ begin
      DataCadastros1.CdSUsaParametro.FieldByName('USP_LIMITE_CONSULTA_ORCA').AsInteger := edNumDiasOrca.Value;
 
      //controle financeiro
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_APROVAR_PAG').AsString   := iif(chkAprovar.Checked ,'S','N');
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_REPROVAR_PAG').AsString  := iif(chkReprovar.Checked ,'S','N');
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_APROVAR_EST').AsString   := iif(chkEstornoAprovacao.Checked ,'S','N');
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_REPROVAR_EST').AsString  := iif(chkEstornoReprovacao.Checked ,'S','N');
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_APONTAR_EST').AsString   := iif(chkEstornarSolicitacao.Checked,'S','N');
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_APONTAR').AsString       := iif(chkSolicitarPag.Checked ,'S','N');
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_CUSTOPRODUCAO').AsString := iif( chkCustosproducao.Checked  ,'S','N');
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_ALTERA_VENDEDOR').AsString := iif(chkBloquearVendedor.Checked,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_APROVAR_PAG').AsString               := iif(chkAprovar.Checked ,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_REPROVAR_PAG').AsString              := iif(chkReprovar.Checked ,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_APROVAR_EST').AsString               := iif(chkEstornoAprovacao.Checked ,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_REPROVAR_EST').AsString              := iif(chkEstornoReprovacao.Checked ,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_APONTAR_EST').AsString               := iif(chkEstornarSolicitacao.Checked,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_APONTAR').AsString                   := iif(chkSolicitarPag.Checked ,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_CUSTOPRODUCAO').AsString             := iif( chkCustosproducao.Checked  ,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_ALTERA_VENDEDOR').AsString           := iif(chkBloquearVendedor.Checked,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_ATIVAR_TROCA_CENTRO_CUSTO').AsString := iif(chkAtivarTrocaCentroCusto.Checked ,'S','N');
 
      DataCadastros1.CdSUsaParametro.FieldByName('USP_PERMITE_ALTER_TIPO').AsString := iif(chkAlterTipo.Checked,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_DESABILITA_COPIAR_PEDIDO').AsString := iif(chkDesabilitaCopiarPedido.Checked,'S','N');
@@ -3068,6 +3070,9 @@ begin
            chkEstornoReprovacao.Checked := DataCadastros1.CdSUsaParametro.FieldByName('USP_REPROVAR_EST').AsString  = 'S';
            chkEstornarSolicitacao.Checked := DataCadastros1.CdSUsaParametro.FieldByName('USP_APONTAR_EST').AsString = 'S';
            chkSolicitarPag.Checked :=  DataCadastros1.CdSUsaParametro.FieldByName('USP_APONTAR').AsString  =  'S' ;
+           chkAtivarTrocaCentroCusto.Checked :=  DataCadastros1.CdSUsaParametro.FieldByName('USP_ATIVAR_TROCA_CENTRO_CUSTO').AsString  =  'S' ;
+
+
            chkCustosproducao.Checked :=  DataCadastros1.CdSUsaParametro.FieldByName('USP_CUSTOPRODUCAO').AsString  = 'S';
            chkBloquearVendedor.Checked := DataCadastros1.CdSUsaParametro.FieldByName('USP_ALTERA_VENDEDOR').AsString = 'S';
            chkAlterTipo.Checked := DataCadastros1.CdSUsaParametro.FieldByName('USP_PERMITE_ALTER_TIPO').AsString  = 'S';
