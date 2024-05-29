@@ -1,4 +1,4 @@
-﻿Atualizado em 24/05/2024
+﻿Atualizado em 29/05/2024
 Inicio da versão: 06/05/2024
 
 principal: EDGE, PARSEALS INDUSTRIAL, Collect
@@ -23,3 +23,10 @@ patch 3: LForja, Vedseals, Collect, Arkson
   1870 - Modificação - Conciliação Financeira e Bancaria [Arkson]
   1871 - ERRO: Tela renovação [Collect]
   
+patch 4: Drimec, Collect
+  1836 - FCI inconsistente : ajustar os processos [Drimec]
+  1872 - Transferir todas as contas de um centro de custo para outro centro de custo [Collect]
+  1875 - Implementação: RELATÓRIO FINANCEIRO CSV [Collect]
+  1876 - Implementação: REL. CADASTRO DE CLIENTE CSV [Collect]
+  1877 - BUG - Menu Financeiro [Collect]
+
