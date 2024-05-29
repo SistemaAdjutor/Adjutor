@@ -1770,6 +1770,10 @@
             <Form>frmPesqSecuritizadora</Form>
             <FormType>dfm</FormType>
         </DCCReference>
+        <DCCReference Include="dfmpas2\uTransfereCentroCusto.pas">
+            <Form>frmTransfereCentroCusto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -1806,7 +1810,12 @@
             </Platforms>
             <Deployment Version="3">
                 <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Release" Class="ProjectFile"/>
-                <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Adjutor.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
@@ -1827,12 +1836,7 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput"/>
-                <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>Adjutor.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Debug" Class="ProjectFile"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

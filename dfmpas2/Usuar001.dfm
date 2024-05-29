@@ -28,7 +28,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Top = 0
     Width = 1052
     Height = 540
-    ActivePage = tabusu
+    ActivePage = TabParametro
     Align = alTop
     TabOrder = 0
     object tabusu: TTabSheet
@@ -1322,7 +1322,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             Height = 343
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tabGerencial
+            Properties.ActivePage = tabFinanceiro
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 339
             ClientRectLeft = 4
@@ -1927,6 +1927,14 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
                 Caption = 'Estornar solicita'#231#227'o'
                 TabOrder = 5
               end
+              object chkAtivarTrocaCentroCusto: TCheckBox
+                Left = 16
+                Top = 124
+                Width = 193
+                Height = 17
+                Caption = 'Ativar troca de Centro de Custo'
+                TabOrder = 6
+              end
             end
             object cxTabSheet2: TcxTabSheet
               Caption = 'Produ'#231#227'o'
@@ -2416,7 +2424,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C0101030005001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000
