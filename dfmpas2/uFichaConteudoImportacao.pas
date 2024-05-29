@@ -23,8 +23,9 @@ uses
   dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
   dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
-  dxSkinWhiteprint, dxSkinXmas2008Blue,
-  cxDataControllerConditionalFormattingRulesManagerDialog;
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxGridDBDataDefinitions,
+  cxDataControllerConditionalFormattingRulesManagerDialog, SgDbSeachComboUnit,
+  ComboBoxRW;
 
 type
   TfrmFichaConteudoImportacao = class(TfrmBaseDBPesquisaFDAC)
@@ -75,11 +76,8 @@ type
     cxgrd1DBTableView2VALOR_TOTAL_ITEM: TcxGridDBColumn;
     cdsBuscaDetalhesPARCELA_IMPORTADA: TFMTBCDField;
     cxgrd1DBTableView2PARCELA_IMPORTADA: TcxGridDBColumn;
-    edReferencia: TEdit;
     Label1: TLabel;
     cdsBuscaDetalhesPRECO_VENDA: TFMTBCDField;
-    Label2: TLabel;
-    edDescricao: TEdit;
     frxFCI: TfrxReport;
     frxDBBusca: TfrxDBDataset;
     frxDBBuscaDetalhes: TfrxDBDataset;
@@ -99,7 +97,7 @@ type
     StringField7: TStringField;
     StringField8: TStringField;
     StringField9: TStringField;
-    FMTBCDField10: TFloatField;
+    cdsNivel4FTI_UC: TFloatField;
     StringField10: TStringField;
     FMTBCDField11: TFMTBCDField;
     FMTBCDField12: TFMTBCDField;
@@ -115,7 +113,7 @@ type
     StringField12: TStringField;
     StringField13: TStringField;
     StringField14: TStringField;
-    FMTBCDField19: TFloatField;
+    cdsNivel5FTI_UC: TFloatField;
     StringField15: TStringField;
     FMTBCDField20: TFMTBCDField;
     FMTBCDField21: TFMTBCDField;
@@ -131,7 +129,7 @@ type
     StringField17: TStringField;
     StringField18: TStringField;
     StringField19: TStringField;
-    FMTBCDField28: TFloatField;
+    cdsNivel6FTI_UC: TFloatField;
     StringField20: TStringField;
     FMTBCDField29: TFMTBCDField;
     FMTBCDField30: TFMTBCDField;
@@ -147,7 +145,7 @@ type
     StringField22: TStringField;
     StringField23: TStringField;
     StringField24: TStringField;
-    FMTBCDField37: TFloatField;
+    cdsNivel7FTI_UC: TFloatField;
     StringField25: TStringField;
     FMTBCDField38: TFMTBCDField;
     FMTBCDField39: TFMTBCDField;
@@ -163,7 +161,7 @@ type
     StringField27: TStringField;
     StringField28: TStringField;
     StringField29: TStringField;
-    FMTBCDField46: TFloatField;
+    cdsNivel8FTI_UC: TFloatField;
     StringField30: TStringField;
     FMTBCDField47: TFMTBCDField;
     FMTBCDField48: TFMTBCDField;
@@ -179,7 +177,7 @@ type
     StringField32: TStringField;
     StringField33: TStringField;
     StringField34: TStringField;
-    FMTBCDField55: TFloatField;
+    cdsNivel9FTI_UC: TFloatField;
     StringField35: TStringField;
     FMTBCDField56: TFMTBCDField;
     FMTBCDField57: TFMTBCDField;
@@ -379,11 +377,15 @@ type
     mtGridNCM: TStringField;
     mtGridGTIN: TStringField;
     SalvarFicha: TSaveDialog;
+    cdsBuscaFTC_BASEFORMULA: TIntegerField;
+    cxgrd1DBTableView1FTC_BASEFORMULA: TcxGridDBColumn;
+    cbProduto: TComboBoxRw;
+    edReferencia: TEdit;
     procedure btnMP_ExpotarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure BotaoPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
-    function AtualizaFCI(prdRefer: string; prdReferPai: string): Double;
+    function AtualizaFCI(prdRefer: string; prdReferPai: string; quantidadePai: double; var totalPI: double): Double;
     procedure btnrelatoriosClick(Sender: TObject);
     procedure frxFCIBeginDoc(Sender: TObject);
     procedure frxFCIGetValue(const VarName: string; var Value: Variant);
@@ -400,7 +402,6 @@ type
     procedure cxgrd1DBTableView6DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
     procedure cxgrd1DBTableView7DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
     procedure cxgrd1DBTableView8DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
-    procedure cxgrd1DBTableView1DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
     procedure edDescricaoKeyPress(Sender: TObject; var Key: Char);
     procedure cdsBuscaDetalhesCalcFields(DataSet: TDataSet);
     procedure cdsNivel3CalcFields(DataSet: TDataSet);
@@ -411,6 +412,32 @@ type
     procedure cdsNivel8CalcFields(DataSet: TDataSet);
     procedure cdsNivel9CalcFields(DataSet: TDataSet);
     procedure FormKeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure cxgrd1DBTableView1DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
+    procedure cxgrd1DBTableView2DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
+    procedure cxgrd1DBTableView3DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
+    procedure cxgrd1DBTableView4DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
+    procedure cxgrd1DBTableView5DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
+    procedure cxgrd1DBTableView6DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
+    procedure cxgrd1DBTableView7DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
+    procedure cxgrd1DBTableView8DataControllerDetailExpanding(
+      ADataController: TcxCustomDataController; ARecordIndex: Integer;
+      var AAllow: Boolean);
+    procedure cbProdutoChange(Sender: TObject);
+    procedure edReferenciaExit(Sender: TObject);
   private
    procedure filtro;
    procedure filtroDetalhe;
@@ -421,10 +448,11 @@ type
    procedure Bloco0;
    procedure Bloco5;
    procedure Bloco9;
-   function ConsumoTotal(cds: TFDQuery; Post: Boolean): double;
+   function CalcularConsumoTotal(referencia, referenciaFilha: string; baseFormula: double): Double;
    procedure EnableControls;
    procedure DisableControls;
    procedure GravaArquivoFCI(prdReferPai: string; nivel: integer);
+    function ConsumoTotal(cds: TFDQuery; Post: Boolean): double;
 
    var
     linhas : TStringList;
@@ -434,6 +462,7 @@ type
     vlParcelaImportadaTotal: double;
     arquivoIni: string;
     FCI : TStringList;
+    base, UCDetalhe, UCNivel3, UCNivel4, UCNivel5, UCNivel6, UCNivel7, UCNivel8: double;
 
     { Private declarations }
   public
@@ -459,7 +488,6 @@ begin
   linhas := TStringList.Create;
   arqPesq := Self.Name + '.' + DBInicio.Usuario.CODIGO  + '.pesq';
   edReferencia.Text := LeIni(arqPesq, 'edReferencia', 'text', temp);
-  edDescricao.Text := LeIni(arqPesq, 'edDescricao', 'text', temp);
   arquivoIni := dbInicio.SistemaLocal + 'settings\frmFichaConteudoImportacao' + DBInicio.Usuario.USERNAME +  ' .grid';
 
   cdsBuscaDetalhes.AddIndex('prdRefer', 'PRD_REFER', 'ASC', []);
@@ -499,13 +527,13 @@ begin
   cxgrd1DBTableView7.RestoreFromIniFile(arquivoIni + '.cxgrd1DBTableView7');
   cxgrd1DBTableView8.RestoreFromIniFile(arquivoIni + '.cxgrd1DBTableView8');
   cxgrd1DBTableView9.RestoreFromIniFile(arquivoIni + '.cxgrd1DBTableView9');
+  edReferencia.SetFocus;
   // btnPesquisa.Click;
 end;
 
 procedure TfrmFichaConteudoImportacao.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   GravaIni(arqPesq, 'edReferencia', 'text', edReferencia.Text);
-  GravaIni(arqPesq, 'edDescricao', 'text', edDescricao.Text);
   cxgrd1DBTableView1.StoreToIniFile(arquivoIni + '.cxgrd1DBTableView1');
   cxgrd1DBTableView2.StoreToIniFile(arquivoIni + '.cxgrd1DBTableView2');
   cxgrd1DBTableView3.StoreToIniFile(arquivoIni + '.cxgrd1DBTableView3');
@@ -723,7 +751,8 @@ begin
     OpenAux('SELECT	AVG(ni.NF_PRECO -  (ni.NF_ICMSVALOR / ni.NF_QTDE )) AS VALOR_SAIDA ' +
                      ' FROM NF_IT01 ni ' +
                      ' JOIN NF0001 nf ON (ni.NF_IT_NOTANUMER = nf.NF_NOTANUMBER AND ni.PED_CODIGO = nf.PED_CODIGO) ' +
-                     ' WHERE  ni.PRD_REFER = ' + QuotedStr(prdRefer)
+                     ' WHERE ni.PRD_REFER = ' + QuotedStr(prdRefer) +
+                     '   AND ni.NF_QTDE > 0 '
             );
     existeNotaSaida := qAux.FieldByName('VALOR_SAIDA').AsCurrency > 0;
     if existeNotaSaida then
@@ -735,7 +764,8 @@ begin
                          ' FROM NF_IT01 ni ' +
                          ' JOIN NF0001 nf ON (ni.NF_IT_NOTANUMER = nf.NF_NOTANUMBER AND ni.PED_CODIGO = nf.PED_CODIGO) ' +
                          ' WHERE  ni.PRD_REFER = ' + QuotedStr(prdRefer) +
-                         '   AND nf.NF_EMISSAO >= ' + DateToSQL(data)
+                         '   AND nf.NF_EMISSAO >= ' + DateToSQL(data) +
+                     '   AND ni.NF_QTDE > 0 '
                 );
         if not qAux.IsEmpty and (qAux.FieldByName('VALOR_SAIDA').AsFloat > 0) then
           break;
@@ -899,11 +929,24 @@ procedure TfrmFichaConteudoImportacao.btnPesquisaClick(Sender: TObject);
 begin
   DisableControls;
   PanelAguarde.Visible := True;
+  if (edReferencia.Text = '') and (cbProduto.Text = '') then
+  begin
+    PanelAguarde.Visible := False;
+    Uteis.Aviso('Informe alguma Referência ou Descrição para pesquisa');
+    Exit;
+  end;
   inherited;
   EnableControls;
   PanelAguarde.Visible := False;
 end;
 
+
+procedure TfrmFichaConteudoImportacao.cbProdutoChange(Sender: TObject);
+begin
+  inherited;
+  edReferencia.Text := cbProduto.IdRetorno;
+  btnPesquisa.Click;
+end;
 
 procedure TfrmFichaConteudoImportacao.cdsBuscaCalcFields(DataSet: TDataSet);
 begin
@@ -914,69 +957,73 @@ end;
 procedure TfrmFichaConteudoImportacao.cdsBuscaDetalhesCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsBuscaDetalhes, True);
+  cdsBuscaDetalhes.FieldByName('CONSUMO_TOTAL').AsFloat := base * DataSet.FieldByName('FTI_UC').ASFloat;
 end;
 
 
 procedure TfrmFichaConteudoImportacao.cdsNivel3CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsNivel3, True);
+  cdsNivel3.FieldByName('CONSUMO_TOTAL').AsFloat := base * UCDetalhe * DataSet.FieldByName('FTI_UC').ASFloat;
+
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel4CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsNivel4, True);
+  cdsNivel4.FieldByName('CONSUMO_TOTAL').AsFloat := base * UCDetalhe * UCNivel3 * DataSet.FieldByName('FTI_UC').ASFloat;
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel5CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsNivel5, True);
+  cdsNivel4.FieldByName('CONSUMO_TOTAL').AsFloat := base * UCDetalhe * UCNivel3 * ucNivel4 * DataSet.FieldByName('FTI_UC').ASFloat;
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel6CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsNivel6, True);
+  cdsNivel4.FieldByName('CONSUMO_TOTAL').AsFloat := base * UCDetalhe * UCNivel3 * ucNivel4 * ucNivel5 * DataSet.FieldByName('FTI_UC').ASFloat;
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel7CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsNivel7, True);
+  cdsNivel4.FieldByName('CONSUMO_TOTAL').AsFloat := base * UCDetalhe * UCNivel3 * ucNivel4 * ucNivel5 * ucNivel6 * DataSet.FieldByName('FTI_UC').ASFloat;
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel8CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsNivel8, True);
+  cdsNivel4.FieldByName('CONSUMO_TOTAL').AsFloat := base * UCDetalhe * UCNivel3 * ucNivel4 * ucNivel5 * ucNivel6 * ucNivel7 * DataSet.FieldByName('FTI_UC').ASFloat;
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsNivel9CalcFields(DataSet: TDataSet);
 begin
   inherited;
-  ConsumoTotal(cdsNivel9, True);
+  cdsNivel4.FieldByName('CONSUMO_TOTAL').AsFloat := base * UCDetalhe * UCNivel3 * ucNivel4 * ucNivel5 * ucNivel6 * ucNivel7 * ucNivel8 * DataSet.FieldByName('FTI_UC').ASFloat;
 end;
 
 procedure TfrmFichaConteudoImportacao.filtro;
 var sqltext : string;
 begin
-  cdsBusca.Close;
+//  cdsBusca.Close;
   sqltext := ' SELECT pr.PRD_REFER, pr.PRD_DESCRI, pt.PTI_SIGLA, IPI_CODIGO AS NCM, ' +
              '        pr.PRD_CODBARRA AS GTIN, pr.PRD_UND, pr.PRD_ORIGEM, ' +
              '        pr.PRD_FCI_CONTEUDO_IMPORTACAO AS CI, ' +
-             '        pr.PRD_FCI_VALOR_PARCELA_IMPORTADA ' +
+             '        pr.PRD_FCI_VALOR_PARCELA_IMPORTADA, ' +
+             '        ft.FTC_BASEFORMULA ' +
              '   FROM PRD0000 pr ' +
              '   JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER ) ' +
              '   JOIN PRD_TIPO pt ON (pt.PTI_CODIGO = pr.PTI_CODIGO) ' +
              '   WHERE 1 = 1 ' +
              iif(edReferencia.Text = '', '', ' AND FT.PRD_REFER LIKE ' + QuotedStr(edReferencia.Text + '%' )) +
-             iif(edDescricao.Text = '', '', ' AND PR.PRD_DESCRI LIKE ' + QuotedStr('%' + edDescricao.Text + '%')) +
+             iif(cbProduto.Text = '', '', ' AND PR.PRD_DESCRI LIKE ' + QuotedStr('%' + cbProduto.Text + '%')) +
              '   ORDER BY pr.PRD_REFER ';
   cdsBusca.SQL.Text := sqltext;
-  cdsBusca.Open;
+  if DBInicio.IsDesenvolvimento then
+    copyToClipBoard(sqlText);
+//  cdsBusca.Open;
 end;
 
 function TfrmFichaConteudoImportacao.sqlText(prdRefer: string): string;
@@ -1010,94 +1057,148 @@ begin
   cdsBuscaDetalhes.Last;
 end;
 
-procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView1DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
-var
-  vlParcelaImportada : double;
-  prdRefer: string;
+procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView1DataControllerDetailExpanding(
+  ADataController: TcxCustomDataController; ARecordIndex: Integer;
+  var AAllow: Boolean);
 begin
   inherited;
-  prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView1PRD_REFER.Index);
-  cdsBuscaDetalhes.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsBusca, cdsBuscaDetalhes, mtGrid);
+  base := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView1FTC_BASEFORMULA.Index);
+//  cxgrd1DBTableView1.ViewData.Collapse(true);
 end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView2DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
 var
-  vlParcelaImportada: double;
   prdRefer : string;
 begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView2PRD_REFER_ITENS.Index);
   cdsNivel3.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsBuscaDetalhes, cdsNivel3, mtGrid);
+  cdsNivel3.Open;
+end;
+
+procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView2DataControllerDetailExpanding(
+  ADataController: TcxCustomDataController; ARecordIndex: Integer;
+  var AAllow: Boolean);
+begin
+  inherited;
+  UCDetalhe := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView2CONSUMO_TOTAL.Index);
+//  cxgrd1DBTableView2.ViewData.Collapse(true);
 end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView3DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
 var
-  vlParcelaImportada: double;
   prdRefer : string;
 begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView3PRD_REFER_ITENS.Index);
   cdsNivel4.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsNivel3, cdsNivel4, mtGrid);
+  cdsNivel4.Open;
+end;
+
+procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView3DataControllerDetailExpanding(
+  ADataController: TcxCustomDataController; ARecordIndex: Integer;
+  var AAllow: Boolean);
+begin
+  inherited;
+  UCNivel3 := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView3CONSUMO_TOTAL.Index);
+//  cxgrd1DBTableView3.ViewData.Collapse(true);
 end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView4DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
 var
-  vlParcelaImportada: double;
   prdRefer : string;
 begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView4PRD_REFER_ITENS.Index);
   cdsNivel5.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsNivel4, cdsNivel5, mtGrid);
+  cdsNivel5.Open;
+end;
+
+procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView4DataControllerDetailExpanding(
+  ADataController: TcxCustomDataController; ARecordIndex: Integer;
+  var AAllow: Boolean);
+begin
+  inherited;
+  UCNivel4 := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView4CONSUMO_TOTAL.Index);
+//  cxgrd1DBTableView4.ViewData.Collapse(true);
 end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView5DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
 var
-  vlParcelaImportada : double;
   prdRefer : string;
 begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView5PRD_REFER_ITENS.Index);
   cdsNivel6.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsNivel5, cdsNivel6, mtGrid);
+  cdsNivel6.Open;
+end;
+
+procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView5DataControllerDetailExpanding(
+  ADataController: TcxCustomDataController; ARecordIndex: Integer;
+  var AAllow: Boolean);
+begin
+  inherited;
+  UCNivel5 := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView5CONSUMO_TOTAL.Index);
+//  cxgrd1DBTableView5.ViewData.Collapse(true);
 end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView6DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
 var
-  vlParcelaImportada : double;
   prdRefer : string;
 begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView6PRD_REFER_ITENS.Index);
   cdsNivel7.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsNivel6, cdsNivel7, mtGrid);
+  cdsNivel7.Open;
+end;
+
+procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView6DataControllerDetailExpanding(
+  ADataController: TcxCustomDataController; ARecordIndex: Integer;
+  var AAllow: Boolean);
+begin
+  inherited;
+  UCNivel6 := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView6CONSUMO_TOTAL.Index);
+//  cxgrd1DBTableView6.ViewData.Collapse(true);
 end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView7DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
 var
-  vlParcelaImportada : double;
   prdRefer : string;
 begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView7PRD_REFER_ITENS.Index);
   cdsNivel8.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsNivel7, cdsNivel8, mtGrid);
+  cdsNivel8.Open;
+end;
+
+procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView7DataControllerDetailExpanding(
+  ADataController: TcxCustomDataController; ARecordIndex: Integer;
+  var AAllow: Boolean);
+begin
+  inherited;
+  UCNivel7 := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView7CONSUMO_TOTAL.Index);
+//  cxgrd1DBTableView7.ViewData.Collapse(true);
 end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView8DataControllerDetailExpanded(ADataController: TcxCustomDataController; ARecordIndex: Integer);
 var
-  vlParcelaImportada : double;
   prdRefer : string;
 begin
   inherited;
   prdRefer := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView8PRD_REFER_ITENS.Index);
   cdsNivel9.SQL.Text := sqlText(prdRefer);
-  AtualizaDetalhe(vlParcelaImportada, prdRefer, cdsNivel8, cdsNivel9, mtGrid);
+  cdsNivel9.Open;
 end;
 
+
+procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView8DataControllerDetailExpanding(
+  ADataController: TcxCustomDataController; ARecordIndex: Integer;
+  var AAllow: Boolean);
+begin
+  inherited;
+  UCNivel8 := ADataController.GetValue(ARecordIndex, cxgrd1DBTableView8CONSUMO_TOTAL.Index);
+//  cxgrd1DBTableView8.ViewData.Collapse(true);
+end;
 
 procedure TfrmFichaConteudoImportacao.cxgrd1DBTableView2StylesGetContentStyle(Sender: TcxCustomGridTableView; ARecord: TcxCustomGridRecord; AItem: TcxCustomGridTableItem; var AStyle: TcxStyle);
 var
@@ -1124,6 +1225,12 @@ begin
     btnPesquisa.Click;
 end;
 
+procedure TfrmFichaConteudoImportacao.edReferenciaExit(Sender: TObject);
+begin
+  inherited;
+  cbProduto.idRetorno := edReferencia.Text;
+end;
+
 procedure TfrmFichaConteudoImportacao.edReferenciaKeyPress(Sender: TObject; var Key: Char);
 begin
   inherited;
@@ -1133,21 +1240,47 @@ end;
 
 procedure TfrmFichaConteudoImportacao.BotaoPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
 var
-  CI: double;
-  prdOrigem: integer;
+  CI, valorTotal, quantidadePai, tPI: double;
+  prdOrigem, rec: integer;
+  prdRefer : string;
 begin
   inherited;
 
   if MessageDlg('Deseja Recalcular a Ficha de Conteúdo de Importação?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
     Exit;
-  vlParcelaImportadaTotal := 0;;
-  AtualizaFCI(cdsBuscaPRD_REFER.AsString, '');
-  CI := (vlParcelaImportadaTotal / cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency) * 100;
+  panelAguarde.Visible := True;
+  Application.ProcessMessages;
   cdsBusca.DisableControls;
+  rec := cdsBusca.RecNo;
+  vlParcelaImportadaTotal := 0;
+  prdRefer := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index];
+  valorTotal := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1VALOR_TOTAL.Index];
+  if (cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index] = null)
+  or (cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index] = 0)
+  then
+    begin
+      cdsBusca.EnableControls;
+      panelAguarde.Visible := False;
+      uteis.Aviso('A Base da Composição não está cadastrada na Ficha Técnica deste produto.' + #13 + 'Impossível Prosseguir');
+      Exit;
+    end;
+  quantidadePai  := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+  tPI := 0;
+  AtualizaFCI(prdRefer, '', quantidadePai, tPI);
+  CI := (vlParcelaImportadaTotal / valorTotal) * 100;
   cdsBusca.Edit;
-  cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency := valorSaida(cdsBuscaPRD_REFER.AsString);
+  cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency := valorSaida(prdRefer);
   cdsBusca.Post;
-  cdsBusca.EnableControls;
+
+
+  if cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency = 0 then
+  begin
+    cdsBusca.EnableControls;
+    panelAguarde.Visible := False;
+    uteis.Aviso('Não existe Nota Fiscal de Saída deste Produto, e também não está cadastrado o Preço de venda.' + #13 + 'Impossível Prosseguir');
+    Exit;
+  end;
+
 
   if (CI > 0) and (CI < 1) then
     CI := 1;
@@ -1158,26 +1291,35 @@ begin
     else prdOrigem := 0;
   end;
 
+
   ExecSql('UPDATE PRD0000 SET ' +
-          // ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL((CI / cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency) * 100) + ', ' +
-          ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL((vlParcelaImportadaTotal / cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency) * 100) + ', ' +
+          ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL((vlParcelaImportadaTotal / valorTotal) * 100) + ', ' +
           ' PRD_FCI_VALOR_PARCELA_IMPORTADA = ' + FloatToSQL(vlParcelaImportadaTotal) + ', ' +
           ' PRD_FCI_DATA_GERACAO = ' + DateTimeToSQL(Now) + ', ' +
           ' PRD_ORIGEM = ' + IntToStr(prdOrigem) +
-          ' WHERE PRD_REFER = ' + QuotedStr(cdsBuscaPRD_REFER.AsString));
+          ' WHERE PRD_REFER = ' + QuotedStr(prdRefer));
 
+  
+
+
+
+
+  cdsBusca.EnableControls;
   btnPesquisa.Click;
+  cdsBusca.RecNo := rec;
+  panelAguarde.Visible := False;
   MessageDlg('Ficha Recalculada com sucesso.', mtInformation, [mbOk], 0);
 end;
 
 
-function TfrmFichaConteudoImportacao.AtualizaFCI(prdRefer: string; prdReferPai: string): Double;
+function TfrmFichaConteudoImportacao.AtualizaFCI(prdRefer: string; prdReferPai: string; quantidadePai: double; var totalPI: double): Double;
 var
   PrdReferItem: string;
-  CI, precoImportado, percentualOrigemImportado, quantidadeCompradaImportado, vlParcelaImportadaLocal, quantidadePai, ResFCI : Double;
+  CI, precoImportado, percentualOrigemImportado, quantidadeCompradaImportado, vlParcelaImportadaLocal, totalPILocal : Double;
   prdOrigem: Integer;
   Auxiliar: TFDQuery;
 begin
+
   Auxiliar := TFDQuery.Create(Self);
   Auxiliar.Connection := dbConn;
   Auxiliar.SQL.Text :=
@@ -1185,9 +1327,12 @@ begin
           '  FROM FTC_IT01 fi ' +
           '  JOIN PRD0000 pr ON (pr.PRD_REFER = fi.PRD_REFER_ITENS) ' +
           '  JOIN PRD_TIPO pt ON (pt.PTI_CODIGO = pr.PTI_CODIGO) ' +
-          '  WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)
+          '  WHERE fi.PRD_REFER = ' + QuotedStr(prdRefer)  +
+          '  ORDER BY fi.PRD_REFER, fi.PRD_REFER_ITENS'
   ;
   Auxiliar.Open;
+  if dbInicio.IsDesenvolvimento then
+    copyToClipboard(Auxiliar.SQL.Text);
 
   while not Auxiliar.Eof do
   begin
@@ -1200,10 +1345,7 @@ begin
       quantidadeCompradaImportado := 0;
       ParcelaImportada(prdReferItem, precoImportado, percentualOrigemImportado, quantidadeCompradaImportado);  // ENTRADA DE NOTA
 
-      quantidadePai := ConsumoTotal(Auxiliar, False);
-
-      // CI := precoImportado * quantidadePai;
-      CI := quantidadePai * ((precoImportado / 100) * percentualOrigemImportado) ;
+      CI := (quantidadePai * Auxiliar.FieldByName('FTI_UC').AsFloat) * ((precoImportado / 100) * percentualOrigemImportado) ;
 
       if CI = 0 then
         vlParcelaImportadaLocal := 0
@@ -1217,8 +1359,7 @@ begin
         71..10000: prdOrigem := 8
         else prdOrigem := 0;
       end;
-      // quantidadePai := BuscaUmDadoSqlAsfloat('SELECT FTI_UC FROM FTC_IT01 FI WHERE PRD_REFER = ' + QuotedStr(prdReferPai) +  ' AND PRD_REFER_itens = ' + QuotedStr(prdRefer) ) ;
-;
+
       ExecSql('UPDATE PRD0000 SET ' +
               ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL(CI) + ', ' +
               ' PRD_FCI_VALOR_PARCELA_IMPORTADA = ' + FloatToSQL(  (vlParcelaImportadaLocal *  Auxiliar.FieldByName('FTI_UC').AsFloat) * quantidadePai ) + ', ' +
@@ -1226,33 +1367,18 @@ begin
               ' PRD_ORIGEM = ' + IntToStr(prdOrigem) +
               ' WHERE PRD_REFER = ' + QuotedStr(prdReferItem));
 
-      // vlParcelaImportadaTotal := vlParcelaImportadaTotal + (vlParcelaImportadaLocal * quantidadePai * Auxiliar.FieldByName('FTI_UC').AsFloat  );
-      vlParcelaImportadaTotal := vlParcelaImportadaTotal + (CI);
+      vlParcelaImportadaTotal := vlParcelaImportadaTotal + ((vlParcelaImportadaLocal *  Auxiliar.FieldByName('FTI_UC').AsFloat) * quantidadePai );
+      totalPI := totalPI + ((vlParcelaImportadaLocal *  Auxiliar.FieldByName('FTI_UC').AsFloat) * quantidadePai )
     end
     else
-    if Auxiliar.FieldByName('PTI_SIGLA').AsString = 'PI' then
+//    if Auxiliar.FieldByName('PTI_SIGLA').AsString = 'PI' then // PODE SER UM PA OU OUTRO TIPO TAMBÉM
     begin
-      resFCI := AtualizaFCI(prdReferItem, prdRefer);
-      {
-      ParcelaImportada(prdReferItem, precoImportado, percentualOrigemImportado, quantidadeCompradaImportado);  // ENTRADA DE NOTA
-      quantidadePai := ConsumoTotal(Auxiliar, False);
-      CI := quantidadePai * ((precoImportado / 100) * percentualOrigemImportado) ;
-      if (CI > 0) and (CI < 1) then
-        CI := 1;
-      case Round(CI) of
-        1..40 : prdOrigem := 5;
-        41..70: prdOrigem := 3;
-        71..10000: prdOrigem := 8
-        else prdOrigem := 0;
-      end;
+      totalPILocal := 0;
+      AtualizaFCI(prdReferItem, prdRefer, quantidadePai * Auxiliar.FieldByName('FTI_UC').AsFloat, totalPILocal);
       ExecSql('UPDATE PRD0000 SET ' +
-              ' PRD_FCI_CONTEUDO_IMPORTACAO = ' + FloatToSQL(CI) + ', ' +
-              ' PRD_FCI_VALOR_PARCELA_IMPORTADA = ' + FloatToSQL( ResFCI ) + ', ' +
-              ' PRD_FCI_DATA_GERACAO = ' + DateTimeToSQL(Now) + ', ' +
-              ' PRD_ORIGEM = ' + IntToStr(prdOrigem) +
-              ' WHERE PRD_REFER = ' + QuotedStr(prdRefer ));
-      }
-
+              ' PRD_FCI_VALOR_PARCELA_IMPORTADA = ' + FloatToSQL(totalPILocal) +
+              ' WHERE PRD_REFER = ' + QuotedStr(prdReferItem));
+      totalPI := totalPI + totalPILocal;
     end;
     Auxiliar.Next;
   end;
@@ -1262,8 +1388,7 @@ end;
 function TfrmFichaConteudoImportacao.AtualizaDetalhe(var vlParcelaImportada: Double; prdRefer: string; var clonePai, cloneFilho: TFDQuery; var tabelaTemp: TFDMemTable): Double;
 var
   precoImportado, percentualOrigemImportado, quantidadeCompradaImportado,
-  CI, quantidadeItensPai, Resultado: double;
-  CloneP, CloneF: TFDQuery;
+  CI, Resultado: double;
 
   PRD_REFER,
   PRD_REFER_ITENS,
@@ -1396,7 +1521,7 @@ begin
       cloneFilho.FieldByName('PRECO_COMPRA_MEDIO').AsFloat := precoImportado;
       cloneFilho.FieldByName('VALOR_COMPRA').AsFloat := precoImportado * quantidadeCompradaImportado;
       CI := ((percentualOrigemImportado / 100) * precoImportado) * cloneFilho.FieldByName('FTI_UC').AsFloat;
-      quantidadeItensPai := BuscaUmDadoSqlAsfloat('SELECT FTI_UC FROM FTC_IT01 FI WHERE PRD_REFER = ' + QuotedStr(clonePai.FieldByName('PRD_REFER').AsString) +  ' AND PRD_REFER_ITENS = ' + QuotedStr(cloneFilho.FieldByName('PRD_REFER').AsString) );
+//      quantidadeItensPai := BuscaUmDadoSqlAsfloat('SELECT FTI_UC FROM FTC_IT01 FI WHERE PRD_REFER = ' + QuotedStr(clonePai.FieldByName('PRD_REFER').AsString) +  ' AND PRD_REFER_ITENS = ' + QuotedStr(cloneFilho.FieldByName('PRD_REFER').AsString) );
 
       if cloneFilho.FieldByName('PTI_SIGLA').AsString = 'MP' then
         Resultado := Resultado + cloneFilho.FieldByName('CONSUMO_TOTAL').AsFloat * ((precoImportado / 100) * percentualOrigemImportado);
@@ -1428,7 +1553,7 @@ begin
       tabelaTemp.FieldByName('PRECO_COMPRA_MEDIO').AsFloat := precoImportado;
       tabelaTemp.FieldByName('VALOR_COMPRA').AsFloat := precoImportado * quantidadeCompradaImportado;
       CI := ((percentualOrigemImportado / 100) * precoImportado) * cloneFilho.FieldByName('FTI_UC').AsFloat;
-      quantidadeItensPai := BuscaUmDadoSqlAsfloat('SELECT FTI_UC FROM FTC_IT01 FI WHERE PRD_REFER = ' + QuotedStr(clonePai.FieldByName('PRD_REFER').AsString) +  ' AND PRD_REFER_itens = ' + QuotedStr(cloneFilho.FieldByName('PRD_REFER').AsString) );
+      // quantidadeItensPai := BuscaUmDadoSqlAsfloat('SELECT FTI_UC FROM FTC_IT01 FI WHERE PRD_REFER = ' + QuotedStr(clonePai.FieldByName('PRD_REFER').AsString) +  ' AND PRD_REFER_itens = ' + QuotedStr(cloneFilho.FieldByName('PRD_REFER').AsString) );
 
       tabelaTemp.FieldByName('CONSUMO_TOTAL').AsFloat := ConsumoTotal(cloneFilho, False);
 
@@ -1459,13 +1584,78 @@ begin
   pnBuscando.Visible := False;
 end;
 
+function TfrmFichaConteudoImportacao.CalcularConsumoTotal(referencia, referenciaFilha: string; baseFormula: double): Double;
+var
+  query: TFDQuery;
+  consumoTotal, consumoFilha: Double;
+
+begin
+  consumoTotal := 0;
+  Result := 0;
+
+  query := TFDQuery.Create(nil);
+  try
+    query.Connection := dbConn;
+    query.SQL.Text :=
+                   ' SELECT ' +
+                   '   fi.FTI_REGISTRO, ' +
+                   '   fi.PRD_REFER, ' +
+                   '   fi.PRD_REFER_ITENS, ' +
+                   '   fi.FTI_UC, ' +
+                   '   pt.PTI_SIGLA, ' +
+                   '   ft.FTC_BASEFORMULA ' +
+                   ' FROM FTC_IT01 fi ' +
+                   ' JOIN PRD0000 p ON (p.PRD_REFER = fi.PRD_REFER_ITENS) ' +
+                   ' JOIN PRD_TIPO pt ON (pt.PTI_CODIGO = p.PTI_CODIGO) ' +
+                   ' JOIN FTC0000 ft ON (ft.PRD_REFER = fi.PRD_REFER) ' +
+                   ' WHERE fi.PRD_REFER = ' + QuotedStr(referencia) +
+                   ' AND   fi.PRD_REFER_ITENS = ' + QuotedStr(referenciaFilha) +
+                   ' ORDER BY fi.PRD_REFER_ITENS';
+    if dbInicio.IsDesenvolvimento then
+      copyToClipboard(query.SQL.Text);
+    query.Open;
+
+
+    while not query.Eof do
+    begin
+      referenciaFilha := query.FieldByName('PRD_REFER_ITENS').AsString;
+      consumoFilha := query.FieldByName('FTI_UC').AsFloat;
+
+      if query.FieldByName('PTI_SIGLA').AsString = 'MP' then
+      begin
+        result := consumoFilha * baseFormula;
+      end
+      else
+        result := result * CalcularConsumoTotal(referencia, referenciaFilha, consumoFilha);
+
+      query.Next;
+    end;
+  finally
+    // Feche a query e libere a memória
+    query.Close;
+    query.Free;
+  end;
+
+  // Retorne o consumo total
+  Result := consumoTotal;
+end;
+
 function TfrmFichaConteudoImportacao.ConsumoTotal(cds: TFDQuery; Post: Boolean): double;
 var
   prdRefer, prdFilho, ptiSigla: string;
+  baseFormula, ConsumoTotal: double;
 begin
   prdRefer := UpperCase(cdsBuscaPRD_REFER.AsString); // UpperCase(edReferencia.Text); //  cds.FieldByName('PRD_REFER').AsString;
   prdFilho := cds.FieldByName('PRD_REFER_ITENS').AsString;
   ptiSigla := cds.FieldByName('PTI_SIGLA').AsString;
+  baseFormula := cdsBuscaFTC_BASEFORMULA.AsFloat * cds.FieldByName('FTI_UC').AsFloat;
+  consumoTotal := CalcularConsumoTotal(prdRefer, prdFilho, baseFormula)   ;
+  if Post then
+    cds.FieldByName('CONSUMO_TOTAL').AsFloat := consumoTotal;
+  result := consumoTotal;
+  exit;
+
+
   qAux.Close;
   qAux.SQL.Text :=
        ' WITH RECURSIVE ficha (id, item_pai, filhos, nivel, caminho, consumo, ctotal) ' +
@@ -1474,7 +1664,7 @@ begin
        '  FROM ftc_it01 ce ' +
        '  WHERE ce.prd_refer = ' + QuotedStr(prdRefer) +
        ' UNION ALL ' +
-       ' SELECT e.fti_registro, e.prd_refer, e.prd_refer_itens, fc.nivel + 1, CAST(fc.caminho || ' + QuotedStr('->') + ' || e.prd_refer AS VARCHAR(1000)) ' +
+       ' SELECT e.fti_registro, e.prd_refer, e.prd_refer_itens, fc.nivel + 1, CAST(fc.caminho || ' + QuotedStr('->') + ' || e.prd_refer AS VARCHAR(32000)) ' +
        '  ,fc.consumo, fc.ctotal * e.fti_uc ' +
        ' FROM ficha fc ' +
        ' JOIN ftc_it01 e ON fc.filhos = e.prd_refer ' +
