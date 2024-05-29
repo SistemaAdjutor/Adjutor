@@ -94,6 +94,8 @@ type
     qExportCLI_DTNASCIMENTO: TSQLTimeStampField;
     qExportEMP_CODIGO: TStringField;
     qExportFPC_VENCTO: TDateField;
+    cdsBuscoSITUACAO: TStringField;
+    qExportSITUACAO: TStringField;
     procedure FormCreate(Sender: TObject);
     procedure CdsBuscoCLI_RAZAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure CdsBuscoCLI_CGCGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -319,6 +321,7 @@ begin
   lista.Add('CLI_CONTATO');
   lista.Add('REP_NOME');
   lista.Add('CORI_DESCRICAO');
+  lista.Add('SITUACAO');
   CriaCSV(dsExport, lista, Self);
 end;
 
@@ -377,6 +380,12 @@ begin
           Add('       ATV.RCL_ATIVIDADE,' );
           Add('       CL.CLI_INSC, rp.REP_NOME, ' );
           Add('       VEND_INTERNO_CODIGO, CLI_CEP, cli_fax, cli_celular, CLI_UND_CONSUMIDORA, co.CORI_DESCRICAO,');
+
+          Add('       CASE ' +
+              '            WHEN CL.CLI_INATIVO = ''A'' THEN ''ATIVO''   ' +
+              '            WHEN CL.CLI_INATIVO = ''I'' THEN ''INATIVO''   ' +
+              '            WHEN CL.CLI_INATIVO = ''R'' THEN ''EM RECUPERAÇÃO''    ' +
+              '       END AS SITUACAO, ' );
 
           Add(       'CAST (((SELECT MAX(T1.FRE_DATA_RECEBIMENTO) ' +
                      '   FROM FAT_RECEBIMENTO T1 ' +
