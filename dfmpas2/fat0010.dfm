@@ -866,6 +866,10 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       FieldName = 'CLI_CGC'
       Size = 14
     end
+    object CdsReceberBaixasPCX_DESCRI: TStringField
+      DisplayLabel = 'Centro de Custol'
+      FieldName = 'PCX_DESCRI'
+    end
   end
   object DsReceberBaixas: TDataSource
     DataSet = CdsReceberBaixas

@@ -184,6 +184,7 @@ type
     cdsReceberCentroCustoFPG_DESCRICAO: TStringField;
     cdsReceberCentroCustoCCPendente: TFloatField;
     ExportarparaCSV1: TMenuItem;
+    CdsReceberBaixasPCX_DESCRI: TStringField;
     procedure Bit_SairClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure EdClienteCodigoExit(Sender: tObject);
@@ -430,6 +431,7 @@ begin
   lista.Add('FPG_DESCRICAO');
   lista.Add('BAN_APELIDO');
   lista.Add('USU_NOME');
+  lista.Add('PCX_DESCRI');
   CriaCSV(DsReceberBaixas, lista, Self);
 end;
 
@@ -678,13 +680,14 @@ begin
    CdsReceberBaixas.Close;
    CdsReceberBaixas.CommandText := SqlDef(IIF(chkMultiEmpresa.Checked,'MULTIEMPRESA','RECEBER'),
               'SELECT T1.*,t8.nf_num_nfe, T2.BAN_APELIDO,T3.FPG_DESCRICAO,T4.USU_NOME,T5.CLI_CODIGO,T6.CLI_RAZAO, T6.CLI_CGC,'+
-              't5.FAT_CODIGO,t5.FPC_NUMER,t5.FPC_NPARCELAS, t5.FPC_VENCTO FROM FAT_RECEBIMENTO T1  '+
+              't5.FAT_CODIGO,t5.FPC_NUMER,t5.FPC_NPARCELAS, t5.FPC_VENCTO, p.PCX_DESCRI FROM FAT_RECEBIMENTO T1  '+
                'JOIN BAN0000 T2 ON (T2.BAN_CODIGO = T1.BAN_CODIGO) '+
                'JOIN FORMA_PAGAMENTO T3 ON (T3.FPG_REGISTRO = T1.FPG_REGISTRO) '+
                'JOIN USUARIO T4 ON (T4.USU_CODIGO = T1.USU_CODIGO) '+
                'JOIN FAT_PC01 T5 ON (T5.FAT_REGISTRO = T1.FAT_REGISTRO  AND t5.EMP_CODIGO = t1.EMP_CODIGO) '+
                ' join fat0000 t7 on(t7.fat_codigo = t5.fat_codigo AND  t5.EMP_CODIGO = t7.emp_codigo)'+
                ' JOIN CLI0000 T6 ON (T6.CLI_CODIGO = T7.CLI_CODIGO) '+
+               ' LEFT JOIN PCX0000 p ON (p.PCX_CODIGO = t5.PCX_CODIGO) ' + // AND p.EMP_CODIGO = t5.EMP_CODIGO) ' +
                ' left join nf0001 t8 on (t8.nf_notanumber = t7.fat_codigo AND  t8.EMP_CODIGO = t7.emp_codigo  and t8.nf_cancelada <> ''S'' and t8.nf_status_nfe <> ''C'' '+
                ' and t8.ope_semvlcom <> '''' and t8.ope_semvlcom IS NOT null)'  ,sCondicao,'FRE_DATA_RECEBIMENTO desc','T1.');
    if dbInicio.isDesenvolvimento then
