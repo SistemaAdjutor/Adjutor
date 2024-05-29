@@ -14,6 +14,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     ExplicitWidth = 1262
     ExplicitHeight = 542
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 1254
       ExplicitHeight = 514
       inherited pnControle: TPanel
@@ -920,6 +922,9 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
       DisplayLabel = #218'ltima Parcela'
       FieldName = 'FPC_VENCTO'
     end
+    object cdsBuscoSITUACAO: TStringField
+      FieldName = 'SITUACAO'
+    end
   end
   inherited mnuGridPesquisa: TPopupMenu
     Left = 564
@@ -1084,6 +1089,10 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     object qExportFPC_VENCTO: TDateField
       DisplayLabel = #218'ltima Parcela'
       FieldName = 'FPC_VENCTO'
+    end
+    object qExportSITUACAO: TStringField
+      DisplayLabel = 'Situa'#231#227'o'
+      FieldName = 'SITUACAO'
     end
   end
   object dsExport: TDataSource
