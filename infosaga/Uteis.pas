@@ -2487,6 +2487,9 @@ begin
     if (str.Substring(i, 1) = #10)  then
       result := result + ''
     else
+    if (str.Substring(i, 1) = #9)  then
+      result := result + ' '
+    else
       result := result + str.Substring(i, 1);
   end;
 end;
