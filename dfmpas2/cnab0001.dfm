@@ -166,7 +166,6 @@ object FormGeradorCNAB: TFormGeradorCNAB
       Font.Style = [fsBold]
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 645
       DesignSize = (
         646
         18)
@@ -185,7 +184,6 @@ object FormGeradorCNAB: TFormGeradorCNAB
         ParentFont = False
         TabOrder = 0
         OnClick = ButFechaClick
-        ExplicitLeft = 738
       end
     end
     object BitFechaVisual: TBitBtn
@@ -244,7 +242,6 @@ object FormGeradorCNAB: TFormGeradorCNAB
     BevelOuter = bvLowered
     Color = clWhite
     TabOrder = 5
-    ExplicitWidth = 1370
     object LblMensagem: TLabel
       Left = 198
       Top = 6
@@ -332,6 +329,8 @@ object FormGeradorCNAB: TFormGeradorCNAB
       Left = 0
       Top = 0
       Caption = 'SelecionaBanco'
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = -5
         Top = 5
@@ -458,6 +457,10 @@ object FormGeradorCNAB: TFormGeradorCNAB
             StyleElements = []
             object tsCopel: TTabSheet
               Caption = 'tsCopel'
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pCopel: TPanel
                 Left = 0
                 Top = 0
@@ -546,6 +549,10 @@ object FormGeradorCNAB: TFormGeradorCNAB
             object tsOutros: TTabSheet
               Caption = 'tsOutros'
               ImageIndex = 1
+              ExplicitLeft = 0
+              ExplicitTop = 0
+              ExplicitWidth = 0
+              ExplicitHeight = 0
               object pOutros: TPanel
                 Left = 0
                 Top = 0
@@ -1280,6 +1287,8 @@ object FormGeradorCNAB: TFormGeradorCNAB
       Left = 0
       Top = 0
       Caption = 'SelecionaDuplicatas'
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox3: TGroupBox
         Left = 5
         Top = 2
@@ -1641,6 +1650,8 @@ object FormGeradorCNAB: TFormGeradorCNAB
       Left = 0
       Top = 0
       Caption = 'Duplicatas Selecionada'
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox5: TGroupBox
         Left = 5
         Top = 2
@@ -3320,7 +3331,7 @@ object FormGeradorCNAB: TFormGeradorCNAB
     Left = 722
     Top = 106
     Bitmap = {
-      494C010103000500140010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500180010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -3567,7 +3578,7 @@ object FormGeradorCNAB: TFormGeradorCNAB
     Cedente.IdentDistribuicao = tbBancoDistribui
     Cedente.PIX.TipoChavePIX = tchNenhuma
     NumeroArquivo = 0
-    Configuracoes.Arquivos.LogRegistro = False
+    Configuracoes.Arquivos.LogNivel = logNenhum
     Configuracoes.WebService.SSLHttpLib = httpOpenSSL
     Configuracoes.WebService.StoreName = 'My'
     Configuracoes.WebService.Ambiente = taHomologacao
