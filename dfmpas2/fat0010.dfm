@@ -867,7 +867,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       Size = 14
     end
     object CdsReceberBaixasPCX_DESCRI: TStringField
-      DisplayLabel = 'Centro de Custol'
+      DisplayLabel = 'Centro de Custo'
       FieldName = 'PCX_DESCRI'
     end
   end
