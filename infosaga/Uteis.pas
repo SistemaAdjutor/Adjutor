@@ -180,6 +180,8 @@ procedure CriaCSV(ds: TDataSource; lista: TStringList; Form: TForm; empCodigo: b
 function LastPos(const pesq: string; const S: string): integer;
 function retiraPontoEVirgula(str: string): string;
 function retiraCRLF(str: string): string;
+function retiraApostrofo(str: string): string;
+function existeApostrofo(str: string): boolean;
 
 
 procedure PreparaACBR(usuario: string);
@@ -2493,6 +2495,37 @@ begin
       result := result + str.Substring(i, 1);
   end;
 end;
+
+function retiraApostrofo(str: string): string;
+var
+  i: Integer;
+begin
+  result := '';
+  for i := 0 to length(str)  do
+  begin
+    if (str.Substring(i, 1) = #39) or (str.Substring(i, 1) = WideChar($2019)) then
+      result := result + ' '
+    else
+      result := result + str.Substring(i, 1);
+  end;
+end;
+
+function existeApostrofo(str: string): boolean;
+var
+  i: Integer;
+begin
+  result := False;
+  for i := 0 to length(str)  do
+  begin
+    if (str.Substring(i, 1) = #39) or (str.Substring(i, 1) = WideChar($2019))  then
+    begin
+      result := True;
+      Exit;
+    end;
+  end;
+end;
+
+
 
 function LastPos(const pesq: string; const S: string): integer;
 var
