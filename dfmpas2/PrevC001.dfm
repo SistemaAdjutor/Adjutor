@@ -532,9 +532,8 @@ inherited FormPrevConsumo: TFormPrevConsumo
       FieldName = 'PRD_GRADE'
       Size = 1
     end
-    object SqlCdsItensFichaFTI_UC: TFMTBCDField
+    object SqlCdsItensFichaFTI_UC: TFloatField
       FieldName = 'FTI_UC'
-      Precision = 15
     end
     object SqlCdsItensFichaFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -841,9 +840,8 @@ inherited FormPrevConsumo: TFormPrevConsumo
       FieldName = 'FTI_MODE8'
       Size = 12
     end
-    object SqlCdsItensGradeFTI_UC: TFMTBCDField
+    object SqlCdsItensGradeFTI_UC: TFloatField
       FieldName = 'FTI_UC'
-      Precision = 15
     end
     object SqlCdsItensGradePTI_SIGLA: TStringField
       FieldName = 'PTI_SIGLA'
@@ -955,9 +953,8 @@ inherited FormPrevConsumo: TFormPrevConsumo
       FieldName = 'FTI_MODE8'
       Size = 12
     end
-    object SqlCdsN1FTI_UC: TFMTBCDField
+    object SqlCdsN1FTI_UC: TFloatField
       FieldName = 'FTI_UC'
-      Precision = 15
     end
   end
 end

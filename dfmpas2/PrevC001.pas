@@ -39,7 +39,7 @@ type
     SqlCdsItensFichaFTI_MODE6: TStringField;
     SqlCdsItensFichaFTI_MODE7: TStringField;
     SqlCdsItensFichaFTI_MODE8: TStringField;
-    SqlCdsItensFichaFTI_UC: TFMTBCdField;
+    SqlCdsItensFichaFTI_UC: TFloatField;
     SqlCdsConsumo: TSQLClientDataSet;
     DsConsumo: TDataSource;
     BitPrevisao: TBitBtn;
@@ -75,7 +75,7 @@ type
     SqlCdsItensGradeFTI_MODE6: TStringField;
     SqlCdsItensGradeFTI_MODE7: TStringField;
     SqlCdsItensGradeFTI_MODE8: TStringField;
-    SqlCdsItensGradeFTI_UC: TFMTBCdField;
+    SqlCdsItensGradeFTI_UC: TFloatField;
     SqlCdsBuscaFichaPTI_SIGLA: TStringField;
     SqlCdsItensFichaPTI_SIGLA: TStringField;
     SqlCdsItensGradePTI_SIGLA: TStringField;
@@ -99,7 +99,7 @@ type
     SqlCdsN1FTI_MODE6: TStringField;
     SqlCdsN1FTI_MODE7: TStringField;
     SqlCdsN1FTI_MODE8: TStringField;
-    SqlCdsN1FTI_UC: TFMTBCdField;
+    SqlCdsN1FTI_UC: TFloatField;
     SqlCdsConsumoPSV_REGISTRO: TIntegerField;
     SqlCdsConsumoEMP_CODIGO: TStringField;
     SqlCdsConsumoPRD_REFER: TStringField;
