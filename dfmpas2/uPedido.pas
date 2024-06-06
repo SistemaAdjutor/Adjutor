@@ -8681,8 +8681,8 @@ begin
   end
   else
   begin
-    // wConsumidor := (BuscaUmDadoSqlAsString('SELECT CLI_CONSFINAL FROM CLI0000 WHERE CLI_CODIGO = ' + QuotedStr(EdClienteCodigo.Text)) = 'S');
-    wConsumidor := (BuscaUmDadoSqlAsString('SELECT CLI_CONSFINAL FROM PED0000 WHERE PED_CODIGO = ' + QuotedStr(EdPedidoNumero.Text)) = 'S');
+    wConsumidor := cbCliConsFinal.ItemIndex = 0;
+    // wConsumidor := (BuscaUmDadoSqlAsString('SELECT CLI_CONSFINAL FROM PED0000 WHERE PED_CODIGO = ' + QuotedStr(EdPedidoNumero.Text)) = 'S');
     if (EdClienteUF.Text <> DBInicio.Empresa.UF) then
       wForaEstSN := 'S'
     else
