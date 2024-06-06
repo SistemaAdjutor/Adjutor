@@ -811,7 +811,9 @@ begin
           ' FPG_REGISTRO =  ' + IntToStr(cdsPedidoFPG_REGISTRO.AsInteger) +  ',' +
           ' BAN_CODIGO = '+QuotedStr(cdsPedidoBAN_CODIGO.AsString)+ ' ,'+
           ' PCX_CODIGO = '+QuotedStr(cdsPedidoPCX_CODIGO.AsString ) +' , ' +
-          ' CLI_UND_CONSUMIDORA = '+ IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsInteger)+
+          ' CLI_UND_CONSUMIDORA = '+ IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsInteger)+ ', ' +
+          ' CLI_DTULTCOM = ' + DateToSQL(now) + ', ' +
+          ' CLI_VL_ULTCOMP = ' + FloatToSQL(cdsPedidoPED_VLTOTAL_BRUTO.AsFloat) +
           ' where cli_codigo = '+ QuotedStr(cli_codigo);
 
   ExecSql(SQL);

@@ -639,10 +639,18 @@ begin
             '    (SELECT MAX(PED_DTENTRADA) FROM PED0000 pe                                   '+
             '   WHERE PE.CLI_CODIGO = CL.CLI_CODIGO'+
               ConcatSe(' AND ', dbinicio.ExclusivoSql('PEDIDOS')) +       ' ) ULTPEDIDO ,     ');
+
+
       If chkClienteAtrasos.Checked then
          sql.Add('FPC_VLPARC, FPC_NUMER, FPC_ENVIADO_CARTA,  FPC_VENCTO vencimento,  BAN_APELIDO as BANCO, FPC_STATUS as status ')
-      else
-         sql.Add(' (select sum (FPC_VLPARC - COALESCE(FPC_VLPAGO,0) ) from FAT_PC01 PC where pc.CLI_CODIGO = cl.CLI_CODIGO AND FPC_EXCLUSAO = ''N''  AND FPC_SITPAG = ''P'' AND FPC_VENCTO < CURRENT_DATE) AS FPC_VLPARC, '+
+      else                                                                                                               {AND FPC_SITPAG = ''P'' }
+         sql.Add(' (select sum(FPC_VLPARC)  from FAT_PC01 PC where pc.CLI_CODIGO = cl.CLI_CODIGO AND FPC_EXCLUSAO = ''N''   AND FPC_DTEMIS = ( SELECT  max(FPC_DTEMIS) FROM FAT_PC01 pc                   '+
+            '                       WHERE pc.CLI_CODIGO = cl.CLI_CODIGO                      '+
+                                     ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
+                                     ' AND FPC_EXCLUSAO = ''N'' '+
+                                     ') ) AS FPC_VLPARC, '+
+
+
          ' '''' FPC_NUMER, ''N'' AS FPC_ENVIADO_CARTA, cast(null as timestamp) vencimento,  BAN_APELIDO AS BANCO, '''' as Status  ');
        sql.Add(' FROM CLI0000 cl                                                                 '+
                ' LEFT JOIN  REP0000 rp ON (rp.REP_CODIGO = cl.REP_CODIGO) ');
