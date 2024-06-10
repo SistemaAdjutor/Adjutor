@@ -1,0 +1,8 @@
+﻿Atualizado em 10/06/2024
+Inicio da versão: 10/06/2024
+
+principal: Drimec, Collect
+  1884 - Erro na Simulação de Estoque [Drimec]
+  1185 - Pesquisa de CRM - Renovação não aparece valor [Collect]
+  1887 - Analisar: DIFAL - Não esta calculando [Drimec]
+  
