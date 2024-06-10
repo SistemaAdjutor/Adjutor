@@ -1962,7 +1962,8 @@ procedure TfrmGerenciamentoPCP.cxgrd1DBBandedTableView1FocusedRecordChanged(Send
 begin
   inherited;
   sbDesvincularPedido.Visible := (AFocusedRecord.Values[cxgrd1DBBandedTableView1IOP_STATUS.Index] = 'F')
-                                 and   (DBInicio.BuscaUmDadoSqlAsString('SELECT USP_BOTAO_DESVINCULAR_PEDIDO FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO ) = 'S');
+                                 and (DBInicio.BuscaUmDadoSqlAsString('SELECT USP_BOTAO_DESVINCULAR_PEDIDO FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO ) = 'S')
+                                 and (DBInicio.BuscaUmDadoSqlAsString('SELECT NF_STATUS_NFE FROM NF0001 WHERE PED_CODIGO = ' + QuotedStr(AFocusedRecord.Values[cxgrd1DBBandedTableView1PED_CODIGO.Index]) ) = 'C')  ;
   try
     if (AFocusedRecord <> nil) and not TcxCustomGridRecord(AFocusedRecord).Expanded and (APrevFocusedRecord<> nil) and (APrevFocusedRecord.Level > 0)   and
      TcxCustomGridRecord(APrevFocusedRecord).Expanded then
@@ -3797,29 +3798,29 @@ end;
 
 procedure TfrmGerenciamentoPCP.sbDesvincularPedidoClick(Sender: TObject);
 var
-  AValue: Variant;
-  AColumn: TcxGridColumn;
-  ARowIndex: Integer;
+  fCodEmSeqUnica, numeroPedido, numeroPedidoAnt, cliCodigo : string;
+  opv, depCodigo : integer;
 begin
   inherited;
-    // Pegando o índice da linha atualmente selecionada
-  ARowIndex := cxgrd1DBBandedTableView1.Controller.FocusedRecordIndex;
 
-  // Obtendo a coluna pelo nome do campo
-  AColumn := cxgrd1DBBandedTableView1.GetColumnByFieldName('IOP_STATUS');
+  numeroPedidoAnt := cdsBuscaPED_CODIGO.AsString;
+  if uteis.Confirmacao('Deseja Desvincular o Pedido ' + numeroPedidoAnt + '?') <> mrYes  then
+    Exit;
+  if dbInicio.empresa.fSeqUnicaPed then
+    fCodEmSeqUnica := '001'
+  Else
+    fCodEmSeqUnica := dbInicio.Empresa.EMP_CODIGO;
+  numeroPedido := StrZero(SequenciadorPRC(fCodEmSeqUnica, 'PED0000', 'PED_CODIGO', 0, '' ), 6 );
 
-  if (AColumn <> nil) and (ARowIndex >= 0) then
-  begin
-    // Pegando o valor da célula específica
-    AValue := cxgrd1DBBandedTableView1.DataController.Values[ARowIndex, AColumn.Index];
-
-    // Convertendo o valor para o tipo desejado, por exemplo, string
-    ShowMessage(VarToStr(AValue));
-  end
-  else
-    ShowMessage('Coluna IOP_STATUS não encontrada ou nenhuma linha está selecionada.');
-
-
+  opv := BuscaUmDadoSqlAsInteger('SELECT OPV_CODIGO FROM OPV0000 WHERE OPV_PRODUCAO = ''S'' AND OPV_PEDIDOINTERNO = ''S'' ');
+  cliCodigo := BuscaUmDadoSqlAsString('SELECT CLI_CODIGO FROM CLI0000 c WHERE CLI_CGC = ' + QuotedStr(RetirarMascaraCNPJ_INSC(dbInicio.Empresa.CNPJ_CNPF)) );
+  GravarPedidoResumido (numeroPedido, IntToStr(opv), cliCodigo, now, now);
+  ExecSQL('UPDATE ORDEMPRODUCAO SET PED_CODIGO = ' + QuotedStr(numeroPedido) + ', CLI_CODIGO = ' + QuotedStr(cliCodigo) +  '  WHERE PED_CODIGO = ' + QuotedStr(numeroPedidoAnt) );
+  ExecSql('UPDATE DEMANDA_PRODUCAO SET PED_CODIGO = ' + QuotedStr(numeroPedido) + ' WHERE PED_CODIGO = ' + QuotedStr(numeroPedidoAnt) ) ;
+  depCodigo := BuscaUmDadoSqlAsInteger ('SELECT DEP_CODIGO FROM DEMANDA_PRODUCAO WHERE IOP_CODIGO = ' + cdsBuscaIOP_CODIGO.AsString);
+  tcr.DemandaHistorico(depCodigo, 'PEDIDO ' + numeroPedidoAnt + ' DESVINCULADO',  numeroPedido, cdsBuscaPRD_CODIGO.AsString, True) ;
+  btnPesquisa.Click;
+  ShowMessage('Pedido ' + numeroPedidoAnt + ', desvinculado com Sucesso' + #13 + 'Número do pedido novo: ' + numeroPedido);
 
 end;
 

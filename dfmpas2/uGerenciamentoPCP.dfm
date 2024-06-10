@@ -10,25 +10,25 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     Width = 1444
     Height = 567
     OnChange = pgc1Change
-    ExplicitWidth = 1384
+    ExplicitWidth = 1444
     ExplicitHeight = 567
     inherited tsNotas: TTabSheet
-      ExplicitWidth = 1376
+      ExplicitWidth = 1436
       ExplicitHeight = 539
       inherited pnlControle: TPanel
         Width = 1436
         Height = 105
-        ExplicitWidth = 1376
+        ExplicitWidth = 1436
         ExplicitHeight = 105
         inherited pnlFiltro: TPanel
           Width = 1436
           Height = 105
-          ExplicitWidth = 1376
+          ExplicitWidth = 1436
           ExplicitHeight = 105
           inherited pnlpn1: TPanel
             Width = 1436
             Height = 105
-            ExplicitWidth = 1376
+            ExplicitWidth = 1436
             ExplicitHeight = 105
             DesignSize = (
               1436
@@ -228,7 +228,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Width = 1436
         Height = 434
         ExplicitTop = 105
-        ExplicitWidth = 1376
+        ExplicitWidth = 1436
         ExplicitHeight = 434
         inherited cxgrd1DBTableView1: TcxGridDBTableView
           PopupMenu = pmInsumo
@@ -898,7 +898,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object tbHistorico: TTabSheet
       Caption = 'Hist'#243'rico'
       ImageIndex = 1
-      ExplicitWidth = 1376
       object Phistorico: TPanel
         Left = 0
         Top = 0
@@ -906,7 +905,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
         Height = 539
         Align = alClient
         TabOrder = 0
-        ExplicitWidth = 1376
         object cxGrid1: TcxGrid
           Left = 1
           Top = 1
@@ -914,7 +912,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Height = 537
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 1374
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             FilterBox.CustomizeDialog = False
@@ -974,7 +971,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     Top = 608
     Width = 1444
     ExplicitTop = 608
-    ExplicitWidth = 1384
+    ExplicitWidth = 1444
     DesignSize = (
       1444
       36)
@@ -985,7 +982,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
   end
   inherited pnlUtilTop: TPanel
     Width = 1444
-    ExplicitWidth = 1384
+    ExplicitWidth = 1444
     DesignSize = (
       1444
       41)
@@ -1069,7 +1066,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object sbDesvincularPedido: TSpeedButton
       Tag = 2
       Left = 471
-      Top = 1
+      Top = 0
       Width = 108
       Height = 40
       Hint = 'Retornar a pendente'
