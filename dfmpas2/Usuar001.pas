@@ -219,6 +219,7 @@ type
     chkPermiteVendaClienteFaturaAtraso: TCheckBox;
     cbAtivo: TDBCheckBox;
     chkAtivarTrocaCentroCusto: TCheckBox;
+    chkBotaoDesvincularPedido: TCheckBox;
     procedure FormShow(Sender: tObject);
     procedure FormCloseQuery(Sender: tObject; var CanClose: Boolean);
     procedure BitInclusaoClick(Sender: tObject);
@@ -2902,9 +2903,12 @@ begin
      DataCadastros1.CdSUsaParametro.FieldByName('USP_REPROVAR_EST').AsString              := iif(chkEstornoReprovacao.Checked ,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_APONTAR_EST').AsString               := iif(chkEstornarSolicitacao.Checked,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_APONTAR').AsString                   := iif(chkSolicitarPag.Checked ,'S','N');
-     DataCadastros1.CdSUsaParametro.FieldByName('USP_CUSTOPRODUCAO').AsString             := iif( chkCustosproducao.Checked  ,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_ALTERA_VENDEDOR').AsString           := iif(chkBloquearVendedor.Checked,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_ATIVAR_TROCA_CENTRO_CUSTO').AsString := iif(chkAtivarTrocaCentroCusto.Checked ,'S','N');
+
+     // produção
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_CUSTOPRODUCAO').AsString             := iif( chkCustosproducao.Checked  ,'S','N');
+     DataCadastros1.CdSUsaParametro.FieldByName('USP_BOTAO_DESVINCULAR_PEDIDO').AsString  := iif( chkBotaoDesvincularPedido.Checked  ,'S','N');
 
      DataCadastros1.CdSUsaParametro.FieldByName('USP_PERMITE_ALTER_TIPO').AsString := iif(chkAlterTipo.Checked,'S','N');
      DataCadastros1.CdSUsaParametro.FieldByName('USP_DESABILITA_COPIAR_PEDIDO').AsString := iif(chkDesabilitaCopiarPedido.Checked,'S','N');
@@ -3074,6 +3078,9 @@ begin
 
 
            chkCustosproducao.Checked :=  DataCadastros1.CdSUsaParametro.FieldByName('USP_CUSTOPRODUCAO').AsString  = 'S';
+           chkBotaoDesvincularPedido.Checked :=  DataCadastros1.CdSUsaParametro.FieldByName('USP_BOTAO_DESVINCULAR_PEDIDO').AsString  = 'S';
+
+
            chkBloquearVendedor.Checked := DataCadastros1.CdSUsaParametro.FieldByName('USP_ALTERA_VENDEDOR').AsString = 'S';
            chkAlterTipo.Checked := DataCadastros1.CdSUsaParametro.FieldByName('USP_PERMITE_ALTER_TIPO').AsString  = 'S';
            chkDesabilitaCopiarPedido.Checked := DataCadastros1.CdSUsaParametro.FieldByName('USP_DESABILITA_COPIAR_PEDIDO').AsString  = 'S';

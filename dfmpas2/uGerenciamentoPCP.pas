@@ -858,6 +858,7 @@ type
     frxOrdemProducaoModelos: TfrxReport;
     cdsBuscaTEM_DESCRICAO: TStringField;
     cdsBuscaTEM_CAPACIDADE: TFloatField;
+    sbDesvincularPedido: TSpeedButton;
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
@@ -934,6 +935,7 @@ type
     procedure frxOrdemProducaoModelosBeginDoc(Sender: TObject);
     procedure frxOrdemProducaoModelosGetValue(const VarName: string; var Value: Variant);
     procedure ListagemdeOrdensporClienteeNotadeEntrada1Click(Sender: TObject);
+    procedure sbDesvincularPedidoClick(Sender: TObject);
   private
     NaoAtualizaHistorico : boolean;
     sPedidoTitulo:string;
@@ -957,7 +959,7 @@ var
 implementation
 
 uses uteis, InicioDB, uvinculandoServico, Animacao, RWFunc, uPCPObservacaoIOP, uSelecionaAlmoxarifado,
-     uRequisicaoMaterial, uRequisicaoMaterialPesq, uPCPInformaFornecedor;
+     uRequisicaoMaterial, uRequisicaoMaterialPesq, uPCPInformaFornecedor, uPedidoDao;
 {$R *.dfm}
 
 procedure TfrmGerenciamentoPCP.AbrirPendente;
@@ -1959,6 +1961,8 @@ procedure TfrmGerenciamentoPCP.cxgrd1DBBandedTableView1FocusedRecordChanged(Send
   ANewItemRecordFocusingChanged: Boolean);
 begin
   inherited;
+  sbDesvincularPedido.Visible := (AFocusedRecord.Values[cxgrd1DBBandedTableView1IOP_STATUS.Index] = 'F')
+                                 and   (DBInicio.BuscaUmDadoSqlAsString('SELECT USP_BOTAO_DESVINCULAR_PEDIDO FROM USUARIO_PARAMETRO WHERE USP_COD_USUARIO = ' + DBInicio.Usuario.CODIGO ) = 'S');
   try
     if (AFocusedRecord <> nil) and not TcxCustomGridRecord(AFocusedRecord).Expanded and (APrevFocusedRecord<> nil) and (APrevFocusedRecord.Level > 0)   and
      TcxCustomGridRecord(APrevFocusedRecord).Expanded then
@@ -3789,6 +3793,34 @@ begin
 
 
   end;
+end;
+
+procedure TfrmGerenciamentoPCP.sbDesvincularPedidoClick(Sender: TObject);
+var
+  AValue: Variant;
+  AColumn: TcxGridColumn;
+  ARowIndex: Integer;
+begin
+  inherited;
+    // Pegando o índice da linha atualmente selecionada
+  ARowIndex := cxgrd1DBBandedTableView1.Controller.FocusedRecordIndex;
+
+  // Obtendo a coluna pelo nome do campo
+  AColumn := cxgrd1DBBandedTableView1.GetColumnByFieldName('IOP_STATUS');
+
+  if (AColumn <> nil) and (ARowIndex >= 0) then
+  begin
+    // Pegando o valor da célula específica
+    AValue := cxgrd1DBBandedTableView1.DataController.Values[ARowIndex, AColumn.Index];
+
+    // Convertendo o valor para o tipo desejado, por exemplo, string
+    ShowMessage(VarToStr(AValue));
+  end
+  else
+    ShowMessage('Coluna IOP_STATUS não encontrada ou nenhuma linha está selecionada.');
+
+
+
 end;
 
 procedure TfrmGerenciamentoPCP.spEstornarInicioClick(Sender: TObject);

@@ -6230,6 +6230,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'USP_ATIVAR_TROCA_CENTRO_CUSTO'
       Size = 1
     end
+    object SQLUsaParametroUSP_BOTAO_DESVINCULAR_PEDIDO: TStringField
+      FieldName = 'USP_BOTAO_DESVINCULAR_PEDIDO'
+      Size = 1
+    end
   end
   object DSPUsaParametro: TDataSetProvider
     DataSet = SQLUsaParametro
@@ -6668,6 +6672,10 @@ object DataCadastros1: TDataCadastros1
     end
     object CDSUsaParametroUSP_ATIVAR_TROCA_CENTRO_CUSTO: TStringField
       FieldName = 'USP_ATIVAR_TROCA_CENTRO_CUSTO'
+      Size = 1
+    end
+    object CDSUsaParametroUSP_BOTAO_DESVINCULAR_PEDIDO: TStringField
+      FieldName = 'USP_BOTAO_DESVINCULAR_PEDIDO'
       Size = 1
     end
   end

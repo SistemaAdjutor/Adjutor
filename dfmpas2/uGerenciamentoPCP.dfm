@@ -1,13 +1,13 @@
 inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
   Caption = 'Programa'#231#227'o da Produ'#231#227'o'
   ClientHeight = 644
-  ClientWidth = 1384
-  ExplicitWidth = 1400
+  ClientWidth = 1444
+  ExplicitWidth = 1460
   ExplicitHeight = 683
   PixelsPerInch = 96
   TextHeight = 13
   inherited pgc1: TPageControl
-    Width = 1384
+    Width = 1444
     Height = 567
     OnChange = pgc1Change
     ExplicitWidth = 1384
@@ -16,29 +16,29 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       ExplicitWidth = 1376
       ExplicitHeight = 539
       inherited pnlControle: TPanel
-        Width = 1376
+        Width = 1436
         Height = 105
         ExplicitWidth = 1376
         ExplicitHeight = 105
         inherited pnlFiltro: TPanel
-          Width = 1376
+          Width = 1436
           Height = 105
           ExplicitWidth = 1376
           ExplicitHeight = 105
           inherited pnlpn1: TPanel
-            Width = 1376
+            Width = 1436
             Height = 105
             ExplicitWidth = 1376
             ExplicitHeight = 105
             DesignSize = (
-              1376
+              1436
               105)
             inherited btnPesquisa: TSpeedButton
-              Left = 1223
+              Left = 1283
               ExplicitLeft = 1219
             end
             inherited btnLimpar: TSpeedButton
-              Left = 1223
+              Left = 1283
               ExplicitLeft = 1219
             end
             object chkFinalizados: TCheckBox
@@ -225,7 +225,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       end
       inherited cxgrd1: TcxGrid
         Top = 105
-        Width = 1376
+        Width = 1436
         Height = 434
         ExplicitTop = 105
         ExplicitWidth = 1376
@@ -898,20 +898,23 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object tbHistorico: TTabSheet
       Caption = 'Hist'#243'rico'
       ImageIndex = 1
+      ExplicitWidth = 1376
       object Phistorico: TPanel
         Left = 0
         Top = 0
-        Width = 1376
+        Width = 1436
         Height = 539
         Align = alClient
         TabOrder = 0
+        ExplicitWidth = 1376
         object cxGrid1: TcxGrid
           Left = 1
           Top = 1
-          Width = 1374
+          Width = 1434
           Height = 537
           Align = alClient
           TabOrder = 0
+          ExplicitWidth = 1374
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             FilterBox.CustomizeDialog = False
@@ -969,22 +972,22 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
   end
   inherited pnl1: TPanel
     Top = 608
-    Width = 1384
+    Width = 1444
     ExplicitTop = 608
     ExplicitWidth = 1384
     DesignSize = (
-      1384
+      1444
       36)
     inherited btnSelect: TSpeedButton
-      Left = 1514
+      Left = 1574
       ExplicitLeft = 1155
     end
   end
   inherited pnlUtilTop: TPanel
-    Width = 1384
+    Width = 1444
     ExplicitWidth = 1384
     DesignSize = (
-      1384
+      1444
       41)
     inherited btnExclui: TSpeedButton
       Left = 202
@@ -1026,25 +1029,25 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       ExplicitHeight = 40
     end
     inherited btnFechar: TSpeedButton
-      Left = 857
+      Left = 917
       Top = 1
       ExplicitLeft = 843
       ExplicitTop = 1
     end
     inherited btnExtra: TSpeedButton
-      Left = 531
+      Left = 585
       Top = 2
-      ExplicitLeft = 531
+      ExplicitLeft = 585
       ExplicitTop = 2
     end
     inherited btnMP_Expotar: TJvArrowButton
-      Left = 754
+      Left = 814
       Top = 1
       ExplicitLeft = 740
       ExplicitTop = 1
     end
     inherited btnrelatorios: TJvArrowButton
-      Left = 653
+      Left = 713
       Top = 1
       DropDown = pmListar
       ExplicitLeft = 639
@@ -1063,10 +1066,24 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       ShowHint = True
       OnClick = spEstornarInicioClick
     end
+    object sbDesvincularPedido: TSpeedButton
+      Tag = 2
+      Left = 471
+      Top = 1
+      Width = 108
+      Height = 40
+      Hint = 'Retornar a pendente'
+      Caption = 'Desvincular Pedido'
+      Layout = blGlyphTop
+      ParentShowHint = False
+      ShowHint = True
+      Visible = False
+      OnClick = sbDesvincularPedidoClick
+    end
   end
   inherited ACBrEnterTab1: TACBrEnterTab
     Left = 552
-    Top = 8
+    Top = 56
   end
   inherited cxLocalizer1: TcxLocalizer
     Left = 264

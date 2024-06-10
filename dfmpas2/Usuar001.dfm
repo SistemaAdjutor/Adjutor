@@ -1322,7 +1322,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             Height = 343
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = tabFinanceiro
+            Properties.ActivePage = cxTabSheet2
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 339
             ClientRectLeft = 4
@@ -1939,6 +1939,8 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             object cxTabSheet2: TcxTabSheet
               Caption = 'Produ'#231#227'o'
               ImageIndex = 7
+              ExplicitLeft = 16
+              ExplicitTop = 26
               object chkCustosproducao: TCheckBox
                 Left = 16
                 Top = 15
@@ -1949,6 +1951,19 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
                 ParentShowHint = False
                 ShowHint = True
                 TabOrder = 0
+              end
+              object chkBotaoDesvincularPedido: TCheckBox
+                Left = 16
+                Top = 38
+                Width = 193
+                Height = 17
+                Hint = 
+                  'Habilita (Mostra) o  Bot'#227'o Desvincular Pedido na Tela da Program' +
+                  'a'#231#227'o da Produ'#231#227'o'
+                Caption = 'Habilitar Bot'#227'o Desvincular Pedido'
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 1
               end
             end
             object cxTabSheet3: TcxTabSheet
@@ -2424,7 +2439,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C010103000500200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000

@@ -1717,6 +1717,8 @@ type
     CDSUsuarioUSUARIO_ATIVO: TStringField;
     SQLUsaParametroUSP_ATIVAR_TROCA_CENTRO_CUSTO: TStringField;
     CDSUsaParametroUSP_ATIVAR_TROCA_CENTRO_CUSTO: TStringField;
+    SQLUsaParametroUSP_BOTAO_DESVINCULAR_PEDIDO: TStringField;
+    CDSUsaParametroUSP_BOTAO_DESVINCULAR_PEDIDO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
