@@ -1629,120 +1629,133 @@ end;
 
 procedure TFormFaturamento.btnDANFEClick(Sender: TObject);
 var
- xml :TStringStream;
- xmlstream : TStream;
- nomeArq: string;
- erro: boolean;
- LOGO   :tBitMap;
- protocolo : string ;
-Begin
+  xml: TStringStream;
+  xmlstream: TStream;
+  nomeArq: string;
+  erro: boolean;
+  LOGO: TBitmap;
+  protocolo: string;
+  nf: TfrmProcessaNFe;
+begin
+  // Limpar explicitamente a instância DANFE e reiniciar as configurações
+  ACBrNFeDANFEFR1.Free;
+  ACBrNFeDANFEFR1 := TACBrNFeDANFEFR.Create(Self);
+
   ACBrNFe1.Configuracoes.Geral.VersaoDF := ve400;
-    ACBrNFeDANFEFR1.CasasDecimais.vUnCom :=  dbInicio.Empresa.fPMT_QTDE_DEC_PED;
+  ACBrNFeDANFEFR1.CasasDecimais.vUnCom := dbInicio.Empresa.fPMT_QTDE_DEC_PED;
+
   if cdsNotas.FieldByName('nf_status_nfe').AsString = 'A' then
   begin
-
-
-     if CdsNotas.FieldByName('NF_NUM_NFCE').AsInteger <> 0  then
-     begin
-       ACBrNFe1.DANFE := ACBrNFeDANFCEFR1;
-       ACBrNFeDANFCEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFeNFCe5_00.fr3';
-     end
-     Else
-     begin
-       ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
-       ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFE.fr3';
-     end;
+    if CdsNotas.FieldByName('NF_NUM_NFCE').AsInteger <> 0 then
+    begin
+      ACBrNFe1.DANFE := ACBrNFeDANFCEFR1;
+      ACBrNFeDANFCEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\DANFeNFCe5_00.fr3';
+    end
+    else
+    begin
+      ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
+      ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\DANFE.fr3';
+    end;
 
     ACBrNFe1.NotasFiscais.Clear;
-    OpenAux('select first 1 NFX_XML from NF0001_XML'+
-            ' where  NF_REGISTRO = '+ IntToStr(cdsNotas.FieldByName('NF_REGISTRO').AsInteger)  +
+    OpenAux('select first 1 NFX_XML from NF0001_XML' +
+            ' where  NF_REGISTRO = ' + IntToStr(cdsNotas.FieldByName('NF_REGISTRO').AsInteger) +
             ' ORDER BY NFX_REGISTRO DESC ');
-    erro:= True;
+    erro := True;
     while not qaux.Eof do
     begin
-     if qAux.FieldByName('NFX_XML').AsString <> '' then
-     begin
-       xml :=  TStringStream.Create;
-       xmlstream := qAux.CreateBlobStream(qAux.FieldByName('NFX_XML'),bmRead);
-       try
-         xml.CopyFrom(xmlstream,xmlstream.Size) ;
-         if ACBrNFe1.NotasFiscais.LoadFromStream(xml,TRUE) then
-         if ACBrNFe1.NotasFiscais.Items[0].NFE.procNFe.nProt = '' then
+      if qAux.FieldByName('NFX_XML').AsString <> '' then
+      begin
+        xml := TStringStream.Create;
+        xmlstream := qAux.CreateBlobStream(qAux.FieldByName('NFX_XML'), bmRead);
+        try
+          xml.CopyFrom(xmlstream, xmlstream.Size);
+          if ACBrNFe1.NotasFiscais.LoadFromStream(xml, True) then
           begin
-           PROTOCOLO :=  BuscaUmDadoSqlAsString('SELECT NF_PROTOCOLO_NFE FROM NF0001 WHERE NF_REGISTRO = '+ IntToStr(cdsNotas.FieldByName('NF_REGISTRO').AsInteger));
-           ACBrNFe1.NotasFiscais.Items[0].NFE.procNFe.nProt :=  PROTOCOLO;
-          end;
-
-         // if ACBrNFe1.NotasFiscais.Items[0].NFE.procNFe.nProt <> '' then
-            LOGO := tBitMap.Create;
-            OpenAux3(' SELECT EMP_LOGO, EMP_LOGO_NFE, EMP_LOGONFE_PROPRIO, EMP_RAZAO, EMP_EMAIL, EMP_HOME '+
-            ' from emp0000 as emp WHERE emp.emp_codigo = '+QuotedStr(cdsNotasEMP_CODIGO.AsString));
-
-            If qAux3.FieldByName('EMP_LOGONFE_PROPRIO').AsString = 'S' then
+            if ACBrNFe1.NotasFiscais.Items[0].NFE.procNFe.nProt = '' then
             begin
-              Le_Imagem_JPEG_toBMP( qaux3.FieldByName('EMP_LOGO_NFE') as TBlobField ,logo );
-              Logo.SaveToFile(DBInicio.Versao.PATH+'NFe4'+'\temp\'+ logoJPG)
+              protocolo := BuscaUmDadoSqlAsString('SELECT NF_PROTOCOLO_NFE FROM NF0001 WHERE NF_REGISTRO = ' + IntToStr(cdsNotas.FieldByName('NF_REGISTRO').AsInteger));
+              ACBrNFe1.NotasFiscais.Items[0].NFE.procNFe.nProt := protocolo;
+            end;
+
+            LOGO := TBitmap.Create;
+            OpenAux3('SELECT EMP_LOGO, EMP_LOGO_NFE, EMP_LOGONFE_PROPRIO, EMP_RAZAO, EMP_EMAIL, EMP_HOME ' +
+                     'FROM emp0000 AS emp WHERE emp.emp_codigo = ' + QuotedStr(cdsNotasEMP_CODIGO.AsString));
+
+            if qAux3.FieldByName('EMP_LOGONFE_PROPRIO').AsString = 'S' then
+            begin
+              Le_Imagem_JPEG_toBMP(qaux3.FieldByName('EMP_LOGO_NFE') as TBlobField, LOGO);
+              LOGO.SaveToFile(DBInicio.Versao.PATH + 'NFe4' + '\temp\' + logoJPG);
             end
             else
             begin
-              Le_Imagem_JPEG_toBMP( qaux3.FieldByName('EMP_LOGO') as TBlobField ,logo );
-              LOGO.SaveToFile(DBInicio.Versao.PATH+'NFe4'+'\temp\'+ logoJPG);
+              Le_Imagem_JPEG_toBMP(qaux3.FieldByName('EMP_LOGO') as TBlobField, LOGO);
+              LOGO.SaveToFile(DBInicio.Versao.PATH + 'NFe4' + '\temp\' + logoJPG);
             end;
 
-            ACBrNFE1.NotasFiscais.Items[0].NFe.Emit.xNome  := copy(qAux3.FieldByName('EMP_RAZAO').AsString,1,60);
+            if FileExists(DBInicio.Versao.PATH + 'NFe4' + '\temp\' + logoJPG) then
+            begin
+              ACBrNFe1.DANFE.Logo := DBInicio.Versao.PATH + 'NFe4' + '\temp\' + logoJPG;
+            end
+            else
+            begin
+              raise Exception.Create('Logo não encontrada: ' + DBInicio.Versao.PATH + 'NFe4' + '\temp\' + logoJPG);
+            end;
+
+            ACBrNFE1.NotasFiscais.Items[0].NFe.Emit.xNome := Copy(qAux3.FieldByName('EMP_RAZAO').AsString, 1, 60);
             ACBrNFE1.DANFE.Email := qAux3.FieldByName('EMP_EMAIL').AsString;
             ACBrNFE1.DANFE.Site := qAux3.FieldByName('EMP_HOME').AsString;
-
             ACBrNFe1.DANFE.ExpandeLogoMarca := qAux3.FieldByName('EMP_LOGONFE_PROPRIO').AsString = 'S';
 
-
-           ACBrNFE1.NotasFiscais.Imprimir;
-           erro:= False;
-           break;
-
-
-       finally
-         FreeAndNil(xml);
-         FreeAndNil(xmlstream);
-         ACBrNFe1.NotasFiscais.Clear;
-         logo.Free;
-       end;
-     end;
-     qAux.Next;
+            ACBrNFE1.NotasFiscais.Imprimir;
+            erro := False;
+            Break;
+          end;
+        finally
+          FreeAndNil(xml);
+          FreeAndNil(xmlstream);
+          ACBrNFe1.NotasFiscais.Clear;
+          LOGO.Free;
+        end;
+      end;
+      qAux.Next;
     end;
 
     if erro then
-     raise Exception.Create('Erro XML');
+      raise Exception.Create('Erro XML');
   end
-  Else if cdsNotas.FieldByName('nf_status_nfe').AsString = 'N' then
-  Begin
-   ShowMessage('Espelho da NFe não tem validade. ' + #13#10+
-               'Precisa autorizar na receita'
-   );
+  else if cdsNotas.FieldByName('nf_status_nfe').AsString = 'N' then
+  begin
+    ShowMessage('Espelho da NFe não tem validade. ' + #13#10 +
+                'Precisa autorizar na receita');
 
     ACBrNFe1.NotasFiscais.Clear;
-    if not assigned(frmProcessaNFe)  then
+
+    frmProcessaNFe := nil;
+    if not assigned(frmProcessaNFe) then
       nf := TfrmProcessaNFe.Create(self);
-     NF.EmpCodigo := cdsNotasEMP_CODIGO.AsString;
-     NF.BuscaNota(CdsNotas.FieldByName('NF_NOTANUMBER').AsString);
-     NF.ACBrNFe1.NotasFiscais.Clear;
-     nf.GerarNFE(True);
-     nf.ConfiguracoesIniciais(moNFe);
-     nf.ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
-     nf.ACBrNFe1.DANFE.PathPDF  := DBInicio.Versao.PATH +'NFe4' + '\'+ FormatDateTime('yyyymm',date) + '\Gerados\' + NomeArq;
-     nf.ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\PredanfeNovo.fr3';  //BASEADO NO DANFeRetrato_2019.fr3
-     ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\PredanfeNovo.fr3';  //BASEADO NO DANFeRetrato_2019.fr3
 
-     NF.ACBrNFE1.NotasFiscais.Imprimir;
-     nomeArq := CdsNotas.FieldByName('NF_NOTANUMBER').AsString;
-     nomeArq := DBInicio.Versao.PATH +'NFe4' + '\'+ FormatDateTime('yyyymm',date) + '\Gerados\' + NomeArq;
-     NF.ACBrNFe1.NotasFiscais.GravarXML(NomeArq +'-nfe.xml');
-  End
+    nf.ACBrNFe1.NotasFiscais.Clear;
+    nf.EmpCodigo := cdsNotasEMP_CODIGO.AsString;
+    nf.BuscaNota(CdsNotas.FieldByName('NF_NOTANUMBER').AsString);
+
+    nf.GerarNFE(True);
+    nf.ConfiguracoesIniciais(moNFe);
+    nf.ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
+    nf.ACBrNFe1.DANFE.PathPDF := DBInicio.Versao.PATH + 'NFe4' + '\' + FormatDateTime('yyyymm', Date) + '\Gerados\' + CdsNotas.FieldByName('NF_NOTANUMBER').AsString;
+    nf.ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\PredanfeNovo.fr3';  // BASEADO NO DANFeRetrato_2019.fr3
+    ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\PredanfeNovo.fr3';  // BASEADO NO DANFeRetrato_2019.fr3
+
+    nf.ACBrNFE1.NotasFiscais.Imprimir;
+
+    nomeArq := CdsNotas.FieldByName('NF_NOTANUMBER').AsString;
+    nomeArq := DBInicio.Versao.PATH + 'NFe4' + '\' + FormatDateTime('yyyymm', Date) + '\Gerados\' + nomeArq;
+    nf.ACBrNFe1.NotasFiscais.GravarXML(nomeArq + '-nfe.xml');
+  end
   else
-   raise Exception.Create('Só pode imprimir Nota Fiscal eletrônica autorizada');
-
-
+    raise Exception.Create('Só pode imprimir Nota Fiscal eletrônica autorizada');
 end;
+
 
 procedure TFormFaturamento.BitBtn1Click(Sender: TObject);
 begin

@@ -493,7 +493,7 @@ begin
   ' NF_VALOR_BCICMS_DESTINO, NF_PERC_FCP, NF_ALIQ_ICMS_INTERNA_DESTINO, NF_ALIQ_ICMS_INTERESTADUAL, NF_PERC_PARTILHA_DESTINO,                                       '+
   ' NF_VALOR_FCP, NF_VALOR_PARTILHA_DESTINO, NF_VALOR_PARTILHA_ORIGEM, PR.PRD_CODBARRA, NF_ALIQDOSIMPLES, NF_CREDICMSDOSIMPLES,  '+
   ' NF_ICMSSUBSTITUTO_ANT, NF_CBENEF, pr.PRD_UND_TRIB, pid.PRF_QUANT_TRIB,NF_VALOR_FCP_st, CST_PIS, CST_COFINS,'+
-  '  NF_VALORICMSDESON,NF_MOTIVDESON, PRD_VAIXML , OPE_CENQ_IPI, pr.PRD_CODIGO_FCI                           '+
+  '  NF_VALORICMSDESON,NF_MOTIVDESON, PRD_VAIXML , OPE_CENQ_IPI, pr.PRD_CODIGO_FCI, NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES                           '+
   ' FROM NF_IT01 it                                                                                                                                                 '+
   ' JOIN PRD0000 PR ON (PR.PRD_REFER = IT.PRD_REFER  '+ ConcatSe (' and PR.',dbInicio.ExclusivoSql('PRODUTOS') ) + ')                                              '+
   ' LEFT JOIN SITUACAO_TRIBUTARIA ST ON (PR.STB_TRIBUTACAO =  ST.STB_TRIBUTACAO)                                                                                    '+
@@ -3023,7 +3023,8 @@ begin
       Produto.Imposto.ICMS.CST :=  StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
 
     case StrToIntDef(CSOSNIcmsToStr(Produto.Imposto.ICMS.CSOSN),0)   of
-    101: begin //Tributada pelo Simples Nacional com permissão de crédito (TRIBUTADA / COM CRED / SEM ST)
+    101:
+          begin //Tributada pelo Simples Nacional com permissão de crédito (TRIBUTADA / COM CRED / SEM ST)
           if ( NotaF.NFe.Ide.indFinal  = cfNao ) then
           begin
            Produto.Imposto.ICMS.PCredSN :=   qItemNota.FieldByName('NF_ALIQDOSIMPLES').AsFloat;
@@ -3084,8 +3085,8 @@ begin
             Produto.Imposto.ICMS.VICMSST := qItemNota.FieldByName('NF_VLSUBST').AsFloat;
             IF StrToIntDef(CSOSNIcmsToStr(Produto.Imposto.ICMS.CSOSN),0)=201 THEN
             begin
-                Produto.Imposto.ICMS.PCredSN := qNota.FieldByName('NF_ALIQCREDSIMPLES').AsFloat;
-                Produto.Imposto.ICMS.VCredICMSSN := qNota.FieldByName('NF_VLCREDSIMPLES').AsFloat;
+                Produto.Imposto.ICMS.PCredSN := qItemNota.FieldByName('NF_ALIQCREDSIMPLES').AsFloat;
+                Produto.Imposto.ICMS.VCredICMSSN := qItemNota.FieldByName('NF_VLCREDSIMPLES').AsFloat;
             end;
            if qItemNota.FieldByName('NF_VALOR_FCP_st').asCurrency > 0  then
            begin
