@@ -37,8 +37,6 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
       Left = 0
       Top = 0
       Caption = 'SelecionaBanco'
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GbConsulta: TGroupBox
         Left = 10
         Top = 4
