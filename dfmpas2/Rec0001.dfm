@@ -357,9 +357,18 @@ inherited FormContasReceber: TFormContasReceber
       Top = 0
       Width = 88
       Height = 25
-      Caption = 'Gerar NFSE'
+      Caption = 'Gerar NFSe'
       TabOrder = 10
       OnClick = btnServicoClick
+    end
+    object chkUnificarNFSe: TCheckBox
+      Left = 583
+      Top = 6
+      Width = 97
+      Height = 17
+      Caption = 'Unificar NFSe'
+      TabOrder = 11
+      OnClick = chkUnificarNFSeClick
     end
   end
   object GrpExclusao: TGroupBox [1]
@@ -3016,7 +3025,7 @@ inherited FormContasReceber: TFormContasReceber
     Left = 311
     Top = 312
     Bitmap = {
-      494C010107000900180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101070009001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       00000000000000000000000000000000000000000000D8D8F2007272D0007272
       D0007272D0007272D0007272D0007272D0007272D0007272D0007272D0007272

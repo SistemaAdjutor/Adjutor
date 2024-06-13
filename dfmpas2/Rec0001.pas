@@ -261,6 +261,7 @@ type
     CdsParcelasGridFPC_ANTECIPACAO_CONCLUIDA: TStringField;
     CDSRecebimentosSEC_DESCRICAO: TStringField;
     qRecebimentosSEC_DESCRICAO: TStringField;
+    chkUnificarNFSe: TCheckBox;
     procedure HabilitaBotoes;
     procedure DesabilitaBotoes;
     procedure AplicaParcelamento;
@@ -320,6 +321,7 @@ type
     procedure CdsParcelasGridFPC_NUMERGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure cbClientesButtonClick(Sender: TObject);
     procedure cbClientesSelect(Sender: TObject);
+    procedure chkUnificarNFSeClick(Sender: TObject);
   private
     { Private declarations }
     pLerEstadoPesquisa: Boolean ;
@@ -852,10 +854,10 @@ begin
   inherited;
   if not (CdsParcelasGrid.IsEmpty) and (Column.FieldName = 'selecionado') then
   begin
-      if  not (CdsParcelasGrid.State in dsEditModes)  then
+     if  not (CdsParcelasGrid.State in dsEditModes)  then
         CdsParcelasGrid.Edit;
      CdsParcelasGridselecionado.AsBoolean :=  not CdsParcelasGridselecionado.AsBoolean;
-      CdsParcelasGrid.Post;
+     CdsParcelasGrid.Post;
   end;
 end;
 
@@ -2459,6 +2461,22 @@ begin
         PainelOpcao.Visible := True;
 end;
 
+procedure TFormContasReceber.chkUnificarNFSeClick(Sender: TObject);
+begin
+  inherited;
+    CdsParcelasGrid.DisableControls;
+    CdsParcelasGrid.First;
+    while not CdsParcelasGrid.Eof do
+    begin
+      CdsParcelasGrid.Edit;
+      CdsParcelasGridselecionado.AsBoolean :=  chkUnificarNFSe.Checked;
+      CdsParcelasGrid.Post;
+      CdsParcelasGrid.Next;
+    end;
+    CdsParcelasGrid.First;
+    CdsParcelasGrid.EnableControls;
+end;
+
 procedure TFormContasReceber.BitBtn1Click(Sender: tObject);
 begin
       if (not CdsParcelasGrid.IsEmpty) then
@@ -2610,6 +2628,7 @@ begin
                                           valor );
 
         FrmNotaFiscalServico.ShowModal;
+        chkUnificarNFSe.Checked := False;
         rps:= FrmNotaFiscalServico.CdsNfseRPS_CODIGO.AsInteger ;
         if FrmNotaFiscalServico.Status = tsNSucesso then
         begin
