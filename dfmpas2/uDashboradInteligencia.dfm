@@ -15,8 +15,6 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
     Height = 385
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 773
-    ExplicitHeight = 579
     object pfinanceiro: TPanel
       Left = 1
       Top = 57
@@ -24,8 +22,6 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
       Height = 256
       Align = alClient
       TabOrder = 0
-      ExplicitWidth = 771
-      ExplicitHeight = 450
       object Label1: TLabel
         Left = 417
         Top = 19
@@ -178,7 +174,6 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
       Height = 32
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 771
       object cbMes: TComboBox
         Left = 9
         Top = 2
@@ -240,8 +235,6 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
       Height = 71
       Align = alBottom
       TabOrder = 2
-      ExplicitTop = 507
-      ExplicitWidth = 771
       object Image1: TImage
         Left = 247
         Top = 2
@@ -556,7 +549,6 @@ inherited frmDashBoardInteligencia: TfrmDashBoardInteligencia
       Height = 24
       Align = alTop
       TabOrder = 3
-      ExplicitWidth = 771
       object LinkLabel1: TLinkLabel
         Left = 6
         Top = 2

@@ -187,22 +187,22 @@ begin
         '  AND n.NF_STATUS_NFE NOT IN (''C'', ''R'') '
   );
 
-  kilosVendidos.Value := totalKilosVendidos;
-  Faturamento.Value := TotalVendasFaturadas;
-  FKG.Value := TotalVendasFaturadas / totalKilosVendidos;
+  kilosVendidos.Value := totalKilosVendidos;     // Campo Kilos Vendidos
+  Faturamento.Value := TotalVendasFaturadas;     // Campo Faturamento
+  FKG.Value := TotalVendasFaturadas / totalKilosVendidos; // Campo Média FKG
   if mesAtual <> mes then
     // percentual, ficou texto 17 para não se perder na planilha de origem do cálculo...
-    texto17 := (totalKilosVendidos / DiaAtual) / (((v220000 / FKG.Value)) / ultimoDia) * 100
+    texto17 := (totalKilosVendidos / DiaAtual) / ((( totalVendasFaturadas {v220000} / FKG.Value)) / ultimoDia) * 100
   else
     // percentual
-    texto17 := (totalKilosVendidos / DiaAtual) / (((v240000 / FKG.Value)) / ultimoDia) * 100;
+    texto17 := (totalKilosVendidos / DiaAtual) / (((totalVendasFaturadas {v240000} / FKG.Value)) / ultimoDia) * 100;
 
-  Faturamento2.Value := v240000 / (Texto17 / 100);
+  Faturamento2.Value := v240000 / (Texto17 / 100); // Campo Projeção
 
   if mesAtual <> mes then
-    MetaKilosVendidos.Value := totalKilosVendidos
+    MetaKilosVendidos.Value := totalKilosVendidos // Campo Projeção Kilos Vendidos
   else
-    MetaKilosVendidos.Value := (totalKilosVendidos / diaAtual) * UltimoDia;
+    MetaKilosVendidos.Value := (totalKilosVendidos / diaAtual) * UltimoDia;  // Campo Projeção Kilos Vendidos
 
   // media1.Value := (v35000 / UltimoDia) * DiaAtual;
   // media2.Value := DiaAtual * (v240000 / FKG.Value) / diaAtual;
