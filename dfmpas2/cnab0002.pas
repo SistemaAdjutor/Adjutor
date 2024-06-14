@@ -1930,20 +1930,19 @@ begin
                ProgressBar.Max         := SQLDupliCNAB.RecordCount;
                while not SQLDupliCNAB.Eof do
                   begin
-                    {estorna duplicata}
-                 //    DataCadastros.SqlUpdate.Close;
-                 //    DataCadastros.SqlUpdate.Sql.Text := 'UPDATE FAT_PC01 SET FPC_STATUS_REMESSA = ''N'',FPC_DATA_REMESSA = NULL '+
-                 //    ' WHERE FAT_CODIGO = '''+SQLDupliCNAB.FieldByname('FAT_CODIGO').AsString+''' AND FPC_NUMER = '''+SQLDupliCNAB.FieldByname('FPC_NUMER').AsString+''''+
-                 //    ' AND EMP_CODIGO = '+QuotedStr(DBInicio.Empresa.EMP_CODIGO) ;
-
-                 //    DataCadastros.SqlUpdate.ExecSql;
                     if SQLDupliCNAB.FieldByname('FPC_CODIGO_REGISTRO_RETORNO').AsString <> '' then
                       ContasReceberEstornaBaixa(
                         DBInicio.BuscaUmDadoSqlAsString('SELECT fr.FRE_REGISTRO FROM FAT_RECEBIMENTO fr' +
                                                ' JOIN FAT_PC01 fp ON (fp.FAT_REGISTRO = fr.FAT_REGISTRO) ' +
                                                ' WHERE fp.FPC_CODIGO_REGISTRO_RETORNO = ' + QuotedStr(SQLDupliCNAB.FieldByname('FPC_CODIGO_REGISTRO_RETORNO').AsString)
                                                         )
-                      );
+                      )
+                      else
+                      begin
+                         dbInicio.ExecSql('UPDATE FAT_PC01 SET FPC_STATUS_REMESSA = ''N'',FPC_DATA_REMESSA = NULL '+
+                         ' WHERE FAT_CODIGO = '''+SQLDupliCNAB.FieldByname('FAT_CODIGO').AsString+''' AND FPC_NUMER = '''+SQLDupliCNAB.FieldByname('FPC_NUMER').AsString+''''+
+                         ' AND EMP_CODIGO = '+QuotedStr(DBInicio.Empresa.EMP_CODIGO) ) ;
+                      end;
                     ProgressBar.Position := ProgressBar.Position + 1;
                     SQLDupliCNAB.Next;
                   end;
