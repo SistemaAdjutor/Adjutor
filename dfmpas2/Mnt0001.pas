@@ -6,7 +6,10 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, BaseDbEstoqueForm,
   Dialogs, StdCtrls, ExtCtrls, Grids, DBGrids, ComCtrls, Provider, SqlExpr,SqlClientDataSet,
   DB, DBClient, DBLocal, DBLocalS,RWFunc, Mask,  rxToolEdit,  rxCurrEdit, Buttons, RwSQLComando,
-  xmldom, XMLIntf, msxmldom, XMLDoc, SimpleDS, Data.DBXFirebird, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.Samples.Gauges, SgDbSeachComboUnit, ComboBoxRW;
+  xmldom, XMLIntf, msxmldom, XMLDoc, SimpleDS, Data.DBXFirebird, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.Samples.Gauges, SgDbSeachComboUnit, ComboBoxRW,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFrmManutencao = class(TFrmBaseDbEstoque)
@@ -256,6 +259,13 @@ type
     Button31: TButton;
     cbAlmoxarifado: TComboBoxRw;
     Button32: TButton;
+    Button33: TButton;
+    qTabela: TFDQuery;
+    pbTabela: TProgressBar;
+    pbCampo: TProgressBar;
+    sqlCampo: TSQLQuery;
+    dspCampo: TDataSetProvider;
+    qCampo: TClientDataSet;
     procedure Button3Click(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure BtnCancelaClick(Sender: tObject);
@@ -293,6 +303,7 @@ type
     procedure Button30Click(Sender: TObject);
     procedure Button31Click(Sender: TObject);
     procedure Button32Click(Sender: TObject);
+    procedure Button33Click(Sender: TObject);
   private
     { Private declarations }
     wCancela :Boolean;
@@ -486,6 +497,100 @@ begin
   PrBar.Max := 0;
   PrBar.Position := 0;
   MessageDlg('Processo Concluído.', mtInformation, [mbOk], 0);
+end;
+
+procedure TFrmManutencao.Button33Click(Sender: TObject);
+var
+  tabela, campo, chavePrimaria, tipoChavePrimaria, sql: string;
+  valorChavePrimaria : variant;
+  j : integer;
+begin
+  inherited;
+  qTabela.Close;
+  qTabela.SQL.Text :=  'SELECT DISTINCT  TRIM(rf.RDB$RELATION_NAME) AS TABELA ' +
+                       ' FROM RDB$RELATION_FIELDS rf ' +
+                       ' JOIN RDB$RELATIONS r ON rf.RDB$RELATION_NAME = r.RDB$RELATION_NAME ' +
+                       ' WHERE r.RDB$VIEW_BLR IS NULL ' +
+                       '   AND r.RDB$SYSTEM_FLAG = 0 ';
+  qTabela.Open;
+  qTabela.Last;
+  pbTabela.Min := 0;
+  pbTabela.Max := qTabela.RecordCount;
+  pbTabela.Visible := True;
+  pbCampo.Visible := True;
+  qTabela.First;
+  while not qTabela.EOF do
+  begin
+    pbTabela.Position := qTabela.RecNo;
+    tabela := qTabela.FieldByName('TABELA').AsString;
+    qCampo.Close;
+    sqlCampo.SQL.Text := 'SELECT * FROM ' + Tabela ;
+    try
+      qCampo.Open;
+      qCampo.Last;
+    except on e: Exception do
+      uteis.Aviso(tabela + ' - ' + e.Message);
+    end;
+    chavePrimaria := dbInicio.BuscaUmDadoSqlAsString(
+                       ' SELECT TRIM(s.RDB$FIELD_NAME)' +
+                       ' FROM RDB$RELATION_CONSTRAINTS rc ' +
+                       ' JOIN RDB$INDEX_SEGMENTS s ON rc.RDB$INDEX_NAME = s.RDB$INDEX_NAME ' +
+                       ' WHERE rc.RDB$CONSTRAINT_TYPE = ''PRIMARY KEY'' ' +
+                       '     AND rc.RDB$RELATION_NAME = ' + QuotedStr(tabela)
+                      );
+    if chavePrimaria = '' then
+    begin
+      qTabela.Next;
+      continue;
+    end;
+    tipoChavePrimaria := dbInicio.BuscaUmDadoSqlAsString(
+                        ' SELECT ' +
+                        '    CASE f.RDB$FIELD_TYPE ' +
+                        '        WHEN 7 THEN ''INTEGER'' ' +
+                        '        WHEN 8 THEN ''INTEGER'' ' +
+                        '        WHEN 14 THEN ''STRING'' ' +
+                        '        WHEN 37 THEN ''STRING'' ' +
+                        '    END ' +
+                        ' FROM RDB$RELATION_CONSTRAINTS rc ' +
+                        ' JOIN RDB$INDEX_SEGMENTS s ON rc.RDB$INDEX_NAME = s.RDB$INDEX_NAME ' +
+                        ' JOIN RDB$RELATION_FIELDS rf ON s.RDB$FIELD_NAME = rf.RDB$FIELD_NAME AND rf.RDB$RELATION_NAME = rc.RDB$RELATION_NAME ' +
+                        ' JOIN RDB$FIELDS f ON rf.RDB$FIELD_SOURCE = f.RDB$FIELD_NAME ' +
+                        ' WHERE rc.RDB$CONSTRAINT_TYPE = ''PRIMARY KEY'' ' +
+                        '    AND rc.RDB$RELATION_NAME = ' + QuotedStr(tabela)
+                    );
+    pbCampo.Min := 0;
+    pbCampo.Max := qCampo.RecordCount;
+    qCampo.First;
+    while not qCampo.EOF do
+    begin
+      pbCampo.Position := qCampo.RecNo;
+      valorChavePrimaria := qCampo.FieldByName(chavePrimaria).asVariant;
+
+      for j := 0 to qCampo.FieldCount - 1 do
+      begin
+        if (qCampo.Fields[j].DataType = ftString) and (qCampo.Fields[j].Size >= 25)  then
+        begin
+          if existeApostrofo(qCampo.Fields[j].AsString) then
+          begin
+            sql := 'UPDATE ' + tabela +
+                   ' SET ' + qCampo.Fields[j].FieldName + ' = ' + QuotedStr(retiraApostrofo(qCampo.Fields[j].AsString)) +
+                   ' WHERE ' + chavePrimaria + ' = ' +  iif(tipoChavePrimaria = 'INTEGER', IntToStr(valorChavePrimaria), QuotedStr(valorChavePrimaria) );
+            dbInicio.ExecSQL(sql);
+          end;
+
+        end;
+
+      end;
+      qCampo.Next;
+    end;
+    qCampo.ApplyUpdates(0);
+    qTabela.Next;
+  end;
+  qTabela.Close;
+  qCampo.Close;
+  pbTabela.Visible := False;
+  pbCampo.Visible := False;
+  uteis.Aviso('Banco de Dados Processado com Sucesso.');
 end;
 
 procedure TFrmManutencao.Button3Click(Sender: tObject);

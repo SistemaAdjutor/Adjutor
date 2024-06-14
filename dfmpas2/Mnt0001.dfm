@@ -3,14 +3,14 @@ inherited FrmManutencao: TFrmManutencao
   Top = 0
   BorderIcons = [biSystemMenu]
   Caption = 'Manuten'#231#227'o T'#233'cnica Novi'
-  ClientHeight = 615
-  ClientWidth = 770
+  ClientHeight = 795
+  ClientWidth = 967
   Font.Name = 'MS Sans Serif'
   FormStyle = fsMDIChild
   Position = poDesktopCenter
   Visible = True
-  ExplicitWidth = 786
-  ExplicitHeight = 654
+  ExplicitWidth = 983
+  ExplicitHeight = 834
   PixelsPerInch = 96
   TextHeight = 13
   object Label5: TLabel [0]
@@ -50,13 +50,12 @@ inherited FrmManutencao: TFrmManutencao
   object Panel1: TPanel [2]
     Left = 0
     Top = 0
-    Width = 770
+    Width = 967
     Height = 41
     Align = alTop
     BevelOuter = bvNone
     Color = clWhite
     TabOrder = 16
-    ExplicitWidth = 748
     object Label1: TLabel
       Left = 8
       Top = 8
@@ -87,7 +86,7 @@ inherited FrmManutencao: TFrmManutencao
   end
   object Button3: TButton [3]
     Left = 324
-    Top = 539
+    Top = 561
     Width = 75
     Height = 25
     Caption = '&Sair'
@@ -103,13 +102,11 @@ inherited FrmManutencao: TFrmManutencao
   end
   object PrBar: TProgressBar [4]
     Left = 0
-    Top = 597
-    Width = 770
+    Top = 777
+    Width = 967
     Height = 18
     Align = alBottom
     TabOrder = 15
-    ExplicitTop = 555
-    ExplicitWidth = 748
   end
   object Button17: TButton [5]
     Left = 16
@@ -449,7 +446,135 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 25
     OnClick = Button25Click
   end
-  object GroupBox1: TGroupBox [28]
+  object cbAlmoxarifado: TComboBoxRw [28]
+    Left = 589
+    Top = 336
+    Width = 99
+    Height = 21
+    TabOrder = 32
+    CharCase = ecUpperCase
+    LookupSelect = 'amx_CODIGO,AMX_DESCRI'
+    LookupOrderBy = 'AMX_DESCRI'
+    LookupTable = 'ALMOX0000'
+    LookupDispl = 'AMX_DESCRI'
+    GridAutoSize = False
+    LookupSource = cbAlmoxarifado.InternalSource
+    LookupKeyField = 'amx_CODIGO'
+    ShowButton = True
+    LookupTableShare = 'TABELAS'
+    AutoF8WinTitulo = 'Almoxarifados'
+    AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
+    GridLeft = 0
+    GridWidth = 0
+    GridHeight = 100
+    GridTop = 0
+    GridShowWhenEnter = False
+    SelectWithDoubleClick = False
+    LimparCampoAoSair = True
+    Tabela = 'ALMOX0000'
+    CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
+    CamposRetornar = 'amx_CODIGO'
+    CamposOrdernar = 'AMX_DESCRI'
+    ConexaoBanco = DataCadastros.SQLConnection1
+    Compartilhar = 'TABELAS'
+    Localizado = False
+    CodigoEmpresa = 0
+    ResetaCampos = False
+    MultiEmpresa = False
+    Localizar = False
+    CarregarCombo = False
+    itemindex = 0
+    style = csDropDown
+  end
+  object Button31: TButton [29]
+    Left = 368
+    Top = 333
+    Width = 217
+    Height = 25
+    Caption = 'Refaz Saldos dos Lotes de Produtos'
+    TabOrder = 31
+    OnClick = Button31Click
+  end
+  object Button30: TButton [30]
+    Left = 368
+    Top = 283
+    Width = 345
+    Height = 25
+    Caption = 'Atualizar Sequ'#234'ncia dos Itens no Pedido'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 30
+    OnClick = Button30Click
+  end
+  object Button32: TButton [31]
+    Left = 368
+    Top = 308
+    Width = 345
+    Height = 25
+    Caption = 'Atualizar Sequ'#234'ncia dos Itens na Ficha T'#233'cnica'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 33
+    OnClick = Button32Click
+  end
+  object Button29: TButton [32]
+    Left = 16
+    Top = 481
+    Width = 345
+    Height = 25
+    Caption = 'Acerto Grade preencher campos medida'
+    TabOrder = 29
+    OnClick = Button29Click
+  end
+  object Button33: TButton [33]
+    Left = 16
+    Top = 508
+    Width = 345
+    Height = 25
+    Caption = 'Retira Ap'#243'strofo do Banco de Dados'
+    TabOrder = 34
+    OnClick = Button33Click
+  end
+  object pbTabela: TProgressBar [34]
+    Left = 16
+    Top = 532
+    Width = 150
+    Height = 17
+    TabOrder = 35
+    Visible = False
+  end
+  object pbCampo: TProgressBar [35]
+    Left = 211
+    Top = 532
+    Width = 150
+    Height = 17
+    TabOrder = 36
+    Visible = False
+  end
+  object Button28: TButton [36]
+    Left = 16
+    Top = 454
+    Width = 345
+    Height = 25
+    Caption = 'Acerto Nova Op'#231#227'o Estoque'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 28
+    OnClick = Button28Click
+  end
+  object GroupBox1: TGroupBox [37]
     Left = 367
     Top = 371
     Width = 345
@@ -513,109 +638,6 @@ inherited FrmManutencao: TFrmManutencao
       OnClick = Button27Click
     end
   end
-  object Button28: TButton [29]
-    Left = 16
-    Top = 454
-    Width = 345
-    Height = 25
-    Caption = 'Acerto Nova Op'#231#227'o Estoque'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 28
-    OnClick = Button28Click
-  end
-  object Button29: TButton [30]
-    Left = 16
-    Top = 481
-    Width = 345
-    Height = 25
-    Caption = 'Acerto Grade preencher campos medida'
-    TabOrder = 29
-    OnClick = Button29Click
-  end
-  object cbAlmoxarifado: TComboBoxRw [31]
-    Left = 589
-    Top = 336
-    Width = 99
-    Height = 21
-    TabOrder = 32
-    CharCase = ecUpperCase
-    LookupSelect = 'amx_CODIGO,AMX_DESCRI'
-    LookupOrderBy = 'AMX_DESCRI'
-    LookupTable = 'ALMOX0000'
-    LookupDispl = 'AMX_DESCRI'
-    GridAutoSize = False
-    LookupSource = cbAlmoxarifado.InternalSource
-    LookupKeyField = 'amx_CODIGO'
-    ShowButton = True
-    LookupTableShare = 'TABELAS'
-    AutoF8WinTitulo = 'Almoxarifados'
-    AutoF8ColumnsTitulo = 'C'#243'digo, Descri'#231#227'o'
-    GridLeft = 0
-    GridWidth = 0
-    GridHeight = 100
-    GridTop = 0
-    GridShowWhenEnter = False
-    SelectWithDoubleClick = False
-    LimparCampoAoSair = True
-    Tabela = 'ALMOX0000'
-    CamposCarregar = 'amx_CODIGO,AMX_DESCRI'
-    CamposRetornar = 'amx_CODIGO'
-    CamposOrdernar = 'AMX_DESCRI'
-    ConexaoBanco = DataCadastros.SQLConnection1
-    Compartilhar = 'TABELAS'
-    Localizado = False
-    CodigoEmpresa = 0
-    ResetaCampos = False
-    MultiEmpresa = False
-    Localizar = False
-    CarregarCombo = False
-    itemindex = 0
-    style = csDropDown
-  end
-  object Button31: TButton [32]
-    Left = 368
-    Top = 333
-    Width = 217
-    Height = 25
-    Caption = 'Refaz Saldos dos Lotes de Produtos'
-    TabOrder = 31
-    OnClick = Button31Click
-  end
-  object Button30: TButton [33]
-    Left = 368
-    Top = 283
-    Width = 345
-    Height = 25
-    Caption = 'Atualizar Sequ'#234'ncia dos Itens no Pedido'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 30
-    OnClick = Button30Click
-  end
-  object Button32: TButton [34]
-    Left = 368
-    Top = 308
-    Width = 345
-    Height = 25
-    Caption = 'Atualizar Sequ'#234'ncia dos Itens na Ficha T'#233'cnica'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 33
-    OnClick = Button32Click
-  end
   inherited coCalcula: TACBrCalculadora
     Top = 624
   end
@@ -649,12 +671,10 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsPesquisa: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -689,7 +709,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsNparcelas: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'select EMP_CODIGO,PAG_CODIGO,Count(*) AS NPARCELAS From PAG_PC01' +
       #13#10'Group by'#13#10'EMP_CODIGO,'#13#10'PAG_CODIGO'
@@ -699,7 +718,6 @@ inherited FrmManutencao: TFrmManutencao
     CommandText = 
       'select EMP_CODIGO,PAG_CODIGO,Count(*) AS NPARCELAS From PAG_PC01' +
       #13#10'Group by'#13#10'EMP_CODIGO,'#13#10'PAG_CODIGO'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -721,7 +739,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SQLClientDataSet1: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'Select'#13#10'O1.OSV_REGISTRO,'#13#10'O1.OSV_CODIGO,'#13#10'O1.OSV_CODIGO_PAI'#13#10'fro' +
       'm OSV0001 O1'#13#10'ORDER BY'#13#10'O1.OSV_REGISTRO'
@@ -731,7 +748,6 @@ inherited FrmManutencao: TFrmManutencao
     CommandText = 
       'Select'#13#10'O1.OSV_REGISTRO,'#13#10'O1.OSV_CODIGO,'#13#10'O1.OSV_CODIGO_PAI'#13#10'fro' +
       'm OSV0001 O1'#13#10'ORDER BY'#13#10'O1.OSV_REGISTRO'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -740,7 +756,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsReserva: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'Select'#13#10'P2.PRD_REFER,'#13#10'SUM(P2.PRF_QTDE) AS WQTDE'#13#10'from PED0000 P' +
       '1'#13#10'JOIN PED_IT01 P2 ON (P1.PED_CODIGO = P2.PED_CODIGO) AND (P1.E' +
@@ -758,7 +773,6 @@ inherited FrmManutencao: TFrmManutencao
       'O1.opv_codigo)'#13#10'where P1.PED_SITUACAO <> '#39'T'#39' AND O1.opv_atestoqu' +
       'e = '#39'S'#39'  AND P1.ped_flag_ped_dupl = '#39'N'#39#13#10'GROUP BY'#13#10'P2.PRD_REFER'#13 +
       #10#13#10'ORDER BY'#13#10'P2.PRD_REFER'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -775,7 +789,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlPedidos: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'select '#13#10'P1.PED_REGISTRO,'#13#10'P1.PED_CODIGO '#13#10'from PED0000 P1'#13#10'orde' +
       'r by'#13#10'P1.PED_CODIGO'
@@ -785,7 +798,6 @@ inherited FrmManutencao: TFrmManutencao
     CommandText = 
       'select '#13#10'P1.PED_REGISTRO,'#13#10'P1.PED_CODIGO '#13#10'from PED0000 P1'#13#10'orde' +
       'r by'#13#10'P1.PED_CODIGO'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -803,13 +815,11 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsOsv: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 'select OSV_CODIGO from OSV0001'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select OSV_CODIGO from OSV0001'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -823,7 +833,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsFlag: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'T2.PED_REGISTRO,'#13#10'T1.PED_CODIGO,'#13#10'T1.EMP_CODIGO,'#13#10'T1.PRF' +
       '_REGISTRO,'#13#10'T1.PRD_REFER,'#13#10'T3.OPV_ATESTOQUE,'#13#10'T5.PGR_ATUALIZA_ES' +
@@ -849,7 +858,6 @@ inherited FrmManutencao: TFrmManutencao
       'EFER)'#13#10'LEFT JOIN PRD_GRUPO T5 ON (T5.PGR_CODIGO = T4.PGR_CODIGO)' +
       #13#10'LEFT JOIN PRD_TIPO T6 ON (T6.PTI_CODIGO = T4.PTI_CODIGO)'#13#10'WHER' +
       'E T1.PRF_FLAG_ATUALIZA_ESTOQUE IS NULL'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -903,7 +911,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsFlagNF: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'T1.NF_REGISTRO,'#13#10'T2.OPE_SEMVLCOM'#13#10'FROM NF0001 T1'#13#10'JOIN O' +
       'PE0000 T2 ON (T2.OPE_CODIGO = T1.OPE_CODIGO)'#13#10'ORDER BY'#13#10'T1.NF_RE' +
@@ -915,7 +922,6 @@ inherited FrmManutencao: TFrmManutencao
       'SELECT'#13#10'T1.NF_REGISTRO,'#13#10'T2.OPE_SEMVLCOM'#13#10'FROM NF0001 T1'#13#10'JOIN O' +
       'PE0000 T2 ON (T2.OPE_CODIGO = T1.OPE_CODIGO)'#13#10'ORDER BY'#13#10'T1.NF_RE' +
       'GISTRO'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -932,12 +938,10 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsTabela: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -946,7 +950,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsFlagNF2: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'T3.CLI_CODIGO,'#13#10'T3.AMX_CODIGO,'#13#10'T5.CLI_RAZAO,'#13#10'T3.NF_EMI' +
       'SSAO,'#13#10'T3.NF_HORASAIDA,'#13#10'T3.OPE_NATUREZA,'#13#10'T4.OPE_DESCRI,'#13#10'T2.PR' +
@@ -970,7 +973,6 @@ inherited FrmManutencao: TFrmManutencao
       ' T4 ON (T4.OPE_CODIGO = T3.OPE_CODIGO)'#13#10'LEFT JOIN PED_IT01 T2 ON' +
       ' (T2.PRD_REFER = T1.PRD_REFER) AND (T1.PED_CODIGO = T2.PED_CODIG' +
       'O)'#13#10'WHERE ((T2.PRF_SITUACAO = '#39'T'#39') or (T2.PRF_SITUACAO = '#39'P'#39'))'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1147,13 +1149,11 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsSaldo: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 'SELECT'#13#10'DISTINCT(PRD_REFER)'#13#10'FROM'#13#10'PRD_ENSA'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'SELECT'#13#10'DISTINCT(PRD_REFER)'#13#10'FROM'#13#10'PRD_ENSA'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1166,7 +1166,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlSaldoAcerto: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'E1.PRD_REFER,'#13#10'E1.PES_DATA,'#13#10'E1.PES_HORA,'#13#10'E1.PES_FLAG_A' +
       'CERTO,'#13#10'E1.PES_FLAG_CONTA'#13#10'from PRD_ENSA E1'#13#10'WHERE E1.PES_TIPDOC' +
@@ -1178,7 +1177,6 @@ inherited FrmManutencao: TFrmManutencao
       'SELECT'#13#10'E1.PRD_REFER,'#13#10'E1.PES_DATA,'#13#10'E1.PES_HORA,'#13#10'E1.PES_FLAG_A' +
       'CERTO,'#13#10'E1.PES_FLAG_CONTA'#13#10'from PRD_ENSA E1'#13#10'WHERE E1.PES_TIPDOC' +
       ' = '#39'AC'#39' AND E1.PRD_REFER = '#39'PH17535'#39#13#10'ORDER BY'#13#10'E1.PES_DATA DESC'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1205,7 +1203,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsNF: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'T1.EMP_CODIGO,'#13#10'T1.FAT_CODIGO,'#13#10'T1.FPC_TIPODOC'#13#10'FROM FAT' +
       '_PC01 T1'#13#10'WHERE T1.FPC_TIPODOC <> '#39#39#13#10'GROUP BY'#13#10'T1.EMP_CODIGO,'#13#10 +
@@ -1219,7 +1216,6 @@ inherited FrmManutencao: TFrmManutencao
       '_PC01 T1'#13#10'WHERE T1.FPC_TIPODOC <> '#39#39#13#10'GROUP BY'#13#10'T1.EMP_CODIGO,'#13#10 +
       'T1.FAT_CODIGO,'#13#10'T1.FPC_TIPODOC'#13#10'ORDER BY'#13#10'T1.EMP_CODIGO,'#13#10'T1.FAT' +
       '_CODIGO'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1241,7 +1237,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlFlag_nota: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'T1.NF_REGISTRO,'#13#10'T5.PTI_ATUALIZAR_ESTOQUE,'#13#10'T7.PGR_ATUAL' +
       'IZA_ESTOQUE,'#13#10'T3.OPV_ATESTOQUE,'#13#10'T6.OPE_ESTOQUE,'#13#10'T4.PGR_CODIGO,' +
@@ -1267,7 +1262,6 @@ inherited FrmManutencao: TFrmManutencao
       'IGO = T2.OPE_CODIGO)'#13#10'LEFT JOIN PRD_GRUPO T7 ON (T7.PGR_CODIGO =' +
       ' T4.PGR_CODIGO)'#13#10'WHERE (T1.NF_FLAG_ATUALIZA_ESTOQUE = '#39#39') or (T1' +
       '.NF_FLAG_ATUALIZA_ESTOQUE IS NULL)'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1305,7 +1299,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsEstoque: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'T1.PRD_CODIGO,'#13#10'T1.PRD_REFER'#13#10'FROM PRD0000 T1'#13#10'ORDER BY'#13 +
       #10'T1.PRD_REFER'
@@ -1315,7 +1308,6 @@ inherited FrmManutencao: TFrmManutencao
     CommandText = 
       'SELECT'#13#10'T1.PRD_CODIGO,'#13#10'T1.PRD_REFER'#13#10'FROM PRD0000 T1'#13#10'ORDER BY'#13 +
       #10'T1.PRD_REFER'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1333,7 +1325,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlCdsUltCompra: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'T1.ENF_PRECO,'#13#10'T1.ENF_IT_NOTANUMBER,'#13#10'T2.ENF_EMISSAO,'#13#10'T' +
       '1.FOR_CODIGO'#13#10'FROM ENF_IT01 T1'#13#10'LEFT JOIN ENF0001 T2 ON (T2.FOR_' +
@@ -1353,7 +1344,6 @@ inherited FrmManutencao: TFrmManutencao
       ' ON (T3.FOR_CODIGO = T1.FOR_CODIGO) AND (T1.EMP_CODIGO = T3.EMP_' +
       'CODIGO)'#13#10'WHERE T1.PRD_REFER = '#39'385'#39#13#10'ORDER BY'#13#10'T2.ENF_EMISSAO DE' +
       'SC,'#13#10'T1.ENF_PRECO,'#13#10'T1.ENF_IT_NOTANUMBER desc'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1379,7 +1369,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlAtualizaFlag: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT T1.* FROM PRD_ENSA T1 WHERE T1.PES_TIPDOC = '#39'AC'#39' AND T1.P' +
       'RD_REFER = '#39'TESTE'#39' ORDER BY T1.PES_REGISTRO DESC'
@@ -1389,7 +1378,6 @@ inherited FrmManutencao: TFrmManutencao
     CommandText = 
       'SELECT T1.* FROM PRD_ENSA T1 WHERE T1.PES_TIPDOC = '#39'AC'#39' AND T1.P' +
       'RD_REFER = '#39'TESTE'#39' ORDER BY T1.PES_REGISTRO DESC'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1515,13 +1503,11 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlItens: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 'SELECT DISTINCT(X1.PRD_REFER) FROM PRD_ENSA X1'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'SELECT DISTINCT(X1.PRD_REFER) FROM PRD_ENSA X1'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1534,7 +1520,6 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SqlAcertos: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT E1.PES_REGISTRO,E1.PES_DATA, E1.PES_HORA from PRD_ENSA E1' +
       '  LEFT JOIN PRD0000 P1 ON (P1.PRD_REFER = E1.PRD_REFER) WHERE E1' +
@@ -1548,7 +1533,6 @@ inherited FrmManutencao: TFrmManutencao
       '  LEFT JOIN PRD0000 P1 ON (P1.PRD_REFER = E1.PRD_REFER) WHERE E1' +
       '.PES_TIPDOC = '#39'AC'#39' AND E1.PES_TIPO = '#39'E'#39' AND E1.PRD_REFER = '#39'TES' +
       'TE'#39
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1567,13 +1551,11 @@ inherited FrmManutencao: TFrmManutencao
   end
   object CONSULTATMP: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 'SELECT'#13#10'DISTINCT(PRD_REFER)'#13#10'FROM'#13#10'PRD_ENSA'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'SELECT'#13#10'DISTINCT(PRD_REFER)'#13#10'FROM'#13#10'PRD_ENSA'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1582,13 +1564,11 @@ inherited FrmManutencao: TFrmManutencao
   end
   object SQLNF_PC01: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 'select * from NF_PC01'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select * from NF_PC01'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1900,5 +1880,32 @@ inherited FrmManutencao: TFrmManutencao
       FieldName = 'grade'
       Size = 255
     end
+  end
+  object qTabela: TFDQuery
+    CachedUpdates = True
+    Connection = DBInicio.FDACConn
+    UpdateOptions.AssignedValues = [uvCheckReadOnly]
+    UpdateOptions.CheckReadOnly = False
+    Left = 768
+    Top = 544
+  end
+  object sqlCampo: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = DBConn
+    Left = 704
+    Top = 600
+  end
+  object dspCampo: TDataSetProvider
+    DataSet = sqlCampo
+    Left = 768
+    Top = 600
+  end
+  object qCampo: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspCampo'
+    Left = 848
+    Top = 600
   end
 end

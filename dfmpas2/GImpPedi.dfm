@@ -3965,6 +3965,196 @@ inherited FormGImpPedido: TFormGImpPedido
     UserName = 'DBRel02'
     Left = 880
     Top = 216
+    object ppDBRel02ppField1: TppField
+      FieldAlias = 'PED_DTSAIDA'
+      FieldName = 'PED_DTSAIDA'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField2: TppField
+      FieldAlias = 'PED_DTENTRADA'
+      FieldName = 'PED_DTENTRADA'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField3: TppField
+      FieldAlias = 'CLI_CODIGO'
+      FieldName = 'CLI_CODIGO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField4: TppField
+      FieldAlias = 'CLI_RAZAO'
+      FieldName = 'CLI_RAZAO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField5: TppField
+      FieldAlias = 'CLI_UF'
+      FieldName = 'CLI_UF'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField6: TppField
+      FieldAlias = 'REP_NOME'
+      FieldName = 'REP_NOME'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField7: TppField
+      FieldAlias = 'REP_CODIGO'
+      FieldName = 'REP_CODIGO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 6
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField8: TppField
+      FieldAlias = 'PED_CODIGO'
+      FieldName = 'PED_CODIGO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 7
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField9: TppField
+      FieldAlias = 'PED_DESCTOVL'
+      FieldName = 'PED_DESCTOVL'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 8
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField10: TppField
+      FieldAlias = 'WVALOR_FATURADO'
+      FieldName = 'WVALOR_FATURADO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 9
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField11: TppField
+      FieldAlias = 'WVALOR_PEDIDO_LIQUIDO'
+      FieldName = 'WVALOR_PEDIDO_LIQUIDO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 10
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField12: TppField
+      FieldAlias = 'WVALOR_FATURADO_LIQUIDO'
+      FieldName = 'WVALOR_FATURADO_LIQUIDO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 11
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField13: TppField
+      FieldAlias = 'WVALOR_FATURADO_IPI'
+      FieldName = 'WVALOR_FATURADO_IPI'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 12
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField14: TppField
+      FieldAlias = 'PED_PENDENTE_CC'
+      FieldName = 'PED_PENDENTE_CC'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 13
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField15: TppField
+      FieldAlias = 'PED_VLTUPS'
+      FieldName = 'PED_VLTUPS'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 14
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField16: TppField
+      FieldAlias = 'PED_TOTUPS'
+      FieldName = 'PED_TOTUPS'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 15
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField17: TppField
+      FieldAlias = 'PED_COMIS1'
+      FieldName = 'PED_COMIS1'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 16
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField18: TppField
+      FieldAlias = 'Comissao_CC'
+      FieldName = 'Comissao_CC'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 17
+      Searchable = False
+      Sortable = False
+    end
+    object ppDBRel02ppField19: TppField
+      FieldAlias = 'EMP_CODIGO'
+      FieldName = 'EMP_CODIGO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 18
+      Searchable = False
+      Sortable = False
+    end
   end
   object ppRRel03: TppReport
     AutoStop = False
@@ -14184,8 +14374,13 @@ inherited FormGImpPedido: TFormGImpPedido
       Size = 5
     end
     object qRel05CLI_RAZAO: TStringField
+      DisplayWidth = 100
       FieldName = 'CLI_RAZAO'
-      Size = 55
+      OnChange = qRel05CLI_RAZAOChange
+      OnGetText = qRel05CLI_RAZAOGetText
+      OnSetText = qRel05CLI_RAZAOSetText
+      OnValidate = qRel05CLI_RAZAOValidate
+      Size = 100
     end
     object qRel05NF_NOTANUMBER: TStringField
       FieldName = 'NF_NOTANUMBER'
@@ -14216,7 +14411,7 @@ inherited FormGImpPedido: TFormGImpPedido
       Size = 40
     end
     object qRel05emp_codigo: TStringField
-      FieldName = 'emp_codigo'
+      FieldName = 'EMP_CODIGO'
       Size = 3
     end
     object qRel05FPG_DESCRICAO: TStringField
@@ -14228,12 +14423,14 @@ inherited FormGImpPedido: TFormGImpPedido
       Size = 35
     end
     object qRel05VLRFATURAR: TFMTBCDField
+      DisplayWidth = 16
       FieldName = 'VLRFATURAR'
-      Size = 5
+      Precision = 15
     end
     object qRel05VALOR_A_FATURAR: TFMTBCDField
+      DisplayWidth = 16
       FieldName = 'VALOR_A_FATURAR'
-      Size = 5
+      Precision = 15
     end
   end
   object cdsRel02: TFDQuery

@@ -953,6 +953,11 @@ type
     procedure frxRelOrdemGetValue(const VarName: string; var Value: Variant);
     procedure qRel05CalcFields(DataSet: TDataSet);
     procedure cdsRel02CalcFields(DataSet: TDataSet);
+    procedure qRel05CLI_RAZAOGetText(Sender: TField; var Text: string;
+      DisplayText: Boolean);
+    procedure qRel05CLI_RAZAOChange(Sender: TField);
+    procedure qRel05CLI_RAZAOValidate(Sender: TField);
+    procedure qRel05CLI_RAZAOSetText(Sender: TField; const Text: string);
   private
     { Private declarations }
     fListaEmpresas : TStringList;
@@ -1401,7 +1406,9 @@ begin
            //wSql2 := 'LEFT JOIN CLI0000 C1 ON (P1.CLI_CODIGO = C1.CLI_CODIGO) LEFT JOIN FAT0000 F1 ON (P1.PED_CODIGO = F1.PED_CODIGO) AND (P1.EMP_CODIGO = F1.EMP_CODIGO) LEFT JOIN OPV0000 O1 ON (P1.OPV_CODIGO = O1.OPV_CODIGO) ';
 
            wSql1 := 'SELECT pcl.PCL_NOME, p1.emp_codigo, P1.REP_CODIGO,RE.REP_RAZAO, P1.PED_CODIGO,P1.OPV_CODIGO,O1.OPV_DESCRICAO,P1.PED_DTENTRADA,P1.PED_DTSAIDA,P1.PED_SITUACAO,P1.CLI_CODIGO, '+
-                    ' coalesce(C1.CLI_RAZAO, PED_ORS_CLIENTE) AS CLI_RAZAO, '+
+                    '  COALESCE(REPLACE(C1.CLI_RAZAO, ''&#39;'', ''´''), REPLACE(PED_ORS_CLIENTE, ''&#39;'', ''´'')) AS CLI_RAZAO, ' +
+
+
                     '(SELECT first 1 F1.NF_NOTANUMBER  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_NOTANUMBER, '+
                     '(SELECT first 1 F1.NF_EMISSAO  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_EMISSAO,'+
                     '(SELECT first 1 F1.NF_NUM_NFE  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_NUM_NFE,'+
@@ -1451,7 +1458,8 @@ begin
            if (RadFaturamento.checked ) then
            begin
                wSql1 := 'SELECT pcl.PCL_NOME, p1.emp_codigo, P1.REP_CODIGO,vE.REP_RAZAO, P1.PED_CODIGO,P1.OPV_CODIGO,O1.OPV_DESCRICAO,P1.PED_DTENTRADA,P1.PED_DTSAIDA,P1.PED_SITUACAO,P1.CLI_CODIGO,'+
-                  ' coalesce(C1.CLI_RAZAO, PED_ORS_CLIENTE) AS CLI_RAZAO ,'+
+                        '  COALESCE(REPLACE(C1.CLI_RAZAO, ''&#39;'', ''´''), REPLACE(PED_ORS_CLIENTE, ''&#39;'', ''´'')) AS CLI_RAZAO, ' +
+
                   ' F1.NF_NOTANUMBER, '+
                   ' F1.NF_EMISSAO,'+
                   ' F1.NF_NUM_NFE,'+
@@ -2904,6 +2912,32 @@ begin
        qRel05PED_STATUS_CC.AsString := 'PARCIAL';
     if (qRel05PED_SITUACAO.AsString = 'T') then
        qRel05PED_STATUS_CC.AsString := 'FATURADO';
+end;
+
+procedure TFormGImpPedido.qRel05CLI_RAZAOChange(Sender: TField);
+begin
+  inherited;
+  showmessage('foi')
+end;
+
+procedure TFormGImpPedido.qRel05CLI_RAZAOGetText(Sender: TField;
+  var Text: string; DisplayText: Boolean);
+begin
+  inherited;
+  if text = #39 then showmessage('foi')
+end;
+
+procedure TFormGImpPedido.qRel05CLI_RAZAOSetText(Sender: TField;
+  const Text: string);
+begin
+  inherited;
+  showmessage('foi')
+end;
+
+procedure TFormGImpPedido.qRel05CLI_RAZAOValidate(Sender: TField);
+begin
+  inherited;
+  showmessage('foi')
 end;
 
 procedure TFormGImpPedido.PaginaGetText(Sender: TObject; var Text: string);
