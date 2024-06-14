@@ -3163,6 +3163,12 @@ var
   icmsDeson, AliquotaDeson, a,b,c, saldo, BaseProdutoBanco: double;
   motivDeson : string;
   baseSimples, IpiNaBaseICMS, FreteNaBAse, ICMSTotalNota : boolean;
+
+  vValorIcmSimples: Currency ;
+  CSOSN :integer;
+  opeArtigoReducao: string;
+  NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES: double;
+
 begin
     sCompl:='';
     nf_fcpst := 0;
@@ -3455,6 +3461,59 @@ begin
 
 
 
+
+
+
+    if (fOPT_SIMPLES = 'S') then // desconsiderado sem valor comercial and (qOperFiscOPE_SEMVLCOM.AsString = 'N') Then   // venda
+    begin
+
+         vValorIcmSimples := 0;
+
+         if (fALIQ_CREDITO > 0)  then
+         begin
+             wBaseicms_simples := (CurProdutos.Value + CdsNotaFiscalNF_VLFRETE.AsFloat + CdsNotaFiscalNF_VLSEGURO.AsFloat + CdsNotaFiscalNF_DESP_ACES.AsFloat
+             + CdsNotaFiscalNF_VL_SUBTRIB.AsFloat + CdsNotaFiscalNF_VL_IPI.AsFloat          );
+
+              if (qOperFiscOPE_INDICE_IMP.AsFloat > 0) and (qOperFiscOPE_SEMVLCOM.AsString = 'N') then
+              begin
+                   wBaseicms_simples := (wBaseicms_simples - (CurProdutos.Value * qOperFiscOPE_INDICE_IMP.AsFloat / 100)) * (fALIQ_CREDITO / 100);
+                   DBMemoObs.Lines.Add('Redução da base de  R$ ' + FormatFloat('##0.00', CurProdutos.Value) + ' em ' + FormatFloat('##0.00', qOperFiscOPE_INDICE_IMP.AsFloat) + '%');
+              end ;
+
+              OpenAux3('SELECT EMP_CSOSN, OPE_ARTIGO_REDUCAO FROM OPE0000 o '+
+                       ' WHERE OPE_CODIGO = '+ QuotedStr (CbOper.idretorno)+
+                       iif(DBInicio.empresa.wPMT_FATURA_MULTIEMPRESA,
+                       ConcatSe( ' and ', dbInicio.ExclusivoSql('FISCAL',EmpCodigo) ),
+                       ConcatSe( ' and ', dbInicio.ExclusivoSql('FISCAL') )))
+
+
+                      ;
+              If (qAux3.FieldByName('EMP_CSOSN').IsNull) OR (qAux3.FieldByName('EMP_CSOSN').AsInteger = 0 ) then
+                CSOSN :=  fiCSOSN
+              else
+                CSOSN := qAux3.FieldByName('EMP_CSOSN').AsInteger;
+              opeArtigoReducao := qAux3.FieldByName('OPE_ARTIGO_REDUCAO').AsString;
+
+              vValorIcmSimples := wBaseicms_simplesAproveit * fALIQ_CREDITO / 100;
+              if (vValorIcmSimples > 0) and  (CdsPedidosCLI_CONSFINAL.AsString <> 'S') and (CSOSN in [101,201]) then
+              begin
+                NF_ALIQCREDSIMPLES := fALIQ_CREDITO;
+                NF_VLCREDSIMPLES := vValorIcmSimples;
+              end
+              else
+              begin
+                NF_ALIQCREDSIMPLES := 0;
+                NF_VLCREDSIMPLES := 0;
+              end;
+
+         End
+         else
+         begin
+           NF_ALIQCREDSIMPLES := 0;
+           NF_VLCREDSIMPLES := 0;
+         end;
+    end;
+
    sql:=
             ' Insert into NF_IT01 ( emp_codigo, USU_CODIGO, AMX_CODIGO_DESTINO, PRD_CODIGO, NF_IT_NOTANUMER, '+
             '                       PRD_REFER, PRD_DESCRI, PRD_COMPL_DESCRI, PED_CODIGO, NF_QTDE, NF_IFRETE, '+
@@ -3462,7 +3521,7 @@ begin
             '                       IBPT_VLAP, PRDL_REGISTRO, NF_MARGEM_PRODUTO, NF_CUSTO, NF_PRECO, NF_ALIQDOSIMPLES, '+
             '                       NF_CREDICMSDOSIMPLES, NF_ICMSBASE, NF_ICMSALIQ, NF_ICMSVALOR, NF_ICMSREDUCAOPERC,' +
             '                       CST_IPI, NF_IPIBASE, NF_IPIVALOR, IPI_CODIGO, NF_IPIALIQ, NF_IPI_POR_UNIDADE, NF_SUBTRIBASE, ' +
-            '                       NF_ALIQSUBTRIB, NF_VLSUBST, NF_MVAPERC, NF_PMATPRIMA, PRF_REGISTRO, NF_COMISSAO, '+
+            '                       NF_ALIQSUBTRIB, NF_VLSUBST, NF_MVAPERC, NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES, NF_PMATPRIMA, PRF_REGISTRO, NF_COMISSAO, '+
             '                       NF_FLAG_ATUALIZA_ESTOQUE, NF_PRODUTO_AGREGADO, NF_HORA, OPE_CODIGO, NTP_CFOP, '+
             '                       STB_TRIBUTACAO, CST_PIS, NF_BASE_PIS, NF_ALIQPIS, NF_VLPIS, CST_COFINS, NF_BASE_COFINS, NF_ALIQCOFINS, '+
             '                       NF_VLCOFINS, PRG_REGISTRO, PRDCO_CODIGO_ORIGINAL, NF_LEI_TRANSPARENCIA '+blDifalA+
@@ -3506,6 +3565,11 @@ begin
             '          '+sNF_ALIQSUBTRIB+', '+ //NF_ALIQSUBTRIB,
             '          '+sNF_VLSUBST+', '+ //NF_VLSUBST,
             '          '+sNF_MVAPERC+', '+ //NF_MVAPERC,
+
+            '          '+FloatToSql( Uteis.RoundTo( NF_ALIQCREDSIMPLES, -2) )+', '+ //NF_ALIQCREDSIMPLES,
+            '          '+FloatToSql( Uteis.RoundTo( NF_VLCREDSIMPLES / CdsItemPedido.RecordCount, -2) )+', '+ //NF_VLCREDSIMPLES,
+
+
             '          '+FloatToSql( wPrecoMatPrima )+', '+ //NF_PMATPRIMA,
             '          '+CdsItemPedidoPRF_REGISTRO.AsString+', '+ //PRF_REGISTRO,
             '          '+FloatToSql( CdsItemPedidoPRF_ITEMCOMIS.AsFloat )+', '+ //NF_COMISSAO, '+

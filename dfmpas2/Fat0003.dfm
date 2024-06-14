@@ -19,7 +19,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alTop
     Caption = 'Nota'
     TabOrder = 2
-    ExplicitWidth = 1284
     object Label23: TLabel
       Left = 28
       Top = 49
@@ -581,7 +580,6 @@ inherited FormFatPedido: TFormFatPedido
     Height = 69
     Align = alTop
     TabOrder = 0
-    ExplicitWidth = 1284
     object Label3: TLabel
       Left = 45
       Top = 19
@@ -797,7 +795,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alBottom
     ParentColor = True
     TabOrder = 3
-    ExplicitWidth = 1284
     object Label13: TLabel
       Left = 8
       Top = 19
@@ -995,7 +992,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 1284
     object GroupBox3: TGroupBox
       Left = 0
       Top = 0
@@ -1243,10 +1239,6 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet2: TTabSheet
         Caption = 'Transporte'
         ImageIndex = 1
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label4: TLabel
           Left = 11
           Top = 59
@@ -1387,10 +1379,6 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet3: TTabSheet
         Caption = 'Devolu'#231#227'o'
         ImageIndex = 2
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object GroupBox7: TLabel
           Left = 7
           Top = 31
@@ -1437,10 +1425,6 @@ inherited FormFatPedido: TFormFatPedido
       object TabSheet4: TTabSheet
         Caption = 'Exporta'#231#227'o'
         ImageIndex = 3
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label11: TLabel
           Left = 15
           Top = 12
@@ -1860,7 +1844,6 @@ inherited FormFatPedido: TFormFatPedido
     Align = alClient
     Caption = 'Itens do Pedido '#224' Faturar'
     TabOrder = 4
-    ExplicitWidth = 1284
     object PanOperacao: TLabel
       Left = 630
       Top = 18
