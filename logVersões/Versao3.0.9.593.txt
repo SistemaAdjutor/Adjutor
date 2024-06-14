@@ -7,6 +7,7 @@ principal: Drimec, Collect
   1887 - Analisar: DIFAL - Não esta calculando [Drimec]
   
 patch 1 - Normadin, Collect
+  1882 - Relatório de pedidos - PEDIDOS À FATURAR/FATURADOS
   1886 - Implementação- Cancelar Pedido no PCP [Novi]
   1890 - Valor da alíquota e valor do aproveitamento de credito do ICMS zerados [Normadin]
   1891 - Erro - Espelho Nota Fiscal [Novi]
