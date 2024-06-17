@@ -179,6 +179,7 @@ type
    procedure ExcluiFaturas;
    procedure Estatistica;
    procedure Comissao;
+   procedure AtualizaContaFinanceira;
   public
     { Public declarations }
   end;
@@ -196,6 +197,20 @@ procedure TfrmPedidoDoacao.btPesqClinteClick(Sender: TObject);
 begin
   inherited;
   ClienteF4.Button.Click;
+
+end;
+
+procedure TfrmPedidoDoacao.AtualizaContaFinanceira;
+var
+  CFCodigo : String;
+begin
+  CFCodigo := dbInicio.BuscaUmDadoSqlAsString('SELECT CCT_CODIGO FROM CLI0000 WHERE CLI_CODIGO = ' + QuotedStr(PesqCliente.IdRetorno) );
+  if (CFCodigo = '') or (CFCodigo <> cbContaFinanceira.idRetorno )then
+  begin
+    if uteis.Confirmacao('Conta Financeira Atual Diverge da Cadastrada no Cliente. ' + #13 + #13 + 'Atualiza a Conta Financeira do Cliente?') <> mrYes then
+      Exit;
+    ExecSQL('UPDATE CLI0000 SET CCT_CODIGO = ' + QuotedStr(cbContaFinanceira.idRetorno) + ' WHERE CLI_CODIGO = ' + QuotedStr(PesqCliente.IdRetorno) );
+  end;
 
 end;
 
@@ -332,7 +347,7 @@ begin
   ValidarPedido;
   BeginTransaction;
   try
-
+    AtualizaContaFinanceira;
     if not VarIsNull(cdsParcelasped_VLTOTAL.value) then
     begin
        cdsPedidoPED_VLTOTAL_LIQ.AsBCD := VarToBcd(cdsParcelasped_VLTOTAL.Value);
