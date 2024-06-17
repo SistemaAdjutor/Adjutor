@@ -3940,44 +3940,67 @@ end;
     end;
 ///
 
-
-function  TFormFatPedido.RateioFrete: double;
+function TFormFatPedido.RateioFrete: double;
 var
   rt, wRateioFrete, valorTotal, valorTotalProd: double;
+  somaRateio: double;
+  i: Integer;
+  rateios: array of double;
 begin
-
   valorTotalProd := 0;
 
+  // Calcula o valor total dos produtos
   CdsItemPedido.First;
-  while not CdsItemPedido.Eof do // acumuladores
+  while not CdsItemPedido.Eof do
   begin
     valorTotalProd := valorTotalProd + (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat * CdsItemPedidoPRF_PRECO.AsFloat);
     CdsItemPedido.Next;
   end;
+
   if chkFreteProporcional.Checked then
     valorTotal := CdsPedidosPED_VLTOTAL_LIQ.AsFloat
   else
     valorTotal := valorTotalProd;
 
+  // Inicializa o array para armazenar os rateios
+  SetLength(rateios, CdsItemPedido.RecordCount);
+  somaRateio := 0;
 
-
+  // Calcula o rateio sem arredondamento
   CdsItemPedido.First;
-  rt := 0;
-  wRateioFrete := 0;
-  while not CdsItemPedido.Eof do // acumuladores
+  i := 0;
+  while not CdsItemPedido.Eof do
   begin
-    //rt := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ valorTotal {CdsPedidosPED_VLTOTAL_LIQ.AsFloat}  ) ;
-    rt := (Uteis.RoundTo((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)/ valorTotal, -2)) ;
-    if (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat > 0) then // Frete
-    begin
-      wRateioFrete := wRateioFrete + Uteis.RoundTo(rt * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
-    end;
-
+    rt := (CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat) / valorTotal;
+    rateios[i] := rt * cdsNotaFiscalNF_VLFRETE.AsFloat;
+    somaRateio := somaRateio + rateios[i];
+    Inc(i);
     CdsItemPedido.Next;
-
   end;
+
+  // Arredonda os valores de rateio, exceto o último
+  wRateioFrete := 0;
+  CdsItemPedido.First;
+  for i := 0 to Length(rateios) - 2 do
+  begin
+    rateios[i] := Uteis.RoundTo(rateios[i], -2);
+    wRateioFrete := wRateioFrete + rateios[i];
+    CdsItemPedido.Next;
+  end;
+
+  // Ajusta o último valor para corrigir qualquer diferença
+  rateios[High(rateios)] := cdsNotaFiscalNF_VLFRETE.AsFloat - wRateioFrete;
+  rateios[High(rateios)] := Uteis.RoundTo(rateios[High(rateios)], -2);
+
+  // Recalcula o total após ajuste
+  wRateioFrete := 0;
+  for i := 0 to High(rateios) do
+    wRateioFrete := wRateioFrete + rateios[i];
+
   result := wRateioFrete;
 end;
+
+
 
 procedure TFormFatPedido.RateioFrete_despesas;
     begin
