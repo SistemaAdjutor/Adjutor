@@ -216,11 +216,9 @@ inherited frmEstruturaFicha: TfrmEstruturaFicha
       Precision = 18
       Size = 5
     end
-    object cdsBuscaFTI_UC: TFMTBCDField
+    object cdsBuscaFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       Origin = 'FTI_UC'
-      Precision = 18
-      Size = 6
     end
     object cdsBuscaPRD_PCUSTO: TBCDField
       FieldName = 'PRD_PCUSTO'

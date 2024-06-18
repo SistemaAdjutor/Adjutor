@@ -328,10 +328,9 @@ object FormCustoGlobal: TFormCustoGlobal
       FieldName = 'PRD_REFER_ITENS'
       Size = 11
     end
-    object SqlCdsItensFichaFTI_UC: TFMTBCDField
+    object SqlCdsItensFichaFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       DisplayFormat = '#,####0.000000'
-      Precision = 15
     end
     object SqlCdsItensFichaFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'

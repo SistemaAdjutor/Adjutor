@@ -29,7 +29,7 @@ type
     SqlCdsFichaTecFTC_TUP: TFMTBCdField;
     SqlCdsItensFichaPRD_REFER: TStringField;
     SqlCdsItensFichaPRD_REFER_ITENS: TStringField;
-    SqlCdsItensFichaFTI_UC: TFMTBCdField;
+    SqlCdsItensFichaFTI_UC: TFloatField;
     SqlCdsItensFichaFTI_MODE1: TStringField;
     GrpBotoes: TGroupBox;
     BitBtn2: TBitBtn;

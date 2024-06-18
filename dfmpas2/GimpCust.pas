@@ -102,13 +102,13 @@ type
     SqlCdsItens: TSQLClientDataSet;
     SqlCdsItensPRD_REFER: TStringField;
     SqlCdsItensPRD_REFER_ITENS: TStringField;
-    SqlCdsItensFTI_UC: TFMTBCdField;
+    SqlCdsItensFTI_UC: TFloatField;
     SqlCdsItensFTI_MODE1: TStringField;
     SqlCdsItensPRD_DESCRI: TStringField;
     SqlCdsItensPRD_DTPCUSTO: TSQLTimeStampField;
     SqlCdsItensPRD_PCUSTO: TFMTBCdField;
     SqlCdsItensFTI_MODIFICADA: TSQLTimeStampField;
-    SqlCdsItensFTI_UCMODIFIC: TFMTBCdField;
+    SqlCdsItensFTI_UCMODIFIC: TFloatField;
     SqlCdsItensFTI_PRECOCUSTO: TFMTBCdField;
     SqlCdsClasse: TSQLClientDataSet;
     SqlCdsClasseVCT_CLASSE: TStringField;
@@ -276,6 +276,8 @@ type
     procedure DBGrid1DrawColumnCell(Sender: tObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure FormDestroy(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure DbGridFichasTitleClick(Column: TColumn);
   private
     { Private declarations }
          {campos}
@@ -296,6 +298,7 @@ type
 
   public
     { Public declarations }
+    FSortAscending: Boolean;
     procedure BotoesAcesso;
   end;
 
@@ -582,6 +585,11 @@ begin
       uteis.erro  (pchar('Erro ao fechar as tabelas !'+e.Message));
     end;
     Action := CaFree;
+end;
+
+procedure TFormGimpCusto.FormCreate(Sender: TObject);
+begin
+  FSortAscending := True;
 end;
 
 procedure TFormGimpCusto.FormDestroy(Sender: TObject);
@@ -1133,13 +1141,39 @@ begin
 end;
 
 procedure TFormGimpCusto.DBGrid1TitleClick(Column: TColumn);
+var
+  SortField: string;
+  IndexName: string;
 begin
-    screen.Cursor := crHourglass;
-    if not (Column.Field.DataType in [ftBlob,ftMemo]) then
-       begin
-           SqlCdsItens.IndexFieldNames := Column.FieldName;
-       end;
-    screen.Cursor := crDefault;
+  screen.Cursor := crHourglass;
+//  if not (Column.Field.DataType in [ftBlob,ftMemo]) then
+//  begin
+//     SqlCdsItens.IndexFieldNames := Column.FieldName;
+//  end;
+
+  SortField := Column.FieldName;
+  if FSortAscending then
+    IndexName := 'asc_' + SortField
+  else
+    IndexName := 'desc_' + SortField;
+
+//  if SqlCdsItens.IndexDefs.IndexOf(IndexName) <> -1 then
+//    SqlCdsItens.DeleteIndex(IndexName);
+
+  SqlCdsItens.IndexDefs.Clear;
+
+  try
+    if FSortAscending then
+      SqlCdsItens.AddIndex(IndexName, SortField, [])
+    else
+      SqlCdsItens.AddIndex(IndexName, SortField, [ixDescending]);
+    SqlCdsItens.IndexName := IndexName;
+    FSortAscending := not FSortAscending;
+  except on e: Exception do
+    uteis.Aviso('Campo Calculado, impossível ordenar.');
+  end;
+
+  screen.Cursor := crDefault;
 end;
 
 procedure TFormGimpCusto.CCustoCompleClick(Sender: tObject);
@@ -1265,6 +1299,30 @@ begin
               DbGridFichas.DefaultDrawDataCell(Rect,column.Field,state);
           end;
 end;
+
+procedure TFormGimpCusto.DbGridFichasTitleClick(Column: TColumn);
+var
+  SortField: string;
+  IndexName: string;
+begin
+  SortField := Column.FieldName;
+  if FSortAscending then
+    IndexName := 'asc_' + SortField
+  else
+    IndexName := 'desc_' + SortField;
+
+//  if SqlCdsFichaCusto.IndexDefs.IndexOf(IndexName) <> -1 then
+//    SqlCdsFichaCusto.DeleteIndex(IndexName);
+  SqlCdsFichaCusto.IndexDefs.Clear;
+
+  if FSortAscending then
+    SqlCdsFichaCusto.AddIndex(IndexName, SortField, [])
+  else
+    SqlCdsFichaCusto.AddIndex(IndexName, SortField, [ixDescending]);
+  SqlCdsFichaCusto.IndexName := IndexName;
+  FSortAscending := not FSortAscending;
+end;
+
 
 procedure TFormGimpCusto.DBGrid1DrawColumnCell(Sender: tObject;
   const Rect: TRect; DataCol: Integer; Column: TColumn;
