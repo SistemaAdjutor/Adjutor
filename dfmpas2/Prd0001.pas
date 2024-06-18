@@ -7551,7 +7551,7 @@ end;
 
 procedure TFormProduto.BuscaVendas;
 var
-  Empresa : string;
+  Empresa, datas : string;
 begin
   CdsVendas.DisableControls;
   CdsVendas.close;
@@ -7563,20 +7563,79 @@ begin
     Else
       Empresa := ' and t1.emp_codigo = ' + QuotedStr( DBInicio.Empresa.EMP_CODIGO );
 
-    CdsVendas.CommandText := 'select  t3.NF_EMISSAO, ' + '        t3.NF_NOTANUMBER, ' + '        t3.NF_NUM_NFE, ' + '        T1.NTP_CFOP, ' + '        t3.PED_CODIGO, ' + '        t3.CLI_CODIGO, ' + '        t2.CLI_RAZAO, ' + '        t1.NF_QTDE, ' + '        t1.NF_PRECO, ' + '        p.prdl_lote,  ' + '        CAST((t1.NF_QTDE * t1.NF_PRECO) AS NUMERIC(18,4)) as TOTAL, ' +
-      '        CAST( CASE WHEN T1.NF_IPIALIQ > 0 THEN (t1.NF_PRECO * (T1.NF_IPIALIQ / 100)) ELSE 0 END AS NUMERIC(18,4)) AS VALOR_IPI, ' + '        CAST( CASE WHEN T1.NF_VLSUBST > 0 THEN (T1.NF_VLSUBST / t1.NF_QTDE) ELSE 0 END AS NUMERIC(18,4)) AS VALOR_ST, ' + '        CAST( CAST((t1.NF_QTDE * t1.NF_PRECO) AS NUMERIC(18,4)) + ' + '              CAST( CASE WHEN T1.NF_IPIALIQ > 0 ' + '                         THEN (t1.NF_PRECO * (T1.NF_IPIALIQ / 100)) ' + '                         ELSE 0 ' +
-      '                    END AS NUMERIC(18,4)) + ' + '              CAST( CASE WHEN T1.NF_VLSUBST > 0 ' + '                         THEN (T1.NF_VLSUBST / t1.NF_QTDE) ' + '                         ELSE 0 ' + '                    END AS NUMERIC(18,4)) AS NUMERIC(18,4)) AS TOTAL_COM_IMPOSTOS, ' + ' t3.emp_codigo ' + 'from  NF_IT01 t1  ' + '      join opE0000 D on (D.OPE_TIPO_OPERACAO IN (''V'',''O''))' +
-      '      join NF0001 t3 on (t3.NF_NOTANUMBER = t1.NF_IT_NOTANUMER and t3.emp_codigo = t1.emp_codigo AND NF_TIPONOTA =' + QuotedStr( CdsProdutosPRD_PRODSERV.AsString ) + ')  and (T3.OPE_CODIGO = D.OPE_CODIGO)' + '      join CLI0000 t2 on (t2.CLI_CODIGO = t3.CLI_CODIGO) ' + '      left outer join prd_lote p ON (p.prdl_registro = t1.prdl_registro)' + 'where t1.PRD_CODIGO = ' + QuotedStr( CdsProdutosPRD_CODIGO.AsString ) + ' and NF_VENDA_FATURADA = ''S''    ' + '      and t3.NF_EMISSAO BETWEEN '
-      + DateToSql( EditDataI.date ) + ' and ' + DateToSql( EditDataF.date ) + Empresa +
-    // VENDA DE KITS
-      ' union all ' + ' select  t3.NF_EMISSAO, ' + '        t3.NF_NOTANUMBER, ' + '        t3.NF_NUM_NFE, ' + '        0, ' + '        t3.PED_CODIGO, ' + '        t3.CLI_CODIGO, ' + '        t2.CLI_RAZAO, ' + '        t1.prf_QTDE *it.prf_QTDE, ' + '        t1.prf_PRECO, ' + '        p.prdl_lote,  ' + '         CAST((t1.prf_QTDE*it.prf_QTDE * t1.prf_PRECO) AS NUMERIC(18,4)) as TOTAL,  ' +
-      '         CAST( CASE WHEN T1.PRF_IPIALIQ > 0 THEN (t1.prf_PRECO * (T1.PRF_IPIALIQ / 100)) ELSE 0 END AS NUMERIC(18,4)) AS VALOR_IPI , ' + '        CAST( CASE WHEN T1.PRF_VALOR_ST > 0 THEN (T1.PRF_VALOR_ST / t1.prf_QTDE*it.prf_QTDE ) ELSE 0 END AS NUMERIC(18,4)) AS VALOR_ST , ' + '         CAST( CAST((t1.prf_QTDE * t1.prf_PRECO) AS NUMERIC(18,4)) +  ' + '             CAST( CASE WHEN T1.PRF_IPIALIQ > 0  ' + '                        THEN (t1.prf_PRECO * (T1.PRF_IPIALIQ / 100)) ' +
-      '                         ELSE 0 ' + '                    END AS NUMERIC(18,4)) + ' + '              CAST( CASE WHEN T1.PRF_VALOR_ST > 0  ' + '                          THEN (T1.PRF_VALOR_ST / (t1.prf_QTDE*it.prf_QTDE) ) ' + '                         ELSE 0 ' + '                    END AS NUMERIC(18,4)) AS NUMERIC(18,4)) AS TOTAL_COM_IMPOSTOS, ' + ' t3.emp_codigo ' + 'from  NF0001 t3  ' + '      join opE0000 D on (D.OPE_TIPO_OPERACAO IN (''V'',''O''))' +
-      '   join  PED_IT01 t1  on (t3.ped_codigo = t1.ped_codigo and T1.emp_CODIGO = t3.emp_CODIGO  and (T3.OPE_CODIGO = D.OPE_CODIGO) )' + '   join PED_IT01 it on (it.PRF_REGISTRO = t1.PRF_REGISTRO_VINCULADO) ' + '   join CLI0000 t2 on (t2.CLI_CODIGO = t3.CLI_CODIGO) ' + '   left outer join prd_lote p ON (p.prdl_registro = t1.prdl_registro)' + 'where t1.PRD_CODIGO = ' + QuotedStr( CdsProdutosPRD_CODIGO.AsString ) + '  and t1.PRF_REGISTRO_VINCULADO > 0 ' + ' and NF_VENDA_FATURADA = ''S''    ' +
-      '  and t3.NF_EMISSAO BETWEEN ' + DateToSql( EditDataI.date ) + ' and ' + DateToSql( EditDataF.date ) + Empresa +
+//  '        and t3.NF_EMISSAO BETWEEN ' + DateToSql(EditDataI.Date) + ' and ' + DateToSql(EditDataF.Date) +
 
+    datas := '';
+    if ( EditDataI.date > 0 ) and ( EditDataF.date > 0 ) then
+      datas := datas + ' and  t3.NF_EMISSAO between ' + DateToSql( EditDataI.date ) + ' and ' + DateToSql( EditDataF.date )
+    else
+    if ( EditDataI.date = 0 ) and ( EditDataF.date > 0 ) then
+      datas := datas + ' and  t3.NF_EMISSAO <= ' + DateToSql( EditDataF.date )
+    else
+      if ( EditDataI.date > 0 ) and ( EditDataF.date = 0 ) then
+        datas := datas + ' and  t3.NF_EMISSAO >= ' + DateToSql( EditDataF.date );
+
+    CdsVendas.CommandText :=
+      'select  t3.NF_EMISSAO, ' +
+      '        t3.NF_NOTANUMBER, ' +
+      '        t3.NF_NUM_NFE, ' +
+      '        T1.NTP_CFOP, ' +
+      '        t3.PED_CODIGO, ' +
+      '        t3.CLI_CODIGO, ' +
+      '        t2.CLI_RAZAO, ' +
+      '        t1.NF_QTDE, ' +
+      '        t1.NF_PRECO, ' +
+      '        p.prdl_lote, ' +
+      '        CAST((t1.NF_QTDE * t1.NF_PRECO) AS NUMERIC(18,4)) as TOTAL, ' +
+      '        CAST(CASE WHEN T1.NF_IPIALIQ > 0 THEN (t1.NF_PRECO * (T1.NF_IPIALIQ / 100)) ELSE 0 END AS NUMERIC(18,4)) AS VALOR_IPI, ' +
+      '        CAST(CASE WHEN T1.NF_VLSUBST > 0 THEN (T1.NF_VLSUBST / t1.NF_QTDE) ELSE 0 END AS NUMERIC(18,4)) AS VALOR_ST, ' +
+      '        CAST( CAST((t1.NF_QTDE * t1.NF_PRECO) AS NUMERIC(18,4)) + ' +
+      '              CAST(CASE WHEN T1.NF_IPIALIQ > 0 THEN (t1.NF_PRECO * (T1.NF_IPIALIQ / 100)) ELSE 0 END AS NUMERIC(18,4)) + ' +
+      '              CAST(CASE WHEN T1.NF_VLSUBST > 0 THEN (T1.NF_VLSUBST / t1.NF_QTDE) ELSE 0 END AS NUMERIC(18,4)) AS NUMERIC(18,4)) AS TOTAL_COM_IMPOSTOS, ' +
+      '        t3.emp_codigo ' +
+      'from    NF_IT01 t1 ' +
+      '        join opE0000 D on (D.OPE_TIPO_OPERACAO IN (''V'',''O'')) ' +
+      '        join NF0001 t3 on (t3.NF_NOTANUMBER = t1.NF_IT_NOTANUMER and t3.emp_codigo = t1.emp_codigo AND NF_TIPONOTA =' + QuotedStr(CdsProdutosPRD_PRODSERV.AsString) + ') and (T3.OPE_CODIGO = D.OPE_CODIGO) ' +
+      '        join CLI0000 t2 on (t2.CLI_CODIGO = t3.CLI_CODIGO) ' +
+      '        left outer join prd_lote p ON (p.prdl_registro = t1.prdl_registro) ' +
+      'where   t1.PRD_CODIGO = ' + QuotedStr(CdsProdutosPRD_CODIGO.AsString) + ' and NF_VENDA_FATURADA = ''S'' ' +
+      '        and t3.NF_EMISSAO BETWEEN ' + DateToSql(EditDataI.Date) + ' and ' + DateToSql(EditDataF.Date) + Empresa +
+
+      // VENDA DE KITS
+      ' union all ' +
+      'select  t3.NF_EMISSAO, ' +
+      '        t3.NF_NOTANUMBER, ' +
+      '        t3.NF_NUM_NFE, ' +
+      '        0, ' +
+      '        t3.PED_CODIGO, ' +
+      '        t3.CLI_CODIGO, ' +
+      '        t2.CLI_RAZAO, ' +
+      '        t1.prf_QTDE, ' +
+      '        t1.prf_PRECO, ' +
+      '        p.prdl_lote, ' +
+      '        CAST((t1.prf_QTDE * t1.prf_PRECO) AS NUMERIC(18,4)) as TOTAL, ' +
+      '        CAST(CASE WHEN T1.PRF_IPIALIQ > 0 THEN (t1.prf_PRECO * (T1.PRF_IPIALIQ / 100)) ELSE 0 END AS NUMERIC(18,4)) AS VALOR_IPI, ' +
+      '        CAST(CASE WHEN T1.PRF_VALOR_ST > 0 THEN (T1.PRF_VALOR_ST / t1.prf_QTDE * it.prf_QTDE) ELSE 0 END AS NUMERIC(18,4)) AS VALOR_ST, ' +
+      '        CAST( CAST((t1.prf_QTDE * t1.prf_PRECO) AS NUMERIC(18,4)) + ' +
+      '              CAST(CASE WHEN T1.PRF_IPIALIQ > 0 THEN (t1.prf_PRECO * (T1.PRF_IPIALIQ / 100)) ELSE 0 END AS NUMERIC(18,4)) + ' +
+      '              CAST(CASE WHEN T1.PRF_VALOR_ST > 0 THEN (T1.PRF_VALOR_ST / (t1.prf_QTDE * it.prf_QTDE)) ELSE 0 END AS NUMERIC(18,4)) AS NUMERIC(18,4)) AS TOTAL_COM_IMPOSTOS, ' +
+      '        t3.emp_codigo ' +
+      'from    NF0001 t3 ' +
+      '        join opE0000 D on (D.OPE_TIPO_OPERACAO IN (''V'',''O'')) ' +
+      '        join PED_IT01 t1 on (t3.ped_codigo = t1.ped_codigo and T1.emp_CODIGO = t3.emp_CODIGO and (T3.OPE_CODIGO = D.OPE_CODIGO)) ' +
+      '        left join PED_IT01 it on (it.PRF_REGISTRO = t1.PRF_REGISTRO_VINCULADO) ' +  // adicionado left no join
+      '        join CLI0000 t2 on (t2.CLI_CODIGO = t3.CLI_CODIGO) ' +
+      '        left outer join prd_lote p ON (p.prdl_registro = t1.prdl_registro) ' +
+      'where   t1.PRD_CODIGO = ' + QuotedStr(CdsProdutosPRD_CODIGO.AsString) +
+      '        and NF_VENDA_FATURADA = ''S'' ' +
+//      '        and t1.PRF_REGISTRO_VINCULADO > 0 ' +
+      datas +
+      Empresa +
       ' ORDER BY 1 DESC';
 
+
+    if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(CdsVendas.CommandText);
     CdsVendas.Open;
     // if CdsVendas.RecordCount > 0  then
     CdsVendas.EnableControls;
