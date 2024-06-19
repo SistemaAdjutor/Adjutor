@@ -309,6 +309,7 @@ inherited FrmPedidoTipo: TFrmPedidoTipo
     Cursor = crHandPoint
     Hint = '|Grava registro...'
     Caption = '&Gravar'
+    Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -11
