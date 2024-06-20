@@ -143,7 +143,7 @@ type
     SqlCdsN1FTI_MODE6: TStringField;
     SqlCdsN1FTI_MODE7: TStringField;
     SqlCdsN1FTI_MODE8: TStringField;
-    SqlCdsN1FTI_UC: TFMTBCdField;
+    SqlCdsN1FTI_UC: TFloatField;
     SqlCdsConsumoPRD_REFER: TStringField;
     SqlCdsConsumoPRD_DESCRI: TStringField;
     SqlCdsConsumoPRD_PCUSTO: TFMTBCdField;

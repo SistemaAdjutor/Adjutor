@@ -18,6 +18,7 @@ object FormGimpCusto: TFormGimpCusto
   Position = poDesktopCenter
   Visible = True
   OnClose = FormClose
+  OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnShow = FormShow
@@ -722,7 +723,7 @@ object FormGimpCusto: TFormGimpCusto
     Hint = 'D'#234' duplo clique  ou <Enter> para alterar o pre'#231'o !'
     Color = 16776176
     DataSource = DSQItensCusto
-    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+    Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
     ParentShowHint = False
     ReadOnly = True
     ShowHint = True
@@ -842,7 +843,7 @@ object FormGimpCusto: TFormGimpCusto
       Font.Height = -11
       Font.Name = 'Arial'
       Font.Style = []
-      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
+      Options = [dgTitles, dgIndicator, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
       ParentFont = False
       TabOrder = 0
       TitleFont.Charset = DEFAULT_CHARSET
@@ -851,6 +852,7 @@ object FormGimpCusto: TFormGimpCusto
       TitleFont.Name = 'MS Sans Serif'
       TitleFont.Style = []
       OnDrawColumnCell = DbGridFichasDrawColumnCell
+      OnTitleClick = DbGridFichasTitleClick
       Columns = <
         item
           Expanded = False
@@ -1005,7 +1007,6 @@ object FormGimpCusto: TFormGimpCusto
     BevelInner = bvRaised
     BevelOuter = bvNone
     BevelWidth = 2
-    Caption = 'PnLocalizar'
     Color = 10841658
     TabOrder = 11
     Visible = False
@@ -1030,7 +1031,7 @@ object FormGimpCusto: TFormGimpCusto
         OnClick = RadReferClick
       end
       object RadDescricao: TRadioButton
-        Left = 174
+        Left = 169
         Top = 22
         Width = 97
         Height = 17
@@ -1440,8 +1441,8 @@ object FormGimpCusto: TFormGimpCusto
   end
   object DSQItensCusto: TDataSource
     DataSet = SqlCdsItens
-    Left = 541
-    Top = 290
+    Left = 589
+    Top = 282
   end
   object DsQFichaCusto: TDataSource
     DataSet = SqlCdsFichaCusto
@@ -1527,10 +1528,9 @@ object FormGimpCusto: TFormGimpCusto
       FieldName = 'PRD_REFER_ITENS'
       Size = 11
     end
-    object SqlCdsItensFTI_UC: TFMTBCDField
+    object SqlCdsItensFTI_UC: TFloatField
       FieldName = 'FTI_UC'
       DisplayFormat = '#,###0.000000'
-      Precision = 15
     end
     object SqlCdsItensFTI_MODE1: TStringField
       FieldName = 'FTI_MODE1'
@@ -1551,9 +1551,8 @@ object FormGimpCusto: TFormGimpCusto
     object SqlCdsItensFTI_MODIFICADA: TSQLTimeStampField
       FieldName = 'FTI_MODIFICADA'
     end
-    object SqlCdsItensFTI_UCMODIFIC: TFMTBCDField
+    object SqlCdsItensFTI_UCMODIFIC: TFloatField
       FieldName = 'FTI_UCMODIFIC'
-      Precision = 15
     end
     object SqlCdsItensFTI_PRECOCUSTO: TFMTBCDField
       FieldName = 'FTI_PRECOCUSTO'

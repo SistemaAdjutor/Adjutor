@@ -38,7 +38,7 @@ type
     dsbusca: TDataSource;
     cdsBuscaPRD_UND: TStringField;
     cdsBuscaPRD_PVENDA: TFMTBCDField;
-    cdsBuscaFTI_UC: TFMTBCDField;
+    cdsBuscaFTI_UC: TFloatField;
     cdsBuscaPRD_PCUSTO: TBCDField;
     cdsBuscaTOTALITEM: TBCDField;
     cdsBuscaPTI_SIGLA: TStringField;
