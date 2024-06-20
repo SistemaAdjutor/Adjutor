@@ -220,6 +220,11 @@ procedure TFrmPedidoTipo.CbNovoTipoSelect(Sender: TObject);
 begin
   inherited;
   EdPedidoNovoNumero.Text := CbNovoTipo.idRetorno;
+  if (CbNovoTipo.idRetorno <> '') and (CbNovoTipo.idRetorno <> '000') then
+    Bit_Gravar.Enabled := True
+  else
+    Bit_Gravar.Enabled := False;
+
   // CbNovoTipoChange(Sender);
 end;
 
@@ -281,7 +286,7 @@ begin
          EdCodigoEmpresa.SetFocus;
    end
    else
-   if (EdPedidoNovoNumero.Text = '') then
+   if (EdPedidoNovoNumero.Text = '') or (EdPedidoNovoNumero.Text = '000') or (cbNovoTipo.idRetorno = '')  then
    begin
          uteis.aviso('Informe o novo Tipo do Pedido');
          EdPedidoNovoNumero.SelectAll;
