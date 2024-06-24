@@ -7406,12 +7406,16 @@ begin
 end;
 
 procedure TFormProduto.RecalculaIndicesGrade;
+var
+  j : integer;
 begin
   if not CdsGrade.Active then
     Exit;
   CdsGrade.First;
-  while ( not CdsGrade.Eof ) do
+  // while ( not CdsGrade.Eof ) do // neste componente, quando dá o post, ele volta para o registro 1 da tabela
+  for j := 1 to cdsGrade.RecordCount do
   begin
+    cdsGrade.RecNo := j;
     CdsGrade.Edit;
     // M2 Normal
     if ( CdsProdutosPRD_UND_GRADE_CALCULO.AsString = 'M2' ) and ( CdsGradePRG_MEDIDA_1.AsFloat <> 0 ) and ( CdsGradePRG_MEDIDA_2.AsFloat <> 0 ) and ( CdsGradePRG_MEDIDA_3.AsFloat = 0 ) then
@@ -7446,9 +7450,10 @@ begin
           end
           else
             CdsGradePRG_INDICE.AsFloat := 0;
-    //
+
+    CdsGrade.Post;
     CdsGrade.ApplyUpdates( 0 );
-    CdsGrade.Next;
+    // CdsGrade.Next;
   end;
 end;
 
