@@ -1,4 +1,4 @@
-﻿Atualizado em 20/06/2024
+﻿Atualizado em 27/06/2024
 Inicio da versão: 10/06/2024
 
 principal: Drimec, Collect
@@ -21,3 +21,7 @@ patch 2: Collect, Drimec, Arkson
   1900 - Erro- Cadastro Produtos [Drimec]
   1901 - Erro - Pedido [Arkson]
 
+patch 3: LFEPIS, Metalúrgica Água
+  1897 - Erro frete no faturamento [LFEPIS]
+  1904 - Erro - Novo Cadastro de produto [Metalúrgica Água]
+  
