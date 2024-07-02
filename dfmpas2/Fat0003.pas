@@ -3540,7 +3540,7 @@ begin
             '          '+FloatToSql( wFreteIndividual  )+', '+ //NF_IFRETE, '+
             '          '+FloatToSql( wDespesaIndividual  )+', '+ //NF_IDESP_ACES,
             '          '+FloatToSql( wSeguroIndividual  )+', '+ //NF_ISEGURO,
-            '          '+FloatToSql( wDescontoIndividual  )+', '+ //NF_IDESCTO1,
+            '          '+FloatToSql( wDescontoIndividual  )+', '+ //NF_IDESCTO1,    //////////////////////////////////////////////////
             '          '+qStr( wCest )+', '+ //CEST_COD,
             '          '+FloatToSql( wIbptAliqFed )+', '+ //IBPT_ALIQFED,
             '          '+FloatToSql( wIbptAliqEst )+', '+ //IBPT_ALIQEST, '+
@@ -4017,8 +4017,8 @@ procedure TFormFatPedido.RateioFrete_despesas;
                   if CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat>0 then
                   begin
 
-                      // rt1 := (Uteis.RoundTo(CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2)/ wValorProdGeral) ;
-                      rt1 := (Uteis.RoundTo((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)/ wValorProdGeral, -2))  ;
+                      rt1 := (CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat) / wValorProdGeral ;
+                      // rt1 := (Uteis.RoundTo((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)/ wValorProdGeral, -2))  ;
 
 
                       if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then // Frete
@@ -4046,6 +4046,7 @@ procedure TFormFatPedido.RateioFrete_despesas;
                       if (CdsPedidosPED_DESCTOVL.AsFloat > 0) then //Desconto
                       begin
                            rRateioTmp := Uteis.RoundTo(rt1 * CdsPedidosPED_DESCTOVL.AsFloat,-2);
+                           // rRateioTmp := rt1 * CdsPedidosPED_DESCTOVL.AsFloat;
                            rRateioDescontoDiferenca := rRateioDescontoDiferenca + rRateioTmp;
                       end;
                   end;
@@ -4496,13 +4497,18 @@ begin
 										//verifica se haverá diferenca do rateio do frete despesa e seguro
 										//Frete
 
-//                    if chkFreteProporcional.Checked
-//                      then rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  )
-//                      else rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / wValorProdGeral );
+//     old               if chkFreteProporcional.Checked
+//     old                 then rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  )
+//     old                 else rt1 := (Uteis.RoundTo( CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, -2 ) / wValorProdGeral );
+
+//     new               if chkFreteProporcional.Checked
+//     new                 then rt1 := Uteis.RoundTo( ((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)  / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  ) , -2)
+//     new                 else rt1 := Uteis.RoundTo( ((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)  / wValorProdGeral ), -2);
+
 
                     if chkFreteProporcional.Checked
-                      then rt1 := Uteis.RoundTo( ((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)  / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  ) , -2)
-                      else rt1 := Uteis.RoundTo( ((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)  / wValorProdGeral ), -2);
+                      then rt1 :=  ((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)  / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  )
+                      else rt1 := ((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)  / wValorProdGeral );
 
 										if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then
 										begin
