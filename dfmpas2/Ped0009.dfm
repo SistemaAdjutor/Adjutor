@@ -9,9 +9,8 @@ inherited FormPedidoDuplicar: TFormPedidoDuplicar
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   KeyPreview = True
-  Position = poDesktopCenter
   ExplicitWidth = 694
-  ExplicitHeight = 241
+  ExplicitHeight = 245
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox1: TGroupBox [0]

@@ -2418,6 +2418,12 @@ begin
     with FormaPagamentos do
     begin
       indPag := ipVista;
+      if (tPag = fpCartaoCredito) or (tPag = fpCartaoDebito) then
+      begin
+        tpIntegra := tiPagNaoIntegrado;
+        tBand := bcOutros;
+        // cAut := '123456';
+      end;
       vPag := qNota.FieldByName('NF_TOT_NOTA').AsFloat ;
       if tPag = fpOutro then
         xPag := DBInicio.GetParametroSistema('PMT_DESCRICAO_99_OUTROS');
@@ -2463,6 +2469,7 @@ begin
   if qNota.FieldByName('NF_VALORTOT_COFINS').AsFloat> 0 then
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco +'.'+' COFINS '+ FormatFloat('#,##0.00',FCofins) + '%' +
     ' TOTAL '+ FormatFloat('##0.00', qNota.FieldByName('NF_VALORTOT_COFINS').AsFloat );
+
 
   //informações complementares do tecnico responsável somente para ambiente de homologação
  // if ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao then
