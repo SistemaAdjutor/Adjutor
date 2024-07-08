@@ -121,10 +121,10 @@
         <VerInfo_Special>true</VerInfo_Special>
         <DCC_MapFile>3</DCC_MapFile>
         <Icon_MainIcon>Adjutor_Icon.ico</Icon_MainIcon>
-        <VerInfo_Build>593</VerInfo_Build>
+        <VerInfo_Build>594</VerInfo_Build>
         <VerInfo_MajorVer>3</VerInfo_MajorVer>
         <VerInfo_Release>9</VerInfo_Release>
-        <VerInfo_Keys>CompanyName=Novi Sistemas;FileDescription=sistema Adjutor ERP;FileVersion=3.0.9.593;InternalName=adjutor.exe;LegalCopyright=Novi sistemas;LegalTrademarks=Novi sistemas;OriginalFilename=adjutor;ProductName=Adjutor;ProductVersion=3.0.9.593;Comments=sistema Adjutor http://www.novisistemas.com.br/;SpecialBuild=patch 3;PrivateBuild=;patch=0;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
+        <VerInfo_Keys>CompanyName=Novi Sistemas;FileDescription=sistema Adjutor ERP;FileVersion=3.0.9.594;InternalName=adjutor.exe;LegalCopyright=Novi sistemas;LegalTrademarks=Novi sistemas;OriginalFilename=adjutor;ProductName=Adjutor;ProductVersion=3.0.9.594;Comments=sistema Adjutor http://www.novisistemas.com.br/;SpecialBuild=;PrivateBuild=;patch=0;ProgramID=com.embarcadero.$(MSBuildProjectName)</VerInfo_Keys>
         <BT_BuildType>Debug</BT_BuildType>
         <AppEnableRuntimeThemes>true</AppEnableRuntimeThemes>
     </PropertyGroup>
@@ -1800,6 +1800,7 @@
                     <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Enterprise\LibD25\dclfsTee25.bpl">FastScript 1.9 Tee Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Enterprise\LibD25\dclfrxIBX25.bpl">FastReport 6.0 IBX Components</Excluded_Packages>
                     <Excluded_Packages Name="C:\Program Files (x86)\FastReport 6 VCL Enterprise\LibD25\dclfsIBX25.bpl">FastScript 1.9 IBX Components</Excluded_Packages>
+                    <Excluded_Packages Name="C:\Adjutor\Componentes\02-acbr\Lib\Delphi\LibD25\Win32\DCLACBr_OpenSSL.bpl">ACBr - (design-time) Bind para OpenSSL 1.1.1 - (http://www.projetoacbr.com.br/)</Excluded_Packages>
                 </Excluded_Packages>
                 <WelcomePageFile/>
                 <WelcomePageFolder Path="..\Adjutor2"/>
@@ -1810,7 +1811,12 @@
             </Platforms>
             <Deployment Version="3">
                 <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Release" Class="ProjectFile"/>
-                <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Debug" Class="ProjectFile"/>
+                <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput">
+                    <Platform Name="Win32">
+                        <RemoteName>Adjutor.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Release" Class="ProjectFile">
                     <Platform Name="Win32">
                         <RemoteDir>.\</RemoteDir>
@@ -1831,12 +1837,7 @@
                     </Platform>
                 </DeployFile>
                 <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput"/>
-                <DeployFile LocalName="Adjutor.exe" Configuration="Release" Class="ProjectOutput">
-                    <Platform Name="Win32">
-                        <RemoteName>Adjutor.exe</RemoteName>
-                        <Overwrite>true</Overwrite>
-                    </Platform>
-                </DeployFile>
+                <DeployFile LocalName="dfmpas2\UFUNCOES.PAS" Configuration="Debug" Class="ProjectFile"/>
                 <DeployClass Name="AdditionalDebugSymbols">
                     <Platform Name="iOSSimulator">
                         <Operation>1</Operation>

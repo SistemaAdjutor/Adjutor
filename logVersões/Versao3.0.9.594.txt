@@ -1,0 +1,8 @@
+﻿Atualizado em 08/07/2024
+Inicio da versão: 08/07/2024
+
+principal: LF Epis
+  1907 - ERRO - EMISSÃO NF DESCONTO PROD.[LF Epis]
+  1909 - implementacão - NFCe [Novi]
+  1910 - Correção - NF paginando após trasmitir [Novi]
+  
