@@ -573,7 +573,7 @@ begin
   FrmEntradaNotaXmlItem.SetFocus;
 
 
-  dbedtDescricao.Text :=  DataCadastros.CdsProdutosPRD_DESCRI.AsString;
+  dbedtDescricao.Text := DBInicio.BuscaUmDadoSqlAsString('select prd_descri from PRD0000 where prd_codigo = ' + QuotedStr(prd_codigo))  ; //  DataCadastros.CdsProdutosPRD_DESCRI.AsString;
   imgProduto.Visible :=  sReferencia = '';
   imgConversao.Visible := (edtUnidadeSistema.Text <> eUnidadeOriginal.Text) and (edtQuantidadeConversao.Value = 0)  ;
  // Close;

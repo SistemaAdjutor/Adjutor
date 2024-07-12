@@ -2832,7 +2832,7 @@ begin
       // AtivaSqls;
       // BuscaVendas;
     finally
-      HabilitaBotoes;
+     // HabilitaBotoes;
       CarregaPrecoEmpresa( );
 //      cdsProdutos.Cancel;
       EdtPrd_Refer.Enabled := True;
