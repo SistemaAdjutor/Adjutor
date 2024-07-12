@@ -7628,7 +7628,7 @@ begin
       'from    NF0001 t3 ' +
       '        join opE0000 D on (D.OPE_TIPO_OPERACAO IN (''V'',''O'')) ' +
       '        join PED_IT01 t1 on (t3.ped_codigo = t1.ped_codigo and T1.emp_CODIGO = t3.emp_CODIGO and (T3.OPE_CODIGO = D.OPE_CODIGO)) ' +
-      '        left join PED_IT01 it on (it.PRF_REGISTRO = t1.PRF_REGISTRO_VINCULADO) ' +  // adicionado left no join
+      '        join PED_IT01 it on (it.PRF_REGISTRO = t1.PRF_REGISTRO_VINCULADO) ' +  // {adicionado} retirado left no join
       '        join CLI0000 t2 on (t2.CLI_CODIGO = t3.CLI_CODIGO) ' +
       '        left outer join prd_lote p ON (p.prdl_registro = t1.prdl_registro) ' +
       'where   t1.PRD_CODIGO = ' + QuotedStr(CdsProdutosPRD_CODIGO.AsString) +
