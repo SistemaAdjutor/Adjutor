@@ -1,8 +1,15 @@
-﻿Atualizado em 08/07/2024
+﻿Atualizado em 12/07/2024
 Inicio da versão: 08/07/2024
 
 principal: LF Epis
   1907 - ERRO - EMISSÃO NF DESCONTO PROD.[LF Epis]
   1909 - implementacão - NFCe [Novi]
   1910 - Correção - NF paginando após trasmitir [Novi]
+  
+patch 1: Drimec, Metalúrgica Água
+  1903 - Erro - Difal [Drimec]
+  1908 - Erro-> Emissão NF ICMS do item [Drimec]
+  1912 - Revisão: Cadastros/Compra [Drimec]
+  1913 - Erro: Alterar produto novo na entrada de NF [Metalúrgica Água]
+  
   
