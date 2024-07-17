@@ -3,7 +3,7 @@ unit Mnt0001;
 interface
 
 uses
-  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, BaseDbEstoqueForm,
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms, BaseDbEstoqueForm, StrUtils,
   Dialogs, StdCtrls, ExtCtrls, Grids, DBGrids, ComCtrls, Provider, SqlExpr,SqlClientDataSet,
   DB, DBClient, DBLocal, DBLocalS,RWFunc, Mask,  rxToolEdit,  rxCurrEdit, Buttons, RwSQLComando,
   xmldom, XMLIntf, msxmldom, XMLDoc, SimpleDS, Data.DBXFirebird, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.Samples.Gauges, SgDbSeachComboUnit, ComboBoxRW,
@@ -506,6 +506,9 @@ var
   j : integer;
 begin
   inherited;
+  if uteis.confirmacao('Confirma processamento do Banco de Dados?') <> mrYes then
+    Exit;
+
   qTabela.Close;
   qTabela.SQL.Text :=  'SELECT DISTINCT  TRIM(rf.RDB$RELATION_NAME) AS TABELA ' +
                        ' FROM RDB$RELATION_FIELDS rf ' +
@@ -573,7 +576,7 @@ begin
           if existeApostrofo(qCampo.Fields[j].AsString) then
           begin
             sql := 'UPDATE ' + tabela +
-                   ' SET ' + qCampo.Fields[j].FieldName + ' = ' + QuotedStr(retiraApostrofo(qCampo.Fields[j].AsString)) +
+                   ' SET ' + qCampo.Fields[j].FieldName + ' = ' + QuotedStr(LeftStr(retiraApostrofo(qCampo.Fields[j].AsString, tabela), qCampo.Fields[j].Size) ) +
                    ' WHERE ' + chavePrimaria + ' = ' +  iif(tipoChavePrimaria = 'INTEGER', IntToStr(valorChavePrimaria), QuotedStr(valorChavePrimaria) );
             dbInicio.ExecSQL(sql);
           end;

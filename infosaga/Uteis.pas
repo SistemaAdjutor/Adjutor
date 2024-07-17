@@ -180,7 +180,7 @@ procedure CriaCSV(ds: TDataSource; lista: TStringList; Form: TForm; empCodigo: b
 function LastPos(const pesq: string; const S: string): integer;
 function retiraPontoEVirgula(str: string): string;
 function retiraCRLF(str: string): string;
-function retiraApostrofo(str: string): string;
+function retiraApostrofo(str, tabela: string): string;
 function existeApostrofo(str: string): boolean;
 
 
@@ -2496,7 +2496,7 @@ begin
   end;
 end;
 
-function retiraApostrofo(str: string): string;
+function retiraApostrofo(str, tabela: string): string;
 var
   i: Integer;
 begin
@@ -2505,6 +2505,9 @@ begin
   begin
     if (str.Substring(i, 1) = #39) or (str.Substring(i, 1) = WideChar($2019)) then
       result := result + ' '
+    else
+    if ( (str.Substring(i, 1) = #34)  or (str.Substring(i, 1) =  WideChar($201C)) or (str.Substring(i, 1) =  WideChar($201D)) ) and (tabela = 'PRD0000') then
+      result := result + 'POL.'
     else
       result := result + str.Substring(i, 1);
   end;
@@ -2517,7 +2520,12 @@ begin
   result := False;
   for i := 0 to length(str)  do
   begin
-    if (str.Substring(i, 1) = #39) or (str.Substring(i, 1) = WideChar($2019))  then
+    if (str.Substring(i, 1) = #39)
+    or (str.Substring(i, 1) = #34)
+    or (str.Substring(i, 1) = WideChar($2019))
+    or (str.Substring(i, 1) =  WideChar($201D))
+    or (str.Substring(i, 1) =  WideChar($201C))
+    then
     begin
       result := True;
       Exit;

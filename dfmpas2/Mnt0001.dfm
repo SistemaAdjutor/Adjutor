@@ -416,37 +416,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 23
     OnClick = Button23Click
   end
-  object Button24: TButton [26]
-    Left = 368
-    Top = 209
-    Width = 345
-    Height = 25
-    Caption = 'Acerto de Cidades Transportadora NFe (v.251)'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 24
-    OnClick = Button24Click
-  end
-  object Button25: TButton [27]
-    Left = 368
-    Top = 234
-    Width = 345
-    Height = 25
-    Caption = 'Importar saldos para Novo Estoque (v.311)'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 25
-    OnClick = Button25Click
-  end
-  object cbAlmoxarifado: TComboBoxRw [28]
+  object cbAlmoxarifado: TComboBoxRw [26]
     Left = 589
     Top = 336
     Width = 99
@@ -486,7 +456,7 @@ inherited FrmManutencao: TFrmManutencao
     itemindex = 0
     style = csDropDown
   end
-  object Button31: TButton [29]
+  object Button31: TButton [27]
     Left = 368
     Top = 333
     Width = 217
@@ -495,7 +465,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 31
     OnClick = Button31Click
   end
-  object Button30: TButton [30]
+  object Button30: TButton [28]
     Left = 368
     Top = 283
     Width = 345
@@ -510,7 +480,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 30
     OnClick = Button30Click
   end
-  object Button32: TButton [31]
+  object Button32: TButton [29]
     Left = 368
     Top = 308
     Width = 345
@@ -525,7 +495,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 33
     OnClick = Button32Click
   end
-  object Button29: TButton [32]
+  object Button29: TButton [30]
     Left = 16
     Top = 481
     Width = 345
@@ -534,16 +504,16 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 29
     OnClick = Button29Click
   end
-  object Button33: TButton [33]
+  object Button33: TButton [31]
     Left = 16
     Top = 508
     Width = 345
     Height = 25
-    Caption = 'Retira Ap'#243'strofo do Banco de Dados'
+    Caption = 'Retira Ap'#243'strofo e Aspas do Banco de Dados'
     TabOrder = 34
     OnClick = Button33Click
   end
-  object pbTabela: TProgressBar [34]
+  object pbTabela: TProgressBar [32]
     Left = 16
     Top = 532
     Width = 150
@@ -551,7 +521,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 35
     Visible = False
   end
-  object pbCampo: TProgressBar [35]
+  object pbCampo: TProgressBar [33]
     Left = 211
     Top = 532
     Width = 150
@@ -559,7 +529,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 36
     Visible = False
   end
-  object Button28: TButton [36]
+  object Button28: TButton [34]
     Left = 16
     Top = 454
     Width = 345
@@ -574,7 +544,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 28
     OnClick = Button28Click
   end
-  object GroupBox1: TGroupBox [37]
+  object GroupBox1: TGroupBox [35]
     Left = 367
     Top = 371
     Width = 345
@@ -637,6 +607,36 @@ inherited FrmManutencao: TFrmManutencao
       TabOrder = 2
       OnClick = Button27Click
     end
+  end
+  object Button25: TButton [36]
+    Left = 368
+    Top = 234
+    Width = 345
+    Height = 25
+    Caption = 'Importar saldos para Novo Estoque (v.311)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 25
+    OnClick = Button25Click
+  end
+  object Button24: TButton [37]
+    Left = 368
+    Top = 209
+    Width = 345
+    Height = 25
+    Caption = 'Acerto de Cidades Transportadora NFe (v.251)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 24
+    OnClick = Button24Click
   end
   inherited coCalcula: TACBrCalculadora
     Top = 624
