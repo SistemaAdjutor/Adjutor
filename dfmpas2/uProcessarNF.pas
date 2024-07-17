@@ -3030,7 +3030,7 @@ begin
       Produto.Imposto.ICMS.CST :=  StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
 
     case StrToIntDef(CSOSNIcmsToStr(Produto.Imposto.ICMS.CSOSN),0)   of
-    101:
+    101, 201:
           begin //Tributada pelo Simples Nacional com permissão de crédito (TRIBUTADA / COM CRED / SEM ST)
           if ( NotaF.NFe.Ide.indFinal  = cfNao ) then
           begin
