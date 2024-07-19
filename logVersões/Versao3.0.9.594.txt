@@ -1,4 +1,4 @@
-﻿Atualizado em 17/07/2024
+﻿Atualizado em 18/07/2024
 Inicio da versão: 08/07/2024
 
 principal: LF Epis
@@ -14,4 +14,9 @@ patch 1: Drimec, Metalúrgica Água
   
 patch 2: Metalúrgica Água
   1915 - ERRO->CADASTRO->PRODUTO->CONSULTA [Metalúrgica Água]
+  
+patch 3: Normadin, Metalúrgica Água
+  1917 - Implementação - Criar TAG "Crédito do ICMS" [Normadin]
+  1920 - Correção-> Cadastro [Metalúrgica Água]
+
 
