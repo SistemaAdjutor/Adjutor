@@ -2521,6 +2521,7 @@ type
       var Text: string; DisplayText: Boolean);
     procedure CdsProdutosCalcFields(DataSet: TDataSet);
     procedure bit_ExportaC9Click(Sender: TObject);
+    procedure CdsProdutosAfterEdit(DataSet: TDataSet);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -2653,7 +2654,7 @@ var
 procedure TFormProduto.HabilitaBotoes;
 begin
   Bit_novo.Enabled := True;
-  Bit_Excluir.Enabled := True;
+  Bit_Excluir.Enabled := cdsProdutos.State = dsBrowse;
   Bit_Sair.Enabled := True;
   Bit_Relatorio.Enabled := True;
   Bit_Lista.Enabled := True;
@@ -2665,15 +2666,15 @@ end;
 
 procedure TFormProduto.DesabilitaBotoes;
 begin
-  BotoesAcesso;
   Bit_novo.Enabled := False;
-  Bit_Excluir.Enabled := False;
+  Bit_Excluir.Enabled := cdsProdutos.State = dsBrowse; // False;
   Bit_Sair.Enabled := False;
   Bit_Relatorio.Enabled := False;
   Bit_Lista.Enabled := False;
   Bit_Gravar.Enabled := True;
   Bit_Cancelar.Enabled := True;
   DBNavigator1.Enabled := False;
+  BotoesAcesso;
 
 end;
 
@@ -7302,6 +7303,13 @@ begin
   EdtPrd_Refer.TabStop := True;
 end;
 
+procedure TFormProduto.CdsProdutosAfterEdit(DataSet: TDataSet);
+begin
+  inherited;
+  Bit_Excluir.Enabled := DataSet.State = dsBrowse;
+
+end;
+
 procedure TFormProduto.CdsProdutosAfterInsert( DataSet : TDataSet );
 var
   max : Integer;
@@ -7535,7 +7543,7 @@ procedure TFormProduto.sgdbEnderecamentoSelect(Sender: TObject);
 begin
   inherited;
   prdeRegistro.Text := sgdbEnderecamento.idRetorno;
-  if not ( CdsProdutos.State in dsEditModes ) then
+  if (not ( CdsProdutos.State in dsEditModes )) and  (sgdbEnderecamento.idRetorno <> '') then
     CdsProdutos.Edit;
 end;
 
