@@ -2657,7 +2657,7 @@ begin
   Bit_Excluir.Enabled := cdsProdutos.State = dsBrowse;
   Bit_Sair.Enabled := True;
   Bit_Relatorio.Enabled := True;
-  Bit_Lista.Enabled := True;
+  Bit_Lista.Enabled := cdsProdutos.State = dsBrowse; // True;
   Bit_Gravar.Enabled := False;
   Bit_Cancelar.Enabled := False;
   DBNavigator1.Enabled := True;
@@ -2670,7 +2670,7 @@ begin
   Bit_Excluir.Enabled := cdsProdutos.State = dsBrowse; // False;
   Bit_Sair.Enabled := False;
   Bit_Relatorio.Enabled := False;
-  Bit_Lista.Enabled := False;
+  Bit_Lista.Enabled := cdsProdutos.State = dsBrowse; // False;
   Bit_Gravar.Enabled := True;
   Bit_Cancelar.Enabled := True;
   DBNavigator1.Enabled := False;
@@ -7307,6 +7307,7 @@ procedure TFormProduto.CdsProdutosAfterEdit(DataSet: TDataSet);
 begin
   inherited;
   Bit_Excluir.Enabled := DataSet.State = dsBrowse;
+  Bit_Lista.Enabled := DataSet.State = dsBrowse;
 
 end;
 
