@@ -96,6 +96,7 @@ type
     qExportFPC_VENCTO: TDateField;
     cdsBuscoSITUACAO: TStringField;
     qExportSITUACAO: TStringField;
+    qExportULTPARCELA: TFMTBCDField;
     procedure FormCreate(Sender: TObject);
     procedure CdsBuscoCLI_RAZAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure CdsBuscoCLI_CGCGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -303,25 +304,27 @@ begin
   lista.Add('CLI_CODIGO');
   lista.Add('CLI_RAZAO');
   lista.Add('CLI_FANTASIA');
+  lista.Add('SITUACAO');
   lista.Add('CLI_CGC');
-  lista.Add('CLI_FONE');
+  lista.Add('CLI_INSC');
+  lista.Add('REP_NOME');
+  lista.Add('CORI_DESCRICAO');
+  lista.Add('RCL_ATIVIDADE');
+  lista.Add('ULTPARCELA');
+  lista.Add('CLI_ENDERE');
+  lista.Add('CLI_BAIRRO');
   lista.Add('CLI_CIDADE');
   lista.Add('CLI_UF');
-  lista.Add('CLI_INSC');
-  lista.Add('CLI_DTNASCIMENTO');
-  lista.Add('FPC_VENCTO');
-  lista.Add('RCL_ATIVIDADE');
-  lista.Add('CLI_FAX');
-  lista.Add('CLI_CELULAR');
-  lista.Add('CLI_BAIRRO');
   lista.Add('CLI_CEP');
-  lista.Add('CLI_ENDERE');
+  lista.Add('CLI_DTNASCIMENTO');
+  lista.Add('CLI_CELULAR');
+  lista.Add('CLI_FONE');
+  lista.Add('CLI_FAX');
   lista.Add('CLI_EMAIL_ALTERNATIVO');
   lista.Add('CLI_EMAIL');
   lista.Add('CLI_CONTATO');
-  lista.Add('REP_NOME');
-  lista.Add('CORI_DESCRICAO');
-  lista.Add('SITUACAO');
+
+//   lista.Add('FPC_VENCTO');
   CriaCSV(dsExport, lista, Self);
 end;
 
@@ -380,6 +383,17 @@ begin
           Add('       ATV.RCL_ATIVIDADE,' );
           Add('       CL.CLI_INSC, rp.REP_NOME, ' );
           Add('       VEND_INTERNO_CODIGO, CLI_CEP, cli_fax, cli_celular, CLI_UND_CONSUMIDORA, co.CORI_DESCRICAO,');
+
+          Add('  (SELECT  MAX(FPC_VLPARC) FROM FAT_PC01 pc ' +
+              '    WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+              '      AND FPC_EXCLUSAO = ''N''   ' +
+                   ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
+              '      AND FPC_VENCTO =   ( SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc2  ' +
+              '             WHERE pc2.CLI_CODIGO = cl.CLI_CODIGO  ' +
+                            ConcatSe(' AND pc2.', dbinicio.ExclusivoSql('RECEBER')) +
+              '               AND FPC_EXCLUSAO = ''N''   ' +
+              '                     ) ) AS ULTPARCELA, ' );
+
 
           Add('       CASE ' +
               '            WHEN CL.CLI_INATIVO = ''A'' THEN ''ATIVO''   ' +
