@@ -1209,7 +1209,7 @@ type
     Label103 : TLabel;
     Label111 : TLabel;
     Label104 : TLabel;
-    Label12 : TLabel;
+    lbIndice: TLabel;
     DBEdit59 : TDBEdit;
     dbedtPRG_MEDIDA_1 : TDBEdit;
     dbedtPRG_MEDIDA_2 : TDBEdit;
@@ -6480,6 +6480,8 @@ begin
 end;
 
 procedure TFormProduto.AtualizaProdutoGrade;
+var
+  sUnidade: string;
 begin
   CdsGrade.close;
   if ( not CdsProdutos.isEmpty ) then
@@ -6488,6 +6490,14 @@ begin
     CdsGrade.CommandText := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD_GRADE', 'WHERE PRD_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ), 'PRG_DESCRICAO', '' );
     CdsGrade.Open;
   end;
+  if ( CdsProdutosPRD_UND_GRADE_CALCULO.AsString <> '' ) then
+    sUnidade := CdsProdutosPRD_UND_GRADE_CALCULO.AsString
+  else
+    sUnidade := CdsProdutosPRD_UND.AsString;
+  if sUnidade = 'M3' then
+    lbIndice.Caption := 'Índice M3'
+  else
+    lbIndice.Caption := 'Índice';
 end;
 
 procedure TFormProduto.AtualizarComissoes;
@@ -7083,7 +7093,8 @@ begin
         // M3
         if ( sUnidade = 'M3' ) and ( CdsGradePRG_MEDIDA_1.AsFloat <> 0 ) and ( CdsGradePRG_MEDIDA_2.AsFloat <> 0 ) and ( CdsGradePRG_MEDIDA_3.AsFloat <> 0 ) then
         begin
-          CdsGradePRG_INDICE.AsFloat := ( CdsGradePRG_MEDIDA_1.AsFloat * CdsGradePRG_MEDIDA_2.AsFloat * CdsGradePRG_MEDIDA_3.AsFloat ) / 1000000;
+          // CdsGradePRG_INDICE.AsFloat := ( CdsGradePRG_MEDIDA_1.AsFloat * CdsGradePRG_MEDIDA_2.AsFloat * CdsGradePRG_MEDIDA_3.AsFloat ) / 1000000;
+          CdsGradePRG_INDICE.AsFloat := ( CdsGradePRG_MEDIDA_1.AsFloat * CdsGradePRG_MEDIDA_2.AsFloat * CdsGradePRG_MEDIDA_3.AsFloat );
           if ( CdsGradePRG_REDUCAO_PERCENT.AsFloat > 0 ) then
             CdsGradePRG_INDICE.AsFloat := CdsGradePRG_INDICE.AsFloat - ( CdsGradePRG_INDICE.AsFloat * ( CdsGradePRG_REDUCAO_PERCENT.AsFloat / 100 ) );
         end

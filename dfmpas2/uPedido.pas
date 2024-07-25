@@ -1094,6 +1094,7 @@ type
     curPeso: TJvValidateEdit;
     btCancelaPeso: TBitBtn;
     btSalvaPeso: TBitBtn;
+    SqlCdsPedidoItemPRG_INDICE: TFMTBCDField;
 
     procedure FormKeyDown(Sender: tObject; var Key: Word;Shift: TShiftState);
     procedure CurDescontoNotaFiscalExit(Sender: tObject);
@@ -2033,10 +2034,15 @@ begin
                    '       t1.prf_preco, '+
                    '       t1.prf_custo, '+
                    '       0.00 as markup, '+
-                   ' CASE PRF_PRODUTO_AGREGADO'+
-                   ' WHEN ''N'' THEN cast(cast(t1.PRF_QTDE as numeric(15,3)) * cast(t1.PRF_PRECO as numeric(15,5)) as numeric(18,2))                                                                              '+
-                   ' ELSE cast(cast(t1.PRF_QTDE as numeric(15,3)) * cast(t1.PRF_PRECO as numeric(15,5)) as numeric(18,2))*(SELECT PRF_QTDE FROM PED_IT01 it2 WHERE it2.PRF_REGISTRO = t1.PRF_REGISTRO_VINCULADO)' +
-                   ' END AS TOTAL, '  +
+                   '        CASE ' +
+                   '         WHEN PMT_ATIVA_METRO_CUBICO = ''S'' ' +
+                   '           THEN CAST(t3.PRG_INDICE * t1.PRF_QTDE * t1.PRF_PRECO AS NUMERIC(18,2)) ' +
+                   '         ELSE ' +
+                   '          CASE PRF_PRODUTO_AGREGADO'+
+                   '           WHEN ''N'' THEN cast(cast(t1.PRF_QTDE as numeric(15,3)) * cast(t1.PRF_PRECO as numeric(15,5)) as numeric(18,2))                                                                              '+
+                   '           ELSE cast(cast(t1.PRF_QTDE as numeric(15,3)) * cast(t1.PRF_PRECO as numeric(15,5)) as numeric(18,2))*(SELECT PRF_QTDE FROM PED_IT01 it2 WHERE it2.PRF_REGISTRO = t1.PRF_REGISTRO_VINCULADO)' +
+                   '          END ' +
+                           ' END AS TOTAL, '  +
                    ' (SELECT PRF_QTDE FROM PED_IT01 it2 WHERE it2.PRF_REGISTRO = t1.PRF_REGISTRO_VINCULADO) as QtdeKit, '+
                   // '       cast(cast(t1.PRF_QTDE as numeric(15,3)) * cast(t1.PRF_PRECO as numeric(15,5)) as numeric(18,2))  as total,'+
                    '       t1.prf_ipialiq, '+
@@ -2057,6 +2063,7 @@ begin
                    '       t3.PRG_MEDIDA_1,'+
                    '       t3.PRG_MEDIDA_2,'+
                    '       t3.PRG_MEDIDA_3,'+
+                   '       t3.PRG_INDICE,'+
                    '       t2.PRD_FATOR_PROD,'+
                    '       t2.PRD_ALIQICM, '+
                    '       t2.IPI_CODIGO, '+
@@ -2083,6 +2090,7 @@ begin
                    ' PRF_QUANT_TRIB, T2.PRD_UND_TRIB, T1.CAP_CODIGO, T1.ACO_CODIGO '+
                    'from  ped_it01 t1 '+
                    ' join  prd0000 t2 on t2.prd_codigo = t1.prd_codigo '+
+                   ' JOIN PRMT0001 p2 ON (p2.EMP_CODIGO = t1.EMP_CODIGO) ' +
                 //  '      join prd0000 t2 on t2.prd_refer = IIF(Coalesce(t1.prd_refer,'+qStr('')+')='+qStr('')+',T1.prdco_codigo_original,T1.prd_refer) '+sEmpresa+' '+
                    '      left join prd_grade t3 on (t3.prg_registro = t1.prg_registro) '+
                    '      left join prd_diretiva t4 on (t4.prdd_registro = t1.prdd_registro) '+
@@ -2689,6 +2697,10 @@ begin
 
   PanelAguarde.Top := (Self.Height div 2) - (PanelAguarde.Height div 2);
   PanelAguarde.Left := (Self.Width div 2) - (PanelAguarde.Width div 2);
+
+  if BuscaUmDadoSqlAsString('SELECT PMT_ATIVA_METRO_CUBICO FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO)) <> 'S'  then
+    GetColumn(DbGradeItemPedido, 'PRG_INDICE').Visible := False;
+
 
   if BuscaUmDadoSqlAsString('SELECT PMT_IMPORTA_ITENS_XML FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO)) = 'S'  then
   begin

@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = TabGrade
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -10460,11 +10460,12 @@ inherited FormProduto: TFormProduto
           Alignment = taRightJustify
           Caption = 'Pre'#231'o Grade:'
         end
-        object Label12: TLabel
-          Left = 820
+        object lbIndice: TLabel
+          Left = 784
           Top = 55
-          Width = 31
+          Width = 67
           Height = 14
+          Alignment = taRightJustify
           Caption = 'Indice:'
         end
         object Label10: TLabel
