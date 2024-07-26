@@ -6372,10 +6372,14 @@ begin
 end;
 
 procedure TFrmPedidoItem.HabilitarCamposSemGrade( const pCodProduto: String);
+var
+  precoVendaZero, lancaZerado : boolean;
 begin
+  precoVendaZero := (BuscaUmDadoSqlAsFloat('SELECT PRD_PVENDA FROM PRD0000 WHERE PRD_CODIGO = ' + QuotedStr(cbReferencia.IdRetorno)) = 0);
+  lancaZerado := (BuscaUmDadoSqlAsString('SELECT PRD_LANCA_VALOR_ZERADO FROM PRD0000 WHERE PRD_CODIGO = ' + QuotedStr(cbReferencia.IdRetorno)) = 'S');
+	CurPrecoBruto.Enabled :=  (dbInicio.Empresa.bUSP_STAT_PRECO_BRUTO_P) or ((precoVendaZero) and (lancaZerado) ) ;
+	CurPrecoLiquido.Enabled :=  (dbInicio.Empresa.bUSP_STAT_PRECO_LIQUIDO_P) or ((precoVendaZero) and (lancaZerado) ) ;
 
-	CurPrecoBruto.Enabled :=  (dbInicio.Empresa.bUSP_STAT_PRECO_BRUTO_P);
-	CurPrecoLiquido.Enabled :=  (dbInicio.Empresa.bUSP_STAT_PRECO_LIQUIDO_P);
   if (qAux.FieldByName('pti_sigla').AsString = 'KT')  and DBInicio.Empresa.wPMT_ITENS_KIT then
   begin
    CurDesconto.ReadOnly := True;

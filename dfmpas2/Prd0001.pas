@@ -2252,6 +2252,9 @@ type
     qFichaTecnicaItensEMP_CODIGO: TStringField;
     N4: TMenuItem;
     ExportarFichaTcnicaparaoC91: TMenuItem;
+    DBCheckBox7: TDBCheckBox;
+    SqlProdutosPRD_LANCA_VALOR_ZERADO: TStringField;
+    CdsProdutosPRD_LANCA_VALOR_ZERADO: TStringField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
