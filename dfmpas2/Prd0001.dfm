@@ -10461,9 +10461,9 @@ inherited FormProduto: TFormProduto
           Caption = 'Pre'#231'o Grade:'
         end
         object lbIndice: TLabel
-          Left = 784
+          Left = 820
           Top = 55
-          Width = 67
+          Width = 31
           Height = 14
           Alignment = taRightJustify
           Caption = 'Indice:'

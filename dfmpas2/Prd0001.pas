@@ -6495,7 +6495,13 @@ begin
   else
     sUnidade := CdsProdutosPRD_UND.AsString;
   if sUnidade = 'M3' then
-    lbIndice.Caption := 'Índice M3'
+  begin
+    lbIndice.Caption := 'Índice M3';
+    lbIndice.Hint := 'Inserir valor da metragem cúbica para a grade.';
+    lbIndice.ShowHint := True;
+    dbedtPRG_INDICE.Hint := 'Inserir valor da metragem cúbica para a grade.';
+    dbedtPRG_INDICE.ShowHint := True;
+  end
   else
     lbIndice.Caption := 'Índice';
 end;

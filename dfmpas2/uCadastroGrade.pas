@@ -26,7 +26,7 @@ type
     CurMedida3: TCurrencyEdit;
     Label8: TLabel;
     CurReducao: TCurrencyEdit;
-    Label9: TLabel;
+    lbIndice: TLabel;
     CurIndice: TCurrencyEdit;
     CurPrecoCalculado: TCurrencyEdit;
     Label10: TLabel;
@@ -156,7 +156,7 @@ begin
    //M3
    if (sProdutoUnidade = 'M3')and(CurMedida1.Value <> 0)and(CurMedida2.Value <> 0)and(CurMedida3.Value <> 0) then
       begin
-         CurIndice.Value := (CurMedida1.Value  * CurMedida2.Value * CurMedida3.Value) / 1000000;
+         CurIndice.Value := (CurMedida1.Value  * CurMedida2.Value * CurMedida3.Value) { / 1000000} ;
          if (CurReducao.Value > 0) then
             CurIndice.Value := CurIndice.Value - (CurIndice.Value * (CurReducao.Value/100));
       end
@@ -210,6 +210,21 @@ begin
     lbMedida2.Caption := DBInicio.GetParametroSistema('PMT_GRADE_MEDIDA2');
     lbMedida3.Caption := DBInicio.GetParametroSistema('PMT_GRADE_MEDIDA3');
   end;
+
+  if sProdutoUnidade = 'M3' then
+  begin
+    lbIndice.Caption := 'Índice M3';
+    lbIndice.Hint := 'Inserir valor da metragem cúbica para a grade.';
+    lbIndice.ShowHint := True;
+    CurIndice.Hint := 'Inserir valor da metragem cúbica para a grade.';
+    CurIndice.ShowHint := True;
+  end
+  else
+    lbIndice.Caption := 'Índice';
+
+
+
+
 
 end;
 
