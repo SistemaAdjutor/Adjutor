@@ -2998,11 +2998,14 @@ begin
                         IntToStr(Trunc(DataCadastros.sqlUpdate.FieldByName('PRG_MEDIDA_3').AsCurrency * 1000))  +
                         Cor;
                      ExecSql( 'UPDATE PED_IT01 SET PRDCO_CODIGO_ORIGINAL = ' + qStr(PrdCoCodigoOriginal) + ' WHERE PRF_REGISTRO = '+IntToStr(iRegistroItem) );
-
+{
                      if (DataCadastros.sqlUpdate.FieldByName('PRG_MEDIDA_1').AsFloat <= 18) and (DataCadastros.sqlUpdate.FieldByName('PRG_MEDIDA_2').AsFloat <= 30) then
                        NCMCodigo := '39232110'
                      else
                        NCMCodigo := '39232190';
+ }
+                     NCMCodigo := BuscaUmDadoSqlAsString('SELECT IPI_CODIGO FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(prdRefer) );
+
                      ExecSql( 'UPDATE PED_IT01 SET NCM_CODIGO  = ' + qStr(NCMCodigo) + ' WHERE PRF_REGISTRO = '+IntToStr(iRegistroItem) );
 
                    end;
