@@ -341,6 +341,7 @@ type
     CdsReceberCLI_PESSOA: TStringField;
     CdsReceberFPC_ANTECIPACAO_CONCLUIDA: TStringField;
     cxgrdReceberFPC_ANTECIPACAO_CONCLUIDA: TcxGridDBColumn;
+    cdsExportaExcelCLI_UND_CONSUMIDORA: TIntegerField;
     procedure FormShow(Sender: tObject);
     procedure BaixarnaConsulta;
     procedure Bit_SairClick(Sender: tObject);
@@ -2022,6 +2023,7 @@ begin
   lista.Add('FPC_VLPAGO');
   lista.Add('FAT_VLFAT');
   lista.Add('CLI_CGC');
+  lista.Add('CLI_UND_CONSUMIDORA');
   lista.Add('CLI_RAZAO');
   lista.Add('PED_CODIGO');
   lista.Add('NF_NUM_NFE');
