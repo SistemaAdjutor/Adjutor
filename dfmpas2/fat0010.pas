@@ -915,7 +915,8 @@ begin
   qReceberCentrocusto.SQL.Add('  JOIN FORMA_PAGAMENTO T3 ON	(T3.FPG_REGISTRO = T1.FPG_REGISTRO) ');
   qReceberCentrocusto.SQL.Add('  JOIN USUARIO T4 ON	(T4.USU_CODIGO = T1.USU_CODIGO) ');
   qReceberCentrocusto.SQL.Add('  JOIN FAT_PC01 T5 ON	(T5.FAT_REGISTRO = T1.FAT_REGISTRO	AND t5.EMP_CODIGO = t1.EMP_CODIGO) ');
-  qReceberCentrocusto.SQL.Add('  LEFT JOIN PCX0000 PCX ON	(PCX.PCX_CODIGO = T5.PCX_CODIGO	AND PCX.EMP_CODIGO = T5.EMP_CODIGO) ');
+//  qReceberCentrocusto.SQL.Add('  LEFT JOIN PCX0000 PCX ON	(PCX.PCX_CODIGO = T5.PCX_CODIGO	AND PCX.EMP_CODIGO = T5.EMP_CODIGO) ');
+  qReceberCentrocusto.SQL.Add('  LEFT JOIN PCX0000 PCX ON	(PCX.PCX_CODIGO = T5.PCX_CODIGO) ');
   qReceberCentrocusto.SQL.Add('  JOIN fat0000 t7 ON	(t7.fat_codigo = t5.fat_codigo		AND t5.EMP_CODIGO = t7.emp_codigo) ');
   qReceberCentrocusto.SQL.Add('  JOIN CLI0000 T6 ON	(T6.CLI_CODIGO = T7.CLI_CODIGO) ');
   qReceberCentrocusto.SQL.Add('  LEFT JOIN nf0001 t8 ON	(t8.nf_notanumber = t7.fat_codigo		AND t8.EMP_CODIGO = t7.emp_codigo		AND t8.nf_cancelada <> ''S''		AND t8.nf_status_nfe <> ''C''		AND t8.ope_semvlcom <> ''''		AND t8.ope_semvlcom IS NOT NULL) ');
