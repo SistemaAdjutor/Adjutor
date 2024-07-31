@@ -6111,7 +6111,7 @@ inherited FormProduto: TFormProduto
         Width = 875
         Height = 188
         Cursor = crHandPoint
-        ActivePage = TbS_FatorConv
+        ActivePage = TabSheet3
         HotTrack = True
         TabOrder = 2
         OnChange = PgCtrl_ProdutosChange
@@ -6552,6 +6552,7 @@ inherited FormProduto: TFormProduto
               Align = alBottom
               Caption = 'Prazo da Oferta'
               TabOrder = 3
+              ExplicitWidth = 745
               object Label84: TLabel
                 Left = 10
                 Top = 17
@@ -6681,6 +6682,23 @@ inherited FormProduto: TFormProduto
                 PopupColor = clBtnFace
                 ShowNullDate = False
                 TabOrder = 1
+              end
+              object DBCheckBox7: TDBCheckBox
+                Left = 455
+                Top = 16
+                Width = 125
+                Height = 17
+                Hint = 
+                  'Na inser'#231#227'o do Item no Pedido, Permite alterar o Valor se Pre'#231'o ' +
+                  'de Venda estiver Zerado'
+                Caption = 'Altera Valor Zerado'
+                DataField = 'PRD_LANCA_VALOR_ZERADO'
+                DataSource = DsProdutos
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 2
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
             object gbEmpresaPreco: TGroupBox
@@ -8423,7 +8441,7 @@ inherited FormProduto: TFormProduto
         Top = 157
         Width = 1059
         Height = 142
-        ActivePage = TabSheet11
+        ActivePage = TabSheet9
         TabOrder = 1
         object TabSheet9: TTabSheet
           Caption = 'Organiza'#231#227'o do Produto'
@@ -18354,6 +18372,10 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRD_AGRONEGOCIO'
       Size = 1
     end
+    object SqlProdutosPRD_LANCA_VALOR_ZERADO: TStringField
+      FieldName = 'PRD_LANCA_VALOR_ZERADO'
+      Size = 1
+    end
   end
   object DspProdutos: TDataSetProvider [76]
     DataSet = SqlProdutos
@@ -19365,6 +19387,10 @@ inherited FormProduto: TFormProduto
     end
     object CdsProdutosPRD_AGRONEGOCIO: TStringField
       FieldName = 'PRD_AGRONEGOCIO'
+      Size = 1
+    end
+    object CdsProdutosPRD_LANCA_VALOR_ZERADO: TStringField
+      FieldName = 'PRD_LANCA_VALOR_ZERADO'
       Size = 1
     end
   end
