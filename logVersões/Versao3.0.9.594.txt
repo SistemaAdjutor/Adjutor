@@ -1,4 +1,4 @@
-﻿Atualizado em 18/07/2024
+﻿Atualizado em 31/07/2024
 Inicio da versão: 08/07/2024
 
 principal: LF Epis
@@ -19,4 +19,14 @@ patch 3: Normadin, Metalúrgica Água
   1917 - Implementação - Criar TAG "Crédito do ICMS" [Normadin]
   1920 - Correção-> Cadastro [Metalúrgica Água]
 
-
+patch 4: Normadin, Collect, Drimec, Vila Rica, Parseals, Rotor
+  1917 - Implementação - Criar TAG "Crédito do ICMS" [Normadin]
+  1922 - IMPLEMENTAÇÃO->Cadastro/ Clientes [Collect]
+  1923 - Implementar -> RELATÓRIO FINANCEIRO EM EXCEL [Collect]
+  1924 - Bug -> Ao carregar CFOP [Drimec]
+  1925 - Erro ao selecionar grade do produto no pedido [Vila Rica]
+  1926 - Inserir Calculo de M3 no cadastro das grades [Vila Rica]
+  1927 - Erro->Relatório Receber Agrupado Centro de custo [Collect]
+  1928 - Implementar -> Produtos possa alterar o valor se zerado [Parseals]
+  1929 - ERRO->FALTA INFORMAÇAO DO ICMS SUBST.TRIBUTARIA NO PEDIDO [Rotor]
+  
