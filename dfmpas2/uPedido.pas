@@ -7445,7 +7445,7 @@ begin
                                                         + iif( sOrigem <> '', ' and OPR_ORIGEM = ' +QuotedStr(sOrigem),'')  ,'','T1.');
                           dbInicio.qAux2.open;
 
-                          if not dbInicio.qAux2.IsEmpty then
+                          if dbInicio.qAux2.IsEmpty then
                           begin
                             i := 8;
                             while (i >= 2) do
