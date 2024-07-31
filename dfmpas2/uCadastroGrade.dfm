@@ -11,7 +11,7 @@ object FrmCadastroGrade: TFrmCadastroGrade
   Font.Name = 'Arial'
   Font.Style = []
   OldCreateOrder = False
-  Position = poDesktopCenter
+  Position = poOwnerFormCenter
   OnShow = FormShow
   PixelsPerInch = 96
   TextHeight = 14
@@ -161,10 +161,10 @@ object FrmCadastroGrade: TFrmCadastroGrade
       Font.Style = []
       ParentFont = False
     end
-    object Label9: TLabel
-      Left = 216
+    object lbIndice: TLabel
+      Left = 183
       Top = 97
-      Width = 31
+      Width = 64
       Height = 14
       Alignment = taRightJustify
       Caption = #205'ndice:'

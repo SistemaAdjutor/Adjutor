@@ -406,6 +406,9 @@ type
     cbCor: TSgDbSearchCombo;
     SQLQuery2: TSQLQuery;
     CbGrade: TComboBoxRw;
+    cdsItemGradePRG_MEDIDA_1: TFMTBCDField;
+    cdsItemGradePRG_MEDIDA_2: TFMTBCDField;
+    cdsItemGradePRG_MEDIDA_3: TFMTBCDField;
 
     procedure Bit_CancelarClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
@@ -1149,7 +1152,9 @@ begin
 end;
 
 procedure TFrmPedidoItem.CalculaTotais;
-var lValor: Currency ;
+var
+  lValor: Currency ;
+  indice: double;
 begin
 	if (pgcPrincipal.ActivePage = tsSemGrade) then
   begin
@@ -1161,7 +1166,16 @@ begin
   				CurPrecoLiquido.Value := Uteis.RoundTo((CurPrecoBruto.Value *( 1- (rIndiceDesconto /100))),-5)
         else
           CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
-				CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value;
+        if cbGrade.IdRetorno <> '' then
+          indice := BuscaUmDadoSqlAsFloat('SELECT PRG_INDICE FROM PRD_GRADE WHERE PRG_REGISTRO = ' + QuotedStr(cbGrade.IdRetorno) )
+        else
+          indice := 0;
+
+        if indice > 0 then
+  				CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value * indice
+        else
+          CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value;
+
 
 				CurValorIPI.Value := 0;
 				lValor := qAux.FieldByName('IPI_VALOR_POR_ITEM').asCurrency;
@@ -1332,7 +1346,7 @@ begin
 	if (not VarIsEmpty(Prod_Codigo)) then
 	begin
     sItemGrade.SQL.Clear;
-    sItemGrade.SQL.Add(SQLDEF('PRODUTOS', 'SELECT PRG_REGISTRO, p.PRD_CODIGO, PRG_SALDO, '+
+    sItemGrade.SQL.Add(SQLDEF('PRODUTOS', 'SELECT PRG_REGISTRO, p.PRD_CODIGO, PRG_SALDO, PRG_MEDIDA_1, PRG_MEDIDA_2, PRG_MEDIDA_3,'+
                                           'PRG_DESCRICAO,  PRG_REDUCAO_PERCENT, PRG_INDICE, '+
                                           ' 0.0 as PRG_QTDE, 0.0 as PRG_QTDEAnterior, IIF(PRG_PRECO = 0,PRD_PVENDA, PRG_PRECO) as PRG_BRUTO, '+
                                           ' 0.0 PRECO_LIQU, 0 as PORC_IPI, '+

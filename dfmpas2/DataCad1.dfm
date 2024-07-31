@@ -1683,6 +1683,10 @@ object DataCadastros1: TDataCadastros1
     object SqlParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO_D: TIntegerField
       FieldName = 'PMT_BLOQ_PED_VENDA_FAT_ATRASO_D'
     end
+    object SqlParametrosPMT_ATIVA_METRO_CUBICO: TStringField
+      FieldName = 'PMT_ATIVA_METRO_CUBICO'
+      Size = 1
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -3007,6 +3011,10 @@ object DataCadastros1: TDataCadastros1
     end
     object CdsParametrosPMT_BLOQ_PED_VENDA_FAT_ATRASO_D: TIntegerField
       FieldName = 'PMT_BLOQ_PED_VENDA_FAT_ATRASO_D'
+    end
+    object CdsParametrosPMT_ATIVA_METRO_CUBICO: TStringField
+      FieldName = 'PMT_ATIVA_METRO_CUBICO'
+      Size = 1
     end
   end
   object DsParametros: TDataSource

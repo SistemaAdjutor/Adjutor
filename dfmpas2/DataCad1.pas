@@ -1719,6 +1719,8 @@ type
     CDSUsaParametroUSP_ATIVAR_TROCA_CENTRO_CUSTO: TStringField;
     SQLUsaParametroUSP_BOTAO_DESVINCULAR_PEDIDO: TStringField;
     CDSUsaParametroUSP_BOTAO_DESVINCULAR_PEDIDO: TStringField;
+    SqlParametrosPMT_ATIVA_METRO_CUBICO: TStringField;
+    CdsParametrosPMT_ATIVA_METRO_CUBICO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

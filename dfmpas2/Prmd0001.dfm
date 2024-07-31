@@ -493,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 3
+      PageIndex = 4
       TabOrder = 0
       object TPage
         Left = 0
@@ -1206,7 +1206,6 @@ inherited FormParametros: TFormParametros
             TabOrder = 0
             object tsFinanceiro: TTabSheet
               Caption = 'Financeiro'
-              ExplicitTop = 31
               object Label19: TLabel
                 Left = 413
                 Top = 36
@@ -2967,6 +2966,26 @@ inherited FormParametros: TFormParametros
                   DataSource = DataCadastros1.DsParametros
                   TabOrder = 2
                 end
+              end
+              object DBCheckBox99: TDBCheckBox
+                Left = 11
+                Top = 276
+                Width = 271
+                Height = 17
+                Caption = 'Ativa Coluna Metro C'#250'bico'
+                DataField = 'PMT_ATIVA_METRO_CUBICO'
+                DataSource = DataCadastros1.DsParametros
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clBlack
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = []
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 15
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
           end
