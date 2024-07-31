@@ -506,6 +506,8 @@ begin
     Try
       DataCadastros.CdsOperFisc.Close;
       DataCadastros.CdsOperFisc.CommandText := SQLDEF('OPERACAOFISCAL','SELECT * FROM OPE0000','','OPE_CODIGO','');
+      DataCadastros.CdsOperFisc.IndexDefs.Clear;
+      DataCadastros.CdsOperFisc.IndexName := '';
       DataCadastros.CdsOperFisc.Open;
       chkretencao.Enabled := DBChOPE_SERVICO.Checked;
     except on E:EdatabaseError do
