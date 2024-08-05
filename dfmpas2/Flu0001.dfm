@@ -14,7 +14,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
   Position = poDesktopCenter
   Visible = True
   ExplicitWidth = 1153
-  ExplicitHeight = 627
+  ExplicitHeight = 631
   PixelsPerInch = 96
   TextHeight = 14
   object GroupBox2: TGroupBox [0]
@@ -3214,6 +3214,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
     PassSetting = psTwoPass
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Carta'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -3230,6 +3231,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = True
@@ -3239,22 +3248,34 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = True
@@ -3262,14 +3283,27 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 120
     Top = 232
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 0
     DataPipelineName = 'ppDBFluxoCx'
     object pp00HeaderBand1: TppHeaderBand
       BeforePrint = pp00HeaderBand1BeforePrint
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 19579
       mmPrintPosition = 0
@@ -3277,6 +3311,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         DesignLayer = ppDesignLayer1
         UserName = 'Line1'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3290,13 +3325,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'LBL_00_EMPRESA'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'LABEL_EMPRESA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 0
@@ -3310,13 +3347,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'LBL_00_LTITULO1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO1'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -3330,13 +3369,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'LBL_00_LTITULO2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'TITULO2'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 0
@@ -3349,6 +3390,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         DesignLayer = ppDesignLayer1
         UserName = 'Line2'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3362,6 +3404,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'SystemVariable1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtDateTime
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3381,6 +3424,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'SystemVariable2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         VarType = vtPageSetDesc
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -3399,6 +3443,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         DesignLayer = ppDesignLayer1
         UserName = 'Line3'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3412,13 +3457,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'Label1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'DATA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 2117
@@ -3432,13 +3479,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'Label2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'RECEBER'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3246
@@ -3453,13 +3502,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'Label3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'PAGAR'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3246
@@ -3474,13 +3525,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'Label4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'SALDO BANCO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 89165
@@ -3494,13 +3547,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'Label5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'CAIXA DO DIA'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 116946
@@ -3514,13 +3569,15 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'Label6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Caption = 'ACUMULADO'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Times New Roman'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3175
@@ -3532,8 +3589,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
       end
     end
     object pp00DetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 3175
@@ -3543,6 +3599,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'DBText1'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FLU_DIA'
         DataPipeline = ppDBFluxoCx
         Font.Charset = DEFAULT_CHARSET
@@ -3564,6 +3621,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'DBText2'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FLU_RECEBE'
         DataPipeline = ppDBFluxoCx
         DisplayFormat = '#,##0.00'
@@ -3587,6 +3645,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'DBText3'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FLU_PAGAR'
         DataPipeline = ppDBFluxoCx
         DisplayFormat = '#,##0.00'
@@ -3610,6 +3669,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'DBText4'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FLU_BANCO'
         DataPipeline = ppDBFluxoCx
         DisplayFormat = '#,##0.00'
@@ -3633,6 +3693,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'DBText5'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FLU_SALDO'
         DataPipeline = ppDBFluxoCx
         DisplayFormat = '#,##0.00'
@@ -3656,6 +3717,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         UserName = 'DBText6'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         DataField = 'FLU_ACUMULO'
         DataPipeline = ppDBFluxoCx
         DisplayFormat = '#,##0.00'
@@ -3676,7 +3738,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
       end
     end
     object pp00SummaryBand1: TppSummaryBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 1588
       mmPrintPosition = 0
@@ -3684,6 +3746,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         DesignLayer = ppDesignLayer1
         UserName = 'Line4'
         Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
@@ -3694,7 +3757,6 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
       end
     end
     object raCodeModule3: TraCodeModule
-      ProgramStream = {00}
     end
     object ppDesignLayers1: TppDesignLayers
       object ppDesignLayer1: TppDesignLayer
@@ -3813,7 +3875,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
     Top = 400
   end
   object frxReport1: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -3850,12 +3912,16 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 18.897650000000000000
         Width = 1046.929810000000000000
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Width = 589.606680000000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -3864,12 +3930,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[empresa]')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Top = 15.118120000000000000
           Width = 589.606680000000000000
           Height = 15.118120000000000000
@@ -3879,12 +3947,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fluxo de Caixa')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Top = 30.236240000000000000
           Width = 589.606680000000000000
           Height = 15.118120000000000000
@@ -3894,12 +3964,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[filtro]')
           ParentFont = False
           VAlign = vaCenter
         end
         object SysMemo2: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 918.425790000000000000
           Top = 15.118120000000000000
           Width = 128.504020000000000000
@@ -3909,6 +3981,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[TIME]')
@@ -3916,6 +3989,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           VAlign = vaCenter
         end
         object SysMemo3: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 918.425790000000000000
           Top = 30.236240000000000000
           Width = 128.504020000000000000
@@ -3925,6 +3999,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[PAGE#] de [TOTALPAGES#]')
@@ -3932,6 +4007,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           VAlign = vaCenter
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 45.354360000000000000
           Width = 1046.929810000000000000
           Color = clBlack
@@ -3939,6 +4015,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Frame.Typ = [ftTop]
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Top = 45.354360000000000000
           Width = 79.370130000000000000
           Height = 30.236240000000000000
@@ -3948,12 +4025,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Movimento')
           ParentFont = False
           VAlign = vaCenter
         end
         object SysMemo1: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 918.425790000000000000
           Width = 128.504020000000000000
           Height = 15.118120000000000000
@@ -3962,6 +4041,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[DATE]')
@@ -3969,6 +4049,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           VAlign = vaCenter
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 75.590600000000000000
           Width = 1046.929810000000000000
           Color = clBlack
@@ -3976,13 +4057,16 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Frame.Typ = [ftTop]
         end
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 45.354360000000000000
           Width = 438.425480000000000000
           Height = 15.118120000000000000
           Fill.BackColor = clSilver
+          Frame.Typ = []
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 45.354360000000000000
           Width = 438.425480000000000000
@@ -3993,12 +4077,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Previs'#227'o')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 60.472480000000000000
           Width = 113.385900000000000000
@@ -4009,12 +4095,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Prev. Receber')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Top = 60.472480000000000000
           Width = 109.606370000000000000
@@ -4025,12 +4113,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Prev. Pagar')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 60.472480000000000000
           Width = 98.267780000000000000
@@ -4041,12 +4131,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Prev. Saldo Dia')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 400.630180000000000000
           Top = 60.472480000000000000
           Width = 117.165430000000000000
@@ -4057,19 +4149,23 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Prev. Saldo Acumulado')
           ParentFont = False
           VAlign = vaCenter
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 45.354360000000000000
           Width = 529.134200000000000000
           Height = 15.118120000000000000
           Fill.BackColor = clSilver
+          Frame.Typ = []
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 45.354360000000000000
           Width = 529.134200000000000000
@@ -4080,12 +4176,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'Realizado')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Top = 60.472480000000000000
           Width = 113.385900000000000000
@@ -4096,12 +4194,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Recebido')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Top = 60.472480000000000000
           Width = 98.267780000000000000
@@ -4112,12 +4212,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Pago')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 831.496600000000000000
           Top = 60.472480000000000000
           Width = 98.267780000000000000
@@ -4128,12 +4230,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Prev. Saldo Dia')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 929.764380000000000000
           Top = 60.472480000000000000
           Width = 117.165430000000000000
@@ -4144,12 +4248,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Prev. Saldo Acumulado')
           ParentFont = False
           VAlign = vaCenter
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 729.449290000000000000
           Top = 60.472480000000000000
           Width = 102.047310000000000000
@@ -4160,6 +4266,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Desconto')
           ParentFont = False
@@ -4168,6 +4275,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 15.118120000000000000
         Top = 154.960730000000000000
         Width = 1046.929810000000000000
@@ -4175,6 +4283,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
         DataSetName = 'frxDBDataset1'
         RowCount = 0
         object frxDBDataset1DATA_MOVIMENTO: TfrxMemoView
+          AllowVectorExport = True
           Width = 79.370130000000000000
           Height = 15.118120000000000000
           DataField = 'DATA_MOVIMENTO'
@@ -4185,11 +4294,13 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBDataset1."DATA_MOVIMENTO"]')
           ParentFont = False
         end
         object frxDBDataset1VALOR_PREVISAO_RECEBER: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
@@ -4204,12 +4315,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."VALOR_PREVISAO_RECEBER"]')
           ParentFont = False
         end
         object frxDBDataset1VALOR_PREVISAO_PAGAR: TfrxMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -4224,12 +4337,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."VALOR_PREVISAO_PAGAR"]')
           ParentFont = False
         end
         object frxDBDataset1SALDO_DO_DIA_PREV: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Width = 98.267780000000000000
           Height = 15.118120000000000000
@@ -4244,12 +4359,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."SALDO_DO_DIA_PREV"]')
           ParentFont = False
         end
         object frxDBDataset1SALDO_ACUMULADO_PREV: TfrxMemoView
+          AllowVectorExport = True
           Left = 400.630180000000000000
           Width = 117.165430000000000000
           Height = 15.118120000000000000
@@ -4264,12 +4381,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."SALDO_ACUMULADO_PREV"]')
           ParentFont = False
         end
         object frxDBDataset1VALOR_RECEBIDO: TfrxMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Width = 113.385900000000000000
           Height = 15.118120000000000000
@@ -4284,12 +4403,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."VALOR_RECEBIDO"]')
           ParentFont = False
         end
         object frxDBDataset1VALOR_PAGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Width = 98.267780000000000000
           Height = 15.118120000000000000
@@ -4304,12 +4425,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."VALOR_PAGO"]')
           ParentFont = False
         end
         object frxDBDataset1VALOR_DESCONTADO: TfrxMemoView
+          AllowVectorExport = True
           Left = 729.449290000000000000
           Width = 102.047310000000000000
           Height = 15.118120000000000000
@@ -4323,12 +4446,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."VALOR_DESCONTADO"]')
           ParentFont = False
         end
         object frxDBDataset1SALDO_DO_DIA_REAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 831.496600000000000000
           Width = 98.267780000000000000
           Height = 15.118120000000000000
@@ -4343,12 +4468,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."SALDO_DO_DIA_REAL"]')
           ParentFont = False
         end
         object frxDBDataset1SALDO_ACUMULADO_REAL: TfrxMemoView
+          AllowVectorExport = True
           Left = 929.764380000000000000
           Width = 117.165430000000000000
           Height = 15.118120000000000000
@@ -4363,6 +4490,7 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBDataset1."SALDO_ACUMULADO_REAL"]')
@@ -4371,10 +4499,12 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 3.779530000000000000
         Top = 272.126160000000000000
         Width = 1046.929810000000000000
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Style = fsDot
@@ -4383,10 +4513,12 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 192.756030000000000000
         Width = 1046.929810000000000000
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Width = 79.370130000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -4395,11 +4527,13 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Totais')
           ParentFont = False
         end
         object SysMemo4: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
@@ -4411,12 +4545,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."VALOR_PREVISAO_RECEBER">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo5: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 192.756030000000000000
           Width = 109.606370000000000000
           Height = 18.897650000000000000
@@ -4428,12 +4564,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."VALOR_PREVISAO_PAGAR">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo6: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 517.795610000000000000
           Width = 113.385900000000000000
           Height = 18.897650000000000000
@@ -4445,12 +4583,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."VALOR_RECEBIDO">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo7: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 631.181510000000000000
           Width = 98.267780000000000000
           Height = 18.897650000000000000
@@ -4462,12 +4602,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."VALOR_PAGO">,MasterData1,3)]')
           ParentFont = False
         end
         object SysMemo8: TfrxSysMemoView
+          AllowVectorExport = True
           Left = 729.449290000000000000
           Width = 102.047310000000000000
           Height = 18.897650000000000000
@@ -4479,12 +4621,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[SUM(<frxDBDataset1."VALOR_DESCONTADO">,MasterData1,3)]')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Style = fsDot
@@ -4519,11 +4663,14 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -4534,6 +4681,9 @@ inherited FormFluxoCaixa: TFormFluxoCaixa
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 112
     Top = 176
   end

@@ -23,7 +23,8 @@ uses
   JvExControls, JvAnimatedImage, JvGIFCtrl, frxClass, frxDBSet,
   frxExportXLS, frxExportPDF,  rxCurrEdit, ComCtrls, VclTee.TeeGDIPlus,
   Data.DBXFirebird, ppDesignLayer, ppParameter, SimpleDS, ACBrEnterTab,
-  ACBrBase, ACBrCalculadora, Data.FMTBCd, JvExMask, JvToolEdit, JvDBGridFooter, Vcl.Menus, JvExStdCtrls, JvEdit, JvValidateEdit, JvDialogs, JvArrowButton, JvDBGridExport, JvComponentBase;
+  ACBrBase, ACBrCalculadora, Data.FMTBCd, JvExMask, JvToolEdit, JvDBGridFooter, Vcl.Menus, JvExStdCtrls, JvEdit, JvValidateEdit, JvDialogs, JvArrowButton, JvDBGridExport, JvComponentBase,
+  frxExportBaseDialog;
 
 type
   TFormFluxoCaixa = class(TfrmBase)
@@ -373,6 +374,8 @@ begin
                       QuotedStr(DataAmericana(Dt_final.Text))+','+QuotedStr(iif(chkMultiEmpresa.Checked,'999',dbInicio.EMPRESA.EMP_CODIGO))+','+
                       QuotedStr(iif(chkIntegrar.Checked,'S','N'))+ ','+QuotedStr('N')+
                       ')';
+         if dbInicio.IsDesenvolvimento then
+          copyToClipboard(SqlCdsFluxo.CommandText);
          SqlCdsFluxo.Open;
 
          DbGridFluxoCaixa.Columns[1].Visible := chkIntegrar.Checked;
