@@ -1281,13 +1281,22 @@ begin
 					ADD( '        T5.prdco_descricao,');
 					ADD( '        T6.cli_razao,');
 					ADD( '        t7.PRDL_LOTE,');
-//					Add( '        t8.prde_endereco, ');
-          Add(       ' (SELECT pe.prde_endereco FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO) JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) WHERE	pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + ') AS prde_endereco, ' );
+          Add(       ' COALESCE((SELECT pe.prde_endereco ');
+          Add(       '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ');
+          Add(       '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO  AND pe.EMP_CODIGO = pee2.EMP_CODIGO  ) ');
+//          Add(       '      JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) ');
+          Add(       '    WHERE pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + '), '''') AS prde_endereco, ' );
+//          Add( '        '''' as prde_endereco, ');
+
           Add( '        0 as quantidade, ');
-          aDD('( SELECT SUM(kas_saldo) '+
+
+          Add('( SELECT SUM(kas_saldo) '+
               ' FROM kardex_almox_saldo '+
                'WHERE prd_codigo = t1.prd_codigo '+
               ConcatSe (' and ',dbInicio.ExclusivoSql('ESTOQUES') )+') Estoque ');
+//          Add( '        CAST(0 as NUMERIC(18, 5)) as Estoque ');
+
+
 					ADD( 'from PRD0000 t1 ');
 					// qMeusProdutos.sql.ADD( '     left join PRD_TIPO T2 ON (T2.PTI_CODIGO = T1.PTI_CODIGO)');
 					// qMeusProdutos.sql.ADD( '     left join PRD_GRUPO T3 on (t3.pgr_codigo = t1.pgr_codigo)');
@@ -1341,6 +1350,7 @@ begin
 
         if DBInicio.IsDesenvolvimento then
           CopyToClipBoard(qMeusProdutos.sql.text);
+        CdsMeusProdutos.FetchParams;
         CdsMeusProdutos.Open;
 		 Finally
 				CdsMeusProdutos.EnableControls;
