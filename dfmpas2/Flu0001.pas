@@ -374,6 +374,8 @@ begin
                       QuotedStr(DataAmericana(Dt_final.Text))+','+QuotedStr(iif(chkMultiEmpresa.Checked,'999',dbInicio.EMPRESA.EMP_CODIGO))+','+
                       QuotedStr(iif(chkIntegrar.Checked,'S','N'))+ ','+QuotedStr('N')+
                       ')';
+         if dbInicio.IsDesenvolvimento then
+          copyToClipboard(SqlCdsFluxo.CommandText);
          SqlCdsFluxo.Open;
 
          DbGridFluxoCaixa.Columns[1].Visible := chkIntegrar.Checked;

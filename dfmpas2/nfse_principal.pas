@@ -479,6 +479,9 @@ begin
     Screen.Cursor := crHourGlass;
 
     try
+      ACBrNFSe1.SSL.DescarregarCertificado;
+      ACBrNFSe1.SSL.NumeroSerie :=  BuscaUmDadoSqlAsString('SELECT PMT_CERTIFICADO_DIGITAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO));
+      ACBrNFSe1.SSL.CarregarCertificado;
       if not ACBrNFSe1.SSL.CertificadoLido then
       begin
         ACBrNFSe1.SSL.NumeroSerie := BuscaUmDadoSqlAsString('SELECT PMT_CERTIFICADO_DIGITAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO));
@@ -776,7 +779,7 @@ end;
 procedure TfrmNfse.btnXML_RPSClick(Sender: TObject);
 
 Var clone : TClientDataSet;
- diretorio, cidade : string;
+ diretorio, cidade, xml : string;
   ArqIni: TIniFile;
 
 begin
@@ -806,8 +809,7 @@ begin
   diretorio := ACBrNFSe1.Configuracoes.Arquivos.PathGer;
   if SelectDirectory(diretorio,[sdAllowCreate],0) then
   begin
-     ACBrNFSe1.NotasFiscais.GravarXML(PathWithDelim(diretorio));
-
+    ACBrNFSe1.NotasFiscais.GravarXML(PathWithDelim(diretorio));
   end;
 
 //  ACBrNFSe1.GerarLote(0);
@@ -1538,13 +1540,21 @@ begin
   with ACBrNFSe1.Configuracoes.Geral do
    begin
 
-   if DBInicio.NFSE.Emp_TipoCertificado = 1 then //a1
+   if (DBInicio.NFSE.Emp_TipoCertificado = 1) and (sPrefeituraNome = 'CURITIBA') then
    begin
-     SSLLib := libCapicomDelphiSoap;
+     SSLLib := libWinCrypt;
      SSLCryptLib := cryWinCrypt;
      SSLHttpLib := httpWinHttp;
-     SSLXmlSignLib := xsMsXml;
-   end;
+     SSLXmlSignLib := xsLibXml2;
+   end
+   else
+   if DBInicio.NFSE.Emp_TipoCertificado = 1 then //a1
+     begin
+       SSLLib := libCapicomDelphiSoap;
+       SSLCryptLib := cryWinCrypt;
+       SSLHttpLib := httpWinHttp;
+       SSLXmlSignLib := xsMsXml;
+     end;
    if (DBInicio.NFSE.Emp_TipoCertificado = 3) or (DBInicio.NFSE.Emp_TipoCertificado = 9) then //a1
    begin
      SSLLib := libWinCrypt;
