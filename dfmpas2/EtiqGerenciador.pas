@@ -11,6 +11,7 @@ uses
   cxGridDBTableView, cxGrid;
 
 type
+
   TFrmGerenciadorEtiquetas = class(TfrmBaseDB)
     qTipoProduto: TSQLQuery;
     qGrupo: TSQLQuery;
@@ -466,6 +467,8 @@ type
     ppDesignLayers14: TppDesignLayers;
     ppDesignLayer14: TppDesignLayer;
     ppParameterList14: TppParameterList;
+    gbAguarde: TGroupBox;
+    pbAguarde: TProgressBar;
     procedure cbTipoSelect(Sender: TObject);
     procedure CbGrupoSelect(Sender: TObject);
     procedure CBLinhaSelect(Sender: TObject);
@@ -527,8 +530,10 @@ type
     procedure lbFoneMod13GetText(Sender: TObject; var Text: string);
     procedure lbCnpjMod13GetText(Sender: TObject; var Text: string);
     procedure ppLogoMod13Print(Sender: TObject);
+    procedure CdsMeusProdutosCalcFields(DataSet: TDataSet);
  private
     { Private declarations }
+    contador: integer;
     procedure AtivarACBrETQ ;
     procedure BuscaProduto;
     procedure BuscaProdutoET;
@@ -1100,6 +1105,36 @@ begin
 end;
 
 
+procedure TFrmGerenciadorEtiquetas.CdsMeusProdutosCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  if cdsMeusProdutos = nil then
+    Abort;
+  if contador = 0 then
+      pbAguarde.Max := cdsMeusProdutos.RecordCount;
+  Inc(contador);
+  pbAguarde.Position := contador;
+  if (contador / 100) =  Round((contador / 100)) then
+  begin
+    Application.ProcessMessages;
+    if GetAsyncKeyState(VK_ESCAPE) <> 0 then
+    begin
+      uteis.Aviso('Cancelado pelo usuário');
+      try
+        cdsMeusProdutos.Close;
+      except
+      end;
+      Abort;
+    end;
+  end;
+  CdsMeusProdutosPRDE_ENDERECO.AsString := dbInicio.BuscaUmDadoSqlAsString(
+         ' SELECT pe.prde_endereco ' +
+         '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ' +
+         '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO  AND pe.EMP_CODIGO = pee2.EMP_CODIGO  ) ' +
+         '      JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) ' +
+         '    WHERE pee2.PRD_REFER = ' + QuotedStr(CdsMeusProdutosPRD_REFER.AsString) +' AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)
+        );
+end;
 procedure TFrmGerenciadorEtiquetas.CdsMeusProdutosSelecaoGetText(Sender: TField; var Text: string; DisplayText: Boolean);
 begin
   inherited;
@@ -1204,7 +1239,7 @@ end;
 
 procedure TFrmGerenciadorEtiquetas.FormShow(Sender: TObject);
 begin
-	 BuscaProdutoET;
+	 // BuscaProdutoET; demora demais para trazer todos os registros
 	 // tab não estão prontas
 
 	 TabSheetClientes.TabVisible := False;
@@ -1212,6 +1247,7 @@ begin
 	 TabSheetEntradas.TabVisible := False;
 	 TabShProducao.TabVisible := False;
    DbProdutoGrid.SelectedIndex := 1;
+   gbAguarde.Visible := False;
 end;
 
 procedure TFrmGerenciadorEtiquetas.BuscaProduto;
@@ -1237,7 +1273,6 @@ begin
 			 cdsMeusProdutos.Close;
 			 cdsMeusProdutos.CommandText := SQLDEF('PRODUTOS', wSql1 + wSql2 + wSql3, wSeleciona, wOrdem, 'T1.');
        cdsMeusProdutos.Open;
-
      Finally
      end;
 end;
@@ -1262,7 +1297,7 @@ var whe : boolean;
 begin
 		 whe := True;
 		 CdsMeusProdutos.DisableControls;
-		 try
+//		 try
 				CdsMeusProdutos.Close;
 				 with  qMeusProdutos, SQL  do
 				 begin
@@ -1281,12 +1316,13 @@ begin
 					ADD( '        T5.prdco_descricao,');
 					ADD( '        T6.cli_razao,');
 					ADD( '        t7.PRDL_LOTE,');
-          Add(       ' COALESCE((SELECT pe.prde_endereco ');
-          Add(       '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ');
-          Add(       '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO  AND pe.EMP_CODIGO = pee2.EMP_CODIGO  ) ');
+//          Add(       ' COALESCE((SELECT pe.prde_endereco ');
+//          Add(       '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ');
+//          Add(       '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO  AND pe.EMP_CODIGO = pee2.EMP_CODIGO  ) ');
 //          Add(       '      JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) ');
-          Add(       '    WHERE pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + '), '''') AS prde_endereco, ' );
-//          Add( '        '''' as prde_endereco, ');
+//          Add(       '    WHERE pee2.PRD_REFER = t1.PRD_REFER  AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + '), '''') AS prde_endereco, ' );
+
+/////////          Add( '        '''' as prde_endereco, ');
 
           Add( '        0 as quantidade, ');
 
@@ -1350,11 +1386,23 @@ begin
 
         if DBInicio.IsDesenvolvimento then
           CopyToClipBoard(qMeusProdutos.sql.text);
-        CdsMeusProdutos.FetchParams;
+
+        contador := 0;
+        pbAguarde.Position := contador;
+        pbAguarde.Min := 0;
+        gbAguarde.Visible := True;
+        FCancelaProcessamento := True;
+        Application.ProcessMessages;
         CdsMeusProdutos.Open;
-		 Finally
-				CdsMeusProdutos.EnableControls;
-		 end;
+        if FCancelaProcessamento = False then
+          CdsMeusProdutos.EnableControls;
+        FCancelaProcessamento := False;
+        gbAguarde.Visible := False;
+        Application.ProcessMessages;
+
+//		 Finally
+//				CdsMeusProdutos.EnableControls;
+//		 end;
 
 		 DbProdutoGrid.SetFocus;
 end;

@@ -86,6 +86,7 @@ type
 
   public
     ErrHandler : tFrmError;
+    FCancelaProcessamento: boolean;
     procedure SetTamanhoMaximo(pHeight, pwidth: integer);
     procedure SetTamanhoMinimo(pHeight, pwidth: integer);
     procedure SetReadOnly(const AValue: Boolean);
@@ -401,7 +402,7 @@ begin
   // processar onkeydown do formulario
   if not (GetKeyState( VK_CONTROL ) and 128 > 0) then // control liberado
   begin
-        if (Key=VK_ESCAPE) then
+        if (Key=VK_ESCAPE) and (FCancelaProcessamento = False) then
         begin
             self.close;
             key := 0;
@@ -467,6 +468,7 @@ begin
   Self.Width:=ini.ReadInteger('FORM', 'Width', Self.Width);
   Self.Height:=ini.ReadInteger('FORM', 'Height', Self.Height);
   ini.Free;
+  FCancelaProcessamento := True;
 end;
 
 procedure TfrmBase.InicializaComponentes;
