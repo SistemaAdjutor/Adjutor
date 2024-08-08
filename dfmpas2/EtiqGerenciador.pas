@@ -1120,10 +1120,8 @@ begin
     if GetAsyncKeyState(VK_ESCAPE) <> 0 then
     begin
       uteis.Aviso('Cancelado pelo usuário');
-      try
-        cdsMeusProdutos.Close;
-      except
-      end;
+      cdsMeusProdutos.Close;
+      FCancelaProcessamento := True;
       Abort;
     end;
   end;
@@ -1391,7 +1389,7 @@ begin
         pbAguarde.Position := contador;
         pbAguarde.Min := 0;
         gbAguarde.Visible := True;
-        FCancelaProcessamento := True;
+        FCancelaProcessamento := False;
         Application.ProcessMessages;
         CdsMeusProdutos.Open;
         if FCancelaProcessamento = False then
