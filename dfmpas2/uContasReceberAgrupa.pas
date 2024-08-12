@@ -97,6 +97,7 @@ type
   public
     { Public declarations }
     sFaturas : string;
+    aFaturas : TStringList;
     // bBloqueado : Boolean;
   end;
 
@@ -230,6 +231,7 @@ begin
    CdSRecebimentos.CreateDataSet;
    frmBase := TfrmBase.Create(Self);
    frmbase.SqlConnection := DBInicio.MainDB;
+   aFaturas := TStringList.Create;
 {
    cbcontabanco.idretorno := '0005';
    cbformapagamento.idretorno := '5';
@@ -311,9 +313,9 @@ procedure TformContasReceberAgrupa.AplicaParcelamento;
 Var
 
   dDataAcumulada : TDateTime;
-  n, opvCodigo : Integer;
+  n, j, opvCodigo : Integer;
   fpg_reg : integer;
-  nFatura, carteira, tipoDoc: string;
+  nFatura, carteira, tipoDoc, insert: string;
   valorTotal: double;
 begin
 //     Cdesconto      := 0;
@@ -335,11 +337,13 @@ begin
           begin
                if uteis.confirmacao ( 'Confirma o Parcelamento Selecionado ?')= idYes then
                begin
-                    nFatura := SequenciadorPRC(DataCadastros.SQLConnection1, //Conexao
+{                    nFatura := SequenciadorPRC(DataCadastros.SQLConnection1, //Conexao
                                                        dbInicio.Empresa.EMP_CODIGO,  //empresa
                                                        'NF0001',                     //Tabela
                                                        'NF_NOTANUMBER_N',            //Campo da Tabela
                                                        0);
+}
+                    nFatura := IntToStr(dbInicio.BuscaUmDadoSqlAsInteger( 'SELECT CAST(MAX(FAT_CODIGO) AS INT) + 1  FROM FAT0000' ));
                     nFatura := strzero(nFatura, 6);
                     Busca_Dados_Parcela(nFatura,  StrZero(IntToStr(1),2), 1);
                     //Parcelar a fatura Gerar duplicatas
@@ -427,7 +431,15 @@ begin
                       valorTotal := ValorTotal + CdSRecebimentosPendente.AsFloat;
                       CdSRecebimentos.Next;
                     end;
-
+                    for j := 0 to aFaturas.Count - 1 do
+                    begin
+                      insert := 'INSERT INTO FAT_AGRUPADO VALUES (' +
+                                    QuotedStr(dbInicio.EMP_CODIGO) + ', ' +
+                                    QuotedStr(nFatura) + ',' +
+                                    QuotedStr(Copy(aFaturas[j], 0, 6)) + ',' +
+                                    QuotedStr(Copy(aFaturas[j], 7, 2)) + ')';
+                      dbInicio.ExecSQL(insert);
+                    end;
 
                     ExcluirParcelas(nFatura);
 
