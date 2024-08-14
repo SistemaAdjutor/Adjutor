@@ -662,7 +662,10 @@ begin
 		begin
 			lGrade.Visible := True;
 			CbGrade.Visible := True;
-      // CbGrade.FiltroTabela := ' prd_codigo = '+QuotedStr(qaux.FieldByName('prd_codigo').AsString);
+      // CbGrade.FiltroTabela := ' prd_codigo = '+QuotedStr(qaux.FieldByName('prd_codigo').AsString); edReferencia.text cbReferencia.IdRetorno
+      CbGrade.FiltroTabela := ' prd_codigo = ' + QuotedStr(cbReferencia.IdRetorno);
+      // CbGrade.WherePersonalizado := 'WHERE PRD_CODIGO = ' + QuotedStr(cbReferencia.IdRetorno);
+      CbGrade.Refresh;
   		SdCadastroGrade.Visible := True;
 			pgcPrincipal.ActivePage := tsSemGrade;
 		end //não utiliza grade
