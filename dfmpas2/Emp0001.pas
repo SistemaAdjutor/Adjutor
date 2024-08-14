@@ -12,7 +12,22 @@ uses
     Data.DBXFirebird, SimpleDS, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, IdIOHandler, IdIOHandlerSocket, IdIOHandlerStack,
     IdSSL, IdSSLOpenSSL, IdMessage, IdBaseComponent, IdComponent,IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase, IdMessageClient,
     IdSMTPBase, IdSMTP, IdIntercept, ACBrDFe, ACBrNFSe, Vcl.Grids, Vcl.DBGrids, cxStyles, cxCustomData, cxFilter, cxData, cxDataStorage, cxNavigator, cxDBData, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView, cxGrid;
+  cxGridDBTableView, cxGridLevel, cxClasses, cxGridCustomView, cxGrid,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue;
 
 type TFormEmpresa = class(TfrmBaseDB)
      Label1: TLabel;
@@ -519,6 +534,9 @@ type TFormEmpresa = class(TfrmBaseDB)
     RxDBComboBox1: TRxDBComboBox;
     QEmpresaEMP_CLAS_ESTAB_IND: TStringField;
     CdsEmpresaEMP_CLAS_ESTAB_IND: TStringField;
+    cbEMP_APLICA_DIVISOR_SIMPLES: TDBCheckBox;
+    QEmpresaEMP_APLICA_DIVISOR_SIMPLES: TStringField;
+    CdsEmpresaEMP_APLICA_DIVISOR_SIMPLES: TStringField;
 
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);
@@ -1265,12 +1283,15 @@ begin
        begin
        CombCSOSN.ItemIndex := 1;     {Simples Nacional}
        DBRadCRT.ItemIndex := 0;      {Simples Nacioanl}
-       DBRadModalidade.ItemIndex := 0 {Simples}
+       DBRadModalidade.ItemIndex := 0; {Simples}
+       cbEMP_APLICA_DIVISOR_SIMPLES.Enabled := True;
        end
   else
        begin
        CombCSOSN.ItemIndex := 0;
        DBRadCRT.ItemIndex := 2;       // É REGIME NORMAL
+       cbEMP_APLICA_DIVISOR_SIMPLES.Enabled := False;
+       cbEMP_APLICA_DIVISOR_SIMPLES.Checked := False;
        end;
 end;
 
