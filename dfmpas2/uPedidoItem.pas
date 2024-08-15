@@ -3470,8 +3470,12 @@ begin
   inherited;
   AtualizaGradeInfo;
   AtualizaUltimoPreco;
+  CurPrecoBruto.Value := BuscaUmDadoSqlAsFloat('SELECT PRG_PRECO FROM PRD_GRADE WHERE PRG_REGISTRO = ' + cbGrade.idRetorno);
   if cbCapacidade.CanFocus then
-    cbCapacidade.SetFocus;
+    cbCapacidade.SetFocus
+  else
+    if CurQuantidade.CanFocus then
+      CurQuantidade.SetFocus;
 
 end;
 
