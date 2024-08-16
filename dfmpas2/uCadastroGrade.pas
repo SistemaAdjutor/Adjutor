@@ -87,10 +87,11 @@ begin
    //caso nao encontre
    if (DataCadastros.sqlUpdate.IsEmpty) then
       begin
-         sQuery := 'INSERT INTO prd_grade (EMP_CODIGO,PRD_CODIGO,PRG_DESCRICAO,PRG_MEDIDA_1,PRG_MEDIDA_2,PRG_MEDIDA_3,PRG_REDUCAO_PERCENT,PRG_INDICE) '+
+         sQuery := 'INSERT INTO prd_grade (EMP_CODIGO,PRD_CODIGO,PRG_DESCRICAO, PRG_PRECO, PRG_MEDIDA_1,PRG_MEDIDA_2,PRG_MEDIDA_3,PRG_REDUCAO_PERCENT,PRG_INDICE) '+
                                                                                'VALUES ('+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+','
                                                                                          +QuotedStr(sProdutoCodigo)+','
                                                                                          +QuotedStr(Trim(edtGrade.Text))+','
+                                                                                         +FloatToSql(CurPrecoCalculado.value)+','
                                                                                          +FloatToSql(CurMedida1.value)+','
                                                                                          +FloatToSql(CurMedida2.value)+','
                                                                                          +FloatToSql(CurMedida3.value)+','

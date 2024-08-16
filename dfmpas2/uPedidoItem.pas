@@ -662,7 +662,10 @@ begin
 		begin
 			lGrade.Visible := True;
 			CbGrade.Visible := True;
-      // CbGrade.FiltroTabela := ' prd_codigo = '+QuotedStr(qaux.FieldByName('prd_codigo').AsString);
+      // CbGrade.FiltroTabela := ' prd_codigo = '+QuotedStr(qaux.FieldByName('prd_codigo').AsString); edReferencia.text cbReferencia.IdRetorno
+      CbGrade.FiltroTabela := ' prd_codigo = ' + QuotedStr(cbReferencia.IdRetorno);
+      // CbGrade.WherePersonalizado := 'WHERE PRD_CODIGO = ' + QuotedStr(cbReferencia.IdRetorno);
+      CbGrade.Refresh;
   		SdCadastroGrade.Visible := True;
 			pgcPrincipal.ActivePage := tsSemGrade;
 		end //não utiliza grade
@@ -1885,7 +1888,7 @@ procedure TFrmPedidoItem.Bit_GravarClick(Sender: tObject); // Gravar Item;
 var
    sQuery, sEmpresa:String;
    iDiretiva, iRegistroItem,  iRegistro, iGrade : integer;
-   rQtdeAnterior, rQtdeNova, rSaldo, rCusto, qPendenteAnterior, qPendenteNova, qpreciso, kardexSaldo :double;
+   rQtdeAnterior, rQtdeNova, rSaldo, rCusto, qPendenteAnterior, qPendenteNova, qpreciso, kardexSaldo, indice :double;
    bContinuab, bContinua, bValidaProduto, bexclusao, bvendaPendente:Boolean;
 	 sTabelaPreco:string;
    rPBruto: Double;
@@ -2750,6 +2753,11 @@ begin
                    // (qAux.FieldByName('PRD_GRADE_OBRIGATORIO').AsString = 'N') and
                    aliquotaICMS := buscaAliquotaICMS(cbReferencia.CdS.fieldByName('PRD_REFER').AsString, FrmPedido.edCfop.idRetorno);
                    valorICMS := (CurTotal.Value / 100 * aliquotaICMS);
+
+                   if (dbInicio.GetParametroSistema('PMT_ATIVA_METRO_CUBICO') = 'S') and (cbUnidade.idRetorno = 'M3') then
+                     indice := dbInicio.BuscaUmDadoSqlAsFloat('SELECT PRG_INDICE FROM PRD_GRADE WHERE PRG_REGISTRO = ' + cbGrade.idRetorno)
+                   else
+                    indice := 1;
 									 if (pgcPrincipal.ActivePage = tsSemGrade) then
                    begin
                           iRegistroItem := GravarPedidoItem(iif((DBInicio.Empresa.wPMT_VALOR_KIT) and (FrmPedido.WDiretivaKit > 0),FrmPedido.WDiretivaKit,wID_DIRETIVAS),
@@ -2769,8 +2777,8 @@ begin
                                                             CurQuantidade.Value,
                                                             CurQuantidade.Value,
                                                            0,  // Quantidade Faturada
-                                                           iif(ChkSemValor.Checked,0,CurPrecoLiquido.Value),
-                                                           iif(ChkSemValor.Checked,0,CurPrecoBruto.Value),
+                                                           iif(ChkSemValor.Checked,0,CurPrecoLiquido.Value * indice),
+                                                           iif(ChkSemValor.Checked,0,CurPrecoBruto.Value * indice),
                                                            rCusto,
                                                            CurMarkup.Value,
                                                            CurrAcrescimoReal.Value,
@@ -3467,8 +3475,12 @@ begin
   inherited;
   AtualizaGradeInfo;
   AtualizaUltimoPreco;
+  CurPrecoBruto.Value := BuscaUmDadoSqlAsFloat('SELECT PRG_PRECO FROM PRD_GRADE WHERE PRG_REGISTRO = ' + cbGrade.idRetorno);
   if cbCapacidade.CanFocus then
-    cbCapacidade.SetFocus;
+    cbCapacidade.SetFocus
+  else
+    if CurQuantidade.CanFocus then
+      CurQuantidade.SetFocus;
 
 end;
 

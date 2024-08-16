@@ -2035,8 +2035,10 @@ begin
                    '       t1.prf_custo, '+
                    '       0.00 as markup, '+
                    '        CASE ' +
-                   '         WHEN PMT_ATIVA_METRO_CUBICO = ''S'' ' +
-                   '           THEN CAST(t3.PRG_INDICE * t1.PRF_QTDE * t1.PRF_PRECO AS NUMERIC(18,2)) ' +
+//                   '         WHEN PMT_ATIVA_METRO_CUBICO = ''S'' ' +
+                   '         WHEN T1.PRD_UND = ''M3'' AND PMT_ATIVA_METRO_CUBICO = ''S'' ' +
+//                   '           THEN CAST(CAST(t3.PRG_INDICE AS DOUBLE PRECISION) * t1.PRF_QTDE * t1.PRF_PRECO AS NUMERIC(18,2)) ' +
+                   '           THEN CAST(t1.PRF_QTDE * t1.PRF_PRECO AS NUMERIC(18,2)) ' +
                    '         ELSE ' +
                    '          CASE PRF_PRODUTO_AGREGADO'+
                    '           WHEN ''N'' THEN cast(cast(t1.PRF_QTDE as numeric(15,3)) * cast(t1.PRF_PRECO as numeric(15,5)) as numeric(18,2))                                                                              '+

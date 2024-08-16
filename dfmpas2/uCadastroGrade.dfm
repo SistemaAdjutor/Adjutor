@@ -162,9 +162,9 @@ object FrmCadastroGrade: TFrmCadastroGrade
       ParentFont = False
     end
     object lbIndice: TLabel
-      Left = 183
+      Left = 216
       Top = 97
-      Width = 64
+      Width = 31
       Height = 14
       Alignment = taRightJustify
       Caption = #205'ndice:'
