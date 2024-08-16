@@ -3086,6 +3086,8 @@ begin
           ' JOIN PARAMETROS_DA_QUALIDADE pq ON (pq.PAR_CODIGO = cqp.PAR_CODIGO) ' +
           ' JOIN ITEM_ORDEMPRODUCAO iop ON (Iop.IOP_NORDEM = ' + QuotedStr(cdsProdutoOP5IOP_NORDEM.asString) + ' ) ' +
           ' WHERE pr.PRD_REFER = ' + QuotedStr(refer) ;
+      if dbInicio.Isdesenvolvimento then
+        CopyToClipboard(qAux.SQL.Text);
       qAux.Open;
 
       qAux2.Close;

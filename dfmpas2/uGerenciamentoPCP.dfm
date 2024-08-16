@@ -11960,7 +11960,7 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           Frame.Typ = [ftLeft, ftRight, ftTop, ftBottom]
           HAlign = haCenter
           Memo.UTF8W = (
-            '[frxDBProdutoOP5."IOP_NORDEM"] / [PMT_LOTE_PREFIXO]')
+            '[frxDBProdutoOP5."PRDL_LOTE"] / [PMT_LOTE_PREFIXO]')
           ParentFont = False
           Formats = <
             item
@@ -12547,7 +12547,12 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
           DataSetName = 'frxDBQualidade'
           Frame.Typ = []
           Memo.UTF8W = (
-            '[frxDBQualidadeCabecalho."IOP_NORDEM"] / [PMT_LOTE_PREFIXO]')
+            '[frxDBProdutoOP5."PRDL_LOTE"] / [PMT_LOTE_PREFIXO]')
+          Formats = <
+            item
+            end
+            item
+            end>
         end
         object Memo36: TfrxMemoView
           AllowVectorExport = True
