@@ -12,7 +12,7 @@ inherited FormEmpresa: TFormEmpresa
   Position = poMainFormCenter
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 970
-  ExplicitHeight = 627
+  ExplicitHeight = 631
   PixelsPerInch = 96
   TextHeight = 14
   object Label1: TLabel [0]
@@ -38,7 +38,7 @@ inherited FormEmpresa: TFormEmpresa
     Top = 32
     Width = 961
     Height = 537
-    ActivePage = TabSheet6
+    ActivePage = TabSheet1
     TabOrder = 1
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
@@ -601,6 +601,8 @@ inherited FormEmpresa: TFormEmpresa
     object TabSheet3: TTabSheet
       Caption = 'Dados Fiscais'
       ImageIndex = 2
+      ExplicitLeft = 28
+      ExplicitTop = 57
       object Label29: TLabel
         Left = 14
         Top = 38
@@ -609,8 +611,8 @@ inherited FormEmpresa: TFormEmpresa
         Caption = 'Al'#237'quota do ICMS Simples:'
       end
       object Label30: TLabel
-        Left = 349
-        Top = 12
+        Left = 467
+        Top = 10
         Width = 178
         Height = 14
         Caption = 'C'#243'digo da Empresa na Contabilidade:'
@@ -646,8 +648,8 @@ inherited FormEmpresa: TFormEmpresa
         Caption = 'CFOP Padr'#227'o Venda Fora do Estado:'
       end
       object SpeedButton2: TSpeedButton
-        Left = 596
-        Top = 368
+        Left = 718
+        Top = 370
         Width = 25
         Height = 22
         Hint = 'Atualizar Clientes de Dentro do Estado'
@@ -670,8 +672,8 @@ inherited FormEmpresa: TFormEmpresa
         OnClick = SpeedButton2Click
       end
       object SpeedButton3: TSpeedButton
-        Left = 596
-        Top = 392
+        Left = 718
+        Top = 394
         Width = 25
         Height = 22
         Hint = 'Atualizar Clientes de Fora do Estado'
@@ -729,8 +731,8 @@ inherited FormEmpresa: TFormEmpresa
         TabOrder = 1
       end
       object DBEdit12: TDBEdit
-        Left = 529
-        Top = 8
+        Left = 647
+        Top = 6
         Width = 90
         Height = 22
         DataField = 'EMP_CODIGO_CONTABILIDADE'
@@ -740,7 +742,7 @@ inherited FormEmpresa: TFormEmpresa
       object CombCSOSN: TComboBox
         Left = 7
         Top = 87
-        Width = 615
+        Width = 732
         Height = 22
         DropDownCount = 9
         TabOrder = 3
@@ -771,7 +773,7 @@ inherited FormEmpresa: TFormEmpresa
       object DBRadCRT: TDBRadioGroup
         Left = 7
         Top = 151
-        Width = 616
+        Width = 733
         Height = 100
         Caption = 'C'#243'digo do Regime Tribut'#225'rio (CRT)'
         DataField = 'EMP_CRT'
@@ -789,7 +791,7 @@ inherited FormEmpresa: TFormEmpresa
       object GroupBox5: TGroupBox
         Left = 8
         Top = 256
-        Width = 614
+        Width = 731
         Height = 108
         Caption = 'Modalidade Cont'#225'bil da Empresa e Tributos'
         TabOrder = 5
@@ -871,7 +873,7 @@ inherited FormEmpresa: TFormEmpresa
       object CombCSOSNST: TComboBox
         Left = 7
         Top = 127
-        Width = 615
+        Width = 732
         Height = 22
         DropDownCount = 9
         TabOrder = 7
@@ -900,8 +902,8 @@ inherited FormEmpresa: TFormEmpresa
           '900 - Outros que n'#227'o se enquadram nos anteriores')
       end
       object cxLookupComboBox1: TcxLookupComboBox
-        Left = 194
-        Top = 368
+        Left = 196
+        Top = 369
         Properties.KeyFieldNames = 'OPE_CODIGO'
         Properties.ListColumns = <
           item
@@ -916,11 +918,11 @@ inherited FormEmpresa: TFormEmpresa
         TabOrder = 8
         OnClick = cxLookupComboBox1Click
         OnExit = cxLookupComboBox1Exit
-        Width = 399
+        Width = 516
       end
       object cxLookupComboBox2: TcxLookupComboBox
-        Left = 194
-        Top = 392
+        Left = 196
+        Top = 393
         Properties.KeyFieldNames = 'OPE_CODIGO'
         Properties.ListColumns = <
           item
@@ -935,7 +937,7 @@ inherited FormEmpresa: TFormEmpresa
         TabOrder = 9
         OnClick = cxLookupComboBox2Click
         OnExit = cxLookupComboBox2Exit
-        Width = 399
+        Width = 516
       end
       object DBEdit24: TDBEdit
         Left = 396
@@ -945,6 +947,25 @@ inherited FormEmpresa: TFormEmpresa
         DataField = 'EMP_DIREITO_CREDITO'
         DataSource = DsEmpresa
         TabOrder = 2
+      end
+      object cbEMP_APLICA_DIVISOR_SIMPLES: TDBCheckBox
+        Left = 229
+        Top = 8
+        Width = 227
+        Height = 17
+        Caption = 'Aplica Divisor no Valor de Cr'#233'dito'
+        DataField = 'EMP_APLICA_DIVISOR_SIMPLES'
+        DataSource = DsEmpresa
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -11
+        Font.Name = 'MS Sans Serif'
+        Font.Style = []
+        ParentFont = False
+        TabOrder = 10
+        ValueChecked = 'S'
+        ValueUnchecked = 'N'
+        OnClick = DBCkSimplesClick
       end
     end
     object TsNFE: TTabSheet
@@ -3288,15 +3309,15 @@ inherited FormEmpresa: TFormEmpresa
   end
   inherited qAux: TSQLQuery
     Left = 722
-    Top = 461
+    Top = 485
   end
   inherited qAux2: TSQLQuery
     Left = 762
-    Top = 460
+    Top = 484
   end
   inherited qAux3: TSQLQuery
     Left = 802
-    Top = 460
+    Top = 484
   end
   object OpenDialog1: TOpenDialog
     Filter = '*.jpg'
@@ -3927,6 +3948,10 @@ inherited FormEmpresa: TFormEmpresa
       FieldName = 'EMP_CLAS_ESTAB_IND'
       Size = 2
     end
+    object CdsEmpresaEMP_APLICA_DIVISOR_SIMPLES: TStringField
+      FieldName = 'EMP_APLICA_DIVISOR_SIMPLES'
+      Size = 1
+    end
   end
   object DspEmpresa: TDataSetProvider
     DataSet = QEmpresa
@@ -4479,6 +4504,10 @@ inherited FormEmpresa: TFormEmpresa
     object QEmpresaEMP_CLAS_ESTAB_IND: TStringField
       FieldName = 'EMP_CLAS_ESTAB_IND'
       Size = 2
+    end
+    object QEmpresaEMP_APLICA_DIVISOR_SIMPLES: TStringField
+      FieldName = 'EMP_APLICA_DIVISOR_SIMPLES'
+      Size = 1
     end
   end
   object smtp: TIdSMTP

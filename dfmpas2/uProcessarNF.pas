@@ -374,6 +374,12 @@ begin
         Produto.Imposto.COFINS.CST := cof08;
 
    end;
+
+   // IRRF
+   // Produto.Imposto.    qItemNota.FieldByName('TOTAL').AsFloat
+
+
+
    // ICMS uf dest  - antigo VendaInterEstadualConsumidorFinal_Item
    if (NotaF.NFe.Emit.EnderEmit.UF <> NotaF.NFe.Dest.EnderDest.UF) and // interestadual
       ( NotaF.NFe.Ide.indFinal  = cfConsumidorFinal ) and // Consumidor final / não contribuinte
@@ -2470,6 +2476,11 @@ begin
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco +'.'+' COFINS '+ FormatFloat('#,##0.00',FCofins) + '%' +
     ' TOTAL '+ FormatFloat('##0.00', qNota.FieldByName('NF_VALORTOT_COFINS').AsFloat );
 
+  if dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_NATUREZA FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = '6147' then
+    NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco +' . '+'IRRF retido R$ '+ FormatFloat('#,##0.00',NotaF.NFe.Total.retTrib.vIRRF ) ;
+
+
+
 
   //informações complementares do tecnico responsável somente para ambiente de homologação
  // if ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao then
@@ -2668,8 +2679,17 @@ end;
  70 – Com redução de base de cálculo e cobrança do ICMS-ST
  90 – Outras}
 procedure TfrmProcessaNFe.TotalizacaoNFE;
-var temST: boolean;
+var
+  temST: boolean;
 begin
+
+  // IRRF
+  if dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_NATUREZA FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = '6147' then
+  begin
+    NotaF.NFe.Total.retTrib.vBCIRRF := qNota.FieldByName('NF_TOT_PROD').AsFloat;
+    NotaF.NFe.Total.retTrib.vIRRF := qNota.FieldByName('NF_TOT_PROD').AsFloat / 100 * 1.2;
+  end;
+
 
   with NotaF.NFe.Total.ICMSTot do
   begin

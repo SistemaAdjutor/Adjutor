@@ -3162,12 +3162,12 @@ var
   sql, NTP_CFOP, ope_codigo: string;
   icmsDeson, AliquotaDeson, a,b,c, saldo, BaseProdutoBanco: double;
   motivDeson : string;
-  baseSimples, IpiNaBaseICMS, FreteNaBAse, ICMSTotalNota : boolean;
+  baseSimples, IpiNaBaseICMS, FreteNaBAse, ICMSTotalNota, aplicaDivisorSimples : boolean;
 
   vValorIcmSimples: Currency ;
   CSOSN :integer;
   opeArtigoReducao: string;
-  NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES: double;
+  NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES, divisor: double;
 
 begin
     sCompl:='';
@@ -3461,11 +3461,14 @@ begin
 
 
 
-
-
-
     if (fOPT_SIMPLES = 'S') then // desconsiderado sem valor comercial and (qOperFiscOPE_SEMVLCOM.AsString = 'N') Then   // venda
     begin
+          aplicaDivisorSimples := BuscaUmDadoSqlAsString('SELECT EMP_APLICA_DIVISOR_SIMPLES FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)) = 'S' ;
+          if aplicaDivisorSimples then
+            divisor := (CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat*CdsItemPedidoPRF_PRECO.AsFloat) / CurProdutos.Value     // CdsItemPedido.RecordCount
+          else
+            divisor := 1;
+
 
          vValorIcmSimples := 0;
 
@@ -3512,7 +3515,9 @@ begin
            NF_ALIQCREDSIMPLES := 0;
            NF_VLCREDSIMPLES := 0;
          end;
-    end;
+    end
+    else
+      divisor := CdsItemPedido.RecordCount;
 
    sql:=
             ' Insert into NF_IT01 ( emp_codigo, USU_CODIGO, AMX_CODIGO_DESTINO, PRD_CODIGO, NF_IT_NOTANUMER, '+
@@ -3567,7 +3572,7 @@ begin
             '          '+sNF_MVAPERC+', '+ //NF_MVAPERC,
 
             '          '+FloatToSql( Uteis.RoundTo( NF_ALIQCREDSIMPLES, -2) )+', '+ //NF_ALIQCREDSIMPLES,
-            '          '+FloatToSql( Uteis.RoundTo( NF_VLCREDSIMPLES / CdsItemPedido.RecordCount, -2) )+', '+ //NF_VLCREDSIMPLES,
+            '          '+FloatToSql( Uteis.RoundTo( NF_VLCREDSIMPLES / divisor, -2) )+', '+ //NF_VLCREDSIMPLES,
 
 
             '          '+FloatToSql( wPrecoMatPrima )+', '+ //NF_PMATPRIMA,
