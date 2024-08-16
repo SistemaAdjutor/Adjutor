@@ -131,8 +131,10 @@ object formContasReceberAgrupa: TformContasReceberAgrupa
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edParcela: TEdit
       Left = 90
@@ -253,8 +255,10 @@ object formContasReceberAgrupa: TformContasReceberAgrupa
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'BAN0000'
       CamposCarregar = 'BAN_APELIDO'
       CamposRetornar = 'BAN_CODIGO'
@@ -314,8 +318,10 @@ object formContasReceberAgrupa: TformContasReceberAgrupa
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
       Tabela = 'FORMA_PAGAMENTO'
       CamposCarregar = 'FPG_DESCRICAO'
       CamposRetornar = 'FPG_REGISTRO'
@@ -389,8 +395,10 @@ object formContasReceberAgrupa: TformContasReceberAgrupa
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edContaFinanceira: TEdit
       Left = 101
@@ -424,8 +432,10 @@ object formContasReceberAgrupa: TformContasReceberAgrupa
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object edCentroCusto: TEdit
       Left = 548

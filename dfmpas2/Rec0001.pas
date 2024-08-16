@@ -347,6 +347,7 @@ type
 
 
     procedure ExcluirFaturas;
+    procedure AlterarAgrupados;
     procedure Limpa;
     procedure AtivaRetencao;
     procedure CalcRetencao;
@@ -637,6 +638,7 @@ begin
                                       DataMovimento.CdsReceberFAT_EXCLUSAO.AsString        := 'S';
                                       DataMovimento.CdsReceber.ApplyUpdates(0);
                                       ExcluirFaturas;
+                                      AlterarAgrupados;
                                       ExecSql( 'UPDATE NF0001 SET NF_CANCELADA = ''S'' '+
                                               ' where nf_status_nfe = ''A'' AND  EMP_CODIGO = '+QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
                                               ' AND nf_notanumber ='+QuotedStr(DataMovimento.CdsReceberFAT_CODIGO.AsString));
@@ -1583,6 +1585,33 @@ procedure TFormContasReceber.Excluir_somente_Inclusao(const sNumFatura: String);
 begin
      ExecSql('DELETE FROM FAT0000 WHERE FAT_CODIGO = '''+sNumFatura+''''+ConcatSe(' AND ', DBINICIO.ExclusivoSql('RECEBER') ) );
      ExecSql('DELETE FROM FAT_PC01 WHERE FAT_CODIGO = '''+sNumFatura+''''+ConcatSe(' AND ', DBINICIO.ExclusivoSql('RECEBER') ) );
+end;
+
+procedure TFormContasReceber.AlterarAgrupados;
+begin
+  qAux.Close;
+  OpenAux('SELECT * FROM FAT_AGRUPADO WHERE FAT_CODIGO_ORI = ' + QuotedStr(EditFatura.Text) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  );
+  qAux.First;
+  while not qAux.Eof do
+  begin
+    ExecSql( 'UPDATE FAT_PC01 SET ' +
+            '   FPC_STATUS = ' + QuotedStr('Pendente') + ', ' +
+            '   FPC_EXCLUSAO = ' + QuotedStr('N') + ',' +
+            '   FPC_SITPAG = ' + QuotedStr('P') + ',' +
+            '   USU_CODIGO = ' + QuotedStr(Edt_Usu_Cod.Text) + ', ' +
+            '   USU_LOGIN  = ' + QuotedStr(Edt_Usu_Nome.Text) +
+            ' WHERE ' +
+            ' FAT_CODIGO = ' + QuotedStr(qAux.FieldByName('FAT_CODIGO').AsString) +
+            ' AND FPC_NUMER = ' + QuotedStr(qAux.FieldByName('FPC_NUMER').AsString) +
+          ConcatSe(' AND ', DBINICIO.ExclusivoSql('RECEBER') ) ); // EMP_CODIGO
+    ExecSql( 'DELETE FROM FAT_AGRUPADO ' +
+                  ' WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) +
+                  ' AND FAT_CODIGO = ' + QuotedStr(qAux.FieldByName('FAT_CODIGO').AsString) +
+                  ' AND FPC_NUMER = ' + QuotedStr(qAux.FieldByName('FPC_NUMER').AsString)
+            );
+    qAux.Next;
+  end;
+
 end;
 
 procedure TFormContasReceber.Alterar_Valor_Parcela(const sFatura,

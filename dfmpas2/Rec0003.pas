@@ -1651,6 +1651,7 @@ begin
       formContasReceberAgrupa := TformContasReceberAgrupa.Create(Application);
     //Adiciona parcelas a serem agrupadas
     formContasReceberAgrupa.sFaturas := '';
+    formContasReceberAgrupa.aFaturas.Clear;
     CdsReceber.First;
     while (not CdsReceber.Eof) do
       begin
@@ -1664,7 +1665,10 @@ begin
         formContasReceberAgrupa.CdSRecebimentosCliente.AsString := CdsReceberCLI_RAZAO.AsString;
         formContasReceberAgrupa.CdSRecebimentosClienteCodigo.AsString := CdsReceberCLI_CODIGO.AsString;
         formContasReceberAgrupa.CdSRecebimentosBanco.AsString := CdsReceberBAN_APELIDO.AsString;
+
         formContasReceberAgrupa.sFaturas := formContasReceberAgrupa.sFaturas + formContasReceberAgrupa.CdSRecebimentosFatura.AsString + '(' + CdsReceberFPC_NUMER.AsString + '), ';
+        formContasReceberAgrupa.aFaturas.Add(formContasReceberAgrupa.CdSRecebimentosFatura.AsString + CdsReceberFPC_NUMER.AsString);
+
         formContasReceberAgrupa.CurrTotalReceber.Value := formContasReceberAgrupa.CurrTotalReceber.Value + CdsReceberCCPendente.AsFloat;
         formContasReceberAgrupa.CdSRecebimentos.Post;
         CdsReceber.Next;
