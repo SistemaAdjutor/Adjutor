@@ -384,15 +384,18 @@ begin
           Add('       CL.CLI_INSC, rp.REP_NOME, ' );
           Add('       VEND_INTERNO_CODIGO, CLI_CEP, cli_fax, cli_celular, CLI_UND_CONSUMIDORA, co.CORI_DESCRICAO,');
 
-          Add('  (SELECT  MAX(FPC_VLPARC) FROM FAT_PC01 pc ' +
-              '    WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
-              '      AND FPC_EXCLUSAO = ''N''   ' +
-                   ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-              '      AND FPC_VENCTO =   ( SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc2  ' +
-              '             WHERE pc2.CLI_CODIGO = cl.CLI_CODIGO  ' +
-                            ConcatSe(' AND pc2.', dbinicio.ExclusivoSql('RECEBER')) +
-              '               AND FPC_EXCLUSAO = ''N''   ' +
-              '                     ) ) AS ULTPARCELA, ' );
+          if dbInicio.GetParametroSistema('PMT_PEDIDO_DOACAO') = 'S' then
+            Add('  (SELECT  MAX(FPC_VLPARC) FROM FAT_PC01 pc ' +
+                '    WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+                '      AND FPC_EXCLUSAO = ''N''   ' +
+                     ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
+                '      AND FPC_VENCTO =   ( SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc2  ' +
+                '             WHERE pc2.CLI_CODIGO = cl.CLI_CODIGO  ' +
+                              ConcatSe(' AND pc2.', dbinicio.ExclusivoSql('RECEBER')) +
+                '               AND FPC_EXCLUSAO = ''N''   ' +
+                '                     ) ) AS ULTPARCELA, ' )
+          else
+            Add ('CAST(0 as NUMERIC(18,5)) AS ULTPARCELA, ' );
 
 
           Add('       CASE ' +
@@ -401,14 +404,16 @@ begin
               '            WHEN CL.CLI_INATIVO = ''R'' THEN ''EM RECUPERAÇÃO''    ' +
               '       END AS SITUACAO, ' );
 
-          Add(       'CAST (((SELECT MAX(T1.FRE_DATA_RECEBIMENTO) ' +
-                     '   FROM FAT_RECEBIMENTO T1 ' +
-                     '     JOIN FAT_PC01 f ON f.fat_registro = t1.fat_registro ' +
-                     '   WHERE T1.FAT_REGISTRO = f.fat_registro ' +
-                     '   	AND T1.EMP_CODIGO = CL.EMP_CODIGO ' +
-                     '   	AND CLI_CODIGO  = CL.CLI_CODIGO'  +
-                     '  )) AS DATE) AS FPC_VENCTO ' );
-
+          if dbInicio.GetParametroSistema('PMT_PEDIDO_DOACAO') = 'S' then
+            Add(       'CAST (((SELECT MAX(T1.FRE_DATA_RECEBIMENTO) ' +
+                       '   FROM FAT_RECEBIMENTO T1 ' +
+                       '     JOIN FAT_PC01 f ON f.fat_registro = t1.fat_registro ' +
+                       '   WHERE T1.FAT_REGISTRO = f.fat_registro ' +
+                       '   	AND T1.EMP_CODIGO = CL.EMP_CODIGO ' +
+                       '   	AND CLI_CODIGO  = CL.CLI_CODIGO'  +
+                       '  )) AS DATE) AS FPC_VENCTO ' )
+          else
+            Add ('CAST(CURRENT_DATE as DATE) AS FPC_VENCTO ' );
 
           add('FROM CLI0000 CL');
           add('     LEFT JOIN CLI_ATV1 ATV ON ATV.RCL_CODIGO=CL.CLI_ATIVIDADE ');
