@@ -1,13 +1,15 @@
-﻿Atualizado em 16/08/2024
+﻿Atualizado em 19/08/2024
 Inicio da versão: 06/08/2024
 
 principal: Parseals, Embraterm
   1931 - Erro-> XML NFE-S Criando em branco na empresa 002. [Parseals]
   1933 - Divergência de valores no saldo de fluxo de caixa [Embraterm]
 
-patch 1: Rotor, LForja, Drimec, Normadin, Vila Rica
+patch 1: Rotor, LForja, Drimec, Normadin, Vila Rica, LF Epis
   1935 - Erro -> Geração de Etiquetas [Rotor]
   1937 - Erro -> Agrupar cobrança e des-agrupar [LForja]
   1940 - Implementação -> IMPOSTO DE RENDA NO XML E DADOS ADICIONAIS [Drimec]
   1941 - Valor da alíquota e valor do aproveitamento de credito do ICMS zerados [Normadin]
   1942 - Erro nas grades do produto no pedido [Vila Rica]
+  1945 - Demora ao abrir tela de cliente [LF Epis]
+  
