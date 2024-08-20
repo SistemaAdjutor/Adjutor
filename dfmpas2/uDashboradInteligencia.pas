@@ -142,9 +142,7 @@ procedure TfrmDashBoardInteligencia.Gera();
 var
   ultimoDia, diaAtual, mesAtual: integer;
   dia, mes, ano: Word;
-  totalKilosVendidos, totalVendasFaturadas,
-  v220000, v240000, v35000,
-  pesos, texto17: double;
+  totalKilosVendidos, totalVendasFaturadas: double;
   whereEmissao: string;
 begin
 
@@ -157,9 +155,6 @@ begin
     diaAtual := Dia;
   ultimoDia := UltimoDiaDoMes(mesAtual, cbAno.ItemIndex);
 
-  v220000 := 220000;
-  v240000 := 240000;
-  v35000 := 35000;
   whereEmissao := ' WHERE  n.NF_EMISSAO BETWEEN  ' + QuotedStr(IntToStr(ano) + '-' + IntToStr(mesAtual) + '-01') +
            ' AND '  + QuotedStr(IntToStr(ano) + '-' + IntToStr(mesAtual) + '-' + IntToStr(diaAtual) );
 
@@ -190,22 +185,13 @@ begin
   kilosVendidos.Value := totalKilosVendidos;
   Faturamento.Value := TotalVendasFaturadas;
   FKG.Value := TotalVendasFaturadas / totalKilosVendidos;
-  if mesAtual <> mes then
-    // percentual, ficou texto 17 para não se perder na planilha de origem do cálculo...
-    texto17 := (totalKilosVendidos / DiaAtual) / (((v220000 / FKG.Value)) / ultimoDia) * 100
-  else
-    // percentual
-    texto17 := (totalKilosVendidos / DiaAtual) / (((v240000 / FKG.Value)) / ultimoDia) * 100;
 
-  Faturamento2.Value := v240000 / (Texto17 / 100);
+  Faturamento2.Value := ((ultimoDia / 7) * TotalVendasFaturadas) / (diaAtual / 7) ;
 
   if mesAtual <> mes then
     MetaKilosVendidos.Value := totalKilosVendidos
   else
-    MetaKilosVendidos.Value := (totalKilosVendidos / diaAtual) * UltimoDia;
-
-  // media1.Value := (v35000 / UltimoDia) * DiaAtual;
-  // media2.Value := DiaAtual * (v240000 / FKG.Value) / diaAtual;
+    MetaKilosVendidos.Value :=  ((ultimoDia / 7) * totalKilosVendidos) / (diaAtual / 7) ; // (totalKilosVendidos / diaAtual) * UltimoDia;
 
   OpenAux(
           '  SELECT ' +
