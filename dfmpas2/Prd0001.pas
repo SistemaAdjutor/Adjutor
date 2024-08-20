@@ -7117,6 +7117,13 @@ begin
           end
           else
             CdsGradePRG_INDICE.AsFloat := 0;
+
+   if (CdsGradePRG_INDICE.AsFloat > 0) then
+      CdsGradePRG_PRECO.AsFloat := CdsGradePRG_INDICE.AsFloat * CdsProdutosPRD_PVENDA.AsFloat
+   else
+      CdsGradePRG_PRECO.AsFloat := CdsProdutosPRD_PVENDA.AsFloat;
+
+
     CdsGradePRG_DESCRICAO.AsString := dbedtPRG_MEDIDA_1.Text + ' x ' + dbedtPRG_MEDIDA_2.Text + ' x ' + dbedtPRG_MEDIDA_3.Text;
   end;
 

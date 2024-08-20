@@ -1157,7 +1157,7 @@ end;
 procedure TFrmPedidoItem.CalculaTotais;
 var
   lValor: Currency ;
-  indice: double;
+//  indice: double;
 begin
 	if (pgcPrincipal.ActivePage = tsSemGrade) then
   begin
@@ -1169,14 +1169,15 @@ begin
   				CurPrecoLiquido.Value := Uteis.RoundTo((CurPrecoBruto.Value *( 1- (rIndiceDesconto /100))),-5)
         else
           CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
-        if cbGrade.IdRetorno <> '' then
-          indice := BuscaUmDadoSqlAsFloat('SELECT PRG_INDICE FROM PRD_GRADE WHERE PRG_REGISTRO = ' + QuotedStr(cbGrade.IdRetorno) )
-        else
-          indice := 0;
 
-        if indice > 0 then
-  				CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value * indice
-        else
+//        if cbGrade.IdRetorno <> '' then
+//          indice := BuscaUmDadoSqlAsFloat('SELECT PRG_INDICE FROM PRD_GRADE WHERE PRG_REGISTRO = ' + QuotedStr(cbGrade.IdRetorno) )
+//        else
+//          indice := 0;
+
+//        if indice > 0 then
+//  				CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value * indice
+//        else
           CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value;
 
 
