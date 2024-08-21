@@ -3473,6 +3473,8 @@ end;
 procedure TFrmPedidoItem.CbGradeSelect(Sender: TObject);
 begin
   inherited;
+  if cbGrade.idRetorno = '' then
+    Exit;
   AtualizaGradeInfo;
   AtualizaUltimoPreco;
   CurPrecoBruto.Value := BuscaUmDadoSqlAsFloat('SELECT PRG_PRECO FROM PRD_GRADE WHERE PRG_REGISTRO = ' + cbGrade.idRetorno);
