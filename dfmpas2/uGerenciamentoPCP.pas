@@ -3098,6 +3098,8 @@ begin
       ' JOIN PRD0000 pr ON (pr.PRD_CODIGO = iop.PRD_CODIGO) ' +
       ' WHERE IOP.IOP_NORDEM = ' + sqstr(cdsProdutoOP5IOP_NORDEM.asString) + ' AND CQ.CQUA_PRDL_LOTE = ' + sqstr(cdsProdutoOP5PRDL_LOTE.asString); }
       qAux2.SQL.Text := 'SELECT FIRST 1 ' + sqstr(cdsProdutoOP5IOP_NORDEM.asString) +' IOP_NORDEM, ' + sqstr(cdsProdutoOP5PRDL_LOTE.asString) + ' CQUA_PRDL_LOTE FROM PRD0000';
+      if dbInicio.IsDesenvolvimento then
+        copyToClipboard(qAux2.SQL.Text);
       qAux2.Open;
 
       qAux3.Close;

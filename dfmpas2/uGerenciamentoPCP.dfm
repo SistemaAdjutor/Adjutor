@@ -1185,12 +1185,13 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     Top = 151
     object qAux2IOP_NORDEM: TStringField
       AutoGenerateValue = arDefault
+      DisplayWidth = 10
       FieldName = 'IOP_NORDEM'
       Origin = 'IOP_NORDEM'
       ProviderFlags = []
       ReadOnly = True
       FixedChar = True
-      Size = 3
+      Size = 10
     end
     object qAux2CQUA_PRDL_LOTE: TStringField
       AutoGenerateValue = arDefault
