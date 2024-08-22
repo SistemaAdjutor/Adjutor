@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 46
     Width = 2500
     Height = 566
-    ActivePage = TabGrade
+    ActivePage = Tbs_Produtos
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -6552,7 +6552,6 @@ inherited FormProduto: TFormProduto
               Align = alBottom
               Caption = 'Prazo da Oferta'
               TabOrder = 3
-              ExplicitWidth = 745
               object Label84: TLabel
                 Left = 10
                 Top = 17
