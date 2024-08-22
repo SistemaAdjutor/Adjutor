@@ -1,4 +1,4 @@
-﻿Atualizado em 21/08/2024
+﻿Atualizado em 22/08/2024
 Inicio da versão: 06/08/2024
 
 principal: Parseals, Embraterm
@@ -12,4 +12,7 @@ patch 1: Rotor, LForja, Drimec, Normadin, Vila Rica, LF Epis
   1941 - Valor da alíquota e valor do aproveitamento de credito do ICMS zerados [Normadin]
   1942 - Erro nas grades do produto no pedido [Vila Rica]
   1945 - Demora ao abrir tela de cliente [LF Epis]
+  
+patch 2: Vila Rica
+  1942 - Erro nas grades do produto no pedido [Vila Rica]
   
