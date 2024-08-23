@@ -757,6 +757,8 @@ end;
 procedure TfrmDemandaProducao.cdsBuscaCalcFields(DataSet: TDataSet);
 begin
   inherited;
+  if cdsBuscaDEP_CODIGO.AsString = '' then
+    Exit;
   qAux.Close;
   qAux.SQL.Text :=
     'SELECT ei.ENF_IT_NOTANUMBER, f.FOR_RAZAO ' +
