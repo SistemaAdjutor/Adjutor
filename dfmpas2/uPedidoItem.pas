@@ -7315,7 +7315,7 @@ begin
 															end
 															else  // Verifica se o ST não é por CNAE
 															if (cliModoTribSt = 'CNAE')
-                              and ( BuscaUmDadoSqlAsFloat('SELECT CNAE_CARGA_TRIB_MEDIA FROM CNAE WHERE CNE_REGISTRO = ' + cnaeRegistro) > 0)
+                              and ( BuscaUmDadoSqlAsFloat('SELECT CNAE_CARGA_TRIB_MEDIA FROM CNAE WHERE CNAE_REGISTRO = ' + cnaeRegistro) > 0)
                               then
 															begin
 																	 wBaseValorSubs := Uteis.RoundTo ( wBaseValorSubs + (CurTotal.Value), -2);
@@ -7326,9 +7326,9 @@ begin
 
 																	 wCalBaseValorSubs := ((((wBaseValorSubs - wValorIPIIndividual) * (wUfAliqIcmsForaEst / 100)) + (wBaseValorSubs
                                    *
-                                   (BuscaUmDadoSqlAsFloat('SELECT CNAE_CARGA_TRIB_MEDIA FROM CNAE WHERE CNE_REGISTRO = ' + cnaeRegistro) / 100))) / (wUfAliqIcmsSubCli / 100));
+                                   (BuscaUmDadoSqlAsFloat('SELECT CNAE_CARGA_TRIB_MEDIA FROM CNAE WHERE CNAE_REGISTRO = ' + cnaeRegistro) / 100))) / (wUfAliqIcmsSubCli / 100));
 
-																	 wValorSubs := wBaseValorSubs * (BuscaUmDadoSqlAsFloat('SELECT CNAE_CARGA_TRIB_MEDIA FROM CNAE WHERE CNE_REGISTRO = ' + cnaeRegistro)  / 100);
+																	 wValorSubs := wBaseValorSubs * (BuscaUmDadoSqlAsFloat('SELECT CNAE_CARGA_TRIB_MEDIA FROM CNAE WHERE CNAE_REGISTRO = ' + cnaeRegistro)  / 100);
 																	 wBaseValorSubs := wCalBaseValorSubs;
 
 																	 if (wValorSubs > 0) then

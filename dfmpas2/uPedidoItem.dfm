@@ -1527,6 +1527,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
           object tsDiretivas: TTabSheet
             Caption = 'Diretivas'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object RxDBGrid1: TDBGrid
               Left = 0
               Top = 14
@@ -3365,7 +3369,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
     Left = 1349
     Top = 202
     Bitmap = {
-      494C0101020005002C0010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500300010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
