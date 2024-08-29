@@ -6128,7 +6128,7 @@ begin
     if (SpeedButton1.Tag = 1)  then
     begin
       if FrmPedidoItem = nil then
-        FrmPedidoItem := TFrmPedidoItem.Create(nil);
+        FrmPedidoItem := TFrmPedidoItem.Create(self);
       try
           FrmPedidoItem.Pesquisa := True;
           FrmPedidoItem.sTipo := 'I';
