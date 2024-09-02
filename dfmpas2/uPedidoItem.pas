@@ -5284,8 +5284,8 @@ procedure TFrmPedidoItem.CalculaIndiceDesconto;
 begin
    //Calcula Indice do Desconto
    //rIndiceDesconto := 0;
-   rIndiceDesconto := (100 - (CurDesconto.Value + CurDescontoAdicional.Value));
-   rIndiceDesconto := (rIndiceDesconto - (( rIndiceDesconto {* CurDescontoAdicional.Value} ) / 100));
+   rIndiceDesconto := (100 - CurDesconto.Value);
+   rIndiceDesconto := (rIndiceDesconto - (( rIndiceDesconto * CurDescontoAdicional.Value ) / 100));
 
    {mostra o resultado}
    rIndiceDesconto := (100 - rIndiceDesconto );
