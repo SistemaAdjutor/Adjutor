@@ -1,0 +1,9 @@
+﻿Atualizado em 02/09/2024
+Inicio da versão: 02/09/2024
+
+principal: Inquibra, Collect, Parseals
+  1943 - Informação divergente no cabeçalho de ordem de produção [Inquibra]
+  1949 - Correção - INSERIR COLUNA DA UNIDADE CONSUMIDORA NO RELATÓRIO FINANCEIRO EM EXCEL [Collect]
+  1951 - Erro->Ao alterar valor liquido Altera bruto mesmo bloqueado [Parseals]
+  
+ 
