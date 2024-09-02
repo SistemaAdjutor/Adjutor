@@ -1908,7 +1908,7 @@ begin
   begin
     if not assigned(FrmPedido) then
     begin
-      FrmPedido := TFrmPedido.Create(nil);
+      FrmPedido := TFrmPedido.Create(self);
       if (MDIChildCount > 1) then
         SendMessage(ClientHandle, WM_MDICASCADE, 0, 0)
       else

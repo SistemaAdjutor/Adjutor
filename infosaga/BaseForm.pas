@@ -902,7 +902,7 @@ begin
         /////////////////////////////
         if assigned( Evnt ) then
            Evnt( sender ) ;
-        self.LastActiveControl:=tWinControl(sender);
+        // self.LastActiveControl:=tWinControl(sender);
      except
            self.ActiveControl:=tWinControl(sender);
            raise;

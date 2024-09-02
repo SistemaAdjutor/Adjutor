@@ -409,6 +409,7 @@ type
     cdsItemGradePRG_MEDIDA_1: TFMTBCDField;
     cdsItemGradePRG_MEDIDA_2: TFMTBCDField;
     cdsItemGradePRG_MEDIDA_3: TFMTBCDField;
+    TimerRestoreFocus: TTimer;
 
     procedure Bit_CancelarClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
@@ -518,6 +519,7 @@ type
     procedure cbEnderecoClick(Sender: TObject);
     procedure cbReferenciakeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure CbGradeSelect(Sender: TObject);
+    procedure TimerRestoreFocusTimer(Sender: TObject);
   private
     prdPVenda: Double;
     pvFlgProcSelect:boolean;
@@ -543,6 +545,8 @@ type
 		lTabPrinc, lTabSec, lTabPromo, lTabEspe: Integer;
     opv_semlote : boolean ;
     loteCorrente: integer;
+    FLastFocusedControl: TWinControl; // Variável para armazenar o controle focado
+    FFocusRestored: Boolean;  // Variável para garantir que o foco foi restaurado
 
     procedure BuscaProduto( const pCodProduto: String);
     procedure Focar;
@@ -586,6 +590,8 @@ type
     procedure AtualizaUltimoPreco;
     function BuscaPrecoVenda(pCodigoProduto: string): double;
     function ValidaAgronegocio: boolean;
+    function ValidaDescontoPrecoLiquido: boolean;
+    procedure RestoreFocus(Sender: TObject); // Procedimento para restaurar o foco
 
 public
     wDescontoAnt: double;
@@ -1166,9 +1172,9 @@ begin
 
 				CalculaIndiceDesconto;
         if rIndiceDesconto>0 then
-  				CurPrecoLiquido.Value := Uteis.RoundTo((CurPrecoBruto.Value *( 1- (rIndiceDesconto /100))),-5)
-        else
-          CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
+  				CurPrecoLiquido.Value := Uteis.RoundTo((CurPrecoBruto.Value *( 1- (rIndiceDesconto /100))),-5) ;
+//        else
+//          CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
 
 //        if cbGrade.IdRetorno <> '' then
 //          indice := BuscaUmDadoSqlAsFloat('SELECT PRG_INDICE FROM PRD_GRADE WHERE PRG_REGISTRO = ' + QuotedStr(cbGrade.IdRetorno) )
@@ -1492,6 +1498,7 @@ begin
      CurDesconto.Clear;
      CurDescontoAdicional.Clear;
      CurPrecoLiquido.Clear;
+     CurrAcrescimoReal.Value := 0;
      CbLoteProduto.Clear;
      CbDiretiva.Clear;
      CbDiretiva.Text := '';
@@ -1756,6 +1763,7 @@ procedure TFrmPedidoItem.CurDescontoAdicionalExit(Sender: TObject);
 begin
   inherited;
    CalculaTotais;
+   ValidaDesconto;
   if Bit_Gravar.CanFocus then
     Bit_Gravar.SetFocus;
 end;
@@ -1769,9 +1777,12 @@ begin
    rPrecoBruto := CurPrecoBruto.Value;
    if (rPrecoSaida < rPrecoBruto) then
    begin
+       ValidaDescontoPrecoLiquido;
+       if not ValidaDesconto
+         then exit;
        rPrecoBruto := rPrecoBruto - CurrAcrescimoReal.Value;
        CurPrecoBruto.Value := rPrecoBruto;
-       CurrAcrescimoReal.Clear;
+       CurrAcrescimoReal.Value := 0;
    end;
    // volta preço liquido sem o acrescimo para comparar certo nas alterações de preço
    if CurrAcrescimoReal.Value > 0 then
@@ -1784,8 +1795,8 @@ begin
          if (rPrecoSaida >= rPrecoBruto ) then
          begin
 							 CurrAcrescimoReal.Value := 0;
-               CurrAcrescimoReal.Value := ((rPrecoSaida - CurrAcrescimoReal.Value) - rPrecoBruto);
-               CurPrecoBruto.Value     := rPrecoSaida;
+               CurrAcrescimoReal.Value :=  (rPrecoSaida - rPrecoBruto); //   ((rPrecoSaida - CurrAcrescimoReal.Value) - rPrecoBruto);
+               // CurPrecoBruto.Value     := rPrecoSaida;
          end
          else
          begin
@@ -1808,6 +1819,7 @@ begin
           TJvValidateEdit(Sender).SetFocus;
    end;
 
+   CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value;
 end;
 
 procedure TFrmPedidoItem.AlteraLoteProduto (const Lotes: Variant; registroItem: integer);
@@ -3377,9 +3389,17 @@ begin
 end;
 
 function TFrmPedidoItem.ValidaDesconto: Boolean;
-var tcr: TFrmAutoriza;
+var
+  tcr: TFrmAutoriza;
+
 begin
    CalculaIndiceDesconto;
+
+  // Salva o componente que está com o foco atualmente
+  FLastFocusedControl := Self.ActiveControl;
+  FFocusRestored := False; // Indica que o foco ainda não foi restaurado
+
+
    if (dbInicio.Empresa.DesctoMaximo_P = 0) then // zero = desconto totalmente liberado
       Result := true
    else
@@ -3390,25 +3410,49 @@ begin
         tcr.TipoValidacao := vDescontoMaximo;
         tcr.DescontoMax := rIndiceDesconto;
         tcr.lbAviso.Caption := Pchar('O Desconto praticado foi de '+FloatToStr(rIndiceDesconto)+' % o máximo autorizado é de '+FloatToStr(dbInicio.Empresa.DesctoMaximo_P)+' %');
+
+        TimerRestoreFocus.Enabled := True; // Ativa o temporizador para monitorar o foco
+
         tcr.ShowModal;
         if tcr.modalresult<>mrOk then
         begin
           // Self.Close;
           uteis.Aviso(Pchar('O Desconto praticado foi de '+FloatToStr(rIndiceDesconto)+' % o máximo autorizado é de '+FloatToStr(dbInicio.Empresa.DesctoMaximo_P)+' %'));
           CurDesconto.Value := 0;
+          CurPrecoLiquido.Value := CurPrecoBruto.Value;
           result := False;
         end
         else
+        begin
          Result := True;
+        end;
 
        finally
          FreeAndNil( tcr ) ;
        end;
+                        {
+
+        if Assigned(FLastFocusedControl) then
+        begin
+          FLastFocusedControl.SetFocus;  // Restaura o foco para o controle salvo
+          FLastFocusedControl.Perform(WM_LBUTTONDOWN, 0, 0);  // Simula um clique no controle
+          FLastFocusedControl.Perform(WM_LBUTTONUP, 0, 0);    // Finaliza o clique
+//          FLastFocusedControl := nil;    // Limpa a variável após restaurar o foco
+        end;
+
+                         }
+
+
    end
    else
        Result := True;
 end;
 
+
+function TFrmPedidoItem.ValidaDescontoPrecoLiquido: boolean;
+begin
+  CurDesconto.Value := ((CurPrecoBruto.Value - CurPrecoLiquido.Value) / CurPrecoBruto.Value) * 100
+end;
 
 procedure TFrmPedidoItem.ItemAgregado;
 begin
@@ -4037,6 +4081,18 @@ begin
 
 end;
 
+
+procedure TFrmPedidoItem.RestoreFocus(Sender: TObject);
+begin
+  if Assigned(FLastFocusedControl) then
+  begin
+    FLastFocusedControl.SetFocus;  // Restaura o foco para o controle salvo
+    FLastFocusedControl := nil;    // Limpa a variável após restaurar o foco
+  end;
+
+  // Desassocia o evento para evitar múltiplas chamadas
+  Application.OnActivate := nil;
+end;
 
 function TFrmPedidoItem.RetornaPercentualComissao(
   const wCodITem: String): Currency;
@@ -5088,6 +5144,23 @@ begin
 		 except
 					 raise;
 		 end;
+end;
+
+procedure TFrmPedidoItem.TimerRestoreFocusTimer(Sender: TObject);
+begin
+  inherited;
+  if (Self = Screen.ActiveForm) and not FFocusRestored then
+  begin
+    if Assigned(FLastFocusedControl) then
+    begin
+      FLastFocusedControl.SetFocus;  // Restaura o foco para o controle salvo
+      FLastFocusedControl.Perform(WM_LBUTTONDOWN, 0, 0);  // Simula o botão do mouse pressionado
+      FLastFocusedControl.Perform(WM_LBUTTONUP, 0, 0);    // Simula o botão do mouse liberado
+      FLastFocusedControl := nil;    // Limpa a variável após restaurar o foco
+    end;
+    FFocusRestored := True;  // Marca que o foco foi restaurado
+    TimerRestoreFocus.Enabled := False;  // Desativa o temporizador
+  end;
 end;
 
 function TFrmPedidoItem.TipoAtualizaEstoque(const prd_refer: string): boolean;
@@ -6152,6 +6225,7 @@ end;
 
 procedure TFrmPedidoItem.CurQuantidadeExit(Sender: tObject);
 begin
+  CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
   CalculaTotais;
 end;
 

@@ -1188,6 +1188,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
               DisplayFormat = dfCurrency
               DecimalPlaces = 3
               EditText = '0'
+              Enabled = False
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -11
@@ -1231,6 +1232,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
               DisplayFormat = dfCurrency
               DecimalPlaces = 3
               EditText = '0'
+              Enabled = False
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -11
@@ -1253,6 +1255,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
               DisplayFormat = dfCurrency
               DecimalPlaces = 3
               EditText = '0'
+              Enabled = False
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -11
@@ -1275,6 +1278,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
               DecimalPlaces = 3
               DisplaySuffix = ' %'
               EditText = '0'
+              Enabled = False
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -11
@@ -1296,6 +1300,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
               DisplayFormat = dfFloat
               DecimalPlaces = 3
               EditText = '0'
+              Enabled = False
               Font.Charset = ANSI_CHARSET
               Font.Color = clBlack
               Font.Height = -11
@@ -1527,10 +1532,6 @@ inherited FrmPedidoItem: TFrmPedidoItem
           object tsDiretivas: TTabSheet
             Caption = 'Diretivas'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object RxDBGrid1: TDBGrid
               Left = 0
               Top = 14
@@ -3369,7 +3370,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
     Left = 1349
     Top = 202
     Bitmap = {
-      494C010102000500300010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500400010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -4517,5 +4518,12 @@ inherited FrmPedidoItem: TFrmPedidoItem
     SQLConnection = DataCadastros.SQLConnection1
     Left = 880
     Top = 189
+  end
+  object TimerRestoreFocus: TTimer
+    Enabled = False
+    Interval = 100
+    OnTimer = TimerRestoreFocusTimer
+    Left = 696
+    Top = 64
   end
 end
