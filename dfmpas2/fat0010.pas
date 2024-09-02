@@ -185,6 +185,7 @@ type
     cdsReceberCentroCustoCCPendente: TFloatField;
     ExportarparaCSV1: TMenuItem;
     CdsReceberBaixasPCX_DESCRI: TStringField;
+    CdsReceberBaixasCLI_UND_CONSUMIDORA: TIntegerField;
     procedure Bit_SairClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure EdClienteCodigoExit(Sender: tObject);
@@ -423,6 +424,7 @@ begin
   lista.Add('FRE_DATA_RECEBIMENTO');
   lista.Add('CLI_RAZAO');
   lista.Add('CLI_CGC');
+  lista.Add('CLI_UND_CONSUMIDORA');
   lista.Add('FRE_VALOR');
   lista.Add('FRE_DESCONTO');
   lista.Add('FRE_JUROS');
@@ -679,7 +681,7 @@ begin
    //Pesquisa
    CdsReceberBaixas.Close;
    CdsReceberBaixas.CommandText := SqlDef(IIF(chkMultiEmpresa.Checked,'MULTIEMPRESA','RECEBER'),
-              'SELECT T1.*,t8.nf_num_nfe, T2.BAN_APELIDO,T3.FPG_DESCRICAO,T4.USU_NOME,T5.CLI_CODIGO,T6.CLI_RAZAO, T6.CLI_CGC,'+
+              'SELECT T1.*,t8.nf_num_nfe, T2.BAN_APELIDO,T3.FPG_DESCRICAO,T4.USU_NOME,T5.CLI_CODIGO,T6.CLI_RAZAO, T6.CLI_CGC, T6.CLI_UND_CONSUMIDORA,'+
               't5.FAT_CODIGO,t5.FPC_NUMER,t5.FPC_NPARCELAS, t5.FPC_VENCTO, p.PCX_DESCRI FROM FAT_RECEBIMENTO T1  '+
                'JOIN BAN0000 T2 ON (T2.BAN_CODIGO = T1.BAN_CODIGO) '+
                'JOIN FORMA_PAGAMENTO T3 ON (T3.FPG_REGISTRO = T1.FPG_REGISTRO) '+
