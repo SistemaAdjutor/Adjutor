@@ -531,6 +531,7 @@ type
     procedure lbCnpjMod13GetText(Sender: TObject; var Text: string);
     procedure ppLogoMod13Print(Sender: TObject);
     procedure CdsMeusProdutosCalcFields(DataSet: TDataSet);
+    procedure CdsEtiquetaCalcFields(DataSet: TDataSet);
  private
     { Private declarations }
     contador: integer;
@@ -1104,6 +1105,35 @@ begin
   EdtTipo.Text := CBtIPO.idRetorno;
 end;
 
+
+procedure TFrmGerenciadorEtiquetas.CdsEtiquetaCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  if CdsEtiqueta = nil then
+    Abort;
+  if contador = 0 then
+      pbAguarde.Max := CdsEtiqueta.RecordCount;
+  Inc(contador);
+  pbAguarde.Position := contador;
+  if (contador / 100) =  Round((contador / 100)) then
+  begin
+    Application.ProcessMessages;
+    if GetAsyncKeyState(VK_ESCAPE) <> 0 then
+    begin
+      uteis.Aviso('Cancelado pelo usuário');
+      CdsEtiqueta.Close;
+      FCancelaProcessamento := True;
+      Abort;
+    end;
+  end;
+  CdsEtiquetaPRDE_ENDERECO.AsString := dbInicio.BuscaUmDadoSqlAsString(
+         ' SELECT pe.prde_endereco ' +
+         '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ' +
+         '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO  AND pe.EMP_CODIGO = pee2.EMP_CODIGO  ) ' +
+         '      JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) ' +
+         '    WHERE pee2.PRD_REFER = ' + QuotedStr(CdsEtiquetaPRD_REFER.AsString) +' AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)
+        );
+end;
 
 procedure TFrmGerenciadorEtiquetas.CdsMeusProdutosCalcFields(DataSet: TDataSet);
 begin
