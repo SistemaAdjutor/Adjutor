@@ -774,6 +774,8 @@ type
     JvGIFAnimator1: TJvGIFAnimator;
     pinfo: TPanel;
     DBCheckBox5: TDBCheckBox;
+    CdsVendasCLI_DTULTCOM: TSQLTimeStampField;
+    CdsVendasCLI_CODIGO: TStringField;
 
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
@@ -938,6 +940,7 @@ type
     procedure DsDupFatDataChange(Sender: TObject; Field: TField);
     procedure ExportarparaC91Click(Sender: TObject);
     procedure qClientesCLI_FONEGetText(Sender: TField; var Text: string; DisplayText: Boolean);
+    procedure CdsVendasCalcFields(DataSet: TDataSet);
   private
 
     bIncluir_Servico, bAlterar_Servico: Boolean;
@@ -1939,7 +1942,8 @@ begin
     CdsVendas.CommandText := 'select ' + ' t2.emp_codigo, t1.prd_refer, ' +
       '  t1.prd_descri, ' + '  t1.ped_codigo, ' + '  T1.nf_it_notanumer, ' +
       '  t2.nf_num_nfe, ' + '  t2.nf_emissao, ' + '  t1.nf_qtde, ' +
-      '  t1.nf_preco, ' + '  t1.nf_ipialiq, ' +
+      '  t1.nf_preco, ' + '  t1.nf_ipialiq, t2.CLI_CODIGO, ' +
+     // '(SELECT MAX(PED_DTENTRADA)  FROM PED0000 p  JOIN PED_IT01 PI2 ON (PI2.PED_CODIGO = p.PED_CODIGO and pi2.PRD_CODIGO = t1.PRD_CODIGO )  WHERE p.EMP_CODIGO = t2.EMP_CODIGO AND p.CLI_CODIGO = t2.CLI_CODIGO) AS CLI_DTULTCOM,' +
       '  CAST((coalesce(t1.nf_ipivalor,0) / t1.nf_qtde) AS NUMERIC(18,4)) AS valor_ipi, '
       + '  CAST((coalesce(t1.nf_vlsubst,0) / t1.nf_qtde) AS NUMERIC(18,4)) as valor_icms_st, '
       + '  t1.nf_preco + CAST((coalesce(t1.nf_ipivalor,0) + coalesce(t1.nf_vlsubst,0))/t1.nf_qtde AS NUMERIC(18,4)) as VALOR_FINAL '
@@ -1948,6 +1952,8 @@ begin
       ' join nf0001 t2 on (t2.emp_codigo = t1.emp_codigo and t2.nf_notanumber = t1.nf_it_notanumer  and t2.nf_cancelada <> ''S'' and t2.cli_codigo = '
       + ' ' +QuotedStr( DataCadastros.CdsClientesCLI_CODIGO.AsString) +
       ') where t1.nf_qtde > 0 ' + sEmpresa + 'order by t2.nf_emissao desc';
+    if dbInicio.IsDesenvolvimento then
+      copyToClipboard(CdsVendas.CommandText);
     CdsVendas.Open;
   end;
   If (DataCadastros.CdsClientes.FieldByName('CLI_FRETE').AsString <> '') and
@@ -2741,6 +2747,19 @@ end;
 procedure TFormCliente.CdsClientesAfterScroll(DataSet: TDataSet);
 begin
   MostraPrecosExclusivosCliente;
+end;
+
+procedure TFormCliente.CdsVendasCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  CdsVendasCLI_DTULTCOM.AsDateTime := dbInicio.BuscaUmDadoSqlAsDateTime(
+           'SELECT MAX(PED_DTENTRADA)  ' +
+           ' FROM PED_IT01 PI2  ' +
+           ' JOIN PED0000 p  ON p.PED_CODIGO = pi2.PED_CODIGO' +
+           ' WHERE pi2.PRD_REFER = ' + QuotedStr(CdsVendasPRD_REFER.AsString) +
+           ' AND p.EMP_CODIGO = '  + QuotedStr(dbInicio.EMP_CODIGO) +
+           ' AND p.CLI_CODIGO = ' + QuotedStr(CdsVendasCLI_CODIGO.AsString)
+           );
 end;
 
 procedure TFormCliente.MostraPrecosExclusivosCliente;
