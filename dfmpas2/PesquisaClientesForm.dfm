@@ -14,8 +14,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     ExplicitWidth = 1262
     ExplicitHeight = 542
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 0
-      ExplicitTop = 0
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 1254
       ExplicitHeight = 514
       inherited pnControle: TPanel
@@ -1094,7 +1094,7 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
       DisplayLabel = 'Situa'#231#227'o'
       FieldName = 'SITUACAO'
     end
-    object qExportULTPARCELA: TFMTBCDField
+    object qExportULTPARCELA: TSQLTimeStampField
       DisplayLabel = #218'ltima Parcela'
       FieldName = 'ULTPARCELA'
     end

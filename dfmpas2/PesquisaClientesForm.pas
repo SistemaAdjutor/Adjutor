@@ -96,7 +96,7 @@ type
     qExportFPC_VENCTO: TDateField;
     cdsBuscoSITUACAO: TStringField;
     qExportSITUACAO: TStringField;
-    qExportULTPARCELA: TFMTBCDField;
+    qExportULTPARCELA: TSQLTimeStampField;
     procedure FormCreate(Sender: TObject);
     procedure CdsBuscoCLI_RAZAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure CdsBuscoCLI_CGCGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -384,8 +384,8 @@ begin
           Add('       CL.CLI_INSC, rp.REP_NOME, ' );
           Add('       VEND_INTERNO_CODIGO, CLI_CEP, cli_fax, cli_celular, CLI_UND_CONSUMIDORA, co.CORI_DESCRICAO,');
 
-          if dbInicio.GetParametroSistema('PMT_PEDIDO_DOACAO') = 'S' then
-            Add('  (SELECT  MAX(FPC_VLPARC) FROM FAT_PC01 pc ' +
+//          if dbInicio.GetParametroSistema('PMT_PEDIDO_DOACAO') = 'S' then
+            Add('  (SELECT  CAST(MAX(FPC_VENCTO) AS TIMESTAMP) FROM FAT_PC01 pc ' +
                 '    WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
                 '      AND FPC_EXCLUSAO = ''N''   ' +
                      ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
@@ -393,9 +393,9 @@ begin
                 '             WHERE pc2.CLI_CODIGO = cl.CLI_CODIGO  ' +
                               ConcatSe(' AND pc2.', dbinicio.ExclusivoSql('RECEBER')) +
                 '               AND FPC_EXCLUSAO = ''N''   ' +
-                '                     ) ) AS ULTPARCELA, ' )
-          else
-            Add ('CAST(0 as NUMERIC(18,5)) AS ULTPARCELA, ' );
+                '                     ) ) AS ULTPARCELA, ' );
+//          else
+//            Add ('NULL AS ULTPARCELA, ' );
 
 
           Add('       CASE ' +
