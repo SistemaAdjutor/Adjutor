@@ -68,16 +68,7 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     Color = 12681984
     TabOrder = 2
   end
-  object DBNavigator1: TDBNavigator [6]
-    Left = 552
-    Top = 7
-    Width = 120
-    Height = 25
-    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
-    TabOrder = 3
-    OnClick = DBNavigator1Click
-  end
-  object CbAlmoxarifadoDestino: TComboBoxRw [7]
+  object CbAlmoxarifadoDestino: TComboBoxRw [6]
     Left = 88
     Top = 78
     Width = 352
@@ -120,7 +111,7 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
     itemindex = 0
     style = csDropDown
   end
-  object GroupBox1: TGroupBox [8]
+  object GroupBox1: TGroupBox [7]
     Left = 18
     Top = 101
     Width = 665
@@ -166,7 +157,7 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
         end>
     end
   end
-  object Panel2: TPanel [9]
+  object Panel2: TPanel [8]
     Left = 375
     Top = 427
     Width = 289
@@ -334,6 +325,15 @@ inherited FrmProdutoEnderecamento: TFrmProdutoEnderecamento
       TabStop = False
       OnClick = Bit_GravarClick
     end
+  end
+  object DBNavigator1: TDBNavigator [9]
+    Left = 552
+    Top = 7
+    Width = 120
+    Height = 25
+    VisibleButtons = [nbFirst, nbPrior, nbNext, nbLast]
+    TabOrder = 3
+    OnClick = DBNavigator1Click
   end
   inherited coCalcula: TACBrCalculadora
     Left = 232

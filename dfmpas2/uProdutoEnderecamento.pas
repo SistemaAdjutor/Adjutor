@@ -301,13 +301,13 @@ begin
                                                                ' FROM PRD0000_ENDERECAMENTO pe ' +
                                                               // ' JOIN PRD0000_ENDERECAMENTO_EMPRESA pee ON (pe.PRDE_REGISTRO = pee.PRDE_REGISTRO AND pee.EMP_CODIGO = pe.EMP_CODIGO ) ' +
                                                                ' JOIN EMP0000 e ON (e.EMP_CODIGO = pe.EMP_CODIGO )',
-                                                               ConcatSe('WHERE pe.',dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'PRDE_ENDERECO','')
+                                                               ConcatSe('WHERE pe.', dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'PRDE_ENDERECO','')
     else
       cdsProdutoEnderecamento.SQL.Text := SQLDEF('TABELAS','SELECT DISTINCT PE.PRDE_REGISTRO, PE.PRDE_ENDERECO, PE.EMP_CODIGO, PE.AMX_CODIGO, E.EMP_RAZAO  ' +
                                                               ' FROM PRD0000_ENDERECAMENTO pe ' +
                                                               // ' LEFT JOIN PRD0000_ENDERECAMENTO_EMPRESA pee ON (pe.PRDE_REGISTRO = pee.PRDE_REGISTRO AND pee.EMP_CODIGO = pe.EMP_CODIGO ) ' +
                                                               ' LEFT JOIN EMP0000 e ON (e.EMP_CODIGO = pe.EMP_CODIGO )',
-                                                              ConcatSe('WHERE pe.',dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'PRDE_ENDERECO','');
+                                                              ConcatSe('WHERE pe.', dbinicio.ExclusivoSql('ENDERECO_ESTOQUE'))  ,'pe.PRDE_ENDERECO','');
     CdsProdutoEnderecamento.open;
     Habilitabotoes;
     if CdsProdutoEnderecamento.IsEmpty Then  //Evita alteração antes que se

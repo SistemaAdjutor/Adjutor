@@ -1136,6 +1136,8 @@ begin
 end;
 
 procedure TFrmGerenciadorEtiquetas.CdsMeusProdutosCalcFields(DataSet: TDataSet);
+var
+  empresas : string;
 begin
   inherited;
   if cdsMeusProdutos = nil then
@@ -1155,13 +1157,49 @@ begin
       Abort;
     end;
   end;
+
+  if Share('ENDERECO_ESTOQUE') = 'C' then
+  begin
+
+    if dbInicio.BuscaUmDadoSqlAsInteger(
+           ' SELECT COUNT(pe.prde_endereco) ' +
+           '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ' +
+           '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO    ) ' +
+           '    WHERE pee2.PRD_REFER = ' + QuotedStr(CdsMeusProdutosPRD_REFER.AsString) // +' AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)
+          ) > 1 then
+    begin
+      dbInicio.qAux.Close;
+      dbInicio.qAux.Sql.Text :=
+                 ' SELECT pe.EMP_CODIGO, pee2.PRD_REFER ' +
+           '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ' +
+           '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO    ) ' +
+           '    WHERE pee2.PRD_REFER = ' + QuotedStr(CdsMeusProdutosPRD_REFER.AsString)
+      ;
+      dbInicio.qAux.Open;
+      empresas := '';
+      while not dbInicio.qAux.Eof do
+      begin
+        empresas := empresas + ' | ' + dbInicio.qAux.FieldByName('EMP_CODIGO').AsString + ' - Ref. ' + dbInicio.qAux.FieldByName('PRD_REFER').AsString;
+        dbInicio.qAux.Next;
+      end;
+      uteis.Aviso('Inconsistência na base de dados' + #13 + 'O cadastro de produtos é Compartilhado entre as empresas e está cadastrado nas empresas ' + empresas + #13 + #13 + 'Favor Revisar.' );
+    end;
+    CdsMeusProdutosPRDE_ENDERECO.AsString := dbInicio.BuscaUmDadoSqlAsString(
+           ' SELECT pe.prde_endereco ' +
+           '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ' +
+           '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO    ) ' +
+           '    WHERE pee2.PRD_REFER = ' + QuotedStr(CdsMeusProdutosPRD_REFER.AsString) // +' AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)
+          )
+  end
+  else
   CdsMeusProdutosPRDE_ENDERECO.AsString := dbInicio.BuscaUmDadoSqlAsString(
-         ' SELECT pe.prde_endereco ' +
-         '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ' +
-         '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO  AND pe.EMP_CODIGO = pee2.EMP_CODIGO  ) ' +
-         '      JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) ' +
-         '    WHERE pee2.PRD_REFER = ' + QuotedStr(CdsMeusProdutosPRD_REFER.AsString) +' AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)
-        );
+           ' SELECT pe.prde_endereco ' +
+           '    FROM PRD0000_ENDERECAMENTO_EMPRESA pee2 ' +
+           '      JOIN PRD0000_ENDERECAMENTO pe ON (pe.PRDE_REGISTRO = pee2.PRDE_REGISTRO  AND pe.EMP_CODIGO = pee2.EMP_CODIGO  ) ' +
+           '      JOIN EMP0000 e ON (e.EMP_CODIGO = pee2.EMP_CODIGO ) ' +
+           '    WHERE pee2.PRD_REFER = ' + QuotedStr(CdsMeusProdutosPRD_REFER.AsString) +' AND pee2.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)
+          )
+    ;
 end;
 procedure TFrmGerenciadorEtiquetas.CdsMeusProdutosSelecaoGetText(Sender: TField; var Text: string; DisplayText: Boolean);
 begin
