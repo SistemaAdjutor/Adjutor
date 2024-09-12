@@ -1,4 +1,4 @@
-﻿Atualizado em 02/09/2024
+﻿Atualizado em 11/09/2024
 Inicio da versão: 02/09/2024
 
 principal: Inquibra, Collect, Parseals
@@ -6,4 +6,8 @@ principal: Inquibra, Collect, Parseals
   1949 - Correção - INSERIR COLUNA DA UNIDADE CONSUMIDORA NO RELATÓRIO FINANCEIRO EM EXCEL [Collect]
   1951 - Erro->Ao alterar valor liquido Altera bruto mesmo bloqueado [Parseals]
   
- 
+patch 1: Rotor, Química Rocha
+  1953 - Erro->RASTREABILIDADE NAS ETIQUETA [Rotor]
+  1954 - Implamentação: Cadastro de cliente Aba "vendas" Grid não tem Ultima compar [Química Rocha]
+  1955 - Revisão-> Cadastro Do Cliente importação CSV [Collect]
+
