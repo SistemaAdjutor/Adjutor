@@ -1182,7 +1182,7 @@ begin
         empresas := empresas + ' | ' + dbInicio.qAux.FieldByName('EMP_CODIGO').AsString + ' - Ref. ' + dbInicio.qAux.FieldByName('PRD_REFER').AsString;
         dbInicio.qAux.Next;
       end;
-      uteis.Aviso('Inconsistência na base de dados' + #13 + 'O cadastro de produtos é Compartilhado entre as empresas e está cadastrado nas empresas ' + empresas + #13 + #13 + 'Favor Revisar.' );
+      uteis.Aviso('Inconsistência na base de dados' + #13 + 'O cadastro de Endereços é Compartilhado entre as empresas e está cadastrado nas empresas ' + empresas + #13 + #13 + 'Favor Revisar.' );
     end;
     CdsMeusProdutosPRDE_ENDERECO.AsString := dbInicio.BuscaUmDadoSqlAsString(
            ' SELECT pe.prde_endereco ' +
