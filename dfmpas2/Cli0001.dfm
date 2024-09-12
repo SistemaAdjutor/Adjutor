@@ -14,6 +14,7 @@ inherited FormCliente: TFormCliente
   Position = poDesigned
   Visible = True
   OnCloseQuery = FormCloseQuery
+  ExplicitLeft = -219
   ExplicitWidth = 1758
   ExplicitHeight = 639
   PixelsPerInch = 96
@@ -67,7 +68,7 @@ inherited FormCliente: TFormCliente
     Top = 42
     Width = 1752
     Height = 538
-    ActivePage = TabSheet1
+    ActivePage = tsVendas
     Align = alClient
     TabOrder = 0
     OnChange = PageClienteChange
@@ -271,10 +272,6 @@ inherited FormCliente: TFormCliente
         TabOrder = 25
         object TabSheet5: TTabSheet
           Caption = 'Contato'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object grpContato: TGroupBox
             Left = 0
             Top = 0
@@ -406,10 +403,6 @@ inherited FormCliente: TFormCliente
         object TabSheet6: TTabSheet
           Caption = 'Financeiro'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GRP_Bloquear: TGroupBox
             Left = 0
             Top = 49
@@ -591,10 +584,6 @@ inherited FormCliente: TFormCliente
         object tsVenda: TTabSheet
           Caption = 'Venda'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox19: TGroupBox
             Left = 0
             Top = 0
@@ -1115,10 +1104,6 @@ inherited FormCliente: TFormCliente
         object tsFaturamento: TTabSheet
           Caption = 'Faturamento'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox16: TGroupBox
             Left = 0
             Top = 0
@@ -1319,10 +1304,6 @@ inherited FormCliente: TFormCliente
         object tsPrincipal: TTabSheet
           Caption = 'Endere'#231'o Principal'
           OnShow = tsPrincipalShow
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox3: TGroupBox
             Left = 0
             Top = 0
@@ -1500,10 +1481,6 @@ inherited FormCliente: TFormCliente
           Caption = 'Entrega'
           ImageIndex = 1
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox1: TGroupBox
             Left = 0
             Top = 0
@@ -1715,10 +1692,6 @@ inherited FormCliente: TFormCliente
           Caption = 'Cobran'#231'a'
           ImageIndex = 2
           TabVisible = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox15: TGroupBox
             Left = 0
             Top = 0
@@ -2757,10 +2730,6 @@ inherited FormCliente: TFormCliente
       ImageIndex = 1
       OnExit = TabSheet2Exit
       OnShow = TabSheet2Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox5: TGroupBox
         Left = 0
         Top = 140
@@ -3395,10 +3364,6 @@ inherited FormCliente: TFormCliente
     object TabSheet3: TTabSheet
       Caption = 'Servi'#231'os'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Panel5: TPanel
         Left = 0
         Top = 464
@@ -3482,10 +3447,6 @@ inherited FormCliente: TFormCliente
         TabOrder = 1
         object tsDadosBasicos: TTabSheet
           Caption = 'Dados b'#225'sicos'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox23: TGroupBox
             Left = 0
             Top = 0
@@ -3913,10 +3874,6 @@ inherited FormCliente: TFormCliente
         object tsHistorico: TTabSheet
           Caption = 'Hist'#243'rico de implanta'#231#227'o'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox12: TGroupBox
             Left = 0
             Top = 0
@@ -4037,10 +3994,6 @@ inherited FormCliente: TFormCliente
     object tsVendas: TTabSheet
       Caption = 'Vendas'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dbgrdVendas: TDBGrid
         Left = 0
         Top = 169
@@ -4111,6 +4064,13 @@ inherited FormCliente: TFormCliente
             Title.Alignment = taCenter
             Title.Caption = 'Emiss'#227'o'
             Width = 76
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'CLI_DTULTCOM'
+            Title.Caption = #218'ltima Compra'
+            Width = 80
             Visible = True
           end
           item
@@ -4229,10 +4189,6 @@ inherited FormCliente: TFormCliente
     object TabSheet4: TTabSheet
       Caption = '&Hist'#243'rico de Contatos'
       ImageIndex = 3
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DBMemo1: TDBMemo
         Left = 0
         Top = 0
@@ -4256,10 +4212,6 @@ inherited FormCliente: TFormCliente
     object tsContato: TTabSheet
       Caption = 'Contatos no Cliente'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label86: TLabel
         Left = 8
         Top = 8
@@ -4476,10 +4428,6 @@ inherited FormCliente: TFormCliente
     object tsAvisos: TTabSheet
       Caption = 'Avisos'
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label21: TLabel
         Left = 8
         Top = 32
@@ -4620,10 +4568,6 @@ inherited FormCliente: TFormCliente
     object tsArquivo: TTabSheet
       Caption = 'Arquivo'
       ImageIndex = 7
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox22: TGroupBox
         Left = 0
         Top = 0
@@ -4749,10 +4693,6 @@ inherited FormCliente: TFormCliente
     object tsPrecos: TTabSheet
       Caption = 'Pre'#231'os Exclusivos '
       ImageIndex = 8
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
     end
   end
   object DbNavigator1: TDBNavigator [2]
@@ -5231,13 +5171,11 @@ inherited FormCliente: TFormCliente
   end
   object SqlCdsAtiv: TSqlClientDataSet [10]
     Aggregates = <>
-    Connection = DBInicio.MainDB
     DataSet.CommandText = 'select RCL_CODIGO, RCL_ATIVIDADE, EMP_CODIGO from CLI_ATV1'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'select RCL_CODIGO, RCL_ATIVIDADE, EMP_CODIGO from CLI_ATV1'
-    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -5619,6 +5557,7 @@ inherited FormCliente: TFormCliente
     DataSet.Params = <>
     PacketRecords = 50
     Params = <>
+    OnCalcFields = CdsVendasCalcFields
     CommandText = 
       'select'#13#10'  t1.prd_refer,'#13#10'  t1.prd_descri,'#13#10'  t1.ped_codigo,'#13#10'  T' +
       '1.nf_it_notanumer,'#13#10'  t2.nf_num_nfe,'#13#10'  t2.nf_emissao,'#13#10'  t1.nf_' +
@@ -5694,6 +5633,15 @@ inherited FormCliente: TFormCliente
     object CdsVendasEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
       Size = 3
+    end
+    object CdsVendasCLI_DTULTCOM: TSQLTimeStampField
+      FieldKind = fkCalculated
+      FieldName = 'CLI_DTULTCOM'
+      Calculated = True
+    end
+    object CdsVendasCLI_CODIGO: TStringField
+      FieldName = 'CLI_CODIGO'
+      Size = 5
     end
   end
   object SqlCdsCentroCusto: TSqlClientDataSet [27]
