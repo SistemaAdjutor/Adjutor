@@ -2775,7 +2775,8 @@ begin
               sqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT * FROM PRD0000', 'WHERE PRD_REFER = ' + qStr( EdtPrd_Refer.Text ), 'PRD_REFER', '' );
             end
             else
-              sqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT first 1 * FROM PRD0000', '', 'PRD_REFER', '' );
+              sqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT  * FROM PRD0000', '', 'PRD_REFER', '' );
+              // sqlProdutos.sql.Text := SQLDEF( 'PRODUTOS', 'SELECT first 1 * FROM PRD0000', '', 'PRD_REFER', '' );
         CdsProdutos.Open;
         // CdsProdutos.Addindex('idxPRD_REFER', 'PRD_REFER', []);  demora mais ainda para abrir o form....
         // CdsProdutos.IndexName := '';
