@@ -3252,7 +3252,8 @@ begin
   begin
     CdsFornecedorAux.CommandText := 'SELECT ' + 'T1.FOR_CODIGO, ' + 'T1.FOR_RAZAO, ' + 'T1.FOR_CONTATO, ' + 'T1.FOR_FONCONT, ' + 'T1.FOR_FONE, ' + 'T1.FOR_EMAIL, ' + 'T1.FOR_PRAZOVENDAS FROM FOR0000 T1 ' + ' WHERE T1.FOR_CODIGO in (SELECT T1.for_codigo FROM enf_it01 T1 WHERE T1.prd_refer = ' + qStr( CdsProdutosPRD_REFER.AsString ) + ' GROUP BY T1.for_codigo) or T1.FOR_CODIGO in (select t2.for_codigo from PRD0000_CODIGO t2 ' + ' JOIN PRD0000 E ON T2.PRD_CODIGO = E.PRD_CODIGO ' +
       ' where t2.prd_codigo = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + ConcatSE( ' and E.', DBInicio.ExclusivoSql( 'PRODUTOS' ) ) + ')' + 'ORDER BY FOR_CODIGO ';
-
+    if dbInicio.Isdesenvolvimento  then
+      copyToClipboard(CdsFornecedorAux.CommandText);
     CdsFornecedorAux.Open;
   end;
 end;

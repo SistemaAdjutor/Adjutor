@@ -6111,7 +6111,7 @@ inherited FormProduto: TFormProduto
         Width = 875
         Height = 188
         Cursor = crHandPoint
-        ActivePage = TabSheet3
+        ActivePage = TbS_Fornec
         HotTrack = True
         TabOrder = 2
         OnChange = PgCtrl_ProdutosChange
@@ -8696,7 +8696,7 @@ inherited FormProduto: TFormProduto
               Width = 100
               Height = 22
               CharCase = ecUpperCase
-              DataField = 'PRD_PESOKg'
+              DataField = 'PRD_PESOKG'
               DataSource = DsProdutos
               MaxLength = 7
               TabOrder = 1
