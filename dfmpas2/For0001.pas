@@ -293,6 +293,22 @@ type
     PanelAguarde: TPanel;
     JvGIFAnimator1: TJvGIFAnimator;
     pinfo: TPanel;
+    qFornecedoresFOR_CODIGO: TStringField;
+    cdsFornecedoresFOR_CODIGO: TStringField;
+    qFornecedoresFOR_OBS: TStringField;
+    cdsFornecedoresFOR_OBS: TStringField;
+    qFornecedoresFINALIDADE: TStringField;
+    cdsFornecedoresFINALIDADE: TStringField;
+    qFornecedoresCID_COD_IBGE: TIntegerField;
+    cdsFornecedoresCID_COD_IBGE: TIntegerField;
+    qFornecedoresCORI_CODIGO: TStringField;
+    cdsFornecedoresCORI_CODIGO: TStringField;
+    qFornecedoresFOR_ATIVIDADE: TStringField;
+    cdsFornecedoresFOR_ATIVIDADE: TStringField;
+    qFornecedoresREG_DESCRI: TStringField;
+    cdsFornecedoresREG_DESCRI: TStringField;
+    qFornecedoresFOR_SUFRAMA: TStringField;
+    cdsFornecedoresFOR_SUFRAMA: TStringField;
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);
@@ -1625,8 +1641,12 @@ begin
   cdsFornecedores.Close;
   qFornecedores.SQL.Text :=
     '  SELECT' +
-      ' EMP_CODIGO,' +
-      ' FOR_CGC,' +
+      ' f.FOR_CODIGO,' +
+      ' CASE ' +
+      '    WHEN FOR_CGC IS NULL THEN ''"00000000000000"'' ' +
+      '    WHEN FOR_CGC = '''' THEN ''"00000000000000"'' ' +
+      '    ELSE ''"'' || FOR_CGC || ''"'' ' +
+      ' END AS FOR_CGC, ' +
       ' FOR_RAZAO,' +
       ' ''F'' AS FOR_TIPO,' +
       ' FOR_RAZAO AS FOR_FANTASIA,' +
@@ -1680,12 +1700,22 @@ begin
       ' '''' AS REP_RAZAO,' +
       ' '''' AS PCX_DESCRI,' +
       ' '''' AS BAN_APELIDO,' +
-      ' '''' AS CLI_UND_CONSUMIDORA' +
+      ' FOR_OBS, ' +
+      ' '''' AS FINALIDADE, ' +
+      ' cd.CID_COD_IBGE, ' +
+      ' '''' AS CORI_CODIGO, ' +
+      ' '''' AS FOR_ATIVIDADE, ' +
+      ' '''' AS REG_DESCRI, ' +
+      ' '''' AS CLI_UND_CONSUMIDORA, ' +
+      ' FOR_SUFRAMA, ' +
+      ' f.EMP_CODIGO ' +
     ' FROM FOR0000 f' +
+    ' LEFT JOIN CID0000 cd ON cd.CID_CIDADE = f.FOR_CIDADE AND cd.CID_ESTADO = f.FOR_UF ' +
     ' ORDER BY FOR_RAZAO' ;
   cdsFornecedores.Open;
 
   lista := TStringList.Create;
+  lista.Add('FOR_CODIGO');
   lista.Add('FOR_CGC');
   lista.Add('FOR_RAZAO');
   lista.Add('FOR_TIPO');
@@ -1705,7 +1735,14 @@ begin
   lista.Add('REP_RAZAO');
   lista.Add('PCX_DESCRI');
   lista.Add('BAN_APELIDO');
+  lista.Add('FOR_OBS');
+  lista.Add('FINALIDADE');
+  lista.Add('CID_COD_IBGE');
+  lista.Add('CORI_CODIGO');
+  lista.Add('FOR_ATIVIDADE');
+  lista.Add('REG_DESCRI');
   lista.Add('CLI_UND_CONSUMIDORA');
+  lista.Add('FOR_SUFRAMA');
   CriaCSV(dsExportaExcel, lista, Self);
 
 end;

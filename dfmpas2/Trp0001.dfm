@@ -842,10 +842,14 @@ object FormTransport: TFormTransport
     SQLConnection = DataCadastros.SQLConnection1
     Left = 514
     Top = 195
+    object qTransportadorasTRP_CODIGO: TStringField
+      FieldName = 'TRP_CODIGO'
+      Size = 3
+    end
     object qTransportadorasTRP_CGC: TStringField
       DisplayLabel = 'CNPJ/CPF'
+      DisplayWidth = 20
       FieldName = 'TRP_CGC'
-      Size = 14
     end
     object qTransportadorasTRP_RAZAO: TStringField
       DisplayLabel = 'RAZAO'
@@ -945,16 +949,46 @@ object FormTransport: TFormTransport
       FixedChar = True
       Size = 1
     end
-    object qTransportadorasCLI_UND_CONSUMIDORA: TStringField
-      DisplayLabel = 'UNIDADE CONSUMIDORA'
-      FieldName = 'CLI_UND_CONSUMIDORA'
-      Required = True
-      FixedChar = True
+    object qTransportadorasTRP_OBSERVACAO: TMemoField
+      FieldName = 'TRP_OBSERVACAO'
+      BlobType = ftMemo
+    end
+    object qTransportadorasFINALIDADE: TStringField
+      FieldName = 'FINALIDADE'
+      Size = 1
+    end
+    object qTransportadorasCID_COD_IBGE: TIntegerField
+      DisplayLabel = 'CODIGO IBGE'
+      FieldName = 'CID_COD_IBGE'
+    end
+    object qTransportadorasCORI_CODIGO: TStringField
+      DisplayLabel = 'ORIGEM DO FORNECEDOR'
+      FieldName = 'CORI_CODIGO'
+      Size = 1
+    end
+    object qTransportadorasTRP_ATIVIDADE: TStringField
+      FieldName = 'TRP_ATIVIDADE'
+      Size = 1
+    end
+    object qTransportadorasREG_DESCRI: TStringField
+      DisplayLabel = 'REGI'#195'O'
+      FieldName = 'REG_DESCRI'
       Size = 1
     end
     object qTransportadorasEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
       Size = 3
+    end
+    object qTransportadorasTRP_UND_CONSUMIDORA: TStringField
+      DisplayLabel = 'UNIDADE CONSUMIDORA'
+      FieldName = 'TRP_UND_CONSUMIDORA'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object qTransportadorasTRP_SUFRAMA: TStringField
+      FieldName = 'TRP_SUFRAMA'
+      Size = 1
     end
   end
   object dsExportaExcel: TDataSource
@@ -973,10 +1007,15 @@ object FormTransport: TFormTransport
     ProviderName = 'dspTransportadoras'
     Left = 520
     Top = 312
+    object cdsTransportadorasTRP_CODIGO: TStringField
+      DisplayLabel = 'CODIGO INTERNO'
+      FieldName = 'TRP_CODIGO'
+      Size = 3
+    end
     object cdsTransportadorasTRP_CGC: TStringField
       DisplayLabel = 'CNPJ/CPF'
+      DisplayWidth = 20
       FieldName = 'TRP_CGC'
-      Size = 14
     end
     object cdsTransportadorasTRP_RAZAO: TStringField
       DisplayLabel = 'RAZAO'
@@ -984,7 +1023,7 @@ object FormTransport: TFormTransport
       Size = 45
     end
     object cdsTransportadorasTRP_TIPO: TStringField
-      DisplayLabel = 'TIPO'
+      DisplayLabel = 'TIPO (C, F, T)'
       FieldName = 'TRP_TIPO'
       Required = True
       FixedChar = True
@@ -1076,16 +1115,49 @@ object FormTransport: TFormTransport
       FixedChar = True
       Size = 1
     end
-    object cdsTransportadorasCLI_UND_CONSUMIDORA: TStringField
-      DisplayLabel = 'UNIDADE CONSUMIDORA'
-      FieldName = 'CLI_UND_CONSUMIDORA'
-      Required = True
-      FixedChar = True
+    object cdsTransportadorasTRP_OBSERVACAO: TMemoField
+      DisplayLabel = 'OBSERVA'#199#213'ES'
+      FieldName = 'TRP_OBSERVACAO'
+      BlobType = ftMemo
+    end
+    object cdsTransportadorasFINALIDADE: TStringField
+      FieldName = 'FINALIDADE'
+      Size = 1
+    end
+    object cdsTransportadorasCID_COD_IBGE: TIntegerField
+      DisplayLabel = 'CODIGO IBGE'
+      FieldName = 'CID_COD_IBGE'
+    end
+    object cdsTransportadorasCORI_CODIGO: TStringField
+      DisplayLabel = 'ORIGEM DA TRANSPORTADORA'
+      FieldName = 'CORI_CODIGO'
+      Size = 1
+    end
+    object cdsTransportadorasTRP_ATIVIDADE: TStringField
+      DisplayLabel = 'RAMO DE ATIVIDADE'
+      FieldName = 'TRP_ATIVIDADE'
+      Size = 1
+    end
+    object cdsTransportadorasREG_DESCRI: TStringField
+      DisplayLabel = 'REGI'#195'O'
+      FieldName = 'REG_DESCRI'
       Size = 1
     end
     object cdsTransportadorasEMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
       Size = 3
+    end
+    object cdsTransportadorasTRP_UND_CONSUMIDORA: TStringField
+      DisplayLabel = 'UNIDADE CONSUMIDORA'
+      FieldName = 'TRP_UND_CONSUMIDORA'
+      Required = True
+      FixedChar = True
+      Size = 1
+    end
+    object cdsTransportadorasTRP_SUFRAMA: TStringField
+      DisplayLabel = 'SUFRAMA'
+      FieldName = 'TRP_SUFRAMA'
+      Size = 1
     end
   end
 end

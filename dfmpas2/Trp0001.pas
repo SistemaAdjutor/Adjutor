@@ -98,7 +98,7 @@ type
     qTransportadorasREP_RAZAO: TStringField;
     qTransportadorasPCX_DESCRI: TStringField;
     qTransportadorasBAN_APELIDO: TStringField;
-    qTransportadorasCLI_UND_CONSUMIDORA: TStringField;
+    qTransportadorasTRP_UND_CONSUMIDORA: TStringField;
     qTransportadorasEMP_CODIGO: TStringField;
     dspTransportadoras: TDataSetProvider;
     cdsTransportadoras: TClientDataSet;
@@ -121,8 +121,24 @@ type
     cdsTransportadorasREP_RAZAO: TStringField;
     cdsTransportadorasPCX_DESCRI: TStringField;
     cdsTransportadorasBAN_APELIDO: TStringField;
-    cdsTransportadorasCLI_UND_CONSUMIDORA: TStringField;
+    cdsTransportadorasTRP_UND_CONSUMIDORA: TStringField;
     cdsTransportadorasEMP_CODIGO: TStringField;
+    qTransportadorasTRP_CODIGO: TStringField;
+    cdsTransportadorasTRP_CODIGO: TStringField;
+    qTransportadorasTRP_OBSERVACAO: TMemoField;
+    cdsTransportadorasTRP_OBSERVACAO: TMemoField;
+    qTransportadorasFINALIDADE: TStringField;
+    cdsTransportadorasFINALIDADE: TStringField;
+    qTransportadorasCID_COD_IBGE: TIntegerField;
+    qTransportadorasCORI_CODIGO: TStringField;
+    cdsTransportadorasCID_COD_IBGE: TIntegerField;
+    cdsTransportadorasCORI_CODIGO: TStringField;
+    qTransportadorasTRP_ATIVIDADE: TStringField;
+    cdsTransportadorasTRP_ATIVIDADE: TStringField;
+    qTransportadorasREG_DESCRI: TStringField;
+    cdsTransportadorasREG_DESCRI: TStringField;
+    qTransportadorasTRP_SUFRAMA: TStringField;
+    cdsTransportadorasTRP_SUFRAMA: TStringField;
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);
@@ -623,8 +639,12 @@ begin
   cdsTransportadoras.close;
   qTransportadoras.SQL.Text :=
     '  SELECT' +
-      ' EMP_CODIGO,' +
-      ' TRP_CGC,' +
+      ' t.TRP_CODIGO,' +
+      ' CASE ' +
+      '    WHEN TRP_CGC IS NULL THEN ''"00000000000000"'' ' +
+      '    WHEN TRP_CGC = '''' THEN ''"00000000000000"'' ' +
+      '    ELSE ''"'' || TRP_CGC || ''"'' ' +
+      ' END AS TRP_CGC, ' +
       ' TRP_RAZAO,' +
       ' ''T'' AS TRP_TIPO,' +
       ' TRP_RAZAO AS TRP_FANTASIA,' +
@@ -666,11 +686,21 @@ begin
       ' '''' AS REP_RAZAO,' +
       ' '''' AS PCX_DESCRI,' +
       ' '''' AS BAN_APELIDO,' +
-      ' '''' AS CLI_UND_CONSUMIDORA' +
-    ' FROM TRP0000 c' +
+      ' TRP_OBSERVACAO, ' +
+      ' '''' AS FINALIDADE, ' +
+      ' cd.CID_COD_IBGE, ' +
+      ' '''' AS CORI_CODIGO, ' +
+      ' '''' AS TRP_ATIVIDADE, ' +
+      ' '''' AS REG_DESCRI, ' +
+      ' '''' AS TRP_UND_CONSUMIDORA, ' +
+      ' '''' AS TRP_SUFRAMA, ' +
+      ' t.EMP_CODIGO ' +
+    ' FROM TRP0000 t' +
+    ' LEFT JOIN CID0000 cd ON cd.CID_CIDADE = t.TRP_CIDADE AND cd.CID_ESTADO = t.TRP_UF ' +
     ' ORDER BY TRP_RAZAO';
   cdsTransportadoras.Open;
   lista := TStringList.Create;
+  lista.Add('TRP_CODIGO');
   lista.Add('TRP_CGC');
   lista.Add('TRP_RAZAO');
   lista.Add('TRP_TIPO');
@@ -690,7 +720,14 @@ begin
   lista.Add('REP_RAZAO');
   lista.Add('PCX_DESCRI');
   lista.Add('BAN_APELIDO');
-  lista.Add('CLI_UND_CONSUMIDORA');
+  lista.Add('TRP_OBSERVACAO');
+  lista.Add('FINALIDADE');
+  lista.Add('CID_COD_IBGE');
+  lista.Add('CORI_CODIGO');
+  lista.Add('TRP_ATIVIDADE');
+  lista.Add('REG_DESCRI');
+  lista.Add('TRP_UND_CONSUMIDORA');
+  lista.Add('TRP_SUFRAMA');
 
   CriaCSV(dsExportaExcel, lista, Self);
 

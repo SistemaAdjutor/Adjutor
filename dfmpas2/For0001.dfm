@@ -638,7 +638,7 @@ inherited FormFornec: TFormFornec
         Top = 162
         Width = 961
         Height = 154
-        ActivePage = TabSheet1
+        ActivePage = tsfinanceiro
         TabOrder = 1
         object tsfinanceiro: TTabSheet
           Caption = 'Financeiro/Fiscal'
@@ -2603,10 +2603,14 @@ inherited FormFornec: TFormFornec
     SQLConnection = DataCadastros.SQLConnection1
     Left = 458
     Top = 348
+    object qFornecedoresFOR_CODIGO: TStringField
+      FieldName = 'FOR_CODIGO'
+      Size = 4
+    end
     object qFornecedoresFOR_CGC: TStringField
       DisplayLabel = 'CNPJ/CPF'
+      DisplayWidth = 20
       FieldName = 'FOR_CGC'
-      Size = 14
     end
     object qFornecedoresFOR_RAZAO: TStringField
       DisplayLabel = 'RAZAO/NOME'
@@ -2622,10 +2626,11 @@ inherited FormFornec: TFormFornec
     end
     object qFornecedoresFOR_FANTASIA: TStringField
       DisplayLabel = 'FANTASIA'
+      DisplayWidth = 70
       FieldName = 'FOR_FANTASIA'
       Required = True
       FixedChar = True
-      Size = 1
+      Size = 70
     end
     object qFornecedoresFOR_INSC: TStringField
       DisplayLabel = 'INSC. ESTAD.'
@@ -2653,10 +2658,11 @@ inherited FormFornec: TFormFornec
     end
     object qFornecedoresFOR_EMAIL_NFE: TStringField
       DisplayLabel = 'EMAIL NFE'
+      DisplayWidth = 150
       FieldName = 'FOR_EMAIL_NFE'
       Required = True
       FixedChar = True
-      Size = 1
+      Size = 150
     end
     object qFornecedoresFOR_CEP: TStringField
       DisplayLabel = 'CEP'
@@ -2709,11 +2715,38 @@ inherited FormFornec: TFormFornec
       FixedChar = True
       Size = 1
     end
+    object qFornecedoresFOR_OBS: TStringField
+      FieldName = 'FOR_OBS'
+      Size = 4000
+    end
+    object qFornecedoresFINALIDADE: TStringField
+      FieldName = 'FINALIDADE'
+      Size = 1
+    end
+    object qFornecedoresCID_COD_IBGE: TIntegerField
+      FieldName = 'CID_COD_IBGE'
+    end
+    object qFornecedoresCORI_CODIGO: TStringField
+      FieldName = 'CORI_CODIGO'
+      Size = 1
+    end
+    object qFornecedoresFOR_ATIVIDADE: TStringField
+      FieldName = 'FOR_ATIVIDADE'
+      Size = 1
+    end
+    object qFornecedoresREG_DESCRI: TStringField
+      FieldName = 'REG_DESCRI'
+      Size = 1
+    end
     object qFornecedoresCLI_UND_CONSUMIDORA: TStringField
       DisplayLabel = 'UNIDADE CONSUMIDORA'
       FieldName = 'CLI_UND_CONSUMIDORA'
       Required = True
       FixedChar = True
+      Size = 1
+    end
+    object qFornecedoresFOR_SUFRAMA: TStringField
+      FieldName = 'FOR_SUFRAMA'
       Size = 1
     end
     object qFornecedoresEMP_CODIGO: TStringField
@@ -2737,10 +2770,15 @@ inherited FormFornec: TFormFornec
     ProviderName = 'dspFornecedores'
     Left = 456
     Top = 462
+    object cdsFornecedoresFOR_CODIGO: TStringField
+      DisplayLabel = 'CODIGO INTERNO'
+      FieldName = 'FOR_CODIGO'
+      Size = 4
+    end
     object cdsFornecedoresFOR_CGC: TStringField
       DisplayLabel = 'CNPJ/CPF'
+      DisplayWidth = 20
       FieldName = 'FOR_CGC'
-      Size = 14
     end
     object cdsFornecedoresFOR_RAZAO: TStringField
       DisplayLabel = 'RAZAO/NOME'
@@ -2748,18 +2786,20 @@ inherited FormFornec: TFormFornec
       Size = 70
     end
     object cdsFornecedoresFOR_TIPO: TStringField
-      DisplayLabel = 'TIPO'
+      DisplayLabel = 'TIPO (C, F, T)'
+      DisplayWidth = 70
       FieldName = 'FOR_TIPO'
       Required = True
       FixedChar = True
-      Size = 1
+      Size = 70
     end
     object cdsFornecedoresFOR_FANTASIA: TStringField
       DisplayLabel = 'FANTASIA'
+      DisplayWidth = 70
       FieldName = 'FOR_FANTASIA'
       Required = True
       FixedChar = True
-      Size = 1
+      Size = 70
     end
     object cdsFornecedoresFOR_INSC: TStringField
       DisplayLabel = 'INSC. ESTAD.'
@@ -2787,10 +2827,11 @@ inherited FormFornec: TFormFornec
     end
     object cdsFornecedoresFOR_EMAIL_NFE: TStringField
       DisplayLabel = 'EMAIL NFE'
+      DisplayWidth = 150
       FieldName = 'FOR_EMAIL_NFE'
       Required = True
       FixedChar = True
-      Size = 1
+      Size = 150
     end
     object cdsFornecedoresFOR_CEP: TStringField
       DisplayLabel = 'CEP'
@@ -2843,11 +2884,44 @@ inherited FormFornec: TFormFornec
       FixedChar = True
       Size = 1
     end
+    object cdsFornecedoresFOR_OBS: TStringField
+      DisplayLabel = 'OBSERVA'#199#213'ES'
+      FieldName = 'FOR_OBS'
+      Size = 4000
+    end
+    object cdsFornecedoresFINALIDADE: TStringField
+      FieldName = 'FINALIDADE'
+      Size = 1
+    end
+    object cdsFornecedoresCID_COD_IBGE: TIntegerField
+      DisplayLabel = 'CODIGO IBGE'
+      FieldName = 'CID_COD_IBGE'
+    end
+    object cdsFornecedoresCORI_CODIGO: TStringField
+      DisplayLabel = 'ORIGEM DO FORNECEDOR'
+      FieldName = 'CORI_CODIGO'
+      Size = 1
+    end
+    object cdsFornecedoresFOR_ATIVIDADE: TStringField
+      DisplayLabel = 'RAMO DE ATIVIDADE'
+      FieldName = 'FOR_ATIVIDADE'
+      Size = 1
+    end
+    object cdsFornecedoresREG_DESCRI: TStringField
+      DisplayLabel = 'REGI'#195'O'
+      FieldName = 'REG_DESCRI'
+      Size = 1
+    end
     object cdsFornecedoresCLI_UND_CONSUMIDORA: TStringField
       DisplayLabel = 'UNIDADE CONSUMIDORA'
       FieldName = 'CLI_UND_CONSUMIDORA'
       Required = True
       FixedChar = True
+      Size = 1
+    end
+    object cdsFornecedoresFOR_SUFRAMA: TStringField
+      DisplayLabel = 'SUFRAMA'
+      FieldName = 'FOR_SUFRAMA'
       Size = 1
     end
     object cdsFornecedoresEMP_CODIGO: TStringField
