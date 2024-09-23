@@ -1732,7 +1732,10 @@ end;
 procedure TFrmPedidoItem.CurPrecoBrutoExit(Sender: TObject);
 begin
   inherited;
-   CalculaTotais;
+  if CurPrecoLiquido.Value = 0 then
+    CurPrecoLiquido.Value := CurPrecoBruto.Value;
+
+  CalculaTotais;
 
    try
       if not SameValue(rPrecoBruto,CurPrecoBruto.Value) and (CurPrecoBruto.Value> 0)  then
