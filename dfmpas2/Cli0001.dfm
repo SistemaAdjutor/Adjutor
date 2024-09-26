@@ -14,7 +14,6 @@ inherited FormCliente: TFormCliente
   Position = poDesigned
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitLeft = -219
   ExplicitWidth = 1758
   ExplicitHeight = 639
   PixelsPerInch = 96
@@ -68,7 +67,7 @@ inherited FormCliente: TFormCliente
     Top = 42
     Width = 1752
     Height = 538
-    ActivePage = tsVendas
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     OnChange = PageClienteChange
@@ -1298,7 +1297,7 @@ inherited FormCliente: TFormCliente
         Top = 192
         Width = 1687
         Height = 116
-        ActivePage = TabSheet8
+        ActivePage = tsPrincipal
         MultiLine = True
         TabOrder = 24
         object tsPrincipal: TTabSheet
@@ -7545,8 +7544,8 @@ inherited FormCliente: TFormCliente
       'JOIN USUARIO T4 ON (T4.USU_CODIGO = T1.USU_CODIGO)'
       'WHERE T1.FAT_REGISTRO = 0')
     SQLConnection = DBInicio.MainDB
-    Left = 60
-    Top = 434
+    Left = 20
+    Top = 394
     object qRecebimentosFRE_DATA_RECEBIMENTO: TDateField
       FieldName = 'FRE_DATA_RECEBIMENTO'
     end
@@ -7714,7 +7713,6 @@ inherited FormCliente: TFormCliente
     object qClientesCLI_CGC: TStringField
       DisplayLabel = 'CNPJ/CPF'
       FieldName = 'CLI_CGC'
-      Size = 14
     end
     object qClientesCLI_RAZAO: TStringField
       DisplayLabel = 'RAZAO/NOME'
@@ -7746,13 +7744,13 @@ inherited FormCliente: TFormCliente
     end
     object qClientesCLI_FONE: TStringField
       DisplayLabel = 'FONE'
+      DisplayWidth = 20
       FieldName = 'CLI_FONE'
-      Size = 11
     end
     object qClientesCLI_CELULAR: TStringField
       DisplayLabel = 'CELULAR'
+      DisplayWidth = 20
       FieldName = 'CLI_CELULAR'
-      Size = 11
     end
     object qClientesCLI_EMAIL_ALTERNATIVO: TStringField
       DisplayLabel = 'EMAIL'
@@ -7827,6 +7825,31 @@ inherited FormCliente: TFormCliente
       FieldName = 'BAN_DIGCONTA'
       Size = 1
     end
+    object qClientesCLI_OBS: TMemoField
+      FieldName = 'CLI_OBS'
+      BlobType = ftMemo
+    end
+    object qClientesFINALIDADE: TStringField
+      FieldName = 'FINALIDADE'
+      Size = 1
+    end
+    object qClientesCID_COD_IBGE: TIntegerField
+      FieldName = 'CID_COD_IBGE'
+    end
+    object qClientesCORI_CODIGO: TIntegerField
+      FieldName = 'CORI_CODIGO'
+    end
+    object qClientesCLI_ATIVIDADE: TStringField
+      FieldName = 'CLI_ATIVIDADE'
+    end
+    object qClientesREG_DESCRI: TStringField
+      FieldName = 'REG_DESCRI'
+      Size = 30
+    end
+    object qClientesCLI_SUFRAMA: TStringField
+      FieldName = 'CLI_SUFRAMA'
+      Size = 30
+    end
   end
   object dspClientes: TDataSetProvider [77]
     DataSet = qClientes
@@ -7840,15 +7863,15 @@ inherited FormCliente: TFormCliente
     Left = 456
     Top = 476
     object cdsClientesCLI_CODIGO: TStringField
-      DisplayLabel = 'Codnome'
+      DisplayLabel = 'CODIGO INTERNO'
       FieldName = 'CLI_CODIGO'
       Required = True
       Size = 5
     end
     object cdsClientesCLI_CGC: TStringField
       DisplayLabel = 'CNPJ/CPF'
+      DisplayWidth = 20
       FieldName = 'CLI_CGC'
-      Size = 14
     end
     object cdsClientesCLI_RAZAO: TStringField
       DisplayLabel = 'RAZAO/NOME'
@@ -7880,13 +7903,13 @@ inherited FormCliente: TFormCliente
     end
     object cdsClientesCLI_FONE: TStringField
       DisplayLabel = 'FONE'
+      DisplayWidth = 20
       FieldName = 'CLI_FONE'
-      Size = 11
     end
     object cdsClientesCLI_CELULAR: TStringField
       DisplayLabel = 'CELULAR'
+      DisplayWidth = 20
       FieldName = 'CLI_CELULAR'
-      Size = 11
     end
     object cdsClientesCLI_EMAIL_ALTERNATIVO: TStringField
       DisplayLabel = 'EMAIL'
@@ -7961,6 +7984,38 @@ inherited FormCliente: TFormCliente
     object cdsClientesBAN_DIGCONTA: TStringField
       FieldName = 'BAN_DIGCONTA'
       Size = 1
+    end
+    object cdsClientesCLI_OBS: TMemoField
+      DisplayLabel = 'OBSERVA'#199#213'ES'
+      FieldName = 'CLI_OBS'
+      BlobType = ftMemo
+    end
+    object cdsClientesFINALIDADE: TStringField
+      DisplayLabel = 'FINALIDADE DA VENDA'
+      FieldName = 'FINALIDADE'
+      Size = 1
+    end
+    object cdsClientesCID_COD_IBGE: TIntegerField
+      DisplayLabel = 'CODIGO IBGE'
+      FieldName = 'CID_COD_IBGE'
+    end
+    object cdsClientesCORI_CODIGO: TIntegerField
+      DisplayLabel = 'ORIGEM DO CLIENTE'
+      FieldName = 'CORI_CODIGO'
+    end
+    object cdsClientesCLI_ATIVIDADE: TStringField
+      DisplayLabel = 'RAMO DE ATIVIDADE'
+      FieldName = 'CLI_ATIVIDADE'
+    end
+    object cdsClientesREG_DESCRI: TStringField
+      DisplayLabel = 'REGI'#195'O'
+      FieldName = 'REG_DESCRI'
+      Size = 30
+    end
+    object cdsClientesCLI_SUFRAMA: TStringField
+      DisplayLabel = 'SUFRAMA'
+      FieldName = 'CLI_SUFRAMA'
+      Size = 30
     end
   end
   object qContafinanceira: TSQLQuery [79]

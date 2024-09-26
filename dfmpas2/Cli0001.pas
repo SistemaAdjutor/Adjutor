@@ -776,6 +776,20 @@ type
     DBCheckBox5: TDBCheckBox;
     CdsVendasCLI_DTULTCOM: TSQLTimeStampField;
     CdsVendasCLI_CODIGO: TStringField;
+    qClientesCLI_OBS: TMemoField;
+    cdsClientesCLI_OBS: TMemoField;
+    qClientesCID_COD_IBGE: TIntegerField;
+    cdsClientesCID_COD_IBGE: TIntegerField;
+    qClientesFINALIDADE: TStringField;
+    cdsClientesFINALIDADE: TStringField;
+    qClientesCORI_CODIGO: TIntegerField;
+    cdsClientesCORI_CODIGO: TIntegerField;
+    qClientesCLI_ATIVIDADE: TStringField;
+    cdsClientesCLI_ATIVIDADE: TStringField;
+    qClientesREG_DESCRI: TStringField;
+    cdsClientesREG_DESCRI: TStringField;
+    qClientesCLI_SUFRAMA: TStringField;
+    cdsClientesCLI_SUFRAMA: TStringField;
 
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
@@ -4750,8 +4764,12 @@ begin
   qClientes.SQL.Text :=
     'SELECT' +
     ' c.EMP_CODIGO,' +
-    ' CLI_CODIGO,' +
-    ' CLI_CGC,' +
+    ' CLI_CODIGO, ' +
+    ' CASE ' +
+    '    WHEN CLI_CGC IS NULL THEN ''"00000000000000"'' ' +
+    '    WHEN CLI_CGC = '''' THEN ''"00000000000000"'' ' +
+    '    ELSE ''"'' || CLI_CGC || ''"'' ' +
+    ' END AS CLI_CGC, ' +
     ' CLI_RAZAO,' +
     ' CASE' +
       ' WHEN CLI_CLASSE_CLI_FOR = ''C'' THEN ''C'' ' +
@@ -4813,18 +4831,28 @@ begin
     ' END AS CLI_BAIRRO,' +
     ' REP_RAZAO,' +
     ' PCX_DESCRI,' +
-    ' BAN_APELIDO, ' + 
-	' BAN_CONTA || (CASE WHEN BAN_DIGCONTA = '''' THEN '''' ELSE ''-'' || BAN_DIGCONTA END ) AS BAN_CONTA,' + 
-    ' BAN_DIGCONTA, C.EMP_CODIGO,' +
+    ' BAN_APELIDO, ' +
+    ' CLI_OBS, ' +
+    ' '''' AS FINALIDADE, ' +
+    ' cd.CID_COD_IBGE, ' +
+    ' ca.RCL_ATIVIDADE AS CLI_ATIVIDADE, ' +
+    ' rg.REG_DESCRI, ' +
+    ' CLI_SUFRAMA, ' +
+	' BAN_CONTA || (CASE WHEN BAN_DIGCONTA = '''' THEN '''' ELSE ''-'' || BAN_DIGCONTA END ) AS BAN_CONTA,' +
+    ' BAN_DIGCONTA, ' +
+    ' CORI_CODIGO, ' +
     ' CLI_UND_CONSUMIDORA' +
   ' FROM CLI0000 c' +
   ' LEFT JOIN REP0000 r ON (r.REP_CODIGO = c.REP_CODIGO)' +
   ' LEFT JOIN PCX0000 p ON (p.PCX_CODIGO = c.PCX_CODIGO)' +
   ' LEFT JOIN BAN0000 b ON (b.BAN_CODIGO = C.BAN_CODIGO)' +
+  ' LEFT JOIN CID0000 cd ON cd.CID_CIDADE = c.CLI_CIDADE AND cd.CID_ESTADO = c.CLI_UF ' +
+  ' LEFT JOIN CLI_ATV1 ca ON ca.RCL_ATIVIDADE = c.CLI_ATIVIDADE ' +
+  ' LEFT JOIN REG0000 rg ON rg.REG_CODIGO = c.REG_CODIGO ' +
   ' ORDER BY CLI_RAZAO';
-  cdsClientes.Open;
   if DBInicio.IsDesenvolvimento then
     CopyToClipBoard(qClientes.SQL.Text);
+  cdsClientes.Open;
 
   lista := TStringList.Create;
   lista.Add('CLI_CODIGO');
@@ -4846,8 +4874,15 @@ begin
   lista.Add('CLI_BAIRRO');
   lista.Add('REP_RAZAO');
   lista.Add('PCX_DESCRI');
-  lista.Add('BAN_CONTA');
+  lista.Add('BAN_APELIDO');
+  lista.Add('CLI_OBS');
+  lista.Add('FINALIDADE');
+  lista.Add('CID_COD_IBGE');
+  lista.Add('CORI_CODIGO');
+  lista.Add('CLI_ATIVIDADE');
+  lista.Add('REG_DESCRI');
   lista.Add('CLI_UND_CONSUMIDORA');
+  lista.Add('CLI_SUFRAMA');
   CriaCSV(dsExportaExcel, lista, Self);
 
 end;
