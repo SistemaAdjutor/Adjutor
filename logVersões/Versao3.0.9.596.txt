@@ -1,4 +1,4 @@
-﻿Atualizado em 11/09/2024
+﻿Atualizado em 26/09/2024
 Inicio da versão: 02/09/2024
 
 principal: Inquibra, Collect, Parseals
@@ -11,3 +11,8 @@ patch 1: Rotor, Química Rocha
   1954 - Implamentação: Cadastro de cliente Aba "vendas" Grid não tem Ultima compar [Química Rocha]
   1955 - Revisão-> Cadastro Do Cliente importação CSV [Collect]
 
+patch 2: Drimec, Compacta 9, Inquibra
+  1957 - Erro -> Modulo Cadastro de Produto Aba Compras [Drimec]
+  1962 - Melhoria na Importação de cadastro de clientes, Fornecedores e Transportadoras para o C9 [Compacta 9]
+  1963 - Melhoria na Importação de cadastro de Produtos para o C9 [Compacta 9]
+  1966 - Erro-> Inserir Volumes nos Pedidos [Inquibra]
