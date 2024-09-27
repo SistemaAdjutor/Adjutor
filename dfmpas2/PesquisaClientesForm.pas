@@ -385,11 +385,11 @@ begin
           Add('       VEND_INTERNO_CODIGO, CLI_CEP, cli_fax, cli_celular, CLI_UND_CONSUMIDORA, co.CORI_DESCRICAO,');
 
 //          if dbInicio.GetParametroSistema('PMT_PEDIDO_DOACAO') = 'S' then
-            Add('  (SELECT  CAST(MAX(FPC_VENCTO) AS TIMESTAMP) FROM FAT_PC01 pc ' +
+            Add('  (SELECT  CAST(MAX(FPC_PAGTO) AS TIMESTAMP) FROM FAT_PC01 pc ' +
                 '    WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
                 '      AND FPC_EXCLUSAO = ''N''   ' +
                      ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-                '      AND FPC_VENCTO =   ( SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc2  ' +
+                '      AND FPC_PAGTO =   ( SELECT  max(FPC_PAGTO) FROM FAT_PC01 pc2  ' +
                 '             WHERE pc2.CLI_CODIGO = cl.CLI_CODIGO  ' +
                               ConcatSe(' AND pc2.', dbinicio.ExclusivoSql('RECEBER')) +
                 '               AND FPC_EXCLUSAO = ''N''   ' +
