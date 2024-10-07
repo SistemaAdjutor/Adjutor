@@ -381,11 +381,18 @@ type
     cxgrd1DBTableView1FTC_BASEFORMULA: TcxGridDBColumn;
     cbProduto: TComboBoxRw;
     edReferencia: TEdit;
+    GerarFicha1: TMenuItem;
+    ListadeItens1: TMenuItem;
+    btProcessarGrid: TJvArrowButton;
+    chkCalcula: TCheckBox;
+    frxDBListaItens: TfrxDBDataset;
+    frxListaItens: TfrxReport;
     procedure btnMP_ExpotarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure BotaoPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
     function AtualizaFCI(prdRefer: string; prdReferPai: string; quantidadePai: double; var totalPI: double): Double;
+    function ChamaAtualizacaoFCI(prdRefer: string; prdReferPai: string; quantidadePai: double; var totalPI: double): Double;
     procedure btnrelatoriosClick(Sender: TObject);
     procedure frxFCIBeginDoc(Sender: TObject);
     procedure frxFCIGetValue(const VarName: string; var Value: Variant);
@@ -438,6 +445,11 @@ type
       var AAllow: Boolean);
     procedure cbProdutoChange(Sender: TObject);
     procedure edReferenciaExit(Sender: TObject);
+    procedure GerarFicha1Click(Sender: TObject);
+    procedure btProcessarGridClick(Sender: TObject);
+    procedure ListadeItens1Click(Sender: TObject);
+    procedure frxListaItensBeginDoc(Sender: TObject);
+    procedure frxListaItensGetValue(const VarName: string; var Value: Variant);
   private
    procedure filtro;
    procedure filtroDetalhe;
@@ -614,6 +626,36 @@ begin
     Value := '';
 
   end;
+end;
+
+procedure TfrmFichaConteudoImportacao.frxListaItensBeginDoc(Sender: TObject);
+begin
+  inherited;
+  TfrxPictureView(frxListaItens.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
+
+end;
+
+procedure TfrmFichaConteudoImportacao.frxListaItensGetValue(
+  const VarName: string; var Value: Variant);
+begin
+  inherited;
+  if (VarName  = 'EMPRESA') then
+     Value := DBInicio.Empresa.RAZAO;
+  if (VarName  = 'PRD_ORIGEM') then
+  begin
+    case cdsBuscaPRD_ORIGEM.AsInteger of
+      0 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Nacional';
+      1 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Estrangeira';
+      2 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Estrangeira';
+      3 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Nacional';
+      4 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Nacional';
+      5 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Nacional';
+      6 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Estrangeira';
+      7 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Estrangeira';
+      8 : Value := cdsBuscaPRD_ORIGEM.AsString + ' - Nacional';
+    end;
+  end;
+
 end;
 
 procedure TfrmFichaConteudoImportacao.ParcelaImportada(prdRefer: string; var preco, percentualOrigem, QuantidadeComprada: double);
@@ -945,13 +987,14 @@ procedure TfrmFichaConteudoImportacao.cbProdutoChange(Sender: TObject);
 begin
   inherited;
   edReferencia.Text := cbProduto.IdRetorno;
-  btnPesquisa.Click;
+//  btnPesquisa.Click;
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsBuscaCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  cdsBuscaVALOR_TOTAL.AsFloat := valorSaida(cdsBuscaPRD_REFER.AsString);
+  if chkCalcula.Checked then
+    cdsBuscaVALOR_TOTAL.AsFloat := valorSaida(cdsBuscaPRD_REFER.AsString);
 end;
 
 procedure TfrmFichaConteudoImportacao.cdsBuscaDetalhesCalcFields(DataSet: TDataSet);
@@ -1238,47 +1281,26 @@ begin
     btnPesquisa.Click;
 end;
 
-procedure TfrmFichaConteudoImportacao.BotaoPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
-var
-  CI, valorTotal, quantidadePai, tPI: double;
-  prdOrigem, rec: integer;
-  prdRefer : string;
-begin
-  inherited;
 
-  if MessageDlg('Deseja Recalcular a Ficha de Conteúdo de Importação?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
-    Exit;
-  panelAguarde.Visible := True;
-  Application.ProcessMessages;
-  cdsBusca.DisableControls;
-  rec := cdsBusca.RecNo;
-  vlParcelaImportadaTotal := 0;
-  prdRefer := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index];
-  valorTotal := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1VALOR_TOTAL.Index];
-  if (cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index] = null)
-  or (cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index] = 0)
-  then
-    begin
-      cdsBusca.EnableControls;
-      panelAguarde.Visible := False;
-      uteis.Aviso('A Base da Composição não está cadastrada na Ficha Técnica deste produto.' + #13 + 'Impossível Prosseguir');
-      Exit;
-    end;
-  quantidadePai  := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
-  tPI := 0;
+function TfrmFichaConteudoImportacao.ChamaAtualizacaoFCI(prdRefer, prdReferPai: string; quantidadePai: double; var totalPI: double): Double;
+var
+  tPI, CI, valorTotal: double;
+  prdOrigem: integer;
+begin
   AtualizaFCI(prdRefer, '', quantidadePai, tPI);
   CI := (vlParcelaImportadaTotal / valorTotal) * 100;
   cdsBusca.Edit;
-  cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency := valorSaida(prdRefer);
+  valorTotal := valorSaida(prdRefer);
+  cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency := valorTotal; // valorSaida(prdRefer);
   cdsBusca.Post;
 
 
-  if cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency = 0 then
+  if valorTotal = 0 then // cdsBusca.FieldByName('VALOR_TOTAL').AsCurrency = 0 then
   begin
     cdsBusca.EnableControls;
     panelAguarde.Visible := False;
     uteis.Aviso('Não existe Nota Fiscal de Saída deste Produto, e também não está cadastrado o Preço de venda.' + #13 + 'Impossível Prosseguir');
-    Exit;
+    Abort;
   end;
 
 
@@ -1299,9 +1321,76 @@ begin
           ' PRD_ORIGEM = ' + IntToStr(prdOrigem) +
           ' WHERE PRD_REFER = ' + QuotedStr(prdRefer));
 
-  
+end;
 
 
+procedure TfrmFichaConteudoImportacao.BotaoPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
+var
+  CI, valorTotal, quantidadePai, tPI, baseFormula: double;
+  prdOrigem, rec, I, inicio, fim: integer;
+  prdRefer : string;
+begin
+  inherited;
+
+  if TComponent(Sender).className = 'TcxButtonEdit' then
+    if MessageDlg('Deseja Recalcular a Ficha de Conteúdo de Importação?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
+      Exit;
+  panelAguarde.Visible := True;
+  Application.ProcessMessages;
+  cdsBusca.DisableControls;
+
+  rec := cdsBusca.RecNo;
+  valorTotal := 0;
+  // loop no grid
+  if TComponent(Sender).className = 'TcxButtonEdit' then
+  begin
+    fim := 0;
+  end
+  else
+  begin
+    fim := cxgrd1DBTableView1.DataController.RecordCount - 1;
+  end;
+
+
+  for I := 0 to fim do
+  begin
+    vlParcelaImportadaTotal := 0;
+    if TComponent(Sender).className = 'TcxButtonEdit' then
+    begin
+      if (cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index] = null)
+        or (cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index] = 0)
+          then baseFormula := 0
+          else baseFormula := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+    end
+    else
+    begin
+      if (cxgrd1DBTableView1.DataController.Values[I, cxgrd1DBTableView1FTC_BASEFORMULA.Index] = null)
+        or (cxgrd1DBTableView1.DataController.Values[I, cxgrd1DBTableView1FTC_BASEFORMULA.Index] = 0)
+          then baseFormula := 0
+          else baseFormula := cxgrd1DBTableView1.DataController.Values[I, cxgrd1DBTableView1FTC_BASEFORMULA.Index];
+    end;
+
+    if (baseFormula = 0)
+    then
+      begin
+        cdsBusca.EnableControls;
+        panelAguarde.Visible := False;
+        uteis.Aviso('A Base da Composição não está cadastrada na Ficha Técnica do produto ' + prdRefer +  #13 + 'Impossível Processar');
+        Continue;
+      end;
+    if TComponent(Sender).className = 'TcxButtonEdit' then
+    begin
+      prdRefer := cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index];
+    end
+    else
+    begin
+      prdRefer := cxgrd1DBTableView1.DataController.Values[I, cxgrd1DBTableView1PRD_REFER.Index];
+    end;
+    quantidadePai  := baseFormula;
+    tPI := 0;
+
+    ChamaAtualizacaoFCI(prdRefer, '', quantidadePai, tPI);
+  end;
 
 
   cdsBusca.EnableControls;
@@ -1319,7 +1408,7 @@ var
   prdOrigem: Integer;
   Auxiliar: TFDQuery;
 begin
-
+  Application.ProcessMessages;
   Auxiliar := TFDQuery.Create(Self);
   Auxiliar.Connection := dbConn;
   Auxiliar.SQL.Text :=
@@ -1371,7 +1460,6 @@ begin
       totalPI := totalPI + ((vlParcelaImportadaLocal *  Auxiliar.FieldByName('FTI_UC').AsFloat) * quantidadePai )
     end
     else
-//    if Auxiliar.FieldByName('PTI_SIGLA').AsString = 'PI' then // PODE SER UM PA OU OUTRO TIPO TAMBÉM
     begin
       totalPILocal := 0;
       AtualizaFCI(prdReferItem, prdRefer, quantidadePai * Auxiliar.FieldByName('FTI_UC').AsFloat, totalPILocal);
@@ -1640,6 +1728,7 @@ begin
   Result := consumoTotal;
 end;
 
+
 function TfrmFichaConteudoImportacao.ConsumoTotal(cds: TFDQuery; Post: Boolean): double;
 var
   prdRefer, prdFilho, ptiSigla: string;
@@ -1738,11 +1827,12 @@ begin
     Exit;
   end;
 
+  prdRefer := VarToStr(cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index]);
 
+  SalvarFicha.FileName := prdRefer + '.html';
   if not SalvarFicha.Execute then
     Exit;
 
-  prdRefer := VarToStr(cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index]);
   DisableControls;
   cdsbusca.Filter := 'PRD_REFER = ' + QuotedStr(prdRefer);
   cdsBusca.Filtered := True;
@@ -1809,11 +1899,27 @@ begin
   FCI.Add('</table>');
   FCI.SaveToFile(SalvarFicha.FileName);
   FCI.Free;
+  cdsBusca.Filtered := False;
   Aviso('Arquivo Gerado com Sucesso');
 
   EnableControls;
 end;
 
+
+procedure TfrmFichaConteudoImportacao.btProcessarGridClick(Sender: TObject);
+begin
+  inherited;
+    if MessageDlg('Deseja Recalcular todas as Fichas de Conteúdo de Importação apresentadas no grid?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
+      Exit;
+
+  BotaoPropertiesButtonClick(Sender, 0);
+end;
+
+procedure TfrmFichaConteudoImportacao.GerarFicha1Click(Sender: TObject);
+begin
+  inherited;
+  btnrelatoriosClick(Sender);
+end;
 
 procedure TfrmFichaConteudoImportacao.GravaArquivoFCI(prdReferPai: string; nivel: integer);
 var
@@ -1895,5 +2001,11 @@ begin
 end;
 
 
+
+procedure TfrmFichaConteudoImportacao.ListadeItens1Click(Sender: TObject);
+begin
+  inherited;
+  frxListaItens.ShowReport();
+end;
 
 end.
