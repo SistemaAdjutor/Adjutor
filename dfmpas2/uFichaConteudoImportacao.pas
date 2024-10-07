@@ -25,7 +25,7 @@ uses
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxGridDBDataDefinitions,
   cxDataControllerConditionalFormattingRulesManagerDialog, SgDbSeachComboUnit,
-  ComboBoxRW;
+  ComboBoxRW, JvBaseDlg, JvSelectDirectory;
 
 type
   TfrmFichaConteudoImportacao = class(TfrmBaseDBPesquisaFDAC)
@@ -381,18 +381,20 @@ type
     cxgrd1DBTableView1FTC_BASEFORMULA: TcxGridDBColumn;
     cbProduto: TComboBoxRw;
     edReferencia: TEdit;
-    GerarFicha1: TMenuItem;
+    GerarFicha: TMenuItem;
     ListadeItens1: TMenuItem;
     btProcessarGrid: TJvArrowButton;
     chkCalcula: TCheckBox;
     frxDBListaItens: TfrxDBDataset;
     frxListaItens: TfrxReport;
+    GerarGrid: TMenuItem;
+    SelecionarPasta: TJvSelectDirectory;
     procedure btnMP_ExpotarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure BotaoPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
     function AtualizaFCI(prdRefer: string; prdReferPai: string; quantidadePai: double; var totalPI: double): Double;
-    function ChamaAtualizacaoFCI(prdRefer: string; prdReferPai: string; quantidadePai: double; var totalPI: double): Double;
+    procedure ChamaAtualizacaoFCI(prdRefer: string; prdReferPai: string; quantidadePai: double; var totalPI: double);
     procedure btnrelatoriosClick(Sender: TObject);
     procedure frxFCIBeginDoc(Sender: TObject);
     procedure frxFCIGetValue(const VarName: string; var Value: Variant);
@@ -445,11 +447,12 @@ type
       var AAllow: Boolean);
     procedure cbProdutoChange(Sender: TObject);
     procedure edReferenciaExit(Sender: TObject);
-    procedure GerarFicha1Click(Sender: TObject);
+    procedure GerarFichaClick(Sender: TObject);
     procedure btProcessarGridClick(Sender: TObject);
     procedure ListadeItens1Click(Sender: TObject);
     procedure frxListaItensBeginDoc(Sender: TObject);
     procedure frxListaItensGetValue(const VarName: string; var Value: Variant);
+    procedure GerarGridClick(Sender: TObject);
   private
    procedure filtro;
    procedure filtroDetalhe;
@@ -1282,11 +1285,12 @@ begin
 end;
 
 
-function TfrmFichaConteudoImportacao.ChamaAtualizacaoFCI(prdRefer, prdReferPai: string; quantidadePai: double; var totalPI: double): Double;
+procedure TfrmFichaConteudoImportacao.ChamaAtualizacaoFCI(prdRefer, prdReferPai: string; quantidadePai: double; var totalPI: double);
 var
   tPI, CI, valorTotal: double;
   prdOrigem: integer;
 begin
+  valorTotal := 0;
   AtualizaFCI(prdRefer, '', quantidadePai, tPI);
   CI := (vlParcelaImportadaTotal / valorTotal) * 100;
   cdsBusca.Edit;
@@ -1326,8 +1330,8 @@ end;
 
 procedure TfrmFichaConteudoImportacao.BotaoPropertiesButtonClick(Sender: TObject; AButtonIndex: Integer);
 var
-  CI, valorTotal, quantidadePai, tPI, baseFormula: double;
-  prdOrigem, rec, I, inicio, fim: integer;
+  quantidadePai, tPI, baseFormula: double;
+  rec, I, fim: integer;
   prdRefer : string;
 begin
   inherited;
@@ -1340,7 +1344,6 @@ begin
   cdsBusca.DisableControls;
 
   rec := cdsBusca.RecNo;
-  valorTotal := 0;
   // loop no grid
   if TComponent(Sender).className = 'TcxButtonEdit' then
   begin
@@ -1819,88 +1822,131 @@ end;
 procedure TfrmFichaConteudoImportacao.btnrelatoriosClick(Sender: TObject);
 var
   prdRefer: string;
+  I, fim: integer;
 begin
   inherited;
-  if cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0] = nil then
+
+  if TComponent(Sender).Name = 'GerarFicha' then
   begin
-    Aviso('Por favor, selecione um registro');
-    Exit;
+    if cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0] = nil then
+    begin
+      Aviso('Por favor, selecione um registro');
+      Exit;
+    end;
+    fim := 0;
+    cdsbusca.Filter := 'PRD_REFER = ' + QuotedStr(VarToStr(cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index]));
+    cdsBusca.Filtered := True;
+  end
+  else // GerarGrid
+  begin
+    if cxgrd1DBTableView1.DataController.RecordCount = 0 then
+    begin
+      Aviso('Por favor, escolha um filtro de registros');
+      Exit;
+    end;
+    fim := cxgrd1DBTableView1.DataController.RecordCount - 1;
+
   end;
 
-  prdRefer := VarToStr(cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index]);
+  // prdRefer := VarToStr(cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index]);
 
-  SalvarFicha.FileName := prdRefer + '.html';
-  if not SalvarFicha.Execute then
-    Exit;
-
+  FCI := TStringList.Create;
   DisableControls;
-  cdsbusca.Filter := 'PRD_REFER = ' + QuotedStr(prdRefer);
-  cdsBusca.Filtered := True;
   cdsBusca.First;
   cdsBuscaDetalhes.First;
 
-  // frxFCI.ShowReport();
+
+  if TComponent(Sender).Name = 'GerarFicha' then
+  begin
+    prdRefer := VarToStr(cxgrd1DBTableView1.DataController.Controller.SelectedRecords[0].Values[cxgrd1DBTableView1PRD_REFER.Index]);
+    SalvarFicha.FileName := prdRefer + '.html';
+    if not SalvarFicha.Execute then
+      Exit;
+
+  end
+  else // Gerar Grid
+  begin
+    if not SelecionarPasta.Execute then
+      Exit;
+  end;
 
 
-  FCI := TStringList.Create;
-  FCI.Add(
-    '    <style>  body '       + #123 + 'font-size: 1em; font-family: Arial;' + #125 + '</style>' +
-    '    <style>  .pi '        + #123 + 'font-size: 1.1em; font-family: Arial; font-weight: bold; color:grey; ' + #125 + '</style>' +
-    '    <style>  .cabecalho ' + #123 + 'font-size: 1.3em; font-family: Arial; font-weight: bold;' + #125 + '</style>' +
-    '    <style>  table'       + #123 + 'border:0px;' + #125 + '</style>' +
-    '    <style>  th '         + #123 + 'font-style:bold; text-align:left;' + #125 + '</style>' +
-    '    <style>  .direita '   + #123 + 'text-align:right;' + #125 + '</style>' +
-    '    <style>  .tipo '      + #123 + 'width: 50px;' + #125 + '</style>' +
+  for I := 0 to fim do
+  begin
 
-    '<table>'  +
-    '<tr class="cabecalho">'  +
-      '<th>Referência</th>' +
-      '<th>Descrição</th>' +
-      '<th class="direita">Valor da Parcela Importada</th>' +
-      '<th class="direita">Conteudo de Importação</th>' +
-      '<th>NCM</th>' +
-      '<th>GTIN</th>' +
-    '</tr>'
-  );
+    if TComponent(Sender).Name = 'GerarGrid' then
+      prdRefer := cdsbusca.FieldByName('PRD_REFER').AsString;
 
-  FCI.Add(
-          '<tr class="cabecalho">' +
-            '<td>' + cdsbusca.FieldByName('PRD_REFER').AsString +  '</td>'  +
-            '<td>' + cdsbusca.FieldByName('PRD_DESCRI').AsString + '</td>' +
-            '<td class="direita">' + FormatFloat('###,###,##0.00', cdsbusca.FieldByName('PRD_FCI_VALOR_PARCELA_IMPORTADA').AsFloat) + '</td>' +
-            '<td class="direita">' + FormatFloat('###,###,##0.00', cdsbusca.FieldByName('CI').AsFloat) + '</td>' +
-            '<td>' + cdsbusca.FieldByName('NCM').AsString + '</td>' +
-            '<td>' + cdsbusca.FieldByName('GTIN').AsString + '</td>' +
-          '</tr>'
-         );
+    // frxFCI.ShowReport();
 
-  FCI.Add('</table>');
+    FCI.Clear;
+    FCI.Add(
+      '    <style>  body '       + #123 + 'font-size: 1em; font-family: Arial;' + #125 + '</style>' +
+      '    <style>  .pi '        + #123 + 'font-size: 1.1em; font-family: Arial; font-weight: bold; color:grey; ' + #125 + '</style>' +
+      '    <style>  .cabecalho ' + #123 + 'font-size: 1.3em; font-family: Arial; font-weight: bold;' + #125 + '</style>' +
+      '    <style>  table'       + #123 + 'border:0px;' + #125 + '</style>' +
+      '    <style>  th '         + #123 + 'font-style:bold; text-align:left;' + #125 + '</style>' +
+      '    <style>  .direita '   + #123 + 'text-align:right;' + #125 + '</style>' +
+      '    <style>  .tipo '      + #123 + 'width: 50px;' + #125 + '</style>' +
 
-  FCI.Add('<hr>');
+      '<table>'  +
+      '<tr class="cabecalho">'  +
+        '<th>Referência</th>' +
+        '<th>Descrição</th>' +
+        '<th class="direita">Valor da Parcela Importada</th>' +
+        '<th class="direita">Conteudo de Importação</th>' +
+        '<th>NCM</th>' +
+        '<th>GTIN</th>' +
+      '</tr>'
+    );
 
-  FCI.Add('<table>');
+    FCI.Add(
+            '<tr class="cabecalho">' +
+              '<td>' + cdsbusca.FieldByName('PRD_REFER').AsString +  '</td>'  +
+              '<td>' + cdsbusca.FieldByName('PRD_DESCRI').AsString + '</td>' +
+              '<td class="direita">' + FormatFloat('###,###,##0.00', cdsbusca.FieldByName('PRD_FCI_VALOR_PARCELA_IMPORTADA').AsFloat) + '</td>' +
+              '<td class="direita">' + FormatFloat('###,###,##0.00', cdsbusca.FieldByName('CI').AsFloat) + '</td>' +
+              '<td>' + cdsbusca.FieldByName('NCM').AsString + '</td>' +
+              '<td>' + cdsbusca.FieldByName('GTIN').AsString + '</td>' +
+            '</tr>'
+           );
+
+    FCI.Add('</table>');
+
+    FCI.Add('<hr>');
+
+    FCI.Add('<table>');
 
 
-  FCI.Add(
-    '<tr>'  +
-      '<th>Referência</th>' +
-      '<th>Descrição</th>' +
-      '<th class="tipo">Tipo</th>' +
-      '<th class="tipo">Unidade</th>' +
-      '<th class="direita">UC</th>' +
-      '<th class="direita">Valor de Compra</th>' +
-      '<th class="direita">Perc. Origem</th>' +
-      '<th class="direita">Parcela Importada</th>' +
-      '<th>NCM</th>' +
-      '<th>GTIN</th>' +
-    '</tr>'
-  );
-  GravaArquivoFCI(prdrefer, 0);
-  FCI.Add('</table>');
-  FCI.SaveToFile(SalvarFicha.FileName);
+    FCI.Add(
+      '<tr>'  +
+        '<th>Referência</th>' +
+        '<th>Descrição</th>' +
+        '<th class="tipo">Tipo</th>' +
+        '<th class="tipo">Unidade</th>' +
+        '<th class="direita">UC</th>' +
+        '<th class="direita">Valor de Compra</th>' +
+        '<th class="direita">Perc. Origem</th>' +
+        '<th class="direita">Parcela Importada</th>' +
+        '<th>NCM</th>' +
+        '<th>GTIN</th>' +
+      '</tr>'
+    );
+    GravaArquivoFCI(prdrefer, 0);
+    FCI.Add('</table>');
+    if TComponent(Sender).Name = 'GerarGrid' then
+      SalvarFicha.FileName := SelecionarPasta.Directory + '\' + prdRefer + '.html';
+    FCI.SaveToFile(SalvarFicha.FileName);
+    if TComponent(Sender).Name = 'GerarGrid' then
+      cdsBusca.Next;
+
+  end;
   FCI.Free;
   cdsBusca.Filtered := False;
-  Aviso('Arquivo Gerado com Sucesso');
+  if TComponent(Sender).Name = 'GerarGrid' then
+    Aviso( IntToStr(fim) + ' Arquivos Gerados com Sucesso')
+  else
+    Aviso('Arquivo Gerado com Sucesso');
 
   EnableControls;
 end;
@@ -1915,7 +1961,13 @@ begin
   BotaoPropertiesButtonClick(Sender, 0);
 end;
 
-procedure TfrmFichaConteudoImportacao.GerarFicha1Click(Sender: TObject);
+procedure TfrmFichaConteudoImportacao.GerarFichaClick(Sender: TObject);
+begin
+  inherited;
+  btnrelatoriosClick(Sender);
+end;
+
+procedure TfrmFichaConteudoImportacao.GerarGridClick(Sender: TObject);
 begin
   inherited;
   btnrelatoriosClick(Sender);

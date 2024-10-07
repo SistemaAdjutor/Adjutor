@@ -1580,9 +1580,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
   inherited PopupMenu2: TPopupMenu
     Left = 1168
     Top = 40
-    object GerarFicha1: TMenuItem
-      Caption = 'Gerar Ficha'
-      OnClick = GerarFicha1Click
+    object GerarFicha: TMenuItem
+      Caption = 'Gerar Ficha Selecionada'
+      OnClick = GerarFichaClick
+    end
+    object GerarGrid: TMenuItem
+      Caption = 'Gerar Fichas de acordo com o grid'
+      OnClick = GerarGridClick
     end
     object ListadeItens1: TMenuItem
       Caption = 'Lista de Itens'
@@ -5152,5 +5156,9 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         end
       end
     end
+  end
+  object SelecionarPasta: TJvSelectDirectory
+    Left = 1164
+    Top = 97
   end
 end
