@@ -4515,6 +4515,7 @@ begin
                       then rt1 :=  ((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)  / CdsPedidosPED_VLTOTAL_LIQ.AsFloat  )
                       else rt1 := ((CdsItemPedidoPRF_PRECO.AsFloat * CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat)  / wValorProdGeral );
 
+                      // Frete
 										if (cdsNotaFiscalNF_VLFRETE.AsFloat > 0) then
 										begin
 												 rRateioTmp := rRateioTmp + Uteis.RoundTo(rt1 * cdsNotaFiscalNF_VLFRETE.AsFloat,-2);
@@ -4523,9 +4524,11 @@ begin
 										end;
 
 										//Despesas
-										if (cdsNotaFiscalNF_DESP_ACES.AsFloat > 0) OR (CdsNotaFiscalNF_VLDIFAL.asFloat > 0) then
+										// if (cdsNotaFiscalNF_DESP_ACES.AsFloat > 0) OR (CdsNotaFiscalNF_VLDIFAL.asFloat > 0) then
+										if (cdsNotaFiscalNF_DESP_ACES.AsFloat > 0)  then
 										begin
-												 rRateioTmp := {rRateioTmp +} Uteis.RoundTo(rt1 * (cdsNotaFiscalNF_DESP_ACES.AsFloat + CdsNotaFiscalNF_VLDIFAL.asFloat), -2);
+												 // rRateioTmp := Uteis.RoundTo(rt1 * (cdsNotaFiscalNF_DESP_ACES.AsFloat + CdsNotaFiscalNF_VLDIFAL.asFloat), -2);
+												 rRateioTmp := Uteis.RoundTo(rt1 * (cdsNotaFiscalNF_DESP_ACES.AsFloat), -2);
 												 wDespesaIndividual := rRateioDespesaDiferenca + rRateioTmp;
 												 rRateioDespesaDiferenca := 0;
 										end;
@@ -4533,7 +4536,7 @@ begin
 										//Seguro
 										if (cdsNotaFiscalNF_VLSEGURO.asfloat > 0) then
 										begin
-												 rRateioTmp := {rRateioTmp +} Uteis.RoundTo(rt1 * cdsNotaFiscalNF_VLSEGURO.asfloat, -2);
+												 rRateioTmp := Uteis.RoundTo(rt1 * cdsNotaFiscalNF_VLSEGURO.asfloat, -2);
 												 wSeguroIndividual := rRateioSeguroDiferenca + rRateioTmp;
 												 rRateioSeguroDiferenca := 0;
 										end;
@@ -4541,7 +4544,7 @@ begin
 										//Desconto
 										if (CdsPedidosPED_DESCTOVL.AsFloat > 0) then
 										begin
-												 rRateioTmp := {rRateioTmp +} Uteis.RoundTo(rt1 * CdsPedidosPED_DESCTOVL.AsFloat, -2);
+												 rRateioTmp := Uteis.RoundTo(rt1 * CdsPedidosPED_DESCTOVL.AsFloat, -2);
 												 wDescontoIndividual := rRateioDescontoDiferenca + rRateioTmp;
 												 rRateioDescontoDiferenca := 0;
 										end;
