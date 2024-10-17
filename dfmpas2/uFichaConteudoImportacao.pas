@@ -25,7 +25,8 @@ uses
   dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
   dxSkinWhiteprint, dxSkinXmas2008Blue, cxGridDBDataDefinitions,
   cxDataControllerConditionalFormattingRulesManagerDialog, SgDbSeachComboUnit,
-  ComboBoxRW, JvBaseDlg, JvSelectDirectory;
+  ComboBoxRW, JvBaseDlg, JvSelectDirectory, JvExComCtrls, JvDateTimePicker,
+  Vcl.Mask, RxToolEdit;
 
 type
   TfrmFichaConteudoImportacao = class(TfrmBaseDBPesquisaFDAC)
@@ -389,6 +390,10 @@ type
     frxListaItens: TfrxReport;
     GerarGrid: TMenuItem;
     SelecionarPasta: TJvSelectDirectory;
+    Label2: TLabel;
+    Label3: TLabel;
+    DataInicial: TDateEdit;
+    DataFinal: TDateEdit;
     procedure btnMP_ExpotarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -543,7 +548,8 @@ begin
   cxgrd1DBTableView8.RestoreFromIniFile(arquivoIni + '.cxgrd1DBTableView8');
   cxgrd1DBTableView9.RestoreFromIniFile(arquivoIni + '.cxgrd1DBTableView9');
   edReferencia.SetFocus;
-  // btnPesquisa.Click;
+  DataInicial.Date := Now - 30;
+  DataFinal.Date := Now;
 end;
 
 procedure TfrmFichaConteudoImportacao.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -972,6 +978,21 @@ end;
 
 procedure TfrmFichaConteudoImportacao.btnPesquisaClick(Sender: TObject);
 begin
+  if DataFinal.Date < DataInicial.Date then
+  begin
+    uteis.Aviso('A Data Final é menor que a Data Incial');
+    Abort;
+  end;
+  if (DataInicial.Date > StrToDate('30/12/1899') ) and (DataFinal.Date = StrToDate('30/12/1899') )   then
+  begin
+    uteis.Aviso('A Data Final não foi informada');
+    Abort;
+  end;
+  if (DataFinal.Date > StrToDate('30/12/1899') ) and (DataInicial.Date = StrToDate('30/12/1899') )   then
+  begin
+    uteis.Aviso('A Data Inicial não foi informada');
+    Abort;
+  end;
   DisableControls;
   PanelAguarde.Visible := True;
   if (edReferencia.Text = '') and (cbProduto.Text = '') then
@@ -1051,10 +1072,12 @@ begin
 end;
 
 procedure TfrmFichaConteudoImportacao.filtro;
-var sqltext : string;
+var
+  sqltext : string;
 begin
 //  cdsBusca.Close;
-  sqltext := ' SELECT pr.PRD_REFER, pr.PRD_DESCRI, pt.PTI_SIGLA, IPI_CODIGO AS NCM, ' +
+
+  sqltext := ' SELECT DISTINCT pr.PRD_REFER, pr.PRD_DESCRI, pt.PTI_SIGLA, pr.IPI_CODIGO AS NCM, ' +
              '        pr.PRD_CODBARRA AS GTIN, pr.PRD_UND, pr.PRD_ORIGEM, ' +
              '        pr.PRD_FCI_CONTEUDO_IMPORTACAO AS CI, ' +
              '        pr.PRD_FCI_VALOR_PARCELA_IMPORTADA, ' +
@@ -1062,9 +1085,13 @@ begin
              '   FROM PRD0000 pr ' +
              '   JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER ) ' +
              '   JOIN PRD_TIPO pt ON (pt.PTI_CODIGO = pr.PTI_CODIGO) ' +
+             iif(DataInicial.Date > StrToDateTime('30/12/1899'), 'JOIN NF_IT01 ni ON (ni.PRD_REFER = pr.PRD_REFER)', '') +
+             iif(DataInicial.Date > StrToDateTime('30/12/1899'), 'JOIN NF0001 nf ON (ni.NF_IT_NOTANUMER = nf.NF_NOTANUMBER AND ni.PED_CODIGO = nf.PED_CODIGO)', '') +
              '   WHERE 1 = 1 ' +
              iif(edReferencia.Text = '', '', ' AND FT.PRD_REFER LIKE ' + QuotedStr(edReferencia.Text + '%' )) +
              iif(cbProduto.Text = '', '', ' AND PR.PRD_DESCRI LIKE ' + QuotedStr('%' + cbProduto.Text + '%')) +
+             iif(DataInicial.Date > StrToDateTime('30/12/1899'), ' AND nf.NF_EMISSAO > ' + DateToSQL(DataInicial.Date), '') +
+             iif(DataInicial.Date > StrToDateTime('30/12/1899'), ' AND nf.NF_EMISSAO < ' + DateToSQL(DataFinal.Date), '') +
              '   ORDER BY pr.PRD_REFER ';
   cdsBusca.SQL.Text := sqltext;
   if DBInicio.IsDesenvolvimento then
@@ -1844,7 +1871,7 @@ begin
       Aviso('Por favor, escolha um filtro de registros');
       Exit;
     end;
-    fim := cxgrd1DBTableView1.DataController.RecordCount - 1;
+    fim := cxgrd1DBTableView1.DataController.RecordCount;
 
   end;
 

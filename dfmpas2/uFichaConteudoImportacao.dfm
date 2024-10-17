@@ -42,6 +42,20 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
               Height = 13
               Caption = 'Produto'
             end
+            object Label2: TLabel
+              Left = 608
+              Top = 24
+              Width = 53
+              Height = 13
+              Caption = 'Data Inicial'
+            end
+            object Label3: TLabel
+              Left = 773
+              Top = 24
+              Width = 48
+              Height = 13
+              Caption = 'Data Final'
+            end
             object cbProduto: TComboBoxRw
               Left = 179
               Top = 20
@@ -99,6 +113,28 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
               Height = 17
               Caption = 'Calcula Venda Total'
               TabOrder = 2
+            end
+            object DataInicial: TDateEdit
+              Left = 664
+              Top = 20
+              Width = 97
+              Height = 21
+              Hint = 'Data in'#237'cial do per'#237'odo de Vendas'
+              NumGlyphs = 2
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 3
+            end
+            object DataFinal: TDateEdit
+              Left = 824
+              Top = 21
+              Width = 97
+              Height = 21
+              Hint = 'Data final do per'#237'odo de Vendas'
+              NumGlyphs = 2
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 4
             end
           end
         end
@@ -1180,12 +1216,13 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
       OnClick = btImportarClick
     end
     object btProcessarGrid: TJvArrowButton
-      Left = 849
+      Left = 816
       Top = 0
-      Width = 129
+      Width = 162
       Height = 39
+      Hint = 'Gera as FCI'#39's Apresentadas no Grid'
       Anchors = [akTop, akRight]
-      Caption = '&Processar Grid'
+      Caption = '&Gerar FCI'#39's Pelo Grid'
       FillFont.Charset = DEFAULT_CHARSET
       FillFont.Color = clWindowText
       FillFont.Height = -11
@@ -1267,6 +1304,8 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
         C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
         C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
         C3C3C3C3C3C3C3C30000}
+      ParentShowHint = False
+      ShowHint = True
       OnClick = btProcessarGridClick
     end
   end
@@ -1594,8 +1633,8 @@ inherited frmFichaConteudoImportacao: TfrmFichaConteudoImportacao
     end
   end
   inherited frxPadrao: TfrxReport
-    Left = 748
-    Top = 97
+    Left = 796
+    Top = 241
     Datasets = <>
     Variables = <>
     Style = <>
