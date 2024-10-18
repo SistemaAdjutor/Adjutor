@@ -3302,6 +3302,8 @@ procedure TFormProduto.FormActivate( Sender : tObject );
     if FileExists( arquivo )
     then
       RichDoc.Lines.LoadFromFile( arquivo );
+
+    {
     if not ( CdsProdutos.isEmpty ) and not ( CdsProdutos.State in dsEditModes )
     then
     begin
@@ -3310,7 +3312,7 @@ procedure TFormProduto.FormActivate( Sender : tObject );
       CdsProdutos.Open;
       CdsProdutos.Locate('PRD_REFER', EdtPrd_Refer.Text, [] );
     end;
-
+     }
   end;
 
 procedure TFormProduto.FormClose(
