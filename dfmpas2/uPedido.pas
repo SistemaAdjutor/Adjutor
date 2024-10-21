@@ -3681,7 +3681,7 @@ begin
        ' srv_nome, PED_CONTATO_CLIENTE, PED_NUMERO_PED_CLIENTE, IOP_PRECO, '+
        '  (SELECT FIRST 1 PRE_ACORDOCOM FROM precos0000 pre WHERE pre.CLI_CODIGO = cl.cli_codigo ORDER BY PRE_VIGENCIA1 DESC ) PRE_ACORDOCOM, ' +
        ' (SELECT FIRST 1 u.USU_NOME  FROM PED_IT01 it JOIN USUARIO u ON (u.USU_CODIGO = it.USU_CODIGO ) WHERE it.PRF_REGISTRO = iop.PRF_REGISTRO) as usu_nome,  '+
-       ' (SELECT FIRST 1 PRF_QTDE_ENV_PRODUCAO FROM PED_IT01 IT WHERE IT.PED_CODIGO = PE.PED_CODIGO AND IOP.PRD_CODIGO = IT.PRD_CODIGO) AS PRF_QTDE_ENV_PRODUCAO, '+
+       ' (SELECT FIRST 1 PRF_QTDE_ENV_PRODUCAO FROM PED_IT01 IT WHERE IT.PED_CODIGO = PE.PED_CODIGO AND IOP.PRF_REGISTRO = IT.PRF_REGISTRO AND IOP.PRD_CODIGO = IT.PRD_CODIGO) AS PRF_QTDE_ENV_PRODUCAO, '+
        ' (select FIRST 1 COALESCE(t1.PRD_UND,t2.PRD_UND)  FROM ped_it01 t1 join  prd0000 t2 on t2.prd_codigo = t1.prd_codigo AND  iop.PRD_CODIGO = t1.PRD_CODIGO AND pe.PED_CODIGO = t1.PED_CODIGO) prd_und, '+
        ' op.OPR_DATAFATURA, op.OPR_LEADTIME, op.opr_conclusao  '+
        ' FROM ped0000 pe                                                                                                                                                                               '+
