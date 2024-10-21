@@ -2739,7 +2739,7 @@ begin
 
      if DBInicio.Empresa.PMT_HABILITAR_DIFAL then
      begin
-       VOutro :=  qNota.FieldByName('NF_DESP_ACES').AsFloat + qNota.FieldByName('NF_VLDIFAL').AsFloat ;
+       VOutro :=  qNota.FieldByName('NF_DESP_ACES').AsFloat; // + qNota.FieldByName('NF_VLDIFAL').AsFloat ;
        vNF :=  qNota.FieldByName('NF_TOT_NOTA').AsFloat + vFCPST  + qNota.FieldByName('NF_VLDIFAL').AsFloat
      end
      else
