@@ -394,6 +394,9 @@ type
     Label3: TLabel;
     DataInicial: TDateEdit;
     DataFinal: TDateEdit;
+    PercentuaisdaFCI1: TMenuItem;
+    frxPercentuaisFCI: TfrxReport;
+    cdsBuscaPRD_FCI_DATA_GERACAO: TSQLTimeStampField;
     procedure btnMP_ExpotarClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
@@ -458,6 +461,7 @@ type
     procedure frxListaItensBeginDoc(Sender: TObject);
     procedure frxListaItensGetValue(const VarName: string; var Value: Variant);
     procedure GerarGridClick(Sender: TObject);
+    procedure PercentuaisdaFCI1Click(Sender: TObject);
   private
    procedure filtro;
    procedure filtroDetalhe;
@@ -640,7 +644,7 @@ end;
 procedure TfrmFichaConteudoImportacao.frxListaItensBeginDoc(Sender: TObject);
 begin
   inherited;
-  TfrxPictureView(frxListaItens.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
+  TfrxPictureView(frxPercentuaisFCI.FindObject('LogoEmpresa')).Picture.Assign(DBInicio.Empresa.LOGO);
 
 end;
 
@@ -793,6 +797,12 @@ end;
 
 
 
+
+procedure TfrmFichaConteudoImportacao.PercentuaisdaFCI1Click(Sender: TObject);
+begin
+  inherited;
+  frxPercentuaisFCI.ShowReport();
+end;
 
 function TfrmFichaConteudoImportacao.ValorSaida(prdRefer: string): double;
 var
@@ -1081,7 +1091,7 @@ begin
              '        pr.PRD_CODBARRA AS GTIN, pr.PRD_UND, pr.PRD_ORIGEM, ' +
              '        pr.PRD_FCI_CONTEUDO_IMPORTACAO AS CI, ' +
              '        pr.PRD_FCI_VALOR_PARCELA_IMPORTADA, ' +
-             '        ft.FTC_BASEFORMULA ' +
+             '        ft.FTC_BASEFORMULA, pr.PRD_FCI_DATA_GERACAO ' +
              '   FROM PRD0000 pr ' +
              '   JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER ) ' +
              '   JOIN PRD_TIPO pt ON (pt.PTI_CODIGO = pr.PTI_CODIGO) ' +
