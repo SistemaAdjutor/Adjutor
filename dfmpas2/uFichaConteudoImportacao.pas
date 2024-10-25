@@ -1099,9 +1099,9 @@ begin
              iif(DataInicial.Date > StrToDateTime('30/12/1899'), 'JOIN NF0001 nf ON (ni.NF_IT_NOTANUMER = nf.NF_NOTANUMBER AND ni.PED_CODIGO = nf.PED_CODIGO)', '') +
              '   WHERE 1 = 1 ' +
              iif(edReferencia.Text = '', '', ' AND FT.PRD_REFER LIKE ' + QuotedStr(edReferencia.Text + '%' )) +
-             iif(cbProduto.Text = '', '', ' AND PR.PRD_DESCRI LIKE ' + QuotedStr('%' + cbProduto.Text + '%')) +
-             iif(DataInicial.Date > StrToDateTime('30/12/1899'), ' AND nf.NF_EMISSAO > ' + DateToSQL(DataInicial.Date), '') +
-             iif(DataInicial.Date > StrToDateTime('30/12/1899'), ' AND nf.NF_EMISSAO < ' + DateToSQL(DataFinal.Date), '') +
+             iif(cbProduto.Text = '', '', ' AND PR.PRD_DESCRI LIKE UPPER(' + QuotedStr('%' + cbProduto.Text + '%') + ')' ) +
+             iif(DataInicial.Date > StrToDateTime('30/12/1899'), ' AND nf.NF_EMISSAO >= ' + DateToSQL(DataInicial.Date), '') +
+             iif(DataInicial.Date > StrToDateTime('30/12/1899'), ' AND nf.NF_EMISSAO <= ' + DateToSQL(DataFinal.Date), '') +
              '   ORDER BY pr.PRD_REFER ';
   cdsBusca.SQL.Text := sqltext;
   if DBInicio.IsDesenvolvimento then
