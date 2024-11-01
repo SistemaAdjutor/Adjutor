@@ -493,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 4
+      PageIndex = 12
       TabOrder = 0
       object TPage
         Left = 0
@@ -5217,7 +5217,7 @@ inherited FormParametros: TFormParametros
             Top = 1
             Width = 765
             Height = 507
-            ActivePage = tsEntrada
+            ActivePage = tsSaida
             Align = alClient
             TabOrder = 0
             object tsEntrada: TTabSheet
@@ -5354,7 +5354,7 @@ inherited FormParametros: TFormParametros
               end
               object Label_669: TLabel
                 Left = 10
-                Top = 401
+                Top = 425
                 Width = 101
                 Height = 14
                 Caption = 'Descri'#231#227'o 99 outros:'
@@ -5554,7 +5554,7 @@ inherited FormParametros: TFormParametros
               end
               object PMT_DESCRICAO_99_OUTROS: TDBEdit
                 Left = 122
-                Top = 393
+                Top = 417
                 Width = 303
                 Height = 22
                 CharCase = ecUpperCase
@@ -5681,6 +5681,18 @@ inherited FormParametros: TFormParametros
                   DataSource = DataCadastros1.DsParametros
                   TabOrder = 3
                 end
+              end
+              object DBCheckBox100: TDBCheckBox
+                Left = 122
+                Top = 386
+                Width = 178
+                Height = 17
+                Caption = 'Somar DIFAL no Total da NF'
+                DataField = 'PMT_ADICIONAR_DIFAL_TOTAL_NF'
+                DataSource = DataCadastros1.DsParametros
+                TabOrder = 18
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
             object TabSheet4: TTabSheet

@@ -2055,8 +2055,13 @@ begin
 
        if NotaF.NFe.Ide.indFinal  = cfConsumidorFinal then
        begin
-          NotaF.NFe.Dest.indIEDest := inNaoContribuinte;
+
           NotaF.NFe.Dest.IE       := OnlyNumber(qnota.FieldByName('CLI_INSC').AsString);
+          if NotaF.NFe.Dest.IE = '' then
+            NotaF.NFe.Dest.indIEDest := inNaoContribuinte
+          else
+            NotaF.NFe.Dest.indIEDest := inContribuinte;
+          // NotaF.NFe.Dest.IE       := OnlyNumber(qnota.FieldByName('CLI_INSC').AsString);
        end
        else
        begin
@@ -2446,7 +2451,10 @@ begin
         if qNota.FieldByName('PCL_MODALIDADE').AsString <> '2' then
         begin
           indPag := StrToIndpag(ok,qNota.FieldByName('PCL_MODALIDADE').AsString);
-          vPag := qNota.FieldByName('NF_TOT_NOTA').AsFloat ;
+          if DBInicio.GetParametroSistema('PMT_ADICIONAR_DIFAL_TOTAL_NF') = 'S' then
+            vPag := qNota.FieldByName('NF_TOT_NOTA').AsFloat + qNota.FieldByName('NF_VLDIFAL').AsFloat
+          else
+            vPag := qNota.FieldByName('NF_TOT_NOTA').AsFloat;
         end;
         if tPag = fpOutro then
           xPag := DBInicio.GetParametroSistema('PMT_DESCRICAO_99_OUTROS');
@@ -2491,7 +2499,7 @@ begin
       CNPJ     := '11089061000193';
       xContato := 'Márcio Pacheco - Novi sistemas';
       email    := 'suporte@novisistemas.com.br';
-      fone     := '4130299231';
+      fone     := '4135038230';
     end;
   end;
 
@@ -2740,7 +2748,10 @@ begin
      if DBInicio.Empresa.PMT_HABILITAR_DIFAL then
      begin
        VOutro :=  qNota.FieldByName('NF_DESP_ACES').AsFloat; // + qNota.FieldByName('NF_VLDIFAL').AsFloat ;
-       vNF :=  qNota.FieldByName('NF_TOT_NOTA').AsFloat + vFCPST  + qNota.FieldByName('NF_VLDIFAL').AsFloat
+       if DBInicio.GetParametroSistema('PMT_ADICIONAR_DIFAL_TOTAL_NF') = 'S' then
+         vNF :=  qNota.FieldByName('NF_TOT_NOTA').AsFloat + vFCPST  + qNota.FieldByName('NF_VLDIFAL').AsFloat
+       else
+         vNF :=  qNota.FieldByName('NF_TOT_NOTA').AsFloat + vFCPST;
      end
      else
      begin

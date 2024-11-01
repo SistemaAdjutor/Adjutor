@@ -2261,7 +2261,7 @@ var wTip_Cobranca, wTip_Docuto, wCct_codigo, wPcx_codigo, sql : string;
 begin
     if (wValorProdFaturar <= 0) then
       exit;
-   wSomaDespesas := CdsNotaFiscalNF_VLFRETE.AsFloat + CdsNotaFiscalNF_VLSEGURO.AsFloat + CdsNotaFiscalNF_DESP_ACES.AsFloat + CdsNotaFiscalNF_VLDIFAL.AsFloat  ;
+   wSomaDespesas := CdsNotaFiscalNF_VLFRETE.AsFloat + CdsNotaFiscalNF_VLSEGURO.AsFloat + CdsNotaFiscalNF_DESP_ACES.AsFloat; // + CdsNotaFiscalNF_VLDIFAL.AsFloat  ;
    If qOperFiscope_temretencao.AsString = 'S' then
      cRetencao := edValorISS.Value +edValorINSS.Value + edValorCSLL.Value + edValorIR.Value + edValorPIS.Value+ edValorCOFINS.Value   // retenções serviço
    else
@@ -3009,7 +3009,8 @@ begin
                                           ConcatSe( ' and ', dbInicio.ExclusivoSql('FISCAL'))));
 
 
-
+  if Result > 0 then
+    wCST_CODIGO :=  BuscaUmDAdoSqlASString('SELECT STB_TRIBUTACAO FROM ope_regra where opr_registro = ' +  IntToStr(Result));
 
 end;
 
@@ -3159,7 +3160,7 @@ var
   sNF_SUBTRIBASE, sNF_ALIQSUBTRIB, sNF_VLSUBST, sNF_MVAPERC, sNF_IPI_POR_UNIDADE, sCompl: string;
   BlDifalA, BlDifalB, CSOSN_item,  cstIPI: string;
   rAliqAux, rCusto, sNF_ICMSVALOR, sNF_IPIALIQ, sPercReduz, vICMSSubstituto , Nf_fcp, nf_fcpst : Currency;
-  sql, NTP_CFOP, ope_codigo: string;
+  sql, NTP_CFOP, ope_codigo, cliIE: string;
   icmsDeson, AliquotaDeson, a,b,c, saldo, BaseProdutoBanco: double;
   motivDeson : string;
   baseSimples, IpiNaBaseICMS, FreteNaBAse, ICMSTotalNota, aplicaDivisorSimples : boolean;
@@ -3285,9 +3286,9 @@ begin
 
        end;
 
+       cliIE := BuscaUmDadoSQLAsString('SELECT CLI_INSC FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(cdsPedidosCLI_CODIGO.AsString));
 
-
-       if wConsumidor and wVenda and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
+       if wConsumidor and wVenda and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL  and ((cliIE = 'ISENTO') OR (cliIE = '')) then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
        begin
 
 //           // não é exportação e origem = 1,2 ou 3(importados)
@@ -3301,13 +3302,13 @@ begin
            begin
             if IcmTipoCalculoDifal = 1 then // o cálculo ´´e com base por dentro
             begin
-               // a := wBaseProduto - ((wBaseProduto / 100) *  rAliqAux);
-               // b := a / (1 -(wALiqICmsInterno / 100));
-               // wIcmDifal := ( b - wBaseProduto )  // wIcmDifal valor do difal
+                // a := wBaseProduto - ((wBaseProduto / 100) *  rAliqAux);
+                // b := a / (1 -(wALiqICmsInterno / 100));
+                //  wIcmDifal := ( b - wBaseProduto )  // wIcmDifal valor do difal
 
-               a := wBaseIcmsIndividual - ((wBaseIcmsIndividual / 100) *  rAliqAux);
-               b := a / (1 -(wALiqICmsInterno / 100));
-               wIcmDifal := ((b * (wALiqICmsInterno / 100) )- sNF_ICMSVALOR); // wIcmDifal valor do difal
+                a := wBaseIcmsIndividual - ((wBaseIcmsIndividual / 100) *  rAliqAux);
+                b := a / (1 -(wALiqICmsInterno / 100));
+                wIcmDifal := ((b * (wALiqICmsInterno / 100) )- sNF_ICMSVALOR); // wIcmDifal valor do difal
             end
             else // o cálculo é com base por fora
             begin
@@ -4036,7 +4037,7 @@ procedure TFormFatPedido.RateioFrete_despesas;
                            rRateioTmp := Uteis.RoundTo(rt1 * cdsNotaFiscalNF_DESP_ACES.AsFloat  ,-2);
                            rRateioDespesaDiferenca := rRateioDespesaDiferenca + rRateioTmp;
                       end;
-                      if (CdsNotaFiscalNF_VLDIFAL.AsFloat > 0) then  //Despesas
+                      if (CdsNotaFiscalNF_VLDIFAL.AsFloat > 0) then  // DIFAL
                       begin
                            rRateioTmp := Uteis.RoundTo(rt1 * (CdsNotaFiscalNF_VLDIFAL.AsFloat)  ,-2);
                            rRateioDespesaDiferenca  := rRateioDespesaDiferenca + rRateioTmp;
@@ -4309,7 +4310,7 @@ begin
           sprd_Origem :=  CdsItemPedido.FieldByName('prd_origem').AsString;
 					qAux.Close;
 
-					wauxCST := wCST_CODIGO;
+					// wauxCST := wCST_CODIGO;   ///////////////////////////////////////////////
 					// regras uf
           if (CdsItemPedidoCFOP_Codigo.AsString = '') then
           begin
@@ -4328,6 +4329,7 @@ begin
   						BuscaOperacaoNovo ( CdsItemPedidoCFOP_Codigo.AsString ); // usa cfop/regra definida no item
             end;
           end;
+          wauxCST := wCST_CODIGO; ////////////////////////////////////////////////////////
  			    if bRegra <> 0 then //le regra uf
 						 LeRegra( bRegra)
 					else
@@ -4780,7 +4782,8 @@ begin
                       wTotalBaseIcms := Uteis.RoundTo ( wTotalBaseIcms + wBaseIcms , -2);
                       wTotalVlBaseIcms := Uteis.RoundTo ( wTotalVlBaseIcms + wValorIcms, -2);
                     end;
-										if ((CdsPedidosCLI_CONSFINAL.AsString = 'S') or (not (wTemSubs = 'S'))) then
+										// if ((CdsPedidosCLI_CONSFINAL.AsString = 'S') or (not (wTemSubs = 'S'))) then
+										if ((CdsPedidosCLI_CONSFINAL.AsString = 'S') and (wTemSubs = 'N')) then
 										begin
 												 // É consumidor final ou É venda interna -UF do cliente e da empresa emissora diferentes ou
 												 wValorSubs := 0;

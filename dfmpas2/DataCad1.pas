@@ -1721,6 +1721,8 @@ type
     CDSUsaParametroUSP_BOTAO_DESVINCULAR_PEDIDO: TStringField;
     SqlParametrosPMT_ATIVA_METRO_CUBICO: TStringField;
     CdsParametrosPMT_ATIVA_METRO_CUBICO: TStringField;
+    SqlParametrosPMT_ADICIONAR_DIFAL_TOTAL_NF: TStringField;
+    CdsParametrosPMT_ADICIONAR_DIFAL_TOTAL_NF: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
