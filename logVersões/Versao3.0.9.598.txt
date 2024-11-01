@@ -1,0 +1,10 @@
+﻿Atualizado em 01/11/2024
+Inicio da versão: 01/11/2024
+
+principal: Drimec, Collect, Embraterm, Parseals
+  1961 - Implementar->RELATORIO DE PERCENTUAIS FCI [Drimec]
+  1967 - Revisão-> Cadastro Do Cliente importação CSV [Collect]
+  1971 - Melhorias FCI [Drimec]
+  1972 - Erro->Relatorio Pedido Tratamento Termico Qtn itens [Embraterm]
+  1975 - Revisão ->Lentidão Ao abrir Cadastro de produtos [Parseals]
+  
