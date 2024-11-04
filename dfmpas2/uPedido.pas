@@ -1712,7 +1712,7 @@ begin
    edtExportacaoUF.Clear;
    edtExportacaoDescricaoLocalEmbarque.Clear;
    edtExportacaoDescricaoRecinto.Clear;
-   cbbClienteEstado.Text := dbInicio.EMPRESA.UF;
+   cbbClienteEstado.Clear;
 
    if Habilita then
      BuscaPedido( '' );
@@ -6364,6 +6364,7 @@ begin
   begin
     EdClienteCodigo.Clear;
     edCliente.idRetorno:='';
+    cbbClienteEstado.Clear;
     GBInformacoesOrcamento.Visible := True;
     TabSheet5.Caption := 'Informações';
     GBInformacoesOrcamento.BringToFront;
