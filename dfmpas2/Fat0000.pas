@@ -1819,10 +1819,14 @@ begin
        CancelarDenegada := true
       else
         exit;
-
-
-
     end;
+
+    if BuscaUmDadoSqlAsInteger('Select cast(count(*) as integer) as conta from    NF0001_HISTORICO h WHERE  NFM_REGISTRO = 0 '+
+    ' AND NF_REGITRO = ' +  IntToStr(CdsNotasNF_REGISTRO.AsInteger) ) > 0  then
+         GeraException('Nota Rejeitada. Código de retorno é Zero. Possíveis problemas na SEFAZ, verifique.');
+
+
+
   end;
 
    //vai verificar se rejeição é denegado ou duplicidade , neste caso somente a novi pode excluir
