@@ -158,7 +158,7 @@ begin
 
 
 
-  except
+  except 
      // silencioso
   end;
 end;
@@ -490,7 +490,7 @@ begin
        if acbrnf1.NotasFiscais.Items[0].NFe.Dest.EnderDest.fone <> '' then
        begin
          if copy(acbrnf1.NotasFiscais.Items[0].NFe.Dest.EnderDest.fone,1,1) <> '0' then
-           fone:= '0' +acbrnf1.NotasFiscais.Items[0].NFe.Dest.EnderDest.fone
+           fone:= {'0' +} acbrnf1.NotasFiscais.Items[0].NFe.Dest.EnderDest.fone
          else
            fone := acbrnf1.NotasFiscais.Items[0].NFe.Dest.EnderDest.fone;
        end;
@@ -1073,7 +1073,7 @@ begin
 end;
 
 procedure TfrmImportarXMLMigracaoNovi.ProcessaNota;
-var sCodPessoa, sCodTransp, sNumNF: string;
+var sCodPessoa, sCodTransp, sNumNF, sSerieNF: string;
 var i : integer;
 begin
 
@@ -1082,6 +1082,7 @@ begin
          if (pCnpj = acbrnf1.NotasFiscais.Items[0].NFe.Emit.CNPJCPF) OR (MatchStr(DBInicio.Usuario.USERNAME,['ADM','NOVI'])) then
          BEGIN
               sNumNF := strzero( acbrnf1.NotasFiscais.Items[0].NFe.Ide.nNF,6);
+              sSerieNF := IntToStr(acbrnf1.NotasFiscais.Items[0].NFe.Ide.Serie);
               if sNumNF<>'000000' then
               begin
                    dbinicio.ExecSql('execute block as              '+
@@ -1091,7 +1092,9 @@ begin
                                     ' execute statement  '+QuotedStr('set generator GEN_PRD_CODIGO to ') +' || (x+1); '+
                                     ' end; '+
                                    '  ');
-                   if BuscaUmDadoSqlasInteger('Select cast(count(*) as integer) as conta from    nf0001 where emp_codigo = '+QuotedStr(dbinicio.empresa.EMP_CODIGO)+ ' and NF_NOTANUMBER='+qStr( sNumNF ))=0 then
+                   if BuscaUmDadoSqlasInteger('Select cast(count(*) as integer) as conta from    nf0001 where emp_codigo = ' + QuotedStr(dbinicio.empresa.EMP_CODIGO) +
+                     ' and NF_NOTANUMBER=' + qStr( sNumNF ) + ' and NF_SERIE = ' + qStr(sSerieNF)
+                     ) = 0 then
                    begin
 
                         if acbrnf1.NotasFiscais.Items[0].NFe.ide.tpnf=tnSaida then
