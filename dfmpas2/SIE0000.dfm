@@ -227,8 +227,10 @@ object FrmSie: TFrmSie
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
         end
       end
       object gbCliente: TGroupBox
@@ -282,8 +284,10 @@ object FrmSie: TFrmSie
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
         end
       end
       object grpEmpresa: TGroupBox
@@ -545,8 +549,9 @@ object FrmSie: TFrmSie
       Properties.ActivePage = cxtbshtResultado
       Properties.CustomButtons.Buttons = <>
       LookAndFeel.NativeStyle = True
-      ClientRectBottom = 433
-      ClientRectRight = 1249
+      ClientRectBottom = 429
+      ClientRectLeft = 4
+      ClientRectRight = 1245
       ClientRectTop = 25
       object cxtbshtResultado: TcxTabSheet
         Caption = 'Resultado'
@@ -554,8 +559,8 @@ object FrmSie: TFrmSie
         object dbgrd1: TDBGrid
           Left = 0
           Top = 41
-          Width = 1249
-          Height = 367
+          Width = 1241
+          Height = 363
           Margins.Left = 1
           Margins.Top = 1
           Margins.Right = 1
@@ -586,7 +591,7 @@ object FrmSie: TFrmSie
         object pFiltro: TPanel
           Left = 0
           Top = 0
-          Width = 1249
+          Width = 1241
           Height = 41
           Align = alTop
           TabOrder = 1
@@ -623,12 +628,11 @@ object FrmSie: TFrmSie
       object cxtbshtGrafico: TcxTabSheet
         Caption = 'Gr'#225'fico'
         ImageIndex = 1
-        ExplicitWidth = 2317
         object chtGrafico: TChart
           Left = 0
           Top = 57
-          Width = 1249
-          Height = 351
+          Width = 1241
+          Height = 347
           BackImage.Inside = True
           BackWall.Transparent = False
           Gradient.Direction = gdFromCenter
@@ -657,7 +661,6 @@ object FrmSie: TFrmSie
           Align = alClient
           Color = clWhite
           TabOrder = 0
-          ExplicitWidth = 2317
           DefaultCanvas = 'TGDIPlusCanvas'
           ColorPaletteIndex = 13
           object brsrsSeries1: TBarSeries
@@ -673,12 +676,11 @@ object FrmSie: TFrmSie
         object Panel2: TPanel
           Left = 0
           Top = 0
-          Width = 1249
+          Width = 1241
           Height = 57
           Align = alTop
           Color = clWhite
           TabOrder = 1
-          ExplicitWidth = 2317
           object SpeedButton5: TSpeedButton
             Left = 330
             Top = 0
@@ -1738,15 +1740,13 @@ object FrmSie: TFrmSie
       object cxResultado: TcxTabSheet
         Caption = 'cxResultado'
         ImageIndex = 2
-        ExplicitWidth = 2317
         object cxGrid1: TcxGrid
           Left = 0
           Top = 0
-          Width = 1249
-          Height = 408
+          Width = 1241
+          Height = 404
           Align = alClient
           TabOrder = 0
-          ExplicitWidth = 2317
           object cxGrid1DBTableView1: TcxGridDBTableView
             Navigator.Buttons.CustomButtons = <>
             OnCustomDrawCell = cxGrid1DBTableView1CustomDrawCell
@@ -2107,15 +2107,15 @@ object FrmSie: TFrmSie
       LineColor = 13158600
     end
   end
-  object fltpnMenu: TFlatPanel
+  object fltpnMenu: TPanel
     Left = 15
     Top = 25
     Width = 321
     Height = 600
-    ParentColor = True
-    Visible = False
     Align = alLeft
+    ParentColor = True
     TabOrder = 3
+    Visible = False
     object JvNavigationPane1: TJvNavigationPane
       Left = 1
       Top = 1
@@ -2324,7 +2324,6 @@ object FrmSie: TFrmSie
     Cells = <>
     Aggregates = <>
     MergedCells = <>
-    DefRowHeight = 12.750000000000000000
     Left = 596
     Top = 362
   end

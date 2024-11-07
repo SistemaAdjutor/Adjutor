@@ -13,7 +13,23 @@ uses
   JvNavigationPane, JvExControls, TFlatPanelUnit, BaseDBForm, ACBrEnterTab,
   ACBrBase, ACBrCalculadora, JvChart,  Animacao, JvComponentBase, JvDBGridExport, cxCustomData, cxFilter, cxData, cxDataStorage, cxEdit, cxNavigator, cxDBData, cxGridLevel, cxGridCustomView,
   cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGrid, SgDbSeachComboUnit, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS,
-  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client,
+  dxSkinsCore, dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel,
+  dxSkinCoffee, dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, dxBarBuiltInMenu,
+  cxDataControllerConditionalFormattingRulesManagerDialog;
 
 type
 
@@ -70,7 +86,7 @@ type
     cdsPivot: TClientDataSet;
     qTemp: TSQLQuery;
     dsPivot: TDataSource;
-    fltpnMenu: TFlatPanel;
+    fltpnMenu: TPanel;
     JvNavigationPane1: TJvNavigationPane;
     jvnPlanoContas: TJvNavPanelPage;
     dbgrdPlanoConta: TdbGrid;
@@ -2984,13 +3000,14 @@ begin
   if rbEntradaPedido.Checked then
   begin
      GerarConsulta(
-    ' SELECT COALESCE(co.cori_descricao,''SEM ORIGEM'') cori_descricao , PED_DTENTRADA,  SUM(PED_VLTOTAL_BRUTO) AS PED_VLTOTAL_LIQ   '+
-    ' FROM PED0000 pe                           '+
-    ' JOIN OPV0000 op ON (op.OPV_CODIGO = pe.OPV_CODIGO AND op.OPV_VENDA = ''S'' )'   +
-    ' LEFT JOIN cliente_origem co ON (co.Cori_codigo = pe.cori_codigo) '+
-    ' WHERE PED_SITUACAO NOT IN ( ''A'',''C'') '+
-     iif(rbEmpresa.Checked, ' AND pe.EMP_CODIGO = ' +  QuotedStr(sEmpresa), '')+
-    ' AND PED_DTENTRADA BETWEEN  ' + DateToSql(dDataInicial) + ' AND ' + DateToSql(dDataFinal)+
+    ' SELECT COALESCE(co.cori_descricao,''SEM ORIGEM'') cori_descricao , PED_DTENTRADA,  SUM(FAT_VLFAT) AS PED_VLTOTAL_LIQ   ' +
+    ' FROM PED0000 pe ' +
+    ' JOIN OPV0000 op ON (op.OPV_CODIGO = pe.OPV_CODIGO AND op.OPV_VENDA = ''S'' )' +
+    ' JOIN FAT0000 f ON (f.PED_CODIGO = pe.PED_CODIGO) ' +
+    ' LEFT JOIN cliente_origem co ON (co.Cori_codigo = pe.cori_codigo) ' +
+    ' WHERE PED_SITUACAO NOT IN ( ''A'',''C'') ' +
+     iif(rbEmpresa.Checked, ' AND pe.EMP_CODIGO = ' +  QuotedStr(sEmpresa), '') +
+    ' AND PED_DTENTRADA BETWEEN  ' + DateToSql(dDataInicial) + ' AND ' + DateToSql(dDataFinal) +
     ' GROUP BY 1,2');
       GerarColunas('Origem', 'PED_DTENTRADA', '100', '90', 'ftString',    odColunas);
       GerarLinhas(True, 'Origem', 'cori_descricao', 'PED_DTENTRADA', 'PED_VLTOTAL_LIQ');
