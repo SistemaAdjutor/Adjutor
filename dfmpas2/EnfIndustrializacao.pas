@@ -806,7 +806,7 @@ begin
     else
     begin
       if frmEnfIndustrializacoSelecionaCor <> nil then
-        Value := SqlCdsNotaItemPESO.AsCurrency * SqlCdsNotaItemENF_QTDE.AsCurrency
+        Value := SqlCdsNotaItemPESO.AsCurrency * (SqlCdsNotaItemENF_QTDE.AsCurrency - SqlCdsNotaItemENF_QUANTIDADE_IND_RETORNO.AsCurrency)
       else
       if frmEnfIndustrializacoEnviaDemanda = nil then
         Value := iif(SqlCdsNotaItemENF_UCOM.AsString ='KG', SqlCdsNotaItemRETORNADO.AsCurrency, SqlCdsNotaItemPESO.AsCurrency * SqlCdsNotaItemRETORNADO.AsCurrency)
@@ -940,10 +940,12 @@ begin
                                       ' left join ind_tiporetorno t3 on (t3.itt_registro = t1.itt_registro) '+
 
                                       ' ORDER BY t3.itt_descricao, t0.enf_entrada, t0.enf_notanumber ';
+  if dbInicio.IsDesenvolvimento then
+    copyToClipboard(SqlCdsItensRelatorio.CommandText);
   SqlCdsItensRelatorio.Open;
-  //Abre Relatporio
+  //Abre Relatório
   frxRelatorio.ShowReport();
-  
+
 end;
 
 procedure TFrmEnfIndustrializacao.frxRelatorioGetValue(
