@@ -1677,12 +1677,14 @@ procedure TfrmGerenciamentoPCP.btnPesquisaClick(Sender: TObject);
 begin
   if NOT assigned (frmGerenciamentoPCP) then exit;
   if not frmGerenciamentoPCP.visible then exit;
+  cdsBusca.DisableControls;
   if frmGerenciamentoPCP <> nil then
     NaoAtualizaHistorico := True;
   inherited;
   if frmGerenciamentoPCP <> nil then
     NaoAtualizaHistorico := False;
   AbrirPendente;
+  cdsBusca.EnableControls;
 end;
 
 procedure TfrmGerenciamentoPCP.cdsBuscaAfterRefresh(DataSet: TDataSet);
@@ -1717,14 +1719,13 @@ begin
 
   if not (cdsBuscaPRF_REGISTRO.IsNull)  and (cdsBuscaCustoTotal.AsFloat >0) then
     cdsBuscaIndicadorFinanceiro.AsFloat :=  cdsBuscaIOP_PRECO.AsFloat /  cdsBuscaCustoTotal.AsFloat *100;
-
+    {
   cdsBuscaENF_IT_NOTANUMBER.AsString := BuscaUmDadoSqlAsString(
       'SELECT FIRST 1 EI.ENF_IT_NOTANUMBER ' +
       ' FROM DEMANDA_PRODUCAO DPR ' +
       ' LEFT JOIN ENF_IT01 ei ON	(ei.ENF_REGISTRO = dpr.ENF_REGISTRO) ' +
       ' WHERE (DPR.PED_CODIGO = ' + QuotedStr(cdsBuscaPED_CODIGO.AsString) + ' AND EI.EMP_CODIGO = DPR.EMP_CODIGO		) '
-  );
-
+  ); }
 
   cdsBuscaPESO_TOTAL.AsFloat := cdsBuscaIOP_PESO.AsFloat * cdsBuscaIOP_QUANTIDADE.AsFloat
 
@@ -2338,7 +2339,7 @@ begin
   with cdsBusca,sql do
   begin
     colunas := 'pe.REP_CODIGO, iop.IOP_CODIGO, iop.PRD_CODIGO, iop.OPR_CODIGO, IOP_SEQUENCIA, IOP_NORDEM, IOP_QUANTIDADE, IOP_PESO, IOP_STATUS, IOP_DATA_INICIO, IOP_DATA_CONCLUSAO, IOP_DATA_PREVISTA, IOP_PRECO, IOP_CUSTO,  '+
-               ' iop.PRF_REGISTRO, iop.PRO_CODIGO, IOP_LEADTIME, FTI_REGISTRO, IOP_DATALIBERACAO, IOP_QTDE_REFUGADA, IOP_QTDE_CONCLUIDA, IOP_QTDE_PRODUZINDO, IOP_CUSTOMP, IOP_SEQ_PRG, IOP_DTENTREGA, '+
+               ' iop.PRF_REGISTRO, iop.PRO_CODIGO, IOP_LEADTIME, iop.FTI_REGISTRO, IOP_DATALIBERACAO, IOP_QTDE_REFUGADA, IOP_QTDE_CONCLUIDA, IOP_QTDE_PRODUZINDO, IOP_CUSTOMP, IOP_SEQ_PRG, IOP_DTENTREGA, '+
                ' IOP_CUSTOOPERACAO, IOP_CUSTOCOLABORADOR, IOP_CUSTOEQUIPAMENTO, IOP_CUSTOSERVICOS, IOP_STATUS_ENVASE, ORE_CODIGO, ORE_DATAENVASE, IOP_PREFIXO,  IOP_DIAS_CORRIDOS, '+
                ' IOP_STATUS_ENTREGA, ';
 //    if DBInicio.Empresa.Bpmt_gerarsubordens then
@@ -2373,10 +2374,10 @@ begin
 
 
      //custos da subordem so tem com geração de subordens
-     cdsBusca.SQL.Text := 'SELECT ac.ACO_NOME, it.PRF_QTDE, LOT.PRDL_DATA_FABRICACAO, LOT.PRDL_DATA_VALIDADE, IOP.IOP_DTENTREGA, op.*, '+colunas+
+     cdsBusca.SQL.Text := 'SELECT EI.ENF_IT_NOTANUMBER, ac.ACO_NOME, it.PRF_QTDE, LOT.PRDL_DATA_FABRICACAO, LOT.PRDL_DATA_VALIDADE, IOP.IOP_DTENTREGA, op.*, '+colunas+
                           ' COALESCE(CLI_FANTASIA, CLI_RAZAO) CLI_RAZAO, COALESCE(IOP_DATA_AJUSTADA,PE.PED_DTSAIDA)  IOP_DATA_AJUSTADA,  '+
-                          ' datediff(DAY,CURRENT_DATE, IOP_DTENTREGA) leftdays, '+
-                          ' datediff(DAY,IOP_DATA_INICIO,IOP_DTENTREGA ) deadline, ' +
+                          ' datediff(DAY,CURRENT_DATE, iop.IOP_DTENTREGA) leftdays, '+
+                          ' datediff(DAY,IOP_DATA_INICIO, iop.IOP_DTENTREGA ) deadline, ' +
                           ' pr.prd_und, IOP_CUSTOMP,  '+
                           ' pr.PRD_REFER, te.TEM_DESCRICAO, te.TEM_CAPACIDADE, ' +
                           ' COALESCE(it.PRF_PRDDESCRI, pr.PRD_DESCRI) as PRD_DESCRI, ' +
@@ -2390,15 +2391,15 @@ begin
                           ' JOIN ITEM_ORDEMPRODUCAO iop ON (Iop.OPR_CODIGO = OP.OPR_CODIGO ) '+
                           ' LEFT JOIN PRD_LOTE lot ON (lot.IOP_CODIGO = iop.IOP_CODIGO)'+
                           ' JOIN PRD0000 pr ON (pr.PRD_CODIGO = iop.PRD_CODIGO) '+
+                          ' JOIN DEMANDA_PRODUCAO dpr ON (dpr.PED_CODIGO = op.PED_CODIGO AND dpr.EMP_CODIGO = op.EMP_CODIGO ) ' +
+                          ' LEFT JOIN ENF_IT01 ei ON	(ei.ENF_REGISTRO = dpr.ENF_REGISTRO) ' +
                           ' LEFT JOIN MOLA_MATERIA mm ON (mm.PRD_CODIGO = pr.PRD_CODIGO) '+
                           ' LEFT JOIN TIPO_EMBALAGEM te ON (te.TEM_CODIGO = mm.TEM_CODIGO) '+
                           ' LEFT JOIN FTC0000 ft ON (ft.PRD_REFER = pr.PRD_REFER) '+
                           ' JOIN PED0000 pe ON (PE.PED_CODIGO = OP.PED_CODIGO  AND OP.EMP_CODIGO = PE.EMP_CODIGO) '+
                           ' left JOIN PED_IT01 it ON (it.PED_CODIGO = op.PED_CODIGO AND it.PRD_CODIGO = iop.PRD_CODIGO AND it.PRF_REGISTRO = iop.PRF_REGISTRO) ' +
                           ' LEFT JOIN ACABAMENTO_CORES ac ON (ac.ACO_CODIGO = it.ACO_CODIGO) ' +
-                          ' WHERE EXISTS                                                     '+
-                          ' (SELECT * FROM DEMANDA_PRODUCAO dpr WHERE dpr.PED_CODIGO = op.PED_CODIGO '+
-                          '   AND dpr.EMP_CODIGO = op.EMP_CODIGO )' +
+                          ' WHERE 1=1 ' +
                          iif(chkFinalizados.Checked,'',' AND ( iop_status <> ''F'' ) ' ) ;
                          // iif(chkFinalizados.Checked,'',' AND ( iop_status <> ''F'' OR IOP_DATA_CONCLUSAO  BETWEEN CURRENT_DATE-7 AND CURRENT_DATE) ' ) ;
    Filtrados := true;
