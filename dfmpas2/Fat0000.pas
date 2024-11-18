@@ -1942,7 +1942,7 @@ end;
 procedure TFormFaturamento.btnEmitirClick(Sender: TObject);
 var
     errNaoSEFAZ, MostrarErro: boolean;
-    ie: string;
+    ie, status: string;
 
 begin
   MostrarErro := False;
@@ -1961,6 +1961,24 @@ begin
     clone.First;
     if not clone.IsEmpty then
     begin
+
+
+      status := BuscaUmDadoSqlAsString('SELECT NF_STATUS_NFE FROM NF0001 n WHERE n.PED_CODIGO = ' + QuotedStr(CLONE.FieldByName('PED_CODIGO').AsString) + ' AND n.NF_STATUS_NFE IN (''T'', ''A'') ');
+      if status = 'T' then
+      begin
+        Uteis.Aviso('Esta nota já foi Transmitida. Favor Atualizar (Fechar e Abrir) a tela de Faturamento.');
+        FreeAndNil(clone);
+        Exit;
+      end;
+      if status = 'A' then
+      begin
+        Uteis.Aviso('Esta nota já foi Autorizada. Favor Atualizar (Fechar e Abrir) a tela de Faturamento.');
+        FreeAndNil(clone);
+        Exit;
+      end;
+
+
+
       ACBrNFe1.NotasFiscais.Clear;
       if not DBInicio.Empresa.wPMT_FATURA_MULTIEMPRESA then
       begin
