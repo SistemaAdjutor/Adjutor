@@ -3288,7 +3288,8 @@ begin
 
        cliIE := BuscaUmDadoSQLAsString('SELECT CLI_INSC FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(cdsPedidosCLI_CODIGO.AsString));
 
-       if wConsumidor and wVenda and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL  and ((cliIE = 'ISENTO') OR (cliIE = '')) then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
+       // wCST_CODIGO = DIFAL pessoa física ou contribuinte isento
+       if (wCST_CODIGO = '00') and  wConsumidor and wVenda and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL  and ((cliIE = 'ISENTO') OR (cliIE = '')) then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
        begin
 
 //           // não é exportação e origem = 1,2 ou 3(importados)
@@ -4847,7 +4848,7 @@ begin
 
 																	 // Regra Especial Calc Difal ST
                                    // nova regra de cálculo difal para todos os UF's
-																	 if (bRegra<>0) and (wUfAliqMVA=0) and DBInicio.Empresa.PMT_HABILITAR_DIFAL Then  // MVA zerado na regra ou zerado por isenção icms para uso consumo (combustiveis)
+															 {		 if (bRegra<>0) and (wUfAliqMVA=0) and DBInicio.Empresa.PMT_HABILITAR_DIFAL Then  // MVA zerado na regra ou zerado por isenção icms para uso consumo (combustiveis)
 																	 begin
 
 																				wFator := RoundTo( (100 - wUfAliqIcmsSubCli) / 100, -3 );  // Fator -> Aliquota Interna: 18% = (100 - 18)/100 = 0,82
@@ -4866,7 +4867,8 @@ begin
 
 																				wValorSubs := wIcmDifalST;
 																	 end
-																	 Else
+																	 Else          }
+                                   if (bRegra<>0) then
 																	 Begin
 
 																				wCalBaseValorSubs := Uteis.RoundTo ( wBaseValorSubs * wUfAliqMVA / 100, -3 );
@@ -4894,13 +4896,13 @@ begin
 
 																	 if (wValorSubs > 0) then
 																	 begin
-                                     if ((bRegra<>0) or (wDifal>0)) and (wUfAliqMVA=0) and DBInicio.Empresa.PMT_HABILITAR_DIFAL Then
+                                  {   if ((bRegra<>0) or (wDifal>0)) and (wUfAliqMVA=0) and DBInicio.Empresa.PMT_HABILITAR_DIFAL Then
                                      begin
                                         wBaseValorSubs := wBaseValorSubs   +wValorSubs ;
 																				wTotalBaseValorSubs := Uteis.RoundTo ( wTotalBaseValorSubs +wBaseValorSubs,-2 );
 																				wTotalValorSubs := Uteis.RoundTo ( wTotalValorSubs + wValorSubs,-2 );
                                      end
-                                     else
+                                     else}
                                      begin
 																				wTotalBaseValorSubs := Uteis.RoundTo ( wTotalBaseValorSubs + wBaseValorSubs,-2 );
 																				wTotalValorSubs := Uteis.RoundTo ( wTotalValorSubs + wValorSubs,-2 );
