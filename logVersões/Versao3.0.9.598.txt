@@ -1,4 +1,4 @@
-﻿Atualizado em 01/11/2024
+﻿Atualizado em 26/11/2024
 Inicio da versão: 01/11/2024
 
 principal: Drimec, Collect, Embraterm, Parseals
@@ -7,4 +7,14 @@ principal: Drimec, Collect, Embraterm, Parseals
   1971 - Melhorias FCI [Drimec]
   1972 - Erro->Relatorio Pedido Tratamento Termico Qtn itens [Embraterm]
   1975 - Revisão ->Lentidão Ao abrir Cadastro de produtos [Parseals]
+  
+patch 1: Drimec, Rotor, Parseals, Vila Rica, LForja, Netocolor
+   110 - Ajustar totais do BI por origem [Drimec]
+  1974 - Erro->Erro na Emissão de NF-e com DIFAL para SC sem Inscrição Estadual [Rotor]
+  1976 - Recorrente->Faturamento Duplicidade da nfs [Novi]
+  1977 - Erros->Pedido  [Parseals]
+  1979 - Inserir nf usando xml [Drimec]
+  1980 - Ajustar casas decimais na grades [Vila Rica]
+  1981 - Revisão->Programação da Produção [LForja]
+  1982 - Calculo na qtd parcial das cores [Netocolor]
   
