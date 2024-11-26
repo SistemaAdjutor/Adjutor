@@ -287,8 +287,8 @@ object FrmCadastroGrade: TFrmCadastroGrade
       Width = 101
       Height = 21
       AutoSize = False
-      DecimalPlaces = 3
-      DisplayFormat = '0'
+      DecimalPlaces = 5
+      DisplayFormat = '###,##0.00000'
       TabOrder = 5
     end
     object CurPrecoCalculado: TCurrencyEdit
@@ -300,7 +300,7 @@ object FrmCadastroGrade: TFrmCadastroGrade
       AutoSize = False
       Color = 14145495
       DecimalPlaces = 3
-      DisplayFormat = '###,###,###,##0.00'
+      DisplayFormat = '###,###,###,##0.000'
       ReadOnly = True
       TabOrder = 6
     end
