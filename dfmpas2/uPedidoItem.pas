@@ -1577,7 +1577,7 @@ begin
        CurrPendente.Value := FrmPedido.SqlCdsPedidoItemprf_qtdePend.AsFloat;
 //			 CurPrecoLiquido.DecimalPlaces := 5;
 //			 CurPrecoLiquido.DisplayFormat := ',0.0000##;-,0.0000##';
-//			 CurPrecoLiquido.Value := FrmPedido.SqlCdsPedidoItemPRF_PRECO.AsFloat;
+			 CurPrecoLiquido.Value := FrmPedido.SqlCdsPedidoItemPRF_PRECO.AsFloat;
 //
 //			 CurPrecoBruto.DecimalPlaces := 5;
 //			 CurPrecoBruto.DisplayFormat := ',0.0000##;-,0.0000##';
@@ -5013,7 +5013,11 @@ end;
 
 procedure TFrmPedidoItem.CurDescontoExit(Sender: tObject);
 begin
+   if CurDesconto.Value > 0 then
+    CurrAcrescimoReal.Value := 0;
+
    CalculaTotais;
+
    if (dbInicio.Empresa.bHabilitarTabelaPreco) then
    begin
      if CurPrecoLiquido.Value > 0  then
@@ -6228,7 +6232,8 @@ end;
 
 procedure TFrmPedidoItem.CurQuantidadeExit(Sender: tObject);
 begin
-  CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
+  if CurPrecoLiquido.Value = 0  then
+    CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
   CalculaTotais;
 end;
 
