@@ -1747,10 +1747,8 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
       Size = 5
     end
     object cdsBuscaENF_IT_NOTANUMBER: TStringField
-      FieldKind = fkCalculated
       FieldName = 'ENF_IT_NOTANUMBER'
       Size = 10
-      Calculated = True
     end
     object cdsBuscaREP_CODIGO: TStringField
       FieldName = 'REP_CODIGO'
