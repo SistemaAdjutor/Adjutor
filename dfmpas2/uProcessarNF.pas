@@ -575,6 +575,8 @@ begin
     ' and nf.EMP_CODIGO = '+ QuotedStr(EmpCodigo);
 
   // Clipboard.AsText :=  qNota.CommandText;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(qNota.CommandText);
 
   qnota.Open;
   BuscaItem(Nota);
