@@ -816,7 +816,8 @@ begin
                         '       C1.CLI_RAZAO, '+
                         '       C1.CLI_UF, '+
                         '       c1.CLI_CGC, '+
-                        '       t1.NF_TOT_NOTA + COALESCE(t1.NF_VLDIFAL, 0) as NF_TOT_NOTA, '+
+                    //    '       t1.NF_TOT_NOTA + COALESCE(t1.NF_VLDIFAL, 0) as NF_TOT_NOTA, '+
+                        '       t1.NF_TOT_NOTA as NF_TOT_NOTA, '+
                         '       t1.NF_TOT_PROD, '+
                         '       t1.NF_IMPRESS, '+
                         '       0 as NF_SELECAO, '+

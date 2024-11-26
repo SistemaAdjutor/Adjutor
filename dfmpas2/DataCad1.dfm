@@ -1687,6 +1687,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_ATIVA_METRO_CUBICO'
       Size = 1
     end
+    object SqlParametrosPMT_ADICIONAR_DIFAL_TOTAL_NF: TStringField
+      FieldName = 'PMT_ADICIONAR_DIFAL_TOTAL_NF'
+      Size = 1
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -3014,6 +3018,10 @@ object DataCadastros1: TDataCadastros1
     end
     object CdsParametrosPMT_ATIVA_METRO_CUBICO: TStringField
       FieldName = 'PMT_ATIVA_METRO_CUBICO'
+      Size = 1
+    end
+    object CdsParametrosPMT_ADICIONAR_DIFAL_TOTAL_NF: TStringField
+      FieldName = 'PMT_ADICIONAR_DIFAL_TOTAL_NF'
       Size = 1
     end
   end
