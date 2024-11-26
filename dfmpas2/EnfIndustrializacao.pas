@@ -782,11 +782,11 @@ begin
   if (VarName  = 'QUANTIDADE') then
   begin
     if frmEnfIndustrializacoSelecionaCor <> nil then
-      Value := SqlCdsNotaItemENF_QTDE.AsCurrency - SqlCdsNotaItemENF_QUANTIDADE_IND_RETORNO.AsCurrency
+      Value := SqlCdsNotaItemENF_QTDE.AsFloat - SqlCdsNotaItemENF_QUANTIDADE_IND_RETORNO.AsFloat
 //      Value := SqlCdsNotaItemENF_QTDE.AsCurrency
     else
     if (frmEnfIndustrializacoEnviaDemanda = NIL)  then
-      Value := SqlCdsNotaItemRETORNADO.AsCurrency
+      Value := SqlCdsNotaItemRETORNADO.AsFloat
     else
       Value := frmEnfIndustrializacoEnviaDemanda.edEnviar.Value;
   end
@@ -794,24 +794,24 @@ begin
   if (VarName  = 'PESO_UNITARIO') then
   begin
     if (SqlCdsNotaItemENF_UCOM.AsString = 'KG')  then
-      Value := SqlCdsNotaItemRETORNADO.AsCurrency
+      Value := SqlCdsNotaItemRETORNADO.AsFloat
     else
-      Value := SqlCdsNotaItemPESO.AsCurrency;
+      Value := SqlCdsNotaItemPESO.AsFloat;
   end
   else
   if (VarName  = 'PESO_TOTAL') then
   begin
     if (SqlCdsNotaItemENF_UCOM.AsString = 'KG')  then
-      Value := SqlCdsNotaItemRETORNADO.AsCurrency
+      Value := SqlCdsNotaItemRETORNADO.AsFloat
     else
     begin
       if frmEnfIndustrializacoSelecionaCor <> nil then
-        Value := SqlCdsNotaItemPESO.AsCurrency * SqlCdsNotaItemENF_QTDE.AsCurrency
+        Value := RoundTo(SqlCdsNotaItemPESO.AsFloat, -3) * (SqlCdsNotaItemENF_QTDE.AsFloat - SqlCdsNotaItemENF_QUANTIDADE_IND_RETORNO.AsFloat)
       else
       if frmEnfIndustrializacoEnviaDemanda = nil then
-        Value := iif(SqlCdsNotaItemENF_UCOM.AsString ='KG', SqlCdsNotaItemRETORNADO.AsCurrency, SqlCdsNotaItemPESO.AsCurrency * SqlCdsNotaItemRETORNADO.AsCurrency)
+        Value := iif(SqlCdsNotaItemENF_UCOM.AsString ='KG', SqlCdsNotaItemRETORNADO.AsFloat, SqlCdsNotaItemPESO.AsFloat * SqlCdsNotaItemRETORNADO.AsFloat)
       else
-        Value := SqlCdsNotaItemPESO.AsCurrency * frmEnfIndustrializacoEnviaDemanda.edEnviar.Value;
+        Value := SqlCdsNotaItemPESO.AsFloat * frmEnfIndustrializacoEnviaDemanda.edEnviar.Value;
     end;
   end
   else
@@ -940,10 +940,12 @@ begin
                                       ' left join ind_tiporetorno t3 on (t3.itt_registro = t1.itt_registro) '+
 
                                       ' ORDER BY t3.itt_descricao, t0.enf_entrada, t0.enf_notanumber ';
+  if dbInicio.IsDesenvolvimento then
+    copyToClipboard(SqlCdsItensRelatorio.CommandText);
   SqlCdsItensRelatorio.Open;
-  //Abre Relatporio
+  //Abre Relatório
   frxRelatorio.ShowReport();
-  
+
 end;
 
 procedure TFrmEnfIndustrializacao.frxRelatorioGetValue(
