@@ -1,4 +1,4 @@
-﻿Atualizado em 26/11/2024
+﻿Atualizado em 29/11/2024
 Inicio da versão: 01/11/2024
 
 principal: Drimec, Collect, Embraterm, Parseals
@@ -17,4 +17,7 @@ patch 1: Drimec, Rotor, Parseals, Vila Rica, LForja, Netocolor
   1980 - Ajustar casas decimais na grades [Vila Rica]
   1981 - Revisão->Programação da Produção [LForja]
   1982 - Calculo na qtd parcial das cores [Netocolor]
+  
+patch 2: Parseals
+  1988 - Faturamento Revisão Parseals -> Tela de Bloqueio Urgente [Parseals]
   
