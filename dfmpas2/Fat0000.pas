@@ -1964,7 +1964,7 @@ begin
     begin
 
 
-      status := BuscaUmDadoSqlAsString('SELECT NF_STATUS_NFE FROM NF0001 n WHERE n.PED_CODIGO = ' + QuotedStr(CLONE.FieldByName('PED_CODIGO').AsString) + ' AND n.NF_STATUS_NFE IN (''T'', ''A'') ');
+      status := BuscaUmDadoSqlAsString('SELECT NF_STATUS_NFE FROM NF0001 n WHERE n.PED_CODIGO = ' + QuotedStr(CLONE.FieldByName('PED_CODIGO').AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  + ' AND n.NF_STATUS_NFE IN (''T'', ''A'') ');
       if status = 'T' then
       begin
         Uteis.Aviso('Esta nota já foi Transmitida. Favor Atualizar (Fechar e Abrir) a tela de Faturamento.');
