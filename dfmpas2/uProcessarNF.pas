@@ -512,6 +512,9 @@ begin
       qItemNota.SQL.add( ' AND PR.PRD_PRODSERV = '+ QuotedStr('P'));
    qItemNota.SQL.add(' ORDER BY pid.PED_CODIGO, pid.PRF_SEQUENCIA');
 
+ if dbInicio.IsDesenvolvimento then
+  copytoclipboard(qItemNota.SQL.Text);
+
  qItemNota.Open;
 
 

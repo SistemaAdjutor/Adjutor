@@ -3573,8 +3573,11 @@ begin
             '          '+sNF_VLSUBST+', '+ //NF_VLSUBST,
             '          '+sNF_MVAPERC+', '+ //NF_MVAPERC,
 
-            '          '+FloatToSql( Uteis.RoundTo( NF_ALIQCREDSIMPLES, -2) )+', '+ //NF_ALIQCREDSIMPLES,
-            '          '+FloatToSql( Uteis.RoundTo( NF_VLCREDSIMPLES / divisor, -2) )+', '+ //NF_VLCREDSIMPLES,
+//          '          '+FloatToSql( Uteis.RoundTo( NF_ALIQCREDSIMPLES, -2) )+', '+ //NF_ALIQCREDSIMPLES,
+//            '          '+FloatToSql( Uteis.RoundTo( NF_VLCREDSIMPLES / divisor, -2) )+', '+ //NF_VLCREDSIMPLES,
+
+            '          '+FloatToSql( Uteis.RoundTo( fALIQ_CREDITO, -2) )+', '+ //NF_ALIQCREDSIMPLES,
+            '          '+FloatToSql( Uteis.RoundTo( wValorCredSimples, -2) )+', '+ //NF_VLCREDSIMPLES,
 
 
             '          '+FloatToSql( wPrecoMatPrima )+', '+ //NF_PMATPRIMA,
@@ -5696,8 +5699,6 @@ begin
   wFreteIndividual := qAux3.FieldByName('ENF_IT_VALFRETE').AsFloat;
   wSeguroIndividual := qAux3.FieldByName('ENF_IT_VLSEGURO').AsFloat;
   wDespesaIndividual := qAux3.FieldByName('ENF_IT_VLDESP_ACES').AsFloat;
-
-  // teste
 
 end;
 
