@@ -5696,6 +5696,9 @@ begin
   wFreteIndividual := qAux3.FieldByName('ENF_IT_VALFRETE').AsFloat;
   wSeguroIndividual := qAux3.FieldByName('ENF_IT_VLSEGURO').AsFloat;
   wDespesaIndividual := qAux3.FieldByName('ENF_IT_VLDESP_ACES').AsFloat;
+
+  // teste
+
 end;
 
 end.
