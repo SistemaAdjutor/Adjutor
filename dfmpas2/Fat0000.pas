@@ -1963,7 +1963,7 @@ begin
     if not clone.IsEmpty then
     begin
 
-
+      {
       status := BuscaUmDadoSqlAsString('SELECT NF_STATUS_NFE FROM NF0001 n WHERE n.PED_CODIGO = ' + QuotedStr(CLONE.FieldByName('PED_CODIGO').AsString) + ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  + ' AND n.NF_STATUS_NFE IN (''T'', ''A'') ');
       if status = 'T' then
       begin
@@ -1978,7 +1978,7 @@ begin
         Exit;
       end;
 
-
+       }
 
       ACBrNFe1.NotasFiscais.Clear;
       if not DBInicio.Empresa.wPMT_FATURA_MULTIEMPRESA then
