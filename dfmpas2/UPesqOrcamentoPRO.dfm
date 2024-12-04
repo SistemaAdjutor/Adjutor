@@ -257,9 +257,6 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
         Top = 145
         Width = 1155
         Height = 331
-        LookAndFeel.Kind = lfStandard
-        LookAndFeel.NativeStyle = False
-        LookAndFeel.ScrollbarMode = sbmClassic
         ExplicitTop = 145
         ExplicitWidth = 1155
         ExplicitHeight = 331
