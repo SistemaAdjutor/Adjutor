@@ -1,0 +1,7 @@
+﻿Atualizado em 06/12/2024
+Inicio da versão: 06/12/2024
+
+principal: Normadin, Embraterm
+  1986 - Faturamento -Recorrente Normadin-> Calculando errado Aliquota ICMS Simples [Normadin]
+  1990 - Erro Embraterm - Orçamento de produção-Urgente [Embraterm]
+  
