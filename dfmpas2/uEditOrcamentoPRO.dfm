@@ -2,8 +2,8 @@
   Caption = 'FrmEditOrcamentoPRO'
   ClientHeight = 517
   ClientWidth = 1123
-  ExplicitWidth = 1131
-  ExplicitHeight = 544
+  ExplicitWidth = 1139
+  ExplicitHeight = 556
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter [0]
@@ -352,8 +352,10 @@
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object DbeCliCep: TDBEdit
       Left = 92
@@ -483,8 +485,10 @@
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object DBEdit5: TDBEdit
       Left = 891
@@ -590,8 +594,10 @@
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object EdVendedorCodigo: TDBEdit
       Left = 632
@@ -653,8 +659,10 @@
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
     object DBEdit2: TDBEdit
       Left = 652
@@ -684,6 +692,10 @@
       TabOrder = 0
       object tsclientes: TTabSheet
         Caption = 'Itens    '
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object gdItens: TDBGrid
           Left = 0
           Top = 0
@@ -775,6 +787,10 @@
       object obsPedidos: TTabSheet
         Caption = 'Observa'#231#227'o do pedido'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object mObs: TDBMemo
           Left = 0
           Top = 0
@@ -835,6 +851,10 @@
       object TabSheet3: TTabSheet
         Caption = 'Informa'#231#245'es transportadora'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object mObsTransp: TDBMemo
           Left = 0
           Top = 0
@@ -900,8 +920,9 @@
   end
   object ACBrCEP1: TACBrCEP [18]
     ProxyPort = '8080'
-    ParseText = True
     TimeOut = 10000
+    ContentsEncodingCompress = []
+    NivelLog = 0
     WebService = wsViaCep
     PesquisarIBGE = True
     OnBuscaEfetuada = ACBrCEP1BuscaEfetuada
