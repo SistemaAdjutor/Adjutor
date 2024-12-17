@@ -137,6 +137,26 @@ inherited FrmExportProdutoExcel: TFrmExportProdutoExcel
             FieldName = 'FOR_CGC'
             Title.Caption = 'CNPJ do fornecedor'
             Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'INTERNO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'EXTERNO'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ALTURA1'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'ALTURA2'
+            Visible = True
           end>
       end
     end
@@ -237,6 +257,18 @@ inherited FrmExportProdutoExcel: TFrmExportProdutoExcel
     object cdsBuscoFOR_CGC: TStringField
       FieldName = 'FOR_CGC'
       Size = 14
+    end
+    object cdsBuscoINTERNO: TFMTBCDField
+      FieldName = 'INTERNO'
+    end
+    object cdsBuscoEXTERNO: TFMTBCDField
+      FieldName = 'EXTERNO'
+    end
+    object cdsBuscoALTURA1: TFMTBCDField
+      FieldName = 'ALTURA1'
+    end
+    object cdsBuscoALTURA2: TFMTBCDField
+      FieldName = 'ALTURA2'
     end
   end
 end

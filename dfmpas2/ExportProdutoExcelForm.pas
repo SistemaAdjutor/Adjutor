@@ -34,6 +34,10 @@ type
     cdsBuscoCOD_BARRA_TRIBUTAVEL: TStringField;
     cdsBuscoFOR_CODIGO: TStringField;
     cdsBuscoFOR_CGC: TStringField;
+    cdsBuscoINTERNO: TFMTBCDField;
+    cdsBuscoEXTERNO: TFMTBCDField;
+    cdsBuscoALTURA1: TFMTBCDField;
+    cdsBuscoALTURA2: TFMTBCDField;
     procedure FormCreate(Sender: tObject);
   private
     fBotao:TButton;
@@ -94,7 +98,7 @@ begin
              ' p.PRD_MARGEMVENDA, ' +
              ' p.PRD_PVENDA, ' +
              ' (SELECT c.CEST_DESCRICAO FROM CEST0000 c WHERE c.CEST_COD = p.CEST_COD) AS CEST_DESCRICAO, ' +
-             ' p.PRD_CODBARRA , ' +
+             ' p.PRD_CODBARRA , INTERNO, EXTERNO, ALTURA1, ALTURA2, ' +
              QuotedStr(' ') +  ' AS COD_BARRA_TRIBUTAVEL, ' +
              ' (SELECT FIRST 1 T1.FOR_CODIGO FROM FOR0000 T1  WHERE T1.FOR_CODIGO in (SELECT T1.for_codigo FROM enf_it01 T1 WHERE T1.prd_refer = P.PRD_REFER GROUP BY T1.for_codigo) or T1.FOR_CODIGO ' +
              '    in (select t2.for_codigo from PRD0000_CODIGO t2  JOIN PRD0000 E ON T2.PRD_CODIGO = E.PRD_CODIGO  where t2.prd_codigo = p.PRD_CODIGO) ORDER BY FOR_CODIGO) AS FOR_CODIGO, ' +
