@@ -5,3 +5,7 @@ principal: Normadin, Embraterm
   1986 - Faturamento -Recorrente Normadin-> Calculando errado Aliquota ICMS Simples [Normadin]
   1990 - Erro Embraterm - Orçamento de produção-Urgente [Embraterm]
   
+patch 1: Drimec, Vedseals
+  1985 - Pedido Drimec->Ativando tela de desconto, e não alterando o valor de IPI manualmente [Drimec]
+  1993 - implementar novos campos na exportação de produtos [Vedseals]
+  
