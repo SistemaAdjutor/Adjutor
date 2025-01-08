@@ -894,7 +894,12 @@ begin
       if DBInicio.Empresa.wPMT_UTILIZA_CODIGO_ORIG_VD and  (EdReferenciaOriginal.Text <> '') then
         MemoDescricao.Text := cbReferencia.CdS.FieldByName('prd_descri').AsString +  ' ['+ EdReferenciaOriginal.Text  +']'
       else
-  			MemoDescricao.Text := cbReferencia.CdS.FieldByName('prd_descri').AsString;
+      begin
+        if (FrmPedido.SqlCdsPedidoItemDESCRICAO.AsString <> '') and (sTipo = 'A')   then      // somente alteração
+          MemoDescricao.Text := FrmPedido.SqlCdsPedidoItemDESCRICAO.AsString
+        else
+    			MemoDescricao.Text := cbReferencia.CdS.FieldByName('prd_descri').AsString;
+      end;
 
 
   		MemoComplemento.Text := qAux.FieldByName('PRD_COMPL').AsString;
