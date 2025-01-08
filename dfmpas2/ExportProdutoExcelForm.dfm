@@ -26,12 +26,6 @@ inherited FrmExportProdutoExcel: TFrmExportProdutoExcel
           end
           item
             Expanded = False
-            FieldName = 'PRD_COMPL'
-            Title.Caption = 'Complemento'
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'IPI_CODIGO'
             Title.Caption = 'Ncm'
             Visible = True
@@ -92,12 +86,6 @@ inherited FrmExportProdutoExcel: TFrmExportProdutoExcel
           end
           item
             Expanded = False
-            FieldName = 'PRD_PCUSTO'
-            Title.Caption = 'Pre'#231'o de Custo'
-            Visible = True
-          end
-          item
-            Expanded = False
             FieldName = 'PRD_MARGEMVENDA'
             Title.Caption = 'Margem'
             Visible = True
@@ -106,6 +94,18 @@ inherited FrmExportProdutoExcel: TFrmExportProdutoExcel
             Expanded = False
             FieldName = 'PRD_PVENDA'
             Title.Caption = 'Pre'#231'o de Venda'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRD_CUSTOCOMIPI'
+            Title.Caption = 'Custo Bruto'
+            Visible = True
+          end
+          item
+            Expanded = False
+            FieldName = 'PRD_PCUSTO'
+            Title.Caption = 'Custo L'#237'quido'
             Visible = True
           end
           item
@@ -269,6 +269,9 @@ inherited FrmExportProdutoExcel: TFrmExportProdutoExcel
     end
     object cdsBuscoALTURA2: TFMTBCDField
       FieldName = 'ALTURA2'
+    end
+    object cdsBuscoPRD_CUSTOCOMIPI: TFMTBCDField
+      FieldName = 'PRD_CUSTOCOMIPI'
     end
   end
 end
