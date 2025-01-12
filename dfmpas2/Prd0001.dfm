@@ -15,13 +15,14 @@ inherited FormProduto: TFormProduto
   Position = poDefaultPosOnly
   Visible = True
   OnCloseQuery = FormCloseQuery
+  ExplicitLeft = -1377
   ExplicitWidth = 2506
   ExplicitHeight = 1029
   PixelsPerInch = 96
   TextHeight = 14
   object PctrlProdutos: TPageControl [0]
     Left = 0
-    Top = 46
+    Top = 0
     Width = 2500
     Height = 566
     ActivePage = Tbs_Produtos
@@ -30,6 +31,8 @@ inherited FormProduto: TFormProduto
     TabOrder = 0
     TabStop = False
     OnChange = PctrlProdutosChange
+    ExplicitLeft = -32
+    ExplicitTop = -90
     object Tbs_FichaTec: TTabSheet
       Caption = 'Ficha T'#233'cnica'
       ImageIndex = 1
@@ -12430,11 +12433,12 @@ inherited FormProduto: TFormProduto
   end
   object GroupBox2: TGroupBox [1]
     Left = 0
-    Top = 0
+    Top = 566
     Width = 2500
     Height = 46
     Align = alTop
     TabOrder = 1
+    ExplicitTop = 0
     object DBText1: TDBText
       Left = 2
       Top = 16
@@ -21708,5 +21712,242 @@ inherited FormProduto: TFormProduto
     DataSet = qFichaTecnicaItens
     Left = 1152
     Top = 752
+  end
+  object qExporta: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQL.Strings = (
+      ' SELECT'
+      #9'CLI_CODIGO,'
+      #9'CLI_CGC,'
+      #9'CLI_RAZAO,'
+      #9#39'C'#39' AS CLI_TIPO,'
+      #9'CASE'
+      #9#9'WHEN CLI_FANTASIA = '#39#39' THEN CLI_RAZAO'
+      #9#9'WHEN CLI_FANTASIA IS NULL THEN CLI_RAZAO'
+      #9#9'ELSE CLI_FANTASIA'
+      #9'END AS CLI_FANTASIA,'
+      #9'REPLACE(REPLACE (CLI_INSC, '#39'-'#39', '#39#39'), '#39'.'#39', '#39#39') AS CLI_INSC,'
+      #9'CLI_CONTATO,'
+      
+        #9#39'('#39'||SUBSTRING (CLI_FONE FROM 1 FOR 2)||'#39')'#39'||SUBSTRING (CLI_FON' +
+        'E FROM 3 FOR 255) AS CLI_FONE,'
+      
+        #9#39'('#39'||SUBSTRING (CLI_CELULAR FROM 1 FOR 2)||'#39')'#39'||SUBSTRING (CLI_' +
+        'CELULAR FROM 3 FOR 255)  CLI_CELULAR,'
+      #9'CASE'
+      
+        #9#9'WHEN position ('#39';'#39' in CLI_EMAIL_ALTERNATIVO) = 0 THEN CLI_EMAI' +
+        'L_ALTERNATIVO '
+      #9#9'ELSE '
+      #9#9'CASE'
+      
+        #9#9#9'WHEN position ('#39';'#39' in CLI_EMAIL_ALTERNATIVO) > 0 THEN SUBSTRI' +
+        'NG (CLI_EMAIL_ALTERNATIVO FROM 1 FOR POSITION('#39';'#39' in CLI_EMAIL_A' +
+        'LTERNATIVO) -1)'
+      #9#9'END'
+      #9'END AS CLI_EMAIL_ALTERNATIVO,'
+      #9'CASE'
+      #9#9'WHEN position ('#39';'#39' in CLI_EMAIL) = 0 THEN CLI_EMAIL '
+      #9#9'ELSE '
+      #9#9'CASE'
+      
+        #9#9#9'WHEN position ('#39';'#39' in CLI_EMAIl) > 0 THEN SUBSTRING (CLI_EMAI' +
+        'L FROM 1 FOR POSITION('#39';'#39' in CLI_EMAIL) -1)'
+      #9#9'END'
+      #9'END AS CLI_EMAIL, '#9
+      #9'CLI_CEP,'
+      #9'CASE'
+      #9#9'WHEN CLI_CIDADE = '#39#39' THEN '#39'n'#227'o informado'#39
+      #9#9'WHEN CLI_CIDADE IS NULL THEN '#39'n'#227'o informado'#39
+      #9#9'ELSE CLI_CIDADE'
+      #9'END AS CLI_CIDADE,'
+      #9'CASE'
+      #9#9'WHEN CLI_UF = '#39#39' THEN '#39'n'#227'o informado'#39
+      #9#9'WHEN CLI_UF IS NULL THEN '#39'n'#227'o informado'#39
+      #9#9'ELSE CLI_UF'
+      #9'END AS CLI_UF,'
+      #9'CASE'
+      #9#9'WHEN CLI_ENDERE = '#39#39' THEN '#39'n'#227'o informado'#39
+      #9#9'WHEN CLI_ENDERE IS NULL THEN '#39'n'#227'o informado'#39
+      #9#9'WHEN position ('#39','#39' in CLI_ENDERE) = 0 THEN CLI_ENDERE '
+      #9#9'ELSE '
+      #9#9'CASE'
+      
+        #9#9#9'WHEN position ('#39','#39' in CLI_ENDERE) > 0 THEN SUBSTRING (CLI_END' +
+        'ERE FROM 1 FOR POSITION('#39','#39' in CLI_ENDERE) -1)'
+      #9#9'END'
+      #9'END AS CLI_ENDERE,'
+      #9'CASE'
+      
+        #9#9'WHEN POSITION('#39','#39' IN CLI_ENDERE) > 0 THEN SUBSTRING (CLI_ENDER' +
+        'E FROM POSITION('#39','#39' IN CLI_ENDERE) + 1 FOR 255)'
+      #9#9'ELSE '#39'S/N'#39
+      #9'END AS CLI_NUMERO,'#9
+      #9'CASE'
+      #9#9'WHEN CLI_BAIRRO = '#39#39' THEN '#39'n'#227'o informado'#39
+      #9#9'WHEN CLI_BAIRRO IS NULL THEN '#39'n'#227'o informado'#39
+      #9#9'ELSE CLI_BAIRRO'
+      #9'END AS CLI_BAIRRO,'
+      #9'REP_RAZAO,'
+      #9'PCX_DESCRI,'
+      #9'BAN_APELIDO, BAN_CONTA, BAN_DIGCONTA, C.EMP_CODIGO,'
+      #9'CLI_UND_CONSUMIDORA'
+      'FROM'
+      #9'CLI0000 c'
+      'LEFT JOIN REP0000 r ON'
+      #9'(r.REP_CODIGO = c.REP_CODIGO)'
+      'LEFT JOIN PCX0000 p ON'
+      #9'(p.PCX_CODIGO = c.PCX_CODIGO)'
+      'LEFT JOIN BAN0000 b ON'
+      #9'(b.BAN_CODIGO = C.BAN_CODIGO)'
+      'ORDER BY'
+      #9'CLI_RAZAO')
+    SQLConnection = DataCadastros.SQLConnection1
+    Left = 2282
+    Top = 108
+  end
+  object dspExporta: TDataSetProvider
+    DataSet = qExporta
+    Left = 2280
+    Top = 156
+  end
+  object cdsExporta: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspExporta'
+    Left = 2280
+    Top = 204
+    object cdsExportaPRD_REFER: TStringField
+      DisplayLabel = 'Refer'#234'ncia'
+      FieldName = 'PRD_REFER'
+    end
+    object cdsExportaPRD_CODIGO: TStringField
+      DisplayLabel = 'C'#243'digo'
+      FieldName = 'PRD_CODIGO'
+      Size = 5
+    end
+    object cdsExportaPRD_DESCRI: TStringField
+      DisplayLabel = 'Nome'
+      FieldName = 'PRD_DESCRI'
+      Size = 100
+    end
+    object cdsExportaPRD_UND: TStringField
+      DisplayLabel = 'Unidade'
+      FieldName = 'PRD_UND'
+      Size = 6
+    end
+    object cdsExportaPRD_COMPL: TStringField
+      DisplayLabel = 'Complemento'
+      FieldName = 'PRD_COMPL'
+      Size = 500
+    end
+    object cdsExportaIPI_CODIGO: TStringField
+      DisplayLabel = 'Ncm'
+      FieldName = 'IPI_CODIGO'
+      Size = 8
+    end
+    object cdsExportaPTI_DESCRI: TStringField
+      DisplayLabel = 'Tipo'
+      FieldName = 'PTI_DESCRI'
+      Size = 100
+    end
+    object cdsExportaPGR_DESCRI: TStringField
+      DisplayLabel = 'Grupo'
+      FieldName = 'PGR_DESCRI'
+      Size = 25
+    end
+    object cdsExportaLIN_DESCRI: TStringField
+      DisplayLabel = 'Marca'
+      FieldName = 'LIN_DESCRI'
+      Size = 30
+    end
+    object cdsExportaPRD_ORIGEM: TIntegerField
+      DisplayLabel = 'Origem (0 = Nacional,1 = Estrangeira)'
+      FieldName = 'PRD_ORIGEM'
+    end
+    object cdsExportaAMX_SALDO_RET: TFMTBCDField
+      DisplayLabel = 'Saldo Estoque'
+      FieldName = 'AMX_SALDO_RET'
+    end
+    object cdsExportaPRD_MINIMO: TFMTBCDField
+      DisplayLabel = 'Estoque minimo'
+      FieldName = 'PRD_MINIMO'
+    end
+    object cdsExportaPRDE_ENDERECO: TStringField
+      DisplayLabel = 'Localizacao do estoque'
+      FieldName = 'PRDE_ENDERECO'
+      Size = 30
+    end
+    object cdsExportaPRD_PESOLIQ: TFMTBCDField
+      DisplayLabel = 'Peso L'#237'quido'
+      FieldName = 'PRD_PESOLIQ'
+    end
+    object cdsExportaPRD_PESOKG: TFMTBCDField
+      DisplayLabel = 'Peso Bruto'
+      FieldName = 'PRD_PESOKG'
+    end
+    object cdsExportaPRD_PCUSTO: TFMTBCDField
+      DisplayLabel = 'Custo L'#237'quido'
+      FieldName = 'PRD_PCUSTO'
+    end
+    object cdsExportaPRD_MARGEMVENDA: TFMTBCDField
+      DisplayLabel = 'Margem'
+      FieldName = 'PRD_MARGEMVENDA'
+    end
+    object cdsExportaPRD_PVENDA: TFMTBCDField
+      DisplayLabel = 'Pre'#231'o de Venda'
+      FieldName = 'PRD_PVENDA'
+    end
+    object cdsExportaPRD_CUSTOCOMIPI: TFMTBCDField
+      DisplayLabel = 'Custo Bruto'
+      FieldName = 'PRD_CUSTOCOMIPI'
+    end
+    object cdsExportaCEST_DESCRICAO: TStringField
+      DisplayLabel = 'CEST'
+      FieldName = 'CEST_DESCRICAO'
+      Size = 512
+    end
+    object cdsExportaPRD_CODBARRA: TStringField
+      DisplayLabel = 'C'#243'digo de Barra'
+      FieldName = 'PRD_CODBARRA'
+      Size = 13
+    end
+    object cdsExportaINTERNO: TFMTBCDField
+      FieldName = 'INTERNO'
+    end
+    object cdsExportaEXTERNO: TFMTBCDField
+      FieldName = 'EXTERNO'
+    end
+    object cdsExportaALTURA1: TFMTBCDField
+      FieldName = 'ALTURA1'
+    end
+    object cdsExportaALTURA2: TFMTBCDField
+      FieldName = 'ALTURA2'
+    end
+    object cdsExportaCOD_BARRA_TRIBUTAVEL: TStringField
+      DisplayLabel = 'C'#243'digo de barra tribut'#225'vel'
+      FieldName = 'COD_BARRA_TRIBUTAVEL'
+      Size = 1
+    end
+    object cdsExportaFOR_CODIGO: TStringField
+      DisplayLabel = 'C'#243'digo do fornecedor'
+      FieldName = 'FOR_CODIGO'
+      Size = 4
+    end
+    object cdsExportaFOR_CGC: TStringField
+      DisplayLabel = 'CNPJ do fornecedor'
+      FieldName = 'FOR_CGC'
+      Size = 14
+    end
+    object cdsExportaEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
+    end
+  end
+  object dsExporta: TDataSource
+    DataSet = cdsExporta
+    Left = 2280
+    Top = 252
   end
 end

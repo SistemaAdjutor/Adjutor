@@ -2255,6 +2255,39 @@ type
     DBCheckBox7: TDBCheckBox;
     SqlProdutosPRD_LANCA_VALOR_ZERADO: TStringField;
     CdsProdutosPRD_LANCA_VALOR_ZERADO: TStringField;
+    qExporta: TSQLQuery;
+    dspExporta: TDataSetProvider;
+    cdsExporta: TClientDataSet;
+    dsExporta: TDataSource;
+    cdsExportaPRD_REFER: TStringField;
+    cdsExportaPRD_CODIGO: TStringField;
+    cdsExportaPRD_DESCRI: TStringField;
+    cdsExportaPRD_UND: TStringField;
+    cdsExportaPRD_COMPL: TStringField;
+    cdsExportaIPI_CODIGO: TStringField;
+    cdsExportaPTI_DESCRI: TStringField;
+    cdsExportaPGR_DESCRI: TStringField;
+    cdsExportaLIN_DESCRI: TStringField;
+    cdsExportaPRD_ORIGEM: TIntegerField;
+    cdsExportaAMX_SALDO_RET: TFMTBCDField;
+    cdsExportaPRD_MINIMO: TFMTBCDField;
+    cdsExportaPRDE_ENDERECO: TStringField;
+    cdsExportaPRD_PESOLIQ: TFMTBCDField;
+    cdsExportaPRD_PESOKG: TFMTBCDField;
+    cdsExportaPRD_PCUSTO: TFMTBCDField;
+    cdsExportaPRD_MARGEMVENDA: TFMTBCDField;
+    cdsExportaPRD_PVENDA: TFMTBCDField;
+    cdsExportaPRD_CUSTOCOMIPI: TFMTBCDField;
+    cdsExportaCEST_DESCRICAO: TStringField;
+    cdsExportaPRD_CODBARRA: TStringField;
+    cdsExportaINTERNO: TFMTBCDField;
+    cdsExportaEXTERNO: TFMTBCDField;
+    cdsExportaALTURA1: TFMTBCDField;
+    cdsExportaALTURA2: TFMTBCDField;
+    cdsExportaCOD_BARRA_TRIBUTAVEL: TStringField;
+    cdsExportaFOR_CODIGO: TStringField;
+    cdsExportaFOR_CGC: TStringField;
+    cdsExportaEMP_CODIGO: TStringField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -8605,7 +8638,100 @@ var
   tcr : tFrmExportProdutoExcel;
   sTipo : string;
   bocultar : Boolean;
+  query : string;
+  lista: TStringList;
 begin
+  frmFiltroExportar := tfrmFiltroExportar.Create( Application );
+  try
+    if frmFiltroExportar.ShowModal = mrOk then
+    begin
+      sTipo := frmFiltroExportar.CbTipo.idRetorno;
+      bocultar := frmFiltroExportar.chkOcultarInativas.Checked;
+    end;
+
+  finally
+    FreeAndNil( frmFiltroExportar );
+  end;
+     query :=
+             ' SELECT ' +
+             ' p.EMP_CODIGO, ' +
+             ' PRD_REFER, ' +
+             ' PRD_CODIGO, ' +
+             ' PRD_DESCRI, ' +
+             ' PRD_UND, ' +
+             ' PRD_COMPL, ' +
+             ' IPI_CODIGO, ' +
+             ' (SELECT pt.PTI_DESCRI FROM PRD_TIPO pt WHERE pt.PTI_CODIGO = p.PTI_CODIGO) AS PTI_DESCRI, ' +
+             ' (SELECT pg.PGR_DESCRI FROM PRD_GRUPO pg WHERE pg.PGR_CODIGO = p.PGR_CODIGO) AS PGR_DESCRI, ' +
+             ' (SELECT pl.LIN_DESCRI FROM PRD_LINHA pl WHERE pl.LIN_CODIGO = p.LIN_CODIGO) AS LIN_DESCRI, ' +
+             ' CASE ' +
+             '   WHEN PRD_ORIGEM = 0 OR PRD_ORIGEM = 3 OR PRD_ORIGEM = 4 OR PRD_ORIGEM = 5 OR PRD_ORIGEM = 8 THEN 0 ' +
+             '   WHEN PRD_ORIGEM = 1 OR PRD_ORIGEM = 2 OR PRD_ORIGEM = 6 OR PRD_ORIGEM = 7 THEN 1 ' +
+             ' END AS PRD_ORIGEM, ' +
+           ' (SELECT SUM(AMX_SALDO_RET) FROM pCd_kardex_saldo(p.EMP_CODIGO, p.PRD_CODIGO, NULL)) AS AMX_SALDO_RET, ' +
+             ' p.PRD_MINIMO, ' +
+           ' (SELECT pe.PRDE_ENDERECO FROM PRD0000_ENDERECAMENTO pe WHERE pe.PRDE_REGISTRO = p.PRDE_REGISTRO AND pe.EMP_CODIGO = P.EMP_CODIGO) AS PRDE_ENDERECO, ' +
+             ' p.PRD_PESOLIQ, ' +
+             ' p.PRD_PESOKG, ' +
+             ' p.PRD_PCUSTO, ' +
+             ' p.PRD_MARGEMVENDA, ' +
+             ' p.PRD_PVENDA, ' +
+             ' p.PRD_CUSTOCOMIPI, ' +
+             ' (SELECT c.CEST_DESCRICAO FROM CEST0000 c WHERE c.CEST_COD = p.CEST_COD) AS CEST_DESCRICAO, ' +
+             ' p.PRD_CODBARRA , INTERNO, EXTERNO, ALTURA1, ALTURA2, ' +
+             QuotedStr(' ') +  ' AS COD_BARRA_TRIBUTAVEL, ' +
+             ' (SELECT FIRST 1 T1.FOR_CODIGO FROM FOR0000 T1  WHERE T1.FOR_CODIGO in (SELECT T1.for_codigo FROM enf_it01 T1 WHERE T1.prd_refer = P.PRD_REFER GROUP BY T1.for_codigo) or T1.FOR_CODIGO ' +
+             '    in (select t2.for_codigo from PRD0000_CODIGO t2  JOIN PRD0000 E ON T2.PRD_CODIGO = E.PRD_CODIGO  where t2.prd_codigo = p.PRD_CODIGO) ORDER BY FOR_CODIGO) AS FOR_CODIGO, ' +
+             ' (SELECT FIRST 1 T1.FOR_CGC FROM FOR0000 T1  WHERE T1.FOR_CODIGO in (SELECT T1.for_codigo FROM enf_it01 T1 WHERE T1.prd_refer = P.PRD_REFER GROUP BY T1.for_codigo) or T1.FOR_CODIGO in ' +
+             '    (select t2.for_codigo from PRD0000_CODIGO t2  JOIN PRD0000 E ON T2.PRD_CODIGO = E.PRD_CODIGO  where t2.prd_codigo = p.PRD_CODIGO) ORDER BY FOR_CODIGO) AS FOR_CGC ' +
+             ' FROM PRD0000 p WHERE 1 = 1  ';
+
+     if DBInicio.ExclusivoSql('PRODUTOS') <> '' then
+        query := query + ' AND ' +  DBInicio.ExclusivoSql('PRODUTOS') ;
+
+     if bocultar then
+       query := query + ' AND p.PRD_STATUS = '+QuotedStr('A');
+     if sTipo <> '' then
+       query := query +' AND p.PTI_CODIGO = '+QuotedStr(sTipo);
+
+
+     query := query + ' order by p.PRD_REFER  ';
+     qExporta.sql.Text := query ;
+
+     if dbInicio.IsDesenvolvimento then
+       copyToClipboard(qExporta.SQL.text);
+     cdsExporta.Open;
+     lista := TStringList.Create;
+     lista.Add('PRD_CODIGO');
+     lista.Add('PRD_DESCRI');
+     lista.Add('PRD_UND');
+     lista.Add('IPI_CODIGO');
+     lista.Add('PTI_DESCRI');
+     lista.Add('PGR_DESCRI');
+     lista.Add('LIN_DESCRI');
+     lista.Add('PRD_ORIGEM');
+     lista.Add('AMX_SALDO_RET');
+     lista.Add('PRD_MINIMO');
+     lista.Add('PRDE_ENDERECO');
+     lista.Add('PRD_PESOLIQ');
+     lista.Add('PRD_PESOKG');
+     lista.Add('PRD_MARGEMVENDA');
+     lista.Add('PRD_PVENDA');
+     lista.Add('PRD_CUSTOCOMIPI');
+     lista.Add('PRD_PCUSTO');
+     lista.Add('CEST_DESCRICAO');
+     lista.Add('PRD_CODBARRA');
+     lista.Add('COD_BARRA_TRIBUTAVEL');
+     lista.Add('FOR_CODIGO');
+     lista.Add('FOR_CGC');
+     lista.Add('INTERNO');
+     lista.Add('EXTERNO');
+     lista.Add('ALTURA1');
+     lista.Add('ALTURA2');
+     CriaCSV(dsExporta, lista, Self);
+
+
+{
   frmFiltroExportar := tfrmFiltroExportar.Create( Application );
   try
     if frmFiltroExportar.ShowModal = mrOk then
@@ -8628,6 +8754,7 @@ begin
   finally
     FreeAndNil( tcr );
   end;
+  }
 end;
 
 procedure TFormProduto.N2CdigosdoFornecedor1Click( Sender : tObject );
