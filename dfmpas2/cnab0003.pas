@@ -1633,9 +1633,8 @@ begin
      PDisplayBanco.Caption := 'CELESC DISTRIBUIÇÃO S.A';
      CValorTotal.Clear;
      dataArq := NOW;
-    // dataArq:= EncodeDate( StrToInt(copy(Retorno.Strings[0],66,4)),StrToInt(copy(Retorno.Strings[0],70,2)) ,StrToInt(copy(Retorno.Strings[0],72,2)) );
-//     dataArq:= StrToDateDef(copy(Retorno.Strings[0],66,8),Date,'yyyymmdd');
-     AtualizaArquivoCNABRetorno(copy(Retorno.Strings[0],74,6), 'RETORNO', '01', 'COBRANCA', DateToStr(dataArq ) );
+     // AtualizaArquivoCNABRetorno(copy(Retorno.Strings[0],74,6), 'RETORNO', '01', 'COBRANCA', DateToStr(dataArq ) );
+     AtualizaArquivoCNABRetorno(copy(Retorno.Strings[0],76,6), 'RETORNO', '01', 'COBRANCA', DateToStr(dataArq ) );  // número sequencial de envio
      Gauge.Progress        :=  1;
 
 
@@ -1675,7 +1674,7 @@ begin
            wDATA_OCORRENCIA := dataArq
          else
            wDATA_OCORRENCIA     := dataBaixa;
-//           wDATA_OCORRENCIA     := EncodeDate( StrToInt(copy(Retorno.Strings[i],28,4)),StrToInt(copy(Retorno.Strings[i],26,2)) ,StrToInt(copy(Retorno.Strings[i],24,2)) );
+//           wDATA_OCORRENCIA     := EncodeDate( StrToInt(copy(Retorno.Strings[i],24,4)),StrToInt(copy(Retorno.Strings[i],22,2)) ,StrToInt(copy(Retorno.Strings[i],20,2)) );
 
          wOCORRENCIA  := copy(retorno.Strings[i],32,2);  //32-33
         case StrToInt(wOCORRENCIA) of
@@ -1749,13 +1748,21 @@ begin
            wOCORRENCIA_DESC := erroMsg;
          end;
 
-       end;
+       end;   // fim tipo registro 2
 
        PDisplayDup.Caption :=  numdoc;
        PDisplayEmiss.Caption := DateToStr(wDATA_OCORRENCIA);
-       if trim(copy(Retorno.Strings[i],106,4))<>'' then  //data de vencimento
-          PDisplayVenc.Caption :=   copy(Retorno.Strings[i],102,2) +'/'+copy(Retorno.Strings[i],104,2) + '/'+ copy(Retorno.Strings[i],106,4) ;
+
+//       if trim(copy(Retorno.Strings[i],106,4))<>'' then  //data de vencimento
+//          PDisplayVenc.Caption :=   copy(Retorno.Strings[i],102,2) +'/'+copy(Retorno.Strings[i],104,2) + '/'+ copy(Retorno.Strings[i],106,4) ;
+       if trim(copy(Retorno.Strings[i],122,4))<>'' then  //data de vencimento
+          PDisplayVenc.Caption :=   copy(Retorno.Strings[i],122,2) +'/'+copy(Retorno.Strings[i],124,2) + '/'+ copy(Retorno.Strings[i],126,4) ;
+
        CDisplayValor.Value := StrToFloatDef(wVALOR_PAGO,0);
+
+//       if trim(copy(Retorno.Strings[i],106,4))<>'' then  //data de vencimento
+//          PDisplayVenc.Caption :=   copy(Retorno.Strings[i],102,2) +'/'+copy(Retorno.Strings[i],104,2) + '/'+ copy(Retorno.Strings[i],106,4) ;
+
        CValorTotal.Value     := (CValorTotal.Value + CdisplayValor.Value);
 
        cli_codigo := BuscaUmDadoSqlAsString('SELECT CLI_CODIGO FROM CLI0000 WHERE CLI_UND_CONSUMIDORA = '+ QuotedStr(codConsumidora));
