@@ -1,0 +1,7 @@
+﻿Atualizado em 22/01/2025
+Inicio da versão: 22/01/2025
+
+principal: Vila Rica, Collect
+  1997 - Solicitação Vila Rica [Vila Rica]
+  1998 - Ajuste Colect - IMPORTAR ARQUIVO CELESC [Collect]
+  
