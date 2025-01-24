@@ -1596,7 +1596,8 @@ begin
      retorno.LoadFromFile(NomeArq);
      if retorno.Count < 2 then
        GeraException('Arquivo vazio');
-     if copy(Retorno.Strings[0],144,1) <> '2' then
+     // if copy(Retorno.Strings[0],144,1) <> '2' then
+     if copy(Retorno.Strings[0],144,1) <> '3' then
          GeraException('Arquivo não é retorno CELESC');
      if trim(copy(Retorno.Strings[0],82,2)) <> '' then
      begin
