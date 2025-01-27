@@ -1,7 +1,13 @@
-﻿Atualizado em 22/01/2025
+﻿Atualizado em 27/01/2025
 Inicio da versão: 22/01/2025
 
 principal: Vila Rica, Collect
   1997 - Solicitação Vila Rica [Vila Rica]
   1998 - Ajuste Colect - IMPORTAR ARQUIVO CELESC [Collect]
+  
+patch 1: Yvytu, Collect, Normandim
+  1995 - Ivytu - nota de entrada de importação 3102 com problema [Yvytu]
+  1998 - Ajuste Colect - IMPORTAR ARQUIVO CELESC [Collect]
+  2000 - Modificação Normandim - Alterar Informações Complementares Danf [Normandim]
+  1996 - Implementar -> Importar produtos para C9 -base Template [Novi]
   
