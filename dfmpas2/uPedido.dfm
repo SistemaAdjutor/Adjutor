@@ -2586,6 +2586,7 @@ inherited FrmPedido: TFrmPedido
               Sorted = True
               TabOrder = 5
               OnChange = cbbClienteEstadoChange
+              OnExit = cbbClienteEstadoExit
               Items.Strings = (
                 'AC'
                 'AL'
@@ -2659,8 +2660,8 @@ inherited FrmPedido: TFrmPedido
             end
           end
           object GBInformacoesCliente: TGroupBox
-            Left = 351
-            Top = 15
+            Left = 212
+            Top = 20
             Width = 1168
             Height = 75
             Font.Charset = ANSI_CHARSET
@@ -8852,8 +8853,8 @@ inherited FrmPedido: TFrmPedido
     TabOrder = 3
   end
   object PanelAguarde: TPanel [4]
-    Left = 117
-    Top = 134
+    Left = 50
+    Top = 500
     Width = 293
     Height = 66
     AutoSize = True
@@ -9997,7 +9998,7 @@ inherited FrmPedido: TFrmPedido
     Left = 1192
     Top = 389
     Bitmap = {
-      494C010103000500500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11775,7 +11776,7 @@ inherited FrmPedido: TFrmPedido
     Left = 40
     Top = 147
     Bitmap = {
-      494C010104000900500010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900540010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

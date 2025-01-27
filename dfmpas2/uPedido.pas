@@ -1321,6 +1321,7 @@ type
     procedure curPesoExit(Sender: TObject);
     procedure frxPedidoTratBeginDoc(Sender: TObject);
     procedure frxPedidoTratGetValue(const VarName: string; var Value: Variant);
+    procedure cbbClienteEstadoExit(Sender: TObject);
   private
     pOldId: string ;
     wCurDescontoIndice: Real;
@@ -1712,7 +1713,8 @@ begin
    edtExportacaoUF.Clear;
    edtExportacaoDescricaoLocalEmbarque.Clear;
    edtExportacaoDescricaoRecinto.Clear;
-   cbbClienteEstado.Clear;
+   // cbbClienteEstado.Clear;
+   cbbClienteEstado.ItemIndex := -1;
 
    if Habilita then
      BuscaPedido( '' );
@@ -3821,6 +3823,17 @@ begin
   inherited;
   EdClienteUF.Text := cbbClienteEstado.Text;
   MontaFiltroCfop;
+end;
+
+procedure TFrmPedido.cbbClienteEstadoExit(Sender: TObject);
+begin
+  inherited;
+  if not MatchText(cbbClienteEstado.Text, ['PR','SP','RJ','AC','AL','AP','AM','BA','CE','DF','ES','EX','GO','MA','MT','MS','MG','PA','PB','PE','PI','RN','RS','RO','RR','SC','SE','TO']) then
+  begin
+    cbbClienteEstado.Text := '';
+    uteis.Aviso('Estado do Cliente Inválido');
+    cbbClienteEstado.SetFocus;
+  end;
 end;
 
 procedure TFrmPedido.cbClienteVendasButtonClick(Sender: TObject);
@@ -6364,7 +6377,8 @@ begin
   begin
     EdClienteCodigo.Clear;
     edCliente.idRetorno:='';
-    cbbClienteEstado.Clear;
+    // cbbClienteEstado.Clear;
+    cbbClienteEstado.ItemIndex := -1;
     GBInformacoesOrcamento.Visible := True;
     TabSheet5.Caption := 'Informações';
     GBInformacoesOrcamento.BringToFront;
