@@ -38,6 +38,7 @@ type
     cdsBuscoEXTERNO: TFMTBCDField;
     cdsBuscoALTURA1: TFMTBCDField;
     cdsBuscoALTURA2: TFMTBCDField;
+    cdsBuscoPRD_CUSTOCOMIPI: TFMTBCDField;
     procedure FormCreate(Sender: tObject);
   private
     fBotao:TButton;
@@ -97,6 +98,7 @@ begin
              ' p.PRD_PCUSTO, ' +
              ' p.PRD_MARGEMVENDA, ' +
              ' p.PRD_PVENDA, ' +
+             ' p.PRD_CUSTOCOMIPI, ' +
              ' (SELECT c.CEST_DESCRICAO FROM CEST0000 c WHERE c.CEST_COD = p.CEST_COD) AS CEST_DESCRICAO, ' +
              ' p.PRD_CODBARRA , INTERNO, EXTERNO, ALTURA1, ALTURA2, ' +
              QuotedStr(' ') +  ' AS COD_BARRA_TRIBUTAVEL, ' +
@@ -114,6 +116,7 @@ begin
        SqlAdd('p.PRD_STATUS = '+QuotedStr('A'));
      if TIPO <> '' then
        SqlAdd('p.PTI_CODIGO = '+QuotedStr(TIPO));
+
 
      Add('order by p.PRD_REFER  ');
 
