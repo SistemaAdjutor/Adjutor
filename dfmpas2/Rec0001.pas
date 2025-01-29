@@ -1154,7 +1154,9 @@ begin
         begin
              DataMovimento.CdsReceber.Close;
 
-             DataMovimento.CdsReceber.CommandText := SQLDEF('RECEBER','SELECT FAT.* FROM FAT0000 FAT','WHERE FAT.FAT_CODIGO = '''+EditFatura.Text+'''','FAT.FAT_CODIGO','FAT.');
+             DataMovimento.CdsReceber.CommandText := SQLDEF('RECEBER',
+              'SELECT FAT.* FROM FAT0000 FAT LEFT JOIN FAT_AGRUPADO fa ON fa.FAT_CODIGO_ORI = FAT.FAT_CODIGO',
+              'WHERE FAT.FAT_CODIGO = ' + QuotedStr(EditFatura.Text) + ' OR FAT_CODIGO_ORI = ' + QuotedStr(EditFatura.Text) ,'FAT.FAT_CODIGO','FAT.');
              DataMovimento.CdsReceber.Open;
              if (not DataMovimento.CdsReceber.IsEmpty) then
              begin
