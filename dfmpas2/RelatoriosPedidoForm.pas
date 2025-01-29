@@ -1571,7 +1571,7 @@ begin
   else
   if (VarName  = 'CLI_UF') then
   begin
-      if (fCliUF <> '') then
+      if (fCliUF <> '') and (fclientecodigo = '') then
          Value := fCliUF
       else
          Value := cdspedidoCLI_UF.AsString;
