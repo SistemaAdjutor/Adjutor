@@ -1385,7 +1385,7 @@ begin
          i:=1;
          while not clone.Eof do
          begin
-          status := BuscaUmDadoSqlAsString('SELECT NF_STATUS_NFE FROM NF0001 WHERE PED_CODIGO = ' + QuotedStr(clone.FieldByName('ped_codigo').AsString));
+          status := BuscaUmDadoSqlAsString('SELECT NF_STATUS_NFE FROM NF0001 WHERE PED_CODIGO = ' + QuotedStr(clone.FieldByName('PED_CODIGO').AsString) + ' AND NF_NOTANUMBER = ' + QuotedStr(clone.FieldByName('NF_NOTANUMBER').AsString)   + ' AND EMP_CODIGO = ' + QuotedStr(clone.FieldByName('EMP_CODIGO').AsString)       );
           if MatchStr(status, ['N', 'R', 'T', 'O' ]) then
           begin
             if status = 'N' then
