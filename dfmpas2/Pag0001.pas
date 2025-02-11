@@ -833,7 +833,9 @@ end;
 procedure TformContasPagar.EdtPag_codigoExit(Sender: tObject);
 begin
   EdtPag_codigo.Text := StrZero(EdtPag_codigo.Text,EdtPag_codigo.MaxLength);
-  if (not wIncluir) then
+  if (Screen.ActiveControl.Name = 'Bit_novo') then
+    wIncluir := True;
+  if (not wIncluir)  then
         BuscaLancto(2);
 end;
 
