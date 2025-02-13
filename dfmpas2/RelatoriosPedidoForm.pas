@@ -1654,7 +1654,7 @@ begin
   if (VarName  = 'DIFAL') then
   begin
     if cdspedidoPED_VLDIFAL.AsFloat > 0 then
-      Value := 'VALOR DE R$ ' +  FormatFloat('##0.00', cdspedidoPED_VLDIFAL.AsFloat) + ' INSERIDO EM DESPESAS ACESSÓRIAS REFERENTE AO IMPOSTO DIFAL'
+      Value := 'VALOR DE R$ ' +  FormatFloat('##0.00', cdspedidoPED_VLDIFAL.AsFloat) + ' REFERENTE AO DIFAL POR CONTA DO EMITENTE'
     else
       Value := '';
   end

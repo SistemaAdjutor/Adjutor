@@ -35343,6 +35343,9 @@ inherited FrmRelatoriosPedido: TFrmRelatoriosPedido
           Height = 11.338590000000000000
           DataSet = frxDataPedido
           DataSetName = 'frxDataPedido'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = '#,##0.00'
+          DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
           Font.Height = -9
@@ -35350,18 +35353,8 @@ inherited FrmRelatoriosPedido: TFrmRelatoriosPedido
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            
-              '[<frxDataPedido."PED_DESP_ACES"> + <frxDataPedido."PED_VLDIFAL">' +
-              ']')
+            '[<frxDataPedido."PED_DESP_ACES">]')
           ParentFont = False
-          Formats = <
-            item
-              DecimalSeparator = ','
-              FormatStr = '#,##0.00'
-              Kind = fkNumeric
-            end
-            item
-            end>
         end
         object Memo136: TfrxMemoView
           AllowVectorExport = True
@@ -50361,7 +50354,7 @@ inherited FrmRelatoriosPedido: TFrmRelatoriosPedido
         object Memo97: TfrxMemoView
           AllowVectorExport = True
           Left = 115.417513230000000000
-          Top = 26.456710000000040000
+          Top = 26.456710000000000000
           Width = 60.472406770000000000
           Height = 11.338590000000000000
           DataSet = frxDataPedido
@@ -50377,7 +50370,9 @@ inherited FrmRelatoriosPedido: TFrmRelatoriosPedido
           Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
-            '[frxDataPedido."PED_VLFRETE"]')
+            
+              '[<frxDataPedido."PED_VLFRETE"> + <frxDataPedido."PED_DESP_ACES">' +
+              ']')
           ParentFont = False
         end
         object Memo99: TfrxMemoView

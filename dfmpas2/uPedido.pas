@@ -2318,7 +2318,9 @@ begin
            CurTotalProduto.Value := rTotalProduto;
          end;
 
-     CurTotalPedido.Value := (CurTotalProduto.Value + CurTotalIPI.Value + CurFrete.Value + CurDespesasAcessorias.Value +CurSeguro.Value+CurTotalDifal.Value+CurTotalST.Value) ;
+
+     // CurTotalPedido.Value := (CurTotalProduto.Value + CurTotalIPI.Value + CurFrete.Value + CurDespesasAcessorias.Value +CurSeguro.Value+CurTotalDifal.Value+CurTotalST.Value) ;
+     CurTotalPedido.Value := (CurTotalProduto.Value + CurTotalIPI.Value + CurFrete.Value + CurDespesasAcessorias.Value +CurSeguro.Value + CurTotalST.Value) ;
 
      //Markup
      if (dbInicio.Empresa.bVisualizaMarkupPedido) then
@@ -7548,7 +7550,7 @@ begin
 
 
 
-                          if (bLocalizadoRegra)and not (CLI_CONSFINAL) then
+                          if (bLocalizadoRegra) and not (CLI_CONSFINAL) then
                             begin
                                 // DataCadastros.CdsOperFisc.Open;
                                 // DataCadastros.CdsOperFisc.Locate('OPE_CODIGO',StrZero(dbInicio.qAux2.FieldByName('OPE_DESTINO').AsString,3),[]);
@@ -7623,8 +7625,10 @@ begin
                             begin
                                // DataCadastros.CdsOperFisc.Open;
                                // DataCadastros.CdsOperFisc.Locate('OPE_CODIGO',StrZero(edCfop.idRetorno,3),[]);
-                               opeCodigo := StrZero(edCfop.idRetorno,3);
                                // pega ST do cadastro do produto
+                               // opeCodigo := StrZero(edCfop.idRetorno,3);
+
+                               opeCodigo := StrZero(dbInicio.qAux2.FieldByName('OPE_DESTINO').AsString,3);
                                wCST_CODIGO := wCST_CODIGOProduto;
                             end;
 
@@ -8685,7 +8689,7 @@ var
   wAliqreduzidaICMS, wIcmsAliq, wValorIcmsIndividual, wUfAliqIcmsForaEst, wCadProdAliqIcms,
   wALiqICmsCliente, wDesctoValorICMS, wValorProdGeral,wValorProdIndividual, ipiValorPorItem, rValorIPIUnidade,
   lBase, wIPIFrete, wValorIPI, wBaseIPIIndividual, wIPIDESPIMPORT, wRateioFreteSeguroDesp,
-  wBaseIcms, wBaseValorSubs, sNF_ICMSVALOR, wDesctoValorIPI  : double;
+  wBaseIcms, wBaseValorSubs, sNF_ICMSVALOR, wDesctoValorIPI, wBaseCalculo  : double;
   IcmTipoCalculoDifal, bRegra, GetCSOSN: integer;
 
 begin
@@ -9128,9 +9132,13 @@ begin
       begin
         if IcmTipoCalculoDifal = 1 then // o cálculo é com base por dentro
         begin
-          a := wBaseProduto - ((wBaseProduto / 100) *  rAliqAux);
-          b := a / (1 -(wALiqICmsInterno / 100));
-          wIcmDifal := wIcmDifal +  ( b - wBaseProduto )  // wIcmDifal valor do difal
+            wBaseCalculo := wBaseProduto / (1 - (wALiqICmsInterno / 100) );
+            wIcmDifal := (wBaseCalculo * (wALiqICmsInterno / 100) ) - (wBaseCalculo * (rAliqAux / 100 ) );
+
+//          a := wBaseProduto - ((wBaseProduto / 100) *  rAliqAux);
+//          b := a / (1 -(wALiqICmsInterno / 100));
+//          wIcmDifal := wIcmDifal +  ( b - wBaseProduto )  // wIcmDifal valor do difal
+
         end
         else // o cálculo é com base por fora
         begin

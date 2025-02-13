@@ -3168,7 +3168,7 @@ var
   vValorIcmSimples: Currency ;
   CSOSN :integer;
   opeArtigoReducao: string;
-  NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES, divisor: double;
+  NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES, divisor, wBaseCalculo: double;
 
 begin
     sCompl:='';
@@ -3307,9 +3307,13 @@ begin
                 // b := a / (1 -(wALiqICmsInterno / 100));
                 //  wIcmDifal := ( b - wBaseProduto )  // wIcmDifal valor do difal
 
-                a := wBaseIcmsIndividual - ((wBaseIcmsIndividual / 100) *  rAliqAux);
-                b := a / (1 -(wALiqICmsInterno / 100));
-                wIcmDifal := ((b * (wALiqICmsInterno / 100) )- sNF_ICMSVALOR); // wIcmDifal valor do difal
+                // a := wBaseIcmsIndividual - ((wBaseIcmsIndividual / 100) *  rAliqAux);
+                // b := a / (1 -(wALiqICmsInterno / 100));
+                // wIcmDifal := ((b * (wALiqICmsInterno / 100) )- sNF_ICMSVALOR); // wIcmDifal valor do difal
+
+                wBaseCalculo := wBaseIcmsIndividual / (1 - (wALiqICmsInterno / 100) );
+                wIcmDifal := (wBaseCalculo * (wALiqICmsInterno / 100) ) - (wBaseCalculo * (rAliqAux / 100 ) );
+
             end
             else // o cálculo é com base por fora
             begin
@@ -3855,17 +3859,23 @@ begin
     end;
      if wVTotFPC>0 then
        CdsNotaFiscalNF_VALOR_TOTAL_FCP.asCurrency := Uteis.RoundTo(wVTotFPC,-2);
-     if wSalvaDadosFCPPartilha then
+
+
+       //     if wSalvaDadosFCPPartilha then
+    if (femp_crt <> '1') then
      begin
 
           CdsNotaFiscalNF_VALOR_TOTAL_PARTILHA_DEST.asCurrency := Uteis.RoundTo(wVTotPartDest,-2);
           CdsNotaFiscalNF_VALOR_TOTAL_PARTILHA_ORIG.asCurrency := Uteis.RoundTo(wVTotPartOrig,-2);
         // simples (não tem GNRE UF remetente)
-        if (fOPT_SIMPLES = 'N') and DBInicio.Empresa.PMT_HABILITAR_DIFAL then
-              DBMemoObs.Lines.Add( '** EC 87/2015 DIFAL '+
-                                   'valor GNRE UF destinatário '+FormatFloat('#0.00',wPercentPartilha)+'% R$ '+FormatFloat( '####,##0.00',wVTotPartDest)+', '+
-                                   'valor GNRE UF remetente '+FormatFloat('#0.00',100-wPercentPartilha)+'% R$ '+FormatFloat( '####,##0.00',wVTotPartOrig)+', '+
-                                   'valor FCP R$ '+FormatFloat('####,##0.00',wVTotFPC)+' **' );
+        // if (fOPT_SIMPLES = 'N') and DBInicio.Empresa.PMT_HABILITAR_DIFAL then
+        if DBInicio.Empresa.PMT_HABILITAR_DIFAL then
+              DBMemoObs.Lines.Add( '** ICMS DIFAL DECRETO 87/2015 DESTINADO A CONSUMIDOR FINAL NÃO CONTRIBUINTE DO ICMS ' +
+                                   'Aliquota interna ' + FormatFloat('#0.00', wALiqICmsInterno) +
+                                   ' - Aliquota interestadual ' + FormatFloat('#0.00', wALiqICmsInterEstadual) +
+                                   ' - valor GNRE UF destinatário ' + FormatFloat('#0.00', wPercentPartilha) + '% R$ ' + FormatFloat( '####,##0.00',wVTotPartDest) + ' ** ' );
+                                 //  'valor GNRE UF remetente '+FormatFloat('#0.00',100-wPercentPartilha)+'% R$ '+FormatFloat( '####,##0.00',wVTotPartOrig)+', '+
+                                 //  'valor FCP R$ '+FormatFloat('####,##0.00',wVTotFPC)+' **' );
 
 
      end;

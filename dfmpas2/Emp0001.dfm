@@ -38,7 +38,7 @@ inherited FormEmpresa: TFormEmpresa
     Top = 32
     Width = 961
     Height = 537
-    ActivePage = TabSheet1
+    ActivePage = TabSheet3
     TabOrder = 1
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
@@ -601,8 +601,6 @@ inherited FormEmpresa: TFormEmpresa
     object TabSheet3: TTabSheet
       Caption = 'Dados Fiscais'
       ImageIndex = 2
-      ExplicitLeft = 28
-      ExplicitTop = 57
       object Label29: TLabel
         Left = 14
         Top = 38
