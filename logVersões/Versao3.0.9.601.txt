@@ -1,7 +1,11 @@
-﻿Atualizado em 03/02/2025
+﻿Atualizado em 13/02/2025
 Inicio da versão: 03/02/2025
 
 principal: Rotor, LForja
   2002 - Manutenção Base Rotor - Pedido Orçamento, cliente avulso "UF" [Rotor]
   2003 - Revisar Lforja -> Mesclar fatura cliente Superfix [LForja]
+  
+patch 1: Turen Industria
+  2005 - Erro Turen Brnova - Erro ao gerar NF já faturada [Turen Industria]
+  2009 - Auxílio ao Suporte [Novi]
   
