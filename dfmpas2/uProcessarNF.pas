@@ -2802,15 +2802,17 @@ end;
 
 procedure TfrmProcessaNFe.TributacaoICMS;
 begin
- produto.Imposto.ICMS.orig := StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
- if copy(IntToStr(qItemNota.FieldByName('NTP_CFOP').AsInteger),1,1) = '7' then // cfop de exportação cts do icms é 41 = não tributado
-  produto.Imposto.ICMS.CST  := cst41
- else
-   produto.Imposto.ICMS.CST  := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
- if qnota.FieldByName('nf_export_local_embarque').AsString <> '' then  //exportação seta cst 41
-   produto.Imposto.ICMS.CST := cst41
- else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( NOT MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['51','20', '10']) )  then    //DIFERIMENTO
-  produto.Imposto.ICMS.CST := cst51 ; //diferimento
+  produto.Imposto.ICMS.orig := StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  if copy(IntToStr(qItemNota.FieldByName('NTP_CFOP').AsInteger),1,1) = '7' then // cfop de exportação cts do icms é 41 = não tributado
+    produto.Imposto.ICMS.CST  := cst41
+  else
+    produto.Imposto.ICMS.CST  := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+  if qnota.FieldByName('nf_export_local_embarque').AsString <> '' then  //exportação seta cst 41
+    produto.Imposto.ICMS.CST := cst41
+  else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['00']) )  then    //redução na base
+    produto.Imposto.ICMS.CST := cst20  // redução na base
+  else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( NOT MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['51','20', '10']) )  then    //DIFERIMENTO
+    produto.Imposto.ICMS.CST := cst51 ; //diferimento
 
 
   if produto.Imposto.ICMS.cst = cst00 then
