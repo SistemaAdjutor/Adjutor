@@ -2809,7 +2809,7 @@ begin
     produto.Imposto.ICMS.CST  := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
   if qnota.FieldByName('nf_export_local_embarque').AsString <> '' then  //exportação seta cst 41
     produto.Imposto.ICMS.CST := cst41
-  else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['00']) )  then    //redução na base
+  else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['00', '20']) )  then    //redução na base
     produto.Imposto.ICMS.CST := cst20  // redução na base
   else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( NOT MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['51','20', '10']) )  then    //DIFERIMENTO
     produto.Imposto.ICMS.CST := cst51 ; //diferimento
@@ -2867,12 +2867,12 @@ begin
     produto.Imposto.ICMS.pICMS := qItemNota.FieldByName('NF_ICMSALIQ').AsFloat;
     produto.Imposto.ICMS.vICMS := qItemNota.FieldByName('NF_ICMSVALOR').AsFloat;  //TNotaFiscalItem(NotaFiscal.ItensNotaFiscal[I]).IcmsValor;
 
-   IF (qItemNota.FieldByName('NF_VALOR_FCP').asCurrency > 0) and ( NotaF.NFe.Ide.indFinal  <> cfConsumidorFinal ) Then
-   begin
-    Produto.Imposto.ICMS.vBCFCP   := qItemNota.FieldByName('NF_ICMSBASE').AsFloat;
-    Produto.Imposto.ICMS.pFCP     := qItemNota.FieldByName('NF_PERC_FCP').asCurrency;
-    Produto.Imposto.ICMS.vFCP     := qItemNota.FieldByName('NF_VALOR_FCP').asCurrency ;
-   end;
+    if (qItemNota.FieldByName('NF_VALOR_FCP').asCurrency > 0) and ( NotaF.NFe.Ide.indFinal  <> cfConsumidorFinal ) Then
+    begin
+      Produto.Imposto.ICMS.vBCFCP   := qItemNota.FieldByName('NF_ICMSBASE').AsFloat;
+      Produto.Imposto.ICMS.pFCP     := qItemNota.FieldByName('NF_PERC_FCP').asCurrency;
+      Produto.Imposto.ICMS.vFCP     := qItemNota.FieldByName('NF_VALOR_FCP').asCurrency ;
+    end;
 
   end
   else

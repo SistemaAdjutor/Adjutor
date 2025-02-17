@@ -3289,7 +3289,7 @@ begin
        cliIE := BuscaUmDadoSQLAsString('SELECT CLI_INSC FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(cdsPedidosCLI_CODIGO.AsString));
 
        // wCST_CODIGO = DIFAL pessoa física ou contribuinte isento
-       if (wCST_CODIGO = '00') and  wConsumidor and wVenda and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL  and ((cliIE = 'ISENTO') OR (cliIE = '')) then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
+       if ((wCST_CODIGO = '00') OR (wCST_CODIGO = '20'))  and  wConsumidor and wVenda and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL  and ((cliIE = 'ISENTO') OR (cliIE = '')) then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
        begin
 
 //           // não é exportação e origem = 1,2 ou 3(importados)
