@@ -3588,22 +3588,24 @@ begin
            ' WHERE PRO_CODIGO = '+  IntToStr(model_pro_codigo);
      ExecSql(sql);
 
-     SQL:='INSERT INTO ITEM_ORDEMPRODUCAO (PRD_CODIGO, OPR_CODIGO, IOP_SEQUENCIA, ' +
-          ' IOP_NORDEM, IOP_QUANTIDADE, IOP_PESO, IOP_STATUS,'+
-          ' IOP_PRECO, PRF_REGISTRO, pro_codigo) '+
-          ' VALUES( '+
-          QuotedStr(SqlCdsPedidoItemPRD_CODIGO.asstring)+','+
-          IntToStr(ordemprod) +','+
-          IntToStr(s)+','+
-          QuotedStr(strzero(SqlCdsPedidoPED_CODIGO.AsString,6)+'-'+strzero( s,2))+','+
-          FloatToSQL(SqlCdsPedidoItemPRF_QTDE.AsFloat)+','+
+
+
+     SQL := 'INSERT INTO ITEM_ORDEMPRODUCAO (PRD_CODIGO, OPR_CODIGO, IOP_SEQUENCIA, ' +
+          ' IOP_NORDEM, IOP_QUANTIDADE, IOP_PESO, IOP_STATUS,' +
+          ' IOP_PRECO, PRF_REGISTRO, pro_codigo) ' +
+          ' VALUES( ' +
+          QuotedStr(SqlCdsPedidoItemPRD_CODIGO.asstring) + ',' +
+          IntToStr(ordemprod) + ',' +
+          IntToStr(s) + ',' +
+          QuotedStr(strzero(SqlCdsPedidoPED_CODIGO.AsString,6) + '-' + strzero( s,2)) + ',' +
+          FloatToSQL(SqlCdsPedidoItemPRF_QTDE.AsFloat) + ',' +
           FloatToSQL(SqlCdsPedidoItemPRF_PESOKG.AsFloat) + ',' +
-          QuotedStr('L')+','+
-          FloatToSQL( SqlCdsPedidoItemPRF_PRECO.AsFloat)+','+
-          IntToStr(SqlCdsPedidoItemPRF_REGISTRO.AsInteger)+ ','+
-          IntToStr(pro_codigo)+
-          ')';
-     ExecSql(sql);
+          QuotedStr('L') + ',' +
+          FloatToSQL( SqlCdsPedidoItemPRF_PRECO.AsFloat) + ',' +
+          IntToStr(SqlCdsPedidoItemPRF_REGISTRO.AsInteger) + ',' +
+          IntToStr(pro_codigo) +
+           ')';
+     ExecSql(sql);
 
      sql := 'UPDATE PED_IT01 SET PRF_PRDDESCRI = ' +
              QuotedStr(SqlCdsPedidoItemDESCRICAO.AsString + ' / OS:' + strzero(SqlCdsPedidoPED_CODIGO.AsString,6) + '-' + strzero(IntToStr(s), 2)) +
@@ -8682,7 +8684,7 @@ end;
 procedure TFrmPedido.CalculaDifal;
 var
   wConsumidor, wVenda, opeFreteNaBase, ipiNaBaseICMS, opeICMSTotalNota, bIsentarICMS, bIPIPorUnidade : Boolean;
-  wForaEstSN, opeNatureza, iRegCfopPrincipal, wCST_CODIGO, wTemSubs, wExterior : string;
+  wForaEstSN, opeNatureza, iRegCfopPrincipal, wCST_CODIGO, wTemSubs, wExterior, idCfopDestino : string;
   rAliqAux, wAliqIcmsImportado, wALiqICmsInterEstadual, wALiqICmsInternow, wDifal,
   wALiqICmsInterno, wIcmDifal, wBaseProduto, rateioTmp, rt1, a, b,
   wDescontoIndividual, wFreteIndividual, wSeguroIndividual, wDespesaIndividual, wUfAliqIcmsInterestadlRegra, wBaseIcmsIndividual,
@@ -8722,8 +8724,12 @@ begin
       wForaEstSN := 'N';
   end;
 
+  // pega a CFOP correta
+  idCfopDestino := BuscaUmDadoSqlAsString('SELECT OPE_DESTINO FROM OPE_REGRA WHERE OPE_CODIGO_ORIGEM = ' + QuotedStr(edCfop.idRetorno) + ConcatSe( ' AND ', dbInicio.ExclusivoSql('OPERACAOFISCAL')) );
+
   qAux.Close;
-  qAux.SQL.Text := 'SELECT * FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(edCfop.idRetorno) + ConcatSe( ' AND ', dbInicio.ExclusivoSql('OPERACAOFISCAL'));
+  // qAux.SQL.Text := 'SELECT * FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(edCfop.idRetorno) + ConcatSe( ' AND ', dbInicio.ExclusivoSql('OPERACAOFISCAL'));
+  qAux.SQL.Text := 'SELECT * FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(idCfopDestino) + ConcatSe( ' AND ', dbInicio.ExclusivoSql('OPERACAOFISCAL'));
   qAux.Open;
   wVenda := qAux.FieldByName('OPE_TIPO_OPERACAO').AsString = 'V';
   opeFreteNaBase := qAux.FieldByName('OPE_FRETENABASE').AsString = 'S';
@@ -9079,6 +9085,20 @@ begin
 															if (qAux.FieldByName('OPE_REDU_ICM').AsFloat > 0) then //and (fOPT_SIMPLES <> 'S') then
 																wValorIcmsIndividual := Uteis.RoundTo ( wValorIcmsIndividual - (wValorIcmsIndividual * qAux.FieldByName('OPE_REDU_ICM').AsFloat/ 100),-2);
 
+
+
+
+															// redução na base do ICMS
+															if (qAux.FieldByName('OPE_INDICE_IMP').AsFloat > 0) then
+															begin
+																	 wBaseIcmsIndividual := Uteis.RoundTo ( wBaseIcmsIndividual - (wBaseIcmsIndividual * qAux.FieldByName('OPE_INDICE_IMP').AsFloat / 100),-2);
+																	 wValorIcmsIndividual := Uteis.RoundTo ( wValorIcmsIndividual - (wValorIcmsIndividual * qAux.FieldByName('OPE_INDICE_IMP').AsFloat) / 100,-2);
+															end;
+
+
+
+
+
 												 end;  // fim do laço ICMS
 
 												 // ratear frete+seguro+despesas para substitução tributária
@@ -9118,8 +9138,9 @@ begin
       wBaseProduto := wBaseProduto -  wDesctoValorIPI;
 
 
-
-
+      // redução na base do ICMS
+      if (qAux.FieldByName('OPE_INDICE_IMP').AsFloat > 0) then
+           wBaseProduto := Uteis.RoundTo ( wBaseProduto - (wBaseProduto * qAux.FieldByName('OPE_INDICE_IMP').AsFloat / 100),-2);
 
 
       // não é exportação e origem = 1,2 ou 3(importados)
