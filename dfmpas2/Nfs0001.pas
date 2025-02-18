@@ -1046,7 +1046,8 @@ begin
            SqlCdsGridSemOC.EnableControls;
        end;
 
-       NTotalGeral.Value := (CurTotalProdutos.Value+CurTotalValorIPI.Value+CurrVlFrete.Value+CurrVlDespesas.Value+CurrVlSeguro.Value+CurTotalValorICMSST.Value)-CurrVlDescto.Value; //Format('%n',[WTotal + WVLIPI]);
+       // NTotalGeral.Value := (CurTotalProdutos.Value + CurTotalValorIPI.Value + CurrVlFrete.Value + CurrVlDespesas.Value + CurrVlSeguro.Value + CurTotalValorICMSST.Value) - CurrVlDescto.Value; //Format('%n',[WTotal + WVLIPI]);
+       NTotalGeral.Value := (CurTotalProdutos.Value + CurTotalValorIPI.Value + CurrVlFrete.Value + CurrVlDespesas.Value + CurrVlSeguro.Value) - CurrVlDescto.Value;
        LbFreteNaoNota.Visible := False;
 
     if RadComOC.checked  then
@@ -1695,6 +1696,7 @@ begin
     CurrPreco.Clear;
     DbeChaveNFe.Clear;
     CrCfopItem.Clear;
+    NTotalGeral.Clear;
     edPedidodireto.Clear;
     EdtAlmox.Clear;
     CbAlmox.Text         := '';
