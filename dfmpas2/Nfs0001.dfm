@@ -4633,6 +4633,8 @@ inherited FormNfEntrada: TFormNfEntrada
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     ACBrNFe = acbrnf1
     ExibeCampoFatura = False
     Left = 1560
