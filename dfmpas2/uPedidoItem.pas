@@ -410,6 +410,7 @@ type
     cdsItemGradePRG_MEDIDA_2: TFMTBCDField;
     cdsItemGradePRG_MEDIDA_3: TFMTBCDField;
     TimerRestoreFocus: TTimer;
+    chkMantemDescricao: TCheckBox;
 
     procedure Bit_CancelarClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
@@ -520,6 +521,7 @@ type
     procedure cbReferenciakeyUp(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure CbGradeSelect(Sender: TObject);
     procedure TimerRestoreFocusTimer(Sender: TObject);
+    procedure chkMantemDescricaoClick(Sender: TObject);
   private
     prdPVenda: Double;
     pvFlgProcSelect:boolean;
@@ -547,6 +549,7 @@ type
     loteCorrente: integer;
     FLastFocusedControl: TWinControl; // Variável para armazenar o controle focado
     FFocusRestored: Boolean;  // Variável para garantir que o foco foi restaurado
+    arquivoIni: string;
 
     procedure BuscaProduto( const pCodProduto: String);
     procedure Focar;
@@ -604,6 +607,7 @@ public
     CurquantidadeAnterior: double;
     loteAnterior: Integer;
     bRegra: integer;
+    textoComplementar: string;
     property ProdutoGradeIncluido : boolean read FProdutoGradeIncluido write SetProdutoGradeIncluido; // produto já cadastrado tipo grade
     property ExclusaoItensGrade: Boolean read FExclusaoItensGrade write SetExclusaoItensGrade; // produto que foi incluido 0 para item que já havia sido incluido no item
     property sTipo: string read FsTipo write SetSTipo;
@@ -895,8 +899,17 @@ begin
         MemoDescricao.Text := cbReferencia.CdS.FieldByName('prd_descri').AsString +  ' ['+ EdReferenciaOriginal.Text  +']'
       else
       begin
-        if (FrmPedido.SqlCdsPedidoItemDESCRICAO.AsString <> '') and (sTipo = 'A')   then      // somente alteração
+        if (FrmPedido.SqlCdsPedidoItemDESCRICAO.AsString <> '')
+        and (sTipo = 'A')
+        and fLendo
+          then      // somente alteração e carregando a página
           MemoDescricao.Text := FrmPedido.SqlCdsPedidoItemDESCRICAO.AsString
+        else if (FrmPedido.SqlCdsPedidoItemDESCRICAO.AsString <> '')
+             and (sTipo = 'A')
+             and chkMantemDescricao.Checked
+             and (Pos(cbReferencia.CdS.FieldByName('prd_descri').AsString, FrmPedido.SqlCdsPedidoItemDESCRICAO.AsString) = 0)
+             then      // alteração com texto complementar vindo do registro anterior
+             MemoDescricao.Text := cbReferencia.CdS.FieldByName('prd_descri').AsString + ' ' + textoComplementar
         else
     			MemoDescricao.Text := cbReferencia.CdS.FieldByName('prd_descri').AsString;
       end;
@@ -3702,6 +3715,7 @@ begin
      FormProdutoGrid := TFormProdutoGrid.Create(Application);
      try
         FormProdutoGrid.DisponivelVendas := True;
+
         FormProdutoGrid.ShowModal;
         if FormProdutoGrid.ModalResult=mrOk then
            cbReferencia.IdRetorno := FormProdutoGrid.CodigoRetorno ;
@@ -3788,6 +3802,8 @@ begin
       abort;
 
     try
+     if fLendo then
+      textoComplementar := Trim(StringReplace(FrmPedido.SqlCdsPedidoItemDESCRICAO.AsString, cbReferencia.CdS.FieldByName('prd_descri').AsString,  '', [rfReplaceAll]));
      BuscaProduto( cbReferencia.idRetorno );
      Focar;
     except
@@ -5346,6 +5362,7 @@ begin
   FrmPedido.wAdcProdKit := false;
   FrmPedido.WDiretivaKit := 0;
   VariosLote := varNull;
+  GravaIni(arquivoIni, 'form', 'chkFinalizadas', iif(chkMantemDescricao.Checked, 'True', 'False'));
 end;
 
 procedure TFrmPedidoItem.FormCloseQuery(Sender: TObject; var CanClose: Boolean);
@@ -5357,9 +5374,15 @@ begin
 end;
 
 procedure TFrmPedidoItem.FormCreate(Sender: tObject);
-var vCasas: Integer;
+var
+  vCasas: Integer;
+  temp: String;
+
 begin
    inherited;
+   arquivoIni := Self.Name + '_form_' + DBInicio.Usuario.USERNAME;
+   if FileExists(DBInicio.SistemaLocal + 'settings\' + arquivoIni + '.ini') then
+     chkMantemDescricao.Checked := iif(LeIni(arquivoIni, 'form', 'chkFinalizadas', temp) = 'True', True, False);
    fPesquisa :=False;
    AlterouTabelaPrecos :=True;
    EntrouTabelaPrecos :=True;
@@ -6819,6 +6842,19 @@ begin
 end;
 
 
+
+procedure TFrmPedidoItem.chkMantemDescricaoClick(Sender: TObject);
+var
+  temp: string;
+
+begin
+  inherited;
+  if chkMantemDescricao.Checked then
+    chkMantemDescricao.Hint := 'Mantém a Descrição Complementar do Produto, mesmo alterando a Referência'
+  else
+    chkMantemDescricao.Hint := 'Atribui a Descrição do Cadastro de Produtos no item do pedido';
+
+end;
 
 function TFrmPedidoItem.ConsultaPersonalizada: string;
 var
