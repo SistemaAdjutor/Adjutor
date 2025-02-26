@@ -894,13 +894,9 @@ inherited frmRequisicaoMaterial: TfrmRequisicaoMaterial
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
-      'SELECT rmi.*, '
-      '    (SELECT PRD_UND  FROM PRD0000 p '
-      '      WHERE p.PRD_REFER = rmi.PRD_REFER) ,'
-      '    (SELECT AMX_CODIGO  FROM PRD0000 p '
-      '      WHERE p.PRD_REFER = rmi.PRD_REFER) '
-      ''
-      'FROM REQUISICAO_MATERIAL_ITEM rmi')
+      'SELECT rmi.*, p.PRD_UND, P.AMX_CODIGO '
+      'FROM REQUISICAO_MATERIAL_ITEM rmi'
+      'LEFT JOIN PRD0000 p ON p.PRD_REFER = rmi.PRD_REFER;')
     SQLConnection = DBConn
     Left = 232
     Top = 104

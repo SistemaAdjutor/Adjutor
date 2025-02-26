@@ -161,6 +161,8 @@ begin
   cxGrid1DBTableView1.RestoreFromIniFile(arquivo, True, True, [gsoUseFilter] );
   cdsRequisicao.Open;
   cdsRequisicao.Last;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(qItem.SQL.Text);
   cdsItem.Open;
   if cdsRequisicaoRMO_CODIGO.AsString = '' then
     lbOrigem.Caption := 'Indefinido'
@@ -356,11 +358,11 @@ begin
     '          AND k.EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +  ') AS Saldo ' +
     '	FROM REQUISICAO_MATERIAL rm ' +
     ' JOIN REQUISICAO_MATERIAL_ITEM rmi ON (rm.REM_CODIGO = rmi.REM_CODIGO) ' +
-    ' JOIN REQUISICAO_MATERIAL_AUT rma ON (rma.RMI_CODIGO = rmi.RMI_CODIGO) ' +
-    ' JOIN REQUISICAO_MATERIAL_ORI rmo ON (rm.RMO_CODIGO = rmo.RMO_CODIGO) ' +
-    ' JOIN PRD0000 p ON (p.PRD_REFER = rmi.PRD_REFER ) ' +
-    ' JOIN SETOR s ON (s.SET_CODIGO = rm.SET_CODIGO) ' +
-    ' JOIN ALMOX0000 a ON (a.AMX_CODIGO = rm.AMX_CODIGO) ' +
+    ' LEFT JOIN REQUISICAO_MATERIAL_AUT rma ON (rma.RMI_CODIGO = rmi.RMI_CODIGO) ' +
+    ' LEFT JOIN REQUISICAO_MATERIAL_ORI rmo ON (rm.RMO_CODIGO = rmo.RMO_CODIGO) ' +
+    ' LEFT JOIN PRD0000 p ON (p.PRD_REFER = rmi.PRD_REFER ) ' +
+    ' LEFT JOIN SETOR s ON (s.SET_CODIGO = rm.SET_CODIGO) ' +
+    ' LEFT JOIN ALMOX0000 a ON (a.AMX_CODIGO = rm.AMX_CODIGO) ' +
     ' WHERE rm.REM_CODIGO = ' + dbCodigo.Caption;
   qRelatorio.Open;
   if DBInicio.IsDesenvolvimento then
