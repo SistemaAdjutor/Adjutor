@@ -19,7 +19,7 @@ uses  System.Variants, Windows, Messages, SysUtils, Classes, Graphics, Controls,
   DBTables,  rxToolEdit, RXDBCtrl,  rxCurrEdit, Provider, SqlExpr,SqlClientDataSet, DBClient,
   DBLocal, DBLocalS, Menus, ComboBoxRw, RwSQLComando, frxClass, frxDBSet, system.StrUtils,
   frxExportPDF,JPEG, SimpleDS, Data.DBXFirebird, SgDbSeachComboUnit, Data.FMTBcd, BaseForm, ACBrCalculadora, ACBrBase, ACBrEnterTab, JvExMask, JvToolEdit, JvDBControls,
-  JvExControls, JvArrowButton,BaseDBForm;
+  JvExControls, JvArrowButton,BaseDBForm, frxExportBaseDialog;
 
 type
   TFormOrdCompra = class(TfrmBaseDB)
@@ -284,6 +284,7 @@ type
     cdsForPCL_CODIGO: TStringField;
     cdsForEMP_CODIGO: TStringField;
     cdsForTRP_CODIGO: TStringField;
+    Bit_Baixar: TBitBtn;
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_CancelarClick(Sender: tObject);
     procedure verificaEdicao;
@@ -352,6 +353,7 @@ type
     procedure BtnDuplicarClick(Sender: TObject);
     procedure AlteraCorpo(Sender: TObject);
     procedure qGriPRD_DESCRIGetText(Sender: TField; var Text: string; DisplayText: Boolean);
+    procedure Bit_BaixarClick(Sender: TObject);
 
   private
     bMensagemPedidoCompra : string;
@@ -406,7 +408,7 @@ var
 
 implementation
 
-uses Uteis, GimpOC, DataMov, DataCad, iniciodb,
+uses Uteis, GimpOC, DataMov, DataCad, iniciodb, uBaixaPedidoCompra,
      Prd0006, Men0001, {uProcedimentos,} EMAIL0001,uCadastroFrases, DataMov2, uPesqEmpresa, uPesqOCP, For0002;
 
 {$R *.DFM}
@@ -549,6 +551,7 @@ begin
     Bit_Relatorio.Enabled := True;
     Bit_Lista.Enabled     := True;
     Bit_Gravar.Enabled    := False;
+    Bit_Baixar.Enabled    := False;
     Bit_Cancelar.Enabled  := False;
     EdtOCP_CODIGO.Color   := clWindow;
     EdtOCP_CODIGO.Enabled := True;
@@ -566,6 +569,7 @@ begin
     Bit_Relatorio.Enabled := False;
     Bit_Lista.Enabled     := False;
     Bit_Gravar.Enabled    := True;
+    Bit_Baixar.Enabled    := True;
     Bit_Cancelar.Enabled  := True;
     btnEmpresa.Enabled    := False;
     btnImpressao.Enabled  := False;
@@ -835,6 +839,50 @@ begin
          Habilitabotoes;
 
       end;
+end;
+
+procedure TFormOrdCompra.Bit_BaixarClick(Sender: TObject);
+var
+  Resultado, iRegistro: Integer;
+
+begin
+  inherited;
+  Resultado := MessageDlg('Deseja baixar o pedido na Íntegra?',
+    mtConfirmation, [mbYes, mbNo, mbCancel], 0);
+  if Resultado = mrCancel then
+    Exit;
+
+  frmBaixaPedidoCompra := TfrmBaixaPedidoCompra.Create(Self);
+  frmBaixaPedidoCompra.Resultado := Resultado;
+  case Resultado  of
+    mrYes:
+    begin
+
+      FormOrdCompra.SqlCdsGri.First;
+      while not FormOrdCompra.SqlCdsGri.Eof do
+      begin
+        SqlCdsGri.Edit;
+        SqlCdsGriOCI_QTDER.AsFloat := FormOrdCompra.SqlCdsGriOCI_QTDES.AsFloat;
+        SqlCdsGri.Next;
+      end;
+
+
+    End;
+    mrNo:
+    begin
+
+    end;
+  end;
+  frmBaixaPedidoCompra.ShowModal;
+  LimparDados;
+  HabilitaBotoes;
+  WInsert  := False;
+  wIncluir := false;
+  SqlCdsGri.Close;
+  EdtOCP_CODIGO.Text := '';
+  if EdtOCP_CODIGO.CanFocus then
+    EdtOCP_CODIGO.SetFocus;
+  FreeAndNil(frmBaixaPedidoCompra);
 end;
 
 procedure TFormOrdCompra.Bit_CancelarClick(Sender: tObject);
@@ -1611,6 +1659,11 @@ end;
 
 procedure TFormOrdCompra.SpPesquisaClick(Sender: tObject);
 begin
+  if DataMovimento.CdsOrdCompra.State = DsBrowse then
+     DataMovimento.CdsOrdCompra.Edit;
+  btnGravarItem.Enabled := True;
+  btnCancelarItem.Enabled := True;
+
   if DataMovimento.CdsOrdCompra.State in [dsEdit,dsInsert] then
   begin
     DataMovimento.CdsOrdCompra.ApplyUpdates(0);
@@ -2425,6 +2478,7 @@ begin
    if not( DataMovimento.DsOrdCompra.State in dsEditModes) then
      DataMovimento.DsOrdCompra.Edit;
    Bit_Gravar.Enabled := true;
+   Bit_Baixar.Enabled := true;
 end;
 
 procedure TFormOrdCompra.SqlCdsGriPRD_DESCRIGetText(Sender: TField;

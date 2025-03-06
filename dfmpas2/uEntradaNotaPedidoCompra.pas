@@ -9,7 +9,7 @@ uses
   SimpleDS, Iniciodb, Data.DBXFirebird, Data.FMTBCd, ACBrEnterTab, ACBrBase, ACBrCalculadora, Vcl.ExtCtrls, ACBrETQ, System.ImageList, Vcl.ImgList;
 
 type
-  TFormNfEntradaPedidoCompra = class(TFrmBaseDbEstoque)
+  TFormNfEntradaPedidoCompra = class(TfrmBaseDbEstoque)
     dsOrdemCompraItem: TDataSource;
     CdsOrdemCompraItem: TSQLClientDataSet;
     GroupBox1: TGroupBox;
