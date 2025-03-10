@@ -1,0 +1,7 @@
+﻿Atualizado em 10/03/2025
+Inicio da versão: 10/03/2025
+
+principal: BSC, Chemvet
+  2017 - Revisão Chemvet-Alterar produto no pedido [Chemvet]
+  2019 - Erro BSC ->Requisição de material com Synchronization error [BSC]
+  
