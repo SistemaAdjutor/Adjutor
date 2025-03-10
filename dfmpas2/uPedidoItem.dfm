@@ -203,6 +203,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
       object tsSemGrade: TTabSheet
         Caption = 'Sem Grade'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object pgc2: TPageControl
           Left = 0
           Top = 0
@@ -214,6 +218,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
           OnChange = pgc2Change
           object tsInfoLancamento: TTabSheet
             Caption = 'Informa'#231#245'es do Lan'#231'amento'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object lblTabelaPreco: TLabel
               Left = 7
               Top = 29
@@ -1532,6 +1540,10 @@ inherited FrmPedidoItem: TFrmPedidoItem
           object tsDiretivas: TTabSheet
             Caption = 'Diretivas'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object RxDBGrid1: TDBGrid
               Left = 0
               Top = 14
@@ -2726,8 +2738,8 @@ inherited FrmPedidoItem: TFrmPedidoItem
       Caption = 'Complemento:'
     end
     object SdCadastroGrade: TSpeedButton
-      Left = 288
-      Top = 156
+      Left = 260
+      Top = 155
       Width = 23
       Height = 22
       Hint = 'Cadastrar Nova Grade'
@@ -2772,7 +2784,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
     end
     object sbVoltar: TSpeedButton
       Left = 659
-      Top = 154
+      Top = 155
       Width = 111
       Height = 22
       Hint = 'Voltar a tela de selecionar outro produto'
@@ -2811,7 +2823,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
       OnClick = sbVoltarClick
     end
     object lbCapacidade: TLabel
-      Left = 331
+      Left = 294
       Top = 159
       Width = 57
       Height = 14
@@ -2819,7 +2831,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
       Visible = False
     end
     object lbCor: TLabel
-      Left = 517
+      Left = 475
       Top = 158
       Width = 17
       Height = 14
@@ -3169,7 +3181,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
       end
     end
     object cbCapacidade: TSgDbSearchCombo
-      Left = 391
+      Left = 354
       Top = 155
       Width = 91
       Height = 22
@@ -3199,7 +3211,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
       LimparCampoAoSair = True
     end
     object cbCor: TSgDbSearchCombo
-      Left = 537
+      Left = 495
       Top = 154
       Width = 76
       Height = 22
@@ -3229,7 +3241,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
     object CbGrade: TComboBoxRw
       Left = 55
       Top = 156
-      Width = 204
+      Width = 184
       Height = 22
       TabOrder = 9
       CharCase = ecUpperCase
@@ -3264,6 +3276,18 @@ inherited FrmPedidoItem: TFrmPedidoItem
       CarregarCombo = False
       itemindex = 0
       style = csDropDown
+    end
+    object chkMantemDescricao: TCheckBox
+      Left = 600
+      Top = 158
+      Width = 87
+      Height = 17
+      Hint = 'Atribui a Descri'#231#227'o do Cadastro de Produtos no item do pedido '
+      Caption = 'Mant'#233'm Desc.'
+      ParentShowHint = False
+      ShowHint = True
+      TabOrder = 10
+      OnClick = chkMantemDescricaoClick
     end
   end
   inherited coCalcula: TACBrCalculadora
@@ -3370,7 +3394,7 @@ inherited FrmPedidoItem: TFrmPedidoItem
     Left = 1349
     Top = 202
     Bitmap = {
-      494C010102000500440010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010102000500500010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
