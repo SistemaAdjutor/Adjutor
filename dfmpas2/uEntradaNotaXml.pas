@@ -267,7 +267,7 @@ var
 implementation
 
 uses
-  RWFunc, pcnNFe,  pcnConversao, DataCad, uProdutoDao,
+  RWFunc, ACBrNFe.Classes,  pcnConversao, DataCad, uProdutoDao,
   uNaturezaOperacaoDao, uEntradaNotaXmlItem, Nfs0001, For0001,
   DataMov, ACBrNFeNotasFiscais, uteis, pcnConversaoNFE, PesqTipoProduto, Pag0001, uSelecionaCentroDeCusto;
 

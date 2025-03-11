@@ -8,7 +8,7 @@ uses
   iniciodb, pcnconversaonfe, ACBrMail, IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase, IdMessageClient, IdSMTPBase, IdSMTP, IdComponent, IdIOHandler, IdIOHandlerSocket,
   IdIOHandlerStack, IdSSL, IdSSLOpenSSL, IdBaseComponent, IdMessage, ACBrDFe, ACBrNFe, ACBrNFeDANFEClass, ACBrNFeDANFEFR, vcl.imaging.jpeg, pcnconversao, ACBrNFeDANFeESCPOS,
   ACBrDANFCeFortesFr, IdAttachmentFile,  ACBrUtil, XMLIntf, XMLDoc, zlib, ACBrNFeDANFeRLClass,  Spin,    ACBrNFeNotasFiscais,System.StrUtils,
-  TypInfo, DateUtils,  blcksock, pcnNFe,   ACBrDFeConfiguracoes, pcnAuxiliar,    Grids,  ACBrNFeConfiguracoes, Vcl.ExtCtrls, Datasnap.Provider, Datasnap.DBClient,
+  TypInfo, DateUtils,  blcksock, ACBrNFe.Classes,   ACBrDFeConfiguracoes, pcnAuxiliar,    Grids,  ACBrNFeConfiguracoes, Vcl.ExtCtrls, Datasnap.Provider, Datasnap.DBClient,
   pngextra, rwfunc,ACBrECFVirtual, ACBrECFVirtualBuffer, ACBrECFVirtualPrinter, ACBrECFVirtualNFCe, ACBrDFeReport, ACBrDFeDANFeReport, frxClass, BaseDbEstoqueForm,ACBrDFeSSL,
   Vcl.Clipbrd ;
 
@@ -849,10 +849,10 @@ begin
    begin
      if DBInicio.Nfe.Emp_TipoCertificado = 1 then //a1
      begin
-       SSLLib                := libCapicomDelphiSoap;
-       SSLCryptLib           := cryCapicom;
-       SSLHttpLib            := httpIndy;
-       SSLXmlSignLib         := xsMsXmlCapicom;
+        SSLLib         := libCapicomDelphiSoap;
+        SSLCryptLib    := cryCapicom;
+        SSLHttpLib     := httpIndy;
+        SSLXmlSignLib  := xsMsXmlCapicom;
      end
      else
      if (DBInicio.Nfe.Emp_TipoCertificado = 3) or (DBInicio.Nfe.Emp_TipoCertificado = 9) then
@@ -862,7 +862,8 @@ begin
        SSLHttpLib := httpWinHttp;
        SSLXmlSignLib := xsLibXml2;
      end;
-     ACBrNFe1.Configuracoes.WebServices.SSLType :=  LT_TLSv1_2;
+//     ACBrNFe1.Configuracoes.WebServices.SSLType :=  LT_TLSv1_2;
+       ACBrNFe1.Configuracoes.WebServices.SSLType :=  LT_TLSv1_2;
 
      AtualizarXMLCancelado := true;
      ExibirErroSchema := True;

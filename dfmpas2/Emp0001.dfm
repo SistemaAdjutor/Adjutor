@@ -43,6 +43,10 @@ inherited FormEmpresa: TFormEmpresa
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
       Caption = 'Dados da Empresa'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label2: TLabel
         Left = 13
         Top = 8
@@ -601,6 +605,10 @@ inherited FormEmpresa: TFormEmpresa
     object TabSheet3: TTabSheet
       Caption = 'Dados Fiscais'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label29: TLabel
         Left = 14
         Top = 38
@@ -970,6 +978,10 @@ inherited FormEmpresa: TFormEmpresa
       Caption = 'NFe/NFCe 4.0'
       ImageIndex = 1
       OnShow = TsNFEShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label23: TLabel
         Left = 158
         Top = 73
@@ -1462,6 +1474,10 @@ inherited FormEmpresa: TFormEmpresa
     object TabSheet4: TTabSheet
       Caption = 'Envio Email'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox1: TGroupBox
         Left = 0
         Top = 197
@@ -1852,6 +1868,10 @@ inherited FormEmpresa: TFormEmpresa
     object tabNFSE: TTabSheet
       Caption = 'Nota Fiscal de Servi'#231'o'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label69: TLabel
         Left = 16
         Top = 197
@@ -1989,6 +2009,10 @@ inherited FormEmpresa: TFormEmpresa
     object TabSheet6: TTabSheet
       Caption = 'SPED'
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grpContador: TGroupBox
         Left = 0
         Top = 0
@@ -2496,6 +2520,10 @@ inherited FormEmpresa: TFormEmpresa
     object Mercos: TTabSheet
       Caption = 'Mercos'
       ImageIndex = 6
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label77: TLabel
         Left = 39
         Top = 95
@@ -2550,6 +2578,10 @@ inherited FormEmpresa: TFormEmpresa
     object IEManaus: TTabSheet
       Caption = 'I.E. Manaus'
       ImageIndex = 7
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label31: TLabel
         Left = 40
         Top = 24
@@ -4552,10 +4584,10 @@ inherited FormEmpresa: TFormEmpresa
     end
   end
   object ACBrNFSe1: TACBrNFSe
-    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.SSLLib = libCustom
     Configuracoes.Geral.SSLCryptLib = cryCapicom
     Configuracoes.Geral.SSLHttpLib = httpIndy
-    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.CodigoMunicipio = 0
