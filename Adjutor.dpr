@@ -283,7 +283,6 @@ uses
   ufrmPreviewRB in 'dfmpas2\ufrmPreviewRB.pas' {frmPreviewrb},
   Fat0000_Romaneio in 'dfmpas2\Fat0000_Romaneio.pas' {FrmFat0000_Romaneio},
   Fat0000_etiquetas in 'dfmpas2\Fat0000_etiquetas.pas' {FrmFat0000_etiquetas},
-  BaseDbEstoqueForm in 'dfmpas2\BaseDbEstoqueForm.pas' {frmBaseDbEstoque},
   BaseDbFaturamentoForm in 'dfmpas2\BaseDbFaturamentoForm.pas' {frmBaseDbFaturamento},
   ImportarXMLMigracaoNovi in 'dfmpas2\ImportarXMLMigracaoNovi.pas' {frmImportarXMLMigracaoNovi},
   PesquisaClientesForm in 'dfmpas2\PesquisaClientesForm.pas' {frmPesquisaClientes},
@@ -521,7 +520,9 @@ uses
   uDashboradInteligencia in 'dfmpas2\uDashboradInteligencia.pas' {frmDashBoardInteligencia},
   uSecuritizadora in 'dfmpas2\uSecuritizadora.pas' {frmSecuritizadora},
   uPesqSecuritizadora in 'dfmpas2\uPesqSecuritizadora.pas' {frmPesqSecuritizadora},
-  uTransfereCentroCusto in 'dfmpas2\uTransfereCentroCusto.pas' {frmTransfereCentroCusto};
+  uTransfereCentroCusto in 'dfmpas2\uTransfereCentroCusto.pas' {frmTransfereCentroCusto},
+  BaseDbEstoqueForm in 'dfmpas2\BaseDbEstoqueForm.pas' {frmBaseDbEstoque},
+  uBaixaPedidoCompra in 'dfmpas2\uBaixaPedidoCompra.pas' {frmBaixaPedidoCompra};
 
 {$R *.res}
 {$D+}
@@ -553,6 +554,7 @@ begin
   Application.CreateForm(TDmCfg, DmCfg);
   Application.CreateForm(TFrmMenu, FrmMenu);
   Application.CreateForm(TForm3, Form3);
+  Application.CreateForm(TfrmBaseDbEstoque, frmBaseDbEstoque);
   if dbInicio.ModulosComoAplicacao then
   begin
      Application.CreateForm(TfrmBaseDBFDAC, frmBaseDBFDAC);

@@ -36,7 +36,7 @@ uses
   FireDAC.VCLUI.Wait;
 
 type
-  TFrmKardexLancamentoManual = class(TFrmBaseDbEstoque)
+  TFrmKardexLancamentoManual = class(TfrmBaseDbEstoque)
     DsProduto: TDataSource;
     DsSaldos: TDataSource;
     CdsSaldos: TClientDataSet;

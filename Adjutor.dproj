@@ -961,9 +961,6 @@
         <DCCReference Include="dfmpas2\Fat0000_etiquetas.pas">
             <Form>FrmFat0000_etiquetas</Form>
         </DCCReference>
-        <DCCReference Include="dfmpas2\BaseDbEstoqueForm.pas">
-            <Form>frmBaseDbEstoque</Form>
-        </DCCReference>
         <DCCReference Include="dfmpas2\BaseDbFaturamentoForm.pas">
             <Form>frmBaseDbFaturamento</Form>
         </DCCReference>
@@ -1772,6 +1769,14 @@
         </DCCReference>
         <DCCReference Include="dfmpas2\uTransfereCentroCusto.pas">
             <Form>frmTransfereCentroCusto</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="dfmpas2\BaseDbEstoqueForm.pas">
+            <Form>frmBaseDbEstoque</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="dfmpas2\uBaixaPedidoCompra.pas">
+            <Form>frmBaixaPedidoCompra</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">

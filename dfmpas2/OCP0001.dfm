@@ -14,8 +14,8 @@ inherited FormOrdCompra: TFormOrdCompra
   Visible = True
   OnCloseQuery = FormCloseQuery
   OnKeyPress = FormKeyPress
-  ExplicitWidth = 1148
-  ExplicitHeight = 778
+  ExplicitWidth = 1156
+  ExplicitHeight = 790
   PixelsPerInch = 96
   TextHeight = 14
   object Panel1: TPanel [0]
@@ -26,7 +26,6 @@ inherited FormOrdCompra: TFormOrdCompra
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
-    ExplicitWidth = 1124
     object Label4: TLabel
       Left = 6
       Top = 16
@@ -230,8 +229,10 @@ inherited FormOrdCompra: TFormOrdCompra
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'FOR0000'
           CamposCarregar = 'FOR_CODIGO,FOR_RAZAO'
           CamposRetornar = 'FOR_CODIGO'
@@ -567,8 +568,10 @@ inherited FormOrdCompra: TFormOrdCompra
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
           Tabela = 'TRP0000'
           CamposCarregar = 'TRP_CODIGO,TRP_RAZAO'
           CamposRetornar = 'TRP_CODIGO'
@@ -607,8 +610,6 @@ inherited FormOrdCompra: TFormOrdCompra
     Align = alClient
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitWidth = 1124
-    ExplicitHeight = 403
     object GbItem: TGroupBox
       Left = 0
       Top = 233
@@ -616,7 +617,6 @@ inherited FormOrdCompra: TFormOrdCompra
       Height = 84
       Align = alTop
       TabOrder = 1
-      ExplicitWidth = 1124
       object Label10: TLabel
         Left = 7
         Top = 8
@@ -981,8 +981,10 @@ inherited FormOrdCompra: TFormOrdCompra
         GridLeft = 0
         GridWidth = 0
         GridHeight = 100
+        GridTop = 0
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
+        LimparCampoAoSair = True
       end
       object currICMS: TCurrencyEdit
         Left = 652
@@ -1032,7 +1034,6 @@ inherited FormOrdCompra: TFormOrdCompra
       Height = 233
       Align = alTop
       TabOrder = 0
-      ExplicitWidth = 1124
       DesignSize = (
         1140
         233)
@@ -1295,7 +1296,6 @@ inherited FormOrdCompra: TFormOrdCompra
         Align = alBottom
         BevelOuter = bvNone
         TabOrder = 1
-        ExplicitWidth = 1120
         object Label12: TLabel
           Left = 5
           Top = 4
@@ -1407,8 +1407,6 @@ inherited FormOrdCompra: TFormOrdCompra
       Align = alClient
       Caption = 'Observa'#231#227'o da Compra'
       TabOrder = 2
-      ExplicitWidth = 1124
-      ExplicitHeight = 86
       DesignSize = (
         1140
         204)
@@ -1423,8 +1421,8 @@ inherited FormOrdCompra: TFormOrdCompra
         DataSource = DataMovimento.DsOrdCompra
         ScrollBars = ssVertical
         TabOrder = 0
-        ExplicitWidth = 1120
-        ExplicitHeight = 68
+        ExplicitLeft = 3
+        ExplicitTop = 12
       end
       object Panel3: TPanel
         Left = 1080
@@ -1433,7 +1431,6 @@ inherited FormOrdCompra: TFormOrdCompra
         Height = 25
         Anchors = [akTop, akRight]
         TabOrder = 1
-        ExplicitLeft = 1064
         object SpeedButton1: TSpeedButton
           Left = 2
           Top = 2
@@ -1482,10 +1479,8 @@ inherited FormOrdCompra: TFormOrdCompra
     Align = alBottom
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitTop = 588
-    ExplicitWidth = 1124
     object btnImpressao: TJvArrowButton
-      Left = 267
+      Left = 261
       Top = 9
       Width = 105
       Height = 25
@@ -1540,7 +1535,7 @@ inherited FormOrdCompra: TFormOrdCompra
       OnClick = Bit_SairClick
     end
     object Bit_Cancelar: TBitBtn
-      Left = 877
+      Left = 878
       Top = 9
       Width = 85
       Height = 25
@@ -1573,7 +1568,7 @@ inherited FormOrdCompra: TFormOrdCompra
       OnClick = Bit_CancelarClick
     end
     object Bit_Gravar: TBitBtn
-      Left = 792
+      Left = 793
       Top = 9
       Width = 85
       Height = 25
@@ -1601,9 +1596,9 @@ inherited FormOrdCompra: TFormOrdCompra
       OnClick = Bit_GravarClick
     end
     object Bit_Excluir: TBitBtn
-      Left = 706
+      Left = 718
       Top = 9
-      Width = 85
+      Width = 75
       Height = 25
       Cursor = crHandPoint
       Hint = '|Exclui registro atual..'
@@ -1624,9 +1619,9 @@ inherited FormOrdCompra: TFormOrdCompra
       OnClick = Bit_ExcluirClick
     end
     object Bit_novo: TBitBtn
-      Left = 620
+      Left = 643
       Top = 9
-      Width = 85
+      Width = 75
       Height = 25
       Cursor = crHandPoint
       Caption = '&Novo'
@@ -1670,7 +1665,7 @@ inherited FormOrdCompra: TFormOrdCompra
       OnClick = Bit_ListaClick
     end
     object Bit_Relatorio: TBitBtn
-      Left = 90
+      Left = 86
       Top = 9
       Width = 85
       Height = 25
@@ -1694,7 +1689,7 @@ inherited FormOrdCompra: TFormOrdCompra
       OnClick = Bit_RelatorioClick
     end
     object btnMail: TBitBtn
-      Left = 176
+      Left = 171
       Top = 9
       Width = 90
       Height = 25
@@ -1756,7 +1751,7 @@ inherited FormOrdCompra: TFormOrdCompra
       OnClick = btnMailClick
     end
     object btnEmpresa: TBitBtn
-      Left = 508
+      Left = 533
       Top = 9
       Width = 109
       Height = 25
@@ -1794,7 +1789,7 @@ inherited FormOrdCompra: TFormOrdCompra
       OnClick = btnEmpresaClick
     end
     object BtnDuplicar: TBitBtn
-      Left = 417
+      Left = 449
       Top = 9
       Width = 85
       Height = 25
@@ -1817,6 +1812,31 @@ inherited FormOrdCompra: TFormOrdCompra
       TabOrder = 9
       TabStop = False
       OnClick = BtnDuplicarClick
+    end
+    object Bit_Baixar: TBitBtn
+      Left = 366
+      Top = 9
+      Width = 83
+      Height = 25
+      Cursor = crHandPoint
+      Hint = 'Baixar Pedido na '#205'ntegra ou Parcial'
+      Caption = '&Baixar'
+      Enabled = False
+      Glyph.Data = {
+        D6000000424DD60000000000000076000000280000000C0000000C0000000100
+        0400000000006000000000000000000000001000000000000000000000000000
+        80000080000000808000800000008000800080800000C0C0C000808080000000
+        FF0000FF000000FFFF00FF000000FF00FF00FFFF0000FFFFFF00777777777777
+        0000777777777777000077777777777700007777777777770000777770777777
+        0000777700077777000077700000777700007700000007770000777777777777
+        0000777777777777000077777777777700007777777777770000}
+      Margin = 5
+      ParentShowHint = False
+      ShowHint = True
+      Spacing = 6
+      TabOrder = 10
+      TabStop = False
+      OnClick = Bit_BaixarClick
     end
   end
   inherited coCalcula: TACBrCalculadora
@@ -1947,7 +1967,6 @@ inherited FormOrdCompra: TFormOrdCompra
   end
   object SqlCdsGri: TClientDataSet
     Aggregates = <>
-    FetchOnDemand = False
     Params = <>
     ProviderName = 'dspGri'
     AfterPost = SqlCdsGriAfterPost
@@ -2116,7 +2135,7 @@ inherited FormOrdCompra: TFormOrdCompra
     end
   end
   object frxPedido: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -2202,10 +2221,13 @@ inherited FormOrdCompra: TFormOrdCompra
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnAfterPrint = 'Page1OnAfterPrint'
       OnBeforePrint = 'Page1OnBeforePrint'
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -2218,22 +2240,26 @@ inherited FormOrdCompra: TFormOrdCompra
         OnAfterPrint = 'ReportTitle1OnAfterPrint'
         OnBeforePrint = 'ReportTitle1OnBeforePrint'
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 14.118120000000000000
           Width = 196.535433070000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 90.267780000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 17.559060000000000000
           Width = 362.834596850000000000
@@ -2244,12 +2270,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
           VAlign = vaCenter
         end
         object wFrxEndereco: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.567100000000000000
           Top = 38.677180000000000000
           Width = 510.236550000000000000
@@ -2261,11 +2289,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO] - Bairro: [BAIRRO]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.433210000000000000
           Top = 53.692950000000000000
           Width = 253.228510000000000000
@@ -2276,11 +2306,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE] - [UF] - CEP: [CEP]')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.693260000000000000
           Top = 53.692950000000000000
           Width = 113.385900000000000000
@@ -2291,11 +2323,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fone: [FONE]')
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.330860000000000000
           Top = 70.370130000000000000
           Width = 230.551330000000000000
@@ -2306,11 +2340,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [EMAIL]')
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 473.630180000000000000
           Top = 70.370130000000000000
           Width = 98.267780000000000000
@@ -2321,11 +2357,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CNPJ]')
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 439.086890000000000000
           Top = 70.370130000000000000
           Width = 34.015770000000000000
@@ -2336,11 +2374,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 576.913730000000000000
           Top = 70.590600000000000000
           Width = 45.354360000000000000
@@ -2351,11 +2391,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inscri'#231#227'o:')
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 624.488560000000000000
           Top = 70.370130000000000000
           Width = 83.149660000000000000
@@ -2366,11 +2408,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[INSCR]')
           ParentFont = False
         end
         object frxDataPedidoPED_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 6.559060000000000000
           Width = 147.401670000000000000
@@ -2380,12 +2424,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'OR'#199'AMENTO DE COMPRA')
           ParentFont = False
         end
         object frxDataPedidoPED_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 23.677180000000000000
           Width = 147.401670000000000000
@@ -2396,12 +2442,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBPedido."OCP_CODIGO"]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 576.724800000000000000
           Top = 53.692950000000000000
           Width = 113.385900000000000000
@@ -2412,17 +2460,20 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fax: [FAX]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 116.944960000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object frxDataPedidoPED_DTENTRADA: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 94.267780000000000000
           Width = 272.126160000000000000
@@ -2433,11 +2484,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data: [frxDBPedido."OCP_DTEMIS"]')
           ParentFont = False
         end
         object frxDataPedidoPED_DTSAIDA: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 94.267780000000000000
           Width = 336.378170000000000000
@@ -2448,12 +2501,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Limite para Entrega: [frxDBPedido."OCP_DTENTREGA"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_CONTATO: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.779530000000000000
           Top = 161.299320000000000000
           Width = 204.094620000000000000
@@ -2466,12 +2521,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Contato: [frxDBFornecedor."FOR_CONTATO"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBFornecedorFOR_FONCONT: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Top = 162.299320000000000000
           Width = 120.944960000000000000
@@ -2484,11 +2541,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fone: [FORFONE]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 340.157700000000000000
           Top = 162.299320000000000000
           Width = 120.944960000000000000
@@ -2501,11 +2560,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fax: [FORFAX]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_EMAIL: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 162.299320000000000000
           Width = 257.008040000000000000
@@ -2518,11 +2579,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [frxDBFornecedor."FOR_EMAIL"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.779530000000000000
           Top = 118.944960000000000000
           Width = 476.220780000000000000
@@ -2535,17 +2598,20 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_RAZAO"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 181.196970000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 182.196970000000000000
           Width = 60.472480000000000000
@@ -2556,12 +2622,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'C'#211'DIGO')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 68.590600000000000000
           Top = 182.196970000000000000
           Width = 52.913420000000000000
@@ -2571,12 +2639,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QTDE')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 125.283550000000000000
           Top = 182.196970000000000000
           Width = 26.456710000000000000
@@ -2587,12 +2657,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'UND')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 151.181200000000000000
           Top = 182.196970000000000000
           Width = 219.212740000000000000
@@ -2603,12 +2675,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PRODUTO')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 373.291590000000000000
           Top = 182.196970000000000000
           Width = 64.252010000000000000
@@ -2619,12 +2693,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PRE'#199'O UNIT.')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 440.425480000000000000
           Top = 182.196970000000000000
           Width = 64.252010000000000000
@@ -2635,12 +2711,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOTAL')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 556.472790000000000000
           Top = 182.196970000000000000
           Width = 45.354360000000000000
@@ -2651,18 +2729,21 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'IPI')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 218.315090000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object frxDBFornecedorFOR_ENDERE: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.779530000000000000
           Top = 137.622140000000000000
           Width = 449.764070000000000000
@@ -2675,11 +2756,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_ENDERE"] [frxDBFornecedor."FOR_BAIRRO"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_CIDADE: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 139.622140000000000000
           Width = 257.008040000000000000
@@ -2692,11 +2775,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_CIDADE"] [frxDBFornecedor."FOR_UF"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.338590000000000000
           Top = 119.787401570000000000
           Width = 71.811070000000000000
@@ -2707,12 +2792,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'FORNECEDOR:')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 118.165430000000000000
           Width = 79.370130000000000000
@@ -2722,11 +2809,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'COTA'#199#195'O')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 506.457020000000000000
           Top = 181.417440000000000000
           Width = 45.354360000000000000
@@ -2736,12 +2825,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ICMS ST')
           ParentFont = False
         end
         object lcodfornecedor: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 200.315090000000000000
           Width = 132.283550000000000000
@@ -2751,12 +2842,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'C'#211'DIGO DO FORNECEDOR')
           ParentFont = False
         end
         object ldescrfornecedor: TfrxMemoView
+          AllowVectorExport = True
           Left = 200.315090000000000000
           Top = 200.315090000000000000
           Width = 211.653680000000000000
@@ -2766,11 +2859,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'DESCRI'#199#195'O DO FORNECEDOR')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 608.504330000000000000
           Top = 181.417440000000000000
           Width = 37.795300000000000000
@@ -2780,12 +2875,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'ICMS')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 652.079160000000000000
           Top = 181.417440000000000000
           Width = 56.692950000000000000
@@ -2795,12 +2892,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'DESCONTO')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 566.929500000000000000
           Top = 118.165430000000000000
           Width = 151.181200000000000000
@@ -2812,6 +2911,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ: [frxDBFornecedor."FOR_CGC"]')
           ParentFont = False
@@ -2824,6 +2924,7 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 31.370081180000000000
         Top = 298.582870000000000000
         Width = 718.110700000000000000
@@ -2835,6 +2936,7 @@ inherited FormOrdCompra: TFormOrdCompra
         RowCount = 0
         Stretched = True
         object frxDBPedidoItemPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -2846,12 +2948,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRD_REFER"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 68.811070000000000000
           Width = 52.913420000000000000
           Height = 15.118120000000000000
@@ -2864,6 +2968,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_QTDES"]')
@@ -2871,6 +2976,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 127.504020000000000000
           Width = 22.677180000000000000
           Height = 15.118120000000000000
@@ -2882,12 +2988,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRD_UND"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 152.519790000000000000
           Width = 215.433210000000000000
           Height = 15.118120000000000000
@@ -2900,11 +3008,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRD_DESCRI"]')
           ParentFont = False
         end
         object mpreco: TfrxMemoView
+          AllowVectorExport = True
           Left = 371.071120000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -2919,6 +3029,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_PRECO"]')
@@ -2926,6 +3037,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object mtotal_cc: TfrxMemoView
+          AllowVectorExport = True
           Left = 434.645950000000000000
           Width = 71.811070000000000000
           Height = 15.118120000000000000
@@ -2940,6 +3052,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_TOTAL_CC"]')
@@ -2947,6 +3060,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Width = 45.354360000000000000
           Height = 15.118120000000000000
@@ -2960,6 +3074,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_IPI"]%')
@@ -2967,6 +3082,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 513.016080000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -2980,6 +3096,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_PERC_ICMS_ST"]%')
@@ -2987,6 +3104,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object mcodfornecedor: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 15.677180000000000000
           Width = 185.196970000000000000
@@ -2996,11 +3114,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[<frxDBPedidoItem."PRDC_REFERENCIA">]')
           ParentFont = False
         end
         object mdescfornecedor: TfrxMemoView
+          AllowVectorExport = True
           Left = 190.756030000000000000
           Top = 15.677180000000000000
           Width = 491.338900000000000000
@@ -3010,11 +3130,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRDC_DESSCRICAO"]')
           ParentFont = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 612.283860000000000000
           Width = 34.015770000000000000
           Height = 15.118120000000000000
@@ -3028,6 +3150,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -3037,6 +3160,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 650.079160000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -3045,6 +3169,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[DESCONTO]')
@@ -3053,23 +3178,27 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 351.496290000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = -1.000000000000000000
           Width = 718.110236220472000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Top = 73.795300000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object mtotalgeral: TfrxMemoView
+          AllowVectorExport = True
           Left = 419.425480000000000000
           Top = 1.000000000000000000
           Width = 86.929190000000000000
@@ -3084,6 +3213,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALPROD]')
@@ -3091,6 +3221,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 57.692950000000000000
           Top = 0.220470000000000000
           Width = 64.252010000000000000
@@ -3105,6 +3236,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[qtde]')
@@ -3112,6 +3244,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object frxDBPedidoOCP_OBS: TfrxMemoView
+          AllowVectorExport = True
           Left = 16.779530000000000000
           Top = 57.897650000000000000
           Width = 691.653990000000000000
@@ -3125,11 +3258,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedido."OCP_OBS"]')
           ParentFont = False
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 86.000000000000000000
           Top = 48.897650000000000000
           Width = 631.181510000000000000
@@ -3137,6 +3272,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Frame.Typ = [ftTop]
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = -54.661410000000000000
           Top = 45.338590000000000000
           Width = 139.842610000000000000
@@ -3147,12 +3283,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Observa'#231#245'es gerais')
           ParentFont = False
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 1.260050000000000000
           Top = 25.456710000000000000
           Width = 718.110236220472000000
@@ -3160,6 +3298,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Frame.Typ = [ftTop]
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 238.141930000000000000
           Top = 26.456710000000000000
           Width = 22.677180000000000000
@@ -3170,12 +3309,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'IPI:')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 587.913730000000000000
           Top = 26.456710000000000000
           Width = 37.795300000000000000
@@ -3186,12 +3327,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total:')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 261.598640000000000000
           Top = 26.456710000000000000
           Width = 64.252010000000000000
@@ -3206,6 +3349,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[IPI]')
@@ -3213,6 +3357,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 626.709030000000000000
           Top = 26.456710000000000000
           Width = 90.708720000000000000
@@ -3227,6 +3372,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALCIPI]')
@@ -3234,6 +3380,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Top = 26.456710000000000000
           Width = 37.795300000000000000
           Height = 15.118120000000000000
@@ -3243,12 +3390,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Frete:')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Top = 26.456710000000000000
           Width = 64.252010000000000000
@@ -3263,6 +3412,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedido."OCP_FRETE"]')
@@ -3270,6 +3420,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 108.149660000000000000
           Top = 26.456710000000000000
           Width = 60.472480000000000000
@@ -3280,12 +3431,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Despesas:')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 168.944960000000000000
           Top = 26.456710000000000000
           Width = 64.252010000000000000
@@ -3300,6 +3453,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedido."OCP_DESPESAS"]')
@@ -3307,6 +3461,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 452.409710000000000000
           Top = 26.456710000000000000
           Width = 52.913420000000000000
@@ -3316,12 +3471,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'ICMS ST:')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 507.543600000000000000
           Top = 26.456710000000000000
           Width = 56.692950000000000000
@@ -3336,6 +3493,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[ICMSST]')
@@ -3343,6 +3501,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 327.685220000000000000
           Top = 26.456710000000000000
           Width = 56.692950000000000000
@@ -3352,12 +3511,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Desconto:')
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.157700000000000000
           Top = 26.456710000000000000
           Width = 64.252010000000000000
@@ -3372,6 +3533,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALDESCONTO]')
@@ -3379,6 +3541,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 2.000000000000000000
           Width = 49.133890000000000000
@@ -3388,12 +3551,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total Qtde.')
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 364.834880000000000000
           Top = 2.000000000000000000
           Width = 52.913420000000000000
@@ -3403,6 +3568,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total Prod.')
@@ -3411,11 +3577,13 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 487.559370000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 56.692950000000100000
           Width = 328.819110000000000000
@@ -3425,11 +3593,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '                      Requerente: [frxDBPedido."OCP_REQUERENTE"]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Top = 56.692950000000100000
           Width = 56.692950000000000000
@@ -3440,12 +3610,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Assinatura:')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 446.559370000000000000
           Top = 56.692950000000100000
           Width = 268.346630000000000000
@@ -3456,6 +3628,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -3464,6 +3637,7 @@ inherited FormOrdCompra: TFormOrdCompra
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -3473,12 +3647,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Local de Entrega:')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 18.897650000000000000
           Width = 109.606370000000000000
@@ -3489,12 +3665,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Condi'#231#227'o de Pagamento:')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 37.795299999999900000
           Width = 109.606370000000000000
@@ -3505,12 +3683,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Transportadora:')
           ParentFont = False
         end
         object frxDBTransportadoraTRP_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 37.795299999999900000
           Width = 185.196970000000000000
@@ -3525,12 +3705,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBTransportadora."TRP_RAZAO"]')
           ParentFont = False
           WordBreak = True
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 600.945270000000000000
           Height = 15.118120000000000000
@@ -3543,12 +3725,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[LOCALENTREGA]')
           ParentFont = False
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 18.897650000000000000
           Width = 64.252010000000000000
@@ -3559,12 +3743,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Tipo do Frete:')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 448.559370000000000000
           Top = 18.897650000000000000
           Width = 268.346630000000000000
@@ -3578,12 +3764,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TIPOFRETE]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBPedidoOCP_PRAZO: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165354330000000000
           Top = 18.897637800000000000
           Width = 260.787570000000000000
@@ -3596,11 +3784,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedido."OCP_PRAZO"]')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 37.795299999999900000
           Width = 185.196970000000000000
@@ -3614,18 +3804,21 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBTransportadora."TRP_FONE"]')
           ParentFont = False
         end
       end
       object Line9: TfrxLineView
+        AllowVectorExport = True
         Top = 1024.252630000000000000
         Width = 721.890230000000000000
         Color = clBlack
         Frame.Typ = [ftTop]
       end
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Left = 5.677180000000000000
         Top = 1026.811690000000000000
         Width = 170.078850000000000000
@@ -3636,6 +3829,7 @@ inherited FormOrdCompra: TFormOrdCompra
         Font.Height = -8
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'Adjutor ERP - www.novisistemas.com.br')
         ParentFont = False
@@ -3647,11 +3841,14 @@ inherited FormOrdCompra: TFormOrdCompra
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     Creator = 'FastReport (http://www.fast-report.com)'
@@ -3662,6 +3859,9 @@ inherited FormOrdCompra: TFormOrdCompra
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 587
     Top = 248
   end
@@ -3770,12 +3970,10 @@ inherited FormOrdCompra: TFormOrdCompra
   end
   object SqlCdsForRES: TSqlClientDataSet
     Aggregates = <>
-    Connection = DBInicio.MainDB
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = ''
-    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -4002,7 +4200,7 @@ inherited FormOrdCompra: TFormOrdCompra
     Top = 249
   end
   object frxRefEmpresa: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -4088,10 +4286,13 @@ inherited FormOrdCompra: TFormOrdCompra
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnAfterPrint = 'Page1OnAfterPrint'
       OnBeforePrint = 'Page1OnBeforePrint'
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -4104,22 +4305,26 @@ inherited FormOrdCompra: TFormOrdCompra
         OnAfterPrint = 'ReportTitle1OnAfterPrint'
         OnBeforePrint = 'ReportTitle1OnBeforePrint'
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 14.118120000000000000
           Width = 196.535433070000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 90.267780000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 17.559060000000000000
           Width = 362.834596850000000000
@@ -4130,12 +4335,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
           VAlign = vaCenter
         end
         object wFrxEndereco: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.567100000000000000
           Top = 38.677180000000000000
           Width = 510.236550000000000000
@@ -4147,11 +4354,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO] - Bairro: [BAIRRO]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.433210000000000000
           Top = 53.692950000000000000
           Width = 253.228510000000000000
@@ -4162,11 +4371,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE] - [UF] - CEP: [CEP]')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.693260000000000000
           Top = 53.692950000000000000
           Width = 113.385900000000000000
@@ -4177,11 +4388,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fone: [FONE]')
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.330860000000000000
           Top = 70.370130000000000000
           Width = 230.551330000000000000
@@ -4192,11 +4405,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [EMAIL]')
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 473.630180000000000000
           Top = 70.370130000000000000
           Width = 98.267780000000000000
@@ -4207,11 +4422,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CNPJ]')
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 439.086890000000000000
           Top = 70.370130000000000000
           Width = 34.015770000000000000
@@ -4222,11 +4439,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 576.913730000000000000
           Top = 70.590600000000000000
           Width = 45.354360000000000000
@@ -4237,11 +4456,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inscri'#231#227'o:')
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 624.488560000000000000
           Top = 70.370130000000000000
           Width = 83.149660000000000000
@@ -4252,11 +4473,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[INSCR]')
           ParentFont = False
         end
         object frxDataPedidoPED_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 6.559060000000000000
           Width = 147.401670000000000000
@@ -4267,12 +4490,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ORDEM DE COMPRA')
           ParentFont = False
         end
         object frxDataPedidoPED_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 23.677180000000000000
           Width = 147.401670000000000000
@@ -4283,12 +4508,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBPedido."OCP_CODIGO"]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 576.724800000000000000
           Top = 53.692950000000000000
           Width = 113.385900000000000000
@@ -4299,17 +4526,20 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fax: [FAX]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 116.944960000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object frxDataPedidoPED_DTENTRADA: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 94.267780000000000000
           Width = 272.126160000000000000
@@ -4320,11 +4550,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data: [frxDBPedido."OCP_DTEMIS"]')
           ParentFont = False
         end
         object frxDataPedidoPED_DTSAIDA: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 94.267780000000000000
           Width = 336.378170000000000000
@@ -4335,12 +4567,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Limite para Entrega: [frxDBPedido."OCP_DTENTREGA"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_CONTATO: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.779530000000000000
           Top = 161.299320000000000000
           Width = 204.094620000000000000
@@ -4353,12 +4587,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Contato: [frxDBFornecedor."FOR_CONTATO"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBFornecedorFOR_FONCONT: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Top = 162.299320000000000000
           Width = 120.944960000000000000
@@ -4371,11 +4607,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fone: [FORFONE]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 340.157700000000000000
           Top = 162.299320000000000000
           Width = 120.944960000000000000
@@ -4388,11 +4626,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fax: [FORFAX]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_EMAIL: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 162.299320000000000000
           Width = 257.008040000000000000
@@ -4405,11 +4645,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [frxDBFornecedor."FOR_EMAIL"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.779530000000000000
           Top = 118.944960000000000000
           Width = 476.220780000000000000
@@ -4422,17 +4664,20 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_RAZAO"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 181.196970000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 182.196970000000000000
           Width = 52.913420000000000000
@@ -4443,12 +4688,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'C'#211'DIGO')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 61.031540000000000000
           Top = 182.196970000000000000
           Width = 52.913420000000000000
@@ -4458,12 +4705,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QTDE')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.724490000000000000
           Top = 182.196970000000000000
           Width = 26.456710000000000000
@@ -4474,12 +4723,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'UND')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 146.622140000000000000
           Top = 182.196970000000000000
           Width = 241.889920000000000000
@@ -4490,12 +4741,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PRODUTO')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 390.645950000000000000
           Top = 182.196970000000000000
           Width = 64.252010000000000000
@@ -4506,12 +4759,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PRE'#199'O UNIT.')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 460.779840000000000000
           Top = 182.196970000000000000
           Width = 79.370130000000000000
@@ -4522,12 +4777,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOTAL')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.488560000000000000
           Top = 182.551181100000000000
           Width = 22.677180000000000000
@@ -4538,18 +4795,21 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'IPI')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 199.417440000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object frxDBFornecedorFOR_ENDERE: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.779530000000000000
           Top = 137.622140000000000000
           Width = 449.764070000000000000
@@ -4562,11 +4822,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_ENDERE"] [frxDBFornecedor."FOR_BAIRRO"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_CIDADE: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 139.622140000000000000
           Width = 257.008040000000000000
@@ -4579,11 +4841,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_CIDADE"] [frxDBFornecedor."FOR_UF"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.338590000000000000
           Top = 119.787401570000000000
           Width = 71.811070000000000000
@@ -4594,12 +4858,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'FORNECEDOR:')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 117.165430000000000000
           Width = 94.488250000000000000
@@ -4609,11 +4875,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'COTA'#199#195'O')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 545.709030000000000000
           Top = 182.417440000000000000
           Width = 41.574830000000000000
@@ -4623,12 +4891,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ICMS ST')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 625.063390000000000000
           Top = 182.551181100000000000
           Width = 26.456710000000000000
@@ -4638,12 +4908,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ICMS')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 657.638220000000000000
           Top = 182.551181100000000000
           Width = 56.692950000000000000
@@ -4653,12 +4925,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'DESCONTO')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 120.944960000000000000
           Width = 154.960730000000000000
@@ -4670,6 +4944,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ: [frxDBFornecedor."FOR_CGC"]')
           ParentFont = False
@@ -4682,6 +4957,7 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.251961180000000000
         Top = 279.685220000000000000
         Width = 718.110700000000000000
@@ -4693,6 +4969,7 @@ inherited FormOrdCompra: TFormOrdCompra
         RowCount = 0
         Stretched = True
         object frxDBPedidoItemPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 52.913420000000000000
           Height = 15.118120000000000000
@@ -4705,12 +4982,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRD_REFER"]')
           ParentFont = False
           WordBreak = True
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 61.252010000000000000
           Width = 52.913420000000000000
           Height = 15.118120000000000000
@@ -4723,6 +5002,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_QTDES"]')
@@ -4730,6 +5010,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.543299760000000000
           Width = 22.677180000000000000
           Height = 15.118120000000000000
@@ -4741,12 +5022,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRD_UND"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 146.645669290000000000
           Width = 245.669450000000000000
           Height = 15.118120000000000000
@@ -4759,11 +5042,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRD_DESCRI"]')
           ParentFont = False
         end
         object mpreco: TfrxMemoView
+          AllowVectorExport = True
           Left = 395.984540000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -4778,6 +5063,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_PRECO"]')
@@ -4785,6 +5071,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object mtotal_cc: TfrxMemoView
+          AllowVectorExport = True
           Left = 462.559370000000000000
           Width = 79.370130000000000000
           Height = 15.118120000000000000
@@ -4799,6 +5086,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_TOTAL_CC"]')
@@ -4806,6 +5094,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 589.606680000000000000
           Width = 35.149611181102400000
           Height = 15.118120000000000000
@@ -4819,6 +5108,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_IPI"]%')
@@ -4826,6 +5116,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 544.709030000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -4839,6 +5130,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_PERC_ICMS_ST"]%')
@@ -4846,6 +5138,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 624.842920000000000000
           Width = 34.015770000000000000
           Height = 15.118120000000000000
@@ -4859,6 +5152,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -4868,6 +5162,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 662.638220000000000000
           Width = 56.692950000000000000
           Height = 15.118120000000000000
@@ -4876,6 +5171,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[DESCONTO]')
@@ -4884,11 +5180,13 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 83.149660000000000000
         Top = 317.480520000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 239.275820000000000000
           Top = 29.000000000000000000
           Width = 22.677180000000000000
@@ -4899,12 +5197,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'IPI:')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 585.268090000000000000
           Top = 29.000000000000000000
           Width = 45.354360000000000000
@@ -4915,18 +5215,21 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total:')
           ParentFont = False
         end
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = -1.000000000000000000
           Width = 718.110236220472000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object mtotalgeral: TfrxMemoView
+          AllowVectorExport = True
           Left = 447.882190000000000000
           Width = 94.488250000000000000
           Height = 15.118120000000000000
@@ -4940,6 +5243,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALPROD]')
@@ -4947,6 +5251,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 262.732530000000000000
           Top = 29.000000000000000000
           Width = 64.252010000000000000
@@ -4961,6 +5266,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[IPI]')
@@ -4968,6 +5274,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 631.622450000000000000
           Top = 29.000000000000000000
           Width = 83.149660000000000000
@@ -4982,6 +5289,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALCIPI]')
@@ -4989,6 +5297,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 49.133890000000000000
           Width = 64.252010000000000000
           Height = 15.118120000000000000
@@ -5002,6 +5311,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[qtde]')
@@ -5009,6 +5319,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object frxDBPedidoOCP_OBS: TfrxMemoView
+          AllowVectorExport = True
           Left = 16.779530000000000000
           Top = 61.897650000000000000
           Width = 691.653990000000000000
@@ -5022,11 +5333,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedido."OCP_OBS"]')
           ParentFont = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 1.133890000000000000
           Top = 29.000000000000000000
           Width = 37.795300000000000000
@@ -5037,12 +5350,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Frete:')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 42.708720000000000000
           Top = 29.000000000000000000
           Width = 64.252010000000000000
@@ -5057,6 +5372,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedido."OCP_FRETE"]')
@@ -5064,6 +5380,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 109.283550000000000000
           Top = 29.000000000000000000
           Width = 60.472480000000000000
@@ -5074,12 +5391,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Despesas:')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 170.078850000000000000
           Top = 29.000000000000000000
           Width = 64.252010000000000000
@@ -5094,6 +5413,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedido."OCP_DESPESAS"]')
@@ -5101,6 +5421,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 86.000000000000000000
           Top = 55.897650000000000000
           Width = 631.181510000000000000
@@ -5108,6 +5429,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Frame.Typ = [ftTop]
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = -54.661410000000000000
           Top = 48.338590000000000000
           Width = 139.842610000000000000
@@ -5118,12 +5440,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Observa'#231#245'es gerais')
           ParentFont = False
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 1.260050000000000000
           Top = 25.456710000000000000
           Width = 718.110700000000000000
@@ -5131,6 +5455,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Frame.Typ = [ftTop]
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 453.543600000000000000
           Top = 29.000000000000000000
           Width = 52.913420000000000000
@@ -5140,12 +5465,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'ICMS ST:')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 508.677490000000000000
           Top = 29.000000000000000000
           Width = 56.692950000000000000
@@ -5160,6 +5487,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[ICMSST]')
@@ -5167,6 +5495,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 328.819110000000000000
           Top = 29.000000000000000000
           Width = 56.692950000000000000
@@ -5176,12 +5505,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Desconto:')
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 386.291590000000000000
           Top = 29.000000000000000000
           Width = 64.252010000000000000
@@ -5196,6 +5527,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALDESCONTO]')
@@ -5203,6 +5535,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Width = 49.133890000000000000
           Height = 15.118120000000000000
           Font.Charset = DEFAULT_CHARSET
@@ -5210,12 +5543,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total Qtde.')
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 391.291590000000000000
           Width = 52.913420000000000000
           Height = 15.118120000000000000
@@ -5224,6 +5559,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total Prod.')
@@ -5232,11 +5568,13 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 461.102660000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 56.692950000000100000
           Width = 328.819110000000000000
@@ -5246,11 +5584,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '                      Requerente: [frxDBPedido."OCP_REQUERENTE"]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Top = 56.692950000000100000
           Width = 56.692950000000000000
@@ -5261,12 +5601,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Assinatura:')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 446.559370000000000000
           Top = 56.692950000000100000
           Width = 268.346630000000000000
@@ -5277,6 +5619,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -5285,6 +5628,7 @@ inherited FormOrdCompra: TFormOrdCompra
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -5294,12 +5638,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Local de Entrega:')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 18.897650000000000000
           Width = 109.606370000000000000
@@ -5310,12 +5656,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Condi'#231#227'o de Pagamento:')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 37.795299999999900000
           Width = 109.606370000000000000
@@ -5326,12 +5674,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Transportadora:')
           ParentFont = False
         end
         object frxDBTransportadoraTRP_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 37.795299999999900000
           Width = 185.196970000000000000
@@ -5346,12 +5696,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBTransportadora."TRP_RAZAO"]')
           ParentFont = False
           WordBreak = True
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 600.945270000000000000
           Height = 15.118120000000000000
@@ -5364,12 +5716,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[LOCALENTREGA]')
           ParentFont = False
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 18.897650000000000000
           Width = 64.252010000000000000
@@ -5380,12 +5734,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Tipo do Frete:')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 448.559370000000000000
           Top = 18.897650000000000000
           Width = 264.567100000000000000
@@ -5399,12 +5755,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TIPOFRETE]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBPedidoOCP_PRAZO: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165354330000000000
           Top = 18.897637800000000000
           Width = 260.787570000000000000
@@ -5417,11 +5775,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedido."OCP_PRAZO"]')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 37.795299999999900000
           Width = 185.196970000000000000
@@ -5435,11 +5795,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBTransportadora."TRP_FONE"]')
           ParentFont = False
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           StretchMode = smMaxHeight
           Color = clBlack
@@ -5447,12 +5809,14 @@ inherited FormOrdCompra: TFormOrdCompra
         end
       end
       object Line9: TfrxLineView
+        AllowVectorExport = True
         Top = 1024.252630000000000000
         Width = 718.110236220472000000
         Color = clBlack
         Frame.Typ = [ftTop]
       end
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Left = 5.677180000000000000
         Top = 1026.811690000000000000
         Width = 170.078850000000000000
@@ -5463,6 +5827,7 @@ inherited FormOrdCompra: TFormOrdCompra
         Font.Height = -8
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'Adjutor ERP - www.novisistemas.com.br')
         ParentFont = False
@@ -5470,7 +5835,7 @@ inherited FormOrdCompra: TFormOrdCompra
     end
   end
   object frxCodFornecedor: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -5556,10 +5921,13 @@ inherited FormOrdCompra: TFormOrdCompra
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
+      Frame.Typ = []
+      MirrorMode = []
       OnAfterPrint = 'Page1OnAfterPrint'
       OnBeforePrint = 'Page1OnBeforePrint'
       object ReportTitle1: TfrxReportTitle
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -5572,22 +5940,26 @@ inherited FormOrdCompra: TFormOrdCompra
         OnAfterPrint = 'ReportTitle1OnAfterPrint'
         OnBeforePrint = 'ReportTitle1OnBeforePrint'
         object LogoEmpresa: TfrxPictureView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 14.118120000000000000
           Width = 196.535433070000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
         end
         object Line1: TfrxLineView
+          AllowVectorExport = True
           Top = 90.267780000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object wFrxRazao: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.551330000000000000
           Top = 17.559060000000000000
           Width = 362.834596850000000000
@@ -5598,12 +5970,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
           VAlign = vaCenter
         end
         object wFrxEndereco: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.567100000000000000
           Top = 38.677180000000000000
           Width = 510.236550000000000000
@@ -5615,11 +5989,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO] - Bairro: [BAIRRO]')
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.433210000000000000
           Top = 53.692950000000000000
           Width = 253.228510000000000000
@@ -5630,11 +6006,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE] - [UF] - CEP: [CEP]')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.693260000000000000
           Top = 53.692950000000000000
           Width = 113.385900000000000000
@@ -5645,11 +6023,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fone: [FONE]')
           ParentFont = False
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 205.330860000000000000
           Top = 70.370130000000000000
           Width = 230.551330000000000000
@@ -5660,11 +6040,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [EMAIL]')
           ParentFont = False
         end
         object Memo93: TfrxMemoView
+          AllowVectorExport = True
           Left = 473.630180000000000000
           Top = 70.370130000000000000
           Width = 98.267780000000000000
@@ -5675,11 +6057,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CNPJ]')
           ParentFont = False
         end
         object Memo94: TfrxMemoView
+          AllowVectorExport = True
           Left = 439.086890000000000000
           Top = 70.370130000000000000
           Width = 34.015770000000000000
@@ -5690,11 +6074,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 576.913730000000000000
           Top = 70.590600000000000000
           Width = 45.354360000000000000
@@ -5705,11 +6091,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Inscri'#231#227'o:')
           ParentFont = False
         end
         object Memo96: TfrxMemoView
+          AllowVectorExport = True
           Left = 624.488560000000000000
           Top = 70.370130000000000000
           Width = 83.149660000000000000
@@ -5720,11 +6108,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[INSCR]')
           ParentFont = False
         end
         object frxDataPedidoPED_CODIGO: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 6.559060000000000000
           Width = 147.401670000000000000
@@ -5735,12 +6125,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ORDEM DE COMPRA')
           ParentFont = False
         end
         object frxDataPedidoPED_CODIGO1: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.709030000000000000
           Top = 23.677180000000000000
           Width = 147.401670000000000000
@@ -5751,12 +6143,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[frxDBPedido."OCP_CODIGO"]')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 576.724800000000000000
           Top = 53.692950000000000000
           Width = 113.385900000000000000
@@ -5767,17 +6161,20 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fax: [FAX]')
           ParentFont = False
         end
         object Line2: TfrxLineView
+          AllowVectorExport = True
           Top = 116.944960000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object frxDataPedidoPED_DTENTRADA: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 94.267780000000000000
           Width = 272.126160000000000000
@@ -5788,11 +6185,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data: [frxDBPedido."OCP_DTEMIS"]')
           ParentFont = False
         end
         object frxDataPedidoPED_DTSAIDA: TfrxMemoView
+          AllowVectorExport = True
           Left = 377.953000000000000000
           Top = 94.267780000000000000
           Width = 336.378170000000000000
@@ -5803,12 +6202,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Limite para Entrega: [frxDBPedido."OCP_DTENTREGA"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_CONTATO: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.779530000000000000
           Top = 161.299320000000000000
           Width = 204.094620000000000000
@@ -5821,12 +6222,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Contato: [frxDBFornecedor."FOR_CONTATO"]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBFornecedorFOR_FONCONT: TfrxMemoView
+          AllowVectorExport = True
           Left = 219.212740000000000000
           Top = 162.299320000000000000
           Width = 120.944960000000000000
@@ -5839,11 +6242,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fone: [FORFONE]')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 340.157700000000000000
           Top = 162.299320000000000000
           Width = 120.944960000000000000
@@ -5856,11 +6261,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fax: [FORFAX]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_EMAIL: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 162.299320000000000000
           Width = 257.008040000000000000
@@ -5873,11 +6280,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'E-Mail: [frxDBFornecedor."FOR_EMAIL"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.779530000000000000
           Top = 118.944960000000000000
           Width = 476.220780000000000000
@@ -5890,17 +6299,20 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_RAZAO"]')
           ParentFont = False
         end
         object Line3: TfrxLineView
+          AllowVectorExport = True
           Top = 181.196970000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 76.149660000000000000
           Top = 182.551181102362200000
           Width = 41.574830000000000000
@@ -5910,12 +6322,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'QTDE')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 121.504020000000000000
           Top = 182.551181102362200000
           Width = 26.456710000000000000
@@ -5926,12 +6340,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'UND')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 151.181200000000000000
           Top = 182.551181102362200000
           Width = 234.330860000000000000
@@ -5942,12 +6358,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PRODUTO')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 388.189240000000000000
           Top = 182.551181102362200000
           Width = 64.252010000000000000
@@ -5958,12 +6376,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'PRE'#199'O UNIT.')
           ParentFont = False
         end
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Left = 455.543600000000000000
           Top = 182.551181102362200000
           Width = 71.811070000000000000
@@ -5974,12 +6394,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'TOTAL')
           ParentFont = False
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 579.149970000000000000
           Top = 182.551181102362200000
           Width = 22.677180000000000000
@@ -5990,18 +6412,21 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'IPI')
           ParentFont = False
         end
         object Line4: TfrxLineView
+          AllowVectorExport = True
           Top = 199.315090000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object frxDBFornecedorFOR_ENDERE: TfrxMemoView
+          AllowVectorExport = True
           Left = 5.779530000000000000
           Top = 137.622140000000000000
           Width = 449.764070000000000000
@@ -6014,11 +6439,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_ENDERE"] [frxDBFornecedor."FOR_BAIRRO"]')
           ParentFont = False
         end
         object frxDBFornecedorFOR_CIDADE: TfrxMemoView
+          AllowVectorExport = True
           Left = 461.102660000000000000
           Top = 139.622140000000000000
           Width = 257.008040000000000000
@@ -6031,11 +6458,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBFornecedor."FOR_CIDADE"] [frxDBFornecedor."FOR_UF"]')
           ParentFont = False
         end
         object Memo39: TfrxMemoView
+          AllowVectorExport = True
           Left = 6.338590000000000000
           Top = 119.787401570000000000
           Width = 71.811070000000000000
@@ -6046,12 +6475,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'FORNECEDOR:')
           ParentFont = False
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Left = 79.370130000000000000
           Top = 117.165430000000000000
           Width = 75.590600000000000000
@@ -6061,11 +6492,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'COTA'#199#195'O')
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 532.913730000000000000
           Top = 182.551181102362200000
           Width = 41.574830000000000000
@@ -6075,12 +6508,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ICMS ST')
           ParentFont = False
         end
         object frxMemoView1: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 182.551181102362200000
           Width = 68.031540000000000000
@@ -6090,12 +6525,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'C'#211'DIGO')
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 608.504330000000000000
           Top = 182.551181100000000000
           Width = 37.795300000000000000
@@ -6105,12 +6542,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'ICMS')
           ParentFont = False
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 650.079160000000000000
           Top = 182.551181100000000000
           Width = 56.692950000000000000
@@ -6120,12 +6559,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'DESCONTO')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 563.149970000000000000
           Top = 120.944960000000000000
           Width = 154.960730000000000000
@@ -6137,6 +6578,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ: [frxDBFornecedor."FOR_CGC"]')
           ParentFont = False
@@ -6149,6 +6591,7 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Height = 16.251961180000000000
         Top = 279.685220000000000000
         Width = 718.110700000000000000
@@ -6160,6 +6603,7 @@ inherited FormOrdCompra: TFormOrdCompra
         RowCount = 0
         Stretched = True
         object frxDBPedidoItemPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 68.031540000000000000
           Height = 15.118120000000000000
@@ -6170,12 +6614,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[<frxDBPedidoItem."PRDC_REFERENCIA">]')
           ParentFont = False
           WordWrap = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 76.370130000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -6188,6 +6634,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_QTDES"]')
@@ -6195,6 +6642,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 119.944960000000000000
           Width = 22.677180000000000000
           Height = 15.118120000000000000
@@ -6206,12 +6654,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRD_UND"]')
           ParentFont = False
           WordWrap = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 144.960730000000000000
           Width = 241.889920000000000000
           Height = 15.118120000000000000
@@ -6224,11 +6674,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedidoItem."PRD_DESCRI"]')
           ParentFont = False
         end
         object mpreco: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.968770000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -6243,6 +6695,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_PRECO"]')
@@ -6250,6 +6703,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object mtotal_cc: TfrxMemoView
+          AllowVectorExport = True
           Left = 449.764070000000000000
           Width = 83.149660000000000000
           Height = 15.118120000000000000
@@ -6264,6 +6718,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_TOTAL_CC"]')
@@ -6271,6 +6726,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 578.268090000000000000
           Width = 30.236240000000000000
           Height = 15.118120000000000000
@@ -6284,6 +6740,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_IPI"]%')
@@ -6291,6 +6748,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 531.913730000000000000
           Width = 41.574830000000000000
           Height = 15.118120000000000000
@@ -6304,6 +6762,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedidoItem."OCI_PERC_ICMS_ST"]%')
@@ -6311,6 +6770,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 612.283860000000000000
           Width = 34.015770000000000000
           Height = 15.118120000000000000
@@ -6324,6 +6784,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -6333,6 +6794,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 650.079160000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -6341,6 +6803,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[DESCONTO]')
@@ -6349,23 +6812,27 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 317.480520000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Line5: TfrxLineView
+          AllowVectorExport = True
           Left = -1.000000000000000000
           Width = 718.110236220472400000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Line6: TfrxLineView
+          AllowVectorExport = True
           Top = 73.795300000000000000
           Width = 718.110700000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object mtotalgeral: TfrxMemoView
+          AllowVectorExport = True
           Left = 438.323130000000000000
           Top = 4.779530000000000000
           Width = 94.488250000000000000
@@ -6380,6 +6847,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALPROD]')
@@ -6387,6 +6855,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo34: TfrxMemoView
+          AllowVectorExport = True
           Left = 53.913420000000000000
           Top = 4.000000000000000000
           Width = 64.252010000000000000
@@ -6401,6 +6870,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[qtde]')
@@ -6408,6 +6878,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object frxDBPedidoOCP_OBS: TfrxMemoView
+          AllowVectorExport = True
           Left = 16.779530000000000000
           Top = 53.897650000000000000
           Width = 691.653990000000000000
@@ -6421,11 +6892,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedido."OCP_OBS"]')
           ParentFont = False
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Left = 86.000000000000000000
           Top = 48.897650000000000000
           Width = 631.181510000000000000
@@ -6433,6 +6906,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Frame.Typ = [ftTop]
         end
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Left = -54.661410000000000000
           Top = 41.338590000000000000
           Width = 139.842610000000000000
@@ -6443,12 +6917,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Observa'#231#245'es gerais')
           ParentFont = False
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 1.260050000000000000
           Top = 25.456710000000000000
           Width = 718.110236220472400000
@@ -6456,6 +6932,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Frame.Typ = [ftTop]
         end
         object Memo20: TfrxMemoView
+          AllowVectorExport = True
           Left = 241.921460000000000000
           Top = 29.236240000000000000
           Width = 22.677180000000000000
@@ -6466,12 +6943,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'IPI:')
           ParentFont = False
         end
         object Memo21: TfrxMemoView
+          AllowVectorExport = True
           Left = 587.913730000000000000
           Top = 29.236240000000000000
           Width = 45.354360000000000000
@@ -6482,12 +6961,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total:')
           ParentFont = False
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 265.378170000000000000
           Top = 29.236240000000000000
           Width = 64.252010000000000000
@@ -6502,6 +6983,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[IPI]')
@@ -6509,6 +6991,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo32: TfrxMemoView
+          AllowVectorExport = True
           Left = 634.268090000000000000
           Top = 29.236240000000000000
           Width = 83.149660000000000000
@@ -6523,6 +7006,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALCIPI]')
@@ -6530,6 +7014,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Top = 29.236240000000000000
           Width = 37.795300000000000000
           Height = 15.118120000000000000
@@ -6539,12 +7024,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Frete:')
           ParentFont = False
         end
         object Memo36: TfrxMemoView
+          AllowVectorExport = True
           Left = 41.574830000000000000
           Top = 29.236240000000000000
           Width = 64.252010000000000000
@@ -6559,6 +7046,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedido."OCP_FRETE"]')
@@ -6566,6 +7054,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo37: TfrxMemoView
+          AllowVectorExport = True
           Left = 108.149660000000000000
           Top = 29.236240000000000000
           Width = 60.472480000000000000
@@ -6576,12 +7065,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Despesas:')
           ParentFont = False
         end
         object Memo38: TfrxMemoView
+          AllowVectorExport = True
           Left = 168.944960000000000000
           Top = 29.236240000000000000
           Width = 64.252010000000000000
@@ -6596,6 +7087,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxDBPedido."OCP_DESPESAS"]')
@@ -6603,6 +7095,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo41: TfrxMemoView
+          AllowVectorExport = True
           Left = 459.968770000000000000
           Top = 29.236240000000000000
           Width = 52.913420000000000000
@@ -6612,12 +7105,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'ICMS ST:')
           ParentFont = False
         end
         object Memo42: TfrxMemoView
+          AllowVectorExport = True
           Left = 515.102660000000000000
           Top = 29.236240000000000000
           Width = 56.692950000000000000
@@ -6632,6 +7127,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[ICMSST]')
@@ -6639,6 +7135,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 335.244280000000000000
           Top = 29.236240000000000000
           Width = 56.692950000000000000
@@ -6648,12 +7145,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Desconto:')
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 392.716760000000000000
           Top = 29.236240000000000000
           Width = 64.252010000000000000
@@ -6668,6 +7167,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[TOTALDESCONTO]')
@@ -6675,6 +7175,7 @@ inherited FormOrdCompra: TFormOrdCompra
           WordWrap = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779530000000000000
           Width = 49.133890000000000000
@@ -6684,12 +7185,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total Qtde.')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 5.779530000000000000
           Width = 52.913420000000000000
@@ -6699,6 +7202,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Total Prod.')
@@ -6707,11 +7211,13 @@ inherited FormOrdCompra: TFormOrdCompra
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 75.590600000000000000
         Top = 453.543600000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 56.692950000000100000
           Width = 328.819110000000000000
@@ -6721,11 +7227,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '                      Requerente: [frxDBPedido."OCP_REQUERENTE"]')
           ParentFont = False
         end
         object Memo23: TfrxMemoView
+          AllowVectorExport = True
           Left = 385.512060000000000000
           Top = 56.692950000000100000
           Width = 56.692950000000000000
@@ -6736,12 +7244,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Assinatura:')
           ParentFont = False
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 446.559370000000000000
           Top = 56.692950000000100000
           Width = 268.346630000000000000
@@ -6752,6 +7262,7 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             
@@ -6760,6 +7271,7 @@ inherited FormOrdCompra: TFormOrdCompra
           ParentFont = False
         end
         object Memo26: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Width = 109.606370000000000000
           Height = 15.118120000000000000
@@ -6769,12 +7281,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Local de Entrega:')
           ParentFont = False
         end
         object Memo27: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 18.897650000000000000
           Width = 109.606370000000000000
@@ -6785,12 +7299,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Condi'#231#227'o de Pagamento:')
           ParentFont = False
         end
         object Memo28: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 37.795299999999900000
           Width = 109.606370000000000000
@@ -6801,12 +7317,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Transportadora:')
           ParentFont = False
         end
         object frxDBTransportadoraTRP_RAZAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Top = 37.795299999999900000
           Width = 185.196970000000000000
@@ -6821,12 +7339,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBTransportadora."TRP_RAZAO"]')
           ParentFont = False
           WordBreak = True
         end
         object Memo35: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165430000000000000
           Width = 600.945270000000000000
           Height = 15.118120000000000000
@@ -6839,12 +7359,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[LOCALENTREGA]')
           ParentFont = False
           WordWrap = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 381.732530000000000000
           Top = 18.897650000000000000
           Width = 64.252010000000000000
@@ -6855,12 +7377,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Tipo do Frete:')
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 448.559370000000000000
           Top = 18.897650000000000000
           Width = 268.346630000000000000
@@ -6874,12 +7398,14 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TIPOFRETE]')
           ParentFont = False
           WordWrap = False
         end
         object frxDBPedidoOCP_PRAZO: TfrxMemoView
+          AllowVectorExport = True
           Left = 117.165354330000000000
           Top = 18.897637800000000000
           Width = 260.787570000000000000
@@ -6892,11 +7418,13 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBPedido."OCP_PRAZO"]')
           ParentFont = False
         end
         object Memo33: TfrxMemoView
+          AllowVectorExport = True
           Left = 302.362400000000000000
           Top = 37.795299999999900000
           Width = 185.196970000000000000
@@ -6910,18 +7438,21 @@ inherited FormOrdCompra: TFormOrdCompra
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxDBTransportadora."TRP_FONE"]')
           ParentFont = False
         end
       end
       object Line9: TfrxLineView
+        AllowVectorExport = True
         Top = 1024.252630000000000000
         Width = 721.890230000000000000
         Color = clBlack
         Frame.Typ = [ftTop]
       end
       object Memo1: TfrxMemoView
+        AllowVectorExport = True
         Left = 5.677180000000000000
         Top = 1026.811690000000000000
         Width = 170.078850000000000000
@@ -6932,6 +7463,7 @@ inherited FormOrdCompra: TFormOrdCompra
         Font.Height = -8
         Font.Name = 'Arial'
         Font.Style = []
+        Frame.Typ = []
         Memo.UTF8W = (
           'Adjutor ERP - www.novisistemas.com.br')
         ParentFont = False
