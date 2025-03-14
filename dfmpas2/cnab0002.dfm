@@ -37,6 +37,8 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
       Left = 0
       Top = 0
       Caption = 'SelecionaBanco'
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GbConsulta: TGroupBox
         Left = 10
         Top = 4
@@ -1035,6 +1037,8 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
       Left = 0
       Top = 0
       Caption = 'GerarArquivoCNAB'
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GbRetorno: TGroupBox
         Left = 2
         Top = 8
@@ -2579,11 +2583,12 @@ object FrmRetornoCNAB: TFrmRetornoCNAB
     Cedente.TipoInscricao = pJuridica
     Cedente.IdentDistribuicao = tbBancoDistribui
     Cedente.PIX.TipoChavePIX = tchNenhuma
+    Cedente.IntegradoraBoleto = tibNenhum
     NumeroArquivo = 0
     Configuracoes.Arquivos.LogNivel = logNenhum
     Configuracoes.WebService.SSLHttpLib = httpOpenSSL
     Configuracoes.WebService.StoreName = 'My'
-    Configuracoes.WebService.Ambiente = taHomologacao
+    Configuracoes.WebService.Ambiente = tawsHomologacao
     Configuracoes.WebService.Operacao = tpInclui
     Configuracoes.WebService.VersaoDF = '1.2'
     Left = 520

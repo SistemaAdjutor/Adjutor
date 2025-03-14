@@ -2048,6 +2048,8 @@ object FormGeradorCNAB: TFormGeradorCNAB
       Left = 0
       Top = 0
       Caption = 'GerarArquivoCNAB'
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GbCnab: TGroupBox
         Left = -6
         Top = 5
@@ -3331,7 +3333,7 @@ object FormGeradorCNAB: TFormGeradorCNAB
     Left = 722
     Top = 106
     Bitmap = {
-      494C010103000500180010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005001C0010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -3577,11 +3579,12 @@ object FormGeradorCNAB: TFormGeradorCNAB
     Cedente.TipoInscricao = pJuridica
     Cedente.IdentDistribuicao = tbBancoDistribui
     Cedente.PIX.TipoChavePIX = tchNenhuma
+    Cedente.IntegradoraBoleto = tibNenhum
     NumeroArquivo = 0
     Configuracoes.Arquivos.LogNivel = logNenhum
     Configuracoes.WebService.SSLHttpLib = httpOpenSSL
     Configuracoes.WebService.StoreName = 'My'
-    Configuracoes.WebService.Ambiente = taHomologacao
+    Configuracoes.WebService.Ambiente = tawsHomologacao
     Configuracoes.WebService.Operacao = tpInclui
     Configuracoes.WebService.VersaoDF = '1.2'
     Left = 236

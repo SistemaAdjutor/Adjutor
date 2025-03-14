@@ -6070,10 +6070,10 @@ inherited frmNfe40: TfrmNfe40
   end
   object ACBrNFe1: TACBrNFe
     MAIL = ACBrMail1
-    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.SSLLib = libCustom
     Configuracoes.Geral.SSLCryptLib = cryCapicom
     Configuracoes.Geral.SSLHttpLib = httpIndy
-    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.AtualizarXMLCancelado = True
@@ -6110,6 +6110,8 @@ inherited frmNfe40: TfrmNfe40
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     TipoDANFE = tiNFCe
     FastFile = 'C:\Developer\Adjutor\NFe4\relatorio\DANFeNFCe.fr3'
     FastFileEvento = 'C:\Developer\Adjutor\NFe4\relatorio\EventosNFCe.fr3'
@@ -6350,7 +6352,7 @@ inherited frmNfe40: TfrmNfe40
     Left = 152
     Top = 568
     Bitmap = {
-      494C01010E0011001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E001100200010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10373,6 +10375,8 @@ inherited frmNfe40: TfrmNfe40
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     ExibeCampoFatura = False
     Left = 320
     Top = 247
@@ -10413,6 +10417,8 @@ inherited frmNfe40: TfrmNfe40
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     ACBrNFe = ACBrNFe1
     TipoDANFE = tiNFCe
     ImprimeNomeFantasia = True
@@ -10445,6 +10451,8 @@ inherited frmNfe40: TfrmNfe40
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     FormularioContinuo = True
     Left = 304
     Top = 399
@@ -10976,6 +10984,8 @@ inherited frmNfe40: TfrmNfe40
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     ImprimeNomeFantasia = True
     ImprimeQRCodeLateral = True
     EspacoFinal = 50

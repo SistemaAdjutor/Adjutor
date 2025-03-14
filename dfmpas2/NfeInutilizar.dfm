@@ -3,8 +3,8 @@ inherited FrmInutilizar: TFrmInutilizar
   ClientHeight = 561
   ClientWidth = 940
   Constraints.MaxHeight = 646
-  ExplicitWidth = 948
-  ExplicitHeight = 588
+  ExplicitWidth = 956
+  ExplicitHeight = 600
   PixelsPerInch = 96
   TextHeight = 13
   object Splitter1: TSplitter [0]
@@ -541,10 +541,10 @@ inherited FrmInutilizar: TFrmInutilizar
     Top = 302
   end
   object ACBrNFe1: TACBrNFe
-    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.SSLLib = libCustom
     Configuracoes.Geral.SSLCryptLib = cryCapicom
     Configuracoes.Geral.SSLHttpLib = httpIndy
-    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
     Configuracoes.Geral.FormaEmissao = teContingencia
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.VersaoDF = ve200
