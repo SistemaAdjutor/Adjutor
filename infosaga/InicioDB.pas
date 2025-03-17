@@ -3042,8 +3042,8 @@ procedure TDBInicio.LerVersao;
         Close;
       end;
     end;
-    vlVersao.patch := 0;
-    vlVersao.Issues := '2022';
+    vlVersao.patch := 1;
+    vlVersao.Issues := '';
 
     r := TIdIPWatch.Create( nil );
     try

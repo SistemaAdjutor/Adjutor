@@ -1,7 +1,10 @@
-﻿Atualizado em 10/03/2025
+﻿Atualizado em 14/03/2025
 Inicio da versão: 10/03/2025
 
 principal: BSC, Chemvet
   2017 - Revisão Chemvet-Alterar produto no pedido [Chemvet]
   2019 - Erro BSC ->Requisição de material com Synchronization error [BSC]
   
+patch 1: Inquibra, R Pinheiro
+  2020 - Erro Inquibra-> Pedido de Compra Não salva [Inquibra]
+  2022 - Banco Santander : nova regra no código digitável dos boletos [R Pinheiro]
