@@ -15,7 +15,6 @@ inherited FormProduto: TFormProduto
   Position = poDefaultPosOnly
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitLeft = -1377
   ExplicitWidth = 2506
   ExplicitHeight = 1029
   PixelsPerInch = 96
@@ -25,14 +24,12 @@ inherited FormProduto: TFormProduto
     Top = 0
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = Tbs_Detalhe
     Align = alTop
     HotTrack = True
     TabOrder = 0
     TabStop = False
     OnChange = PctrlProdutosChange
-    ExplicitLeft = -32
-    ExplicitTop = -90
     object Tbs_FichaTec: TTabSheet
       Caption = 'Ficha T'#233'cnica'
       ImageIndex = 1
@@ -10213,37 +10210,29 @@ inherited FormProduto: TFormProduto
           Align = alClient
           Color = 16776176
           DataSource = DsEstoqueDetalhe
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick]
           TabOrder = 0
           TitleFont.Charset = ANSI_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -11
           TitleFont.Name = 'Arial'
           TitleFont.Style = []
+          OnTitleClick = DBGrid2TitleClick
           Columns = <
             item
               Expanded = False
-              FieldName = 'OSV_EMISSAO'
+              FieldName = 'IOP_DATA_CONCLUSAO'
               Title.Alignment = taCenter
               Title.Caption = 'Emiss'#227'o'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
+              Width = 90
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'OSV_CODIGO'
+              FieldName = 'IOP_CODIGO'
               Title.Alignment = taCenter
-              Title.Caption = 'Num.O.P'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 68
+              Title.Caption = 'Num. O.P.'
+              Width = 79
               Visible = True
             end
             item
@@ -10251,51 +10240,27 @@ inherited FormProduto: TFormProduto
               FieldName = 'CLI_RAZAO'
               Title.Alignment = taCenter
               Title.Caption = 'Cliente'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 578
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'CC_VARIACAO'
+              FieldName = 'VARIACAO'
               Title.Alignment = taCenter
               Title.Caption = 'Varia'#231#227'o'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 126
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'OSV_STATUS'
+              FieldName = 'IOP_STATUS'
               Title.Alignment = taCenter
               Title.Caption = 'Status'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 93
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'CC_QTDE'
+              FieldName = 'IOP_QTDE_CONCLUIDA'
               Title.Alignment = taCenter
-              Title.Caption = 'Qtde'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 70
+              Title.Caption = 'Qtde.'
               Visible = True
             end>
         end
@@ -12438,7 +12403,6 @@ inherited FormProduto: TFormProduto
     Height = 46
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 0
     object DBText1: TDBText
       Left = 2
       Top = 16
@@ -13574,116 +13538,39 @@ inherited FormProduto: TFormProduto
       OnClick = VeraFichaTcnicaDesteItem1Click
     end
   end
-  object SqlCdsEstoqueDetalhe: TSqlClientDataSet [24]
+  object SqlCdsEstoqueDetalhe_OLD: TSqlClientDataSet [24]
     Aggregates = <>
     AggregatesActive = True
-    DataSet.CommandText = 
-      'Select V1.PED_CODIGO,V1.OSV_CODIGO,V1.PRD_REFER,V1.OSV_QTDE,V1.O' +
-      'SV_QTDE1,V1.OSV_QTDE2,V1.OSV_QTDE3'#13#10',V1.OSV_QTDE4,V1.OSV_QTDE5,V' +
-      '1.OSV_QTDE6,V1.OSV_QTDE7,V1.OSV_QTDE8, V1.OSV_EMISSAO,'#13#10'V1.OSV_S' +
-      'TATUS,P1.PRD_DESCRI,C1.CLI_RAZAO from OSV0001 V1'#13#10'left join PRD0' +
-      '000 P1 on (P1.PRD_REFER = V1.PRD_REFER)'#13#10'Left join cli0000 C1 on' +
-      ' (V1.CLI_CODIGO = C1.CLI_CODIGO)'#13#10'Where V1.OSV_STATUS not in('#39'C'#39 +
-      ','#39'E'#39')'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
-    OnCalcFields = SqlCdsEstoqueDetalheCalcFields
-    CommandText = 
-      'Select V1.PED_CODIGO,V1.OSV_CODIGO,V1.PRD_REFER,V1.OSV_QTDE,V1.O' +
-      'SV_QTDE1,V1.OSV_QTDE2,V1.OSV_QTDE3'#13#10',V1.OSV_QTDE4,V1.OSV_QTDE5,V' +
-      '1.OSV_QTDE6,V1.OSV_QTDE7,V1.OSV_QTDE8, V1.OSV_EMISSAO,'#13#10'V1.OSV_S' +
-      'TATUS,P1.PRD_DESCRI,C1.CLI_RAZAO from OSV0001 V1'#13#10'left join PRD0' +
-      '000 P1 on (P1.PRD_REFER = V1.PRD_REFER)'#13#10'Left join cli0000 C1 on' +
-      ' (V1.CLI_CODIGO = C1.CLI_CODIGO)'#13#10'Where V1.OSV_STATUS not in('#39'C'#39 +
-      ','#39'E'#39')'
+    OnCalcFields = SqlCdsEstoqueDetalhe_OLDCalcFields
+    CommandText = ''
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
     Left = 1094
     Top = 374
-    object SqlCdsEstoqueDetalheOSV_CODIGO: TStringField
-      FieldName = 'OSV_CODIGO'
-      Required = True
-      Size = 8
+    object SqlCdsEstoqueDetalhe_OLDIOP_DATA_CONCLUSAO: TSQLTimeStampField
+      FieldName = 'IOP_DATA_CONCLUSAO'
     end
-    object SqlCdsEstoqueDetalheOSV_QTDE: TFMTBCDField
-      FieldName = 'OSV_QTDE'
-      Precision = 15
+    object SqlCdsEstoqueDetalhe_OLDIOP_CODIGO: TIntegerField
+      FieldName = 'IOP_CODIGO'
     end
-    object SqlCdsEstoqueDetalheOSV_QTDE1: TFMTBCDField
-      FieldName = 'OSV_QTDE1'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE2: TFMTBCDField
-      FieldName = 'OSV_QTDE2'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE3: TFMTBCDField
-      FieldName = 'OSV_QTDE3'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE4: TFMTBCDField
-      FieldName = 'OSV_QTDE4'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE5: TFMTBCDField
-      FieldName = 'OSV_QTDE5'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE6: TFMTBCDField
-      FieldName = 'OSV_QTDE6'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE7: TFMTBCDField
-      FieldName = 'OSV_QTDE7'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE8: TFMTBCDField
-      FieldName = 'OSV_QTDE8'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_STATUS: TStringField
-      FieldName = 'OSV_STATUS'
-      OnGetText = SqlCdsEstoqueDetalheOSV_STATUSGetText
-      Size = 1
-    end
-    object SqlCdsEstoqueDetalheCC_STATUS: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'CC_STATUS'
-      Calculated = True
-    end
-    object SqlCdsEstoqueDetalheCC_QTDE: TCurrencyField
-      FieldKind = fkCalculated
-      FieldName = 'CC_QTDE'
-      DisplayFormat = '#00'
-      currency = False
-      Calculated = True
-    end
-    object SqlCdsEstoqueDetalheCC_VARIACAO: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'CC_VARIACAO'
-      Calculated = True
-    end
-    object SqlCdsEstoqueDetalheOSV_EMISSAO: TSQLTimeStampField
-      DisplayWidth = 10
-      FieldName = 'OSV_EMISSAO'
-    end
-    object SqlCdsEstoqueDetalheCLI_RAZAO: TStringField
+    object SqlCdsEstoqueDetalhe_OLDCLI_RAZAO: TStringField
       FieldName = 'CLI_RAZAO'
-      Size = 55
+      Size = 70
     end
-    object SqlCdsEstoqueDetalhePED_CODIGO: TStringField
-      FieldName = 'PED_CODIGO'
-      Size = 7
+    object SqlCdsEstoqueDetalhe_OLDVARIACAO: TStringField
+      DisplayWidth = 12
+      FieldName = 'VARIACAO'
+      Size = 12
     end
-    object SqlCdsEstoqueDetalhePRD_DESCRI: TStringField
-      FieldName = 'PRD_DESCRI'
-      Size = 100
+    object SqlCdsEstoqueDetalhe_OLDIOP_STATUS: TStringField
+      FieldName = 'IOP_STATUS'
     end
-    object SqlCdsEstoqueDetalhePRD_REFER: TStringField
-      FieldName = 'PRD_REFER'
-      Size = 11
+    object SqlCdsEstoqueDetalhe_OLDIOP_QTDE_CONCLUIDA: TFMTBCDField
+      FieldName = 'IOP_QTDE_CONCLUIDA'
     end
   end
   object DsEstoqueDetalhe: TDataSource [25]
@@ -21949,5 +21836,37 @@ inherited FormProduto: TFormProduto
     DataSet = cdsExporta
     Left = 2280
     Top = 252
+  end
+  object SqlCdsEstoqueDetalhe: TFDQuery
+    BeforeInsert = CdsLotesBeforeInsert
+    BeforePost = CdsLotesBeforePost
+    AfterPost = CdsLotesAfterPost
+    AfterDelete = CdsLotesAfterDelete
+    OnCalcFields = CdsLotesCalcFields
+    CachedUpdates = True
+    Connection = DBInicio.FDACConn
+    Left = 1096
+    Top = 487
+    object SqlCdsEstoqueDetalheIOP_DATA_CONCLUSAO: TSQLTimeStampField
+      FieldName = 'IOP_DATA_CONCLUSAO'
+    end
+    object SqlCdsEstoqueDetalheIOP_CODIGO: TIntegerField
+      FieldName = 'IOP_CODIGO'
+    end
+    object SqlCdsEstoqueDetalheCLI_RAZAO: TStringField
+      FieldName = 'CLI_RAZAO'
+      Size = 70
+    end
+    object SqlCdsEstoqueDetalheVARIACAO: TStringField
+      DisplayWidth = 12
+      FieldName = 'VARIACAO'
+      Size = 12
+    end
+    object SqlCdsEstoqueDetalheIOP_STATUS: TStringField
+      FieldName = 'IOP_STATUS'
+    end
+    object SqlCdsEstoqueDetalheIOP_QTDE_CONCLUIDA: TFMTBCDField
+      FieldName = 'IOP_QTDE_CONCLUIDA'
+    end
   end
 end

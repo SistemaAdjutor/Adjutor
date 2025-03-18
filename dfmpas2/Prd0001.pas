@@ -265,27 +265,10 @@ type
     Tbs_Detalhe : TTabSheet;
     GroupBox10 : TGroupBox;
     DBGrid2 : TDBGrid;
-    SqlCdsEstoqueDetalhe : TSQLClientDataSet;
-    SqlCdsEstoqueDetalheOSV_CODIGO : TStringField;
-    SqlCdsEstoqueDetalheOSV_QTDE : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_QTDE1 : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_QTDE2 : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_QTDE3 : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_QTDE4 : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_QTDE5 : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_QTDE6 : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_QTDE7 : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_QTDE8 : TFMTBCdField;
-    SqlCdsEstoqueDetalheOSV_STATUS : TStringField;
+    SqlCdsEstoqueDetalhe_OLD: TSqlClientDataSet;
     DsEstoqueDetalhe : TDataSource;
-    SqlCdsEstoqueDetalheCC_STATUS : TStringField;
-    SqlCdsEstoqueDetalheCC_QTDE : TCurrencyField;
-    SqlCdsEstoqueDetalheCC_VARIACAO : TStringField;
     Label65 : TLabel;
-    SqlCdsEstoqueDetalheOSV_EMISSAO : TSQLTimeStampField;
-    SqlCdsEstoqueDetalheCLI_RAZAO : TStringField;
     SqlCdsVar : TSQLClientDataSet;
-    SqlCdsEstoqueDetalhePED_CODIGO : TStringField;
     SqlCdsVarPRF_VAR1 : TFMTBCdField;
     SqlCdsVarPRF_VAR2 : TFMTBCdField;
     SqlCdsVarPRF_VAR3 : TFMTBCdField;
@@ -398,7 +381,6 @@ type
     SqlRelProdutosPRD_DESCRI : TStringField;
     SqlItensGradePRD_DESCRI : TStringField;
     SqlCdsMaterialPRD_DESCRI : TStringField;
-    SqlCdsEstoqueDetalhePRD_DESCRI : TStringField;
     CdsSaldos : TClientDataSet;
     CdsSaldosAMX_CODIGO_RET : TStringField;
     CdsSaldosAMX_DESCRI_RET : TStringField;
@@ -549,7 +531,6 @@ type
     SqlCdsProdutoPRD_REFER : TStringField;
     SqlCdsVarPRD_REFER : TStringField;
     SqlCdsMaterialPRD_REFER : TStringField;
-    SqlCdsEstoqueDetalhePRD_REFER : TStringField;
     CdsRelItensPRD_REFER : TStringField;
     CdsRelItensPRD_REFER_ITENS : TStringField;
     Label110 : TLabel;
@@ -2288,6 +2269,19 @@ type
     cdsExportaFOR_CODIGO: TStringField;
     cdsExportaFOR_CGC: TStringField;
     cdsExportaEMP_CODIGO: TStringField;
+    SqlCdsEstoqueDetalhe_OLDIOP_DATA_CONCLUSAO: TSQLTimeStampField;
+    SqlCdsEstoqueDetalhe_OLDIOP_CODIGO: TIntegerField;
+    SqlCdsEstoqueDetalhe_OLDCLI_RAZAO: TStringField;
+    SqlCdsEstoqueDetalhe_OLDVARIACAO: TStringField;
+    SqlCdsEstoqueDetalhe_OLDIOP_STATUS: TStringField;
+    SqlCdsEstoqueDetalhe_OLDIOP_QTDE_CONCLUIDA: TFMTBCDField;
+    SqlCdsEstoqueDetalhe: TFDQuery;
+    SqlCdsEstoqueDetalheIOP_DATA_CONCLUSAO: TSQLTimeStampField;
+    SqlCdsEstoqueDetalheIOP_CODIGO: TIntegerField;
+    SqlCdsEstoqueDetalheCLI_RAZAO: TStringField;
+    SqlCdsEstoqueDetalheVARIACAO: TStringField;
+    SqlCdsEstoqueDetalheIOP_STATUS: TStringField;
+    SqlCdsEstoqueDetalheIOP_QTDE_CONCLUIDA: TFMTBCDField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2337,7 +2331,7 @@ type
     procedure Bit_EquivalenciaClick( Sender : tObject );
     procedure DBGridFichaTecnicaItemKeyDown( Sender : tObject; var Key : Word; Shift : TShiftState );
     procedure DbDtFTC_CRIACAOKeyPress( Sender : tObject; var Key : Char );
-    procedure SqlCdsEstoqueDetalheCalcFields( DataSet : TDataSet );
+    procedure SqlCdsEstoqueDetalhe_OLDCalcFields( DataSet : TDataSet );
     procedure DBECustoliquidoEnter( Sender : tObject );
     procedure DBECustoliquidoExit( Sender : tObject );
     procedure DBEprecoVendaExit( Sender : tObject );
@@ -2558,6 +2552,7 @@ type
     procedure CdsProdutosCalcFields(DataSet: TDataSet);
     procedure bit_ExportaC9Click(Sender: TObject);
     procedure CdsProdutosAfterEdit(DataSet: TDataSet);
+    procedure DBGrid2TitleClick(Column: TColumn);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -6086,11 +6081,10 @@ begin
   CalculaCusto;
 end;
 
-procedure TFormProduto.SqlCdsEstoqueDetalheCalcFields( DataSet : TDataSet );
+procedure TFormProduto.SqlCdsEstoqueDetalhe_OLDCalcFields( DataSet : TDataSet );
 begin
-  { }
 
-  { }
+{
   if SqlCdsEstoqueDetalheOSV_QTDE1.AsCurrency <> 0 then
   begin
     SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR1.AsString;
@@ -6144,7 +6138,7 @@ begin
                     SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR1.AsString;
                     SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE.AsCurrency;
                   end;
-
+}
 end;
 
 procedure TFormProduto.SqlCdsEstoqueDetalheOSV_STATUSGetText( Sender : TField; var Text : string; DisplayText : Boolean );
@@ -6178,11 +6172,45 @@ begin
   { wSQL1 := 'Select V1.OSV_CODIGO,V1.PRD_REFER,V1.OSV_QTDE,V1.OSV_QTDE1,V1.OSV_QTDE2,V1.OSV_QTDE3,V1.OSV_QTDE4,V1.OSV_QTDE5,V1.OSV_QTDE6,V1.OSV_QTDE7,V1.OSV_QTDE8,V1.OSV_STATUS,P1.PRD_DESCRI from OSV0001 V1';
     wSQL2 := ' left join PRD0000 P1 on (P1.PRD_REFER = V1.PRD_REFER) Where V1.OSV_STATUS not in(''C'',''E'') and V1.PRD_REFER = '''+EdtPrd_Refer.Text+'''';
   }
-  wSql1 := 'Select V1.PED_CODIGO,V1.OSV_CODIGO,V1.PRD_REFER,V1.OSV_QTDE,V1.OSV_QTDE1,V1.OSV_QTDE2,V1.OSV_QTDE3,V1.OSV_QTDE4,V1.OSV_QTDE5,V1.OSV_QTDE6,V1.OSV_QTDE7,V1.OSV_QTDE8, V1.OSV_EMISSAO,V1.OSV_STATUS,P1.PRD_DESCRI,C1.CLI_RAZAO from OSV0001 V1';
+  {wSql1 := 'Select V1.PED_CODIGO,V1.OSV_CODIGO,V1.PRD_REFER,V1.OSV_QTDE,V1.OSV_QTDE1,V1.OSV_QTDE2,V1.OSV_QTDE3,V1.OSV_QTDE4,V1.OSV_QTDE5,V1.OSV_QTDE6,V1.OSV_QTDE7,V1.OSV_QTDE8, V1.OSV_EMISSAO,V1.OSV_STATUS,P1.PRD_DESCRI,C1.CLI_RAZAO from OSV0001 V1';
   wSql2 := ' left join PRD0000 P1 on (P1.PRD_REFER = V1.PRD_REFER) Left join cli0000 C1 on (V1.CLI_CODIGO = C1.CLI_CODIGO) Where V1.OSV_STATUS not in(''E'') and V1.PRD_REFER = ''' + EdtPrd_Refer.Text + '''';
+   }
+
+  wSql1 :=
+           '   SELECT ' +
+           '     iop.IOP_DATA_CONCLUSAO, ' +
+           '     iop.IOP_CODIGO, ' +
+           '     cl.CLI_RAZAO, ' +
+           '     CASE ' +
+           '       WHEN PRD_DCVAR7 <> '''' THEN PRD_DCVAR7 ' +
+           '       WHEN PRD_DCVAR6 <> '''' THEN PRD_DCVAR6 ' +
+           '       WHEN PRD_DCVAR5 <> '''' THEN PRD_DCVAR5 ' +
+           '       WHEN PRD_DCVAR4 <> '''' THEN PRD_DCVAR4 ' +
+           '       WHEN PRD_DCVAR3 <> '''' THEN PRD_DCVAR3 ' +
+           '       WHEN PRD_DCVAR2 <> '''' THEN PRD_DCVAR2 ' +
+           '       WHEN PRD_DCVAR1 <> '''' THEN PRD_DCVAR1 ' +
+           '     END Variacao, ' +
+           '     CASE ' +
+           '       WHEN iop.IOP_STATUS = ''L'' THEN ''LIBERADA'' ' +
+           '       WHEN iop.IOP_STATUS = ''E'' THEN ''EM ANDAMENTO'' ' +
+           '       WHEN iop.IOP_STATUS = ''C'' THEN ''CANCELADA'' ' +
+           '       WHEN iop.IOP_STATUS = ''F'' THEN ''FINALIZADA'' ' +
+           '     END IOP_STATUS, ' +
+           '     iop.IOP_QTDE_CONCLUIDA ' +
+           '   FROM ORDEMPRODUCAO op ' +
+           '   JOIN ITEM_ORDEMPRODUCAO iop ON (iop.OPR_CODIGO = op.OPR_CODIGO ) ' +
+           '   JOIN CLI0000 cl ON cl.CLI_CODIGO = op.CLI_CODIGO ' +
+           '   JOIN PRD0000 p ON p.PRD_codigo = iop.PRD_CODIGO ' +
+           '   WHERE p.PRD_REFER = ' + QuotedStr(EdtPrd_Refer.Text)   +
+//           '    AND  iop.IOP_STATUS = ''F'' ' +
+           '   ORDER BY iop.IOP_DATA_CONCLUSAO DESC ' ;
+
+
 
   SqlCdsEstoqueDetalhe.close;
-  SqlCdsEstoqueDetalhe.CommandText := wSql1 + wSql2 + '  ORDER BY V1.OSV_EMISSAO DESC ';
+  SqlCdsEstoqueDetalhe.SQL.Text := wSql1 ;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(SqlCdsEstoqueDetalhe.SQL.Text);
   SqlCdsEstoqueDetalhe.Open;
 
 end;
@@ -8350,6 +8378,12 @@ begin
     ShellExecute( Self.Handle, 'open', Pchar( TempPath ), nil, nil, SW_SHOWNORMAL )
 
   end;
+end;
+
+procedure TFormProduto.DBGrid2TitleClick(Column: TColumn);
+begin
+  inherited;
+  // se não tiver esta rotina, dá erro quando clica no cabeçalho, ordenação a ser implementada
 end;
 
 procedure TFormProduto.DBGrid7DblClick( Sender : tObject );
