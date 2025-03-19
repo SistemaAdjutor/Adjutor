@@ -265,7 +265,6 @@ type
     Tbs_Detalhe : TTabSheet;
     GroupBox10 : TGroupBox;
     DBGrid2 : TDBGrid;
-    SqlCdsEstoqueDetalhe_OLD: TSqlClientDataSet;
     DsEstoqueDetalhe : TDataSource;
     Label65 : TLabel;
     SqlCdsVar : TSQLClientDataSet;
@@ -2269,19 +2268,13 @@ type
     cdsExportaFOR_CODIGO: TStringField;
     cdsExportaFOR_CGC: TStringField;
     cdsExportaEMP_CODIGO: TStringField;
-    SqlCdsEstoqueDetalhe_OLDIOP_DATA_CONCLUSAO: TSQLTimeStampField;
-    SqlCdsEstoqueDetalhe_OLDIOP_CODIGO: TIntegerField;
-    SqlCdsEstoqueDetalhe_OLDCLI_RAZAO: TStringField;
-    SqlCdsEstoqueDetalhe_OLDVARIACAO: TStringField;
-    SqlCdsEstoqueDetalhe_OLDIOP_STATUS: TStringField;
-    SqlCdsEstoqueDetalhe_OLDIOP_QTDE_CONCLUIDA: TFMTBCDField;
     SqlCdsEstoqueDetalhe: TFDQuery;
     SqlCdsEstoqueDetalheIOP_DATA_CONCLUSAO: TSQLTimeStampField;
-    SqlCdsEstoqueDetalheIOP_CODIGO: TIntegerField;
     SqlCdsEstoqueDetalheCLI_RAZAO: TStringField;
     SqlCdsEstoqueDetalheVARIACAO: TStringField;
     SqlCdsEstoqueDetalheIOP_STATUS: TStringField;
     SqlCdsEstoqueDetalheIOP_QTDE_CONCLUIDA: TFMTBCDField;
+    SqlCdsEstoqueDetalheIOP_NORDEM: TStringField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2331,7 +2324,6 @@ type
     procedure Bit_EquivalenciaClick( Sender : tObject );
     procedure DBGridFichaTecnicaItemKeyDown( Sender : tObject; var Key : Word; Shift : TShiftState );
     procedure DbDtFTC_CRIACAOKeyPress( Sender : tObject; var Key : Char );
-    procedure SqlCdsEstoqueDetalhe_OLDCalcFields( DataSet : TDataSet );
     procedure DBECustoliquidoEnter( Sender : tObject );
     procedure DBECustoliquidoExit( Sender : tObject );
     procedure DBEprecoVendaExit( Sender : tObject );
@@ -6081,66 +6073,6 @@ begin
   CalculaCusto;
 end;
 
-procedure TFormProduto.SqlCdsEstoqueDetalhe_OLDCalcFields( DataSet : TDataSet );
-begin
-
-{
-  if SqlCdsEstoqueDetalheOSV_QTDE1.AsCurrency <> 0 then
-  begin
-    SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR1.AsString;
-    SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE1.AsCurrency;
-  end
-  else
-    if SqlCdsEstoqueDetalheOSV_QTDE2.AsCurrency <> 0 then
-    begin
-      SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR2.AsString;
-      SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE2.AsCurrency;
-    end
-    else
-      if SqlCdsEstoqueDetalheOSV_QTDE3.AsCurrency <> 0 then
-      begin
-        SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR3.AsString;
-        SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE3.AsCurrency;
-      end
-      else
-        if SqlCdsEstoqueDetalheOSV_QTDE4.AsCurrency <> 0 then
-        begin
-          SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR4.AsString;
-          SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE4.AsCurrency;
-        end
-        else
-          if SqlCdsEstoqueDetalheOSV_QTDE5.AsCurrency <> 0 then
-          begin
-            SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR5.AsString;
-            SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE5.AsCurrency;
-          end
-          else
-            if SqlCdsEstoqueDetalheOSV_QTDE6.AsCurrency <> 0 then
-            begin
-              SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR6.AsString;
-              SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE6.AsCurrency;
-            end
-            else
-              if SqlCdsEstoqueDetalheOSV_QTDE7.AsCurrency <> 0 then
-              begin
-                SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR7.AsString;
-                SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE7.AsCurrency;
-              end
-              else
-                if SqlCdsEstoqueDetalheOSV_QTDE8.AsCurrency <> 0 then
-                begin
-                  SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR8.AsString;
-                  SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE8.AsCurrency;
-                end
-                Else
-                  if SqlCdsEstoqueDetalheOSV_QTDE.AsCurrency <> 0 then
-                  begin
-                    SqlCdsEstoqueDetalheCC_VARIACAO.AsString := CdsProdutosPRD_DCVAR1.AsString;
-                    SqlCdsEstoqueDetalheCC_QTDE.AsCurrency := SqlCdsEstoqueDetalheOSV_QTDE.AsCurrency;
-                  end;
-}
-end;
-
 procedure TFormProduto.SqlCdsEstoqueDetalheOSV_STATUSGetText( Sender : TField; var Text : string; DisplayText : Boolean );
 begin
   inherited;
@@ -6179,7 +6111,7 @@ begin
   wSql1 :=
            '   SELECT ' +
            '     iop.IOP_DATA_CONCLUSAO, ' +
-           '     iop.IOP_CODIGO, ' +
+           '     iop.IOP_NORDEM, ' +
            '     cl.CLI_RAZAO, ' +
            '     CASE ' +
            '       WHEN PRD_DCVAR7 <> '''' THEN PRD_DCVAR7 ' +
