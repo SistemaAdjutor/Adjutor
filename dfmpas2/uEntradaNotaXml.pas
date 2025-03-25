@@ -588,11 +588,15 @@ begin
          CdsCobranca.First;
       end;
    //Totais
-   edtBaseIcms.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vBC;
-   edtValorIcms.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vICMS;
-   edtBaseIcmsSt.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vBCST;
-   edtValorIcmsST.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vST;
-   edtValorProdutos.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vProd;
+   edtBaseIcms.Value := FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vBC;
+   edtValorIcms.Value := FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vICMS;
+   edtBaseIcmsSt.Value := FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vBCST;
+   edtValorIcmsST.Value := FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vST;
+   if FormNfEntrada.SomaICMSST then
+     edtValorProdutos.Value := FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vProd + FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vST
+   else
+     edtValorProdutos.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vProd;
+
    edtValorFrete.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vFrete;
    edtValorSeguro.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vSeg;
    edtValorDesconto.Value :=FormNfEntrada.acbrnf1.NotasFiscais.Items[0].NFe.Total.ICMSTot.vDesc;

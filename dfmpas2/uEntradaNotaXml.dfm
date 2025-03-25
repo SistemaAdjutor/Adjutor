@@ -1467,7 +1467,7 @@ inherited FrmEntradaNotaXml: TFrmEntradaNotaXml
     object DBCtrlGrid1: TDBCtrlGrid
       Left = 2
       Top = 16
-      Width = 968
+      Width = 969
       Height = 52
       Align = alClient
       ColCount = 3
@@ -1476,7 +1476,6 @@ inherited FrmEntradaNotaXml: TFrmEntradaNotaXml
       PanelWidth = 317
       TabOrder = 0
       RowCount = 2
-      ExplicitWidth = 969
       object dbedtDuplicata: TDBEdit
         Left = 1
         Top = 2
@@ -1792,7 +1791,7 @@ inherited FrmEntradaNotaXml: TFrmEntradaNotaXml
     Left = 695
     Top = 208
     Bitmap = {
-      494C010103000500140010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500180010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -2163,6 +2162,8 @@ inherited FrmEntradaNotaXml: TFrmEntradaNotaXml
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     ExibeCampoFatura = False
     Left = 80
     Top = 287

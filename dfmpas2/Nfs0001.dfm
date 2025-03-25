@@ -4473,10 +4473,10 @@ inherited FormNfEntrada: TFormNfEntrada
     end
   end
   object acbrnf1: TACBrNFe
-    Configuracoes.Geral.SSLLib = libCapicomDelphiSoap
+    Configuracoes.Geral.SSLLib = libCustom
     Configuracoes.Geral.SSLCryptLib = cryCapicom
     Configuracoes.Geral.SSLHttpLib = httpIndy
-    Configuracoes.Geral.SSLXmlSignLib = xsMsXmlCapicom
+    Configuracoes.Geral.SSLXmlSignLib = xsNone
     Configuracoes.Geral.FormatoAlerta = 'TAG:%TAGNIVEL% ID:%ID%/%TAG%(%DESCRICAO%) - %MSG%.'
     Configuracoes.Geral.ValidarDigest = False
     Configuracoes.Geral.VersaoQRCode = veqr000

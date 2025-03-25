@@ -724,6 +724,8 @@ type
     sFornecedorImportado:String;
     vMovimentaEstoque: String;
     AntRecebidoPedCompras : double;
+    SomaICMSST: boolean;
+
     //campos que não aparecem ao editar o item, mas ele guarda ao capturar o xml
     //  o programa ta feito da seguinte maneira, ao editar um item, e depois confirmar
     // ele iternamente vai excluir  e depois incluir de novo  , ele , assim perde os campos "invisíveis"
@@ -1047,7 +1049,10 @@ begin
        end;
 
        // NTotalGeral.Value := (CurTotalProdutos.Value + CurTotalValorIPI.Value + CurrVlFrete.Value + CurrVlDespesas.Value + CurrVlSeguro.Value + CurTotalValorICMSST.Value) - CurrVlDescto.Value; //Format('%n',[WTotal + WVLIPI]);
-       NTotalGeral.Value := (CurTotalProdutos.Value + CurTotalValorIPI.Value + CurrVlFrete.Value + CurrVlDespesas.Value + CurrVlSeguro.Value) - CurrVlDescto.Value;
+       if SomaICMSST then
+          NTotalGeral.Value := (CurTotalProdutos.Value + CurTotalValorIPI.Value + CurrVlFrete.Value + CurrVlDespesas.Value + CurrVlSeguro.Value + CurTotalValorICMSST.Value) - CurrVlDescto.Value
+       else
+          NTotalGeral.Value := (CurTotalProdutos.Value + CurTotalValorIPI.Value + CurrVlFrete.Value + CurrVlDespesas.Value + CurrVlSeguro.Value) - CurrVlDescto.Value;
        LbFreteNaoNota.Visible := False;
 
     if RadComOC.checked  then
@@ -1570,7 +1575,11 @@ begin
     CurrBaseST.Value           := DataMovimento.CdsEnfENF_VLBASESUBTRIB.AsFloat      ;
     CurrVlST.Value             := DataMovimento.CdsEnfENF_VL_SUBTRIB.AsFloat      ;
 
-    NTotalGeral.Value          := DataMovimento.CdsEnfENF_TOT_NOTA.AsFloat      ;
+    if SomaICMSST then
+       NTotalGeral.Value          := DataMovimento.CdsEnfENF_TOT_NOTA.AsFloat +DataMovimento.CdsEnfENF_VL_SUBTRIB.AsFloat
+    else
+       NTotalGeral.Value          := DataMovimento.CdsEnfENF_TOT_NOTA.AsFloat      ;
+
     //Status Projeto Obra
     if (DataMovimento.CdsEnfENF_FECHADO_PROJETO_OBRA.AsString = 'S') then
       begin
