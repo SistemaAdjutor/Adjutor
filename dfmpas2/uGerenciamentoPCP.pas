@@ -2374,7 +2374,7 @@ begin
 
 
      //custos da subordem so tem com geração de subordens
-     cdsBusca.SQL.Text := 'SELECT EI.ENF_IT_NOTANUMBER, ac.ACO_NOME, it.PRF_QTDE, LOT.PRDL_DATA_FABRICACAO, LOT.PRDL_DATA_VALIDADE, IOP.IOP_DTENTREGA, op.*, '+colunas+
+     cdsBusca.SQL.Text := 'SELECT DISTINCT EI.ENF_IT_NOTANUMBER, ac.ACO_NOME, it.PRF_QTDE, LOT.PRDL_DATA_FABRICACAO, LOT.PRDL_DATA_VALIDADE, IOP.IOP_DTENTREGA, op.*, '+colunas+
                           ' COALESCE(CLI_FANTASIA, CLI_RAZAO) CLI_RAZAO, COALESCE(IOP_DATA_AJUSTADA,PE.PED_DTSAIDA)  IOP_DATA_AJUSTADA,  '+
                           ' datediff(DAY,CURRENT_DATE, iop.IOP_DTENTREGA) leftdays, '+
                           ' datediff(DAY,IOP_DATA_INICIO, iop.IOP_DTENTREGA ) deadline, ' +
