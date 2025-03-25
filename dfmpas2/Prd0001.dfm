@@ -15,7 +15,6 @@ inherited FormProduto: TFormProduto
   Position = poDefaultPosOnly
   Visible = True
   OnCloseQuery = FormCloseQuery
-  ExplicitLeft = -1377
   ExplicitWidth = 2506
   ExplicitHeight = 1029
   PixelsPerInch = 96
@@ -25,14 +24,12 @@ inherited FormProduto: TFormProduto
     Top = 0
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = Tbs_FichaTec
     Align = alTop
     HotTrack = True
     TabOrder = 0
     TabStop = False
     OnChange = PctrlProdutosChange
-    ExplicitLeft = -32
-    ExplicitTop = -90
     object Tbs_FichaTec: TTabSheet
       Caption = 'Ficha T'#233'cnica'
       ImageIndex = 1
@@ -1444,11 +1441,14 @@ inherited FormProduto: TFormProduto
             Top = 180
             Width = 93
             Height = 22
+            Hint = 'Custo de Entrada = Custo total / Base da Composi'#231#227'o'
             CriticalPoints.MaxValueIncluded = False
             CriticalPoints.MinValueIncluded = False
             DisplayFormat = dfFloat
             DecimalPlaces = 5
+            ParentShowHint = False
             ReadOnly = True
+            ShowHint = True
             TabOrder = 12
           end
           object currTotalConsumo: TJvValidateEdit
@@ -12438,7 +12438,6 @@ inherited FormProduto: TFormProduto
     Height = 46
     Align = alTop
     TabOrder = 1
-    ExplicitTop = 0
     object DBText1: TDBText
       Left = 2
       Top = 16
@@ -19892,7 +19891,7 @@ inherited FormProduto: TFormProduto
   end
   object JvDBGridWordExport1: TJvDBGridWordExport [111]
     Caption = 'Exporting to MS Word...'
-    Left = 652
+    Left = 604
     Top = 65535
   end
   object JvDBGridExcelExport1: TJvDBGridExcelExport [112]

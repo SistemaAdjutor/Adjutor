@@ -272,7 +272,6 @@ object FormCustoGlobal: TFormCustoGlobal
   end
   object SqlCdsLinha: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'L1.LIN_CODIGO,'#13#10'L1.LIN_DESCRI'#13#10'FROM PRD_LINHA L1'#13#10'ORDER ' +
       'BY '#13#10'L1.LIN_DESCRI'
@@ -282,7 +281,6 @@ object FormCustoGlobal: TFormCustoGlobal
     CommandText = 
       'SELECT'#13#10'L1.LIN_CODIGO,'#13#10'L1.LIN_DESCRI'#13#10'FROM PRD_LINHA L1'#13#10'ORDER ' +
       'BY '#13#10'L1.LIN_DESCRI'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -300,7 +298,6 @@ object FormCustoGlobal: TFormCustoGlobal
   end
   object SqlCdsItensFicha: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'F2.PRD_REFER,'#13#10'F2.PRD_REFER_ITENS,'#13#10'F2.FTI_UC,'#13#10'F2.FTI_M' +
       'ODE1,'#13#10'P1.PRD_PCUSTO'#13#10'FROM FTC_IT01 F2'#13#10'JOIN PRD0000 P1 ON (P1.P' +
@@ -314,7 +311,6 @@ object FormCustoGlobal: TFormCustoGlobal
       'ODE1,'#13#10'P1.PRD_PCUSTO'#13#10'FROM FTC_IT01 F2'#13#10'JOIN PRD0000 P1 ON (P1.P' +
       'RD_REFER = F2.PRD_REFER)'#13#10'ORDER BY '#13#10'F2.PRD_REFER,'#13#10'F2.PRD_REFER' +
       '_ITENS'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -347,7 +343,6 @@ object FormCustoGlobal: TFormCustoGlobal
   end
   object SqlCdsFichaTec: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT'#13#10'F1.PRD_REFER,'#13#10'F1.FTC_TUP'#13#10'FROM FTC0000 F1'#13#10'ORDER BY '#13#10'F' +
       '1.PRD_REFER'
@@ -357,7 +352,6 @@ object FormCustoGlobal: TFormCustoGlobal
     CommandText = 
       'SELECT'#13#10'F1.PRD_REFER,'#13#10'F1.FTC_TUP'#13#10'FROM FTC0000 F1'#13#10'ORDER BY '#13#10'F' +
       '1.PRD_REFER'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -391,7 +385,6 @@ object FormCustoGlobal: TFormCustoGlobal
   end
   object SqlCdsParam: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'select '#13#10'P1.PMT_EMPRESACLASSE,'#13#10'P1.PMT_UNFORMULA'#13#10'from PRMT0001 ' +
       'P1'
@@ -401,7 +394,6 @@ object FormCustoGlobal: TFormCustoGlobal
     CommandText = 
       'select '#13#10'P1.PMT_EMPRESACLASSE,'#13#10'P1.PMT_UNFORMULA'#13#10'from PRMT0001 ' +
       'P1'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -421,7 +413,6 @@ object FormCustoGlobal: TFormCustoGlobal
   end
   object SqlCdsRelCusto: TSqlClientDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
     DataSet.CommandText = 
       'SELECT '#13#10'P1.PRD_DESCRI, '#13#10'P1.PRD_REFER, '#13#10'P1.PRD_PCUSTO, '#13#10'P1.PR' +
       'D_PVENDA, '#13#10'P1.PRD_PMATPRI, '#13#10'P1.PRD_MAOOBRA,'#13#10'P1.LIN_CODIGO'#13#10'FR' +
@@ -434,7 +425,6 @@ object FormCustoGlobal: TFormCustoGlobal
       'SELECT '#13#10'P1.PRD_DESCRI, '#13#10'P1.PRD_REFER, '#13#10'P1.PRD_PCUSTO, '#13#10'P1.PR' +
       'D_PVENDA, '#13#10'P1.PRD_PMATPRI, '#13#10'P1.PRD_MAOOBRA,'#13#10'P1.LIN_CODIGO'#13#10'FR' +
       'OM PRD0000 P1'#13#10'ORDER BY P1.PRD_REFER'
-    DBConnection = DataCadastros.SQLConnection1
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -1110,5 +1100,9 @@ object FormCustoGlobal: TFormCustoGlobal
     end
     object ppParameterList1: TppParameterList
     end
+  end
+  object FDQuery1: TFDQuery
+    Left = 360
+    Top = 239
   end
 end

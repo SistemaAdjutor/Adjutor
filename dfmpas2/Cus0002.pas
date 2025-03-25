@@ -7,7 +7,10 @@ uses
   DBCtrls, Mask, Buttons, ExtCtrls, Grids, DBGrids, Db, DBTables, RwFunc, StdCtrls,
   Provider, SqlExpr,SqlClientDataSet, DBClient, DBLocal, DBLocalS, ppDB, ppProd, ppClass,
   ppReport, ppComm, ppRelatv, ppDBPipe, ppCtrls, ppBands, ppVar, ppPrnabl,
-  ppCache, ComCtrls, Data.DBXFirebird, ppDesignLayer, ppParameter, SimpleDS;
+  ppCache, ComCtrls, Data.DBXFirebird, ppDesignLayer, ppParameter, SimpleDS,
+  FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
+  FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
+  FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
   TFormCustoGlobal = class(TForm)
@@ -83,6 +86,7 @@ type
     SqlCdsItensFichaPRD_CUSTOCOMIPI: TFMTBCDField;
     Memo1: TMemo;
     SqlCdsFichaTecPRD_MARGEMVENDA: TFMTBCDField;
+    FDQuery1: TFDQuery;
     procedure FormShow(Sender: tObject);
     procedure BitProcessarClick(Sender: tObject);
     procedure FormClose(Sender: tObject; var Action: TCloseAction);
@@ -107,6 +111,7 @@ type
     procedure LayOutClasse;
     procedure LayOutRel;
     procedure BuscaFichas;
+    procedure AtualizarPrecoProduto(Referencia: string);
   public
     { Public declarations }
   end;
@@ -168,16 +173,200 @@ begin
     end;
 end;
 
+
+
+procedure TFormCustoGlobal.AtualizarPrecoProduto(Referencia: string);
+var
+  wPrecoUnit, wPreco_Mprima, wValor_Mobra, wPrecoFinal, wPrecoTotal, wFormula: Currency;
+  wPreco_EntradaUnit, wPreco_EntradaTotal, dBaseFormula, wConsumo, wIndice: Double;
+  SqlQuery: TFDQuery;
+begin
+  wPrecoUnit := 0; wPreco_Mprima := 0; wValor_Mobra := 0; wPrecoFinal := 0;
+  wPrecoTotal := 0; wPreco_EntradaUnit := 0; wPreco_EntradaTotal := 0;
+
+  // Cria a consulta
+  SqlQuery := TFDQuery.Create(nil);
+  try
+    SqlQuery.Connection := dbInicio.FDACConn;
+
+    // Consulta os subitens do produto
+    SqlQuery.SQL.Text :=
+      'SELECT F2.PRD_REFER_ITENS, F2.FTI_UC, P1.PRD_PCUSTO, P1.PRD_CUSTOCOMIPI ' +
+      'FROM FTC_IT01 F2 ' +
+      'JOIN PRD0000 P1 ON (P1.PRD_REFER = F2.PRD_REFER_ITENS) ' +
+      'WHERE F2.PRD_REFER = :Referencia';
+    SqlQuery.ParamByName('Referencia').AsString := Referencia;
+    SqlQuery.Open;
+
+    while not SqlQuery.Eof do
+    begin
+      // Calcula os custos do subitem
+      wConsumo := SqlQuery.FieldByName('FTI_UC').AsFloat;
+      wPrecoUnit := SqlQuery.FieldByName('PRD_PCUSTO').AsCurrency * wConsumo;
+      wPreco_EntradaUnit := SqlQuery.FieldByName('PRD_CUSTOCOMIPI').AsCurrency * wConsumo;
+
+      // Acumula os valores para o produto atual
+      wPreco_Mprima := wPreco_Mprima + wPrecoUnit;
+      wPrecoTotal := wPrecoTotal + wPrecoUnit;
+      wPreco_EntradaTotal := wPreco_EntradaTotal + wPreco_EntradaUnit;
+
+      // Chama recursivamente para calcular os custos dos subitens do item atual
+      AtualizarPrecoProduto(SqlQuery.FieldByName('PRD_REFER_ITENS').AsString);
+
+      SqlQuery.Next;
+    end;
+
+    // Obtém a base de cálculo da ficha técnica
+    dBaseFormula := DBInicio.BuscaUmDadoSqlAsCurrency('SELECT FTC_BASEFORMULA FROM FTC0000 WHERE PRD_REFER = ' + QuotedStr(Referencia)  );
+
+    if dBaseFormula > 0 then
+    begin
+      wPreco_EntradaTotal := wPreco_EntradaTotal / dBaseFormula;
+      wPrecoTotal := wPrecoTotal / dBaseFormula;
+    end;
+
+    // Aplica fórmula e índice de preço
+    wPreco_Mprima := (wPreco_Mprima / wFormula);
+
+    if dBaseFormula > 0 then
+      wPrecoFinal := (wPreco_Mprima) / (100 - wIndice) * 100 / dBaseFormula
+    else
+      wPrecoFinal := (wPreco_Mprima) / (100 - wIndice) * 100;
+
+    // Atualiza os preços no banco de dados
+    try
+      DataCadastros.SqlUpdate.Close;
+      DataCadastros.SqlUpdate.SQL.Text :=
+        'UPDATE PRD0000 SET ' +
+        IIF(not DBInicio.Empresa.wPMT_NAO_AUTO_PVENDA,
+            ' PRD_PVENDA=' + QuotedStr(ValorAmericano(FloatToStr(wPrecoFinal))) + ',','') +
+        ' PRD_PMATPRI= ' + QuotedStr(ValorAmericano(FloatToStr(wPreco_Mprima))) +
+        ', PRD_MAOOBRA= ' + QuotedStr(ValorAmericano(FloatToStr(wValor_Mobra))) +
+        ', PRD_PCUSTO = ' + QuotedStr(ValorAmericano(FloatToStr(wPrecoTotal))) +
+        ', PRD_CUSTOCOMIPI = ' + QuotedStr(ValorAmericano(FloatToStr(wPreco_EntradaTotal))) +
+        ' WHERE PRD_REFER = ' + QuotedStr(Referencia);
+      DataCadastros.SqlUpdate.ExecSQL;
+    except
+      on E: EDataBaseError do
+        ShowMessage('Erro ao atualizar o Preço de Custo! ' + E.Message);
+    end;
+
+  finally
+    SqlQuery.Free;
+  end;
+end;
+
+
+
+
+
+
 procedure TFormCustoGlobal.BitProcessarClick(Sender: tObject);
 Var
   wConsumo, dBaseFormula : double;
+  preco_MPrima, Preco_Final, valor_MObra, preco_Total, preco_EntradaTotal,
+  precoTotal: double;
 begin
     if uteis.confirmacao ( 'Esta rotina atualiza os custos de matéria-prima para composição de item com ficha técnica. Confirma ?')= Mrno then
        exit;
+
+
+
+
     Screen.Cursor := crHourGlass;
     SqlCdsFichaTec.First;
     PrBar.Max      := SqlCdsFichaTec.RecordCount;
     PrBar.Position := 0;
+
+    while not SqlCdsFichaTec.Eof do
+    begin
+      AtualizarPrecoProduto(SqlCdsFichaTecPRD_REFER.AsString);
+
+      SqlCdsFichaTec.Next; //
+      continue;            //
+
+
+
+
+
+
+
+          begin
+           dBaseFormula := DBInicio.BuscaUmDadoSqlAsCurrency(SQLDEF('PRODUTOS',' SELECT FTC_BASEFORMULA FROM FTC0000 f ',
+                                                            'WHERE PRD_REFER  = '+QuotedStr(SqlCdsFichaTecPRD_REFER.AsString) ,'',''));
+           if dBaseFormula>0 then
+           begin
+             wPreco_EntradaTotal := wPreco_EntradaTotal/ dBaseFormula;
+             wPrecoTotal := wPrecoTotal/  dBaseFormula;
+           end;
+           {Aplica formula de mil no parametro}
+            wPreco_Mprima :=(wPreco_Mprima/wFormula);
+  //         // aplicar desconto
+  //         wPreco_Mprima:=wPreco_Mprima-(wPreco_MPrima*SqlCdsClasseVCT_DESC.AsCurrency/100);
+           // somar mao-de-obra
+             wValor_Mobra:=SqlCdsFichaTecFTC_TUP.AsCurrency ;
+
+
+
+           // Aplicar indice p/ preco final
+           if dBaseFormula>0 then
+             wPrecoFinal:=(wPreco_Mprima)/(100-wIndice)*100/ dBaseFormula
+           else
+             wPrecoFinal:=(wPreco_Mprima)/(100-wIndice)*100;
+
+//         ERA
+//           if dBaseFormula>0 then
+//             wPrecoFinal:=(wPreco_Mprima+wValor_Mobra)/(100-wIndice)*100/ dBaseFormula
+//           else
+//             wPrecoFinal:=(wPreco_Mprima+wValor_Mobra)/(100-wIndice)*100;
+
+
+
+
+
+           if SqlCdsFichaTecPRD_MARGEMVENDA.AsFloat> 0  then
+               wPrecoFinal :=  (1+ (SqlCdsFichaTecPRD_MARGEMVENDA.AsCurrency/100)) *  wPreco_EntradaTotal ;
+
+
+           // Atualiza precos no cad. de produtos (preco mat.prima e preco custo)
+           try
+
+             wSql1      :=
+             'UPDATE PRD0000 SET '+//PRD_PCUSTO = '+ QuotedStr(ValorAmericano(FloatToStr(wPreco_Mprima+wValor_Mobra)))+
+             IIF(not DBInicio.Empresa.wPMT_NAO_AUTO_PVENDA, ' PRD_PVENDA='+QuotedStr(ValorAmericano(FloatToStr(wPrecoFinal)))+',','' )+
+             ' PRD_PMATPRI= '+QuotedStr(ValorAmericano(FloatToStr(wPreco_Mprima)))+
+             ' ,PRD_MAOOBRA= '+QuotedStr(ValorAmericano(FloatToStr(wValor_Mobra))) +
+             ' ,PRD_PCUSTO = '+QuotedStr(ValorAmericano(FloatToStr(wPrecoTotal))) +
+             ' ,PRD_CUSTOCOMIPI = '+QuotedStr(ValorAmericano(FloatToStr(wPreco_EntradaTotal))) ;
+             wSeleciona := 'WHERE PRD_REFER = '+QuotedStr(SqlCdsFichaTecPRD_REFER.AsString);
+             DataCadastros.sqlUpdate.close;
+             DataCadastros.SqlUpdate.sql.text :=SQLDEF('PRODUTOS',wSql1,wSeleciona,'','');
+             DataCadastros.sqlUpdate.Execsql;
+           except on E:EDataBaseError do
+             uteis.erro  (pchar('Erro ao atualizar o Preço de Custo ! '+e.message));
+           end;
+          end;
+
+
+      PrBar.Position := PrBar.Position + 1;
+      SqlCdsFichaTec.Next;
+    end;
+    Exit;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     SqlCdsFichaTec.DisableControls;
     SqlCdsItensFicha.DisableControls;
     While not SqlCdsFichaTec.Eof do
@@ -224,11 +413,24 @@ begin
            // somar mao-de-obra
              wValor_Mobra:=SqlCdsFichaTecFTC_TUP.AsCurrency ;
 
+
+
            // Aplicar indice p/ preco final
            if dBaseFormula>0 then
-             wPrecoFinal:=(wPreco_Mprima+wValor_Mobra)/(100-wIndice)*100/ dBaseFormula
+             wPrecoFinal:=(wPreco_Mprima)/(100-wIndice)*100/ dBaseFormula
            else
-             wPrecoFinal:=(wPreco_Mprima+wValor_Mobra)/(100-wIndice)*100;
+             wPrecoFinal:=(wPreco_Mprima)/(100-wIndice)*100;
+
+//         ERA
+//           if dBaseFormula>0 then
+//             wPrecoFinal:=(wPreco_Mprima+wValor_Mobra)/(100-wIndice)*100/ dBaseFormula
+//           else
+//             wPrecoFinal:=(wPreco_Mprima+wValor_Mobra)/(100-wIndice)*100;
+
+
+
+
+
            if SqlCdsFichaTecPRD_MARGEMVENDA.AsFloat> 0  then
                wPrecoFinal :=  (1+ (SqlCdsFichaTecPRD_MARGEMVENDA.AsCurrency/100)) *  wPreco_EntradaTotal ;
 
