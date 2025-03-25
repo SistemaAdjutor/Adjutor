@@ -1664,6 +1664,7 @@ begin
   lista.Add('CCT_DESCRICAO');
   lista.Add('PAG_NUMDOC');
   lista.Add('PCX_DESCRI');
+  lista.Add('EMP_CODIGO');
 
   CriaCSV(dsExportaExcel, lista, Self);
 
