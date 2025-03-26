@@ -111,7 +111,7 @@ type
     procedure LayOutClasse;
     procedure LayOutRel;
     procedure BuscaFichas;
-    procedure AtualizarPrecoProduto(Referencia: string);
+    function AtualizarPrecoProduto(Referencia: string; ftiUC: double): TArray<Double>;
   public
     { Public declarations }
   end;
@@ -174,85 +174,72 @@ begin
 end;
 
 
-
-procedure TFormCustoGlobal.AtualizarPrecoProduto(Referencia: string);
+function TFormCustoGlobal.AtualizarPrecoProduto(Referencia: string; ftiUC: double): TArray<Double>;
 var
-  wPrecoUnit, wPreco_Mprima, wValor_Mobra, wPrecoFinal, wPrecoTotal, wFormula: Currency;
-  wPreco_EntradaUnit, wPreco_EntradaTotal, dBaseFormula, wConsumo, wIndice: Double;
-  SqlQuery: TFDQuery;
+  sqlFichaTecnica, sqlProduto: TFDQuery;
+  MateriaPrima: TArray<Double>;
+  Custo, CustoIPI, UC: double;
 begin
-  wPrecoUnit := 0; wPreco_Mprima := 0; wValor_Mobra := 0; wPrecoFinal := 0;
-  wPrecoTotal := 0; wPreco_EntradaUnit := 0; wPreco_EntradaTotal := 0;
-
   // Cria a consulta
-  SqlQuery := TFDQuery.Create(nil);
+  sqlFichaTecnica := TFDQuery.Create(nil);
+  sqlProduto := TFDQuery.Create(nil);
   try
-    SqlQuery.Connection := dbInicio.FDACConn;
+    sqlFichaTecnica.Connection := dbInicio.FDACConn;
+    sqlProduto.Connection := dbInicio.FDACConn;
+    Custo := 0;
+    CustoIPI := 0;
+    UC := 0;
 
     // Consulta os subitens do produto
-    SqlQuery.SQL.Text :=
+    sqlFichaTecnica.SQL.Text :=
       'SELECT F2.PRD_REFER_ITENS, F2.FTI_UC, P1.PRD_PCUSTO, P1.PRD_CUSTOCOMIPI ' +
       'FROM FTC_IT01 F2 ' +
       'JOIN PRD0000 P1 ON (P1.PRD_REFER = F2.PRD_REFER_ITENS) ' +
       'WHERE F2.PRD_REFER = :Referencia';
-    SqlQuery.ParamByName('Referencia').AsString := Referencia;
-    SqlQuery.Open;
+    sqlFichaTecnica.ParamByName('Referencia').AsString := Referencia;
+    sqlFichaTecnica.Open;
 
-    while not SqlQuery.Eof do
+    // Varre os subitens do produto
+    if sqlFichaTecnica.RecordCount = 0 then
     begin
-      // Calcula os custos do subitem
-      wConsumo := SqlQuery.FieldByName('FTI_UC').AsFloat;
-      wPrecoUnit := SqlQuery.FieldByName('PRD_PCUSTO').AsCurrency * wConsumo;
-      wPreco_EntradaUnit := SqlQuery.FieldByName('PRD_CUSTOCOMIPI').AsCurrency * wConsumo;
 
-      // Acumula os valores para o produto atual
-      wPreco_Mprima := wPreco_Mprima + wPrecoUnit;
-      wPrecoTotal := wPrecoTotal + wPrecoUnit;
-      wPreco_EntradaTotal := wPreco_EntradaTotal + wPreco_EntradaUnit;
 
-      // Chama recursivamente para calcular os custos dos subitens do item atual
-      AtualizarPrecoProduto(SqlQuery.FieldByName('PRD_REFER_ITENS').AsString);
+      sqlProduto.SQL.Text :=
+        'SELECT PRD_PCUSTO, PRD_CUSTOCOMIPI ' +
+        'FROM PRD0000 P1 ' +
+        'WHERE P1.PRD_REFER = :Referencia';
+      sqlProduto.ParamByName('Referencia').AsString := Referencia;
+      sqlProduto.Open;
 
-      SqlQuery.Next;
-    end;
+      SetLength(Result, 3);
+      Result[0] := sqlProduto.FieldByName('PRD_PCUSTO').AsCurrency * ftiUC ;
+      Result[1] := sqlProduto.FieldByName('PRD_CUSTOCOMIPI').AsCurrency * ftiUC ;
+      Result[2] := ftiUC;
 
-    // Obtém a base de cálculo da ficha técnica
-    dBaseFormula := DBInicio.BuscaUmDadoSqlAsCurrency('SELECT FTC_BASEFORMULA FROM FTC0000 WHERE PRD_REFER = ' + QuotedStr(Referencia)  );
-
-    if dBaseFormula > 0 then
-    begin
-      wPreco_EntradaTotal := wPreco_EntradaTotal / dBaseFormula;
-      wPrecoTotal := wPrecoTotal / dBaseFormula;
-    end;
-
-    // Aplica fórmula e índice de preço
-    wPreco_Mprima := (wPreco_Mprima / wFormula);
-
-    if dBaseFormula > 0 then
-      wPrecoFinal := (wPreco_Mprima) / (100 - wIndice) * 100 / dBaseFormula
+    end
     else
-      wPrecoFinal := (wPreco_Mprima) / (100 - wIndice) * 100;
+    begin
+      UC := ftiUC;
+      while not sqlFichaTecnica.Eof do
+      begin
+        MateriaPrima := AtualizarPrecoProduto(sqlFichaTecnica.FieldByName('PRD_REFER_ITENS').AsString, sqlFichaTecnica.FieldByName('FTI_UC').AsFloat);
 
-    // Atualiza os preços no banco de dados
-    try
-      DataCadastros.SqlUpdate.Close;
-      DataCadastros.SqlUpdate.SQL.Text :=
-        'UPDATE PRD0000 SET ' +
-        IIF(not DBInicio.Empresa.wPMT_NAO_AUTO_PVENDA,
-            ' PRD_PVENDA=' + QuotedStr(ValorAmericano(FloatToStr(wPrecoFinal))) + ',','') +
-        ' PRD_PMATPRI= ' + QuotedStr(ValorAmericano(FloatToStr(wPreco_Mprima))) +
-        ', PRD_MAOOBRA= ' + QuotedStr(ValorAmericano(FloatToStr(wValor_Mobra))) +
-        ', PRD_PCUSTO = ' + QuotedStr(ValorAmericano(FloatToStr(wPrecoTotal))) +
-        ', PRD_CUSTOCOMIPI = ' + QuotedStr(ValorAmericano(FloatToStr(wPreco_EntradaTotal))) +
-        ' WHERE PRD_REFER = ' + QuotedStr(Referencia);
-      DataCadastros.SqlUpdate.ExecSQL;
-    except
-      on E: EDataBaseError do
-        ShowMessage('Erro ao atualizar o Preço de Custo! ' + E.Message);
+        Custo := Custo +  MateriaPrima[0];
+        CustoIPI := CustoIPI + MateriaPrima[1];
+
+
+
+
+        sqlFichaTecnica.Next;
+      end;
+      SetLength(Result, 3);
+      Result[0] := Custo;
+      Result[1] := CustoIPI;
+      Result[2] := UC;
     end;
-
   finally
-    SqlQuery.Free;
+    sqlFichaTecnica.Free;
+    sqlProduto.Free;
   end;
 end;
 
@@ -261,11 +248,12 @@ end;
 
 
 
+
 procedure TFormCustoGlobal.BitProcessarClick(Sender: tObject);
 Var
-  wConsumo, dBaseFormula : double;
-  preco_MPrima, Preco_Final, valor_MObra, preco_Total, preco_EntradaTotal,
-  precoTotal: double;
+  wConsumo, dBaseFormula, preco_MPrima, Preco_Final,
+  valor_MObra, preco_Total, preco_EntradaTotal, precoTotal: double;
+  MateriaPrima: TArray<Double>;
 begin
     if uteis.confirmacao ( 'Esta rotina atualiza os custos de matéria-prima para composição de item com ficha técnica. Confirma ?')= Mrno then
        exit;
@@ -280,7 +268,9 @@ begin
 
     while not SqlCdsFichaTec.Eof do
     begin
-      AtualizarPrecoProduto(SqlCdsFichaTecPRD_REFER.AsString);
+      dBaseFormula := DBInicio.BuscaUmDadoSqlAsCurrency(SQLDEF('PRODUTOS',' SELECT FTC_BASEFORMULA FROM FTC0000 f ',
+                                                            'WHERE PRD_REFER  = '+QuotedStr(SqlCdsFichaTecPRD_REFER.AsString) ,'',''));
+        MateriaPrima := AtualizarPrecoProduto(SqlCdsFichaTecPRD_REFER.AsString, dBaseFormula);
 
       SqlCdsFichaTec.Next; //
       continue;            //
