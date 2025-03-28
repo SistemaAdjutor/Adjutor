@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 0
     Width = 2500
     Height = 566
-    ActivePage = Tbs_FichaTec
+    ActivePage = Tbs_Produtos
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -6114,7 +6114,7 @@ inherited FormProduto: TFormProduto
         Width = 875
         Height = 188
         Cursor = crHandPoint
-        ActivePage = TbS_Fornec
+        ActivePage = TabSheet3
         HotTrack = True
         TabOrder = 2
         OnChange = PgCtrl_ProdutosChange
@@ -6348,7 +6348,6 @@ inherited FormProduto: TFormProduto
                 DataField = 'PRD_MARGEMVENDA'
                 DataSource = DsProdutos
                 ParentShowHint = False
-                ReadOnly = True
                 ShowHint = True
                 TabOrder = 0
                 OnEnter = DBEmargemVendaEnter

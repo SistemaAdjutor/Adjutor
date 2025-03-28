@@ -372,6 +372,10 @@ object FormCustoGlobal: TFormCustoGlobal
       EditFormat = '#,###0.0000'
       Precision = 15
     end
+    object SqlCdsFichaTecLIN_CODIGO: TStringField
+      FieldName = 'LIN_CODIGO'
+      Size = 3
+    end
   end
   object DsItensFicha: TDataSource
     DataSet = SqlCdsItensFicha

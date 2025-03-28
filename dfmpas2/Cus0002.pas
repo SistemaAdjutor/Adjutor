@@ -87,6 +87,7 @@ type
     Memo1: TMemo;
     SqlCdsFichaTecPRD_MARGEMVENDA: TFMTBCDField;
     FDQuery1: TFDQuery;
+    SqlCdsFichaTecLIN_CODIGO: TStringField;
     procedure FormShow(Sender: tObject);
     procedure BitProcessarClick(Sender: tObject);
     procedure FormClose(Sender: tObject; var Action: TCloseAction);
@@ -354,7 +355,12 @@ begin
     if uteis.confirmacao ( 'Esta rotina atualiza os custos de matéria-prima para composição de item com ficha técnica. Confirma ?')= Mrno then
        exit;
 
-
+    if RadSegmento.Checked then
+    begin
+      SqlCdsFichaTec.Filtered := False;
+      SqlCdsFichaTec.Filter := 'LIN_CODIGO = ' + QuotedStr(EdtSeg.Text);
+      SqlCdsFichaTec.Filtered := True;
+    end;
 
 
     Screen.Cursor := crHourGlass;
@@ -364,48 +370,53 @@ begin
 
     while not SqlCdsFichaTec.Eof do
     begin
-       MateriaPrima := AtualizarPrecoProduto(SqlCdsFichaTecPRD_REFER.AsString, '', 0);
+         MateriaPrima := AtualizarPrecoProduto(SqlCdsFichaTecPRD_REFER.AsString, '', 0);
 
+         dBaseFormula := DBInicio.BuscaUmDadoSqlAsCurrency(SQLDEF('PRODUTOS',' SELECT FTC_BASEFORMULA FROM FTC0000 f ',
+                                                            'WHERE PRD_REFER  = ' + QuotedStr(SqlCdsFichaTecPRD_REFER.AsString) ,'',''));
 
-       dBaseFormula := DBInicio.BuscaUmDadoSqlAsCurrency(SQLDEF('PRODUTOS',' SELECT FTC_BASEFORMULA FROM FTC0000 f ',
-                                                            'WHERE PRD_REFER  = '+QuotedStr(SqlCdsFichaTecPRD_REFER.AsString) ,'',''));
+         wPreco_Mprima := MateriaPrima[0] / dBaseFormula; // PRD_PCUSTO
+         wPrecoTotal := MateriaPrima[0] / dBaseFormula; // PRD_PCUSTO
+         wPreco_EntradaTotal := MateriaPrima[1] / dBaseFormula; // PRD_CUSTOCOMIPI
 
-          wPreco_Mprima := MateriaPrima[0] / dBaseFormula; // PRD_PCUSTO
-          wPrecoTotal := MateriaPrima[0] / dBaseFormula; // PRD_PCUSTO
-          wPreco_EntradaTotal := MateriaPrima[1] / dBaseFormula; // PRD_CUSTOCOMIPI
-
-          if dBaseFormula>0 then
-            wPrecoFinal := MateriaPrima[1] / (100 - wIndice) * 100/ dBaseFormula
-          else
-            wPrecoFinal := MateriaPrima[1] / (100 - wIndice)*100;
+         wIndice := SqlCdsFichaTecPRD_MARGEMVENDA.AsFloat;
 
 
 
 
-           try
-
-             wSql1      :=
-             'UPDATE PRD0000 SET '+
-             IIF(not DBInicio.Empresa.wPMT_NAO_AUTO_PVENDA, ' PRD_PVENDA='+QuotedStr(ValorAmericano(FloatToStr(wPrecoFinal)))+',','' )+
-             ' PRD_PMATPRI= '+QuotedStr(ValorAmericano(FloatToStr(wPreco_Mprima)))+
-             ' ,PRD_PCUSTO = '+QuotedStr(ValorAmericano(FloatToStr(wPrecoTotal))) +
-             ' ,PRD_CUSTOCOMIPI = '+QuotedStr(ValorAmericano(FloatToStr(wPreco_EntradaTotal))) ;
-             wSeleciona := 'WHERE PRD_REFER = '+QuotedStr(SqlCdsFichaTecPRD_REFER.AsString);
-             DataCadastros.sqlUpdate.close;
-             DataCadastros.SqlUpdate.sql.text :=SQLDEF('PRODUTOS',wSql1,wSeleciona,'','');
-             DataCadastros.sqlUpdate.Execsql;
-           except on E:EDataBaseError do
-             uteis.erro  (pchar('Erro ao atualizar o Preço de Custo ! '+e.message));
-           end;
+         if dBaseFormula > 0 then
+           wPrecoFinal := (MateriaPrima[1] + ((MateriaPrima[1] / 100) * wIndice)) / dBaseFormula
+         else
+           wPrecoFinal := (MateriaPrima[1] + ((MateriaPrima[1] / 100) * wIndice)) ;
 
 
 
 
-        PrBar.Position := PrBar.Position + 1;
-        SqlCdsFichaTec.Next;
+         try
+
+           wSql1      :=
+           'UPDATE PRD0000 SET '+
+           IIF(not DBInicio.Empresa.wPMT_NAO_AUTO_PVENDA, ' PRD_PVENDA='+QuotedStr(ValorAmericano(FloatToStr(wPrecoFinal)))+',','' )+
+           ' PRD_PMATPRI= '+QuotedStr(ValorAmericano(FloatToStr(wPreco_Mprima)))+
+           ' ,PRD_PCUSTO = '+QuotedStr(ValorAmericano(FloatToStr(wPrecoTotal))) +
+           ' ,PRD_CUSTOCOMIPI = '+QuotedStr(ValorAmericano(FloatToStr(wPreco_EntradaTotal))) ;
+           wSeleciona := 'WHERE PRD_REFER = '+QuotedStr(SqlCdsFichaTecPRD_REFER.AsString);
+           DataCadastros.sqlUpdate.close;
+           DataCadastros.SqlUpdate.sql.text :=SQLDEF('PRODUTOS',wSql1,wSeleciona,'','');
+           DataCadastros.sqlUpdate.Execsql;
+         except on E:EDataBaseError do
+           uteis.erro  (pchar('Erro ao atualizar o Preço de Custo ! '+e.message));
+         end;
+
+
+
+
+         PrBar.Position := PrBar.Position + 1;
+         SqlCdsFichaTec.Next;
      end;
-    PrBar.Position := 0; 
+    PrBar.Position := 0;
     SqlCdsItensFicha.EnableControls;
+    SqlCdsFichaTec.Filtered := False;
     SqlCdsFichaTec.EnableControls;
     SqlCdsFichaTec.Refresh;
     SqlCdsFichaTec.First;
@@ -418,7 +429,7 @@ end;
 procedure TFormCustoGlobal.BuscaFichas;
 begin
   SqlCdsFichaTec.Close;
-  SqlCdsFichaTec.CommandText := SQLDEF('PRODUTOS','SELECT F1.PRD_REFER,F1.FTC_TUP, P1.prd_margemvenda FROM FTC0000 F1 join PRD0000 P1 ON (P1.PRD_REFER = F1.PRD_REFER) ','','F1.PRD_REFER','F1.');
+  SqlCdsFichaTec.CommandText := SQLDEF('PRODUTOS','SELECT F1.PRD_REFER,F1.FTC_TUP, P1.prd_margemvenda, P1.LIN_CODIGO FROM FTC0000 F1 join PRD0000 P1 ON (P1.PRD_REFER = F1.PRD_REFER) ','','F1.PRD_REFER','F1.');
   SqlCdsFichaTec.Open;
 
 end;
