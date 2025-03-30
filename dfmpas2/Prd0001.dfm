@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 0
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = Tbs_Detalhe
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -10212,37 +10212,29 @@ inherited FormProduto: TFormProduto
           Align = alClient
           Color = 16776176
           DataSource = DsEstoqueDetalhe
-          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit]
+          Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgCancelOnExit, dgTitleClick]
           TabOrder = 0
           TitleFont.Charset = ANSI_CHARSET
           TitleFont.Color = clWindowText
           TitleFont.Height = -11
           TitleFont.Name = 'Arial'
           TitleFont.Style = []
+          OnTitleClick = DBGrid2TitleClick
           Columns = <
             item
               Expanded = False
-              FieldName = 'OSV_EMISSAO'
+              FieldName = 'IOP_DATA_CONCLUSAO'
               Title.Alignment = taCenter
               Title.Caption = 'Emiss'#227'o'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
+              Width = 90
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'OSV_CODIGO'
+              FieldName = 'IOP_NORDEM'
               Title.Alignment = taCenter
-              Title.Caption = 'Num.O.P'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 68
+              Title.Caption = 'Num. O.P.'
+              Width = 79
               Visible = True
             end
             item
@@ -10250,51 +10242,27 @@ inherited FormProduto: TFormProduto
               FieldName = 'CLI_RAZAO'
               Title.Alignment = taCenter
               Title.Caption = 'Cliente'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 578
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'CC_VARIACAO'
+              FieldName = 'VARIACAO'
               Title.Alignment = taCenter
               Title.Caption = 'Varia'#231#227'o'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 126
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'OSV_STATUS'
+              FieldName = 'IOP_STATUS'
               Title.Alignment = taCenter
               Title.Caption = 'Status'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 93
               Visible = True
             end
             item
               Expanded = False
-              FieldName = 'CC_QTDE'
+              FieldName = 'IOP_QTDE_CONCLUIDA'
               Title.Alignment = taCenter
-              Title.Caption = 'Qtde'
-              Title.Font.Charset = ANSI_CHARSET
-              Title.Font.Color = clBlack
-              Title.Font.Height = -11
-              Title.Font.Name = 'Arial'
-              Title.Font.Style = [fsBold]
-              Width = 70
+              Title.Caption = 'Qtde.'
               Visible = True
             end>
         end
@@ -13572,124 +13540,12 @@ inherited FormProduto: TFormProduto
       OnClick = VeraFichaTcnicaDesteItem1Click
     end
   end
-  object SqlCdsEstoqueDetalhe: TSqlClientDataSet [24]
-    Aggregates = <>
-    AggregatesActive = True
-    DataSet.CommandText = 
-      'Select V1.PED_CODIGO,V1.OSV_CODIGO,V1.PRD_REFER,V1.OSV_QTDE,V1.O' +
-      'SV_QTDE1,V1.OSV_QTDE2,V1.OSV_QTDE3'#13#10',V1.OSV_QTDE4,V1.OSV_QTDE5,V' +
-      '1.OSV_QTDE6,V1.OSV_QTDE7,V1.OSV_QTDE8, V1.OSV_EMISSAO,'#13#10'V1.OSV_S' +
-      'TATUS,P1.PRD_DESCRI,C1.CLI_RAZAO from OSV0001 V1'#13#10'left join PRD0' +
-      '000 P1 on (P1.PRD_REFER = V1.PRD_REFER)'#13#10'Left join cli0000 C1 on' +
-      ' (V1.CLI_CODIGO = C1.CLI_CODIGO)'#13#10'Where V1.OSV_STATUS not in('#39'C'#39 +
-      ','#39'E'#39')'
-    DataSet.MaxBlobSize = -1
-    DataSet.Params = <>
-    Params = <>
-    OnCalcFields = SqlCdsEstoqueDetalheCalcFields
-    CommandText = 
-      'Select V1.PED_CODIGO,V1.OSV_CODIGO,V1.PRD_REFER,V1.OSV_QTDE,V1.O' +
-      'SV_QTDE1,V1.OSV_QTDE2,V1.OSV_QTDE3'#13#10',V1.OSV_QTDE4,V1.OSV_QTDE5,V' +
-      '1.OSV_QTDE6,V1.OSV_QTDE7,V1.OSV_QTDE8, V1.OSV_EMISSAO,'#13#10'V1.OSV_S' +
-      'TATUS,P1.PRD_DESCRI,C1.CLI_RAZAO from OSV0001 V1'#13#10'left join PRD0' +
-      '000 P1 on (P1.PRD_REFER = V1.PRD_REFER)'#13#10'Left join cli0000 C1 on' +
-      ' (V1.CLI_CODIGO = C1.CLI_CODIGO)'#13#10'Where V1.OSV_STATUS not in('#39'C'#39 +
-      ','#39'E'#39')'
-    Options = [poAllowCommandText]
-    NoMetadata = False
-    UpdateMode = upWhereAll
-    Left = 1094
-    Top = 374
-    object SqlCdsEstoqueDetalheOSV_CODIGO: TStringField
-      FieldName = 'OSV_CODIGO'
-      Required = True
-      Size = 8
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE: TFMTBCDField
-      FieldName = 'OSV_QTDE'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE1: TFMTBCDField
-      FieldName = 'OSV_QTDE1'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE2: TFMTBCDField
-      FieldName = 'OSV_QTDE2'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE3: TFMTBCDField
-      FieldName = 'OSV_QTDE3'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE4: TFMTBCDField
-      FieldName = 'OSV_QTDE4'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE5: TFMTBCDField
-      FieldName = 'OSV_QTDE5'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE6: TFMTBCDField
-      FieldName = 'OSV_QTDE6'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE7: TFMTBCDField
-      FieldName = 'OSV_QTDE7'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_QTDE8: TFMTBCDField
-      FieldName = 'OSV_QTDE8'
-      Precision = 15
-    end
-    object SqlCdsEstoqueDetalheOSV_STATUS: TStringField
-      FieldName = 'OSV_STATUS'
-      OnGetText = SqlCdsEstoqueDetalheOSV_STATUSGetText
-      Size = 1
-    end
-    object SqlCdsEstoqueDetalheCC_STATUS: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'CC_STATUS'
-      Calculated = True
-    end
-    object SqlCdsEstoqueDetalheCC_QTDE: TCurrencyField
-      FieldKind = fkCalculated
-      FieldName = 'CC_QTDE'
-      DisplayFormat = '#00'
-      currency = False
-      Calculated = True
-    end
-    object SqlCdsEstoqueDetalheCC_VARIACAO: TStringField
-      FieldKind = fkCalculated
-      FieldName = 'CC_VARIACAO'
-      Calculated = True
-    end
-    object SqlCdsEstoqueDetalheOSV_EMISSAO: TSQLTimeStampField
-      DisplayWidth = 10
-      FieldName = 'OSV_EMISSAO'
-    end
-    object SqlCdsEstoqueDetalheCLI_RAZAO: TStringField
-      FieldName = 'CLI_RAZAO'
-      Size = 55
-    end
-    object SqlCdsEstoqueDetalhePED_CODIGO: TStringField
-      FieldName = 'PED_CODIGO'
-      Size = 7
-    end
-    object SqlCdsEstoqueDetalhePRD_DESCRI: TStringField
-      FieldName = 'PRD_DESCRI'
-      Size = 100
-    end
-    object SqlCdsEstoqueDetalhePRD_REFER: TStringField
-      FieldName = 'PRD_REFER'
-      Size = 11
-    end
-  end
-  object DsEstoqueDetalhe: TDataSource [25]
+  object DsEstoqueDetalhe: TDataSource [24]
     DataSet = SqlCdsEstoqueDetalhe
     Left = 1098
     Top = 432
   end
-  object SqlcdsVar: TSqlClientDataSet [26]
+  object SqlcdsVar: TSqlClientDataSet [25]
     Aggregates = <>
     DataSet.CommandText = 
       'select '#13#10'P1.PED_CODIGO,P1.PRF_VAR1,P1.PRF_VAR2,P1.PRF_VAR3,P1.PR' +
@@ -13763,12 +13619,12 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRD_REFER'
     end
   end
-  object DataSource1: TDataSource [27]
+  object DataSource1: TDataSource [26]
     DataSet = SqlProdutos
     Left = 2190
     Top = 564
   end
-  object ppDBPipeline1: TppDBPipeline [28]
+  object ppDBPipeline1: TppDBPipeline [27]
     DataSource = DsRelProduto
     UserName = 'DBPipeline1'
     Left = 1745
@@ -14044,7 +13900,7 @@ inherited FormProduto: TFormProduto
       Sortable = False
     end
   end
-  object ppDBPipeline2: TppDBPipeline [29]
+  object ppDBPipeline2: TppDBPipeline [28]
     DataSource = DsRelItens
     UserName = 'DBPipeline2'
     Left = 1784
@@ -14230,7 +14086,7 @@ inherited FormProduto: TFormProduto
       Sortable = False
     end
   end
-  object ppRelFichaTec: TppReport [30]
+  object ppRelFichaTec: TppReport [29]
     AutoStop = False
     DataPipeline = ppDBPipeline2
     PassSetting = psTwoPass
@@ -15700,7 +15556,7 @@ inherited FormProduto: TFormProduto
     object ppParameterList1: TppParameterList
     end
   end
-  object CdsSaldos: TClientDataSet [31]
+  object CdsSaldos: TClientDataSet [30]
     Aggregates = <>
     FieldDefs = <
       item
@@ -15745,14 +15601,14 @@ inherited FormProduto: TFormProduto
       Precision = 15
     end
   end
-  object DspSaldos: TDataSetProvider [32]
+  object DspSaldos: TDataSetProvider [31]
     DataSet = SqlSaldos
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1086
     Top = 137
   end
-  object SqlSaldos: TSQLDataSet [33]
+  object SqlSaldos: TSQLDataSet [32]
     CommandText = 'SELECT * FROM pcd_kardex_saldo('#39'001'#39','#39'00012'#39',null)'
     MaxBlobSize = -1
     Params = <>
@@ -15772,17 +15628,17 @@ inherited FormProduto: TFormProduto
       Precision = 15
     end
   end
-  object DsSaldos: TDataSource [34]
+  object DsSaldos: TDataSource [33]
     DataSet = CdsSaldos
     Left = 1097
     Top = 241
   end
-  object DsGrade: TDataSource [35]
+  object DsGrade: TDataSource [34]
     DataSet = CdsGrade
     Left = 1636
     Top = 221
   end
-  object CdsGrade: TClientDataSet [36]
+  object CdsGrade: TClientDataSet [35]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspGrade'
@@ -15881,14 +15737,14 @@ inherited FormProduto: TFormProduto
       Size = 5
     end
   end
-  object DspGrade: TDataSetProvider [37]
+  object DspGrade: TDataSetProvider [36]
     DataSet = SqlGrade
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1635
     Top = 125
   end
-  object SqlGrade: TSQLDataSet [38]
+  object SqlGrade: TSQLDataSet [37]
     CommandText = 'SELECT * FROM PRD_GRADE ORDER BY PRG_DESCRICAO'
     MaxBlobSize = -1
     Params = <>
@@ -15946,7 +15802,7 @@ inherited FormProduto: TFormProduto
       Size = 5
     end
   end
-  object CdsSpedTipo: TSqlClientDataSet [39]
+  object CdsSpedTipo: TSqlClientDataSet [38]
     Aggregates = <>
     DataSet.CommandText = 'select * from SPED_TIPOITEM'
     DataSet.MaxBlobSize = -1
@@ -15975,12 +15831,12 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object dsSpedTipo: TDataSource [40]
+  object dsSpedTipo: TDataSource [39]
     DataSet = CdsSpedTipo
     Left = 1233
     Top = 667
   end
-  object CdsSpedServico: TSqlClientDataSet [41]
+  object CdsSpedServico: TSqlClientDataSet [40]
     Aggregates = <>
     DataSet.CommandText = 'SELECT * FROM SRV0000 where SRV_LANCAMENTO = '#39'S'#39
     DataSet.MaxBlobSize = -1
@@ -16013,7 +15869,7 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object CdsSpedGenero: TSqlClientDataSet [42]
+  object CdsSpedGenero: TSqlClientDataSet [41]
     Aggregates = <>
     DataSet.CommandText = 'select * from SPED_GENERO'
     DataSet.MaxBlobSize = -1
@@ -16042,27 +15898,27 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object dsSpedServico: TDataSource [43]
+  object dsSpedServico: TDataSource [42]
     DataSet = CdsSpedServico
     Left = 1233
     Top = 619
   end
-  object dsSpedGenero: TDataSource [44]
+  object dsSpedGenero: TDataSource [43]
     DataSet = CdsSpedGenero
     Left = 1329
     Top = 619
   end
-  object dsProdutosReferencia: TDataSource [45]
+  object dsProdutosReferencia: TDataSource [44]
     DataSet = CdsProdutosReferencia
     Left = 1492
     Top = 438
   end
-  object dsFornecedor: TDataSource [46]
+  object dsFornecedor: TDataSource [45]
     DataSet = CdsFornecedor
     Left = 1932
     Top = 614
   end
-  object CdsFornecedor: TSqlClientDataSet [47]
+  object CdsFornecedor: TSqlClientDataSet [46]
     Aggregates = <>
     DataSet.CommandText = 'select FOR_CODIGO, FOR_RAZAO from FOR0000 order by FOR_RAZAO'
     DataSet.MaxBlobSize = -1
@@ -16085,7 +15941,7 @@ inherited FormProduto: TFormProduto
       Size = 40
     end
   end
-  object SQLProdutoCodigo: TSQLDataSet [48]
+  object SQLProdutoCodigo: TSQLDataSet [47]
     CommandText = 
       'SELECT T1.*, T2.FOR_RAZAO FROM PRD0000_CODIGO T1 JOIN FOR0000 T2' +
       ' ON (T2.FOR_CODIGO = T1.FOR_CODIGO) ORDER BY T1.PRDC_REFERENCIA'
@@ -16119,13 +15975,13 @@ inherited FormProduto: TFormProduto
       Size = 500
     end
   end
-  object DspProdutoCodigo: TDataSetProvider [49]
+  object DspProdutoCodigo: TDataSetProvider [48]
     DataSet = SQLProdutoCodigo
     Options = [poAllowCommandText]
     Left = 1489
     Top = 331
   end
-  object CdsProdutosReferencia: TClientDataSet [50]
+  object CdsProdutosReferencia: TClientDataSet [49]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspProdutoCodigo'
@@ -16161,12 +16017,12 @@ inherited FormProduto: TFormProduto
       Size = 500
     end
   end
-  object OpenDialog1: TOpenDialog [51]
+  object OpenDialog1: TOpenDialog [50]
     Filter = '*.jpg'
     Left = 1416
     Top = 8
   end
-  object CdsCompras: TSqlClientDataSet [52]
+  object CdsCompras: TSqlClientDataSet [51]
     Aggregates = <>
     DataSet.CommandText = 
       'select'#13#10't3.enf_emissao,'#13#10't3.enf_notanumber,'#13#10't1.for_codigo,'#13#10't2.' +
@@ -16297,17 +16153,17 @@ inherited FormProduto: TFormProduto
       FieldName = 'ENF_ORIGEM_MERCADORIA'
     end
   end
-  object dsCompras: TDataSource [53]
+  object dsCompras: TDataSource [52]
     DataSet = CdsCompras
     Left = 1412
     Top = 619
   end
-  object dsLote: TDataSource [54]
+  object dsLote: TDataSource [53]
     DataSet = cdsLotes
     Left = 1409
     Top = 432
   end
-  object CdsVendas: TSqlClientDataSet [55]
+  object CdsVendas: TSqlClientDataSet [54]
     Aggregates = <>
     DataSet.CommandText = 
       'select  t3.NF_EMISSAO,     t3.NF_NOTANUMBER,    t3.NF_NUM_NFE,  ' +
@@ -16422,12 +16278,12 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object dsVendas: TDataSource [56]
+  object dsVendas: TDataSource [55]
     DataSet = CdsVendas
     Left = 1476
     Top = 620
   end
-  object frxReport1: TfrxReport [57]
+  object frxReport1: TfrxReport [56]
     Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -17163,7 +17019,7 @@ inherited FormProduto: TFormProduto
       end
     end
   end
-  object frxdbdtstVendas: TfrxDBDataset [58]
+  object frxdbdtstVendas: TfrxDBDataset [57]
     UserName = 'frxdbdtstVendas'
     CloseDataSource = False
     FieldAliases.Strings = (
@@ -17185,7 +17041,7 @@ inherited FormProduto: TFormProduto
     Left = 1476
     Top = 676
   end
-  object frxPDFExport1: TfrxPDFExport [59]
+  object frxPDFExport1: TfrxPDFExport [58]
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
@@ -17214,7 +17070,7 @@ inherited FormProduto: TFormProduto
     Left = 1748
     Top = 11
   end
-  object frxXLSExport1: TfrxXLSExport [60]
+  object frxXLSExport1: TfrxXLSExport [59]
     UseFileCache = True
     ShowProgress = True
     OverwritePrompt = False
@@ -17229,12 +17085,12 @@ inherited FormProduto: TFormProduto
     Left = 1828
     Top = 11
   end
-  object DsCodigoOriginal: TDataSource [61]
+  object DsCodigoOriginal: TDataSource [60]
     DataSet = CdsCodigoOriginal
     Left = 1484
     Top = 221
   end
-  object CdsCodigoOriginal: TClientDataSet [62]
+  object CdsCodigoOriginal: TClientDataSet [61]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspCodigoOriginal'
@@ -17283,14 +17139,14 @@ inherited FormProduto: TFormProduto
       Size = 7
     end
   end
-  object DspCodigoOriginal: TDataSetProvider [63]
+  object DspCodigoOriginal: TDataSetProvider [62]
     DataSet = SqlCodCli
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1483
     Top = 133
   end
-  object SqlArquivo: TSQLDataSet [64]
+  object SqlArquivo: TSQLDataSet [63]
     CommandText = 'SELECT * FROM ARQUIVO ORDER BY ARQ_DESCRICAO'
     MaxBlobSize = -1
     Params = <>
@@ -17327,14 +17183,14 @@ inherited FormProduto: TFormProduto
       Size = 200
     end
   end
-  object DspArquivo: TDataSetProvider [65]
+  object DspArquivo: TDataSetProvider [64]
     DataSet = SqlArquivo
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1571
     Top = 125
   end
-  object CdsArquivo: TClientDataSet [66]
+  object CdsArquivo: TClientDataSet [65]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspArquivo'
@@ -17371,12 +17227,12 @@ inherited FormProduto: TFormProduto
       Size = 200
     end
   end
-  object dsArquivo: TDataSource [67]
+  object dsArquivo: TDataSource [66]
     DataSet = CdsArquivo
     Left = 1572
     Top = 221
   end
-  object pmArquivo: TPopupMenu [68]
+  object pmArquivo: TPopupMenu [67]
     Left = 1508
     Top = 8
     object AbrirArquivo1: TMenuItem
@@ -17391,7 +17247,7 @@ inherited FormProduto: TFormProduto
       OnClick = ExcluirArquivo1Click
     end
   end
-  object SqlCdsEnderecamento: TSqlClientDataSet [69]
+  object SqlCdsEnderecamento: TSqlClientDataSet [68]
     Aggregates = <>
     DataSet.CommandText = 'select * from PRD0000_ENDERECAMENTO'
     DataSet.MaxBlobSize = -1
@@ -17415,7 +17271,7 @@ inherited FormProduto: TFormProduto
       Size = 30
     end
   end
-  object mnuListar: TPopupMenu [70]
+  object mnuListar: TPopupMenu [69]
     Left = 1588
     Top = 9
     object Listagem1: TMenuItem
@@ -17441,7 +17297,7 @@ inherited FormProduto: TFormProduto
       OnClick = bit_ExportaC9Click
     end
   end
-  object SqlCodCli: TSQLQuery [71]
+  object SqlCodCli: TSQLQuery [70]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -17485,11 +17341,11 @@ inherited FormProduto: TFormProduto
       Size = 7
     end
   end
-  object JvTransparentForm1: TJvTransparentForm [72]
+  object JvTransparentForm1: TJvTransparentForm [71]
     Left = 1320
     Top = 8
   end
-  object qFor: TSQLQuery [73]
+  object qFor: TSQLQuery [72]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -17508,13 +17364,13 @@ inherited FormProduto: TFormProduto
       Size = 40
     end
   end
-  object qCstPC: TSQLQuery [74]
+  object qCstPC: TSQLQuery [73]
     MaxBlobSize = -1
     Params = <>
     Left = 1914
     Top = 147
   end
-  object SqlProdutos: TSQLQuery [75]
+  object SqlProdutos: TSQLQuery [74]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
@@ -18379,13 +18235,13 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object DspProdutos: TDataSetProvider [76]
+  object DspProdutos: TDataSetProvider [75]
     DataSet = SqlProdutos
     Options = [poAllowCommandText]
     Left = 1384
     Top = 133
   end
-  object CdsProdutos: TClientDataSet [77]
+  object CdsProdutos: TClientDataSet [76]
     Aggregates = <>
     PacketRecords = 6
     Params = <>
@@ -19396,17 +19252,17 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object DsProdutos: TDataSource [78]
+  object DsProdutos: TDataSource [77]
     DataSet = CdsProdutos
     Left = 1384
     Top = 229
   end
-  object DsPrdClassIPI: TDataSource [79]
+  object DsPrdClassIPI: TDataSource [78]
     DataSet = CdsPrdClassIPI
     Left = 1652
     Top = 618
   end
-  object CdsPrdClassIPI_OLD: TClientDataSet [80]
+  object CdsPrdClassIPI_OLD: TClientDataSet [79]
     Aggregates = <>
     Params = <>
     ProviderName = 'DspPrdClassIPI'
@@ -19455,42 +19311,42 @@ inherited FormProduto: TFormProduto
       Size = 2
     end
   end
-  object DspPrdClassIPI: TDataSetProvider [81]
+  object DspPrdClassIPI: TDataSetProvider [80]
     DataSet = CdsPrdClassIPI
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1644
     Top = 522
   end
-  object dsTipoProduto: TDataSource [82]
+  object dsTipoProduto: TDataSource [81]
     Left = 1556
     Top = 619
   end
-  object qTipoProduto: TSQLQuery [83]
+  object qTipoProduto: TSQLQuery [82]
     MaxBlobSize = -1
     Params = <>
     Left = 1556
     Top = 575
   end
-  object qGrupo: TSQLQuery [84]
+  object qGrupo: TSQLQuery [83]
     MaxBlobSize = -1
     Params = <>
     Left = 2036
     Top = 151
   end
-  object qLinha: TSQLQuery [85]
+  object qLinha: TSQLQuery [84]
     MaxBlobSize = -1
     Params = <>
     Left = 2156
     Top = 95
   end
-  object qCest: TSQLQuery [86]
+  object qCest: TSQLQuery [85]
     MaxBlobSize = -1
     Params = <>
     Left = 2092
     Top = 151
   end
-  object qItensFicha: TSQLQuery [87]
+  object qItensFicha: TSQLQuery [86]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
@@ -19541,18 +19397,18 @@ inherited FormProduto: TFormProduto
     Left = 1788
     Top = 81
   end
-  object DspItensFicha: TDataSetProvider [88]
+  object DspItensFicha: TDataSetProvider [87]
     DataSet = qItensFicha
     UpdateMode = upWhereKeyOnly
     Left = 1788
     Top = 128
   end
-  object DSSitTributaria: TDataSource [89]
+  object DSSitTributaria: TDataSource [88]
     DataSet = CDSSitTributaria
     Left = 1272
     Top = 436
   end
-  object CDSSitTributaria: TClientDataSet [90]
+  object CDSSitTributaria: TClientDataSet [89]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
@@ -19591,14 +19447,14 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object DSPSitTributaria: TDataSetProvider [91]
+  object DSPSitTributaria: TDataSetProvider [90]
     DataSet = SQLSitTributaria
     Options = [poAllowCommandText]
     UpdateMode = upWhereKeyOnly
     Left = 1272
     Top = 340
   end
-  object SQLSitTributaria: TSQLQuery [92]
+  object SQLSitTributaria: TSQLQuery [91]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19637,11 +19493,11 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object Timer1: TTimer [93]
+  object Timer1: TTimer [92]
     Left = 1164
     Top = 9
   end
-  object qOperacoes: TSQLQuery [94]
+  object qOperacoes: TSQLQuery [93]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19649,7 +19505,7 @@ inherited FormProduto: TFormProduto
     Left = 1976
     Top = 87
   end
-  object qEspecifica: TSQLQuery [95]
+  object qEspecifica: TSQLQuery [94]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19661,17 +19517,17 @@ inherited FormProduto: TFormProduto
     Left = 1176
     Top = 87
   end
-  object dsProcessos: TDataSource [96]
+  object dsProcessos: TDataSource [95]
     DataSet = cdsProcessos
     Left = 1304
     Top = 231
   end
-  object dspProcessos: TDataSetProvider [97]
+  object dspProcessos: TDataSetProvider [96]
     DataSet = qProcesso
     Left = 1304
     Top = 135
   end
-  object qProcesso: TSQLQuery [98]
+  object qProcesso: TSQLQuery [97]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19686,7 +19542,7 @@ inherited FormProduto: TFormProduto
     Left = 1304
     Top = 87
   end
-  object cdsProcessos: TClientDataSet [99]
+  object cdsProcessos: TClientDataSet [98]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspProcessos'
@@ -19726,12 +19582,12 @@ inherited FormProduto: TFormProduto
       Size = 60
     end
   end
-  object dsEspecifica: TDataSource [100]
+  object dsEspecifica: TDataSource [99]
     DataSet = cdsEspecifica
     Left = 1168
     Top = 239
   end
-  object cdsEspecifica: TClientDataSet [101]
+  object cdsEspecifica: TClientDataSet [100]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspEspecifica'
@@ -19781,12 +19637,12 @@ inherited FormProduto: TFormProduto
       Size = 100
     end
   end
-  object dspEspecifica: TDataSetProvider [102]
+  object dspEspecifica: TDataSetProvider [101]
     DataSet = qEspecifica
     Left = 1168
     Top = 135
   end
-  object JvPopupMenu1: TJvPopupMenu [103]
+  object JvPopupMenu1: TJvPopupMenu [102]
     ImageMargin.Left = 0
     ImageMargin.Top = 0
     ImageMargin.Right = 0
@@ -19808,7 +19664,7 @@ inherited FormProduto: TFormProduto
       OnClick = miLeaiuteClick
     end
   end
-  object SQLQuery1: TSQLQuery [104]
+  object SQLQuery1: TSQLQuery [103]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19816,7 +19672,7 @@ inherited FormProduto: TFormProduto
     Left = 2176
     Top = 340
   end
-  object cdsMPusado: TClientDataSet [105]
+  object cdsMPusado: TClientDataSet [104]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspMPusado'
@@ -19850,12 +19706,12 @@ inherited FormProduto: TFormProduto
       DisplayFormat = '#,####0.00 %'
     end
   end
-  object dsMPusado: TDataSource [106]
+  object dsMPusado: TDataSource [105]
     DataSet = cdsMPusado
     Left = 1872
     Top = 423
   end
-  object qMPusado: TSQLQuery [107]
+  object qMPusado: TSQLQuery [106]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -19867,12 +19723,12 @@ inherited FormProduto: TFormProduto
     Left = 1872
     Top = 279
   end
-  object dspMPusado: TDataSetProvider [108]
+  object dspMPusado: TDataSetProvider [107]
     DataSet = qMPusado
     Left = 1872
     Top = 327
   end
-  object puExportar: TPopupMenu [109]
+  object puExportar: TPopupMenu [108]
     Left = 816
     Top = 8
     object miExcel: TMenuItem
@@ -19884,22 +19740,22 @@ inherited FormProduto: TFormProduto
       OnClick = miWordClick
     end
   end
-  object SaveDialog1: TSaveDialog [110]
+  object SaveDialog1: TSaveDialog [109]
     Left = 1236
     Top = 7
   end
-  object JvDBGridWordExport1: TJvDBGridWordExport [111]
+  object JvDBGridWordExport1: TJvDBGridWordExport [110]
     Caption = 'Exporting to MS Word...'
     Left = 604
     Top = 65535
   end
-  object JvDBGridExcelExport1: TJvDBGridExcelExport [112]
+  object JvDBGridExcelExport1: TJvDBGridExcelExport [111]
     Caption = 'Exporting to MS Excel...'
     AutoFit = False
     Left = 532
     Top = 65535
   end
-  object pExportarLote: TPopupMenu [113]
+  object pExportarLote: TPopupMenu [112]
     Left = 1668
     Top = 7
     object miLoteExcel: TMenuItem
@@ -19911,7 +19767,7 @@ inherited FormProduto: TFormProduto
       OnClick = miLoteWordClick
     end
   end
-  object frxMPusado: TfrxReport [114]
+  object frxMPusado: TfrxReport [113]
     Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
@@ -20209,7 +20065,7 @@ inherited FormProduto: TFormProduto
       end
     end
   end
-  object fdsMPusado: TfrxDBDataset [115]
+  object fdsMPusado: TfrxDBDataset [114]
     UserName = 'fdsMPusado'
     CloseDataSource = False
     FieldAliases.Strings = (
@@ -20224,7 +20080,7 @@ inherited FormProduto: TFormProduto
     Left = 1868
     Top = 471
   end
-  object qProcessos: TSQLQuery [116]
+  object qProcessos: TSQLQuery [115]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -20247,7 +20103,7 @@ inherited FormProduto: TFormProduto
       Size = 100
     end
   end
-  object qCnae: TSQLQuery [117]
+  object qCnae: TSQLQuery [116]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -20258,7 +20114,7 @@ inherited FormProduto: TFormProduto
     Left = 1975
     Top = 152
   end
-  object qservico: TSQLQuery [118]
+  object qservico: TSQLQuery [117]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -20270,12 +20126,12 @@ inherited FormProduto: TFormProduto
     Left = 1911
     Top = 92
   end
-  object dsUnidade: TDataSource [119]
+  object dsUnidade: TDataSource [118]
     DataSet = cdsUnidade
     Left = 1708
     Top = 223
   end
-  object cdsUnidade: TClientDataSet [120]
+  object cdsUnidade: TClientDataSet [119]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspunidade'
@@ -20293,24 +20149,24 @@ inherited FormProduto: TFormProduto
       Size = 30
     end
   end
-  object dspunidade: TDataSetProvider [121]
+  object dspunidade: TDataSetProvider [120]
     DataSet = qUnidade
     Left = 1708
     Top = 127
   end
-  object qUnidade: TSQLQuery [122]
+  object qUnidade: TSQLQuery [121]
     Params = <>
     SQL.Strings = (
       'select * from PRD_UNIDADE')
     Left = 1708
     Top = 79
   end
-  object dsMola: TDataSource [123]
+  object dsMola: TDataSource [122]
     DataSet = cdsMola
     Left = 1720
     Top = 424
   end
-  object qMola: TSQLQuery [124]
+  object qMola: TSQLQuery [123]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
@@ -20318,7 +20174,7 @@ inherited FormProduto: TFormProduto
     Left = 1720
     Top = 280
   end
-  object cdsMola: TClientDataSet [125]
+  object cdsMola: TClientDataSet [124]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspMola'
@@ -21127,17 +20983,17 @@ inherited FormProduto: TFormProduto
       Size = 1
     end
   end
-  object dspMola: TDataSetProvider [126]
+  object dspMola: TDataSetProvider [125]
     DataSet = qMola
     Left = 1720
     Top = 328
   end
-  object dsGancho: TDataSource [127]
+  object dsGancho: TDataSource [126]
     DataSet = cdsGancho
     Left = 1232
     Top = 232
   end
-  object cdsGancho: TClientDataSet [128]
+  object cdsGancho: TClientDataSet [127]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspGancho'
@@ -21160,7 +21016,7 @@ inherited FormProduto: TFormProduto
       Required = True
     end
   end
-  object qGancho: TSQLQuery [129]
+  object qGancho: TSQLQuery [128]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
@@ -21168,12 +21024,12 @@ inherited FormProduto: TFormProduto
     Left = 1232
     Top = 88
   end
-  object dspGancho: TDataSetProvider [130]
+  object dspGancho: TDataSetProvider [129]
     DataSet = qGancho
     Left = 1232
     Top = 136
   end
-  object QParametros: TSQLQuery [131]
+  object QParametros: TSQLQuery [130]
     MaxBlobSize = 1
     Params = <>
     SQL.Strings = (
@@ -21181,17 +21037,17 @@ inherited FormProduto: TFormProduto
     Left = 1640
     Top = 280
   end
-  object dspParametros: TDataSetProvider [132]
+  object dspParametros: TDataSetProvider [131]
     DataSet = QParametros
     Left = 1640
     Top = 328
   end
-  object dsParametros: TDataSource [133]
+  object dsParametros: TDataSource [132]
     DataSet = cdsParametros
     Left = 1640
     Top = 424
   end
-  object cdsParametros: TClientDataSet [134]
+  object cdsParametros: TClientDataSet [133]
     Aggregates = <>
     Params = <>
     ProviderName = 'dspParametros'
@@ -21208,12 +21064,12 @@ inherited FormProduto: TFormProduto
       Size = 255
     end
   end
-  object dsCQP: TDataSource [135]
+  object dsCQP: TDataSource [134]
     DataSet = cdsCQP
     Left = 1574
     Top = 426
   end
-  object cdsCQP: TClientDataSet [136]
+  object cdsCQP: TClientDataSet [135]
     Aggregates = <>
     FieldDefs = <
       item
@@ -21274,12 +21130,12 @@ inherited FormProduto: TFormProduto
       Size = 255
     end
   end
-  object dspCQP: TDataSetProvider [137]
+  object dspCQP: TDataSetProvider [136]
     DataSet = qCQP
     Left = 1574
     Top = 330
   end
-  object qCQP: TSQLQuery [138]
+  object qCQP: TSQLQuery [137]
     MaxBlobSize = -1
     Params = <>
     SQL.Strings = (
@@ -21312,7 +21168,7 @@ inherited FormProduto: TFormProduto
       Size = 255
     end
   end
-  object CdsIndustrializacao: TSqlClientDataSet [139]
+  object CdsIndustrializacao: TSqlClientDataSet [138]
     Aggregates = <>
     DataSet.CommandText = 
       'select'#13#10't3.enf_emissao,'#13#10't3.enf_notanumber,'#13#10't1.for_codigo,'#13#10't2.' +
@@ -21429,17 +21285,17 @@ inherited FormProduto: TFormProduto
       Size = 3
     end
   end
-  object dsIndustrializacao: TDataSource [140]
+  object dsIndustrializacao: TDataSource [139]
     DataSet = CdsIndustrializacao
     Left = 1836
     Top = 619
   end
-  object qAuxF: TFDQuery [141]
+  object qAuxF: TFDQuery [140]
     Connection = DBInicio.FDACConn
     Left = 440
     Top = 10
   end
-  object CdsPrdClassIPI: TFDQuery [142]
+  object CdsPrdClassIPI: TFDQuery [141]
     Connection = DBInicio.FDACConn
     Left = 1644
     Top = 479
@@ -21484,7 +21340,7 @@ inherited FormProduto: TFormProduto
       Size = 2
     end
   end
-  object qRegistroEndereco: TSQLQuery [143]
+  object qRegistroEndereco: TSQLQuery [142]
     Params = <>
     Left = 2156
     Top = 151
@@ -21947,5 +21803,37 @@ inherited FormProduto: TFormProduto
     DataSet = cdsExporta
     Left = 2280
     Top = 252
+  end
+  object SqlCdsEstoqueDetalhe: TFDQuery
+    BeforeInsert = CdsLotesBeforeInsert
+    BeforePost = CdsLotesBeforePost
+    AfterPost = CdsLotesAfterPost
+    AfterDelete = CdsLotesAfterDelete
+    OnCalcFields = CdsLotesCalcFields
+    CachedUpdates = True
+    Connection = DBInicio.FDACConn
+    Left = 1096
+    Top = 487
+    object SqlCdsEstoqueDetalheIOP_DATA_CONCLUSAO: TSQLTimeStampField
+      FieldName = 'IOP_DATA_CONCLUSAO'
+    end
+    object SqlCdsEstoqueDetalheCLI_RAZAO: TStringField
+      FieldName = 'CLI_RAZAO'
+      Size = 70
+    end
+    object SqlCdsEstoqueDetalheVARIACAO: TStringField
+      DisplayWidth = 12
+      FieldName = 'VARIACAO'
+      Size = 12
+    end
+    object SqlCdsEstoqueDetalheIOP_STATUS: TStringField
+      FieldName = 'IOP_STATUS'
+    end
+    object SqlCdsEstoqueDetalheIOP_QTDE_CONCLUIDA: TFMTBCDField
+      FieldName = 'IOP_QTDE_CONCLUIDA'
+    end
+    object SqlCdsEstoqueDetalheIOP_NORDEM: TStringField
+      FieldName = 'IOP_NORDEM'
+    end
   end
 end
