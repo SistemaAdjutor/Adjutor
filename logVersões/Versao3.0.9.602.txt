@@ -1,4 +1,4 @@
-﻿Atualizado em 14/03/2025
+﻿Atualizado em 30/03/2025
 Inicio da versão: 10/03/2025
 
 principal: BSC, Chemvet
@@ -8,3 +8,10 @@ principal: BSC, Chemvet
 patch 1: Inquibra, R Pinheiro
   2020 - Erro Inquibra-> Pedido de Compra Não salva [Inquibra]
   2022 - Banco Santander : nova regra no código digitável dos boletos [R Pinheiro]
+  
+patch 2: Arkson, Inquibra, Rotor
+  2024 - Atualização de preço dos produtos compostos [Arkson]
+  2025 - Erro Inquibra -> Cadastro produto Aba Produção [Inquibra]
+  2027 - Rotor: Revisão Urgente - Entrada NF Não esta calculando CST Vlr NF [Rotor]
+  2028 - Erro Arkson -> Programa da Produção - Duplicado [Arkson]
+  
