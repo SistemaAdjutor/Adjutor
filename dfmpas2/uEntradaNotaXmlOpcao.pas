@@ -14,6 +14,7 @@ type
     JvFilenameEdit1: TJvFilenameEdit;
     btnBit_Gravar: TBitBtn;
     btnBit_Cancelar: TBitBtn;
+    chkICMSST: TCheckBox;
     procedure btnBit_CancelarClick(Sender: tObject);
     procedure btnBit_GravarClick(Sender: tObject);
     procedure configurar;
@@ -52,7 +53,9 @@ begin
        //Cria Diretorio caso não exista
        ForceDirectories(InsereBarraDiretorio ( dbInicio.SistemaLocal )+'nfe\download\');
 
+       FormNfEntrada.SomaICMSST := chkICMSST.Checked;
        FormNfEntrada.ImportarXML(JvFilenameEdit1.FileName);
+
 
        Close;
     end

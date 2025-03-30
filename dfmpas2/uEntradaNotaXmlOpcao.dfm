@@ -2,7 +2,7 @@ object FrmEntradaNotaXmlOpcao: TFrmEntradaNotaXmlOpcao
   Left = 743
   Top = 343
   Caption = 'Op'#231#245'es de Entrada de Nota'
-  ClientHeight = 132
+  ClientHeight = 150
   ClientWidth = 531
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
@@ -18,7 +18,7 @@ object FrmEntradaNotaXmlOpcao: TFrmEntradaNotaXmlOpcao
     Left = 0
     Top = 0
     Width = 531
-    Height = 89
+    Height = 102
     Align = alTop
     Caption = 'Op'#231#245'es'
     TabOrder = 0
@@ -50,10 +50,18 @@ object FrmEntradaNotaXmlOpcao: TFrmEntradaNotaXmlOpcao
       TabOrder = 1
       Text = ''
     end
+    object chkICMSST: TCheckBox
+      Left = 24
+      Top = 76
+      Width = 217
+      Height = 17
+      Caption = 'Soma ICMS-ST no valor total da Nota'
+      TabOrder = 2
+    end
   end
   object btnBit_Gravar: TBitBtn
     Left = 317
-    Top = 100
+    Top = 111
     Width = 100
     Height = 25
     Cursor = crHandPoint
@@ -86,7 +94,7 @@ object FrmEntradaNotaXmlOpcao: TFrmEntradaNotaXmlOpcao
   end
   object btnBit_Cancelar: TBitBtn
     Left = 423
-    Top = 100
+    Top = 111
     Width = 100
     Height = 25
     Cursor = crHandPoint
