@@ -2597,6 +2597,7 @@ type
     public
       wcodbarrant, sGradeDescricaoCadastrada : string;
       calculaValor : Boolean;
+      wPrecoVendaAnterior: string;
       procedure BuscaProduto;
       procedure BotoesAcesso;
       procedure HabilitarCamposMola;
@@ -7129,6 +7130,7 @@ end;
 procedure TFormProduto.DBEprecoVendaEnter( Sender : tObject );
 begin
   inherited;
+  wPrecoVendaAnterior := DBEprecoVenda.Text;
   PrecoEmpresaCorDBEdit;
 end;
 
@@ -7139,8 +7141,45 @@ begin
   if not ( CdsProdutos.State in [ dsBrowse ] ) then
   begin
 
+    if StrToFloat(DBEprecoVenda.Text) = 0 then
+    begin
+
+      case wCalcularPV of
+        0:
+        begin
+          if (CdsProdutosPRD_PCUSTO.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency > 0) then
+          begin
+            uteis.Aviso('Nao permite zerar preco de venda quando tem custo e margem definidas.');
+            CdsProdutosPRD_PVENDA.AsString := wPrecoVendaAnterior;
+            DBEprecoVenda.Setfocus;
+          end;
+        end;
+        1:
+        begin
+          if (CdsProdutosPRD_CUSTOCOMIPI.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency > 0) then
+          begin
+            uteis.Aviso('Nao permite zerar preco de venda quando tem custo e margem definidas.');
+            CdsProdutosPRD_PVENDA.AsString := wPrecoVendaAnterior;
+            DBEprecoVenda.Setfocus;
+          end;
+
+        end;
+        2:
+        begin
+          if (CdsProdutosPRD_PMEDIO.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency > 0) then
+          begin
+            uteis.Aviso('Nao permite zerar preco de venda quando tem custo e margem definidas.');
+            CdsProdutosPRD_PVENDA.AsString := wPrecoVendaAnterior;
+            DBEprecoVenda.Setfocus;
+          end;
+        end;
+      end;
+    end;
+
+    
     porFora := DBInicio.GetParametroSistema( 'PMT_METODO_CALCULO_PRECO' ) = '0';
     precoProdutoEmpresa := DBInicio.Exclusivo( 'PRODUTO_PRECO_EMPRESA' );
+
     if precoProdutoEmpresa then
     begin
       if porFora then
