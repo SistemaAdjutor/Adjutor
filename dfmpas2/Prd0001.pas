@@ -7141,13 +7141,13 @@ begin
   if not ( CdsProdutos.State in [ dsBrowse ] ) then
   begin
 
-    if StrToFloat(DBEprecoVenda.Text) = 0 then
+    if StrToFloatDef(DBEprecoVenda.Text, 0.0) = 0 then
     begin
 
       case wCalcularPV of
         0:
         begin
-          if (CdsProdutosPRD_PCUSTO.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency > 0) then
+          if (CdsProdutosPRD_PCUSTO.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency <> 0) then
           begin
             uteis.Aviso('Nao permite zerar preco de venda quando tem custo e margem definidas.');
             CdsProdutosPRD_PVENDA.AsString := wPrecoVendaAnterior;
@@ -7156,7 +7156,7 @@ begin
         end;
         1:
         begin
-          if (CdsProdutosPRD_CUSTOCOMIPI.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency > 0) then
+          if (CdsProdutosPRD_CUSTOCOMIPI.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency <> 0) then
           begin
             uteis.Aviso('Nao permite zerar preco de venda quando tem custo e margem definidas.');
             CdsProdutosPRD_PVENDA.AsString := wPrecoVendaAnterior;
@@ -7166,7 +7166,7 @@ begin
         end;
         2:
         begin
-          if (CdsProdutosPRD_PMEDIO.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency > 0) then
+          if (CdsProdutosPRD_PMEDIO.AsCurrency > 0) and (CdsProdutosPRD_MARGEMVENDA.AsCurrency <> 0) then
           begin
             uteis.Aviso('Nao permite zerar preco de venda quando tem custo e margem definidas.');
             CdsProdutosPRD_PVENDA.AsString := wPrecoVendaAnterior;
