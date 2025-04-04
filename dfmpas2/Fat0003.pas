@@ -3869,7 +3869,7 @@ begin
           CdsNotaFiscalNF_VALOR_TOTAL_PARTILHA_ORIG.asCurrency := Uteis.RoundTo(wVTotPartOrig,-2);
         // simples (não tem GNRE UF remetente)
         // if (fOPT_SIMPLES = 'N') and DBInicio.Empresa.PMT_HABILITAR_DIFAL then
-        if DBInicio.Empresa.PMT_HABILITAR_DIFAL then
+        if DBInicio.Empresa.PMT_HABILITAR_DIFAL and (wVTotPartDest > 0) then
               DBMemoObs.Lines.Add( '** ICMS DIFAL DECRETO 87/2015 DESTINADO A CONSUMIDOR FINAL NÃO CONTRIBUINTE DO ICMS ' +
                                    'Aliquota interna ' + FormatFloat('#0.00', wALiqICmsInterno) +
                                    ' - Aliquota interestadual ' + FormatFloat('#0.00', wALiqICmsInterEstadual) +
