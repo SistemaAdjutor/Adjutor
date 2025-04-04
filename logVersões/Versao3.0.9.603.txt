@@ -1,0 +1,8 @@
+﻿Atualizado em 04/04/2025
+Inicio da versão: 04/04/2025
+
+principal: Drimec
+  2029 - erro ao zerar preço de venda do produto [Novi]
+  2030 - gravou margem errada ao mudar preco de venda [Novi]
+  2033 - FATURAMENTO - Impeditivo por causa de DIFAL[Drimec]
+  
