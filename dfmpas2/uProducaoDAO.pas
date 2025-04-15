@@ -146,7 +146,8 @@ begin
       ' LEFT JOIN ORDEMPRODUCAO OP  ON (   OP.EMP_CODIGO = '+ QuotedStr (DBInicio.Empresa.EMP_CODIGO) +
                                         ' AND op.PED_CODIGO = '+QuotedStr(ped_codigo )+')'+
 //      ' LEFT JOIN ITEM_ORDEMPRODUCAO iop ON (Iop.OPR_CODIGO = OP.OPR_CODIGO AND pr.prd_codigo = iop.PRD_CODIGO)          '+
-      ' WHERE ft.PRD_REFER = '+ QuotedStr(prd_refer ) + ConcatSe(' and ft.', DBInicio.ExclusivoSql('PRODUTOS')) ;
+      ' WHERE ft.PRD_REFER = '+ QuotedStr(prd_refer ) + ConcatSe(' and ft.', DBInicio.ExclusivoSql('PRODUTOS')) +
+      ' ORDER BY ft.FTI_SEQUENCIA '  ;
      // ' and  PTI_SIGLA in (''PA'',''PI'')'  ;
    OpenAux3(sql);
    i:= 0 ;
