@@ -1,4 +1,4 @@
-﻿Atualizado em 04/04/2025
+﻿Atualizado em 15/04/2025
 Inicio da versão: 04/04/2025
 
 principal: Drimec
@@ -6,3 +6,8 @@ principal: Drimec
   2030 - gravou margem errada ao mudar preco de venda [Novi]
   2033 - FATURAMENTO - Impeditivo por causa de DIFAL[Drimec]
   
+patch 1: Normadin, Chemvet. Arkson
+  2026 - Implementação -> Contas-A Pagar >Exporta para CSV [Normadin]
+  2035 - Chemvet e Arkson - Erro na sequência dos itens da ficha técnica na Produção [Chemvet]
+  2037 - Erro exclusão plano de contas - Arkson [Arkson]
+
