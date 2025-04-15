@@ -1225,7 +1225,10 @@ begin
     if BuscaUmdadoSqlAsInteger('Select cast(count(*) as integer) as conta from    pag0000 where CCT_CODIGO = '+qStr(CdsCtAnaliseCCT_CODIGO.AsString)+ConcatSe( ' and ',dbInicio.ExclusivoSql('PLANODECONTAS')) ) =0 then
     begin
          if uteis.confirmacao ( 'Excluir esta Conta ?')= Mryes then
+         begin
             CdsCtAnalise.Delete;
+            CdsCtAnalise.ApplyUpdates(0);
+         end;
     end
     else
         uteis.aviso('Existem lançamentos desta conta no Contas à Pagar e não pode ser excluída !');
