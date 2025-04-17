@@ -1723,6 +1723,8 @@ type
     CdsParametrosPMT_ATIVA_METRO_CUBICO: TStringField;
     SqlParametrosPMT_ADICIONAR_DIFAL_TOTAL_NF: TStringField;
     CdsParametrosPMT_ADICIONAR_DIFAL_TOTAL_NF: TStringField;
+    SqlParametrosPMT_CALCULAR_ITENS_NO_FINAL: TStringField;
+    CdsParametrosPMT_CALCULAR_ITENS_NO_FINAL: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

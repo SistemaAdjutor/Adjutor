@@ -1861,6 +1861,7 @@ type
     Label678: TLabel;
     DBCheckBox99: TDBCheckBox;
     DBCheckBox100: TDBCheckBox;
+    DBCheckBox101: TDBCheckBox;
 
 
     procedure FormShow(Sender: tObject);

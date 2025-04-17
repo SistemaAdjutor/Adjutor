@@ -1095,6 +1095,7 @@ type
     btCancelaPeso: TBitBtn;
     btSalvaPeso: TBitBtn;
     SqlCdsPedidoItemPRG_INDICE: TFMTBCDField;
+    btProcessarCalculo: TBitBtn;
 
     procedure FormKeyDown(Sender: tObject; var Key: Word;Shift: TShiftState);
     procedure CurDescontoNotaFiscalExit(Sender: tObject);
@@ -1322,6 +1323,7 @@ type
     procedure frxPedidoTratBeginDoc(Sender: TObject);
     procedure frxPedidoTratGetValue(const VarName: string; var Value: Variant);
     procedure cbbClienteEstadoExit(Sender: TObject);
+    procedure btProcessarCalculoClick(Sender: TObject);
   private
     pOldId: string ;
     wCurDescontoIndice: Real;
@@ -1415,6 +1417,7 @@ type
     WDiretivaKit:integer;
     wAdcProdKit : boolean;
     ChecaNFC: boolean;
+    PMT_CALCULAR_ITENS_NO_FINAL, btRecalcula: boolean;
 
     procedure LimparCampos(Habilita: boolean = True);
     procedure BuscaItensNota;
@@ -2660,6 +2663,12 @@ end;
 procedure TFrmPedido.FormShow(Sender: tObject);
 begin
   inherited;
+
+  PMT_CALCULAR_ITENS_NO_FINAL := dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_CALCULAR_ITENS_NO_FINAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'S' ;
+  btProcessarCalculo.Visible := PMT_CALCULAR_ITENS_NO_FINAL;
+  btRecalcula := False;
+
+
   pnPedidoMinimo.Font.Color := clRed;
   pnPedidoMinimo.Caption := '';
   bMostraMsgAtraso := True;
@@ -7388,6 +7397,12 @@ var
    i:Integer;
    point:TBookmark;
 begin
+
+  if PMT_CALCULAR_ITENS_NO_FINAL  then
+    if not btRecalcula then
+      Exit;
+
+
   if (bRecalculaSTGeral)  and SqlCdsPedidoItem.Active then
   begin
     try
@@ -8086,6 +8101,15 @@ begin
 
 end;
 
+procedure TFrmPedido.btProcessarCalculoClick(Sender: TObject);
+begin
+  inherited;
+  btRecalcula := True;
+  BtnAlterarClick(Sender);
+  BtnGravarClick(Sender);
+  btRecalcula := False;
+end;
+
 procedure TFrmPedido.RetornoIndustrializacao;
 begin
 
@@ -8693,6 +8717,11 @@ var
   IcmTipoCalculoDifal, bRegra, GetCSOSN: integer;
 
 begin
+
+  if PMT_CALCULAR_ITENS_NO_FINAL  then
+    if not btRecalcula then
+      Exit;
+
 
   if not DBInicio.Empresa.PMT_VALOR_DIFAL_PEDIDO then
   begin

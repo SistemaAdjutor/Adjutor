@@ -29,6 +29,10 @@ inherited FrmPedido: TFrmPedido
     OnChange = PageControl1Change
     object TabPedido: TTabSheet
       Caption = 'Pedido'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GBInformacoesPedido: TGroupBox
         Left = 0
         Top = 105
@@ -672,6 +676,10 @@ inherited FrmPedido: TFrmPedido
           TabStop = False
           object tsoutros: TTabSheet
             Caption = 'Outras'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object poutros: TPanel
               Left = 0
               Top = 0
@@ -1190,6 +1198,10 @@ inherited FrmPedido: TFrmPedido
           object TsDesconto: TTabSheet
             Caption = 'Desconto'
             ImageIndex = 2
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object pdesconto: TPanel
               Left = 0
               Top = 0
@@ -1320,6 +1332,10 @@ inherited FrmPedido: TFrmPedido
           object tsComisssao: TTabSheet
             Caption = 'Comiss'#245'es'
             ImageIndex = 1
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object gbcomissao: TGroupBox
               Left = 2
               Top = 3
@@ -1458,6 +1474,10 @@ inherited FrmPedido: TFrmPedido
           object tsPPAC: TTabSheet
             Caption = 'Cabe'#231'alho do PPAC'
             ImageIndex = 3
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object pPPAC: TPanel
               Left = 0
               Top = 0
@@ -1937,6 +1957,10 @@ inherited FrmPedido: TFrmPedido
         TabOrder = 2
         object TabSheet5: TTabSheet
           Caption = 'Informa'#231#245'es'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GBInformacoesOrcamento: TGroupBox
             Left = 3
             Top = -2
@@ -3551,6 +3575,10 @@ inherited FrmPedido: TFrmPedido
           Caption = 'Endere'#231'o de Entrega'
           ImageIndex = 1
           OnShow = TabSheet6Show
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object DBGrid6: TDBGrid
             Left = 0
             Top = 0
@@ -3647,6 +3675,10 @@ inherited FrmPedido: TFrmPedido
           TabOrder = 0
           object TabPedidoItem: TTabSheet
             Caption = 'Itens do Pedido'
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object Panel4: TPanel
               Left = 0
               Top = 238
@@ -4377,6 +4409,10 @@ inherited FrmPedido: TFrmPedido
             Caption = 'Hist'#243'rico de Vendas do Item'
             ImageIndex = 1
             OnShow = TabHostoricoVendaShow
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object GroupBox7: TGroupBox
               Left = 0
               Top = 0
@@ -4509,6 +4545,10 @@ inherited FrmPedido: TFrmPedido
           object TabSheet3: TTabSheet
             Caption = 'Declara'#231#227'o de Importa'#231#227'o'
             ImageIndex = 2
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object Splitter3: TSplitter
               Left = 567
               Top = 0
@@ -5039,6 +5079,10 @@ inherited FrmPedido: TFrmPedido
           object tsRetornoIndust: TTabSheet
             Caption = 'Retorno de Industrializa'#231#227'o'
             ImageIndex = 3
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object dbgrdRetornoInd: TDBGrid
               Left = 0
               Top = 0
@@ -5122,6 +5166,10 @@ inherited FrmPedido: TFrmPedido
             Caption = 'Exporta'#231#227'o'
             ImageIndex = 4
             TabVisible = False
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object grpInformacoes: TGroupBox
               Left = 0
               Top = 0
@@ -5186,6 +5234,10 @@ inherited FrmPedido: TFrmPedido
           object TabObservacoes: TTabSheet
             Caption = 'OBSERVA'#199#195'O no Pedido / Nota'
             ImageIndex = 5
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object Splitter6: TSplitter
               Left = 481
               Top = 0
@@ -5364,6 +5416,10 @@ inherited FrmPedido: TFrmPedido
           object tsObsProducao: TTabSheet
             Caption = 'Observa'#231#227'o da Produ'#231#227'o'
             ImageIndex = 6
+            ExplicitLeft = 0
+            ExplicitTop = 0
+            ExplicitWidth = 0
+            ExplicitHeight = 0
             object gbObsProducao: TGroupBox
               Left = 0
               Top = 0
@@ -5514,6 +5570,10 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Notas Fiscais'
       ImageIndex = 1
       OnShow = TabNotasFiscaisClienteShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox1: TGroupBox
         Left = 0
         Top = 573
@@ -6339,6 +6399,10 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Informa'#231#245'es do Cliente'
       ImageIndex = 2
       OnShow = TabClienteVendasShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object PageControl3: TPageControl
         Left = 0
         Top = 29
@@ -6349,6 +6413,10 @@ inherited FrmPedido: TFrmPedido
         TabOrder = 0
         object TabSheet1: TTabSheet
           Caption = 'Dados do Cliente'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox11: TGroupBox
             Left = 0
             Top = 0
@@ -7034,6 +7102,10 @@ inherited FrmPedido: TFrmPedido
         object TabSheet2: TTabSheet
           Caption = 'Endere'#231'o de Entrega - Altera'#231#227'o'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox13: TGroupBox
             Left = 0
             Top = 0
@@ -7348,6 +7420,10 @@ inherited FrmPedido: TFrmPedido
         object TabSheet4: TTabSheet
           Caption = 'Produtos Vendidos'
           ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox10: TGroupBox
             Left = 0
             Top = 0
@@ -7675,6 +7751,10 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Vendas '#224' Faturar'
       ImageIndex = 3
       OnShow = TabVendasFaturarShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox15: TGroupBox
         Left = 0
         Top = 0
@@ -8001,6 +8081,10 @@ inherited FrmPedido: TFrmPedido
     object tsContatosCliente: TTabSheet
       Caption = 'Contatos no Cliente'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object grpContatos: TGroupBox
         Left = 0
         Top = 129
@@ -8200,6 +8284,10 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Notas de Industrializa'#231#227'o'
       ImageIndex = 5
       OnShow = NotasIndustrializacaoShow
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox12: TGroupBox
         Left = 0
         Top = 0
@@ -8700,6 +8788,92 @@ inherited FrmPedido: TFrmPedido
       TabOrder = 10
       TabStop = False
       OnClick = btnFaturarNFCEClick
+    end
+    object btProcessarCalculo: TBitBtn
+      Left = 1141
+      Top = 4
+      Width = 156
+      Height = 25
+      Caption = 'Processar C'#225'culos'
+      Glyph.Data = {
+        46090000424D460900000000000036000000280000001A0000001D0000000100
+        18000000000010090000130B0000130B00000000000000000000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3C3C3C3C3C3C3E3D5D6C93A44D5868BC3
+        C3C3D7ABAED86C71E0C9CBC3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C30000C3C3C3C3C3C3
+        DED5D7C3C3C3D9C8CBDE6167E17375E1888FDA7273E65E62E4CCD1C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C30000C3C3C3DFC2C3DD5A66C57F82DA6A71F48086F38384EC
+        7A76F77F83D96F77DBC4C5C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C30000C3C3C3EED1D2
+        DA787EF26772F5787BE96970E57E83ED8289E76570F07179E26168D44C55BA3E
+        43C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3DCADB1E76E70E65F68E7AEB1C3C3C3C3
+        C3C3E5C9C8D95B61EA6F72F07C82DA848CC3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C30000C3C3C3D7A5AA
+        DE8588DB6262E5757FC3C3C3C3C3C3C3C3C3C3C3C3D48183E45959E08F95C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C30000F0D9DCD13841EC6C70D55D5EE77E84C3C3C3C3C3C3C3
+        C3C3C3C3C3CF8D8FE05C5EDE787ED4BBB7C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C30000C3C3C3E0AFB3
+        DF8E95E26469D6545CE2C5C6C3C3C3C3C3C3C3C3C3D0535BE26E6FEC797DEA39
+        43DCE7E6C3C3C3C3C3C3E1DEECC3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3E3D3D1DF7173D75D66D16469D79A9DD7
+        A3A1CF6968D96067E98287EFBEBDBE7390C3C3C3C3C3C38481CE0301C8A3A7D7
+        C3C3C3C3C3C3E1E0ECC3C3C3C3C3C3C3C3C3C3C3C3C3C3C30000C3C3C3C3C3C3
+        D79A9EEA686CE5676BDB5B5FCB5C62D45B5ED45F61ED737CE8999E656DD60000
+        C7C3C3C3C3C3C36D6EDA0000D09A94D8C3C3C3B1B4DF1D1CBFADAEE0C3C3C3C3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3E299A0DA646DF7D8D7DF8D94EB7178ED
+        757FEBA0A5EB7A7FDC70764B3DB80000D24A46CF8784D61E1AD20000D93830C4
+        999BD04442D40000C88F90D9C3C3C3C3C3C3C3C3C3C3C3C30000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3E0CACBDE535DE7A5ABC3C3C3E7CBC2FFCEB9C9CAE00B0C
+        D80000D10000D60200D80300D80000DC0000D70000CF3333CDC3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3EFE0E1EBABB0FD
+        E3D95B64CE1A1FCAB4B7E55251D60000D70400DD0000D70000DA0000D40100D4
+        0500D80000D90000CCA4A5DFB1B0E62929BFB4B6DFC3C3C30000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3504DCF0000CD0000D20100D40500
+        D70000D60603D65354DC7276E43131D80000D40400DB0000D40206D80000CC00
+        00CB7D7DD3C3C3C30000C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C39B9EE60000C80601DA0000DC1310CFBEBFEAC3C3C3C3C3C3C3C3C3
+        7676DC0000D60200D50000E40D0CCF9C9CE1C3C3C3C3C3C30000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3A7AED50000D50303DA0000
+        CEC3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C36667DB0000D80000D41D1CDCC3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C364
+        62C0423BCF1912CD0000D80000E00000C1C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3A19FE60000D90200D60000DB5250CC8A8CD6E4E7EF0000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3292CC50000CF0000DD0200D50000DB3633
+        CBC3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3BABCE60F11DE0500D60000E300
+        00D70000C49FA1DC0000C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C4
+        C8EACAC9F03838CF0000DE0000DF0000B6C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C39293E10000D60100D90100DB635DDB8480E9DEDEE90000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3CACDE60000CF0301DF0000
+        D0BFB3D7C3C3C3C3C3C3C3C3C3C3C3C3C3C3C34A4BD10000D80000DA2524D7C3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C6C3E5251FC80000DD0100DA0200DD0000D38F97D7C3C3C3C3C3C3D0D0F4
+        4443CD0000D40000E30000DA1113CDAEB1DBC3C3C3C3C3C30000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C30204BF0000DA2E2AD40708D50000
+        DD0200DA0000D4020BCB1C23D30000D20000DA0201E20000D31312DB0807DB00
+        00C39192D8C3C3C30000C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C39291DF7F83E3C3C3C36261DB0000DA0100D50100E30100DF0000D90201DC
+        0301DF0000DA0B08D6BCB6EBB4B2E04D50DBC6CAE4C3C3C30000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C39E9BD90101
+        D70000E10000D40000DD0000DE0000DA0000DA0000D84547CCC3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3DEDEEE1E20CA0000D6C3C3C3C3C3C32122D50000DB827EE2
+        C3C3C33034DC0000CEA2A2D1C3C3C3C3C3C3C3C3C3C3C3C30000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C37F82DD4A43
+        D0C3C3C3C3C3C3383BD40000D6C3C3C3C3C3C3A6A6E12F2CD1C9CBE4C3C3C3C3
+        C3C3C3C3C3C3C3C30000C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C30000C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3C3
+        C3C3C3C3C3C3C3C30000}
+      TabOrder = 11
+      Visible = False
+      OnClick = btProcessarCalculoClick
     end
   end
   object Panel2: TPanel [2]
@@ -9998,7 +10172,7 @@ inherited FrmPedido: TFrmPedido
     Left = 1192
     Top = 389
     Bitmap = {
-      494C010103000500580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11776,7 +11950,7 @@ inherited FrmPedido: TFrmPedido
     Left = 40
     Top = 147
     Bitmap = {
-      494C010104000900580010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
