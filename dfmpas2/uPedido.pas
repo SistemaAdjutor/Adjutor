@@ -1508,7 +1508,7 @@ begin
          finally
             FreeAndNil(FrmPedidoItem); // := nil;
          end;
-         BuscaPedidoItem( EdPedidoNumero.Text, false );
+         // BuscaPedidoItem( EdPedidoNumero.Text, false );
          BuscaPedido(EdPedidoNumero.Text);
          // CalcutaTotalItens;
          GravaPedido;
@@ -1896,12 +1896,23 @@ begin
      //CFOP
      edCfop.idRetorno := StrZero(SqlCdsPedidoOPE_CODIGO.AsString,3);
 
-     CbTipoFrete.ItemIndex := iif(SqlCdsPedidoPED_FRETE.AsString = '0',0,
-                              iif(SqlCdsPedidoPED_FRETE.AsString = '1',1,
-                              iif(SqlCdsPedidoPED_FRETE.AsString = '2',2,
-                              iif(SqlCdsPedidoPED_FRETE.AsString = '3',3,
-                              iif(SqlCdsPedidoPED_FRETE.AsString = '4',4,
-                              5)))));
+     //CbTipoFrete.ItemIndex := iif(SqlCdsPedidoPED_FRETE.AsString = '0',0,
+     //                         iif(SqlCdsPedidoPED_FRETE.AsString = '1',1,
+     //                         iif(SqlCdsPedidoPED_FRETE.AsString = '2',2,
+     //                         iif(SqlCdsPedidoPED_FRETE.AsString = '3',3,
+     //                         iif(SqlCdsPedidoPED_FRETE.AsString = '4',4,
+     //                         5)))));
+      case SqlCdsPedidoPED_FRETE.AsInteger of
+        0: CbTipoFrete.ItemIndex := 0;
+        1: CbTipoFrete.ItemIndex := 1;
+        2: CbTipoFrete.ItemIndex := 2;
+        3: CbTipoFrete.ItemIndex := 3;
+        4: CbTipoFrete.ItemIndex := 4;
+      else
+        CbTipoFrete.ItemIndex := 5;
+      end;
+
+
      //Projeto Obra
      edCCusto.idRetorno := SqlCdsPedidoPCX_CODIGO.AsString;
      if (edCCusto.idRetorno = '') then
@@ -2226,12 +2237,15 @@ begin
      rTotalProduto := 0;
      if SqlCdsPedidoItem.active then
      begin
+          // Cronometro(1);
+          // BeginTransaction;
           SqlCdsPedidoItem.First;
           while (not SqlCdsPedidoItem.Eof) do // obtem valor total de produtos
           begin
 
             if (SqlCdsPedidoItemPRF_PRODUTO_AGREGADO.AsString = 'N') then//or ((DBInicio.Empresa.wPMT_VALOR_KIT) and (DBInicio.Empresa.wPMT_ITENS_KIT)) then
               rTotalProduto := rTotalProduto + SqlCdsPedidoItemTOTAL.AsFloat;
+            {
             if dbInicio.Empresa.PMT_HABILITA_ICMS_PEDIDO then
               wIcmsAliq := buscaAliquotaICMS(SqlCdsPedidoItemPRD_REFER.AsString)
             else
@@ -2245,9 +2259,11 @@ begin
                     ' AND EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo) +
                     ' AND PRF_SEQUENCIA = ' + IntToStr(SqlCdsPedidoItemSequencia.AsInteger))
                     ;
-
+             }
             SqlCdsPedidoItem.Next;
           end;
+          // Cronometro(0);
+          // CommitTransaction;
           SqlCdsPedidoItem.First;
      end;
      // FreeAndNil(FrmPedidoItem);
@@ -3197,8 +3213,8 @@ begin
      begin
           PedidoMinimo(EdPedidoNumero.Text);
 
-          if not SqlCdsPedidoItem.isempty then
-            BuscaPedidoItem(EdPedidoNumero.Text, false);
+//          if not SqlCdsPedidoItem.isempty then
+//            BuscaPedidoItem(EdPedidoNumero.Text, false);
           CalculaIndiceDescto;
           //Recalcula ST
           if bTipoPedidoCalculaST then
@@ -3207,7 +3223,7 @@ begin
             RecalculaSTItem;
           end;
           CalculaDifal;
-          CalcutaTotalItens;
+          // CalcutaTotalItens; já é feito no final, dentro do BuscaPedido
 
 
           if (dbInicio.Empresa.pComissaoItem) OR (dbInicio.Empresa.pComissaoEscala) or DBInicio.Empresa.pComissaoSimples or (DBInicio.Empresa.wPMT_PAGAR_COMISSAO_VERBA) then
@@ -3887,6 +3903,10 @@ begin
 //  edVendInternoCodigo.Enabled := true;
 //  edVendInterno.Enabled := true;
 
+
+    SqlCdsPedido.DisableControls;
+    SqlCdsPedidoItem.DisableControls;
+
    PanelAguarde.Visible := True;
    Application.ProcessMessages;
    bRecalculaSTGeral := true;
@@ -3975,6 +3995,9 @@ begin
    bRecalculaSTGeral := False;
    bInclusao:=False;
    PanelAguarde.Visible := False;
+   SqlCdsPedido.EnableControls;
+   SqlCdsPedidoItem.EnableControls;
+
 end;
 
 procedure TFrmPedido.BuscaTipoPedido(sTipoCodigo: Integer);
@@ -6104,6 +6127,8 @@ end;
 procedure TFrmPedido.SpeedButton1Click(Sender: tObject);
 begin
   try
+    SqlCdsPedido.DisableControls;
+    SqlCdsPedidoItem.DisableControls;
     if SqlCdsPedido.Active then
 //      if (BuscaUmDadoSqlAsInteger( 'SELECT OPR_CODIGO FROM ORDEMPRODUCAO ' +
 //                                ' WHERE PED_CODIGO = '+  QuotedStr(SqlCdsPedidoPED_CODIGO.AsString) +
@@ -6127,6 +6152,8 @@ begin
           (SqlCdsPedidoPED_CODIGO.AsString <> '' )
       then
       begin
+        SqlCdsPedido.EnableControls;
+        SqlCdsPedidoItem.EnableControls;
         uteis.aviso('Ordem de produção totalmente gerada. Não pode inserir item.');
         Exit;
       end;
@@ -6143,6 +6170,8 @@ begin
                                  iif(dbInicio.Exclusivo('ORDEMPRODUCAO'), ' AND EMP_CODIGO = '+qStr(DBInicio.Empresa.EMP_CODIGO), '') +
                                  '  AND OPR_STATUS <> '+ QuotedStr('C') ) > 1) then
         begin
+          SqlCdsPedido.EnableControls;
+          SqlCdsPedidoItem.EnableControls;
           uteis.aviso('Ordem de produção já gerada. Não pode inserir item.');
           Exit;
         end;
@@ -6162,10 +6191,16 @@ begin
           EsvaziaBuffer;
           Application.ProcessMessages;
           if DbGradeItemPedido = nil then
+          begin
+            SqlCdsPedido.EnableControls;
+            SqlCdsPedidoItem.EnableControls;
             abort;
+          end;
           if DbGradeItemPedido.CanFocus then
             DbGradeItemPedido.SetFocus;
       finally
+        SqlCdsPedido.EnableControls;
+        SqlCdsPedidoItem.EnableControls;
         FrmPedidoItem.Close;
         PanelAguarde.Visible := False;
       end;
@@ -6190,6 +6225,8 @@ begin
       end;
 
     end;
+    SqlCdsPedido.EnableControls;
+    SqlCdsPedidoItem.EnableControls;
 
   Except on e:Exception do
     showmessage(e.Message); // frmPedido := nil;

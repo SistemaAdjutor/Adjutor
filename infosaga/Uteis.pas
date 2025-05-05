@@ -200,6 +200,7 @@ procedure GravaHistoricoEmail(modulo: string; destinatário: string; titulo: str
 procedure ExecSql2(const pSql: string);
 function RealMod (x: double; MaxInteger: Integer) : double;
 function BloqueiaPedidoVendaFaturaAtraso(cliCodigo, prazoCodigo: string) : Boolean;
+procedure Cronometro(Iniciar: Integer);
 
 
 Const
@@ -267,6 +268,8 @@ Const
 var
     ConnectionStatus: TStringList;
     posicaoUltimoPonto, RegistroCorrente:Integer;
+    TempoInicial: TDateTime;
+
 
 implementation
 
@@ -3239,6 +3242,29 @@ begin
   end
   else
     Result := False;
+end;
+
+
+procedure Cronometro(Iniciar: Integer);
+var
+  TempoFinal, Diferenca: TDateTime;
+  Horas, Minutos, Segundos, Milissegundos: Word;
+begin
+  if Iniciar = 1 then
+  begin
+    TempoInicial := Now;
+  end
+  else
+  begin
+    TempoFinal := Now;
+    Diferenca := TempoFinal - TempoInicial;
+
+    // Extrai os componentes de tempo
+    DecodeTime(Diferenca, Horas, Minutos, Segundos, Milissegundos);
+
+    ShowMessage(Format('Tempo decorrido: %d min, %d seg, %d ms',
+      [Minutos + Horas * 60, Segundos, Milissegundos]));
+  end;
 end;
 
 

@@ -29,10 +29,6 @@ inherited FrmPedido: TFrmPedido
     OnChange = PageControl1Change
     object TabPedido: TTabSheet
       Caption = 'Pedido'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GBInformacoesPedido: TGroupBox
         Left = 0
         Top = 105
@@ -676,10 +672,6 @@ inherited FrmPedido: TFrmPedido
           TabStop = False
           object tsoutros: TTabSheet
             Caption = 'Outras'
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object poutros: TPanel
               Left = 0
               Top = 0
@@ -1198,10 +1190,6 @@ inherited FrmPedido: TFrmPedido
           object TsDesconto: TTabSheet
             Caption = 'Desconto'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pdesconto: TPanel
               Left = 0
               Top = 0
@@ -1332,10 +1320,6 @@ inherited FrmPedido: TFrmPedido
           object tsComisssao: TTabSheet
             Caption = 'Comiss'#245'es'
             ImageIndex = 1
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object gbcomissao: TGroupBox
               Left = 2
               Top = 3
@@ -1474,10 +1458,6 @@ inherited FrmPedido: TFrmPedido
           object tsPPAC: TTabSheet
             Caption = 'Cabe'#231'alho do PPAC'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pPPAC: TPanel
               Left = 0
               Top = 0
@@ -1957,10 +1937,6 @@ inherited FrmPedido: TFrmPedido
         TabOrder = 2
         object TabSheet5: TTabSheet
           Caption = 'Informa'#231#245'es'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GBInformacoesOrcamento: TGroupBox
             Left = 3
             Top = -2
@@ -3575,10 +3551,6 @@ inherited FrmPedido: TFrmPedido
           Caption = 'Endere'#231'o de Entrega'
           ImageIndex = 1
           OnShow = TabSheet6Show
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object DBGrid6: TDBGrid
             Left = 0
             Top = 0
@@ -3675,10 +3647,6 @@ inherited FrmPedido: TFrmPedido
           TabOrder = 0
           object TabPedidoItem: TTabSheet
             Caption = 'Itens do Pedido'
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Panel4: TPanel
               Left = 0
               Top = 238
@@ -4409,10 +4377,6 @@ inherited FrmPedido: TFrmPedido
             Caption = 'Hist'#243'rico de Vendas do Item'
             ImageIndex = 1
             OnShow = TabHostoricoVendaShow
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object GroupBox7: TGroupBox
               Left = 0
               Top = 0
@@ -4545,10 +4509,6 @@ inherited FrmPedido: TFrmPedido
           object TabSheet3: TTabSheet
             Caption = 'Declara'#231#227'o de Importa'#231#227'o'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Splitter3: TSplitter
               Left = 567
               Top = 0
@@ -5079,10 +5039,6 @@ inherited FrmPedido: TFrmPedido
           object tsRetornoIndust: TTabSheet
             Caption = 'Retorno de Industrializa'#231#227'o'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object dbgrdRetornoInd: TDBGrid
               Left = 0
               Top = 0
@@ -5166,10 +5122,6 @@ inherited FrmPedido: TFrmPedido
             Caption = 'Exporta'#231#227'o'
             ImageIndex = 4
             TabVisible = False
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object grpInformacoes: TGroupBox
               Left = 0
               Top = 0
@@ -5234,10 +5186,6 @@ inherited FrmPedido: TFrmPedido
           object TabObservacoes: TTabSheet
             Caption = 'OBSERVA'#199#195'O no Pedido / Nota'
             ImageIndex = 5
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Splitter6: TSplitter
               Left = 481
               Top = 0
@@ -5416,10 +5364,6 @@ inherited FrmPedido: TFrmPedido
           object tsObsProducao: TTabSheet
             Caption = 'Observa'#231#227'o da Produ'#231#227'o'
             ImageIndex = 6
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object gbObsProducao: TGroupBox
               Left = 0
               Top = 0
@@ -5570,10 +5514,6 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Notas Fiscais'
       ImageIndex = 1
       OnShow = TabNotasFiscaisClienteShow
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox1: TGroupBox
         Left = 0
         Top = 573
@@ -6399,10 +6339,6 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Informa'#231#245'es do Cliente'
       ImageIndex = 2
       OnShow = TabClienteVendasShow
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PageControl3: TPageControl
         Left = 0
         Top = 29
@@ -6413,10 +6349,6 @@ inherited FrmPedido: TFrmPedido
         TabOrder = 0
         object TabSheet1: TTabSheet
           Caption = 'Dados do Cliente'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox11: TGroupBox
             Left = 0
             Top = 0
@@ -7102,10 +7034,6 @@ inherited FrmPedido: TFrmPedido
         object TabSheet2: TTabSheet
           Caption = 'Endere'#231'o de Entrega - Altera'#231#227'o'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox13: TGroupBox
             Left = 0
             Top = 0
@@ -7420,10 +7348,6 @@ inherited FrmPedido: TFrmPedido
         object TabSheet4: TTabSheet
           Caption = 'Produtos Vendidos'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox10: TGroupBox
             Left = 0
             Top = 0
@@ -7751,10 +7675,6 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Vendas '#224' Faturar'
       ImageIndex = 3
       OnShow = TabVendasFaturarShow
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox15: TGroupBox
         Left = 0
         Top = 0
@@ -8081,10 +8001,6 @@ inherited FrmPedido: TFrmPedido
     object tsContatosCliente: TTabSheet
       Caption = 'Contatos no Cliente'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object grpContatos: TGroupBox
         Left = 0
         Top = 129
@@ -8284,10 +8200,6 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Notas de Industrializa'#231#227'o'
       ImageIndex = 5
       OnShow = NotasIndustrializacaoShow
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox12: TGroupBox
         Left = 0
         Top = 0
@@ -10172,7 +10084,7 @@ inherited FrmPedido: TFrmPedido
     Left = 1192
     Top = 389
     Bitmap = {
-      494C010103000500600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11950,7 +11862,7 @@ inherited FrmPedido: TFrmPedido
     Left = 40
     Top = 147
     Bitmap = {
-      494C010104000900600010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900640010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
