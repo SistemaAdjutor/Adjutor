@@ -2505,7 +2505,6 @@ begin
  // if ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao then
  if fPMT_RESPONSAVEL_TECNICO  OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
   begin
-
     if (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
       CSRT := 'HJX0FBGCX9U9H9J78S33W0X02E0VTP9L5R8T'  // homologação
     else
@@ -2519,7 +2518,7 @@ begin
     begin
       CNPJ     := '11089061000193';
       xContato := 'Márcio Pacheco - Novi sistemas';
-      email    := 'roseli@novisistemas.com.br';
+      email    := 'suport@novisistemas.com.br';
       fone     := '4135038230';
       idCSRT   := 1;
       hashCSRT := CSRTValida;
