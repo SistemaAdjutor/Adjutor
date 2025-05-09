@@ -532,7 +532,7 @@ begin
   inherited;
   if cdsBuscaIOP_STATUS_ENVASE.AsString = 'F' then
     raise Exception.Create('Já finalizado');
-  tcr.EstornoEnvase(cdsBuscaIOP_CODIGO.AsInteger);
+  tcr.EstornoEnvase(cdsBuscaIOP_CODIGO.AsInteger, cdsBuscaOPr_CODIGO.AsInteger);
   cdsBusca.Filter := '';
   cdsBusca.Filtered := False;
   btnPesquisa.Click;
@@ -664,7 +664,8 @@ begin
       sqladd(' iop_status_envase <>'+QuotedStr('F'));
     if edBusca.Text <> '' then
       SqlAdd(' ore_codigo = '+edBusca.Text);
-
+    if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(sql.text);
   end;
 
 end;
