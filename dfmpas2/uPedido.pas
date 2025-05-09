@@ -1417,7 +1417,7 @@ type
     WDiretivaKit:integer;
     wAdcProdKit : boolean;
     ChecaNFC: boolean;
-    PMT_CALCULAR_ITENS_NO_FINAL, btRecalcula: boolean;
+    PMT_CALCULAR_ITENS_NO_FINAL, btRecalcula, Recalculado: boolean;
 
     procedure LimparCampos(Habilita: boolean = True);
     procedure BuscaItensNota;
@@ -2683,6 +2683,7 @@ begin
   PMT_CALCULAR_ITENS_NO_FINAL := dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_CALCULAR_ITENS_NO_FINAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'S' ;
   btProcessarCalculo.Visible := PMT_CALCULAR_ITENS_NO_FINAL;
   btRecalcula := False;
+  Recalculado := False;
 
 
   pnPedidoMinimo.Font.Color := clRed;
@@ -4484,11 +4485,13 @@ procedure TFrmPedido.Excluir1Click(Sender: tObject);
 begin
    sOperacao := 'I';
    ExcluirItem;
+   Recalculado := False;
 end;
 procedure TFrmPedido.Alterar1Click(Sender: tObject);
 begin
   try
     AlterarItem;
+    Recalculado := False;
   except on e:exception do
 
   end;
@@ -5601,6 +5604,7 @@ procedure TFrmPedido.Adicionar1Click(Sender: tObject);
 begin
 
    AdicionaItem;
+   Recalculado := False;
 
 end;
 
@@ -6222,7 +6226,10 @@ begin
         CalculaDifal;
         if not btnGravar.Enabled then
           CalcutaTotalItens;
-      end;
+        Recalculado := False;
+      end
+      else
+        Recalculado := True;
 
     end;
     SqlCdsPedido.EnableControls;
@@ -7003,6 +7010,14 @@ end;
 procedure TFrmPedido.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
+  if not Recalculado AND PMT_CALCULAR_ITENS_NO_FINAL then
+  begin
+    if MessageDlg('Não foram Processados os Cálculos do pedido, tem certeza que deseja sair?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
+    begin
+      Action := caNone;
+      Exit;
+    end;
+  end;
   ApagaPedidoEmEdicao();
   Action := caFree;
   FrmPedido := nil;
@@ -8145,6 +8160,7 @@ begin
   BtnAlterarClick(Sender);
   BtnGravarClick(Sender);
   btRecalcula := False;
+  Recalculado := True;
 end;
 
 procedure TFrmPedido.RetornoIndustrializacao;
