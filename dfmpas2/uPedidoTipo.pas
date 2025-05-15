@@ -398,6 +398,11 @@ begin
                            //Aqui verificamos se adiciona ou retira material do estoque
                            FrmPedido.SqlCdsPedidoItem.DisableControls;
                            FrmPedido.SqlCdsPedidoItem.First;
+                           if FrmPedido <> nil then
+                             FrmPedido.PanelAguarde.Visible := True;
+                           Application.ProcessMessages;
+
+
                            while (not FrmPedido.SqlCdsPedidoItem.Eof) do
                            begin
                                  prd_codigo := frmPedido.SqlCdsPedidoItemPRD_CODIGO.AsString;
@@ -638,6 +643,11 @@ begin
                                  //Proximo
                                  FrmPedido.SqlCdsPedidoItem.Next;
                            end;
+                           if FrmPedido <> nil then
+                             FrmPedido.PanelAguarde.Visible := False;
+                           Application.ProcessMessages;
+
+
                          FrmPedido.SqlCdsPedidoItem.First;
                          if  not DBInicio.Empresa.wPMT_CONTROLA_KIT  then
                          begin

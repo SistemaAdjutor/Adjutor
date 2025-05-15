@@ -5687,7 +5687,8 @@ begin
    else
   if ValidaPedido then
   begin
-      if (BtnGravar.Enabled) then
+     Recalculado := False;
+     if (BtnGravar.Enabled) then
          BtnGravarClick(Self);
      FrmPedidoTipo := TFrmPedidoTipo.Create(Application);
      try

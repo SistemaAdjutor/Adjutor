@@ -211,16 +211,18 @@ begin
                    ' P2.PRD_DCVAR1,P2.PRD_DCVAR2,P2.PRD_DCVAR3,P2.PRD_DCVAR4,P2.PRD_DCVAR5,'+
                    ' P2.PRD_DCVAR6,P2.PRD_DCVAR7,P2.PRD_DCVAR8, PRF_PESOKG,PRF_PRODUTO_SEMVALOR ';
       wSql2      := ' from PED_IT01 P1 LEFT JOIN PRD0000 P2 on (P2.prd_codigo = P1.prd_codigo)  LEFT JOIN PRD_TIPO P3 ON (P2.PTI_CODIGO = P3.PTI_CODIGO) ';
-      wSeleciona := 'where PED_CODIGO = '''+Edt_Cod_Pedido.Text+'''';
+      wSeleciona := 'where PED_CODIGO = ' + QuotedStr(Edt_Cod_Pedido.Text);
 
 
       //wOrdem     := 'P1.PRF_REGISTRO';
-      WORDEM := '3';
+      // WORDEM := '3';
+      wOrdem     := 'P1.PRF_SEQUENCIA';
+
+
+
       //
       DataMovimento.CdsPedItem.Close;
       DataMovimento.CdsPedItem.CommandText := SQLDEF('PEDIDOS',wSql1+wSql2,wSeleciona,wOrdem,'P1.');
-      if DBInicio.IsDesenvolvimento then
-        CopyToClipBoard(DataMovimento.CdsPedItem.CommandText);
       DataMovimento.CdsPedItem.Open;
       DataMovimento.CdsPedItem.First;
 

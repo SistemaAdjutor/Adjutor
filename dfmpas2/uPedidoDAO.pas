@@ -3,7 +3,7 @@ unit uPedidoDAO;
 interface
 
 uses
-   SysUtils, Variants, uPedido, Data.DBXCommon, Forms, Dialogs, Datasnap.DBClient;
+   SysUtils, Variants, uPedido, Data.DBXCommon, Forms, Dialogs, Datasnap.DBClient, System.Classes;
 
 function GravarTratamentoTermicoItemPedido (const sPedidoCodigo: Integer; const tipoPeca, material, durezaSuperficial, DurezaNucleo, Profundidade, TamanhoGrao, EHT, Desenho : string;
          const PesoKg: double = 0.0; const Qtde: double = 0.0  ) : boolean;
@@ -712,9 +712,11 @@ begin
        MessageDlg('A quantidade enviada para produção não será alterada', mtWarning, [mbOk], 0);
      end;
   end;
-  if FrmPedido <> nil then
-    FrmPedido.PanelAguarde.Visible := True;
-  Application.ProcessMessages;
+//  if FrmPedido <> nil then
+//    FrmPedido.PanelAguarde.Visible := True;
+//  Application.ProcessMessages;
+
+
 
    iRetorno := iRegistroItem;
    bItemExiste := False;
@@ -1115,9 +1117,9 @@ begin
          // dataCadastros.sqlUpdate.Execsql;
 
           continua := true;
-          if FrmPedido <> nil then
-              FrmPedido.PanelAguarde.Visible := True;
-          Application.ProcessMessages;
+//          if FrmPedido <> nil then
+//              FrmPedido.PanelAguarde.Visible := True;
+//          Application.ProcessMessages;
           while continua do
           begin
             try
@@ -1137,8 +1139,8 @@ begin
             end;
             continua := false;
           end;
-          if FrmPedido <> nil then
-              FrmPedido.PanelAguarde.Visible := False;
+//          if FrmPedido <> nil then
+//              FrmPedido.PanelAguarde.Visible := False;
 
          dataCadastros.sqlUpdate.Close;
 
@@ -1233,8 +1235,9 @@ begin
 
     end;
 
-  if FrmPedido <> nil then
-    FrmPedido.PanelAguarde.Visible := False;
+//  if FrmPedido <> nil then
+//    FrmPedido.PanelAguarde.Visible := False;
+//  Screen.Cursor := crDefault;
 
 
   Result := iRetorno;
