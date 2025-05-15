@@ -2764,14 +2764,21 @@ begin
 end;
 
 procedure TFormCliente.CdsVendasCalcFields(DataSet: TDataSet);
+var
+  sEmpresa: string;
 begin
   inherited;
+
+  if Share('PRODUTOS') = 'E' then
+    sEmpresa := ' AND p.EMP_CODIGO = ''' + dbInicio.empresa.EMP_CODIGO + '''';
+
   CdsVendasCLI_DTULTCOM.AsDateTime := dbInicio.BuscaUmDadoSqlAsDateTime(
            'SELECT MAX(PED_DTENTRADA)  ' +
            ' FROM PED_IT01 PI2  ' +
            ' JOIN PED0000 p  ON p.PED_CODIGO = pi2.PED_CODIGO' +
            ' WHERE pi2.PRD_REFER = ' + QuotedStr(CdsVendasPRD_REFER.AsString) +
-           ' AND p.EMP_CODIGO = '  + QuotedStr(dbInicio.EMP_CODIGO) +
+           sEmpresa +
+           // ' AND p.EMP_CODIGO = '  + QuotedStr(dbInicio.EMP_CODIGO) +
            ' AND p.CLI_CODIGO = ' + QuotedStr(CdsVendasCLI_CODIGO.AsString)
            );
 end;
