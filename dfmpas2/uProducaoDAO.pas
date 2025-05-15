@@ -40,7 +40,7 @@ type
    function EnviarDemanda (const ped_codigo , prd_codigo, situacao : string ;const fti_registro, prf_registro, iop_codigo : Integer; const dtEntrega : TDate;const  estoque : double; produzir : double = 0.0 )  : Integer;
    function DemandaHistorico (const dep_codigo : Integer; const descricao, ped_codigo,prd_codigo : string; ReenvioDemanda :  boolean = False ): Boolean;
    function EstornoDemanda (ped_codigo: string; prdCodigo: string = ''):Boolean;
-   function EstornoEnvase(const iop_codigo: integer):boolean;
+   function EstornoEnvase(const iop_codigo, opr_codigo: integer):boolean;
    function EnviaraProducao (const ped_codigo : string;const  Dt_Emissao, dt_Entrega : TDate; const cli_codigo : string): Integer;
    function EnviarItemProducao(const  prd_codigo , prd_refer, ped_codigo: string; const Dt_Emissao: TDate; dt_Entrega: TDate;
             const cli_codigo: string;  QtdePrd: Double ; const pesokg, preco: double; const prf_registro, fti_registro, dep_codigo, programa: integer;var  Item : TItemProducao;
@@ -1453,9 +1453,10 @@ begin
   end;
 end;
 
-function TProducaoDao.EstornoEnvase(const iop_codigo: integer): boolean;
+function TProducaoDao.EstornoEnvase(const iop_codigo, opr_codigo: integer): boolean;
 begin
   ExecSql('delete from MATERIAPRIMA_ORDEMPRODUCAO where iop_codigo = '+IntToStr(iop_codigo));
+  ExecSql('delete from ORDEMPRODUCAO where opr_codigo = '+IntToStr(opr_codigo))  ;
   ExecSql('delete from ITEM_ORDEMPRODUCAO where iop_codigo = '+IntToStr(iop_codigo))  ;
 end;
 
