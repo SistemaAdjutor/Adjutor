@@ -1,0 +1,10 @@
+﻿Atualizado em 15/05/2025
+Inicio da versão: 15/05/2025
+
+principal: Parseals, BSC, Inquibra
+  2039 - Parseals : lentidao para adicionar itens no pedido [Parseals]
+  2041 - Erro BSC-> Cadastro do cliente [BSC]
+  2042 - Erro Inquibra ->Envase Ao estonar não adiciona [Inquibra]
+  2043 - responsável técnico - implementação [Novi]
+  
+
