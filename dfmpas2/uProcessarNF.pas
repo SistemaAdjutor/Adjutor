@@ -3,7 +3,7 @@ unit uProcessarNF;
 interface
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics, System.Hash, System.NetEncoding,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, BaseDBForm, Data.DBXFirebird, Data.FMTBcd, Data.DB, Data.SqlExpr, ACBrEnterTab, ACBrBase, ACBrCalculadora, uteis,
   iniciodb, pcnconversaonfe, ACBrMail, IdTCPConnection, IdTCPClient, IdExplicitTLSClientServerBase, IdMessageClient, IdSMTPBase, IdSMTP, IdComponent, IdIOHandler, IdIOHandlerSocket,
   IdIOHandlerStack, IdSSL, IdSSLOpenSSL, IdBaseComponent, IdMessage, ACBrDFe, ACBrNFe, ACBrNFeDANFEClass, ACBrNFeDANFEFR, vcl.imaging.jpeg, pcnconversao, ACBrNFeDANFeESCPOS,
@@ -1819,6 +1819,11 @@ procedure TfrmProcessaNFe.GerarNFE (const espelho: boolean);
 var vLiqFat, vLiqDesc, vParcelas, semValorComercial: double;
   Hora : TTime;
   Data : TDate;
+  CSRT, CSRTValida : string;
+  TextoHash: string;
+  HashSHA1: THashSHA1;
+  Hash: TBytes;
+
 
   function InforComplentares (compl : string):string;
   begin
@@ -2500,12 +2505,23 @@ begin
  // if ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao then
  if fPMT_RESPONSAVEL_TECNICO  OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
   begin
-     with NotaF.NFe.infRespTec do
+    if (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
+      CSRT := 'HJX0FBGCX9U9H9J78S33W0X02E0VTP9L5R8T'  // homologação
+    else
+      CSRT := 'M0FHBBANJJ88BF374Q8JP6IH7TT73XW1D8I0'; // produção
+    TextoHash := CSRT + NotaF.NFe.infNFe.ID.Substring(3);
+    Hash := THashSHA1.GetHashBytes(TextoHash); // SHA1 do texto
+    CSRTValida := TNetEncoding.Base64.EncodeBytesToString(Hash); // Converte para Base64
+
+
+    with NotaF.NFe.infRespTec do
     begin
       CNPJ     := '11089061000193';
       xContato := 'Márcio Pacheco - Novi sistemas';
-      email    := 'suporte@novisistemas.com.br';
+      email    := 'suport@novisistemas.com.br';
       fone     := '4135038230';
+      idCSRT   := 1;
+      hashCSRT := CSRTValida;
     end;
   end;
 
