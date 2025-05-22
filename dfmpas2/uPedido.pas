@@ -7013,11 +7013,18 @@ begin
   inherited;
   if not Recalculado AND PMT_CALCULAR_ITENS_NO_FINAL then
   begin
-    if MessageDlg('Não foram Processados os Cálculos do pedido, tem certeza que deseja sair?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
+    btRecalcula := True;
+    BtnAlterarClick(Sender);
+    BtnGravarClick(Sender);
+    btRecalcula := False;
+    Recalculado := True;
+
+  { if MessageDlg('Não foram Processados os Cálculos do pedido, tem certeza que deseja sair?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
     begin
       Action := caNone;
       Exit;
     end;
+  }
   end;
   ApagaPedidoEmEdicao();
   Action := caFree;
