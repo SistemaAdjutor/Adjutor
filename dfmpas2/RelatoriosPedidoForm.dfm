@@ -14937,7 +14937,7 @@ inherited FrmRelatoriosPedido: TFrmRelatoriosPedido
           Frame.Typ = []
           Memo.UTF8W = (
             '[OBSERVACAO]'
-            '{DIFAL]')
+            '[DIFAL]')
           ParentFont = False
         end
         object Line7: TfrxLineView
