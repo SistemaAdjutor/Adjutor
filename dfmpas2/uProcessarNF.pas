@@ -501,7 +501,7 @@ begin
   ' NF_ICMSSUBSTITUTO_ANT, NF_CBENEF, pr.PRD_UND_TRIB, pid.PRF_QUANT_TRIB,NF_VALOR_FCP_st, CST_PIS, CST_COFINS,'+
   '  NF_VALORICMSDESON,NF_MOTIVDESON, PRD_VAIXML , OPE_CENQ_IPI, pr.PRD_CODIGO_FCI, NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES                           '+
   ' FROM NF_IT01 it                                                                                                                                                 '+
-  ' JOIN PRD0000 PR ON (PR.PRD_REFER = IT.PRD_REFER  '+ ConcatSe (' and PR.',dbInicio.ExclusivoSql('PRODUTOS') ) + ')                                              '+
+  ' JOIN PRD0000 PR ON (PR.PRD_REFER = IT.PRD_REFER AND PR.PRD_STATUS = ''A''    '+ ConcatSe (' and PR.',dbInicio.ExclusivoSql('PRODUTOS') ) + ')                                              '+
   ' LEFT JOIN SITUACAO_TRIBUTARIA ST ON (PR.STB_TRIBUTACAO =  ST.STB_TRIBUTACAO)                                                                                    '+
   ' LEFT JOIN prd_lote lo on lo.prdl_registro = it.prdl_registro                                                                                                    '+
   ' left join PED_IT01 pid on (pid.PRF_REGISTRO = it.PRF_REGISTRO and pid.emp_codigo = it.emp_codigo )                                                                                                  '+
