@@ -8767,7 +8767,7 @@ end;
 procedure TFrmPedido.CalculaDifal;
 var
   wConsumidor, wVenda, opeFreteNaBase, ipiNaBaseICMS, opeICMSTotalNota, bIsentarICMS, bIPIPorUnidade : Boolean;
-  wForaEstSN, opeNatureza, iRegCfopPrincipal, wCST_CODIGO, wTemSubs, wExterior : string;
+  wForaEstSN, opeNatureza, iRegCfopPrincipal, wCST_CODIGO, wTemSubs, wExterior, cliIE : string;
   rAliqAux, wAliqIcmsImportado, wALiqICmsInterEstadual, wALiqICmsInternow, wDifal,
   wALiqICmsInterno, wIcmDifal, wBaseProduto, rateioTmp, rt1, a, b,
   wDescontoIndividual, wFreteIndividual, wSeguroIndividual, wDespesaIndividual, wUfAliqIcmsInterestadlRegra, wBaseIcmsIndividual,
@@ -8859,6 +8859,7 @@ begin
 
   wIcmDifal := 0;
 
+  cliIE := BuscaUmDadoSQLAsString('SELECT CLI_INSC FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(SqlCdsPedidoCLI_CODIGO.AsString));
 
   // if wConsumidor and wVenda and (wForaEstSN = 'S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
   if ((wCST_CODIGO = '00') OR (wCST_CODIGO = '20'))  and  wConsumidor and wVenda and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL  and ((cliIE = 'ISENTO') OR (cliIE = '')) then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
