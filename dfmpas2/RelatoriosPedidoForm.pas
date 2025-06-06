@@ -987,7 +987,7 @@ begin
       add('     left join prd_diretiva t44 on (t44.prdd_registro = pit.prdd_registro)');
       add('     left join prd_linha t4 on (t4.lin_codigo = prd.lin_codigo)');
       add('     left join prd0000_enderecamento t5 on (t5.prde_registro = prd.prde_registro)');
-      Add('where PIT.PED_CODIGO = '+qStr(nPedido) + ConcatSe(' and PIT.', dbInicio.ExclusivoSql('pedidos') ) );
+      Add('where  prd.PRD_STATUS = ''A'' AND  PIT.PED_CODIGO = '+qStr(nPedido) + ConcatSe(' and PIT.', dbInicio.ExclusivoSql('pedidos') ) );
       if sTipo = 'OP' then
         add(' AND pTI.PTI_SIGLA = ''PA''');
 
