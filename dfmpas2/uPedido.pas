@@ -1902,15 +1902,19 @@ begin
      //                         iif(SqlCdsPedidoPED_FRETE.AsString = '3',3,
      //                         iif(SqlCdsPedidoPED_FRETE.AsString = '4',4,
      //                         5)))));
-      case SqlCdsPedidoPED_FRETE.AsInteger of
-        0: CbTipoFrete.ItemIndex := 0;
-        1: CbTipoFrete.ItemIndex := 1;
-        2: CbTipoFrete.ItemIndex := 2;
-        3: CbTipoFrete.ItemIndex := 3;
-        4: CbTipoFrete.ItemIndex := 4;
-      else
-        CbTipoFrete.ItemIndex := 5;
-      end;
+     try
+       case SqlCdsPedidoPED_FRETE.AsInteger of
+         0: CbTipoFrete.ItemIndex := 0;
+         1: CbTipoFrete.ItemIndex := 1;
+         2: CbTipoFrete.ItemIndex := 2;
+         3: CbTipoFrete.ItemIndex := 3;
+         4: CbTipoFrete.ItemIndex := 4;
+       else
+         CbTipoFrete.ItemIndex := 5;
+       end;
+     except
+       CbTipoFrete.ItemIndex := 5;
+     end;
 
 
      //Projeto Obra
