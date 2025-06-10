@@ -1,7 +1,13 @@
-﻿Atualizado em 04/06/2025
+﻿Atualizado em 10/06/2025
 Inicio da versão: 04/06/2025
 
 principal: Chemvet, PetSpa, Roseplast, Rotor
   2045 - Revisão Roseplast e Rotor-> Pedido Calculo Difal Erro e saindo na impressão mesmo desativado [Rotor, Roseplast]
   2047 - Chemvet e PetSpa - mudar compartilhamento de produtos [Chemvet, PetSpa]
   
+patch 1: Chemvet
+  2050 - Chemvet: erro duplicando na impressão dos pedidos [Chemvet]
+  2051 - Chemvet: Problemas com pedido Web
+  
+
+
