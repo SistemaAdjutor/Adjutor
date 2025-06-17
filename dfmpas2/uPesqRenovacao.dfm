@@ -505,71 +505,60 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
           item
             Expanded = False
             FieldName = 'BANCO'
-            Title.Caption = 'Banco'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'FPC_VLPARC'
-            Title.Caption = 'Valor'
             Width = 87
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'STATUS'
-            Title.Caption = 'Situa'#231#227'o'
             Width = 100
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'CLI_DTULTCOM'
-            Title.Caption = #218'ltima venda'
             Width = 87
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'ULTPARCELA'
-            Title.Caption = #218'ltima parcela'
             Visible = False
           end
           item
             Expanded = False
             FieldName = 'NPARCELA'
-            Title.Caption = 'N'#186' parcelas'
             Visible = False
           end
           item
             Expanded = False
             FieldName = 'ULTVENCIMENTO'
-            Title.Caption = #218'ltimo vencimento'
             Width = 100
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DiasPosVendas'
-            Title.Caption = 'Dias p'#243's-vendas'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'DiasPreVcto'
-            Title.Caption = 'Dias restantes vcto'
             Visible = False
           end
           item
             Expanded = False
             FieldName = 'rep_nome'
-            Title.Caption = 'Nome do vendedor'
             Visible = True
           end
           item
             Expanded = False
             FieldName = 'FPC_ENVIADO_CARTA'
-            Title.Caption = 'Enviado carta'
             Width = 110
             Visible = True
           end>
@@ -695,27 +684,30 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
       DisplayFormat = 'dd/mm/yyyy'
     end
     object cdsBuscoCLI_DTULTCOM: TSQLTimeStampField
-      DisplayLabel = #250'ltima venda'
+      DisplayLabel = #218'ltima venda'
       FieldName = 'CLI_DTULTCOM'
     end
     object cdsBuscoULTVENCIMENTO: TSQLTimeStampField
-      DisplayLabel = 'ult vencimento'
+      DisplayLabel = #218'ltimo vencimento'
       FieldName = 'ULTVENCIMENTO'
     end
     object cdsBuscoULTPARCELA: TFMTBCDField
-      DisplayLabel = 'Ult parcela'
+      DisplayLabel = #218'ltima parcela'
       FieldName = 'ULTPARCELA'
       Precision = 18
       Size = 5
     end
     object cdsBuscoNPARCELA: TIntegerField
+      DisplayLabel = 'N'#186' parcelas'
       FieldName = 'NPARCELA'
     end
     object cdsBuscoDiasPosVendas: TIntegerField
+      DisplayLabel = 'Dias p'#243's-vendas'
       FieldKind = fkInternalCalc
       FieldName = 'DiasPosVendas'
     end
     object cdsBuscoDiasPreVcto: TIntegerField
+      DisplayLabel = 'Dias restantes vcto'
       FieldKind = fkInternalCalc
       FieldName = 'DiasPreVcto'
     end
@@ -728,23 +720,28 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
       Size = 40
     end
     object cdsBuscorep_nome: TStringField
+      DisplayLabel = 'Nome do vendedor'
       FieldName = 'rep_nome'
       Size = 35
     end
     object cdsBuscoBANCO: TStringField
+      DisplayLabel = 'Banco'
       FieldName = 'BANCO'
       Size = 25
     end
     object cdsBuscoSTATUS: TStringField
+      DisplayLabel = 'Situa'#231#227'o'
       FieldName = 'STATUS'
       Size = 60
     end
     object cdsBuscoFPC_ENVIADO_CARTA: TStringField
+      DisplayLabel = 'Enviado carta'
       FieldName = 'FPC_ENVIADO_CARTA'
       OnGetText = cdsBuscoFPC_ENVIADO_CARTAGetText
       Size = 1
     end
     object cdsBuscoFPC_VLPARC: TFMTBCDField
+      DisplayLabel = 'Valor'
       FieldName = 'FPC_VLPARC'
     end
     object cdsBuscoFPC_NUMER: TStringField
@@ -754,6 +751,10 @@ inherited FrmPesqRenovacao: TFrmPesqRenovacao
     object cdsBuscoFAT_CODIGO: TStringField
       FieldName = 'FAT_CODIGO'
       Size = 15
+    end
+    object cdsBuscoEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
     end
   end
   inherited dsBusca: TDataSource

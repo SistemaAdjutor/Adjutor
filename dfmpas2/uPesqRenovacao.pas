@@ -86,6 +86,7 @@ type
     chkClientesCadastradosSemCompras: TCheckBox;
     cdsCartaFAT_REGISTRO: TIntegerField;
     cdsBuscoFAT_CODIGO: TStringField;
+    cdsBuscoEMP_CODIGO: TStringField;
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -113,6 +114,7 @@ type
     procedure cdsBuscoFPC_ENVIADO_CARTAGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure chkClientesCadastradosSemComprasClick(Sender: TObject);
     procedure btnNovoClick(Sender: TObject);
+    procedure btnExcelClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -188,6 +190,31 @@ begin
     tcr.Free;
   end;
 
+end;
+
+procedure TFrmPesqRenovacao.btnExcelClick(Sender: TObject);
+var
+  lista: TStringList;
+begin
+  // inherited;
+
+  lista := TStringList.Create;
+  lista.Clear;
+  lista.add('cli_codigo');
+  lista.add('cli_razao');
+  lista.add('Vencimento');
+  lista.add('BANCO');
+  lista.add('FPC_VLPARC');
+  lista.add('STATUS');
+  lista.add('CLI_DTULTCOM');
+  lista.add('ULTPARCELA');
+  lista.add('NPARCELA');
+  lista.add('ULTVENCIMENTO');
+  lista.add('DiasPosVendas');
+  lista.add('DiasPreVcto');
+  lista.add('rep_nome');
+  lista.add('FPC_ENVIADO_CARTA');
+  CriaCSV(dsBusca, lista, Self, True);
 end;
 
 procedure TFrmPesqRenovacao.btnLimparClick(Sender: TObject);
@@ -595,13 +622,17 @@ begin
   end;
 end;
 
+
 procedure TFrmPesqRenovacao.Filtro;
-var DiasAtrasos :string;
+var
+  DiasAtrasos: string;
 begin
   if Pesquisando then
-   exit ;
+    Exit;
+
   with qBusco do
-	begin
+  begin
+    // Define o número de dias de atraso
     if chkClienteAtrasos.Checked then
     begin
       if edtAtrasos.Text = '' then
@@ -609,99 +640,110 @@ begin
       else
         DiasAtrasos := edtAtrasos.Text;
     end;
-    sql.Clear;
-    sql.Add('SELECT ' + iif(chkClienteAtrasos.Checked, 'PC.FAT_CODIGO', ' ''0'' AS FAT_CODIGO')  + ', cl.CLI_CODIGO, CLI_RAZAO, ' +
-           // ' CLI_DTULTCOM ,      '+
-           '(SELECT MAX(PED_DTENTRADA)  FROM PED0000 p WHERE p.EMP_CODIGO = cl.EMP_CODIGO AND p.CLI_CODIGO = cl.CLI_CODIGO) AS CLI_DTULTCOM,' +
-            '(SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc        ' +
-            ' WHERE pc.CLI_CODIGO = cl.CLI_CODIGO '             +
-             ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-            ' AND FPC_EXCLUSAO = ''N'') AS ULTVENCIMENTO, '+
-            '(SELECT  MAX(FPC_VLPARC) FROM FAT_PC01 pc                                        '+
-            ' WHERE pc.CLI_CODIGO = cl.CLI_CODIGO AND FPC_EXCLUSAO = ''N''                    '+
-             ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-            ' AND FPC_EXCLUSAO = ''N'' '+
-            ' AND FPC_VENCTO =   ( SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc                   '+
-            '                       WHERE pc.CLI_CODIGO = cl.CLI_CODIGO                      '+
-                                     ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-                                     ' AND FPC_EXCLUSAO = ''N'' '+
-                                     '              ) ) AS ULTPARCELA,     '+
-            '  (SELECT  MAX(FPC_NPARCELAS) FROM FAT_PC01 pc                                   '+
-            '   WHERE pc.CLI_CODIGO = cl.CLI_CODIGO AND FPC_EXCLUSAO = ''N''                  '+
-               ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-            '   AND FPC_EXCLUSAO = ''N'' '+
-            '   AND FPC_VENCTO =   ( SELECT  max(FPC_VENCTO) FROM FAT_PC01 pc                 '+
-            '                         WHERE pc.CLI_CODIGO = cl.CLI_CODIGO'+
-                                     ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-                                     ' AND FPC_EXCLUSAO = ''N'' '+
-            '  ) ) AS NPARCELA,     '+
-            '   cl.REP_CODIGO,  rp.rep_nome, rp.REP_RAZAO,                                    '+
-            '    (SELECT MAX(PED_DTENTRADA) FROM PED0000 pe                                   '+
-            '   WHERE PE.CLI_CODIGO = CL.CLI_CODIGO'+
-              ConcatSe(' AND ', dbinicio.ExclusivoSql('PEDIDOS')) +       ' ) ULTPEDIDO ,     ');
 
+    SQL.Clear;
 
-      If chkClienteAtrasos.Checked then
-         sql.Add('FPC_VLPARC, FPC_NUMER, FPC_ENVIADO_CARTA,  FPC_VENCTO vencimento,  BAN_APELIDO as BANCO, FPC_STATUS as status ')
-      else                                                                                                               {AND FPC_SITPAG = ''P'' }
-         sql.Add(' (select sum(FPC_VLPARC)  from FAT_PC01 PC where pc.CLI_CODIGO = cl.CLI_CODIGO AND FPC_EXCLUSAO = ''N''   AND FPC_DTEMIS = ( SELECT  max(FPC_DTEMIS) FROM FAT_PC01 pc                   '+
-            '                       WHERE pc.CLI_CODIGO = cl.CLI_CODIGO                      '+
-                                     ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-                                     ' AND FPC_EXCLUSAO = ''N'' '+
-                                     ') ) AS FPC_VLPARC, '+
+    // SELECT inicial
+    SQL.Add(
+      'SELECT ' +
+      IIf(chkClienteAtrasos.Checked, 'PC.FAT_CODIGO', '''0'' AS FAT_CODIGO') + ', ' +
+      'cl.CLI_CODIGO, CLI_RAZAO, ' +
+      '(SELECT MAX(PED_DTENTRADA) FROM PED0000 p WHERE p.EMP_CODIGO = cl.EMP_CODIGO AND p.CLI_CODIGO = cl.CLI_CODIGO) AS CLI_DTULTCOM, ' +
+      '(SELECT MAX(FPC_VENCTO) FROM FAT_PC01 pc WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+        ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
+        ' AND FPC_EXCLUSAO = ''N'') AS ULTVENCIMENTO, ' +
+      '(SELECT MAX(FPC_VLPARC) FROM FAT_PC01 pc WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+        'AND FPC_EXCLUSAO = ''N'' ' +
+        ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
+        ' AND FPC_VENCTO = (SELECT MAX(FPC_VENCTO) FROM FAT_PC01 pc WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+        ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) + ' AND FPC_EXCLUSAO = ''N'')) AS ULTPARCELA, ' +
+      '(SELECT MAX(FPC_NPARCELAS) FROM FAT_PC01 pc WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+        'AND FPC_EXCLUSAO = ''N'' ' +
+        ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
+        ' AND FPC_VENCTO = (SELECT MAX(FPC_VENCTO) FROM FAT_PC01 pc WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+        ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) + ' AND FPC_EXCLUSAO = ''N'')) AS NPARCELA, ' +
+      'cl.REP_CODIGO, rp.REP_NOME, cl.EMP_CODIGO, rp.REP_RAZAO, ' +
+      '(SELECT MAX(PED_DTENTRADA) FROM PED0000 pe WHERE pe.CLI_CODIGO = cl.CLI_CODIGO ' +
+        ConcatSe(' AND ', dbinicio.ExclusivoSql('PEDIDOS')) + ') AS ULTPEDIDO '
+    );
 
+    // Campos adicionais se cliente com atraso estiver marcado
+    if chkClienteAtrasos.Checked then
+    begin
+      SQL.Add(
+        ' ,FPC_VLPARC, FPC_NUMER, FPC_ENVIADO_CARTA, FPC_VENCTO AS vencimento, BAN_APELIDO AS BANCO,'
+      );
+      SQL.Add(
+        '  CASE FPC_STATUS WHEN ''S'' THEN ''Sim'' ELSE ''Não'' END AS status'
+      );
 
-         ' '''' FPC_NUMER, ''N'' AS FPC_ENVIADO_CARTA, cast(null as timestamp) vencimento,  BAN_APELIDO AS BANCO, '''' as Status  ');
-       sql.Add(' FROM CLI0000 cl                                                                 '+
-               ' LEFT JOIN  REP0000 rp ON (rp.REP_CODIGO = cl.REP_CODIGO) ');
+    end
+    else
+    begin
+      SQL.Add(
+        ',(SELECT SUM(FPC_VLPARC) FROM FAT_PC01 PC WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+        'AND FPC_EXCLUSAO = ''N'' AND FPC_DTEMIS = (SELECT MAX(FPC_DTEMIS) FROM FAT_PC01 pc WHERE pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+        ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) + ' AND FPC_EXCLUSAO = ''N'')) AS FPC_VLPARC, ' +
+        ''''' AS FPC_NUMER, ''N'' AS FPC_ENVIADO_CARTA, CAST(NULL AS TIMESTAMP) AS vencimento, BAN_APELIDO AS BANCO, ''Não'' AS Status '
+      );
+    end;
 
-     If chkClienteAtrasos.Checked then
-       sql.Add(' JOIN FAT_PC01 PC ON (' +
-               ' FPC_SITPAG = ''P''  '+
-               ' AND pc.CLI_CODIGO = cl.CLI_CODIGO  '+
-               ' AND FPC_EXCLUSAO = ''N'' '+
-               ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-              ' AND datediff (day, FPC_VENCTO, CURRENT_DATE) > '+DiasAtrasos+'    )'+
-             ' LEFT JOIN  BAN0000 B ON (B.BAN_CODIGO = PC.BAN_CODIGO ) '  )
-      else
-       sql.Add('LEFT JOIN  BAN0000 B ON (B.BAN_CODIGO = cl.BAN_CODIGO) ');
-//       ')
-//       SqlAdd('EXISTS (SELECT FPC_VENCTO,CLI_CODIGO FROM FAT_PC01 PC '+
-//              ' WHERE FPC_SITPAG = ''P''  '+
-//              ' AND pc.CLI_CODIGO = cl.CLI_CODIGO  '+
-//              ' AND FPC_EXCLUSAO = ''N'' '+
-//              ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
-//              ' AND datediff (day, FPC_VENCTO, CURRENT_DATE) > 5    ) ');
+    // JOINs
+    SQL.Add(' FROM CLI0000 cl ');
+    SQL.Add(' LEFT JOIN REP0000 rp ON rp.REP_CODIGO = cl.REP_CODIGO ');
 
-     // TEVE COMPRA
-   //  SqlAdd(' CLI_DTULTCOM IS NOT NULL');
-     if not chkClientesCadastradosSemCompras.Checked then
-       SqlAdd(' CLI_INATIVO = ''A'' ');// and CLI_DTULTCOM IS NOT NULL    ');
+    if chkClienteAtrasos.Checked then
+    begin
+      SQL.Add(' JOIN FAT_PC01 PC ON ( ' +
+              'pc.FPC_SITPAG = ''P'' ' +
+              'AND pc.CLI_CODIGO = cl.CLI_CODIGO ' +
+              'AND pc.FPC_EXCLUSAO = ''N'' ' +
+              ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
+              ' AND DATEDIFF(DAY, FPC_VENCTO, CURRENT_DATE) > ' + DiasAtrasos + ' )');
+      SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ');
+    end
+    else
+      SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = cl.BAN_CODIGO ');
 
-     if chkClientesCadastradosSemCompras.Checked then
-       SqlAdd(' cl.CLI_CODIGO NOT IN (SELECT pd.CLI_CODIGO FROM PED0000 pd ORDER BY pd.CLI_CODIGO) ');
+    // Filtros adicionais
+    if not chkClientesCadastradosSemCompras.Checked then
+      SQL.Add(' AND CLI_INATIVO = ''A'' ');
 
+    if chkClientesCadastradosSemCompras.Checked then
+      SQL.Add(' AND cl.CLI_CODIGO NOT IN (SELECT pd.CLI_CODIGO FROM PED0000 pd) ');
 
-     //NÃO TEVE TAREFA ASSOCIADA
-     SqlAdd(' (SELECT cast(COUNT(1) as integer) FROM TAREFAS_CRM CR                           '+
-            '  WHERE TRF_NIVEL =2 AND TRF_ACAO = 4                                            '+
-             ConcatSe(' AND ', dbinicio.ExclusivoSql('PEDIDOS')) +
-            '  AND TRF_EXCLUIDO = ''N'' AND CR.CLI_CODIGO = CL.CLI_CODIGO  ) =0               ');
-//            ' ORDER BY CLI_DTULTCOM DESC                                                      ');
+    SQL.Add(
+      ' AND (SELECT CAST(COUNT(1) AS INTEGER) FROM TAREFAS_CRM CR ' +
+      'WHERE CR.TRF_NIVEL = 2 AND CR.TRF_ACAO = 4 ' +
+      ConcatSe(' AND ', dbinicio.ExclusivoSql('PEDIDOS')) +
+      ' AND CR.TRF_EXCLUIDO = ''N'' AND CR.CLI_CODIGO = CL.CLI_CODIGO) = 0 '
+    );
 
-     If (chkClienteAtrasos.Checked)  and  (cbStatus.ItemIndex <> -1)  then
-        SqlAdd('FPC_STATUS =' + QuotedStr(cbStatus.Text));
-     if CbBancos.idRetorno <> '' then
-      SqlAdd(' B.BAN_APELIDO =  ' +QuotedStr(CbBancos.idRetorno));
-     if edVendedor.idRetorno <> '' then
-       SqlAdd('cl.REP_CODIGO = ' +QuotedStr(edVendedor.idRetorno) );
-      if PesqCliente.idRetorno <> '' then
-        SqlAdd('CL.CLI_CODIGO = '+QuotedStr(PesqCliente.idRetorno));
-     SqlAdd(ConcatSe(' CL.', dbinicio.ExclusivoSql('CLIENTES')) );
+    // Filtro por status (quando marcado)
+    if chkClienteAtrasos.Checked and (cbStatus.ItemIndex <> -1) then
+      SQL.Add(' AND FPC_STATUS = ' + QuotedStr(cbStatus.Text));
+
+    // Banco selecionado
+    if CbBancos.idRetorno <> '' then
+      SQL.Add(' AND B.BAN_APELIDO = ' + QuotedStr(CbBancos.idRetorno));
+
+    // Vendedor selecionado
+    if edVendedor.idRetorno <> '' then
+      SQL.Add(' AND cl.REP_CODIGO = ' + QuotedStr(edVendedor.idRetorno));
+
+    // Cliente específico
+    if PesqCliente.idRetorno <> '' then
+      SQL.Add(' AND cl.CLI_CODIGO = ' + QuotedStr(PesqCliente.idRetorno));
+
+    // Restrições adicionais de segurança
+    SQL.Add(ConcatSe(' AND CL.', dbinicio.ExclusivoSql('CLIENTES')));
   end;
+
   if dbInicio.IsDesenvolvimento then
-    copyToClipboard(qBusco.Sql.Text);
+    CopyToClipboard(qBusco.SQL.Text);
 end;
+
+
 
 procedure TFrmPesqRenovacao.FormClose(Sender: TObject; var Action: TCloseAction);
 var
