@@ -1,4 +1,4 @@
-﻿Atualizado em 10/06/2025
+﻿Atualizado em 17/06/2025
 Inicio da versão: 04/06/2025
 
 principal: Chemvet, PetSpa, Roseplast, Rotor
@@ -9,5 +9,8 @@ patch 1: Chemvet
   2050 - Chemvet: erro duplicando na impressão dos pedidos [Chemvet]
   2051 - Chemvet: Problemas com pedido Web
   
+patch 2: Collect
+  2053 - Correção Collect -> Componente Sem Exportação de Ficheiro: Abertura Direta no MS Office [Collect]
+
 
 
