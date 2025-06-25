@@ -5,8 +5,8 @@ inherited frmEditTabelas: TfrmEditTabelas
   ClientHeight = 500
   ClientWidth = 1192
   KeyPreview = True
-  ExplicitWidth = 1200
-  ExplicitHeight = 527
+  ExplicitWidth = 1208
+  ExplicitHeight = 539
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
@@ -517,8 +517,10 @@ inherited frmEditTabelas: TfrmEditTabelas
       GridLeft = 0
       GridWidth = 0
       GridHeight = 100
+      GridTop = 0
       GridShowWhenEnter = False
       SelectWithDoubleClick = False
+      LimparCampoAoSair = True
     end
   end
   object Panel2: TPanel [2]
@@ -1677,7 +1679,7 @@ inherited frmEditTabelas: TfrmEditTabelas
     Top = 256
   end
   object frxAcordo: TfrxReport
-    Version = '5.3.16'
+    Version = '6.9.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]
@@ -1729,6 +1731,8 @@ inherited frmEditTabelas: TfrmEditTabelas
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
+      HGuides.Strings = (
+        '120,94496')
       PaperWidth = 210.000000000000000000
       PaperHeight = 297.000000000000000000
       PaperSize = 9
@@ -1736,35 +1740,41 @@ inherited frmEditTabelas: TfrmEditTabelas
       RightMargin = 10.000000000000000000
       TopMargin = 10.000000000000000000
       BottomMargin = 10.000000000000000000
-      HGuides.Strings = (
-        '120,94496')
+      Frame.Typ = []
+      MirrorMode = []
       object PageHeader1: TfrxPageHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 102.826840000000000000
         Top = 18.897650000000000000
         Width = 718.110700000000000000
         Stretched = True
         object Shape1: TfrxShapeView
+          AllowVectorExport = True
           Left = 604.724800000000000000
           Top = 79.149660000000000000
           Width = 95.590600000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape49: TfrxShapeView
+          AllowVectorExport = True
           Left = 340.157700000000000000
           Top = 79.149660000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object frxcdsEditPRE_ACORDOCOM: TfrxMemoView
+          AllowVectorExport = True
           Left = 464.882190000000000000
           Top = 3.000000000000000000
           Width = 173.858380000000000000
@@ -1776,12 +1786,14 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Acordo comercial n'#186' :')
           ParentFont = False
         end
         object frxcdsEditPRE_REVISAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 559.370440000000000000
           Top = 26.456710000000000000
           Width = 75.590600000000000000
@@ -1793,12 +1805,14 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Revis'#227'o N'#186' :')
           ParentFont = False
         end
         object frxcdsEditPRE_DATAREVISAO: TfrxMemoView
+          AllowVectorExport = True
           Left = 483.779840000000000000
           Top = 46.913420000000000000
           Width = 151.181200000000000000
@@ -1810,12 +1824,14 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -13
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             'Data da '#250'ltima revis'#227'o:')
           ParentFont = False
         end
         object Line8: TfrxLineView
+          AllowVectorExport = True
           Left = 1.471720910000000000
           Top = 75.590600000000000000
           Width = 721.890230000000000000
@@ -1825,68 +1841,83 @@ inherited frmEditTabelas: TfrmEditTabelas
           Frame.Width = 3.000000000000000000
         end
         object Shape51: TfrxShapeView
+          AllowVectorExport = True
           Left = 642.520100000000000000
           Top = 47.252010000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape52: TfrxShapeView
+          AllowVectorExport = True
           Left = 642.520100000000000000
           Top = 22.677180000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape53: TfrxShapeView
+          AllowVectorExport = True
           Left = 642.520100000000000000
           Width = 75.590600000000000000
           Height = 18.897650000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo10: TfrxMemoView
+          AllowVectorExport = True
           Left = 642.520100000000000000
           Top = 45.354360000000000000
           Width = 71.811070000000000000
           Height = 22.677180000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxcdsEdit."PRE_DATAREVISAO"]')
         end
         object Memo30: TfrxMemoView
+          AllowVectorExport = True
           Left = 642.520100000000000000
           Top = 22.677180000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxcdsEdit."PRE_REVISAO"]')
         end
         object Memo31: TfrxMemoView
+          AllowVectorExport = True
           Left = 642.520100000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxcdsEdit."PRE_ACORDOCOM"]')
         end
         object Shape50: TfrxShapeView
+          AllowVectorExport = True
           Left = 35.487490910000000000
           Top = 79.149660000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Line7: TfrxLineView
+          AllowVectorExport = True
           Top = 99.047310000000000000
           Width = 725.669760000000000000
           Color = clBlack
@@ -1895,32 +1926,40 @@ inherited frmEditTabelas: TfrmEditTabelas
           Frame.Width = 3.000000000000000000
         end
         object Memo24: TfrxMemoView
+          AllowVectorExport = True
           Top = 79.524034550000000000
           Width = 87.959970910000000000
           Height = 17.523275450000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'FOR: 019')
         end
         object Memo25: TfrxMemoView
+          AllowVectorExport = True
           Left = 284.936470910000000000
           Top = 79.524034550000000000
           Width = 103.078090910000000000
           Height = 17.523275450000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Revis'#227'o: 02')
         end
         object Memo29: TfrxMemoView
+          AllowVectorExport = True
           Left = 541.385450910000000000
           Top = 79.524034550000000000
           Width = 140.791510910000000000
           Height = 17.523275450000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             'Data Elab: 07/03/2023')
         end
         object logoempresa: TfrxPictureView
+          AllowVectorExport = True
           Width = 366.614283070000000000
           Height = 68.031540000000000000
           Center = True
+          Frame.Typ = []
           HightQuality = False
           Transparent = False
           TransparentColor = clWhite
@@ -1928,18 +1967,22 @@ inherited frmEditTabelas: TfrmEditTabelas
       end
       object Header2: TfrxHeader
         FillType = ftBrush
+        Frame.Typ = []
         Height = 18.897650000000000000
         Top = 400.630180000000000000
         Width = 718.110700000000000000
         ReprintOnNewPage = True
         object Shape48: TfrxShapeView
+          AllowVectorExport = True
           Width = 718.110700000000000000
           Height = 18.897650000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Shape = skRoundRectangle
         end
         object Memo1: TfrxMemoView
+          AllowVectorExport = True
           Top = 2.000000000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
@@ -1948,11 +1991,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'C'#243'd. Produto')
           ParentFont = False
         end
         object Memo2: TfrxMemoView
+          AllowVectorExport = True
           Left = 62.252010000000000000
           Top = 2.000000000000000000
           Width = 204.094620000000000000
@@ -1962,11 +2007,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Produto')
           ParentFont = False
         end
         object Memo3: TfrxMemoView
+          AllowVectorExport = True
           Left = 270.685220000000000000
           Top = 2.000000000000000000
           Width = 79.370130000000000000
@@ -1976,11 +2023,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Tipo pe'#231'a')
           ParentFont = False
         end
         object Memo4: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.393940000000000000
           Top = 2.000000000000000000
           Width = 56.692950000000000000
@@ -1990,11 +2039,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Material')
           ParentFont = False
         end
         object Memo5: TfrxMemoView
+          AllowVectorExport = True
           Left = 415.984540000000000000
           Top = 2.000000000000000000
           Width = 78.708720000000000000
@@ -2004,11 +2055,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Dureza Superficial')
           ParentFont = False
         end
         object Memo6: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.354670000000000000
           Top = 2.000000000000000000
           Width = 68.031540000000000000
@@ -2018,11 +2071,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Profundidade')
           ParentFont = False
         end
         object Memo7: TfrxMemoView
+          AllowVectorExport = True
           Left = 571.047620000000000000
           Top = 2.000000000000000000
           Width = 60.611070000000000000
@@ -2032,11 +2087,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Vlr. Comercial')
           ParentFont = False
         end
         object Memo8: TfrxMemoView
+          AllowVectorExport = True
           Left = 636.079160000000000000
           Top = 2.000000000000000000
           Width = 21.656710000000000000
@@ -2046,11 +2103,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'UN.')
           ParentFont = False
         end
         object Memo22: TfrxMemoView
+          AllowVectorExport = True
           Left = 663.914770980000000000
           Top = 1.000000000000000000
           Width = 52.166276100000000000
@@ -2060,6 +2119,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             'Prev. entrega')
           ParentFont = False
@@ -2067,6 +2127,7 @@ inherited frmEditTabelas: TfrmEditTabelas
       end
       object MasterData1: TfrxMasterData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -11
@@ -2080,66 +2141,79 @@ inherited frmEditTabelas: TfrmEditTabelas
         DataSetName = 'frxcdsEdit'
         RowCount = 0
         object Shape36: TfrxShapeView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 18.897650000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape37: TfrxShapeView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 79.370130000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape38: TfrxShapeView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 18.897650000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape39: TfrxShapeView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 139.842610000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape40: TfrxShapeView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 170.078850000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Shape41: TfrxShapeView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 109.606370000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo66: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 3.779529999999990000
           Width = 71.811070000000000000
@@ -2151,11 +2225,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Raz'#227'o Social:')
           ParentFont = False
         end
         object Memo67: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 64.252010000000000000
           Width = 52.913420000000000000
@@ -2165,39 +2241,48 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Endere'#231'o:')
           ParentFont = False
         end
         object Memo68: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 109.606370000000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[BAIRRO]')
         end
         object Memo69: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 139.842610000000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CONTATO]')
         end
         object Memo70: TfrxMemoView
+          AllowVectorExport = True
           Left = 8.779530000000000000
           Top = 170.078850000000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[EMAIL]')
         end
         object Memo71: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 18.897650000000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxcdsEdit."CLI_RAZAO"]')
           Formats = <
@@ -2207,14 +2292,17 @@ inherited frmEditTabelas: TfrmEditTabelas
             end>
         end
         object Memo72: TfrxMemoView
+          AllowVectorExport = True
           Left = 7.559060000000000000
           Top = 79.370130000000000000
           Width = 525.354670000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[ENDERECO]')
         end
         object Memo73: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 94.488250000000000000
           Width = 45.354360000000000000
@@ -2224,11 +2312,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Bairro:')
           ParentFont = False
         end
         object Memo74: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 124.724490000000000000
           Width = 94.488250000000000000
@@ -2238,11 +2328,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Contato:')
           ParentFont = False
         end
         object Memo75: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 154.960730000000000000
           Width = 37.795300000000000000
@@ -2252,11 +2344,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Email:')
           ParentFont = False
         end
         object Memo76: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 3.779529999999990000
           Width = 94.488250000000000000
@@ -2266,29 +2360,35 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'CNPJ:')
           ParentFont = False
         end
         object Memo77: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 18.897650000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CNPJ]')
         end
         object Shape42: TfrxShapeView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 49.133890000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo78: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 34.015770000000000000
           Width = 94.488250000000000000
@@ -2298,29 +2398,35 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'I.E./RG:')
           ParentFont = False
         end
         object Memo79: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 49.133890000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[IE]')
         end
         object Shape43: TfrxShapeView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 79.370130000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo80: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 64.252010000000000000
           Width = 94.488250000000000000
@@ -2330,15 +2436,18 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Cidade/UF:')
           ParentFont = False
         end
         object Memo81: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 79.370130000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CIDADE]')
           Formats = <
@@ -2348,16 +2457,19 @@ inherited frmEditTabelas: TfrmEditTabelas
             end>
         end
         object Shape44: TfrxShapeView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 109.606370000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo82: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 94.488250000000000000
           Width = 94.488250000000000000
@@ -2367,29 +2479,35 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'CEP:')
           ParentFont = False
         end
         object Memo83: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 109.606370000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[CEP]')
         end
         object Shape45: TfrxShapeView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 139.842610000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo84: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 124.724490000000000000
           Width = 94.488250000000000000
@@ -2399,19 +2517,23 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fax:')
           ParentFont = False
         end
         object Memo85: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 139.842610000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FAX]')
         end
         object Memo86: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 34.015770000000000000
           Width = 94.488250000000000000
@@ -2421,39 +2543,47 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Fantasia:')
           ParentFont = False
         end
         object Shape46: TfrxShapeView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 49.133890000000000000
           Width = 532.913730000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo87: TfrxMemoView
+          AllowVectorExport = True
           Left = 3.779530000000000000
           Top = 49.133890000000000000
           Width = 529.134200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FANTASIA]')
         end
         object Shape47: TfrxShapeView
+          AllowVectorExport = True
           Left = 548.031850000000000000
           Top = 170.078850000000000000
           Width = 170.078850000000000000
           Height = 15.118120000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Frame.Width = 0.500000000000000000
           Shape = skRoundRectangle
         end
         object Memo88: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 154.960730000000000000
           Width = 94.488250000000000000
@@ -2463,19 +2593,23 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Telefone:')
           ParentFont = False
         end
         object Memo89: TfrxMemoView
+          AllowVectorExport = True
           Left = 551.811380000000000000
           Top = 170.078850000000000000
           Width = 151.181200000000000000
           Height = 15.118120000000000000
+          Frame.Typ = []
           Memo.UTF8W = (
             '[TELEFONE]')
         end
         object Line9: TfrxLineView
+          AllowVectorExport = True
           Left = -3.779530000000000000
           Top = 188.976500000000000000
           Width = 725.669760000000000000
@@ -2487,6 +2621,7 @@ inherited frmEditTabelas: TfrmEditTabelas
       end
       object DetailData1: TfrxDetailData
         FillType = ftBrush
+        Frame.Typ = []
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Height = -9
@@ -2500,9 +2635,11 @@ inherited frmEditTabelas: TfrmEditTabelas
         DataSetName = 'frxItensTabela'
         RowCount = 0
         object Memo9: TfrxMemoView
+          AllowVectorExport = True
           Top = 0.755905999999982000
           Width = 718.110700000000000000
           Height = 25.700804000000000000
+          Frame.Typ = []
           Highlight.Font.Charset = DEFAULT_CHARSET
           Highlight.Font.Color = clRed
           Highlight.Font.Height = -13
@@ -2511,8 +2648,10 @@ inherited frmEditTabelas: TfrmEditTabelas
           Highlight.Condition = '<line> mod 2 = 0'
           Highlight.FillType = ftBrush
           Highlight.Fill.BackColor = 15000804
+          Highlight.Frame.Typ = []
         end
         object frxItensTabelaPRD_REFER: TfrxMemoView
+          AllowVectorExport = True
           Width = 60.472480000000000000
           Height = 26.456710000000000000
           DataField = 'PRD_REFER'
@@ -2523,12 +2662,14 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxItensTabela."PRD_REFER"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxItensTabelaPRD_DESCRI: TfrxMemoView
+          AllowVectorExport = True
           Left = 64.252010000000000000
           Width = 200.315090000000000000
           Height = 26.456710000000000000
@@ -2541,6 +2682,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxItensTabela."PRD_DESCRI"]')
           ParentFont = False
@@ -2548,6 +2690,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           VAlign = vaCenter
         end
         object frxItensTabelaPRD_TIPOPECA_TERM: TfrxMemoView
+          AllowVectorExport = True
           Left = 270.685220000000000000
           Width = 79.370130000000000000
           Height = 26.456710000000000000
@@ -2560,12 +2703,14 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxItensTabela."PRD_TIPOPECA_TERM"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxItensTabelaPRD_MATERIAL_TERM: TfrxMemoView
+          AllowVectorExport = True
           Left = 355.609153330000000000
           Width = 56.359616670000000000
           Height = 26.456710000000000000
@@ -2578,6 +2723,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxItensTabela."PRD_MATERIAL_TERM"]')
           ParentFont = False
@@ -2585,6 +2731,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           VAlign = vaCenter
         end
         object frxItensTabelaPRD_DUREZASUPERFICIAL_TERM: TfrxMemoView
+          AllowVectorExport = True
           Left = 415.984540000000000000
           Width = 78.708720000000000000
           Height = 26.456710000000000000
@@ -2597,6 +2744,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxItensTabela."PRD_DUREZASUPERFICIAL_TERM"]')
           ParentFont = False
@@ -2604,6 +2752,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           VAlign = vaCenter
         end
         object frxItensTabelaPRD_PROFUNDIDADE_TERM: TfrxMemoView
+          AllowVectorExport = True
           Left = 498.349413330000000000
           Width = 68.031540010000000000
           Height = 26.456710000000000000
@@ -2616,6 +2765,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxItensTabela."PRD_PROFUNDIDADE_TERM"]')
           ParentFont = False
@@ -2623,6 +2773,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           VAlign = vaCenter
         end
         object frxItensTabelaPRE_PRECO: TfrxMemoView
+          AllowVectorExport = True
           Left = 570.936508890000000000
           Width = 60.611070000000000000
           Height = 26.456710000000000000
@@ -2634,6 +2785,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '[frxItensTabela."PRE_PRECO"]')
@@ -2641,6 +2793,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           VAlign = vaCenter
         end
         object frxItensTabelaPRD_UND: TfrxMemoView
+          AllowVectorExport = True
           Left = 636.079160000000000000
           Width = 21.656710000000000000
           Height = 26.456710000000000000
@@ -2652,12 +2805,14 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[frxItensTabela."PRD_UND"]')
           ParentFont = False
           VAlign = vaCenter
         end
         object frxItensTabelaPRE_PREV_ENTREGA: TfrxMemoView
+          AllowVectorExport = True
           Left = 663.914770980000000000
           Width = 52.166276100000000000
           Height = 26.456710000000000000
@@ -2668,6 +2823,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           HAlign = haRight
           Memo.UTF8W = (
             '3 dias')
@@ -2677,10 +2833,12 @@ inherited frmEditTabelas: TfrmEditTabelas
       end
       object ReportSummary1: TfrxReportSummary
         FillType = ftBrush
+        Frame.Typ = []
         Height = 220.310390000000000000
         Top = 529.134200000000000000
         Width = 718.110700000000000000
         object Memo40: TfrxMemoView
+          AllowVectorExport = True
           Top = 201.412740000000000000
           Width = 718.651240540000000000
           Height = 18.897650000000000000
@@ -2689,6 +2847,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -15
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             
@@ -2697,6 +2856,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo44: TfrxMemoView
+          AllowVectorExport = True
           Left = 362.834880000000000000
           Top = 147.239476670000000000
           Width = 119.685116670000000000
@@ -2706,6 +2866,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
             'Nome do Respons'#225'vel :'
@@ -2714,6 +2875,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo43: TfrxMemoView
+          AllowVectorExport = True
           Left = 365.354566670000000000
           Top = 129.601670000000000000
           Width = 249.448980000000000000
@@ -2723,12 +2885,14 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -12
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
             'APROVA'#199#195'O DO CLIENTE')
           ParentFont = False
         end
         object frxDataOrcamentoREP_EMAIL: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.338590000000000000
           Top = 159.381200000000000000
           Width = 351.785900000000000000
@@ -2738,21 +2902,25 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
             'qualidade@embraterm.ind.br')
           ParentFont = False
         end
         object Shape2: TfrxShapeView
+          AllowVectorExport = True
           Left = 2.400000000000000000
           Top = 6.845330000000000000
           Width = 714.318120000000000000
           Height = 109.102350000000000000
           Fill.BackColor = 15000804
           Frame.Color = clNone
+          Frame.Typ = []
           Shape = skRoundRectangle
         end
         object Memo45: TfrxMemoView
+          AllowVectorExport = True
           Left = 12.000000000000000000
           Top = 11.445330000000000000
           Width = 131.206370000000000000
@@ -2762,11 +2930,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold, fsUnderline]
+          Frame.Typ = []
           Memo.UTF8W = (
             'Observa'#231#245'es Gerais:')
           ParentFont = False
         end
         object Memo46: TfrxMemoView
+          AllowVectorExport = True
           Left = 152.938590000000000000
           Top = 11.445330000000000000
           Width = 158.582560000000000000
@@ -2776,11 +2946,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '**Ordem M'#237'nima de Servi'#231'o = ')
           ParentFont = False
         end
         object Memo47: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 34.645329999999900000
           Width = 100.006370000000000000
@@ -2790,11 +2962,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '- Prazo de entrega:')
           ParentFont = False
         end
         object Memo48: TfrxMemoView
+          AllowVectorExport = True
           Left = 114.600000000000000000
           Top = 34.645329999999900000
           Width = 574.104020000000000000
@@ -2804,6 +2978,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '3 Dias '#250'teis (normalmente executamos os servi'#231'os antes desse pra' +
@@ -2811,6 +2986,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo49: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 51.045330000000000000
           Width = 43.206370000000000000
@@ -2820,11 +2996,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '- Frete:')
           ParentFont = False
         end
         object Memo50: TfrxMemoView
+          AllowVectorExport = True
           Left = 54.200000000000000000
           Top = 51.045330000000000000
           Width = 274.406370000000000000
@@ -2835,11 +3013,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FRETE]')
           ParentFont = False
         end
         object Memo51: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 66.445330000000000000
           Width = 141.606370000000000000
@@ -2849,11 +3029,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '- Condi'#231#227'o de pagamento:')
           ParentFont = False
         end
         object Memo52: TfrxMemoView
+          AllowVectorExport = True
           Left = 153.000000000000000000
           Top = 66.445330000000000000
           Width = 226.406370000000000000
@@ -2863,11 +3045,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[PAGAMENTO]')
           ParentFont = False
         end
         object Memo53: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 81.645329999999900000
           Width = 697.606370000000000000
@@ -2877,6 +3061,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '- Reservamo-nos no direito de subtrair no m'#237'nimo 01(uma) pe'#231'a pa' +
@@ -2884,6 +3069,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo56: TfrxMemoView
+          AllowVectorExport = True
           Left = 11.200000000000000000
           Top = 97.645330000000000000
           Width = 657.606370000000000000
@@ -2893,6 +3079,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               '- Material sujeito a confer'#234'ncia conforme Manual de Fornecimento' +
@@ -2900,6 +3087,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo57: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.338590000000000000
           Top = 142.095670000000000000
           Width = 351.785900000000000000
@@ -2909,11 +3097,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[RAZAO]')
           ParentFont = False
         end
         object Memo58: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.338590000000000000
           Top = 177.495670000000000000
           Width = 351.785900000000000000
@@ -2923,11 +3113,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[SITE]')
           ParentFont = False
         end
         object Memo11: TfrxMemoView
+          AllowVectorExport = True
           Left = 2.400000000000000000
           Top = 123.418490000000000000
           Width = 94.488250000000000000
@@ -2937,11 +3129,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = []
+          Frame.Typ = []
           Memo.UTF8W = (
             '[FONE]')
           ParentFont = False
         end
         object Memo12: TfrxMemoView
+          AllowVectorExport = True
           Left = 488.779840000000000000
           Top = 168.396970000000000000
           Width = 219.212740000000000000
@@ -2955,6 +3149,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo63: TfrxMemoView
+          AllowVectorExport = True
           Left = 488.559370000000000000
           Top = 181.196970000000000000
           Width = 219.212740000000000000
@@ -2968,6 +3163,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo13: TfrxMemoView
+          AllowVectorExport = True
           Left = 488.559370000000000000
           Top = 155.181200000000000000
           Width = 219.212740000000000000
@@ -2981,6 +3177,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo15: TfrxMemoView
+          AllowVectorExport = True
           Left = 374.173470000000000000
           Top = 11.338590000000000000
           Width = 336.220470000000000000
@@ -2990,11 +3187,13 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             '[PMT_MSG_ORCAMENTO_INDUST]')
           ParentFont = False
         end
         object Memo14: TfrxMemoView
+          AllowVectorExport = True
           Left = 309.921460000000000000
           Top = 11.338590000000000000
           Width = 64.094310000000000000
@@ -3006,6 +3205,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             '[PMT_VALOR_MINIMO_DO_SERVICO]')
@@ -3014,19 +3214,24 @@ inherited frmEditTabelas: TfrmEditTabelas
       end
       object PageFooter1: TfrxPageFooter
         FillType = ftBrush
+        Frame.Typ = []
         Height = 97.708720000000000000
         Top = 771.024120000000000000
         Width = 718.110700000000000000
         object Shape27: TfrxShapeView
+          AllowVectorExport = True
           Top = 3.220470000000000000
           Width = 718.110700000000000000
           Height = 94.488250000000000000
+          Frame.Typ = []
         end
         object Picture1: TfrxPictureView
+          AllowVectorExport = True
           Left = 13.000000000000000000
           Top = 4.000000000000000000
           Width = 94.488250000000000000
           Height = 90.708720000000000000
+          Frame.Typ = []
           Picture.Data = {
             07544269746D617056720100424D56720100000000003600000028000000A800
             0000BC0000000100180000000000207201000000000000000000000000000000
@@ -5997,6 +6202,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           TransparentColor = clWhite
         end
         object Memo17: TfrxMemoView
+          AllowVectorExport = True
           Left = 108.606370000000000000
           Top = 14.897650000000000000
           Width = 472.441250000000000000
@@ -6006,6 +6212,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'R. Cezinando Dias Paredes, n'#186' 1154 - Boqueir'#227'o, Curitiba - PR - ' +
@@ -6013,6 +6220,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo18: TfrxMemoView
+          AllowVectorExport = True
           Left = 118.826840000000000000
           Top = 27.015770000000000000
           Width = 449.764070000000000000
@@ -6022,6 +6230,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -8
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           Memo.UTF8W = (
             
               'Fone (41)3286-6025 - E-mail: embraterm@embraterm.ind.br - Site: ' +
@@ -6029,6 +6238,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Memo19: TfrxMemoView
+          AllowVectorExport = True
           Left = 96.267780000000000000
           Top = 48.574830000000000000
           Width = 514.016080000000000000
@@ -6038,6 +6248,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -9
           Font.Name = 'Arial'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'POL'#205'TICA DA QUALIDADE'
@@ -6049,10 +6260,12 @@ inherited frmEditTabelas: TfrmEditTabelas
           ParentFont = False
         end
         object Picture2: TfrxPictureView
+          AllowVectorExport = True
           Left = 614.283860000000000000
           Top = 5.779530000000000000
           Width = 90.708720000000000000
           Height = 90.708720000000000000
+          Frame.Typ = []
           Picture.Data = {
             07544269746D6170F6AC0100424DF6AC0100000000003600000028000000BA00
             0000C40000000100180000000000C0AC01000000000000000000000000000000
@@ -9492,6 +9705,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           TransparentColor = clWhite
         end
         object Memo16: TfrxMemoView
+          AllowVectorExport = True
           Left = 113.385900000000000000
           Top = 0.220470000000000000
           Width = 449.764070000000000000
@@ -9501,6 +9715,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Font.Height = -11
           Font.Name = 'Arial Black'
           Font.Style = [fsBold]
+          Frame.Typ = []
           HAlign = haCenter
           Memo.UTF8W = (
             'EMBRATERM EMPRESA BRASILEIRA DE TRATAMENTOS T'#201'RMICOS LTDA')
@@ -9569,11 +9784,14 @@ inherited frmEditTabelas: TfrmEditTabelas
     ShowProgress = True
     OverwritePrompt = False
     DataOnly = False
+    InteractiveFormsFontSubset = 'A-Z,a-z,0-9,#43-#47 '
+    OpenAfterExport = False
     PrintOptimized = False
     Outline = False
     Background = False
     HTMLTags = True
     Quality = 95
+    Transparency = False
     Author = 'FastReport'
     Subject = 'FastReport PDF export'
     ProtectionFlags = [ePrint, eModify, eCopy, eAnnot]
@@ -9583,6 +9801,9 @@ inherited frmEditTabelas: TfrmEditTabelas
     FitWindow = False
     CenterWindow = False
     PrintScaling = False
+    PdfA = False
+    PDFStandard = psNone
+    PDFVersion = pv17
     Left = 296
     Top = 312
   end
