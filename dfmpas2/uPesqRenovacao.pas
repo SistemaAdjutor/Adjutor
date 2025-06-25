@@ -690,7 +690,10 @@ begin
 
     // JOINs
     SQL.Add(' FROM CLI0000 cl ');
-    SQL.Add(' LEFT JOIN REP0000 rp ON rp.REP_CODIGO = cl.REP_CODIGO ');
+    if (edVendedor.idRetorno <> '') or (CbBancos.idRetorno <> '') then
+      SQL.Add(' JOIN REP0000 rp ON rp.REP_CODIGO = cl.REP_CODIGO ')
+    else
+      SQL.Add(' LEFT JOIN REP0000 rp ON rp.REP_CODIGO = cl.REP_CODIGO ');
 
     if chkClienteAtrasos.Checked then
     begin
@@ -700,10 +703,24 @@ begin
               'AND pc.FPC_EXCLUSAO = ''N'' ' +
               ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
               ' AND DATEDIFF(DAY, FPC_VENCTO, CURRENT_DATE) > ' + DiasAtrasos + ' )');
-      SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ');
+      if CbBancos.idRetorno <> '' then
+        SQL.Add(' JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ')
+      else
+      begin
+        if (CbBancos.idRetorno <> '') or (edVendedor.idRetorno <> '') then
+          SQL.Add(' JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ')
+        else
+          SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ');
+      end;
+
     end
     else
-      SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = cl.BAN_CODIGO ');
+    begin
+      if (CbBancos.idRetorno <> '') or (edVendedor.idRetorno <> '')  then
+        SQL.Add(' JOIN BAN0000 B ON B.BAN_CODIGO = cl.BAN_CODIGO ')
+      else
+        SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = cl.BAN_CODIGO ');
+    end;
 
     // Filtros adicionais
     if not chkClientesCadastradosSemCompras.Checked then
