@@ -7955,6 +7955,10 @@ begin
   if SqlCdsPedido.IsEmpty then
    GeraException('Não há pedido');
 
+   if BuscaUmDadoSqlAsInteger('SELECT count(*) FROM DEMANDA_PRODUCAO WHERE  PED_CODIGO = ' + QuotedStr(EdPedidoNumero.text) + ' AND DEP_SITUACAO = ''C'' AND EMP_CODIGO = ' + QuotedStr(DBInicio.Emp_Codigo) ) > 0 then
+     raise Exception.Create ('O Pedido já foi enviado para a Demanda');
+
+
   if (SqlCdsPedidoPED_SITUACAO.AsString = 'C') then
     raise Exception.Create ('O Pedido não pode ser editado pois está cancelado');
 
