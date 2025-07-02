@@ -307,6 +307,8 @@ begin
 
         SqlCdsKardex.Close;
 				SqlCdsKardex.CommandText := 'SELECT * FROM pCd_kardex_extrato('+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+','+QuotedStr(CbProduto.EditValue)+','+sAmxCodigo+','+QuotedStr(FormatDateTime('MM/DD/yyyy HH:MM:SS',cxDateInicial.EditValue))+','+QuotedStr(FormatDateTime('MM/DD/yyyy HH:MM:SS',cxDateFinal.EditValue))+',''N'')';
+        if dbInicio.IsDesenvolvimento then
+          CopyToClipboard(SqlCdsKardex.CommandText);
         SqlCdsKardex.open;
         SqlCdsKardex.Filter := '';
         IF edColaborador.idRetorno <> '' then
