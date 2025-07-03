@@ -2644,6 +2644,7 @@ var
 begin
   CurDescontoNotaFiscalAdicional.Value := 0;
   CurDescontoNotaFiscal.Value := 0;
+  CurTotalDesconto.Value := CurDescontoNotaFiscalValor.Value;
   desconto := (CurDescontoNotaFiscalValor.Value  / CurTotalProduto.Value) * 100;
   if (dbinicio.Empresa.DesctoMaximo_P < desconto) and (dbinicio.Empresa.DesctoMaximo_P > 0) then
   begin
@@ -3618,22 +3619,22 @@ begin
            ' WHERE PRO_CODIGO = '+  IntToStr(model_pro_codigo);
      ExecSql(sql);
 
-     SQL:='INSERT INTO ITEM_ORDEMPRODUCAO (PRD_CODIGO, OPR_CODIGO, IOP_SEQUENCIA, ' +
-          ' IOP_NORDEM, IOP_QUANTIDADE, IOP_PESO, IOP_STATUS,'+
-          ' IOP_PRECO, PRF_REGISTRO, pro_codigo) '+
-          ' VALUES( '+
-          QuotedStr(SqlCdsPedidoItemPRD_CODIGO.asstring)+','+
-          IntToStr(ordemprod) +','+
-          IntToStr(s)+','+
-          QuotedStr(strzero(SqlCdsPedidoPED_CODIGO.AsString,6)+'-'+strzero( s,2))+','+
-          FloatToSQL(SqlCdsPedidoItemPRF_QTDE.AsFloat)+','+
-          FloatToSQL(SqlCdsPedidoItemPRF_PESOKG.AsFloat) + ',' +
-          QuotedStr('L')+','+
-          FloatToSQL( SqlCdsPedidoItemPRF_PRECO.AsFloat)+','+
-          IntToStr(SqlCdsPedidoItemPRF_REGISTRO.AsInteger)+ ','+
-          IntToStr(pro_codigo)+
-          ')';
-     ExecSql(sql);
+     SQL := 'INSERT INTO ITEM_ORDEMPRODUCAO (PRD_CODIGO, OPR_CODIGO, IOP_SEQUENCIA, ' +
+       '                                IOP_NORDEM, IOP_QUANTIDADE, IOP_PESO, IOP_STATUS, ' +
+       '                                IOP_PRECO, PRF_REGISTRO, pro_codigo) ' +
+       'VALUES (' +
+       QuotedStr(SqlCdsPedidoItemPRD_CODIGO.asstring) + ', ' +
+       IntToStr(ordemprod) + ', ' +
+       IntToStr(s) + ', ' +
+       QuotedStr(strzero(SqlCdsPedidoPED_CODIGO.AsString, 6) + '-' + strzero(s, 2)) + ', ' +
+       FloatToSQL(SqlCdsPedidoItemPRF_QTDE.AsFloat) + ', ' +
+       FloatToSQL(SqlCdsPedidoItemPRF_PESOKG.AsFloat) + ', ' +
+       QuotedStr('L') + ', ' +
+       FloatToSQL(SqlCdsPedidoItemPRF_PRECO.AsFloat) + ', ' +
+       IntToStr(SqlCdsPedidoItemPRF_REGISTRO.AsInteger) + ', ' +
+       IntToStr(pro_codigo) +
+       ')';
+     ExecSql(sql);
 
      sql := 'UPDATE PED_IT01 SET PRF_PRDDESCRI = ' +
              QuotedStr(SqlCdsPedidoItemDESCRICAO.AsString + ' / OS:' + strzero(SqlCdsPedidoPED_CODIGO.AsString,6) + '-' + strzero(IntToStr(s), 2)) +
@@ -3703,33 +3704,38 @@ begin
    SqlCdsPedidoItem.Refresh;
    MessageDlg('Ordem de produção gerada', mtInformation, [mbOK], 0);
 
-
-
-
-
-     qROrdemServico.sql.Text :=
-       ' SELECT  pr.prd_refer , iop.iop_codigo,  iop.IOP_SEQUENCIA,po.pro_codigo, iop_nordem, lpad( op.opr_codigo,7,''0'') opr_codigo , cl.cli_codigo, cl.cli_razao, pe.ped_codigo, OPR_EMISSAO, OPR_DTENTREGA, ' +
-       ' PED_VLTOTAL_BRUTO,                                     ' +
-       ' pr.PRD_DESCRI,IOP_QUANTIDADE, IOP_PESO, po.PRO_DESCRICAO, srv_nome,                                                                       ' +
-       ' PED_TIPOPECA_TERM, PED_MATERIAL_TERM , PED_DUREZASUPERFICIAL_TERM, PED_DUREZANUCLEO_TERM , PED_PROFUNDIDADE_TERM ,  PED_TAMANHOGRAO_TERM, PED_EHT_TERM , PED_DESENHO_TERM,'+
-       ' srv_nome, PED_CONTATO_CLIENTE, PED_NUMERO_PED_CLIENTE, IOP_PRECO, '+
-       '  (SELECT FIRST 1 PRE_ACORDOCOM FROM precos0000 pre WHERE pre.CLI_CODIGO = cl.cli_codigo ORDER BY PRE_VIGENCIA1 DESC ) PRE_ACORDOCOM, ' +
-       ' (SELECT FIRST 1 u.USU_NOME  FROM PED_IT01 it JOIN USUARIO u ON (u.USU_CODIGO = it.USU_CODIGO ) WHERE it.PRF_REGISTRO = iop.PRF_REGISTRO) as usu_nome,  '+
-       ' (SELECT FIRST 1 PRF_QTDE_ENV_PRODUCAO FROM PED_IT01 IT WHERE IT.PED_CODIGO = PE.PED_CODIGO AND IOP.PRF_REGISTRO = IT.PRF_REGISTRO AND IOP.PRD_CODIGO = IT.PRD_CODIGO) AS PRF_QTDE_ENV_PRODUCAO, '+
-       ' (select FIRST 1 COALESCE(t1.PRD_UND,t2.PRD_UND)  FROM ped_it01 t1 join  prd0000 t2 on t2.prd_codigo = t1.prd_codigo AND  iop.PRD_CODIGO = t1.PRD_CODIGO AND pe.PED_CODIGO = t1.PED_CODIGO) prd_und, '+
-       ' op.OPR_DATAFATURA, op.OPR_LEADTIME, op.opr_conclusao  '+
-       ' FROM ped0000 pe                                                                                                                                                                               '+
-       ' join cli0000 cl on (cl.cli_codigo = pe.cli_codigo)                                                                                                                                            '+
-       ' join ordemproducao op on (op.ped_codigo =  pe.ped_codigo and op.emp_codigo = pe.emp_codigo )                                                                                                  '+
-       ' join item_ordemproducao iop on (op.opr_codigo = iop.opr_codigo)                                                                                                                               '+
-       ' join prd0000 pr on (pr.prd_codigo = iop.prd_codigo)                                                              '+
-       ' join processos po ON (po.PRO_CODIGO = iop.PRO_CODIGO)      '+ // alteração do modelo aqui
-       ' join PED_IT01 it on (it.PRF_REGISTRO = iop.PRF_REGISTRO  )                                                                                                                                    '+
-        ' left join servico se on (se.srv_codigo = po.srv_codigo) '+
-       ' WHERE :nordem = ''0''  '+
-       '   AND pe.ped_codigo = :pedido  '+
-       '   AND op.emp_codigo = :emp_codigo '+
-       ' order by IOP_SEQUENCIA';
+    qROrdemServico.sql.Text :=
+      'SELECT pr.prd_refer, iop.iop_codigo, iop.IOP_SEQUENCIA, po.pro_codigo, iop_nordem, ' +
+      '       lpad(op.opr_codigo, 7, ''0'') opr_codigo, cl.cli_codigo, cl.cli_razao, pe.ped_codigo, ' +
+      '       OPR_EMISSAO, OPR_DTENTREGA, PED_VLTOTAL_BRUTO, pr.PRD_DESCRI, IOP_QUANTIDADE, ' +
+      '       IOP_PESO, po.PRO_DESCRICAO, srv_nome, PED_TIPOPECA_TERM, PED_MATERIAL_TERM, ' +
+      '       PED_DUREZASUPERFICIAL_TERM, PED_DUREZANUCLEO_TERM, PED_PROFUNDIDADE_TERM, ' +
+      '       PED_TAMANHOGRAO_TERM, PED_EHT_TERM, PED_DESENHO_TERM, srv_nome, PED_CONTATO_CLIENTE, ' +
+      '       PED_NUMERO_PED_CLIENTE, IOP_PRECO, ' +
+      '       (SELECT FIRST 1 PRE_ACORDOCOM FROM precos0000 pre ' +
+      '        WHERE pre.CLI_CODIGO = cl.cli_codigo ORDER BY PRE_VIGENCIA1 DESC) PRE_ACORDOCOM, ' +
+      '       (SELECT FIRST 1 u.USU_NOME FROM PED_IT01 it ' +
+      '        JOIN USUARIO u ON (u.USU_CODIGO = it.USU_CODIGO) ' +
+      '        WHERE it.PRF_REGISTRO = iop.PRF_REGISTRO) as usu_nome, ' +
+      '       (SELECT FIRST 1 PRF_QTDE_ENV_PRODUCAO FROM PED_IT01 IT ' +
+      '        WHERE IT.PED_CODIGO = PE.PED_CODIGO AND IOP.PRF_REGISTRO = IT.PRF_REGISTRO ' +
+      '        AND IOP.PRD_CODIGO = IT.PRD_CODIGO) AS PRF_QTDE_ENV_PRODUCAO, ' +
+      '       (SELECT FIRST 1 COALESCE(t1.PRD_UND, t2.PRD_UND) FROM ped_it01 t1 ' +
+      '        JOIN prd0000 t2 ON t2.prd_codigo = t1.prd_codigo ' +
+      '        AND iop.PRD_CODIGO = t1.PRD_CODIGO AND pe.PED_CODIGO = t1.PED_CODIGO) prd_und, ' +
+      '       op.OPR_DATAFATURA, op.OPR_LEADTIME, op.opr_conclusao ' +
+      'FROM ped0000 pe ' +
+      '     JOIN cli0000 cl ON (cl.cli_codigo = pe.cli_codigo) ' +
+      '     JOIN ordemproducao op ON (op.ped_codigo = pe.ped_codigo AND op.emp_codigo = pe.emp_codigo) ' +
+      '     JOIN item_ordemproducao iop ON (op.opr_codigo = iop.opr_codigo) ' +
+      '     JOIN prd0000 pr ON (pr.prd_codigo = iop.prd_codigo) ' +
+      '     JOIN processos po ON (po.PRO_CODIGO = iop.PRO_CODIGO) ' +
+      '     JOIN PED_IT01 it ON (it.PRF_REGISTRO = iop.PRF_REGISTRO) ' +
+      '     LEFT JOIN servico se ON (se.srv_codigo = po.srv_codigo) ' +
+      'WHERE :nordem = ''0'' ' +
+      '  AND pe.ped_codigo = :pedido ' +
+      '  AND op.emp_codigo = :emp_codigo ' +
+      'ORDER BY IOP_SEQUENCIA';
 
 
       pedido := edPedidoNumero.Text;
@@ -5202,6 +5208,7 @@ begin
          CurDescontoNotaFiscalValor.ReadOnly := True;
          CurDescontoNotaFiscalValor.TabStop := False;
          CurDescontoNotaFiscalValor.Color := $00d7d7d7;
+         CurTotalDesconto.Clear;
       end;
 end;
 
@@ -5210,7 +5217,13 @@ begin
   if (dbInicio.Empresa.USP_ALTERA_DESCONTO_NOTA) then
    HabilitaDesabilitaDescontoNota(CbDescontoNF.Checked)
   else
-   CbDescontoNF.Checked := False;
+  begin
+    CbDescontoNF.Checked := False;
+    CurDescontoNotaFiscal.Clear;
+    CurDescontoNotaFiscalAdicional.Clear;
+    CurDescontoNotaFiscalValor.Clear;
+    CurTotalDesconto.Clear;
+  end;
 end;
 
 procedure TFrmPedido.cbFinalidadeChange(Sender: TObject);
