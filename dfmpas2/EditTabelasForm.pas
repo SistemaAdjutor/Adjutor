@@ -9,7 +9,8 @@ uses
   DBGrids,  ComCtrls,   Mask, DBCtrls, ComObj,
   SgDbSeachComboUnit, SgDbLookupComboUnit,  rxCurrEdit, JvExMask,
   JvBaseEdits, JvDBControls, JvExDBGrids, JvDBGrid, JvExStdCtrls,
-  JvCombobox, JvDBCombobox, Data.DBXInterBase, Data.DBXFirebird, ACBrEnterTab, JvToolEdit, frxClass, frxDBSet, frxExportPDF;
+  JvCombobox, JvDBCombobox, Data.DBXInterBase, Data.DBXFirebird, ACBrEnterTab, JvToolEdit, frxClass, frxDBSet, frxExportPDF,
+  frxExportBaseDialog;
 
 type
   TfrmEditTabelas = class(TfrmBaseDBEdit)
@@ -427,6 +428,8 @@ begin
     if (Trim(edDescItem.Text)<>'') then
        qItensTabela.sql.add(' and b.prd_descri like '+qStr( edDescItem.Text+'%' ) );
     vlFiltrados := (Pos(' and ', qItensTabela.sql.Text)>0);
+    if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(qItensTabela.Sql.Text);
     CdsItensTabela.Open;
   finally
     CdsItensTabela.EnableControls;
@@ -738,8 +741,8 @@ begin
                                valorcampo := vCampo.AsString;
                             if tJvDbGrid(vgrItens).Columns[vColuna-1].Field.DataType  = ftFMTBCD then
                             begin
-                              vplanilha.cells[vlinha,colunaVisivel] := valorcampo;
-                              vplanilha.cells[vlinha,colunaVisivel].NumberFormat := '#,##0.00';
+                              vplanilha.cells[vlinha,colunaVisivel] := StrToFloatDef(valorcampo, 0);
+                              // vplanilha.cells[vlinha,colunaVisivel].NumberFormat := '0,00';
                             end
                             else
                           //  vplanilha.cells[vlinha,vcoluna] := ''''+valorCampo;
@@ -812,7 +815,7 @@ begin
           n := 1;
           try
 
-             for k := 2 to x do // linhas
+             for k := 4 to x  do // linhas
              begin
                   btnImporta.Caption:='Lendo: '+inttostr(k);
                   application.ProcessMessages;
@@ -836,9 +839,9 @@ begin
                             end;
                             //ListaRefer := ListaRefer+lRefer+',';
 
-                            CdsItensTabelaPRE_PRECO.AsCurrency     := StrToFloat(XLSAplicacao.cells[k,5]);
-                            cdsItensTabelaPERC_COMISSAO.AsCurrency := StrToFloat(XLSAplicacao.cells[k,8]);
-                            cdsItensTabelaPERC_VERBA.AsCurrency    := StrToFloat(XLSAplicacao.cells[k,9]);
+                            CdsItensTabelaPRE_PRECO.AsCurrency     := StrToFloat(XLSAplicacao.cells[k,10]);
+                            cdsItensTabelaPERC_COMISSAO.AsCurrency := StrToFloat(XLSAplicacao.cells[k,14]);
+                            cdsItensTabelaPERC_VERBA.AsCurrency    := StrToFloat(XLSAplicacao.cells[k,15]);
 
                             if CdsItensTabelaPRE_PRECO.AsCurrency < lCusto then
                             begin
@@ -854,24 +857,24 @@ begin
 
                             IF CdsItensTabela.State in [ dsInsert , dsEdit ] then
                             begin
-                               lCodProCli := trim(XLSAplicacao.cells[k,6]);
+                              { lCodProCli := trim(XLSAplicacao.cells[k,6]);
                                if lCodProCli<>'' then
                                begin
                                     CdsItensTabelaCODIGO_PRODUTO_CLIENTE.AsString:=lCodProCli;
                                     lDesProCli:=trim(XLSAplicacao.cells[k,7]);
                                     if lDesProCli<>'' then
                                        CdsItensTabelaDESCRICAO_PRODUTO_CLIENTE.AsString:=lDesProCli;
-                               end;
+                               end;}
                                CdsItensTabela.Post;
 
-                               Inc(n);
-                               if n=101 then
-                               begin
+                               //Inc(n);
+                               //if n=101 then
+                               //begin
                                     CdsItensTabela.ApplyUpdates(0);
-                                    n:=1;
-                               end;
+                               //     n:=1;
+                               //end;
 
-                               XLSAplicacao.cells[k,10]:='';
+                               // XLSAplicacao.cells[k,10]:='';
 
                             end;
                        end
