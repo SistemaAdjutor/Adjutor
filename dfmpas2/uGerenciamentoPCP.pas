@@ -2469,6 +2469,7 @@ begin
                '  or lot.PRDL_LOTE CONTAINING '+ QuotedStr(edPesquisa.Text) +
                '  or pr.PRD_REFER CONTAINING  '+ QuotedStr(edPesquisa.Text) +' )' );
      end;
+     Sql.Add(' ORDER BY OP.OPR_DTENTREGA, iop.IOP_NORDEM ')
     end;
     if dbInicio.IsDesenvolvimento then
       CopyToClipBoard(cdsBusca.SQL.Text);
