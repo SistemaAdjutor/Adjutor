@@ -1,0 +1,11 @@
+﻿Atualizado em 04/07/2025
+Inicio da versão: 04/07/2025
+
+principal: Arkson, Embraterm, Rotor, Parseals
+  2046 - Revisão Arkson -> Produção: ordenacao de OP na tela [Arkson]
+  2057 - Embraterm:Erro ao importar tabela de preço [Embraterm]
+  2058 - Erro Rotor -> Movimento/Importar CTE [Rotor]
+  2060 - parseals: aplicar desconto na nota no pedido [Parseals]
+  2062 - Erro Parseals -> Ao Inserir Produto Pedido empresa 002 [Parseals]
+
+  
