@@ -432,7 +432,7 @@ procedure TfrmCte.CarregaXML( const scaminho : string );
     edtChave.text := ExtrairNumeros( ACBrCTe1.Conhecimentos.items[ 0 ]
       .CTe.infCTe.ID );
     case ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.SituTrib of
-      cstICMSSN :
+      cstICMSSN, cst41 :
         begin
           edtBaseIcms.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS00.vBC;
           edtValorIcms.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS00.vICMS;

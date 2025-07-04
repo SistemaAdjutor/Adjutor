@@ -17,7 +17,6 @@ inherited frmCte: TfrmCte
     Align = alTop
     Caption = 'Informa'#231#245'es Da Nota Fiscal'
     TabOrder = 0
-    ExplicitWidth = 304
     object lblNrNota: TLabel
       Left = 23
       Top = 26
@@ -322,7 +321,6 @@ inherited frmCte: TfrmCte
     Align = alTop
     Caption = 'Fornecedor'
     TabOrder = 1
-    ExplicitWidth = 304
     object Label7: TLabel
       Left = 68
       Top = 24
@@ -1079,7 +1077,6 @@ inherited frmCte: TfrmCte
     Align = alTop
     Caption = 'Totais'
     TabOrder = 2
-    ExplicitWidth = 304
     object Label18: TLabel
       Left = 33
       Top = 16
@@ -1269,7 +1266,6 @@ inherited frmCte: TfrmCte
     Height = 60
     Align = alBottom
     TabOrder = 3
-    ExplicitWidth = 304
     object btnFornecedor: TBitBtn
       Left = 11
       Top = 15
@@ -1408,7 +1404,6 @@ inherited frmCte: TfrmCte
     Align = alClient
     Caption = 'Panel2'
     TabOrder = 4
-    ExplicitWidth = 304
     object Label29: TLabel
       Left = 5
       Top = 7
@@ -1423,7 +1418,6 @@ inherited frmCte: TfrmCte
       Height = 89
       Align = alBottom
       TabOrder = 0
-      ExplicitWidth = 302
     end
   end
   inherited coCalcula: TACBrCalculadora
@@ -1480,6 +1474,8 @@ inherited frmCte: TfrmCte
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     ACBrCTE = ACBrCTe1
     ImprimirHoraSaida = False
     TipoDACTE = tiSemGeracao
