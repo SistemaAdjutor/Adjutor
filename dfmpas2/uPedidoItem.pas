@@ -7587,7 +7587,9 @@ begin
                  'SELECT PRD_PVENDA ' +
                  ' FROM PRD0000 pr ' +
                  ' WHERE pr.PRD_CODIGO = ' + QuotedStr(pCodigoProduto) +
-                 ' AND pr.EMP_CODIGO = ' + QuotedStr(DBInicio.EMP_CODIGO)
+                   ConcatSe(' and ',DBInicio.ExclusivoSql('PRODUTOS'))
+
+//                 ' AND pr.EMP_CODIGO = ' + QuotedStr(DBInicio.EMP_CODIGO)
               );
   end;
 end;
