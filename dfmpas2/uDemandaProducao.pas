@@ -1582,7 +1582,8 @@ begin
         ' WHERE   '+
         '   NOT EXISTS '+
         '   (SELECT * FROM ORDEMPRODUCAO OP '+
-        '     WHERE OP.PED_CODIGO = PE.PED_CODIGO AND OP.EMP_CODIGO = PE.EMP_CODIGO AND OPR_STATUS = ''F'') ' ;
+        '     JOIN ITEM_ORDEMPRODUCAO iop ON (Iop.OPR_CODIGO = OP.OPR_CODIGO ) ' +
+        '     WHERE OP.PED_CODIGO = PE.PED_CODIGO AND OP.EMP_CODIGO = PE.EMP_CODIGO AND Iop.IOP_STATUS = ''F'') ' ;
 
 
    Filtrados := true;
