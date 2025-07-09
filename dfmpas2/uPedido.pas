@@ -7028,7 +7028,7 @@ end;
 procedure TFrmPedido.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
-  if not Recalculado AND PMT_CALCULAR_ITENS_NO_FINAL then
+  if not Recalculado AND PMT_CALCULAR_ITENS_NO_FINAL and (SqlCdsPedido.Active) then
   begin
     btRecalcula := True;
     BtnAlterarClick(Sender);
