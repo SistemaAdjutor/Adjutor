@@ -731,7 +731,8 @@ begin
    end
    else
    begin
-         // CurComissao.Value := 0 ;
+         if disComissao then
+           CurComissao.Value := 0;
          CurComissao.ReadOnly := True;
          CurComissao.Color := $00d7d7d7;
          CurComissao.TabStop := False;
@@ -807,7 +808,10 @@ begin
 
     end;
     CurDesconto.Value := qAux.FieldByName('PRD_DESCONTO').AsFloat;
-    CurComissao.Value := qAux.FieldByName('PRD_PERC_COMISSAO').AsFloat;
+    if disComissao then
+      CurComissao.Value := 0
+    else
+      CurComissao.Value := qAux.FieldByName('PRD_PERC_COMISSAO').AsFloat;
     CurPrecoBruto.Value := 0;
     if (DBInicio.Empresa.sReferenciaProvisoriaOrcamento = qAux.FieldByName('PRD_REFER').AsString)  and  (FrmPedido.SqlCdsTipoPedidoOPV_VENDA.AsString = 'S') then
     begin
@@ -1511,6 +1515,7 @@ begin
      CbItemAgregado.Checked := FrmPedido.wAdcProdKit;
      CurQuantidade.Clear;
      CurPeso.Clear;
+     CurComissao.Value := 0 ;
      cbUnidade.idRetorno := '';
      cbCapacidade.idRetorno := '';
      cbCor.idRetorno := '';
