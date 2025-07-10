@@ -8620,6 +8620,7 @@ begin
           EdSituacao.color := clBlue;
           EdSituacao.Font.color := clWhite;
           HabilitaDesabilitaEdicao(False);
+          Recalculado := True;
      end
      else
      if SqlCdsPedidoPED_SITUACAO.AsString = 'A' then
