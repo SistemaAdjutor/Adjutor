@@ -605,7 +605,7 @@ var assunto,email  : string;
  reply, mensagem, AnexosEmail: TStringList;
  NomeArq,msg: String;
  xml : String;
- registro: integer;
+//  registro: integer;
 begin
   inherited;
   if not cdsHistorico.IsEmpty then
@@ -623,9 +623,10 @@ begin
            ACBrNFeDANFeRL1.MostraPreview := true;
            ACBrNFeDANFeRL1.PathPDF := DBInicio.Versao.PATH +'NFe4\temp\';
            cdsNotas.Locate('selecionado',True, []);
-           registro := cdsNotas.Recno; // o coponenete ACBR está alterando o Nº do registro....
+           // registro := cdsNotas.Recno; // o coponenete ACBR está alterando o Nº do registro....
            ACBrNFeDANFeRL1.ImprimirEVENTOPDF(ACBrNFe1.NotasFiscais[0].NFe)  ;
-           cdsNotas.RecNo := registro;
+           // cdsNotas.RecNo := registro;
+           cdsNotas.Locate('selecionado',True, []);
 
            xml := DBInicio.Versao.PATH +'NFe4\temp\NF-' + IntToStr(ACBrNFe1.NotasFiscais[0].NFe.ide.nNF)  + '.xml';
            ACBrNFe1.NotasFiscais.GravarXML(xml);
@@ -863,7 +864,7 @@ begin
                         ' JOIN CLI0000 cl on (nf.CLI_CODIGO = cl.CLI_CODIGO) '+
                         ' JOIN PED0000 pd on (pd.PED_CODIGO = NF.PED_CODIGO) '+
                         iif( condicaosql <> '', 'WHERE ' + condicaoSQL,'') +
-                        ' ORDER BY NF_EMISSAO DESC '                                        ;
+                        ' ORDER BY NF_EMISSAO DESC, NF_REGISTRO DESC '                                        ;
   cdsNotas.Open;
   if DBInicio.IsDesenvolvimento then
     CopyToClipboard(qNotas.CommandText);
