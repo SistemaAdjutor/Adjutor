@@ -1248,6 +1248,13 @@ procedure TfrmDemandaProducao.cxgrd1DBBandedTableView1Editing(Sender: TcxCustomG
 begin
   inherited;
    AItem.Focused := true;
+   if dbInicio.Usuario.Nome = 'NOVI' then
+   begin
+    AAllow := True;
+    Exit;
+   end;
+
+
   if (cdsBuscaDEP_QTDE_ESTOQUE.AsFloat = cdsBuscaPRF_QTDE.AsFloat) and (cdsBuscaMARCADO.AsInteger = 0) and (AItem.Index = cxgrd1DBBandedTableView1MARCADO.Index) then
     raise Exception.Create('Não pode enviar a produção porque não há nada para produzir. '#13#10+
                             ' Quantidades solicitada e usada de estoque são iguais');
