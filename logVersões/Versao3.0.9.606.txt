@@ -1,4 +1,4 @@
-﻿Atualizado em 04/07/2025
+﻿Atualizado em 21/07/2025
 Inicio da versão: 04/07/2025
 
 principal: Arkson, Embraterm, Rotor, Parseals
@@ -8,4 +8,15 @@ principal: Arkson, Embraterm, Rotor, Parseals
   2060 - parseals: aplicar desconto na nota no pedido [Parseals]
   2062 - Erro Parseals -> Ao Inserir Produto Pedido empresa 002 [Parseals]
 
+patch 1: Aço Ferrara, Arkson, LForja, LFEPIS
+  2055 - Erro Aço Ferrara - Mais NFe [Aços Ferrara]
+  2059 - Erro Arkson-> Pedido PCP preso [Arkson]
+  2061 - todos: mudar de lugar coluna de pesos [Novi]
+  2064 - LForja : concluir Ordens de Producao [LForja]
+  2065 - Erro LFEPI - Pedido de venda não traz a comissão vendedor [LFEpis]
+  2067 - LForja : duplicando OP [LForja]
+  2068 - Lforja : Numeração empresa 002 incorreta [LForja]
+
+
+  
   
