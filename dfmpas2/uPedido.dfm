@@ -29,10 +29,6 @@ inherited FrmPedido: TFrmPedido
     OnChange = PageControl1Change
     object TabPedido: TTabSheet
       Caption = 'Pedido'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GBInformacoesPedido: TGroupBox
         Left = 0
         Top = 105
@@ -676,10 +672,6 @@ inherited FrmPedido: TFrmPedido
           TabStop = False
           object tsoutros: TTabSheet
             Caption = 'Outras'
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object poutros: TPanel
               Left = 0
               Top = 0
@@ -1466,10 +1458,6 @@ inherited FrmPedido: TFrmPedido
           object tsPPAC: TTabSheet
             Caption = 'Cabe'#231'alho do PPAC'
             ImageIndex = 3
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object pPPAC: TPanel
               Left = 0
               Top = 0
@@ -1949,10 +1937,6 @@ inherited FrmPedido: TFrmPedido
         TabOrder = 2
         object TabSheet5: TTabSheet
           Caption = 'Informa'#231#245'es'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GBInformacoesOrcamento: TGroupBox
             Left = 3
             Top = -2
@@ -3663,10 +3647,6 @@ inherited FrmPedido: TFrmPedido
           TabOrder = 0
           object TabPedidoItem: TTabSheet
             Caption = 'Itens do Pedido'
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Panel4: TPanel
               Left = 0
               Top = 238
@@ -4233,18 +4213,6 @@ inherited FrmPedido: TFrmPedido
                 end
                 item
                   Expanded = False
-                  FieldName = 'PesoLiquido'
-                  Title.Caption = 'Peso L'#237'quido'
-                  Visible = True
-                end
-                item
-                  Expanded = False
-                  FieldName = 'PRF_PESOKG'
-                  Title.Caption = 'Peso Total'
-                  Visible = True
-                end
-                item
-                  Expanded = False
                   FieldName = 'prf_qtdePend'
                   Title.Caption = 'Falta'
                   Width = 73
@@ -4280,6 +4248,18 @@ inherited FrmPedido: TFrmPedido
                   Title.Alignment = taCenter
                   Title.Caption = 'Total'
                   Width = 80
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'PesoLiquido'
+                  Title.Caption = 'Peso L'#237'quido'
+                  Visible = True
+                end
+                item
+                  Expanded = False
+                  FieldName = 'PRF_PESOKG'
+                  Title.Caption = 'Peso Total'
                   Visible = True
                 end
                 item
@@ -4529,10 +4509,6 @@ inherited FrmPedido: TFrmPedido
           object TabSheet3: TTabSheet
             Caption = 'Declara'#231#227'o de Importa'#231#227'o'
             ImageIndex = 2
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Splitter3: TSplitter
               Left = 567
               Top = 0
@@ -5210,10 +5186,6 @@ inherited FrmPedido: TFrmPedido
           object TabObservacoes: TTabSheet
             Caption = 'OBSERVA'#199#195'O no Pedido / Nota'
             ImageIndex = 5
-            ExplicitLeft = 0
-            ExplicitTop = 0
-            ExplicitWidth = 0
-            ExplicitHeight = 0
             object Splitter6: TSplitter
               Left = 481
               Top = 0
@@ -7703,10 +7675,6 @@ inherited FrmPedido: TFrmPedido
       Caption = 'Vendas '#224' Faturar'
       ImageIndex = 3
       OnShow = TabVendasFaturarShow
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox15: TGroupBox
         Left = 0
         Top = 0
@@ -10119,7 +10087,7 @@ inherited FrmPedido: TFrmPedido
     Left = 1192
     Top = 389
     Bitmap = {
-      494C010103000500800010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500840010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11897,7 +11865,7 @@ inherited FrmPedido: TFrmPedido
     Left = 40
     Top = 147
     Bitmap = {
-      494C010104000900800010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900840010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
