@@ -1,9 +1,9 @@
 inherited frmVinculandoServico: TfrmVinculandoServico
   Caption = 'Vinculando servi'#231'o'
-  ClientHeight = 126
-  ClientWidth = 489
-  ExplicitWidth = 497
-  ExplicitHeight = 153
+  ClientHeight = 131
+  ClientWidth = 491
+  ExplicitWidth = 507
+  ExplicitHeight = 170
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel [0]
@@ -34,7 +34,43 @@ inherited frmVinculandoServico: TfrmVinculandoServico
     Height = 13
     Caption = 'Total:'
   end
-  object cbServico: TSgDbSearchCombo [4]
+  object edCusto: TJvValidateEdit [4]
+    Left = 63
+    Top = 35
+    Width = 121
+    Height = 21
+    CriticalPoints.MaxValueIncluded = False
+    CriticalPoints.MinValueIncluded = False
+    DisplayFormat = dfFloat
+    DecimalPlaces = 2
+    Enabled = False
+    TabOrder = 2
+  end
+  object edQtde: TJvValidateEdit [5]
+    Left = 328
+    Top = 35
+    Width = 121
+    Height = 21
+    CriticalPoints.MaxValueIncluded = False
+    CriticalPoints.MinValueIncluded = False
+    DisplayFormat = dfFloat
+    DecimalPlaces = 5
+    TabOrder = 3
+    OnChange = edQtdeChange
+  end
+  object edTotal: TJvValidateEdit [6]
+    Left = 63
+    Top = 62
+    Width = 121
+    Height = 21
+    CriticalPoints.MaxValueIncluded = False
+    CriticalPoints.MinValueIncluded = False
+    DisplayFormat = dfFloat
+    DecimalPlaces = 2
+    Enabled = False
+    TabOrder = 4
+  end
+  object cbServico: TSgDbSearchCombo [7]
     Left = 63
     Top = 8
     Width = 386
@@ -58,82 +94,83 @@ inherited frmVinculandoServico: TfrmVinculandoServico
     GridLeft = 0
     GridWidth = 0
     GridHeight = 100
+    GridTop = 0
     GridShowWhenEnter = False
     SelectWithDoubleClick = False
-  end
-  object edCusto: TJvValidateEdit [5]
-    Left = 63
-    Top = 35
-    Width = 121
-    Height = 21
-    CriticalPoints.MaxValueIncluded = False
-    CriticalPoints.MinValueIncluded = False
-    DisplayFormat = dfFloat
-    DecimalPlaces = 2
-    Enabled = False
-    TabOrder = 2
-  end
-  object edQtde: TJvValidateEdit [6]
-    Left = 328
-    Top = 35
-    Width = 121
-    Height = 21
-    CriticalPoints.MaxValueIncluded = False
-    CriticalPoints.MinValueIncluded = False
-    DisplayFormat = dfFloat
-    DecimalPlaces = 5
-    TabOrder = 3
-    OnChange = edQtdeChange
-  end
-  object edTotal: TJvValidateEdit [7]
-    Left = 63
-    Top = 62
-    Width = 121
-    Height = 21
-    CriticalPoints.MaxValueIncluded = False
-    CriticalPoints.MinValueIncluded = False
-    DisplayFormat = dfFloat
-    DecimalPlaces = 2
-    Enabled = False
-    TabOrder = 4
+    LimparCampoAoSair = True
   end
   inherited pnUtil: TPanel
-    Top = 94
-    Width = 489
+    Top = 99
+    Width = 491
     ExplicitTop = 94
     ExplicitWidth = 489
     inherited btnOk: TSpeedButton
-      Left = 241
+      Left = 243
       ExplicitLeft = 241
     end
     inherited btnCancelar: TSpeedButton
-      Left = 366
+      Left = 368
       ExplicitLeft = 366
     end
   end
+  inherited ACBrEnterTab1: TACBrEnterTab
+    Left = 560
+    Top = 112
+  end
+  inherited cxLocalizer1: TcxLocalizer
+    Left = 560
+    Top = 336
+  end
+  inherited qAux: TFDQuery
+    Left = 203
+    Top = 152
+  end
   inherited FDPhysFBDriverLink1: TFDPhysFBDriverLink
-    Left = 272
-    Top = 72
+    Left = 560
+    Top = 224
   end
   inherited FDGUIxWaitCursor1: TFDGUIxWaitCursor
-    Left = 216
-    Top = 0
+    Left = 560
+    Top = 168
+  end
+  inherited FDTransac: TFDTransaction
+    Left = 560
+    Top = 16
+  end
+  inherited FDGUIxErrorDialog1: TFDGUIxErrorDialog
+    Left = 560
+  end
+  inherited qAux2: TFDQuery
+    Left = 251
+    Top = 151
+  end
+  inherited qAux3: TFDQuery
+    Left = 291
+    Top = 151
+  end
+  inherited qAux4: TFDQuery
+    Left = 331
+    Top = 151
   end
   inherited dbConn: TFDConnection
-    Left = 19
-    Top = 120
+    Left = 27
+    Top = 152
+  end
+  inherited FDStoredProc1: TFDStoredProc
+    Left = 560
+    Top = 280
   end
   inherited dsEdits: TDataSource
-    Left = 269
-    Top = 119
+    Left = 141
+    Top = 151
   end
   inherited cdsEdit: TFDQuery
     SQL.Strings = (
       'SELECT srv_codigo, SRO_CODIGO, IOP_CODIGO, SRO_QUATDE, SRV_CUSTO'
       'FROM SERVICOS_ORDEM'
       'WHERE IOP_CODIGO = -1')
-    Left = 163
-    Top = 80
+    Left = 91
+    Top = 152
     object cdsEditSRO_CODIGO: TIntegerField
       FieldName = 'SRO_CODIGO'
       Origin = 'SRO_CODIGO'
@@ -162,16 +199,24 @@ inherited frmVinculandoServico: TfrmVinculandoServico
     end
   end
   inherited cdsEditDetail: TFDQuery
-    Left = 67
-    Top = 136
+    Left = 83
+    Top = 208
   end
   inherited dsEditDetail: TDataSource
-    Left = 101
-    Top = 143
+    Left = 157
+    Top = 207
+  end
+  inherited JvValidators1: TJvValidators
+    Left = 433
+    Top = 146
   end
   inherited JvValidationSummary1: TJvValidationSummary
-    Left = 200
-    Top = 112
+    Left = 432
+    Top = 256
+  end
+  inherited JvErrorIndicator1: TJvErrorIndicator
+    Left = 425
+    Top = 210
   end
   object qServico: TSQLQuery
     MaxBlobSize = -1
@@ -187,8 +232,8 @@ inherited frmVinculandoServico: TfrmVinculandoServico
       '      (coalesce(PD.PRD_REFER, '#39#39') <> '#39#39')'
       'order by PD.PRD_REFER  ')
     SQLConnection = dbConn
-    Left = 95
-    Top = 84
+    Left = 479
+    Top = 4
     object qServicoSRV_CODIGO: TIntegerField
       FieldName = 'SRV_CODIGO'
     end
