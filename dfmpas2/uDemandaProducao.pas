@@ -501,6 +501,7 @@ procedure TfrmDemandaProducao.btnNovoClick(Sender: TObject);
 var produzir, convertido : Double ;
     ordem, update, prdReferItem : string;
     Tipo : TItemProducao;
+    TextoMensagem: string;
 begin
   inherited;
   if cdsBusca.State in dsEditModes then
@@ -522,11 +523,23 @@ begin
      cdsBusca.Filtered := False;
      cdsBusca.Filter := ' marcado = 1';
      cdsBusca.Filtered := True;
-     if cdsbusca.RecordCount=0 then
+     if cdsbusca.RecordCount = 0 then
        raise Exception.Create('Nada foi selecionado');
      cdsBusca.First;
+     TextoMensagem := '';
      while not cdsBusca.eof do
      begin
+
+        if  BuscaUmDadoSqlAsInteger (' SELECT opr_codigo FROM ORDEMPRODUCAO '+
+                                     ' WHERE PED_CODIGO = ' + QuotedStr(cdsBuscaPED_CODIGO.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
+                                     '  and opr_status <> ' + QuotedStr('C') ) > 0 then
+        begin
+          TextoMensagem := TextoMensagem + 'Pedido: ' + cdsBuscaPED_CODIGO.AsString + ' já foi enviado à produção.' + #13 + #10;
+          cdsBusca.Next;
+          Continue;
+        end;
+
+
          tcr.numLoteEIP := '';
          Tipo.ordem := '';
          tipo.iop_codigo := 0 ;
@@ -608,18 +621,18 @@ begin
             ExecSql(update);
             qAux2.Next;
          end;
+         TextoMensagem := TextoMensagem + 'Pedido: ' + cdsBuscaPED_CODIGO.AsString + ' Enviado a produção com sucesso' + #13 + #10;
          cdsBusca.Next;
      end;
-      ShowMessage('Enviado a produção com sucesso');
   finally
-
+      ShowMessage(TextoMensagem);
       cdsBusca.Filtered:= False;
       cdsBusca.Filter := '';
       cdsBusca.EnableControls;
       cdsHistorico.EnableControls;
       btnNovo.Enabled := True;
-
-      fmAnimacao.Close;
+      if fmAnimacao <> nil then
+        fmAnimacao.Close;
       btnNovo.Enabled := True;
   end;
   btnPesquisa.Click;
