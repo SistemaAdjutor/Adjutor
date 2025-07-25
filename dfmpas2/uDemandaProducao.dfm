@@ -14,6 +14,8 @@ inherited frmDemandaProducao: TfrmDemandaProducao
     ExplicitWidth = 1167
     ExplicitHeight = 599
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 1159
       ExplicitHeight = 571
       object spl1: TSplitter [0]

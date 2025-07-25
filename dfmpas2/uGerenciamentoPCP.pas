@@ -1313,6 +1313,7 @@ begin
 
   finally
     fmAnimacao.Close;
+    fmAnimacao := nil;
   end;
   btnPesquisa.Click;
 end;
@@ -1964,6 +1965,7 @@ begin
   inherited;
   if cdsBusca.RecordCount = 0 then
   begin
+    frmGerenciamentoPCP.SetFocus;
     uteis.Aviso('O filtro aplicado gerou um conjunto de dados vazio, tente alterar seu filtro');
     Abort;
   end;

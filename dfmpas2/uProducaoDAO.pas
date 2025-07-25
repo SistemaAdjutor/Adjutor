@@ -1077,7 +1077,8 @@ begin
     if ped_codigo <> '' then//pedido ficara branco quando for envase digitado pelo produto
         ordemprod:=
             BuscaUmDadoSqlAsInteger (' SELECT opr_codigo FROM ORDEMPRODUCAO '+
-                                     ' WHERE PED_CODIGO = '+QuotedStr(ped_codigo)+' AND EMP_CODIGO = '+QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
+                                     ' WHERE PED_CODIGO = ' + QuotedStr(ped_codigo) +
+                                     ' AND EMP_CODIGO = '+QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
                                      '  and opr_status <> '+QuotedStr('C'));
 
   if ordemprod =0  then

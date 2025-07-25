@@ -530,9 +530,12 @@ begin
      while not cdsBusca.eof do
      begin
 
-        if  BuscaUmDadoSqlAsInteger (' SELECT opr_codigo FROM ORDEMPRODUCAO '+
-                                     ' WHERE PED_CODIGO = ' + QuotedStr(cdsBuscaPED_CODIGO.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
-                                     '  and opr_status <> ' + QuotedStr('C') ) > 0 then
+        if  BuscaUmDadoSqlAsInteger (' SELECT op.opr_codigo FROM ORDEMPRODUCAO op '+
+                                     ' LEFT JOIN ITEM_ORDEMPRODUCAO io ON (io.OPR_CODIGO = op.OPR_CODIGO )' +
+                                     ' WHERE op.PED_CODIGO = ' + QuotedStr(cdsBuscaPED_CODIGO.AsString) +
+                                     ' AND io.PRD_CODIGO = ' + QuotedStr(cdsBuscaPRD_CODIGO.AsString) +
+                                     ' AND op.EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
+                                     ' AND op.opr_status <> ' + QuotedStr('C') ) > 0 then
         begin
           TextoMensagem := TextoMensagem + 'Pedido: ' + cdsBuscaPED_CODIGO.AsString + ' já foi enviado à produção.' + #13 + #10;
           cdsBusca.Next;

@@ -898,10 +898,6 @@ inherited frmGerenciamentoPCP: TfrmGerenciamentoPCP
     object tbHistorico: TTabSheet
       Caption = 'Hist'#243'rico'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Phistorico: TPanel
         Left = 0
         Top = 0
