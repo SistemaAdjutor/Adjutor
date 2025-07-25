@@ -7,8 +7,8 @@ inherited frmBaseDBPesquisaBase: TfrmBaseDBPesquisaBase
   OldCreateOrder = True
   OnMouseWheel = FormMouseWheel
   OnResize = FormResize
-  ExplicitWidth = 683
-  ExplicitHeight = 482
+  ExplicitWidth = 691
+  ExplicitHeight = 494
   PixelsPerInch = 96
   TextHeight = 13
   object PageControl1: TPageControl [0]
@@ -22,6 +22,10 @@ inherited frmBaseDBPesquisaBase: TfrmBaseDBPesquisaBase
     TabStop = False
     object tsNotas: TTabSheet
       Caption = 'Pesquisa'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object pnControle: TPanel
         Left = 0
         Top = 0

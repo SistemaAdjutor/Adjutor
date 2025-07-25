@@ -240,7 +240,7 @@ begin
   if Pesquisando then
     exit ;
   inherited;
-
+  // lbCntRegistros.Caption := IntToStr(cdsBusco.RecordCount);
 end;
 
 procedure TFrmPesqRenovacao.cdsBuscoCalcFields(DataSet: TDataSet);
@@ -690,7 +690,7 @@ begin
 
     // JOINs
     SQL.Add(' FROM CLI0000 cl ');
-    if (edVendedor.idRetorno <> '') or (CbBancos.idRetorno <> '') then
+    if (edVendedor.idRetorno <> '') {or (CbBancos.idRetorno <> '')} then
       SQL.Add(' JOIN REP0000 rp ON rp.REP_CODIGO = cl.REP_CODIGO ')
     else
       SQL.Add(' LEFT JOIN REP0000 rp ON rp.REP_CODIGO = cl.REP_CODIGO ');
@@ -707,7 +707,7 @@ begin
         SQL.Add(' JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ')
       else
       begin
-        if (CbBancos.idRetorno <> '') or (edVendedor.idRetorno <> '') then
+        if (CbBancos.idRetorno <> '') {or (edVendedor.idRetorno <> '')} then
           SQL.Add(' JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ')
         else
           SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ');

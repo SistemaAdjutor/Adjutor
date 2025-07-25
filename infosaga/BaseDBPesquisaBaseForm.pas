@@ -240,19 +240,19 @@ end;
 procedure TfrmBaseDBPesquisaBase.cdsBuscoAfterOpen(DataSet: TDataSet);
 begin
      inherited;
-     lbCntRegistros.Caption:=ContaRegistros.ToString+' Resgistros.';
+     lbCntRegistros.Caption:=ContaRegistros.ToString+' Registros.';
 end;
 
 procedure TfrmBaseDBPesquisaBase.cdsBuscoAfterRowRequest(Sender: TObject; var OwnerData: OleVariant);
 begin
   inherited;
-  lbCntRegistros.Caption:=cdsBusco.RecordCount.ToString+' Resgistros.';
+  lbCntRegistros.Caption:=cdsBusco.RecordCount.ToString+' Registros.';
 end;
 
 procedure TfrmBaseDBPesquisaBase.cdsBuscoFilterRecord(DataSet: TDataSet; var Accept: Boolean);
 begin
   inherited;
-   lbCntRegistros.Caption:=cdsBusco.RecordCount.ToString+' Resgistros.';
+   lbCntRegistros.Caption:=cdsBusco.RecordCount.ToString+' Registros.';
 end;
 
 Function TfrmBaseDBPesquisaBase.ContaRegistros:integer;
