@@ -2818,7 +2818,7 @@ var  wMensagem, uf: string;
 begin
 
 		 qOperFisc.Close;
-		 qOperFisc.SQL.Text:='select * from ope0000 where ope_codigo='+qStr(pCodOper);
+		 qOperFisc.SQL.Text:='select * from ope0000 where ope_codigo='+qStr(StrZero(pCodOper, 3));
 		 qOperFisc.Open;
      tsServico.TabVisible := qOperFisc.FieldByName('OPE_SERVICO').asstring = 'S';
 		 result :=  not qOperFisc.IsEmpty;
@@ -3593,13 +3593,13 @@ begin
             '          '+qStr(ope_codigo ) +', '+ //OPE_CODIGO,
             '          '+ NTP_CFOP +', '+ //NTP_CFOP, '+
             '          '+qStr( wCST_CODIGO )+', '+  //STB_TRIBUTACAO,
-            '          '+QuotedStr(qOperFiscOPE_CST_PISCOFINS.AsString)+ ','+    //CST_PIS
-//            '          '+QuotedStr(cstPISCOFINS)+ ','+    //CST_PIS
+//            '          '+QuotedStr(qOperFiscOPE_CST_PISCOFINS.AsString)+ ','+    //CST_PIS
+            '          '+QuotedStr(cstPISCOFINS)+ ','+    //CST_PIS
             '          '+FloatToSql( Uteis.RoundTo( wBasePIS, -2))+', '+ //NF_BASE_PIS,
             '          '+FloatToSql( wAliquotaPIS )+', '+ //NF_ALIQPIS,
             '          '+IIF(MatchStr(cstPISCOFINS,['99','98','49']),'0',FloatToSql( Uteis.RoundTo( wValorPIS,-2 )))+', '+ //NF_VLPIS,
-            '          '+QuotedStr(qOperFiscOPE_CST_PISCOFINS.AsString)+ ','+  //CST_COFINS
-//            '          '+QuotedStr(cstPISCOFINS)+ ','+  //CST_COFINS
+//            '          '+QuotedStr(qOperFiscOPE_CST_PISCOFINS.AsString)+ ','+  //CST_COFINS
+            '          '+QuotedStr(cstPISCOFINS)+ ','+  //CST_COFINS
             '          '+FloatToSql( Uteis.RoundTo( wBaseCOFINS, -2))+', '+ //NF_BASE_COFINS,
             '          '+FloatToSql( wAliquotaCOFINS )+', '+ //NF_ALIQCOFINS, '+
             '          '+IIF(MatchStr(cstPISCOFINS,['99','98','49']),'0',FloatToSql( Uteis.RoundTo( wValorCOFINS, -2)))+', '+ //NF_VLCOFINS,
@@ -4280,19 +4280,22 @@ begin
 		 while not CdsItemPedido.Eof do
 		 begin
 
-					IniciaVarItem ;
+  					IniciaVarItem ;
 
-					lIsProdutoEspecifico := CdsItemPedidoPRD_ESPECIFICO.asstring = 'S';
-					lIsMedicamento :=CdsItemPedidoID_PRD_ESPECIFICO.asinteger=3;
+  					lIsProdutoEspecifico := CdsItemPedidoPRD_ESPECIFICO.asstring = 'S';
+  					lIsMedicamento :=CdsItemPedidoID_PRD_ESPECIFICO.asinteger=3;
 
 
-					if lIsProdutoEspecifico and lIsMedicamento then
-					begin
-							 wReducaoBaseST := CdsItemPedidoPRD_ESPECIFICO_REDST.AsCurrency;
-							 wPMC := DBInicio.BuscaUmDadoSqlAsFloat ( 'select prdl_preco_maximo from prd_lote where prdl_registro = '+CdsItemPedidoPrdl_Registro.AsString );
-					end;
+  					if lIsProdutoEspecifico and lIsMedicamento then
+  					begin
+  							 wReducaoBaseST := CdsItemPedidoPRD_ESPECIFICO_REDST.AsCurrency;
+  							 wPMC := DBInicio.BuscaUmDadoSqlAsFloat ( 'select prdl_preco_maximo from prd_lote where prdl_registro = '+CdsItemPedidoPrdl_Registro.AsString );
+  					end;
 
-           BuscaOperacaoNovo ( CdsItemPedidoCFOP_Codigo.AsString );
+           if CdsPedidosOPE_Codigo.Asstring <> '' then
+             BuscaOperacaoNovo ( CdsPedidosOPE_Codigo.AsString )
+           else
+            BuscaOperacaoNovo ( CdsItemPedidoCFOP_Codigo.AsString );
            if (femp_crt = '1') AND (fOPT_SIMPLES = 'S') then // SIMPLES
               cstPISCOFINS := '99'
            Else
@@ -4307,6 +4310,7 @@ begin
            end
            else
              cstPISCOFINS := '';
+           cst_PIS_COFINS := cstPISCOFINS;
 					// Regra Nova CFOP
 					// Aqui realizamos a busca por uma regra caso nao encontre assumira o padrao
 					// a pesquisa será pela tabela ope_regra
