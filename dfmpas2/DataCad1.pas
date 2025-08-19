@@ -1725,6 +1725,8 @@ type
     CdsParametrosPMT_ADICIONAR_DIFAL_TOTAL_NF: TStringField;
     SqlParametrosPMT_CALCULAR_ITENS_NO_FINAL: TStringField;
     CdsParametrosPMT_CALCULAR_ITENS_NO_FINAL: TStringField;
+    SqlParametrosPMT_CADASTRA_PRODUTO_PEDIDO: TStringField;
+    CdsParametrosPMT_CADASTRA_PRODUTO_PEDIDO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

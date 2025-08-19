@@ -666,7 +666,7 @@ inherited FrmPedido: TFrmPedido
           Top = 46
           Width = 759
           Height = 143
-          ActivePage = TsDesconto
+          ActivePage = tsoutros
           Align = alLeft
           TabOrder = 3
           TabStop = False
@@ -8926,6 +8926,25 @@ inherited FrmPedido: TFrmPedido
       TabOrder = 5
       OnClick = Panel16Click
     end
+    object pImportarXML: TPanel
+      Left = 1176
+      Top = 0
+      Width = 161
+      Height = 17
+      Align = alLeft
+      Alignment = taLeftJustify
+      BevelInner = bvLowered
+      BorderWidth = 1
+      Caption = 'F12 - Importar XML'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 6
+      OnClick = pImportarXMLClick
+    end
   end
   object pMensagemFat: TFlowPanel [3]
     Left = 800
@@ -10087,7 +10106,7 @@ inherited FrmPedido: TFrmPedido
     Left = 1192
     Top = 389
     Bitmap = {
-      494C010103000500840010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -11865,7 +11884,7 @@ inherited FrmPedido: TFrmPedido
     Left = 40
     Top = 147
     Bitmap = {
-      494C010104000900840010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
