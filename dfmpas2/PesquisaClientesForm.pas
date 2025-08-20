@@ -299,6 +299,8 @@ begin
 //  inherited;
   qExport.Close;
   qExport.SQL.Text := qBusco.SQL.Text;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(qExport.SQL.Text);
   qExport.Open;
   lista := TStringList.Create;
   lista.Add('CLI_CODIGO');
@@ -323,9 +325,10 @@ begin
   lista.Add('CLI_EMAIL_ALTERNATIVO');
   lista.Add('CLI_EMAIL');
   lista.Add('CLI_CONTATO');
-
 //   lista.Add('FPC_VENCTO');
+
   CriaCSV(dsExport, lista, Self);
+
 end;
 
 procedure TfrmPesquisaClientes.btnImprimeClick(Sender: TObject);

@@ -2502,35 +2502,59 @@ end;
 function retiraApostrofo(str, tabela: string): string;
 var
   i: Integer;
+  C: Char;
 begin
-  result := '';
-  for i := 0 to length(str)  do
+  Result := '';
+  for i := 1 to Length(str) do
   begin
-    if (str.Substring(i, 1) = #39) or (str.Substring(i, 1) = WideChar($2019)) then
-      result := result + ' '
+    C := str[i];
+
+    // Apostrofo simples e smart apostrophe
+    if (C = #39) or (C = WideChar($2019)) then
+      Result := Result + ' '
+
+    // Aspas duplas e smart quotes
+    else if (C = #34) or (C = WideChar($201C)) or (C = WideChar($201D)) then
+    begin
+      if tabela = 'PRD0000' then
+        Result := Result + 'POL.'
+      else
+        Result := Result + ' ';
+    end
+
+    // En dash / Em dash
+    else if (C = WideChar($2013)) or (C = WideChar($2014)) then
+      Result := Result + '-'
+
+    // Caracteres de controle ASCII
+    else if Ord(C) < 32 then
+      Result := Result + ' '
+
+    // Unicode fora da faixa ISO8859_1
+    else if Ord(C) > 255 then
+      Result := Result + '?'
+
     else
-    if ( (str.Substring(i, 1) = #34)  or (str.Substring(i, 1) =  WideChar($201C)) or (str.Substring(i, 1) =  WideChar($201D)) ) and (tabela = 'PRD0000') then
-      result := result + 'POL.'
-    else
-      result := result + str.Substring(i, 1);
+      Result := Result + C;
   end;
 end;
 
 function existeApostrofo(str: string): boolean;
 var
   i: Integer;
+  C: Char;
 begin
-  result := False;
-  for i := 0 to length(str)  do
+  Result := False;
+  for i := 1 to Length(str) do
   begin
-    if (str.Substring(i, 1) = #39)
-    or (str.Substring(i, 1) = #34)
-    or (str.Substring(i, 1) = WideChar($2019))
-    or (str.Substring(i, 1) =  WideChar($201D))
-    or (str.Substring(i, 1) =  WideChar($201C))
-    then
+    C := str[i];
+    if (C = #39) or (C = #34) or
+       (C = WideChar($2013)) or (C = WideChar($2014)) or
+       (C = WideChar($201C)) or (C = WideChar($201D)) or
+       (C = WideChar($2019)) or
+       (Ord(C) < 32) or (Ord(C) > 255) then
     begin
-      result := True;
+      Result := True;
       Exit;
     end;
   end;

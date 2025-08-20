@@ -14,8 +14,6 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     ExplicitWidth = 1262
     ExplicitHeight = 542
     inherited tsNotas: TTabSheet
-      ExplicitLeft = 4
-      ExplicitTop = 24
       ExplicitWidth = 1254
       ExplicitHeight = 514
       inherited pnControle: TPanel
@@ -966,6 +964,7 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
   end
   object qExport: TFDQuery
     Connection = DBInicio.FDACConn
+    FetchOptions.AssignedValues = [evMode, evRowsetSize]
     Left = 380
     Top = 224
     object qExportCLI_CODIGO: TStringField
