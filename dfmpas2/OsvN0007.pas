@@ -224,6 +224,9 @@ begin
    //
    SqlCdsPs2.Close;
    SqlCdsPs2.CommandText := FrmMenu.RwSqlGeralCmd.ComandoSql;
+   if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(SqlCdsPs2.CommandText);
+
    SqlCdsPs2.Open;
 end;
 

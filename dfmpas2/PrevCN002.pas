@@ -175,6 +175,9 @@ begin
       wSeleciona := ' WHERE (X1.PSI_ESTFISICO>0)';
       SqlCdsDisponivel.Close;
       SqlCdsDisponivel.CommandText := wSql1+wSql2+wSql3+' HAVING X1.PSI_ESTFISICO >= SUM(x1.PSI_CONSUMO) '+wOrdem;
+      if dbInicio.Isdesenvolvimento then
+        CopyToClipboard(SqlCdsDisponivel.CommandText);
+
       SqlCdsDisponivel.Open;
 
       {Abrir a tabela da materia prima consumida}
@@ -192,6 +195,8 @@ begin
       //
       SQLCdsComprar.Close;
       SQLCdsComprar.CommandText := wSql1+wSql2+wSql3+' HAVING SUM(x1.PSI_CONSUMO) >= X1.PSI_ESTFISICO or  X1.PSI_ESTFISICO <=0 '+wOrdem;
+      if dbInicio.Isdesenvolvimento then
+        CopyToClipboard(SQLCdsComprar.CommandText);
       SQLCdsComprar.Open;
       //
       AtribuiQtdedeCompra;

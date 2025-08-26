@@ -1159,10 +1159,10 @@ begin
                                               wQtde_Falta,                                //pFalta,
                                               wQtde_Disponivel,                           //pDisponivel,
                                               wQtde_Reserva);                             //pReserva,
-                           if (SqlCdsN1PTI_SIGLA.AsString = 'PA') OR (SqlCdsN1PTI_SIGLA.AsString = 'PI') then
-                              begin
-                                  TesteNIvel(1,SqlCdsN1PRD_REFER_ITENS.AsString,(pConsumo-wSaldo_Estoque));
-                              end;
+                       //    if (SqlCdsN1PTI_SIGLA.AsString = 'PA') OR (SqlCdsN1PTI_SIGLA.AsString = 'PI') then
+                       //       begin
+                       //           TesteNIvel(1,SqlCdsN1PRD_REFER_ITENS.AsString,(pConsumo-wSaldo_Estoque));
+                       //       end;
                        end;
                     SqlCdsN1.Next;
                 end;
