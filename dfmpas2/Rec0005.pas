@@ -571,7 +571,8 @@ begin
                            begin
                                uteis.aviso('Informe o Tipo de Cobrança !');
                                CbxCarteira.ItemIndex := 0;
-                               CbxCarteira.SetFocus;
+                               if CbxCarteira.CanFocus then
+                                 CbxCarteira.SetFocus;
                                Screen.Cursor := crDefault;
                                exit;
                            end;
@@ -579,7 +580,8 @@ begin
                            begin
                                uteis.aviso('Informe o Tipo de Documento !');
                                CbxTipoDoc.ItemIndex := 0;
-                               CbxTipoDoc.SetFocus;
+                               if CbxTipoDoc.CanFocus Then
+                                  CbxTipoDoc.SetFocus;
                                Screen.Cursor := crDefault;
                                exit;
                            end;
@@ -587,7 +589,8 @@ begin
                         and(CurrBco.AsInteger = 9999)) then
                            begin
                               uteis.aviso('Esta Conta não está disponível para este tipo de movimento !');
-                              CurrBco.SetFocus;
+                              if CurrBco.CanFocus then
+                                CurrBco.SetFocus;
                               CurrBco.SelectAll;
                               Screen.Cursor := crDefault;
                               exit;
@@ -1865,7 +1868,7 @@ procedure TFrmRemessaDescontar.BotoesAcesso;
 begin
   if Assigned(FrmRemessaDescontar) then
   begin
-    Bit_Relatorio.Enabled := Uteis.AcessoUsuario('FinanceiroRemessas de Desconto/Depósito/Transferências',DBInicio.Usuario.CODIGO,FrmRemessaDescontar).Relatorio;
+   // Bit_Relatorio.Enabled := Uteis.AcessoUsuario('FinanceiroRemessas de Desconto/Depósito/Transferências',DBInicio.Usuario.CODIGO,FrmRemessaDescontar).Relatorio;
   end;
 end;
 
@@ -1931,7 +1934,10 @@ end;
 
 procedure TFrmRemessaDescontar.DesabilitaObjetos;
 begin
-    GrpFiltro.Enabled    := False;
+
+    Exit;
+
+{    GrpFiltro.Enabled    := False;
     GrpPesq.Enabled      := False;
     GrpInforme.Enabled   := False;
     GrpGerar.Enabled     := False;
@@ -1939,7 +1945,7 @@ begin
     Pn_Relatorio.Enabled := False;
     BitCancelar.Enabled  := False;
     BitSair.Enabled      := False;
-    FormaPagamento.Visible := False;
+    FormaPagamento.Visible := False; }
 end;
 
 procedure TFrmRemessaDescontar.HabilitaObjetos;
@@ -2097,10 +2103,13 @@ end;
 
 procedure TFrmRemessaDescontar.DesabilitaGroups;
 begin
-    GrpFiltro.Enabled  := False;
-    GrpPesq.Enabled    := False;
-    GrpInforme.Enabled := False;
-    GrpGerar.Enabled   := False;
+
+  Exit;
+
+//    GrpFiltro.Enabled  := False;
+ //   GrpPesq.Enabled    := False;
+  //  GrpInforme.Enabled := False;
+   // GrpGerar.Enabled   := False;
 end;
 
 procedure TFrmRemessaDescontar.HabilitaGroups;
@@ -2118,6 +2127,9 @@ end;
 
 procedure TFrmRemessaDescontar.LayOutGerar;
 begin
+
+  Exit;
+{
     if (Rad_Remessa.Checked) then
        begin
            Pan_Cheq.Visible      := True;
@@ -2148,6 +2160,7 @@ begin
            Bit_Estornar.Enabled  := True;
            //
        end;
+       }
 end;
 
 procedure TFrmRemessaDescontar.CbxCarteiraChange(Sender: tObject);
@@ -2400,6 +2413,9 @@ end;
 
 procedure TFrmRemessaDescontar.Objetos_Default;
 begin
+
+  Exit;
+
       if (Rad_aDescontar.Checked) then
          begin
              {Group = Pesquisar}
