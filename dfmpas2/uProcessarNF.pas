@@ -126,7 +126,7 @@ var
 //  Reboque: TreboqueCollectionItem;
 //  Lacre: TLacresCollectionItem;
     ProcReferenciado: TprocRefCollectionItem;
-    NumNFe :string;
+    NumNFe, cst_PIS_COFINS :string;
     ok: boolean;
     i: integer;
     CSOSN,CSOSNST: Integer;
@@ -351,8 +351,12 @@ begin
        Produto.Imposto.II.vII := 0;
        Produto.Imposto.II.vIOF := 0;
       end;
-       Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
-      if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_PIS').AsString,['99','98','49']))) then
+
+       Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
+//       Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
+
+//      if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_PIS').AsString,['99','98','49']))) then
+      if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS, ['99','98','49']))) then
       begin
         Produto.Imposto.PIS.VBC := qItemNota.FieldByName('NF_BASE_PIS').asCurrency;
         Produto.Imposto.PIS.PPIS := qItemNota.FieldByName('NF_ALIQPIS').asCurrency;
@@ -361,8 +365,12 @@ begin
       end
       else if qItemNota.FieldByName('CST_PIS').AsString = '' then
           Produto.Imposto.PIS.CST := pis08;
-      Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, qItemNota.FieldByName('CST_COFINS').AsString);
-     if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_COFINS').AsString,['99','98','49'])) then
+
+      Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, cst_PIS_COFINS);
+//     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, qItemNota.FieldByName('CST_COFINS').AsString);
+
+//     if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_COFINS').AsString,['99','98','49'])) then
+     if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS,['99','98','49'])) then
      begin
 
         Produto.Imposto.COFINS.VBC := qItemNota.FieldByName('NF_BASE_COFINS').asCurrency;
