@@ -1,0 +1,13 @@
+﻿Atualizado em 02/09/2025
+Inicio da versão: 02/09/2025
+
+principal: Collect, Aços Ferrara, Embraterm, Rotor, Drimec, Arkson
+  2069 - Revisão Collect ->Pedido/Renovação [Collect]
+  2073 - Erro Aço Ferrara - Faturamento Pis COfins [Aços Ferrara]
+  2076 - Erro Embraterm -> Analise Plano de contas x Centro Custo [Embraterm]
+  2077 - Erro Rotor-> importar xls cadastro cliente. [Rotor]
+  2078 - ERRO DRIMEC -> Produtos no Simulação de Consumo de Materiais [Drimec]
+  2081 - Arkson [10932] - Não apresenta dois campos para preenchimento [Arkson]
+  
+  
+  
