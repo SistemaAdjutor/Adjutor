@@ -153,6 +153,10 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Estoque Dispon'#237'vel'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBGrid2: TDBGrid
         Left = 0
         Top = 41
@@ -377,6 +381,10 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     object TabSheet2: TTabSheet
       Caption = 'Estoque '#224' Comprar'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBGridMatPrima: TDBGrid
         Left = 0
         Top = 41
@@ -640,6 +648,10 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     object TabSheet3: TTabSheet
       Caption = #192' Produzir'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBGridProdutos: TDBGrid
         Left = 0
         Top = 41
