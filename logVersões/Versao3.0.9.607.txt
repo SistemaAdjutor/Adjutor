@@ -1,5 +1,5 @@
-﻿Atualizado em 02/09/2025
-Inicio da versão: 02/09/2025
+﻿Atualizado em 03/09/2025
+Inicio da versão: 03/09/2025
 
 principal: Collect, Aços Ferrara, Embraterm, Rotor, Drimec, Arkson
   2069 - Revisão Collect ->Pedido/Renovação [Collect]
@@ -9,5 +9,7 @@ principal: Collect, Aços Ferrara, Embraterm, Rotor, Drimec, Arkson
   2078 - ERRO DRIMEC -> Produtos no Simulação de Consumo de Materiais [Drimec]
   2081 - Arkson [10932] - Não apresenta dois campos para preenchimento [Arkson]
   
-  
+patch 1: Parseals
+  2084 - Implementacao Normativa emissão NF A vista <dup> [Parseals]
+
   
