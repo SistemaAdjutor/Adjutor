@@ -2341,7 +2341,7 @@ begin
 
 
     qDuplicata.First;
-    if NotaF.NFe.Cobr.Fat.vLiq > 0 then
+    if (NotaF.NFe.Cobr.Fat.vLiq > 0)  and (qNota.FieldByName('PCL_MODALIDADE').AsInteger <> 0) then
     begin
       if not qDuplicata.IsEmpty then
       begin
