@@ -3112,6 +3112,7 @@ begin
         //frmPedidoItem := nil;
      end;
 
+     BuscaPedidoItem(EdPedidoNumero.Text, True);;
      CalcutaTotalItens;
      GravaPedido;
 
@@ -6245,10 +6246,10 @@ begin
         if not btnGravar.Enabled then
           CalcutaTotalItens;
         Recalculado := False;
+        GravaPedido;
       end
       else
         Recalculado := True;
-
     end;
     SqlCdsPedido.EnableControls;
     SqlCdsPedidoItem.EnableControls;
