@@ -3112,7 +3112,7 @@ begin
         //frmPedidoItem := nil;
      end;
 
-     BuscaPedidoItem(EdPedidoNumero.Text, True);;
+     BuscaPedidoItem(EdPedidoNumero.Text, True);
      CalcutaTotalItens;
      GravaPedido;
 
