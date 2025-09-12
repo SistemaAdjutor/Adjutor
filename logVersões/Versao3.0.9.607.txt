@@ -1,4 +1,4 @@
-﻿Atualizado em 03/09/2025
+﻿Atualizado em 12/09/2025
 Inicio da versão: 03/09/2025
 
 principal: Collect, Aços Ferrara, Embraterm, Rotor, Drimec, Arkson
@@ -11,5 +11,8 @@ principal: Collect, Aços Ferrara, Embraterm, Rotor, Drimec, Arkson
   
 patch 1: Parseals
   2084 - Implementacao Normativa emissão NF A vista <dup> [Parseals]
+
+patch 2: Netocolor
+  2087 - Erro - Pedido valor não altera no PDF [Netocolor]
 
   
