@@ -328,7 +328,7 @@ begin
                                           DataMovimento.CdsPedidosREP_CODIGO_INTERNO.AsString+''','''+
                                           'S'','''+
                                           DataAmericana(DateToStr(Now))+''','+
-                                          DateToSQL(dtePrazoEntrega.Date)+','''+
+                                          DateToSQL(Now)+','''+
                                           ValorAmericano(DataMovimento.CdsPedidosPED_COMIS1.AsString)+''','''+
                                           ValorAmericano(DataMovimento.CdsPedidosPED_COMIS2.AsString)+''','''+
                                           ValorAmericano(DataMovimento.CdsPedidosPED_COMIS3.AsString)+''','''+

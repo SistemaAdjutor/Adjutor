@@ -691,7 +691,7 @@ inherited FrmRelatoriosPedido: TFrmRelatoriosPedido
           Font.Style = [fsBold]
           Frame.Typ = []
           Memo.UTF8W = (
-            
+
               '[iif(<frxDataPedido."PED_DTSAIDA"> = '#39'30/12/1899'#39', '#39#39', <frxDataP' +
               'edido."PED_DTSAIDA">)]')
           ParentFont = False
