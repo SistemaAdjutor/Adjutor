@@ -4496,6 +4496,8 @@ procedure TFrmPedido.Excluir1Click(Sender: tObject);
 begin
    sOperacao := 'I';
    ExcluirItem;
+   BuscaPedidoItem(EdPedidoNumero.Text, True);
+   GravaPedido;
    Recalculado := False;
 end;
 procedure TFrmPedido.Alterar1Click(Sender: tObject);
