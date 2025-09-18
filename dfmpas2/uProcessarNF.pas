@@ -2477,6 +2477,12 @@ begin
         end;
         if tPag = fpOutro then
           xPag := DBInicio.GetParametroSistema('PMT_DESCRICAO_99_OUTROS');
+
+      if (tPag = fpPagamentoInstantaneo)  then
+      begin
+        tpIntegra := tiPagNaoIntegrado;
+      end;
+
       end;
     end
     else
