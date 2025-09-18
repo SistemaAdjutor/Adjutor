@@ -1096,6 +1096,7 @@ type
     btSalvaPeso: TBitBtn;
     SqlCdsPedidoItemPRG_INDICE: TFMTBCDField;
     btProcessarCalculo: TBitBtn;
+    pImportarXML: TPanel;
 
     procedure FormKeyDown(Sender: tObject; var Key: Word;Shift: TShiftState);
     procedure CurDescontoNotaFiscalExit(Sender: tObject);
@@ -1324,6 +1325,7 @@ type
     procedure frxPedidoTratGetValue(const VarName: string; var Value: Variant);
     procedure cbbClienteEstadoExit(Sender: TObject);
     procedure btProcessarCalculoClick(Sender: TObject);
+    procedure pImportarXMLClick(Sender: TObject);
   private
     pOldId: string ;
     wCurDescontoIndice: Real;
@@ -1426,7 +1428,8 @@ type
     procedure RecalculaSTItem;
     procedure BotoesAcesso;
     function PedidoMinimo(pedido: string): Boolean;
-
+    function LoadXMLCPP(Sequencia: Integer): Integer;
+    function CadastraProduto(prdRefer, Descricao, Unidade, Valor: String): String;
   end;
 
 var
@@ -2055,9 +2058,7 @@ begin
                    '       t1.prf_custo, '+
                    '       0.00 as markup, '+
                    '        CASE ' +
-//                   '         WHEN PMT_ATIVA_METRO_CUBICO = ''S'' ' +
                    '         WHEN T1.PRD_UND = ''M3'' AND PMT_ATIVA_METRO_CUBICO = ''S'' ' +
-//                   '           THEN CAST(CAST(t3.PRG_INDICE AS DOUBLE PRECISION) * t1.PRF_QTDE * t1.PRF_PRECO AS NUMERIC(18,2)) ' +
                    '           THEN CAST(t1.PRF_QTDE * t1.PRF_PRECO AS NUMERIC(18,2)) ' +
                    '         ELSE ' +
                    '          CASE PRF_PRODUTO_AGREGADO'+
@@ -2066,7 +2067,6 @@ begin
                    '          END ' +
                            ' END AS TOTAL, '  +
                    ' (SELECT PRF_QTDE FROM PED_IT01 it2 WHERE it2.PRF_REGISTRO = t1.PRF_REGISTRO_VINCULADO) as QtdeKit, '+
-                  // '       cast(cast(t1.PRF_QTDE as numeric(15,3)) * cast(t1.PRF_PRECO as numeric(15,5)) as numeric(18,2))  as total,'+
                    '       t1.prf_ipialiq, '+
                    '       t1.prf_itemcomis, '+
                    '       t1.PRF_B2B_PEDIDO_COMPRA,'+
@@ -2407,6 +2407,9 @@ begin
           Reajuste;
      end
      else
+     if (key = VK_F12) then
+        pImportarXMLClick(Sender)
+     else
      if (key = VK_F11) then
         spRedimecionarItem.Click
      else
@@ -2686,6 +2689,7 @@ begin
   inherited;
 
   PMT_CALCULAR_ITENS_NO_FINAL := dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_CALCULAR_ITENS_NO_FINAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'S' ;
+  pImportarXML.Visible := dbInicio.BuscaUmDadoSqlAsString('SELECT PMT_CADASTRA_PRODUTO_PEDIDO FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'S' ;
   btProcessarCalculo.Visible := PMT_CALCULAR_ITENS_NO_FINAL;
   btRecalcula := False;
   Recalculado := False;
@@ -3448,6 +3452,7 @@ begin
    end;
    SqlCdsPedidoItem.EnableControls;
 end;
+
 
 Function TFrmPedido.GetTipoPedidoPadrao:integer;
 var
@@ -6127,6 +6132,197 @@ end;
 procedure TFrmPedido.PedidosemValores1Click(Sender: tObject);
 begin
    ImprimePedido(true,'SV');
+end;
+
+function TFrmPedido.CadastraProduto(prdRefer, Descricao, Unidade, Valor: String) : String;
+Var
+  prdCodigo : string;
+begin
+  prdCodigo := StrZero( BuscaUmDadoSqlAsInteger( 'SELECT max(CAST(prd_codigo AS INTEGER)) from prd0000' ) + 1 , 5);
+
+  dbInicio.ExecSql('INSERT INTO PRD0000 ' +
+                   ' (PRD_CODIGO, PRD_REFER, PRD_STATUS, PRD_DESCRI, PRD_UND, PTI_CODIGO, PRD_PVENDA) ' +
+                   ' VALUES ( ' +
+                   QuotedStr(prdCodigo) + ', ' +
+                   QuotedStr(prdRefer) + ', ' +
+                   QuotedStr('A') + ', ' +
+                   QuotedStr(Descricao) + ', ' +
+                   QuotedStr(Unidade) + ' ,' +
+                   QuotedStr('005') + ' ,' +
+                   Valor +
+                   ' ) '
+                   );
+  Result := prdCodigo;
+end;
+
+function TFrmPedido.LoadXMLCPP(Sequencia: Integer): Integer;
+var
+  RootNode, InfNFeNode, DetNode, ProdNode: IXMLNode;
+  NodeList, RootList: IXMLNodeList;
+  i, j: Integer;
+  sQuery, prdCodigo: string;
+  quantidade, valorUnit, total: Double;
+begin
+  // Garante que o XML está carregado
+  XMLDocument1.Active := True;
+
+  RootNode := XMLDocument1.DocumentElement;
+  if not Assigned(RootNode) then
+    raise Exception.Create('XML inválido ou não carregado.');
+
+  // Pega todos os nós de primeiro nível (alguns XMLs têm <NFe> e dentro dele o <infNFe>)
+  RootList := RootNode.ChildNodes;
+
+  for j := 0 to RootList.Count - 1 do
+  begin
+    // Procura pelo <infNFe>
+    if SameText(RootList[j].NodeName, 'infNFe') then
+      InfNFeNode := RootList[j]
+    else if SameText(RootList[j].NodeName, 'NFe') then
+      InfNFeNode := RootList[j].ChildNodes.FindNode('infNFe')
+    else
+      InfNFeNode := nil;
+
+    if not Assigned(InfNFeNode) then
+      Continue;
+
+    // Agora percorre os <det> dentro de <infNFe>
+    NodeList := InfNFeNode.ChildNodes;
+
+    for i := 0 to NodeList.Count - 1 do
+    begin
+      DetNode := NodeList[i];
+
+      if SameText(DetNode.NodeName, 'det') then
+      begin
+        // Dentro de cada <det> tem um <prod>
+        ProdNode := DetNode.ChildNodes.FindNode('prod');
+        if Assigned(ProdNode) then
+        begin
+          prdCodigo := BuscaUmDadoSqlAsString(
+            'SELECT p.PRD_CODIGO FROM PRD0000 p WHERE p.PRD_REFER = ' +
+            QuotedStr(ProdNode.ChildNodes['cProd'].Text)
+          );
+
+          if prdCodigo = '' then
+            prdCodigo := CadastraProduto(
+                                        ProdNode.ChildNodes['cProd'].Text,
+                                        ProdNode.ChildNodes['xProd'].Text,
+                                        ProdNode.ChildNodes['uCom'].Text,
+                                        ProdNode.ChildNodes['vUnCom'].Text
+                                      );
+          quantidade := StrToFloat(StringReplace(ProdNode.ChildNodes['qCom'].Text, '.', ',', [rfReplaceAll]));
+          valorUnit  := StrToFloat(StringReplace(ProdNode.ChildNodes['vUnCom'].Text, '.', ',', [rfReplaceAll]));
+          total := quantidade * valorUnit;
+
+          sQuery :=
+            'INSERT INTO ped_it01 ' +
+            '(' +
+            'PRF_REGISTRO,' +
+            'PRF_SEQUENCIA,' +
+            'PED_CODIGO,' +
+            'PRD_CODIGO,' +
+            'PRD_REFER,' +
+            'PRF_PRDDESCRI, ' +
+            'PRD_UND,' +
+            'PRF_QTDE,' +
+            'PRF_QTDE_CONVERTIDA, ' +
+            'PRF_PESO, ' +
+            'PRF_PRECO_BRUTO, ' +
+            'EMP_CODIGO,' +
+            'PRF_PRECO,' +
+            'PRF_PRECO_ORIGINAL, ' +
+            'USU_CODIGO,' +
+            'PRF_PRODUTO_AGREGADO, ' +
+            'AMX_CODIGO_DESTINO' +
+            ') VALUES (' +
+            QuotedStr(IntToStr(dbInicio.GetNextSequence('GEN_ITEM_PEDIDO'))) + ',' +
+            QuotedStr(IntToStr(Sequencia)) + ',' +
+            QuotedStr(FrmPedido.EdPedidoNumero.Text) + ',' +
+            QuotedStr(prdCodigo) + ',' +
+            QuotedStr(ProdNode.ChildNodes['cProd'].Text) + ',' +
+            QuotedStr(ProdNode.ChildNodes['xProd'].Text) + ',' +
+            QuotedStr(ProdNode.ChildNodes['uCom'].Text) + ',' +
+            QuotedStr(ValorAmericano(ProdNode.ChildNodes['qCom'].Text)) + ',' +
+            QuotedStr(ValorAmericano(ProdNode.ChildNodes['qCom'].Text)) + ',' +
+            QuotedStr(ValorAmericano(ProdNode.ChildNodes['qCom'].Text)) + ',' +
+            QuotedStr(ValorAmericano(ProdNode.ChildNodes['vUnCom'].Text)) + ',' +
+            // QuotedStr(ValorAmericano(FloatToStr(total))) + ',' +
+            QuotedStr(dbInicio.Empresa.EMP_CODIGO) + ',' +
+            QuotedStr(ValorAmericano(ProdNode.ChildNodes['vUnCom'].Text)) + ',' +
+            QuotedStr(ValorAmericano(ProdNode.ChildNodes['vUnCom'].Text)) + ',' +
+            QuotedStr(dbInicio.Usuario.Codigo) + ',' +
+            QuotedStr('N') + ',' +
+            QuotedStr(DBInicio.GetParametroSistema('PMT_AMX_VENDA')) +
+            ')';
+
+          dbInicio.ExecSQL(sQuery);
+          Inc(Sequencia);
+        end;
+      end;
+    end;
+  end;
+
+  Result := Sequencia;
+end;
+
+
+procedure TFrmPedido.pImportarXMLClick(Sender: TObject);
+var
+  j, Sequencia :Integer;
+begin
+ inherited;
+  if (BtnGravar.Enabled) then
+    GravaPedido;
+
+  if (SqlCdsPedido.IsEmpty) then
+    uteis.aviso('Adicione um pedido antes de colocar os itens')
+  else
+  if (SqlCdsPedidoPED_SITUACAO.AsString = 'C') then
+    uteis.aviso('Pedido cancelado não permite adicionar novos itens!')
+  else
+  if (EdSituacao.Text = 'FATURADO TOTAL') then
+    uteis.aviso('Pedido faturado não permite adicionar novos itens!')
+  else
+  if (EdSituacao.Text = 'AGRUPADO') then
+    uteis.aviso('Não é possível incluir mais itens. Pedido já foi agrupado!')
+  else
+  if (MatchStr(SqlCdsPedidoPED_SITUACAO.AsString ,['F','P'] ) )  and (SqlCdsPedidoPed_faturar_liberado.AsString = 'S') and ( DBInicio.empresa.wTipoLiberacaoFaturamento = 'M') then
+    uteis.aviso('Pedido já liberado para faturamento')
+  else
+  if ValidaPedido then
+  begin
+
+    if MessageDlg('Deseja Importar Arquivos XML?', mtConfirmation, [mbYes, mbNo], 0) <> mrYes then
+      Exit;
+
+
+    OpenDialog1.Title := 'Selecione os arquivos XML';
+    OpenDialog1.Filter := 'Arquivos XML (*.xml)|*.xml';
+    OpenDialog1.DefaultExt := 'xml';
+    OpenDialog1.Options := [ofFileMustExist, ofPathMustExist, ofAllowMultiSelect];
+    OpenDialog1.Execute;
+
+    if OpenDialog1.Files.Count > 0 then
+    begin
+      Sequencia := 1;
+      // Percorre todos os XMLs selecionados
+      for j := 0 to OpenDialog1.Files.Count - 1 do
+      begin
+        XMLDocument1.Active := False;
+        XMLDocument1.FileName := OpenDialog1.Files[j];
+        XMLDocument1.Active := True;
+        Sequencia := LoadXMLCPP(Sequencia);
+        // ShowMessage('Arquivo selecionado: ' + OpenDialog1.Files[j]);
+      end;
+    end;
+    SqlCdsPedidoItem.Refresh;
+    BuscaPedidoItem(EdPedidoNumero.Text, True);
+    CalcutaTotalItens;
+    // GravaPedido;
+
+    // ReordenarItens(SqlCdsPedidoItem);
+  end;
 end;
 
 procedure TFrmPedido.PmuItemPedidoPopup(Sender: TObject);

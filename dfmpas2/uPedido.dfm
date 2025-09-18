@@ -8926,6 +8926,25 @@ inherited FrmPedido: TFrmPedido
       TabOrder = 5
       OnClick = Panel16Click
     end
+    object pImportarXML: TPanel
+      Left = 1176
+      Top = 0
+      Width = 161
+      Height = 17
+      Align = alLeft
+      Alignment = taLeftJustify
+      BevelInner = bvLowered
+      BorderWidth = 1
+      Caption = 'F12 - Importar XML'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -11
+      Font.Name = 'Arial'
+      Font.Style = [fsBold]
+      ParentFont = False
+      TabOrder = 6
+      OnClick = pImportarXMLClick
+    end
   end
   object pMensagemFat: TFlowPanel [3]
     Left = 800

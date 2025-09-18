@@ -1695,6 +1695,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_CALCULAR_ITENS_NO_FINAL'
       Size = 1
     end
+    object SqlParametrosPMT_CADASTRA_PRODUTO_PEDIDO: TStringField
+      FieldName = 'PMT_CADASTRA_PRODUTO_PEDIDO'
+      Size = 1
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -3030,6 +3034,10 @@ object DataCadastros1: TDataCadastros1
     end
     object CdsParametrosPMT_CALCULAR_ITENS_NO_FINAL: TStringField
       FieldName = 'PMT_CALCULAR_ITENS_NO_FINAL'
+      Size = 1
+    end
+    object CdsParametrosPMT_CADASTRA_PRODUTO_PEDIDO: TStringField
+      FieldName = 'PMT_CADASTRA_PRODUTO_PEDIDO'
       Size = 1
     end
   end

@@ -493,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 4
+      PageIndex = 12
       TabOrder = 0
       object TPage
         Left = 0
@@ -5236,7 +5236,7 @@ inherited FormParametros: TFormParametros
             Top = 1
             Width = 765
             Height = 507
-            ActivePage = tsSaida
+            ActivePage = tsEntrada
             Align = alClient
             TabOrder = 0
             object tsEntrada: TTabSheet
@@ -5343,6 +5343,21 @@ inherited FormParametros: TFormParametros
                 ParentShowHint = False
                 ShowHint = True
                 TabOrder = 6
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
+              object DBCheckBox102: TDBCheckBox
+                Left = 12
+                Top = 141
+                Width = 369
+                Height = 17
+                Hint = 'Produtos que controlam lote v'#227'o obrigar a vincula'#231#227'o do lote'
+                Caption = 'Cadastra Produtos e Pedido na Entrada da Nota '
+                DataField = 'PMT_CADASTRA_PRODUTO_PEDIDO'
+                DataSource = DataCadastros1.DsParametros
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 7
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
