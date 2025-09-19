@@ -1863,6 +1863,7 @@ type
     DBCheckBox100: TDBCheckBox;
     DBCheckBox101: TDBCheckBox;
     DBCheckBox102: TDBCheckBox;
+    DBCheckBox103: TDBCheckBox;
 
 
     procedure FormShow(Sender: tObject);
