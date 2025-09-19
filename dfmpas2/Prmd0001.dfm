@@ -493,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 12
+      PageIndex = 4
       TabOrder = 0
       object TPage
         Left = 0
@@ -2659,6 +2659,20 @@ inherited FormParametros: TFormParametros
                 ParentShowHint = False
                 ShowHint = True
                 TabOrder = 28
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
+              object DBCheckBox103: TDBCheckBox
+                Left = 9
+                Top = 196
+                Width = 232
+                Height = 17
+                Caption = 'Habilitar Importa'#231#227'o Direta de XML no Pedido'
+                DataField = 'PMT_CADASTRA_PRODUTO_PEDIDO'
+                DataSource = DataCadastros1.DsParametros
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 29
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
