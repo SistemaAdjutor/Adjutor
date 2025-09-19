@@ -1,4 +1,4 @@
-﻿Atualizado em 12/09/2025
+﻿Atualizado em 19/09/2025
 Inicio da versão: 03/09/2025
 
 principal: Collect, Aços Ferrara, Embraterm, Rotor, Drimec, Arkson
@@ -15,4 +15,5 @@ patch 1: Parseals
 patch 2: Netocolor
   2087 - Erro - Pedido valor não altera no PDF [Netocolor]
 
-  
+patch 3: Sustemplast
+  2089 - Erro JA Mulduras ->Forma combrança PIX [Sustemplast]  

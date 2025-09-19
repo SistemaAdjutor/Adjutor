@@ -2675,6 +2675,7 @@ inherited FormParametros: TFormParametros
                 TabOrder = 29
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
+                Visible = False
               end
             end
             object TabSheet2: TTabSheet
