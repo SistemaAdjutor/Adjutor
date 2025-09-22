@@ -2457,6 +2457,11 @@ begin
       vPag := qNota.FieldByName('NF_TOT_NOTA').AsFloat ;
       if tPag = fpOutro then
         xPag := DBInicio.GetParametroSistema('PMT_DESCRICAO_99_OUTROS');
+      if (tPag = fpPagamentoInstantaneo)  then
+        begin
+          tpIntegra := tiPagNaoIntegrado;
+        end;
+
     end;
   end
   else
@@ -2478,10 +2483,10 @@ begin
         if tPag = fpOutro then
           xPag := DBInicio.GetParametroSistema('PMT_DESCRICAO_99_OUTROS');
 
-      if (tPag = fpPagamentoInstantaneo)  then
-      begin
-        tpIntegra := tiPagNaoIntegrado;
-      end;
+        if (tPag = fpPagamentoInstantaneo)  then
+        begin
+          tpIntegra := tiPagNaoIntegrado;
+        end;
 
       end;
     end
