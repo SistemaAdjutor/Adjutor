@@ -160,48 +160,47 @@ inherited FrmInutilizar: TFrmInutilizar
       Align = alTop
       Caption = 'Inutiliza'#231#245'es realizadas'
       TabOrder = 0
-      object DBGrid2: TDBGrid
+      object cxGrid1: TcxGrid
         Left = 2
         Top = 15
         Width = 754
         Height = 359
         Align = alClient
-        DataSource = dsInutilizados
-        ReadOnly = True
         TabOrder = 0
-        TitleFont.Charset = DEFAULT_CHARSET
-        TitleFont.Color = clWindowText
-        TitleFont.Height = -11
-        TitleFont.Name = 'Tahoma'
-        TitleFont.Style = []
-        Columns = <
-          item
-            Expanded = False
-            FieldName = 'FIC_DATA'
-            Title.Caption = 'Data'
-            Width = 93
-            Visible = True
+        ExplicitLeft = 5
+        ExplicitTop = 113
+        ExplicitWidth = 639
+        ExplicitHeight = 177
+        object cxGrid1DBTableView1: TcxGridDBTableView
+          Navigator.Buttons.CustomButtons = <>
+          DataController.DataSource = dsInutilizados
+          DataController.Summary.DefaultGroupSummaryItems = <>
+          DataController.Summary.FooterSummaryItems = <>
+          DataController.Summary.SummaryGroups = <>
+          OptionsView.GroupByBox = False
+          object cxGrid1DBTableView1FIC_DATA: TcxGridDBColumn
+            Caption = 'Data'
+            DataBinding.FieldName = 'FIC_DATA'
+            Width = 103
           end
-          item
-            Expanded = False
-            FieldName = 'FIC_NUMERO_NFE'
-            Title.Caption = 'N'#250'mero NFe'
-            Width = 77
-            Visible = True
+          object cxGrid1DBTableView1FIC_NUMERO_NFE: TcxGridDBColumn
+            Caption = 'N'#250'mero NFe'
+            DataBinding.FieldName = 'FIC_NUMERO_NFE'
+            Width = 80
           end
-          item
-            Expanded = False
-            FieldName = 'USU_NOME'
-            Title.Caption = 'Usu'#225'rio '
-            Width = 127
-            Visible = True
+          object cxGrid1DBTableView1USU_NOME: TcxGridDBColumn
+            Caption = 'Usu'#225'rio'
+            DataBinding.FieldName = 'USU_NOME'
+            Width = 129
           end
-          item
-            Expanded = False
-            FieldName = 'FIC_OBSERVACAO'
-            Title.Caption = 'Observa'#231#227'o'
-            Visible = True
-          end>
+          object cxGrid1DBTableView1FIC_OBSERVACAO: TcxGridDBColumn
+            Caption = 'Observa'#231#227'o'
+            DataBinding.FieldName = 'FIC_OBSERVACAO'
+          end
+        end
+        object cxGrid1Level1: TcxGridLevel
+          GridView = cxGrid1DBTableView1
+        end
       end
     end
     object GroupBox4: TGroupBox
@@ -525,10 +524,14 @@ inherited FrmInutilizar: TFrmInutilizar
   end
   inherited qAux: TSQLQuery
     Left = 322
+    Top = 45
   end
   inherited qAux2: TSQLQuery
     Left = 234
     Top = 156
+  end
+  inherited qAux3: TSQLQuery
+    Top = 44
   end
   object dsInutilizados: TDataSource
     DataSet = qInutilizado
@@ -561,6 +564,7 @@ inherited FrmInutilizar: TFrmInutilizar
     Top = 191
   end
   object qInutilizado: TFDQuery
+    CachedUpdates = True
     Connection = DBInicio.FDACConn
     Left = 405
     Top = 417
