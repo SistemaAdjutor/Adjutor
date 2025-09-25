@@ -87,8 +87,10 @@ type
     procedure btnLimparClick(Sender: TObject);
     procedure MJustificativaChange(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure dbgEncontradosTitleClick(Column: TColumn);
   private
     emp_codigo : string;
+    Ordem : String;
     procedure BuscaInutilizados;
     procedure BuscaNumerosNaoUsados;
     procedure CalculaNumerosNaoUsados;
@@ -132,29 +134,23 @@ begin
 end;
 
 procedure TFrmInutilizar.btnLimparClick(Sender: TObject);
-var clone : TFDQuery;
 begin
-  clone := TFDQuery.Create(Self);
-  clone.Connection := DBInicio.FDACConn;
-  clone.sql.text := qNumeroSemUso.SQL.Text;
-
   try
-    clone.CloneCursor(qNumeroSemUso,true);
-    clone.First;
-    while not clone.Eof do
+    qNumeroSemUso.DisableControls;
+    qNumeroSemUso.First;
+    while not qNumeroSemUso.Eof do
     begin
-      clone.Edit;
-      clone.FieldByName('selecionado').AsBoolean := False;
-      clone.Post;
-      clone.Next;
+      qNumeroSemUso.Edit;
+      qNumeroSemUso.FieldByName('selecionado').AsBoolean := False;
+      qNumeroSemUso.Post;
+      qNumeroSemUso.Next;
     end;
   finally
-    FreeAndNil(clone);
+    qNumeroSemUso.EnableControls;
+    qNumeroSemUso.First;
   end;
-
 end;
-//  if  not (Sender.IsNull) then
-//    text:= strzero(Sender.Value,8);
+
 procedure TFrmInutilizar.BuscaInutilizados;
 begin
   qInutilizado.Close;
@@ -320,6 +316,22 @@ begin
   end;
 end;
 
+procedure TFrmInutilizar.dbgEncontradosTitleClick(Column: TColumn);
+begin
+  inherited;
+  if Ordem = 'DESC' then
+      Ordem := 'ASC'
+  else
+    Ordem := 'DESC';
+
+  qNumeroSemUso.Close;
+  qNumeroSemUso.Sql.Text :=
+           'SELECT EMP_CODIGO, NFI_INUTILIZAR,NFI_OK FROM nf0001_inutilizar NC where '+
+           ' trim(nfi_ok) = ''N'' and trim(NC.emp_codigo) = '+ QuotedStr(emp_codigo) +
+           ' ORDER BY NFI_INUTILIZAR ' + Ordem;
+  qNumeroSemUso.Open
+end;
+
 procedure TFrmInutilizar.edPesqNumKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
@@ -368,7 +380,7 @@ begin
   // Ajusta a cor para a mesma dos botões do Windows
   cxGrid1DBTableView1.Styles.Header.Color := clBtnFace;
   cxGrid1DBTableView1.Styles.Header.TextColor := clWindowText;
-
+  Ordem := 'ASC';
 end;
 
 procedure TFrmInutilizar.GravaInutilizado (Numero_NFE : Integer);
@@ -458,23 +470,10 @@ begin
 end;
 
 procedure TFrmInutilizar.Validar;
-var clone : TFDQuery;
 begin
-  clone := TFDQuery.Create(Self);
-  clone.Connection := DBInicio.FDACConn;
-  clone.sql.text := qNumeroSemUso.SQL.Text;
 
-  try
-    clone.CloneCursor(qNumeroSemUso,False);
-    clone.Filtered := False;
-    clone.Filter:= '(selecionado = true)';
-    clone.Filtered := True;
-    if clone.RecordCount = 0 then
-      raise Exception.Create('Nada foi selecionado.');
-
-  finally
-    FreeAndNil(clone);
-  end;
+  if not qNumeroSemUso.Locate('selecionado', True, []) then
+    raise Exception.Create('Nada foi selecionado.');
 
   if Length(MJustificativa.Text) < 15 then
     raise Exception.Create('Justificativa tem menos de 15 caracteres.');

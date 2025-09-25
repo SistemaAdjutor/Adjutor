@@ -88,6 +88,7 @@ inherited FrmInutilizar: TFrmInutilizar
         TitleFont.Style = []
         OnCellClick = dbgEncontradosCellClick
         OnDrawColumnCell = dbgEncontradosDrawColumnCell
+        OnTitleClick = dbgEncontradosTitleClick
         Columns = <
           item
             Expanded = False
@@ -167,16 +168,16 @@ inherited FrmInutilizar: TFrmInutilizar
         Height = 359
         Align = alClient
         TabOrder = 0
-        ExplicitLeft = 5
-        ExplicitTop = 113
-        ExplicitWidth = 639
-        ExplicitHeight = 177
         object cxGrid1DBTableView1: TcxGridDBTableView
           Navigator.Buttons.CustomButtons = <>
           DataController.DataSource = dsInutilizados
           DataController.Summary.DefaultGroupSummaryItems = <>
           DataController.Summary.FooterSummaryItems = <>
           DataController.Summary.SummaryGroups = <>
+          OptionsData.Deleting = False
+          OptionsData.DeletingConfirmation = False
+          OptionsData.Editing = False
+          OptionsData.Inserting = False
           OptionsView.GroupByBox = False
           object cxGrid1DBTableView1FIC_DATA: TcxGridDBColumn
             Caption = 'Data'
