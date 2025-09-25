@@ -10,7 +10,8 @@ uses
   ppClass, ppReport, ppComm, ppRelatv, ppDB, ppDBPipe, ppModule, raCodMod,
   ppBands, ppVar, ppCtrls, ppPrnabl, ppCache, MIDASLIB, ppParameter, jpeg,
   frxClass, frxDBSet, frxExportXLS, frxExportPDF, Data.DBXFirebird,
-  ppDesignLayer, SimpleDS, JvExMask, JvToolEdit, Data.FMTBcd, SgDbSeachComboUnit;
+  ppDesignLayer, SimpleDS, JvExMask, JvToolEdit, Data.FMTBcd, SgDbSeachComboUnit,
+  frxExportBaseDialog;
 
 type
   TFormGImpRelAdm = class(TForm)
@@ -1365,12 +1366,37 @@ begin
              wSql2 := 'COALESCE(T2.NF_PRECO,0) AS NF_PRECO,COALESCE(T2.NF_PMATPRIMA,0) AS NF_PMATPRIMA,COALESCE(T2.NF_IPIALIQ,0) AS NF_IPIALIQ,COALESCE(T2.NF_VLSUBST,0) AS NF_VLSUBST FROM FAT0000 T1 ';
              wSql3 := 'LEFT JOIN NF_IT01 T2 ON (T2.NF_IT_NOTANUMER = T1.FAT_CODIGO AND T1.EMP_CODIGO = T2.EMP_CODIGO AND T2.NF_FLAG_ATUALIZA_ESTOQUE = ''S'') LEFT JOIN PRD0000 T3 ON (T3.PRD_REFER = T2.PRD_REFER) ';
 }
-             wSql1 := 'SELECT T1.NF_NOTANUMBER,T1.NF_VL_DESCTO,T2.PRD_REFER,T3.PRD_DESCRI,T2.NF_FLAG_ATUALIZA_ESTOQUE,CAST(((T2.NF_QTDE * T2.NF_PRECO)) AS NUMERIC(15,4)) AS CTOTAL,COALESCE(T2.NF_PRECO,0) AS NF_PRECO,';
-             wSql2 := 'COALESCE(T2.NF_QTDE,0) AS NF_QTDE,COALESCE(T3.PRD_PMATPRI,0) AS PRD_PMATPRI,COALESCE(T2.NF_PMATPRIMA,0) AS NF_PMATPRIMA,COALESCE(T2.NF_IPIALIQ,0) AS NF_IPIALIQ,COALESCE(T2.NF_VLSUBST,0) AS NF_VLSUBST,T1.OPE_SEMVLCOM,';
-             wSql3 := 'CAST(T3.PRD_PCUSTO AS NUMERIC(15,4)) AS CUSTO,CAST((T2.NF_QTDE * T3.PRD_PCUSTO) AS NUMERIC(15,4)) AS CUSTO_TOTAL FROM NF0001 T1 LEFT JOIN NF_IT01 T2 ON (T2.NF_IT_NOTANUMER = T1.NF_NOTANUMBER '+
-                      ' AND T1.EMP_CODIGO = T2.EMP_CODIGO) JOIN PRD0000 T3 ON (T3.PRD_REFER = T2.PRD_REFER    '+IIF(Share('PRODUTOS') = 'C','','AND T3.EMP_CODIGO = T2.EMP_CODIGO') +'      ) '+
-                      'JOIN OPE0000 T4 ON (T4.OPE_CODIGO = T1.OPE_CODIGO) ';
-             //
+
+              wSql1 :=
+                'SELECT ' +
+                '  T1.NF_NOTANUMBER, ' +
+                '  T1.NF_VL_DESCTO, ' +
+                '  T2.PRD_REFER, ' +
+                '  T3.PRD_DESCRI, ' +
+                '  T2.NF_FLAG_ATUALIZA_ESTOQUE, ' +
+                '  CAST((T2.NF_QTDE * T2.NF_PRECO) AS NUMERIC(15,4)) AS CTOTAL, ' +
+                '  COALESCE(T2.NF_PRECO, 0) AS NF_PRECO, ';
+
+              wSql2 :=
+                '  COALESCE(T2.NF_QTDE, 0) AS NF_QTDE, ' +
+                '  COALESCE(T3.PRD_PMATPRI, 0) AS PRD_PMATPRI, ' +
+                '  COALESCE(T2.NF_PMATPRIMA, 0) AS NF_PMATPRIMA, ' +
+                '  COALESCE(T2.NF_IPIALIQ, 0) AS NF_IPIALIQ, ' +
+                '  COALESCE(T2.NF_VLSUBST, 0) AS NF_VLSUBST, ' +
+                '  T1.OPE_SEMVLCOM, ';
+
+              wSql3 :=
+                '  CAST(T3.PRD_CUSTOCOMIPI AS NUMERIC(15,4)) AS CUSTO, ' +
+                '  CAST((T2.NF_QTDE * T3.PRD_CUSTOCOMIPI) AS NUMERIC(15,4)) AS CUSTO_TOTAL ' +
+                'FROM NF0001 T1 ' +
+                'LEFT JOIN NF_IT01 T2 ON (T2.NF_IT_NOTANUMER = T1.NF_NOTANUMBER ' +
+                '  AND T1.EMP_CODIGO = T2.EMP_CODIGO) ' +
+                'JOIN PRD0000 T3 ON (T3.PRD_REFER = T2.PRD_REFER ' +
+                IIF(Share('PRODUTOS') = 'C', '', 'AND T3.EMP_CODIGO = T2.EMP_CODIGO') + ') ' +
+                'JOIN OPE0000 T4 ON (T4.OPE_CODIGO = T1.OPE_CODIGO) ';
+
+
+
              SqlCdsRel080910.Close;
              SqlCdsRel080910.CommandText := SQLDEF(iif(rgEmpresaLogada.ItemIndex = 0,'EXCLUSIVA','NAOEXCLUSIVA'),wSql1+wSql2+wSql3,wSeleciona,'T3.PRD_REFER','T1.');
              SqlCdsRel080910.Open;
