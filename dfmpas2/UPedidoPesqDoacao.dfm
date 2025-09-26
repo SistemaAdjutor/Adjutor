@@ -554,11 +554,13 @@ inherited frmPesqDoacao: TfrmPesqDoacao
         Expanded = False
         FieldName = 'REP_NOME'
         Title.Caption = 'Vendedor'
+        Width = 157
         Visible = True
       end
       item
         Expanded = False
         FieldName = 'CCT_DESCRI'
+        Width = 181
         Visible = True
       end
       item
@@ -577,6 +579,12 @@ inherited frmPesqDoacao: TfrmPesqDoacao
         Expanded = False
         FieldName = 'PED_SITUACAO'
         Title.Caption = 'Situa'#231#227'o'
+        Visible = True
+      end
+      item
+        Expanded = False
+        FieldName = 'PCX_DESCRI'
+        Width = 158
         Visible = True
       end>
   end
