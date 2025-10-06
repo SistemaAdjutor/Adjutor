@@ -1799,6 +1799,7 @@ procedure TFrmPedidoItem.CurPrecoLiquidoExit(Sender: tObject);
 var
    rPrecoSaida, rDesconto,
    rPrecoBruto:Real;
+   tab1: Currency;
 begin
    rPrecoSaida := CurPrecoLiquido.Value;
    rPrecoBruto := CurPrecoBruto.Value;
@@ -1814,7 +1815,24 @@ begin
    // volta preço liquido sem o acrescimo para comparar certo nas alterações de preço
    if CurrAcrescimoReal.Value > 0 then
       rPrecoBruto := rPrecoBruto - CurrAcrescimoReal.Value;
-   if (rPrecoLiquido <> rPrecoSaida) then
+
+
+
+    //===========================
+    // 1 BUSCA PREÇO DA TABELA 1 (PADRÃO)
+    //===========================
+    if dbInicio.Empresa.bHabilitarTabelaPreco then
+    begin
+      tab1 := dbInicio.BuscaUmDadoSqlAsCurrency(
+        'select prd_pvenda from tabelaprecos ' +
+        'where emp_codigo = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
+        ' and prd_codigo = ' + QuotedStr(qAux.FieldByName('prd_codigo').AsString) +
+        ' and seq = 1 ' +
+        'order by prd_pvenda');
+    end;
+
+
+   if (rPrecoLiquido <> rPrecoSaida) or (rPrecoLiquido < tab1) then
    begin
          CurDesconto.Clear;
          CurDescontoAdicional.Clear;
@@ -1840,7 +1858,7 @@ begin
   cbTabelaPrecoMultiplo.EditValue :=   IntToStr(SetarTabelaPrecos);
 
    try
-     if not SameValue(rPrecoLiquido,rPrecoSaida)  and (rPrecoSaida>0) then
+     if (not SameValue(rPrecoLiquido,rPrecoSaida)  and (rPrecoSaida>0)) or (rPrecoLiquido < tab1)  then
        TestaPrecoAbaixoCusto ;
    except
           TJvValidateEdit(Sender).SetFocus;
@@ -5119,66 +5137,110 @@ begin
 
 end;
                   }
-procedure TFrmPedidoItem.TestaPrecoAbaixoCusto ;
-var tcr : tFrmAutoriza;
-    tab1 : Currency;
+procedure TFrmPedidoItem.TestaPrecoAbaixoCusto;
+var
+  tcr   : TFrmAutoriza;
+  tab1  : Currency;
+  custo : Currency;
 begin
-     try
-       if dbInicio.Empresa.bHabilitarTabelaPreco then
-        tab1 :=  dbinicio.BuscaUmDadoSqlAsCurrency (' select prd_pvenda from tabelaprecos'+
-                                                   ' where EMP_CODIGO = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO)+
-                                                   ' and prd_codigo = '+QuotedStr(qAux.FieldByName('prd_codigo').AsString) +
-                                                   ' and seq = 1' +
-                                                   ' ORDER BY PRD_PVENDA ');
+  try
+    //===========================
+    // 1 BUSCA PREÇO DA TABELA 1 (PADRÃO)
+    //===========================
+    if dbInicio.Empresa.bHabilitarTabelaPreco then
+    begin
+      tab1 := dbInicio.BuscaUmDadoSqlAsCurrency(
+        'select prd_pvenda from tabelaprecos ' +
+        'where emp_codigo = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
+        ' and prd_codigo = ' + QuotedStr(qAux.FieldByName('prd_codigo').AsString) +
+        ' and seq = 1 ' +
+        'order by prd_pvenda');
+    end;
 
+    //===========================
+    // 2 BUSCA CUSTO DO PRODUTO (de acordo com parâmetros da empresa)
+    //===========================
+    custo := dbInicio.BuscaUmDadoSqlAsCurrency(
+      'select ' +
+      'case ' +
+      '  when (select produto_preco_empresa from sharedb) = ''E'' then ' +
+      '       (select first 1 prd_pe_custocomipi from prd0000_preco_empresa ppe ' +
+      '         where ppe.prd_codigo = t1.prd_codigo ' +
+      '         order by ppe.prd_pe_data_atualizacao desc) ' +
+      '  else ' +
+      '       case ' +
+      '         when (select pmt_calcularpv from prmt0001 pmt where pmt.emp_codigo = t1.emp_codigo) = 0 then t1.prd_pcusto ' +
+      '         when (select pmt_calcularpv from prmt0001 pmt where pmt.emp_codigo = t1.emp_codigo) = 1 then t1.prd_custocomipi ' +
+      '         when (select pmt_calcularpv from prmt0001 pmt where pmt.emp_codigo = t1.emp_codigo) = 2 then t1.prd_pmedio ' +
+      '       end ' +
+      'end as prd_pcusto ' +
+      'from prd0000 t1 where prd_codigo = ' + qStr(cbReferencia.idRetorno));
 
-          // SE TIVER ABAIXO DO PREÇO DE CUSTO OU ABAIXO DO PREÇO DA TABELA 1 SE USA TABELA SIMPLES
-      if (not dbInicio.empresa.pVENDA_ABAIXO_CUSTO) or  (CbItemAgregado.Checked  and not (DBInicio.Empresa.wPMT_ITENS_KIT)) then
-        if (CurPrecoLiquido.value < dbInicio.BuscaUmDadoSqlAsCurrency(
-                'select ' +
-//                ' PRD_PCUSTO ' +
-                  ' CASE ' +
-                  '   WHEN (SELECT PRODUTO_PRECO_EMPRESA FROM SHAREDB) = ''E'' THEN (SELECT FIRST 1 PRD_PE_CUSTOCOMIPI FROM PRD0000_PRECO_EMPRESA ppe WHERE ppe.PRD_CODIGO = T1.PRD_CODIGO ORDER BY ppe.PRD_PE_DATA_ATUALIZACAO DESC) ' +
-                  '     ELSE ' +
-                  '         CASE ' +
-                  '           WHEN (SELECT PMT_CALCULARPV  FROM PRMT0001 pmt WHERE pmt.EMP_CODIGO = T1.EMP_CODIGO ) = 0 THEN t1.PRD_PCUSTO ' +
-                '             WHEN (SELECT PMT_CALCULARPV  FROM PRMT0001 pmt WHERE pmt.EMP_CODIGO = T1.EMP_CODIGO ) = 1 THEN t1.PRD_CUSTOCOMIPI ' +
-                '             WHEN (SELECT PMT_CALCULARPV  FROM PRMT0001 pmt WHERE pmt.EMP_CODIGO = T1.EMP_CODIGO ) = 2 THEN t1.PRD_PMEDIO ' +
-                    '       END ' +
-                  ' END AS PRD_PCUSTO ' +
-                ' from prd0000 t1 where prd_codigo='+qStr(cbReferencia.idRetorno))) OR
-        ( dbInicio.Empresa.bHabilitarTabelaPreco and (CurPrecoLiquido.value < tab1))  then
-          if (dbinicio.empresa.pVENDA_ABAIXO_CUSTO) then
+    //===========================
+    // 3 TESTE 1 — PREÇO ABAIXO DO CUSTO
+    //===========================
+    if (not dbInicio.Empresa.pVENDA_ABAIXO_CUSTO) then
+    begin
+      if (CurPrecoLiquido.Value < custo) then
+      begin
+        if not fAutorizado then
+        begin
+          tcr := tFrmAutoriza.Create(Self);
+          try
+            tcr.TipoValidacao := vPrecoAbaixoCusto;
+            tcr.lbAviso.Caption :=
+              'Preço de venda informado é menor que o valor de custo!';
+            tcr.ShowModal;
+
+            if tcr.ModalResult <> mrOk then
+            begin
+              CurDesconto.Value := 0;
+              GeraException('Não Autorizado!');
+            end
+            else
+              fAutorizado := True;
+          finally
+            FreeAndNil(tcr);
+          end;
+        end;
+      end;
+    end;
+
+    //===========================
+    // 4 TESTE 2 — PREÇO ABAIXO DA TABELA 1
+    //===========================
+    if (dbInicio.Empresa.bHabilitarTabelaPreco) and
+       ( (dbInicio.GetParametroSistema('PMT_PRECO_LIQ_MENOR_TABELA_P') <> 'S')) and
+       (CurPrecoLiquido.Value < tab1) then
+    begin
+      if not fAutorizado then
+      begin
+        tcr := tFrmAutoriza.Create(Self);
+        try
+          tcr.TipoValidacao := vPrecoAbaixoCusto; // pode criar um tipo específico se quiser
+          tcr.lbAviso.Caption :=
+            'Preço informado é menor que o valor da 1ª tabela de preços!';
+          tcr.ShowModal;
+
+          if tcr.ModalResult <> mrOk then
           begin
-            fAutorizado := True;
+            CurDesconto.Value := 0;
+            GeraException('Não Autorizado!');
           end
           else
-          begin
-             if fAutorizado = False then
-               begin
-               tcr := tFrmAutoriza.Create(self) ;
-                 try
-                    tcr.TipoValidacao := vPrecoAbaixoCusto;
-                    tcr.lbAviso.Caption := 'Preço de venda informado é menor que o valor de custo ou abaixo da 1a tabela !';
-                    tcr.ShowModal;
-                    if tcr.modalresult<>mrOk then
-                    begin
-                       // Self.Close;
-                       CurDesconto.Value := 0;
-                       GeraException('Não Autorizado!');
-                    end
-                    else
-                       fAutorizado := True;
-                 finally
-                        FreeAndNil( tcr ) ;
-                 end;
-               end;
-          end;
+            fAutorizado := True;
+        finally
+          FreeAndNil(tcr);
+        end;
+      end;
+    end;
 
-		 except
-					 raise;
-		 end;
+  except
+    on E: Exception do
+      raise Exception.Create('Erro ao testar preço abaixo do custo: ' + E.Message);
+  end;
 end;
+
 
 procedure TFrmPedidoItem.TimerRestoreFocusTimer(Sender: TObject);
 begin
