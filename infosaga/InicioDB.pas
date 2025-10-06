@@ -3043,7 +3043,7 @@ procedure TDBInicio.LerVersao;
       end;
     end;
     vlVersao.patch := 3;
-    vlVersao.Issues := '';
+    vlVersao.Issues := '2066';
 
     r := TIdIPWatch.Create( nil );
     try

@@ -522,7 +522,9 @@ uses
   uPesqSecuritizadora in 'dfmpas2\uPesqSecuritizadora.pas' {frmPesqSecuritizadora},
   uTransfereCentroCusto in 'dfmpas2\uTransfereCentroCusto.pas' {frmTransfereCentroCusto},
   BaseDbEstoqueForm in 'dfmpas2\BaseDbEstoqueForm.pas' {frmBaseDbEstoque},
-  uBaixaPedidoCompra in 'dfmpas2\uBaixaPedidoCompra.pas' {frmBaixaPedidoCompra};
+  uBaixaPedidoCompra in 'dfmpas2\uBaixaPedidoCompra.pas' {frmBaixaPedidoCompra},
+  uCBS in 'dfmpas2\uCBS.pas' {frmCBS},
+  uIBS in 'dfmpas2\uIBS.pas' {frmIBS};
 
 {$R *.res}
 {$D+}
@@ -555,6 +557,8 @@ begin
   Application.CreateForm(TFrmMenu, FrmMenu);
   Application.CreateForm(TForm3, Form3);
   Application.CreateForm(TfrmBaseDbEstoque, frmBaseDbEstoque);
+  Application.CreateForm(TfrmCBS, frmCBS);
+  Application.CreateForm(TfrmIBS, frmIBS);
   if dbInicio.ModulosComoAplicacao then
   begin
      Application.CreateForm(TfrmBaseDBFDAC, frmBaseDBFDAC);
