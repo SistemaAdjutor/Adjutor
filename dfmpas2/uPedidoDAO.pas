@@ -737,95 +737,11 @@ begin
    end;
 
 
-   if (bItemExiste)  then //era Update, agora é delete...
+   if (bItemExiste)  then
     begin
 
      if rQuantidadeFaturada = 0 then
       rQuantidadeFaturada := DataCadastros.SqlUpdate.FieldByName('PRF_QTDEFAT').AsFloat;
-
-      {
-
-       if dataCadastros.sqlUpdate.FieldByName('PRDL_REGISTRO').AsInteger = 0 then
-       begin
-
-          if VarIsNumeric(iCodigoLote) then
-          begin
-            Lote:= iCodigoLote;
-            DataCadastros.SqlUpdate2.SQL.Text := 'SELECT PRDL_SALDO, PRDL_DATA_VALIDADE, PRDL_LOTE FROM PRD_LOTE '+
-                                                 ' WHERE PRDL_REGISTRO = '+IntToStr(lote);
-            DataCadastros.SqlUpdate2.Open;
-            validade := dataCadastros.sqlUpdate2.FieldByName('PRDL_DATA_VALIDADE').AsDateTime;
-            nomeLote := dataCadastros.sqlUpdate2.FieldByName('PRDL_LOTE').AsString;
-            Saldo := dataCadastros.sqlUpdate2.FieldByName('PRDL_SALDO').AsFloat;
-
-          end;
-          if VarIsArray(iCodigoLote) then
-          begin
-           Lote := VarArrayGet(iCodigoLote, [1,1] );
-           //saldo := VarArrayGet(iCodigoLote, [1,2] );
-           validade := VarArrayGet(iCodigoLote,[1,3]);
-           nomeLote := VarArrayGet(iCodigoLote,[1,4]);
-          end;
-         if Lote > 0 then
-           sProdutoDescricao := sProdutoDescricao +  ' - Lote :'+ nomeLote +
-           iif(validade = 0 ,'',' Validade: '+FormatDateTime('dd/mm/yyyy',validade));
-       end
-       else
-       begin
-         Lote := dataCadastros.sqlUpdate.FieldByName('PRDL_REGISTRO').AsInteger ;
-         saldo := DBInicio.BuscaUmDadoSqlAsFloat('SELECT PRDL_SALDO FROM PRD_LOTE WHERE PRDL_REGISTRO = ' + IntToStr(Lote));
-       end;
-       p_PRF_PRAZO_ENTREGA := StringReplace(p_PRF_PRAZO_ENTREGA, '-', '/', [rfReplaceAll]);
-       sQuery := 'UPDATE ped_it01 SET '+
-                 ' PED_CODIGO = '+QuotedStr(sPedidoCodigo)+','+
-                 ' PRD_REFER = '+QuotedStr(sProdutoReferencia)+','+
-                 ' PRDCO_CODIGO_ORIGINAL = '+QuotedStr(sProdutoCodigoOriginal)+','+
-                 ' PRF_TABPRECO = '+QuotedStr(sTabelaPreco)+','+
-                 ' PRF_QTDE = '+QuotedStr(ValorAmericano(FloatToStr(rQuantidade)))+','+
-                 ' PRF_QTDE_CONVERTIDA = '+QuotedStr(ValorAmericano(FloatToStr(rQuantidadeConvertida)))+','+
-                 ' PRF_PRECO = '+QuotedStr(ValorAmericano(FloatToStr(rPreco)))+','+
-                 ' PRF_PRECO_ORIGINAL = '+QuotedStr(ValorAmericano(FloatToStr(rPreco)))+','+
-                 ' PRF_CUSTO = '+QuotedStr(ValorAmericano(FloatToStr(rCusto)))+','+
-                 ' PRF_MARGEM_PRODUTO = '+QuotedStr(ValorAmericano(FloatToStr(rMargemProduto)))+','+
-                 ' PRF_IDESCTO1 = '+FloatToSql ( rDesconto1 ) +','+
-                 ' PRF_IDESCTO2 = '+FloatToSql ( rDesconto2 ) +','+
-                 ' PRF_ITEMCOMIS = '+QuotedStr(ValorAmericano(FloatToStr(rComissaoItem)))+','+
-                 ' PRF_IPIALIQ = '+QuotedStr(ValorAmericano(FloatToStr(rAliquotaIPI)))+','+
-                 ' PRF_VALOR_ST = '+QuotedStr(ValorAmericano(FloatToStr(rValorST)))+','+
-                 ' PRF_ICMSALIQ = '+QuotedStr(ValorAmericano(FloatToStr(rAliquotaICMS)))+','+
-                 ' PRF_PRDDESCRI = '+QuotedStr(sProdutoDescricao)+','+
-                 ' PRF_PRECO_BRUTO = '+QuotedStr(ValorAmericano(FloatToStr(rPrecoBruto)))+','+
-                 ' PRF_ACRESCIMO = '+QuotedStr(ValorAmericano(FloatToStr(rAcrescimo)))+','+
-                 ' PRF_FLAG_ATUALIZA_ESTOQUE = '+QuotedStr(IIF(bAtualizaEstoque,'S','N'))+','+
-                 ' PRF_PRODUTO_AGREGADO = '+QuotedStr(IIF(bProdutoAgregado,'S','N'))+','+
-                 ' PRF_VALOR_ICMS = '+QuotedStr(ValorAmericano(FloatToStr(rValorICMS)))+','+
-                 ' USU_CODIGO = '+QuotedStr(dbInicio.Usuario.Codigo)+','+
-                 ' PRD_CODIGO = '+QuotedStr(sProdutoCodigo)+','+
-                 ' EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)+','+
-                 ' AMX_CODIGO_DESTINO = '+QuotedStr(sAlmoxarifadoCodigo)+','+
-                 ' PRF_COMPL_DESCRI = '+QuotedStr(sProdutoDescricaoComplemento)+','+
-                 ' PRG_REGISTRO = '+QuotedStr(IntToStr(iCCdigoGrade))+','+
-                 ' PRDD_REGISTRO = '+QuotedStr(IntToStr(iDiretiva))+','+
-                 ' PRF_B2B_PEDIDO_COMPRA = '+QuotedStr(sPedidoB2b)+','+
-                 ' PRF_B2B_ITEM_PEDIDO_COMPRA = '+QuotedStr(IntToStr(iItemPedidoB2b))+','+
-                 ' USOU_VERBA = '+QuotedStr(sUsouVerba)+','+
-                 ' VALOR_VERBA = '+FloatToSql(rValorVerba)+ ','+
-                 ' PRF_PRAZO_ENTREGA = ' + iif((p_PRF_PRAZO_ENTREGA='')  or (p_PRF_PRAZO_ENTREGA=' null ') or (p_PRF_PRAZO_ENTREGA='0') ,'NULL', p_PRF_PRAZO_ENTREGA)+  ','+
-                 ' PRF_PRAZO_DIAS = ' + iif(Prazo='','NULL',Prazo)+  ','+
-                 ' PRF_PESOKG = '+ FloatToSQL(PesoKg) + ','+
-                 IIF(LOTE=0,'',' PRDL_REGISTRO = '+(IntToStr(Lote))+',')+   //PRDL_REGISTRO
-                 ' prf_qtdePend = '+ QuotedStr(ValorAmericano(FloatToStr(qPendente)))+','+
-                 IIF (qPendente>0, ' PRF_DTPENDENCIA = CURRENT_TIMESTAMP ,','')+
-                 ' PRF_PRODUTO_SEMVALOR = '+ QuotedStr(IIF(bProdutoSemValor,'S','N'))+
-                 ' WHERE prf_registro = '+QuotedStr(IntToStr(iRegistroItem))+' and EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO);
-
-       dataCadastros.sqlUpdate.Close;
-       DataCadastros.SqlUpdate.sql.text :=sQuery;
-       dataCadastros.sqlUpdate.Execsql;
-       dataCadastros.sqlUpdate.Close;
-
-       }
-
 
 
        prfSequencia := DBInicio.BuscaUmDadoSqlAsInteger('select prf_sequencia from PED_IT01 pi2 WHERE prf_registro = ' + IntToStr(iRegistroItem));

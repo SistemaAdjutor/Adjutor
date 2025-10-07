@@ -2801,7 +2801,7 @@ begin
 									 if (pgcPrincipal.ActivePage = tsSemGrade) then
                    begin
                           iRegistroItem := GravarPedidoItem(iif((DBInicio.Empresa.wPMT_VALOR_KIT) and (FrmPedido.WDiretivaKit > 0),FrmPedido.WDiretivaKit,wID_DIRETIVAS),
-                                                           iif(cbUnidade.idRetorno = '', cbReferencia.CdS.fieldByName('PRD_UND').AsString, cbUnidade.IdRetorno),
+                                                           iif(cbUnidade.Visible, cbUnidade.IdRetorno, cbReferencia.CdS.fieldByName('PRD_UND').AsString),
                                                            NumeroPedido,
                                                            cbReferencia.CdS.fieldByName('PRD_CODIGO').AsString,
                                                            cbReferencia.CdS.fieldByName('PRD_REFER').AsString,
