@@ -5210,7 +5210,7 @@ begin
     // 4 TESTE 2 — PREÇO ABAIXO DA TABELA 1
     //===========================
     if (dbInicio.Empresa.bHabilitarTabelaPreco) and
-       ( (dbInicio.GetParametroSistema('PMT_PRECO_LIQ_MENOR_TABELA_P') <> 'S')) and
+       ( (dbInicio.GetParametroSistema('PMT_PRECO_LIQ_MENOR_TABELA_P') = 'S')) and
        (CurPrecoLiquido.Value < tab1) then
     begin
       if not fAutorizado then

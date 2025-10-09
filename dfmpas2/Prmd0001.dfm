@@ -2682,7 +2682,7 @@ inherited FormParametros: TFormParametros
                 Top = 194
                 Width = 311
                 Height = 17
-                Caption = 'Permite pre'#231'o l'#237'quido menor que a Tabela 1 (Padr'#227'o)'
+                Caption = 'N'#227'o Permitir pre'#231'o l'#237'quido menor que a Tabela 1 (Padr'#227'o)'
                 DataField = 'PMT_PRECO_LIQ_MENOR_TABELA_P'
                 DataSource = DataCadastros1.DsParametros
                 Font.Charset = ANSI_CHARSET
