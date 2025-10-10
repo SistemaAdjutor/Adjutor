@@ -1429,7 +1429,7 @@ type
     procedure BotoesAcesso;
     function PedidoMinimo(pedido: string): Boolean;
     function LoadXMLCPP(Sequencia: Integer): Integer;
-    function CadastraProduto(prdRefer, Descricao, Unidade, Valor: String): String;
+    function CadastraProduto(prdRefer, Descricao, Unidade, Valor, NCM, Orig, CST: String): String;
   end;
 
 var
@@ -6131,14 +6131,14 @@ begin
    ImprimePedido(true,'SV');
 end;
 
-function TFrmPedido.CadastraProduto(prdRefer, Descricao, Unidade, Valor: String) : String;
+function TFrmPedido.CadastraProduto(prdRefer, Descricao, Unidade, Valor, NCM, Orig, CST: String) : String;
 Var
   prdCodigo : string;
 begin
   prdCodigo := StrZero( BuscaUmDadoSqlAsInteger( 'SELECT max(CAST(prd_codigo AS INTEGER)) from prd0000' ) + 1 , 5);
 
   dbInicio.ExecSql('INSERT INTO PRD0000 ' +
-                   ' (PRD_CODIGO, PRD_REFER, PRD_STATUS, PRD_DESCRI, PRD_UND, PTI_CODIGO, PRD_PVENDA) ' +
+                   ' (PRD_CODIGO, PRD_REFER, PRD_STATUS, PRD_DESCRI, PRD_UND, PTI_CODIGO, IPI_CODIGO, PRD_ORIGEM, STB_TRIBUTACAO, PRD_PVENDA) ' +
                    ' VALUES ( ' +
                    QuotedStr(prdCodigo) + ', ' +
                    QuotedStr(prdRefer) + ', ' +
@@ -6146,6 +6146,9 @@ begin
                    QuotedStr(Descricao) + ', ' +
                    QuotedStr(Unidade) + ' ,' +
                    QuotedStr('005') + ' ,' +
+                   QuotedStr(NCM) + ' ,' +
+                   Orig + ' ,' +
+                   QuotedStr(CST) + ' ,' +
                    Valor +
                    ' ) '
                    );
@@ -6206,7 +6209,9 @@ begin
                                         ProdNode.ChildNodes['cProd'].Text,
                                         ProdNode.ChildNodes['xProd'].Text,
                                         ProdNode.ChildNodes['uCom'].Text,
-                                        ProdNode.ChildNodes['vUnCom'].Text
+                                        ProdNode.ChildNodes['vUnCom'].Text,
+                                        ProdNode.ChildNodes['NCM'].Text,
+
                                       );
           quantidade := StrToFloat(StringReplace(ProdNode.ChildNodes['qCom'].Text, '.', ',', [rfReplaceAll]));
           valorUnit  := StrToFloat(StringReplace(ProdNode.ChildNodes['vUnCom'].Text, '.', ',', [rfReplaceAll]));
