@@ -2261,7 +2261,7 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Height = 24.543846670000000000
           DataSet = frxDataItens
           DataSetName = 'frxDataItens'
-          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.FormatStr = '%2.4n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
@@ -2279,10 +2279,9 @@ inherited PesqOrcamentoProducao: TPesqOrcamentoProducao
           Left = 556.386210000000000000
           Width = 43.174830000000000000
           Height = 24.543846670000000000
-          DataField = 'OIP_PESO'
           DataSet = frxDataItens
           DataSetName = 'frxDataItens'
-          DisplayFormat.FormatStr = '%2.2n'
+          DisplayFormat.FormatStr = '%2.4n'
           DisplayFormat.Kind = fkNumeric
           Font.Charset = DEFAULT_CHARSET
           Font.Color = clBlack
