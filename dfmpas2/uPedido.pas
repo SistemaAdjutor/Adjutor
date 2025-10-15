@@ -1429,7 +1429,7 @@ type
     procedure BotoesAcesso;
     function PedidoMinimo(pedido: string): Boolean;
     function LoadXMLCPP(Sequencia: Integer): Integer;
-    function CadastraProduto(prdRefer, Descricao, Unidade, Valor: String): String;
+    function CadastraProduto(prdRefer, Descricao, Unidade, Valor, NCM, Orig, CST: String): String;
   end;
 
 var
@@ -6134,14 +6134,34 @@ begin
    ImprimePedido(true,'SV');
 end;
 
-function TFrmPedido.CadastraProduto(prdRefer, Descricao, Unidade, Valor: String) : String;
+function TFrmPedido.CadastraProduto(prdRefer, Descricao, Unidade, Valor, NCM, Orig, CST: String) : String;
 Var
   prdCodigo : string;
 begin
-  prdCodigo := StrZero( BuscaUmDadoSqlAsInteger( 'SELECT max(CAST(prd_codigo AS INTEGER)) from prd0000' ) + 1 , 5);
+  if (BuscaUmDadoSqlAsString('SELECT IPI_CODIGO FROM IPI0000 WHERE IPI_CODIGO = ' + QuotedStr(NCM) +  ' and EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)) = '') then
+  begin
+    ExecSQL(
+      'INSERT INTO IPI0000 (' +
+      'IPI_CODIGO, ' +
+      'IPI_ALIQ, ' +
+      'EMP_CODIGO, ' +
+      'NCM_TEMCREDITO, ' +
+      'IPI_VALOR_POR_ITEM, ' +
+      'IPI_REDVLLIQ' +
+      ') VALUES (' +
+      QuotedStr(NCM) + ', ' +
+      '0, ' +
+      QuotedStr(dbInicio.EMP_CODIGO) + ', ' +
+      QuotedStr('N') + ', ' +
+      '0, ' +
+      QuotedStr('N') +
+      ')'
+    );
+  end;
 
+  prdCodigo := StrZero( BuscaUmDadoSqlAsInteger( 'SELECT max(CAST(prd_codigo AS INTEGER)) from prd0000' ) + 1 , 5);
   dbInicio.ExecSql('INSERT INTO PRD0000 ' +
-                   ' (PRD_CODIGO, PRD_REFER, PRD_STATUS, PRD_DESCRI, PRD_UND, PTI_CODIGO, PRD_PVENDA) ' +
+                   ' (PRD_CODIGO, PRD_REFER, PRD_STATUS, PRD_DESCRI, PRD_UND, PTI_CODIGO, IPI_CODIGO, PRD_ORIGEM, STB_TRIBUTACAO, PRD_PVENDA) ' +
                    ' VALUES ( ' +
                    QuotedStr(prdCodigo) + ', ' +
                    QuotedStr(prdRefer) + ', ' +
@@ -6149,6 +6169,9 @@ begin
                    QuotedStr(Descricao) + ', ' +
                    QuotedStr(Unidade) + ' ,' +
                    QuotedStr('005') + ' ,' +
+                   QuotedStr(NCM) + ' ,' +
+                   Orig + ' ,' +
+                   QuotedStr(CST) + ' ,' +
                    Valor +
                    ' ) '
                    );
@@ -6157,10 +6180,10 @@ end;
 
 function TFrmPedido.LoadXMLCPP(Sequencia: Integer): Integer;
 var
-  RootNode, InfNFeNode, DetNode, ProdNode: IXMLNode;
+  RootNode, InfNFeNode, DetNode, ProdNode, ImpostoNode, ICMSNode, TipoICMSNode: IXMLNode;
   NodeList, RootList: IXMLNodeList;
   i, j: Integer;
-  sQuery, prdCodigo: string;
+  sQuery, prdCodigo, Orig: string;
   quantidade, valorUnit, total: Double;
 begin
   // Garante que o XML está carregado
@@ -6199,6 +6222,20 @@ begin
         ProdNode := DetNode.ChildNodes.FindNode('prod');
         if Assigned(ProdNode) then
         begin
+          // Busca o <orig> dentro de <imposto><ICMS><ICMS00|ICMS51|etc.>
+          Orig := '0'; // valor padrão
+          ImpostoNode := DetNode.ChildNodes.FindNode('imposto');
+          if Assigned(ImpostoNode) then
+          begin
+            ICMSNode := ImpostoNode.ChildNodes.FindNode('ICMS');
+            if Assigned(ICMSNode) and ICMSNode.HasChildNodes then
+            begin
+              TipoICMSNode := ICMSNode.ChildNodes.First;
+              if Assigned(TipoICMSNode.ChildNodes.FindNode('orig')) then
+                Orig := TipoICMSNode.ChildNodes['orig'].Text;
+            end;
+          end;
+
           prdCodigo := BuscaUmDadoSqlAsString(
             'SELECT p.PRD_CODIGO FROM PRD0000 p WHERE p.PRD_REFER = ' +
             QuotedStr(ProdNode.ChildNodes['cProd'].Text)
@@ -6209,8 +6246,12 @@ begin
                                         ProdNode.ChildNodes['cProd'].Text,
                                         ProdNode.ChildNodes['xProd'].Text,
                                         ProdNode.ChildNodes['uCom'].Text,
-                                        ProdNode.ChildNodes['vUnCom'].Text
+                                        ProdNode.ChildNodes['vUnCom'].Text,
+                                        ProdNode.ChildNodes['NCM'].Text,
+                                        Orig,
+                                        '00'
                                       );
+
           quantidade := StrToFloat(StringReplace(ProdNode.ChildNodes['qCom'].Text, '.', ',', [rfReplaceAll]));
           valorUnit  := StrToFloat(StringReplace(ProdNode.ChildNodes['vUnCom'].Text, '.', ',', [rfReplaceAll]));
           total := quantidade * valorUnit;
@@ -6247,7 +6288,6 @@ begin
             QuotedStr(ValorAmericano(ProdNode.ChildNodes['qCom'].Text)) + ',' +
             QuotedStr(ValorAmericano(ProdNode.ChildNodes['qCom'].Text)) + ',' +
             QuotedStr(ValorAmericano(ProdNode.ChildNodes['vUnCom'].Text)) + ',' +
-            // QuotedStr(ValorAmericano(FloatToStr(total))) + ',' +
             QuotedStr(dbInicio.Empresa.EMP_CODIGO) + ',' +
             QuotedStr(ValorAmericano(ProdNode.ChildNodes['vUnCom'].Text)) + ',' +
             QuotedStr(ValorAmericano(ProdNode.ChildNodes['vUnCom'].Text)) + ',' +
