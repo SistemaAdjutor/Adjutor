@@ -1322,7 +1322,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             Height = 343
             Align = alClient
             TabOrder = 0
-            Properties.ActivePage = cxTabSheet2
+            Properties.ActivePage = cxTabSheet1
             Properties.CustomButtons.Buttons = <>
             ClientRectBottom = 339
             ClientRectLeft = 4
@@ -1939,8 +1939,6 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             object cxTabSheet2: TcxTabSheet
               Caption = 'Produ'#231#227'o'
               ImageIndex = 7
-              ExplicitLeft = 16
-              ExplicitTop = 26
               object chkCustosproducao: TCheckBox
                 Left = 16
                 Top = 15
@@ -2439,7 +2437,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C010103000500240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000

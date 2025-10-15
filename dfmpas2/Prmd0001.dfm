@@ -2111,7 +2111,7 @@ inherited FormParametros: TFormParametros
               end
               object Label658: TLabel
                 Left = 310
-                Top = 273
+                Top = 299
                 Width = 187
                 Height = 14
                 Caption = 'Validade padr'#227'o p/ or'#231'amento em dias:'
@@ -2436,7 +2436,7 @@ inherited FormParametros: TFormParametros
               end
               object gbkit: TGroupBox
                 Left = 306
-                Top = 192
+                Top = 218
                 Width = 351
                 Height = 65
                 Caption = 'KIT'
@@ -2506,7 +2506,7 @@ inherited FormParametros: TFormParametros
               end
               object DBEdit57: TDBEdit
                 Left = 503
-                Top = 269
+                Top = 295
                 Width = 61
                 Height = 22
                 CharCase = ecUpperCase
@@ -2516,7 +2516,7 @@ inherited FormParametros: TFormParametros
               end
               object DBCheckBox58: TDBCheckBox
                 Left = 308
-                Top = 315
+                Top = 341
                 Width = 381
                 Height = 17
                 Caption = 
@@ -2530,7 +2530,7 @@ inherited FormParametros: TFormParametros
               end
               object DBCheckBox63: TDBCheckBox
                 Left = 308
-                Top = 298
+                Top = 324
                 Width = 381
                 Height = 17
                 Caption = 'Vincular o vendedor cadastrado no usu'#225'rio'
@@ -2542,7 +2542,7 @@ inherited FormParametros: TFormParametros
               end
               object DBCheckBox72: TDBCheckBox
                 Left = 308
-                Top = 334
+                Top = 360
                 Width = 341
                 Height = 17
                 Caption = 'Utilizar Descri'#231#227'o "Data de Expedi'#231#227'o" na Impress'#227'o do Pedido'
@@ -2562,7 +2562,7 @@ inherited FormParametros: TFormParametros
               end
               object DBCheckBox86: TDBCheckBox
                 Left = 308
-                Top = 351
+                Top = 377
                 Width = 341
                 Height = 17
                 Caption = 'Permite alterar quantidade nos pedidos enviados para produ'#231#227'o'
@@ -2582,7 +2582,7 @@ inherited FormParametros: TFormParametros
               end
               object DBCheckBox87: TDBCheckBox
                 Left = 308
-                Top = 368
+                Top = 394
                 Width = 126
                 Height = 17
                 Caption = 'Retorno por Cores'
@@ -2645,7 +2645,7 @@ inherited FormParametros: TFormParametros
               end
               object DBCheckBox101: TDBCheckBox
                 Left = 308
-                Top = 387
+                Top = 413
                 Width = 344
                 Height = 17
                 Hint = 
@@ -2676,6 +2676,26 @@ inherited FormParametros: TFormParametros
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
                 Visible = False
+              end
+              object DBCheckBox104: TDBCheckBox
+                Left = 308
+                Top = 194
+                Width = 311
+                Height = 17
+                Caption = 'N'#227'o Permitir pre'#231'o l'#237'quido menor que a Tabela 1 (Padr'#227'o)'
+                DataField = 'PMT_PRECO_LIQ_MENOR_TABELA_P'
+                DataSource = DataCadastros1.DsParametros
+                Font.Charset = ANSI_CHARSET
+                Font.Color = clBlack
+                Font.Height = -11
+                Font.Name = 'Arial'
+                Font.Style = []
+                ParentFont = False
+                ParentShowHint = False
+                ShowHint = True
+                TabOrder = 30
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
               end
             end
             object TabSheet2: TTabSheet

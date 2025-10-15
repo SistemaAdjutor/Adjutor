@@ -1727,6 +1727,8 @@ type
     CdsParametrosPMT_CALCULAR_ITENS_NO_FINAL: TStringField;
     SqlParametrosPMT_CADASTRA_PRODUTO_PEDIDO: TStringField;
     CdsParametrosPMT_CADASTRA_PRODUTO_PEDIDO: TStringField;
+    SqlParametrosPMT_PRECO_LIQ_MENOR_TABELA_P: TStringField;
+    CdsParametrosPMT_PRECO_LIQ_MENOR_TABELA_P: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
