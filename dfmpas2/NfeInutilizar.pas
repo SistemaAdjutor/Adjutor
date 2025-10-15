@@ -8,7 +8,27 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs,pcnconversao,BaseDBForm, UTEIS, Data.DBXFirebird, Data.FMTBcd, Data.DB, Data.SqlExpr, ACBrEnterTab, ACBrBase, ACBrCalculadora,  Datasnap.Provider,
   Datasnap.DBClient, Vcl.ExtCtrls, Vcl.Grids, Vcl.DBGrids, iniciodb, Vcl.StdCtrls, Vcl.DBCtrls, Vcl.DBCGrids, Vcl.Buttons, JvButton, JvNavigationPane, JvExControls, JvLinkLabel, Vcl.Imaging.jpeg,
   ACBrDFe, ACBrNFe, acbrdfessl, pcnconversaonfe, FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf, FireDAC.Stan.Async,
-  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
+  FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client, cxGraphics,
+  cxControls, cxLookAndFeels, cxLookAndFeelPainters, cxStyles, dxSkinsCore,
+  dxSkinBlack, dxSkinBlue, dxSkinBlueprint, dxSkinCaramel, dxSkinCoffee,
+  dxSkinDarkRoom, dxSkinDarkSide, dxSkinDevExpressDarkStyle,
+  dxSkinDevExpressStyle, dxSkinFoggy, dxSkinGlassOceans, dxSkinHighContrast,
+  dxSkiniMaginary, dxSkinLilian, dxSkinLiquidSky, dxSkinLondonLiquidSky,
+  dxSkinMcSkin, dxSkinMetropolis, dxSkinMetropolisDark, dxSkinMoneyTwins,
+  dxSkinOffice2007Black, dxSkinOffice2007Blue, dxSkinOffice2007Green,
+  dxSkinOffice2007Pink, dxSkinOffice2007Silver, dxSkinOffice2010Black,
+  dxSkinOffice2010Blue, dxSkinOffice2010Silver, dxSkinOffice2013DarkGray,
+  dxSkinOffice2013LightGray, dxSkinOffice2013White, dxSkinOffice2016Colorful,
+  dxSkinOffice2016Dark, dxSkinPumpkin, dxSkinSeven, dxSkinSevenClassic,
+  dxSkinSharp, dxSkinSharpPlus, dxSkinSilver, dxSkinSpringTime, dxSkinStardust,
+  dxSkinSummer2008, dxSkinTheAsphaltWorld, dxSkinTheBezier,
+  dxSkinsDefaultPainters, dxSkinValentine, dxSkinVisualStudio2013Blue,
+  dxSkinVisualStudio2013Dark, dxSkinVisualStudio2013Light, dxSkinVS2010,
+  dxSkinWhiteprint, dxSkinXmas2008Blue, cxCustomData, cxFilter, cxData,
+  cxDataStorage, cxEdit, cxNavigator,
+  cxDataControllerConditionalFormattingRulesManagerDialog, cxDBData,
+  cxGridCustomTableView, cxGridTableView, cxGridDBTableView, cxGridLevel,
+  cxClasses, cxGridCustomView, cxGrid;
 
 type
   TFrmInutilizar = class(TfrmBaseDB)
@@ -19,7 +39,6 @@ type
     dsInutilizados: TDataSource;
     dsNumerosSemUso: TDataSource;
     GroupBox1: TGroupBox;
-    DBGrid2: TDBGrid;
     GroupBox2: TGroupBox;
     dbgEncontrados: TDBGrid;
     Splitter2: TSplitter;
@@ -49,6 +68,13 @@ type
     qNumeroSemUsoNFI_INUTILIZAR: TIntegerField;
     qNumeroSemUsoNFI_OK: TStringField;
     qNumeroSemUsoEMP_CODIGO: TStringField;
+    cxGrid1DBTableView1: TcxGridDBTableView;
+    cxGrid1Level1: TcxGridLevel;
+    cxGrid1: TcxGrid;
+    cxGrid1DBTableView1FIC_DATA: TcxGridDBColumn;
+    cxGrid1DBTableView1FIC_NUMERO_NFE: TcxGridDBColumn;
+    cxGrid1DBTableView1USU_NOME: TcxGridDBColumn;
+    cxGrid1DBTableView1FIC_OBSERVACAO: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure dbgEncontradosDrawColumnCell(Sender: TObject; const Rect: TRect; DataCol: Integer; Column: TColumn; State: TGridDrawState);
     procedure dbgEncontradosCellClick(Column: TColumn);
@@ -60,8 +86,11 @@ type
     procedure BitConfirmarClick(Sender: TObject);
     procedure btnLimparClick(Sender: TObject);
     procedure MJustificativaChange(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure dbgEncontradosTitleClick(Column: TColumn);
   private
     emp_codigo : string;
+    Ordem : String;
     procedure BuscaInutilizados;
     procedure BuscaNumerosNaoUsados;
     procedure CalculaNumerosNaoUsados;
@@ -105,29 +134,23 @@ begin
 end;
 
 procedure TFrmInutilizar.btnLimparClick(Sender: TObject);
-var clone : TFDQuery;
 begin
-  clone := TFDQuery.Create(Self);
-  clone.Connection := DBInicio.FDACConn;
-  clone.sql.text := qNumeroSemUso.SQL.Text;
-
   try
-    clone.CloneCursor(qNumeroSemUso,true);
-    clone.First;
-    while not clone.Eof do
+    qNumeroSemUso.DisableControls;
+    qNumeroSemUso.First;
+    while not qNumeroSemUso.Eof do
     begin
-      clone.Edit;
-      clone.FieldByName('selecionado').AsBoolean := False;
-      clone.Post;
-      clone.Next;
+      qNumeroSemUso.Edit;
+      qNumeroSemUso.FieldByName('selecionado').AsBoolean := False;
+      qNumeroSemUso.Post;
+      qNumeroSemUso.Next;
     end;
   finally
-    FreeAndNil(clone);
+    qNumeroSemUso.EnableControls;
+    qNumeroSemUso.First;
   end;
-
 end;
-//  if  not (Sender.IsNull) then
-//    text:= strzero(Sender.Value,8);
+
 procedure TFrmInutilizar.BuscaInutilizados;
 begin
   qInutilizado.Close;
@@ -293,6 +316,22 @@ begin
   end;
 end;
 
+procedure TFrmInutilizar.dbgEncontradosTitleClick(Column: TColumn);
+begin
+  inherited;
+  if Ordem = 'DESC' then
+      Ordem := 'ASC'
+  else
+    Ordem := 'DESC';
+
+  qNumeroSemUso.Close;
+  qNumeroSemUso.Sql.Text :=
+           'SELECT EMP_CODIGO, NFI_INUTILIZAR,NFI_OK FROM nf0001_inutilizar NC where '+
+           ' trim(nfi_ok) = ''N'' and trim(NC.emp_codigo) = '+ QuotedStr(emp_codigo) +
+           ' ORDER BY NFI_INUTILIZAR ' + Ordem;
+  qNumeroSemUso.Open
+end;
+
 procedure TFrmInutilizar.edPesqNumKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
 begin
   inherited;
@@ -324,6 +363,24 @@ begin
   CalculaNumerosNaoUsados;
   BuscaInutilizados;
   BuscaNumerosNaoUsados;
+end;
+
+procedure TFrmInutilizar.FormShow(Sender: TObject);
+begin
+  inherited;
+
+  cxGrid1.LookAndFeel.NativeStyle := False;
+  cxGrid1.LookAndFeel.SkinName := '';
+
+  cxGrid1DBTableView1.LookAndFeel.NativeStyle := False;
+
+  // Cria o estilo para o cabeçalho
+  cxGrid1DBTableView1.Styles.Header := TcxStyle.Create(Self);
+
+  // Ajusta a cor para a mesma dos botões do Windows
+  cxGrid1DBTableView1.Styles.Header.Color := clBtnFace;
+  cxGrid1DBTableView1.Styles.Header.TextColor := clWindowText;
+  Ordem := 'ASC';
 end;
 
 procedure TFrmInutilizar.GravaInutilizado (Numero_NFE : Integer);
@@ -413,23 +470,10 @@ begin
 end;
 
 procedure TFrmInutilizar.Validar;
-var clone : TFDQuery;
 begin
-  clone := TFDQuery.Create(Self);
-  clone.Connection := DBInicio.FDACConn;
-  clone.sql.text := qNumeroSemUso.SQL.Text;
 
-  try
-    clone.CloneCursor(qNumeroSemUso,False);
-    clone.Filtered := False;
-    clone.Filter:= '(selecionado = true)';
-    clone.Filtered := True;
-    if clone.RecordCount = 0 then
-      raise Exception.Create('Nada foi selecionado.');
-
-  finally
-    FreeAndNil(clone);
-  end;
+  if not qNumeroSemUso.Locate('selecionado', True, []) then
+    raise Exception.Create('Nada foi selecionado.');
 
   if Length(MJustificativa.Text) < 15 then
     raise Exception.Create('Justificativa tem menos de 15 caracteres.');
