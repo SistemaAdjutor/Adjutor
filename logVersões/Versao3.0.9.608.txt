@@ -1,0 +1,16 @@
+﻿Atualizado em 15/10/2025
+Inicio da versão: 15/10/2025
+
+principal: SustemPlast, Drimec, Arkson, LFEpis, Normadin, Collect, Embratherm, LForja
+2048 - Solicitação Personalização SustemPlast -> Pedido de venda
+2092 - Erro Drimec -> Inutilização erro no gride ao ordenar
+2093 - Arkson : mudar coluna relatório de margem
+2094 - Implementação Collect - Coluna nova no grid do Pedido->Consulta
+2095 - LFEpis : nao deixar vender com preco liquido abaixo da menor tabela
+2097 - Normadin: Erro - Codigo 0 retorno do sefaz 
+2098 - Normadin: Erro - Ao altera Uni do cad. produto - Não altera do pedido
+2099 - LFEpis: Erro - Plano Conta não gera relatorio
+2100 - Collect: Revisar -> Pedido / Renovação
+2103 - Revisão Embratherm -> Orçamento Industrial No cadastro tem 4 casas depois da virgula e quando gera o orçamento sai arredondado.
+2105 - Erro LFORJA - CODIGO DE RETORNO É ZERO empresa 002
+
