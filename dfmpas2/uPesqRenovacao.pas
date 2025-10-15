@@ -332,6 +332,10 @@ procedure TFrmPesqRenovacao.ChkAcaoonClick(Sender: TObject);
 var pesquisaAtrado : boolean;
 begin
   inherited;
+  btnPesquisaClick(Sender);
+  Exit;
+
+
   if TCheckBox(Sender).Checked then
   begin
      lblCobranca.Caption := 'Para Clientes em atraso, clique com o botão direito do mouse para enviar a carta de cobrança.';
@@ -691,9 +695,9 @@ begin
     // JOINs
     SQL.Add(' FROM CLI0000 cl ');
     if (edVendedor.idRetorno <> '') {or (CbBancos.idRetorno <> '')} then
-      SQL.Add(' JOIN REP0000 rp ON rp.REP_CODIGO = cl.REP_CODIGO ')
+      SQL.Add(' JOIN REP0000 rp ON (rp.REP_CODIGO = cl.REP_CODIGO) ')
     else
-      SQL.Add(' LEFT JOIN REP0000 rp ON rp.REP_CODIGO = cl.REP_CODIGO ');
+      SQL.Add(' LEFT JOIN REP0000 rp ON (rp.REP_CODIGO = cl.REP_CODIGO) ');
 
     if chkClienteAtrasos.Checked then
     begin
@@ -704,23 +708,25 @@ begin
               ConcatSe(' AND PC.', dbinicio.ExclusivoSql('RECEBER')) +
               ' AND DATEDIFF(DAY, FPC_VENCTO, CURRENT_DATE) > ' + DiasAtrasos + ' )');
       if CbBancos.idRetorno <> '' then
-        SQL.Add(' JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ')
+        SQL.Add(' JOIN BAN0000 B ON (B.BAN_CODIGO = PC.BAN_CODIGO) ')
       else
       begin
         if (CbBancos.idRetorno <> '') {or (edVendedor.idRetorno <> '')} then
-          SQL.Add(' JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ')
+          SQL.Add(' JOIN BAN0000 B ON (B.BAN_CODIGO = PC.BAN_CODIGO) ')
         else
-          SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = PC.BAN_CODIGO ');
+          SQL.Add(' LEFT JOIN BAN0000 B ON (B.BAN_CODIGO = PC.BAN_CODIGO) ');
       end;
 
     end
     else
     begin
       if (CbBancos.idRetorno <> '') or (edVendedor.idRetorno <> '')  then
-        SQL.Add(' JOIN BAN0000 B ON B.BAN_CODIGO = cl.BAN_CODIGO ')
+        SQL.Add(' JOIN BAN0000 B ON (B.BAN_CODIGO = cl.BAN_CODIGO) ')
       else
-        SQL.Add(' LEFT JOIN BAN0000 B ON B.BAN_CODIGO = cl.BAN_CODIGO ');
+        SQL.Add(' LEFT JOIN BAN0000 B ON (B.BAN_CODIGO = cl.BAN_CODIGO) ');
     end;
+
+    SQL.Add(' WHERE 1 = 1 ');
 
     // Filtros adicionais
     if not chkClientesCadastradosSemCompras.Checked then
