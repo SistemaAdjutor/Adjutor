@@ -91,7 +91,12 @@ end;
 procedure TfrmCBS.cdsEditBeforePost(DataSet: TDataSet);
 begin
 //  inherited;
-
+  if DataSet.FieldByName('CBS_ALIQUOTA').IsNull then
+  begin
+    MessageDlg('O campo "Alíquota" é obrigatório. Informe um valor antes de salvar.',
+      mtWarning, [mbOK], 0);
+    Abort; // cancela o Post
+  end;
 end;
 
 procedure TfrmCBS.FormCreate(Sender: TObject);

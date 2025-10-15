@@ -31,7 +31,7 @@ uses
   cxDataStorage, cxEdit, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, cxDBData,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid;
+  cxGridDBTableView, cxGrid, cxDBLookupComboBox;
 
 type
   TfrmIBS = class(TfrmBaseDBEditFDAC)
@@ -42,6 +42,8 @@ type
     cxGrid1DBTableView1IBS_ALIQUOTA: TcxGridDBColumn;
     cxGrid1DBTableView1CID_CODIGO: TcxGridDBColumn;
     cxGrid1Level1: TcxGridLevel;
+    qCidade: TFDQuery;
+    dsCidade: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure cdsEditAfterOpen(DataSet: TDataSet);
     procedure cdsEditAfterPost(DataSet: TDataSet);
@@ -91,7 +93,12 @@ end;
 procedure TfrmIBS.cdsEditBeforePost(DataSet: TDataSet);
 begin
 //  inherited;
-
+  if DataSet.FieldByName('IBS_ALIQUOTA').IsNull then
+  begin
+    MessageDlg('O campo "Alíquota" é obrigatório. Informe um valor antes de salvar.',
+      mtWarning, [mbOK], 0);
+    Abort; // cancela o Post
+  end;
 end;
 
 procedure TfrmIBS.FormCreate(Sender: TObject);
@@ -107,6 +114,10 @@ begin
   cdsEdit.UpdateOptions.KeyFields := 'IBS_ID';
   cdsEdit.UpdateOptions.AutoIncFields := 'IBS_ID';
   cdsEdit.Open;
+
+  qCidade.SQL.Text := 'SELECT CID_CODIGO, CID_CIDADE FROM CID0000 ORDER BY CID_CIDADE';
+  qCidade.Open;
+
 end;
 
 end.

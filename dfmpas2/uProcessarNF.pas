@@ -383,6 +383,52 @@ begin
 
    end;
 
+
+    // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
+    // IBS - Imposto sobre Bens e Serviços
+    if qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat > 0 then
+    begin
+      // Calcular valor do IBS
+      Produto.Imposto.IBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+      Produto.Imposto.IBS.pIBS := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
+      Produto.Imposto.IBS.vIBS := RoundTo(
+        Produto.Imposto.IBS.vBC * (Produto.Imposto.IBS.pIBS / 100), -2
+      );
+    end;
+
+    // CBS - Contribuição sobre Bens e Serviços
+    if qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat > 0 then
+    begin
+      // Calcular valor do CBS
+      Produto.Imposto.CBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+      Produto.Imposto.CBS.pCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
+      Produto.Imposto.CBS.vCBS := RoundTo(
+        Produto.Imposto.CBS.vBC * (Produto.Imposto.CBS.pCBS / 100), -2
+      );
+    end;
+
+    // IS - Imposto Seletivo
+    if qItemNota.FieldByName('IS_ALIQUOTA').AsFloat > 0 then
+    begin
+      // Calcular valor do IS
+      Produto.Imposto.IS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+      Produto.Imposto.IS.pIS := qItemNota.FieldByName('IS_ALIQUOTA').AsFloat;
+      Produto.Imposto.IS.vIS := RoundTo(
+        Produto.Imposto.IS.vBC * (Produto.Imposto.IS.pIS / 100), -2
+      );
+    end;
+
+
+
+
+
+
+
+
+
+
+
+
    // IRRF
    // Produto.Imposto.    qItemNota.FieldByName('TOTAL').AsFloat
 
@@ -508,12 +554,17 @@ begin
   ' NF_VALOR_FCP, NF_VALOR_PARTILHA_DESTINO, NF_VALOR_PARTILHA_ORIGEM, PR.PRD_CODBARRA, NF_ALIQDOSIMPLES, NF_CREDICMSDOSIMPLES,  '+
   ' NF_ICMSSUBSTITUTO_ANT, NF_CBENEF, pr.PRD_UND_TRIB, pid.PRF_QUANT_TRIB,NF_VALOR_FCP_st, CST_PIS, CST_COFINS,'+
   '  NF_VALORICMSDESON,NF_MOTIVDESON, PRD_VAIXML , OPE_CENQ_IPI, pr.PRD_CODIGO_FCI, NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES                           '+
+  ' , ibs.IBS_CODIGO, ibs.IBS_DESCRICAO, ibs.IBS_ALIQUOTA, ' +
+  ' cbs.CBS_CODIGO, cbs.CBS_DESCRICAO, cbs.CBS_ALIQUOTA, ' +
+  ' pr.IS_ALIQUOTA ' +
   ' FROM NF_IT01 it                                                                                                                                                 '+
   ' JOIN PRD0000 PR ON (PR.PRD_REFER = IT.PRD_REFER AND PR.PRD_STATUS = ''A''    '+ ConcatSe (' and PR.',dbInicio.ExclusivoSql('PRODUTOS') ) + ')                                              '+
   ' LEFT JOIN SITUACAO_TRIBUTARIA ST ON (PR.STB_TRIBUTACAO =  ST.STB_TRIBUTACAO)                                                                                    '+
   ' LEFT JOIN prd_lote lo on lo.prdl_registro = it.prdl_registro                                                                                                    '+
   ' left join PED_IT01 pid on (pid.PRF_REGISTRO = it.PRF_REGISTRO and pid.emp_codigo = it.emp_codigo )                                                                                                  '+
   ' LEFT JOIN OPE0000 OP ON (OP.OPE_CODIGO  = it.OPE_CODIGO )                                                                                                       '+
+  ' LEFT JOIN IBS ibs ON (pr.IBS_ID = ibs.IBS_ID) ' +
+  ' LEFT JOIN CBS cbs ON (pr.CBS_ID = cbs.CBS_ID) ' +
   ' WHERE NF_IT_NOTANUMER =  '+QuotedStr(Nota) +
   ' and it.emp_codigo = ' + QuotedStr(EmpCodigo) ) ;
    if (qNota.FieldByName('NF_INTEGRADO').AsString = 'S') then

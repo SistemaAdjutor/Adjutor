@@ -9,11 +9,15 @@ inherited frmIBS: TfrmIBS
   inherited pnUtil: TPanel
     Top = 529
     Width = 784
+    ExplicitTop = 529
+    ExplicitWidth = 784
     inherited btnOk: TSpeedButton
       Left = 536
+      ExplicitLeft = 536
     end
     inherited btnCancelar: TSpeedButton
       Left = 661
+      ExplicitLeft = 661
     end
   end
   object cxGrid1: TcxGrid [1]
@@ -26,9 +30,6 @@ inherited frmIBS: TfrmIBS
     LookAndFeel.Kind = lfStandard
     LookAndFeel.NativeStyle = False
     LookAndFeel.ScrollbarMode = sbmClassic
-    ExplicitTop = 49
-    ExplicitWidth = 763
-    ExplicitHeight = 370
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Cancel.Visible = False
@@ -66,6 +67,18 @@ inherited frmIBS: TfrmIBS
       object cxGrid1DBTableView1CID_CODIGO: TcxGridDBColumn
         Caption = 'Munic'#237'pio'
         DataBinding.FieldName = 'CID_CODIGO'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.DropDownListStyle = lsEditList
+        Properties.DropDownRows = 10
+        Properties.DropDownSizeable = True
+        Properties.ImmediatePost = True
+        Properties.KeyFieldNames = 'CID_CODIGO'
+        Properties.ListColumns = <
+          item
+            Caption = 'Escolha o Munic'#237'pio'
+            FieldName = 'CID_CIDADE'
+          end>
+        Properties.ListSource = dsCidade
         Width = 233
       end
     end
@@ -77,5 +90,15 @@ inherited frmIBS: TfrmIBS
     CachedUpdates = False
     SQL.Strings = (
       'SELECT * FROM IBS ORDER BY IBS_CODIGO')
+  end
+  object qCidade: TFDQuery
+    Connection = dbConn
+    Left = 568
+    Top = 144
+  end
+  object dsCidade: TDataSource
+    DataSet = qCidade
+    Left = 616
+    Top = 144
   end
 end

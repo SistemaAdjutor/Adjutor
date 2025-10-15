@@ -9,11 +9,15 @@ inherited frmCBS: TfrmCBS
   inherited pnUtil: TPanel
     Top = 529
     Width = 784
+    ExplicitTop = 529
+    ExplicitWidth = 784
     inherited btnOk: TSpeedButton
       Left = 536
+      ExplicitLeft = 536
     end
     inherited btnCancelar: TSpeedButton
       Left = 661
+      ExplicitLeft = 661
     end
   end
   object cxGrid1: TcxGrid [1]
@@ -26,9 +30,6 @@ inherited frmCBS: TfrmCBS
     LookAndFeel.Kind = lfStandard
     LookAndFeel.NativeStyle = False
     LookAndFeel.ScrollbarMode = sbmClassic
-    ExplicitTop = 49
-    ExplicitWidth = 763
-    ExplicitHeight = 370
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Cancel.Visible = False
