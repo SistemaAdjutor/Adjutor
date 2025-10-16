@@ -2675,7 +2675,6 @@ inherited FormParametros: TFormParametros
                 TabOrder = 29
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
-                Visible = False
               end
               object DBCheckBox104: TDBCheckBox
                 Left = 308
