@@ -44,6 +44,7 @@ type
     cxGrid1Level1: TcxGridLevel;
     qCidade: TFDQuery;
     dsCidade: TDataSource;
+    cxGrid1DBTableView1IBS_ALIQUOTA_UF: TcxGridDBColumn;
     procedure FormCreate(Sender: TObject);
     procedure cdsEditAfterOpen(DataSet: TDataSet);
     procedure cdsEditAfterPost(DataSet: TDataSet);
@@ -113,6 +114,7 @@ begin
   inherited;
   cdsEdit.UpdateOptions.KeyFields := 'IBS_ID';
   cdsEdit.UpdateOptions.AutoIncFields := 'IBS_ID';
+  cdsEdit.UpdateOptions.UpdateTableName := 'IBS';
   cdsEdit.Open;
 
   qCidade.SQL.Text := 'SELECT CID_CODIGO, CID_CIDADE FROM CID0000 ORDER BY CID_CIDADE';

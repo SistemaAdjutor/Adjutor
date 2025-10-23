@@ -52,17 +52,17 @@ inherited frmIBS: TfrmIBS
       object cxGrid1DBTableView1IBS_CODIGO: TcxGridDBColumn
         Caption = 'C'#243'digo'
         DataBinding.FieldName = 'IBS_CODIGO'
-        Width = 118
+        Width = 109
       end
       object cxGrid1DBTableView1IBS_DESCRICAO: TcxGridDBColumn
         Caption = 'Descri'#231#227'o'
         DataBinding.FieldName = 'IBS_DESCRICAO'
-        Width = 365
+        Width = 256
       end
       object cxGrid1DBTableView1IBS_ALIQUOTA: TcxGridDBColumn
         Caption = 'Al'#237'quota'
         DataBinding.FieldName = 'IBS_ALIQUOTA'
-        Width = 52
+        Width = 62
       end
       object cxGrid1DBTableView1CID_CODIGO: TcxGridDBColumn
         Caption = 'Munic'#237'pio'
@@ -79,12 +79,23 @@ inherited frmIBS: TfrmIBS
             FieldName = 'CID_CIDADE'
           end>
         Properties.ListSource = dsCidade
-        Width = 233
+        Width = 259
+      end
+      object cxGrid1DBTableView1IBS_ALIQUOTA_UF: TcxGridDBColumn
+        Caption = 'Al'#237'quota da UF'
+        DataBinding.FieldName = 'IBS_ALIQUOTA_UF'
+        Width = 82
       end
     end
     object cxGrid1Level1: TcxGridLevel
       GridView = cxGrid1DBTableView1
     end
+  end
+  inherited FDPhysFBDriverLink1: TFDPhysFBDriverLink
+    Top = 32
+  end
+  inherited FDGUIxWaitCursor1: TFDGUIxWaitCursor
+    Top = 24
   end
   inherited cdsEdit: TFDQuery
     CachedUpdates = False

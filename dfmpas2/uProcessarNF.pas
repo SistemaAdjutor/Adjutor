@@ -10,7 +10,7 @@ uses
   ACBrDANFCeFortesFr, IdAttachmentFile,  ACBrUtil, XMLIntf, XMLDoc, zlib, ACBrNFeDANFeRLClass,  Spin,    ACBrNFeNotasFiscais,System.StrUtils,
   TypInfo, DateUtils,  blcksock, ACBrNFe.Classes,   ACBrDFeConfiguracoes, pcnAuxiliar,    Grids,  ACBrNFeConfiguracoes, Vcl.ExtCtrls, Datasnap.Provider, Datasnap.DBClient,
   pngextra, rwfunc,ACBrECFVirtual, ACBrECFVirtualBuffer, ACBrECFVirtualPrinter, ACBrECFVirtualNFCe, ACBrDFeReport, ACBrDFeDANFeReport, frxClass, BaseDbEstoqueForm,ACBrDFeSSL,
-  Vcl.Clipbrd ;
+  Vcl.Clipbrd, ACBrDFe.Conversao ;
 
 type
 
@@ -352,7 +352,9 @@ begin
        Produto.Imposto.II.vIOF := 0;
       end;
 
-       Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
+      if cst_PIS_COFINS = '' then // esta vindo string vazia e dando erro
+        cst_PIS_COFINS := qItemNota.FieldByName('CST_PIS').AsString;
+      Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
 //       Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
 
 //      if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_PIS').AsString,['99','98','49']))) then
@@ -386,52 +388,77 @@ begin
 
     // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
     // IBS - Imposto sobre Bens e Serviços
+
+    NotaF.NFe.Ide.cMunFGIBS := qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
+
     if qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat > 0 then
     begin
-      // Calcular valor do IBS
-      Produto.Imposto.IBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
-      Produto.Imposto.IBS.pIBS := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
-      Produto.Imposto.IBS.vIBS := RoundTo(
-        Produto.Imposto.IBS.vBC * (Produto.Imposto.IBS.pIBS / 100), -2
+      // Garante que o grupo existe
+
+      Produto.Imposto.IBSCBS.CST := cst000;
+      Produto.Imposto.IBSCBS.cClassTrib := '000001';
+
+
+      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+        Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+
+      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun := TgIBSMun.Create;
+
+      Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+
+      Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
+      Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF := RoundTo(
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF / 100), -2
+      );
+
+
+      Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
+      Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun := RoundTo(
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
+      );
+
+      Produto.Imposto.IBSCBS.gIBSCBS.vIBS := RoundTo(
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
       );
     end;
+
 
     // CBS - Contribuição sobre Bens e Serviços
     if qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat > 0 then
     begin
-      // Calcular valor do CBS
-      Produto.Imposto.CBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
-      Produto.Imposto.CBS.pCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
-      Produto.Imposto.CBS.vCBS := RoundTo(
-        Produto.Imposto.CBS.vBC * (Produto.Imposto.CBS.pCBS / 100), -2
+      Produto.Imposto.IBSCBS.CST := cst000;
+      Produto.Imposto.IBSCBS.cClassTrib := '000001';
+
+
+      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+        Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+
+      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gCBS) then
+        Produto.Imposto.IBSCBS.gIBSCBS.gCBS := TgCBS.Create;
+
+      Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+      Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
+      Produto.Imposto.IBSCBS.gIBSCBS.gCBS.vCBS := RoundTo(
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS / 100), -2
       );
     end;
 
     // IS - Imposto Seletivo
     if qItemNota.FieldByName('IS_ALIQUOTA').AsFloat > 0 then
     begin
-      // Calcular valor do IS
-      Produto.Imposto.IS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
-      Produto.Imposto.IS.pIS := qItemNota.FieldByName('IS_ALIQUOTA').AsFloat;
-      Produto.Imposto.IS.vIS := RoundTo(
-        Produto.Imposto.IS.vBC * (Produto.Imposto.IS.pIS / 100), -2
+      Produto.Imposto.ISel.vBCIS := qItemNota.FieldByName('TOTAL').AsFloat;
+      Produto.Imposto.ISel.pIS := qItemNota.FieldByName('IS_ALIQUOTA').AsFloat;
+      Produto.Imposto.ISel.vIS := RoundTo(
+        Produto.Imposto.ISel.vBCIS * (Produto.Imposto.ISel.pIS / 100), -2
       );
     end;
 
 
 
 
-
-
-
-
-
-
-
-
    // IRRF
    // Produto.Imposto.    qItemNota.FieldByName('TOTAL').AsFloat
-
 
 
    // ICMS uf dest  - antigo VendaInterEstadualConsumidorFinal_Item
@@ -553,8 +580,9 @@ begin
   ' NF_VALOR_BCICMS_DESTINO, NF_PERC_FCP, NF_ALIQ_ICMS_INTERNA_DESTINO, NF_ALIQ_ICMS_INTERESTADUAL, NF_PERC_PARTILHA_DESTINO,                                       '+
   ' NF_VALOR_FCP, NF_VALOR_PARTILHA_DESTINO, NF_VALOR_PARTILHA_ORIGEM, PR.PRD_CODBARRA, NF_ALIQDOSIMPLES, NF_CREDICMSDOSIMPLES,  '+
   ' NF_ICMSSUBSTITUTO_ANT, NF_CBENEF, pr.PRD_UND_TRIB, pid.PRF_QUANT_TRIB,NF_VALOR_FCP_st, CST_PIS, CST_COFINS,'+
-  '  NF_VALORICMSDESON,NF_MOTIVDESON, PRD_VAIXML , OPE_CENQ_IPI, pr.PRD_CODIGO_FCI, NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES                           '+
-  ' , ibs.IBS_CODIGO, ibs.IBS_DESCRICAO, ibs.IBS_ALIQUOTA, ' +
+  '  NF_VALORICMSDESON,NF_MOTIVDESON, PRD_VAIXML , OPE_CENQ_IPI, pr.PRD_CODIGO_FCI, NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES,                           '+
+  ' (SELECT CID_COD_IBGE  FROM CID0000 WHERE CID_CODIGO = ibs.CID_CODIGO) CID_COD_IBGE,                                            '+
+  ' ibs.IBS_CODIGO, ibs.IBS_DESCRICAO, ibs.IBS_ALIQUOTA, ibs.IBS_ALIQUOTA_UF,' +
   ' cbs.CBS_CODIGO, cbs.CBS_DESCRICAO, cbs.CBS_ALIQUOTA, ' +
   ' pr.IS_ALIQUOTA ' +
   ' FROM NF_IT01 it                                                                                                                                                 '+
