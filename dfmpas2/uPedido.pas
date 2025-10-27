@@ -23,10 +23,12 @@ type
     FReferencia: String;
     FQtd: String;
     FPreco: String;
+    FUnidade: String;
   public
     property Referencia : String read FReferencia write FReferencia;
     property Qtd        : String read FQtd        write FQtd;
     property Preco      : String read FPreco      write FPreco;
+    property Unidade    : String read FUnidade    write FUnidade;
   end;
 
 
@@ -8921,8 +8923,10 @@ begin
         if tempItens.Referencia = '' then
           Continue;
 
+        tempItens.Unidade := BuscaUmDadoSqlAsString('SELECT PRD_UND FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(tempItens.Referencia)  );
         sDescricaoProduto := RetornaProdutoDescricaoPelaReferencia(tempItens.Referencia);
         prdCodigo := BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(tempItens.Referencia)  );
+
         if prdCodigo = '' then
           MensagemLoadXML := MensagemLoadXML + 'Referência ' + tempItens.Referencia + ' não cadastrada.'  + #13 + #10
         else
@@ -8931,7 +8935,7 @@ begin
           if comissao>0 then
            totalcomissao := totalcomissao +  (StrToFloat(tempItens.Qtd) * StrToFloat(tempItens.Preco) * (comissao/100));
           GravarPedidoItem(0,
-                          '',
+                          tempItens.Unidade,
                           EdPedidoNumero.Text,
                           prdCodigo,
                           tempItens.Referencia,
