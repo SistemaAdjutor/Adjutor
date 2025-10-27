@@ -332,8 +332,8 @@ procedure TFrmPesqRenovacao.ChkAcaoonClick(Sender: TObject);
 var pesquisaAtrado : boolean;
 begin
   inherited;
-  btnPesquisaClick(Sender);
-  Exit;
+//  btnPesquisaClick(Sender);
+//  Exit;
 
 
   if TCheckBox(Sender).Checked then
