@@ -1,4 +1,4 @@
-﻿Atualizado em 15/10/2025
+﻿Atualizado em 28/10/2025
 Inicio da versão: 15/10/2025
 
 principal: SustemPlast, Drimec, Arkson, LFEpis, Normadin, Collect, Embratherm, LForja
@@ -14,3 +14,8 @@ principal: SustemPlast, Drimec, Arkson, LFEpis, Normadin, Collect, Embratherm, L
 2103 - Revisão Embratherm -> Orçamento Industrial No cadastro tem 4 casas depois da virgula e quando gera o orçamento sai arredondado.
 2105 - Erro LFORJA - CODIGO DE RETORNO É ZERO empresa 002
 
+patch 1: Novi, Embraterm, SustemPlast, Collect
+2101 - todos : gerar script para atualizar alíquotas de ICMS
+2107 - Embraterm - Erro Entrada NF manual
+2108 - Sustemplast - Revisar Erro ao adicionar produto usando um XML personalizado
+2109 - Collect - Revisar Tela de reconovação
