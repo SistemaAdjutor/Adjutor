@@ -18,6 +18,7 @@ object FormOperFisc: TFormOperFisc
   Visible = True
   OnClose = FormClose
   OnCloseQuery = FormCloseQuery
+  OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnKeyPress = FormKeyPress
   OnResize = FormResize
@@ -542,14 +543,10 @@ object FormOperFisc: TFormOperFisc
     Top = 192
     Width = 897
     Height = 332
-    ActivePage = tsPisCofins
+    ActivePage = TabSheet2
     TabOrder = 7
     object tsPrincipal: TTabSheet
       Caption = 'Principal'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object gbCSOSN: TGroupBox
         Left = 0
         Top = 3
@@ -1035,10 +1032,6 @@ object FormOperFisc: TFormOperFisc
     object tsIcms: TTabSheet
       Caption = 'ICMS'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox9: TGroupBox
         Left = 3
         Top = 2
@@ -1117,8 +1110,6 @@ object FormOperFisc: TFormOperFisc
           CriticalPoints.MinValueIncluded = False
           DisplayFormat = dfFloat
           DecimalPlaces = 2
-          EditText = '0,00'
-          ReadOnly = True
           TabOrder = 1
           DataConnector.DataSource = dsoperfisc
           DataConnector.DataField = 'OPE_ICMSDESON'
@@ -1305,10 +1296,6 @@ object FormOperFisc: TFormOperFisc
     object tsIpi: TTabSheet
       Caption = 'IPI'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox10: TGroupBox
         Left = 3
         Top = 1
@@ -1547,10 +1534,6 @@ object FormOperFisc: TFormOperFisc
     object TabSheet1: TTabSheet
       Caption = 'Dados Fiscais Adicionais'
       ImageIndex = 4
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label18: TLabel
         Left = 192
         Top = 16
@@ -1607,6 +1590,56 @@ object FormOperFisc: TFormOperFisc
           DataSource = DataCadastros.DsOperFisc
           TabOrder = 2
         end
+      end
+    end
+    object TabSheet2: TTabSheet
+      Caption = 'IBS / CBS'
+      ImageIndex = 5
+      object Label21: TLabel
+        Left = 38
+        Top = 16
+        Width = 19
+        Height = 14
+        Caption = 'IBS:'
+      end
+      object Label335: TLabel
+        Left = 34
+        Top = 43
+        Width = 24
+        Height = 14
+        Caption = 'CBS:'
+      end
+      object cmbIBS: TDBLookupComboBox
+        Left = 63
+        Top = 11
+        Width = 241
+        Height = 22
+        Hint = 'Selecione o imposto IBS aplic'#225'vel'
+        DataField = 'IBS_ID'
+        DataSource = DataCadastros.DsOperFisc
+        DropDownWidth = 300
+        KeyField = 'IBS_ID'
+        ListField = 'IBS_EXIBE'
+        ListSource = dsIBS
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 0
+      end
+      object cmbCBS: TDBLookupComboBox
+        Left = 63
+        Top = 39
+        Width = 241
+        Height = 22
+        Hint = 'Selecione o imposto CBS aplic'#225'vel'
+        DataField = 'CBS_ID'
+        DataSource = DataCadastros.DsOperFisc
+        DropDownWidth = 300
+        KeyField = 'CBS_ID'
+        ListField = 'CBS_EXIBE'
+        ListSource = dsCBS
+        ParentShowHint = False
+        ShowHint = True
+        TabOrder = 1
       end
     end
   end
@@ -3145,5 +3178,34 @@ object FormOperFisc: TFormOperFisc
     DataSet = DataCadastros.CdsOperFisc
     Left = 816
     Top = 463
+  end
+  object qryIBS: TFDQuery
+    Connection = DBInicio.FDACConn
+    SQL.Strings = (
+      
+        'SELECT IBS_ID, IBS_CODIGO || '#39' - '#39' || IBS_DESCRICAO AS IBS_EXIBE' +
+        ' FROM IBS ORDER BY IBS_CODIGO;'
+      '')
+    Left = 498
+    Top = 265
+  end
+  object qryCBS: TFDQuery
+    Connection = DBInicio.FDACConn
+    SQL.Strings = (
+      
+        'SELECT CBS_ID, CBS_CODIGO || '#39' - '#39' || CBS_DESCRICAO AS CBS_EXIBE' +
+        ' FROM CBS ORDER BY CBS_CODIGO;')
+    Left = 546
+    Top = 273
+  end
+  object dsIBS: TDataSource
+    DataSet = qryIBS
+    Left = 498
+    Top = 337
+  end
+  object dsCBS: TDataSource
+    DataSet = qryCBS
+    Left = 554
+    Top = 337
   end
 end

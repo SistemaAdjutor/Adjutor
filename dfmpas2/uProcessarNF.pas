@@ -390,13 +390,12 @@ begin
     // IBS - Imposto sobre Bens e Serviços
 
     NotaF.NFe.Ide.cMunFGIBS := qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
+    Produto.Imposto.IBSCBS.CST := cst000;
+    Produto.Imposto.IBSCBS.cClassTrib := '000001';
 
     if qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat > 0 then
     begin
       // Garante que o grupo existe
-
-      Produto.Imposto.IBSCBS.CST := cst000;
-      Produto.Imposto.IBSCBS.cClassTrib := '000001';
 
 
       if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
@@ -421,15 +420,41 @@ begin
       Produto.Imposto.IBSCBS.gIBSCBS.vIBS := RoundTo(
         Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
       );
+    end
+    else
+    begin
+      qAux.Close;
+      qAux.SQL.Text := 'SELECT
+      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+        Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+
+      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun := TgIBSMun.Create;
+
+      Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+
+      Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
+      Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF := RoundTo(
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF / 100), -2
+      );
+
+
+      Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
+      Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun := RoundTo(
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
+      );
+
+      Produto.Imposto.IBSCBS.gIBSCBS.vIBS := RoundTo(
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
+      );
+
     end;
+
 
 
     // CBS - Contribuição sobre Bens e Serviços
     if qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat > 0 then
     begin
-      Produto.Imposto.IBSCBS.CST := cst000;
-      Produto.Imposto.IBSCBS.cClassTrib := '000001';
-
 
       if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
         Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
@@ -569,7 +594,6 @@ begin
  qItemNota.SQL.Clear;
  qItemNota.SQL.Add(
   '  SELECT it.CST_IPI, it.PRDCO_CODIGO_ORIGINAL, IT.PRD_REFER, IT.PRD_DESCRI, IT.IPI_CODIGO, IT.NTP_CFOP, IT.OPE_CODIGO, ' +
-//  '  PR.PRD_UND, ' +
   ' CASE WHEN pid.PRD_UND IS NULL THEN pr.PRD_UND ELSE pid.PRD_UND END AS PRD_UND, ' +
   '  IT.NF_QTDE, IT.NF_PRECO, it.PRD_COMPL_DESCRI, PRD_ESPECIFICO, ID_PRD_ESPECIFICO,   '+
   ' cast(IT.nf_totalitem as numeric(18,2)) as TOTAL, NF_IFRETE, NF_IDESP_ACES, NF_ISEGURO, NF_IDESCTO1, pid.PRF_REGISTRO,lo.prdl_registro ,                '+
