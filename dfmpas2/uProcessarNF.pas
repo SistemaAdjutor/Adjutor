@@ -146,6 +146,8 @@ var i, j, recordCount : integer;
  precoUndTrib, resto : double;
  vlDifal : Real;
  Municipal, Estadual, Federal: string;
+ AliqMun, AliqUF: Double;
+ AliqCBS, AliqIS: Double;
 
 begin
 {
@@ -324,7 +326,8 @@ begin
     if (femp_crt <> '2')  then
      Produto.Imposto.PIS.CST := pis99
     else
-     Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
+     Produto.Imposto.PIS.CST := StrToCSTPIS(qItemNota.FieldByName('CST_PIS').AsString);
+     // Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
     Produto.Imposto.PIS.VBC := 0;
     Produto.Imposto.PIS.PPIS := 0;
     Produto.Imposto.PIS.VPIS := 0;
@@ -333,7 +336,8 @@ begin
     if (femp_crt <> '2')  then
        Produto.Imposto.COFINS.CST := cof99
     else
-     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK,qItemNota.FieldByName('CST_COFINS').AsString);
+     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(qItemNota.FieldByName('CST_COFINS').AsString);
+     // Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK,qItemNota.FieldByName('CST_COFINS').AsString);
     Produto.Imposto.COFINS.VBC := 0;
     Produto.Imposto.COFINS.pCOFINS := 0;
     Produto.Imposto.COFINS.vCOFINS := 0;
@@ -354,8 +358,11 @@ begin
 
       if cst_PIS_COFINS = '' then // esta vindo string vazia e dando erro
         cst_PIS_COFINS := qItemNota.FieldByName('CST_PIS').AsString;
-      Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
-//       Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
+      Produto.Imposto.PIS.CST := StrToCSTPIS(cst_PIS_COFINS);
+      // Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
+
+
+      //       Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
 
 //      if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_PIS').AsString,['99','98','49']))) then
       if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS, ['99','98','49']))) then
@@ -368,8 +375,11 @@ begin
       else if qItemNota.FieldByName('CST_PIS').AsString = '' then
           Produto.Imposto.PIS.CST := pis08;
 
-      Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, cst_PIS_COFINS);
-//     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, qItemNota.FieldByName('CST_COFINS').AsString);
+      Produto.Imposto.COFINS.CST := StrToCSTCOFINS(cst_PIS_COFINS);
+      // Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, cst_PIS_COFINS);
+
+
+      //     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, qItemNota.FieldByName('CST_COFINS').AsString);
 
 //     if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_COFINS').AsString,['99','98','49'])) then
      if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS,['99','98','49'])) then
@@ -386,98 +396,107 @@ begin
    end;
 
 
-    // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
-    // IBS - Imposto sobre Bens e Serviços
-
-    NotaF.NFe.Ide.cMunFGIBS := qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
-    Produto.Imposto.IBSCBS.CST := cst000;
-    Produto.Imposto.IBSCBS.cClassTrib := '000001';
-
-    if qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat > 0 then
-    begin
-      // Garante que o grupo existe
-
-
-      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
-        Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
-
-      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
-        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun := TgIBSMun.Create;
-
-      Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
-
-      Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
-      Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF := RoundTo(
-        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF / 100), -2
-      );
-
-
-      Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
-      Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun := RoundTo(
-        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
-      );
-
-      Produto.Imposto.IBSCBS.gIBSCBS.vIBS := RoundTo(
-        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
-      );
-    end
-    else
-    begin
-      qAux.Close;
-      qAux.SQL.Text := 'SELECT
-      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
-        Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
-
-      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
-        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun := TgIBSMun.Create;
-
-      Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
-
-      Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
-      Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF := RoundTo(
-        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF / 100), -2
-      );
-
-
-      Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
-      Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun := RoundTo(
-        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
-      );
-
-      Produto.Imposto.IBSCBS.gIBSCBS.vIBS := RoundTo(
-        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun / 100), -2
-      );
-
-    end;
 
 
 
-    // CBS - Contribuição sobre Bens e Serviços
-    if qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat > 0 then
-    begin
 
-      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
-        Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
 
-      if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gCBS) then
-        Produto.Imposto.IBSCBS.gIBSCBS.gCBS := TgCBS.Create;
+      // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
 
-      Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
-      Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
-      Produto.Imposto.IBSCBS.gIBSCBS.gCBS.vCBS := RoundTo(
-        Produto.Imposto.IBSCBS.gIBSCBS.vBC * (Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS / 100), -2
-      );
-    end;
+      // --- IBS ---
+      begin
+        NotaF.NFe.Ide.cMunFGIBS := qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
+        Produto.Imposto.IBSCBS.CST := cst000;
+        Produto.Imposto.IBSCBS.cClassTrib := '000001';
 
-    // IS - Imposto Seletivo
-    if qItemNota.FieldByName('IS_ALIQUOTA').AsFloat > 0 then
-    begin
-      Produto.Imposto.ISel.vBCIS := qItemNota.FieldByName('TOTAL').AsFloat;
-      Produto.Imposto.ISel.pIS := qItemNota.FieldByName('IS_ALIQUOTA').AsFloat;
-      Produto.Imposto.ISel.vIS := RoundTo(
-        Produto.Imposto.ISel.vBCIS * (Produto.Imposto.ISel.pIS / 100), -2
-      );
-    end;
+        // Cria o grupo principal e subgrupos se necessário
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+          Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun := TgIBSMun.Create;
+
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF) then
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF := TgIBSUF.Create;
+
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+
+        // Busca alíquotas (prioridade: item > tabela OPE0000)
+        AliqMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
+        AliqUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
+
+        if (AliqMun <= 0) or (AliqUF <= 0) then
+        begin
+          qAux.Close;
+          qAux.SQL.Text :=
+            'SELECT i.IBS_ALIQUOTA, i.IBS_ALIQUOTA_UF ' +
+            'FROM OPE0000 o ' +
+            'JOIN IBS i ON i.IBS_ID = o.IBS_ID';
+          qAux.Open;
+          AliqMun := qAux.FieldByName('IBS_ALIQUOTA').AsFloat;
+          AliqUF  := qAux.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
+        end;
+
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := AliqMun;
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun :=
+          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqMun / 100), -2);
+
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF := AliqUF;
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF :=
+          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqUF / 100), -2);
+
+        // Valor total do IBS
+        Produto.Imposto.IBSCBS.gIBSCBS.vIBS :=
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun +
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF;
+      end;
+
+
+      // --- CBS ---
+      begin
+        AliqCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
+
+        if (AliqCBS <= 0) then
+        begin
+          qAux.Close;
+          qAux.SQL.Text :=
+            'SELECT c.CBS_ALIQUOTA ' +
+            'FROM OPE0000 o ' +
+            'JOIN CBS c ON c.CBS_ID = o.IBS_ID';
+          qAux.Open;
+          AliqCBS := qAux.FieldByName('CBS_ALIQUOTA').AsFloat;
+        end;
+
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+          Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gCBS) then
+          Produto.Imposto.IBSCBS.gIBSCBS.gCBS := TgCBS.Create;
+
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+        Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS := AliqCBS;
+        Produto.Imposto.IBSCBS.gIBSCBS.gCBS.vCBS :=
+          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqCBS / 100), -2);
+      end;
+
+
+      // --- IS (Imposto Seletivo) ---
+      begin
+        AliqIS := qItemNota.FieldByName('IS_ALIQUOTA').AsFloat;
+
+        if (AliqIS > 0) then
+        begin
+          Produto.Imposto.ISel.vBCIS := qItemNota.FieldByName('TOTAL').AsFloat;
+          Produto.Imposto.ISel.pIS := AliqIS;
+          Produto.Imposto.ISel.vIS :=
+            RoundTo(Produto.Imposto.ISel.vBCIS * (AliqIS / 100), -2);
+        end;
+      end;
+
+
+
+
+
 
 
 
@@ -2941,11 +2960,15 @@ end;
 
 procedure TfrmProcessaNFe.TributacaoICMS;
 begin
-  produto.Imposto.ICMS.orig := StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  produto.Imposto.ICMS.orig := StrToOrig(IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  // produto.Imposto.ICMS.orig := StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+
   if copy(IntToStr(qItemNota.FieldByName('NTP_CFOP').AsInteger),1,1) = '7' then // cfop de exportação cts do icms é 41 = não tributado
     produto.Imposto.ICMS.CST  := cst41
   else
-    produto.Imposto.ICMS.CST  := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+    produto.Imposto.ICMS.CST  := StrToCSTICMS ( qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+    // produto.Imposto.ICMS.CST  := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+
   if qnota.FieldByName('nf_export_local_embarque').AsString <> '' then  //exportação seta cst 41
     produto.Imposto.ICMS.CST := cst41
   else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['00', '20']) )  then    //redução na base
@@ -3166,7 +3189,8 @@ end;
 
 procedure TfrmProcessaNFe.TributacaoICMS_simples;
 begin
-  Produto.Imposto.ICMS.orig    :=  StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  Produto.Imposto.ICMS.orig    :=  StrToOrig(IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  // Produto.Imposto.ICMS.orig    :=  StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
   //sem st e não for 10 e 60
   // cst 10 - Tributada e com cobrança do ICMS-ST
   // cst 60 - cobrado anteriormente por ST
@@ -3188,7 +3212,9 @@ begin
       Produto.Imposto.ICMS.motDesICMS   := StrTomotDesICMS(ok, qItemNota.FieldByName('NF_MOTIVDESON').AsString);
     end;
 
-    Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(ok,IntToStr(CSOSN));
+    Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(IntToStr(CSOSN));
+    // Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(ok,IntToStr(CSOSN));
+
     if (COPY(Produto.Prod.CFOP,1,1) = '3') then   // grupo 3: entradas e aquisições de serviços no exterior
     begin
        Produto.Imposto.ICMS.CSOSN := csosn900;
@@ -3204,7 +3230,8 @@ begin
 
     end
     else
-      Produto.Imposto.ICMS.CST :=  StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+      Produto.Imposto.ICMS.CST :=  StrToCSTICMS ( qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+      // Produto.Imposto.ICMS.CST :=  StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
 
     case StrToIntDef(CSOSNIcmsToStr(Produto.Imposto.ICMS.CSOSN),0)   of
     101, 201:
@@ -3249,7 +3276,9 @@ begin
   else //com st
   begin
 
-    Produto.Imposto.ICMS.CST := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+    Produto.Imposto.ICMS.CST := StrToCSTICMS ( qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+    // Produto.Imposto.ICMS.CST := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+
     if qItemNota.FieldByName('NF_MVAPERC').AsFloat > 0  then
       produto.Imposto.ICMS.ModBCST := StrTomodBCST(ok, '4')
     else
@@ -3259,7 +3288,8 @@ begin
        CSOSNST := qnota.FieldByName('EMP_CSOSN_ST').AsInteger // especifica por cfop
     Else
        CSOSNST := fiCSOSN_ST;
-    Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(ok,IntToStr(CSOSNST));
+    Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(IntToStr(CSOSNST));
+    // Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(ok,IntToStr(CSOSNST));
     case StrToIntDef(CSOSNIcmsToStr(Produto.Imposto.ICMS.CSOSN),0)  of
     201,202,203:
         begin

@@ -70,10 +70,36 @@ end;
 
 procedure TfrmCBS.btnOkClick(Sender: TObject);
 begin
-  // inherited;
   if cdsEdit.State in [dsEdit, dsInsert] then
     cdsEdit.Post;
 
+  try
+    cdsEdit.ApplyUpdates(0);
+
+    // commit real no banco
+    if dbConn.InTransaction then
+      dbConn.CommitRetaining
+    else
+      dbConn.Commit;
+
+    cdsEdit.CommitUpdates; // limpa cache local
+
+    // força uma nova transação pro dataset (recarrega dados frescos)
+    cdsEdit.Close;
+    cdsEdit.Connection := nil;
+    dbConn.Connected := False;
+    dbConn.Connected := True;
+    cdsEdit.Connection := dbConn;
+    cdsEdit.Open;
+  except
+    on E: Exception do
+    begin
+      if dbConn.InTransaction then
+        dbConn.RollbackRetaining;
+      cdsEdit.CancelUpdates;
+      Application.ShowException(E);
+    end;
+  end;
 end;
 
 procedure TfrmCBS.cdsEditAfterOpen(DataSet: TDataSet);

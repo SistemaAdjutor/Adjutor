@@ -69,8 +69,10 @@ inherited frmCBS: TfrmCBS
       GridView = cxGrid1DBTableView1
     end
   end
+  inherited dbConn: TFDConnection
+    TxOptions.AutoStop = True
+  end
   inherited cdsEdit: TFDQuery
-    CachedUpdates = False
     SQL.Strings = (
       'SELECT * FROM CBS ORDER BY CBS_CODIGO')
   end

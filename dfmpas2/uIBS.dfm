@@ -97,8 +97,10 @@ inherited frmIBS: TfrmIBS
   inherited FDGUIxWaitCursor1: TFDGUIxWaitCursor
     Top = 24
   end
+  inherited dbConn: TFDConnection
+    TxOptions.AutoStop = True
+  end
   inherited cdsEdit: TFDQuery
-    CachedUpdates = False
     SQL.Strings = (
       'SELECT * FROM IBS ORDER BY IBS_CODIGO')
   end
