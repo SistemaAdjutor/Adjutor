@@ -462,7 +462,7 @@ begin
           qAux.SQL.Text :=
             'SELECT c.CBS_ALIQUOTA ' +
             'FROM OPE0000 o ' +
-            'JOIN CBS c ON c.CBS_ID = o.IBS_ID';
+            'JOIN CBS c ON c.CBS_ID = o.CBS_ID';
           qAux.Open;
           AliqCBS := qAux.FieldByName('CBS_ALIQUOTA').AsFloat;
         end;
