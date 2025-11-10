@@ -86,6 +86,8 @@ type
     procedure configuraCabImpressao (Sender : Tform);
     procedure cbProdutoReferenciaButtonClick(Sender: TObject);
     procedure cbFornecedorButtonClick(Sender: TObject);
+    procedure btnImprimeMouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     bpesquisar : boolean;
     procedure DefaultOnChange(Sender: TObject);
@@ -414,13 +416,14 @@ begin
     exit;
 
     Screen.Cursor := crHourGlass;
+    {
     if chkSemMov.Checked then
       cdsbusco.filter := 'media=0 and (kas_saldo <>0)'
     else if cb1.checked then
       cdsbusco.filter := 'media<>0';
 
     cdsBusco.Filtered :=  cb1.checked or chkSemMov.checked;
-
+     }
 
      qBusco.sql.clear;
      qBusco.sql.ADD('SELECT 0 as selecionado, prd0000.prd_codigo,  prd0000.prd_refer , prd0000.prd_descri,                         ');
@@ -675,6 +678,17 @@ begin
 
   end;
 
+end;
+
+procedure TFrmGiroDoEstoquexCompras.btnImprimeMouseUp(Sender: TObject;
+  Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
+begin
+  inherited;
+  if not cdsBusco.Active then
+  begin
+    uteis.Aviso('Favor Iniciar Cálculos');
+    Abort;
+  end;
 end;
 
 procedure TFrmGiroDoEstoquexCompras.btnLimparClick(Sender: TObject);

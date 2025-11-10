@@ -153,8 +153,8 @@ begin
          end;
        end;
 
-       if not dbGrid.DataSource.DataSet.Active then
-         dbGrid.DataSource.DataSet.Open;
+      // if not dbGrid.DataSource.DataSet.Active then
+      //   dbGrid.DataSource.DataSet.Open;
 
        tcr.dbGrid:=dbGrid;
        case rgSaida.ItemIndex  of

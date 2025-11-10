@@ -261,6 +261,9 @@ var it: TBookmark;
   from, order: integer;
 
 begin
+  if Self.Name = 'FrmGiroDoEstoquexCompras' then
+    Exit;
+
   if cdsBusco.Active  then
   begin
     linha := UpperCase(StringReplace(qBusco.SQL.Text, #$D#$A, ' ', [rfReplaceAll]));
