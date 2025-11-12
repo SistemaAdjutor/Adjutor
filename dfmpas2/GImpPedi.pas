@@ -909,6 +909,60 @@ type
     cdsRel02PED_COMIS1: TFMTBCDField;
     cdsRel02Comissao_CC: TCurrencyField;
     cdsRel02EMP_CODIGO: TStringField;
+    ppVendaAgrupadaProduto: TppReport;
+    ppHeaderBand11: TppHeaderBand;
+    ppLine68: TppLine;
+    ppLabel116: TppLabel;
+    ppLabel123: TppLabel;
+    ppSystemVariable21: TppSystemVariable;
+    ppSystemVariable22: TppSystemVariable;
+    ppLine69: TppLine;
+    ppLabel124: TppLabel;
+    ppLabel125: TppLabel;
+    ppLabel126: TppLabel;
+    ppLabel127: TppLabel;
+    ppLabel128: TppLabel;
+    ppLine70: TppLine;
+    ppLabel129: TppLabel;
+    ppDetailBand12: TppDetailBand;
+    ppDBText103: TppDBText;
+    ppDBText104: TppDBText;
+    ppDBText105: TppDBText;
+    ppDBText106: TppDBText;
+    ppDBText107: TppDBText;
+    ppDBText108: TppDBText;
+    ppFooterBand2: TppFooterBand;
+    ppLine71: TppLine;
+    ppLabel130: TppLabel;
+    ppDBCalc43: TppDBCalc;
+    ppDBCalc44: TppDBCalc;
+    ppDBCalc45: TppDBCalc;
+    ppDBCalc46: TppDBCalc;
+    ppDesignLayers12: TppDesignLayers;
+    ppDesignLayer12: TppDesignLayer;
+    ppParameterList11: TppParameterList;
+    dbVendaAgrupadaProduto: TppDBPipeline;
+    dsVendaAgrupadaProduto: TDataSource;
+    sqlVendaAgrupadaProduto: TSQLQuery;
+    slqVendaAgrupadaProdutoQTDE: TFMTBCDField;
+    slqVendaAgrupadaProdutoTOTAL_FAT: TFMTBCDField;
+    slqVendaAgrupadaProdutoTOTAL_PED: TFMTBCDField;
+    slqVendaAgrupadaProdutoCC_REPRES: TCurrencyField;
+    slqVendaAgrupadaProdutoTOTAL_GERAL_FAT: TAggregateField;
+    dspVendaAgrupadaProduto: TDataSetProvider;
+    cdsVendaAgrupadaProduto: TClientDataSet;
+    cdsVendaAgrupadaProdutoQTDE: TFMTBCDField;
+    cdsVendaAgrupadaProdutoTOTAL_FAT: TFMTBCDField;
+    cdsVendaAgrupadaProdutoTOTAL_PED: TFMTBCDField;
+    cdsVendaAgrupadaProdutoCC_REPRES: TCurrencyField;
+    cdsVendaAgrupadaProdutoTOTAL_GERAL_FAT: TAggregateField;
+    sqlVendaAgrupadaProdutoPRD_REFER: TStringField;
+    cdsVendaAgrupadaProdutoPRD_REFER: TStringField;
+    sqlVendaAgrupadaProdutoPRF_PRDDESCRI: TStringField;
+    cdsVendaAgrupadaProdutoPRF_PRDDESCRI: TStringField;
+    ppLabel131: TppLabel;
+    ppFiltro: TppLabel;
+    ppLine72: TppLine;
     procedure BitOkClick(Sender: tObject);
     procedure BitConfigClick(Sender: tObject);
     procedure BitCancelarClick(Sender: tObject);
@@ -958,6 +1012,7 @@ type
     procedure qRel05CLI_RAZAOChange(Sender: TField);
     procedure qRel05CLI_RAZAOValidate(Sender: TField);
     procedure qRel05CLI_RAZAOSetText(Sender: TField; const Text: string);
+    procedure cdsVendaAgrupadaProdutoCalcFields(DataSet: TDataSet);
   private
     { Private declarations }
     fListaEmpresas : TStringList;
@@ -988,6 +1043,7 @@ type
     procedure ImprimirGastosFrete;
     procedure Rel_Contagem_Orcamentos;
     procedure ImprimirControleDeOrcamentosNoPeriodo;
+    procedure ImprimirVendasAgrupadasPorProduto;
   public
     { Public declarations }
   end;
@@ -997,7 +1053,7 @@ var
 
 implementation
 
-uses Uteis, DataCad, uPedido, InicioDB, ufrmpreviewrb;
+uses Uteis, DataCad, uPedido, InicioDB, ufrmpreviewrb, DateUtils;
 
 {$R *.dfm}
 
@@ -1605,7 +1661,11 @@ begin
      end
      else
      if (LTBox.ItemIndex = 13) then
-       ImprimirControleDeOrcamentosNoPeriodo;
+       ImprimirControleDeOrcamentosNoPeriodo
+       else
+     if (LTBox.ItemIndex = 14) then  {Vendas por agrupamento de Produtos}
+       ImprimirVendasAgrupadasPorProduto;
+;
   finally
     screen.Cursor := crDefault;
   end;
@@ -2269,6 +2329,7 @@ begin
     LTBox.Items.Add('Pedidos com forma de pagamento');//11 copia do 09
     LTBox.Items.Add('Relação de O.S'); // 12
     LTBox.Items.Add('Controle de Orçamento no Mês'); // 13
+    LTBox.Items.Add('Vendas por agrupamento de Produtos'); // 14
 
     LTBox.ItemIndex := 0;  // seta no primeiro item
     EditDataI.Date := now;      // data de hoje
@@ -2658,6 +2719,42 @@ begin
            grpVendedor.Top        := Grp07.Top + Grp07.Height;
            pOrigem.Top            := grpVendedor.Top + grpVendedor.Height;
            Grp08.Top              := pOrigem.Top + pOrigem.Height;
+       end
+    else
+    if (LTBox.ItemIndex = 14) then {Vendas por agrupamento de Produtos}
+       begin
+           {Ativa}
+           Grp02.Visible          := True; // Clientes - 41
+           Grp03.Visible          := True; // Tipo e Centro de Custo - 65
+           grpVendedor.Visible    := True; // Vendedor - 33
+           Grp06.Visible          := True; // Todos, A Faturar e Faturados - 41
+           Grp07.Visible          := True; // Período - 73
+
+           {Desativa}
+           Grp04.Visible          := False; // Nº do Pedido
+           Grp05.Visible          := False; // Somente Tipo
+           Grp09.Visible          := False; // Frete e Transportadora
+           pOrigem.Visible        := False; // Origem
+
+           {Habilitar}
+           RadEntrada.Enabled     := False;
+           RadEntrega.Enabled     := True;
+           RadEntrega.Checked     := True;
+           RadFaturamento.Enabled := False;
+           RadEntrada.Caption     := 'Data Entrada';
+           Grp02.Top              := 119;
+           Grp03.Top              := 160;
+           grpVendedor.Top        := 225;
+           Grp06.Top              := 258;
+           Grp07.Top              := 299;
+
+           Grp08.Top              := 372;
+           Edt_Tipo.Text          := '999';
+           Cb_Tipo.Text           := 'TODOS OS TIPOS';
+
+           EditDataI.Date := StrToDate('01/' + IntToStr( MonthOf(Date)) + '/' + IntToStr(YearOf(Date)) ); // inicio do mês
+           EditDataF.Date := StrToDate(IntToStr(UltimoDiaDoMes(MonthOf(Date), YearOf(Date))) + '/' + IntToStr( MonthOf(Date)) + '/' + IntToStr(YearOf(Date)) ); // fim do mês
+
        end
 
        ;
@@ -3184,11 +3281,129 @@ begin
 
 end;
 
+procedure TFormGImpPedido.cdsVendaAgrupadaProdutoCalcFields(DataSet: TDataSet);
+begin
+  inherited;
+  cdsVendaAgrupadaProdutoCC_REPRES.AsCurrency :=  ((cdsVendaAgrupadaProdutoTOTAL_FAT.AsCurrency * 100) / cdsVendaAgrupadaProdutoTOTAL_GERAL_FAT.value);
+
+end;
+
 procedure TFormGImpPedido.cdsVendaSegCalcFields(DataSet: TDataSet);
 begin
   inherited;
   cdsVendaSegCC_REPRES.AsCurrency :=  ((CdsVendaSegTOTAL_FAT.AsCurrency * 100)/CdsVendaSegTOTAL_GERAL_FAT.value);
 end;
+
+
+
+procedure TFormGImpPedido.ImprimirVendasAgrupadasPorProduto;
+// Vendas por agrupamento de Produtos
+var
+wGroup, Filtro :String;
+begin
+   Filtro := 'Filtro: ';
+   wSQL1  := 'select Sum(I1.PRF_QTDE)AS QTDE ,sum(I1.PRF_QTDEFAT * I1.PRF_PRECO)AS TOTAL_FAT ,sum(I1.PRF_QTDE * I1.PRF_PRECO)AS TOTAL_PED , I1.PRD_REFER, I1.PRF_PRDDESCRI  ' +
+             ' from PED_IT01 I1 '+
+             ' join  ped0000 pe on pe.emp_codigo = i1.emp_codigo and pe.ped_codigo = i1.ped_codigo and PED_SITUACAO <> '+QuotedStr('C')+
+             ' left join PRD0000 P1 on(I1.PRD_REFER = P1.PRD_REFER  AND i1.EMP_CODIGO = p1.EMP_CODIGO) ';
+   wSQL2  := 'left join PRD_LINHA L1 on (L1.LIN_CODIGO = P1.lIN_CODIGO)';
+
+   wGroup := ' group by I1.PRD_REFER, I1.PRF_PRDDESCRI  ORDER BY PRF_PRDDESCRI';
+
+//   if RadEntrada.checked  then
+//       wSQL3 := ' where PED_DTENTRADA between '''+DataAmericana(EditDataI.Text)+''' and ' + QuotedStr(DataAmericana(EditDataF.Text))
+//   else
+//   if RadEntrega.checked  then
+   wSQL3 := ' where I1.PED_CODIGO in(select PED_CODIGO from NF0001 Where NF_SAIDA between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''')';
+   Filtro := Filtro + ' Data de Entrega ';
+
+//   else
+//     if RadFaturamento.checked  then
+//       wSQL3 := ' where I1.PED_CODIGO in(select PED_CODIGO from FAT0000 Where FAT_DTEMIS between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''')'   ;
+
+   {Tipo de Faturamento}
+   if (Rad_Faturado.Checked) then
+   begin
+          wSQL3 :=  wSQL3  + ' AND ((pe.PED_SITUACAO = ''T'') OR (pe.PED_SITUACAO = ''P''))';
+          Filtro := Filtro + ' - Pedidos Pendentes ou Faturados'
+   end;
+   if (Rad_Faturar.Checked) then
+   begin
+          wSQL3 :=  wSQL3  + ' AND ((pe.PED_SITUACAO = ''F'') OR (pe.PED_SITUACAO = ''P''))';
+          Filtro := Filtro + ' - Pedidos Pendentes ou a Faturar'
+   end;
+
+
+
+  {Selecionou um cliente}
+  if EdtClie.Text <> '' then
+  begin
+      wSQL3 :=  wSQL3  + ' AND Pe.CLI_CODIGO = '+QuotedStr( EdtClie.Text);
+      Filtro := Filtro + ' - Cliente: ' + cbCliente.Text;
+  end;
+
+  { tpo de pedido}
+  if EdtTipo.Text <> '' then
+  begin
+     wSQL3 :=  wSQL3  + ' AND pe.OPV_CODIGO = '+QuotedStr( EdtTipo.Text);
+     Filtro := Filtro + ' - Tipo: ' + cbTipo.Text;
+  end;
+
+   {centro de custo}
+  if EdProjetoObraCodigo.Text <> '' then
+  begin
+   wSQL3 :=  wSQL3  + ' AND pe.PCX_CODIGO =  '+QuotedStr( EdProjetoObraCodigo.Text);
+   Filtro := Filtro + ' - Centro de Custo: ' + cbProjetoObra.Text;
+  end;
+
+  {selecionar vendedor}
+  if EdtRep.Text <> '' then
+  begin
+     wSQL3 :=  wSQL3  + ' AND Pe.REP_CODIGO = '+QuotedStr( EdtRep.Text);
+     Filtro := Filtro + ' - Vendedor: ' + cbRep.Text;
+  end;
+
+   cdsVendaAgrupadaProduto.Close;
+   //SqlCdsVendaSeg.CommandText := SqlDef('PEDIDOS',wSQL1,wSQL2+wGroup,'order by TOTAL_FAT Desc','I1.');
+   sqlVendaAgrupadaProduto.SQL.Clear;
+   {Verifica o compartilhamento se exclusivo}
+    if not chkMultiempresa.Checked and (share('PEDIDOS') = 'E') then
+      wSQL3 := wSQL3 + ' AND i1.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO)
+    else if chkMultiempresa.Checked then
+      wSQL3 := wSQL3 + ' and '+ ' i1.emp_codigo in ('+fListaEmpresas.commatext+')';
+
+
+   sqlVendaAgrupadaProduto.SQL.Text := wSQL1 + wSQL2 + wSQL3 + wGroup;
+   if DBInicio.IsDesenvolvimento then
+      CopyToClipboard(sqlVendaAgrupadaProduto.SQL.Text);
+   cdsVendaAgrupadaProduto.Open;
+   if cdsVendaAgrupadaProduto.IsEmpty then
+      GeraException('Não foi encontrado informações');
+   cdsVendaAgrupadaProduto.IndexDefs.Update;
+
+//   SqlCdsVendaSeg.IndexFieldNames := 'TOTAL_FAT'desc;
+
+   if RadVideo.checked  then
+      begin
+          ppVendaAgrupadaProduto.DeviceType := 'Screen';
+      end;
+   if RadImpressora.checked  then
+      begin
+          ppVendaAgrupadaProduto.ShowPrintDialog := true;
+          ppVendaAgrupadaProduto.DeviceType      := 'Printer';
+      end;
+
+   ppLabel116.Caption := DBINICIO.EMPRESA.RAZAO;
+   ppLabel129.Caption    := 'Período de  '+EditDataI.Text+'  até  '+EditDataF.Text+'';
+   ppFiltro.Caption := Filtro;
+
+   RBuilderPreview(ppVendaAgrupadaProduto);
+
+end;
+
+
+
+
 
 procedure TFormGImpPedido.ImprimiVendasSegmento;
 // Vendas por Linha dos Produtos

@@ -4,11 +4,11 @@ inherited FormGImpPedido: TFormGImpPedido
   BorderIcons = [biSystemMenu]
   Caption = 'Relat'#243'rio de pedidos'
   ClientHeight = 654
-  ClientWidth = 1307
+  ClientWidth = 1410
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   Position = poScreenCenter
-  ExplicitWidth = 1323
+  ExplicitWidth = 1426
   ExplicitHeight = 693
   PixelsPerInch = 96
   TextHeight = 14
@@ -7949,8 +7949,8 @@ inherited FormGImpPedido: TFormGImpPedido
   end
   object DsVendaSeg: TDataSource
     DataSet = cdsVendaSeg
-    Left = 816
-    Top = 464
+    Left = 808
+    Top = 472
   end
   object ppRVendaSeg: TppReport
     AutoStop = False
@@ -8039,7 +8039,7 @@ inherited FormGImpPedido: TFormGImpPedido
     CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
     CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
     CloudDriveSettings.OneDriveSettings.DirectorySupport = True
-    Left = 952
+    Left = 968
     Top = 464
     Version = '22.0'
     mmColumnWidth = 0
@@ -14514,6 +14514,891 @@ inherited FormGImpPedido: TFormGImpPedido
     object cdsRel02EMP_CODIGO: TStringField
       FieldName = 'EMP_CODIGO'
       Size = 3
+    end
+  end
+  object ppVendaAgrupadaProduto: TppReport
+    AutoStop = False
+    DataPipeline = dbVendaAgrupadaProduto
+    PassSetting = psTwoPass
+    PrinterSetup.BinName = 'Default'
+    PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
+    PrinterSetup.PaperName = 'Carta'
+    PrinterSetup.PrinterName = 'Default'
+    PrinterSetup.SaveDeviceSettings = False
+    PrinterSetup.mmMarginBottom = 15000
+    PrinterSetup.mmMarginLeft = 10000
+    PrinterSetup.mmMarginRight = 10000
+    PrinterSetup.mmMarginTop = 15000
+    PrinterSetup.mmPaperHeight = 279000
+    PrinterSetup.mmPaperWidth = 216000
+    PrinterSetup.PaperSize = 1
+    Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\RELPED05.rtm'
+    Units = utMillimeters
+    ArchiveFileName = '($MyDocuments)\ReportArchive.raf'
+    DeviceType = 'Screen'
+    DefaultFileDeviceType = 'PDF'
+    EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
+    LanguageID = 'Default'
+    OpenFile = False
+    OutlineSettings.CreateNode = True
+    OutlineSettings.CreatePageNodes = True
+    OutlineSettings.Enabled = False
+    OutlineSettings.Visible = False
+    ThumbnailSettings.Enabled = True
+    ThumbnailSettings.Visible = True
+    ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
+    PDFSettings.EmbedFontOptions = [efUseSubset]
+    PDFSettings.EncryptSettings.AllowCopy = True
+    PDFSettings.EncryptSettings.AllowInteract = True
+    PDFSettings.EncryptSettings.AllowModify = True
+    PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
+    PDFSettings.EncryptSettings.Enabled = False
+    PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
+    PDFSettings.FontEncoding = feAnsi
+    PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    PreviewFormSettings.WindowState = wsMaximized
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
+    RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
+    RTFSettings.DefaultFont.Color = clWindowText
+    RTFSettings.DefaultFont.Height = -13
+    RTFSettings.DefaultFont.Name = 'Arial'
+    RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
+    TextFileName = '($MyDocuments)\Report.pdf'
+    TextSearchSettings.DefaultString = '<FindText>'
+    TextSearchSettings.Enabled = True
+    XLSSettings.AppName = 'ReportBuilder'
+    XLSSettings.Author = 'ReportBuilder'
+    XLSSettings.Subject = 'Report'
+    XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
+    Left = 1296
+    Top = 560
+    Version = '22.0'
+    mmColumnWidth = 0
+    DataPipelineName = 'dbVendaAgrupadaProduto'
+    object ppHeaderBand11: TppHeaderBand
+      Border.mmPadding = 0
+      PrintHeight = phDynamic
+      mmBottomOffset = 0
+      mmHeight = 24871
+      mmPrintPosition = 0
+      object ppLine68: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line1'
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 265
+        mmLeft = 0
+        mmTop = 0
+        mmWidth = 196057
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel116: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'LblSegEmpresa'
+        HyperlinkEnabled = False
+        AutoSize = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'LABEL_EMPRESA'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 265
+        mmTop = 794
+        mmWidth = 159809
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel123: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'LBL_05_TITULO01'
+        HyperlinkEnabled = False
+        AutoSize = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Relatorio de Vendas Agrupado por Produto'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 0
+        mmTop = 5292
+        mmWidth = 160073
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppSystemVariable21: TppSystemVariable
+        DesignLayer = ppDesignLayer12
+        UserName = 'SystemVariable1'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        VarType = vtDateTime
+        DisplayFormat = 'dd/mm/yyyy HH:mm'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 169863
+        mmTop = 794
+        mmWidth = 26458
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppSystemVariable22: TppSystemVariable
+        DesignLayer = ppDesignLayer12
+        UserName = 'SystemVariable2'
+        HyperlinkEnabled = False
+        OnGetText = PaginaGetText
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        VarType = vtPageSetDesc
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        mmHeight = 4163
+        mmLeft = 178188
+        mmTop = 9790
+        mmWidth = 18133
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLine69: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line4'
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 265
+        mmLeft = 0
+        mmTop = 14552
+        mmWidth = 196057
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel124: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label58'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Descri'#231#227'o do Produto'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4234
+        mmLeft = 11906
+        mmTop = 20116
+        mmWidth = 33073
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel125: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label59'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Qtde Total de Itens'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4057
+        mmLeft = 63765
+        mmTop = 20035
+        mmWidth = 30057
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel126: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label60'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Valor Total Pedidos'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4057
+        mmLeft = 100806
+        mmTop = 20035
+        mmWidth = 30692
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel127: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label61'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Valor Total Faturado'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4057
+        mmLeft = 136790
+        mmTop = 20035
+        mmWidth = 32173
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel128: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label62'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Representa'#231#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4057
+        mmLeft = 170392
+        mmTop = 20035
+        mmWidth = 23495
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLine70: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line46'
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 265
+        mmLeft = 0
+        mmTop = 24614
+        mmWidth = 196321
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel129: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'ppLblPeriodo'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'ppLblPeriodo'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4057
+        mmLeft = 265
+        mmTop = 9790
+        mmWidth = 20532
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLabel131: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label131'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Refer.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4234
+        mmLeft = 794
+        mmTop = 20116
+        mmWidth = 8996
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppFiltro: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'ppLblPeriodo1'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Filtro'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 4233
+        mmLeft = 1588
+        mmTop = 15346
+        mmWidth = 7672
+        BandType = 0
+        LayerName = BandLayer12
+      end
+      object ppLine72: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line72'
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 265
+        mmLeft = -3
+        mmTop = 19584
+        mmWidth = 196057
+        BandType = 0
+        LayerName = BandLayer12
+      end
+    end
+    object ppDetailBand12: TppDetailBand
+      Border.mmPadding = 0
+      ColumnTraversal = ctLeftToRight
+      mmBottomOffset = 0
+      mmHeight = 4233
+      mmPrintPosition = 0
+      object ppDBText103: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText56'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'PRD_REFER'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '000'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 3969
+        mmLeft = 794
+        mmTop = 260
+        mmWidth = 6879
+        BandType = 4
+        LayerName = BandLayer12
+      end
+      object ppDBText104: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText57'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'PRF_PRDDESCRI'
+        DataPipeline = dbVendaAgrupadaProduto
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 3969
+        mmLeft = 8467
+        mmTop = 260
+        mmWidth = 52652
+        BandType = 4
+        LayerName = BandLayer12
+      end
+      object ppDBText105: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText58'
+        HyperlinkEnabled = False
+        AutoSize = True
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'QTDE'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '#0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 4057
+        mmLeft = 71797
+        mmTop = 176
+        mmWidth = 18203
+        BandType = 4
+        LayerName = BandLayer12
+      end
+      object ppDBText106: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText59'
+        HyperlinkEnabled = False
+        AutoSize = True
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'TOTAL_PED'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '#,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 4057
+        mmLeft = 111446
+        mmTop = 176
+        mmWidth = 15452
+        BandType = 4
+        LayerName = BandLayer12
+      end
+      object ppDBText107: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText60'
+        HyperlinkEnabled = False
+        AutoSize = True
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'TOTAL_FAT'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '#,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 4057
+        mmLeft = 148541
+        mmTop = 176
+        mmWidth = 17357
+        BandType = 4
+        LayerName = BandLayer12
+      end
+      object ppDBText108: TppDBText
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBText61'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'CC_REPRES'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '#00 %'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 4057
+        mmLeft = 173038
+        mmTop = 176
+        mmWidth = 17000
+        BandType = 4
+        LayerName = BandLayer12
+      end
+    end
+    object ppFooterBand2: TppFooterBand
+      Border.mmPadding = 0
+      mmBottomOffset = 0
+      mmHeight = 5027
+      mmPrintPosition = 0
+      object ppLine71: TppLine
+        DesignLayer = ppDesignLayer12
+        UserName = 'Line47'
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Weight = 0.750000000000000000
+        mmHeight = 1323
+        mmLeft = 0
+        mmTop = 265
+        mmWidth = 196586
+        BandType = 8
+        LayerName = BandLayer12
+      end
+      object ppLabel130: TppLabel
+        DesignLayer = ppDesignLayer12
+        UserName = 'Label63'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Total Geral :'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 3969
+        mmLeft = 0
+        mmTop = 1000
+        mmWidth = 19579
+        BandType = 8
+        LayerName = BandLayer12
+      end
+      object ppDBCalc43: TppDBCalc
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBCalc17'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'QTDE'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '#,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 3969
+        mmLeft = 60000
+        mmTop = 1000
+        mmWidth = 29898
+        BandType = 8
+        LayerName = BandLayer12
+      end
+      object ppDBCalc44: TppDBCalc
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBCalc18'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'TOTAL_PED'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '#,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 3969
+        mmLeft = 97000
+        mmTop = 1000
+        mmWidth = 29898
+        BandType = 8
+        LayerName = BandLayer12
+      end
+      object ppDBCalc45: TppDBCalc
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBCalc19'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'TOTAL_FAT'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '#,##0.00'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 3969
+        mmLeft = 136000
+        mmTop = 1000
+        mmWidth = 29898
+        BandType = 8
+        LayerName = BandLayer12
+      end
+      object ppDBCalc46: TppDBCalc
+        DesignLayer = ppDesignLayer12
+        UserName = 'DBCalc20'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'CC_REPRES'
+        DataPipeline = dbVendaAgrupadaProduto
+        DisplayFormat = '000 %'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 10
+        Font.Style = []
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'dbVendaAgrupadaProduto'
+        mmHeight = 4057
+        mmLeft = 173038
+        mmTop = 970
+        mmWidth = 17000
+        BandType = 8
+        LayerName = BandLayer12
+      end
+    end
+    object ppDesignLayers12: TppDesignLayers
+      object ppDesignLayer12: TppDesignLayer
+        UserName = 'BandLayer12'
+        LayerType = ltBanded
+        Index = 0
+      end
+    end
+    object ppParameterList11: TppParameterList
+    end
+  end
+  object dbVendaAgrupadaProduto: TppDBPipeline
+    DataSource = dsVendaAgrupadaProduto
+    CloseDataSource = True
+    UserName = 'DBVendaSeg1'
+    Left = 1296
+    Top = 504
+    object dbVendaAgrupadaProdutoppField1: TppField
+      FieldAlias = 'QTDE'
+      FieldName = 'QTDE'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 0
+      Searchable = False
+      Sortable = False
+    end
+    object dbVendaAgrupadaProdutoppField2: TppField
+      FieldAlias = 'TOTAL_FAT'
+      FieldName = 'TOTAL_FAT'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 1
+      Searchable = False
+      Sortable = False
+    end
+    object dbVendaAgrupadaProdutoppField3: TppField
+      FieldAlias = 'TOTAL_PED'
+      FieldName = 'TOTAL_PED'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 2
+      Searchable = False
+      Sortable = False
+    end
+    object dbVendaAgrupadaProdutoppField4: TppField
+      FieldAlias = 'CC_REPRES'
+      FieldName = 'CC_REPRES'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 3
+      Searchable = False
+      Sortable = False
+    end
+    object dbVendaAgrupadaProdutoppField5: TppField
+      FieldAlias = 'PRD_REFER'
+      FieldName = 'PRD_REFER'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 4
+      Searchable = False
+      Sortable = False
+    end
+    object dbVendaAgrupadaProdutoppField6: TppField
+      FieldAlias = 'PRF_PRDDESCRI'
+      FieldName = 'PRF_PRDDESCRI'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 5
+      Searchable = False
+      Sortable = False
+    end
+  end
+  object dsVendaAgrupadaProduto: TDataSource
+    DataSet = cdsVendaAgrupadaProduto
+    Left = 1296
+    Top = 448
+  end
+  object sqlVendaAgrupadaProduto: TSQLQuery
+    MaxBlobSize = -1
+    Params = <>
+    SQLConnection = DBConn
+    Left = 1288
+    Top = 256
+    object slqVendaAgrupadaProdutoQTDE: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'QTDE'
+      Precision = 15
+    end
+    object slqVendaAgrupadaProdutoTOTAL_FAT: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'TOTAL_FAT'
+      DisplayFormat = '###.##0.00'
+      EditFormat = '###.##0.00'
+      Precision = 15
+    end
+    object slqVendaAgrupadaProdutoTOTAL_PED: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'TOTAL_PED'
+      DisplayFormat = '##0.00'
+      EditFormat = '##0.00'
+      Precision = 15
+    end
+    object slqVendaAgrupadaProdutoCC_REPRES: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'CC_REPRES'
+      Calculated = True
+    end
+    object sqlVendaAgrupadaProdutoPRD_REFER: TStringField
+      FieldName = 'PRD_REFER'
+    end
+    object sqlVendaAgrupadaProdutoPRF_PRDDESCRI: TStringField
+      FieldName = 'PRF_PRDDESCRI'
+      Size = 255
+    end
+    object slqVendaAgrupadaProdutoTOTAL_GERAL_FAT: TAggregateField
+      FieldName = 'TOTAL_GERAL_FAT'
+      currency = True
+      DisplayName = ''
+      DisplayFormat = '##0.00'
+      Expression = 'sum(TOTAL_FAT)'
+    end
+  end
+  object dspVendaAgrupadaProduto: TDataSetProvider
+    DataSet = sqlVendaAgrupadaProduto
+    Left = 1296
+    Top = 312
+  end
+  object cdsVendaAgrupadaProduto: TClientDataSet
+    Aggregates = <>
+    AggregatesActive = True
+    Params = <>
+    ProviderName = 'dspVendaAgrupadaProduto'
+    OnCalcFields = cdsVendaAgrupadaProdutoCalcFields
+    Left = 1288
+    Top = 384
+    object cdsVendaAgrupadaProdutoQTDE: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'QTDE'
+      Precision = 15
+    end
+    object cdsVendaAgrupadaProdutoTOTAL_FAT: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'TOTAL_FAT'
+      DisplayFormat = '###.##0.00'
+      EditFormat = '###.##0.00'
+      Precision = 15
+    end
+    object cdsVendaAgrupadaProdutoTOTAL_PED: TFMTBCDField
+      Alignment = taLeftJustify
+      FieldName = 'TOTAL_PED'
+      DisplayFormat = '##0.00'
+      EditFormat = '##0.00'
+      Precision = 15
+    end
+    object cdsVendaAgrupadaProdutoCC_REPRES: TCurrencyField
+      FieldKind = fkCalculated
+      FieldName = 'CC_REPRES'
+      Calculated = True
+    end
+    object cdsVendaAgrupadaProdutoPRD_REFER: TStringField
+      FieldName = 'PRD_REFER'
+    end
+    object cdsVendaAgrupadaProdutoPRF_PRDDESCRI: TStringField
+      FieldName = 'PRF_PRDDESCRI'
+      Size = 255
+    end
+    object cdsVendaAgrupadaProdutoTOTAL_GERAL_FAT: TAggregateField
+      FieldName = 'TOTAL_GERAL_FAT'
+      Active = True
+      currency = True
+      DisplayName = ''
+      DisplayFormat = '##0.00'
+      Expression = 'sum(TOTAL_FAT)'
     end
   end
 end
