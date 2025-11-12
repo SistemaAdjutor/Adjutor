@@ -406,7 +406,7 @@ begin
       // --- IBS ---
       begin
         NotaF.NFe.Ide.cMunFGIBS := qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
-        Produto.Imposto.IBSCBS.CST := cst000;
+        Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(qItemNota.FieldByName('IBS_CODIGO').AsString);
         Produto.Imposto.IBSCBS.cClassTrib := '000001';
 
         // Cria o grupo principal e subgrupos se necessário
@@ -2951,6 +2951,8 @@ begin
      end;
 
   end;
+
+  notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_NOTA').AsFloat;
 
   // if (oSistema.Empresa.Parametro.ValorAproximadoImpostos = vaiTodos) or (NotaFiscal.Destinatario.ConsumidorFinal) then  //incompleto
    if  MostraIBPT_Item then
