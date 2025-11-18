@@ -517,12 +517,10 @@ inherited FormGImpPedido: TFormGImpPedido
     object Rad_Todos: TRadioButton
       Left = 15
       Top = 19
-      Width = 53
+      Width = 101
       Height = 17
       Caption = '&Todos'
-      Checked = True
       TabOrder = 0
-      TabStop = True
     end
     object Rad_Faturado: TRadioButton
       Left = 141
@@ -530,7 +528,9 @@ inherited FormGImpPedido: TFormGImpPedido
       Width = 113
       Height = 17
       Caption = 'Somente &Faturado'
+      Checked = True
       TabOrder = 1
+      TabStop = True
     end
     object Rad_Faturar: TRadioButton
       Left = 277
@@ -14612,7 +14612,7 @@ inherited FormGImpPedido: TFormGImpPedido
       Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
-      mmHeight = 24871
+      mmHeight = 29369
       mmPrintPosition = 0
       object ppLine68: TppLine
         DesignLayer = ppDesignLayer12
@@ -14745,10 +14745,10 @@ inherited FormGImpPedido: TFormGImpPedido
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 4234
-        mmLeft = 11906
-        mmTop = 20116
-        mmWidth = 33073
+        mmHeight = 4233
+        mmLeft = 25929
+        mmTop = 24342
+        mmWidth = 37571
         BandType = 0
         LayerName = BandLayer12
       end
@@ -14758,7 +14758,7 @@ inherited FormGImpPedido: TFormGImpPedido
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Qtde Total de Itens'
+        Caption = 'Qtde de Itens'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -14766,11 +14766,13 @@ inherited FormGImpPedido: TFormGImpPedido
         Font.Style = []
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taRightJustified
         Transparent = True
-        mmHeight = 4057
-        mmLeft = 63765
-        mmTop = 20035
-        mmWidth = 30057
+        WordWrap = True
+        mmHeight = 8467
+        mmLeft = 121973
+        mmTop = 20108
+        mmWidth = 18521
         BandType = 0
         LayerName = BandLayer12
       end
@@ -14780,7 +14782,7 @@ inherited FormGImpPedido: TFormGImpPedido
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Valor Total Pedidos'
+        Caption = 'Valor dos Pedidos'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -14788,33 +14790,13 @@ inherited FormGImpPedido: TFormGImpPedido
         Font.Style = []
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taRightJustified
         Transparent = True
-        mmHeight = 4057
-        mmLeft = 100806
-        mmTop = 20035
-        mmWidth = 30692
-        BandType = 0
-        LayerName = BandLayer12
-      end
-      object ppLabel127: TppLabel
-        DesignLayer = ppDesignLayer12
-        UserName = 'Label61'
-        HyperlinkEnabled = False
-        Border.Weight = 1.000000000000000000
-        Border.mmPadding = 0
-        Caption = 'Valor Total Faturado'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 10
-        Font.Style = []
-        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
-        FormFieldSettings.FormFieldType = fftNone
-        Transparent = True
-        mmHeight = 4057
-        mmLeft = 136790
-        mmTop = 20035
-        mmWidth = 32173
+        WordWrap = True
+        mmHeight = 8467
+        mmLeft = 147373
+        mmTop = 20108
+        mmWidth = 20109
         BandType = 0
         LayerName = BandLayer12
       end
@@ -14832,11 +14814,12 @@ inherited FormGImpPedido: TFormGImpPedido
         Font.Style = []
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
+        TextAlignment = taRightJustified
         Transparent = True
-        mmHeight = 4057
-        mmLeft = 170392
-        mmTop = 20035
-        mmWidth = 23495
+        mmHeight = 4234
+        mmLeft = 170921
+        mmTop = 20108
+        mmWidth = 23019
         BandType = 0
         LayerName = BandLayer12
       end
@@ -14848,7 +14831,7 @@ inherited FormGImpPedido: TFormGImpPedido
         Weight = 0.750000000000000000
         mmHeight = 265
         mmLeft = 0
-        mmTop = 24614
+        mmTop = 29104
         mmWidth = 196321
         BandType = 0
         LayerName = BandLayer12
@@ -14881,7 +14864,7 @@ inherited FormGImpPedido: TFormGImpPedido
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Refer.'
+        Caption = 'Refer'#234'ncia'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -14890,10 +14873,10 @@ inherited FormGImpPedido: TFormGImpPedido
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 4234
+        mmHeight = 4233
         mmLeft = 794
-        mmTop = 20116
-        mmWidth = 8996
+        mmTop = 24342
+        mmWidth = 18785
         BandType = 0
         LayerName = BandLayer12
       end
@@ -14951,14 +14934,14 @@ inherited FormGImpPedido: TFormGImpPedido
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 10
+        Font.Size = 9
         Font.Style = []
         Transparent = True
         DataPipelineName = 'dbVendaAgrupadaProduto'
-        mmHeight = 3969
+        mmHeight = 3968
         mmLeft = 794
-        mmTop = 260
-        mmWidth = 6879
+        mmTop = 265
+        mmWidth = 24077
         BandType = 4
         LayerName = BandLayer12
       end
@@ -14973,14 +14956,14 @@ inherited FormGImpPedido: TFormGImpPedido
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 10
+        Font.Size = 9
         Font.Style = []
         Transparent = True
         DataPipelineName = 'dbVendaAgrupadaProduto'
         mmHeight = 3969
-        mmLeft = 8467
-        mmTop = 260
-        mmWidth = 52652
+        mmLeft = 25929
+        mmTop = 265
+        mmWidth = 93927
         BandType = 4
         LayerName = BandLayer12
       end
@@ -14997,15 +14980,15 @@ inherited FormGImpPedido: TFormGImpPedido
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 10
+        Font.Size = 9
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'dbVendaAgrupadaProduto'
-        mmHeight = 4057
-        mmLeft = 71797
-        mmTop = 176
-        mmWidth = 18203
+        mmHeight = 3968
+        mmLeft = 121973
+        mmTop = 265
+        mmWidth = 18521
         BandType = 4
         LayerName = BandLayer12
       end
@@ -15022,40 +15005,15 @@ inherited FormGImpPedido: TFormGImpPedido
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 10
+        Font.Size = 9
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'dbVendaAgrupadaProduto'
-        mmHeight = 4057
-        mmLeft = 111446
-        mmTop = 176
-        mmWidth = 15452
-        BandType = 4
-        LayerName = BandLayer12
-      end
-      object ppDBText107: TppDBText
-        DesignLayer = ppDesignLayer12
-        UserName = 'DBText60'
-        HyperlinkEnabled = False
-        AutoSize = True
-        Border.Weight = 1.000000000000000000
-        Border.mmPadding = 0
-        DataField = 'TOTAL_FAT'
-        DataPipeline = dbVendaAgrupadaProduto
-        DisplayFormat = '#,##0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 10
-        Font.Style = []
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'dbVendaAgrupadaProduto'
-        mmHeight = 4057
-        mmLeft = 148541
-        mmTop = 176
-        mmWidth = 17357
+        mmHeight = 3969
+        mmLeft = 142346
+        mmTop = 265
+        mmWidth = 25135
         BandType = 4
         LayerName = BandLayer12
       end
@@ -15071,14 +15029,14 @@ inherited FormGImpPedido: TFormGImpPedido
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
-        Font.Size = 10
+        Font.Size = 9
         Font.Style = []
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'dbVendaAgrupadaProduto'
-        mmHeight = 4057
-        mmLeft = 173038
-        mmTop = 176
+        mmHeight = 3968
+        mmLeft = 177013
+        mmTop = 265
         mmWidth = 17000
         BandType = 4
         LayerName = BandLayer12
@@ -15118,8 +15076,8 @@ inherited FormGImpPedido: TFormGImpPedido
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
-        mmLeft = 0
-        mmTop = 1000
+        mmLeft = 82815
+        mmTop = 1058
         mmWidth = 19579
         BandType = 8
         LayerName = BandLayer12
@@ -15142,8 +15100,8 @@ inherited FormGImpPedido: TFormGImpPedido
         Transparent = True
         DataPipelineName = 'dbVendaAgrupadaProduto'
         mmHeight = 3969
-        mmLeft = 60000
-        mmTop = 1000
+        mmLeft = 110596
+        mmTop = 1058
         mmWidth = 29898
         BandType = 8
         LayerName = BandLayer12
@@ -15166,33 +15124,9 @@ inherited FormGImpPedido: TFormGImpPedido
         Transparent = True
         DataPipelineName = 'dbVendaAgrupadaProduto'
         mmHeight = 3969
-        mmLeft = 97000
-        mmTop = 1000
-        mmWidth = 29898
-        BandType = 8
-        LayerName = BandLayer12
-      end
-      object ppDBCalc45: TppDBCalc
-        DesignLayer = ppDesignLayer12
-        UserName = 'DBCalc19'
-        HyperlinkEnabled = False
-        Border.Weight = 1.000000000000000000
-        Border.mmPadding = 0
-        DataField = 'TOTAL_FAT'
-        DataPipeline = dbVendaAgrupadaProduto
-        DisplayFormat = '#,##0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 10
-        Font.Style = []
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'dbVendaAgrupadaProduto'
-        mmHeight = 3969
-        mmLeft = 136000
-        mmTop = 1000
-        mmWidth = 29898
+        mmLeft = 142346
+        mmTop = 265
+        mmWidth = 25135
         BandType = 8
         LayerName = BandLayer12
       end
@@ -15214,7 +15148,7 @@ inherited FormGImpPedido: TFormGImpPedido
         Transparent = True
         DataPipelineName = 'dbVendaAgrupadaProduto'
         mmHeight = 4057
-        mmLeft = 173038
+        mmLeft = 177013
         mmTop = 970
         mmWidth = 17000
         BandType = 8

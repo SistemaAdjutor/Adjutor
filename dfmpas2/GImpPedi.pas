@@ -920,7 +920,6 @@ type
     ppLabel124: TppLabel;
     ppLabel125: TppLabel;
     ppLabel126: TppLabel;
-    ppLabel127: TppLabel;
     ppLabel128: TppLabel;
     ppLine70: TppLine;
     ppLabel129: TppLabel;
@@ -929,14 +928,12 @@ type
     ppDBText104: TppDBText;
     ppDBText105: TppDBText;
     ppDBText106: TppDBText;
-    ppDBText107: TppDBText;
     ppDBText108: TppDBText;
     ppFooterBand2: TppFooterBand;
     ppLine71: TppLine;
     ppLabel130: TppLabel;
     ppDBCalc43: TppDBCalc;
     ppDBCalc44: TppDBCalc;
-    ppDBCalc45: TppDBCalc;
     ppDBCalc46: TppDBCalc;
     ppDesignLayers12: TppDesignLayers;
     ppDesignLayer12: TppDesignLayer;
@@ -2737,11 +2734,12 @@ begin
            pOrigem.Visible        := False; // Origem
 
            {Habilitar}
-           RadEntrada.Enabled     := False;
-           RadEntrega.Enabled     := True;
-           RadEntrega.Checked     := True;
+           Rad_Todos.Enabled      := False;
+           RadEntrada.Enabled     := True;
+           RadEntrega.Enabled     := False;
            RadFaturamento.Enabled := False;
            RadEntrada.Caption     := 'Data Entrada';
+           RadEntrada.Checked     := True;
            Grp02.Top              := 119;
            Grp03.Top              := 160;
            grpVendedor.Top        := 225;
@@ -3302,7 +3300,16 @@ var
 wGroup, Filtro :String;
 begin
    Filtro := 'Filtro: ';
-   wSQL1  := 'select Sum(I1.PRF_QTDE)AS QTDE ,sum(I1.PRF_QTDEFAT * I1.PRF_PRECO)AS TOTAL_FAT ,sum(I1.PRF_QTDE * I1.PRF_PRECO)AS TOTAL_PED , I1.PRD_REFER, I1.PRF_PRDDESCRI  ' +
+   wSQL1  := 'select Sum(I1.PRF_QTDE)AS QTDE , ';
+
+   if (Rad_Faturado.Checked) then
+    wSQL1:= wSQL1 + ' sum(I1.PRF_QTDEFAT * I1.PRF_PRECO)AS TOTAL_FAT , ';
+
+    if (Rad_Faturar.Checked) then
+    wSQL1:= wSQL1 + ' sum(I1.PRF_QTDE * I1.PRF_PRECO)AS TOTAL_FAT , ';
+
+
+   wSQL1:= wSQL1 + ' sum(I1.PRF_QTDE * I1.PRF_PRECO)AS TOTAL_PED , I1.PRD_REFER, I1.PRF_PRDDESCRI  ' +
              ' from PED_IT01 I1 '+
              ' join  ped0000 pe on pe.emp_codigo = i1.emp_codigo and pe.ped_codigo = i1.ped_codigo and PED_SITUACAO <> '+QuotedStr('C')+
              ' left join PRD0000 P1 on(I1.PRD_REFER = P1.PRD_REFER  AND i1.EMP_CODIGO = p1.EMP_CODIGO) ';
@@ -3310,27 +3317,23 @@ begin
 
    wGroup := ' group by I1.PRD_REFER, I1.PRF_PRDDESCRI  ORDER BY PRF_PRDDESCRI';
 
-//   if RadEntrada.checked  then
-//       wSQL3 := ' where PED_DTENTRADA between '''+DataAmericana(EditDataI.Text)+''' and ' + QuotedStr(DataAmericana(EditDataF.Text))
-//   else
-//   if RadEntrega.checked  then
-   wSQL3 := ' where I1.PED_CODIGO in(select PED_CODIGO from NF0001 Where NF_SAIDA between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''')';
+
    Filtro := Filtro + ' Data de Entrega ';
 
-//   else
-//     if RadFaturamento.checked  then
-//       wSQL3 := ' where I1.PED_CODIGO in(select PED_CODIGO from FAT0000 Where FAT_DTEMIS between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''')'   ;
 
    {Tipo de Faturamento}
    if (Rad_Faturado.Checked) then
    begin
-          wSQL3 :=  wSQL3  + ' AND ((pe.PED_SITUACAO = ''T'') OR (pe.PED_SITUACAO = ''P''))';
-          Filtro := Filtro + ' - Pedidos Pendentes ou Faturados'
+          wSQL3 := ' where I1.PED_CODIGO in(select PED_CODIGO from NF0001 Where PED_DTENTRADA between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''')';
+          wSQL3 :=  wSQL3  + ' AND ((pe.PED_SITUACAO = ''T''))';
+          Filtro := Filtro + ' - Pedidos Faturados'
    end;
+
    if (Rad_Faturar.Checked) then
    begin
-          wSQL3 :=  wSQL3  + ' AND ((pe.PED_SITUACAO = ''F'') OR (pe.PED_SITUACAO = ''P''))';
-          Filtro := Filtro + ' - Pedidos Pendentes ou a Faturar'
+          wSQL3 := ' where (pe.PED_DTENTRADA between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''')';
+          wSQL3 :=  wSQL3 + ' and ((pe.PED_SITUACAO = ''F''))';
+          Filtro := Filtro + ' - Pedidos a Faturar'
    end;
 
 
