@@ -2544,9 +2544,10 @@ begin
            Grp02.Visible          := True;
            Grp03.Visible          := True;
            grpVendedor.Visible    := True;
+           Grp06.Visible          := True;
+
            Grp04.Visible          := False;
            Grp05.Visible          := False;
-           Grp06.Visible          := False;
            Grp09.Visible          := False;
            pOrigem.Visible        := False;
            {Habilitar}
@@ -2558,9 +2559,11 @@ begin
            Grp02.Top              := 119;
            Grp03.Top              := 161;
            grpVendedor.Top        := 224;
+           Grp06.Top              := 257;
 
-           Grp07.Top              := 257;    //73
-           Grp08.Top              := 330;
+
+           Grp07.Top              := 298;    //73
+           Grp08.Top              := 401;
            Edt_Tipo.Text          := '999';
            Cb_Tipo.Text           := 'TODOS OS TIPOS';
        end
@@ -3211,6 +3214,13 @@ begin
    else
      if RadFaturamento.checked  then
        wSQL3 := ' where I1.PED_CODIGO in(select PED_CODIGO from FAT0000 Where FAT_DTEMIS between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''')'   ;
+
+
+   if (Rad_Faturado.Checked) then
+      wSQL3 :=  wSQL3  +  ' AND (pe.PED_SITUACAO = ''T'')';
+   if (Rad_Faturar.Checked) then
+      wSQL3 :=  wSQL3  +  ' AND (pe.PED_SITUACAO = ''F'')';
+
 
   {Selecionou um cliente}
   if EdtClie.Text <> '' then
