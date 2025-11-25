@@ -493,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 4
+      PageIndex = 8
       TabOrder = 0
       object TPage
         Left = 0
@@ -4732,6 +4732,114 @@ inherited FormParametros: TFormParametros
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
             LimparCampoAoSair = True
+          end
+          object GroupBox44: TGroupBox
+            Left = 5
+            Top = 182
+            Width = 584
+            Height = 190
+            Caption = 'IBS / CBS'
+            TabOrder = 3
+            object Label679: TLabel
+              Left = 235
+              Top = 81
+              Width = 10
+              Height = 14
+              Caption = '%'
+            end
+            object Label680: TLabel
+              Left = 23
+              Top = 81
+              Width = 163
+              Height = 14
+              Caption = 'Al'#237'quota Municipal Padr'#227'o  do IBS:'
+            end
+            object Label681: TLabel
+              Left = 238
+              Top = 141
+              Width = 10
+              Height = 14
+              Caption = '%'
+            end
+            object Label682: TLabel
+              Left = 65
+              Top = 137
+              Width = 121
+              Height = 14
+              Caption = 'Al'#237'quota Padr'#227'o  do CBS:'
+            end
+            object Label683: TLabel
+              Left = 235
+              Top = 111
+              Width = 10
+              Height = 14
+              Caption = '%'
+            end
+            object Label684: TLabel
+              Left = 23
+              Top = 111
+              Width = 160
+              Height = 14
+              Caption = 'Al'#237'quota Estadual Padr'#227'o  do IBS:'
+            end
+            object Label685: TLabel
+              Left = 124
+              Top = 52
+              Width = 60
+              Height = 14
+              Caption = 'CST Padr'#227'o:'
+            end
+            object DBCheckBox104: TDBCheckBox
+              Left = 23
+              Top = 26
+              Width = 122
+              Height = 17
+              Hint = 'Produtos que controlam lote v'#227'o obrigar a vincula'#231#227'o do lote'
+              Caption = 'Ativar IBS / CBS'
+              DataField = 'PMT_ATIVAR_IBS_CBS'
+              DataSource = DataCadastros1.DsParametros
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 0
+              ValueChecked = 'S'
+              ValueUnchecked = 'N'
+            end
+            object DBEdit68: TDBEdit
+              Left = 189
+              Top = 77
+              Width = 40
+              Height = 22
+              DataField = 'PMT_IBS_ALIQUOTA_MUNICIPAL'
+              DataSource = DataCadastros1.DsParametros
+              TabOrder = 1
+            end
+            object DBEdit69: TDBEdit
+              Left = 189
+              Top = 137
+              Width = 40
+              Height = 22
+              DataField = 'PMT_CBS_ALIQUOTA'
+              DataSource = DataCadastros1.DsParametros
+              TabOrder = 3
+            end
+            object DBEdit70: TDBEdit
+              Left = 189
+              Top = 107
+              Width = 40
+              Height = 22
+              DataField = 'PMT_IBS_ALIQUOTA_ESTADUAL'
+              DataSource = DataCadastros1.DsParametros
+              TabOrder = 2
+            end
+            object DBEdit71: TDBEdit
+              Left = 189
+              Top = 49
+              Width = 40
+              Height = 22
+              DataField = 'PMT_CST_IBS_CBS'
+              DataSource = DataCadastros1.DsParametros
+              TabOrder = 4
+            end
           end
         end
       end

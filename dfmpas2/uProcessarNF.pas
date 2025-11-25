@@ -126,7 +126,7 @@ var
 //  Reboque: TreboqueCollectionItem;
 //  Lacre: TLacresCollectionItem;
     ProcReferenciado: TprocRefCollectionItem;
-    NumNFe, cst_PIS_COFINS :string;
+    NumNFe, cst_PIS_COFINS, TextoInfAdicCbsIbsIs :string;
     ok: boolean;
     i: integer;
     CSOSN,CSOSNST: Integer;
@@ -404,9 +404,15 @@ begin
       // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
 
       // --- IBS ---
+   if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' then
+   begin
+
       begin
         NotaF.NFe.Ide.cMunFGIBS := qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
-        Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(qItemNota.FieldByName('IBS_CODIGO').AsString);
+        if qItemNota.FieldByName('IBS_CODIGO').AsString = '' then
+          Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(dbInicio.GetParametroSistema('PMT_CST_IBS_CBS') )
+        else
+          Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(qItemNota.FieldByName('IBS_CODIGO').AsString);
         Produto.Imposto.IBSCBS.cClassTrib := '000001';
 
         // Cria o grupo principal e subgrupos se necessário
@@ -421,9 +427,17 @@ begin
 
         Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
 
-        // Busca alíquotas (prioridade: item > tabela OPE0000)
+        // Busca alíquotas (prioridade: item > tabela OPE0000 > Parâmetro)
         AliqMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
         AliqUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
+        if AliqMun = 0 then
+          AliqMun := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_MUNICIPAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
+        if AliqUF = 0 then
+          AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
+
+
+
+
 
         Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := AliqMun;
         Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun :=
@@ -443,6 +457,9 @@ begin
       // --- CBS ---
       begin
         AliqCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
+        if AliqCBS = 0 then
+          AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
+
 
         if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
           Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
@@ -470,6 +487,12 @@ begin
         end;
       end;
 
+      if TextoInfAdicCbsIbsIs = '' then
+        TextoInfAdicCbsIbsIs := 'IBS = ' + FormatFloat('0.0#', AliqUF) +
+                                ' e CBS = ' + FormatFloat('0.0#', AliqCBS) +
+                                ' incluso no xml de acordo com as regras da SEFAZ. ' ;
+
+   end;
 
 
 
@@ -1509,6 +1532,7 @@ begin
   Screen.Cursor := crHourGlass;
   ACBrNFeDANFEFR1.CasasDecimais.qCom :=  dbInicio.Empresa.fPMT_QTDE_DEC_PED;
   ACBrNFeDANFEFR1.CasasDecimais.vUnCom :=  dbInicio.Empresa.fPMT_QTDE_DEC_PED;
+  TextoInfAdicCbsIbsIs := '';
 end;
 
 procedure TfrmProcessaNFe.FormDestroy(Sender: TObject);
@@ -2626,7 +2650,10 @@ begin
   if dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_NATUREZA FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = '6147' then
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco +' . '+'IRRF retido R$ '+ FormatFloat('#,##0.00',NotaF.NFe.Total.retTrib.vIRRF ) ;
 
-
+  if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' THEN
+  begin
+    NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco + ' - ' + TextoInfAdicCbsIbsIs;
+  end;
 
 
   //informações complementares do tecnico responsável somente para ambiente de homologação

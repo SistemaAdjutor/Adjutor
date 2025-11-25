@@ -1864,6 +1864,19 @@ type
     DBCheckBox101: TDBCheckBox;
     DBCheckBox102: TDBCheckBox;
     DBCheckBox103: TDBCheckBox;
+    GroupBox44: TGroupBox;
+    DBCheckBox104: TDBCheckBox;
+    DBEdit68: TDBEdit;
+    Label679: TLabel;
+    Label680: TLabel;
+    DBEdit69: TDBEdit;
+    Label681: TLabel;
+    Label682: TLabel;
+    DBEdit70: TDBEdit;
+    Label683: TLabel;
+    Label684: TLabel;
+    Label685: TLabel;
+    DBEdit71: TDBEdit;
 
 
     procedure FormShow(Sender: tObject);

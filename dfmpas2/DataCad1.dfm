@@ -1699,6 +1699,32 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_CADASTRA_PRODUTO_PEDIDO'
       Size = 1
     end
+    object SqlParametrosPMT_ATIVAR_IBS_CBS: TStringField
+      FieldName = 'PMT_ATIVAR_IBS_CBS'
+      Size = 1
+    end
+    object SqlParametrosPMT_IBS_ALIQUOTA_MUNICIPAL: TFMTBCDField
+      DisplayWidth = 14
+      FieldName = 'PMT_IBS_ALIQUOTA_MUNICIPAL'
+      Precision = 10
+      Size = 4
+    end
+    object SqlParametrosPMT_IBS_ALIQUOTA_ESTADUAL: TFMTBCDField
+      DisplayWidth = 14
+      FieldName = 'PMT_IBS_ALIQUOTA_ESTADUAL'
+      Precision = 10
+      Size = 4
+    end
+    object SqlParametrosPMT_CBS_ALIQUOTA: TFMTBCDField
+      DisplayWidth = 14
+      FieldName = 'PMT_CBS_ALIQUOTA'
+      Precision = 10
+      Size = 4
+    end
+    object SqlParametrosPMT_CST_IBS_CBS: TStringField
+      FieldName = 'PMT_CST_IBS_CBS'
+      Size = 3
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -3039,6 +3065,35 @@ object DataCadastros1: TDataCadastros1
     object CdsParametrosPMT_CADASTRA_PRODUTO_PEDIDO: TStringField
       FieldName = 'PMT_CADASTRA_PRODUTO_PEDIDO'
       Size = 1
+    end
+    object CdsParametrosPMT_ATIVAR_IBS_CBS: TStringField
+      FieldName = 'PMT_ATIVAR_IBS_CBS'
+      Size = 1
+    end
+    object CdsParametrosPMT_IBS_ALIQUOTA_MUNICIPAL: TFMTBCDField
+      DisplayWidth = 14
+      FieldName = 'PMT_IBS_ALIQUOTA_MUNICIPAL'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Precision = 10
+      Size = 4
+    end
+    object CdsParametrosPMT_IBS_ALIQUOTA_ESTADUAL: TFMTBCDField
+      DisplayWidth = 14
+      FieldName = 'PMT_IBS_ALIQUOTA_ESTADUAL'
+      ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
+      Precision = 10
+      Size = 4
+    end
+    object CdsParametrosPMT_CBS_ALIQUOTA: TFMTBCDField
+      Tag = 4
+      DisplayWidth = 14
+      FieldName = 'PMT_CBS_ALIQUOTA'
+      Precision = 10
+      Size = 4
+    end
+    object CdsParametrosPMT_CST_IBS_CBS: TStringField
+      FieldName = 'PMT_CST_IBS_CBS'
+      Size = 3
     end
   end
   object DsParametros: TDataSource
