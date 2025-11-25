@@ -557,8 +557,6 @@ begin
   Application.CreateForm(TFrmMenu, FrmMenu);
   Application.CreateForm(TForm3, Form3);
   Application.CreateForm(TfrmBaseDbEstoque, frmBaseDbEstoque);
-  Application.CreateForm(TfrmCBS, frmCBS);
-  Application.CreateForm(TfrmIBS, frmIBS);
   if dbInicio.ModulosComoAplicacao then
   begin
      Application.CreateForm(TfrmBaseDBFDAC, frmBaseDBFDAC);

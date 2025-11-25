@@ -2,6 +2,7 @@ inherited frmIBS: TfrmIBS
   Caption = 'Imposto sobre Bens e Servi'#231'os'
   ClientHeight = 561
   ClientWidth = 784
+  OnActivate = FormActivate
   ExplicitWidth = 800
   ExplicitHeight = 600
   PixelsPerInch = 96
@@ -60,7 +61,7 @@ inherited frmIBS: TfrmIBS
         Width = 256
       end
       object cxGrid1DBTableView1IBS_ALIQUOTA: TcxGridDBColumn
-        Caption = 'Al'#237'quota'
+        Caption = 'Al'#237'quota Municipal'
         DataBinding.FieldName = 'IBS_ALIQUOTA'
         Width = 62
       end
@@ -68,6 +69,7 @@ inherited frmIBS: TfrmIBS
         Caption = 'Munic'#237'pio'
         DataBinding.FieldName = 'CID_CODIGO'
         PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.CaseSensitiveSearch = True
         Properties.DropDownListStyle = lsEditList
         Properties.DropDownRows = 10
         Properties.DropDownSizeable = True
@@ -101,6 +103,7 @@ inherited frmIBS: TfrmIBS
     TxOptions.AutoStop = True
   end
   inherited cdsEdit: TFDQuery
+    BeforeOpen = cdsEditBeforeOpen
     SQL.Strings = (
       'SELECT * FROM IBS ORDER BY IBS_CODIGO')
   end

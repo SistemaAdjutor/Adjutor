@@ -2,6 +2,7 @@ inherited frmCBS: TfrmCBS
   Caption = 'Contribui'#231#227'o sobre Bens e Servi'#231'os'
   ClientHeight = 561
   ClientWidth = 784
+  OnActivate = FormActivate
   ExplicitWidth = 800
   ExplicitHeight = 600
   PixelsPerInch = 96

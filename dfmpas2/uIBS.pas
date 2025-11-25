@@ -52,6 +52,8 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
+    procedure cdsEditBeforeOpen(DataSet: TDataSet);
   private
     { Private declarations }
   public
@@ -127,6 +129,13 @@ begin
  }
 end;
 
+procedure TfrmIBS.cdsEditBeforeOpen(DataSet: TDataSet);
+begin
+  inherited;
+  if not qCidade.Active then
+    qCidade.Open;
+end;
+
 procedure TfrmIBS.cdsEditBeforePost(DataSet: TDataSet);
 begin
 //  inherited;
@@ -138,9 +147,17 @@ begin
   end;
 end;
 
+procedure TfrmIBS.FormActivate(Sender: TObject);
+begin
+  inherited;
+  frmIBS.Caption := 'Imposto sobre Bens e Serviços';
+end;
+
 procedure TfrmIBS.FormCreate(Sender: TObject);
 begin
   inherited;
+  qCidade.SQL.Text := 'SELECT CID_CODIGO, CID_CIDADE FROM CID0000 ORDER BY CID_CIDADE';
+  qCidade.Open;
   self.Width := 800;
   self.Height := 600;
 end;
@@ -153,8 +170,6 @@ begin
   cdsEdit.UpdateOptions.UpdateTableName := 'IBS';
   cdsEdit.Open;
 
-  qCidade.SQL.Text := 'SELECT CID_CODIGO, CID_CIDADE FROM CID0000 ORDER BY CID_CIDADE';
-  qCidade.Open;
 
 end;
 

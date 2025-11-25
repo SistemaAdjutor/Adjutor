@@ -48,6 +48,7 @@ type
     procedure btnCancelarClick(Sender: TObject);
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure FormActivate(Sender: TObject);
   private
     { Private declarations }
   public
@@ -123,6 +124,12 @@ begin
       mtWarning, [mbOK], 0);
     Abort; // cancela o Post
   end;
+end;
+
+procedure TfrmCBS.FormActivate(Sender: TObject);
+begin
+  inherited;
+  frmCBS.Caption := 'Contribuição sobre Bens e Serviços';
 end;
 
 procedure TfrmCBS.FormCreate(Sender: TObject);
