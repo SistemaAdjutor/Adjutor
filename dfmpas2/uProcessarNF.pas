@@ -408,7 +408,7 @@ begin
    begin
 
       begin
-        NotaF.NFe.Ide.cMunFGIBS := qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
+        // NotaF.NFe.Ide.cMunFGIBS := fCID_IBGE; // qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
         if qItemNota.FieldByName('IBS_CODIGO').AsString = '' then
           Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(dbInicio.GetParametroSistema('PMT_CST_IBS_CBS') )
         else
@@ -2966,7 +2966,12 @@ begin
 
   end;
 
-  notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_NOTA').AsFloat;
+  if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' then
+  begin
+    notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_NOTA').AsFloat;
+    // NotaF.NFe.Total.IBSCBS.cMunFGIBS := 'XXXXX';
+  end;
+
 
   // if (oSistema.Empresa.Parametro.ValorAproximadoImpostos = vaiTodos) or (NotaFiscal.Destinatario.ConsumidorFinal) then  //incompleto
    if  MostraIBPT_Item then
