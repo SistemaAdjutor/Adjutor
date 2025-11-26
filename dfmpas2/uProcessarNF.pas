@@ -490,7 +490,7 @@ begin
       if TextoInfAdicCbsIbsIs = '' then
         TextoInfAdicCbsIbsIs := 'IBS = ' + FormatFloat('0.0#', AliqUF) +
                                 ' e CBS = ' + FormatFloat('0.0#', AliqCBS) +
-                                ' incluso no xml de acordo com as regras da SEFAZ. ' ;
+                                ' incluso no XML de acordo com as regras da SEFAZ. ' ;
 
    end;
 
