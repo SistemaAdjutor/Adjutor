@@ -621,6 +621,7 @@ end;
 
 procedure TFormContasPagarGrid.BitPesquisarClick(Sender: tObject);
 begin
+  Limpa_totais;
   BuscarLanctos;
 
 end;
@@ -1219,6 +1220,13 @@ end;
 
 procedure TFormContasPagarGrid.Limpa_totais;
 begin
+    CurrTotalQuantidade.Value := 0;
+    CurrTotalReceber.Value := 0;
+    CurrTotalDesconto.Value := 0;
+    CurrTotalJuros.Value := 0;
+    CurrTotalRecebido.Value := 0;
+    CurrFaltaReceber.Value := 0;
+
     CurrTotalPagar.Value := 0;
     CurrTotalPago.Value  := 0;
     CurrFaltaPagar.Value := 0;
