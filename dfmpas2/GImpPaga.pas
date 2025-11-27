@@ -10,7 +10,8 @@ uses
   ppModule, raCodMod, ppVar, ppCtrls, ppPrnabl, MIDASLIB,  rxCurrEdit,
   ppParameter, frxClass, frxDBSet, jpeg, frxExportPDF, frxExportXLS,
   Data.DBXFirebird, ppDesignLayer, SimpleDS, Data.FMTBCd, ACBrEnterTab,
-  ACBrBase, ACBrCalculadora, ACBrETQ, JvExMask, JvToolEdit, System.StrUtils;
+  ACBrBase, ACBrCalculadora, ACBrETQ, JvExMask, JvToolEdit, System.StrUtils,
+  frxExportBaseDialog;
 
 type
   TFormGImpPagar = class(TfrmBase)
