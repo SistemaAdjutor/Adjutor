@@ -3196,9 +3196,10 @@ end;
 procedure TFormGImpPedido.ImprimiVendasSegmento;
 // Vendas por Linha dos Produtos
 var
-wGroup :String;
+wGroup, tipoFiltro :String;
 begin
 
+   tipoFiltro := '';
    wSQL1  := 'select Sum(I1.PRF_QTDE)AS QTDE ,sum(I1.PRF_QTDEFAT * I1.PRF_PRECO)AS TOTAL_FAT ,sum(I1.PRF_QTDE * I1.PRF_PRECO)AS TOTAL_PED ,P1.LIN_CODIGO,L1.LIN_DESCRI from PED_IT01 I1 '+
              ' join  ped0000 pe on pe.emp_codigo = i1.emp_codigo and pe.ped_codigo = i1.ped_codigo and PED_SITUACAO <> '+QuotedStr('C')+
              ' left join PRD0000 P1 on(I1.PRD_REFER = P1.PRD_REFER  AND i1.EMP_CODIGO = p1.EMP_CODIGO) ';
@@ -3217,9 +3218,19 @@ begin
 
 
    if (Rad_Faturado.Checked) then
+   begin
       wSQL3 :=  wSQL3  +  ' AND (pe.PED_SITUACAO = ''T'')';
+      tipoFiltro := ' - Pedidos Faturados';
+   end;
    if (Rad_Faturar.Checked) then
+   begin
       wSQL3 :=  wSQL3  +  ' AND (pe.PED_SITUACAO = ''F'')';
+      tipoFiltro := ' - Pedidos A Faturar';
+   end;
+   if (Rad_Todos.Checked) then
+   begin
+      tipoFiltro := ' - Todos os Pedidos';
+   end;
 
 
   {Selecionou um cliente}
@@ -3269,7 +3280,7 @@ begin
       end;
 
    ppLblSegEmpresa.Caption := DBINICIO.EMPRESA.RAZAO;
-   ppLblperiodo.Caption    := 'Período de  '+EditDataI.Text+'  até  '+EditDataF.Text+'';
+   ppLblperiodo.Caption    := 'Período de  '+EditDataI.Text+'  até  '+EditDataF.Text+'' + tipoFiltro;
 
    RBuilderPreview(ppRVendaSeg);
 
