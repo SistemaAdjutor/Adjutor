@@ -33,10 +33,6 @@ inherited FormProduto: TFormProduto
     object Tbs_FichaTec: TTabSheet
       Caption = 'Ficha T'#233'cnica'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object PAN_FTC03: TPanel
         Left = 0
         Top = 2
@@ -158,10 +154,6 @@ inherited FormProduto: TFormProduto
         OnChange = pcFichaTecnicaChange
         object tsGeral: TTabSheet
           Caption = 'Composi'#231#227'o'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Total: TLabel
             Left = 593
             Top = 183
@@ -1519,10 +1511,6 @@ inherited FormProduto: TFormProduto
         object tsProcesso: TTabSheet
           Caption = 'Engenharia de processo'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object dbProcessos: TDBGrid
             Left = 6
             Top = 0
@@ -1815,10 +1803,6 @@ inherited FormProduto: TFormProduto
         object tsCamposTecnicos: TTabSheet
           Caption = 'Campos t'#233'cnicos'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object BIT_MOLA_GRAVAR: TBitBtn
             Left = 846
             Top = 430
@@ -1891,10 +1875,6 @@ inherited FormProduto: TFormProduto
             TabOrder = 2
             object tsCampos1: TTabSheet
               Caption = 'Mat'#233'ria prima'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label148: TLabel
                 Left = 3
                 Top = 77
@@ -2327,10 +2307,6 @@ inherited FormProduto: TFormProduto
             object tsCampos2: TTabSheet
               Caption = 'Dimensionais'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label174: TLabel
                 Left = 3
                 Top = 3
@@ -3917,10 +3893,6 @@ inherited FormProduto: TFormProduto
             object tsCampos3: TTabSheet
               Caption = 'Caracter'#237'sticas'
               ImageIndex = 2
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label223: TLabel
                 Left = 241
                 Top = 1
@@ -4892,10 +4864,6 @@ inherited FormProduto: TFormProduto
             object tsCampos4: TTabSheet
               Caption = 'Informa'#231#245'es Diversas'
               ImageIndex = 3
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object Label267: TLabel
                 Left = 2
                 Top = 8
@@ -5202,10 +5170,6 @@ inherited FormProduto: TFormProduto
         object tsQualidade: TTabSheet
           Caption = 'Qualidade'
           ImageIndex = 3
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label323: TLabel
             Left = 35
             Top = 16
@@ -5572,10 +5536,6 @@ inherited FormProduto: TFormProduto
     end
     object Tbs_Produtos: TTabSheet
       Caption = 'Cadastro de Produtos'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox7: TGroupBox
         Left = 0
         Top = 0
@@ -6160,10 +6120,6 @@ inherited FormProduto: TFormProduto
         OnChange = PgCtrl_ProdutosChange
         object TbS_Caract: TTabSheet
           Caption = 'Caracter'#237'sticas'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object RichDoc: TRichEdit
             Left = 0
             Top = 0
@@ -6208,10 +6164,6 @@ inherited FormProduto: TFormProduto
         object TabSheet3: TTabSheet
           Caption = 'Pre'#231'os'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel16: TPanel
             Left = 0
             Top = 0
@@ -6814,10 +6766,6 @@ inherited FormProduto: TFormProduto
         object TabSheet1: TTabSheet
           Caption = 'Custos'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox15: TGroupBox
             Left = 0
             Top = 0
@@ -7016,10 +6964,6 @@ inherited FormProduto: TFormProduto
           Font.Name = 'MS Sans Serif'
           Font.Style = [fsBold]
           ParentFont = False
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel7: TPanel
             Left = 0
             Top = 0
@@ -7361,10 +7305,6 @@ inherited FormProduto: TFormProduto
         end
         object TbS_FatorConv: TTabSheet
           Caption = 'Fator de Convers'#227'o'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label17: TLabel
             Left = 5
             Top = 8
@@ -7586,10 +7526,6 @@ inherited FormProduto: TFormProduto
         end
         object TbS_Variacoes: TTabSheet
           Caption = 'Varia'#231#227'o'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label28: TLabel
             Left = 22
             Top = 47
@@ -7978,10 +7914,6 @@ inherited FormProduto: TFormProduto
         object tsPrecos: TTabSheet
           Caption = 'Tabelas'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Panel6: TPanel
             Left = 0
             Top = 0
@@ -8381,10 +8313,6 @@ inherited FormProduto: TFormProduto
         object TabSheet5: TTabSheet
           Caption = 'C'#243'digo do Produto no Fornecedor'
           ImageIndex = 8
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label91: TLabel
             Left = 599
             Top = 0
@@ -8510,18 +8438,14 @@ inherited FormProduto: TFormProduto
         end
       end
       object PageControl2: TPageControl
-        Left = 3
-        Top = 157
+        Left = 0
+        Top = 158
         Width = 1059
         Height = 142
-        ActivePage = TabSheet9
+        ActivePage = TabSheet14
         TabOrder = 1
         object TabSheet9: TTabSheet
           Caption = 'Organiza'#231#227'o do Produto'
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object GroupBox21: TGroupBox
             Left = 0
             Top = 0
@@ -8804,10 +8728,6 @@ inherited FormProduto: TFormProduto
         object TabSheet10: TTabSheet
           Caption = 'Fiscal'
           ImageIndex = 1
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label93: TLabel
             Left = 11
             Top = 5
@@ -9438,13 +9358,76 @@ inherited FormProduto: TFormProduto
             ValueUnchecked = 'N'
           end
         end
+        object TabSheet14: TTabSheet
+          Caption = 'IBS / CBS / IS'
+          ImageIndex = 7
+          OnShow = TabSheet14Show
+          object Label12: TLabel
+            Left = 38
+            Top = 16
+            Width = 19
+            Height = 14
+            Caption = 'IBS:'
+          end
+          object Label335: TLabel
+            Left = 34
+            Top = 43
+            Width = 24
+            Height = 14
+            Caption = 'CBS:'
+          end
+          object Label336: TLabel
+            Left = 45
+            Top = 70
+            Width = 12
+            Height = 14
+            Caption = 'IS:'
+          end
+          object cmbCBS: TDBLookupComboBox
+            Left = 63
+            Top = 39
+            Width = 241
+            Height = 22
+            Hint = 'Selecione o imposto CBS aplic'#225'vel'
+            DataField = 'CBS_ID'
+            DataSource = DsProdutos
+            DropDownWidth = 300
+            KeyField = 'CBS_ID'
+            ListField = 'CBS_EXIBE'
+            ListSource = dsCBS
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 0
+          end
+          object cmbIBS: TDBLookupComboBox
+            Left = 63
+            Top = 12
+            Width = 241
+            Height = 22
+            Hint = 'Selecione o imposto IBS aplic'#225'vel'
+            DataField = 'IBS_ID'
+            DataSource = DsProdutos
+            DropDownWidth = 300
+            KeyField = 'IBS_ID'
+            ListField = 'IBS_EXIBE'
+            ListSource = dsIBS
+            ParentShowHint = False
+            ShowHint = True
+            TabOrder = 1
+          end
+          object DBEdit79: TDBEdit
+            Left = 63
+            Top = 67
+            Width = 121
+            Height = 22
+            DataField = 'IS_ALIQUOTA'
+            DataSource = DsProdutos
+            TabOrder = 2
+          end
+        end
         object tsServico: TTabSheet
           Caption = 'Servi'#231'os'
           ImageIndex = 6
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label141: TLabel
             Left = 11
             Top = 11
@@ -9554,10 +9537,6 @@ inherited FormProduto: TFormProduto
         object TabSheet11: TTabSheet
           Caption = 'Estoque'
           ImageIndex = 2
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label18: TLabel
             Left = 5
             Top = 4
@@ -9675,10 +9654,6 @@ inherited FormProduto: TFormProduto
             TabOrder = 4
             object TabSheet12: TTabSheet
               Caption = 'Estoque'
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object cxGrid2: TDBGrid
                 Left = 0
                 Top = 0
@@ -9737,10 +9712,6 @@ inherited FormProduto: TFormProduto
             object TabSheet13: TTabSheet
               Caption = 'Endere'#231'os'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object DBGrid8: TDBGrid
                 Left = 0
                 Top = 0
@@ -9780,10 +9751,6 @@ inherited FormProduto: TFormProduto
         object TabSheet2: TTabSheet
           Caption = 'C'#243'digo Original / Cliente'
           ImageIndex = 3
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object grCodCli: TJvDBGrid
             Left = 0
             Top = 0
@@ -9848,10 +9815,6 @@ inherited FormProduto: TFormProduto
         object TabSheet7: TTabSheet
           Caption = 'Produto Especifico'
           ImageIndex = 4
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label113: TLabel
             Left = 56
             Top = 55
@@ -9925,10 +9888,6 @@ inherited FormProduto: TFormProduto
         object tsTratamentoTermico: TTabSheet
           Caption = 'Tratamento t'#233'rmico'
           ImageIndex = 5
-          ExplicitLeft = 0
-          ExplicitTop = 0
-          ExplicitWidth = 0
-          ExplicitHeight = 0
           object Label131: TLabel
             Left = 41
             Top = 37
@@ -10297,10 +10256,6 @@ inherited FormProduto: TFormProduto
     object Tbs_Detalhe: TTabSheet
       Caption = 'Produ'#231#227'o'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox10: TGroupBox
         Left = 0
         Top = 0
@@ -10384,10 +10339,6 @@ inherited FormProduto: TFormProduto
       Caption = 'Grade'
       ImageIndex = 3
       OnShow = TabGradeShow
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object Label110: TLabel
         Left = 695
         Top = 46
@@ -10692,10 +10643,6 @@ inherited FormProduto: TFormProduto
       Caption = 'Compras'
       ImageIndex = 4
       OnShow = TabSheet4Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dbgrdCompras: TDBGrid
         Left = 0
         Top = 49
@@ -11038,10 +10985,6 @@ inherited FormProduto: TFormProduto
       Caption = 'Industrializa'#231#227'o'
       ImageIndex = 9
       OnShow = TabSheet8Show
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox20: TGroupBox
         Left = 0
         Top = 0
@@ -11364,10 +11307,6 @@ inherited FormProduto: TFormProduto
     object tsVendas: TTabSheet
       Caption = 'Vendas'
       ImageIndex = 5
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox18: TGroupBox
         Left = 0
         Top = 0
@@ -11705,10 +11644,6 @@ inherited FormProduto: TFormProduto
     object TabSheet6: TTabSheet
       Caption = 'Arquivos'
       ImageIndex = 6
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox9: TGroupBox
         Left = 0
         Top = 0
@@ -11834,10 +11769,6 @@ inherited FormProduto: TFormProduto
     object Lotes: TTabSheet
       Caption = 'Lotes'
       ImageIndex = 7
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object dbgrdLote: TDBGrid
         Left = 0
         Top = 33
@@ -12448,10 +12379,6 @@ inherited FormProduto: TFormProduto
       Caption = 'Usado em'
       ImageIndex = 8
       OnEnter = tsMPusadoEnter
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object pUsadoem: TPanel
         Left = 0
         Top = 0
@@ -18374,10 +18301,24 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRD_LANCA_VALOR_ZERADO'
       Size = 1
     end
+    object SqlProdutosCBS_ID: TIntegerField
+      FieldName = 'CBS_ID'
+    end
+    object SqlProdutosIBS_ID: TIntegerField
+      DisplayWidth = 10
+      FieldName = 'IBS_ID'
+    end
+    object SqlProdutosIS_ALIQUOTA: TFMTBCDField
+      FieldName = 'IS_ALIQUOTA'
+      DisplayFormat = '0.####'
+      Precision = 10
+      Size = 4
+    end
   end
   object DspProdutos: TDataSetProvider [75]
     DataSet = SqlProdutos
-    Options = [poAllowCommandText]
+    Options = [poAllowCommandText, poUseQuoteChar]
+    UpdateMode = upWhereKeyOnly
     Left = 1384
     Top = 133
   end
@@ -18392,6 +18333,7 @@ inherited FormProduto: TFormProduto
     AfterPost = CdsProdutosAfterPost
     AfterCancel = CdsProdutosAfterCancel
     OnNewRecord = CdsProdutosNewRecord
+    OnReconcileError = CdsProdutosReconcileError
     Left = 1384
     Top = 181
     object CdsProdutosPRD_CODIGO: TStringField
@@ -19390,6 +19332,18 @@ inherited FormProduto: TFormProduto
     object CdsProdutosPRD_LANCA_VALOR_ZERADO: TStringField
       FieldName = 'PRD_LANCA_VALOR_ZERADO'
       Size = 1
+    end
+    object CdsProdutosCBS_ID: TIntegerField
+      FieldName = 'CBS_ID'
+    end
+    object CdsProdutosIBS_ID: TIntegerField
+      FieldName = 'IBS_ID'
+    end
+    object CdsProdutosIS_ALIQUOTA: TFMTBCDField
+      FieldName = 'IS_ALIQUOTA'
+      DisplayFormat = '0.####'
+      Precision = 10
+      Size = 4
     end
   end
   object DsProdutos: TDataSource [77]
@@ -21975,5 +21929,34 @@ inherited FormProduto: TFormProduto
     object SqlCdsEstoqueDetalheIOP_NORDEM: TStringField
       FieldName = 'IOP_NORDEM'
     end
+  end
+  object dsCBS: TDataSource
+    DataSet = qryCBS
+    Left = 2364
+    Top = 409
+  end
+  object dsIBS: TDataSource
+    DataSet = qryIBS
+    Left = 2292
+    Top = 409
+  end
+  object qryIBS: TFDQuery
+    Connection = DBInicio.FDACConn
+    SQL.Strings = (
+      
+        'SELECT IBS_ID, IBS_CODIGO || '#39' - '#39' || IBS_DESCRICAO AS IBS_EXIBE' +
+        ' FROM IBS ORDER BY IBS_CODIGO;'
+      '')
+    Left = 2292
+    Top = 337
+  end
+  object qryCBS: TFDQuery
+    Connection = DBInicio.FDACConn
+    SQL.Strings = (
+      
+        'SELECT CBS_ID, CBS_CODIGO || '#39' - '#39' || CBS_DESCRICAO AS CBS_EXIBE' +
+        ' FROM CBS ORDER BY CBS_CODIGO;')
+    Left = 2356
+    Top = 337
   end
 end

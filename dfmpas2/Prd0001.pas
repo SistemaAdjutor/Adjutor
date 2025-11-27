@@ -134,7 +134,7 @@ uses
   dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue, frxExportBaseDialog, Vcl.Samples.Spin;
+  dxSkinXmas2008Blue, frxExportBaseDialog, Vcl.Samples.Spin, cxSpinEdit;
 
 type
   TFormProduto = class( TfrmBaseDB )
@@ -2275,6 +2275,23 @@ type
     SqlCdsEstoqueDetalheIOP_STATUS: TStringField;
     SqlCdsEstoqueDetalheIOP_QTDE_CONCLUIDA: TFMTBCDField;
     SqlCdsEstoqueDetalheIOP_NORDEM: TStringField;
+    TabSheet14: TTabSheet;
+    Label12: TLabel;
+    Label335: TLabel;
+    Label336: TLabel;
+    dsCBS: TDataSource;
+    dsIBS: TDataSource;
+    qryIBS: TFDQuery;
+    qryCBS: TFDQuery;
+    SqlProdutosCBS_ID: TIntegerField;
+    SqlProdutosIBS_ID: TIntegerField;
+    SqlProdutosIS_ALIQUOTA: TFMTBCDField;
+    CdsProdutosCBS_ID: TIntegerField;
+    CdsProdutosIBS_ID: TIntegerField;
+    CdsProdutosIS_ALIQUOTA: TFMTBCDField;
+    cmbCBS: TDBLookupComboBox;
+    cmbIBS: TDBLookupComboBox;
+    DBEdit79: TDBEdit;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -2545,6 +2562,10 @@ type
     procedure bit_ExportaC9Click(Sender: TObject);
     procedure CdsProdutosAfterEdit(DataSet: TDataSet);
     procedure DBGrid2TitleClick(Column: TColumn);
+    procedure CdsProdutosReconcileError(DataSet: TCustomClientDataSet;
+      E: EReconcileError; UpdateKind: TUpdateKind;
+      var Action: TReconcileAction);
+    procedure TabSheet14Show(Sender: TObject);
     private
       // pVENDA_VER_CUSTO, pCUSTO_ALTERA, pAlteraCustosAutomaticosProdutos: string;
       wBtnAltRefer : string;
@@ -3000,7 +3021,8 @@ begin
           FrmEntradaNotaXmlItem.edtUnidadeSistema.Text := FormProduto.CdsProdutosPRD_UND.AsString;
         end;
       end;
-      CdsProdutos.ApplyUpdates( - 1 );
+      // CdsProdutos.ApplyUpdates( - 1 );
+      CdsProdutos.ApplyUpdates(0);
 
 
       if eNotaEntrada then
@@ -6735,6 +6757,14 @@ begin
   end;
 end;
 
+procedure TFormProduto.CdsProdutosReconcileError(DataSet: TCustomClientDataSet;
+  E: EReconcileError; UpdateKind: TUpdateKind; var Action: TReconcileAction);
+begin
+  inherited;
+  ShowMessage('Erro na atualização: ' + E.Message);
+  Abort; // Action := raCancel;  // ou raRetry se quiser tentar de novo
+end;
+
 procedure TFormProduto.CdsProdutosReferenciaAfterDelete( DataSet : TDataSet );
 begin
   CdsProdutosReferencia.ApplyUpdates( 0 );
@@ -6836,6 +6866,13 @@ begin
     CdsProdutos.Edit;
   DesabilitaBotoes;
   HabilitarCamposMola;
+end;
+
+procedure TFormProduto.TabSheet14Show(Sender: TObject);
+begin
+  inherited;
+  // ShowMessage(CdsProdutos.FieldByName('IS_ALIQUOTA').AsString);
+
 end;
 
 procedure TFormProduto.TabSheet4Show( Sender : tObject );
@@ -7987,8 +8024,12 @@ begin
     sgdbEnderecamento.FiltroTabela := dbinicio.ExclusivoSql('ENDERECO_ESTOQUE');
 
     sgdbEnderecamento.Refresh;
-
   end;
+
+  qryIBS.Open;
+  qryCBS.Open;
+
+
 end;
 
 procedure TFormProduto.FormDestroy( Sender : tObject );

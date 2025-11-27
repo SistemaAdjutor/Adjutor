@@ -3,7 +3,7 @@
         <ProjectGuid>{8A3DBD83-53A7-4DCF-B9D2-E860EF14A76A}</ProjectGuid>
         <MainSource>Adjutor.dpr</MainSource>
         <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Release</Config>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <TargetedPlatforms>3</TargetedPlatforms>
         <AppType>Application</AppType>
         <FrameworkType>VCL</FrameworkType>
@@ -1777,6 +1777,14 @@
         </DCCReference>
         <DCCReference Include="dfmpas2\uBaixaPedidoCompra.pas">
             <Form>frmBaixaPedidoCompra</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="dfmpas2\uCBS.pas">
+            <Form>frmCBS</Form>
+            <FormType>dfm</FormType>
+        </DCCReference>
+        <DCCReference Include="dfmpas2\uIBS.pas">
+            <Form>frmIBS</Form>
             <FormType>dfm</FormType>
         </DCCReference>
         <BuildConfiguration Include="Debug">

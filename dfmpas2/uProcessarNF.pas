@@ -10,7 +10,7 @@ uses
   ACBrDANFCeFortesFr, IdAttachmentFile,  ACBrUtil, XMLIntf, XMLDoc, zlib, ACBrNFeDANFeRLClass,  Spin,    ACBrNFeNotasFiscais,System.StrUtils,
   TypInfo, DateUtils,  blcksock, ACBrNFe.Classes,   ACBrDFeConfiguracoes, pcnAuxiliar,    Grids,  ACBrNFeConfiguracoes, Vcl.ExtCtrls, Datasnap.Provider, Datasnap.DBClient,
   pngextra, rwfunc,ACBrECFVirtual, ACBrECFVirtualBuffer, ACBrECFVirtualPrinter, ACBrECFVirtualNFCe, ACBrDFeReport, ACBrDFeDANFeReport, frxClass, BaseDbEstoqueForm,ACBrDFeSSL,
-  Vcl.Clipbrd ;
+  Vcl.Clipbrd, ACBrDFe.Conversao ;
 
 type
 
@@ -126,7 +126,7 @@ var
 //  Reboque: TreboqueCollectionItem;
 //  Lacre: TLacresCollectionItem;
     ProcReferenciado: TprocRefCollectionItem;
-    NumNFe, cst_PIS_COFINS :string;
+    NumNFe, cst_PIS_COFINS, TextoInfAdicCbsIbsIs :string;
     ok: boolean;
     i: integer;
     CSOSN,CSOSNST: Integer;
@@ -146,6 +146,8 @@ var i, j, recordCount : integer;
  precoUndTrib, resto : double;
  vlDifal : Real;
  Municipal, Estadual, Federal: string;
+ AliqMun, AliqUF: Double;
+ AliqCBS, AliqIS: Double;
 
 begin
 {
@@ -324,7 +326,8 @@ begin
     if (femp_crt <> '2')  then
      Produto.Imposto.PIS.CST := pis99
     else
-     Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
+     Produto.Imposto.PIS.CST := StrToCSTPIS(qItemNota.FieldByName('CST_PIS').AsString);
+     // Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
     Produto.Imposto.PIS.VBC := 0;
     Produto.Imposto.PIS.PPIS := 0;
     Produto.Imposto.PIS.VPIS := 0;
@@ -333,7 +336,8 @@ begin
     if (femp_crt <> '2')  then
        Produto.Imposto.COFINS.CST := cof99
     else
-     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK,qItemNota.FieldByName('CST_COFINS').AsString);
+     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(qItemNota.FieldByName('CST_COFINS').AsString);
+     // Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK,qItemNota.FieldByName('CST_COFINS').AsString);
     Produto.Imposto.COFINS.VBC := 0;
     Produto.Imposto.COFINS.pCOFINS := 0;
     Produto.Imposto.COFINS.vCOFINS := 0;
@@ -352,8 +356,13 @@ begin
        Produto.Imposto.II.vIOF := 0;
       end;
 
-       Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
-//       Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
+      if cst_PIS_COFINS = '' then // esta vindo string vazia e dando erro
+        cst_PIS_COFINS := qItemNota.FieldByName('CST_PIS').AsString;
+      Produto.Imposto.PIS.CST := StrToCSTPIS(cst_PIS_COFINS);
+      // Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
+
+
+      //       Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
 
 //      if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_PIS').AsString,['99','98','49']))) then
       if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS, ['99','98','49']))) then
@@ -366,8 +375,11 @@ begin
       else if qItemNota.FieldByName('CST_PIS').AsString = '' then
           Produto.Imposto.PIS.CST := pis08;
 
-      Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, cst_PIS_COFINS);
-//     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, qItemNota.FieldByName('CST_COFINS').AsString);
+      Produto.Imposto.COFINS.CST := StrToCSTCOFINS(cst_PIS_COFINS);
+      // Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, cst_PIS_COFINS);
+
+
+      //     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, qItemNota.FieldByName('CST_COFINS').AsString);
 
 //     if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_COFINS').AsString,['99','98','49'])) then
      if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS,['99','98','49'])) then
@@ -383,9 +395,114 @@ begin
 
    end;
 
+
+
+
+
+
+
+      // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
+
+      // --- IBS ---
+   if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' then
+   begin
+
+      begin
+        // NotaF.NFe.Ide.cMunFGIBS := fCID_IBGE; // qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
+        if qItemNota.FieldByName('IBS_CODIGO').AsString = '' then
+          Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(dbInicio.GetParametroSistema('PMT_CST_IBS_CBS') )
+        else
+          Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(qItemNota.FieldByName('IBS_CODIGO').AsString);
+        Produto.Imposto.IBSCBS.cClassTrib := '000001';
+
+        // Cria o grupo principal e subgrupos se necessário
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+          Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun := TgIBSMun.Create;
+
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF) then
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF := TgIBSUF.Create;
+
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+
+        // Busca alíquotas (prioridade: item > tabela OPE0000 > Parâmetro)
+        AliqMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
+        AliqUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
+        if AliqMun = 0 then
+          AliqMun := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_MUNICIPAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
+        if AliqUF = 0 then
+          AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
+
+
+
+
+
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := AliqMun;
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun :=
+          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqMun / 100), -2);
+
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF := AliqUF;
+        Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF :=
+          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqUF / 100), -2);
+
+        // Valor total do IBS
+        Produto.Imposto.IBSCBS.gIBSCBS.vIBS :=
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun +
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF;
+      end;
+
+
+      // --- CBS ---
+      begin
+        AliqCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
+        if AliqCBS = 0 then
+          AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
+
+
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+          Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+
+        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gCBS) then
+          Produto.Imposto.IBSCBS.gIBSCBS.gCBS := TgCBS.Create;
+
+        Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
+        Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS := AliqCBS;
+        Produto.Imposto.IBSCBS.gIBSCBS.gCBS.vCBS :=
+          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqCBS / 100), -2);
+      end;
+
+
+      // --- IS (Imposto Seletivo) ---
+      begin
+        AliqIS := qItemNota.FieldByName('IS_ALIQUOTA').AsFloat;
+
+        if (AliqIS > 0) then
+        begin
+          Produto.Imposto.ISel.vBCIS := qItemNota.FieldByName('TOTAL').AsFloat;
+          Produto.Imposto.ISel.pIS := AliqIS;
+          Produto.Imposto.ISel.vIS :=
+            RoundTo(Produto.Imposto.ISel.vBCIS * (AliqIS / 100), -2);
+        end;
+      end;
+
+      if TextoInfAdicCbsIbsIs = '' then
+        TextoInfAdicCbsIbsIs := 'IBS = ' + FormatFloat('0.0#', AliqUF) +
+                                ' e CBS = ' + FormatFloat('0.0#', AliqCBS) +
+                                ' incluso no XML de acordo com as regras da SEFAZ. ' ;
+
+   end;
+
+
+
+
+
+
+
+
    // IRRF
    // Produto.Imposto.    qItemNota.FieldByName('TOTAL').AsFloat
-
 
 
    // ICMS uf dest  - antigo VendaInterEstadualConsumidorFinal_Item
@@ -492,38 +609,53 @@ end;
 
 procedure TfrmProcessaNFe.BuscaItem(const Nota: string);
 begin
- qItemNota.Close;
- qItemNota.SQL.Clear;
- qItemNota.SQL.Add(
-  '  SELECT it.CST_IPI, it.PRDCO_CODIGO_ORIGINAL, IT.PRD_REFER, IT.PRD_DESCRI, IT.IPI_CODIGO, IT.NTP_CFOP, IT.OPE_CODIGO, ' +
-//  '  PR.PRD_UND, ' +
-  ' CASE WHEN pid.PRD_UND IS NULL THEN pr.PRD_UND ELSE pid.PRD_UND END AS PRD_UND, ' +
-  '  IT.NF_QTDE, IT.NF_PRECO, it.PRD_COMPL_DESCRI, PRD_ESPECIFICO, ID_PRD_ESPECIFICO,   '+
-  ' cast(IT.nf_totalitem as numeric(18,2)) as TOTAL, NF_IFRETE, NF_IDESP_ACES, NF_ISEGURO, NF_IDESCTO1, pid.PRF_REGISTRO,lo.prdl_registro ,                '+
-  ' lo.prdl_data_validade,lo.prdl_data_fabricacao, lo.prdl_lote, lo.prdl_preco_maximo, pr.CEST_COD, it.NF_CSOSN, pid.PRF_B2B_PEDIDO_COMPRA, pid.PRF_B2B_ITEM_PEDIDO_COMPRA, '+
-  ' pid.PRD_ORIGEM, NF_VLSUBST, it.STB_TRIBUTACAO, it.NF_IPIBASE,it.NF_IPIALIQ, it.NF_IPIVALOR , NF_ICMSVALOR, NF_ICMSBASE, NF_ICMSALIQ, NF_ICMSREDUCAOPERC,            '+
-  ' NF_SUBTRIBASE, NF_ALIQSUBTRIB, NF_VLSUBST,NF_MVAPERC, ST.STB_TRIBUTACAO, ST.STB_DESCRICAO, OPE_TIPO_OPERACAO, NF_VLPIS, NF_ALIQPIS, NF_BASE_PIS,                '+
-  ' NF_VLCOFINS, NF_ALIQCOFINS,NF_BASE_COFINS, it.IBPT_VLAP,it.IBPT_ALIQFED, it.IBPT_ALIQEST,                                                                       '+
-  ' NF_VALOR_BCICMS_DESTINO, NF_PERC_FCP, NF_ALIQ_ICMS_INTERNA_DESTINO, NF_ALIQ_ICMS_INTERESTADUAL, NF_PERC_PARTILHA_DESTINO,                                       '+
-  ' NF_VALOR_FCP, NF_VALOR_PARTILHA_DESTINO, NF_VALOR_PARTILHA_ORIGEM, PR.PRD_CODBARRA, NF_ALIQDOSIMPLES, NF_CREDICMSDOSIMPLES,  '+
-  ' NF_ICMSSUBSTITUTO_ANT, NF_CBENEF, pr.PRD_UND_TRIB, pid.PRF_QUANT_TRIB,NF_VALOR_FCP_st, CST_PIS, CST_COFINS,'+
-  '  NF_VALORICMSDESON,NF_MOTIVDESON, PRD_VAIXML , OPE_CENQ_IPI, pr.PRD_CODIGO_FCI, NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES                           '+
-  ' FROM NF_IT01 it                                                                                                                                                 '+
-  ' JOIN PRD0000 PR ON (PR.PRD_REFER = IT.PRD_REFER AND PR.PRD_STATUS = ''A''    '+ ConcatSe (' and PR.',dbInicio.ExclusivoSql('PRODUTOS') ) + ')                                              '+
-  ' LEFT JOIN SITUACAO_TRIBUTARIA ST ON (PR.STB_TRIBUTACAO =  ST.STB_TRIBUTACAO)                                                                                    '+
-  ' LEFT JOIN prd_lote lo on lo.prdl_registro = it.prdl_registro                                                                                                    '+
-  ' left join PED_IT01 pid on (pid.PRF_REGISTRO = it.PRF_REGISTRO and pid.emp_codigo = it.emp_codigo )                                                                                                  '+
-  ' LEFT JOIN OPE0000 OP ON (OP.OPE_CODIGO  = it.OPE_CODIGO )                                                                                                       '+
-  ' WHERE NF_IT_NOTANUMER =  '+QuotedStr(Nota) +
-  ' and it.emp_codigo = ' + QuotedStr(EmpCodigo) ) ;
-   if (qNota.FieldByName('NF_INTEGRADO').AsString = 'S') then
-      qItemNota.SQL.add( ' AND PR.PRD_PRODSERV = '+ QuotedStr('P'));
-   qItemNota.SQL.add(' ORDER BY pid.PED_CODIGO, pid.PRF_SEQUENCIA');
+    qItemNota.Close;
+    qItemNota.SQL.Clear;
+    qItemNota.SQL.Add('SELECT it.CST_IPI, it.PRDCO_CODIGO_ORIGINAL, it.PRD_REFER, it.PRD_DESCRI, it.IPI_CODIGO, it.NTP_CFOP, it.OPE_CODIGO,');
+    qItemNota.SQL.Add('CASE WHEN pid.PRD_UND IS NULL THEN pr.PRD_UND ELSE pid.PRD_UND END AS PRD_UND, it.NF_QTDE, it.NF_PRECO, it.PRD_COMPL_DESCRI,');
+    qItemNota.SQL.Add('pr.PRD_ESPECIFICO, pr.ID_PRD_ESPECIFICO, CAST(it.NF_TOTALITEM AS NUMERIC(18,2)) AS TOTAL, it.NF_IFRETE, it.NF_IDESP_ACES,');
+    qItemNota.SQL.Add('it.NF_ISEGURO, it.NF_IDESCTO1, pid.PRF_REGISTRO, lo.PRDL_REGISTRO, lo.PRDL_DATA_VALIDADE, lo.PRDL_DATA_FABRICACAO, lo.PRDL_LOTE,');
+    qItemNota.SQL.Add('lo.PRDL_PRECO_MAXIMO, pr.CEST_COD, it.NF_CSOSN, pid.PRF_B2B_PEDIDO_COMPRA, pid.PRF_B2B_ITEM_PEDIDO_COMPRA, pid.PRD_ORIGEM,');
+    qItemNota.SQL.Add('it.NF_VLSUBST, it.STB_TRIBUTACAO, it.NF_IPIBASE, it.NF_IPIALIQ, it.NF_IPIVALOR, it.NF_ICMSVALOR, it.NF_ICMSBASE, it.NF_ICMSALIQ,');
+    qItemNota.SQL.Add('it.NF_ICMSREDUCAOPERC, it.NF_SUBTRIBASE, it.NF_ALIQSUBTRIB, it.NF_VLSUBST, it.NF_MVAPERC, st.STB_TRIBUTACAO, st.STB_DESCRICAO,');
+    qItemNota.SQL.Add('op.OPE_TIPO_OPERACAO, it.NF_VLPIS, it.NF_ALIQPIS, it.NF_BASE_PIS, it.NF_VLCOFINS, it.NF_ALIQCOFINS, it.NF_BASE_COFINS, it.IBPT_VLAP,');
+    qItemNota.SQL.Add('it.IBPT_ALIQFED, it.IBPT_ALIQEST, it.NF_VALOR_BCICMS_DESTINO, it.NF_PERC_FCP, it.NF_ALIQ_ICMS_INTERNA_DESTINO,');
+    qItemNota.SQL.Add('it.NF_ALIQ_ICMS_INTERESTADUAL, it.NF_PERC_PARTILHA_DESTINO, it.NF_VALOR_FCP, it.NF_VALOR_PARTILHA_DESTINO, it.NF_VALOR_PARTILHA_ORIGEM,');
+    qItemNota.SQL.Add('pr.PRD_CODBARRA, it.NF_ALIQDOSIMPLES, it.NF_CREDICMSDOSIMPLES, it.NF_ICMSSUBSTITUTO_ANT, it.NF_CBENEF, pr.PRD_UND_TRIB,');
+    qItemNota.SQL.Add('pid.PRF_QUANT_TRIB, it.NF_VALOR_FCP_ST, it.CST_PIS, it.CST_COFINS, it.NF_VALORICMSDESON, it.NF_MOTIVDESON, pr.PRD_VAIXML,');
+    qItemNota.SQL.Add('op.OPE_CENQ_IPI, pr.PRD_CODIGO_FCI, it.NF_ALIQCREDSIMPLES, it.NF_VLCREDSIMPLES, cid.CID_COD_IBGE,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_CODIGO, ibs_pr.IBS_CODIGO, ibs_cfop.IBS_CODIGO) AS IBS_CODIGO,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_DESCRICAO, ibs_pr.IBS_DESCRICAO, ibs_cfop.IBS_DESCRICAO) AS IBS_DESCRICAO,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA, ibs_pr.IBS_ALIQUOTA, ibs_cfop.IBS_ALIQUOTA) AS IBS_ALIQUOTA,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA_UF, ibs_pr.IBS_ALIQUOTA_UF, ibs_cfop.IBS_ALIQUOTA_UF) AS IBS_ALIQUOTA_UF,');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CODIGO, cbs_cfop.CBS_CODIGO) AS CBS_CODIGO,');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_DESCRICAO, cbs_cfop.CBS_DESCRICAO) AS CBS_DESCRICAO,');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA');
+    qItemNota.SQL.Add('FROM NF_IT01 it');
+    qItemNota.SQL.Add('JOIN NF0001 nf ON (nf.NF_NOTANUMBER = it.NF_IT_NOTANUMER)' );
+    qItemNota.SQL.Add('JOIN PRD0000 pr ON pr.PRD_REFER = it.PRD_REFER AND pr.PRD_STATUS = ''A''');
+    qItemNota.SQL.Add('LEFT JOIN CLI0000 cli ON cli.CLI_CODIGO = nf.CLI_CODIGO');
+    qItemNota.SQL.Add('LEFT JOIN SITUACAO_TRIBUTARIA st ON pr.STB_TRIBUTACAO = st.STB_TRIBUTACAO');
+    qItemNota.SQL.Add('LEFT JOIN PRD_LOTE lo ON lo.PRDL_REGISTRO = it.PRDL_REGISTRO');
+    qItemNota.SQL.Add('LEFT JOIN PED_IT01 pid ON pid.PRF_REGISTRO = it.PRF_REGISTRO AND pid.EMP_CODIGO = it.EMP_CODIGO');
+    qItemNota.SQL.Add('LEFT JOIN OPE0000 op ON op.OPE_CODIGO = it.OPE_CODIGO');
+    qItemNota.SQL.Add('LEFT JOIN IBS ibs_pr ON pr.IBS_ID = ibs_pr.IBS_ID');
+    qItemNota.SQL.Add('LEFT JOIN CBS cbs_pr ON pr.CBS_ID = cbs_pr.CBS_ID');
+    qItemNota.SQL.Add('LEFT JOIN IBS ibs_cfop ON op.IBS_ID = ibs_cfop.IBS_ID');
+    qItemNota.SQL.Add('LEFT JOIN CBS cbs_cfop ON op.CBS_ID = cbs_cfop.CBS_ID');
+    qItemNota.SQL.Add('LEFT JOIN IBS ibs_mun ON ibs_mun.CID_CODIGO = cli.CID_CODIGO');
+    qItemNota.SQL.Add('LEFT JOIN CID0000 cid ON cid.CID_CODIGO = cli.CID_CODIGO');
+    qItemNota.SQL.Add(' WHERE NF_IT_NOTANUMER = ' + QuotedStr(Nota));
+    qItemNota.SQL.Add(' and it.emp_codigo = ' + QuotedStr(EmpCodigo));
+    if (qNota.FieldByName('NF_INTEGRADO').AsString = 'S') then
+      qItemNota.SQL.Add(' AND PR.PRD_PRODSERV = ''P''');
+    qItemNota.SQL.Add(' ORDER BY pid.PED_CODIGO, pid.PRF_SEQUENCIA');
 
- if dbInicio.IsDesenvolvimento then
-  copytoclipboard(qItemNota.SQL.Text);
 
- qItemNota.Open;
+    if dbInicio.IsDesenvolvimento then
+      copytoclipboard(qItemNota.SQL.Text);
+
+    qItemNota.Open;
 
 
 end;
@@ -541,7 +673,7 @@ begin
     ' OPE_TIPO_OPERACAO,ped.CLI_CONSFINAL,ENDERECO_ENTREGA, nf.CLI_CODIGO, COALESCE(ED.ESTADO, CLI_UF) CLI_UF_ENTR ,CLI_UF,          '+
     ' CLI_CGC,CLI_INSCMUNI,  CLI_FANTASIA,  CLI_INSC,CLI_SUFRAMA,cl.CLI_RAZAO , CLI_FONE, CLI_ENDERE,                 '+
     ' cli_bairro, cl.cli_cidade,CLI_EMAIL,   CLI_CEP, pa.pai_pais, cl.pai_codigo,                                                      '+
-    ' (SELECT CID_COD_IBGE  FROM CID0000 WHERE CID_CODIGO = cl.CID_CODIGO) CID_COD_IBGE,                                            '+
+    ' (SELECT CID_COD_IBGE  FROM CID0000 WHERE CID_CODIGO = cl.CID_CODIGO) AS CID_COD_IBGE,                                            '+
     '  COALESCE(re.ESTADO, CLI_UF) CLI_UF_retirada, re.cod_cidade codcidade_retirada, ' +
     ' re.nome as nome_retirada, RE.DESCRICAO AS end_retirada, re.insc_estadual as ie_retirada,  re.CNPJ AS CNPJ_retirada, re.COD_PAIS AS COD_PAIS_retirada, re.NUMERO AS NUM_retirada,   '+
     ' ed.nome as nome_entr , ed.DESCRICAO AS end_entr, ed.insc_estadual as ie_entr,  ed.CNPJ AS CNPJ_ENTR, ed.COD_PAIS AS COD_PAIS_ENTR, ed.NUMERO AS NUM_ENTR,                       '+
@@ -1400,6 +1532,7 @@ begin
   Screen.Cursor := crHourGlass;
   ACBrNFeDANFEFR1.CasasDecimais.qCom :=  dbInicio.Empresa.fPMT_QTDE_DEC_PED;
   ACBrNFeDANFEFR1.CasasDecimais.vUnCom :=  dbInicio.Empresa.fPMT_QTDE_DEC_PED;
+  TextoInfAdicCbsIbsIs := '';
 end;
 
 procedure TfrmProcessaNFe.FormDestroy(Sender: TObject);
@@ -2517,7 +2650,10 @@ begin
   if dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_NATUREZA FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = '6147' then
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco +' . '+'IRRF retido R$ '+ FormatFloat('#,##0.00',NotaF.NFe.Total.retTrib.vIRRF ) ;
 
-
+  if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' THEN
+  begin
+    NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco + ' - ' + TextoInfAdicCbsIbsIs;
+  end;
 
 
   //informações complementares do tecnico responsável somente para ambiente de homologação
@@ -2830,6 +2966,13 @@ begin
 
   end;
 
+  if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' then
+  begin
+    notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_NOTA').AsFloat;
+    // NotaF.NFe.Total.IBSCBS.cMunFGIBS := 'XXXXX';
+  end;
+
+
   // if (oSistema.Empresa.Parametro.ValorAproximadoImpostos = vaiTodos) or (NotaFiscal.Destinatario.ConsumidorFinal) then  //incompleto
    if  MostraIBPT_Item then
           notaf.NFe.Total.ICMSTot.VTotTrib := qnota.FieldByName('IBPT_VLAPROXTRIBUTOS').AsCurrency;
@@ -2838,11 +2981,15 @@ end;
 
 procedure TfrmProcessaNFe.TributacaoICMS;
 begin
-  produto.Imposto.ICMS.orig := StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  produto.Imposto.ICMS.orig := StrToOrig(IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  // produto.Imposto.ICMS.orig := StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+
   if copy(IntToStr(qItemNota.FieldByName('NTP_CFOP').AsInteger),1,1) = '7' then // cfop de exportação cts do icms é 41 = não tributado
     produto.Imposto.ICMS.CST  := cst41
   else
-    produto.Imposto.ICMS.CST  := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+    produto.Imposto.ICMS.CST  := StrToCSTICMS ( qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+    // produto.Imposto.ICMS.CST  := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+
   if qnota.FieldByName('nf_export_local_embarque').AsString <> '' then  //exportação seta cst 41
     produto.Imposto.ICMS.CST := cst41
   else if (qItemNota.FieldByName('NF_ICMSREDUCAOPERC').AsFloat > 0) and ( MatchStr(qItemNota.FieldByName('STB_TRIBUTACAO').AsString,['00', '20']) )  then    //redução na base
@@ -3063,7 +3210,8 @@ end;
 
 procedure TfrmProcessaNFe.TributacaoICMS_simples;
 begin
-  Produto.Imposto.ICMS.orig    :=  StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  Produto.Imposto.ICMS.orig    :=  StrToOrig(IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
+  // Produto.Imposto.ICMS.orig    :=  StrToOrig(ok,IntToStr(qItemNota.FieldByName('PRD_ORIGEM').AsInteger));
   //sem st e não for 10 e 60
   // cst 10 - Tributada e com cobrança do ICMS-ST
   // cst 60 - cobrado anteriormente por ST
@@ -3085,7 +3233,9 @@ begin
       Produto.Imposto.ICMS.motDesICMS   := StrTomotDesICMS(ok, qItemNota.FieldByName('NF_MOTIVDESON').AsString);
     end;
 
-    Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(ok,IntToStr(CSOSN));
+    Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(IntToStr(CSOSN));
+    // Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(ok,IntToStr(CSOSN));
+
     if (COPY(Produto.Prod.CFOP,1,1) = '3') then   // grupo 3: entradas e aquisições de serviços no exterior
     begin
        Produto.Imposto.ICMS.CSOSN := csosn900;
@@ -3101,7 +3251,8 @@ begin
 
     end
     else
-      Produto.Imposto.ICMS.CST :=  StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+      Produto.Imposto.ICMS.CST :=  StrToCSTICMS ( qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+      // Produto.Imposto.ICMS.CST :=  StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
 
     case StrToIntDef(CSOSNIcmsToStr(Produto.Imposto.ICMS.CSOSN),0)   of
     101, 201:
@@ -3146,7 +3297,9 @@ begin
   else //com st
   begin
 
-    Produto.Imposto.ICMS.CST := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+    Produto.Imposto.ICMS.CST := StrToCSTICMS ( qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+    // Produto.Imposto.ICMS.CST := StrToCSTICMS ( ok , qItemNota.FieldByName('STB_TRIBUTACAO').AsString);
+
     if qItemNota.FieldByName('NF_MVAPERC').AsFloat > 0  then
       produto.Imposto.ICMS.ModBCST := StrTomodBCST(ok, '4')
     else
@@ -3156,7 +3309,8 @@ begin
        CSOSNST := qnota.FieldByName('EMP_CSOSN_ST').AsInteger // especifica por cfop
     Else
        CSOSNST := fiCSOSN_ST;
-    Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(ok,IntToStr(CSOSNST));
+    Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(IntToStr(CSOSNST));
+    // Produto.Imposto.ICMS.CSOSN := StrToCSOSNIcms(ok,IntToStr(CSOSNST));
     case StrToIntDef(CSOSNIcmsToStr(Produto.Imposto.ICMS.CSOSN),0)  of
     201,202,203:
         begin

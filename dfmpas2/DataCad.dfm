@@ -6019,6 +6019,12 @@ object DataCadastros: TDataCadastros
       FieldName = 'OPE_ARTIGO_REDUCAO'
       Size = 255
     end
+    object CdsOperFiscCBS_ID: TIntegerField
+      FieldName = 'CBS_ID'
+    end
+    object CdsOperFiscIBS_ID: TIntegerField
+      FieldName = 'IBS_ID'
+    end
   end
   object DsOperFisc: TDataSource
     DataSet = CdsOperFisc
@@ -6343,6 +6349,12 @@ object DataCadastros: TDataCadastros
     object SqlOperFiscOPE_ARTIGO_REDUCAO: TStringField
       FieldName = 'OPE_ARTIGO_REDUCAO'
       Size = 255
+    end
+    object SqlOperFiscCBS_ID: TIntegerField
+      FieldName = 'CBS_ID'
+    end
+    object SqlOperFiscIBS_ID: TIntegerField
+      FieldName = 'IBS_ID'
     end
   end
   object SqlEmpresa: TSQLQuery

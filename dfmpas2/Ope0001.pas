@@ -38,7 +38,10 @@ uses
   dxSkinTheAsphaltWorld, dxSkinTheBezier, dxSkinsDefaultPainters,
   dxSkinValentine, dxSkinVisualStudio2013Blue, dxSkinVisualStudio2013Dark,
   dxSkinVisualStudio2013Light, dxSkinVS2010, dxSkinWhiteprint,
-  dxSkinXmas2008Blue;
+  dxSkinXmas2008Blue, FireDAC.Stan.Intf, FireDAC.Stan.Option,
+  FireDAC.Stan.Param, FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf,
+  FireDAC.DApt.Intf, FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet,
+  FireDAC.Comp.Client;
 
 type
   TFormOperFisc = class(TForm)
@@ -258,6 +261,15 @@ type
     OPE_ARTIGO_REDUCAO: TDBEdit;
     Label19: TLabel;
     Label20: TLabel;
+    qryIBS: TFDQuery;
+    qryCBS: TFDQuery;
+    dsIBS: TDataSource;
+    dsCBS: TDataSource;
+    TabSheet2: TTabSheet;
+    Label21: TLabel;
+    cmbIBS: TDBLookupComboBox;
+    Label335: TLabel;
+    cmbCBS: TDBLookupComboBox;
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);
@@ -302,6 +314,7 @@ type
     procedure ChOPE_TRIBIPIClick(Sender: TObject);
     procedure ChkTribPISCOFINSClick(Sender: TObject);
     procedure rgFormulaBaseICMSClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
   private
     { Private declarations }
        {campos}
@@ -711,6 +724,13 @@ begin
     except 
        //uteis.erro  (Pchar('Impossível Fechar as Tabelas !'+e.message));
     end;
+end;
+
+procedure TFormOperFisc.FormCreate(Sender: TObject);
+begin
+  qryIBS.Open;
+  qryCBS.Open;
+
 end;
 
 procedure TFormOperFisc.Bit_RelatorioClick(Sender: tObject);

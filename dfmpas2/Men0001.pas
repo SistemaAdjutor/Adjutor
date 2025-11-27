@@ -306,6 +306,9 @@ type
     FichadecontedodeImportao1: TMenuItem;
     Histricodoenviodeemail1: TMenuItem;
     Securitizadora1: TMenuItem;
+    IBS1: TMenuItem;
+    CBS1: TMenuItem;
+    N36: TMenuItem;
     procedure Clientes1Click(Sender: tObject);
     procedure Representantes1Click(Sender: tObject);
     procedure Transportadoras1Click(Sender: tObject);
@@ -555,6 +558,8 @@ type
     procedure MainMenuChange(Sender: TObject; Source: TMenuItem; Rebuild: Boolean);
     procedure Button1000Click(Sender: TObject);
     procedure Securitizadora1Click(Sender: TObject);
+    procedure IBS1Click(Sender: TObject);
+    procedure CBS1Click(Sender: TObject);
   private
     LastActiveForm: String;
     empCodigo: string;
@@ -663,7 +668,7 @@ uses Uteis, Rep0001, Trp0001, Ban0001, Eve0001, Pag0001,
   uPesqClassificacao, uPesqGancho, uPesqAcabamentoSup,PesqCores, upesqtratamento, uPesqTipoMola, uPesqParametrosDaQualidade, uControleDeQualidade, uPesqTipoEmbalagem,
   CustoFabricaCentroCusto, uRentabilidadeOS, uSolicitacaoCompra, uXMLSCOAManaus, uProgramacaoProcessoFabricacao, UCotacaoPesquisa, uCotacaoAutorizacao, uRegularizacaoEstoque,
   uRequisicaoMaterial, uPesqRequisicaoMaterialOri, uPesqCapacidade, uHistoricoEmail,
-  testes, uDashboradInteligencia, uPesqSecuritizadora;
+  testes, uDashboradInteligencia, uPesqSecuritizadora, uIBS, uCBS;
 
 
 
@@ -2647,6 +2652,15 @@ begin
   LBLinkBlog.Font.Style := [fsBold, fsUnderline];
 end;
 
+procedure TFrmMenu.IBS1Click(Sender: TObject);
+begin
+  if not assigned(frmIBS) then
+  Begin
+    frmIBS := TfrmIBS.Create(Application);
+  end;
+  frmIBS.Show;
+end;
+
 procedure TFrmMenu.Image1MouseMove(Sender: tObject; Shift: TShiftState;
   X, Y: Integer);
 begin
@@ -3214,6 +3228,15 @@ procedure TFrmMenu.CbEmpresaEnter(Sender: TObject);
 begin
   idRetorno := CbEmpresa.ItemIndex;
   empCodigo := CEmpresa.Text;
+end;
+
+procedure TFrmMenu.CBS1Click(Sender: TObject);
+begin
+  if not assigned(frmCBS) then
+  Begin
+    frmCBS := TfrmCBS.Create(Application);
+  end;
+  frmCBS.Show;
 end;
 
 procedure TFrmMenu.NotasdeEntradaseSaidasporProduto1Click(Sender: tObject);

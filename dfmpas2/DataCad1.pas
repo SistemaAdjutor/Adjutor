@@ -1729,6 +1729,16 @@ type
     CdsParametrosPMT_CADASTRA_PRODUTO_PEDIDO: TStringField;
     SqlParametrosPMT_PRECO_LIQ_MENOR_TABELA_P: TStringField;
     CdsParametrosPMT_PRECO_LIQ_MENOR_TABELA_P: TStringField;
+    SqlParametrosPMT_ATIVAR_IBS_CBS: TStringField;
+    CdsParametrosPMT_ATIVAR_IBS_CBS: TStringField;
+    SqlParametrosPMT_IBS_ALIQUOTA_MUNICIPAL: TFMTBCDField;
+    CdsParametrosPMT_IBS_ALIQUOTA_MUNICIPAL: TFMTBCDField;
+    SqlParametrosPMT_IBS_ALIQUOTA_ESTADUAL: TFMTBCDField;
+    SqlParametrosPMT_CBS_ALIQUOTA: TFMTBCDField;
+    CdsParametrosPMT_CBS_ALIQUOTA: TFMTBCDField;
+    CdsParametrosPMT_IBS_ALIQUOTA_ESTADUAL: TFMTBCDField;
+    SqlParametrosPMT_CST_IBS_CBS: TStringField;
+    CdsParametrosPMT_CST_IBS_CBS: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

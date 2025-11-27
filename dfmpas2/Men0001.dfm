@@ -3,8 +3,8 @@ object FrmMenu: TFrmMenu
   Top = 115
   BorderWidth = 1
   Caption = 'Adjutor - Sistema de Gest'#227'o Empresarial'
-  ClientHeight = 553
-  ClientWidth = 1360
+  ClientHeight = 551
+  ClientWidth = 1358
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clBlack
@@ -22,15 +22,15 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   DesignSize = (
-    1360
-    553)
+    1358
+    551)
   PixelsPerInch = 96
   TextHeight = 14
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1360
-    Height = 514
+    Width = 1358
+    Height = 512
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676596260200FFD8FFE000104A46494600010101006000
@@ -4552,7 +4552,7 @@ object FrmMenu: TFrmMenu
   end
   object imgLogoNovi: TImage
     Left = 32
-    Top = 511
+    Top = 509
     Width = 249
     Height = 83
     Anchors = [akLeft, akBottom]
@@ -6902,7 +6902,7 @@ object FrmMenu: TFrmMenu
   object imgSuporte: TImage
     AlignWithMargins = True
     Left = 956
-    Top = 429
+    Top = 427
     Width = 128
     Height = 139
     Anchors = [akLeft, akBottom]
@@ -7697,8 +7697,8 @@ object FrmMenu: TFrmMenu
   end
   object Status: TStatusBar
     Left = 0
-    Top = 536
-    Width = 1360
+    Top = 534
+    Width = 1358
     Height = 17
     Panels = <
       item
@@ -7714,8 +7714,8 @@ object FrmMenu: TFrmMenu
   end
   object Pan_Versao: TPanel
     Left = 0
-    Top = 514
-    Width = 1360
+    Top = 512
+    Width = 1358
     Height = 22
     Align = alBottom
     BevelOuter = bvNone
@@ -8278,6 +8278,17 @@ object FrmMenu: TFrmMenu
           OnClick = SituaoTributria1Click
         end
         object N12: TMenuItem
+          Caption = '-'
+        end
+        object IBS1: TMenuItem
+          Caption = 'IBS'
+          OnClick = IBS1Click
+        end
+        object CBS1: TMenuItem
+          Caption = 'CBS'
+          OnClick = CBS1Click
+        end
+        object N36: TMenuItem
           Caption = '-'
         end
         object Cnae1: TMenuItem

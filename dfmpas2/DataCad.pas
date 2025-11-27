@@ -1704,6 +1704,10 @@ type
     cdsSecuritizadoraSEC_CODIGO: TIntegerField;
     cdsSecuritizadoraSEC_DESCRICAO: TStringField;
     cdsSecuritizadoraEMP_CODIGO: TStringField;
+    SqlOperFiscCBS_ID: TIntegerField;
+    SqlOperFiscIBS_ID: TIntegerField;
+    CdsOperFiscCBS_ID: TIntegerField;
+    CdsOperFiscIBS_ID: TIntegerField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);
