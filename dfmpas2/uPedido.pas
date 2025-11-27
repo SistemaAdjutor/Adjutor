@@ -5678,11 +5678,13 @@ end;
 
 procedure TFrmPedido.SpeedTipoClick(Sender: tObject);
 begin
-  if pnPedidoMinimo.Font.Color = clRed then
-  begin
-    MessageDlg('Valor mínimo do pedido não atingido', mtWarning, [mbok], 0);
-    exit;
-  end;
+
+  if (pnPedidoMinimo.Font.Color = clRed) and (pnPedidoMinimo.Visible) then
+   begin
+     MessageDlg('Valor mínimo do pedido não atingido', mtWarning, [mbok], 0);
+     exit;
+   end;
+
    if (not SqlCdsPedido.IsEmpty) and (SqlCdsTipoPedidoOPV_ORCAMENTO.AsString = 'S') and (SqlCdsPedidoCLI_CODIGO.AsString = '') then
       uteis.aviso('Somente poderá ser alterado o tipo do pedido quando, um cliente cadastrado estiver vinculado ao mesmo')
    else
