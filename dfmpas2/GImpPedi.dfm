@@ -14930,7 +14930,6 @@ inherited FormGImpPedido: TFormGImpPedido
         Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = dbVendaAgrupadaProduto
-        DisplayFormat = '000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'

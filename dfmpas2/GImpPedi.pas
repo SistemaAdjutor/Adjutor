@@ -3012,7 +3012,7 @@ end;
 procedure TFormGImpPedido.qRel05CLI_RAZAOChange(Sender: TField);
 begin
   inherited;
-  showmessage('foi')
+  // showmessage('foi')
 end;
 
 procedure TFormGImpPedido.qRel05CLI_RAZAOGetText(Sender: TField;
