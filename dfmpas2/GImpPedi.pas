@@ -958,6 +958,7 @@ type
     procedure qRel05CLI_RAZAOChange(Sender: TField);
     procedure qRel05CLI_RAZAOValidate(Sender: TField);
     procedure qRel05CLI_RAZAOSetText(Sender: TField; const Text: string);
+    procedure Rad_TodosClick(Sender: TObject);
   private
     { Private declarations }
     fListaEmpresas : TStringList;
@@ -3006,6 +3007,21 @@ begin
   cbTransp.SelectAll;
 end;
 
+procedure TFormGImpPedido.Rad_TodosClick(Sender: TObject);
+begin
+  inherited;
+  cdsVendaSeg.Close;
+  if Rad_Faturado.Checked then
+    cdsVendaSegTOTAL_GERAL_FAT.Expression :=
+      'SUM( TOTAL_FAT )';
+
+  if Rad_Faturar.Checked or Rad_Todos.Checked then
+    cdsVendaSegTOTAL_GERAL_FAT.Expression :=
+      'SUM( TOTAL_PED )';
+
+
+end;
+
 procedure TFormGImpPedido.Rel_Contagem_Orcamentos;
 var condicao:string;
  Const
@@ -3190,7 +3206,10 @@ end;
 procedure TFormGImpPedido.cdsVendaSegCalcFields(DataSet: TDataSet);
 begin
   inherited;
-  cdsVendaSegCC_REPRES.AsCurrency :=  ((CdsVendaSegTOTAL_FAT.AsCurrency * 100)/CdsVendaSegTOTAL_GERAL_FAT.value);
+  if Rad_Faturado.Checked then
+    cdsVendaSegCC_REPRES.AsCurrency :=  ((CdsVendaSegTOTAL_FAT.AsCurrency * 100)/CdsVendaSegTOTAL_GERAL_FAT.value)
+  else
+    cdsVendaSegCC_REPRES.AsCurrency :=  ((CdsVendaSegTOTAL_PED.AsCurrency * 100)/CdsVendaSegTOTAL_GERAL_FAT.value)  ;
 end;
 
 procedure TFormGImpPedido.ImprimiVendasSegmento;

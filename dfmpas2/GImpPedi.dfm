@@ -523,6 +523,7 @@ inherited FormGImpPedido: TFormGImpPedido
       Checked = True
       TabOrder = 0
       TabStop = True
+      OnClick = Rad_TodosClick
     end
     object Rad_Faturado: TRadioButton
       Left = 141
@@ -531,6 +532,7 @@ inherited FormGImpPedido: TFormGImpPedido
       Height = 17
       Caption = 'Somente &Faturado'
       TabOrder = 1
+      OnClick = Rad_TodosClick
     end
     object Rad_Faturar: TRadioButton
       Left = 277
@@ -539,6 +541,7 @@ inherited FormGImpPedido: TFormGImpPedido
       Height = 17
       Caption = 'Somente '#224' Fat&urar'
       TabOrder = 2
+      OnClick = Rad_TodosClick
     end
   end
   object grp09: TGroupBox [9]
@@ -10106,7 +10109,7 @@ inherited FormGImpPedido: TFormGImpPedido
       currency = True
       DisplayName = ''
       DisplayFormat = '##0.00'
-      Expression = 'sum(TOTAL_FAT)'
+      Expression = 'sum(TOTAL_PED)'
     end
   end
   object dspVendasSeg: TDataSetProvider
