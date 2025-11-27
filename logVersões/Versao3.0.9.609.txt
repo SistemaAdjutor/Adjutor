@@ -1,0 +1,11 @@
+﻿Atualizado em 27/11/2025
+Inicio da versão: 27/11/2025
+
+principal: Arkson, Metalúrgica Água, Pecarpa
+2066 - IBS/CBS ativar campos e tags [Novi]
+2111 - ARKSON - VALORES NÃO ATUALIZAM CONTAS A PAGAR
+2113 - INDUSTRIA ÁGUA -VALOR MÍNIMO DO PEDIDO NÃO ATINGIDO [Metalúrgica Água]
+2114 - ARKSON - RELATÓRIO COM PROBLEMA AO GERAR [Arkson]
+2115 - Pecarpa : relatório de vendas agrupado por produto [Pecarpa]
+2123 - Percarpa: modificar filtro em vendas por linha [Pecarpa]
+

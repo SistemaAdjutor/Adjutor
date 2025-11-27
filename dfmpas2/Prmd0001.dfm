@@ -4808,21 +4808,6 @@ inherited FormParametros: TFormParametros
               Height = 14
               Caption = 'CST Padr'#227'o:'
             end
-            object DBCheckBox104: TDBCheckBox
-              Left = 23
-              Top = 26
-              Width = 122
-              Height = 17
-              Hint = 'Produtos que controlam lote v'#227'o obrigar a vincula'#231#227'o do lote'
-              Caption = 'Ativar IBS / CBS'
-              DataField = 'PMT_ATIVAR_IBS_CBS'
-              DataSource = DataCadastros1.DsParametros
-              ParentShowHint = False
-              ShowHint = True
-              TabOrder = 0
-              ValueChecked = 'S'
-              ValueUnchecked = 'N'
-            end
             object DBEdit68: TDBEdit
               Left = 189
               Top = 77
@@ -4830,7 +4815,7 @@ inherited FormParametros: TFormParametros
               Height = 22
               DataField = 'PMT_IBS_ALIQUOTA_MUNICIPAL'
               DataSource = DataCadastros1.DsParametros
-              TabOrder = 1
+              TabOrder = 2
             end
             object DBEdit69: TDBEdit
               Left = 189
@@ -4839,7 +4824,7 @@ inherited FormParametros: TFormParametros
               Height = 22
               DataField = 'PMT_CBS_ALIQUOTA'
               DataSource = DataCadastros1.DsParametros
-              TabOrder = 3
+              TabOrder = 4
             end
             object DBEdit70: TDBEdit
               Left = 189
@@ -4848,7 +4833,7 @@ inherited FormParametros: TFormParametros
               Height = 22
               DataField = 'PMT_IBS_ALIQUOTA_ESTADUAL'
               DataSource = DataCadastros1.DsParametros
-              TabOrder = 2
+              TabOrder = 3
             end
             object DBEdit71: TDBEdit
               Left = 189
@@ -4857,7 +4842,19 @@ inherited FormParametros: TFormParametros
               Height = 22
               DataField = 'PMT_CST_IBS_CBS'
               DataSource = DataCadastros1.DsParametros
-              TabOrder = 4
+              TabOrder = 1
+            end
+            object DBCheckBox105: TDBCheckBox
+              Left = 44
+              Top = 26
+              Width = 97
+              Height = 17
+              Caption = 'Ativar CBS / IBS'
+              DataField = 'PMT_ATIVAR_IBS_CBS'
+              DataSource = DataCadastros1.DsParametros
+              TabOrder = 0
+              ValueChecked = 'S'
+              ValueUnchecked = 'N'
             end
           end
         end
