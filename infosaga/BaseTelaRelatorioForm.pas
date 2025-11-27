@@ -152,6 +152,10 @@ begin
               vlSelecionaTodos(Sender);
          end;
        end;
+
+      // if not dbGrid.DataSource.DataSet.Active then
+      //   dbGrid.DataSource.DataSet.Open;
+
        tcr.dbGrid:=dbGrid;
        case rgSaida.ItemIndex  of
        0: tcr.rpMain.Preview(nil);

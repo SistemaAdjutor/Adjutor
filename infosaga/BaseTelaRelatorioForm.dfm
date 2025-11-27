@@ -4,8 +4,8 @@ inherited frmBaseTelaRelatorio: TfrmBaseTelaRelatorio
   Caption = 'frmBaseTelaRelatorio'
   ClientHeight = 179
   ClientWidth = 596
-  ExplicitWidth = 604
-  ExplicitHeight = 206
+  ExplicitWidth = 612
+  ExplicitHeight = 218
   PixelsPerInch = 96
   TextHeight = 13
   object Label1: TLabel [0]

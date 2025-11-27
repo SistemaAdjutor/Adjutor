@@ -9,8 +9,8 @@ inherited FrmGiroDoEstoquexCompras: TFrmGiroDoEstoquexCompras
   Position = poDesktopCenter
   Visible = True
   WindowState = wsMaximized
-  ExplicitWidth = 1364
-  ExplicitHeight = 663
+  ExplicitWidth = 1372
+  ExplicitHeight = 675
   PixelsPerInch = 96
   TextHeight = 13
   object Label3: TLabel [0]
@@ -80,6 +80,7 @@ inherited FrmGiroDoEstoquexCompras: TFrmGiroDoEstoquexCompras
             inherited btnImprime: TSpeedButton
               Left = 1092
               Top = 0
+              OnMouseUp = btnImprimeMouseUp
               ExplicitLeft = 746
               ExplicitTop = 0
             end
@@ -197,8 +198,10 @@ inherited FrmGiroDoEstoquexCompras: TFrmGiroDoEstoquexCompras
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object ComboGrupo: TSgDbSearchCombo
               Left = 443
@@ -224,8 +227,10 @@ inherited FrmGiroDoEstoquexCompras: TFrmGiroDoEstoquexCompras
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object ComboTipo: TSgDbSearchCombo
               Left = 443
@@ -251,8 +256,10 @@ inherited FrmGiroDoEstoquexCompras: TFrmGiroDoEstoquexCompras
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object EdtMeses: TSpinEdit
               Left = 257
@@ -595,8 +602,10 @@ inherited FrmGiroDoEstoquexCompras: TFrmGiroDoEstoquexCompras
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
             object cbFornecedor: TSgDbSearchCombo
               Left = 444
@@ -621,8 +630,10 @@ inherited FrmGiroDoEstoquexCompras: TFrmGiroDoEstoquexCompras
               GridLeft = 0
               GridWidth = 0
               GridHeight = 100
+              GridTop = 0
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
+              LimparCampoAoSair = True
             end
           end
         end
