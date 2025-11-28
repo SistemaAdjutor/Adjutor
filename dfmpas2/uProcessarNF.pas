@@ -2968,7 +2968,7 @@ begin
 
   if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' then
   begin
-    notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_NOTA').AsFloat;
+    notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
     // NotaF.NFe.Total.IBSCBS.cMunFGIBS := 'XXXXX';
   end;
 
