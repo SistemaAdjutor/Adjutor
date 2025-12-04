@@ -5,8 +5,8 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
   ClientHeight = 485
   ClientWidth = 1073
   Position = poDesktopCenter
-  ExplicitWidth = 1081
-  ExplicitHeight = 512
+  ExplicitWidth = 1089
+  ExplicitHeight = 524
   PixelsPerInch = 96
   TextHeight = 13
   object grpMensagem: TGroupBox [0]
@@ -246,6 +246,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DataPipeline = pipPedido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -255,7 +256,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 53000
     PrinterSetup.mmPaperWidth = 95000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -263,6 +264,14 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -272,22 +281,34 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -295,14 +316,26 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 108
     Top = 110
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 90000
     DataPipelineName = 'pipPedido'
     object ppDetailBand1: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 53000
@@ -310,6 +343,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText1: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText1'
+        Border.mmPadding = 0
         DataField = 'EMP_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -329,6 +363,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText2: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText2'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -349,13 +384,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label1'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Cliente:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 1852
@@ -368,13 +405,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label2'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'CNPJ:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 39428
@@ -387,6 +426,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'DBText3'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_CGC'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -407,13 +447,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label3'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Inscri'#231#227'o Est.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 39348
@@ -426,6 +468,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'DBText4'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_INSC'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -446,13 +489,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label4'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Telefone:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 39428
@@ -465,6 +510,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'DBText5'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_FONE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -485,13 +531,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label5'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Site:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3531
         mmLeft = 39428
@@ -506,6 +554,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         HyperlinkEnabled = False
         HyperlinkColor = clBlack
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_HOME'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -526,13 +575,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label6'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Qtde.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 50976
@@ -544,6 +595,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText7: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText7'
+        Border.mmPadding = 0
         DataField = 'QTDE_IMPRESSA'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -564,13 +616,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label7'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Item:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -582,6 +636,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText8: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText8'
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -602,13 +657,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label8'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 1852
@@ -620,6 +677,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText9: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText9'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -641,13 +699,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer1
         UserName = 'Label10'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Pedido:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 48683
@@ -659,6 +719,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText11: TppDBText
         DesignLayer = ppDesignLayer1
         UserName = 'DBText11'
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -683,6 +744,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         MaintainAspectRatio = False
         Stretch = True
         Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+        Border.mmPadding = 0
         DataField = 'EMP_LOGO'
         DataPipeline = pipPedido
         GraphicType = 'AutoDetect'
@@ -828,9 +890,13 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       FieldName = 'CLI_CEP'
       Size = 8
     end
+    object CdsEtiquetaPED_NUMERO_PED_CLIENTE: TStringField
+      FieldName = 'PED_NUMERO_PED_CLIENTE'
+    end
   end
   object pipPedido: TppDBPipeline
     DataSource = dsreport
+    AutoCreateFields = False
     UserName = 'pipPedido'
     Left = 28
     Top = 180
@@ -1114,6 +1180,13 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       Searchable = False
       Sortable = False
     end
+    object pipPedidoppField29: TppField
+      FieldAlias = 'PED_NUMERO_PED_CLIENTE'
+      FieldName = 'PED_NUMERO_PED_CLIENTE'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 28
+    end
   end
   object cdsReport: TClientDataSet
     Aggregates = <>
@@ -1230,6 +1303,9 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       FieldName = 'CLI_CEP'
       Size = 8
     end
+    object cdsReportPED_NUMERO_PED_CLIENTE: TStringField
+      FieldName = 'PED_NUMERO_PED_CLIENTE'
+    end
   end
   object dsreport: TDataSource
     DataSet = cdsReport
@@ -1242,6 +1318,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DataPipeline = pipPedido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1251,7 +1328,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 150000
     PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -1259,6 +1336,14 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -1268,22 +1353,34 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -1291,13 +1388,26 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 244
     Top = 110
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 45000
     DataPipelineName = 'pipPedido'
     object ppHeaderBand1: TppHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 36777
       mmPrintPosition = 0
@@ -1305,13 +1415,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer2
         UserName = 'Lendereco'
         OnGetText = ppLabel11GetText
+        Border.mmPadding = 0
         Caption = 'Lendereco'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Courier New'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         WordWrap = True
         mmHeight = 3704
@@ -1325,13 +1437,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer2
         UserName = 'lCEP'
         OnGetText = ppLabel12GetText
+        Border.mmPadding = 0
         Caption = 'lCEP'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Courier New'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 41010
@@ -1344,13 +1458,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer2
         UserName = 'ltelefone'
         OnGetText = ppLabel13GetText
+        Border.mmPadding = 0
         Caption = 'ltelefone'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Courier New'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 41010
@@ -1363,13 +1479,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer2
         UserName = 'lcidadeEstado'
         OnGetText = lcidadeEstadoGetText
+        Border.mmPadding = 0
         Caption = 'lcidadeEstado'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Courier New'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3175
         mmLeft = 41010
@@ -1384,6 +1502,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         AlignBarcode = ahLeft
         AutoScale = True
         AutoSize = False
+        Border.mmPadding = 0
         Color = clBlack
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clWhite
@@ -1391,21 +1510,31 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         Font.Size = -1
         Font.Style = []
         Transparent = True
-        MaxiCodeSettings.BarHeight = 4
-        MaxiCodeSettings.BarWidth = 1
+        BarCodeType = bcQRCode
+        BarCodeUnits = buScreenPixels
+        CaptionLayout = tlTop
+        Data = '2DBarCode'
         MaxiCodeSettings.CarrierPostalCode = '000000000'
         MaxiCodeSettings.HorPixelsPerMM = 4.000000000000000000
         MaxiCodeSettings.VerPixelsPerMM = 4.000000000000000000
-        PDF417Settings.BarHeight = 8
+        MaxiCodeSettings.mmBarHeight = 1058
+        MaxiCodeSettings.mmBarWidth = 265
+        MaxiCodeSettings.mmQuietZone = 2118
         PDF417Settings.RelativeBarHeight = True
+        PDF417Settings.mmBarHeight = 2117
+        PDF417Settings.mmBarWidth = 530
+        PDF417Settings.mmQuietZone = 2118
         QRCodeSettings.CharEncoding = bceUTF8
-        QRCodeSettings.QuietZone = 4
-        DataMatrixSettings.ModuleSize = 3
-        DataMatrixSettings.QuietZone = 3
+        QRCodeSettings.IncludeBOM = True
+        QRCodeSettings.EPCSettings.Version = '001'
+        QRCodeSettings.EPCSettings.Enabled = False
+        QRCodeSettings.mmModuleSize = 1059
+        QRCodeSettings.mmQuietZone = 1058
+        QRCodeSettings.ECICode = -1
         DataMatrixSettings.Square = True
-        BarCodeType = bcQRCode
-        CaptionLayout = tlTop
-        Data = '2DBarCode'
+        DataMatrixSettings.mmModuleSize = 794
+        DataMatrixSettings.mmQuietZone = 794
+        AztecCodeSettings.mmModuleSize = 1600
         mmHeight = 19050
         mmLeft = 65440
         mmTop = 16757
@@ -1421,6 +1550,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         MaintainAspectRatio = False
         Stretch = True
         Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+        Border.mmPadding = 0
         DataField = 'EMP_LOGO'
         DataPipeline = pipPedido
         GraphicType = 'AutoDetect'
@@ -1436,6 +1566,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppLine1: TppLine
         DesignLayer = ppDesignLayer2
         UserName = 'Line1'
+        Border.mmPadding = 0
         Weight = 0.750000000000000000
         mmHeight = 1323
         mmLeft = 1058
@@ -1447,6 +1578,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBMemo1: TppDBMemo
         DesignLayer = ppDesignLayer2
         UserName = 'MOD1_PRD_REFER1'
+        Border.mmPadding = 0
         CharWrap = False
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
@@ -1473,13 +1605,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppLabel9: TppLabel
         DesignLayer = ppDesignLayer2
         UserName = 'Label9'
+        Border.mmPadding = 0
         Caption = 'C'#243'digo:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Courier New'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 2910
@@ -1491,6 +1625,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText12: TppDBText
         DesignLayer = ppDesignLayer2
         UserName = 'DBText12'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -1511,13 +1646,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer2
         UserName = 'Label14'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Pedido:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Courier New'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3351
         mmLeft = 2910
@@ -1529,6 +1666,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText13: TppDBText
         DesignLayer = ppDesignLayer2
         UserName = 'DBText13'
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -1547,14 +1685,13 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       end
     end
     object ppColumnHeaderBand1: TppColumnHeaderBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand2: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 10054
       mmPrintPosition = 0
@@ -1565,6 +1702,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         AutoEncode = True
         BarCodeType = bcCode128
         BarColor = clBlack
+        Border.mmPadding = 0
         CalcCheckDigit = False
         DataField = 'PRDCO_CODIGO_ORIGINAL'
         DataPipeline = pipPedido
@@ -1588,19 +1726,20 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       end
     end
     object ppColumnFooterBand1: TppColumnFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppFooterBand1: TppFooterBand
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 2646
       mmPrintPosition = 0
       object ppDBText10: TppDBText
         DesignLayer = ppDesignLayer2
         UserName = 'DBText10'
+        Border.mmPadding = 0
         DataField = 'EMP_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -1632,13 +1771,13 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       DataPipelineName = 'pipPedido'
       NewFile = False
       object ppGroupHeaderBand1: TppGroupHeaderBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         mmBottomOffset = 0
         mmHeight = 0
         mmPrintPosition = 0
       end
       object ppGroupFooterBand1: TppGroupFooterBand
-        Background.Brush.Style = bsClear
+        Border.mmPadding = 0
         HideWhenOneDetail = False
         mmBottomOffset = 0
         mmHeight = 0
@@ -1677,7 +1816,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     PrinterSetup.mmMarginTop = 4000
     PrinterSetup.mmPaperHeight = 76000
     PrinterSetup.mmPaperWidth = 110000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     PrinterSetup.DevMode = {00000000}
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
@@ -1686,6 +1825,14 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -1695,23 +1842,35 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
+    PreviewFormSettings.PageSeparation = 1
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
-    PreviewFormSettings.PageSeparation = 1
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -1719,21 +1878,33 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 180
     Top = 106
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 35000
     DataPipelineName = 'pipPedido'
     object ppColumnHeaderBand2: TppColumnHeaderBand
       Visible = False
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
     end
     object ppDetailBand4: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       ColumnTraversal = ctLeftToRight
       mmBottomOffset = 0
       mmHeight = 23000
@@ -1741,6 +1912,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object MOD1_PRD_REFER: TppDBMemo
         DesignLayer = ppDesignLayer4
         UserName = 'MOD1_PRD_REFER'
+        Border.mmPadding = 0
         CharWrap = False
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
@@ -1767,6 +1939,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBMemo2: TppDBMemo
         DesignLayer = ppDesignLayer4
         UserName = 'DBMemo2'
+        Border.mmPadding = 0
         CharWrap = False
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = pipPedido
@@ -1798,6 +1971,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         AutoSizeFont = False
         BarCodeType = bcCode128
         BarColor = clBlack
+        Border.mmPadding = 0
         CalcCheckDigit = False
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
@@ -1821,7 +1995,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     end
     object ppColumnFooterBand2: TppColumnFooterBand
       Visible = False
-      Background.Brush.Style = bsClear
+      Border.mmPadding = 0
       mmBottomOffset = 0
       mmHeight = 0
       mmPrintPosition = 0
@@ -1841,6 +2015,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DataPipeline = pipPedido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -1850,7 +2025,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     PrinterSetup.mmMarginTop = 0
     PrinterSetup.mmPaperHeight = 30000
     PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Users\Desenvolvimento\Documents\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -1858,6 +2033,14 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -1867,22 +2050,34 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -1890,14 +2085,26 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 308
     Top = 110
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 90000
     DataPipelineName = 'pipPedido'
     object ppDetailBand3: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 30000
@@ -1906,13 +2113,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer3
         UserName = 'Label8'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 33538
@@ -1924,6 +2133,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText22: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText9'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -1949,6 +2159,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         MaintainAspectRatio = False
         Stretch = True
         Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+        Border.mmPadding = 0
         DataField = 'EMP_LOGO'
         DataPipeline = pipPedido
         GraphicType = 'AutoDetect'
@@ -1964,6 +2175,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText14: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText14'
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -1985,13 +2197,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer3
         UserName = 'Label16'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Ref:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 61762
@@ -2004,13 +2218,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer3
         UserName = 'Label15'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Qtde:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 65968
@@ -2022,6 +2238,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText15: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText15'
+        Border.mmPadding = 0
         DataField = 'QTDE_IMPRESSA'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2043,13 +2260,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer3
         UserName = 'Label17'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'NF:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4178
         mmLeft = 33538
@@ -2061,6 +2280,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText16: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText16'
+        Border.mmPadding = 0
         DataField = 'NF_NUM_NFE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2084,6 +2304,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         AlignBarCode = ahCenter
         BarCodeType = bcCode39
         BarColor = clBlack
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
         PrintHumanReadable = False
@@ -2107,13 +2328,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppLabel18: TppLabel
         DesignLayer = ppDesignLayer3
         UserName = 'Label18'
+        Border.mmPadding = 0
         Caption = 'C'#243'digo:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 9
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 33602
@@ -2125,6 +2348,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText17: TppDBText
         DesignLayer = ppDesignLayer3
         UserName = 'DBText17'
+        Border.mmPadding = 0
         DataField = 'PRDCO_CODIGO_ORIGINAL'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2157,6 +2381,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DataPipeline = pipPedido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -2166,7 +2391,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 51600
     PrinterSetup.mmPaperWidth = 90000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -2174,6 +2399,14 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -2183,22 +2416,34 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -2206,14 +2451,26 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 364
     Top = 110
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 90000
     DataPipelineName = 'pipPedido'
     object ppDetailBand5: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 51600
@@ -2221,6 +2478,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText18: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText1'
+        Border.mmPadding = 0
         DataField = 'EMP_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2241,6 +2499,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText19: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText2'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2261,13 +2520,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label1'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Cliente:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 1852
@@ -2280,13 +2541,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label2'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'CNPJ:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 39428
@@ -2299,6 +2562,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'DBText3'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_CGC'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2319,13 +2583,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label3'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Inscri'#231#227'o Est.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 39348
@@ -2338,6 +2604,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'DBText4'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_INSC'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2358,13 +2625,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label4'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Telefone:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 39428
@@ -2377,6 +2646,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'DBText5'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_FONE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2397,13 +2667,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label5'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Site:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3531
         mmLeft = 39428
@@ -2418,6 +2690,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         HyperlinkEnabled = False
         HyperlinkColor = clBlack
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_HOME'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2438,13 +2711,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label6'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Qtde.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 50976
@@ -2456,6 +2731,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText25: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText7'
+        Border.mmPadding = 0
         DataField = 'QTDE_IMPRESSA'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2476,13 +2752,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label7'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Item:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -2494,6 +2772,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText26: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText8'
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2514,13 +2793,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label8'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 1852
@@ -2532,6 +2813,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText27: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText9'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2553,13 +2835,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer5
         UserName = 'Label10'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Pedido:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4059
         mmLeft = 48683
@@ -2571,6 +2855,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText28: TppDBText
         DesignLayer = ppDesignLayer5
         UserName = 'DBText11'
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2595,6 +2880,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         MaintainAspectRatio = False
         Stretch = True
         Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+        Border.mmPadding = 0
         DataField = 'EMP_LOGO'
         DataPipeline = pipPedido
         GraphicType = 'AutoDetect'
@@ -2623,6 +2909,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DataPipeline = pipPedido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -2632,7 +2919,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 75000
     PrinterSetup.mmPaperWidth = 105000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -2640,6 +2927,14 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -2649,22 +2944,34 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -2672,14 +2979,26 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 420
     Top = 110
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 100000
     DataPipelineName = 'pipPedido'
     object ppDetailBand6: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 71702
@@ -2687,6 +3006,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText29: TppDBText
         DesignLayer = ppDesignLayer6
         UserName = 'DBText1'
+        Border.mmPadding = 0
         DataField = 'EMP_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2706,6 +3026,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText30: TppDBText
         DesignLayer = ppDesignLayer6
         UserName = 'DBText2'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2727,13 +3048,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label1'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Cliente:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1654
@@ -2746,13 +3069,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label2'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'CNPJ:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 39423
@@ -2765,6 +3090,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'DBText3'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_CGC'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2785,13 +3111,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label3'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Inscri'#231#227'o Est.:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 39423
@@ -2804,6 +3132,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'DBText4'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_INSC'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2824,13 +3153,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label4'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Telefone:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 39423
@@ -2843,6 +3174,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'DBText5'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_FONE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2863,13 +3195,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label5'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Site:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 39423
@@ -2884,6 +3218,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         HyperlinkEnabled = False
         HyperlinkColor = clBlack
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_HOME'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2904,13 +3239,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label6'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Qtde.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 71702
@@ -2922,6 +3259,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText35: TppDBText
         DesignLayer = ppDesignLayer6
         UserName = 'DBText7'
+        Border.mmPadding = 0
         DataField = 'QTDE_IMPRESSA'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2942,13 +3280,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label7'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Item:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -2960,6 +3300,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText36: TppDBText
         DesignLayer = ppDesignLayer6
         UserName = 'DBText8'
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -2980,13 +3321,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label8'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Descri'#231#227'o:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 1852
@@ -2998,6 +3341,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText37: TppDBText
         DesignLayer = ppDesignLayer6
         UserName = 'DBText9'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3019,13 +3363,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label10'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Pedido:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 65617
@@ -3037,6 +3383,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText38: TppDBText
         DesignLayer = ppDesignLayer6
         UserName = 'DBText11'
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3061,6 +3408,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         MaintainAspectRatio = False
         Stretch = True
         Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+        Border.mmPadding = 0
         DataField = 'EMP_LOGO'
         DataPipeline = pipPedido
         GraphicType = 'AutoDetect'
@@ -3077,13 +3425,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer6
         UserName = 'Label38'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'NF:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 10
         Font.Style = [fsBold]
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 4233
         mmLeft = 4763
@@ -3095,6 +3445,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText39: TppDBText
         DesignLayer = ppDesignLayer6
         UserName = 'DBText39'
+        Border.mmPadding = 0
         DataField = 'NF_NUM_NFE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3128,6 +3479,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DataPipeline = pipPedido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -3137,7 +3489,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 80000
     PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -3146,6 +3498,14 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -3155,22 +3515,34 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -3178,14 +3550,26 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 476
     Top = 110
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 90000
     DataPipelineName = 'pipPedido'
     object ppDetailBand7: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 75142
@@ -3218,6 +3602,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         MaintainAspectRatio = False
         Stretch = True
         Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+        Border.mmPadding = 0
         DataField = 'EMP_LOGO'
         DataPipeline = pipPedido
         GraphicType = 'AutoDetect'
@@ -3283,6 +3668,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText40: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText1'
+        Border.mmPadding = 0
         DataField = 'EMP_ENDERE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3302,6 +3688,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText41: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText2'
+        Border.mmPadding = 0
         DataField = 'TRP_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3314,7 +3701,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         mmHeight = 2944
         mmLeft = 2117
         mmTop = 71266
-        mmWidth = 85725
+        mmWidth = 56621
         BandType = 4
         LayerName = BandLayer10
       end
@@ -3322,6 +3709,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'DBText3'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_BAIRRO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3342,6 +3730,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'DBText4'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_CIDADE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3362,13 +3751,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label4'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Tel:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 62098
@@ -3381,6 +3772,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'DBText5'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_FONE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3401,13 +3793,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label5'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'CEP:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2910
         mmLeft = 31426
@@ -3422,6 +3816,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         HyperlinkEnabled = False
         HyperlinkColor = clBlack
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_CEP'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3441,6 +3836,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText46: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText7'
+        Border.mmPadding = 0
         DataField = 'QTDE_IMPRESSA'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3460,6 +3856,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText47: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText8'
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3479,6 +3876,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText48: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText9'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3500,13 +3898,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label40'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Bairro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 31426
@@ -3519,6 +3919,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'DBText50'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_UF'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3538,6 +3939,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText51: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText51'
+        Border.mmPadding = 0
         DataField = 'CLI_ENDERE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3558,13 +3960,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label41'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Cliente:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 3440
@@ -3577,13 +3981,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label48'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Endere'#231'o do Cliente'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 3499
@@ -3595,6 +4001,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText52: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText52'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3615,6 +4022,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText53: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText53'
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3634,6 +4042,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText54: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText54'
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3653,6 +4062,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText55: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText55'
+        Border.mmPadding = 0
         DataField = 'CLI_UF'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3672,6 +4082,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText56: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText56'
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3692,13 +4103,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label49'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'C'#243'digo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 2970
@@ -3711,13 +4124,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label50'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 20962
@@ -3730,13 +4145,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label51'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Quantidade'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 3175
@@ -3749,13 +4166,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label39'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Transportadora'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 2117
@@ -3767,13 +4186,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppContador: TppLabel
         DesignLayer = ppDesignLayer7
         UserName = 'Contador'
+        Border.mmPadding = 0
         Caption = 'Contador'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3704
@@ -3786,13 +4207,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppTotal: TppLabel
         DesignLayer = ppDesignLayer7
         UserName = 'Total'
+        Border.mmPadding = 0
         Caption = 'Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 64029
@@ -3804,13 +4227,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppLabel44: TppLabel
         DesignLayer = ppDesignLayer7
         UserName = 'Label44'
+        Border.mmPadding = 0
         Caption = '/'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 62177
@@ -3823,13 +4248,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label45'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Volume'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 47096
@@ -3851,6 +4278,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText57: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText57'
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3871,13 +4299,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label46'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Pedido'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 2646
@@ -3899,6 +4329,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText49: TppDBText
         DesignLayer = ppDesignLayer7
         UserName = 'DBText49'
+        Border.mmPadding = 0
         DataField = 'NF_NUM_NFE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -3909,9 +4340,9 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         Transparent = True
         DataPipelineName = 'pipPedido'
         mmHeight = 3969
-        mmLeft = 46302
-        mmTop = 64222
-        mmWidth = 19844
+        mmLeft = 47096
+        mmTop = 64294
+        mmWidth = 42598
         BandType = 4
         LayerName = BandLayer10
       end
@@ -3919,13 +4350,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer7
         UserName = 'Label47'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Nota Fiscal'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 46302
@@ -3934,18 +4367,64 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         BandType = 4
         LayerName = BandLayer10
       end
+      object ppLabel55: TppLabel
+        DesignLayer = ppDesignLayer7
+        UserName = 'Label55'
+        AutoSize = False
+        Border.mmPadding = 0
+        Caption = 'O.C.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 3440
+        mmLeft = 23019
+        mmTop = 61119
+        mmWidth = 5292
+        BandType = 4
+        LayerName = BandLayer10
+      end
+      object ppDBText76: TppDBText
+        DesignLayer = ppDesignLayer7
+        UserName = 'DBText101'
+        Border.mmPadding = 0
+        DataField = 'PED_NUMERO_PED_CLIENTE'
+        DataPipeline = pipPedido
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        Transparent = True
+        DataPipelineName = 'pipPedido'
+        mmHeight = 3704
+        mmLeft = 23019
+        mmTop = 64294
+        mmWidth = 20902
+        BandType = 4
+        LayerName = BandLayer10
+      end
     end
     object raCodeModule1: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650611
-        436F6E7461646F724F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F75726365068370726F63656475726520436F6E
-        7461646F724F6E476574546578742876617220546578743A20537472696E6729
-        3B0D0A626567696E0D0A202054657874203A3D20496E74546F53747228526570
-        6F72742E4162736F6C757465506167654E6F293B20200D0A656E643B20202020
-        20202020202020202020202020202020202020200D0A0D436F6D706F6E656E74
-        4E616D650608436F6E7461646F72094576656E744E616D6506094F6E47657454
-        657874074576656E7449440235084361726574506F730102010204000000}
+      object raProgramInfo1: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'ContadorOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure ContadorOnGetText(var Text: String);'#13#10'begin'#13#10'  Text :=' +
+          ' IntToStr(Report.AbsolutePageNo);  '#13#10'end;                       ' +
+          ' '#13#10
+        raProgram.ComponentName = 'Contador'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          1
+          4)
+      end
     end
     object ppDesignLayers7: TppDesignLayers
       object ppDesignLayer7: TppDesignLayer
@@ -3962,6 +4441,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DataPipeline = pipPedido
     PrinterSetup.BinName = 'Default'
     PrinterSetup.DocumentName = 'Report'
+    PrinterSetup.Duplex = dpNone
     PrinterSetup.PaperName = 'Custom'
     PrinterSetup.PrinterName = 'Default'
     PrinterSetup.SaveDeviceSettings = False
@@ -3971,7 +4451,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     PrinterSetup.mmMarginTop = 1000
     PrinterSetup.mmPaperHeight = 50000
     PrinterSetup.mmPaperWidth = 100000
-    PrinterSetup.PaperSize = 119
+    PrinterSetup.PaperSize = 256
     Template.FileName = 'C:\Developer\adjutor\fontesrelatorios\ETIQUETASISTEMA.rtm'
     Template.ShowBusyCursor = False
     Units = utMillimeters
@@ -3980,6 +4460,14 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     DeviceType = 'Screen'
     DefaultFileDeviceType = 'PDF'
     EmailSettings.ReportFormat = 'PDF'
+    EmailSettings.ConnectionSettings.MailService = 'SMTP'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.GmailSettings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectURI = 'http://localhost'
+    EmailSettings.ConnectionSettings.WebMail.Outlook365Settings.OAuth2.RedirectPort = 0
+    EmailSettings.ConnectionSettings.EnableMultiPlugin = False
     LanguageID = 'Default'
     OpenFile = False
     OutlineSettings.CreateNode = False
@@ -3989,22 +4477,34 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     ThumbnailSettings.Enabled = True
     ThumbnailSettings.Visible = True
     ThumbnailSettings.DeadSpace = 30
+    ThumbnailSettings.PageHighlight.Width = 3
+    ThumbnailSettings.ThumbnailSize = tsSmall
     PDFSettings.EmbedFontOptions = [efUseSubset]
     PDFSettings.EncryptSettings.AllowCopy = True
     PDFSettings.EncryptSettings.AllowInteract = True
     PDFSettings.EncryptSettings.AllowModify = True
     PDFSettings.EncryptSettings.AllowPrint = True
+    PDFSettings.EncryptSettings.AllowExtract = True
+    PDFSettings.EncryptSettings.AllowAssemble = True
+    PDFSettings.EncryptSettings.AllowQualityPrint = True
     PDFSettings.EncryptSettings.Enabled = False
     PDFSettings.EncryptSettings.KeyLength = kl40Bit
+    PDFSettings.EncryptSettings.EncryptionType = etRC4
+    PDFSettings.DigitalSignatureSettings.SignPDF = False
     PDFSettings.FontEncoding = feAnsi
     PDFSettings.ImageCompressionLevel = 25
+    PDFSettings.PDFAFormat = pafNone
+    PreviewFormSettings.PageBorder.mmPadding = 0
     PreviewFormSettings.WindowState = wsMaximized
     PreviewFormSettings.ZoomSetting = zs100Percent
+    RTFSettings.AppName = 'ReportBuilder'
+    RTFSettings.Author = 'ReportBuilder'
     RTFSettings.DefaultFont.Charset = DEFAULT_CHARSET
     RTFSettings.DefaultFont.Color = clWindowText
     RTFSettings.DefaultFont.Height = -13
     RTFSettings.DefaultFont.Name = 'Arial'
     RTFSettings.DefaultFont.Style = []
+    RTFSettings.Title = 'Report'
     TextFileName = '($MyDocuments)\Report.pdf'
     TextSearchSettings.DefaultString = '<FindText>'
     TextSearchSettings.Enabled = False
@@ -4012,14 +4512,26 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
     XLSSettings.Author = 'ReportBuilder'
     XLSSettings.Subject = 'Report'
     XLSSettings.Title = 'Report'
+    XLSSettings.WorksheetName = 'Report'
+    CloudDriveSettings.DropBoxSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.DropBoxSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.DropBoxSettings.DirectorySupport = True
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.GoogleDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.GoogleDriveSettings.DirectorySupport = False
+    CloudDriveSettings.OneDriveSettings.OAuth2.AuthStorage = [oasAccessToken, oasRefreshToken]
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectURI = 'http://localhost'
+    CloudDriveSettings.OneDriveSettings.OAuth2.RedirectPort = 0
+    CloudDriveSettings.OneDriveSettings.DirectorySupport = True
     Left = 532
     Top = 110
-    Version = '16.02'
+    Version = '22.0'
     mmColumnWidth = 90000
     DataPipelineName = 'pipPedido'
     object ppDetailBand8: TppDetailBand
-      Background1.Brush.Style = bsClear
-      Background2.Brush.Style = bsClear
+      Border.mmPadding = 0
       PrintHeight = phDynamic
       mmBottomOffset = 0
       mmHeight = 44186
@@ -4092,6 +4604,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         MaintainAspectRatio = False
         Stretch = True
         Border.BorderPositions = [bpLeft, bpTop, bpRight, bpBottom]
+        Border.mmPadding = 0
         DataField = 'EMP_LOGO'
         DataPipeline = pipPedido
         GraphicType = 'AutoDetect'
@@ -4117,6 +4630,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText58: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText1'
+        Border.mmPadding = 0
         DataField = 'EMP_ENDERE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4137,6 +4651,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'DBText3'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_BAIRRO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4157,6 +4672,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'DBText4'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_CIDADE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4187,13 +4703,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label4'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Tel:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 67469
@@ -4206,6 +4724,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'DBText5'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_FONE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4226,13 +4745,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label5'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'CEP:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 2910
         mmLeft = 31426
@@ -4247,6 +4768,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         HyperlinkEnabled = False
         HyperlinkColor = clBlack
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_CEP'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4266,6 +4788,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText64: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText7'
+        Border.mmPadding = 0
         DataField = 'QTDE_IMPRESSA'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4285,6 +4808,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText65: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText8'
+        Border.mmPadding = 0
         DataField = 'PRD_REFER'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4304,6 +4828,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText66: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText9'
+        Border.mmPadding = 0
         DataField = 'PRF_PRDDESCRI'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4325,13 +4850,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label40'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Bairro'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 31426
@@ -4344,6 +4871,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'DBText50'
         AutoSize = True
+        Border.mmPadding = 0
         DataField = 'EMP_UF'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4363,6 +4891,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText68: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText51'
+        Border.mmPadding = 0
         DataField = 'CLI_ENDERE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4382,6 +4911,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText70: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText53'
+        Border.mmPadding = 0
         DataField = 'CLI_BAIRRO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4401,6 +4931,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText71: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText54'
+        Border.mmPadding = 0
         DataField = 'CLI_CIDADE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4420,6 +4951,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText72: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText55'
+        Border.mmPadding = 0
         DataField = 'CLI_UF'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4439,6 +4971,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText73: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText56'
+        Border.mmPadding = 0
         DataField = 'CLI_CEP'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4459,13 +4992,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label50'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Produto'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 20962
@@ -4478,13 +5013,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label51'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Qtde:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 2910
@@ -4497,13 +5034,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label39'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Transp:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3456
         mmLeft = 2117
@@ -4515,13 +5054,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppLabel61: TppLabel
         DesignLayer = ppDesignLayer8
         UserName = 'Contador'
+        Border.mmPadding = 0
         Caption = 'Contador'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         TextAlignment = taRightJustified
         Transparent = True
         mmHeight = 3440
@@ -4535,13 +5076,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Total8'
         OnGetText = ppTotal8GetText
+        Border.mmPadding = 0
         Caption = 'Total8'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3704
         mmLeft = 36777
@@ -4553,13 +5096,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppLabel63: TppLabel
         DesignLayer = ppDesignLayer8
         UserName = 'Label44'
+        Border.mmPadding = 0
         Caption = '/'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 34925
@@ -4572,13 +5117,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label45'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Vol:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3969
         mmLeft = 22754
@@ -4590,6 +5137,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText74: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText57'
+        Border.mmPadding = 0
         DataField = 'PED_CODIGO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4610,13 +5158,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label46'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'Ped:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 45244
@@ -4628,6 +5178,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText75: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText49'
+        Border.mmPadding = 0
         DataField = 'NF_NUM_NFE'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4648,13 +5199,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label47'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'NF:'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 67469
@@ -4666,6 +5219,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText59: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText2'
+        Border.mmPadding = 0
         DataField = 'TRP_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4686,13 +5240,15 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
         DesignLayer = ppDesignLayer8
         UserName = 'Label49'
         AutoSize = False
+        Border.mmPadding = 0
         Caption = 'C'#243'digo'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
-        FormField = False
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
         Transparent = True
         mmHeight = 3440
         mmLeft = 2970
@@ -4704,6 +5260,7 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       object ppDBText69: TppDBText
         DesignLayer = ppDesignLayer8
         UserName = 'DBText52'
+        Border.mmPadding = 0
         DataField = 'CLI_RAZAO'
         DataPipeline = pipPedido
         Font.Charset = DEFAULT_CHARSET
@@ -4723,16 +5280,21 @@ inherited FrmEtiquetasExpedicao2: TFrmEtiquetasExpedicao2
       end
     end
     object raCodeModule2: TraCodeModule
-      ProgramStream = {
-        01060F5472614576656E7448616E646C65720B50726F6772616D4E616D650611
-        436F6E7461646F724F6E476574546578740B50726F6772616D54797065070B74
-        7450726F63656475726506536F75726365068370726F63656475726520436F6E
-        7461646F724F6E476574546578742876617220546578743A20537472696E6729
-        3B0D0A626567696E0D0A202054657874203A3D20496E74546F53747228526570
-        6F72742E4162736F6C757465506167654E6F293B20200D0A656E643B20202020
-        20202020202020202020202020202020202020200D0A0D436F6D706F6E656E74
-        4E616D650608436F6E7461646F72094576656E744E616D6506094F6E47657454
-        657874074576656E7449440235084361726574506F730102010204000000}
+      object raProgramInfo2: TraProgramInfo
+        raClassName = 'TraEventHandler'
+        raProgram.ProgramName = 'ContadorOnGetText'
+        raProgram.ProgramType = ttProcedure
+        raProgram.Source = 
+          'procedure ContadorOnGetText(var Text: String);'#13#10'begin'#13#10'  Text :=' +
+          ' IntToStr(Report.AbsolutePageNo);  '#13#10'end;                       ' +
+          ' '#13#10
+        raProgram.ComponentName = 'Contador'
+        raProgram.EventName = 'OnGetText'
+        raProgram.EventID = 53
+        raProgram.CaretPos = (
+          1
+          4)
+      end
     end
     object ppDesignLayers8: TppDesignLayers
       object ppDesignLayer8: TppDesignLayer
