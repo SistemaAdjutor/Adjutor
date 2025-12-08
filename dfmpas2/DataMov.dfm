@@ -1282,7 +1282,7 @@ object DataMovimento: TDataMovimento
     object CdsRecParceFAT_CODIGO: TStringField
       FieldName = 'FAT_CODIGO'
       ProviderFlags = [pfInUpdate]
-      Size = 6
+      Size = 15
     end
     object CdsRecParceREP_CODIGO: TStringField
       FieldName = 'REP_CODIGO'
@@ -1610,9 +1610,10 @@ object DataMovimento: TDataMovimento
       Size = 2
     end
     object SqlRecParceFAT_CODIGO: TStringField
+      DisplayWidth = 15
       FieldName = 'FAT_CODIGO'
       ProviderFlags = [pfInUpdate]
-      Size = 6
+      Size = 15
     end
     object SqlRecParceREP_CODIGO: TStringField
       FieldName = 'REP_CODIGO'
