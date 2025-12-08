@@ -1,5 +1,5 @@
-﻿Atualizado em 27/11/2025
-Inicio da versão: 27/11/2025
+﻿Atualizado em 08/12/2025
+Inicio da versão: 08/12/2025
 
 principal: Arkson, Metalúrgica Água, Pecarpa
 2066 - IBS/CBS ativar campos e tags [Novi]
@@ -8,4 +8,11 @@ principal: Arkson, Metalúrgica Água, Pecarpa
 2114 - ARKSON - RELATÓRIO COM PROBLEMA AO GERAR [Arkson]
 2115 - Pecarpa : relatório de vendas agrupado por produto [Pecarpa]
 2123 - Percarpa: modificar filtro em vendas por linha [Pecarpa]
+
+patch 1: Arkson, LForja
+2119 - ARKSON - CONSOLIDAÇÃO POR CONTA (COM PAGAMENTOS PARCIAIS)
+2126 - Erro Lforja - Contas a Receber - Lançamento manual
+2127 - Revisão Lforja - Etiqueta 7
+2128 - Erro Arkson - Sincronizar entrada de nf
+2129 - Alíquotas tabela icms incorretas nas últimas versões
 
