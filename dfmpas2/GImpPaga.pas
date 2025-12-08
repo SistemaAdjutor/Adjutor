@@ -1071,7 +1071,7 @@ begin
                       sObsTmp := 'P2.PPC_OBS'
                    else
                        sObsTmp := 'COALESCE(T5.PAG_OBS,'''')||'' ''||COALESCE(p2.PPC_OBS,'''')';
-
+{
                  if (LTBoxRelatorio.ItemIndex = 2) then    // busca pelo Pagamento (realizado)
                    begin
                      wSql1 := 'SELECT (T1.pag_valor + T1.PAG_JUROS) as pag_valor, P2.PAG_CODIGO, '+sObsTmp+' as PPC_OBS,P2.PPC_VENCTO,P2.PPC_VLPARC,P2.PPC_VLPAGO,P2.PPC_PAGTO,P2.PCX_CODIGO,P2.PPC_DTEMIS, P2.ppc_juros, P2.ppc_multa, P2.ppc_descto, ';
@@ -1090,6 +1090,76 @@ begin
                    SqlCdsPag02.Close;
                    SqlCdsPag02.CommandText := SQLDEF('PAGAR',wSql1+wSql2+wSql3,wSeleciona,wOrdem,'P2.');
                    SqlCdsPag02.Open;
+ }
+
+
+
+                    if (LTBoxRelatorio.ItemIndex = 2) then    // realizado
+                    begin
+                      wSql1 :=
+                        'SELECT DISTINCT '+
+                        ' (SELECT SUM(TX.PAG_VALOR + TX.PAG_JUROS) '+
+                        '    FROM PAG_PAGAMENTO TX '+
+                        '   WHERE TX.PAG_REGISTRO = P2.PAG_REGISTRO '+
+                        ' ) AS PAG_VALOR, '+
+                        ' P2.PAG_CODIGO, '+
+                        sObsTmp+' AS PPC_OBS, '+
+                        ' P2.PPC_VENCTO, P2.PPC_VLPARC, P2.PPC_VLPAGO, P2.PPC_PAGTO, '+
+                        ' P2.PCX_CODIGO, P2.PPC_DTEMIS, '+
+                        ' P2.PPC_JUROS, P2.PPC_MULTA, P2.PPC_DESCTO, ';
+
+                      wSql2 :=
+                        ' P2.PAG_NUMDOC, '+
+                        ' P2.CCT_CODIGO, C1.CCT_DESCRI, C1.CCT_PROVISAO, '+
+                        ' P2.FOR_CODIGO, F1.FOR_RAZAO '+
+                        ' FROM PAG_PC01 P2 '+
+                        ' LEFT JOIN PAG_PAGAMENTO T1 ON (T1.PAG_REGISTRO = P2.PAG_REGISTRO) ';
+
+                      wSql3 :=
+                        ' JOIN PAG0000 T5 ON (T5.PAG_CODIGO = P2.PAG_CODIGO AND P2.EMP_CODIGO = T5.EMP_CODIGO) '+
+                        ' JOIN CCT_0000 C1 ON P2.CCT_CODIGO = C1.CCT_CODIGO '+
+                        ' JOIN FOR0000 F1 ON P2.FOR_CODIGO = F1.FOR_CODIGO';
+                    end
+                    else    // previsto
+                    begin
+                      wSql1 :=
+                        'SELECT '+
+                        ' P2.PAG_CODIGO, '+
+                        sObsTmp+' AS PPC_OBS, '+
+                        ' P2.PPC_VENCTO, P2.PPC_VLPARC, P2.PPC_VLPAGO, P2.PPC_PAGTO, '+
+                        ' P2.PCX_CODIGO, P2.PPC_DTEMIS, '+
+                        ' P2.PPC_JUROS, P2.PPC_MULTA, P2.PPC_DESCTO, ';
+
+                      wSql2 :=
+                        ' P2.PAG_NUMDOC, '+
+                        ' P2.CCT_CODIGO, C1.CCT_DESCRI, C1.CCT_PROVISAO, '+
+                        ' P2.FOR_CODIGO, F1.FOR_RAZAO, '+
+                        ' P2.PPC_VLPARC AS PAG_VALOR '+
+                        ' FROM PAG_PC01 P2 ';
+
+                      wSql3 :=
+                        ' JOIN PAG0000 T5 ON (T5.PAG_CODIGO = P2.PAG_CODIGO AND P2.EMP_CODIGO = T5.EMP_CODIGO) '+
+                        ' JOIN CCT_0000 C1 ON P2.CCT_CODIGO = C1.CCT_CODIGO '+
+                        ' JOIN FOR0000 F1 ON P2.FOR_CODIGO = F1.FOR_CODIGO';
+                    end;
+
+                    // filtro obrigatório comum
+                    wSeleciona := wSeleciona + ' AND P2.PPC_EXCLUSAO = ''N''';
+
+                    SqlCdsPag02.Close;
+                    SqlCdsPag02.CommandText :=
+                      SQLDEF('PAGAR', wSql1 + wSql2 + wSql3, wSeleciona, wOrdem, 'P2.');
+                    SqlCdsPag02.Open;
+
+
+
+
+
+
+
+
+
+
 
 
           end
