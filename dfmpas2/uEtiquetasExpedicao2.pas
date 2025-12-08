@@ -311,6 +311,11 @@ type
     ppDesignLayers8: TppDesignLayers;
     ppDesignLayer8: TppDesignLayer;
     ppParameterList8: TppParameterList;
+    ppLabel55: TppLabel;
+    pipPedidoppField29: TppField;
+    cdsReportPED_NUMERO_PED_CLIENTE: TStringField;
+    ppDBText76: TppDBText;
+    CdsEtiquetaPED_NUMERO_PED_CLIENTE: TStringField;
     procedure BitEtiqFecharClick(Sender: TObject);
     procedure BitImprimeEtiqClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -425,6 +430,7 @@ begin
   OpenAux(
          ' SELECT  ' +
          '     P1.PED_CODIGO,  '+
+         '     P1.PED_NUMERO_PED_CLIENTE, ' +
          '     E1.EMP_RAZAO,       '+
          '     E1.EMP_FONE,        '+
          '     E1.EMP_CGC,         '+
@@ -473,6 +479,7 @@ begin
  begin
    CdsEtiqueta.Append;
    CdsEtiquetaPED_CODIGO.AsString := qAux.FieldByName('PED_CODIGO').AsString;
+   CdsEtiquetaPED_NUMERO_PED_CLIENTE.AsString := qAux.FieldByName('PED_NUMERO_PED_CLIENTE').AsString;
    CdsEtiquetaEMP_RAZAO.AsString := qAux.FieldByName('EMP_RAZAO').AsString;
    CdsEtiquetaEMP_FONE.AsString := MascaraFone(QAUX.FieldByName('EMP_FONE').AsString);
    CdsEtiquetaEMP_HOME.AsString := qaux.FieldByName('EMP_HOME').AsString;
@@ -555,6 +562,7 @@ begin
      begin
        cdsReport.Append;
        cdsReportPED_CODIGO.AsString := CdsEtiquetaPED_CODIGO.AsString;
+       cdsReportPED_NUMERO_PED_CLIENTE.AsString := CdsEtiquetaPED_NUMERO_PED_CLIENTE.AsString;
        cdsReportEMP_RAZAO.AsString := CdsEtiquetaEMP_RAZAO.AsString ;
        cdsReportEMP_FONE.AsString := CdsEtiquetaEMP_FONE.AsString ;
        cdsReportEMP_HOME.AsString:= CdsEtiquetaEMP_HOME.AsString ;
@@ -635,6 +643,7 @@ begin
        cdsReportQTDE_IMPRESSA.AsFloat :=  CdsEtiquetaQTDE_IMPRESSA.AsFloat;
        cdsReportAMX_CODIGO.AsString := CdsEtiquetaAMX_CODIGO.AsString ;
        cdsReportPED_CODIGO.AsString := CdsEtiquetaPED_CODIGO.AsString;
+       cdsReportPED_NUMERO_PED_CLIENTE.AsString := CdsEtiquetaPED_NUMERO_PED_CLIENTE.AsString;
        cdsReportPRDCO_CODIGO_ORIGINAL.AsString := qAux.FieldByName('PRDCO_CODIGO_ORIGINAL').AsString;
        cdsReportNF_NUM_NFE.AsString := CdsEtiquetaNF_NUM_NFE.AsString;
           if not CdsEtiquetaEMP_LOGO.IsNull then
