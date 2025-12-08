@@ -277,6 +277,8 @@ begin
       'JOIN PRD0000 P1 ON (P1.PRD_REFER = F2.PRD_REFER_ITENS) ' +
       'WHERE F2.PRD_REFER = :Referencia';
     sqlFichaTecnica.ParamByName('Referencia').AsString := Referencia;
+    if dbInicio.IsDesenvolvimento then
+      copyToClipboard(sqlFichaTecnica.SQL.Text);
     sqlFichaTecnica.Open;
 
     // Se não tem ficha técnica, busca o custo diretamente no PRD0000
@@ -289,7 +291,25 @@ begin
         'WHERE F2.PRD_REFER = :ReferenciaPai AND F2.PRD_REFER_ITENS = :Referencia';
       sqlProduto.ParamByName('ReferenciaPai').AsString := ReferenciaPai;
       sqlProduto.ParamByName('Referencia').AsString := Referencia;
+      if dbInicio.IsDesenvolvimento then
+        copyToClipboard(sqlProduto.SQL.Text);
       sqlProduto.Open;
+
+      if sqlProduto.IsEmpty then
+      begin
+        sqlProduto.SQL.Text :=
+          'SELECT P1.PRD_PCUSTO, P1.PRD_CUSTOCOMIPI, 1 AS FTI_UC ' +
+          'FROM PRD0000 P1  ' +
+          'WHERE P1.PRD_REFER = :Referencia ';
+        sqlProduto.ParamByName('Referencia').AsString := Referencia;
+        if dbInicio.IsDesenvolvimento then
+          copyToClipboard(sqlProduto.SQL.Text);
+        sqlProduto.Open;
+        if ftiUC = 0  then
+          ftiUC := 1;
+      end;
+
+
 
       if not sqlProduto.IsEmpty then
       begin
