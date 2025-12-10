@@ -15,4 +15,5 @@ patch 1: Arkson, LForja
 2127 - Revisão Lforja - Etiqueta 7
 2128 - Erro Arkson - Sincronizar entrada de nf
 2129 - Alíquotas tabela icms incorretas nas últimas versões
+2131 - Erro Arkson -> Atualização de preço de produtos compostos
 
