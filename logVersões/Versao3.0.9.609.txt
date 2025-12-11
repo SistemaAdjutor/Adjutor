@@ -1,4 +1,4 @@
-﻿Atualizado em 08/12/2025
+﻿Atualizado em 11/12/2025
 Inicio da versão: 08/12/2025
 
 principal: Arkson, Metalúrgica Água, Pecarpa
@@ -17,3 +17,5 @@ patch 1: Arkson, LForja
 2129 - Alíquotas tabela icms incorretas nas últimas versões
 2131 - Erro Arkson -> Atualização de preço de produtos compostos
 
+patch 2: Aços Ferrara
+2132 - Erro Aço Ferrara - Duplicação dos produtos ao faturar
