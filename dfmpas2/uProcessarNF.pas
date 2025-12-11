@@ -634,10 +634,10 @@ begin
     qItemNota.SQL.Add('FROM NF_IT01 it');
     qItemNota.SQL.Add('JOIN NF0001 nf ON (nf.NF_NOTANUMBER = it.NF_IT_NOTANUMER)' );
     qItemNota.SQL.Add('LEFT JOIN CLI0000 cli ON cli.CLI_CODIGO = nf.CLI_CODIGO');
-    qItemNota.SQL.Add('JOIN PRD0000 pr ON pr.PRD_REFER = it.PRD_REFER AND pr.PRD_STATUS = ''A'' AND pr.emp_codigo = nf.emp_codigo  ');
-    qItemNota.SQL.Add('LEFT JOIN SITUACAO_TRIBUTARIA st ON pr.STB_TRIBUTACAO = st.STB_TRIBUTACAO');
     qItemNota.SQL.Add('LEFT JOIN PRD_LOTE lo ON lo.PRDL_REGISTRO = it.PRDL_REGISTRO');
     qItemNota.SQL.Add('LEFT JOIN PED_IT01 pid ON pid.PRF_REGISTRO = it.PRF_REGISTRO AND pid.EMP_CODIGO = it.EMP_CODIGO');
+    qItemNota.SQL.Add('JOIN PRD0000 pr ON pr.PRD_REFER = it.PRD_REFER AND pr.PRD_STATUS = ''A'' AND pid.emp_codigo = nf.emp_codigo  ');
+    qItemNota.SQL.Add('LEFT JOIN SITUACAO_TRIBUTARIA st ON pr.STB_TRIBUTACAO = st.STB_TRIBUTACAO');
     qItemNota.SQL.Add('LEFT JOIN OPE0000 op ON op.OPE_CODIGO = it.OPE_CODIGO');
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_pr ON pr.IBS_ID = ibs_pr.IBS_ID');
     qItemNota.SQL.Add('LEFT JOIN CBS cbs_pr ON pr.CBS_ID = cbs_pr.CBS_ID');
