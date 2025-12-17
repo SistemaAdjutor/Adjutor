@@ -1708,6 +1708,8 @@ type
     SqlOperFiscIBS_ID: TIntegerField;
     CdsOperFiscCBS_ID: TIntegerField;
     CdsOperFiscIBS_ID: TIntegerField;
+    SqlOperFiscOPE_MOSTRA_IBS_CBS: TStringField;
+    CdsOperFiscOPE_MOSTRA_IBS_CBS: TStringField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);

@@ -6025,6 +6025,10 @@ object DataCadastros: TDataCadastros
     object CdsOperFiscIBS_ID: TIntegerField
       FieldName = 'IBS_ID'
     end
+    object CdsOperFiscOPE_MOSTRA_IBS_CBS: TStringField
+      FieldName = 'OPE_MOSTRA_IBS_CBS'
+      Size = 1
+    end
   end
   object DsOperFisc: TDataSource
     DataSet = CdsOperFisc
@@ -6355,6 +6359,10 @@ object DataCadastros: TDataCadastros
     end
     object SqlOperFiscIBS_ID: TIntegerField
       FieldName = 'IBS_ID'
+    end
+    object SqlOperFiscOPE_MOSTRA_IBS_CBS: TStringField
+      FieldName = 'OPE_MOSTRA_IBS_CBS'
+      Size = 1
     end
   end
   object SqlEmpresa: TSQLQuery

@@ -1110,6 +1110,8 @@ object FormOperFisc: TFormOperFisc
           CriticalPoints.MinValueIncluded = False
           DisplayFormat = dfFloat
           DecimalPlaces = 2
+          EditText = '0,00'
+          ReadOnly = True
           TabOrder = 1
           DataConnector.DataSource = dsoperfisc
           DataConnector.DataField = 'OPE_ICMSDESON'
@@ -1640,6 +1642,18 @@ object FormOperFisc: TFormOperFisc
         ParentShowHint = False
         ShowHint = True
         TabOrder = 1
+      end
+      object DBCheckBox12: TDBCheckBox
+        Left = 63
+        Top = 74
+        Width = 312
+        Height = 17
+        Caption = 'Insere as tags de IBS/CBS NO XML/DANFE da Nota Fiscal'
+        DataField = 'OPE_MOSTRA_IBS_CBS'
+        DataSource = DataCadastros.DsOperFisc
+        TabOrder = 2
+        ValueChecked = 'S'
+        ValueUnchecked = '|N'
       end
     end
   end

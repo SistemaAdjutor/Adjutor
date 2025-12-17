@@ -270,6 +270,7 @@ type
     cmbIBS: TDBLookupComboBox;
     Label335: TLabel;
     cmbCBS: TDBLookupComboBox;
+    DBCheckBox12: TDBCheckBox;
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);

@@ -404,7 +404,9 @@ begin
       // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
 
       // --- IBS ---
-   if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' then
+   if (dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S')
+   and (dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qItemNota.FieldByName('OPE_CODIGO').AsString)) = 'S')
+   then
    begin
 
       begin
@@ -2650,7 +2652,9 @@ begin
   if dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_NATUREZA FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = '6147' then
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco +' . '+'IRRF retido R$ '+ FormatFloat('#,##0.00',NotaF.NFe.Total.retTrib.vIRRF ) ;
 
-  if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' THEN
+  if (dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S')
+   and (dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = 'S')
+  then
   begin
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco + ' - ' + TextoInfAdicCbsIbsIs;
   end;
@@ -2966,7 +2970,9 @@ begin
 
   end;
 
-  if dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S' then
+  if (dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S')
+   and (dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qItemNota.FieldByName('OPE_CODIGO').AsString)) = 'S')
+  then
   begin
     notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
     // NotaF.NFe.Total.IBSCBS.cMunFGIBS := 'XXXXX';
