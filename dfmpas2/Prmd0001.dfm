@@ -4856,6 +4856,18 @@ inherited FormParametros: TFormParametros
               ValueChecked = 'S'
               ValueUnchecked = 'N'
             end
+            object DBCheckBox106: TDBCheckBox
+              Left = 251
+              Top = 111
+              Width = 222
+              Height = 17
+              Caption = 'Soma o IBS Estadual na Base de C'#225'lculo'
+              DataField = 'PMT_SOMA_IBS_UF_BASE_CALCULO'
+              DataSource = DataCadastros1.DsParametros
+              TabOrder = 5
+              ValueChecked = 'S'
+              ValueUnchecked = 'N'
+            end
           end
         end
       end

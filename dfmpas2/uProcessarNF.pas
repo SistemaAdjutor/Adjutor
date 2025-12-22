@@ -2869,6 +2869,7 @@ end;
  90 – Outras}
 procedure TfrmProcessaNFe.TotalizacaoNFE;
 var
+  AliqUF: Double;
   temST: boolean;
 begin
 
@@ -2971,11 +2972,16 @@ begin
   end;
 
   if (dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S')
-   and (dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qItemNota.FieldByName('OPE_CODIGO').AsString)) = 'S')
+   and (dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = 'S')
   then
   begin
-    notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
-    // NotaF.NFe.Total.IBSCBS.cMunFGIBS := 'XXXXX';
+    if (dbInicio.GetParametroSistema('PMT_SOMA_IBS_UF_BASE_CALCULO') = 'S') then
+    begin
+      AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
+      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat + ((qNota.FieldByName('NF_TOT_PROD').AsFloat / 100) + AliqUF  )
+    end
+    else
+      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
   end;
 
 
