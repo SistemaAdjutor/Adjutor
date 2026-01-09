@@ -1739,6 +1739,8 @@ type
     CdsParametrosPMT_IBS_ALIQUOTA_ESTADUAL: TFMTBCDField;
     SqlParametrosPMT_CST_IBS_CBS: TStringField;
     CdsParametrosPMT_CST_IBS_CBS: TStringField;
+    SqlParametrosPMT_SOMA_IBS_UF_BASE_CALCULO: TStringField;
+    CdsParametrosPMT_SOMA_IBS_UF_BASE_CALCULO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

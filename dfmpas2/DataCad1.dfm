@@ -1729,6 +1729,10 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_CST_IBS_CBS'
       Size = 3
     end
+    object SqlParametrosPMT_SOMA_IBS_UF_BASE_CALCULO: TStringField
+      FieldName = 'PMT_SOMA_IBS_UF_BASE_CALCULO'
+      Size = 1
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -3102,6 +3106,10 @@ object DataCadastros1: TDataCadastros1
     object CdsParametrosPMT_CST_IBS_CBS: TStringField
       FieldName = 'PMT_CST_IBS_CBS'
       Size = 3
+    end
+    object CdsParametrosPMT_SOMA_IBS_UF_BASE_CALCULO: TStringField
+      FieldName = 'PMT_SOMA_IBS_UF_BASE_CALCULO'
+      Size = 1
     end
   end
   object DsParametros: TDataSource
