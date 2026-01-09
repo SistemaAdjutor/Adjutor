@@ -4292,10 +4292,18 @@ begin
   							 wPMC := DBInicio.BuscaUmDadoSqlAsFloat ( 'select prdl_preco_maximo from prd_lote where prdl_registro = '+CdsItemPedidoPrdl_Registro.AsString );
   					end;
 
-           if CdsPedidosOPE_Codigo.Asstring <> '' then
-             BuscaOperacaoNovo ( CdsPedidosOPE_Codigo.AsString )
-           else
-            BuscaOperacaoNovo ( CdsItemPedidoCFOP_Codigo.AsString );
+
+            if CdsItemPedidoCFOP_Codigo.AsString <> '' then
+              BuscaOperacaoNovo ( CdsItemPedidoCFOP_Codigo.AsString )
+            else
+            begin
+              if (CdsPedidosOPE_Codigo.Asstring <> '') and (CdsPedidosOPE_Codigo.Asstring <> '0') then
+                BuscaOperacaoNovo ( CdsPedidosOPE_Codigo.AsString )
+              else
+                BuscaOperacaoNovo(cbOper.idRetorno);
+
+            end;
+
            if (femp_crt = '1') AND (fOPT_SIMPLES = 'S') then // SIMPLES
               cstPISCOFINS := '99'
            Else
