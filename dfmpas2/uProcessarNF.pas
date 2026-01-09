@@ -2978,7 +2978,7 @@ begin
     if (dbInicio.GetParametroSistema('PMT_SOMA_IBS_UF_BASE_CALCULO') = 'S') then
     begin
       AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
-      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat + ((qNota.FieldByName('NF_TOT_PROD').AsFloat / 100) * AliqUF  );
+      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat; //  + ((qNota.FieldByName('NF_TOT_PROD').AsFloat / 100) * AliqUF  );
     end
     else
       notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
