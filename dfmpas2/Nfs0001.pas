@@ -6943,6 +6943,11 @@ begin
 
      sFornecedor := EdtFor_Codigo.Text;
 
+     if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(SqlCdsGridSemOC.CommandText);
+
+
+
      SqlCdsGridSemOC.First;
      while (not SqlCdsGridSemOC.Eof) do
      begin
