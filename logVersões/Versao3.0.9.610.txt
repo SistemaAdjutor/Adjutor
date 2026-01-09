@@ -1,0 +1,10 @@
+﻿Inicio da versão: 09/01/2026
+Atualizado em 09/01/2026
+
+principal: Embraterm, Normadin
+	2133 - Erro Novas Tributação - CFOP devem sair mensagem [Embraterm]
+	2135 - Erro - Faturamento [Normadin]
+	2136 - Erro Arkson - Entrada de NF [Arkson]
+	2137 - Revisar Normandin -IBS Estadual Rejeição 1026 [Normadin]
+	
+
