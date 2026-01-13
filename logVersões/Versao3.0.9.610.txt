@@ -1,5 +1,5 @@
 ﻿Inicio da versão: 09/01/2026
-Atualizado em 09/01/2026
+Atualizado em 13/01/2026
 
 principal: Embraterm, Normadin
 	2133 - Erro Novas Tributação - CFOP devem sair mensagem [Embraterm]
@@ -7,4 +7,5 @@ principal: Embraterm, Normadin
 	2136 - Erro Arkson - Entrada de NF [Arkson]
 	2137 - Revisar Normandin -IBS Estadual Rejeição 1026 [Normadin]
 	
-
+patch 1: Metalúrgica Água
+	2139 - Erro Metalurgica Agua - TCSTPIS Urgente [Metalúrgica Água]
