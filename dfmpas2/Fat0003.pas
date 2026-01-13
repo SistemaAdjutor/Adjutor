@@ -3525,99 +3525,144 @@ begin
     else
       divisor := CdsItemPedido.RecordCount;
 
-   sql:=
-            ' Insert into NF_IT01 ( emp_codigo, USU_CODIGO, AMX_CODIGO_DESTINO, PRD_CODIGO, NF_IT_NOTANUMER, '+
-            '                       PRD_REFER, PRD_DESCRI, PRD_COMPL_DESCRI, PED_CODIGO, NF_QTDE, NF_IFRETE, '+
-            '                       NF_IDESP_ACES, NF_ISEGURO, NF_IDESCTO1, CEST_COD, IBPT_ALIQFED, IBPT_ALIQEST, '+
-            '                       IBPT_VLAP, PRDL_REGISTRO, NF_MARGEM_PRODUTO, NF_CUSTO, NF_PRECO, NF_ALIQDOSIMPLES, '+
-            '                       NF_CREDICMSDOSIMPLES, NF_ICMSBASE, NF_ICMSALIQ, NF_ICMSVALOR, NF_ICMSREDUCAOPERC,' +
-            '                       CST_IPI, NF_IPIBASE, NF_IPIVALOR, IPI_CODIGO, NF_IPIALIQ, NF_IPI_POR_UNIDADE, NF_SUBTRIBASE, ' +
-            '                       NF_ALIQSUBTRIB, NF_VLSUBST, NF_MVAPERC, NF_ALIQCREDSIMPLES, NF_VLCREDSIMPLES, NF_PMATPRIMA, PRF_REGISTRO, NF_COMISSAO, '+
-            '                       NF_FLAG_ATUALIZA_ESTOQUE, NF_PRODUTO_AGREGADO, NF_HORA, OPE_CODIGO, NTP_CFOP, '+
-            '                       STB_TRIBUTACAO, CST_PIS, NF_BASE_PIS, NF_ALIQPIS, NF_VLPIS, CST_COFINS, NF_BASE_COFINS, NF_ALIQCOFINS, '+
-            '                       NF_VLCOFINS, PRG_REGISTRO, PRDCO_CODIGO_ORIGINAL, NF_LEI_TRANSPARENCIA '+blDifalA+
-            '                       , NF_CSOSN, nf_totalitem, NF_ICMSSUBSTITUTO_ANT, nf_cbenef,NF_VALOR_FCP, NF_PERC_FCP, NF_VALOR_FCP_st, '+
-            '                      NF_VALORICMSDESON, NF_MOTIVDESON ) '+
-            ' values ( '+qStr(EmpCodigo)+', '+ //emp_codigo,
-            '          '+qStr(dbInicio.Usuario.Codigo)+', '+ //USU_CODIGO,
-            '          '+qStr(CdsItemPedidoAMX_CODIGO_DESTINO.AsString)+', '+ //AMX_CODIGO_DESTINO,
-            '          '+qStr(CdsItemPedidoPRD_PRODUTO.AsString)+', '+ //PRD_CODIGO,
-            '          '+qStr( sNota )+', '+ //NF_IT_NOTANUMER, '+
-            '          '+qStr( sItem )+', '+  //PRD_REFER,
-            '          '+qStr( CdsItemPedidoPRF_PRDDESCRI.AsString )+', '+ //PRD_DESCRI,
-            '          '+qstr( sCompl )+', '+ //PRD_COMPL_DESCRI,
-            '          '+qStr( CdsPedidosPed_Codigo.asstring )+', '+ //PED_CODIGO,
-            '          '+FloatToSql(iif(CdsItemPedidoPRF_PRODUTO_SEMVALOR.AsString <> 'S',CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat, CdsItemPedidoPRF_QTDE.AsFloat) )+', '+  //NF_QTDE,
-            '          '+FloatToSql( wFreteIndividual  )+', '+ //NF_IFRETE, '+
-            '          '+FloatToSql( wDespesaIndividual  )+', '+ //NF_IDESP_ACES,
-            '          '+FloatToSql( wSeguroIndividual  )+', '+ //NF_ISEGURO,
-            '          '+FloatToSql( wDescontoIndividual  )+', '+ //NF_IDESCTO1,    //////////////////////////////////////////////////
-            '          '+qStr( wCest )+', '+ //CEST_COD,
-            '          '+FloatToSql( wIbptAliqFed )+', '+ //IBPT_ALIQFED,
-            '          '+FloatToSql( wIbptAliqEst )+', '+ //IBPT_ALIQEST, '+
-            '          '+FloatToSql( wValorAproxTributosItem )+', '+  //IBPT_VLAP,
-            '          '+iif(CdsItemPedidoPRDL_REGISTRO.IsNull,'null',CdsItemPedidoPRDL_REGISTRO.AsString) +', '+ //PRDL_REGISTRO,
-            '          '+FloatToSql( CdsItemPedidoPRF_MARGEM_PRODUTO.AsFloat )+', '+ //NF_MARGEM_PRODUTO,
-            '          '+FloatToSql( rCusto )+', '+ //NF_CUSTO,
-            '          '+FloatToSql(iif(CdsItemPedidoPRF_PRODUTO_SEMVALOR.AsString <> 'S',CdsItemPedidoPRF_PRECO.AsFloat,0) )+', '+ //NF_PRECO,
-            '          '+FloatToSql( fALIQ_CREDITO)+', '+ //NF_ALIQDOSIMPLES, '+
-            '          '+FloatToSql( wValorCredSimples )+', '+ //NF_CREDICMSDOSIMPLES,
-            '          '+FloatToSql( Uteis.RoundTo( wBaseIcmsIndividual,-2)  )+', '+ //NF_ICMSBASE,
-            '          '+FloatToSql( Uteis.RoundTo( wIcmsAliq,-2)  )+', '+ //NF_ICMSALIQ,
-            '          '+FloatToSql( Uteis.RoundTo( sNF_ICMSVALOR, -2 ) )+', '+ //NF_ICMSVALOR,
-            '          '+FloatToSql( sPercReduz )+', '+ //NF_ICMSREDUCAOPERC,' +
-            '          '+QuotedStr(cstIPI)+','+  //CST_IPI
-            '          '+FloatToSql( Uteis.RoundTo( wBaseIPIIndividual, -2) )+', '+ //NF_IPIBASE,
-            '          '+FloatToSql( Uteis.RoundTo( wValorIPIIndividual, -2) )+', '+ //NF_IPIVALOR,
-            '          '+qStr( CdsItemPedidoIPI_CODIGO.AsString )+', '+ //IPI_CODIGO,
-            '          '+FloatToSql( sNF_IPIALIQ )+', '+ //NF_IPIALIQ,
-            '          '+qStr( sNF_IPI_POR_UNIDADE )+', '+ //NF_IPI_POR_UNIDADE,
-            '          '+sNF_SUBTRIBASE+', '+ //NF_SUBTRIBASE, ' +
-            '          '+sNF_ALIQSUBTRIB+', '+ //NF_ALIQSUBTRIB,
-            '          '+sNF_VLSUBST+', '+ //NF_VLSUBST,
-            '          '+sNF_MVAPERC+', '+ //NF_MVAPERC,
-
-//          '          '+FloatToSql( Uteis.RoundTo( NF_ALIQCREDSIMPLES, -2) )+', '+ //NF_ALIQCREDSIMPLES,
-//            '          '+FloatToSql( Uteis.RoundTo( NF_VLCREDSIMPLES / divisor, -2) )+', '+ //NF_VLCREDSIMPLES,
-
-            '          '+FloatToSql( Uteis.RoundTo( fALIQ_CREDITO, -2) )+', '+ //NF_ALIQCREDSIMPLES,
-            '          '+FloatToSql( Uteis.RoundTo( wValorCredSimples, -2) )+', '+ //NF_VLCREDSIMPLES,
 
 
-            '          '+FloatToSql( wPrecoMatPrima )+', '+ //NF_PMATPRIMA,
-            '          '+CdsItemPedidoPRF_REGISTRO.AsString+', '+ //PRF_REGISTRO,
-            '          '+FloatToSql( CdsItemPedidoPRF_ITEMCOMIS.AsFloat )+', '+ //NF_COMISSAO, '+
-            '          '+qStr( CdsItemPedidoPRF_FLAG_ATUALIZA_ESTOQUE.AsString )+', '+ //NF_FLAG_ATUALIZA_ESTOQUE,
-            '          '+qStr( CdsItemPedidoPRF_PRODUTO_AGREGADO.AsString )+', ' + //NF_PRODUTO_AGREGADO,
-            '          '+TimeToSql( time )+', '+ //NF_HORA,
-            '          '+qStr(ope_codigo ) +', '+ //OPE_CODIGO,
-            '          '+ NTP_CFOP +', '+ //NTP_CFOP, '+
-            '          '+qStr( wCST_CODIGO )+', '+  //STB_TRIBUTACAO,
-//            '          '+QuotedStr(qOperFiscOPE_CST_PISCOFINS.AsString)+ ','+    //CST_PIS
-            '          '+QuotedStr(cstPISCOFINS)+ ','+    //CST_PIS
-            '          '+FloatToSql( Uteis.RoundTo( wBasePIS, -2))+', '+ //NF_BASE_PIS,
-            '          '+FloatToSql( wAliquotaPIS )+', '+ //NF_ALIQPIS,
-            '          '+IIF(MatchStr(cstPISCOFINS,['99','98','49']),'0',FloatToSql( Uteis.RoundTo( wValorPIS,-2 )))+', '+ //NF_VLPIS,
-//            '          '+QuotedStr(qOperFiscOPE_CST_PISCOFINS.AsString)+ ','+  //CST_COFINS
-            '          '+QuotedStr(cstPISCOFINS)+ ','+  //CST_COFINS
-            '          '+FloatToSql( Uteis.RoundTo( wBaseCOFINS, -2))+', '+ //NF_BASE_COFINS,
-            '          '+FloatToSql( wAliquotaCOFINS )+', '+ //NF_ALIQCOFINS, '+
-            '          '+IIF(MatchStr(cstPISCOFINS,['99','98','49']),'0',FloatToSql( Uteis.RoundTo( wValorCOFINS, -2)))+', '+ //NF_VLCOFINS,
-            '          '+ IIF( CdsItemPedidoPRG_REGISTRO.AsInteger=0,'NULL',IntToStr(CdsItemPedidoPRG_REGISTRO.AsInteger)) +', '+ //PRG_REGISTRO,
-            '          '+qStr( CdsItemPedidoPRDCO_CODIGO_ORIGINAL.AsString )+', '+ //PRDCO_CODIGO_ORIGINAL,
-            '          '+qStr( iif( wConsumidor and wVenda, 'S','N' ) )+ //NF_LEI_TRANSPARENCIA
-            '          '+blDifalB+', '+CSOSN_item+    ','+
-            '          '+FloatToSql( CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat*CdsItemPedidoPRF_PRECO.AsFloat) +     ','+ //nf_totalitem
-            '          '+FloatToSql(vICMSSubstituto)+','+
-            '          '+QuotedStr(CdsItemPedidoprd_cbenef.AsString) +','+
-            '          '+FloatToSQL( Nf_fcp)+ ','+
-            '          '+FloatToSql(wAliqFCP )+','+
-            '          '+FloatToSql( nf_fcpst )+ ','+
-            '          '+FloatToSql( icmsDeson )+ ','+
-            '          '+ iif (motivDeson='','null',motivDeson)+
-                   ' )';
 
-  ExecSql(sql ,false);
+
+    sql :=
+      ' Insert into NF_IT01 ( '+
+      ' emp_codigo, USU_CODIGO, AMX_CODIGO_DESTINO, PRD_CODIGO, NF_IT_NOTANUMER, '+
+      ' PRD_REFER, PRD_DESCRI, PRD_COMPL_DESCRI, PED_CODIGO, NF_QTDE, NF_IFRETE, '+
+      ' NF_IDESP_ACES, NF_ISEGURO, NF_IDESCTO1, CEST_COD, IBPT_ALIQFED, IBPT_ALIQEST, '+
+      ' IBPT_VLAP, PRDL_REGISTRO, NF_MARGEM_PRODUTO, NF_CUSTO, NF_PRECO, NF_ALIQDOSIMPLES, '+
+      ' NF_CREDICMSDOSIMPLES, NF_ICMSBASE, NF_ICMSALIQ, NF_ICMSVALOR, NF_ICMSREDUCAOPERC, '+
+      ' CST_IPI, NF_IPIBASE, NF_IPIVALOR, IPI_CODIGO, NF_IPIALIQ, NF_IPI_POR_UNIDADE, '+
+      ' NF_SUBTRIBASE, NF_ALIQSUBTRIB, NF_VLSUBST, NF_MVAPERC, NF_ALIQCREDSIMPLES, '+
+      ' NF_VLCREDSIMPLES, NF_PMATPRIMA, PRF_REGISTRO, NF_COMISSAO, '+
+      ' NF_FLAG_ATUALIZA_ESTOQUE, NF_PRODUTO_AGREGADO, NF_HORA, OPE_CODIGO, NTP_CFOP, '+
+      ' STB_TRIBUTACAO, CST_PIS, NF_BASE_PIS, NF_ALIQPIS, NF_VLPIS, '+
+      ' CST_COFINS, NF_BASE_COFINS, NF_ALIQCOFINS, NF_VLCOFINS, PRG_REGISTRO, '+
+      ' PRDCO_CODIGO_ORIGINAL, NF_LEI_TRANSPARENCIA ' + blDifalA +
+      ' , NF_CSOSN, nf_totalitem, NF_ICMSSUBSTITUTO_ANT, nf_cbenef, '+
+      ' NF_VALOR_FCP, NF_PERC_FCP, NF_VALOR_FCP_st, NF_VALORICMSDESON, NF_MOTIVDESON ) '+
+      ' VALUES ( '+
+      qStr(EmpCodigo) +', '+                                   // emp_codigo
+      qStr(dbInicio.Usuario.Codigo) +', '+                     // USU_CODIGO
+      qStr(CdsItemPedidoAMX_CODIGO_DESTINO.AsString) +', '+    // AMX_CODIGO_DESTINO
+      qStr(CdsItemPedidoPRD_PRODUTO.AsString) +', '+           // PRD_CODIGO
+      qStr(sNota) +', '+                                      // NF_IT_NOTANUMER
+
+      qStr(sItem) +', '+                                      // PRD_REFER
+      qStr(CdsItemPedidoPRF_PRDDESCRI.AsString) +', '+         // PRD_DESCRI
+      qStr(sCompl) +', '+                                     // PRD_COMPL_DESCRI
+      qStr(CdsPedidosPed_Codigo.AsString) +', '+               // PED_CODIGO
+      FloatToSql(
+        iif(CdsItemPedidoPRF_PRODUTO_SEMVALOR.AsString <> 'S',
+            CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat,
+            CdsItemPedidoPRF_QTDE.AsFloat)
+      ) +', '+                                                 // NF_QTDE
+
+      FloatToSql(wFreteIndividual) +', '+                      // NF_IFRETE
+      FloatToSql(wDespesaIndividual) +', '+                    // NF_IDESP_ACES
+      FloatToSql(wSeguroIndividual) +', '+                     // NF_ISEGURO
+      FloatToSql(wDescontoIndividual) +', '+                   // NF_IDESCTO1
+      qStr(wCest) +', '+                                      // CEST_COD
+
+      FloatToSql(wIbptAliqFed) +', '+                          // IBPT_ALIQFED
+      FloatToSql(wIbptAliqEst) +', '+                          // IBPT_ALIQEST
+      FloatToSql(wValorAproxTributosItem) +', '+               // IBPT_VLAP
+      iif(CdsItemPedidoPRDL_REGISTRO.IsNull,
+          'null',
+          CdsItemPedidoPRDL_REGISTRO.AsString) +', '+           // PRDL_REGISTRO
+      FloatToSql(CdsItemPedidoPRF_MARGEM_PRODUTO.AsFloat) +', '+// NF_MARGEM_PRODUTO
+
+      FloatToSql(rCusto) +', '+                                // NF_CUSTO
+      FloatToSql(
+        iif(CdsItemPedidoPRF_PRODUTO_SEMVALOR.AsString <> 'S',
+            CdsItemPedidoPRF_PRECO.AsFloat,
+            0)
+      ) +', '+                                                 // NF_PRECO
+      FloatToSql(fALIQ_CREDITO) +', '+                         // NF_ALIQDOSIMPLES
+      FloatToSql(wValorCredSimples) +', '+                     // NF_CREDICMSDOSIMPLES
+      FloatToSql(Uteis.RoundTo(wBaseIcmsIndividual, -2)) +', '+// NF_ICMSBASE
+
+      FloatToSql(Uteis.RoundTo(wIcmsAliq, -2)) +', '+           // NF_ICMSALIQ
+      FloatToSql(Uteis.RoundTo(sNF_ICMSVALOR, -2)) +', '+      // NF_ICMSVALOR
+      FloatToSql(sPercReduz) +', '+                            // NF_ICMSREDUCAOPERC
+      QuotedStr(cstIPI) +', '+                                 // CST_IPI
+      FloatToSql(Uteis.RoundTo(wBaseIPIIndividual, -2)) +', '+ // NF_IPIBASE
+
+      FloatToSql(Uteis.RoundTo(wValorIPIIndividual, -2)) +', '+// NF_IPIVALOR
+      qStr(CdsItemPedidoIPI_CODIGO.AsString) +', '+             // IPI_CODIGO
+      FloatToSql(sNF_IPIALIQ) +', '+                           // NF_IPIALIQ
+      qStr(sNF_IPI_POR_UNIDADE) +', '+                         // NF_IPI_POR_UNIDADE
+      sNF_SUBTRIBASE +', '+                                   // NF_SUBTRIBASE
+
+      sNF_ALIQSUBTRIB +', '+                                  // NF_ALIQSUBTRIB
+      sNF_VLSUBST +', '+                                      // NF_VLSUBST
+      sNF_MVAPERC +', '+                                      // NF_MVAPERC
+      FloatToSql(Uteis.RoundTo(fALIQ_CREDITO, -2)) +', '+      // NF_ALIQCREDSIMPLES
+      FloatToSql(Uteis.RoundTo(wValorCredSimples, -2)) +', '+ // NF_VLCREDSIMPLES
+
+      FloatToSql(wPrecoMatPrima) +', '+                        // NF_PMATPRIMA
+      CdsItemPedidoPRF_REGISTRO.AsString +', '+                // PRF_REGISTRO
+      FloatToSql(CdsItemPedidoPRF_ITEMCOMIS.AsFloat) +', '+    // NF_COMISSAO
+      qStr(CdsItemPedidoPRF_FLAG_ATUALIZA_ESTOQUE.AsString)+', '+// NF_FLAG_ATUALIZA_ESTOQUE
+      qStr(CdsItemPedidoPRF_PRODUTO_AGREGADO.AsString) +', '+ // NF_PRODUTO_AGREGADO
+
+      TimeToSql(Time) +', '+                                  // NF_HORA
+      qStr(ope_codigo) +', '+                                 // OPE_CODIGO
+      NTP_CFOP +', '+                                         // NTP_CFOP
+      qStr(wCST_CODIGO) +', '+                                // STB_TRIBUTACAO
+      QuotedStr(cstPISCOFINS) +', '+                          // CST_PIS
+
+      FloatToSql(Uteis.RoundTo(wBasePIS, -2)) +', '+           // NF_BASE_PIS
+      FloatToSql(wAliquotaPIS) +', '+                          // NF_ALIQPIS
+      IIF(MatchStr(cstPISCOFINS,['99','98','49']),
+          '0',
+          FloatToSql(Uteis.RoundTo(wValorPIS,-2))) +', '+      // NF_VLPIS
+      QuotedStr(cstPISCOFINS) +', '+                          // CST_COFINS
+
+      FloatToSql(Uteis.RoundTo(wBaseCOFINS, -2)) +', '+        // NF_BASE_COFINS
+      FloatToSql(wAliquotaCOFINS) +', '+                       // NF_ALIQCOFINS
+      IIF(MatchStr(cstPISCOFINS,['99','98','49']),
+          '0',
+          FloatToSql(Uteis.RoundTo(wValorCOFINS,-2))) +', '+   // NF_VLCOFINS
+      IIF(CdsItemPedidoPRG_REGISTRO.AsInteger=0,
+          'NULL',
+          IntToStr(CdsItemPedidoPRG_REGISTRO.AsInteger)) +', '+// PRG_REGISTRO
+
+      qStr(CdsItemPedidoPRDCO_CODIGO_ORIGINAL.AsString) +', '+ // PRDCO_CODIGO_ORIGINAL
+      qStr(iif(wConsumidor and wVenda,'S','N')) +              // NF_LEI_TRANSPARENCIA
+      blDifalB +', '+
+      CSOSN_item +', '+                                       // NF_CSOSN
+      FloatToSql(
+        CdsItemPedidoPRF_QTDE_FATURAR_CC.AsFloat *
+        CdsItemPedidoPRF_PRECO.AsFloat
+      ) +', '+                                                 // nf_totalitem
+      FloatToSql(vICMSSubstituto) +', '+                       // NF_ICMSSUBSTITUTO_ANT
+      QuotedStr(CdsItemPedidoprd_cbenef.AsString) +', '+      // nf_cbenef
+      FloatToSQL(Nf_fcp) +', '+                               // NF_VALOR_FCP
+      FloatToSql(wAliqFCP) +', '+                              // NF_PERC_FCP
+      FloatToSql(nf_fcpst) +', '+                              // NF_VALOR_FCP_st
+      FloatToSql(icmsDeson) +', '+                             // NF_VALORICMSDESON
+      iif(motivDeson='','null',motivDeson) +                   // NF_MOTIVDESON
+      ' )';
+
+
+
+
+
+
+
+  qAux.Close;
+  qAux.Sql.Text := sql;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(sql);
+  qAux.ExecSql;
+  // ExecSql(sql ,false);
+
+
   if (CdsItemPedidoPRDL_REGISTRO.AsInteger > 0) AND (DBInicio.GetParametroSistema('PMT_ATUALIZA_LOTE') = 'F')  then
   begin
     saldo := DBInicio.BuscaUmDadoSqlAsFloat('SELECT PRDL_SALDO FROM PRD_LOTE WHERE PRDL_REGISTRO = ' + CdsItemPedidoPRDL_REGISTRO.AsString);
