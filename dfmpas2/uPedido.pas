@@ -8906,7 +8906,7 @@ procedure TFrmPedido.LoadXML;
 Var
   tempItens: TItens;
   I : Integer;
-  sDescricaoProduto, prdCodigo, arquivoLog, MensagemLoadXML: string;
+  sDescricaoProduto, sDescricaoProdutoComplemento, prdCodigo, arquivoLog, MensagemLoadXML: string;
   comissao, totalcomissao: Double;
   log: TextFile;
 begin
@@ -8928,6 +8928,7 @@ begin
         tempItens.Unidade := BuscaUmDadoSqlAsString('SELECT PRD_UND FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(tempItens.Referencia)  );
         sDescricaoProduto := RetornaProdutoDescricaoPelaReferencia(tempItens.Referencia);
         prdCodigo := BuscaUmDadoSqlAsString('SELECT PRD_CODIGO FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(tempItens.Referencia)  );
+        sDescricaoProdutoComplemento := BuscaUmDadoSqlAsString('SELECT PRD_COMPL FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(tempItens.Referencia)  );
 
         if prdCodigo = '' then
           MensagemLoadXML := MensagemLoadXML + 'Referência ' + tempItens.Referencia + ' não cadastrada.'  + #13 + #10
@@ -8944,7 +8945,7 @@ begin
                           '',
                           COPY(sDescricaoProduto,1,100),
                           dbInicio.GetParametroSistema('PMT_AMX_VENDA'),
-                          '',
+                          COPY(sDescricaoProdutoComplemento,1,100),
                           '',
                           '',
                           '0',
@@ -8972,7 +8973,13 @@ begin
                           0,
                           0,
                           0,
-                          0,'');
+                          0,
+                          '',        // Prazo entrega
+                          '',        // Prazo
+                          0,       // PesoKg
+                          0,       // qPendente
+                          False,     // bProdutoSemValor
+                          I + 1);          // SequenciaXML
         end;
       end;
    end;

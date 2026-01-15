@@ -81,7 +81,7 @@ function GravarPedidoItem(sID_DIRETIVAS:Integer;
                           iRegistroItem, iCodigoUsuario: Integer; iCodigoLote : Variant ; iCCdigoGrade, iItemPedidoB2b,
                           iCodigoRegistroVinculado, iDiretiva:Integer;
                           p_PRF_PRAZO_ENTREGA: string; Prazo: string = ''; PesoKg: double = 0.0;
-                          qPendente: real = 0.0; bProdutoSemValor :Boolean = False  ):Integer;
+                          qPendente: real = 0.0; bProdutoSemValor :Boolean = False; SequenciaXML: integer = 0 ):Integer;
 function PercentualComissao (const prd_refer : string; prd_codigo: string; const cli_codigo: string; const preco: double):currency;
 function GravarVendaPerdida(sProdutoCodigo,
                             sProdutoReferencia,
@@ -675,7 +675,7 @@ function GravarPedidoItem(sID_DIRETIVAS:Integer;
                           iCCdigoGrade, iItemPedidoB2b,
                           iCodigoRegistroVinculado, iDiretiva:Integer;
                           p_PRF_PRAZO_ENTREGA: string; Prazo: string = ''; PesoKg: double = 0.0 ;
-                          qPendente: real = 0.0; bProdutoSemValor :Boolean = False ):Integer;
+                          qPendente: real = 0.0; bProdutoSemValor :Boolean = False; SequenciaXML: integer = 0 ):Integer;
 var
    sQuery:WideString;
    bItemExiste, bTemVendaPerdida, continua :Boolean;
@@ -824,9 +824,9 @@ begin
        // DBInicio.ExecSql(sQuery);
        registroVinculado := DBInicio.BuscaUmDadoSqlAsInteger('SELECT PRF_REGISTRO_VINCULADO FROM PED_IT01 WHERE PRF_REGISTRO_VINCULADO = ' + IntToStr(iRegistroItem));
 
-    end;
-
-///    else
+    end
+    else
+      prfSequencia := sequenciaXML;
 
     begin
 

@@ -769,7 +769,7 @@ begin
                         '', // iif(bprazoitens, edPrazo.Text,'') ,
                         0, // CurrPesoIndividual.Value,
                         0, // qPendenteNova,
-                        False, // ChkSemValor.Checked
+                        False // ChkSemValor.Checked
                         );
      Inc(iSequencia);
      DBInicio.ExecSql('UPDATE PED_IT01 SET PRF_SEQUENCIA = ' + IntToStr(iSequencia) + ' WHERE PRF_REGISTRO =  ' + IntToStr(iRetorno) );
