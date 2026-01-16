@@ -712,6 +712,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsFornecedor: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'select FOR_CODIGO, FOR_RAZAO, EMP_CODIGO from FOR0000 ORDER BY F' +
       'OR_RAZAO'
@@ -721,11 +722,12 @@ inherited FormGImpPagar: TFormGImpPagar
     CommandText = 
       'select FOR_CODIGO, FOR_RAZAO, EMP_CODIGO from FOR0000 ORDER BY F' +
       'OR_RAZAO'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 589
-    Top = 496
+    Left = 477
+    Top = 408
     object SqlCdsFornecedorFOR_CODIGO: TStringField
       FieldName = 'FOR_CODIGO'
       Size = 4
@@ -741,6 +743,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsContaAnalise: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'select CCT_CODIGO, CCT_DESCRI, EMP_CODIGO from CCT_0000 ORDER BY' +
       ' CCT_DESCRI'
@@ -750,11 +753,12 @@ inherited FormGImpPagar: TFormGImpPagar
     CommandText = 
       'select CCT_CODIGO, CCT_DESCRI, EMP_CODIGO from CCT_0000 ORDER BY' +
       ' CCT_DESCRI'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 567
-    Top = 601
+    Left = 479
+    Top = 505
     object SqlCdsContaAnaliseCCT_CODIGO: TStringField
       FieldName = 'CCT_CODIGO'
       Size = 3
@@ -770,6 +774,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsPag00: TSimpleDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'select P2.PAG_CODIGO, P2.PPC_DTEMIS, P2.PAG_NUMDOC, P2.PCX_CODIG' +
       'O, P2.PPC_NUMER, P2.PPC_VENCTO, P2.PPC_VLPARC,'#13#10'       P2.PPC_JU' +
@@ -2520,16 +2525,18 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsCentroCustos: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 'SELECT * FROM CEC_0000 ORDER BY CEC_DESCRI'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'SELECT * FROM CEC_0000 ORDER BY CEC_DESCRI'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 567
-    Top = 562
+    Left = 479
+    Top = 458
     object SqlCdsCentroCustosCEC_CODIGO: TStringField
       FieldName = 'CEC_CODIGO'
       Size = 3
@@ -5117,6 +5124,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsPag02: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'SELECT T1.pag_valor, P2.PAG_CODIGO, T5.PAG_OBS as PPC_OBS,P2.PPC' +
       '_VENCTO,P2.PPC_VLPARC,P2.PPC_VLPAGO,P2.PPC_PAGTO,P2.PCX_CODIGO,P' +
@@ -5129,6 +5137,7 @@ inherited FormGImpPagar: TFormGImpPagar
       'SELECT T1.pag_valor, P2.PAG_CODIGO, T5.PAG_OBS as PPC_OBS,P2.PPC' +
       '_VENCTO,P2.PPC_VLPARC,P2.PPC_VLPAGO,P2.PPC_PAGTO,P2.PCX_CODIGO,P' +
       '2.PPC_DTEMIS,'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -5218,6 +5227,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsPag06: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'SELECT'#13#10'P1.PAG_CODIGO,'#13#10'P1.opv_codigo,'#13#10'O1.OPV_DESCRICAO,'#13#10'P1.PA' +
       'G_DTEMIS,'#13#10'P1.PAG_NUMDOC,'#13#10'P1.PAG_VLNOTA,'#13#10'P1.PAG_VL_IPI,'#13#10'P1.PA' +
@@ -5234,6 +5244,7 @@ inherited FormGImpPagar: TFormGImpPagar
       'G_ALIQICMS,'#13#10'P1.PAG_BASEICMS,'#13#10'P1.FOR_CODIGO,'#13#10'F1.FOR_RAZAO'#13#10'FRO' +
       'M PAG0000 P1'#13#10'JOIN FOR0000 F1 ON P1.FOR_CODIGO = F1.FOR_CODIGO'#13#10 +
       'JOIN OPV0000 O1 ON O1.OPV_CODIGO = P1.OPV_CODIGO'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -6397,6 +6408,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsPag07: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'SELECT'#13#10'P1.PAG_CODIGO,'#13#10'P1.OPV_CODIGO,'#13#10'P1.FOR_CODIGO,'#13#10'F1.FOR_R' +
       'AZAO,'#13#10'P1.PAG_DTEMIS,'#13#10'P1.PAG_NUMDOC,'#13#10'P1.PAG_VLNOTA,'#13#10'P1.PAG_VL' +
@@ -6419,6 +6431,7 @@ inherited FormGImpPagar: TFormGImpPagar
       'N P1.for_codigo = F1.for_codigo'#13#10'where p1.pag_dtemis between '#39'01' +
       '.03.2006'#39' and '#39'31.03.2006'#39' and P1.OPV_CODIGO = 1 and P1.EMP_CODI' +
       'GO = '#39'001'#39
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -7847,6 +7860,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsPag08: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'SELECT '#13#10'P1.PAG_CODIGO,'#13#10'P1.PPC_NUMER,'#13#10'P1.PPC_DTEMIS,'#13#10'P1.PPC_V' +
       'ENCTO,'#13#10'P1.PPC_VLPARC,'#13#10'P1.PPC_OBS,'#13#10'P1.PPC_PREVISAO,'#13#10'P1.PAG_NU' +
@@ -7861,6 +7875,7 @@ inherited FormGImpPagar: TFormGImpPagar
       'ENCTO,'#13#10'P1.PPC_VLPARC,'#13#10'P1.PPC_OBS,'#13#10'P1.PPC_PREVISAO,'#13#10'P1.PAG_NU' +
       'MDOC,'#13#10'P1.FOR_CODIGO,'#13#10'F1.FOR_RAZAO'#13#10'FROM pag_pc01 P1'#13#10'JOIN FOR0' +
       '000  F1 ON P1.FOR_CODIGO = F1.FOR_CODIGO'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -8659,16 +8674,18 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsTipos: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 'SELECT'#13#10'OPV_CODIGO,'#13#10'OPV_DESCRICAO,'#13#10'OPV_TIPO'#13#10'FROM'#13#10'OPV0000'
     DataSet.MaxBlobSize = -1
     DataSet.Params = <>
     Params = <>
     CommandText = 'SELECT'#13#10'OPV_CODIGO,'#13#10'OPV_DESCRICAO,'#13#10'OPV_TIPO'#13#10'FROM'#13#10'OPV0000'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 575
-    Top = 641
+    Left = 487
+    Top = 553
     object SqlCdsTiposOPV_CODIGO: TIntegerField
       FieldName = 'OPV_CODIGO'
       Required = True
@@ -8684,6 +8701,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsPag09: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'SELECT'#13#10'P1.PAG_CODIGO,'#13#10'P1.OPV_CODIGO,'#13#10'P1.FOR_CODIGO,'#13#10'F1.FOR_R' +
       'AZAO,'#13#10'P1.PAG_DTEMIS,'#13#10'P1.PAG_NUMDOC,'#13#10'P1.PAG_TIPO,'#13#10'P1.PAG_VLNO' +
@@ -8702,6 +8720,7 @@ inherited FormGImpPagar: TFormGImpPagar
       '0000 P1'#13#10'JOIN FOR0000  F1 ON (P1.FOR_CODIGO = F1.FOR_CODIGO)'#13#10'WH' +
       'ERE P1.PAG_DTEMIS BETWEEN '#39'01.01.2005'#39' AND '#39'31.01.2005'#39' AND P1.P' +
       'AG_TIPO = '#39'NF'#39#13#10'ORDER BY'#13#10'P1.PAG_TIPO,P1.PAG_DTEMIS,F1.FOR_RAZAO'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -9681,6 +9700,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsContas: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'SELECT'#13#10'C1.CCT_NIVEL,'#13#10'C1.CCT_DESCRI,'#13#10'C1.cct_conta,'#13#10'C1.CCT_COD' +
       'IGO,'#13#10'C1.CCT_PROVISAO,'#13#10'C1.CCT_STATUS'#13#10'FROM cct_0000 C1'#13#10'ORDER B' +
@@ -9692,6 +9712,7 @@ inherited FormGImpPagar: TFormGImpPagar
       'SELECT'#13#10'C1.CCT_NIVEL,'#13#10'C1.CCT_DESCRI,'#13#10'C1.cct_conta,'#13#10'C1.CCT_COD' +
       'IGO,'#13#10'C1.CCT_PROVISAO,'#13#10'C1.CCT_STATUS'#13#10'FROM cct_0000 C1'#13#10'ORDER B' +
       'Y'#13#10'CCT_NIVEL'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
@@ -11868,6 +11889,7 @@ inherited FormGImpPagar: TFormGImpPagar
   end
   object SqlCdsPag11: TSqlClientDataSet
     Aggregates = <>
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'SELECT'#13#10'sum(P2.PPC_VLPARC) as PPC_VLPARC,'#13#10'sum(P2.PPC_VLPAGO) as' +
       ' PPC_VLPAGO,'#13#10'(sum(COALESCE(P2.PPC_VLPARC,0)) - sum(COALESCE(P2.' +
@@ -11889,6 +11911,7 @@ inherited FormGImpPagar: TFormGImpPagar
       'OR0000 F1 ON (P2.FOR_CODIGO = F1.FOR_CODIGO)'#13#10'LEFT JOIN BAN0000 ' +
       'B1 ON (B1.BAN_CODIGO = P2.BAN_CODIGO)'#13#10'group by'#13#10'P2.FOR_CODIGO,'#13 +
       #10'F1.FOR_RAZAO'#13#10'order by sum(P2.PPC_VLPARC) desc'
+    DBConnection = DBInicio.MainDB
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
