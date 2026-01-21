@@ -1,5 +1,5 @@
 ﻿Inicio da versão: 09/01/2026
-Atualizado em 19/01/2026
+Atualizado em 21/01/2026
 
 principal: Embraterm, Normadin
 	2133 - Erro Novas Tributação - CFOP devem sair mensagem [Embraterm]
@@ -15,3 +15,7 @@ patch 2: Sustemplast, Chemsystem, LForja, Aleplast
 	2142 - Erro - Geral - Relatorio Contas pagar [Chemsystem]
 	2143 - Ajuste Lforja- Base de dados
 	2144 - Erro Aliplast - Faturamento Parcial com produto duplicidade [Aleplast]
+	
+patch 3: LFEPIS
+	2146 - Revisão LFEPI - Ao inserir Produto o vendedor não pode dar desconte menor que tabela. [LFEPIS]
+	
