@@ -558,7 +558,7 @@ type
     function SetarTabelaPrecos: integer;
     procedure IniciaValores;
     procedure AtualizaGradeInfo;
-    function ValidaDesconto:Boolean;
+    function ValidaDesconto(CurValor: double):Boolean;
     procedure ItemAgregado;
     function TipoAtualizaEstoque (const prd_refer: string ): boolean;
     function GrupoAtualizaEstoque (const prd_refer: string ): boolean;
@@ -1207,8 +1207,8 @@ begin
 //        if indice > 0 then
 //  				CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value * indice
 //        else
-          CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value;
-
+        CurTotal.Value := CurPrecoLiquido.Value * CurQuantidade.Value;
+        CurDesconto.Value := rIndiceDesconto;
 
 				CurValorIPI.Value := 0;
 				lValor := qAux.FieldByName('IPI_VALOR_POR_ITEM').asCurrency;
@@ -1754,12 +1754,16 @@ begin
 end;
 
 procedure TFrmPedidoItem.CurPrecoBrutoExit(Sender: TObject);
+var
+  ValorOriginal, ValorFinal: double;
 begin
   inherited;
-  if CurPrecoLiquido.Value = 0 then
-    CurPrecoLiquido.Value := CurPrecoBruto.Value;
 
+  CurPrecoLiquido.Value := CurPrecoBruto.Value;
+
+  ValidaDesconto(curPrecoBruto.Value);
   CalculaTotais;
+
 
    try
       if not SameValue(rPrecoBruto,CurPrecoBruto.Value) and (CurPrecoBruto.Value> 0)  then
@@ -1790,7 +1794,7 @@ procedure TFrmPedidoItem.CurDescontoAdicionalExit(Sender: TObject);
 begin
   inherited;
    CalculaTotais;
-   ValidaDesconto;
+   ValidaDesconto(CurPrecoLiquido.Value);
   if Bit_Gravar.CanFocus then
     Bit_Gravar.SetFocus;
 end;
@@ -1806,7 +1810,7 @@ begin
    if (rPrecoSaida < rPrecoBruto) then
    begin
        ValidaDescontoPrecoLiquido;
-       if not ValidaDesconto
+       if not ValidaDesconto(curPrecoLiquido.Value)
          then exit;
        rPrecoBruto := rPrecoBruto - CurrAcrescimoReal.Value;
        CurPrecoBruto.Value := rPrecoBruto;
@@ -2380,7 +2384,7 @@ begin
        exemplo não atualiza}
 
        //Valida limite de desconto do usuario e Comissão
-       if (ValidaDesconto) then
+       if (ValidaDesconto(CurPrecoLiquido.Value)) then
        begin
              //Verifica se o item já foi lançado e pergunta se realmente gostaria de lançar o item novamente
 						 if (sTipo = 'I')
@@ -3433,11 +3437,31 @@ begin
   CalculaTotais;
 end;
 
-function TFrmPedidoItem.ValidaDesconto: Boolean;
+function TFrmPedidoItem.ValidaDesconto(CurValor: double): Boolean;
 var
   tcr: TFrmAutoriza;
+  ValorOriginal, ValorFinal: double;
 
 begin
+    //===========================
+    // 1 BUSCA PREÇO DA TABELA 1 (PADRÃO)
+    //===========================
+    if dbInicio.Empresa.bHabilitarTabelaPreco then
+    begin
+      ValorOriginal := dbInicio.BuscaUmDadoSqlAsCurrency(
+        'select prd_pvenda from tabelaprecos ' +
+        'where emp_codigo = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) +
+        ' and prd_codigo = ' + QuotedStr(qAux.FieldByName('prd_codigo').AsString) +
+        ' and seq = 1 ' +
+        'order by prd_pvenda');
+      ValorFinal := CurValor;
+      CurDesconto.Value := ((ValorOriginal - ValorFinal) / ValorOriginal) * 100;
+      if CurDesconto.Value < 0  then
+        CurDesconto.Value := 0;
+    end;
+
+
+
    CalculaIndiceDesconto;
 
   // Salva o componente que está com o foco atualmente
@@ -3445,9 +3469,9 @@ begin
   FFocusRestored := False; // Indica que o foco ainda não foi restaurado
 
 
-   if (dbInicio.Empresa.DesctoMaximo_P = 0) then // zero = desconto totalmente liberado
-      Result := true
-   else
+//   if (dbInicio.Empresa.DesctoMaximo_P = 0) then // zero = desconto totalmente liberado
+//      Result := true
+//   else
    if (rIndiceDesconto > dbInicio.Empresa.DesctoMaximo_P) then
    begin
      tcr := tFrmAutoriza.Create(self) ;
@@ -5072,7 +5096,7 @@ begin
    try
       if not  SameValue(wDescontoAnt,CurDesconto.Value) and (CurDesconto.Value > 0) then
         TestaPrecoAbaixoCusto ;
-      ValidaDesconto;
+      ValidaDesconto(CurPrecoLiquido.Value);
    except
        TJvValidateEdit(Sender).Text := '0';
        TJvValidateEdit(Sender).setfocus;
