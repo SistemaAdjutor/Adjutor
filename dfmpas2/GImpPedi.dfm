@@ -531,8 +531,8 @@ inherited FormGImpPedido: TFormGImpPedido
       Caption = 'Somente &Faturado'
       Checked = True
       TabOrder = 1
-      OnClick = Rad_TodosClick
       TabStop = True
+      OnClick = Rad_TodosClick
     end
     object Rad_Faturar: TRadioButton
       Left = 277
@@ -14335,6 +14335,8 @@ inherited FormGImpPedido: TFormGImpPedido
   object qRel05: TFDQuery
     OnCalcFields = qRel05CalcFields
     Connection = DBInicio.FDACConn
+    FetchOptions.AssignedValues = [evRowsetSize]
+    FetchOptions.RowsetSize = -1
     Left = 752
     Top = 416
     object qRel05PED_CODIGO: TStringField
@@ -14362,15 +14364,18 @@ inherited FormGImpPedido: TFormGImpPedido
     end
     object qRel05PED_VLTOTAL_LIQ: TFMTBCDField
       FieldName = 'PED_VLTOTAL_LIQ'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object qRel05PED_VLTOTAL_BRUTO: TFMTBCDField
       FieldName = 'PED_VLTOTAL_BRUTO'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object qRel05PED_VLFATURADO: TFMTBCDField
       FieldName = 'PED_VLFATURADO'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object qRel05CLI_CODIGO: TStringField
       FieldName = 'CLI_CODIGO'
@@ -14393,8 +14398,10 @@ inherited FormGImpPedido: TFormGImpPedido
       FieldName = 'NF_EMISSAO'
     end
     object qRel05NF_TOT_NOTA: TFMTBCDField
+      DisplayWidth = 18
       FieldName = 'NF_TOT_NOTA'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object qRel05PED_STATUS_CC: TStringField
       FieldKind = fkCalculated
@@ -14429,16 +14436,20 @@ inherited FormGImpPedido: TFormGImpPedido
       DisplayWidth = 16
       FieldName = 'VLRFATURAR'
       Precision = 15
+      Size = 5
     end
     object qRel05VALOR_A_FATURAR: TFMTBCDField
       DisplayWidth = 16
       FieldName = 'VALOR_A_FATURAR'
       Precision = 15
+      Size = 5
     end
   end
   object cdsRel02: TFDQuery
     OnCalcFields = cdsRel02CalcFields
     Connection = DBInicio.FDACConn
+    FetchOptions.AssignedValues = [evMode]
+    FetchOptions.Mode = fmAll
     Left = 752
     Top = 216
     object cdsRel02PED_DTSAIDA: TSQLTimeStampField
@@ -14452,8 +14463,9 @@ inherited FormGImpPedido: TFormGImpPedido
       Size = 5
     end
     object cdsRel02CLI_RAZAO: TStringField
+      DisplayWidth = 100
       FieldName = 'CLI_RAZAO'
-      Size = 50
+      Size = 100
     end
     object cdsRel02CLI_UF: TStringField
       FieldName = 'CLI_UF'
@@ -14474,23 +14486,28 @@ inherited FormGImpPedido: TFormGImpPedido
     end
     object cdsRel02PED_DESCTOVL: TFMTBCDField
       FieldName = 'PED_DESCTOVL'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object cdsRel02WVALOR_FATURADO: TFMTBCDField
       FieldName = 'WVALOR_FATURADO'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object cdsRel02WVALOR_PEDIDO_LIQUIDO: TFMTBCDField
       FieldName = 'WVALOR_PEDIDO_LIQUIDO'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object cdsRel02WVALOR_FATURADO_LIQUIDO: TFMTBCDField
       FieldName = 'WVALOR_FATURADO_LIQUIDO'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object cdsRel02WVALOR_FATURADO_IPI: TFMTBCDField
       FieldName = 'WVALOR_FATURADO_IPI'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object cdsRel02PED_PENDENTE_CC: TCurrencyField
       FieldKind = fkCalculated
@@ -14499,15 +14516,18 @@ inherited FormGImpPedido: TFormGImpPedido
     end
     object cdsRel02PED_VLTUPS: TFMTBCDField
       FieldName = 'PED_VLTUPS'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object cdsRel02PED_TOTUPS: TFMTBCDField
       FieldName = 'PED_TOTUPS'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object cdsRel02PED_COMIS1: TFMTBCDField
       FieldName = 'PED_COMIS1'
-      Precision = 15
+      Precision = 18
+      Size = 5
     end
     object cdsRel02Comissao_CC: TCurrencyField
       FieldKind = fkCalculated
