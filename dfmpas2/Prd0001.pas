@@ -2292,6 +2292,7 @@ type
     cmbCBS: TDBLookupComboBox;
     cmbIBS: TDBLookupComboBox;
     DBEdit79: TDBEdit;
+    chkCFOPVenda: TCheckBox;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
@@ -3888,8 +3889,8 @@ begin
            'join for0000 t2 on (t2.for_codigo = t1.for_codigo) ' +
            'join enf0001 t3 on (t3.enf_notanumber = t1.enf_it_notanumber and t3.for_codigo = t1.for_codigo and t1.emp_codigo = t3.emp_codigo) ' +
            'where ' + ' t3.ENF_INDUSTRIALIZACAO = ''S'' ' +
-           ' AND o.OPE_TIPO_OPERACAO <> ''C'' ' +
-           ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaIndustrializacao.Checked, '', ' and t3.emp_codigo = ' + DBInicio.Empresa.EMP_CODIGO );
+           iif(chkCFOPVenda.Checked,  ' AND o.OPE_TIPO_OPERACAO <> ''C'' ' , '') +
+           ' AND t1.prd_CODIGO = ' + qStr( CdsProdutosPRD_CODIGO.AsString ) + iif( chkMultiempresaIndustrializacao.Checked, '', ' and t3.emp_codigo = ' + QuotedStr(DBInicio.Empresa.EMP_CODIGO) );
 
     if ( dtInicioInd.date > 0 ) and ( dtFimInd.date > 0 ) then
       sql := sql + ' and  t3.enf_emissao between ' + DateToSql( dtInicioInd.date ) + ' and ' + DateToSql( dtFimInd.date )
@@ -3902,6 +3903,8 @@ begin
 
     sql := sql + ' order by t3.enf_entrada desc';
     CdsIndustrializacao.CommandText := sql;
+    if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(sql);
     CdsIndustrializacao.Open;
     CdsIndustrializacao.EnableControls;
   end;
