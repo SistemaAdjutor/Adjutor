@@ -1762,6 +1762,7 @@ begin
   CurPrecoLiquido.Value := CurPrecoBruto.Value;
 
   ValidaDesconto(curPrecoBruto.Value);
+  cbTabelaPrecoMultiplo.EditValue :=   IntToStr(SetarTabelaPrecos);
   CalculaTotais;
 
 
