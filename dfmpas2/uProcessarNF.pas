@@ -2223,7 +2223,7 @@ begin
        else
        begin
           if (qnota.FieldByName('CLI_INSC').AsString = 'ISENTO') OR (qnota.FieldByName('CLI_INSC').AsString= '') then
-            NotaF.NFe.Dest.indIEDest := inIsento
+            NotaF.NFe.Dest.indIEDest := inNaoContribuinte // inIsento
           else
           begin
 //           if DBInicio.GetParametroSistema('PMT_MULTIPLAS_IE') = 'S' then
