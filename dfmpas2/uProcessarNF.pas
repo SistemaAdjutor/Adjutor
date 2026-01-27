@@ -326,7 +326,10 @@ begin
     if (femp_crt <> '2')  then
      Produto.Imposto.PIS.CST := pis99
     else
-     Produto.Imposto.PIS.CST := StrToCSTPIS(qItemNota.FieldByName('CST_PIS').AsString);
+    begin
+      if Trim(qItemNota.FieldByName('CST_PIS').AsString) <> '' then
+        Produto.Imposto.PIS.CST := StrToCSTPIS(qItemNota.FieldByName('CST_PIS').AsString);
+    end;
      // Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
     Produto.Imposto.PIS.VBC := 0;
     Produto.Imposto.PIS.PPIS := 0;
@@ -336,7 +339,10 @@ begin
     if (femp_crt <> '2')  then
        Produto.Imposto.COFINS.CST := cof99
     else
-     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(qItemNota.FieldByName('CST_COFINS').AsString);
+    begin
+      if Trim(qItemNota.FieldByName('CST_COFINS').AsString) <> '' then
+        Produto.Imposto.COFINS.CST := StrToCSTCOFINS(qItemNota.FieldByName('CST_COFINS').AsString);
+    end;
      // Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK,qItemNota.FieldByName('CST_COFINS').AsString);
     Produto.Imposto.COFINS.VBC := 0;
     Produto.Imposto.COFINS.pCOFINS := 0;
@@ -357,8 +363,9 @@ begin
       end;
 
       if cst_PIS_COFINS = '' then // esta vindo string vazia e dando erro
-        cst_PIS_COFINS := qItemNota.FieldByName('CST_PIS').AsString;
-      Produto.Imposto.PIS.CST := StrToCSTPIS(cst_PIS_COFINS);
+        cst_PIS_COFINS := Trim(qItemNota.FieldByName('CST_PIS').AsString);
+      if cst_PIS_COFINS <> '' then
+        Produto.Imposto.PIS.CST := StrToCSTPIS(cst_PIS_COFINS);
       // Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
 
 
@@ -375,11 +382,8 @@ begin
       else if qItemNota.FieldByName('CST_PIS').AsString = '' then
           Produto.Imposto.PIS.CST := pis08;
 
-      Produto.Imposto.COFINS.CST := StrToCSTCOFINS(cst_PIS_COFINS);
-      // Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, cst_PIS_COFINS);
-
-
-      //     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, qItemNota.FieldByName('CST_COFINS').AsString);
+      if Trim(cst_PIS_COFINS) <> '' then
+        Produto.Imposto.COFINS.CST := StrToCSTCOFINS(cst_PIS_COFINS);
 
 //     if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_COFINS').AsString,['99','98','49'])) then
      if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS,['99','98','49'])) then
@@ -2054,7 +2058,16 @@ begin
   Else if qNota.FieldByName('NF_ENTR_SAID').AsString = 'E' then
      NotaF.NFe.Ide.tpNF      := tnEntrada;
   NotaF.NFe.Ide.tpEmis    := ACBrNFe1.Configuracoes.Geral.FormaEmissao;
-  NotaF.NFe.Ide.tpAmb     := ACBrNFe1.Configuracoes.WebServices.Ambiente;
+
+  if BuscaUmDadoSqlasInteger('SELECT EMP_AMBIENTE_NFE FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 1 then
+    NotaF.NFe.Ide.tpAmb := taProducao
+  else
+    NotaF.NFe.Ide.tpAmb := taHomologacao ;
+
+  // NotaF.NFe.Ide.tpAmb     := dbinicio.Nfe.AmbienteWebService;
+  // NotaF.NFe.Ide.tpAmb     := ACBrNFe1.Configuracoes.WebServices.Ambiente;
+
+
   if GetBuildInfo <> '' then
    NotaF.NFe.Ide.verProc   := GetBuildInfo  //Versão do seu sistema
   else
@@ -2665,7 +2678,7 @@ begin
 
   //informações complementares do tecnico responsável somente para ambiente de homologação
  // if ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao then
- if fPMT_RESPONSAVEL_TECNICO  OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
+ if fPMT_RESPONSAVEL_TECNICO OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
   begin
     if (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
       CSRT := 'HJX0FBGCX9U9H9J78S33W0X02E0VTP9L5R8T'  // homologação
@@ -2680,7 +2693,7 @@ begin
     begin
       CNPJ     := '11089061000193';
       xContato := 'Márcio Pacheco - Novi sistemas';
-      email    := 'suport@novisistemas.com.br';
+      email    := 'roseli@novisistemas.com.br';
       fone     := '4135038230';
       idCSRT   := 1;
       hashCSRT := CSRTValida;
