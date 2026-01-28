@@ -6721,6 +6721,8 @@ begin
 
     end;
 
+    CurPrecoLiquido.Value := CurPrecoBruto.Value;
+
    	lbComissao.Visible := false;
 		CurrencyEdit1.Visible := false;
 		lbVerba.Visible := false;
