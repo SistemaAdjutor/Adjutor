@@ -543,7 +543,7 @@ begin
 
     End;
     IF ((Produto.Imposto.ICMS.cst IN [cst00, cst10,cst60, cst90]) and (NotaF.NFe.Dest.EnderDest.UF = 'PR')) OR
-       ((Produto.Imposto.ICMS.cst IN [cst00, cst10, {cst41,} cst60]) and (NotaF.NFe.Dest.EnderDest.UF = 'RJ')) OR
+       ((Produto.Imposto.ICMS.cst IN [cst00, cst10, cst40, cst60]) and (NotaF.NFe.Dest.EnderDest.UF = 'RJ')) OR
               ((Produto.Imposto.ICMS.cst IN [cst00, cst10]) and (NotaF.NFe.Dest.EnderDest.UF = 'RS'))  then
         produto.Prod.cBenef   := ''
     Else
