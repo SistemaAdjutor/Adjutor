@@ -2365,16 +2365,20 @@ begin
        GeraException('Frete não preenchido no produto');
 
     NotaF.NFe.Transp.modFrete := StrTomodFrete(ok,IntToStr(qnota.FieldByName('PED_FRETE').AsInteger)) ;
-    if not MatchStr(qnota.FieldByName('TRP_CGC').AsString,['00000000000000','']) then
-       NotaF.NFe.Transp.Transporta.CNPJCPF  := RetirarMascaraCNPJ_INSC(qnota.FieldByName('TRP_CGC').AsString);
-    NotaF.NFe.Transp.Transporta.xNome    := qNota.FieldByName('TRP_RAZAO').AsString;
-    NotaF.NFe.Transp.Transporta.IE       := RetirarMascaraCNPJ_INSC(qNota.FieldByName('TRP_INSC').AsString) ;
-    NotaF.NFe.Transp.Transporta.xEnder   := qNota.FieldByName('TRP_ENDERE').AsString;
-    NotaF.NFe.Transp.Transporta.xMun     := qNota.FieldByName('TRP_CIDADE').AsString;
-    NotaF.NFe.Transp.Transporta.UF       := qNota.FieldByName('TRP_UF').AsString;
-    NotaF.NFe.Transp.veicTransp.placa := qNota.FieldByName('NF_PLACAVE').AsString;
-    NotaF.NFe.Transp.veicTransp.UF    :=  qNota.FieldByName('nf_ufveiculo').AsString;
-    NotaF.NFe.Transp.veicTransp.RNTC  := '';
+
+    if qnota.FieldByName('PED_FRETE').AsInteger <> 9 then
+    begin
+      if not MatchStr(qnota.FieldByName('TRP_CGC').AsString,['00000000000000','']) then
+         NotaF.NFe.Transp.Transporta.CNPJCPF  := RetirarMascaraCNPJ_INSC(qnota.FieldByName('TRP_CGC').AsString);
+      NotaF.NFe.Transp.Transporta.xNome    := qNota.FieldByName('TRP_RAZAO').AsString;
+      NotaF.NFe.Transp.Transporta.IE       := RetirarMascaraCNPJ_INSC(qNota.FieldByName('TRP_INSC').AsString) ;
+      NotaF.NFe.Transp.Transporta.xEnder   := qNota.FieldByName('TRP_ENDERE').AsString;
+      NotaF.NFe.Transp.Transporta.xMun     := qNota.FieldByName('TRP_CIDADE').AsString;
+      NotaF.NFe.Transp.Transporta.UF       := qNota.FieldByName('TRP_UF').AsString;
+      NotaF.NFe.Transp.veicTransp.placa := qNota.FieldByName('NF_PLACAVE').AsString;
+      NotaF.NFe.Transp.veicTransp.UF    :=  qNota.FieldByName('nf_ufveiculo').AsString;
+      NotaF.NFe.Transp.veicTransp.RNTC  := '';
+    end;
   end
   else // NFC-e não pode ter FRETE
     NotaF.NFe.Transp.modFrete := mfSemFrete; // NFC-e não pode ter FRETE

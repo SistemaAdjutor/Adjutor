@@ -2855,7 +2855,7 @@ begin
 			wConsumidor := ( CdsPedidosCLI_CONSFINAL.AsString = 'S' );
 			wExterior := iif(CdsPedidosCLI_UF.AsString = 'EX', 'S', 'N');
 
-			if qOperFiscOPE_TRIBICMS.AsString = 'S' then
+			if (qOperFiscOPE_TRIBICMS.AsString = 'S') or ((wConsumidor = True) and (qIcmsICM_TIPO_CALCULO_DIFAL.asinteger = 1) ) then
 			begin
          icmTipoCalculoDifal   := qIcmsICM_TIPO_CALCULO_DIFAL.AsInteger;
          wALiqICmsCliente      :=qIcmsICM_ALIQ.asCurrency;
