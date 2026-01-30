@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 0
     Width = 2500
     Height = 566
-    ActivePage = Tbs_Produtos
+    ActivePage = TabSheet8
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -11008,8 +11008,8 @@ inherited FormProduto: TFormProduto
           Caption = 'Emiss'#227'o:'
         end
         object btnIndustrializacao: TBitBtn
-          Left = 457
-          Top = 14
+          Left = 609
+          Top = 13
           Width = 99
           Height = 24
           Hint = 'Pesquisar'
@@ -11155,6 +11155,16 @@ inherited FormProduto: TFormProduto
           Caption = 'Multiempresa'
           TabOrder = 3
           OnClick = chkMultiempresaComprasClick
+        end
+        object chkCFOPVenda: TCheckBox
+          Left = 448
+          Top = 18
+          Width = 145
+          Height = 17
+          Caption = 'Somente CFOP de Venda'
+          Checked = True
+          State = cbChecked
+          TabOrder = 4
         end
       end
       object dbgrdIndustrializacao: TDBGrid
@@ -12798,16 +12808,16 @@ inherited FormProduto: TFormProduto
     Top = 8
   end
   inherited DBConn: TSQLConnection
-    Left = 104
-    Top = 9
+    Left = 120
+    Top = 97
   end
   inherited qAux: TSQLQuery
-    Left = 314
-    Top = 5
+    Left = 330
+    Top = 93
   end
   inherited qAux2: TSQLQuery
-    Left = 354
-    Top = 4
+    Left = 370
+    Top = 92
   end
   object DsQFornec: TDataSource [8]
     DataSet = CdsFornecedorAux
@@ -19840,14 +19850,14 @@ inherited FormProduto: TFormProduto
   end
   object JvDBGridWordExport1: TJvDBGridWordExport [110]
     Caption = 'Exporting to MS Word...'
-    Left = 604
-    Top = 65535
+    Left = 620
+    Top = 87
   end
   object JvDBGridExcelExport1: TJvDBGridExcelExport [111]
     Caption = 'Exporting to MS Excel...'
     AutoFit = False
-    Left = 532
-    Top = 65535
+    Left = 548
+    Top = 87
   end
   object pExportarLote: TPopupMenu [112]
     Left = 1668
@@ -21386,8 +21396,8 @@ inherited FormProduto: TFormProduto
   end
   object qAuxF: TFDQuery [140]
     Connection = DBInicio.FDACConn
-    Left = 440
-    Top = 10
+    Left = 456
+    Top = 98
   end
   object CdsPrdClassIPI: TFDQuery [141]
     Connection = DBInicio.FDACConn
@@ -21440,8 +21450,8 @@ inherited FormProduto: TFormProduto
     Top = 151
   end
   inherited qAux3: TSQLQuery
-    Left = 394
-    Top = 4
+    Left = 410
+    Top = 92
   end
   object cdsLotes: TFDQuery
     BeforeInsert = CdsLotesBeforeInsert
