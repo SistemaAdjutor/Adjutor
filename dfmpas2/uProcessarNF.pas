@@ -105,7 +105,8 @@ type
     function RetirarSujeira ( str : string): string;
     function ValidarRegrasdeNegociosAdjuntor(out Erros: String): Boolean;
     procedure CarregarParametros;
-     property EmpCodigo : string read fEmp_codigo write SetEmpCodigo;
+    property EmpCodigo : string read fEmp_codigo write SetEmpCodigo;
+    function SomaTotalCBSIBS(aliquota: double): double;
   end;
 
 var
@@ -2858,7 +2859,9 @@ procedure TfrmProcessaNFe.SetLote(const aValues: string);
 begin
    FLote := Avalues;
 end;
- {CST ICM
+
+
+{CST ICM
  00 – Tributada integralmente
  10 – Tributada e com cobrança do ICMS-ST
  20 – Com redução de base de cálculo
@@ -2981,19 +2984,21 @@ begin
     AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
     if (dbInicio.GetParametroSistema('PMT_SOMA_IBS_UF_BASE_CALCULO') = 'S') then
     begin
-      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat + ((qNota.FieldByName('NF_TOT_PROD').AsFloat / 100) * AliqUF  );
+      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat + SomaTotalCBSIBS(AliqUF); // qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqUF  / 100) ;
     end
     else
       notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
 
-    notaf.NFe.Total.IBSCBSTot.gIBS.gIBSUFTot.vIBSUF := ((qNota.FieldByName('NF_TOT_PROD').AsFloat / 100) * AliqUF  );
+    notaf.NFe.Total.IBSCBSTot.gIBS.gIBSUFTot.vIBSUF := SomaTotalCBSIBS(AliqUF);
+    // notaf.NFe.Total.IBSCBSTot.gIBS.gIBSUFTot.vIBSUF := RoundTo(  qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqUF / 100),  -2);
+
 
     AliqMun := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_MUNICIPAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
-    notaf.NFe.Total.IBSCBSTot.gIBS.gIBSMunTot.vIBSMun := ((qNota.FieldByName('NF_TOT_PROD').AsFloat / 100) * AliqMun  );
-    notaf.NFe.Total.IBSCBSTot.gIBS.vIBS := ((qNota.FieldByName('NF_TOT_PROD').AsFloat / 100) * AliqUF  );
+    notaf.NFe.Total.IBSCBSTot.gIBS.gIBSMunTot.vIBSMun := SomaTotalCBSIBS(AliqMun); // qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqMun  / 100);
+    notaf.NFe.Total.IBSCBSTot.gIBS.vIBS := SomaTotalCBSIBS(AliqUF); // qNota.FieldByName('NF_TOT_PROD').AsFloat  * (AliqUF / 100);
 
     AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
-    notaf.NFe.Total.IBSCBSTot.gCBS.vCBS := ((qNota.FieldByName('NF_TOT_PROD').AsFloat / 100) * AliqCBS  );
+    notaf.NFe.Total.IBSCBSTot.gCBS.vCBS := SomaTotalCBSIBS(AliqCBS); // qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqCBS / 100) ;
 
   end;
 
@@ -3003,6 +3008,27 @@ begin
           notaf.NFe.Total.ICMSTot.VTotTrib := qnota.FieldByName('IBPT_VLAPROXTRIBUTOS').AsCurrency;
 
 end;
+
+
+function TfrmProcessaNFe.SomaTotalCBSIBS(aliquota: double) : double;
+var
+  totItem: double;
+begin
+  qAux.Close;
+  qAux.Sql.Text := qItemNota.SQL.Text;
+  qAux.Open;
+  totItem := 0;
+  while not qAux.Eof do
+  begin
+  	totItem := totItem + RoundTo( (qAux.FieldByNAme('NF_PRECO').AsFloat * qAux.FieldByNAme('NF_QTDE').AsFloat) * (aliquota / 100), -2);
+    qAux.Next;
+  end;
+  Result := totItem
+end;
+
+
+
+
 
 procedure TfrmProcessaNFe.TributacaoICMS;
 begin
