@@ -1,5 +1,5 @@
 ﻿Inicio da versão: 09/01/2026
-Atualizado em 21/01/2026
+Atualizado em 30/01/2026
 
 principal: Embraterm, Normadin
 	2133 - Erro Novas Tributação - CFOP devem sair mensagem [Embraterm]
@@ -19,3 +19,12 @@ patch 2: Sustemplast, Chemsystem, LForja, Aleplast
 patch 3: LFEPIS
 	2146 - Revisão LFEPI - Ao inserir Produto o vendedor não pode dar desconte menor que tabela. [LFEPIS]
 	
+patch 4: Metalúrgica Água, Arkson, LF EPIS, Aços Farrara
+	2147 - Erro Metalurgica Agua- Faturamento calculo de IBS [Metalúrgica Água]
+	2149 - Erro Arkson - Entrada NF [Arkson]
+	2150 - Erro - Tratamento erro Pis Cofins sem ST [LF EPIS]
+	2151 - Erro Aços Ferrara - Relatorio no Pedidos com forma de pagamento [Aços Farrara]
+	2152 - Erro Arkson - Cadastro de produto Aba Industriação nf não esta buscando [Arkson]
+	2154 - Erro LFEPI - CFOP 6949 Rejeição UF Destino e Partilha indevida de ICMS [LF EPIS]
+	2155 - Revisão LFPI - Pedido Ao Alterar Preso Bruto [LF EPIS]
+	2156 - Erro Unimatriz - Empresa 002 Faturamente só processo não da erro [Unimatriz]
