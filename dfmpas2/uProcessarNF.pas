@@ -327,7 +327,10 @@ begin
     if (femp_crt <> '2')  then
      Produto.Imposto.PIS.CST := pis99
     else
-     Produto.Imposto.PIS.CST := StrToCSTPIS(qItemNota.FieldByName('CST_PIS').AsString);
+    begin
+      if Trim(qItemNota.FieldByName('CST_PIS').AsString) <> '' then
+        Produto.Imposto.PIS.CST := StrToCSTPIS(qItemNota.FieldByName('CST_PIS').AsString);
+    end;
      // Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
     Produto.Imposto.PIS.VBC := 0;
     Produto.Imposto.PIS.PPIS := 0;
@@ -337,13 +340,16 @@ begin
     if (femp_crt <> '2')  then
        Produto.Imposto.COFINS.CST := cof99
     else
-     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(qItemNota.FieldByName('CST_COFINS').AsString);
+    begin
+      if Trim(qItemNota.FieldByName('CST_COFINS').AsString) <> '' then
+        Produto.Imposto.COFINS.CST := StrToCSTCOFINS(qItemNota.FieldByName('CST_COFINS').AsString);
+    end;
      // Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK,qItemNota.FieldByName('CST_COFINS').AsString);
     Produto.Imposto.COFINS.VBC := 0;
     Produto.Imposto.COFINS.pCOFINS := 0;
     Produto.Imposto.COFINS.vCOFINS := 0;
 
-   end //    if fOPT_SIMPLES = 'S' then
+   end //    fOPT_SIMPLES = 'S'
    else     // NÃO É DO SIMPLES
    begin
      TributacaoICMS;
@@ -358,14 +364,12 @@ begin
       end;
 
       if cst_PIS_COFINS = '' then // esta vindo string vazia e dando erro
-        cst_PIS_COFINS := qItemNota.FieldByName('CST_PIS').AsString;
-      Produto.Imposto.PIS.CST := StrToCSTPIS(cst_PIS_COFINS);
-      // Produto.Imposto.PIS.CST := StrToCSTPIS(OK, cst_PIS_COFINS);
+        cst_PIS_COFINS := Trim(qItemNota.FieldByName('CST_PIS').AsString);
+      if cst_PIS_COFINS <> '' then
+        Produto.Imposto.PIS.CST := StrToCSTPIS(cst_PIS_COFINS)
+      Else
+        MessageDlg('Sem Tributação de PIS/COFINS no Cadastro da CFOP', mtWarning,  [mbOK], 0 );
 
-
-      //       Produto.Imposto.PIS.CST := StrToCSTPIS(OK,qItemNota.FieldByName('CST_PIS').AsString);
-
-//      if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_PIS').AsString,['99','98','49']))) then
       if ((qItemNota.FieldByName('NF_VLPIS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS, ['99','98','49']))) then
       begin
         Produto.Imposto.PIS.VBC := qItemNota.FieldByName('NF_BASE_PIS').asCurrency;
@@ -376,13 +380,9 @@ begin
       else if qItemNota.FieldByName('CST_PIS').AsString = '' then
           Produto.Imposto.PIS.CST := pis08;
 
-      Produto.Imposto.COFINS.CST := StrToCSTCOFINS(cst_PIS_COFINS);
-      // Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, cst_PIS_COFINS);
+      if Trim(cst_PIS_COFINS) <> '' then
+        Produto.Imposto.COFINS.CST := StrToCSTCOFINS(cst_PIS_COFINS);
 
-
-      //     Produto.Imposto.COFINS.CST := StrToCSTCOFINS(OK, qItemNota.FieldByName('CST_COFINS').AsString);
-
-//     if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(qItemNota.FieldByName('CST_COFINS').AsString,['99','98','49'])) then
      if (qItemNota.FieldByName('NF_VLCOFINS').AsFloat > 0) and (not MatchStr(cst_PIS_COFINS,['99','98','49'])) then
      begin
 
@@ -511,7 +511,7 @@ begin
    // ICMS uf dest  - antigo VendaInterEstadualConsumidorFinal_Item
    if (NotaF.NFe.Emit.EnderEmit.UF <> NotaF.NFe.Dest.EnderDest.UF) and // interestadual
       ( NotaF.NFe.Ide.indFinal  = cfConsumidorFinal ) and // Consumidor final / não contribuinte
-      (qnota.FieldByName('OPE_TIPO_OPERACAO').AsString = 'V') then
+      ( (qnota.FieldByName('OPE_TIPO_OPERACAO').AsString = 'V') or (qnota.FieldByName('OPE_TIPO_OPERACAO').AsString = 'O') )  then
     Begin
 
 			qAux.Close;
@@ -537,41 +537,42 @@ begin
       Produto.Imposto.ICMSUFDest.vFCPUFDest     := qItemNota.FieldByName('NF_VALOR_FCP').asCurrency ;
       Produto.Imposto.ICMSUFDest.vICMSUFDest    := qItemNota.FieldByName('NF_VALOR_PARTILHA_DESTINO').asCurrency;
       Produto.Imposto.ICMSUFDest.vICMSUFRemet   := qItemNota.FieldByName('NF_VALOR_PARTILHA_ORIGEM').asCurrency;
-
     End;
-    IF ((Produto.Imposto.ICMS.cst IN [cst00, cst10,cst60, cst90]) and (NotaF.NFe.Dest.EnderDest.UF = 'PR')) OR
-       ((Produto.Imposto.ICMS.cst IN [cst00, cst10, {cst41,} cst60]) and (NotaF.NFe.Dest.EnderDest.UF = 'RJ')) OR
+
+
+     IF ((Produto.Imposto.ICMS.cst IN [cst00, cst10,cst60, cst90]) and (NotaF.NFe.Dest.EnderDest.UF = 'PR')) OR
+       ((Produto.Imposto.ICMS.cst IN [cst00, cst10, cst40, cst60]) and (NotaF.NFe.Dest.EnderDest.UF = 'RJ')) OR
               ((Produto.Imposto.ICMS.cst IN [cst00, cst10]) and (NotaF.NFe.Dest.EnderDest.UF = 'RS'))  then
         produto.Prod.cBenef   := ''
-    Else
-      produto.Prod.cBenef   := qItemNota.FieldByName('NF_CBENEF').AsString;
+     Else
+       produto.Prod.cBenef   := qItemNota.FieldByName('NF_CBENEF').AsString;
 
      //   if (oSistema.Empresa.Parametro.ValorAproximadoImpostos = vaiTodos) or (NotaFiscal.Destinatario.ConsumidorFinal) then INCOMPLETO
-   if MostraIBPT_Item then
-      Produto.Imposto.vTotTrib := qItemNota.FieldByName('IBPT_VLAP').AsCurrency;  //ValorImpostosPreco;
+     if MostraIBPT_Item then
+       Produto.Imposto.vTotTrib := qItemNota.FieldByName('IBPT_VLAP').AsCurrency;  //ValorImpostosPreco;
 
-   Inc(i,1);
-   if qItemNota.FieldByName('NF_VALOR_FCP').asCurrency > 0 Then
-      Produto.infAdProd      :=   Produto.infAdProd + ' ' + 'Base FCP :'+ FloatToSQL( qItemNota.FieldByName('NF_ICMSBASE').AsFloat) +
+     Inc(i,1);
+     if qItemNota.FieldByName('NF_VALOR_FCP').asCurrency > 0 Then
+       Produto.infAdProd      :=   Produto.infAdProd + ' ' + 'Base FCP :'+ FloatToSQL( qItemNota.FieldByName('NF_ICMSBASE').AsFloat) +
        '/ Percentual FCP = '+FloatToSQL(qItemNota.FieldByName('NF_PERC_FCP').AsCurrency) +
        ' / Valor FCP = '+FloatToSQL(qItemNota.FieldByName('NF_VALOR_FCP').asCurrency)  ;
-   if qItemNota.FieldByName('NF_VALOR_FCP_st').asCurrency > 0  then
-   if qItemNota.FieldByName('NF_MVAPERC').AsFloat = 0 then
-   begin
-      Produto.infAdProd :=   Produto.infAdProd + ' ' + 'Base FCP ST :'+FormatFloat('#,##0.00', uteis.RoundTo( qItemNota.FieldByName('NF_SUBTRIBASE').AsFloat) )+
-       '/ Percentual FCP ST = '+FloatToSQL(qItemNota.FieldByName('NF_PERC_FCP').AsCurrency) +
-       ' / Valor FCP ST = '+FloatToSQL(qItemNota.FieldByName('NF_VALOR_FCP_st').asCurrency)  ;
-   end
-   else
-   begin
+     if qItemNota.FieldByName('NF_VALOR_FCP_st').asCurrency > 0  then
+        if qItemNota.FieldByName('NF_MVAPERC').AsFloat = 0 then
+      begin
+        Produto.infAdProd :=   Produto.infAdProd + ' ' + 'Base FCP ST :'+FormatFloat('#,##0.00', uteis.RoundTo( qItemNota.FieldByName('NF_SUBTRIBASE').AsFloat) )+
+         '/ Percentual FCP ST = '+FloatToSQL(qItemNota.FieldByName('NF_PERC_FCP').AsCurrency) +
+         ' / Valor FCP ST = '+FloatToSQL(qItemNota.FieldByName('NF_VALOR_FCP_st').asCurrency)  ;
+      end
+    else
+    begin
       Produto.infAdProd :=   Produto.infAdProd + ' ' + 'Base FCP ST :'+FormatFloat('#,##0.00', uteis.RoundTo( qItemNota.FieldByName('TOTAL').AsFloat *
                                                                        qItemNota.FieldByName('NF_MVAPERC').AsFloat/100) )+
        '/ Percentual FCP ST = '+FloatToSQL(qItemNota.FieldByName('NF_PERC_FCP').AsCurrency) +
        ' / Valor FCP ST = '+FloatToSQL(qItemNota.FieldByName('NF_VALOR_FCP_st').asCurrency)  ;
 
-   end;
+    end;
 
-   qItemNota.Next;
+    qItemNota.Next;
   end; // fim inclusão de produto
 
 
@@ -2055,7 +2056,16 @@ begin
   Else if qNota.FieldByName('NF_ENTR_SAID').AsString = 'E' then
      NotaF.NFe.Ide.tpNF      := tnEntrada;
   NotaF.NFe.Ide.tpEmis    := ACBrNFe1.Configuracoes.Geral.FormaEmissao;
-  NotaF.NFe.Ide.tpAmb     := ACBrNFe1.Configuracoes.WebServices.Ambiente;
+
+  if BuscaUmDadoSqlasInteger('SELECT EMP_AMBIENTE_NFE FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 1 then
+    NotaF.NFe.Ide.tpAmb := taProducao
+  else
+    NotaF.NFe.Ide.tpAmb := taHomologacao ;
+
+  // NotaF.NFe.Ide.tpAmb     := dbinicio.Nfe.AmbienteWebService;
+  // NotaF.NFe.Ide.tpAmb     := ACBrNFe1.Configuracoes.WebServices.Ambiente;
+
+
   if GetBuildInfo <> '' then
    NotaF.NFe.Ide.verProc   := GetBuildInfo  //Versão do seu sistema
   else
@@ -2224,7 +2234,7 @@ begin
        else
        begin
           if (qnota.FieldByName('CLI_INSC').AsString = 'ISENTO') OR (qnota.FieldByName('CLI_INSC').AsString= '') then
-            NotaF.NFe.Dest.indIEDest := inIsento
+            NotaF.NFe.Dest.indIEDest := inNaoContribuinte // inIsento
           else
           begin
 //           if DBInicio.GetParametroSistema('PMT_MULTIPLAS_IE') = 'S' then
@@ -2356,16 +2366,20 @@ begin
        GeraException('Frete não preenchido no produto');
 
     NotaF.NFe.Transp.modFrete := StrTomodFrete(ok,IntToStr(qnota.FieldByName('PED_FRETE').AsInteger)) ;
-    if not MatchStr(qnota.FieldByName('TRP_CGC').AsString,['00000000000000','']) then
-       NotaF.NFe.Transp.Transporta.CNPJCPF  := RetirarMascaraCNPJ_INSC(qnota.FieldByName('TRP_CGC').AsString);
-    NotaF.NFe.Transp.Transporta.xNome    := qNota.FieldByName('TRP_RAZAO').AsString;
-    NotaF.NFe.Transp.Transporta.IE       := RetirarMascaraCNPJ_INSC(qNota.FieldByName('TRP_INSC').AsString) ;
-    NotaF.NFe.Transp.Transporta.xEnder   := qNota.FieldByName('TRP_ENDERE').AsString;
-    NotaF.NFe.Transp.Transporta.xMun     := qNota.FieldByName('TRP_CIDADE').AsString;
-    NotaF.NFe.Transp.Transporta.UF       := qNota.FieldByName('TRP_UF').AsString;
-    NotaF.NFe.Transp.veicTransp.placa := qNota.FieldByName('NF_PLACAVE').AsString;
-    NotaF.NFe.Transp.veicTransp.UF    :=  qNota.FieldByName('nf_ufveiculo').AsString;
-    NotaF.NFe.Transp.veicTransp.RNTC  := '';
+
+    if qnota.FieldByName('PED_FRETE').AsInteger <> 9 then
+    begin
+      if not MatchStr(qnota.FieldByName('TRP_CGC').AsString,['00000000000000','']) then
+         NotaF.NFe.Transp.Transporta.CNPJCPF  := RetirarMascaraCNPJ_INSC(qnota.FieldByName('TRP_CGC').AsString);
+      NotaF.NFe.Transp.Transporta.xNome    := qNota.FieldByName('TRP_RAZAO').AsString;
+      NotaF.NFe.Transp.Transporta.IE       := RetirarMascaraCNPJ_INSC(qNota.FieldByName('TRP_INSC').AsString) ;
+      NotaF.NFe.Transp.Transporta.xEnder   := qNota.FieldByName('TRP_ENDERE').AsString;
+      NotaF.NFe.Transp.Transporta.xMun     := qNota.FieldByName('TRP_CIDADE').AsString;
+      NotaF.NFe.Transp.Transporta.UF       := qNota.FieldByName('TRP_UF').AsString;
+      NotaF.NFe.Transp.veicTransp.placa := qNota.FieldByName('NF_PLACAVE').AsString;
+      NotaF.NFe.Transp.veicTransp.UF    :=  qNota.FieldByName('nf_ufveiculo').AsString;
+      NotaF.NFe.Transp.veicTransp.RNTC  := '';
+    end;
   end
   else // NFC-e não pode ter FRETE
     NotaF.NFe.Transp.modFrete := mfSemFrete; // NFC-e não pode ter FRETE
@@ -2666,7 +2680,7 @@ begin
 
   //informações complementares do tecnico responsável somente para ambiente de homologação
  // if ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao then
- if fPMT_RESPONSAVEL_TECNICO  OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
+ if fPMT_RESPONSAVEL_TECNICO OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
   begin
     if (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
       CSRT := 'HJX0FBGCX9U9H9J78S33W0X02E0VTP9L5R8T'  // homologação
@@ -2681,7 +2695,7 @@ begin
     begin
       CNPJ     := '11089061000193';
       xContato := 'Márcio Pacheco - Novi sistemas';
-      email    := 'suport@novisistemas.com.br';
+      email    := 'roseli@novisistemas.com.br';
       fone     := '4135038230';
       idCSRT   := 1;
       hashCSRT := CSRTValida;

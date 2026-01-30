@@ -2855,7 +2855,7 @@ begin
 			wConsumidor := ( CdsPedidosCLI_CONSFINAL.AsString = 'S' );
 			wExterior := iif(CdsPedidosCLI_UF.AsString = 'EX', 'S', 'N');
 
-			if qOperFiscOPE_TRIBICMS.AsString = 'S' then
+			if (qOperFiscOPE_TRIBICMS.AsString = 'S') or ((wConsumidor = True) and (qIcmsICM_TIPO_CALCULO_DIFAL.asinteger = 1) ) then
 			begin
          icmTipoCalculoDifal   := qIcmsICM_TIPO_CALCULO_DIFAL.AsInteger;
          wALiqICmsCliente      :=qIcmsICM_ALIQ.asCurrency;
@@ -3289,7 +3289,7 @@ begin
        cliIE := BuscaUmDadoSQLAsString('SELECT CLI_INSC FROM CLI0000 c WHERE CLI_CODIGO = ' + QuotedStr(cdsPedidosCLI_CODIGO.AsString));
 
        // wCST_CODIGO = DIFAL pessoa física ou contribuinte isento
-       if ((wCST_CODIGO = '00') OR (wCST_CODIGO = '20'))  and  wConsumidor and wVenda and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL  and ((cliIE = 'ISENTO') OR (cliIE = '')) then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
+       if ((wCST_CODIGO = '00') OR (wCST_CODIGO = '20'))  and  wConsumidor {and wVenda}  and (wForaEstSN='S') and DBInicio.Empresa.PMT_HABILITAR_DIFAL  and ((cliIE = 'ISENTO') OR (cliIE = '')) then  // SO INTERESTADUAL decreto EC 87(VENDA FORA DO ESTADO A CONSUMIDOR FINAL )
        begin
 
 //           // não é exportação e origem = 1,2 ou 3(importados)
@@ -3303,13 +3303,6 @@ begin
            begin
             if IcmTipoCalculoDifal = 1 then // o cálculo ´´e com base por dentro
             begin
-                // a := wBaseProduto - ((wBaseProduto / 100) *  rAliqAux);
-                // b := a / (1 -(wALiqICmsInterno / 100));
-                //  wIcmDifal := ( b - wBaseProduto )  // wIcmDifal valor do difal
-
-                // a := wBaseIcmsIndividual - ((wBaseIcmsIndividual / 100) *  rAliqAux);
-                // b := a / (1 -(wALiqICmsInterno / 100));
-                // wIcmDifal := ((b * (wALiqICmsInterno / 100) )- sNF_ICMSVALOR); // wIcmDifal valor do difal
 
                 wBaseCalculo := wBaseIcmsIndividual / (1 - (wALiqICmsInterno / 100) );
                 wIcmDifal := (wBaseCalculo * (wALiqICmsInterno / 100) ) - (wBaseCalculo * (rAliqAux / 100 ) );
