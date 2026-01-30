@@ -1195,7 +1195,7 @@ begin
                   if (LTBox.ItemIndex = 2) then
                      wOrdem := ' ORDER BY P1.PED_DTENTRADA, coalesce(C1.CLI_RAZAO, PED_ORS_CLIENTE)';
                   if (LTBox.ItemIndex = 3) then
-                     wOrdem := ' ORDER BY R1.REP_NOME,P1.PED_DTENTRADA, coalesce(C1.CLI_RAZAO, PED_ORS_CLIENTE)';
+                     wOrdem := ' ORDER BY R1.REP_NOME,P1.PED_DTENTRADA, 6';
                   wSeleciona := ' WHERE P1.PED_DTENTRADA BETWEEN '''+DataAmericana(EditDataI.Text)+''' AND '''+DataAmericana(EditDataF.Text)+''' and P1.PED_SITUACAO NOT IN ( ''C'',''A'') ';
            end
            Else
@@ -1204,9 +1204,9 @@ begin
                   LBL_00_LTITULO2.Caption := 'Entrega de Pedidos - entre '+EditDataI.Text+' e '+EditDataF.Text;
                   LBL_01_LTITULO2.Caption := 'Entrega de Pedidos - entre '+EditDataI.Text+' e '+EditDataF.Text;
                   if (LTBox.ItemIndex = 2) then
-                     wOrdem := ' ORDER BY P1.PED_DTSAIDA, coalesce(C1.CLI_RAZAO, PED_ORS_CLIENTE)';
+                     wOrdem := ' ORDER BY P1.PED_DTSAIDA, 6';
                   if (LTBox.ItemIndex = 3) then
-                     wOrdem := ' ORDER BY R1.REP_NOME,P1.PED_DTSAIDA, coalesce(C1.CLI_RAZAO, PED_ORS_CLIENTE)';
+                     wOrdem := ' ORDER BY R1.REP_NOME,P1.PED_DTSAIDA, 6';
                   wSeleciona := ' WHERE P1.PED_DTSAIDA BETWEEN '''+DataAmericana(EditDataI.Text)+''' AND '''+DataAmericana(EditDataF.Text)+''' and P1.PED_SITUACAO NOT IN ( ''C'',''A'') ';
            end
            Else
@@ -1214,7 +1214,7 @@ begin
            begin
                 LBL_00_LTITULO2.Caption := 'Data do Faturamento - entre '+EditDataI.Text+' e '+EditDataF.Text;
                 LBL_01_LTITULO2.Caption := 'Data do Faturamento - entre '+EditDataI.Text+' e '+EditDataF.Text;
-                wOrdem := ' ORDER BY R1.REP_NOME,P1.PED_DTSAIDA, coalesce(C1.CLI_RAZAO, PED_ORS_CLIENTE)';
+                wOrdem := ' ORDER BY R1.REP_NOME,P1.PED_DTSAIDA, 6';
                 wSeleciona := ' WHERE N1.NF_EMISSAO BETWEEN '''+DataAmericana(EditDataI.Text)+''' AND '''+DataAmericana(EditDataF.Text)+''' AND N1.NF_CANCELADA <> ''S'' AND N1.OPE_SEMVLCOM = ''N'' ' +
                 ' and P1.PED_SITUACAO NOT IN ( ''C'',''A'') ';
            end;
@@ -1297,19 +1297,7 @@ begin
        begin
            screen.cursor := crHourGlass;
            try
-            {
-             if SqlCdsParamPMT_TUPPEDIDO.AsString = 'S' then
-                begin
-                    ppLblTups.Visible := TRUE;
-                    ppDBTups.Visible  := TRUE;
-                end
-             else
-                begin
-                    ppLblTups.Visible := FALSE;
-                    ppDBTups.Visible  := FALSE;
-                end;
-              }
-             if (RadEntrada.checked ) or (RadEntrega.checked ) then
+             {if (RadEntrada.checked ) or (RadEntrega.checked ) then
                 begin
                     wSql1 := ' SELECT P1.EMP_CODIGO,P1.PED_DTSAIDA,P1.PED_DTENTRADA,P1.CLI_CODIGO,P1.PED_COMIS1,coalesce(C1.CLI_RAZAO, PED_ORS_CLIENTE) AS CLI_RAZAO ,C1.CLI_UF,R1.REP_NOME, '+
                              ' P1.REP_CODIGO,P1.PED_CODIGO,P1.PED_DESCTOVL,P1.PED_TOTUPS,P1.PED_VLTUPS,sum(N1.NF_TOT_NOTA) AS WVALOR_FATURADO,';
@@ -1325,6 +1313,124 @@ begin
                     wSql3 := 'JOIN PED0000 P1 ON (P1.PED_CODIGO = N1.PED_CODIGO) AND (N1.EMP_CODIGO =P1.EMP_CODIGO) LEFT JOIN CLI0000 C1 ON P1.CLI_CODIGO = C1.CLI_CODIGO LEFT JOIN REP0000 R1 ON (P1.REP_CODIGO = R1.REP_CODIGO) ';
                     wSql4 := 'GROUP BY 1,2,3,4,5,6 ,C1.CLI_UF,R1.REP_NOME,P1.REP_CODIGO,P1.PED_CODIGO,P1.PED_DESCTOVL,P1.PED_TOTUPS,P1.PED_VLTUPS,P1.PED_VLTOTAL_LIQ ';
                 end;
+                }
+
+
+              if (RadEntrada.Checked) or (RadEntrega.Checked) then
+              begin
+                wSql1 :=
+                  'SELECT ' +
+                  '  P1.EMP_CODIGO, ' +
+                  '  P1.PED_DTSAIDA, ' +
+                  '  P1.PED_DTENTRADA, ' +
+                  '  P1.CLI_CODIGO, ' +
+                  '  P1.PED_COMIS1, ' +
+                  '  CAST(COALESCE(C1.CLI_RAZAO, P1.PED_ORS_CLIENTE) AS VARCHAR(100)) AS CLI_RAZAO, ' +
+                  '  C1.CLI_UF, ' +
+                  '  R1.REP_NOME, ' +
+                  '  P1.REP_CODIGO, ' +
+                  '  P1.PED_CODIGO, ' +
+                  '  P1.PED_DESCTOVL, ' +
+                  '  P1.PED_TOTUPS, ' +
+                  '  P1.PED_VLTUPS, ' +
+                  '  CAST(COALESCE(SUM(N1.NF_TOT_NOTA), 0) AS NUMERIC(18,5)) AS WVALOR_FATURADO, ';
+
+                wSql2 :=
+                  '  CAST( ' +
+                  '    MAX(COALESCE(P1.PED_VLTOTAL_LIQ, 0)) - ' +
+                  '    MAX(COALESCE(P1.PED_DESCTOVL, 0)) ' +
+                  '    AS NUMERIC(18,5) ' +
+                  '  ) AS WVALOR_PEDIDO_LIQUIDO, ' +
+                  '  CAST(COALESCE(SUM(N1.NF_TOT_PROD - N1.NF_VL_DESCTO), 0) AS NUMERIC(18,5)) AS WVALOR_FATURADO_LIQUIDO, ' +
+                  '  CAST(COALESCE(SUM(N1.NF_TOT_NOTA), 0) AS NUMERIC(18,5)) AS WVALOR_FATURADO_IPI ' +
+                  'FROM PED0000 P1 ' +
+                  'LEFT JOIN CLI0000 C1 ' +
+                  '       ON C1.CLI_CODIGO = P1.CLI_CODIGO ';
+
+                wSql3 :=
+                  'LEFT JOIN REP0000 R1 ' +
+                  '       ON R1.REP_CODIGO = P1.REP_CODIGO ' +
+                  'LEFT JOIN NF0001 N1 ' +
+                  '       ON N1.PED_CODIGO = P1.PED_CODIGO ' +
+                  '      AND N1.EMP_CODIGO = P1.EMP_CODIGO ' +
+                  '      AND N1.NF_EMISSAO BETWEEN ''' + DataAmericana(EditDataI.Text) + ''' ' +
+                  '                          AND ''' + DataAmericana(EditDataF.Text) + ''' ' +
+                  '      AND N1.NF_CANCELADA = ''N'' ' +
+                  '      AND N1.OPE_SEMVLCOM = ''N'' ';
+
+                wSql4 :=
+                  'GROUP BY ' +
+                  '  P1.EMP_CODIGO, ' +
+                  '  P1.PED_DTSAIDA, ' +
+                  '  P1.PED_DTENTRADA, ' +
+                  '  P1.CLI_CODIGO, ' +
+                  '  P1.PED_COMIS1, ' +
+                  '  CLI_RAZAO, ' +
+                  '  C1.CLI_UF, ' +
+                  '  R1.REP_NOME, ' +
+                  '  P1.REP_CODIGO, ' +
+                  '  P1.PED_CODIGO, ' +
+                  '  P1.PED_DESCTOVL, ' +
+                  '  P1.PED_TOTUPS, ' +
+                  '  P1.PED_VLTUPS ';
+              end;
+
+
+
+              if (RadFaturamento.Checked) then
+              begin
+                wSql1 :=
+                  'SELECT ' +
+                  '  P1.EMP_CODIGO, ' +
+                  '  P1.PED_DTSAIDA, ' +
+                  '  P1.PED_DTENTRADA, ' +
+                  '  P1.CLI_CODIGO, ' +
+                  '  P1.PED_COMIS1, ' +
+                  '  CAST(COALESCE(C1.CLI_RAZAO, P1.PED_ORS_CLIENTE) AS VARCHAR(100)) AS CLI_RAZAO, ' +
+                  '  C1.CLI_UF, ' +
+                  '  R1.REP_NOME, ' +
+                  '  P1.REP_CODIGO, ' +
+                  '  P1.PED_CODIGO, ' +
+                  '  P1.PED_DESCTOVL, ' +
+                  '  P1.PED_TOTUPS, ' +
+                  '  P1.PED_VLTUPS, ' +
+                  '  CAST(COALESCE(SUM(N1.NF_TOT_NOTA), 0) AS NUMERIC(18,5)) AS WVALOR_FATURADO, ';
+
+                wSql2 :=
+                  '  CAST( ' +
+                  '    MAX(COALESCE(P1.PED_VLTOTAL_LIQ, 0)) - ' +
+                  '    MAX(COALESCE(P1.PED_DESCTOVL, 0)) ' +
+                  '  AS NUMERIC(18,5)) AS WVALOR_PEDIDO_LIQUIDO, ' +
+                  '  CAST(COALESCE(SUM(N1.NF_TOT_PROD - N1.NF_VL_DESCTO), 0) AS NUMERIC(18,5)) AS WVALOR_FATURADO_LIQUIDO, ' +
+                  '  CAST(COALESCE(SUM(N1.NF_TOT_NOTA), 0) AS NUMERIC(18,5)) AS WVALOR_FATURADO_IPI ' +
+                  'FROM NF0001 N1 ';
+
+                wSql3 :=
+                  'JOIN PED0000 P1 ON (P1.PED_CODIGO = N1.PED_CODIGO) ' +
+                  ' AND (P1.EMP_CODIGO = N1.EMP_CODIGO) ' +
+                  'LEFT JOIN CLI0000 C1 ON (C1.CLI_CODIGO = P1.CLI_CODIGO) ' +
+                  'LEFT JOIN REP0000 R1 ON (R1.REP_CODIGO = P1.REP_CODIGO) ';
+
+                wSql4 :=
+                  'GROUP BY ' +
+                  '  P1.EMP_CODIGO, ' +
+                  '  P1.PED_DTSAIDA, ' +
+                  '  P1.PED_DTENTRADA, ' +
+                  '  P1.CLI_CODIGO, ' +
+                  '  P1.PED_COMIS1, ' +
+                  '  CAST(COALESCE(C1.CLI_RAZAO, P1.PED_ORS_CLIENTE) AS VARCHAR(100)), ' +
+                  '  C1.CLI_UF, ' +
+                  '  R1.REP_NOME, ' +
+                  '  P1.REP_CODIGO, ' +
+                  '  P1.PED_CODIGO, ' +
+                  '  P1.PED_DESCTOVL, ' +
+                  '  P1.PED_TOTUPS, ' +
+                  '  P1.PED_VLTUPS ';
+              end;
+
+
+
+
              CdsRel02.Close;
              CdsRel02.SQL.Text := wSql1+wSql2+wSql3+wSeleciona+wSql4+ wOrdem ;
              if dbInicio.isDesenvolvimento then
@@ -1454,11 +1560,12 @@ begin
     if (LTBox.ItemIndex in [6, 9,11]) then
     begin
            Screen.Cursor := crHourGlass;
+
+
+
            wSeleciona := '';
            wOrdem     := '';
-           //wSql1 := 'Select P1.PED_CODIGO,P1.OPV_CODIGO,O1.OPV_DESCRICAO,P1.PED_DTENTRADA,P1.PED_DTSAIDA,P1.PED_SITUACAO,P1.PED_VLTOTAL_LIQ,P1.PED_VLTOTAL_BRUTO,P1.PED_VLFATURADO,P1.CLI_CODIGO,C1.CLI_RAZAO,F1.FAT_CODIGO,F1.FAT_DTEMIS,F1.FAT_VLFAT FROM PED0000 P1 ';
-           //wSql2 := 'LEFT JOIN CLI0000 C1 ON (P1.CLI_CODIGO = C1.CLI_CODIGO) LEFT JOIN FAT0000 F1 ON (P1.PED_CODIGO = F1.PED_CODIGO) AND (P1.EMP_CODIGO = F1.EMP_CODIGO) LEFT JOIN OPV0000 O1 ON (P1.OPV_CODIGO = O1.OPV_CODIGO) ';
-
+{
            wSql1 := 'SELECT pcl.PCL_NOME, p1.emp_codigo, P1.REP_CODIGO,RE.REP_RAZAO, P1.PED_CODIGO,P1.OPV_CODIGO,O1.OPV_DESCRICAO,P1.PED_DTENTRADA,P1.PED_DTSAIDA,P1.PED_SITUACAO,P1.CLI_CODIGO, '+
                     '  COALESCE(REPLACE(C1.CLI_RAZAO, ''&#39;'', ''´''), REPLACE(PED_ORS_CLIENTE, ''&#39;'', ''´'')) AS CLI_RAZAO, ' +
 
@@ -1466,17 +1573,68 @@ begin
                     '(SELECT first 1 F1.NF_NOTANUMBER  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_NOTANUMBER, '+
                     '(SELECT first 1 F1.NF_EMISSAO  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_EMISSAO,'+
                     '(SELECT first 1 F1.NF_NUM_NFE  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_NUM_NFE,'+
-                    '(SELECT SUM(F1.NF_TOT_NOTA)  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) AS NF_TOT_NOTA,'+
+                    ' CAST(COALESCE((SELECT SUM(F1.NF_TOT_NOTA)  FROM nf0001 F1 WHERE (F1.PED_CODIGO = P1.PED_CODIGO AND F1.EMP_CODIGO = P1.EMP_CODIGO)) ,0) AS NUMERIC(18, 5)) AS NF_TOT_NOTA,'+
                     ' COALESCE(P1.PED_VLTOTAL_BRUTO - P1.PED_VLFATURADO, 0) AS VLRFATURAR, ' +
                     ' COALESCE(P1.PED_VLTOTAL_BRUTO - P1.PED_VLFATURADO, 0) AS VALOR_A_FATURAR, ' +
-                    'COALESCE(P1.PED_VLTOTAL_LIQ,0) AS PED_VLTOTAL_LIQ, ';
-           wSql2 := 'COALESCE(P1.PED_VLTOTAL_BRUTO,0) AS PED_VLTOTAL_BRUTO,COALESCE(P1.PED_VLFATURADO,0) AS PED_VLFATURADO, FP.FPG_DESCRICAO FROM PED0000 P1   '+
+                    ' COALESCE(P1.PED_VLTOTAL_LIQ,0) AS PED_VLTOTAL_LIQ, ';
+           wSql2 := ' COALESCE(P1.PED_VLTOTAL_BRUTO,0) AS PED_VLTOTAL_BRUTO,COALESCE(P1.PED_VLFATURADO,0) AS PED_VLFATURADO, FP.FPG_DESCRICAO FROM PED0000 P1   '+
                     ' LEFT JOIN CLI0000 C1 ON (P1.CLI_CODIGO = C1.CLI_CODIGO) ';
            wSql3 := ' LEFT JOIN OPV0000 O1 ON (P1.OPV_CODIGO = O1.OPV_CODIGO) '+
                     ' LEFT JOIN REP0000 RE ON (RE.REP_CODIGO = P1.REP_CODIGO ) '+
                     ' LEFT JOIN PCL0000 pcl ON (pcl.PCL_CODIGO = p1.PCL_CODIGO) ' +
                     ' LEFT JOIN FORMA_PAGAMENTO FP ON (FP.FPG_REGISTRO = P1.FPG_REGISTRO) ';
-           //
+                    }
+
+            wSql1 :=
+              'SELECT ' +
+              '  pcl.PCL_NOME, ' +
+              '  P1.EMP_CODIGO, ' +
+              '  P1.REP_CODIGO, ' +
+              '  RE.REP_RAZAO, ' +
+              '  P1.PED_CODIGO, ' +
+              '  P1.OPV_CODIGO, ' +
+              '  O1.OPV_DESCRICAO, ' +
+              '  P1.PED_DTENTRADA, ' +
+              '  P1.PED_DTSAIDA, ' +
+              '  P1.PED_SITUACAO, ' +
+              '  P1.CLI_CODIGO, ' +
+              '  CAST(COALESCE( ' +
+              '    REPLACE(C1.CLI_RAZAO, ''&#39;'', ''´''), ' +
+              '    REPLACE(P1.PED_ORS_CLIENTE, ''&#39;'', ''´'') ' +
+              '  ) AS VARCHAR(120)) AS CLI_RAZAO, ' +
+              '  NF.NF_NOTANUMBER, ' +
+              '  NF.NF_EMISSAO, ' +
+              '  NF.NF_NUM_NFE, ' +
+              '  CAST(COALESCE(NF.NF_TOT_NOTA,0) AS NUMERIC(18,5)) AS NF_TOT_NOTA, ' +
+              '  CAST(COALESCE(P1.PED_VLTOTAL_BRUTO - P1.PED_VLFATURADO,0) AS NUMERIC(18,5)) AS VLRFATURAR, ' +
+              '  CAST(COALESCE(P1.PED_VLTOTAL_BRUTO - P1.PED_VLFATURADO,0) AS NUMERIC(18,5)) AS VALOR_A_FATURAR, ' +
+              '  CAST(P1.PED_VLTOTAL_LIQ AS NUMERIC(18,5)) AS PED_VLTOTAL_LIQ ';
+
+            wSql2 :=
+              ', CAST(P1.PED_VLTOTAL_BRUTO AS NUMERIC(18,5)) AS PED_VLTOTAL_BRUTO, ' +
+              '  CAST(P1.PED_VLFATURADO AS NUMERIC(18,5)) AS PED_VLFATURADO, ' +
+              '  FP.FPG_DESCRICAO ' +
+              'FROM PED0000 P1 ' +
+              'LEFT JOIN CLI0000 C1 ON (P1.CLI_CODIGO = C1.CLI_CODIGO) ' +
+              'LEFT JOIN OPV0000 O1 ON (P1.OPV_CODIGO = O1.OPV_CODIGO) ' +
+              'LEFT JOIN REP0000 RE ON (RE.REP_CODIGO = P1.REP_CODIGO) ' +
+              'LEFT JOIN PCL0000 pcl ON (pcl.PCL_CODIGO = p1.PCL_CODIGO) ' +
+              'LEFT JOIN FORMA_PAGAMENTO FP ON (FP.FPG_REGISTRO = P1.FPG_REGISTRO) ';
+
+            wSql3 :=
+              'LEFT JOIN ( ' +
+              '  SELECT ' +
+              '    EMP_CODIGO, ' +
+              '    PED_CODIGO, ' +
+              '    MIN(NF_NOTANUMBER) AS NF_NOTANUMBER, ' +
+              '    MIN(NF_EMISSAO)    AS NF_EMISSAO, ' +
+              '    MIN(NF_NUM_NFE)    AS NF_NUM_NFE, ' +
+              '    SUM(NF_TOT_NOTA)   AS NF_TOT_NOTA ' +
+              '  FROM NF0001 ' +
+              '  WHERE NF_STATUS_NFE NOT IN (''C'',''R'') ' +
+              '  GROUP BY EMP_CODIGO, PED_CODIGO ' +
+              ') NF ON (NF.PED_CODIGO = P1.PED_CODIGO ' +
+              '     AND NF.EMP_CODIGO = P1.EMP_CODIGO) ';
 
 
            if (RadEntrada.checked ) then
@@ -1511,6 +1669,7 @@ begin
            else
            if (RadFaturamento.checked ) then
            begin
+           {
                wSql1 := 'SELECT pcl.PCL_NOME, p1.emp_codigo, P1.REP_CODIGO,vE.REP_RAZAO, P1.PED_CODIGO,P1.OPV_CODIGO,O1.OPV_DESCRICAO,P1.PED_DTENTRADA,P1.PED_DTSAIDA,P1.PED_SITUACAO,P1.CLI_CODIGO,'+
                         '  COALESCE(REPLACE(C1.CLI_RAZAO, ''&#39;'', ''´''), REPLACE(PED_ORS_CLIENTE, ''&#39;'', ''´'')) AS CLI_RAZAO, ' +
 
@@ -1527,17 +1686,17 @@ begin
                        ' LEFT JOIN CLI0000 C1 ON (P1.CLI_CODIGO = C1.CLI_CODIGO) '+
                        ' LEFT JOIN REP0000 VE ON (VE.REP_CODIGO = P1.REP_CODIGO ) '
                        ;
-
+            }
               LBL_05_TITULO02.Caption := 'Data de Faturamento: '+EditDataI.Text+' até '+ EditDataF.Text;
-              wSeleciona := ' WHERE F1.NF_EMISSAO between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''' and P1.PED_SITUACAO <> ''C''';
+              wSeleciona := ' WHERE NF_EMISSAO between '''+DataAmericana(EditDataI.Text)+''' and '''+DataAmericana(EditDataF.Text)+''' and P1.PED_SITUACAO <> ''C''';
 
               if  (LTBox.ItemIndex = 9) OR (LTBox.ItemIndex = 11) then
-                wOrdem     := ' P1.REP_CODIGO,F1.NF_EMISSAO '
+                wOrdem     := ' P1.REP_CODIGO,NF_EMISSAO '
               else
               if  (LTBox.ItemIndex = 6)  then
-                wOrdem     := ' P1.OPV_CODIGO, CLI_RAZAO, F1.NF_EMISSAO '
+                wOrdem     := ' P1.OPV_CODIGO, CLI_RAZAO, NF_EMISSAO '
               else
-                wOrdem     := ' P1.OPV_CODIGO,F1.NF_EMISSAO ';
+                wOrdem     := ' P1.OPV_CODIGO,NF_EMISSAO ';
            end;
 
            {Verifica o compartilhamento se exclusivo}
