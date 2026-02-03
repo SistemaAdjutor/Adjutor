@@ -947,7 +947,12 @@ begin
       begin
         If FrmPedido.SqlCdsTipoPedidoOPV_TRANSF_PRECOCUSTO.AsString = 'S' then
         begin
-          prdPVenda := BuscaPrecoVenda(pCodProduto);
+          // prdPVenda := BuscaPrecoVenda(pCodProduto);
+          if (FrmPedido.SqlCdsPedidoItemPRF_PRECO_BRUTO.AsFloat > 0) and (sTipo = 'A') then
+            prdPvenda := FrmPedido.SqlCdsPedidoItemPRF_PRECO_BRUTO.AsFloat
+          else
+            prdPVenda := BuscaPrecoVenda(pCodProduto);
+
           if qAux.FieldByName('PRD_MULTIPLICADOR').AsFloat > 0 then
             CurPrecoBruto.Value := prdPVenda * qAux.FieldByName('PRD_MULTIPLICADOR').AsFloat
           else
@@ -964,7 +969,12 @@ begin
             lTabPreco := FrmPedido.SqlCdsPedidoItemPRF_TABPRECO.AsString;
           if lTabPreco = '' then
           begin
-            prdPVenda := BuscaPrecoVenda(pCodProduto);
+            // prdPVenda := BuscaPrecoVenda(pCodProduto);
+            if (FrmPedido.SqlCdsPedidoItemPRF_PRECO_BRUTO.AsFloat > 0) and (sTipo = 'A') then
+              prdPvenda := FrmPedido.SqlCdsPedidoItemPRF_PRECO_BRUTO.AsFloat
+            else
+              prdPVenda := BuscaPrecoVenda(pCodProduto);
+
             if qAux.FieldByName('PRD_MULTIPLICADOR').AsFloat > 0 then
               CurPrecoBruto.Value := prdPVenda  * qAux.FieldByName('PRD_MULTIPLICADOR').AsFloat
             else
@@ -980,7 +990,13 @@ begin
         else
         begin
           wTabelapreco[1]  := cbReferencia.CdS.FieldByName('PRD_PVENDA').AsCurrency;
-          prdPVenda := BuscaPrecoVenda(pCodProduto);
+
+          // prdPVenda := BuscaPrecoVenda(pCodProduto);
+          if (FrmPedido.SqlCdsPedidoItemPRF_PRECO_BRUTO.AsFloat > 0) and (sTipo = 'A') then
+            prdPvenda := FrmPedido.SqlCdsPedidoItemPRF_PRECO_BRUTO.AsFloat
+          else
+            prdPVenda := BuscaPrecoVenda(pCodProduto);
+
           if not BuscaTabelaPrecos then // se não for tabelas multiplas
           begin
             if qAux.FieldByName('PRD_MULTIPLICADOR').AsFloat > 0 then
@@ -3592,7 +3608,10 @@ begin
     Exit;
   AtualizaGradeInfo;
   AtualizaUltimoPreco;
-  CurPrecoBruto.Value := BuscaUmDadoSqlAsFloat('SELECT PRG_PRECO FROM PRD_GRADE WHERE PRG_REGISTRO = ' + cbGrade.idRetorno);
+  if (FrmPedido.SqlCdsPedidoItemPRF_PRECO_BRUTO.AsFloat > 0) and (sTipo = 'A') then
+    CurPrecoBruto.Value := FrmPedido.SqlCdsPedidoItemPRF_PRECO_BRUTO.AsFloat
+  else
+    CurPrecoBruto.Value := BuscaUmDadoSqlAsFloat('SELECT PRG_PRECO FROM PRD_GRADE WHERE PRG_REGISTRO = ' + cbGrade.idRetorno);
   if cbCapacidade.CanFocus then
     cbCapacidade.SetFocus
   else
