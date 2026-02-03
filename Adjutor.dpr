@@ -524,7 +524,8 @@ uses
   BaseDbEstoqueForm in 'dfmpas2\BaseDbEstoqueForm.pas' {frmBaseDbEstoque},
   uBaixaPedidoCompra in 'dfmpas2\uBaixaPedidoCompra.pas' {frmBaixaPedidoCompra},
   uCBS in 'dfmpas2\uCBS.pas' {frmCBS},
-  uIBS in 'dfmpas2\uIBS.pas' {frmIBS};
+  uIBS in 'dfmpas2\uIBS.pas' {frmIBS},
+  uApagaFaturamento in 'dfmpas2\uApagaFaturamento.pas' {frmApagaFaturamento};
 
 {$R *.res}
 {$D+}
