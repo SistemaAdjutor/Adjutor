@@ -1,0 +1,9 @@
+﻿Inicio da versão: 04/02/2026
+Atualizado em 04/02/2026
+
+principal: Bepine, LForja, Collect
+	2153 - Erro Bepine - Ao alterar o pedido zero custo bruto [Bepine]
+	2158 - Erro Lforja - Constas A Receber
+	2160 - Avaliação Collect- Geração de boleto
+	
+	
