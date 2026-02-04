@@ -99,7 +99,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         Align = alClient
         Color = 16776176
         DataSource = dsDuplicata
-        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
+        Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit, dgTitleClick]
         ParentShowHint = False
         PopupMenu = pmBoletos
         ReadOnly = True
@@ -110,8 +110,8 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
         TitleFont.Height = -11
         TitleFont.Name = 'Arial'
         TitleFont.Style = []
+        OnCellClick = DBGridDuplicataCellClick
         OnDrawColumnCell = DBGridDuplicataDrawColumnCell
-        OnDblClick = DBGridDuplicataDblClick
         OnTitleClick = DBGridDuplicataTitleClick
         Columns = <
           item
@@ -4987,7 +4987,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     Left = 378
     Top = 10
     Bitmap = {
-      494C010103000500240010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500280010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF
@@ -5505,12 +5505,23 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
       Caption = 'Enviar Email do boleto'
       OnClick = Enviaremaildoboleto1Click
     end
+    object N1: TMenuItem
+      Caption = '-'
+    end
+    object SelecionarTodos1: TMenuItem
+      Caption = 'Selecionar Todos'
+      OnClick = SelecionarTodos1Click
+    end
+    object DesmarcarTodos1: TMenuItem
+      Caption = 'Desmarcar Todos'
+      OnClick = DesmarcarTodos1Click
+    end
   end
   object ImageList2: TImageList
     Left = 447
     Top = 16
     Bitmap = {
-      494C010107000900240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010107000900280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       00000000000000000000000000000000000000000000E0E0E0008E8E8E008E8E
       8E008E8E8E008E8E8E008E8E8E008E8E8E008E8E8E008E8E8E008E8E8E008E8E
@@ -5785,7 +5796,7 @@ inherited FrmGimpBoletos: TFrmGimpBoletos
     Left = 448
     Top = 64
     Bitmap = {
-      494C01010E001100240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C01010E001100280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000004000000001002000000000000040
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

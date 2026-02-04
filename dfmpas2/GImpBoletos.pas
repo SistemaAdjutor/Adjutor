@@ -506,6 +506,9 @@ type
     Label15: TLabel;
     edTotalRegistros: TJvValidateEdit;
     edValorTotal: TJvValidateEdit;
+    SelecionarTodos1: TMenuItem;
+    DesmarcarTodos1: TMenuItem;
+    N1: TMenuItem;
     procedure FormShow(Sender: tObject);
     procedure BitImprimirClick(Sender: tObject);
     procedure BitSairClick(Sender: tObject);
@@ -521,7 +524,6 @@ type
     procedure DBGridDuplicataDrawColumnCell(Sender: tObject;
       const Rect: TRect; DataCol: Integer; Column: TColumn;
       State: TGridDrawState);
-    procedure DBGridDuplicataDblClick(Sender: tObject);
     procedure ppDBText37GetText(Sender: tObject; var Text: String);
     procedure FormCreate(Sender: TObject);
     procedure CbBancosSelect(Sender: TObject);
@@ -557,8 +559,10 @@ type
     procedure CbxCarteiraChange(Sender: TObject);
     procedure CbxTipoDocChange(Sender: TObject);
     procedure cbLayOutChange(Sender: TObject);
+    procedure DBGridDuplicataCellClick(Column: TColumn);
+    procedure SelecionarTodos1Click(Sender: TObject);
+    procedure DesmarcarTodos1Click(Sender: TObject);
   private
-
     procedure ImprimirDuplicataSist;
     procedure ImprimirLocacao;
     function FormataNumeroConta(const pConta:string) : String;
@@ -570,10 +574,17 @@ type
     procedure BuscaDuplicatas;
     procedure BotoesAcesso;
     var wCodBanco : integer;
+    private FAnchorBookmark: TBookmark;
+
     function enviarEmailIndy(sPara, sAssunto: String; sMensagem: TStrings; Anexos, sReplyTo: TStrings): boolean;
     procedure GravaHistorico(const FAT_Registro : integer; const msg:string);
     procedure AtualizaEmail ( email :string ; const cli_codigo :string);
     procedure BuscaHistorico(const Fat_reg: integer);
+    procedure SelecionaFaixa;
+    procedure ToggleRegistroAtual;
+    procedure AtualizaTotais;
+    procedure AtualizaAnchor;
+
   end;
 
 var
@@ -1817,6 +1828,161 @@ begin
   end;
 
 end;
+
+
+procedure TFrmGimpBoletos.SelecionaFaixa;
+var
+  BmkIni, BmkFim: TBookmark;
+  Marcando: Boolean;
+begin
+  if not Assigned(FAnchorBookmark) then
+  begin
+    ToggleRegistroAtual;
+    AtualizaAnchor;
+    Exit;
+  end;
+
+  BmkIni := FAnchorBookmark;
+  BmkFim := CdsDuplicata.GetBookmark;
+
+  CdsDuplicata.DisableControls;
+  try
+    Marcando := False;
+    CdsDuplicata.First;
+
+    while not CdsDuplicata.Eof do
+    begin
+      // chegou no início ou no fim da faixa?
+      if (CdsDuplicata.CompareBookmarks(CdsDuplicata.GetBookmark, BmkIni) = 0) or
+         (CdsDuplicata.CompareBookmarks(CdsDuplicata.GetBookmark, BmkFim) = 0) then
+      begin
+        Marcando := not Marcando;
+
+        // marca este também (âncora ou final)
+        CdsDuplicata.Edit;
+        CdsDuplicataSelecao.AsBoolean := True;
+        CdsDuplicata.Post;
+
+        // se era o segundo limite, encerra
+        if not Marcando then
+          Break;
+      end
+      else if Marcando then
+      begin
+        CdsDuplicata.Edit;
+        CdsDuplicataSelecao.AsBoolean := True;
+        CdsDuplicata.Post;
+      end;
+
+      CdsDuplicata.Next;
+    end;
+  finally
+    CdsDuplicata.EnableControls;
+  end;
+end;
+
+
+
+procedure TFrmGimpBoletos.SelecionarTodos1Click(Sender: TObject);
+var
+  Bookmark: TBookmark;
+begin
+  inherited;
+
+  if CdsDuplicata.IsEmpty then
+    Exit;
+
+  Screen.Cursor := crHourGlass;
+  CdsDuplicata.DisableControls;
+  Bookmark := CdsDuplicata.GetBookmark;
+  try
+    CdsDuplicata.First;
+    while not CdsDuplicata.Eof do
+    begin
+        CdsDuplicata.Edit;
+        CdsDuplicataSelecao.AsBoolean := True;
+        CdsDuplicata.Post;
+        CdsDuplicata.Next;
+    end;
+  finally
+    if CdsDuplicata.BookmarkValid(Bookmark) then
+      CdsDuplicata.GotoBookmark(Bookmark);
+    CdsDuplicata.FreeBookmark(Bookmark);
+    CdsDuplicata.EnableControls;
+    Screen.Cursor := crDefault;
+  end;
+
+  AtualizaTotais;
+end;
+
+
+procedure TFrmGimpBoletos.ToggleRegistroAtual;
+begin
+  if not (CdsDuplicata.State in dsEditModes) then
+    CdsDuplicata.Edit;
+
+  CdsDuplicataSelecao.AsBoolean :=
+    not CdsDuplicataSelecao.AsBoolean;
+
+  CdsDuplicata.Post;
+end;
+
+
+procedure TFrmGimpBoletos.AtualizaTotais;
+var
+  Clone: TClientDataSet;
+  RecAtual: Integer;
+  Qtde: Integer;
+  Total: Currency;
+begin
+  if CdsDuplicata.IsEmpty then
+  begin
+    edTotalRegistros.Value := 0;
+    edValorTotal.Value := 0;
+    Exit;
+  end;
+
+  Clone := TClientDataSet.Create(nil);
+  try
+    Clone.CloneCursor(CdsDuplicata, False);
+
+    RecAtual := Clone.RecNo;
+    Qtde := 0;
+    Total := 0;
+
+    Clone.DisableControls;
+    try
+      Clone.First;
+      while not Clone.Eof do
+      begin
+        if Clone.FieldByName('Selecao').AsBoolean then
+        begin
+          Inc(Qtde);
+          Total := Total + Clone.FieldByName('FPC_VLPARC').AsCurrency;
+        end;
+        Clone.Next;
+      end;
+    finally
+      Clone.RecNo := RecAtual;
+      Clone.EnableControls;
+    end;
+
+    edTotalRegistros.Value := Qtde;
+    edValorTotal.Value := Total;
+  finally
+    Clone.Free;
+  end;
+end;
+
+procedure TFrmGimpBoletos.AtualizaAnchor;
+begin
+  if Assigned(FAnchorBookmark) then
+    CdsDuplicata.FreeBookmark(FAnchorBookmark);
+
+  FAnchorBookmark := CdsDuplicata.GetBookmark;
+end;
+
+
 procedure TFrmGimpBoletos.DBGridDuplicataTitleClick(Column: TColumn);
 
 var indice: string;
@@ -1853,6 +2019,37 @@ begin
 
 
 end;
+
+procedure TFrmGimpBoletos.DesmarcarTodos1Click(Sender: TObject);
+var
+  Bookmark: TBookmark;
+begin
+  inherited;
+
+  if CdsDuplicata.IsEmpty then
+    Exit;
+
+  Screen.Cursor := crHourGlass;
+  CdsDuplicata.DisableControls;
+  Bookmark := CdsDuplicata.GetBookmark;
+  try
+    CdsDuplicata.First;
+    while not CdsDuplicata.Eof do
+    begin
+        CdsDuplicata.Edit;
+        CdsDuplicataSelecao.AsBoolean := False;
+        CdsDuplicata.Post;
+        CdsDuplicata.Next;
+    end;
+  finally
+    if CdsDuplicata.BookmarkValid(Bookmark) then
+      CdsDuplicata.GotoBookmark(Bookmark);
+    CdsDuplicata.FreeBookmark(Bookmark);
+    CdsDuplicata.EnableControls;
+    Screen.Cursor := crDefault;
+  end;
+end;
+
 
 procedure TFrmGimpBoletos.AtualizaEmail(email: string;const cli_codigo: string);
 var sql :string;
@@ -1922,85 +2119,26 @@ begin
      Result := StrZero( pConta,vTam);
 end;
 
-procedure TFrmGimpBoletos.DBGridDuplicataDblClick(Sender: tObject);
-var
-    clone: TClientDataSet;
-    nRegistros: integer;
-    vlTotal: double;
+
+procedure TFrmGimpBoletos.DBGridDuplicataCellClick(Column: TColumn);
 begin
-  CdsDuplicata.Edit;
-  CdsDuplicataSelecao.AsBoolean := not CdsDuplicataSelecao.AsBoolean;
-  CdsDuplicata.Post;
 
-  Screen.Cursor := crHourGlass;
-  if (not CdsDuplicata.IsEmpty) then
+  if GetKeyState(VK_SHIFT) < 0 then
+    SelecionaFaixa
+  else if GetKeyState(VK_CONTROL) < 0 then
+    ToggleRegistroAtual
+  else
   begin
-
-    clone:= TClientDataSet.Create(nil);
-    clone.CloneCursor(CdsDuplicata,false);
-    registro := clone.RecNo;
-    clone.RecNo := 1;
-    clone.DisableControls;
-    nRegistros := 0;
-    vlTotal := 0;
-    while not clone.Eof do
-    begin
-      if clone.FieldByName('Selecao').AsBoolean = True then
-      begin
-        vlTotal := vlTotal + clone.FieldByName('FPC_VLPARC').AsCurrency;
-        nRegistros := nRegistros + 1;
-      end;
-      clone.Next;
-    end;
-    edTotalRegistros.Value := nRegistros;
-    edValorTotal.Value := vlTotal;;
-
-    clone.RecNo := registro;
-    clone.EnableControls;
-
+    ToggleRegistroAtual;
+    AtualizaAnchor;
   end;
 
-  Screen.Cursor := crDefault;
-
-
-
-
-
-
-
-
-
-  exit;
-
-     if (not CdsDuplicata.IsEmpty) then
-     begin
-
-            clone:= TClientDataSet.Create(nil);
-            clone.CloneCursor(CdsDuplicata,false);
-            registro := clone.RecNo;
-            clone.RecNo := 1;
-            clone.DisableControls;
-            while not clone.Eof do
-            begin
-              if clone.FieldByName('Selecao').AsBoolean = True then
-              begin
-                clone.Edit;
-                clone.FieldByName('Selecao').AsBoolean := false;
-                clone.Post;
-              end;
-              clone.Next;
-            end;
-
-            //CdsDuplicata.RecNo := 1;
-            //CdsDuplicata.MoveBy(registro -1);
-
-            clone.RecNo := registro;
-            clone.EnableControls;
-
-
-            registro := 0;
-     end;
+  AtualizaTotais;
 end;
+
+
+
+
 
 procedure TFrmGimpBoletos.ppDBText13GetText(Sender: TObject; var Text: string);
 begin
