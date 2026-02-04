@@ -12,7 +12,7 @@ uses
   FireDAC.Stan.Async, FireDAC.DApt, FireDAC.Comp.DataSet, FireDAC.Comp.Client;
 
 type
-  TFrmManutencao = class(TFrmBaseDbEstoque)
+  TFrmManutencao = class(TfrmBaseDbEstoque)
     Panel1: TPanel;
     Label1: TLabel;
     Label2: TLabel;
@@ -266,6 +266,7 @@ type
     sqlCampo: TSQLQuery;
     dspCampo: TDataSetProvider;
     qCampo: TClientDataSet;
+    btApagarFaturamento: TButton;
     procedure Button3Click(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure BtnCancelaClick(Sender: tObject);
@@ -304,6 +305,7 @@ type
     procedure Button31Click(Sender: TObject);
     procedure Button32Click(Sender: TObject);
     procedure Button33Click(Sender: TObject);
+    procedure btApagarFaturamentoClick(Sender: TObject);
   private
     { Private declarations }
     wCancela :Boolean;
@@ -334,7 +336,7 @@ var
 
 implementation
 
-uses DataCad, DmProdu, DataMov2, Men0001, iniciodb, DataMov, uteis;
+uses DataCad, DmProdu, DataMov2, Men0001, iniciodb, DataMov, uteis, uApagaFaturamento;
 
 {$R *.dfm}
 
@@ -1119,6 +1121,19 @@ begin
                      'Mensagem erro: '+e.message));
        end;
    end;
+end;
+
+procedure TFrmManutencao.btApagarFaturamentoClick(Sender: TObject);
+
+begin
+  inherited;
+  frmApagaFaturamento := TfrmApagaFaturamento.Create(Self);
+  try
+    frmApagaFaturamento.ShowModal;
+  finally
+    frmApagaFaturamento.Free;
+  end;
+  //
 end;
 
 procedure TFrmManutencao.Button15Click(Sender: tObject);
