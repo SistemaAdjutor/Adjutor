@@ -58,6 +58,13 @@ begin
     Exit;
   end;
 
+  if MessageDlg(
+       'ATENÇÃO!' + sLineBreak + sLineBreak +
+       'Confira atentamente os dados da Fatura e do Pedido.' + sLineBreak +
+       'Deseja continuar?',
+       mtWarning, [mbYes, mbNo], 0) <> mrYes then
+    Exit;
+
 
 
   if MessageDlg(
