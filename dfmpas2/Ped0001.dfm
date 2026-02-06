@@ -10881,7 +10881,7 @@ object FormPedidos: TFormPedidos
     end
     object SqlPedidoDIPID_NUMERO_DI: TStringField
       FieldName = 'PID_NUMERO_DI'
-      Size = 10
+      Size = 15
     end
     object SqlPedidoDIPID_DATA_DI: TDateField
       FieldName = 'PID_DATA_DI'
@@ -10920,8 +10920,8 @@ object FormPedidos: TFormPedidos
     end
     object CDSPedidoDIPID_NUMERO_DI: TStringField
       FieldName = 'PID_NUMERO_DI'
-      EditMask = '9999999999;0; '
-      Size = 10
+      EditMask = '>AAAAAAAAAAAAAAA;1;_'
+      Size = 15
     end
     object CDSPedidoDIPID_DATA_DI: TDateField
       FieldName = 'PID_DATA_DI'

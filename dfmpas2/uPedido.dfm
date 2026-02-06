@@ -3642,7 +3642,7 @@ inherited FrmPedido: TFrmPedido
           Top = 1
           Width = 1493
           Height = 314
-          ActivePage = TabPedidoItem
+          ActivePage = TabSheet3
           Align = alClient
           TabOrder = 0
           object TabPedidoItem: TTabSheet
@@ -9116,8 +9116,8 @@ inherited FrmPedido: TFrmPedido
     end
   end
   object gbAlterarPeso: TGroupBox [5]
-    Left = 391
-    Top = 484
+    Left = 632
+    Top = 520
     Width = 371
     Height = 93
     Caption = 'Altera Peso do Item'
@@ -10106,7 +10106,7 @@ inherited FrmPedido: TFrmPedido
     Left = 1192
     Top = 389
     Bitmap = {
-      494C010103000500940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005009C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10335,9 +10335,10 @@ inherited FrmPedido: TFrmPedido
       FieldName = 'PRF_REGISTRO'
     end
     object CDSPedidoDIPID_NUMERO_DI: TStringField
+      DisplayWidth = 15
       FieldName = 'PID_NUMERO_DI'
-      EditMask = '9999999999;0; '
-      Size = 10
+      EditMask = '>AAAAAAAAAAAAAAA;1;_'
+      Size = 15
     end
     object CDSPedidoDIPID_DATA_DI: TDateField
       FieldName = 'PID_DATA_DI'
@@ -10404,8 +10405,9 @@ inherited FrmPedido: TFrmPedido
       FieldName = 'PRF_REGISTRO'
     end
     object SqlPedidoDIPID_NUMERO_DI: TStringField
+      DisplayWidth = 15
       FieldName = 'PID_NUMERO_DI'
-      Size = 10
+      Size = 15
     end
     object SqlPedidoDIPID_DATA_DI: TDateField
       FieldName = 'PID_DATA_DI'
@@ -10749,7 +10751,7 @@ inherited FrmPedido: TFrmPedido
     end
     object CDSPedidoDILancadoPID_NUMERO_DI: TStringField
       FieldName = 'PID_NUMERO_DI'
-      Size = 10
+      Size = 15
     end
     object CDSPedidoDILancadoPID_DATA_DI: TDateField
       FieldName = 'PID_DATA_DI'
@@ -10811,7 +10813,7 @@ inherited FrmPedido: TFrmPedido
     end
     object StringField1: TStringField
       FieldName = 'PID_NUMERO_DI'
-      Size = 10
+      Size = 15
     end
     object DateField1: TDateField
       FieldName = 'PID_DATA_DI'
@@ -11884,7 +11886,7 @@ inherited FrmPedido: TFrmPedido
     Left = 40
     Top = 147
     Bitmap = {
-      494C010104000900940010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101040009009C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

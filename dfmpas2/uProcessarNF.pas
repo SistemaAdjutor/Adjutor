@@ -1291,7 +1291,7 @@ begin
     DI.dDesemb     := qDIproduto.FieldByName('PID_DATA_DESEMBARACO').AsDateTime;
     DI.cExportador := qDIproduto.FieldByName('PID_CODIGO_EXPORTADOR').AsString;
     DI.tpViaTransp := StrToTipoViaTransp(OK,IntToStr(qDIproduto.FieldByName('PID_VIA_TRANSPORTE').AsInteger));
-    if (di.tpViaTransp = tvMaritima) then
+//    if (di.tpViaTransp = tvMaritima) then
       di.vAFRMM := qDIproduto.FieldByName('PID_VALOR_AFRMM').AsFloat;
     DI.tpIntermedio :=  StrToTipoIntermedio(OK,IntToStr(qDIproduto.FieldByName('PID_FORMA_IMPORTACAO').AsInteger));
     DI.CNPJ := RetirarMascaraCNPJ_INSC(qDIproduto.FieldByName('PID_CNPJ_ADQUIRENTE').AsString);
