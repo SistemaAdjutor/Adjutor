@@ -1210,10 +1210,10 @@ begin
 		 begin
 
 				CalculaIndiceDesconto;
-        if rIndiceDesconto>0 then
-  				CurPrecoLiquido.Value := Uteis.RoundTo((CurPrecoBruto.Value *( 1- (rIndiceDesconto /100))),-5) ;
-//        else
-//          CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
+        if (rIndiceDesconto > 0) then
+  				CurPrecoLiquido.Value := Uteis.RoundTo((CurPrecoBruto.Value *( 1- (rIndiceDesconto /100))),-5)
+        else
+          CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
 
 //        if cbGrade.IdRetorno <> '' then
 //          indice := BuscaUmDadoSqlAsFloat('SELECT PRG_INDICE FROM PRD_GRADE WHERE PRG_REGISTRO = ' + QuotedStr(cbGrade.IdRetorno) )
@@ -1755,7 +1755,7 @@ end;
 
 procedure TFrmPedidoItem.CurPrecoBrutoChange(Sender: tObject);
 begin
-   CalculaTotais;
+//   CalculaTotais;
 end;
 
 procedure TFrmPedidoItem.CurPrecoBrutoEnter(Sender: TObject);
@@ -1842,7 +1842,7 @@ begin
     //===========================
     // 1 BUSCA PREÇO DA TABELA 1 (PADRÃO)
     //===========================
-    if dbInicio.Empresa.bHabilitarTabelaPreco then
+    if dbInicio.Empresa.bHabilitarTabelaPreco and (CurComissao.Value > 0)then
     begin
       tab1 := dbInicio.BuscaUmDadoSqlAsCurrency(
         'select prd_pvenda from tabelaprecos ' +
@@ -1853,7 +1853,7 @@ begin
     end;
 
 
-   if (rPrecoLiquido <> rPrecoSaida) or (rPrecoLiquido < tab1) then
+   if ((rPrecoLiquido <> rPrecoSaida) or (rPrecoLiquido < tab1)) and (CurComissao.Value > 0) then
    begin
          CurDesconto.Clear;
          CurDescontoAdicional.Clear;
@@ -2770,8 +2770,8 @@ begin
 							 else
 									iGrade := StrToInt(CbGrade.IdRetorno);
 
-                  if not disComissao then
-  									 CurComissao.Value := RetornaPercentualComissao(cbReferencia.CdS.fieldByName('PRD_REFER').AsString);
+//                  if not disComissao then
+  //									 CurComissao.Value := RetornaPercentualComissao(cbReferencia.CdS.fieldByName('PRD_REFER').AsString);
 
 									 //Custo
 
@@ -3463,7 +3463,7 @@ begin
     //===========================
     // 1 BUSCA PREÇO DA TABELA 1 (PADRÃO)
     //===========================
-    if dbInicio.Empresa.bHabilitarTabelaPreco then
+    if dbInicio.Empresa.bHabilitarTabelaPreco and (CurComissao.Value > 0) then
     begin
       ValorOriginal := dbInicio.BuscaUmDadoSqlAsCurrency(
         'select prd_pvenda from tabelaprecos ' +
@@ -3486,9 +3486,9 @@ begin
   FFocusRestored := False; // Indica que o foco ainda não foi restaurado
 
 
-//   if (dbInicio.Empresa.DesctoMaximo_P = 0) then // zero = desconto totalmente liberado
-//      Result := true
-//   else
+   if (dbInicio.Empresa.DesctoMaximo_P = 0) then // zero = desconto totalmente liberado
+      Result := true
+   else
    if (rIndiceDesconto > dbInicio.Empresa.DesctoMaximo_P) then
    begin
      tcr := tFrmAutoriza.Create(self) ;
@@ -4002,7 +4002,8 @@ end;
 function TFrmPedidoItem.SetarTabelaPrecos: integer;
 var ValorInicial : double;
 begin
-  if (dbInicio.Empresa.bHabilitarTabelaPreco) then
+  result := cbTabelaPrecoMultiplo.EditValue;
+  if (dbInicio.Empresa.bHabilitarTabelaPreco) and (CurComissao.Value > 0) then
   begin
     // result := 1;
     OpenAux3(' select * from tabelaprecos'+
@@ -5107,7 +5108,7 @@ begin
 
    CalculaTotais;
 
-   if (dbInicio.Empresa.bHabilitarTabelaPreco) then
+   if (dbInicio.Empresa.bHabilitarTabelaPreco) and (CurComissao.Value > 0) then
    begin
      if CurPrecoLiquido.Value > 0  then
        cbTabelaPrecoMultiplo.EditValue :=   IntToStr(SetarTabelaPrecos);
