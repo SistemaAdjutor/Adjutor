@@ -1,5 +1,5 @@
 ﻿Inicio da versão: 04/02/2026
-Atualizado em 14/02/2026
+Atualizado em 11/02/2026
 
 principal: Bepine, LForja, Collect
 	2153 - Erro Bepine - Ao alterar o pedido zero custo bruto [Bepine]
@@ -10,6 +10,8 @@ patch 1: Rotor, Embraterm
 	2164 - Revisão Rotor - Campos Declaração Importação Aumento campo e Letras [Rotor]
 	2165 - Embraterm - Sobrepor barramento financeiro [Embraterm]
 	
-
+patch 2: Arkson, Chemvet
+	2167 - Alteração Arkson - Relatorio Margens Prevista/Realizadas de xls <- Para -> csv
+	2168 - CHEMVET - Alteração dos valores no pedido
 	
 	
