@@ -452,9 +452,27 @@ begin
 end;
 
 procedure TFrmConsultaMarkup.SpeedButton1Click(Sender: tObject);
+var
+  lista: TStringList;
 begin
   inherited;
-  ExportarExcel(dbgrdNotaFiscal, sender);
+//   ExportarExcel(dbgrdNotaFiscal, sender);
+  lista := TStringList.Create;
+  lista.Add('NF_NUM_NFE');
+  lista.Add('NF_EMISSAO');
+  lista.Add('PED_CODIGO');
+  lista.Add('CLI_RAZAO');
+  lista.Add('REP_NOME');
+  lista.Add('NF_TOT_NOTA');
+  lista.Add('CUSTO');
+  lista.Add('LUCRO');
+  lista.Add('Margem');
+  lista.Add('Markup');
+  lista.Add('VENDA_ESPERADA');
+  lista.Add('LUCRO_ESPERADO');
+  lista.Add('MargemPrevista');
+  lista.Add('MarkupPrevisto');
+  CriaCSV(dsNotaFiscal, lista, Self);
 end;
 
 procedure TFrmConsultaMarkup.SpeedButton2Click(Sender: tObject);

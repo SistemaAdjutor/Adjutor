@@ -10,8 +10,8 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
   FormStyle = fsMDIChild
   Position = poDesigned
   Visible = True
-  ExplicitWidth = 1281
-  ExplicitHeight = 576
+  ExplicitWidth = 1289
+  ExplicitHeight = 588
   PixelsPerInch = 96
   TextHeight = 14
   object PageControl1: TPageControl [0]
@@ -236,8 +236,10 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             Tabela = 'cli0000'
             CamposCarregar = 'CLI_RAZAO'
             CamposRetornar = 'CLI_CODIGO'
@@ -350,8 +352,10 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             Tabela = 'OPV0000'
             CamposCarregar = 'OPV_DESCRICAO'
             CamposRetornar = 'OPV_CODIGO'
@@ -410,8 +414,10 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             Tabela = 'REP0000'
             CamposCarregar = 'REP_NOME'
             CamposRetornar = 'REP_CODIGO'
@@ -464,8 +470,10 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
         end
       end
@@ -853,7 +861,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'NF_NUM_NFE'
                   Title.Alignment = taCenter
-                  Title.Caption = 'NFe'
                   Width = 41
                   Visible = True
                 end
@@ -861,7 +868,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'NF_EMISSAO'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Emiss'#227'o'
                   Width = 58
                   Visible = True
                 end
@@ -869,7 +875,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'PED_CODIGO'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Pedido'
                   Width = 42
                   Visible = True
                 end
@@ -877,7 +882,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'CLI_RAZAO'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Cliente'
                   Width = 153
                   Visible = True
                 end
@@ -885,7 +889,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'REP_NOME'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Vendedor'
                   Width = 72
                   Visible = True
                 end
@@ -894,7 +897,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'NF_TOT_NOTA'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Vlr. Venda'
                   Width = 70
                   Visible = True
                 end
@@ -902,7 +904,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'CUSTO'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Custo'
                   Width = 83
                   Visible = True
                 end
@@ -910,7 +911,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'LUCRO'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Resultado'
                   Width = 74
                   Visible = True
                 end
@@ -918,7 +918,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'Margem'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Markup'
                   Width = 100
                   Visible = True
                 end
@@ -927,7 +926,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'Markup'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Margem Obtida'
                   Width = 99
                   Visible = True
                 end
@@ -935,7 +933,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'VENDA_ESPERADA'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Vlr. Previsto'
                   Width = 71
                   Visible = True
                 end
@@ -950,7 +947,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'MargemPrevista'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Markup Previsto'
                   Width = 100
                   Visible = True
                 end
@@ -958,7 +954,6 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
                   Expanded = False
                   FieldName = 'MarkupPrevisto'
                   Title.Alignment = taCenter
-                  Title.Caption = 'Margem Prevista'
                   Width = 100
                   Visible = True
                 end>
@@ -1263,8 +1258,10 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             Tabela = 'OPV0000'
             CamposCarregar = 'OPV_DESCRICAO'
             CamposRetornar = 'OPV_CODIGO'
@@ -1340,8 +1337,10 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             Tabela = 'cli0000'
             CamposCarregar = 'CLI_RAZAO'
             CamposRetornar = 'CLI_CODIGO'
@@ -1399,8 +1398,10 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
             Tabela = 'REP0000'
             CamposCarregar = 'REP_NOME'
             CamposRetornar = 'REP_CODIGO'
@@ -2161,24 +2162,30 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
     Left = 296
     Top = 220
     object cdsNotaFiscalNF_NUM_NFE: TIntegerField
+      DisplayLabel = 'NFe'
       FieldName = 'NF_NUM_NFE'
     end
     object cdsNotaFiscalNF_EMISSAO: TDateField
+      DisplayLabel = 'Emiss'#227'o'
       FieldName = 'NF_EMISSAO'
     end
     object cdsNotaFiscalPED_CODIGO: TStringField
+      DisplayLabel = 'Pedido'
       FieldName = 'PED_CODIGO'
       Size = 7
     end
     object cdsNotaFiscalCLI_CODIGO: TStringField
+      DisplayLabel = 'C'#243'd. Cliente'
       FieldName = 'CLI_CODIGO'
       Size = 5
     end
     object cdsNotaFiscalCLI_RAZAO: TStringField
+      DisplayLabel = 'Cliente'
       FieldName = 'CLI_RAZAO'
       Size = 55
     end
     object cdsNotaFiscalREP_NOME: TStringField
+      DisplayLabel = 'Vendedor'
       FieldName = 'REP_NOME'
       Size = 35
     end
@@ -2189,30 +2196,35 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
       Size = 5
     end
     object cdsNotaFiscalCUSTO: TFMTBCDField
+      DisplayLabel = 'Custo'
       FieldName = 'CUSTO'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
       Size = 4
     end
     object cdsNotaFiscalLUCRO: TFMTBCDField
+      DisplayLabel = 'Resultado'
       FieldName = 'LUCRO'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
       Size = 5
     end
     object cdsNotaFiscalVENDA_ESPERADA: TFMTBCDField
+      DisplayLabel = 'Vlr. Previsto'
       FieldName = 'VENDA_ESPERADA'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
       Size = 4
     end
     object cdsNotaFiscalLUCRO_ESPERADO: TFMTBCDField
+      DisplayLabel = 'Resultado Prev.'
       FieldName = 'LUCRO_ESPERADO'
       DisplayFormat = '###,###,###,##0.00'
       Precision = 15
       Size = 4
     end
     object cdsNotaFiscalMarkup: TFloatField
+      DisplayLabel = 'Margem Obtida'
       FieldKind = fkCalculated
       FieldName = 'Markup'
       DisplayFormat = '##0.00%'
@@ -2220,6 +2232,7 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
       Calculated = True
     end
     object cdsNotaFiscalMargem: TFloatField
+      DisplayLabel = 'Markup'
       FieldKind = fkCalculated
       FieldName = 'Margem'
       DisplayFormat = '##0.00%'
@@ -2227,6 +2240,7 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
       Calculated = True
     end
     object cdsNotaFiscalMarkupPrevisto: TFloatField
+      DisplayLabel = 'Margem Prevista'
       FieldKind = fkCalculated
       FieldName = 'MarkupPrevisto'
       DisplayFormat = '##0.00%'
@@ -2234,6 +2248,7 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
       Calculated = True
     end
     object cdsNotaFiscalMargemPrevista: TFloatField
+      DisplayLabel = 'Markup Previsto'
       FieldKind = fkCalculated
       FieldName = 'MargemPrevista'
       DisplayFormat = '##0.00%'
@@ -2256,6 +2271,7 @@ inherited FrmConsultaMarkup: TFrmConsultaMarkup
       Size = 3
     end
     object cdsNotaFiscalNF_TOT_NOTA: TFMTBCDField
+      DisplayLabel = 'Vlr. Venda'
       FieldName = 'NF_TOT_NOTA'
       Precision = 15
     end
