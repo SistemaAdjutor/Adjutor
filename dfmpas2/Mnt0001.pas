@@ -267,6 +267,11 @@ type
     dspCampo: TDataSetProvider;
     qCampo: TClientDataSet;
     btApagarFaturamento: TButton;
+    GroupBox2: TGroupBox;
+    chkValidaVersao: TCheckBox;
+    edCaminhoApi: TEdit;
+    Label6: TLabel;
+    SpeedButton1: TSpeedButton;
     procedure Button3Click(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure BtnCancelaClick(Sender: tObject);
@@ -610,6 +615,7 @@ begin
    PrBar.Visible   := True;
    top  := 0;
    Left := 0;
+   chkValida.Checked
 end;
 
 procedure TFrmManutencao.BtnCancelaClick(Sender: tObject);
