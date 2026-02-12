@@ -3785,7 +3785,7 @@ procedure TDBInicio.ValidaOnline(
       // url := 'https://api.teste.compacta9.com.br/api/VerificarContrato/91' + // teste (retirar quando entrar em produção)
       // '?cpf_cnpj=' + pCnpj
       // else
-      url := 'https://api.c9digital.com.br/api/VerificarContrato/91' +
+      url := 'https://api.compacta9.com.br/api/VerificarContrato/91' +
       // produção
         '?cpf_cnpj=' + pCnpj;
 

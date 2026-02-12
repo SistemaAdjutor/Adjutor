@@ -4002,7 +4002,10 @@ end;
 function TFrmPedidoItem.SetarTabelaPrecos: integer;
 var ValorInicial : double;
 begin
-  result := cbTabelaPrecoMultiplo.EditValue;
+  if cbTabelaPrecoMultiplo.EditValue = Null then
+    result := 0
+  else
+    result := cbTabelaPrecoMultiplo.EditValue;
   if (dbInicio.Empresa.bHabilitarTabelaPreco) and (CurComissao.Value > 0) then
   begin
     // result := 1;
