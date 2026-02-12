@@ -311,6 +311,7 @@ type
     procedure Button32Click(Sender: TObject);
     procedure Button33Click(Sender: TObject);
     procedure btApagarFaturamentoClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     { Private declarations }
     wCancela :Boolean;
@@ -2455,6 +2456,23 @@ begin
    finally
       FreeAndNil(QryReg);
    end;
+
+end;
+
+procedure TFrmManutencao.SpeedButton1Click(Sender: TObject);
+
+begin
+  inherited;
+  if MessageDlg(
+       'Confirma a alteração dos dados no banco?',
+       mtConfirmation,
+       [mbYes, mbNo],
+       0
+     ) = mrYes then
+  begin
+    dbInicio.ExecSQL('UPDATE EMP0000 SET
+    // Salvar no banco de dados
+  end;
 
 end;
 

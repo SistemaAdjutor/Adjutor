@@ -9,7 +9,6 @@ inherited FrmManutencao: TFrmManutencao
   FormStyle = fsMDIChild
   Position = poDesktopCenter
   Visible = True
-  ExplicitTop = -116
   ExplicitWidth = 983
   ExplicitHeight = 834
   PixelsPerInch = 96
@@ -87,7 +86,7 @@ inherited FrmManutencao: TFrmManutencao
   end
   object Button3: TButton [3]
     Left = 140
-    Top = 601
+    Top = 566
     Width = 75
     Height = 25
     Caption = '&Sair'
@@ -379,16 +378,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 19
     OnClick = Button19Click
   end
-  object Button20: TButton [23]
-    Left = 368
-    Top = 122
-    Width = 345
-    Height = 25
-    Caption = 'Nfe - Troca Homologa'#231#227'o p/ Produ'#231#227'o (Zera Generator + XML)'
-    TabOrder = 20
-    OnClick = Button20Click
-  end
-  object cbAlmoxarifado: TComboBoxRw [24]
+  object cbAlmoxarifado: TComboBoxRw [23]
     Left = 589
     Top = 336
     Width = 99
@@ -428,7 +418,7 @@ inherited FrmManutencao: TFrmManutencao
     itemindex = 0
     style = csDropDown
   end
-  object Button31: TButton [25]
+  object Button31: TButton [24]
     Left = 368
     Top = 333
     Width = 217
@@ -437,7 +427,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 31
     OnClick = Button31Click
   end
-  object Button30: TButton [26]
+  object Button30: TButton [25]
     Left = 368
     Top = 283
     Width = 345
@@ -452,7 +442,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 30
     OnClick = Button30Click
   end
-  object Button32: TButton [27]
+  object Button32: TButton [26]
     Left = 368
     Top = 308
     Width = 345
@@ -467,7 +457,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 33
     OnClick = Button32Click
   end
-  object Button29: TButton [28]
+  object Button29: TButton [27]
     Left = 16
     Top = 481
     Width = 345
@@ -476,7 +466,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 29
     OnClick = Button29Click
   end
-  object Button33: TButton [29]
+  object Button33: TButton [28]
     Left = 16
     Top = 508
     Width = 345
@@ -485,7 +475,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 34
     OnClick = Button33Click
   end
-  object pbTabela: TProgressBar [30]
+  object pbTabela: TProgressBar [29]
     Left = 16
     Top = 532
     Width = 150
@@ -493,7 +483,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 35
     Visible = False
   end
-  object pbCampo: TProgressBar [31]
+  object pbCampo: TProgressBar [30]
     Left = 211
     Top = 532
     Width = 150
@@ -501,7 +491,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 36
     Visible = False
   end
-  object Button28: TButton [32]
+  object Button28: TButton [31]
     Left = 16
     Top = 454
     Width = 345
@@ -516,9 +506,9 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 28
     OnClick = Button28Click
   end
-  object GroupBox1: TGroupBox [33]
+  object GroupBox1: TGroupBox [32]
     Left = 367
-    Top = 481
+    Top = 391
     Width = 345
     Height = 153
     Caption = 'Importa'#231#227'o Produtos e Grades Adjutor Produ'#231#227'o Web'
@@ -580,7 +570,7 @@ inherited FrmManutencao: TFrmManutencao
       OnClick = Button27Click
     end
   end
-  object Button25: TButton [34]
+  object Button25: TButton [33]
     Left = 368
     Top = 234
     Width = 345
@@ -595,7 +585,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 25
     OnClick = Button25Click
   end
-  object Button24: TButton [35]
+  object Button24: TButton [34]
     Left = 368
     Top = 209
     Width = 345
@@ -610,7 +600,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 24
     OnClick = Button24Click
   end
-  object Button23: TButton [36]
+  object Button23: TButton [35]
     Left = 368
     Top = 178
     Width = 345
@@ -630,7 +620,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 23
     OnClick = Button23Click
   end
-  object btApagarFaturamento: TButton [37]
+  object btApagarFaturamento: TButton [36]
     Left = 368
     Top = 360
     Width = 345
@@ -639,7 +629,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 37
     OnClick = btApagarFaturamentoClick
   end
-  object Button21: TButton [38]
+  object Button21: TButton [37]
     Left = 368
     Top = 97
     Width = 345
@@ -648,9 +638,9 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 21
     OnClick = Button21Click
   end
-  object GroupBox2: TGroupBox [39]
+  object GroupBox2: TGroupBox [38]
     Left = 367
-    Top = 391
+    Top = 550
     Width = 346
     Height = 74
     Caption = 'Caminho API'
@@ -710,6 +700,7 @@ inherited FrmManutencao: TFrmManutencao
         FFFFFFFFFA0202A4FFFFFFFFFFFFFFFFFFFFFFFFFFFA02A4FFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
         FFFFFFFFFFFFFFFFFFFF}
+      OnClick = SpeedButton1Click
     end
     object chkValidaVersao: TCheckBox
       Left = 16
@@ -727,6 +718,15 @@ inherited FrmManutencao: TFrmManutencao
       TabOrder = 1
       Text = 'edCaminhoApi'
     end
+  end
+  object Button20: TButton [39]
+    Left = 368
+    Top = 122
+    Width = 345
+    Height = 25
+    Caption = 'Nfe - Troca Homologa'#231#227'o p/ Produ'#231#227'o (Zera Generator + XML)'
+    TabOrder = 20
+    OnClick = Button20Click
   end
   inherited coCalcula: TACBrCalculadora
     Top = 624
