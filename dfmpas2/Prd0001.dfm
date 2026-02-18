@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 0
     Width = 2500
     Height = 566
-    ActivePage = TabSheet8
+    ActivePage = Tbs_Produtos
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -18148,7 +18148,7 @@ inherited FormProduto: TFormProduto
       Size = 5
     end
     object SqlProdutosInterno: TFMTBCDField
-      FieldName = 'Interno'
+      FieldName = 'INTERNO'
       ProviderFlags = [pfInUpdate]
       DisplayFormat = '##0.00'
       Precision = 18
@@ -18265,7 +18265,7 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRO_CODIGO'
     end
     object SqlProdutosprd_und_trib: TStringField
-      FieldName = 'prd_und_trib'
+      FieldName = 'PRD_UND_TRIB'
       Size = 6
     end
     object SqlProdutosCNAE_CODIGO: TStringField
@@ -19179,7 +19179,7 @@ inherited FormProduto: TFormProduto
       Size = 5
     end
     object CdsProdutosInterno: TFMTBCDField
-      FieldName = 'Interno'
+      FieldName = 'INTERNO'
       ProviderFlags = [pfInUpdate]
       DisplayFormat = '##0.00'
       Precision = 18
@@ -19295,7 +19295,7 @@ inherited FormProduto: TFormProduto
       FieldName = 'PRO_CODIGO'
     end
     object CdsProdutosprd_und_trib: TStringField
-      FieldName = 'prd_und_trib'
+      FieldName = 'PRD_UND_TRIB'
       Size = 6
     end
     object CdsProdutosSRV_CODIGO: TStringField

@@ -523,7 +523,7 @@ type
     procedure TimerRestoreFocusTimer(Sender: TObject);
     procedure chkMantemDescricaoClick(Sender: TObject);
   private
-    prdPVenda: Double;
+    prdPVenda, prdPTabela: Double;
     pvFlgProcSelect:boolean;
     fPesquisa : boolean;
     fLendo, bUsouVerba:boolean;
@@ -1213,7 +1213,8 @@ begin
         if (rIndiceDesconto > 0) then
   				CurPrecoLiquido.Value := Uteis.RoundTo((CurPrecoBruto.Value *( 1- (rIndiceDesconto /100))),-5)
         else
-          CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
+          if  CurPrecoLiquido.Value <=  prdPTabela  then
+            CurPrecoLiquido.Value :=  CurPrecoBruto.Value;
 
 //        if cbGrade.IdRetorno <> '' then
 //          indice := BuscaUmDadoSqlAsFloat('SELECT PRG_INDICE FROM PRD_GRADE WHERE PRG_REGISTRO = ' + QuotedStr(cbGrade.IdRetorno) )
@@ -1778,7 +1779,8 @@ begin
   CurPrecoLiquido.Value := CurPrecoBruto.Value;
 
   ValidaDesconto(curPrecoBruto.Value);
-  cbTabelaPrecoMultiplo.EditValue :=   IntToStr(SetarTabelaPrecos);
+  if CurPrecoLiquido.Value <= prdPTabela then
+    cbTabelaPrecoMultiplo.EditValue :=   IntToStr(SetarTabelaPrecos);
   CalculaTotais;
 
 
@@ -1876,7 +1878,8 @@ begin
          end;
    end;
 
-  cbTabelaPrecoMultiplo.EditValue :=   IntToStr(SetarTabelaPrecos);
+   if CurPrecoLiquido.Value <= prdPTabela then
+     cbTabelaPrecoMultiplo.EditValue :=   IntToStr(SetarTabelaPrecos);
 
    try
      if (not SameValue(rPrecoLiquido,rPrecoSaida)  and (rPrecoSaida>0)) or (rPrecoLiquido < tab1)  then
@@ -3472,7 +3475,9 @@ begin
         ' and seq = 1 ' +
         'order by prd_pvenda');
       ValorFinal := CurValor;
-      CurDesconto.Value := ((ValorOriginal - ValorFinal) / ValorOriginal) * 100;
+//      CurDesconto.Value := ((ValorOriginal - ValorFinal) / ValorOriginal) * 100;
+      CurDesconto.Value := RoundTo(((ValorOriginal - ValorFinal) / ValorOriginal) * 100, -2);
+      // CurDesconto.Value :=  ((   int(ValorOriginal * 10000))     - ValorFinal) / int(ValorOriginal * 10000) * 10;
       if CurDesconto.Value < 0  then
         CurDesconto.Value := 0;
     end;
@@ -4002,7 +4007,10 @@ end;
 function TFrmPedidoItem.SetarTabelaPrecos: integer;
 var ValorInicial : double;
 begin
-  result := cbTabelaPrecoMultiplo.EditValue;
+  if cbTabelaPrecoMultiplo.EditValue = Null then
+    result := 0
+  else
+    result := cbTabelaPrecoMultiplo.EditValue;
   if (dbInicio.Empresa.bHabilitarTabelaPreco) and (CurComissao.Value > 0) then
   begin
     // result := 1;
@@ -5110,7 +5118,7 @@ begin
 
    if (dbInicio.Empresa.bHabilitarTabelaPreco) and (CurComissao.Value > 0) then
    begin
-     if CurPrecoLiquido.Value > 0  then
+     if CurPrecoLiquido.Value <= prdPTabela then
        cbTabelaPrecoMultiplo.EditValue :=   IntToStr(SetarTabelaPrecos);
    end;
 
@@ -5423,13 +5431,23 @@ end;
 
 procedure TFrmPedidoItem.CalculaIndiceDesconto;
 begin
+
    //Calcula Indice do Desconto
    //rIndiceDesconto := 0;
-   rIndiceDesconto := (100 - CurDesconto.Value);
-   rIndiceDesconto := (rIndiceDesconto - (( rIndiceDesconto * CurDescontoAdicional.Value ) / 100));
 
-   {mostra o resultado}
-   rIndiceDesconto := (100 - rIndiceDesconto );
+   if (CurDesconto.Value = 0) and (CurPrecoLiquido.Value <= CurPrecoBruto.Value) then
+   begin
+    rIndiceDesconto := 0
+   end
+   else
+   begin
+
+     rIndiceDesconto := (100 - CurDesconto.Value);
+     rIndiceDesconto := (rIndiceDesconto - (( rIndiceDesconto * CurDescontoAdicional.Value ) / 100));
+
+     {mostra o resultado}
+     rIndiceDesconto := (100 - rIndiceDesconto );
+  end;
 end;
 
 procedure TFrmPedidoItem.Focar;
@@ -6703,6 +6721,7 @@ begin
   inherited;
   if qAux.Active then
     AlterouTabelaPrecos:= True;
+  prdPTabela := VarAsType(cbTabelaPrecoMultiplo.Properties.DataController.DataSet.Lookup('SEQ',cbTabelaPrecoMultiplo.EditValue,'PRD_PVENDA'), varDouble);
   if ( not VarIsEmpty(cbTabelaPrecoMultiplo.EditValue)) and (dbInicio.Empresa.bHabilitarTabelaPreco) then
   begin
      if not disComissao then
