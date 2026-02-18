@@ -1,5 +1,5 @@
 ﻿Inicio da versão: 04/02/2026
-Atualizado em 11/02/2026
+Atualizado em 18/02/2026
 
 principal: Bepine, LForja, Collect
 	2153 - Erro Bepine - Ao alterar o pedido zero custo bruto [Bepine]
@@ -14,4 +14,6 @@ patch 2: Arkson, Chemvet
 	2167 - Alteração Arkson - Relatorio Margens Prevista/Realizadas de xls <- Para -> csv
 	2168 - CHEMVET - Alteração dos valores no pedido
 	
-	
+patch 3: Arkson
+	2173 - voltar validacao para a rota do compacta9 [Novi]
+	2174 - problema desconto do pedido de venda [Arkson]
