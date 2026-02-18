@@ -3688,6 +3688,9 @@ procedure TDBInicio.Validacao;
       then
         bChaveValidador := True;
 
+    if  BuscaUmDadoSqlAsString('SELECT PMT_VALIDA_VERSAO FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'N' then
+      bChaveValidador := False;
+
     if ( iQtdeDias <= 5 ) and ( not bChaveValidador )
     then
     begin
@@ -3785,9 +3788,14 @@ procedure TDBInicio.ValidaOnline(
       // url := 'https://api.teste.compacta9.com.br/api/VerificarContrato/91' + // teste (retirar quando entrar em produção)
       // '?cpf_cnpj=' + pCnpj
       // else
-      url := 'https://api.compacta9.com.br/api/VerificarContrato/91' +
+      // url := 'https://api.compacta9.com.br/api/VerificarContrato/91' +
+      // url := LowerCase(BuscaUmDadoSqlAsString('SELECT PMT_CAMINHO_API FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) ) +  '?cpf_cnpj=' + pCnpj;
+
+
       // produção
-        '?cpf_cnpj=' + pCnpj;
+      url := LowerCase(BuscaUmDadoSqlAsString('SELECT PMT_CAMINHO_API FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) ) + '/api/VerificarContrato/91?cpf_cnpj=' + pCnpj;
+      // copytoclipboard(url);
+      // showmessage(url);
 
       retornoJSON := idHttp.get( url );
       dados := TJSonObject.ParseJSONValue( retornoJSON );

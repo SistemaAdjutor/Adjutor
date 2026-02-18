@@ -616,7 +616,10 @@ begin
    PrBar.Visible   := True;
    top  := 0;
    Left := 0;
-   chkValida.Checked
+   chkValidaVersao.Checked := BuscaUmDadoSqlAsString('SELECT PMT_VALIDA_VERSAO FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) = 'S';
+   edCaminhoApi.Text := BuscaUmDadoSqlAsString('SELECT PMT_CAMINHO_API FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) ) ;
+
+
 end;
 
 procedure TFrmManutencao.BtnCancelaClick(Sender: tObject);
@@ -2460,9 +2463,16 @@ begin
 end;
 
 procedure TFrmManutencao.SpeedButton1Click(Sender: TObject);
-
+var
+  pmtValidaVersao: string;
 begin
   inherited;
+  if ( Trim(edCaminhoApi.Text) = '') and chkValidaVersao.Checked  then
+  begin
+    MessageDlg('Caminho da API não pode ser vazio', mtInformation, [mbOk], 0);
+    Exit;
+  end;
+
   if MessageDlg(
        'Confirma a alteração dos dados no banco?',
        mtConfirmation,
@@ -2470,8 +2480,17 @@ begin
        0
      ) = mrYes then
   begin
-    dbInicio.ExecSQL('UPDATE EMP0000 SET
-    // Salvar no banco de dados
+    if chkValidaVersao.Checked then
+      pmtValidaVersao := 'S'
+    else
+      pmtValidaVersao := 'N';
+
+    dbInicio.ExecSQL('UPDATE EMP0000 ' +
+                     ' SET PMT_VALIDA_VERSAO = ' + QuotedStr(pmtValidaVersao) +
+                     ', PMT_CAMINHO_API = ' + QuotedStr(edCaminhoApi.Text) +
+                     ' WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)
+                     );
+
   end;
 
 end;

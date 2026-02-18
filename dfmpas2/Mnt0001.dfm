@@ -363,22 +363,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 18
     OnClick = Button18Click
   end
-  object Button19: TButton [22]
-    Left = 368
-    Top = 72
-    Width = 345
-    Height = 25
-    Caption = 'Acerto de Cidades Cliente/Fornecedores NFe (v.350)'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlue
-    Font.Height = -11
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-    TabOrder = 19
-    OnClick = Button19Click
-  end
-  object cbAlmoxarifado: TComboBoxRw [23]
+  object cbAlmoxarifado: TComboBoxRw [22]
     Left = 589
     Top = 336
     Width = 99
@@ -418,7 +403,7 @@ inherited FrmManutencao: TFrmManutencao
     itemindex = 0
     style = csDropDown
   end
-  object Button31: TButton [24]
+  object Button31: TButton [23]
     Left = 368
     Top = 333
     Width = 217
@@ -427,7 +412,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 31
     OnClick = Button31Click
   end
-  object Button30: TButton [25]
+  object Button30: TButton [24]
     Left = 368
     Top = 283
     Width = 345
@@ -442,7 +427,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 30
     OnClick = Button30Click
   end
-  object Button32: TButton [26]
+  object Button32: TButton [25]
     Left = 368
     Top = 308
     Width = 345
@@ -457,7 +442,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 33
     OnClick = Button32Click
   end
-  object Button29: TButton [27]
+  object Button29: TButton [26]
     Left = 16
     Top = 481
     Width = 345
@@ -466,7 +451,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 29
     OnClick = Button29Click
   end
-  object Button33: TButton [28]
+  object Button33: TButton [27]
     Left = 16
     Top = 508
     Width = 345
@@ -475,7 +460,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 34
     OnClick = Button33Click
   end
-  object pbTabela: TProgressBar [29]
+  object pbTabela: TProgressBar [28]
     Left = 16
     Top = 532
     Width = 150
@@ -483,7 +468,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 35
     Visible = False
   end
-  object pbCampo: TProgressBar [30]
+  object pbCampo: TProgressBar [29]
     Left = 211
     Top = 532
     Width = 150
@@ -491,7 +476,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 36
     Visible = False
   end
-  object Button28: TButton [31]
+  object Button28: TButton [30]
     Left = 16
     Top = 454
     Width = 345
@@ -506,7 +491,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 28
     OnClick = Button28Click
   end
-  object GroupBox1: TGroupBox [32]
+  object GroupBox1: TGroupBox [31]
     Left = 367
     Top = 391
     Width = 345
@@ -570,7 +555,7 @@ inherited FrmManutencao: TFrmManutencao
       OnClick = Button27Click
     end
   end
-  object Button25: TButton [33]
+  object Button25: TButton [32]
     Left = 368
     Top = 234
     Width = 345
@@ -585,7 +570,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 25
     OnClick = Button25Click
   end
-  object Button24: TButton [34]
+  object Button24: TButton [33]
     Left = 368
     Top = 209
     Width = 345
@@ -600,7 +585,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 24
     OnClick = Button24Click
   end
-  object Button23: TButton [35]
+  object Button23: TButton [34]
     Left = 368
     Top = 178
     Width = 345
@@ -620,7 +605,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 23
     OnClick = Button23Click
   end
-  object btApagarFaturamento: TButton [36]
+  object btApagarFaturamento: TButton [35]
     Left = 368
     Top = 360
     Width = 345
@@ -629,7 +614,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 37
     OnClick = btApagarFaturamentoClick
   end
-  object Button21: TButton [37]
+  object Button21: TButton [36]
     Left = 368
     Top = 97
     Width = 345
@@ -638,7 +623,7 @@ inherited FrmManutencao: TFrmManutencao
     TabOrder = 21
     OnClick = Button21Click
   end
-  object GroupBox2: TGroupBox [38]
+  object GroupBox2: TGroupBox [37]
     Left = 367
     Top = 550
     Width = 346
@@ -719,7 +704,7 @@ inherited FrmManutencao: TFrmManutencao
       Text = 'edCaminhoApi'
     end
   end
-  object Button20: TButton [39]
+  object Button20: TButton [38]
     Left = 368
     Top = 122
     Width = 345
@@ -727,6 +712,21 @@ inherited FrmManutencao: TFrmManutencao
     Caption = 'Nfe - Troca Homologa'#231#227'o p/ Produ'#231#227'o (Zera Generator + XML)'
     TabOrder = 20
     OnClick = Button20Click
+  end
+  object Button19: TButton [39]
+    Left = 368
+    Top = 72
+    Width = 345
+    Height = 25
+    Caption = 'Acerto de Cidades Cliente/Fornecedores NFe (v.350)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlue
+    Font.Height = -11
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 19
+    OnClick = Button19Click
   end
   inherited coCalcula: TACBrCalculadora
     Top = 624
