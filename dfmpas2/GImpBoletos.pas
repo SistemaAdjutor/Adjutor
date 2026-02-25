@@ -648,6 +648,7 @@ begin
            if CdsDuplicata.BookmarkValid(it) then
               CdsDuplicata.GotoBookmark(it);
      finally
+       CdsDuplicata.Filtered := False;
        CdsDuplicata.EnableControls;
 
      end;
