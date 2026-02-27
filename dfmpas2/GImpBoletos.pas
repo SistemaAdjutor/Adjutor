@@ -894,15 +894,18 @@ begin
      end;
      valortotal:=0;
      CdsDuplicata.DisableControls;
+     CdsHistorico.DisableControls;
      while not CdsDuplicata.Eof do
      begin
        valortotal:= valortotal +   CdsDuplicataFPC_VLPARC.AsFloat;
        CdsDuplicata.Next;
      end;
     CdsDuplicata.EnableControls;
+    cdsHistorico.EnableControls;
   FINALLY
      Screen.Cursor := crDefault;
      CdsDuplicata.EnableControls;
+     cdsHistorico.EnableControls;
      lRegistroCount.Caption := 'Nº boletos : '+ IntToStr(CdsDuplicata.RecordCount);;
      lvalortotal.Caption := ' Valor total: R$ '+FormatFloat('###,###,##.00',valortotal);
      edValorTotal.Value := 0;
@@ -963,7 +966,7 @@ var vCodBanco, wDigSantander: string;
     wqualNossoNumero : integer;
     Titulo: TACBrTitulo;
     lMulta: Currency ;
-    lDias, PadraoCarne, j: Integer;
+    lDias, PadraoCarne, j, RecNo: Integer;
     clone: TClientDataSet;
     CaminhoArquivo : string;
 
@@ -1190,9 +1193,11 @@ begin
                      ExecSql( 'UPDATE FAT_PC01 set FPC_COBNUM = '+qStr(NossoNumero)+',FPC_IMPDUP = '+qStr('S')+ ', FPC_DATABOLETO = '+ DateToSQL(titulo.DataDocumento) +
                                ' where FAT_REGISTRO = '+IntToStr(qAux2.FieldByName('FAT_REGISTRO').AsInteger)  );
                    end;
+                 RecNo := Clone.RecNo;
                  clone.Edit;
                  clone.FieldByName('FPC_COBNUM').AsString := Titulo.NossoNumero;
                  clone.Post;
+                 Clone.RecNo := RecNo; // o post começou a ir para o último registro da tabela...
                end
                Else
                begin
