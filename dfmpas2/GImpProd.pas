@@ -1772,6 +1772,9 @@ begin
              wSeleciona := SQLDEF('PRODUTOS','SELECT P1.PRD_REFER,P1.PRD_DESCRI,P1.PRD_COMPL,P1.PRD_PVENDA,P1.PRD_PESOKg,P1.PRD_EMBALA,P1.PRD_TABPRECO,P1.IPI_CODIGO,I1.IPI_ALIQ,P1.LIN_CODIGO,'+
                                              'L1.LIN_DESCRI FROM PRD0000 P1 LEFT JOIN PRD_LINHA L1 ON (P1.LIN_CODIGO = L1.LIN_CODIGO) LEFT JOIN IPI0000 I1 ON (P1.IPI_CODIGO = I1.IPI_CODIGO)',
                                              'WHERE P1.PRD_TABPRECO =''S'' and P1.PRD_STATUS = ''A'''    +
+                                             IIF (Edt_Almox.Text<>'9999' ,' and P1.AMX_CODIGO = '+QuotedStr(Edt_Almox.Text),'') +
+                                             IIF (Edt_Tipo.Text<>'999' ,' and P1.PTI_CODIGO = '+QuotedStr(Edt_Tipo.Text),'') +
+                                             IIF (Edt_Grupo.Text<>'999' ,' and P1.PGR_CODIGO = '+QuotedStr(Edt_Grupo.Text),'') +
                                              IIF (Edt_Linha.Text<>'999' ,' and L1.LIN_CODIGO = '+QuotedStr(Edt_Linha.Text),'')
                                              ,'L1.LIN_DESCRI,P1.PRD_DESCRI','P1.');
 
