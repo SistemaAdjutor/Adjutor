@@ -1,0 +1,7 @@
+﻿Inicio da versão: 05/03/2026
+Atualizado em 05/03/2026
+
+principal: Collect, Arkson
+	2177 - Revisão Collect - Emissão de Boleto e Duplicidade [Collect]
+	2181 - Arkson - Relatório em branco [Arkson]
+
