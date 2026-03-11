@@ -3001,7 +3001,8 @@ begin
       notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat + SomaTotalCBSIBS(AliqUF); // qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqUF  / 100) ;
     end
     else
-      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
+      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := SomaTotalCBSIBS(AliqUF);
+      // notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
 
     notaf.NFe.Total.IBSCBSTot.gIBS.gIBSUFTot.vIBSUF := SomaTotalCBSIBS(AliqUF);
     // notaf.NFe.Total.IBSCBSTot.gIBS.gIBSUFTot.vIBSUF := RoundTo(  qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqUF / 100),  -2);
@@ -3027,14 +3028,20 @@ end;
 function TfrmProcessaNFe.SomaTotalCBSIBS(aliquota: double) : double;
 var
   totItem: double;
+  base, imposto: Currency;
 begin
   qAux.Close;
   qAux.Sql.Text := qItemNota.SQL.Text;
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(qAux.Sql.Text);
   qAux.Open;
   totItem := 0;
   while not qAux.Eof do
   begin
-  	totItem := totItem + RoundTo( (qAux.FieldByNAme('NF_PRECO').AsFloat * qAux.FieldByNAme('NF_QTDE').AsFloat) * (aliquota / 100), -2);
+    base := qAux.FieldByName('NF_PRECO').AsCurrency *
+            qAux.FieldByName('NF_QTDE').AsCurrency;
+    imposto := base * (aliquota / 100);
+    totItem := totItem + SimpleRoundTo(imposto, -2);
     qAux.Next;
   end;
   Result := totItem
