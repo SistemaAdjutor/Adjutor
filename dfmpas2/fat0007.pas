@@ -153,6 +153,11 @@ type
     Label19: TLabel;
     SqlCdsNotaComplementarCLI_RAZAO: TStringField;
     SqlCdsNotaComplementarCLI_CODIGO: TStringField;
+    SqlCdsNotaComplementarNF_IPI_DEVOLVIDO: TStringField;
+    chkIPI_DEVOLVIDO: TDBCheckBox;
+    CdsItemComplementarNF_VALOR_CBS_EDITADO: TFMTBCDField;
+    CdsItemComplementarNF_VALOR_IBS_MUN_EDITADO: TFMTBCDField;
+    CdsItemComplementarNF_VALOR_IBS_UF_EDITADO: TFMTBCDField;
     procedure FormShow(Sender: tObject);
     procedure FormClose(Sender: tObject; var Action: TCloseAction);
     procedure BitSairClick(Sender: tObject);
@@ -198,6 +203,9 @@ begin
       // CdsItemComplementar.CommandText := SQLDEF('PEDIDOS',wSql1,wSeleciona,wOrdem,'T1.');
       CdsItemComplementar.CommandText := wSql1 + wSeleciona ;
       CdsItemComplementar.Open;
+
+      chkIPI_DEVOLVIDO.Visible :=  DBInicio.Empresa.OPT_SIMPLES = 'S';
+
     except on E:EdataBaseError do
        uteis.erro  (pchar('Erro ao localizar a nota fiscal !'+e.message));
     end;

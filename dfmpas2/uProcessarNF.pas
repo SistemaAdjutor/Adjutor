@@ -247,7 +247,8 @@ begin
       Produto.Prod.CEST := qItemNota.FieldByName('CEST_COD').asString;
     Produto.Prod.IndTot  :=itSomaTotalNFe; {O Valor do item compoe o valor total da nota 0=Sim 1=Nao}
 
-    if (NotaF.NFe.Ide.finNFe = fnDevolucao) and (fOPT_SIMPLES = 'S') then
+
+    if ((NotaF.NFe.Ide.finNFe = fnDevolucao) or (qNota.FieldByName('NF_IPI_DEVOLVIDO').AsString = 'S')) and (fOPT_SIMPLES = 'S') then
     begin
      Produto.pDevol := qItemNota.FieldByName('NF_IPIALIQ').AsFloat;
      Produto.vIPIDevol := qItemNota.FieldByName('NF_IPIVALOR').AsFloat;
@@ -441,14 +442,18 @@ begin
 
 
 
-
+        // --- IBS ---
         Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.pIBSMun := AliqMun;
-        Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun :=
-          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqMun / 100), -2);
+        if qItemNota.FieldByName('NF_VALOR_IBS_MUN_EDITADO').AsCurrency > 0 then
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun := qItemNota.FieldByName('NF_VALOR_IBS_MUN_EDITADO').AsCurrency
+        else
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun.vIBSMun := RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqMun / 100), -2);
 
         Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.pIBSUF := AliqUF;
-        Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF :=
-          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqUF / 100), -2);
+        if qItemNota.FieldByName('NF_VALOR_IBS_UF_EDITADO').AsCurrency > 0 then
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF := qItemNota.FieldByName('NF_VALOR_IBS_UF_EDITADO').AsCurrency
+        else
+          Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF.vIBSUF := RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqUF / 100), -2);
 
         // Valor total do IBS
         Produto.Imposto.IBSCBS.gIBSCBS.vIBS :=
@@ -472,8 +477,10 @@ begin
 
         Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
         Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS := AliqCBS;
-        Produto.Imposto.IBSCBS.gIBSCBS.gCBS.vCBS :=
-          RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqCBS / 100), -2);
+        if qItemNota.FieldByName('NF_VALOR_CBS_EDITADO').AsCurrency > 0 then
+          Produto.Imposto.IBSCBS.gIBSCBS.gCBS.vCBS := qItemNota.FieldByName('NF_VALOR_CBS_EDITADO').AsCurrency
+        else
+          Produto.Imposto.IBSCBS.gIBSCBS.gCBS.vCBS := RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqCBS / 100), -2);
       end;
 
 
@@ -615,7 +622,7 @@ procedure TfrmProcessaNFe.BuscaItem(const Nota: string);
 begin
     qItemNota.Close;
     qItemNota.SQL.Clear;
-    qItemNota.SQL.Add('SELECT it.CST_IPI, it.PRDCO_CODIGO_ORIGINAL, it.PRD_REFER, it.PRD_DESCRI, it.IPI_CODIGO, it.NTP_CFOP, it.OPE_CODIGO,');
+    qItemNota.SQL.Add('SELECT it.NF_VALOR_CBS_EDITADO, it.NF_VALOR_IBS_MUN_EDITADO, it.NF_VALOR_IBS_UF_EDITADO, it.CST_IPI, it.PRDCO_CODIGO_ORIGINAL, it.PRD_REFER, it.PRD_DESCRI, it.IPI_CODIGO, it.NTP_CFOP, it.OPE_CODIGO,');
     qItemNota.SQL.Add('CASE WHEN pid.PRD_UND IS NULL THEN pr.PRD_UND ELSE pid.PRD_UND END AS PRD_UND, it.NF_QTDE, it.NF_PRECO, it.PRD_COMPL_DESCRI,');
     qItemNota.SQL.Add('pr.PRD_ESPECIFICO, pr.ID_PRD_ESPECIFICO, CAST(it.NF_TOTALITEM AS NUMERIC(18,2)) AS TOTAL, it.NF_IFRETE, it.NF_IDESP_ACES,');
     qItemNota.SQL.Add('it.NF_ISEGURO, it.NF_IDESCTO1, pid.PRF_REGISTRO, lo.PRDL_REGISTRO, lo.PRDL_DATA_VALIDADE, lo.PRDL_DATA_FABRICACAO, lo.PRDL_LOTE,');
@@ -628,12 +635,13 @@ begin
     qItemNota.SQL.Add('pr.PRD_CODBARRA, it.NF_ALIQDOSIMPLES, it.NF_CREDICMSDOSIMPLES, it.NF_ICMSSUBSTITUTO_ANT, it.NF_CBENEF, pr.PRD_UND_TRIB,');
     qItemNota.SQL.Add('pid.PRF_QUANT_TRIB, it.NF_VALOR_FCP_ST, it.CST_PIS, it.CST_COFINS, it.NF_VALORICMSDESON, it.NF_MOTIVDESON, pr.PRD_VAIXML,');
     qItemNota.SQL.Add('op.OPE_CENQ_IPI, pr.PRD_CODIGO_FCI, it.NF_ALIQCREDSIMPLES, it.NF_VLCREDSIMPLES, cid.CID_COD_IBGE,');
+
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_CODIGO, ibs_pr.IBS_CODIGO, ibs_cfop.IBS_CODIGO) AS IBS_CODIGO,');
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_DESCRICAO, ibs_pr.IBS_DESCRICAO, ibs_cfop.IBS_DESCRICAO) AS IBS_DESCRICAO,');
-    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA, ibs_pr.IBS_ALIQUOTA, ibs_cfop.IBS_ALIQUOTA) AS IBS_ALIQUOTA,');
-    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA_UF, ibs_pr.IBS_ALIQUOTA_UF, ibs_cfop.IBS_ALIQUOTA_UF) AS IBS_ALIQUOTA_UF,');
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CODIGO, cbs_cfop.CBS_CODIGO) AS CBS_CODIGO,');
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_DESCRICAO, cbs_cfop.CBS_DESCRICAO) AS CBS_DESCRICAO,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA, ibs_pr.IBS_ALIQUOTA, ibs_cfop.IBS_ALIQUOTA) AS IBS_ALIQUOTA,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA_UF, ibs_pr.IBS_ALIQUOTA_UF, ibs_cfop.IBS_ALIQUOTA_UF) AS IBS_ALIQUOTA_UF,');
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA');
     qItemNota.SQL.Add('FROM NF_IT01 it');
     qItemNota.SQL.Add('JOIN NF0001 nf ON (nf.NF_NOTANUMBER = it.NF_IT_NOTANUMER)' );
@@ -676,7 +684,7 @@ begin
 
 
  qNota.CommandText :=
-    ' SELECT nf_status_nfe, nf.nf_num_nfe, nf.NF_NOTANUMBER, OPE_DESCRINATUREZA, NF.PCL_CODIGO, PC.PCL_NOME ,PC.PCL_MODALIDADE, NF_ENTR_SAID, nf_finalidade,  '+
+    ' SELECT nf.NF_IPI_DEVOLVIDO, nf.NF_COMPLEMENTAR,  nf_status_nfe, nf.nf_num_nfe, nf.NF_NOTANUMBER, OPE_DESCRINATUREZA, NF.PCL_CODIGO, PC.PCL_NOME ,PC.PCL_MODALIDADE, NF_ENTR_SAID, nf_finalidade,  '+
     ' OPE_TIPO_OPERACAO,ped.CLI_CONSFINAL,ENDERECO_ENTREGA, nf.CLI_CODIGO, COALESCE(ED.ESTADO, CLI_UF) CLI_UF_ENTR ,CLI_UF,          '+
     ' CLI_CGC,CLI_INSCMUNI,  CLI_FANTASIA,  CLI_INSC,CLI_SUFRAMA,cl.CLI_RAZAO , CLI_FONE, CLI_ENDERE,                 '+
     ' cli_bairro, cl.cli_cidade,CLI_EMAIL,   CLI_CEP, pa.pai_pais, cl.pai_codigo,                                                      '+
@@ -2962,7 +2970,7 @@ begin
      end;
 
 
-     if (NotaF.NFe.Ide.finNFe = fnDevolucao) and (fOPT_SIMPLES = 'S') then
+     if ( (NotaF.NFe.Ide.finNFe = fnDevolucao)  or (qNota.FieldByName('NF_IPI_DEVOLVIDO').AsString = 'S') ) and (fOPT_SIMPLES = 'S') then
      begin
        vIPIDevol := qNota.FieldByName('NF_VL_IPI').AsFloat ;
 

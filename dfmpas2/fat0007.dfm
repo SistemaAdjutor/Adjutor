@@ -4,7 +4,7 @@ object FormComplementarNFe: TFormComplementarNFe
   BorderIcons = [biSystemMenu]
   Caption = 'Edi'#231#227'o de Nota Fiscal Faturada'
   ClientHeight = 602
-  ClientWidth = 1099
+  ClientWidth = 1156
   Color = clBtnFace
   Font.Charset = ANSI_CHARSET
   Font.Color = clBlack
@@ -35,11 +35,12 @@ object FormComplementarNFe: TFormComplementarNFe
   object GroupBox1: TGroupBox
     Left = 0
     Top = 197
-    Width = 1099
+    Width = 1156
     Height = 101
     Align = alTop
     Caption = 'Impostos e Totais'
     TabOrder = 1
+    ExplicitWidth = 1099
     object Label1: TLabel
       Left = 19
       Top = 16
@@ -274,15 +275,16 @@ object FormComplementarNFe: TFormComplementarNFe
   object GroupBox3: TGroupBox
     Left = 0
     Top = 298
-    Width = 1099
+    Width = 1156
     Height = 183
     Align = alTop
     Caption = 'Dados dos Produtos/Servi'#231'os'
     TabOrder = 2
+    ExplicitWidth = 1099
     object DBGrid1: TDBGrid
       Left = 2
       Top = 16
-      Width = 1095
+      Width = 1152
       Height = 165
       Align = alClient
       DataSource = DsItemComplementar
@@ -419,16 +421,35 @@ object FormComplementarNFe: TFormComplementarNFe
           Title.Caption = 'MVA%'
           Width = 50
           Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NF_VALOR_CBS_EDITADO'
+          Title.Caption = 'Vl. CBS'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NF_VALOR_IBS_MUN_EDITADO'
+          Title.Caption = 'Vl. IBS Mun.'
+          Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'NF_VALOR_IBS_UF_EDITADO'
+          Title.Caption = 'Vl. IBS UF '
+          Visible = True
         end>
     end
   end
   object Panel1: TPanel
     Left = 0
     Top = 125
-    Width = 1099
+    Width = 1156
     Height = 72
     Align = alTop
     TabOrder = 0
+    ExplicitWidth = 1099
     object Label11: TLabel
       Left = 17
       Top = 23
@@ -554,20 +575,33 @@ object FormComplementarNFe: TFormComplementarNFe
       Enabled = False
       TabOrder = 5
     end
+    object chkIPI_DEVOLVIDO: TDBCheckBox
+      Left = 984
+      Top = 40
+      Width = 97
+      Height = 17
+      Caption = 'IPI Devolvido'
+      DataField = 'NF_IPI_DEVOLVIDO'
+      DataSource = DsNotaComplementar
+      TabOrder = 6
+      ValueChecked = 'S'
+      ValueUnchecked = 'F'
+    end
   end
   object GroupBox2: TGroupBox
     Left = 0
     Top = 0
-    Width = 1099
+    Width = 1156
     Height = 125
     Align = alTop
     Caption = 'Informativo'
     Enabled = False
     TabOrder = 6
+    ExplicitWidth = 1099
     object mmo1: TMemo
       Left = 2
       Top = 16
-      Width = 1095
+      Width = 1152
       Height = 107
       Align = alClient
       Font.Charset = ANSI_CHARSET
@@ -597,25 +631,28 @@ object FormComplementarNFe: TFormComplementarNFe
           'no XML')
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 1095
     end
   end
   object GroupBox4: TGroupBox
     Left = 0
     Top = 481
-    Width = 1099
+    Width = 1156
     Height = 78
     Align = alTop
     Caption = 'Dados Adicionais'
     TabOrder = 7
+    ExplicitWidth = 1099
     object DBMemo1: TDBMemo
       Left = 2
       Top = 16
-      Width = 1095
+      Width = 1152
       Height = 60
       Align = alClient
       DataField = 'NF_OBSERVACAO'
       DataSource = DsNotaComplementar
       TabOrder = 0
+      ExplicitWidth = 1095
     end
   end
   object SqlCdsNotaComplementar: TSqlClientDataSet
@@ -838,6 +875,10 @@ object FormComplementarNFe: TFormComplementarNFe
     object SqlCdsNotaComplementarCLI_CODIGO: TStringField
       FieldName = 'CLI_CODIGO'
       Size = 5
+    end
+    object SqlCdsNotaComplementarNF_IPI_DEVOLVIDO: TStringField
+      FieldName = 'NF_IPI_DEVOLVIDO'
+      Size = 1
     end
   end
   object DsNotaComplementar: TDataSource
@@ -1113,6 +1154,18 @@ object FormComplementarNFe: TFormComplementarNFe
     object CdsItemComplementarNF_CSOSN: TStringField
       FieldName = 'NF_CSOSN'
       Size = 3
+    end
+    object CdsItemComplementarNF_VALOR_CBS_EDITADO: TFMTBCDField
+      FieldName = 'NF_VALOR_CBS_EDITADO'
+      Size = 5
+    end
+    object CdsItemComplementarNF_VALOR_IBS_MUN_EDITADO: TFMTBCDField
+      FieldName = 'NF_VALOR_IBS_MUN_EDITADO'
+      Size = 5
+    end
+    object CdsItemComplementarNF_VALOR_IBS_UF_EDITADO: TFMTBCDField
+      FieldName = 'NF_VALOR_IBS_UF_EDITADO'
+      Size = 5
     end
   end
   object DsItemComplementar: TDataSource
