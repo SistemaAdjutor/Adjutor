@@ -107,6 +107,7 @@ type
     SqlCdsNotasDisponiveisPRD_REFER_PAI: TStringField;
     chkSaldo: TCheckBox;
     ImageList1: TImageList;
+    SqlCdsNotasDisponiveisPRD_ESTOQUE: TFMTBCDField;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);
@@ -232,6 +233,7 @@ begin
   qAux.SQL.Text := 'SELECT ft.PRD_REFER_ITENS FROM FTC_IT01 ft WHERE ft.PRD_REFER = ' + QuotedStr(prdRefer.Text) ;
   qAux.Open;
   sql :=       'SELECT ' +
+      '    (SELECT SUM(KAS_SALDO) - COALESCE(sum(KAS_RESERVA), 0) FROM KARDEX_ALMOX_SALDO kas WHERE kas.PRD_CODIGO = ei.PRD_CODIGO AND (kas.AMX_CODIGO <> '''') ) AS PRD_ESTOQUE, ' +
       '    ft.FTI_UC as QuantidadeFT,'+
       '    (SELECT SUM(CAST(ROUND(pk.QTD_RETORNADO, 4) AS double precision) ) ' +
       '       FROM PED_IND_KIT pk ' +
@@ -290,7 +292,7 @@ begin
     sql := sql + '';
 
 
-  sql := sql +  '  order by 15,10'; // o firebird não aceitou o nome das colunas...
+  sql := sql +  '  order by 16,11'; // o firebird não aceitou o nome das colunas...
 
   qSqlCdsNotasDisponiveis.sql.Text := sql;
   if DBInicio.IsDesenvolvimento then
@@ -302,8 +304,10 @@ begin
   while not SqlCdsNotasDisponiveis.Eof do
   begin
     SqlCdsNotasDisponiveis.Edit;
-    SqlCdsNotasDisponiveisSaldo.AsFloat := SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat;
-    if SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat > 0 then
+//    SqlCdsNotasDisponiveisSaldo.AsFloat := SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat;
+//    if SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat > 0 then
+    SqlCdsNotasDisponiveisSaldo.AsFloat := SqlCdsNotasDisponiveisPRD_ESTOQUE.AsFloat;
+    if SqlCdsNotasDisponiveisPRD_ESTOQUE.AsFloat > 0 then
       SqlCdsNotasDisponiveisSelecao.AsBoolean := True
     else
       SqlCdsNotasDisponiveisSelecao.AsBoolean := False;
