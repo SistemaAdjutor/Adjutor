@@ -1,7 +1,15 @@
 ﻿Inicio da versão: 05/03/2026
-Atualizado em 05/03/2026
+Atualizado em 24/03/2026
 
 principal: Collect, Arkson
 	2177 - Revisão Collect - Emissão de Boleto e Duplicidade [Collect]
 	2181 - Arkson - Relatório em branco [Arkson]
 
+patch 1: Arkson, Jonas Chylka, Arconti, Bepine, EDGE
+    2190 - Melhoria NF-Editável [Arkson]
+	2191 - Jonas Chyla - Alterar forma que o sistema compõe o DI [Jonas Chyla]
+	2192 - Arconti - Erro na emissão com contribuinte isento de IE [Arconti]
+	2186 - Bepine - Valor do IPI devolvido na tag </vIPIDevol> [Bepine]
+	2187 - EDGE - RETORNO DE INDUSTRIALIZAÇÃO COM SALDO INCORRETO [EDGE]
+	2188 - Diferença de R$0,01 no total de CBS — rejeição SEFAZ [Arkson]
+	
