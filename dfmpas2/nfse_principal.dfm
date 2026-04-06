@@ -4854,9 +4854,9 @@ inherited frmNfse: TfrmNfse
     CasasDecimais.MaskAliquota = ',0.00'
     ACBrNFSe = ACBrNFSe1
     Cancelada = False
-    Provedor = proNenhum
     TamanhoFonte = 6
     FormatarNumeroDocumentoNFSe = True
+    Provedor = proNenhum
     Producao = snSim
     Left = 462
     Top = 319

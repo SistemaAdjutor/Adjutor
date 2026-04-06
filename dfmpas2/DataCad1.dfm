@@ -1733,6 +1733,22 @@ object DataCadastros1: TDataCadastros1
       FieldName = 'PMT_SOMA_IBS_UF_BASE_CALCULO'
       Size = 1
     end
+    object SqlParametrosPMT_CSRT_HOMOLOGACAO: TStringField
+      FieldName = 'PMT_CSRT_HOMOLOGACAO'
+      Size = 50
+    end
+    object SqlParametrosPMT_ID_CSRT_HOMOLOGACAO: TStringField
+      FieldName = 'PMT_ID_CSRT_HOMOLOGACAO'
+      Size = 2
+    end
+    object SqlParametrosPMT_CSRT_PRODUCAO: TStringField
+      FieldName = 'PMT_CSRT_PRODUCAO'
+      Size = 50
+    end
+    object SqlParametrosPMT_ID_CSRT_PRODUCAO: TStringField
+      FieldName = 'PMT_ID_CSRT_PRODUCAO'
+      Size = 2
+    end
   end
   object DspParametros: TDataSetProvider
     DataSet = SqlParametros
@@ -3110,6 +3126,22 @@ object DataCadastros1: TDataCadastros1
     object CdsParametrosPMT_SOMA_IBS_UF_BASE_CALCULO: TStringField
       FieldName = 'PMT_SOMA_IBS_UF_BASE_CALCULO'
       Size = 1
+    end
+    object CdsParametrosPMT_CSRT_HOMOLOGACAO: TStringField
+      FieldName = 'PMT_CSRT_HOMOLOGACAO'
+      Size = 50
+    end
+    object CdsParametrosPMT_ID_CSRT_HOMOLOGACAO: TStringField
+      FieldName = 'PMT_ID_CSRT_HOMOLOGACAO'
+      Size = 2
+    end
+    object CdsParametrosPMT_CSRT_PRODUCAO: TStringField
+      FieldName = 'PMT_CSRT_PRODUCAO'
+      Size = 50
+    end
+    object CdsParametrosPMT_ID_CSRT_PRODUCAO: TStringField
+      FieldName = 'PMT_ID_CSRT_PRODUCAO'
+      Size = 2
     end
   end
   object DsParametros: TDataSource

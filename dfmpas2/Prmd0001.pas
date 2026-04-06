@@ -1787,7 +1787,6 @@ type
     GroupBox38: TGroupBox;
     Label489: TLabel;
     DBCheckBox44: TDBCheckBox;
-    DBCheckBox49: TDBCheckBox;
     DBCheckBox59: TDBCheckBox;
     PMT_DESCRICAO_99_OUTROS: TDBEdit;
     DBCheckBox76: TDBCheckBox;
@@ -1880,6 +1879,17 @@ type
     DBEdit71: TDBEdit;
     DBCheckBox105: TDBCheckBox;
     DBCheckBox106: TDBCheckBox;
+    GroupBox45: TGroupBox;
+    Label686: TLabel;
+    dbIDCSRT: TDBEdit;
+    DBEdit72: TDBEdit;
+    Label687: TLabel;
+    DBCheckBox49: TDBCheckBox;
+    GroupBox46: TGroupBox;
+    Label688: TLabel;
+    Label689: TLabel;
+    DBEdit73: TDBEdit;
+    DBEdit74: TDBEdit;
 
 
     procedure FormShow(Sender: tObject);

@@ -493,7 +493,7 @@ inherited FormParametros: TFormParametros
       Width = 767
       Height = 509
       Align = alClient
-      PageIndex = 8
+      PageIndex = 12
       TabOrder = 0
       object TPage
         Left = 0
@@ -5387,7 +5387,7 @@ inherited FormParametros: TFormParametros
             Top = 1
             Width = 765
             Height = 507
-            ActivePage = tsEntrada
+            ActivePage = tsSaida
             Align = alClient
             TabOrder = 0
             object tsEntrada: TTabSheet
@@ -5516,6 +5516,7 @@ inherited FormParametros: TFormParametros
             object tsSaida: TTabSheet
               Caption = 'Sa'#237'da'
               ImageIndex = 1
+              ExplicitTop = 31
               object Label13: TLabel
                 Left = 10
                 Top = 14
@@ -5539,7 +5540,7 @@ inherited FormParametros: TFormParametros
               end
               object Label_669: TLabel
                 Left = 10
-                Top = 425
+                Top = 461
                 Width = 101
                 Height = 14
                 Caption = 'Descri'#231#227'o 99 outros:'
@@ -5660,10 +5661,10 @@ inherited FormParametros: TFormParametros
                 ValueUnchecked = 'N'
               end
               object dbrgrpValorAproximado: TDBRadioGroup
-                Left = 469
-                Top = 373
+                Left = 516
+                Top = 417
                 Width = 238
-                Height = 81
+                Height = 59
                 Caption = 'Valor Aproximado dos Tributos - NFe'
                 DataField = 'PMT_VALOR_APROX_TRIB'
                 DataSource = DataCadastros1.DsParametros
@@ -5711,51 +5712,39 @@ inherited FormParametros: TFormParametros
                   OnExit = DBCheckBox44Exit
                 end
               end
-              object DBCheckBox49: TDBCheckBox
-                Left = 122
-                Top = 337
-                Width = 200
-                Height = 17
-                Caption = 'Incluir tag respons'#225'vel t'#233'cnico'
-                DataField = 'PMT_RESPONSAVEL_TECNICO'
-                DataSource = DataCadastros1.DsParametros
-                TabOrder = 11
-                ValueChecked = 'S'
-                ValueUnchecked = 'N'
-              end
               object DBCheckBox59: TDBCheckBox
-                Left = 122
-                Top = 353
-                Width = 450
+                Left = 95
+                Top = 427
+                Width = 402
                 Height = 17
                 Caption = 
                   'Retirar ICMS da base de calculo do PISe COFINS de acordo com a s' +
                   'enten'#231'a STF'
                 DataField = 'PMT_RETIRAR_ICMS_BASECOFINSPIS'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 12
+                TabOrder = 11
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
               object PMT_DESCRICAO_99_OUTROS: TDBEdit
                 Left = 122
-                Top = 417
+                Top = 453
                 Width = 303
                 Height = 22
                 CharCase = ecUpperCase
                 DataField = 'PMT_DESCRICAO_99_OUTROS'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 13
+                TabOrder = 12
               end
               object DBCheckBox76: TDBCheckBox
-                Left = 122
-                Top = 370
+                Left = 95
+                Top = 394
                 Width = 178
                 Height = 17
                 Caption = 'Habilitar C'#225'lculo do DIFAL'
                 DataField = 'PMT_HABILITAR_DIFAL'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 14
+                TabOrder = 13
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
               end
@@ -5771,7 +5760,7 @@ inherited FormParametros: TFormParametros
                   'FAST-Retrato '
                   'FORTES-Retrato(novo)'
                   'FORTES-Paisagem(novo)')
-                TabOrder = 15
+                TabOrder = 14
                 Values.Strings = (
                   '1'
                   '2'
@@ -5786,7 +5775,7 @@ inherited FormParametros: TFormParametros
                 Caption = ' Permitir Faturamento sem Informar Peso Nota Fiscal'
                 DataField = 'PMT_FATURA_SEM_PESO'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 16
+                TabOrder = 15
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
                 OnExit = DBCheckBox44Exit
@@ -5797,7 +5786,7 @@ inherited FormParametros: TFormParametros
                 Width = 754
                 Height = 122
                 Caption = 'Mensagens Padr'#227'o'
-                TabOrder = 17
+                TabOrder = 16
                 object Label12: TLabel
                   Left = 57
                   Top = 20
@@ -5868,16 +5857,108 @@ inherited FormParametros: TFormParametros
                 end
               end
               object DBCheckBox100: TDBCheckBox
-                Left = 122
-                Top = 386
+                Left = 95
+                Top = 410
                 Width = 178
                 Height = 17
                 Caption = 'Somar DIFAL no Total da NF'
                 DataField = 'PMT_ADICIONAR_DIFAL_TOTAL_NF'
                 DataSource = DataCadastros1.DsParametros
-                TabOrder = 18
+                TabOrder = 17
                 ValueChecked = 'S'
                 ValueUnchecked = 'N'
+              end
+              object GroupBox45: TGroupBox
+                Left = 296
+                Top = 337
+                Width = 458
+                Height = 40
+                Caption = 'Homologa'#231#227'o'
+                TabOrder = 18
+                object Label686: TLabel
+                  Left = 19
+                  Top = 16
+                  Width = 41
+                  Height = 14
+                  Caption = 'ID CSRT:'
+                end
+                object Label687: TLabel
+                  Left = 109
+                  Top = 16
+                  Width = 29
+                  Height = 14
+                  Caption = 'CSRT:'
+                end
+                object dbIDCSRT: TDBEdit
+                  Left = 66
+                  Top = 13
+                  Width = 33
+                  Height = 22
+                  DataField = 'PMT_ID_CSRT_HOMOLOGACAO'
+                  DataSource = DataCadastros1.DsParametros
+                  TabOrder = 0
+                end
+                object DBEdit72: TDBEdit
+                  Left = 142
+                  Top = 13
+                  Width = 299
+                  Height = 22
+                  DataField = 'PMT_CSRT_HOMOLOGACAO'
+                  DataSource = DataCadastros1.DsParametros
+                  TabOrder = 1
+                end
+              end
+              object DBCheckBox49: TDBCheckBox
+                Left = 122
+                Top = 337
+                Width = 178
+                Height = 17
+                Caption = 'Incluir tag respons'#225'vel t'#233'cnico'
+                DataField = 'PMT_RESPONSAVEL_TECNICO'
+                DataSource = DataCadastros1.DsParametros
+                TabOrder = 19
+                ValueChecked = 'S'
+                ValueUnchecked = 'N'
+              end
+              object GroupBox46: TGroupBox
+                Left = 296
+                Top = 376
+                Width = 458
+                Height = 40
+                Caption = 'Produ'#231#227'o'
+                TabOrder = 20
+                object Label688: TLabel
+                  Left = 19
+                  Top = 16
+                  Width = 41
+                  Height = 14
+                  Caption = 'ID CSRT:'
+                end
+                object Label689: TLabel
+                  Left = 109
+                  Top = 16
+                  Width = 29
+                  Height = 14
+                  Caption = 'CSRT:'
+                end
+                object DBEdit73: TDBEdit
+                  Left = 66
+                  Top = 13
+                  Width = 33
+                  Height = 22
+                  DataField = 'PMT_ID_CSRT_PRODUCAO'
+                  DataSource = DataCadastros1.DsParametros
+                  TabOrder = 0
+                end
+                object DBEdit74: TDBEdit
+                  Left = 142
+                  Top = 13
+                  Width = 299
+                  Height = 22
+                  DataField = 'PMT_CSRT_PRODUCAO'
+                  DataSource = DataCadastros1.DsParametros
+                  TabOrder = 1
+                end
               end
             end
             object TabSheet4: TTabSheet

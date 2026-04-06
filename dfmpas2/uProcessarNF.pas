@@ -107,6 +107,11 @@ type
     procedure CarregarParametros;
     property EmpCodigo : string read fEmp_codigo write SetEmpCodigo;
     function SomaTotalCBSIBS(aliquota: double): double;
+    function ObterCSRT(const EmpCodigo: string; const Ambiente: TACBrTipoAmbiente; out IdCSRT: string): string;
+    function GerarHashCSRT(const CSRT, ChaveNFe: string): string;
+    procedure AplicarCSRTNaNFe;
+    procedure InjetarCSRTNoXML;
+
   end;
 
 var
@@ -2689,9 +2694,27 @@ begin
   end;
 
 
-  //informações complementares do tecnico responsável somente para ambiente de homologação
- // if ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao then
- if fPMT_RESPONSAVEL_TECNICO OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
+   if fPMT_RESPONSAVEL_TECNICO OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
+   begin
+      AplicarCSRTNaNFe;
+      InjetarCSRTNoXML
+   end;
+
+
+   {
+  ShowMessage(
+    'ID: ' + IntToStr(ACBrNFe1.NotasFiscais.Items[0].NFe.infRespTec.idCSRT) + sLineBreak +
+    'HASH: ' + ACBrNFe1.NotasFiscais.Items[0].NFe.infRespTec.hashCSRT
+  );
+
+
+    }
+
+
+
+  {
+
+  if fPMT_RESPONSAVEL_TECNICO OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
   begin
     if (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
       CSRT := 'HJX0FBGCX9U9H9J78S33W0X02E0VTP9L5R8T'  // homologação
@@ -2712,9 +2735,131 @@ begin
       hashCSRT := CSRTValida;
     end;
   end;
-
-
+  }
 end;
+
+
+procedure TfrmProcessaNFe.InjetarCSRTNoXML;
+var
+  XML: string;
+  Item: Integer;
+  Id: string;
+  Hash: string;
+begin
+  Item := 0;
+
+  Id := IntToStr(ACBrNFe1.NotasFiscais.Items[Item].NFe.infRespTec.idCSRT);
+  Hash := ACBrNFe1.NotasFiscais.Items[Item].NFe.infRespTec.hashCSRT;
+
+  if (Id = '0') or (Hash = '') then
+    Exit;
+
+  ACBrNFe1.NotasFiscais.Items[Item].GerarXML;
+  XML := ACBrNFe1.NotasFiscais.Items[Item].XML;
+
+  XML := StringReplace(XML,
+    '</infRespTec>',
+    '<idCSRT>' + StrZero(Id, 2) + '</idCSRT>' +
+    '<hashCSRT>' + Hash + '</hashCSRT>' +
+    '</infRespTec>',
+    []);
+
+  ACBrNFe1.NotasFiscais.Items[Item].XML := XML;
+end;
+
+
+
+
+function TfrmProcessaNFe.ObterCSRT(
+  const EmpCodigo: string;
+  const Ambiente: TACBrTipoAmbiente;
+  out IdCSRT: string
+): string;
+begin
+  Result := '';
+  IdCSRT := '';
+
+  qAux.Close;
+  qAux.SQL.Text :=
+    'SELECT PMT_CSRT_HOMOLOGACAO, PMT_ID_CSRT_HOMOLOGACAO, ' +
+    '       PMT_CSRT_PRODUCAO, PMT_ID_CSRT_PRODUCAO ' +
+    'FROM PRMT0001 ' +
+    'WHERE EMP_CODIGO = :EMP_CODIGO';
+
+  qAux.ParamByName('EMP_CODIGO').AsString := EmpCodigo;
+  qAux.Open;
+
+  if not qAux.IsEmpty then
+  begin
+    if Ambiente = taHomologacao then
+    begin
+      Result := Trim(qAux.FieldByName('PMT_CSRT_HOMOLOGACAO').AsString);
+      IdCSRT := Trim(qAux.FieldByName('PMT_ID_CSRT_HOMOLOGACAO').AsString);
+    end
+    else
+    begin
+      Result := Trim(qAux.FieldByName('PMT_CSRT_PRODUCAO').AsString);
+      IdCSRT := Trim(qAux.FieldByName('PMT_ID_CSRT_PRODUCAO').AsString);
+    end;
+  end;
+end;
+
+function TfrmProcessaNFe.GerarHashCSRT(const CSRT, ChaveNFe: string): string;
+var
+  Texto: string;
+  Hash: TBytes;
+begin
+  Texto := CSRT + ChaveNFe;
+
+  Hash := THashSHA1.GetHashBytes(Texto);
+
+  Result := TNetEncoding.Base64.EncodeBytesToString(Hash);
+end;
+
+procedure TfrmProcessaNFe.AplicarCSRTNaNFe;
+var
+  CSRT, IdCSRT2, Chave, HashCSRT2: string;
+begin
+  CSRT := ObterCSRT(
+            dbInicio.EMP_CODIGO,
+            ACBrNFe1.Configuracoes.WebServices.Ambiente,
+            IdCSRT2
+          );
+
+  // só aplica se estiver configurado
+  if (CSRT = '') or (IdCSRT2 = '') then
+    Exit;
+
+  // remove prefixo "NFe"
+  Chave := StringReplace(NotaF.NFe.infNFe.ID, 'NFe', '', []);
+
+  // gera hash
+  HashCSRT2 := GerarHashCSRT(CSRT, Chave);
+
+  // aplica no XML
+  with ACBrNFe1.NotasFiscais.Items[0].NFe.infRespTec do
+  begin
+    CNPJ     := '11089061000193';
+    xContato := 'Marcio Pacheco - Novi Sistemas';
+    email    := 'roseli@novisistemas.com.br';
+    fone     := '4135038230';
+    idCSRT   := StrToInt(IdCSRT2);
+    hashCSRT := HashCSRT2;
+  end;
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function TfrmProcessaNFe.GerarSeqNFCe: string;
 var i: integer;

@@ -1741,6 +1741,14 @@ type
     CdsParametrosPMT_CST_IBS_CBS: TStringField;
     SqlParametrosPMT_SOMA_IBS_UF_BASE_CALCULO: TStringField;
     CdsParametrosPMT_SOMA_IBS_UF_BASE_CALCULO: TStringField;
+    SqlParametrosPMT_CSRT_HOMOLOGACAO: TStringField;
+    SqlParametrosPMT_ID_CSRT_HOMOLOGACAO: TStringField;
+    SqlParametrosPMT_CSRT_PRODUCAO: TStringField;
+    SqlParametrosPMT_ID_CSRT_PRODUCAO: TStringField;
+    CdsParametrosPMT_CSRT_HOMOLOGACAO: TStringField;
+    CdsParametrosPMT_ID_CSRT_HOMOLOGACAO: TStringField;
+    CdsParametrosPMT_CSRT_PRODUCAO: TStringField;
+    CdsParametrosPMT_ID_CSRT_PRODUCAO: TStringField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);

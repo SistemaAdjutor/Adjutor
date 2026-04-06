@@ -1669,7 +1669,7 @@ begin
 
    ACBrNFSe1.DANFSE.Provedor:=   ACBrNFSe1.Configuracoes.Geral.Provedor;
  //  TTipoDANFSE = ( tpPadrao, tpIssDSF, tpFiorilli );
-   ACBrNFSe1.DANFSe.TipoDANFSE := tpPadrao;
+   ACBrNFSe1.DANFSe.TipoDANFSE := ACBrNFSeXConversao.tpPadraoNacional;
 
  end;
 
