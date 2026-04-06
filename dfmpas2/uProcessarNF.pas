@@ -108,9 +108,7 @@ type
     property EmpCodigo : string read fEmp_codigo write SetEmpCodigo;
     function SomaTotalCBSIBS(aliquota: double): double;
     function ObterCSRT(const EmpCodigo: string; const Ambiente: TACBrTipoAmbiente; out IdCSRT: string): string;
-    function GerarHashCSRT(const CSRT, ChaveNFe: string): string;
     procedure AplicarCSRTNaNFe;
-    procedure InjetarCSRTNoXML;
 
   end;
 
@@ -2693,80 +2691,12 @@ begin
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco + ' - ' + TextoInfAdicCbsIbsIs;
   end;
 
-
-   if fPMT_RESPONSAVEL_TECNICO OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
-   begin
-      AplicarCSRTNaNFe;
-      InjetarCSRTNoXML
-   end;
-
-
-   {
-  ShowMessage(
-    'ID: ' + IntToStr(ACBrNFe1.NotasFiscais.Items[0].NFe.infRespTec.idCSRT) + sLineBreak +
-    'HASH: ' + ACBrNFe1.NotasFiscais.Items[0].NFe.infRespTec.hashCSRT
-  );
-
-
-    }
-
-
-
-  {
-
+  // insere o responsável técnico se necessário
   if fPMT_RESPONSAVEL_TECNICO OR (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
-  begin
-    if (ACBrNFe1.Configuracoes.WebServices.Ambiente = taHomologacao) then
-      CSRT := 'HJX0FBGCX9U9H9J78S33W0X02E0VTP9L5R8T'  // homologação
-    else
-      CSRT := 'M0FHBBANJJ88BF374Q8JP6IH7TT73XW1D8I0'; // produção
-    TextoHash := CSRT + NotaF.NFe.infNFe.ID.Substring(3);
-    Hash := THashSHA1.GetHashBytes(TextoHash); // SHA1 do texto
-    CSRTValida := TNetEncoding.Base64.EncodeBytesToString(Hash); // Converte para Base64
+    AplicarCSRTNaNFe;
 
 
-    with NotaF.NFe.infRespTec do
-    begin
-      CNPJ     := '11089061000193';
-      xContato := 'Márcio Pacheco - Novi sistemas';
-      email    := 'roseli@novisistemas.com.br';
-      fone     := '4135038230';
-      idCSRT   := 1;
-      hashCSRT := CSRTValida;
-    end;
-  end;
-  }
 end;
-
-
-procedure TfrmProcessaNFe.InjetarCSRTNoXML;
-var
-  XML: string;
-  Item: Integer;
-  Id: string;
-  Hash: string;
-begin
-  Item := 0;
-
-  Id := IntToStr(ACBrNFe1.NotasFiscais.Items[Item].NFe.infRespTec.idCSRT);
-  Hash := ACBrNFe1.NotasFiscais.Items[Item].NFe.infRespTec.hashCSRT;
-
-  if (Id = '0') or (Hash = '') then
-    Exit;
-
-  ACBrNFe1.NotasFiscais.Items[Item].GerarXML;
-  XML := ACBrNFe1.NotasFiscais.Items[Item].XML;
-
-  XML := StringReplace(XML,
-    '</infRespTec>',
-    '<idCSRT>' + StrZero(Id, 2) + '</idCSRT>' +
-    '<hashCSRT>' + Hash + '</hashCSRT>' +
-    '</infRespTec>',
-    []);
-
-  ACBrNFe1.NotasFiscais.Items[Item].XML := XML;
-end;
-
 
 
 
@@ -2804,17 +2734,6 @@ begin
   end;
 end;
 
-function TfrmProcessaNFe.GerarHashCSRT(const CSRT, ChaveNFe: string): string;
-var
-  Texto: string;
-  Hash: TBytes;
-begin
-  Texto := CSRT + ChaveNFe;
-
-  Hash := THashSHA1.GetHashBytes(Texto);
-
-  Result := TNetEncoding.Base64.EncodeBytesToString(Hash);
-end;
 
 procedure TfrmProcessaNFe.AplicarCSRTNaNFe;
 var
@@ -2833,8 +2752,10 @@ begin
   // remove prefixo "NFe"
   Chave := StringReplace(NotaF.NFe.infNFe.ID, 'NFe', '', []);
 
-  // gera hash
-  HashCSRT2 := GerarHashCSRT(CSRT, Chave);
+
+  // tem que ser via configurações, senão não funciona
+  ACBrNFe1.Configuracoes.RespTec.IdCSRT := StrToInt(IdCSRT2);
+  ACBrNFe1.Configuracoes.RespTec.CSRT := CSRT;
 
   // aplica no XML
   with ACBrNFe1.NotasFiscais.Items[0].NFe.infRespTec do
@@ -2843,8 +2764,6 @@ begin
     xContato := 'Marcio Pacheco - Novi Sistemas';
     email    := 'roseli@novisistemas.com.br';
     fone     := '4135038230';
-    idCSRT   := StrToInt(IdCSRT2);
-    hashCSRT := HashCSRT2;
   end;
 end;
 

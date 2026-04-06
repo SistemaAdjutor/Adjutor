@@ -1740,8 +1740,8 @@ begin
     nf.EmpCodigo := cdsNotasEMP_CODIGO.AsString;
     nf.BuscaNota(CdsNotas.FieldByName('NF_NOTANUMBER').AsString);
 
-    nf.GerarNFE(True);
     nf.ConfiguracoesIniciais(moNFe);
+    nf.GerarNFE(True);
     nf.ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
     nf.ACBrNFe1.DANFE.PathPDF := DBInicio.Versao.PATH + 'NFe4' + '\' + FormatDateTime('yyyymm', Date) + '\Gerados\' + CdsNotas.FieldByName('NF_NOTANUMBER').AsString;
     nf.ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\PredanfeNovo.fr3';  // BASEADO NO DANFeRetrato_2019.fr3
