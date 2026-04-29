@@ -220,6 +220,7 @@ type
     cbAtivo: TDBCheckBox;
     chkAtivarTrocaCentroCusto: TCheckBox;
     chkBotaoDesvincularPedido: TCheckBox;
+    chkAtivo: TCheckBox;
     procedure FormShow(Sender: tObject);
     procedure FormCloseQuery(Sender: tObject; var CanClose: Boolean);
     procedure BitInclusaoClick(Sender: tObject);
@@ -297,6 +298,7 @@ type
     procedure chkUSP_PROD_SEM_ALMOXClick(Sender: TObject);
     procedure DBEdit3Change(Sender: TObject);
     procedure cbAtivoClick(Sender: TObject);
+    procedure chkAtivoClick(Sender: TObject);
   private
     { Private declarations }
      NodePrincipal:TTreeNode;
@@ -417,6 +419,7 @@ begin
      //EdPesquisa.SetFocus;
     // EdPesquisa.SelectAll;
      HabilitaBotoes;
+     chkAtivo.State := cbGrayed;
      //VerificaAcessosUsuario;
    except on E:EDataBaseError do
        begin
@@ -987,7 +990,7 @@ begin
       if Radnome.Checked  = True then
          begin
             DataCadastros1.CdSUsuario.Close;
-            DataCadastros1.CdSUsuario.CommandText := 'select * from USUARIO where USU_NOME like '''+EdPesquisa.Text+'%''';
+            DataCadastros1.CdSUsuario.CommandText := 'select * from USUARIO where USU_NOME like ' + QuotedStr(EdPesquisa.Text + '%') ;
             DataCadastros1.CdSUsuario.open;
             if DataCadastros1.CdSUsuario.IsEmpty then
                begin
@@ -2569,6 +2572,34 @@ begin
       GravaSituacaoOperacoes(LVSIE,LVSIE.Selected.Index,TrVMenus.Items.Item[6].Text);
    if LVConfiguracoes.SelCount > 0 then
       GravaSituacaoOperacoes(LVConfiguracoes,LVConfiguracoes.Selected.Index,TrVMenus.Items.Item[7].Text);
+end;
+
+procedure TFrmCadastroUsuario.chkAtivoClick(Sender: TObject);
+var
+  sql: string;
+begin
+  sql := 'select * from USUARIO ';
+  if chkAtivo.State = cbChecked then
+  begin
+    chkAtivo.Caption := 'Ativo';
+    sql := sql + 'WHERE USU_ATIVO = ' + QuotedStr('S');
+  end
+  else
+    if chkAtivo.State = cbUnchecked then
+    begin
+      chkAtivo.Caption := 'Inativo';
+      sql := sql + ' WHERE USU_ATIVO = ' + QuotedStr('N')
+    end
+  else
+    begin
+      chkAtivo.Caption := 'Ativo/Inativo';
+    end;
+  DataCadastros1.CdSUsuario.Close;
+  DataCadastros1.CdSUsuario.CommandText := sql;
+  DataCadastros1.CdSUsuario.open;
+
+
+
 end;
 
 procedure TFrmCadastroUsuario.ChkInclusaoExit(Sender: tObject);
