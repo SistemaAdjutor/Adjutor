@@ -864,8 +864,10 @@ begin
 
     qNotas.SQL.Add( 'order by t1.NF_EMISSAO DESC,t1.NF_NOTANUMBER DESC');
 
-      CdsNotas.Open;
-      CdsNotas.EnableControls;
+    if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(qNotas.SQL.Text);
+    CdsNotas.Open;
+    CdsNotas.EnableControls;
 end;
 
 procedure TFormFaturamento.CdsItemPedidoCalcFields(DataSet: TDataSet);
