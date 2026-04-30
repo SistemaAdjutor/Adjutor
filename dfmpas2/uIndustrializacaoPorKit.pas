@@ -210,7 +210,7 @@ begin
     chkSaldo.Caption := 'Mostra Apenas Produtos com Saldo Positivo'
   else
   if chkSaldo.State = cbUnchecked then
-    chkSaldo.Caption := 'Mostra Apenas Produtos com Saldo Zerado'
+    chkSaldo.Caption := 'Mostra Apenas Produtos com Saldo Zerado ou Negativo'
   else if chkSaldo.State = cbGrayed then
     chkSaldo.Caption := 'Mostra Todos os Produtos Com e Sem Saldo' ;
   prdReferExit(Sender);
@@ -284,12 +284,20 @@ begin
   end;
 
   if chkSaldo.Checked then
-      sql := sql + ' AND ei.enf_qtde > ei.enf_quantidade_ind_retorno '
-  else
-  if chkSaldo.State = cbUnchecked then
-      sql := sql + ' AND ei.enf_qtde = ei.enf_quantidade_ind_retorno '
-  else if chkSaldo.State = cbGrayed then
-    sql := sql + '';
+    sql := sql +
+      ' AND (SELECT SUM(KAS_SALDO) - COALESCE(SUM(KAS_RESERVA), 0) ' +
+      '      FROM KARDEX_ALMOX_SALDO kas ' +
+      '      WHERE kas.PRD_CODIGO = ei.PRD_CODIGO ' +
+      '        AND kas.AMX_CODIGO <> '''') > 0 '
+
+  else if chkSaldo.State = cbUnchecked then
+    sql := sql +
+      ' AND COALESCE((SELECT SUM(KAS_SALDO) - COALESCE(SUM(KAS_RESERVA), 0) ' +
+      '               FROM KARDEX_ALMOX_SALDO kas ' +
+      '               WHERE kas.PRD_CODIGO = ei.PRD_CODIGO ' +
+      '                 AND kas.AMX_CODIGO <> ''''), 0) <= 0 ';
+
+
 
 
   sql := sql +  '  order by 16,11'; // o firebird não aceitou o nome das colunas...
