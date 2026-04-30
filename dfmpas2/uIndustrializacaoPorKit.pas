@@ -283,13 +283,16 @@ begin
 
   end;
 
+
   if chkSaldo.Checked then
+  begin
+    sql := sql + ' AND (ei.enf_qtde - ei.enf_quantidade_ind_retorno) > 0 ';
     sql := sql +
       ' AND (SELECT SUM(KAS_SALDO) - COALESCE(SUM(KAS_RESERVA), 0) ' +
       '      FROM KARDEX_ALMOX_SALDO kas ' +
       '      WHERE kas.PRD_CODIGO = ei.PRD_CODIGO ' +
       '        AND kas.AMX_CODIGO <> '''') > 0 '
-
+  end
   else if chkSaldo.State = cbUnchecked then
     sql := sql +
       ' AND COALESCE((SELECT SUM(KAS_SALDO) - COALESCE(SUM(KAS_RESERVA), 0) ' +
