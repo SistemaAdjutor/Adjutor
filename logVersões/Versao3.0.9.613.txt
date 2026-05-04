@@ -1,0 +1,10 @@
+﻿Inicio da versão: 04/05/2026
+Atualizado em 04/05/2026
+
+principal: Bepine, Edge, Collect
+	2194 - Todos os cliente PR - Implementação CSRT (Responsável Técnico) na NF-e [Novi]
+	2195 - [BEPINE] - Dashboard Indústria Plástica: cálculo incorreto de Kilos Vendidos e remoção dos campos L+, L- e L [Bepine]
+	2197 - Edge - Exibição de produtos sem saldo [Edge]
+	2200 - Collect - Incluir coluna de data de pagato no relatório financeiro (cliente/fatura) [Collect]
+	2201 - Collect Mehoria da tela de usuários [Collect]
+	
