@@ -1,4 +1,4 @@
-unit uDashboradInteligencia;
+﻿unit uDashboradInteligencia;
 
 interface
 
@@ -30,7 +30,7 @@ uses
   cxDataControllerConditionalFormattingRulesManagerDialog;
 
  Const
-  meses : array[1..12] of string = ('Janeiro','Fevereiro','Mar�o','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro');
+  meses : array[1..12] of string = ('Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro');
 
 type
   TfrmDashBoardInteligencia = class(TfrmBaseDBFDAC)
@@ -52,14 +52,8 @@ type
     FKG: TJvValidateEdit;
     Label5: TLabel;
     kilosVendidos: TJvValidateEdit;
-    Label6: TLabel;
-    LMenos: TJvValidateEdit;
-    Label7: TLabel;
-    LMais: TJvValidateEdit;
     Label8: TLabel;
     MetaKilosVendidos: TJvValidateEdit;
-    Label11: TLabel;
-    L: TJvValidateEdit;
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure cbMesChange(Sender: TObject);
@@ -144,143 +138,97 @@ var
   dia, mes, ano: Word;
   totalKilosVendidos, totalVendasFaturadas,
   v220000, v240000, v35000,
-  pesos, texto17: double;
+  PercentualAtingimentoMetaKilos: double;
   whereEmissao: string;
 begin
-
   DecodeDate(Now, ano, mes, dia);
+
   mesAtual := cbMes.ItemIndex + 1;
   ano := StrToInt(cbAno.Text);
+
   if mesAtual <> mes then
-    diaAtual := UltimoDiaDoMes(mesAtual, cbAno.ItemIndex)
+    diaAtual := UltimoDiaDoMes(mesAtual, ano)
   else
-    diaAtual := Dia;
-  ultimoDia := UltimoDiaDoMes(mesAtual, cbAno.ItemIndex);
+    diaAtual := dia;
+
+  ultimoDia := UltimoDiaDoMes(mesAtual, ano);
 
   v220000 := 220000;
   v240000 := 240000;
-  v35000 := 35000;
-  whereEmissao := ' WHERE  n.NF_EMISSAO BETWEEN  ' + QuotedStr(IntToStr(ano) + '-' + IntToStr(mesAtual) + '-01') +
-           ' AND '  + QuotedStr(IntToStr(ano) + '-' + IntToStr(mesAtual) + '-' + IntToStr(diaAtual) );
+  v35000  := 35000;
 
+  whereEmissao := ' WHERE n.NF_EMISSAO BETWEEN ' +
+                  QuotedStr(IntToStr(ano) + '-' + IntToStr(mesAtual) + '-01') +
+                  ' AND ' +
+                  QuotedStr(IntToStr(ano) + '-' + IntToStr(mesAtual) + '-' + IntToStr(diaAtual));
 
+  // ✅ Kilos Vendidos corrigido
   totalKilosVendidos := BuscaUmDadoSqlAsFloat(
-        'SELECT SUM( ' +
-        '   CASE' +
-        '     WHEN pi2.PRD_UND = ''KG'' THEN PI2.PRF_QTDEFAT' +
-        '     ELSE PRF_PESO' +
-        '   END' +
-        '   )' +
+        'SELECT SUM(COALESCE(pi2.PRF_PESO, 0)) ' +
         ' FROM PED0000 p' +
         ' JOIN PED_IT01 pi2 ON (pi2.PED_CODIGO = p.PED_CODIGO AND pi2.EMP_CODIGO = p.EMP_CODIGO)' +
         ' JOIN NF0001 n ON (n.PED_CODIGO = p.PED_CODIGO AND n.EMP_CODIGO = p.EMP_CODIGO)' +
-        ' JOIN NF_IT01 ni ON (ni.NF_IT_NOTANUMER = n.NF_NOTANUMBER AND ni.EMP_CODIGO = n.EMP_CODIGO)' +
-          whereEmissao
-  );
-  totalVendasFaturadas := BuscaUmDadoSqlAsFloat(
-        'SELECT SUM(n.NF_TOT_PROD)' +
-        ' FROM PED0000 p' +
-        ' JOIN NF0001 n ON (n.PED_CODIGO = p.Ped_codigo AND n.emp_codigo = p.emp_codigo AND n.NF_STATUS_NFE NOT IN (''C'', ''R'') ) ' +
           whereEmissao +
-        '  AND P.PED_SITUACAO NOT IN (''A'', ''F'', ''C'') ' +
-        '  AND p.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  +
-        '  AND n.NF_STATUS_NFE NOT IN (''C'', ''R'') '
+        ' AND P.PED_SITUACAO NOT IN (''A'', ''F'', ''C'') ' +
+        ' AND n.NF_STATUS_NFE NOT IN (''C'', ''R'') ' +
+        ' AND p.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)
+  );
+
+  totalVendasFaturadas := BuscaUmDadoSqlAsFloat(
+        'SELECT SUM(n.NF_TOT_NOTA)' +
+        ' FROM PED0000 p' +
+        ' JOIN NF0001 n ON (n.PED_CODIGO = p.PED_CODIGO AND n.EMP_CODIGO = p.EMP_CODIGO AND n.NF_STATUS_NFE NOT IN (''C'', ''R'') ) ' +
+        ' JOIN FAT0000 fat ON (NF_CANCELADA = ''N'' AND n.NF_NOTANUMBER = fat.FAT_CODIGO AND n.EMP_CODIGO = fat.EMP_CODIGO) ' +
+          whereEmissao +
+        ' AND P.PED_SITUACAO NOT IN (''A'', ''F'', ''C'') ' +
+        ' AND p.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  +
+        ' AND n.NF_STATUS_NFE NOT IN (''C'', ''R'') '
   );
 
   kilosVendidos.Value := totalKilosVendidos;
-  Faturamento.Value := TotalVendasFaturadas;
-  FKG.Value := TotalVendasFaturadas / totalKilosVendidos;
-  if mesAtual <> mes then
-    // percentual, ficou texto 17 para n�o se perder na planilha de origem do c�lculo...
-    texto17 := (totalKilosVendidos / DiaAtual) / (((v220000 / FKG.Value)) / ultimoDia) * 100
+  Faturamento.Value := totalVendasFaturadas;
+
+  // proteção divisão
+  if totalKilosVendidos > 0 then
+    FKG.Value := totalVendasFaturadas / totalKilosVendidos
   else
-    // percentual
-    texto17 := (totalKilosVendidos / DiaAtual) / (((v240000 / FKG.Value)) / ultimoDia) * 100;
+    FKG.Value := 0;
 
-  Faturamento2.Value := v240000 / (Texto17 / 100);
+  // cálculo percentual
+  if (FKG.Value > 0) and (diaAtual > 0) then
+  begin
+    if mesAtual <> mes then
+      PercentualAtingimentoMetaKilos := (totalKilosVendidos / diaAtual) /
+                 ((v220000 / FKG.Value) / ultimoDia) * 100
+    else
+      PercentualAtingimentoMetaKilos := (totalKilosVendidos / diaAtual) /
+                 ((v240000 / FKG.Value) / ultimoDia) * 100;
+  end
+  else
+    PercentualAtingimentoMetaKilos := 0;
 
+  // faturamento projetado
+  if mesAtual <> mes then
+  begin
+    // mês fechado → projetado = realizado
+    Faturamento2.Value := totalVendasFaturadas;
+  end
+  else
+  begin
+    // mês atual → projeção
+    if PercentualAtingimentoMetaKilos > 0 then
+      Faturamento2.Value := v240000 / (PercentualAtingimentoMetaKilos / 100)
+    else
+      Faturamento2.Value := 0;
+  end;
+
+  // meta kilos
   if mesAtual <> mes then
     MetaKilosVendidos.Value := totalKilosVendidos
+  else if diaAtual > 0 then
+    MetaKilosVendidos.Value := (totalKilosVendidos / diaAtual) * ultimoDia
   else
-    MetaKilosVendidos.Value := (totalKilosVendidos / diaAtual) * UltimoDia;
-
-  // media1.Value := (v35000 / UltimoDia) * DiaAtual;
-  // media2.Value := DiaAtual * (v240000 / FKG.Value) / diaAtual;
-
-  OpenAux(
-          '  SELECT ' +
-          '       SUM( COALESCE(CAST(gr.PRG_MEDIDA_1 AS DOUBLE PRECISION), 0) * ' +
-          '            COALESCE(CAST(gr.PRG_MEDIDA_2 AS DOUBLE PRECISION), 0) * ' +
-          '            COALESCE(CAST(gr.PRG_MEDIDA_3 AS DOUBLE PRECISION), 0) * ' +
-          '            COALESCE(CAST(prd.PRD_FATOR_PROD AS DOUBLE PRECISION), 0) ) AS pesos, ' +
-          '       SUM( CASE WHEN  (COALESCE(CAST(gr.PRG_MEDIDA_1 AS DOUBLE PRECISION), 0) * ' +
-          '                        COALESCE(CAST(gr.PRG_MEDIDA_2 AS DOUBLE PRECISION), 0) * ' +
-          '                        COALESCE(CAST(gr.PRG_MEDIDA_3 AS DOUBLE PRECISION), 0) * ' +
-          '                        COALESCE(CAST(prd.PRD_FATOR_PROD AS DOUBLE PRECISION), 0) ) <= ' +
-          '                       (CASE ' +
-          '                         WHEN pi2.PRD_UND = ''KG'' THEN PI2.PRF_QTDEFAT ' +
-          '                         ELSE PRF_PESO END /CASE WHEN pi2.PRD_UND = ''KG'' THEN PI2.PRF_PESO ELSE  PRF_QTDEFAT ' +
-          '                      END ) ' +
-          '                 THEN 0 ' +
-          '              ELSE ' +
-          '                CASE WHEN pi2.prd_und = ''MIL'' ' +
-          '                  THEN CAST ((( pi2.prf_qtde -(pi2.prf_peso / ' +
-          '                               (COALESCE(CAST(gr.PRG_MEDIDA_1 AS DOUBLE PRECISION), 0) * ' +
-          '                                COALESCE(CAST(gr.PRG_MEDIDA_2 AS DOUBLE PRECISION), 0) * ' +
-          '                                COALESCE(CAST(gr.PRG_MEDIDA_3 AS DOUBLE PRECISION), 0) * ' +
-          '                                COALESCE(CAST(prd.PRD_FATOR_PROD AS DOUBLE PRECISION), 0) ))  ) * pi2.prf_preco )AS DOUBLE PRECISION ) ' +
-          '                END ' +
-          '              END) as Lmais, ' +
-
-          '          SUM( CASE WHEN  (COALESCE(CAST(gr.PRG_MEDIDA_1 AS DOUBLE PRECISION), 0) * ' +
-          '                           COALESCE(CAST(gr.PRG_MEDIDA_2 AS DOUBLE PRECISION), 0) * ' +
-          '                           COALESCE(CAST(gr.PRG_MEDIDA_3 AS DOUBLE PRECISION), 0) * ' +
-          '                           COALESCE(CAST(prd.PRD_FATOR_PROD AS DOUBLE PRECISION), 0) ) >= ' +
-          '                           (CASE WHEN pi2.PRD_UND = ''KG'' ' +
-          '                              THEN PI2.PRF_QTDEFAT ' +
-          '                              ELSE PRF_PESO ' +
-          '                             END / ' +
-          '                             CASE WHEN pi2.PRD_UND = ''KG'' ' +
-          '                               THEN PI2.PRF_PESO ' +
-          '                               ELSE  PRF_QTDEFAT ' +
-          '                             END ) ' +
-          '               THEN 0 ' +
-          '               ELSE ' +
-          '                 CASE WHEN pi2.prd_und = ''MIL'' ' +
-          '                   then coalesce( cast ((( (pi2.prf_peso / ' +
-          '                       (COALESCE(CAST(gr.PRG_MEDIDA_1 AS DOUBLE PRECISION), 0) * ' +
-          '                        COALESCE(CAST(gr.PRG_MEDIDA_2 AS DOUBLE PRECISION), 0) * ' +
-          '                        COALESCE(CAST(gr.PRG_MEDIDA_3 AS DOUBLE PRECISION), 0) * ' +
-          '                        COALESCE(CAST(prd.PRD_FATOR_PROD AS DOUBLE PRECISION), 0) )) - pi2.prf_qtde ) * pi2.prf_preco )AS DOUBLE PRECISION ) ,0) ' +
-          '                  END ' +
-          '                END) as Lmenos , ' +
-
-          '          SUM( CASE WHEN pi2.prd_und = ''MIL'' ' +
-          '                 THEN CAST (((pi2.prf_qtde - (pi2.prf_peso / ' +
-          '                             (COALESCE(CAST(gr.PRG_MEDIDA_1 AS DOUBLE PRECISION), 0) * ' +
-          '                              COALESCE(CAST(gr.PRG_MEDIDA_2 AS DOUBLE PRECISION), 0) * ' +
-          '                              COALESCE(CAST(gr.PRG_MEDIDA_3 AS DOUBLE PRECISION), 0) * ' +
-          '                              COALESCE(CAST(prd.PRD_FATOR_PROD AS DOUBLE PRECISION), 0) )) ) * pi2.prf_preco )AS DOUBLE PRECISION ) ' +
-          '                 ELSE 0 ' +
-          '               END) as L ' +
-
-          '  FROM PED0000 p ' +
-          '  JOIN PED_IT01 pi2 ON (pi2.PED_CODIGO = p.PED_CODIGO AND pi2.EMP_CODIGO = p.EMP_CODIGO) ' +
-          '  JOIN NF0001 n ON (n.PED_CODIGO = p.PED_CODIGO AND n.EMP_CODIGO = p.EMP_CODIGO) ' +
-          '  JOIN PRD0000 prd ON (prd.PRD_REFER = pi2.PRD_REFER) ' +
-          '  JOIN PRD_GRADE gr on (gr.PRG_REGISTRO = pi2.PRG_REGISTRO) ' +
-             whereEmissao +
-
-          '  AND P.PED_SITUACAO NOT IN (''A'', ''F'', ''C'') ' +
-          '  AND p.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO)  +
-          '  AND n.NF_STATUS_NFE NOT IN (''C'', ''R'') ' +
-          '  AND pi2.prf_peso > 0 ' +
-          '  AND pi2.prf_qtde > 0; '
-  );
-  LMais.Value := qAux.FieldByName('LMAIS').AsFloat;
-  LMenos.Value := qAux.FieldByName('LMENOS').AsFloat;
-  L.Value := qAux.FieldByName('L').AsFloat;
-
+    MetaKilosVendidos.Value := 0;
 
 end;
 
