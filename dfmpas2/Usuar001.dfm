@@ -28,7 +28,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Top = 0
     Width = 1052
     Height = 540
-    ActivePage = TabParametro
+    ActivePage = tabusu
     Align = alTop
     TabOrder = 0
     object tabusu: TTabSheet
@@ -102,6 +102,16 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
             Text = '0000'
             OnExit = EdPesquisaExit
             OnKeyPress = EdPesquisaKeyPress
+          end
+          object chkAtivo: TCheckBox
+            Left = 383
+            Top = 22
+            Width = 97
+            Height = 17
+            AllowGrayed = True
+            Caption = 'Ativo / Inativo'
+            TabOrder = 3
+            OnClick = chkAtivoClick
           end
         end
       end
@@ -2437,7 +2447,7 @@ object FrmCadastroUsuario: TFrmCadastroUsuario
     Left = 272
     Top = 32
     Bitmap = {
-      494C010103000500280010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101030005002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000008484
       8400848484000000000000000000000000000000000000000000000000000000
