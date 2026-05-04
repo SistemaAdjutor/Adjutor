@@ -2428,7 +2428,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
     Left = 524
     Top = 330
     Bitmap = {
-      494C010108000D00240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010108000D002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000003000000001002000000000000030
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -3975,7 +3975,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
     Left = 528
     Top = 392
     Bitmap = {
-      494C010104000900240010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101040009002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -7634,8 +7634,9 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
       Width = 1000.000000000000000000
     end
     object Page1: TfrxReportPage
-      PaperWidth = 210.000000000000000000
-      PaperHeight = 297.000000000000000000
+      Orientation = poLandscape
+      PaperWidth = 297.000000000000000000
+      PaperHeight = 210.000000000000000000
       PaperSize = 9
       LeftMargin = 10.000000000000000000
       RightMargin = 10.000000000000000000
@@ -7654,8 +7655,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         Font.Style = []
         Height = 15.118120000000000000
         ParentFont = False
-        Top = 226.771800000000000000
-        Width = 718.110700000000000000
+        Top = 204.094620000000000000
+        Width = 1046.929810000000000000
         OnAfterPrint = 'MasterData1OnAfterPrint'
         DataSet = frxDBDatasetReceber
         DataSetName = 'frxDBDatasetReceber'
@@ -7663,7 +7664,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         RowCount = 0
         object frxDBDatasetReceberFPC_VENCTO: TfrxMemoView
           AllowVectorExport = True
-          Left = 346.141930000000000000
+          Left = 523.779840000000000000
           Width = 56.692913390000000000
           Height = 15.118120000000000000
           DataSet = frxDBDatasetReceber
@@ -7685,7 +7686,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         object Memo18: TfrxMemoView
           AllowVectorExport = True
           Left = 23.566929130000000000
-          Width = 37.795275590000000000
+          Width = 83.149635590000000000
           Height = 15.118120000000000000
           DataField = 'NF_NUM_NFE'
           DataSet = frxDBDatasetReceber
@@ -7704,7 +7705,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo20: TfrxMemoView
           AllowVectorExport = True
-          Left = 63.055118110000000000
+          Left = 112.189008110000000000
           Width = 37.795275590000000000
           Height = 15.118120000000000000
           DataField = 'FAT_CODIGO'
@@ -7724,7 +7725,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo22: TfrxMemoView
           AllowVectorExport = True
-          Left = 126.425196850000000000
+          Left = 190.677206850000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
           DataField = 'FPC_STATUS'
@@ -7745,7 +7746,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo23: TfrxMemoView
           AllowVectorExport = True
-          Left = 185.771800000000000000
+          Left = 272.700990000000000000
           Width = 60.472480000000000000
           Height = 15.118120000000000000
           DataField = 'FPC_DTEMIS'
@@ -7768,7 +7769,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo24: TfrxMemoView
           AllowVectorExport = True
-          Left = 405.543307090000000000
+          Left = 666.330877090000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
           DataField = 'FPC_VLPARC'
@@ -7790,7 +7791,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo25: TfrxMemoView
           AllowVectorExport = True
-          Left = 472.764070000000000000
+          Left = 733.551640000000000000
           Width = 60.472438500000000000
           Height = 15.118120000000000000
           DataField = 'FPC_DESCTO'
@@ -7812,7 +7813,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo30: TfrxMemoView
           AllowVectorExport = True
-          Left = 534.197280000000000000
+          Left = 794.984850000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
           DataSet = frxDBDatasetReceber
@@ -7833,7 +7834,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo33: TfrxMemoView
           AllowVectorExport = True
-          Left = 599.008350000000000000
+          Left = 859.795920000000000000
           Width = 64.251968500000000000
           Height = 15.118120000000000000
           DataSet = frxDBDatasetReceber
@@ -7873,8 +7874,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object frxDBDatasetReceberBAN_APELIDO: TfrxMemoView
           AllowVectorExport = True
-          Left = 249.008040000000000000
-          Width = 94.488250000000000000
+          Left = 351.055350000000000000
+          Width = 158.740260000000000000
           Height = 15.118120000000000000
           DataField = 'BAN_APELIDO'
           DataSet = frxDBDatasetReceber
@@ -7892,7 +7893,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo17: TfrxMemoView
           AllowVectorExport = True
-          Left = 668.094930000000000000
+          Left = 928.882500000000000000
           Width = 124.724448500000000000
           Height = 15.118120000000000000
           DataSet = frxDBDatasetReceber
@@ -7912,7 +7913,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo21: TfrxMemoView
           AllowVectorExport = True
-          Left = 102.078740160000000000
+          Left = 151.212630160000000000
           Top = 1.000000000000000000
           Width = 22.677155590000000000
           Height = 15.118120000000000000
@@ -7932,15 +7933,40 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
           ParentFont = False
           WordWrap = False
         end
+        object Memo50: TfrxMemoView
+          AllowVectorExport = True
+          Left = 600.945270000000000000
+          Width = 56.692913390000000000
+          Height = 15.118120000000000000
+          DataSet = frxDBDatasetReceber
+          DataSetName = 'frxDBDatasetReceber'
+          DisplayFormat.DecimalSeparator = ','
+          DisplayFormat.FormatStr = 'dd/mm/yyyy'
+          DisplayFormat.Kind = fkDateTime
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -11
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            
+              '[IIF(<frxDBDatasetReceber."FRE_DATA_RECEBIMENTO"> = 0, '#39#39', Forma' +
+              'tDateTime('#39'dd/mm/yyyy'#39', <frxDBDatasetReceber."FRE_DATA_RECEBIMEN' +
+              'TO">))]')
+          ParentFont = False
+        end
       end
       object Footer1: TfrxFooter
         FillType = ftBrush
         Frame.Typ = []
         Height = 18.897650000000000000
-        Top = 325.039580000000000000
-        Width = 718.110700000000000000
+        Top = 302.362400000000000000
+        Width = 1046.929810000000000000
         object Memo31: TfrxMemoView
           AllowVectorExport = True
+          Top = 2.000000000000000000
           Width = 71.811070000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -7956,6 +7982,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Line3: TfrxLineView
           AllowVectorExport = True
+          Top = 2.000000000000000000
           Width = 1046.929810000000000000
           Color = clBlack
           Frame.Typ = []
@@ -7963,6 +7990,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Line4: TfrxLineView
           AllowVectorExport = True
+          Left = -3.779530000000000000
           Top = 18.897650000000000000
           Width = 1046.929810000000000000
           Color = clBlack
@@ -7972,6 +8000,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         object Memo34: TfrxMemoView
           AllowVectorExport = True
           Left = 71.811070000000000000
+          Top = 2.000000000000000000
           Width = 94.488250000000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -7987,7 +8016,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo35: TfrxMemoView
           AllowVectorExport = True
-          Left = 403.188976380000000000
+          Left = 663.976546380000000000
+          Top = 2.000000000000000000
           Width = 66.141732280000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8006,7 +8036,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo36: TfrxMemoView
           AllowVectorExport = True
-          Left = 467.173228350000000000
+          Left = 727.960798350000000000
+          Top = 2.000000000000000000
           Width = 66.141732280000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8025,7 +8056,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo39: TfrxMemoView
           AllowVectorExport = True
-          Left = 531.803149610000000000
+          Left = 792.590719610000000000
+          Top = 2.000000000000000000
           Width = 66.141732280000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8044,7 +8076,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo40: TfrxMemoView
           AllowVectorExport = True
-          Left = 598.322834650000000000
+          Left = 859.110404650000000000
+          Top = 2.000000000000000000
           Width = 66.141732280000000000
           Height = 18.897650000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8061,44 +8094,10 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
             '[totalPendente]')
           ParentFont = False
         end
-        object Line6: TfrxLineView
-          AllowVectorExport = True
-          Left = 400.630180000000000000
-          Height = 18.897650000000000000
-          Color = clBlack
-          Frame.Typ = [ftLeft]
-        end
-        object Line7: TfrxLineView
-          AllowVectorExport = True
-          Left = 468.661720000000000000
-          Height = 18.897650000000000000
-          Color = clBlack
-          Frame.Typ = [ftLeft]
-        end
-        object Line8: TfrxLineView
-          AllowVectorExport = True
-          Left = 532.913730000000000000
-          Height = 18.897650000000000000
-          Color = clBlack
-          Frame.Typ = [ftLeft]
-        end
-        object Line9: TfrxLineView
-          AllowVectorExport = True
-          Left = 598.165740000000000000
-          Height = 18.897650000000000000
-          Color = clBlack
-          Frame.Typ = [ftLeft]
-        end
-        object Line10: TfrxLineView
-          AllowVectorExport = True
-          Left = 665.197280000000000000
-          Height = 18.897650000000000000
-          Color = clBlack
-          Frame.Typ = [ftLeft]
-        end
         object Memo46: TfrxMemoView
           AllowVectorExport = True
-          Left = 313.700990000000000000
+          Left = 574.488560000000000000
+          Top = 2.000000000000000000
           Width = 83.149618500000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8121,7 +8120,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         Frame.Typ = []
         Height = 60.472480000000000000
         Top = 18.897650000000000000
-        Width = 718.110700000000000000
+        Width = 1046.929810000000000000
         Stretched = True
         object Memo2: TfrxMemoView
           AllowVectorExport = True
@@ -8210,9 +8209,9 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
       object GroupHeader1: TfrxGroupHeader
         FillType = ftBrush
         Frame.Typ = []
-        Height = 63.472480000000000000
+        Height = 39.472480000000000000
         Top = 139.842610000000000000
-        Width = 718.110700000000000000
+        Width = 1046.929810000000000000
         OnAfterPrint = 'GroupHeader1OnAfterPrint'
         Condition = 'frxDBDatasetReceber."CLI_RAZAO"'
         object Memo16: TfrxMemoView
@@ -8271,7 +8270,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo5: TfrxMemoView
           AllowVectorExport = True
-          Left = 63.133890000000000000
+          Left = 112.267780000000000000
           Top = 23.354360000000000000
           Width = 34.015745590000000000
           Height = 13.228346460000000000
@@ -8288,7 +8287,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo6: TfrxMemoView
           AllowVectorExport = True
-          Left = 100.165430000000000000
+          Left = 149.299320000000000000
           Top = 23.354360000000000000
           Width = 22.677155590000000000
           Height = 13.228346460000000000
@@ -8304,7 +8303,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo7: TfrxMemoView
           AllowVectorExport = True
-          Left = 128.519790000000000000
+          Left = 192.771800000000000000
           Top = 23.354360000000000000
           Width = 52.913420000000000000
           Height = 13.228346460000000000
@@ -8322,7 +8321,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo8: TfrxMemoView
           AllowVectorExport = True
-          Left = 183.771800000000000000
+          Left = 270.700990000000000000
           Top = 23.354360000000000000
           Width = 60.472480000000000000
           Height = 13.228346460000000000
@@ -8357,7 +8356,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo9: TfrxMemoView
           AllowVectorExport = True
-          Left = 346.141930000000000000
+          Left = 523.779840000000000000
           Top = 23.354360000000000000
           Width = 56.692913390000000000
           Height = 13.228346460000000000
@@ -8375,9 +8374,9 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo10: TfrxMemoView
           AllowVectorExport = True
-          Left = 405.543307086614000000
+          Left = 666.330877090000000000
           Top = 23.354360000000000000
-          Width = 64.251968503937000000
+          Width = 64.251968500000000000
           Height = 13.228346460000000000
           DisplayFormat.DecimalSeparator = ','
           Font.Charset = DEFAULT_CHARSET
@@ -8393,7 +8392,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo13: TfrxMemoView
           AllowVectorExport = True
-          Left = 472.764070000000000000
+          Left = 733.551640000000000000
           Top = 23.354360000000000000
           Width = 60.472438500000000000
           Height = 13.228346460000000000
@@ -8411,7 +8410,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo15: TfrxMemoView
           AllowVectorExport = True
-          Left = 534.197280000000000000
+          Left = 794.984850000000000000
           Top = 23.354360000000000000
           Width = 64.251968500000000000
           Height = 13.228346460000000000
@@ -8429,7 +8428,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo32: TfrxMemoView
           AllowVectorExport = True
-          Left = 599.008350000000000000
+          Left = 859.795920000000000000
           Top = 23.354360000000000000
           Width = 64.251968500000000000
           Height = 13.228346460000000000
@@ -8464,7 +8463,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo12: TfrxMemoView
           AllowVectorExport = True
-          Left = 266.126160000000000000
+          Left = 398.409710000000000000
           Top = 23.354360000000000000
           Width = 56.692913390000000000
           Height = 13.228346460000000000
@@ -8481,7 +8480,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo28: TfrxMemoView
           AllowVectorExport = True
-          Left = 667.653990000000000000
+          Left = 928.441560000000000000
           Top = 23.354360000000000000
           Width = 113.385858500000000000
           Height = 13.228346460000000000
@@ -8534,13 +8533,30 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
             '[CNPJ]:')
           ParentFont = False
         end
+        object Memo49: TfrxMemoView
+          AllowVectorExport = True
+          Left = 600.945270000000000000
+          Top = 22.677180000000000000
+          Width = 56.692913390000000000
+          Height = 13.228346460000000000
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Height = -9
+          Font.Name = 'Arial'
+          Font.Style = []
+          Frame.Typ = []
+          HAlign = haCenter
+          Memo.UTF8W = (
+            'Pagamento')
+          ParentFont = False
+        end
       end
       object GroupFooter1: TfrxGroupFooter
         FillType = ftBrush
         Frame.Typ = []
         Height = 37.795300000000000000
-        Top = 264.567100000000000000
-        Width = 718.110700000000000000
+        Top = 241.889920000000000000
+        Width = 1046.929810000000000000
         object Memo14: TfrxMemoView
           AllowVectorExport = True
           Left = 3.779530000000000000
@@ -8574,8 +8590,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo37: TfrxMemoView
           AllowVectorExport = True
-          Left = 408.188976377952800000
-          Width = 60.850393700787400000
+          Left = 668.976546380000000000
+          Width = 60.850393700000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2n'
@@ -8593,7 +8609,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo38: TfrxMemoView
           AllowVectorExport = True
-          Left = 472.173228350000000000
+          Left = 732.960798350000000000
           Width = 60.850393700000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8612,8 +8628,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo43: TfrxMemoView
           AllowVectorExport = True
-          Left = 534.803149606299200000
-          Width = 64.629921259842520000
+          Left = 795.590719610000000000
+          Width = 64.629921260000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
           DisplayFormat.FormatStr = '%2.2n'
@@ -8631,7 +8647,7 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Memo44: TfrxMemoView
           AllowVectorExport = True
-          Left = 601.322834650000000000
+          Left = 862.110404650000000000
           Width = 60.850391260000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8650,14 +8666,14 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         end
         object Line5: TfrxLineView
           AllowVectorExport = True
-          Left = 360.496290000000000000
+          Left = 621.283860000000000000
           Width = 306.141930000000000000
           Color = clBlack
           Frame.Typ = [ftTop]
         end
         object Memo45: TfrxMemoView
           AllowVectorExport = True
-          Left = 336.937230000000000000
+          Left = 597.724800000000000000
           Width = 60.472438500000000000
           Height = 15.118120000000000000
           DisplayFormat.DecimalSeparator = ','
@@ -8679,8 +8695,8 @@ inherited FormContasRecParceGrid: TFormContasRecParceGrid
         FillType = ftBrush
         Frame.Typ = []
         Height = 22.677180000000000000
-        Top = 404.409710000000000000
-        Width = 718.110700000000000000
+        Top = 381.732530000000000000
+        Width = 1046.929810000000000000
         object Memo47: TfrxMemoView
           AllowVectorExport = True
           Left = 3.779530000000000000
