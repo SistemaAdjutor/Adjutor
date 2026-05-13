@@ -187,6 +187,8 @@ begin
       //wSeleciona := ' ';
       SqlCdsProduz.Close;
       SqlCdsProduz.CommandText := wSql1+wSql2+wSeleciona+wSql3+' having SUM(X1.PSI_CONSUMO) > X1.PSI_ESTFISICO '+wOrdem;
+      if dbInicio.Isdesenvolvimento then
+        CopyToClipboard(SqlCdsProduz.CommandText);
       SqlCdsProduz.Open;
 
       {Materia Prima a comprar}

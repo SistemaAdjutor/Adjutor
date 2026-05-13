@@ -153,10 +153,6 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     TabOrder = 2
     object TabSheet1: TTabSheet
       Caption = 'Estoque Dispon'#237'vel'
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DBGrid2: TDBGrid
         Left = 0
         Top = 41
@@ -381,10 +377,6 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     object TabSheet2: TTabSheet
       Caption = 'Estoque '#224' Comprar'
       ImageIndex = 1
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DBGridMatPrima: TDBGrid
         Left = 0
         Top = 41
@@ -648,10 +640,6 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     object TabSheet3: TTabSheet
       Caption = #192' Produzir'
       ImageIndex = 2
-      ExplicitLeft = 0
-      ExplicitTop = 0
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object DBGridProdutos: TDBGrid
         Left = 0
         Top = 41
@@ -911,8 +899,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 200
-    Top = 64
+    Left = 488
+    Top = 288
     object SqlCdsProdutosPSV_REGISTRO: TIntegerField
       FieldName = 'PSV_REGISTRO'
       Required = True
@@ -938,8 +926,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
   end
   object DsProdutos: TDataSource
     DataSet = SqlCdsProdutos
-    Left = 280
-    Top = 48
+    Left = 496
+    Top = 344
   end
   object SqlCdsDisponivel: TSqlClientDataSet
     Aggregates = <>
@@ -975,8 +963,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 208
-    Top = 200
+    Left = 32
+    Top = 240
     object SqlCdsDisponivelPRD_REFER_ITENS: TStringField
       FieldName = 'PRD_REFER_ITENS'
       Size = 11
@@ -1051,8 +1039,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
   end
   object DsDisponivel: TDataSource
     DataSet = SqlCdsDisponivel
-    Left = 280
-    Top = 208
+    Left = 32
+    Top = 176
   end
   object SQLCdsComprar: TSqlClientDataSet
     Aggregates = <>
@@ -1088,8 +1076,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 867
-    Top = 104
+    Left = 355
+    Top = 288
     object SQLCdsComprarPRD_REFER_ITENS: TStringField
       FieldName = 'PRD_REFER_ITENS'
       Size = 11
@@ -1167,8 +1155,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
   end
   object DsComprar: TDataSource
     DataSet = CdsComprar
-    Left = 941
-    Top = 105
+    Left = 133
+    Top = 177
   end
   object SqlCdsProduz: TSqlClientDataSet
     Aggregates = <>
@@ -1204,8 +1192,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     Options = [poAllowCommandText]
     NoMetadata = False
     UpdateMode = upWhereAll
-    Left = 192
-    Top = 528
+    Left = 224
+    Top = 248
     object SqlCdsProduzPRD_REFER_ITENS: TStringField
       FieldName = 'PRD_REFER_ITENS'
       Size = 11
@@ -1282,8 +1270,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
   end
   object DsProduz: TDataSource
     DataSet = SqlCdsProduz
-    Left = 240
-    Top = 536
+    Left = 224
+    Top = 184
   end
   object CdsComprar: TClientDataSet
     PersistDataPacket.Data = {
@@ -1355,8 +1343,8 @@ object FormPrevisaoProducao: TFormPrevisaoProducao
     IndexDefs = <>
     Params = <>
     StoreDefs = True
-    Left = 808
-    Top = 112
+    Left = 128
+    Top = 248
     object CdsComprarReferencia: TStringField
       FieldName = 'Referencia'
       Size = 11
