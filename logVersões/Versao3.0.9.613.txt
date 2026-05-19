@@ -1,5 +1,5 @@
 ﻿Inicio da versão: 04/05/2026
-Atualizado em 04/05/2026
+Atualizado em 19/05/2026
 
 principal: Bepine, Edge, Collect
 	2194 - Todos os cliente PR - Implementação CSRT (Responsável Técnico) na NF-e [Novi]
@@ -8,3 +8,7 @@ principal: Bepine, Edge, Collect
 	2200 - Collect - Incluir coluna de data de pagato no relatório financeiro (cliente/fatura) [Collect]
 	2201 - Collect Mehoria da tela de usuários [Collect]
 	
+patch 1: Drimec, Arkson, EDGE
+	2213 - [SUP-41] Drimec - Simulação de Consumo não apresenta MP
+	2215 - [SUP-46] Arkson - Relatório apresenta Vlr.Estoque zerado
+    2217 - [SUP-66] Edge - Saldo do Retorno Ind. Por Kit errado
