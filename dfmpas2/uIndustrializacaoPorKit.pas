@@ -384,7 +384,7 @@ begin
     SqlCdsNotasDisponiveis.Edit;
     SqlCdsNotasDisponiveisqtdSolicitada.AsFloat := (CurQuantidade.Value * Quantidade) / Base;
     SqlCdsNotasDisponiveisQuantidadeTmp.AsFloat := (CurQuantidade.Value * Quantidade) / Base;
-    SqlCdsNotasDisponiveisSaldo.AsFloat := SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat;
+    // SqlCdsNotasDisponiveisSaldo.AsFloat := SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisRETORNADO.AsFloat;
     SqlCdsNotasDisponiveis.Post;
     SqlCdsNotasDisponiveis.Next;
   end;
@@ -663,7 +663,7 @@ begin
       SqlCdsNotasDisponiveis.First;
       while (not SqlCdsNotasDisponiveis.Eof) do
       begin
-        if SqlCdsNotasDisponiveisQuantidadeTmp.AsFloat > SqlCdsNotasDisponiveisENF_QTDE.AsFloat then
+        if SqlCdsNotasDisponiveisQuantidadeTmp.AsFloat > SqlCdsNotasDisponiveisSaldo.AsFloat then
         begin
           MessageDlg('Quantidade informada é maior que o saldo'
           + #13 +
