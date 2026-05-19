@@ -11542,8 +11542,8 @@ object FormGImpProduto: TFormGImpProduto
       ''
       'end.')
     OnGetValue = frxInventarioEstoqueGetValue
-    Left = 704
-    Top = 496
+    Left = 840
+    Top = 312
     Datasets = <
       item
         DataSet = frxDBDataset1

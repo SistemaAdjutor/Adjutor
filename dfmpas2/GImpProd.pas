@@ -2497,8 +2497,8 @@ begin
    datafinal   := QuotedStr(DataAmericana(EditDataF.Text)+' 23:59:59');
 
    CdsEstoqueNovo.Close;
-   condicaoAdicional := '';
    sTipoRelatorio := condicaoAdicional;
+   condicaoAdicional := '';
 
    if ((LTBoxProdu.ItemIndex = 0)or(LTBoxProdu.ItemIndex = 1) or(LTBoxProdu.ItemIndex = 14)  or(LTBoxProdu.ItemIndex = 15)  ) then
       dataInicial := dataFinal;
