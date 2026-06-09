@@ -269,6 +269,8 @@ begin
 
 
     CdsImpNota.Open;
+    if dbInicio.isDesenvolvimento then
+      CopyToClipboard(CdsImpNota.DataSet.CommandText);
     if (CdsImpNota.IsEmpty = FALSE) then
        begin
            RDPrintRecibo.Abrir;

@@ -15,7 +15,7 @@ object FrmFat0000_Romaneio: TFrmFat0000_Romaneio
   TextHeight = 13
   object CdsImpNota: TSimpleDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'select n1.NF_REGISTRO, n1.NF_NOTANUMBER, n1.NF_EMISSAO, n1.NF_SA' +
       'IDA, n1.NF_VLFRETE, n1.NF_VLSEGURO, n1.NF_DESP_ACES, n1.NF_ALIQ_' +
@@ -403,6 +403,7 @@ object FrmFat0000_Romaneio: TFrmFat0000_Romaneio
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Rdprint Preview'
     OpcoesPreview.PreviewZoom = 100
@@ -416,15 +417,19 @@ object FrmFat0000_Romaneio: TFrmFat0000_Romaneio
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Rdprint Setup'
     TitulodoRelatorio = 'Gerado por RDprint'
@@ -481,12 +486,14 @@ object FrmFat0000_Romaneio: TFrmFat0000_Romaneio
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     Left = 247
     Top = 63
   end
   object SqlCdsParcelas: TSimpleDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'select FAT.*,'#13#10'BAN_APELIDO  '#13#10'from FAT_PC01  FAT '#13#10'left join BAN' +
       '0000 on FAT_PC01.BAN_CODIGO = BAN0000.BAN_CODAGE'
@@ -645,6 +652,7 @@ object FrmFat0000_Romaneio: TFrmFat0000_Romaneio
     ImpressoraPersonalizada.Reset = '27 80 18 20 27 53 27 70 27 45 48'
     ImpressoraPersonalizada.Inicializar = '27 64'
     OpcoesPreview.PaginaZebrada = False
+    OpcoesPreview.MostrarSETUP = True
     OpcoesPreview.Remalina = False
     OpcoesPreview.CaptionPreview = 'Rdprint Preview'
     OpcoesPreview.PreviewZoom = 100
@@ -658,15 +666,19 @@ object FrmFat0000_Romaneio: TFrmFat0000_Romaneio
     OpcoesPreview.BotaoProcurar = Ativo
     OpcoesPreview.BotaoPDF = Ativo
     OpcoesPreview.BotaoEMAIL = Ativo
+    OpcoesPreview.ExtraBtnStatus = Invisivel
+    OpcoesPreview.ExtraBtnWidth = 80
+    OpcoesPreview.ExtraBtnCaption = 'Extra Btn'
+    OpcoesPreview.PreviewMode = vPrinter
     Margens.Left = 10
     Margens.Right = 10
     Margens.Top = 10
     Margens.Bottom = 10
     Autor = Deltress
-    RegistroUsuario.NomeRegistro = 'POINT INFORMATICA LTDA'
-    RegistroUsuario.SerieProduto = 'SINGLE-0615/01649'
-    RegistroUsuario.AutorizacaoKey = '5E33-1QQQ-385V-ASCD-RRJM'
-    About = 'RDprint 5.0 - Registrado'
+    RegistroUsuario.NomeRegistro = 'DELTRESS SISTEMAS S/S LTDA'
+    RegistroUsuario.SerieProduto = 'DEMONSTRA'#199#195'O'
+    RegistroUsuario.AutorizacaoKey = '*** SEM REGISTRO ***'
+    About = 'RDprint 8.2 - TRIAL'
     Acentuacao = SemAcento
     CaptionSetup = 'Nota Fiscal'
     TitulodoRelatorio = 'Nota Fiscal'
@@ -723,12 +735,14 @@ object FrmFat0000_Romaneio: TFrmFat0000_Romaneio
     FonteTamanhoPadrao = S17cpp
     FonteEstiloPadrao = []
     Orientacao = poPortrait
+    FonteGrafica = sCourierNew
+    ReduzParaCaber = True
     Left = 247
     Top = 159
   end
   object CdsItemNota: TSimpleDataSet
     Aggregates = <>
-    Connection = DataCadastros.SQLConnection1
+    Connection = DBInicio.MainDB
     DataSet.CommandText = 
       'Select'#13#10'NF.*,'#13#10'CL.CLI_CODIGO,'#13#10'PD.PRD_UND,'#13#10'PD.PRD_COMPL,'#13#10'PD.PR' +
       'D_DCVAR1,'#13#10'PD.PRD_DCVAR2,'#13#10'PD.PRD_DCVAR3,'#13#10'PD.PRD_DCVAR4,'#13#10'PD.PR' +
