@@ -238,6 +238,9 @@ type
     Label22: TLabel;
     Label23: TLabel;
     Panel2: TPanel;
+    DBRadioGroup1: TDBRadioGroup;
+    SqlRegraCFOPOPR_TIPO_CALCULO_MVA: TStringField;
+    CDSRegraCFOPOPR_TIPO_CALCULO_MVA: TStringField;
     procedure FormShow(Sender: tObject);
     procedure FormCloseQuery(Sender: tObject; var CanClose: Boolean);
     procedure Bit_novoClick(Sender: tObject);
@@ -403,7 +406,7 @@ end;
 procedure TFormRegraNatOp.FormCreate(Sender: TObject);
 begin
      inherited;
-     self.Height:=597;
+     self.Height:=613;
      self.Width:=965;
      Bit_Cancelar.Left := Bit_Sair.Left;
      Bit_Cancelar.Top := Bit_Sair.Top;
