@@ -870,7 +870,7 @@ inherited FormContasReceberBaixas: TFormContasReceberBaixas
       DisplayLabel = 'Centro de Custo'
       FieldName = 'PCX_DESCRI'
     end
-    object CdsReceberBaixasCLI_UND_CONSUMIDORA: TIntegerField
+    object CdsReceberBaixasCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'Unidade Consumidora'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end

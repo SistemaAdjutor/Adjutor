@@ -894,7 +894,7 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
       OnGetText = cdsBuscoCLI_FONEGetText
       Size = 11
     end
-    object cdsBuscoCLI_UND_CONSUMIDORA: TIntegerField
+    object cdsBuscoCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'Unidade Consumidora'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end
@@ -1063,7 +1063,7 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
       OnGetText = cdsBuscoCLI_FONEGetText
       Size = 11
     end
-    object qExportCLI_UND_CONSUMIDORA: TIntegerField
+    object qExportCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'Unidade Consumidora'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end

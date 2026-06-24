@@ -1064,7 +1064,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
-        MaxLength = 12
+        MaxLength = 15
         ParentFont = False
         TabOrder = 14
       end
@@ -1529,7 +1529,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
       ProviderFlags = [pfInUpdate]
       Size = 3
     end
-    object qPedidoPED_UND_CONSUMIDORA: TIntegerField
+    object qPedidoPED_UND_CONSUMIDORA: TLargeintField
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object qPedidoPED_VLFATURADO: TFMTBCDField
@@ -1650,7 +1650,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
       ProviderFlags = [pfInUpdate]
       Size = 3
     end
-    object cdsPedidoPED_UND_CONSUMIDORA: TIntegerField
+    object cdsPedidoPED_UND_CONSUMIDORA: TLargeintField
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object cdsPedidoPED_VLFATURADO: TFMTBCDField

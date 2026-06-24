@@ -267,7 +267,7 @@ type
     SQLBancosBAN_CONVENIO: TStringField;
     SQLContaBancosBAN_LEIAUTE: TIntegerField;
     rgLeiaute: TRadioGroup;
-    CDSCrcDuplicataPED_UND_CONSUMIDORA: TIntegerField;
+    CDSCrcDuplicataPED_UND_CONSUMIDORA: TLargeintField;
     ACBrBoleto1: TACBrBoleto;
     CDSCrcDuplicataFPC_DTDESC: TSQLTimeStampField;
     CDSCrcDuplicataFPC_DESCTO: TFMTBCDField;
@@ -3501,7 +3501,7 @@ begin
 
         mesSub := PrimeiroDiadoMesSubsequente(Date);
         Writeln(wREGISTRO,'2'
-                         +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsInteger),13)
+                         +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsLargeint),15)
                          +PreencheZeroEsquerda(ExtrairNumeros(FormatFloat('#,###,##0.00',CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency)),9){valor da parcela}
                          +Copy(DateToStr(Date),1,2) {Data DD - dia }   //DATADEENVIO  DDMMAAAA
                          +Copy(DateToStr(Date),4,2) {Data MM - mes }
@@ -5708,7 +5708,7 @@ begin
                          +PreencheDireita(CdSCrCduplicata.FieldByname('FAT_CODIGO').AsString+ CdSCrCduplicata.FieldByname('FPC_NUMER').AsString,8)
                          +PreencheDireita(TiraCaracteresEspeciais( copy(CdSCrCduplicata.FieldByname('CLI_RAZAO').AsString,1,20),True),12)    {nome cliente}
                          +PreencheDireita(edCodProduto.Text,4)  // codigo do produto
-                         +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsInteger),9)
+                         +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsLargeint),15)
                          +PreencheDireita('',8){livres de 40 a 47 }
                          +PreencheZeroEsquerda(ExtrairNumeros(FormatFloat('#,###,##0.00',CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency)),17){valor da parcela}
                          +'03' {codigo da moeda}

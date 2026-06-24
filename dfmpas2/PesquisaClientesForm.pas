@@ -55,7 +55,7 @@ type
     cdsBuscoCLI_FAX: TStringField;
     rgTipoPessoa: TRadioGroup;
     edUnidade: TLabeledEdit;
-    cdsBuscoCLI_UND_CONSUMIDORA: TIntegerField;
+    cdsBuscoCLI_UND_CONSUMIDORA: TLargeintField;
     chkUltCompra: TCheckBox;
     cdsBuscoREP_NOME: TStringField;
     cbVendedor: TSgDbSearchCombo;
@@ -88,7 +88,7 @@ type
     qExportCLI_CEP: TStringField;
     qExportcli_celular: TStringField;
     qExportCLI_FAX: TStringField;
-    qExportCLI_UND_CONSUMIDORA: TIntegerField;
+    qExportCLI_UND_CONSUMIDORA: TLargeintField;
     qExportREP_NOME: TStringField;
     qExportCORI_DESCRICAO: TStringField;
     qExportCLI_DTNASCIMENTO: TSQLTimeStampField;

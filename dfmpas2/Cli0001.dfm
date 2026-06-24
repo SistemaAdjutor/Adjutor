@@ -265,12 +265,16 @@ inherited FormCliente: TFormCliente
         Top = 304
         Width = 1744
         Height = 130
-        ActivePage = tsVenda
+        ActivePage = tsFaturamento
         Align = alBottom
         MultiLine = True
         TabOrder = 25
         object TabSheet5: TTabSheet
           Caption = 'Contato'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object grpContato: TGroupBox
             Left = 0
             Top = 0
@@ -402,6 +406,10 @@ inherited FormCliente: TFormCliente
         object TabSheet6: TTabSheet
           Caption = 'Financeiro'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GRP_Bloquear: TGroupBox
             Left = 0
             Top = 49
@@ -583,6 +591,10 @@ inherited FormCliente: TFormCliente
         object tsVenda: TTabSheet
           Caption = 'Venda'
           ImageIndex = 2
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox19: TGroupBox
             Left = 0
             Top = 0
@@ -912,6 +924,10 @@ inherited FormCliente: TFormCliente
         object tsFiscal: TTabSheet
           Caption = 'Fiscal'
           ImageIndex = 3
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object grp1: TGroupBox
             Left = 0
             Top = 0
@@ -1480,6 +1496,10 @@ inherited FormCliente: TFormCliente
           Caption = 'Entrega'
           ImageIndex = 1
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox1: TGroupBox
             Left = 0
             Top = 0
@@ -1691,6 +1711,10 @@ inherited FormCliente: TFormCliente
           Caption = 'Cobran'#231'a'
           ImageIndex = 2
           TabVisible = False
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox15: TGroupBox
             Left = 0
             Top = 0
@@ -1861,6 +1885,10 @@ inherited FormCliente: TFormCliente
           Caption = 'Endere'#231'os'
           ImageIndex = 3
           OnShow = TabSheet8Show
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object DBGrid5: TDBGrid
             Left = 0
             Top = 131
@@ -2729,6 +2757,10 @@ inherited FormCliente: TFormCliente
       ImageIndex = 1
       OnExit = TabSheet2Exit
       OnShow = TabSheet2Show
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox5: TGroupBox
         Left = 0
         Top = 140
@@ -3363,6 +3395,10 @@ inherited FormCliente: TFormCliente
     object TabSheet3: TTabSheet
       Caption = 'Servi'#231'os'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Panel5: TPanel
         Left = 0
         Top = 464
@@ -3446,6 +3482,10 @@ inherited FormCliente: TFormCliente
         TabOrder = 1
         object tsDadosBasicos: TTabSheet
           Caption = 'Dados b'#225'sicos'
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox23: TGroupBox
             Left = 0
             Top = 0
@@ -3873,6 +3913,10 @@ inherited FormCliente: TFormCliente
         object tsHistorico: TTabSheet
           Caption = 'Hist'#243'rico de implanta'#231#227'o'
           ImageIndex = 1
+          ExplicitLeft = 0
+          ExplicitTop = 0
+          ExplicitWidth = 0
+          ExplicitHeight = 0
           object GroupBox12: TGroupBox
             Left = 0
             Top = 0
@@ -3993,6 +4037,10 @@ inherited FormCliente: TFormCliente
     object tsVendas: TTabSheet
       Caption = 'Vendas'
       ImageIndex = 4
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object dbgrdVendas: TDBGrid
         Left = 0
         Top = 169
@@ -4188,6 +4236,10 @@ inherited FormCliente: TFormCliente
     object TabSheet4: TTabSheet
       Caption = '&Hist'#243'rico de Contatos'
       ImageIndex = 3
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBMemo1: TDBMemo
         Left = 0
         Top = 0
@@ -4211,6 +4263,10 @@ inherited FormCliente: TFormCliente
     object tsContato: TTabSheet
       Caption = 'Contatos no Cliente'
       ImageIndex = 5
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label86: TLabel
         Left = 8
         Top = 8
@@ -4427,6 +4483,10 @@ inherited FormCliente: TFormCliente
     object tsAvisos: TTabSheet
       Caption = 'Avisos'
       ImageIndex = 6
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label21: TLabel
         Left = 8
         Top = 32
@@ -4567,6 +4627,10 @@ inherited FormCliente: TFormCliente
     object tsArquivo: TTabSheet
       Caption = 'Arquivo'
       ImageIndex = 7
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object GroupBox22: TGroupBox
         Left = 0
         Top = 0
@@ -4692,6 +4756,10 @@ inherited FormCliente: TFormCliente
     object tsPrecos: TTabSheet
       Caption = 'Pre'#231'os Exclusivos '
       ImageIndex = 8
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
     end
   end
   object DbNavigator1: TDBNavigator [2]
@@ -7809,7 +7877,7 @@ inherited FormCliente: TFormCliente
       FieldName = 'BAN_APELIDO'
       Size = 25
     end
-    object qClientesCLI_UND_CONSUMIDORA: TIntegerField
+    object qClientesCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'UNIDADE CONSUMIDORA'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end
@@ -7968,7 +8036,7 @@ inherited FormCliente: TFormCliente
       FieldName = 'BAN_APELIDO'
       Size = 25
     end
-    object cdsClientesCLI_UND_CONSUMIDORA: TIntegerField
+    object cdsClientesCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'UNIDADE CONSUMIDORA'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end

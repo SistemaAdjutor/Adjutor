@@ -123,8 +123,8 @@ type
     edPercAtingido: TMaskEdit;
     btPesqClinte: TBitBtn;
     ClienteF4: TSgDbSearchCombo;
-    qPedidoPED_UND_CONSUMIDORA: TIntegerField;
-    cdsPedidoPED_UND_CONSUMIDORA: TIntegerField;
+    qPedidoPED_UND_CONSUMIDORA: TLargeintField;
+    cdsPedidoPED_UND_CONSUMIDORA: TLargeintField;
     Label17: TLabel;
     DBEdit4: TDBEdit;
     btnAgenda: TBitBtn;
@@ -425,8 +425,8 @@ begin
 
 
       end;
-      if qaux2.FieldByName('CLI_UND_CONSUMIDORA').AsInteger <> 0  then
-        cdsPedidoPED_UND_CONSUMIDORA.AsInteger := qaux2.FieldByName('CLI_UND_CONSUMIDORA').AsInteger;
+      if qaux2.FieldByName('CLI_UND_CONSUMIDORA').AsLargeint <> 0  then
+        cdsPedidoPED_UND_CONSUMIDORA.AsLargeint := qaux2.FieldByName('CLI_UND_CONSUMIDORA').AsLargeint;
 
       cbContaFinanceira.idRetorno := qAux2.FieldByName('CCT_CODIGO').AsString;
       edVendedor.idRetorno := qAux2.FieldByName('REP_CODIGO').AsString;
@@ -826,7 +826,7 @@ begin
           ' FPG_REGISTRO =  ' + IntToStr(cdsPedidoFPG_REGISTRO.AsInteger) +  ',' +
           ' BAN_CODIGO = '+QuotedStr(cdsPedidoBAN_CODIGO.AsString)+ ' ,'+
           ' PCX_CODIGO = '+QuotedStr(cdsPedidoPCX_CODIGO.AsString ) +' , ' +
-          ' CLI_UND_CONSUMIDORA = '+ IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsInteger)+ ', ' +
+          ' CLI_UND_CONSUMIDORA = '+ IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsLargeint)+ ', ' +
           ' CLI_DTULTCOM = ' + DateToSQL(now) + ', ' +
           ' CLI_VL_ULTCOMP = ' + FloatToSQL(cdsPedidoPED_VLTOTAL_BRUTO.AsFloat) +
           ' where cli_codigo = '+ QuotedStr(cli_codigo);
@@ -906,7 +906,7 @@ begin
                  QuotedStr('N') + ','+
                  IntToStr(Banco_id) + ',' +
                  QuotedStr('N') +','+ QuotedStr('N') +','+ QuotedStr('N') +',' + QuotedStr('N') +   ','+
-                 IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsInteger) + ')';
+                 IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsLargeint) + ')';
 
 
        ExecSql(sql);
@@ -1089,7 +1089,7 @@ begin
     GeraException('Informe o valor da parcela');
   if cdsPedidoBAN_CODIGO.AsString = '' then
     GeraException('Informe o Banco');
-  if (cdsPedidoPED_UND_CONSUMIDORA.AsInteger = 0)  or (cdsPedidoPED_UND_CONSUMIDORA.IsNull) then
+  if (cdsPedidoPED_UND_CONSUMIDORA.AsLargeint = 0)  or (cdsPedidoPED_UND_CONSUMIDORA.IsNull) then
   begin
     OpenAux('select * from bancos where bco_codigo = '+IntToStr( CbBancos.CDS.FieldByName('BAN_COD_APELIDO').AsInteger));
 

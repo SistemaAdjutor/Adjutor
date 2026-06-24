@@ -198,7 +198,7 @@ type
     btnTransferir: TBitBtn;
     CdsReceberObstransf: TStringField;
     CdsReceberFPC_IMPDUP: TStringField;
-    CdsReceberCLI_UND_CONSUMIDORA: TIntegerField;
+    CdsReceberCLI_UND_CONSUMIDORA: TLargeintField;
     chkExcluidos: TCheckBox;
     CdsReceberSELECAO_NFSE: TBooleanField;
     CdsReceberRPS_CODIGO: TIntegerField;
@@ -341,7 +341,7 @@ type
     CdsReceberCLI_PESSOA: TStringField;
     CdsReceberFPC_ANTECIPACAO_CONCLUIDA: TStringField;
     cxgrdReceberFPC_ANTECIPACAO_CONCLUIDA: TcxGridDBColumn;
-    cdsExportaExcelCLI_UND_CONSUMIDORA: TIntegerField;
+    cdsExportaExcelCLI_UND_CONSUMIDORA: TLargeintField;
     procedure FormShow(Sender: tObject);
     procedure BaixarnaConsulta;
     procedure Bit_SairClick(Sender: tObject);

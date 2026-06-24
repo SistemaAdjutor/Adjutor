@@ -1570,8 +1570,6 @@ type
     SqlPrdGrupoPGR_PER_LUCRO: TFMTBCDField;
     SqlPrdGrupoPGR_MARGEMOFERTA: TFMTBCDField;
     SqlPrdGrupoPGR_MARGEMVENDA: TFMTBCDField;
-    SqlCLientesCLI_UND_CONSUMIDORA: TIntegerField;
-    CdsClientesCLI_UND_CONSUMIDORA: TIntegerField;
     CdsParcelasPCL_TX_MARGEM: TFMTBCDField;
     SqlParcelasPCL_TX_MARGEM: TFMTBCDField;
     CdsParcelaspcl_baixa_automa: TStringField;
@@ -1710,6 +1708,8 @@ type
     CdsOperFiscIBS_ID: TIntegerField;
     SqlOperFiscOPE_MOSTRA_IBS_CBS: TStringField;
     CdsOperFiscOPE_MOSTRA_IBS_CBS: TStringField;
+    SqlCLientesCLI_UND_CONSUMIDORA: TLargeintField;
+    CdsClientesCLI_UND_CONSUMIDORA: TLargeintField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);

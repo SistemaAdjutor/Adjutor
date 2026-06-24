@@ -732,7 +732,7 @@ type
     qClientesREP_RAZAO: TStringField;
     qClientesPCX_DESCRI: TStringField;
     qClientesBAN_APELIDO: TStringField;
-    qClientesCLI_UND_CONSUMIDORA: TIntegerField;
+    qClientesCLI_UND_CONSUMIDORA: TLargeintField;
     qClientesCLI_NUMERO: TStringField;
     lbCLI_DTNASCIMENTO: TLabel;
     dbedCLI_DTNASCIMENTO: TDBDateEdit;
@@ -760,7 +760,7 @@ type
     cdsClientesREP_RAZAO: TStringField;
     cdsClientesPCX_DESCRI: TStringField;
     cdsClientesBAN_APELIDO: TStringField;
-    cdsClientesCLI_UND_CONSUMIDORA: TIntegerField;
+    cdsClientesCLI_UND_CONSUMIDORA: TLargeintField;
     cdsClientesEMP_CODIGO: TStringField;
     qContafinanceira: TSQLQuery;
     Label55: TLabel;
