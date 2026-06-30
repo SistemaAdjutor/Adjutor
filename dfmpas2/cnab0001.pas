@@ -5684,45 +5684,47 @@ begin
       AssignFile(wREGISTRO,FileArqSalvar.FileName);
       RewRite(wREGISTRO);
      { GERAR REGISTRO-HEADER DA REMESSA TIPO A }
-      Writeln(wREGISTRO,'A'{IDENTIFICACAO DO REGISTRO HEADER}
-                       +'1'{REMESA DO CONVENIO}
-                       +wconvenio{CODIGO DO CONVENIO}
+      Writeln(wREGISTRO,'A'{IDENTIFICACAO DO REGISTRO HEADER 01-01}
+                       +'1'{REMESA DO CONVENIO 02-02}
+                       +wconvenio{CODIGO DO CONVENIO 03-08}
                        +PreencheDireita('',014){livres de 09 a 22 }
-                       +PreencheDireita(TiraCaracteresEspeciais(Copy(DBInicio.Empresa.RAZAO,1,20),True),20){NOME DO EMPRESA}
-                       +'037' // fixo  copel febraban
-                       +PreencheDireita('COPEL DISTRIBUICAO',20){FIXO COPEL}
+                       +PreencheDireita(TiraCaracteresEspeciais(Copy(DBInicio.Empresa.RAZAO,1,20),True),20){NOME DO EMPRESA 23-42}
+                       +'037' // fixo  copel febraban 43 - 45
+                      //  +PreencheDireita('COPEL DISTRIBUICAO', 20){FIXO COPEL 46 -65}   alterado pela issue 2229
+                       +PreencheDireita('COPEL', 20){FIXO COPEL 46 -65}
                        +Copy(DateToStr(Date),7,4) {ANO 4 CASAS - Data da Gravação}
                        +Copy(DateToStr(Date),4,2) {MES - Data da Gravação}
-                       +Copy(DateToStr(Date),1,2) {DIA - Data da Gravação}
-                       +FormatFloat('000000',wSEQ_REMESSA) {NÚMERO SEQUENCIAL DO ARQUIVO DE REMESSA}
-                       +PreencheDireita('',70){livres de 80 A 149  - LIVRE}
-                       +'.');
+                       +Copy(DateToStr(Date),1,2) {DIA - Data da Gravação  66-73}
+                       +FormatFloat('000000',wSEQ_REMESSA) {NÚMERO SEQUENCIAL DO ARQUIVO DE REMESSA 74 - 79}
+                       +PreencheDireita('',70){LIVRE 80 - 149}
+                       +'.'); // 150 - 150
       CdSCrCduplicata.First;
       while not CdSCrCduplicata.Eof do
       begin
 
         Application.ProcessMessages;
        { REGISTRO E , VALOR A SER LANÇADO NA FATURA}
-        Writeln(wREGISTRO,'E'{IDENTIFICACAO DO REGISTRO HEADER}
+        Writeln(wREGISTRO,'E'{IDENTIFICACAO DO REGISTRO HEADER 01-01}
                          +PreencheDireita(CdSCrCduplicata.FieldByname('CLI_CODIGO').AsString,5) {cliente }
                          +PreencheDireita(CdSCrCduplicata.FieldByname('FAT_CODIGO').AsString+ CdSCrCduplicata.FieldByname('FPC_NUMER').AsString,8)
-                         +PreencheDireita(TiraCaracteresEspeciais( copy(CdSCrCduplicata.FieldByname('CLI_RAZAO').AsString,1,20),True),12)    {nome cliente}
-                         +PreencheDireita(edCodProduto.Text,4)  // codigo do produto
-                         +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsLargeint),15)
-                         +PreencheDireita('',8){livres de 40 a 47 }
-                         +PreencheZeroEsquerda(ExtrairNumeros(FormatFloat('#,###,##0.00',CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency)),17){valor da parcela}
-                         +'03' {codigo da moeda}
-                         +PreencheDireita('',2) //67-68
-                         +PreencheDireita('',2) // 69-70
+                         +PreencheDireita(TiraCaracteresEspeciais( copy(CdSCrCduplicata.FieldByname('CLI_RAZAO').AsString,1,20),True),12)    {identificação do cliente 02-26}
+                         +PreencheDireita(edCodProduto.Text,4)  // codigo do produto 27-30
+                         +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsLargeint),15) // 31- 45
+                         +PreencheDireita('',2){livres de 46 a 47 }
+                         +PreencheZeroEsquerda(ExtrairNumeros(FormatFloat('#,###,##0.00',CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency)),17){valor da parcela 48-64}
+                         +'03' {codigo da moeda 65-66 }
+                         +PreencheDireita('',2) // numero inicial da parcela  67-68
+                         +PreencheDireita('',2) // numero final da parcela 69-70
                         // +PreencheZeroEsquerda( CdSCrCduplicata.FieldByname('FPC_NUMER').AsString,2)  //67-68
 //                         +PreencheZeroEsquerda( CdSCrCduplicata.FieldByname('FPC_NUMER').AsString,2) 69-70
-                         +PreencheDireita('',2)
-                         +PreencheDireita('',6)
+                         +PreencheDireita('',2) // Livre 71-72
+                         +PreencheDireita('',6) // data da liberação para o faturamento 73-78
                        //  +copy(DateToStr(CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime),7,4) {data de faturamento ano AAAA}
 //                         +copy(DateToStr(CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime),4,2) {data de faturamento mes MM}
-                         +PreencheDireita('',41)  {LIVRE DE 79-119}
+                         // +PreencheDireita('',41)  {LIVRE DE 79-119} alterado pela issue 2229
+                         +PreencheDireita(CdSCrCduplicata.FieldByname('CLI_CGC').AsString, 41) {CPF/CNPJ cliente 79-119}
                          +PreencheDireita(CdSCrCduplicata.FieldByname('FAT_CODIGO').AsString+' '+ CdSCrCduplicata.FieldByname('FPC_NUMER').AsString,30)  {USO CONVENIO DE 120-149 - passado o numero da fatura}
-                         +iif(rgMovCopel.ItemIndex=0,'I',IIF(rgMovCopel.ItemIndex=1,'A','C'))
+                         +iif(rgMovCopel.ItemIndex=0,'I',IIF(rgMovCopel.ItemIndex=1,'A','C')) // código do movimento Inclisão 150-150
                        );
         CValorTotal.Value     := (CValorTotal.Value   + CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency);
 
