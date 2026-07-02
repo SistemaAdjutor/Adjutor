@@ -469,6 +469,13 @@ object DataCadastros: TDataCadastros
       FieldName = 'CLI_AGRONEGOCIO'
       Size = 1
     end
+    object SqlCLientesCLI_RECORRENTE: TStringField
+      FieldName = 'CLI_RECORRENTE'
+      Size = 1
+    end
+    object SqlCLientesCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField
+      FieldName = 'CLI_DATA_ULTIMA_PARCELA'
+    end
   end
   object DspClientes: TDataSetProvider
     DataSet = SqlCLientes
@@ -912,6 +919,13 @@ object DataCadastros: TDataCadastros
     object CdsClientesCLI_AGRONEGOCIO: TStringField
       FieldName = 'CLI_AGRONEGOCIO'
       Size = 1
+    end
+    object CdsClientesCLI_RECORRENTE: TStringField
+      FieldName = 'CLI_RECORRENTE'
+      Size = 1
+    end
+    object CdsClientesCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField
+      FieldName = 'CLI_DATA_ULTIMA_PARCELA'
     end
   end
   object DsCliente: TDataSource
