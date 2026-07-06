@@ -760,6 +760,7 @@ type
         CreditoConta : double;
 				wSequenciaNFe, IcmTipoCalculoDifal: integer;   { mar }
         sFat_CODIGO : string;
+        oprTipoCalculoMVA: string;
     cstPISCOFINS : string;
     fSerieNF, fUF, fwAtualizaEstoque, fwTp_Cobranca, fwTp_Docto, fsReferenciaProvisoriaOrcamento, fwCod_Carteira,
     fOPT_SIMPLES , fwNFModelo, fwPrmMarca, fwPrmEspecie, fTipoSeqNfe, fPMT_GerarTagICMSSubsPagaAnter,femp_crt,fPMT_CERTIFICADO_DIGITAL : string;
@@ -4263,6 +4264,7 @@ Procedure TFormFatPedido.LeRegra ( pRegra:integer; cfopCodigo : string = '' );
         wUfAliqIcmsSubCliRegra := qAux.FieldByName('OPR_ALIQ_ST_UF').AsFloat;
         wUfAliqIcmsInterestadlRegra := qAux.FieldByName('OPR_ALIQ_INTERESTADUAL').AsFloat; // adr
         wReducaoBaseST := qAux.FieldByName('OPR_REDUCAO_BASE_ST').AsFloat;
+        oprTipoCalculoMVA := qAux.FieldByName('OPR_TIPO_CALCULO_MVA').AsString;
         if consumoProprio then  //consumo próprio é somente diferencial de aliquota
           wUfAliqMVA := 0
         else
@@ -4933,9 +4935,14 @@ begin
 																	 Else          }
                                    if (bRegra<>0) then
 																	 Begin
+                                        if oprTipoCalculoMVA = 'D' then
+                                          wCalBaseValorSubs := wBaseValorSubs / (1 - (wUfAliqMVA / 100) ) //  por dentro
+                                        else
+                                        begin
+  																				wCalBaseValorSubs := Uteis.RoundTo ( wBaseValorSubs * wUfAliqMVA / 100, -3 );  // por fora
+                                          wCalBaseValorSubs := Uteis.RoundTo ( wCalBaseValorSubs + wBaseValorSubs , -3);
+                                        end;
 
-																				wCalBaseValorSubs := Uteis.RoundTo ( wBaseValorSubs * wUfAliqMVA / 100, -3 );
-																				wCalBaseValorSubs := Uteis.RoundTo ( wCalBaseValorSubs + wBaseValorSubs , -3);
 																				wBaseValorSubs := wCalBaseValorSubs;
 
 																				wUfResultMVA := Uteis.RoundTo ( wBaseValorSubs * wUfAliqIcmsSubCli / 100, -3 );

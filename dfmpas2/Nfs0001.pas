@@ -6914,7 +6914,7 @@ procedure TFormNfEntrada.RealizaAtualizacaoCustosEntrada;
       wEstoque,
       wFinaliza:Double;
       sFornecedor:string;
-  ValorImpostosRetirados : Double;
+  ValorImpostosRetirados, wTotalRateioICMS : Double;
   porFora: boolean;
   msg: string;
 begin
@@ -6934,6 +6934,7 @@ begin
      wValor_FreteFora := 0;
      wValor_Diff_ICMS := 0;
      wValor_Outros  := 0 ;
+     wTotalRateioICMS := 0;
 
      wValor_despesas := 0;
      wValor_subTrib := 0;
@@ -6946,7 +6947,14 @@ begin
      if dbInicio.IsDesenvolvimento then
       CopyToClipboard(SqlCdsGridSemOC.CommandText);
 
-
+      qAux.Close;
+      wSql1 := 'SELECT COALESCE(sum(E1.ENF_QTDE * E1.ENF_PRECO),0) as Total '+
+               ' FROM ENF_IT01 E1 '+
+               ' LEFT JOIN PRD0000 P1  ON  (E1.PRD_CODIGO = P1.PRD_CODIGO) ' +
+               ' LEFT JOIN ALMOX0000 A1 ON (A1.AMX_CODIGO = E1.AMX_CODIGO) ' ;
+      qAux.Sql.Text := SqlDef('ORDENSCOMPRA',wSql1,'where E1.ENF_IT_NOTANUMBER = '''+EdtNota.Text+''' AND E1.ENF_ORIGEM_MERCADORIA <> 7 and E1.FOR_CODIGO = '''+EdtFor_Codigo.Text+''' ','','E1.');
+      qAux.Open;
+      wTotalRateioICMS := qAux.FieldByName('Total').AsFloat;
 
      SqlCdsGridSemOC.First;
      while (not SqlCdsGridSemOC.Eof) do
@@ -7009,9 +7017,15 @@ begin
         wVLR_AGREGADO := wVLR_AGREGADO + wValor_FreteFora;
 
         //diferença de ICMS
-        wPERC_RATEIO  := (((rTmpQuantidade * rTmp_Custo) * 100)/Curr_Valor_Produtos.Value);
-        wValor_Diff_ICMS := (((wPERC_RATEIO * currDifICMS.Value) / 100) / rTmpQuantidade);
-        wVLR_AGREGADO := wVLR_AGREGADO + wValor_Diff_ICMS;
+        if SqlCdsGridSemOCENF_ORIGEM_MERCADORIA.AsInteger <> 7 then
+        begin
+          wPERC_RATEIO  := (((rTmpQuantidade * rTmp_Custo) * 100) / wTotalRateioICMS);
+//          wPERC_RATEIO  := (((rTmpQuantidade * rTmp_Custo) * 100) / Curr_Valor_Produtos.Value);
+          wValor_Diff_ICMS := (((wPERC_RATEIO * currDifICMS.Value) / 100) / rTmpQuantidade);
+          wVLR_AGREGADO := wVLR_AGREGADO + wValor_Diff_ICMS;
+        end
+        else
+          wValor_Diff_ICMS := 0;
 
         //OUTROS VALORES
         wPERC_RATEIO  := (((rTmpQuantidade * rTmp_Custo) * 100)/Curr_Valor_Produtos.Value);

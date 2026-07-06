@@ -1,5 +1,5 @@
-﻿Inicio da versão: 04/05/2026
-Atualizado em 19/05/2026
+﻿Inicio da versão: 04/06/2026
+Atualizado em 30/06/2026
 
 principal: Bepine, Edge, Collect
 	2194 - Todos os cliente PR - Implementação CSRT (Responsável Técnico) na NF-e [Novi]
@@ -12,3 +12,14 @@ patch 1: Drimec, Arkson, EDGE
 	2213 - [SUP-41] Drimec - Simulação de Consumo não apresenta MP
 	2215 - [SUP-46] Arkson - Relatório apresenta Vlr.Estoque zerado
     2217 - [SUP-66] Edge - Saldo do Retorno Ind. Por Kit errado
+
+patch 2: Drimec, Arkson, Edge, LF Epis, Collect, Quimica Rocha
+	2213 - [SUP-41] Drimec - Simulação de Consumo não apresenta MP
+	2215 - [SUP-46] Arkson - Relatório apresenta Vlr.Estoque zerado
+	2217 - [SUP-66] Edge - Saldo do Retorno Ind. Por Kit errado
+	2220 - Arkson : ajustar o rateio da Diferença ICMS
+	2227 - [SUP-85] LF EPIS - Produto liberado para edições com problema
+	2228 - [SUP-62] Collect - Correção na geração em lote do numero para boletos selecionados
+	2230 - [SUP-97] DRIMEC - Rejeição SEFAZ - Total de IBS UF difere da soma dos itens (diferença de R$ 0,01)
+	2231 - [SUP-102] Industria Quimica Rocha - ICMS ST sendo calculado como “por fora” no XML e possível divergência de enquadramento ST por UF (PR x CE)
+

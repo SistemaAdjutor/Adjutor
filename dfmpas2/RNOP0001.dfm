@@ -4,7 +4,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
   BorderIcons = [biSystemMenu]
   BorderStyle = bsSingle
   Caption = 'Regras Fiscais para CFOP e NCM'
-  ClientHeight = 572
+  ClientHeight = 584
   ClientWidth = 1451
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
@@ -13,22 +13,23 @@ inherited FormRegraNatOp: TFormRegraNatOp
   Visible = True
   OnCloseQuery = FormCloseQuery
   ExplicitWidth = 1457
-  ExplicitHeight = 597
+  ExplicitHeight = 613
   PixelsPerInch = 96
   TextHeight = 14
   object gbComoFunciona: TGroupBox [0]
     Left = 625
     Top = 0
     Width = 334
-    Height = 572
+    Height = 584
     Align = alLeft
     Caption = 'Como funciona?'
     TabOrder = 0
+    ExplicitHeight = 572
     object Label9: TLabel
       Left = 2
       Top = 16
       Width = 330
-      Height = 554
+      Height = 566
       Align = alClient
       AutoSize = False
       Caption = 
@@ -72,9 +73,11 @@ inherited FormRegraNatOp: TFormRegraNatOp
     Left = 0
     Top = 0
     Width = 625
-    Height = 572
+    Height = 584
     Align = alLeft
     TabOrder = 1
+    ExplicitLeft = -4
+    ExplicitTop = 8
     object Label5: TLabel
       Left = 7
       Top = 9
@@ -94,12 +97,13 @@ inherited FormRegraNatOp: TFormRegraNatOp
       Left = 1
       Top = 29
       Width = 621
-      Height = 541
+      Height = 555
       ActivePage = tsRegra
       TabOrder = 2
       object tsRegra: TTabSheet
         Caption = 'Regras Fiscais'
         OnShow = tsRegraShow
+        ExplicitLeft = 5
         object GroupBox2: TGroupBox
           Left = 3
           Top = 0
@@ -617,8 +621,10 @@ inherited FormRegraNatOp: TFormRegraNatOp
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object cbOrigemMarcadoria: TJvDBComboBox
             Left = 134
@@ -730,7 +736,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           Left = 3
           Top = 246
           Width = 617
-          Height = 225
+          Height = 246
           Caption = 'Aplicar modifica'#231#245'es ao faturar o NCM acima'
           TabOrder = 1
           object Label20: TLabel
@@ -742,16 +748,16 @@ inherited FormRegraNatOp: TFormRegraNatOp
             Caption = 'ST trocada para :'
           end
           object Label6: TLabel
-            Left = 69
-            Top = 95
-            Width = 97
+            Left = 13
+            Top = 104
+            Width = 56
             Height = 14
             Alignment = taRightJustify
-            Caption = 'Percentual do MVA :'
+            Caption = '% do MVA :'
           end
           object Label10: TLabel
             Left = 309
-            Top = 95
+            Top = 104
             Width = 226
             Height = 14
             Alignment = taRightJustify
@@ -759,7 +765,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object Label11: TLabel
             Left = 18
-            Top = 135
+            Top = 150
             Width = 217
             Height = 14
             Alignment = taRightJustify
@@ -767,7 +773,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object Label14: TLabel
             Left = 49
-            Top = 160
+            Top = 175
             Width = 187
             Height = 14
             Alignment = taRightJustify
@@ -775,7 +781,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object Label15: TLabel
             Left = 300
-            Top = 159
+            Top = 174
             Width = 283
             Height = 14
             Alignment = taRightJustify
@@ -789,7 +795,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object Label16: TLabel
             Left = 89
-            Top = 184
+            Top = 199
             Width = 147
             Height = 14
             Alignment = taRightJustify
@@ -797,7 +803,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object Label13: TLabel
             Left = 50
-            Top = 115
+            Top = 130
             Width = 551
             Height = 14
             Alignment = taRightJustify
@@ -836,9 +842,9 @@ inherited FormRegraNatOp: TFormRegraNatOp
             Caption = 'Aliq FCP:'
           end
           object DBEPercentualMva: TDBEdit
-            Left = 172
-            Top = 92
-            Width = 65
+            Left = 75
+            Top = 101
+            Width = 50
             Height = 22
             DataField = 'OPR_PERCENTUAL_MVA'
             DataSource = DSRegraCFOP
@@ -871,7 +877,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object dbedtOPR_PERCENTUAL_MVA_SIMPLES: TDBEdit
             Left = 538
-            Top = 92
+            Top = 101
             Width = 65
             Height = 22
             Hint = 'quando venda para empresa do regime do simples'
@@ -883,7 +889,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object DBEaliqUF_subtrib: TDBEdit
             Left = 236
-            Top = 131
+            Top = 146
             Width = 60
             Height = 22
             DataField = 'OPR_ALIQ_ST_UF'
@@ -892,7 +898,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object dbedtOPR_REDUCAO_BASE_ST: TDBEdit
             Left = 237
-            Top = 155
+            Top = 170
             Width = 59
             Height = 22
             DataField = 'OPR_REDUCAO_BASE_ST'
@@ -920,12 +926,14 @@ inherited FormRegraNatOp: TFormRegraNatOp
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object DBEAliqInterestadual: TDBEdit
             Left = 236
-            Top = 180
+            Top = 195
             Width = 60
             Height = 22
             DataField = 'OPR_ALIQ_INTERESTADUAL'
@@ -934,7 +942,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
           end
           object DBCheckBox29: TDBCheckBox
             Left = 16
-            Top = 204
+            Top = 219
             Width = 583
             Height = 17
             Caption = 
@@ -970,8 +978,10 @@ inherited FormRegraNatOp: TFormRegraNatOp
             GridLeft = 0
             GridWidth = 0
             GridHeight = 100
+            GridTop = 0
             GridShowWhenEnter = False
             SelectWithDoubleClick = False
+            LimparCampoAoSair = True
           end
           object edtDestino: TDBEdit
             Left = 120
@@ -1004,15 +1014,33 @@ inherited FormRegraNatOp: TFormRegraNatOp
             DataSource = DSRegraCFOP
             TabOrder = 1
           end
+          object DBRadioGroup1: TDBRadioGroup
+            Left = 135
+            Top = 89
+            Width = 165
+            Height = 36
+            Caption = 'Tipo de C'#225'lculo do MVA'
+            Columns = 2
+            DataField = 'OPR_TIPO_CALCULO_MVA'
+            DataSource = DSRegraCFOP
+            Items.Strings = (
+              'Por Dentro'
+              'Por Fora')
+            TabOrder = 12
+            Values.Strings = (
+              'D'
+              'F')
+          end
         end
         object Panel3: TPanel
           Left = 0
-          Top = 477
+          Top = 491
           Width = 613
           Height = 35
           Align = alBottom
           BevelOuter = bvNone
           TabOrder = 2
+          ExplicitTop = 477
           object Bit_Lista: TBitBtn
             Left = 19
             Top = 7
@@ -1256,10 +1284,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
         Caption = 'Avan'#231'ado'
         ImageIndex = 1
         OnShow = tsAvancadoShow
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
+        ExplicitHeight = 512
         object Label21: TLabel
           Left = 8
           Top = 15
@@ -1310,12 +1335,13 @@ inherited FormRegraNatOp: TFormRegraNatOp
         end
         object Panel4: TPanel
           Left = 0
-          Top = 477
+          Top = 491
           Width = 613
           Height = 35
           Align = alBottom
           BevelOuter = bvNone
           TabOrder = 2
+          ExplicitTop = 477
           object BitBtn2: TBitBtn
             Left = 497
             Top = 5
@@ -1529,7 +1555,7 @@ inherited FormRegraNatOp: TFormRegraNatOp
         end
         object DBGrid1: TDBGrid
           Left = 0
-          Top = 160
+          Top = 174
           Width = 613
           Height = 317
           Align = alBottom
@@ -1597,8 +1623,10 @@ inherited FormRegraNatOp: TFormRegraNatOp
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = True
+          LimparCampoAoSair = True
         end
         object cbCapacidade: TSgDbSearchCombo
           Left = 70
@@ -1622,8 +1650,10 @@ inherited FormRegraNatOp: TFormRegraNatOp
           GridLeft = 0
           GridWidth = 0
           GridHeight = 100
+          GridTop = 0
           GridShowWhenEnter = False
           SelectWithDoubleClick = False
+          LimparCampoAoSair = True
         end
       end
     end
@@ -2195,6 +2225,10 @@ inherited FormRegraNatOp: TFormRegraNatOp
       FieldName = 'OPR_PERC_FCP'
       Precision = 15
     end
+    object CDSRegraCFOPOPR_TIPO_CALCULO_MVA: TStringField
+      FieldName = 'OPR_TIPO_CALCULO_MVA'
+      Size = 1
+    end
   end
   object DSPRegraCFOP: TDataSetProvider
     DataSet = SqlRegraCFOP
@@ -2427,6 +2461,10 @@ inherited FormRegraNatOp: TFormRegraNatOp
     object SqlRegraCFOPOPR_PERC_FCP: TFMTBCDField
       FieldName = 'OPR_PERC_FCP'
       Precision = 15
+    end
+    object SqlRegraCFOPOPR_TIPO_CALCULO_MVA: TStringField
+      FieldName = 'OPR_TIPO_CALCULO_MVA'
+      Size = 1
     end
   end
   object qAvancado: TSQLQuery
