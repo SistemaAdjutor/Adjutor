@@ -1710,6 +1710,10 @@ type
     CdsOperFiscOPE_MOSTRA_IBS_CBS: TStringField;
     SqlCLientesCLI_UND_CONSUMIDORA: TLargeintField;
     CdsClientesCLI_UND_CONSUMIDORA: TLargeintField;
+    SqlCLientesCLI_RECORRENTE: TStringField;
+    SqlCLientesCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField;
+    CdsClientesCLI_RECORRENTE: TStringField;
+    CdsClientesCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);

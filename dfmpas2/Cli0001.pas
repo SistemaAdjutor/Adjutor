@@ -790,6 +790,9 @@ type
     cdsClientesREG_DESCRI: TStringField;
     qClientesCLI_SUFRAMA: TStringField;
     cdsClientesCLI_SUFRAMA: TStringField;
+    DBRadioGroup2: TDBRadioGroup;
+    DBDateEdit1: TDBDateEdit;
+    Label61: TLabel;
 
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);

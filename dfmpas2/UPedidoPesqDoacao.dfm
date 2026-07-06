@@ -59,7 +59,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     object GbData: TGroupBox
       Left = 5
       Top = 40
-      Width = 391
+      Width = 379
       Height = 41
       Caption = 'Informe o Per'#237'odo'
       Font.Charset = ANSI_CHARSET
@@ -111,7 +111,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
         TabOrder = 0
         Items.Strings = (
           'ENTRADA'
-          'FATURAMENTO')
+          'FATURAMENTO'
+          'VCTO. '#218'LTIMA PARCELA')
       end
       object RxDataInicial: TJvDateEdit
         Left = 156
@@ -469,6 +470,15 @@ inherited frmPesqDoacao: TfrmPesqDoacao
         'Planilha')
       TabOrder = 6
     end
+    object btnRenovarRecorrencias: TButton
+      Left = 755
+      Top = 58
+      Width = 145
+      Height = 25
+      Caption = 'Renovar Recorr'#234'ncias'
+      TabOrder = 7
+      OnClick = btnRenovarRecorrenciasClick
+    end
   end
   object dbGrPedido: TDBGrid [1]
     Left = 0
@@ -477,14 +487,26 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     Height = 434
     Align = alClient
     DataSource = DsPedidos
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = dbGrPedidoCellClick
+    OnDrawColumnCell = dbGrPedidoDrawColumnCell
     OnDblClick = dbGrPedidoDblClick
+    OnTitleClick = dbGrPedidoTitleClick
     Columns = <
+      item
+        Expanded = False
+        FieldName = 'Selecionado'
+        Title.Alignment = taCenter
+        Title.Caption = '*'
+        Width = 28
+        Visible = True
+      end
       item
         Expanded = False
         FieldName = 'PED_CODIGO'
@@ -1083,7 +1105,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'BAN_APELIDO'
       Size = 100
     end
-    object qSqlCdsPesqPED_UND_CONSUMIDORA: TIntegerField
+    object qSqlCdsPesqPED_UND_CONSUMIDORA: TLargeintField
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object qSqlCdsPesqPED_DTENTRADA: TSQLTimeStampField
@@ -1115,6 +1137,17 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     object qSqlCdsPesqPCX_DESCRI: TStringField
       FieldName = 'PCX_DESCRI'
       Size = 25
+    end
+    object qSqlCdsPesqCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField
+      FieldName = 'CLI_DATA_ULTIMA_PARCELA'
+    end
+    object qSqlCdsPesqPCX_CODIGO: TStringField
+      FieldName = 'PCX_CODIGO'
+      Size = 3
+    end
+    object qSqlCdsPesqBAN_CODIGO: TStringField
+      FieldName = 'BAN_CODIGO'
+      Size = 4
     end
   end
   object dspSqlCdsPesq: TDataSetProvider
@@ -1258,7 +1291,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'BAN_APELIDO'
       Size = 100
     end
-    object SqlCdsPesqPED_UND_CONSUMIDORA: TIntegerField
+    object SqlCdsPesqPED_UND_CONSUMIDORA: TLargeintField
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object SqlCdsPesqPED_DTENTRADA: TSQLTimeStampField
@@ -1273,6 +1306,22 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       DisplayLabel = 'Centro de Custo'
       FieldName = 'PCX_DESCRI'
       Size = 25
+    end
+    object SqlCdsPesqSelecionado: TBooleanField
+      FieldKind = fkInternalCalc
+      FieldName = 'Selecionado'
+      DisplayValues = ';'
+    end
+    object SqlCdsPesqCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField
+      FieldName = 'CLI_DATA_ULTIMA_PARCELA'
+    end
+    object SqlCdsPesqPCX_CODIGO: TStringField
+      FieldName = 'PCX_CODIGO'
+      Size = 3
+    end
+    object SqlCdsPesqBAN_CODIGO: TStringField
+      FieldName = 'BAN_CODIGO'
+      Size = 4
     end
   end
   object DsPedidos: TDataSource
@@ -2745,6 +2794,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       DisplayLabel = 'Centro de Custo'
       FieldName = 'PCX_DESCRI'
       Size = 25
+    end
+    object cdsqSqlCdsPesqSelecionado: TBooleanField
+      FieldKind = fkInternalCalc
+      FieldName = 'Selecionado'
     end
   end
   object qContafinanceira: TSQLQuery

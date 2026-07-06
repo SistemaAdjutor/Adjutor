@@ -140,6 +140,9 @@ type
     qContafinanceira: TSQLQuery;
     cbContaFinanceira: TSgDbSearchCombo;
     Label18: TLabel;
+    chkCliRecorrente: TCheckBox;
+    Label19: TLabel;
+    dtCliDataUltimaParcela: TDateTimePicker;
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -173,13 +176,13 @@ type
    procedure ValidarPedido;
    procedure BuscaPadraoCliente(cli_codigo :string);
    procedure GravaPadraoCliente(cli_codigo: string);
-   procedure NumeroPedido;
    procedure GravarFatura;
    procedure EstornaFatura;
    procedure ExcluiFaturas;
    procedure Estatistica;
    procedure Comissao;
    procedure AtualizaContaFinanceira;
+   procedure NumeroPedido;
   public
     { Public declarations }
   end;
@@ -407,7 +410,7 @@ procedure TfrmPedidoDoacao.BuscaPadraoCliente(cli_codigo: string);
 begin
   if cli_codigo <> '' then
   begin
-    OpenAux2('SELECT FPG_REGISTRO, BAN_CODIGO, PCX_CODIGO, CCT_CODIGO, REP_CODIGO, CLI_UND_CONSUMIDORA FROM CLI0000 where cli_codigo = '+ QuotedStr(cli_codigo));
+    OpenAux2('SELECT FPG_REGISTRO, BAN_CODIGO, PCX_CODIGO, CCT_CODIGO, REP_CODIGO, CLI_UND_CONSUMIDORA, CLI_RECORRENTE, CLI_DATA_ULTIMA_PARCELA FROM CLI0000 where cli_codigo = '+ QuotedStr(cli_codigo));
     if not qAux2.IsEmpty then
     begin
       if (not qAux2.FieldByName('ban_codigo').IsNull) or (qAux2.FieldByName('ban_codigo').AsString <> '') then
@@ -430,6 +433,9 @@ begin
 
       cbContaFinanceira.idRetorno := qAux2.FieldByName('CCT_CODIGO').AsString;
       edVendedor.idRetorno := qAux2.FieldByName('REP_CODIGO').AsString;
+      chkCliRecorrente.Checked := qAux2.FieldByName('CLI_RECORRENTE').AsString = 'S';
+      dtCliDataUltimaParcela.Date := qAux2.FieldByName('CLI_DATA_ULTIMA_PARCELA').AsDateTime;
+
     end;
 
   end;
@@ -451,6 +457,13 @@ begin
  qPedido.CommandText := SQL;
 
  cdsPedido.Open;
+
+
+ qAux.Close;
+ qAux.SQL.Text := 'SELECT CLI_RECORRENTE, CLI_DATA_ULTIMA_PARCELA FROM CLI0000 c WHERE c.CLI_CODIGO = ' + QuotedStr(cdsPedido.FieldByName('CLI_CODIGO').AsString);
+ qAux.Open;
+ chkCliRecorrente.Checked := qAux.FieldByName('CLI_RECORRENTE').AsString = 'S';
+ dtCliDataUltimaParcela.Date := qAux.FieldByName('CLI_DATA_ULTIMA_PARCELA').AsDateTime;
 
 
 end;
@@ -807,6 +820,9 @@ begin
    cdsParcelasnparcela.AsInteger := i;
    cdsParcelas.Post;
 
+   if I = Parcela then
+     dtCliDataUltimaParcela.Date := DataParcela;
+
    case tipo of
 
      tpMensal:  DataParcela:=  IncMonth(DataParcela);
@@ -815,6 +831,8 @@ begin
      tpSemestral: DataParcela := IncMonth(DataParcela,6);
      tpAnual: DataParcela := IncMonth(DataParcela,12);
    end;
+
+
 
  end;
 end;
@@ -827,6 +845,8 @@ begin
           ' BAN_CODIGO = '+QuotedStr(cdsPedidoBAN_CODIGO.AsString)+ ' ,'+
           ' PCX_CODIGO = '+QuotedStr(cdsPedidoPCX_CODIGO.AsString ) +' , ' +
           ' CLI_UND_CONSUMIDORA = '+ IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsLargeint)+ ', ' +
+          ' CLI_RECORRENTE = '+ iif(chkCliRecorrente.Checked, QuotedStr('S'), QuotedStr('N') ) + ', ' +
+          ' CLI_DATA_ULTIMA_PARCELA = ' + DateToSQL(dtCliDataUltimaParcela.Date) + ', ' +
           ' CLI_DTULTCOM = ' + DateToSQL(now) + ', ' +
           ' CLI_VL_ULTCOMP = ' + FloatToSQL(cdsPedidoPED_VLTOTAL_BRUTO.AsFloat) +
           ' where cli_codigo = '+ QuotedStr(cli_codigo);
