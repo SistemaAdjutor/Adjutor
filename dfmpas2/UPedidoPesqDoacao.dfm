@@ -1149,6 +1149,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'BAN_CODIGO'
       Size = 4
     end
+    object qSqlCdsPesqCCT_CODIGO: TStringField
+      FieldName = 'CCT_CODIGO'
+      Size = 3
+    end
   end
   object dspSqlCdsPesq: TDataSetProvider
     DataSet = qSqlCdsPesq
@@ -1322,6 +1326,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     object SqlCdsPesqBAN_CODIGO: TStringField
       FieldName = 'BAN_CODIGO'
       Size = 4
+    end
+    object SqlCdsPesqCCT_CODIGO: TStringField
+      FieldName = 'CCT_CODIGO'
+      Size = 3
     end
   end
   object DsPedidos: TDataSource
