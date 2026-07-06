@@ -4741,12 +4741,12 @@ inherited FrmPedido: TFrmPedido
                 Align = alTop
                 TabOrder = 1
                 object Label35: TLabel
-                  Left = 43
+                  Left = 28
                   Top = 1
-                  Width = 33
+                  Width = 48
                   Height = 14
                   Alignment = taRightJustify
-                  Caption = 'DUIMP:'
+                  Caption = 'DI/ DUIMP:'
                 end
                 object Label36: TLabel
                   Left = 185
@@ -10106,7 +10106,7 @@ inherited FrmPedido: TFrmPedido
     Left = 1192
     Top = 389
     Bitmap = {
-      494C010103000500A00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500A40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
@@ -10337,7 +10337,6 @@ inherited FrmPedido: TFrmPedido
     object CDSPedidoDIPID_NUMERO_DI: TStringField
       DisplayWidth = 15
       FieldName = 'PID_NUMERO_DI'
-      EditMask = '>CCCCCCCCCCCCCCC;1;_'
       Size = 15
     end
     object CDSPedidoDIPID_DATA_DI: TDateField
@@ -11886,7 +11885,7 @@ inherited FrmPedido: TFrmPedido
     Left = 40
     Top = 147
     Bitmap = {
-      494C010104000900A00010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010104000900A40010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000002000000001002000000000000020
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
