@@ -1945,6 +1945,8 @@ var
     ie, status: string;
 
 begin
+
+
   MostrarErro := False;
   if not assigned(frmProcessaNFe)  then
    nf := TfrmProcessaNFe.Create(self);
