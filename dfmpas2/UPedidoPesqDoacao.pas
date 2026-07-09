@@ -239,6 +239,8 @@ type
     FCliCodigo      : String;
     FDataUltParcela : TDateTime;
     FTipoParcelaRecorrencia: TPedidoTipoParcela;
+    FDataInicioNovoPedido : TDateTime;
+    FFatCodigo: String;
   public
     { Public declarations }
   end;
@@ -428,14 +430,9 @@ end;
 
 
 
-{
-
-  // 1. Carregar pedido original
-  qAux.Close;
-  qAux.Sql.Text := 'SELECT * FROM PED0000 WHERE PED_CODIGO = ' + QuotedStr(APedCodigo);
-  qAux.Open;
-}
-
+//##############################################################
+//## INÍCIO da Renovação automática de doações recorrentes
+//##############################################################
 
 
 procedure TfrmPesqDoacao.btnRenovarRecorrenciasClick(Sender: TObject);
@@ -452,6 +449,7 @@ begin
 
   RenovarRecorrenciasSelecionadas;
 
+  BitPesquisarClick(Sender);
   ShowMessage('Processamento concluído.');
 end;
 
@@ -638,6 +636,18 @@ begin
 
   vTipoStr := Trim(qAux.FieldByName('PED_TIPOPARCELA').AsString);
 
+
+  // ----------------------------------------
+  // 2.1 CALCULA PRIMEIRO VENCIMENTO DO NOVO CICLO
+  // ----------------------------------------
+  FDataInicioNovoPedido :=
+    CalcularNovaDataRecorrencia(
+      FDataUltParcela,
+      FTipoParcelaRecorrencia
+    );
+
+
+
   // -----------------------------------
   // 3. INSERE CABEÇALHO DO NOVO PEDIDO
   // -----------------------------------
@@ -677,7 +687,7 @@ begin
     SqlCdsPesqFPG_REGISTRO.AsString + ', ' +
     QuotedStr(SqlCdsPesqBAN_CODIGO.AsString) + ', ' +
     SqlCdsPesqPED_PARCELA.AsString + ', ' +
-    DateToSQL(SqlCdsPesqPED_INICIOPAG.AsDateTime) + ', ' +
+    DateToSQL(FDataInicioNovoPedido) + ', ' +
     FloatToSql(SqlCdsPesqPED_VLPARCELA.AsFloat) + ', ' +
     SqlCdsPesqPED_UND_CONSUMIDORA.AsString + ', ' +
     QuotedStr(SqlCdsPesqCCT_CODIGO.AsString) + ', ' +
@@ -861,8 +871,9 @@ end;
 
 
 
-
-{   FATURAMENTO    }
+//#######################################
+//          FATURAMENTO
+//#######################################
 procedure TfrmPesqDoacao.GerarFinanceiro;
 begin
   GerarCabecalhoFinanceiro;
@@ -872,17 +883,16 @@ end;
 procedure TfrmPesqDoacao.GerarCabecalhoFinanceiro;
 var
   vFatRegistro : Integer;
-  vFatCodigo   : String;
 begin
 
   // ----------------------------------------
   // 1. GERA IDENTIFICADORES
   // ----------------------------------------
-  vFatRegistro := dbInicio.GetNextSequence('GEN_FAT0000_REGISTRO');
+  //  vFatRegistro := SequenciadorPRC( dbConn, dbInicio.EMPRESA.EMP_CODIGO, 'NF0001', 'NF_NOTANUMBER_S', 0);
 
   // Neste módulo não existe NF.
   // O financeiro utilizará o próprio número do pedido.
-  vFatCodigo := FNovoPedido;
+  FFatCodigo := strzero(SequenciadorPRC( dbConn, dbInicio.EMPRESA.EMP_CODIGO, 'NF0001', 'NF_NOTANUMBER_S', 0),6);;
 
   // ----------------------------------------
   // 2. CARREGA O PEDIDO RECÉM GERADO
@@ -905,7 +915,7 @@ begin
   qAux2.Close;
   qAux2.SQL.Text :=
     'INSERT INTO FAT0000 ('+
-    ' FAT_REGISTRO,'+
+//    ' FAT_REGISTRO,'+
     ' FAT_CODIGO,'+
     ' PED_CODIGO,'+
     ' EMP_CODIGO,'+
@@ -915,11 +925,15 @@ begin
     ' PCX_CODIGO,'+
     ' FAT_DTEMIS,'+
     ' FAT_VLFAT,'+
+    ' CCT_CODIGO,'+
+    ' FAT_PREVISAO,'+
+    ' FAT_EXCLUSAO,'+
+
     ' FAT_VL_LIQ'+
     ') VALUES ('+
 
-    IntToStr(vFatRegistro)+','+
-    QuotedStr(vFatCodigo)+','+
+  //  IntToStr(vFatRegistro)+','+
+    QuotedStr(FFatCodigo)+','+
     QuotedStr(FNovoPedido)+','+
     QuotedStr(dbInicio.EMP_CODIGO)+','+
     QuotedStr(qAux.FieldByName('CLI_CODIGO').AsString)+','+
@@ -928,6 +942,11 @@ begin
     QuotedStr(qAux.FieldByName('PCX_CODIGO').AsString)+','+
     DateToSQL(Date)+','+
     FloatToStr(qAux.FieldByName('PED_VLTOTAL_BRUTO').AsFloat)+','+
+    QuotedStr(qAux.FieldByName('CCT_CODIGO').AsString)+','+
+    QuotedStr('N')+','+
+    QuotedStr('N')+','+
+
+
     FloatToStr(qAux.FieldByName('PED_VLTOTAL_LIQ').AsFloat)+
     ')';
 
@@ -945,15 +964,34 @@ var
 begin
 
   // ----------------------------------------
-  // 1. CARREGA O PEDIDO RECÉM GERADO
-  // ----------------------------------------
-  qAux.Close;
+  // 1. CARREGA O PEDIDO  E OS DADOS DA ULTIMA PARCELA RECÉM GERADO
+  // ----------------------------------------qAux.Close;
   qAux.SQL.Text :=
-    'SELECT * '+
-    'FROM PED0000 '+
-    'WHERE PED_CODIGO = ' + QuotedStr(FNovoPedido) +
-    ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO);
+    'SELECT '+
+    '  P.*, '+
+    '  FP.* '+
 
+    'FROM PED0000 P '+
+
+    'LEFT JOIN FAT0000 F '+
+    '  ON F.PED_CODIGO = ' + QuotedStr(FPedidoOrigem) +
+    ' AND F.EMP_CODIGO = P.EMP_CODIGO '+
+
+    'LEFT JOIN FAT_PC01 FP '+
+    '  ON FP.FAT_CODIGO = F.FAT_CODIGO '+
+    ' AND FP.EMP_CODIGO = F.EMP_CODIGO '+
+    ' AND FP.FPC_NUMER = ('+
+    '      SELECT MAX(FP2.FPC_NUMER) '+
+    '      FROM FAT_PC01 FP2 '+
+    '      WHERE FP2.FAT_CODIGO = FP.FAT_CODIGO '+
+    '        AND FP2.EMP_CODIGO = FP.EMP_CODIGO'+
+    ' ) '+
+
+    'WHERE P.PED_CODIGO = ' + QuotedStr(FNovoPedido) +
+    ' AND P.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO);
+
+  if dbInicio.IsDesenvolvimento then
+    CopyToClipboard(qAux.SQL.Text);
   qAux.Open;
 
   if qAux.IsEmpty then
@@ -962,7 +1000,6 @@ begin
   vQtdParcelas   := qAux.FieldByName('PED_PARCELA').AsInteger;
   vValorParcela  := qAux.FieldByName('PED_VLPARCELA').AsFloat;
   vDataVencimento := qAux.FieldByName('PED_INICIOPAG').AsDateTime;
-
   // ----------------------------------------
   // 2. GERA AS PARCELAS
   // ----------------------------------------
@@ -990,14 +1027,24 @@ begin
       ' CLI_CODIGO,'+
       ' EMP_CODIGO,'+
       ' FPG_REGISTRO,'+
+      ' FPC_COBTIPO,'+
+      ' FPC_TIPODOC,'+
+      ' FPC_IMPDUP,'+
+      ' FPC_PREVISAO,'+
+      ' FPC_STATUS_REMESSA,' +
+      ' BAN_COD_APELIDO,' +
+      ' FPC_DESCONTADO,'+
+      ' FPC_CONFIRMADEVOLUCAO,'+
+      ' FPC_EXCLUSAO, ' +
+
       ' PED_UND_CONSUMIDORA'+
       ') VALUES ('+
 
       IntToStr(vFatRegistro)+','+
 
-      QuotedStr(FNovoPedido)+','+
+      QuotedStr(FFatCodigo) + ',' +
 
-      QuotedStr(IntToStr(i))+','+
+      QuotedStr(strZero(IntToStr(i), 2))+','+
 
       QuotedStr(qAux.FieldByName('REP_CODIGO').AsString)+','+
       QuotedStr(qAux.FieldByName('BAN_CODIGO').AsString)+','+
@@ -1020,10 +1067,22 @@ begin
 
       IntToStr(qAux.FieldByName('FPG_REGISTRO').AsInteger)+','+
 
+      QuotedStr(qAux.FieldByName('FPC_COBTIPO').AsString)+','+
+      QuotedStr(qAux.FieldByName('FPC_TIPODOC').AsString)+','+
+      QuotedStr(qAux.FieldByName('FPC_IMPDUP').AsString)+','+
+      QuotedStr(qAux.FieldByName('FPC_PREVISAO').AsString)+','+
+      QuotedStr(qAux.FieldByName('FPC_STATUS_REMESSA').AsString)+','+
+      qAux.FieldByName('BAN_COD_APELIDO').AsString+','+
+      QuotedStr(qAux.FieldByName('FPC_DESCONTADO').AsString)+','+
+      QuotedStr(qAux.FieldByName('FPC_CONFIRMADEVOLUCAO').AsString)+','+
+      QuotedStr(qAux.FieldByName('FPC_EXCLUSAO').AsString)+','+
+
       qAux.FieldByName('PED_UND_CONSUMIDORA').AsString+
 
       ')';
 
+    if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(qAux2.SQL.Text);
     qAux2.ExecSQL;
 
     // Guarda a data da última parcela gerada
@@ -1106,9 +1165,9 @@ end;
 
 
 
-
-
-
+//########################################################
+//** FIM DA Renovação automática de doações recorrentes
+//########################################################
 
 
 

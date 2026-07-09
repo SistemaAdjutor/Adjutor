@@ -471,11 +471,11 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       TabOrder = 6
     end
     object btnRenovarRecorrencias: TButton
-      Left = 755
-      Top = 58
-      Width = 145
+      Left = 815
+      Top = 53
+      Width = 76
       Height = 25
-      Caption = 'Renovar Recorr'#234'ncias'
+      Caption = ' Recorr'#234'ncia'
       TabOrder = 7
       OnClick = btnRenovarRecorrenciasClick
     end

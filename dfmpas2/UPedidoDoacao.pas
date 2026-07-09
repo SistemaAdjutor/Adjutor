@@ -364,6 +364,7 @@ begin
     cdsPedidoPED_VLFATURADO.AsBCD  := cdsPedidoPED_VLTOTAL_BRUTO.AsBCD;
     cdsPedidoEMP_CODIGO.AsString := DBInicio.Empresa.EMP_CODIGO;
     cdsPedidoPED_SITUACAO.AsString :=  'F';
+    cdsPedidoFPG_REGISTRO.AsString := edFPagto.idRetorno;
     cdsPedido.Post;
     cdsPedido.ApplyUpdates(0);
     GravaPadraoCliente(cdsPedidoCLI_CODIGO.AsString);
@@ -903,7 +904,7 @@ begin
        numero_pc:= IntToStr(GetNextSequence( 'GEN_FAT_PC01_REGISTRO'));
        sql:= ' INSERT INTO FAT_PC01 (FAT_REGISTRO, FAT_CODIGO,FPC_NUMER, REP_CODIGO, BAN_CODIGO, PCX_CODIGO, CCT_CODIGO, FPC_DTEMIS, FPC_NPARCELAS, '+
               ' FPC_COBTIPO, FPC_TIPODOC, FPC_SITPAG, FPC_STATUS, FPC_VENCTO, FPC_VLPARC, CLI_CODIGO, FPC_IMPDUP, EMP_CODIGO, FPC_PREVISAO, '+
-              ' BAN_COD_APELIDO, FPC_STATUS_REMESSA, FPC_DESCONTADO, FPC_EXCLUSAO, FPC_CONFIRMADEVOLUCAO, PED_UND_CONSUMIDORA ) '+
+              ' BAN_COD_APELIDO, FPC_STATUS_REMESSA, FPC_DESCONTADO, FPC_EXCLUSAO, FPC_CONFIRMADEVOLUCAO, FPG_REGISTRO, PED_UND_CONSUMIDORA ) '+
               ' VALUES ('+
                  numero_pc + ','+
                  QuotedStr(numero_fat)+ ','+
@@ -926,6 +927,7 @@ begin
                  QuotedStr('N') + ','+
                  IntToStr(Banco_id) + ',' +
                  QuotedStr('N') +','+ QuotedStr('N') +','+ QuotedStr('N') +',' + QuotedStr('N') +   ','+
+                 cdsPedidoFPG_REGISTRO.AsString + ', ' +
                  IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsLargeint) + ')';
 
 
