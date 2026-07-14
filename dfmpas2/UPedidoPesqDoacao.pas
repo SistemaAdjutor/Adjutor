@@ -220,13 +220,17 @@ type
     procedure CopiarItensPedido;
     procedure AtualizarClienteRecorrente(const ACliCodigo: String);
     procedure FinalizarRecorrencia;
-    function NormalizaTipoParcela(const AValor: string): TPedidoTipoParcela;
-    function GetIntervaloDiasTipoParcela(ATipo: TPedidoTipoParcela): Integer;
-    function GetTipoParcelaPedido(const APedCodigo: string): string;
-    function CalcularNovaDataRecorrencia(const AData: TDateTime; ATipo: TPedidoTipoParcela): TDateTime;
     procedure GerarFinanceiro;
     procedure GerarCabecalhoFinanceiro;
     procedure GerarParcelasFinanceiras;
+    procedure edTaxaRecorrenciaKeyPress(Sender: TObject; var Key: Char);
+
+    function NormalizaTipoParcela(const AValor: string): TPedidoTipoParcela;
+    function GetIntervaloMesesTipoParcela(ATipo: TPedidoTipoParcela): Integer;
+    function GetTipoParcelaPedido(const APedCodigo: string): string;
+    function CalcularNovaDataRecorrencia(const AData: TDateTime; ATipo: TPedidoTipoParcela): TDateTime;
+    function RecalcularValorRecorrencia(AValor: Double): Double;
+    function ExisteRecorrenciaSelecionada: Boolean;
   private
     procedure BuscaPedido(ordem: string);
     procedure LayOutPesq;
@@ -241,6 +245,8 @@ type
     FTipoParcelaRecorrencia: TPedidoTipoParcela;
     FDataInicioNovoPedido : TDateTime;
     FFatCodigo: String;
+    FContaFinanceiraRecorrencia : String; // CCT_CODIGO
+    FTaxaRecorrencia            : Double; // percentual
   public
     { Public declarations }
   end;
@@ -249,6 +255,8 @@ var
   frmPesqDoacao: TfrmPesqDoacao;
 
 implementation
+
+uses   uRecorrencia;
 
 {$R *.dfm}
 
@@ -440,6 +448,17 @@ begin
   if SqlCdsPesq.IsEmpty then
     Exit;
 
+  if not ExisteRecorrenciaSelecionada then
+  begin
+    MessageDlg(
+      'Nenhuma recorrência foi selecionada.',
+      mtWarning,
+      [mbOK],
+      0);
+    Exit;
+  end;
+
+
   if MessageDlg(
        'Confirma a renovação das recorrências selecionadas?',
        mtConfirmation,
@@ -447,7 +466,27 @@ begin
        0) <> mrYes then
     Exit;
 
-  RenovarRecorrenciasSelecionadas;
+  frmRecorrencia := TfrmRecorrencia.Create(Self);
+  frmRecorrencia.cbContaFinanceiraRecorrencia.idRetorno := SqlCdsPesqCCT_CODIGO.AsString;
+  try
+    if frmRecorrencia.ShowModal <> mrOk then
+      Exit;
+
+    FContaFinanceiraRecorrencia := frmRecorrencia.cbContaFinanceiraRecorrencia.idRetorno;
+    FTaxaRecorrencia :=
+      StrToFloatDef(
+        StringReplace(
+          frmRecorrencia.edTaxaRecorrencia.Text,
+          ',',
+          FormatSettings.DecimalSeparator,
+          [rfReplaceAll]),
+        0);
+
+    RenovarRecorrenciasSelecionadas;
+
+  finally
+    FreeAndNil(frmRecorrencia);
+  end;
 
   BitPesquisarClick(Sender);
   ShowMessage('Processamento concluído.');
@@ -531,7 +570,7 @@ begin
   // -----------------------------------------
   // 4. CALCULAR INTERVALO (REGRA DO MOTOR)
   // -----------------------------------------
-  vDias := GetIntervaloDiasTipoParcela(vTipoParcela);
+  vDias := GetIntervaloMesesTipoParcela(vTipoParcela);
 
   if vDias > 0 then
     FDataNovaUltimaParcela := IncDay(FDataUltParcela, vDias)
@@ -544,7 +583,7 @@ begin
   CarregarPedidoOrigem(FPedidoOrigem);
   GerarNovoPedido;
   CopiarCabecalhoPedido;
-  CopiarItensPedido;
+  // CopiarItensPedido;
   GerarFinanceiro;
   AtualizarClienteRecorrente(FCliCodigo);
   FinalizarRecorrencia;
@@ -615,6 +654,7 @@ end;
 procedure TfrmPesqDoacao.GerarNovoPedido;
 var
   vTipoStr: string;
+  TotalParcela: double;
 begin
 
   // -----------------------------------
@@ -635,7 +675,7 @@ begin
   qAux.Open;
 
   vTipoStr := Trim(qAux.FieldByName('PED_TIPOPARCELA').AsString);
-
+  TotalParcela := RecalcularValorRecorrencia(SqlCdsPesqPED_VLPARCELA.AsFloat);
 
   // ----------------------------------------
   // 2.1 CALCULA PRIMEIRO VENCIMENTO DO NOVO CICLO
@@ -688,7 +728,7 @@ begin
     QuotedStr(SqlCdsPesqBAN_CODIGO.AsString) + ', ' +
     SqlCdsPesqPED_PARCELA.AsString + ', ' +
     DateToSQL(FDataInicioNovoPedido) + ', ' +
-    FloatToSql(SqlCdsPesqPED_VLPARCELA.AsFloat) + ', ' +
+    FloatToSql(TotalParcela) + ', ' +
     SqlCdsPesqPED_UND_CONSUMIDORA.AsString + ', ' +
     QuotedStr(SqlCdsPesqCCT_CODIGO.AsString) + ', ' +
     QuotedStr(vTipoStr) + ')';
@@ -702,6 +742,10 @@ end;
 
 
 procedure TfrmPesqDoacao.CopiarCabecalhoPedido;
+var
+  vCCTCodigo      : String;
+  vVlTotalBruto   : Double;
+  vVlTotalLiquido : Double;
 begin
 
   qAux2.Close;
@@ -709,18 +753,44 @@ begin
     'SELECT * FROM PED0000 ' +
     'WHERE PED_CODIGO = ' + QuotedStr(FPedidoOrigem) +
     ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO);
+
   qAux2.Open;
 
   if qAux2.IsEmpty then
     Exit;
 
+  // ----------------------------------------
+  // Recalcula valores
+  // ----------------------------------------
+  vVlTotalBruto :=
+    RecalcularValorRecorrencia(
+      qAux2.FieldByName('PED_VLTOTAL_BRUTO').AsFloat);
+
+  vVlTotalLiquido :=
+    RecalcularValorRecorrencia(
+      qAux2.FieldByName('PED_VLTOTAL_LIQ').AsFloat);
+
+  // ----------------------------------------
+  // Centro de custo
+  // ----------------------------------------
+  if Trim(FContaFinanceiraRecorrencia) <> '' then
+    vCCTCodigo := FContaFinanceiraRecorrencia
+  else
+    vCCTCodigo := qAux2.FieldByName('CCT_CODIGO').AsString;
+
   qAux3.Close;
   qAux3.SQL.Text :=
     'UPDATE PED0000 SET ' +
+
     'PED_SITUACAO = ''T'', ' +
-    'PED_VLTOTAL_BRUTO = ' + FloatToStr(qAux2.FieldByName('PED_VLTOTAL_BRUTO').AsFloat) + ', ' +
-    'PED_VLTOTAL_LIQ = ' + FloatToStr(qAux2.FieldByName('PED_VLTOTAL_LIQ').AsFloat) + ', ' +
-    'PED_TIPOPARCELA = ' + QuotedStr(qAux2.FieldByName('PED_TIPOPARCELA').AsString) +
+
+    'PED_VLTOTAL_BRUTO = ' + FloatToSql(vVlTotalBruto) + ', ' +
+    'PED_VLTOTAL_LIQ = ' + FloatToSql(vVlTotalLiquido) + ', ' +
+
+    'PED_TIPOPARCELA = ' + QuotedStr(qAux2.FieldByName('PED_TIPOPARCELA').AsString) + ', ' +
+
+    'CCT_CODIGO = ' + QuotedStr(vCCTCodigo) +
+
     ' WHERE PED_CODIGO = ' + QuotedStr(FNovoPedido) +
     ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO);
 
@@ -795,12 +865,13 @@ end;
 procedure TfrmPesqDoacao.AtualizarClienteRecorrente(const ACliCodigo: String);
 var
   vNovaData: TDateTime;
+  vHistorico: string;
 begin
 
   // 1. Busca data atual do cliente
   qAux2.Close;
   qAux2.SQL.Text :=
-    'SELECT CLI_DATA_ULTIMA_PARCELA '+
+    'SELECT CLI_DATA_ULTIMA_PARCELA, CLI_HISTORICO '+
     'FROM CLI0000 '+
     'WHERE CLI_CODIGO = ' + QuotedStr(ACliCodigo) +
     ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO);
@@ -817,13 +888,22 @@ begin
   // 3. Calcula próximo ciclo (padrão da recorrência)
   vNovaData :=
     qAux2.FieldByName('CLI_DATA_ULTIMA_PARCELA').AsDateTime +
-    GetIntervaloDiasTipoParcela(FTipoParcelaRecorrencia);
+    GetIntervaloMesesTipoParcela(FTipoParcelaRecorrencia);
+
+  vHistorico := qAux2.FieldByName('CLI_HISTORICO').AsString + #13 + #10 +
+                FormatDateTime('dd/mm/yyyy', Now) + ' - ' +
+                SqlCdsPesqREP_NOME.AsString  + ' - ' +
+                'RENOVAÇÃO AUTOMÁTICA PELO SISTEMA';
+
+
+
 
   // 4. Atualiza cliente
   qAux3.Close;
   qAux3.SQL.Text :=
     'UPDATE CLI0000 SET ' +
-    'CLI_DATA_ULTIMA_PARCELA = ' + DateToSQL(vNovaData) +
+    'CLI_DATA_ULTIMA_PARCELA = ' + DateToSQL(vNovaData) + ',' +
+    'CLI_HISTORICO = ' + QuotedStr(vHistorico) +
     ' WHERE CLI_CODIGO = ' + QuotedStr(ACliCodigo) +
     ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO);
 
@@ -882,17 +962,21 @@ end;
 
 procedure TfrmPesqDoacao.GerarCabecalhoFinanceiro;
 var
-  vFatRegistro : Integer;
+  vVlFat     : Double;
+  vVlLiquido : Double;
+  vCCTCodigo : String;
 begin
 
   // ----------------------------------------
   // 1. GERA IDENTIFICADORES
   // ----------------------------------------
-  //  vFatRegistro := SequenciadorPRC( dbConn, dbInicio.EMPRESA.EMP_CODIGO, 'NF0001', 'NF_NOTANUMBER_S', 0);
-
-  // Neste módulo não existe NF.
-  // O financeiro utilizará o próprio número do pedido.
-  FFatCodigo := strzero(SequenciadorPRC( dbConn, dbInicio.EMPRESA.EMP_CODIGO, 'NF0001', 'NF_NOTANUMBER_S', 0),6);;
+  FFatCodigo := strzero(
+                  SequenciadorPRC(
+                    dbConn,
+                    dbInicio.EMPRESA.EMP_CODIGO,
+                    'NF0001',
+                    'NF_NOTANUMBER_S',
+                    0),6);
 
   // ----------------------------------------
   // 2. CARREGA O PEDIDO RECÉM GERADO
@@ -910,12 +994,27 @@ begin
     Exit;
 
   // ----------------------------------------
-  // 3. GERA O CABEÇALHO FINANCEIRO
+  // 3. RECALCULA VALORES
+  // ----------------------------------------
+  vVlFat := qAux.FieldByName('PED_VLTOTAL_BRUTO').AsFloat;
+
+  vVlLiquido := qAux.FieldByName('PED_VLTOTAL_LIQ').AsFloat;
+
+  // ----------------------------------------
+  // 4. CENTRO DE CUSTO
+  // ----------------------------------------
+  if Trim(FContaFinanceiraRecorrencia) <> '' then
+    vCCTCodigo := FContaFinanceiraRecorrencia
+  else
+    vCCTCodigo := qAux.FieldByName('CCT_CODIGO').AsString;
+
+  // ----------------------------------------
+  // 5. GERA O CABEÇALHO FINANCEIRO
   // ----------------------------------------
   qAux2.Close;
   qAux2.SQL.Text :=
     'INSERT INTO FAT0000 ('+
-//    ' FAT_REGISTRO,'+
+
     ' FAT_CODIGO,'+
     ' PED_CODIGO,'+
     ' EMP_CODIGO,'+
@@ -928,11 +1027,10 @@ begin
     ' CCT_CODIGO,'+
     ' FAT_PREVISAO,'+
     ' FAT_EXCLUSAO,'+
-
     ' FAT_VL_LIQ'+
+
     ') VALUES ('+
 
-  //  IntToStr(vFatRegistro)+','+
     QuotedStr(FFatCodigo)+','+
     QuotedStr(FNovoPedido)+','+
     QuotedStr(dbInicio.EMP_CODIGO)+','+
@@ -941,13 +1039,16 @@ begin
     QuotedStr(qAux.FieldByName('OPV_CODIGO').AsString)+','+
     QuotedStr(qAux.FieldByName('PCX_CODIGO').AsString)+','+
     DateToSQL(Date)+','+
-    FloatToStr(qAux.FieldByName('PED_VLTOTAL_BRUTO').AsFloat)+','+
-    QuotedStr(qAux.FieldByName('CCT_CODIGO').AsString)+','+
+
+    FloatToSql(vVlFat)+','+
+
+    QuotedStr(vCCTCodigo)+','+
+
     QuotedStr('N')+','+
     QuotedStr('N')+','+
 
+    FloatToSql(vVlLiquido)+
 
-    FloatToStr(qAux.FieldByName('PED_VLTOTAL_LIQ').AsFloat)+
     ')';
 
   qAux2.ExecSQL;
@@ -961,11 +1062,13 @@ var
   vQtdParcelas    : Integer;
   vValorParcela   : Double;
   vDataVencimento : TDateTime;
+  vCCTCodigo      : String;
 begin
 
   // ----------------------------------------
-  // 1. CARREGA O PEDIDO  E OS DADOS DA ULTIMA PARCELA RECÉM GERADO
-  // ----------------------------------------qAux.Close;
+  // 1. CARREGA O PEDIDO E OS DADOS DA ULTIMA PARCELA
+  // ----------------------------------------
+  qAux.Close;
   qAux.SQL.Text :=
     'SELECT '+
     '  P.*, '+
@@ -992,14 +1095,27 @@ begin
 
   if dbInicio.IsDesenvolvimento then
     CopyToClipboard(qAux.SQL.Text);
+
   qAux.Open;
 
   if qAux.IsEmpty then
     Exit;
 
-  vQtdParcelas   := qAux.FieldByName('PED_PARCELA').AsInteger;
-  vValorParcela  := qAux.FieldByName('PED_VLPARCELA').AsFloat;
+  // ----------------------------------------
+  // Centro de custo
+  // ----------------------------------------
+  if Trim(FContaFinanceiraRecorrencia) <> '' then
+    vCCTCodigo := FContaFinanceiraRecorrencia
+  else
+    vCCTCodigo := qAux.FieldByName('CCT_CODIGO').AsString;
+
+  // ----------------------------------------
+  // Dados financeiros
+  // ----------------------------------------
+  vQtdParcelas    := qAux.FieldByName('PED_PARCELA').AsInteger;
+  vValorParcela   := qAux.FieldByName('PED_VLPARCELA').AsFloat;
   vDataVencimento := qAux.FieldByName('PED_INICIOPAG').AsDateTime;
+
   // ----------------------------------------
   // 2. GERA AS PARCELAS
   // ----------------------------------------
@@ -1031,24 +1147,25 @@ begin
       ' FPC_TIPODOC,'+
       ' FPC_IMPDUP,'+
       ' FPC_PREVISAO,'+
-      ' FPC_STATUS_REMESSA,' +
-      ' BAN_COD_APELIDO,' +
+      ' FPC_STATUS_REMESSA,'+
+      ' BAN_COD_APELIDO,'+
       ' FPC_DESCONTADO,'+
       ' FPC_CONFIRMADEVOLUCAO,'+
-      ' FPC_EXCLUSAO, ' +
-
+      ' FPC_EXCLUSAO,'+
       ' PED_UND_CONSUMIDORA'+
       ') VALUES ('+
 
       IntToStr(vFatRegistro)+','+
 
-      QuotedStr(FFatCodigo) + ',' +
+      QuotedStr(FFatCodigo)+','+
 
-      QuotedStr(strZero(IntToStr(i), 2))+','+
+      QuotedStr(StrZero(IntToStr(i),2))+','+
 
       QuotedStr(qAux.FieldByName('REP_CODIGO').AsString)+','+
       QuotedStr(qAux.FieldByName('BAN_CODIGO').AsString)+','+
-      QuotedStr(qAux.FieldByName('CCT_CODIGO').AsString)+','+
+
+      QuotedStr(vCCTCodigo)+','+
+
       QuotedStr(qAux.FieldByName('PCX_CODIGO').AsString)+','+
 
       DateToSQL(Date)+','+
@@ -1060,7 +1177,7 @@ begin
 
       DateToSQL(vDataVencimento)+','+
 
-      FloatToStr(vValorParcela)+','+
+      FloatToSql(vValorParcela)+','+
 
       QuotedStr(qAux.FieldByName('CLI_CODIGO').AsString)+','+
       QuotedStr(dbInicio.EMP_CODIGO)+','+
@@ -1083,6 +1200,7 @@ begin
 
     if dbInicio.IsDesenvolvimento then
       CopyToClipboard(qAux2.SQL.Text);
+
     qAux2.ExecSQL;
 
     // Guarda a data da última parcela gerada
@@ -1090,15 +1208,17 @@ begin
 
     // Próximo vencimento
     vDataVencimento :=
-      IncDay(
+      IncMonth(
         vDataVencimento,
-        GetIntervaloDiasTipoParcela(FTipoParcelaRecorrencia));
+        GetIntervaloMesesTipoParcela(FTipoParcelaRecorrencia));
 
   end;
 
 end;
 
-{ FUNÇÕES AUXILIARES }
+
+
+{ FUNÇÕES AUXILIARES DA RECORRÊNCIA }
 function TfrmPesqDoacao.NormalizaTipoParcela(const AValor: string): TPedidoTipoParcela;
 var
   v: string;
@@ -1121,18 +1241,16 @@ begin
 end;
 
 
-function TfrmPesqDoacao.GetIntervaloDiasTipoParcela(ATipo: TPedidoTipoParcela): Integer;
+function TfrmPesqDoacao.GetIntervaloMesesTipoParcela(ATipo: TPedidoTipoParcela): Integer;
 begin
   case ATipo of
 
-    tpMensal:      Result := 30;
-    tpBimestral:   Result := 60;
-    tpTrimestral:  Result := 90;
-    tpSemestral:   Result := 180;
-    tpAnual:       Result := 365;
-
+    tpMensal:      Result := 1;
+    tpBimestral:   Result := 2;
+    tpTrimestral:  Result := 3;
+    tpSemestral:   Result := 6;
+    tpAnual:       Result := 12;
     tpUnica:       Result := 0;
-
   else
     Result := 0;
   end;
@@ -1160,7 +1278,39 @@ function TfrmPesqDoacao.CalcularNovaDataRecorrencia(
   const AData: TDateTime;
   ATipo: TPedidoTipoParcela): TDateTime;
 begin
-  Result := AData + GetIntervaloDiasTipoParcela(ATipo);
+  Result := AData + GetIntervaloMesesTipoParcela(ATipo);
+end;
+
+function TfrmPesqDoacao.RecalcularValorRecorrencia(AValor: Double): Double;
+begin
+  Result := AValor;
+
+  if FTaxaRecorrencia > 0 then
+    Result :=
+      Result +
+      (Result * FTaxaRecorrencia / 100);
+end;
+
+
+function TfrmPesqDoacao.ExisteRecorrenciaSelecionada: Boolean;
+begin
+  Result := False;
+
+  SqlCdsPesq.DisableControls;
+  try
+    SqlCdsPesq.First;
+    while not SqlCdsPesq.Eof do
+    begin
+      if SqlCdsPesqSelecionado.AsBoolean = True then
+      begin
+        Result := True;
+        Break;
+      end;
+      SqlCdsPesq.Next;
+    end;
+  finally
+    SqlCdsPesq.EnableControls;
+  end;
 end;
 
 
@@ -1387,6 +1537,23 @@ begin
       if (CbProjetoObra.idRetorno='') then
          GeraException('Centro de Custo não localizado com o código informado');
    end;
+end;
+
+procedure TfrmPesqDoacao.edTaxaRecorrenciaKeyPress(Sender: TObject;
+  var Key: Char);
+begin
+  inherited;
+  // Permite apenas números, Backspace e separador decimal
+  if not (Key in ['0'..'9', #8, FormatSettings.DecimalSeparator]) then
+  begin
+    Key := #0;
+    Exit;
+  end;
+
+  // Permite apenas um separador decimal
+  if (Key = FormatSettings.DecimalSeparator) and
+     (Pos(FormatSettings.DecimalSeparator, TEdit(Sender).Text) > 0) then
+    Key := #0;
 end;
 
 procedure TfrmPesqDoacao.Edt_ListaExit(Sender: TObject);

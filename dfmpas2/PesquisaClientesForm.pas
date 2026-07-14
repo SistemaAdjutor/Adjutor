@@ -97,6 +97,7 @@ type
     cdsBuscoSITUACAO: TStringField;
     qExportSITUACAO: TStringField;
     qExportULTPARCELA: TSQLTimeStampField;
+    chkRecorrente: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure CdsBuscoCLI_RAZAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
     procedure CdsBuscoCLI_CGCGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -205,6 +206,7 @@ begin
     end;
   chkUltCompra.Checked := iif(LeIni(arquivo, 'pesquisa', 'ultimacompra', ret) = 'TRUE', True, False)  ;
   AbreTabela:=True;
+  chkRecorrente.State := cbGrayed;
   Filtro; // abre tabelas
 end;
 
@@ -471,6 +473,13 @@ begin
               0: SqlAdd(' CL.CLI_PESSOA = '+QuotedStr('F'));
               1: SqlAdd(' CL.CLI_PESSOA = '+QuotedStr('J'));
             end;
+
+          case chkRecorrente.State of
+            cbChecked: SqlAdd(' CL.CLI_RECORRENTE = '+QuotedStr('S'));
+            cbUnchecked: SqlAdd(' CL.CLI_RECORRENTE = '+QuotedStr('N'));
+          end;
+
+
 
 
           case ComboBox1.ItemIndex of

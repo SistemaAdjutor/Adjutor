@@ -828,7 +828,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     Left = 558
     Top = 304
     Width = 400
-    Height = 44
+    Height = 41
     Caption = 'Informe a Conta Financeira'
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
@@ -902,20 +902,20 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       'WaitOnLocks=True'
       'IsolationLevel=ReadCommitted'
       'Trim Char=True')
-    Left = 600
-    Top = 425
+    Left = 288
+    Top = 417
   end
   inherited qAux: TSQLQuery
-    Left = 682
-    Top = 429
+    Left = 370
+    Top = 421
   end
   inherited qAux2: TSQLQuery
-    Left = 738
-    Top = 428
+    Left = 426
+    Top = 420
   end
   inherited qAux3: TSQLQuery
-    Left = 794
-    Top = 428
+    Left = 482
+    Top = 420
   end
   object qSqlCdsPesq: TSQLQuery
     MaxBlobSize = -1
@@ -1341,8 +1341,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
-    Left = 565
-    Top = 344
+    Left = 213
+    Top = 408
   end
   object frxpesquisa: TfrxDBDataset
     UserName = 'frxpesquisa'
@@ -2812,7 +2812,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
-    Left = 960
-    Top = 316
+    Left = 976
+    Top = 308
   end
 end

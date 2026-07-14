@@ -67,7 +67,7 @@ inherited FormCliente: TFormCliente
     Top = 42
     Width = 1752
     Height = 538
-    ActivePage = TabSheet1
+    ActivePage = TabSheet4
     Align = alClient
     TabOrder = 0
     OnChange = PageClienteChange
@@ -1317,7 +1317,7 @@ inherited FormCliente: TFormCliente
               Left = 623
               Top = 75
               Width = 100
-              Height = 19
+              Height = 22
               DataField = 'CLI_DATA_ULTIMA_PARCELA'
               DataSource = DataCadastros.DsCliente
               NumGlyphs = 2
@@ -7845,7 +7845,7 @@ inherited FormCliente: TFormCliente
       FieldName = 'BAN_APELIDO'
       Size = 25
     end
-    object qClientesCLI_UND_CONSUMIDORA: TIntegerField
+    object qClientesCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'UNIDADE CONSUMIDORA'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end
@@ -8004,7 +8004,7 @@ inherited FormCliente: TFormCliente
       FieldName = 'BAN_APELIDO'
       Size = 25
     end
-    object cdsClientesCLI_UND_CONSUMIDORA: TIntegerField
+    object cdsClientesCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'UNIDADE CONSUMIDORA'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end

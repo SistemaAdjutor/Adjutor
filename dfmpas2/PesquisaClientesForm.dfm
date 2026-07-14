@@ -32,7 +32,7 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
             Width = 1254
             Height = 115
             Align = alClient
-            ExplicitTop = 0
+            ExplicitTop = -6
             ExplicitWidth = 1254
             ExplicitHeight = 115
             DesignSize = (
@@ -77,22 +77,22 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
               Caption = 'Situa'#231#227'o:'
             end
             object Label2: TLabel
-              Left = 506
-              Top = 75
+              Left = 385
+              Top = 76
               Width = 94
               Height = 13
               Caption = 'Ramo de Atividade:'
             end
             object Label5: TLabel
-              Left = 743
-              Top = 75
+              Left = 622
+              Top = 76
               Width = 50
               Height = 13
               Caption = 'Vendedor:'
             end
             object Label6: TLabel
-              Left = 989
-              Top = 72
+              Left = 868
+              Top = 73
               Width = 34
               Height = 13
               Caption = 'Origem'
@@ -156,8 +156,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
                 '')
             end
             object cbAtividade: TSgDbSearchCombo
-              Left = 507
-              Top = 88
+              Left = 386
+              Top = 89
               Width = 207
               Height = 21
               TabOrder = 9
@@ -353,7 +353,7 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
             object edUnidade: TLabeledEdit
               Left = 220
               Top = 89
-              Width = 281
+              Width = 157
               Height = 21
               EditLabel.Width = 102
               EditLabel.Height = 13
@@ -362,8 +362,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
               TabOrder = 8
             end
             object cbVendedor: TSgDbSearchCombo
-              Left = 743
-              Top = 88
+              Left = 622
+              Top = 89
               Width = 207
               Height = 21
               TabOrder = 10
@@ -387,8 +387,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
               LimparCampoAoSair = True
             end
             object cbOrigem: TSgDbSearchCombo
-              Left = 988
-              Top = 88
+              Left = 867
+              Top = 89
               Width = 189
               Height = 21
               TabOrder = 11
@@ -410,6 +410,18 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
               LimparCampoAoSair = True
+            end
+            object chkRecorrente: TCheckBox
+              Left = 1103
+              Top = 91
+              Width = 97
+              Height = 17
+              Hint = 'Grayed - Todos os Registros'
+              AllowGrayed = True
+              Caption = 'Recorrente'
+              ParentShowHint = False
+              ShowHint = True
+              TabOrder = 12
             end
           end
         end
