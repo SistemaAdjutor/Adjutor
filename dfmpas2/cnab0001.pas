@@ -289,6 +289,7 @@ type
     CbInstrucao03: TComboBox;
     SQLContaBancosBAN_INSTRUCAO3: TStringField;
     CDSCrcDuplicataBAN_INSTRUCAO2: TStringField;
+    SQLBancosBAN_TIPO_DIAS_PROTESTO: TStringField;
 
     procedure FormShow(Sender: tObject);
     procedure FormCreate(Sender: tObject);
@@ -547,7 +548,7 @@ procedure TFormGeradorCNAB.preencheBancos;
 begin
    try
      SQLBancos.close;
-     SQLBancos.CommandText := SQLDEF('BANCOS','SELECT B1.BAN_CODIGO,B1.BAN_COD_APELIDO,B1.BAN_APELIDO,B1.BAN_SEQ_NOSSONUMERO, B1.BAN_MULTA, B1.BAN_MULTA_DIAS, B1.BAN_CONVENIO '+
+     SQLBancos.CommandText := SQLDEF('BANCOS','SELECT B1.BAN_CODIGO,B1.BAN_COD_APELIDO,B1.BAN_TIPO_DIAS_PROTESTO,B1.BAN_APELIDO,B1.BAN_SEQ_NOSSONUMERO, B1.BAN_MULTA, B1.BAN_MULTA_DIAS, B1.BAN_CONVENIO '+
      ' FROM BAN0000 B1 ','','B1.BAN_APELIDO','B1.');
 
 
@@ -3281,6 +3282,17 @@ begin
 
 
           DiasDeProtesto := StrToInt(wDIAS_PROTESTO);
+
+          // issue 2246
+          if SQLBancos.FieldByName('BAN_TIPO_DIAS_PROTESTO').AsString = 'U' then
+            TipoDiasProtesto := diUteis
+          else
+            TipoDiasProtesto := diCorridos;
+
+
+
+
+
           if (Rad_Protesto_Gerador.checked ) then
           begin
             if wCOD_INSTRUCAO1 = '00' then
@@ -3344,7 +3356,9 @@ begin
             DataMoraJuros := CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime;
           DataDesconto := dtDesconto;
           DataAbatimento := 0;
-          DataProtesto := wDataProtesto;
+          // issue 2246
+          // DataProtesto := wDataProtesto;
+
           PercentualMulta := StrToCurrDef(edtMulta.Text, 0);
           DataMulta := dtMulta;
           Mensagem.Text := EdMensagem.Text;

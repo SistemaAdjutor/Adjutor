@@ -1710,6 +1710,8 @@ type
     CdsOperFiscIBS_ID: TIntegerField;
     SqlOperFiscOPE_MOSTRA_IBS_CBS: TStringField;
     CdsOperFiscOPE_MOSTRA_IBS_CBS: TStringField;
+    SqlBancoBAN_TIPO_DIAS_PROTESTO: TStringField;
+    CdsBancoBAN_TIPO_DIAS_PROTESTO: TStringField;
     procedure CdsClientesBeforeEdit(DataSet: TDataSet);
     procedure CdsRepresentanteBeforeEdit(DataSet: TDataSet);
     procedure CdsFornecedorBeforeEdit(DataSet: TDataSet);

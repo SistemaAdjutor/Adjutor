@@ -241,6 +241,7 @@ type
     edDiasParaBaixa: TcxDBSpinEdit;
     lbDiasParaBaixa: TLabel;
     Label62: TLabel;
+    DBRadioGroup2: TDBRadioGroup;
     procedure MudaCorCampos(Sender: tObject);
     procedure Bit_SairClick(Sender: tObject);
     procedure Bit_novoClick(Sender: tObject);

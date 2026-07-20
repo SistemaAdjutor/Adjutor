@@ -990,7 +990,7 @@ begin
         qAux.Sql.Text := 'Select BAN_CODIGO, BAN_APELIDO, BAN_COD_APELIDO, BAN_COD_CART, BAN_N_CARTEIRA, BAN_ESPECIE_COB, BAN_ACEITE, '+
                          '       BAN_JUROMES, BAN_CODAGE, BAN_CODAGEDIG, BAN_DIGCONTA, BAN_CONTA, BAN_COD_CART, BAN_N_CARTEIRA, '+
                          '       BAN_SEQ_NOSSONUMERO, BAN_CODNOBANCO, ban_codigo_transmissao, ban_carteira_registro, ban_multa, '+
-                         '       BAN_MULTA_DIAS, ban_instrucao1, ban_instrucao2, ban_protprazo, BAN_JUROMES, ban_convenio, BAN_COBTIPO,ban_leiaute,  '+
+                         '       BAN_MULTA_DIAS, ban_instrucao1, ban_instrucao2, ban_protprazo, BAN_TIPO_DIAS_PROTESTO, BAN_JUROMES, ban_convenio, BAN_COBTIPO,ban_leiaute,  '+
                          '       BAN_RESP_BOLETO, BAN_TAM_NONUM, BAN_TIPO_JUROS '+
                          'From Ban0000 '+
                          'Where ban_codigo='+qStr(clone.FieldByName('BAN_CODIGO').AsString) ;
@@ -1267,8 +1267,19 @@ begin
                        ELSE
                           Mensagem.Text := Mensagem.Text + 'APÓS O VENCIMENTO,COBRAR MULTA DE R$'+FORMATFLOAT('###,##0.00',lValor)+' ('+formatfloat('##0.00',lMulta)+'%)'+#13;
                end;}
-               if not MatchStr(qAux.FieldByname('ban_protprazo').AsString,['00','','0']) then
-                  DataProtesto := vencimento + qAux.FieldByname('ban_protprazo').asinteger;
+
+               // issue 2246
+               // if not MatchStr(qAux.FieldByname('ban_protprazo').AsString,['00','','0']) then
+               //   DataProtesto := vencimento + qAux.FieldByname('ban_protprazo').asinteger;
+               if not MatchStr(qAux.FieldByName('BAN_PROTPRAZO').AsString, ['00', '', '0']) then
+               begin
+                  DiasDeProtesto := qAux.FieldByName('BAN_PROTPRAZO').AsInteger;
+
+                  if qAux.FieldByName('BAN_TIPO_DIAS_PROTESTO').AsString = 'U' then
+                    TipoDiasProtesto := diUteis
+                  else
+                    TipoDiasProtesto := diCorridos;
+               end;
 
                Instrucao1 := qAux.FieldByname('ban_instrucao1').asstring;
                Instrucao2 := qAux.FieldByname('ban_instrucao2').asstring;

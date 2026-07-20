@@ -4212,6 +4212,10 @@ object DataCadastros: TDataCadastros
     object SqlBancoBAN_DIAS_PARA_BAIXA: TIntegerField
       FieldName = 'BAN_DIAS_PARA_BAIXA'
     end
+    object SqlBancoBAN_TIPO_DIAS_PROTESTO: TStringField
+      FieldName = 'BAN_TIPO_DIAS_PROTESTO'
+      Size = 1
+    end
   end
   object DspBanco: TDataSetProvider
     DataSet = SqlBanco
@@ -4563,6 +4567,10 @@ object DataCadastros: TDataCadastros
     end
     object CdsBancoBAN_DIAS_PARA_BAIXA: TIntegerField
       FieldName = 'BAN_DIAS_PARA_BAIXA'
+    end
+    object CdsBancoBAN_TIPO_DIAS_PROTESTO: TStringField
+      FieldName = 'BAN_TIPO_DIAS_PROTESTO'
+      Size = 1
     end
   end
   object DsBanco: TDataSource

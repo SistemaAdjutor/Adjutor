@@ -98,7 +98,7 @@ object FormBanco: TFormBanco
     Top = 38
     Width = 953
     Height = 525
-    ActivePage = TabSheet1
+    ActivePage = TabSheet2
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
@@ -982,6 +982,7 @@ object FormBanco: TFormBanco
           'Dados para Envio de Remessa - Padr'#227'o CNAB 400 e Impress'#227'o de  Bo' +
           'leto'
         TabOrder = 0
+        ExplicitTop = -6
         object Label4: TLabel
           Left = 68
           Top = 22
@@ -1117,7 +1118,7 @@ object FormBanco: TFormBanco
         end
         object Label53: TLabel
           Left = 666
-          Top = 174
+          Top = 170
           Width = 190
           Height = 14
           Caption = 'Respons'#225'vel pela impress'#227'o do Boleto:'
@@ -1370,7 +1371,7 @@ object FormBanco: TFormBanco
         end
         object CbRespBoleto: TComboBox
           Left = 859
-          Top = 170
+          Top = 166
           Width = 78
           Height = 22
           Style = csDropDownList
@@ -1507,6 +1508,23 @@ object FormBanco: TFormBanco
             TabOrder = 0
             Width = 57
           end
+        end
+        object DBRadioGroup2: TDBRadioGroup
+          Left = 639
+          Top = 188
+          Width = 233
+          Height = 44
+          Caption = 'Tipo de Protesto'
+          Columns = 2
+          DataField = 'BAN_TIPO_DIAS_PROTESTO'
+          DataSource = DataCadastros.DsBanco
+          Items.Strings = (
+            'Dias Corridos'
+            'Dias '#218'teis')
+          TabOrder = 27
+          Values.Strings = (
+            'C'
+            'U')
         end
       end
       object GroupBox2: TGroupBox
