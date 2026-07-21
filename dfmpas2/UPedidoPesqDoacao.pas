@@ -1278,7 +1278,9 @@ function TfrmPesqDoacao.CalcularNovaDataRecorrencia(
   const AData: TDateTime;
   ATipo: TPedidoTipoParcela): TDateTime;
 begin
-  Result := AData + GetIntervaloMesesTipoParcela(ATipo);
+  // Result := AData + GetIntervaloMesesTipoParcela(ATipo);
+  Result := IncMonth(AData, + GetIntervaloMesesTipoParcela(ATipo));
+
 end;
 
 function TfrmPesqDoacao.RecalcularValorRecorrencia(AValor: Double): Double;

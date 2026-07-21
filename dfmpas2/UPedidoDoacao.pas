@@ -347,7 +347,13 @@ end;
 procedure TfrmPedidoDoacao.BtnGravarClick(Sender: TObject);
 begin
   inherited;
+
   ValidarPedido;
+
+  if MessageDlg('Marcar este cliente como Recorrente?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    chkCliRecorrente.Checked := True;
+
+
   BeginTransaction;
   try
     AtualizaContaFinanceira;
