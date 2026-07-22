@@ -59,7 +59,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     object GbData: TGroupBox
       Left = 5
       Top = 40
-      Width = 391
+      Width = 379
       Height = 41
       Caption = 'Informe o Per'#237'odo'
       Font.Charset = ANSI_CHARSET
@@ -111,7 +111,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
         TabOrder = 0
         Items.Strings = (
           'ENTRADA'
-          'FATURAMENTO')
+          'FATURAMENTO'
+          'VCTO. '#218'LTIMA PARCELA')
       end
       object RxDataInicial: TJvDateEdit
         Left = 156
@@ -469,6 +470,15 @@ inherited frmPesqDoacao: TfrmPesqDoacao
         'Planilha')
       TabOrder = 6
     end
+    object btnRenovarRecorrencias: TButton
+      Left = 815
+      Top = 53
+      Width = 76
+      Height = 25
+      Caption = ' Recorr'#234'ncia'
+      TabOrder = 7
+      OnClick = btnRenovarRecorrenciasClick
+    end
   end
   object dbGrPedido: TDBGrid [1]
     Left = 0
@@ -477,14 +487,26 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     Height = 434
     Align = alClient
     DataSource = DsPedidos
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
     TabOrder = 1
     TitleFont.Charset = DEFAULT_CHARSET
     TitleFont.Color = clWindowText
     TitleFont.Height = -11
     TitleFont.Name = 'Tahoma'
     TitleFont.Style = []
+    OnCellClick = dbGrPedidoCellClick
+    OnDrawColumnCell = dbGrPedidoDrawColumnCell
     OnDblClick = dbGrPedidoDblClick
+    OnTitleClick = dbGrPedidoTitleClick
     Columns = <
+      item
+        Expanded = False
+        FieldName = 'Selecionado'
+        Title.Alignment = taCenter
+        Title.Caption = '*'
+        Width = 28
+        Visible = True
+      end
       item
         Expanded = False
         FieldName = 'PED_CODIGO'
@@ -806,7 +828,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     Left = 558
     Top = 304
     Width = 400
-    Height = 44
+    Height = 41
     Caption = 'Informe a Conta Financeira'
     Font.Charset = ANSI_CHARSET
     Font.Color = clBlack
@@ -880,20 +902,20 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       'WaitOnLocks=True'
       'IsolationLevel=ReadCommitted'
       'Trim Char=True')
-    Left = 600
-    Top = 425
+    Left = 288
+    Top = 417
   end
   inherited qAux: TSQLQuery
-    Left = 682
-    Top = 429
+    Left = 370
+    Top = 421
   end
   inherited qAux2: TSQLQuery
-    Left = 738
-    Top = 428
+    Left = 426
+    Top = 420
   end
   inherited qAux3: TSQLQuery
-    Left = 794
-    Top = 428
+    Left = 482
+    Top = 420
   end
   object qSqlCdsPesq: TSQLQuery
     MaxBlobSize = -1
@@ -1083,7 +1105,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'BAN_APELIDO'
       Size = 100
     end
-    object qSqlCdsPesqPED_UND_CONSUMIDORA: TIntegerField
+    object qSqlCdsPesqPED_UND_CONSUMIDORA: TLargeintField
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object qSqlCdsPesqPED_DTENTRADA: TSQLTimeStampField
@@ -1115,6 +1137,21 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     object qSqlCdsPesqPCX_DESCRI: TStringField
       FieldName = 'PCX_DESCRI'
       Size = 25
+    end
+    object qSqlCdsPesqCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField
+      FieldName = 'CLI_DATA_ULTIMA_PARCELA'
+    end
+    object qSqlCdsPesqPCX_CODIGO: TStringField
+      FieldName = 'PCX_CODIGO'
+      Size = 3
+    end
+    object qSqlCdsPesqBAN_CODIGO: TStringField
+      FieldName = 'BAN_CODIGO'
+      Size = 4
+    end
+    object qSqlCdsPesqCCT_CODIGO: TStringField
+      FieldName = 'CCT_CODIGO'
+      Size = 3
     end
   end
   object dspSqlCdsPesq: TDataSetProvider
@@ -1258,7 +1295,7 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'BAN_APELIDO'
       Size = 100
     end
-    object SqlCdsPesqPED_UND_CONSUMIDORA: TIntegerField
+    object SqlCdsPesqPED_UND_CONSUMIDORA: TLargeintField
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object SqlCdsPesqPED_DTENTRADA: TSQLTimeStampField
@@ -1274,6 +1311,26 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'PCX_DESCRI'
       Size = 25
     end
+    object SqlCdsPesqSelecionado: TBooleanField
+      FieldKind = fkInternalCalc
+      FieldName = 'Selecionado'
+      DisplayValues = ';'
+    end
+    object SqlCdsPesqCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField
+      FieldName = 'CLI_DATA_ULTIMA_PARCELA'
+    end
+    object SqlCdsPesqPCX_CODIGO: TStringField
+      FieldName = 'PCX_CODIGO'
+      Size = 3
+    end
+    object SqlCdsPesqBAN_CODIGO: TStringField
+      FieldName = 'BAN_CODIGO'
+      Size = 4
+    end
+    object SqlCdsPesqCCT_CODIGO: TStringField
+      FieldName = 'CCT_CODIGO'
+      Size = 3
+    end
   end
   object DsPedidos: TDataSource
     DataSet = SqlCdsPesq
@@ -1284,8 +1341,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
-    Left = 565
-    Top = 344
+    Left = 213
+    Top = 408
   end
   object frxpesquisa: TfrxDBDataset
     UserName = 'frxpesquisa'
@@ -2746,12 +2803,16 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       FieldName = 'PCX_DESCRI'
       Size = 25
     end
+    object cdsqSqlCdsPesqSelecionado: TBooleanField
+      FieldKind = fkInternalCalc
+      FieldName = 'Selecionado'
+    end
   end
   object qContafinanceira: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DBConn
-    Left = 960
-    Top = 316
+    Left = 976
+    Top = 308
   end
 end

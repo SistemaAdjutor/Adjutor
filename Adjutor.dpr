@@ -525,7 +525,8 @@ uses
   uBaixaPedidoCompra in 'dfmpas2\uBaixaPedidoCompra.pas' {frmBaixaPedidoCompra},
   uCBS in 'dfmpas2\uCBS.pas' {frmCBS},
   uIBS in 'dfmpas2\uIBS.pas' {frmIBS},
-  uApagaFaturamento in 'dfmpas2\uApagaFaturamento.pas' {frmApagaFaturamento};
+  uApagaFaturamento in 'dfmpas2\uApagaFaturamento.pas' {frmApagaFaturamento},
+  uRecorrencia in 'dfmpas2\uRecorrencia.pas' {frmRecorrencia};
 
 {$R *.res}
 {$D+}

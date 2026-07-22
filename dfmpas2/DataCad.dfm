@@ -443,10 +443,6 @@ object DataCadastros: TDataCadastros
       FieldName = 'CLI_SEMCOMISSAO'
       Size = 1
     end
-    object SqlCLientesCLI_UND_CONSUMIDORA: TIntegerField
-      FieldName = 'CLI_UND_CONSUMIDORA'
-      ProviderFlags = [pfInUpdate]
-    end
     object SqlCLientesCLI_LONGITUDE: TFMTBCDField
       FieldName = 'CLI_LONGITUDE'
       Precision = 11
@@ -468,6 +464,16 @@ object DataCadastros: TDataCadastros
     object SqlCLientesCLI_AGRONEGOCIO: TStringField
       FieldName = 'CLI_AGRONEGOCIO'
       Size = 1
+    end
+    object SqlCLientesCLI_UND_CONSUMIDORA: TLargeintField
+      FieldName = 'CLI_UND_CONSUMIDORA'
+    end
+    object SqlCLientesCLI_RECORRENTE: TStringField
+      FieldName = 'CLI_RECORRENTE'
+      Size = 1
+    end
+    object SqlCLientesCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField
+      FieldName = 'CLI_DATA_ULTIMA_PARCELA'
     end
   end
   object DspClientes: TDataSetProvider
@@ -883,10 +889,6 @@ object DataCadastros: TDataCadastros
       FieldName = 'CLI_FRETE'
       Size = 1
     end
-    object CdsClientesCLI_UND_CONSUMIDORA: TIntegerField
-      FieldName = 'CLI_UND_CONSUMIDORA'
-      ProviderFlags = [pfInUpdate]
-    end
     object CdsClientesCLI_SEMCOMISSAO: TStringField
       FieldName = 'CLI_SEMCOMISSAO'
       Size = 1
@@ -912,6 +914,16 @@ object DataCadastros: TDataCadastros
     object CdsClientesCLI_AGRONEGOCIO: TStringField
       FieldName = 'CLI_AGRONEGOCIO'
       Size = 1
+    end
+    object CdsClientesCLI_UND_CONSUMIDORA: TLargeintField
+      FieldName = 'CLI_UND_CONSUMIDORA'
+    end
+    object CdsClientesCLI_RECORRENTE: TStringField
+      FieldName = 'CLI_RECORRENTE'
+      Size = 1
+    end
+    object CdsClientesCLI_DATA_ULTIMA_PARCELA: TSQLTimeStampField
+      FieldName = 'CLI_DATA_ULTIMA_PARCELA'
     end
   end
   object DsCliente: TDataSource

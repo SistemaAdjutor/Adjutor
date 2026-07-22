@@ -644,8 +644,8 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         ParentFont = False
       end
       object edSituacao: TDBText
-        Left = 512
-        Top = 336
+        Left = 503
+        Top = 357
         Width = 114
         Height = 17
         DataField = 'PED_SITUACAO'
@@ -684,6 +684,13 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         Font.Name = 'Arial'
         Font.Style = []
         ParentFont = False
+      end
+      object Label19: TLabel
+        Left = 367
+        Top = 336
+        Width = 87
+        Height = 13
+        Caption = 'Venc. Recorr'#234'ncia'
       end
       object edVendedor: TSgDbSearchCombo
         Left = 196
@@ -1064,7 +1071,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         Font.Height = -13
         Font.Name = 'Tahoma'
         Font.Style = []
-        MaxLength = 12
+        MaxLength = 15
         ParentFont = False
         TabOrder = 14
       end
@@ -1094,6 +1101,23 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
         GridShowWhenEnter = False
         SelectWithDoubleClick = False
         LimparCampoAoSair = True
+      end
+      object chkCliRecorrente: TCheckBox
+        Left = 270
+        Top = 334
+        Width = 97
+        Height = 17
+        Caption = 'Recorr'#234'ncia'
+        TabOrder = 16
+      end
+      object dtCliDataUltimaParcela: TDateTimePicker
+        Left = 460
+        Top = 332
+        Width = 99
+        Height = 21
+        Date = 46205.508979189810000000
+        Time = 46205.508979189810000000
+        TabOrder = 17
       end
     end
     object presultado: TPanel
@@ -1529,7 +1553,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
       ProviderFlags = [pfInUpdate]
       Size = 3
     end
-    object qPedidoPED_UND_CONSUMIDORA: TIntegerField
+    object qPedidoPED_UND_CONSUMIDORA: TLargeintField
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object qPedidoPED_VLFATURADO: TFMTBCDField
@@ -1650,7 +1674,7 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
       ProviderFlags = [pfInUpdate]
       Size = 3
     end
-    object cdsPedidoPED_UND_CONSUMIDORA: TIntegerField
+    object cdsPedidoPED_UND_CONSUMIDORA: TLargeintField
       FieldName = 'PED_UND_CONSUMIDORA'
     end
     object cdsPedidoPED_VLFATURADO: TFMTBCDField
@@ -1686,8 +1710,8 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
     Params = <>
     ProviderName = 'dspPedido'
     StoreDefs = True
-    Left = 840
-    Top = 392
+    Left = 752
+    Top = 136
     object cdsParcelasDataParcela: TDateField
       FieldName = 'DataParcela'
     end
@@ -1711,8 +1735,8 @@ inherited frmPedidoDoacao: TfrmPedidoDoacao
   end
   object dsParcelas: TDataSource
     DataSet = cdsParcelas
-    Left = 848
-    Top = 168
+    Left = 752
+    Top = 192
   end
   object qOpv: TSQLQuery
     MaxBlobSize = -1

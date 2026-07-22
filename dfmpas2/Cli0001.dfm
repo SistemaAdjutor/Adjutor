@@ -67,7 +67,7 @@ inherited FormCliente: TFormCliente
     Top = 42
     Width = 1752
     Height = 538
-    ActivePage = TabSheet1
+    ActivePage = TabSheet4
     Align = alClient
     TabOrder = 0
     OnChange = PageClienteChange
@@ -265,7 +265,7 @@ inherited FormCliente: TFormCliente
         Top = 304
         Width = 1744
         Height = 130
-        ActivePage = tsVenda
+        ActivePage = tsFaturamento
         Align = alBottom
         MultiLine = True
         TabOrder = 25
@@ -1112,14 +1112,14 @@ inherited FormCliente: TFormCliente
             TabOrder = 0
             object Label73: TLabel
               Left = 11
-              Top = 22
+              Top = 7
               Width = 99
               Height = 14
               Caption = 'Banco de Cobran'#231'a:'
             end
             object Label83: TLabel
               Left = 421
-              Top = 22
+              Top = 7
               Width = 81
               Height = 14
               Alignment = taRightJustify
@@ -1127,30 +1127,37 @@ inherited FormCliente: TFormCliente
             end
             object Label75: TLabel
               Left = 29
-              Top = 57
+              Top = 42
               Width = 80
               Height = 14
               Caption = 'Protestar Boleto:'
             end
             object Label51: TLabel
-              Left = 430
-              Top = 72
-              Width = 107
+              Left = 14
+              Top = 73
+              Width = 93
               Height = 14
               Alignment = taRightJustify
-              Caption = 'Unidade consumidora:'
+              Caption = 'Unid. Consumidora:'
             end
             object Label55: TLabel
               Left = 453
-              Top = 47
+              Top = 32
               Width = 84
               Height = 14
               Alignment = taRightJustify
               Caption = 'Conta Financeira:'
             end
+            object Label61: TLabel
+              Left = 510
+              Top = 78
+              Width = 107
+              Height = 14
+              Caption = 'Data da '#218'ltima Parcela'
+            end
             object DBEBanco_codigo: TDBEdit
               Left = 112
-              Top = 19
+              Top = 4
               Width = 36
               Height = 22
               CharCase = ecUpperCase
@@ -1162,7 +1169,7 @@ inherited FormCliente: TFormCliente
             end
             object CbxCobranca: TComboBox
               Left = 151
-              Top = 19
+              Top = 4
               Width = 250
               Height = 22
               CharCase = ecUpperCase
@@ -1176,7 +1183,7 @@ inherited FormCliente: TFormCliente
             end
             object DBECentroCusto: TDBEdit
               Left = 504
-              Top = 19
+              Top = 4
               Width = 36
               Height = 22
               CharCase = ecUpperCase
@@ -1188,7 +1195,7 @@ inherited FormCliente: TFormCliente
             end
             object CbxCentroCusto: TComboBox
               Left = 543
-              Top = 19
+              Top = 4
               Width = 378
               Height = 22
               ItemIndex = 0
@@ -1201,7 +1208,7 @@ inherited FormCliente: TFormCliente
             end
             object GroupBox9: TGroupBox
               Left = 112
-              Top = 45
+              Top = 30
               Width = 288
               Height = 35
               TabOrder = 2
@@ -1254,8 +1261,8 @@ inherited FormCliente: TFormCliente
               end
             end
             object edconsumidora: TDBEdit
-              Left = 543
-              Top = 69
+              Left = 112
+              Top = 70
               Width = 203
               Height = 22
               DataField = 'CLI_UND_CONSUMIDORA'
@@ -1264,7 +1271,7 @@ inherited FormCliente: TFormCliente
             end
             object cbContaFinanceira: TSgDbSearchCombo
               Left = 543
-              Top = 44
+              Top = 29
               Width = 352
               Height = 22
               TabOrder = 5
@@ -1288,6 +1295,35 @@ inherited FormCliente: TFormCliente
               GridShowWhenEnter = False
               SelectWithDoubleClick = False
               LimparCampoAoSair = True
+            end
+            object DBRadioGroup2: TDBRadioGroup
+              Left = 351
+              Top = 64
+              Width = 153
+              Height = 34
+              Caption = 'Recorrente'
+              Columns = 2
+              DataField = 'CLI_RECORRENTE'
+              DataSource = DataCadastros.DsCliente
+              Items.Strings = (
+                'Sim'
+                'N'#227'o')
+              TabOrder = 7
+              Values.Strings = (
+                'S'
+                'N')
+            end
+            object DBDateEdit1: TDBDateEdit
+              Left = 623
+              Top = 75
+              Width = 100
+              Height = 22
+              DataField = 'CLI_DATA_ULTIMA_PARCELA'
+              DataSource = DataCadastros.DsCliente
+              NumGlyphs = 2
+              TabOrder = 8
+              YearDigits = dyFour
+              OnExit = DbeCli_dtinicioExit
             end
           end
         end
@@ -7444,16 +7480,16 @@ inherited FormCliente: TFormCliente
   end
   object DsRecebimentos: TDataSource [71]
     DataSet = CDSRecebimentos
-    Left = 352
-    Top = 413
+    Left = 304
+    Top = 485
   end
   object CDSRecebimentos: TClientDataSet [72]
     Aggregates = <>
     PacketRecords = 10
     Params = <>
     ProviderName = 'dspRecebimentos'
-    Left = 257
-    Top = 413
+    Left = 209
+    Top = 485
     object CDSRecebimentosFRE_DATA_RECEBIMENTO: TDateField
       FieldName = 'FRE_DATA_RECEBIMENTO'
     end
@@ -7516,8 +7552,8 @@ inherited FormCliente: TFormCliente
   end
   object dspRecebimentos: TDataSetProvider [73]
     DataSet = qRecebimentos
-    Left = 164
-    Top = 410
+    Left = 116
+    Top = 482
   end
   object qRecebimentos: TSQLQuery [74]
     MaxBlobSize = -1
@@ -7809,7 +7845,7 @@ inherited FormCliente: TFormCliente
       FieldName = 'BAN_APELIDO'
       Size = 25
     end
-    object qClientesCLI_UND_CONSUMIDORA: TIntegerField
+    object qClientesCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'UNIDADE CONSUMIDORA'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end
@@ -7968,7 +8004,7 @@ inherited FormCliente: TFormCliente
       FieldName = 'BAN_APELIDO'
       Size = 25
     end
-    object cdsClientesCLI_UND_CONSUMIDORA: TIntegerField
+    object cdsClientesCLI_UND_CONSUMIDORA: TLargeintField
       DisplayLabel = 'UNIDADE CONSUMIDORA'
       FieldName = 'CLI_UND_CONSUMIDORA'
     end

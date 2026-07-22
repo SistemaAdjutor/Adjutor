@@ -185,7 +185,7 @@ type
     cdsReceberCentroCustoCCPendente: TFloatField;
     ExportarparaCSV1: TMenuItem;
     CdsReceberBaixasPCX_DESCRI: TStringField;
-    CdsReceberBaixasCLI_UND_CONSUMIDORA: TIntegerField;
+    CdsReceberBaixasCLI_UND_CONSUMIDORA: TLargeintField;
     procedure Bit_SairClick(Sender: tObject);
     procedure FormShow(Sender: tObject);
     procedure EdClienteCodigoExit(Sender: tObject);

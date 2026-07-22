@@ -123,8 +123,8 @@ type
     edPercAtingido: TMaskEdit;
     btPesqClinte: TBitBtn;
     ClienteF4: TSgDbSearchCombo;
-    qPedidoPED_UND_CONSUMIDORA: TIntegerField;
-    cdsPedidoPED_UND_CONSUMIDORA: TIntegerField;
+    qPedidoPED_UND_CONSUMIDORA: TLargeintField;
+    cdsPedidoPED_UND_CONSUMIDORA: TLargeintField;
     Label17: TLabel;
     DBEdit4: TDBEdit;
     btnAgenda: TBitBtn;
@@ -140,6 +140,9 @@ type
     qContafinanceira: TSQLQuery;
     cbContaFinanceira: TSgDbSearchCombo;
     Label18: TLabel;
+    chkCliRecorrente: TCheckBox;
+    Label19: TLabel;
+    dtCliDataUltimaParcela: TDateTimePicker;
     procedure BtnNovoClick(Sender: TObject);
     procedure BtnAlterarClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -173,13 +176,13 @@ type
    procedure ValidarPedido;
    procedure BuscaPadraoCliente(cli_codigo :string);
    procedure GravaPadraoCliente(cli_codigo: string);
-   procedure NumeroPedido;
    procedure GravarFatura;
    procedure EstornaFatura;
    procedure ExcluiFaturas;
    procedure Estatistica;
    procedure Comissao;
    procedure AtualizaContaFinanceira;
+   procedure NumeroPedido;
   public
     { Public declarations }
   end;
@@ -344,7 +347,13 @@ end;
 procedure TfrmPedidoDoacao.BtnGravarClick(Sender: TObject);
 begin
   inherited;
+
   ValidarPedido;
+
+  if MessageDlg('Marcar este cliente como Recorrente?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+    chkCliRecorrente.Checked := True;
+
+
   BeginTransaction;
   try
     AtualizaContaFinanceira;
@@ -361,6 +370,7 @@ begin
     cdsPedidoPED_VLFATURADO.AsBCD  := cdsPedidoPED_VLTOTAL_BRUTO.AsBCD;
     cdsPedidoEMP_CODIGO.AsString := DBInicio.Empresa.EMP_CODIGO;
     cdsPedidoPED_SITUACAO.AsString :=  'F';
+    cdsPedidoFPG_REGISTRO.AsString := edFPagto.idRetorno;
     cdsPedido.Post;
     cdsPedido.ApplyUpdates(0);
     GravaPadraoCliente(cdsPedidoCLI_CODIGO.AsString);
@@ -407,7 +417,7 @@ procedure TfrmPedidoDoacao.BuscaPadraoCliente(cli_codigo: string);
 begin
   if cli_codigo <> '' then
   begin
-    OpenAux2('SELECT FPG_REGISTRO, BAN_CODIGO, PCX_CODIGO, CCT_CODIGO, REP_CODIGO, CLI_UND_CONSUMIDORA FROM CLI0000 where cli_codigo = '+ QuotedStr(cli_codigo));
+    OpenAux2('SELECT FPG_REGISTRO, BAN_CODIGO, PCX_CODIGO, CCT_CODIGO, REP_CODIGO, CLI_UND_CONSUMIDORA, CLI_RECORRENTE, CLI_DATA_ULTIMA_PARCELA FROM CLI0000 where cli_codigo = '+ QuotedStr(cli_codigo));
     if not qAux2.IsEmpty then
     begin
       if (not qAux2.FieldByName('ban_codigo').IsNull) or (qAux2.FieldByName('ban_codigo').AsString <> '') then
@@ -425,11 +435,14 @@ begin
 
 
       end;
-      if qaux2.FieldByName('CLI_UND_CONSUMIDORA').AsInteger <> 0  then
-        cdsPedidoPED_UND_CONSUMIDORA.AsInteger := qaux2.FieldByName('CLI_UND_CONSUMIDORA').AsInteger;
+      if qaux2.FieldByName('CLI_UND_CONSUMIDORA').AsLargeint <> 0  then
+        cdsPedidoPED_UND_CONSUMIDORA.AsLargeint := qaux2.FieldByName('CLI_UND_CONSUMIDORA').AsLargeint;
 
       cbContaFinanceira.idRetorno := qAux2.FieldByName('CCT_CODIGO').AsString;
       edVendedor.idRetorno := qAux2.FieldByName('REP_CODIGO').AsString;
+      chkCliRecorrente.Checked := qAux2.FieldByName('CLI_RECORRENTE').AsString = 'S';
+      dtCliDataUltimaParcela.Date := qAux2.FieldByName('CLI_DATA_ULTIMA_PARCELA').AsDateTime;
+
     end;
 
   end;
@@ -451,6 +464,13 @@ begin
  qPedido.CommandText := SQL;
 
  cdsPedido.Open;
+
+
+ qAux.Close;
+ qAux.SQL.Text := 'SELECT CLI_RECORRENTE, CLI_DATA_ULTIMA_PARCELA FROM CLI0000 c WHERE c.CLI_CODIGO = ' + QuotedStr(cdsPedido.FieldByName('CLI_CODIGO').AsString);
+ qAux.Open;
+ chkCliRecorrente.Checked := qAux.FieldByName('CLI_RECORRENTE').AsString = 'S';
+ dtCliDataUltimaParcela.Date := qAux.FieldByName('CLI_DATA_ULTIMA_PARCELA').AsDateTime;
 
 
 end;
@@ -807,6 +827,9 @@ begin
    cdsParcelasnparcela.AsInteger := i;
    cdsParcelas.Post;
 
+   if I = Parcela then
+     dtCliDataUltimaParcela.Date := DataParcela;
+
    case tipo of
 
      tpMensal:  DataParcela:=  IncMonth(DataParcela);
@@ -815,6 +838,8 @@ begin
      tpSemestral: DataParcela := IncMonth(DataParcela,6);
      tpAnual: DataParcela := IncMonth(DataParcela,12);
    end;
+
+
 
  end;
 end;
@@ -826,7 +851,9 @@ begin
           ' FPG_REGISTRO =  ' + IntToStr(cdsPedidoFPG_REGISTRO.AsInteger) +  ',' +
           ' BAN_CODIGO = '+QuotedStr(cdsPedidoBAN_CODIGO.AsString)+ ' ,'+
           ' PCX_CODIGO = '+QuotedStr(cdsPedidoPCX_CODIGO.AsString ) +' , ' +
-          ' CLI_UND_CONSUMIDORA = '+ IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsInteger)+ ', ' +
+          ' CLI_UND_CONSUMIDORA = '+ IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsLargeint)+ ', ' +
+          ' CLI_RECORRENTE = '+ iif(chkCliRecorrente.Checked, QuotedStr('S'), QuotedStr('N') ) + ', ' +
+          ' CLI_DATA_ULTIMA_PARCELA = ' + DateToSQL(dtCliDataUltimaParcela.Date) + ', ' +
           ' CLI_DTULTCOM = ' + DateToSQL(now) + ', ' +
           ' CLI_VL_ULTCOMP = ' + FloatToSQL(cdsPedidoPED_VLTOTAL_BRUTO.AsFloat) +
           ' where cli_codigo = '+ QuotedStr(cli_codigo);
@@ -883,7 +910,7 @@ begin
        numero_pc:= IntToStr(GetNextSequence( 'GEN_FAT_PC01_REGISTRO'));
        sql:= ' INSERT INTO FAT_PC01 (FAT_REGISTRO, FAT_CODIGO,FPC_NUMER, REP_CODIGO, BAN_CODIGO, PCX_CODIGO, CCT_CODIGO, FPC_DTEMIS, FPC_NPARCELAS, '+
               ' FPC_COBTIPO, FPC_TIPODOC, FPC_SITPAG, FPC_STATUS, FPC_VENCTO, FPC_VLPARC, CLI_CODIGO, FPC_IMPDUP, EMP_CODIGO, FPC_PREVISAO, '+
-              ' BAN_COD_APELIDO, FPC_STATUS_REMESSA, FPC_DESCONTADO, FPC_EXCLUSAO, FPC_CONFIRMADEVOLUCAO, PED_UND_CONSUMIDORA ) '+
+              ' BAN_COD_APELIDO, FPC_STATUS_REMESSA, FPC_DESCONTADO, FPC_EXCLUSAO, FPC_CONFIRMADEVOLUCAO, FPG_REGISTRO, PED_UND_CONSUMIDORA ) '+
               ' VALUES ('+
                  numero_pc + ','+
                  QuotedStr(numero_fat)+ ','+
@@ -906,7 +933,8 @@ begin
                  QuotedStr('N') + ','+
                  IntToStr(Banco_id) + ',' +
                  QuotedStr('N') +','+ QuotedStr('N') +','+ QuotedStr('N') +',' + QuotedStr('N') +   ','+
-                 IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsInteger) + ')';
+                 cdsPedidoFPG_REGISTRO.AsString + ', ' +
+                 IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsLargeint) + ')';
 
 
        ExecSql(sql);
@@ -1089,7 +1117,7 @@ begin
     GeraException('Informe o valor da parcela');
   if cdsPedidoBAN_CODIGO.AsString = '' then
     GeraException('Informe o Banco');
-  if (cdsPedidoPED_UND_CONSUMIDORA.AsInteger = 0)  or (cdsPedidoPED_UND_CONSUMIDORA.IsNull) then
+  if (cdsPedidoPED_UND_CONSUMIDORA.AsLargeint = 0)  or (cdsPedidoPED_UND_CONSUMIDORA.IsNull) then
   begin
     OpenAux('select * from bancos where bco_codigo = '+IntToStr( CbBancos.CDS.FieldByName('BAN_COD_APELIDO').AsInteger));
 
