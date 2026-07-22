@@ -6952,7 +6952,7 @@ begin
                ' FROM ENF_IT01 E1 '+
                ' LEFT JOIN PRD0000 P1  ON  (E1.PRD_CODIGO = P1.PRD_CODIGO) ' +
                ' LEFT JOIN ALMOX0000 A1 ON (A1.AMX_CODIGO = E1.AMX_CODIGO) ' ;
-      qAux.Sql.Text := SqlDef('ORDENSCOMPRA',wSql1,'where E1.ENF_IT_NOTANUMBER = '''+EdtNota.Text+''' AND E1.ENF_ORIGEM_MERCADORIA <> 7 and E1.FOR_CODIGO = '''+EdtFor_Codigo.Text+''' ','','E1.');
+      qAux.Sql.Text := SqlDef('ORDENSCOMPRA',wSql1,'where E1.ENF_IT_NOTANUMBER = '''+EdtNota.Text+''' AND E1.ENF_ICMSALIQ = 4 and E1.FOR_CODIGO = '''+EdtFor_Codigo.Text+''' ','','E1.');
       qAux.Open;
       wTotalRateioICMS := qAux.FieldByName('Total').AsFloat;
 
@@ -6994,7 +6994,7 @@ begin
          if (wCUSTO_CREDITO > 0) then
             wCUSTO_CREDITO := wCUSTO_CREDITO / rTmpQuantidade;
 
-         wVLR_AGREGADO :=wVLR_AGREGADO+ wIPI_valor;
+       //  wVLR_AGREGADO :=wVLR_AGREGADO+ wIPI_valor;
 
          //rateio de frete
          wPERC_RATEIO   := (((rTmpQuantidade * rTmp_Custo) * 100)/Curr_Valor_Produtos.Value);
@@ -7016,8 +7016,8 @@ begin
         wValor_FreteFora := (((wPERC_RATEIO * currFrete.Value) / 100) / rTmpQuantidade);
         wVLR_AGREGADO := wVLR_AGREGADO + wValor_FreteFora;
 
-        //diferença de ICMS   SqlCdsGridSemOCENF_ICMSALIQ.asfloat
-        if SqlCdsGridSemOCENF_ORIGEM_MERCADORIA.AsInteger <> 7 then
+        //diferença de ICMS
+        if SqlCdsGridSemOCENF_ICMSALIQ.AsFloat = 4 then
         begin
           wPERC_RATEIO  := (((rTmpQuantidade * rTmp_Custo) * 100) / wTotalRateioICMS);
 //          wPERC_RATEIO  := (((rTmpQuantidade * rTmp_Custo) * 100) / Curr_Valor_Produtos.Value);
