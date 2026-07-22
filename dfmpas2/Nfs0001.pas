@@ -7016,7 +7016,7 @@ begin
         wValor_FreteFora := (((wPERC_RATEIO * currFrete.Value) / 100) / rTmpQuantidade);
         wVLR_AGREGADO := wVLR_AGREGADO + wValor_FreteFora;
 
-        //diferença de ICMS
+        //diferença de ICMS   SqlCdsGridSemOCENF_ICMSALIQ.asfloat
         if SqlCdsGridSemOCENF_ORIGEM_MERCADORIA.AsInteger <> 7 then
         begin
           wPERC_RATEIO  := (((rTmpQuantidade * rTmp_Custo) * 100) / wTotalRateioICMS);
