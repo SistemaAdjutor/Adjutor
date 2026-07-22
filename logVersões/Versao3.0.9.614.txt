@@ -1,0 +1,13 @@
+﻿Inicio da versão: 22/07/2026
+Atualizado em 22/07/2026
+
+principal: Bepine, Collect, Drimec, Arkson, RPS
+	2246 - Bepine - Boleto com mensagem de datas corridas
+	2176 - Collect - criar Renovacao automatica de doaces recorrentes
+	2229 - [SUP-83] Collect - Ajuste da UC (unidade consumidora) novo padrão de digitos
+	2238 - TOC - Duplicidade de nota fiscal
+	2239 - DRIMEC - Adequação do campo de Declaração de Importação para suportar DI e DUIMP
+	2243 - Arkson - Duplicidade de produto na produção
+	2244 - RPS - Envio de e-mail com rejeições
+	
+	
