@@ -2910,11 +2910,12 @@ begin
           ' WHERE NF_REGISTRO = '+ IntToStr(NF_REGISTRO);
  ExecSql(SQL);
 end;
-
+{
 procedure TfrmProcessaNFe.GravaXML(itemNota, nf_registro: integer);
 begin
 //  if ACBrNFe1.NotasFiscais.Items[itemNota].NFE.procNFe.nProt = '' then
 //    exit;
+
   CdsXML.Close;
   qXML.CommandText := 'SELECT NFX_REGISTRO,EMP_CODIGO,NF_REGISTRO, NFX_XML,NFX_XML_RECIBO FROM NF0001_XML where 1=0';
   CdsXML.Open;
@@ -2926,6 +2927,64 @@ begin
   CdsXML.FieldByName('NFX_XML').AsString := UTF8Encode( ACBrNFe1.NotasFiscais.Items[itemNota].XMLAssinado);
   CdsXML.ApplyUpdates(0);
 
+end;
+}
+
+procedure TfrmProcessaNFe.GravaXML(itemNota, nf_registro: Integer);
+var
+  vXML    : String;
+  vRecibo : String;
+begin
+  vXML    := UTF8Encode(ACBrNFe1.NotasFiscais.Items[itemNota].XMLAssinado);
+  vRecibo := UTF8Encode(ACBrNFe1.WebServices.Retorno.Recibo);
+
+  CdsXML.Close;
+
+  qXML.CommandText :=
+    'SELECT FIRST 1 ' +
+    '       NFX_REGISTRO, ' +
+    '       EMP_CODIGO, ' +
+    '       NF_REGISTRO, ' +
+    '       NFX_XML, ' +
+    '       NFX_XML_RECIBO ' +
+    'FROM NF0001_XML ' +
+    'WHERE EMP_CODIGO = :EMP_CODIGO ' +
+    '  AND NF_REGISTRO = :NF_REGISTRO ' +
+    'ORDER BY NFX_REGISTRO';
+
+  qXML.ParamByName('EMP_CODIGO').AsInteger   := StrToInt(EmpCodigo);
+  qXML.ParamByName('NF_REGISTRO').AsInteger := nf_registro;
+
+  CdsXML.Open;
+
+  if CdsXML.IsEmpty then
+  begin
+    CdsXML.Insert;
+
+    cdsXMLNFX_REGISTRO.AsInteger := GetNextSequence('GEN_NF0001_XML_ID');
+    cdsXMLEMP_CODIGO.AsString    := EmpCodigo;
+    cdsXMLNF_REGISTRO.AsInteger  := nf_registro;
+  end
+  else
+  begin
+    // Se absolutamente nada mudou, não grava novamente
+    if (cdsXMLNFX_XML.AsString = vXML) and
+       (
+         (Trim(vRecibo) = '') or
+         (cdsXMLNFX_XML_RECIBO.AsString = vRecibo)
+       ) then
+      Exit;
+
+    CdsXML.Edit;
+  end;
+
+  cdsXMLNFX_XML.AsString := vXML;
+
+  // Nunca sobrescreve um recibo válido por vazio
+  if Trim(vRecibo) <> '' then
+    cdsXMLNFX_XML_RECIBO.AsString := vRecibo;
+
+  CdsXML.ApplyUpdates(0);
 end;
 
 function TfrmProcessaNFe.RetirarSujeira( str: string): string;
