@@ -870,7 +870,7 @@ var sql : string;
 begin
   try
     //GRAVAR FATURA
-  //  BeginTransaction;
+    BeginTransaction;
     numero_fat := strzero(SequenciadorPRC( dbConn, dbInicio.EMPRESA.EMP_CODIGO, 'NF0001', 'NF_NOTANUMBER_S', 0),6);
     if BuscaUmDadoSqlAsFloat('SELECT OPV_COMISSAO_META_VENDEDOR FROM OPV0000 WHERE OPV_CODIGO = ' + cdsPedidoOPV_CODIGO.AsString) > 0 then
       comissaoVendedor := BuscaUmDadoSqlAsFloat('SELECT OPV_COMISSAO_META_VENDEDOR FROM OPV0000 WHERE OPV_CODIGO = ' + cdsPedidoOPV_CODIGO.AsString)
@@ -896,6 +896,8 @@ begin
            DateToSQL( now)+ ','+
            QuotedStr(dbinicio.Empresa.EMP_CODIGO) + ','+
            QuotedStr('N')+')';
+    if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(sql);
     ExecSql(sql);
     //parcelas
     clone := TClientDataSet.Create(Self);
@@ -933,9 +935,12 @@ begin
                  QuotedStr('N') + ','+
                  IntToStr(Banco_id) + ',' +
                  QuotedStr('N') +','+ QuotedStr('N') +','+ QuotedStr('N') +',' + QuotedStr('N') +   ','+
-                 cdsPedidoFPG_REGISTRO.AsString + ', ' +
+                 // cdsPedidoFPG_REGISTRO.AsString + ', ' +
+                 iif(cdsPedidoFPG_REGISTRO.IsNull or (cdsPedidoFPG_REGISTRO.AsInteger = 0), CbBancos.CDS.FieldByName('FPG_REGISTRO').AsString +  ', ', cdsPedidoFPG_REGISTRO.AsString + ', ') +
                  IntToStr(cdsPedidoPED_UND_CONSUMIDORA.AsLargeint) + ')';
 
+       if dbInicio.IsDesenvolvimento then
+          CopyToClipboard(sql);
 
        ExecSql(sql);
        clone.Next;
@@ -970,14 +975,17 @@ begin
             QuotedStr('BL') + ','+
             QuotedStr('S') +' )';
 
+    if dbInicio.IsDesenvolvimento then
+      CopyToClipboard(sql);
+
     ExecSql(SQL);
     Aviso('FATURADO - Parcelas gravadas com sucesso.');
     HabilitaCampos(false, topMostrar);
-//    CommitTransaction;
+    CommitTransaction;
   except
    on e: exception do
    begin
-  //   RollBackTransaction;
+     RollBackTransaction;
      raise Exception.Create(e.Message);
    end;
 
@@ -1082,8 +1090,8 @@ begin
   if (PesqCliente.idRetorno <> '') and (not ClienteAtivo(PesqCliente.idRetorno,sMsg)) then
   begin
     uteis.aviso (Pchar(sMsg));
-    PesqCliente.idRetorno := '';
-    PesqCliente.SetFocus;
+    // PesqCliente.idRetorno := '';
+    // PesqCliente.SetFocus;
   end;
 
 end;
