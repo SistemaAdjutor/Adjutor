@@ -3167,11 +3167,15 @@ begin
      end;
 
     if DBInicio.BuscaUmDadoSqlAsInteger   ('Select cast(count(*) as integer) as conta from    emp0000 where emp_codigo = ' +   qStr(StrZero(CEmpresa.Text, 3))) <> 0 then
-      AlteraEmpresa(StrZero(CEmpresa.Text, 3), true)
+    begin
+      AlteraEmpresa(StrZero(CEmpresa.Text, 3), true);
+      dbInicio.ValidaUserSenha(DBInicio.Usuario.USERNAME, DBInicio.Usuario.PSW);
+    end
     else
     begin
       CEmpresa.Text := DBInicio.Empresa.Emp_Codigo;
       AlteraEmpresa(DBInicio.Empresa.Emp_Codigo, true);
+      dbInicio.ValidaUserSenha(DBInicio.Usuario.USERNAME, DBInicio.Usuario.PSW);
     end;
     CbEmpresa.Text := DBInicio.Empresa.RAZAO;
   end;
@@ -3220,6 +3224,7 @@ begin
           Exit;
        end;
     AlteraEmpresa(StrZero(CEmpresa.Text, 3), true);
+    dbInicio.ValidaUserSenha(DBInicio.Usuario.USERNAME, DBInicio.Usuario.PSW);
   end;
   CbEmpresa.Text := DBInicio.Empresa.RAZAO;
 end;

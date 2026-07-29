@@ -749,11 +749,12 @@ type
       procedure OpenAux( const pSql : string );
       Function CheckUpdtClient : boolean;
       function CheckUpdtServer : boolean;
-      {$ifdef SISTEMA}procedure Validacao;{$Endif}
       procedure LeEstilo;
       procedure CriaMonitor( psqlDB : TSQLConnection );
 
     public
+      // issue 2234 tirou de private e foi para public pois está sendo utilizada também no menu
+      {$ifdef SISTEMA}procedure Validacao;{$Endif}
 
       {$ifdef SISTEMA}procedure CarregaEmpresaSelecionada( const pCod : string );{$endif}
       procedure CarregaParametrosNFSe;
@@ -1092,8 +1093,8 @@ function SplashStart( const pShow : boolean ) : boolean;
         end;
         if Result and ( vlProgSel = '' )
         then
-          if NOT vlSem_Validacao
-          then
+          // ISSUE 2234, RETIRAR COMENTÁRIO ABAIXO
+          // if NOT vlSem_Validacao  then
             Validacao;
 
         // LerVersao;
@@ -1697,6 +1698,9 @@ Function TDBInicio.ValidaUserSenha( pUser, pSenha : String ) : boolean;
         end;
       end;
 
+  var dataTolerancia: TDateTime;
+  var sData: string;
+
   begin
 
     IsManutencao := False;
@@ -1763,6 +1767,24 @@ Function TDBInicio.ValidaUserSenha( pUser, pSenha : String ) : boolean;
       end
       else
       begin
+
+        // issue 2234
+        // DATA DE TOLERÂNCIA NO CASO DE O CLIENTE NÃO PAGAR A LICENÇA
+        sData := Descriptografa(BuscaUmDadoSqlASstring('SELECT EMP_STAMP FROM EMP0000 WHERE EMP_CODIGO = ' + QuotedStr(StrZero(CEmpresa.Text, 3 ))));
+        if sData = '' then
+        begin
+          ValidaUserSenha(DBInicio.Usuario.USERNAME, DBInicio.Usuario.PSW);
+          JvThread1Execute(Self);
+          DataTolerancia := Now
+        end
+        else
+          DataTolerancia := EncodeDate(StrToInt(Copy(sData,1,4)), StrToInt(Copy(sData,5,2)), StrToInt(Copy(sData,7,2)));
+
+        if DataTolerancia < Date then
+        begin
+          GeraException( 'Prazo de licença do software expirou!!!' );
+        end;
+
 
         Result := ( BuscaUmDadoSqlAsInteger
           ( 'Select cast(count(*) as integer) as conta from    USUARIO where USU_LOGIN='
@@ -3776,6 +3798,7 @@ procedure TDBInicio.ValidaOnline(
     IdSSL : TIdSSLIOHandlerSocketOpenSSL;
     dados : TJSonValue;
     Cnpj, retornoJSON, url : string;
+    sDataTolerancia: TDateTime;
   begin
 
     idHttp := TIdHTTP.Create;
@@ -3801,20 +3824,26 @@ procedure TDBInicio.ValidaOnline(
       dados := TJSonObject.ParseJSONValue( retornoJSON );
       sChaveNova := dados.GetValue< string >( 'serial' );
 
+      // issue 2234
+      sDataTolerancia := Validade( sChaveNova);
+      sDataTolerancia := IncDay(sDataTolerancia, 15);
+
       if ( trim( sChaveNova ) <> '' )
       then
       begin
         sData := Criptografa( DateToStr( date ) );
         sChaveNova := Criptografa( sChaveNova );
-        ExecSql( 'UPDATE EMP0000 SET EMP0000.EMP_DATA_ACESSO = ' +
-          RetornaNull( sData ) + ', EMP0000.EMP_CHAVE = ' +
-          RetornaNull( sChaveNova ) + ' WHERE EMP0000.EMP_CGC = ' +
-          ExtrairNumeros( pCnpj ) );
+        ExecSql( 'UPDATE EMP0000 SET ' +
+                ' EMP0000.EMP_DATA_ACESSO = ' + RetornaNull( sData ) + ', ' +
+                ' EMP0000.EMP_STAMP = ' + RetornaNull( Criptografa(FormatDateTime('yyyymmdd', sDataTolerancia))) + ', ' +
+                ' EMP0000.EMP_CHAVE = ' +  RetornaNull( sChaveNova ) +
+                 ' WHERE EMP0000.EMP_CGC = ' + ExtrairNumeros( pCnpj ) );
       end;
 
     except
       on E : Exception do
       begin
+        ValidaUserSenha(DBInicio.Usuario.USERNAME, DBInicio.Usuario.PSW);
         Showmessage( E.Message );
       end;
     end;
