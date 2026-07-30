@@ -2674,12 +2674,25 @@ begin
     NotaF.NFe.InfAdic.infAdFisco := NotaF.NFe.InfAdic.infAdFisco+#13#10+
                 ' . Total do FCP ST = '+FloatToSQL(qNota.FieldByName('NF_VALOR_TOTAL_FCPst').ascurrency);
 
-  IF  qNota.FieldByName('NF_VALORTOT_PIS').AsFloat >0 then
+
+  // issue 2249
+  {IF  qNota.FieldByName('NF_VALORTOT_PIS').AsFloat >0 then
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco + '. '+' PIS '+ FormatFloat('#,##0.00',FPIS) + '%' +
     ' TOTAL '+ FormatFloat('##0.00', qNota.FieldByName('NF_VALORTOT_PIS').AsFloat  ) ;
   if qNota.FieldByName('NF_VALORTOT_COFINS').AsFloat> 0 then
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco +'.'+' COFINS '+ FormatFloat('#,##0.00',FCofins) + '%' +
-    ' TOTAL '+ FormatFloat('##0.00', qNota.FieldByName('NF_VALORTOT_COFINS').AsFloat );
+    ' TOTAL '+ FormatFloat('##0.00', qNota.FieldByName('NF_VALORTOT_COFINS').AsFloat ); }
+  IF  qNota.FieldByName('NF_VALORTOT_PIS').AsFloat >0 then
+    NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco + '. ' + ' PIS TOTAL '+ FormatFloat('##0.00', qNota.FieldByName('NF_VALORTOT_PIS').AsFloat  ) ;
+  if qNota.FieldByName('NF_VALORTOT_COFINS').AsFloat> 0 then
+    NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco + '.' + ' COFINS TOTAL '+ FormatFloat('##0.00', qNota.FieldByName('NF_VALORTOT_COFINS').AsFloat );
+
+
+
+
+
+
+
 
   if dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_NATUREZA FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = '6147' then
     NotaF.NFe.InfAdic.infAdFisco :=  NotaF.NFe.InfAdic.infAdFisco +' . '+'IRRF retido R$ '+ FormatFloat('#,##0.00',NotaF.NFe.Total.retTrib.vIRRF ) ;
