@@ -328,8 +328,6 @@ object FormGeradorCNAB: TFormGeradorCNAB
       Left = 0
       Top = 0
       Caption = 'SelecionaBanco'
-      ExplicitWidth = 0
-      ExplicitHeight = 0
       object GroupBox2: TGroupBox
         Left = -5
         Top = 5
@@ -548,10 +546,6 @@ object FormGeradorCNAB: TFormGeradorCNAB
             object tsOutros: TTabSheet
               Caption = 'tsOutros'
               ImageIndex = 1
-              ExplicitLeft = 0
-              ExplicitTop = 0
-              ExplicitWidth = 0
-              ExplicitHeight = 0
               object pOutros: TPanel
                 Left = 0
                 Top = 0
@@ -3336,7 +3330,7 @@ object FormGeradorCNAB: TFormGeradorCNAB
     Left = 722
     Top = 106
     Bitmap = {
-      494C010103000500240010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010103000500280010000F00FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000000F0000000100200000000000000F
       000000000000000000000000000000000000E7EFF700E7EFF700E7EFF700E7EF
       F700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EFF700E7EF

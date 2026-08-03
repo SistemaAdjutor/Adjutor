@@ -14,6 +14,8 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
     ExplicitWidth = 1262
     ExplicitHeight = 542
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 4
+      ExplicitTop = 24
       ExplicitWidth = 1254
       ExplicitHeight = 514
       inherited pnControle: TPanel
@@ -32,7 +34,7 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
             Width = 1254
             Height = 115
             Align = alClient
-            ExplicitTop = -6
+            ExplicitTop = 0
             ExplicitWidth = 1254
             ExplicitHeight = 115
             DesignSize = (
@@ -416,12 +418,13 @@ inherited frmPesquisaClientes: TfrmPesquisaClientes
               Top = 91
               Width = 97
               Height = 17
-              Hint = 'Grayed - Todos os Registros'
-              AllowGrayed = True
               Caption = 'Recorrente'
+              Checked = True
               ParentShowHint = False
-              ShowHint = True
+              ShowHint = False
+              State = cbChecked
               TabOrder = 12
+              OnClick = chkRecorrenteClick
             end
           end
         end

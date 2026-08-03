@@ -98,7 +98,7 @@ object FormBanco: TFormBanco
     Top = 38
     Width = 953
     Height = 525
-    ActivePage = TabSheet2
+    ActivePage = TabSheet1
     TabOrder = 0
     OnChange = PageControl1Change
     object TabSheet1: TTabSheet
@@ -982,7 +982,6 @@ object FormBanco: TFormBanco
           'Dados para Envio de Remessa - Padr'#227'o CNAB 400 e Impress'#227'o de  Bo' +
           'leto'
         TabOrder = 0
-        ExplicitTop = -6
         object Label4: TLabel
           Left = 68
           Top = 22
