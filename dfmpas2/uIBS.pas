@@ -45,6 +45,10 @@ type
     qCidade: TFDQuery;
     dsCidade: TDataSource;
     cxGrid1DBTableView1IBS_ALIQUOTA_UF: TcxGridDBColumn;
+    cxGrid1DBTableView1IBS_CST: TcxGridDBColumn;
+    cxGrid1DBTableView1IBS_CLASS_TRIB: TcxGridDBColumn;
+    qCST: TFDQuery;
+    dsCST: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure cdsEditAfterOpen(DataSet: TDataSet);
     procedure cdsEditAfterPost(DataSet: TDataSet);
@@ -54,6 +58,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure cdsEditBeforeOpen(DataSet: TDataSet);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -90,13 +95,6 @@ begin
 
     cdsEdit.CommitUpdates; // limpa cache local
 
-    // força uma nova transação pro dataset (recarrega dados frescos)
-    cdsEdit.Close;
-    cdsEdit.Connection := nil;
-    dbConn.Connected := False;
-    dbConn.Connected := True;
-    cdsEdit.Connection := dbConn;
-    cdsEdit.Open;
   except
     on E: Exception do
     begin
@@ -153,11 +151,20 @@ begin
   frmIBS.Caption := 'Imposto sobre Bens e Serviços';
 end;
 
+procedure TfrmIBS.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  dbConn.Connected := False;
+  dbConn.Connected := True;
+end;
+
 procedure TfrmIBS.FormCreate(Sender: TObject);
 begin
   inherited;
   qCidade.SQL.Text := 'SELECT CID_CODIGO, CID_CIDADE FROM CID0000 ORDER BY CID_CIDADE';
   qCidade.Open;
+  qCST.SQL.Text := 'SELECT CST_CODIGO, CAST(CST_CODIGO || '' - '' || CST_DESCRICAO AS VARCHAR(120) CHARACTER SET UTF8) AS CST_DESCRICAO FROM CLASSIFICACAO_TRIBUTARIA ORDER BY CST_CODIGO';
+  qCST.Open;
   self.Width := 800;
   self.Height := 600;
 end;

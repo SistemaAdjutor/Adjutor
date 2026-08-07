@@ -416,11 +416,15 @@ begin
 
       begin
         // NotaF.NFe.Ide.cMunFGIBS := fCID_IBGE; // qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
-        if qItemNota.FieldByName('IBS_CODIGO').AsString = '' then
+        if qItemNota.FieldByName('IBS_CST').AsString = '' then
           Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(dbInicio.GetParametroSistema('PMT_CST_IBS_CBS') )
         else
-          Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(qItemNota.FieldByName('IBS_CODIGO').AsString);
-        Produto.Imposto.IBSCBS.cClassTrib := '000001';
+          Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(qItemNota.FieldByName('IBS_CST').AsString);
+
+        if qItemNota.FieldByName('IBS_CLASS_TRIB').AsString = '' then
+          Produto.Imposto.IBSCBS.cClassTrib := '000001'
+        else
+          Produto.Imposto.IBSCBS.cClassTrib := qItemNota.FieldByName('IBS_CLASS_TRIB').AsString;
 
         // Cria o grupo principal e subgrupos se necessário
         if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
@@ -645,7 +649,15 @@ begin
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_DESCRICAO, cbs_cfop.CBS_DESCRICAO) AS CBS_DESCRICAO,');
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA, ibs_pr.IBS_ALIQUOTA, ibs_cfop.IBS_ALIQUOTA) AS IBS_ALIQUOTA,');
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA_UF, ibs_pr.IBS_ALIQUOTA_UF, ibs_cfop.IBS_ALIQUOTA_UF) AS IBS_ALIQUOTA_UF,');
+
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_CST, ibs_pr.IBS_CST, ibs_cfop.IBS_CST) AS IBS_CST,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_CLASS_TRIB, ibs_pr.IBS_CLASS_TRIB, ibs_cfop.IBS_CLASS_TRIB) AS IBS_CLASS_TRIB,');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CST, cbs_cfop.CBS_CST) AS CBS_CST,');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CLASS_TRIB, cbs_cfop.CBS_CLASS_TRIB) AS CBS_CLASS_TRIB, ');
+
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA');
+
     qItemNota.SQL.Add('FROM NF_IT01 it');
     qItemNota.SQL.Add('JOIN NF0001 nf ON (nf.NF_NOTANUMBER = it.NF_IT_NOTANUMER)' );
     qItemNota.SQL.Add('LEFT JOIN CLI0000 cli ON cli.CLI_CODIGO = nf.CLI_CODIGO');
@@ -657,11 +669,13 @@ begin
       qItemNota.SQL.Add('JOIN PRD0000 pr ON pr.PRD_REFER = it.PRD_REFER AND pr.PRD_STATUS = ''A'' AND pid.emp_codigo = nf.emp_codigo AND pr.emp_codigo = pid.emp_codigo  ');
     qItemNota.SQL.Add('LEFT JOIN SITUACAO_TRIBUTARIA st ON pr.STB_TRIBUTACAO = st.STB_TRIBUTACAO');
     qItemNota.SQL.Add('LEFT JOIN OPE0000 op ON op.OPE_CODIGO = it.OPE_CODIGO');
+
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_pr ON pr.IBS_ID = ibs_pr.IBS_ID');
     qItemNota.SQL.Add('LEFT JOIN CBS cbs_pr ON pr.CBS_ID = cbs_pr.CBS_ID');
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_cfop ON op.IBS_ID = ibs_cfop.IBS_ID');
     qItemNota.SQL.Add('LEFT JOIN CBS cbs_cfop ON op.CBS_ID = cbs_cfop.CBS_ID');
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_mun ON ibs_mun.CID_CODIGO = cli.CID_CODIGO');
+
     qItemNota.SQL.Add('LEFT JOIN CID0000 cid ON cid.CID_CODIGO = cli.CID_CODIGO');
     qItemNota.SQL.Add(' WHERE NF_IT_NOTANUMER = ' + QuotedStr(Nota));
     qItemNota.SQL.Add(' and it.emp_codigo = ' + QuotedStr(EmpCodigo));

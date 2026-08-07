@@ -1,36 +1,37 @@
 inherited frmIBS: TfrmIBS
   Caption = 'Imposto sobre Bens e Servi'#231'os'
   ClientHeight = 561
-  ClientWidth = 784
+  ClientWidth = 946
   OnActivate = FormActivate
-  ExplicitWidth = 800
+  ExplicitWidth = 962
   ExplicitHeight = 600
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
     Top = 529
-    Width = 784
+    Width = 946
     ExplicitTop = 529
-    ExplicitWidth = 784
+    ExplicitWidth = 1007
     inherited btnOk: TSpeedButton
-      Left = 536
+      Left = 698
       ExplicitLeft = 536
     end
     inherited btnCancelar: TSpeedButton
-      Left = 661
+      Left = 823
       ExplicitLeft = 661
     end
   end
   object cxGrid1: TcxGrid [1]
     Left = 0
     Top = 0
-    Width = 784
+    Width = 946
     Height = 529
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfStandard
     LookAndFeel.NativeStyle = False
     LookAndFeel.ScrollbarMode = sbmClassic
+    ExplicitWidth = 1007
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Cancel.Visible = False
@@ -53,17 +54,17 @@ inherited frmIBS: TfrmIBS
       object cxGrid1DBTableView1IBS_CODIGO: TcxGridDBColumn
         Caption = 'C'#243'digo'
         DataBinding.FieldName = 'IBS_CODIGO'
-        Width = 109
+        Width = 47
       end
       object cxGrid1DBTableView1IBS_DESCRICAO: TcxGridDBColumn
         Caption = 'Descri'#231#227'o'
         DataBinding.FieldName = 'IBS_DESCRICAO'
-        Width = 256
+        Width = 250
       end
       object cxGrid1DBTableView1IBS_ALIQUOTA: TcxGridDBColumn
         Caption = 'Al'#237'quota Municipal'
         DataBinding.FieldName = 'IBS_ALIQUOTA'
-        Width = 62
+        Width = 54
       end
       object cxGrid1DBTableView1CID_CODIGO: TcxGridDBColumn
         Caption = 'Munic'#237'pio'
@@ -81,12 +82,30 @@ inherited frmIBS: TfrmIBS
             FieldName = 'CID_CIDADE'
           end>
         Properties.ListSource = dsCidade
-        Width = 259
+        Width = 201
       end
       object cxGrid1DBTableView1IBS_ALIQUOTA_UF: TcxGridDBColumn
         Caption = 'Al'#237'quota da UF'
         DataBinding.FieldName = 'IBS_ALIQUOTA_UF'
-        Width = 82
+        Width = 50
+      end
+      object cxGrid1DBTableView1IBS_CST: TcxGridDBColumn
+        Caption = 'CST'
+        DataBinding.FieldName = 'IBS_CST'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.DropDownListStyle = lsEditList
+        Properties.KeyFieldNames = 'CST_CODIGO'
+        Properties.ListColumns = <
+          item
+            FieldName = 'CST_DESCRICAO'
+          end>
+        Properties.ListSource = dsCST
+        Width = 48
+      end
+      object cxGrid1DBTableView1IBS_CLASS_TRIB: TcxGridDBColumn
+        Caption = 'Classifica'#231#227'o Tribut'#225'ria'
+        DataBinding.FieldName = 'IBS_CLASS_TRIB'
+        Width = 280
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -100,6 +119,12 @@ inherited frmIBS: TfrmIBS
     Top = 24
   end
   inherited dbConn: TFDConnection
+    Params.Strings = (
+      'Database=C:\Jobdados\exemplo\EXEMPLO.FDB'
+      'User_Name=sysdba'
+      'Password=masterkey'
+      'CharacterSet=UTF8'
+      'DriverID=FB')
     TxOptions.AutoStop = True
   end
   inherited cdsEdit: TFDQuery
@@ -116,5 +141,15 @@ inherited frmIBS: TfrmIBS
     DataSet = qCidade
     Left = 616
     Top = 144
+  end
+  object qCST: TFDQuery
+    Connection = dbConn
+    Left = 568
+    Top = 200
+  end
+  object dsCST: TDataSource
+    DataSet = qCST
+    Left = 624
+    Top = 200
   end
 end

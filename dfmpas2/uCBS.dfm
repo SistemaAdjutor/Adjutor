@@ -1,31 +1,31 @@
 inherited frmCBS: TfrmCBS
   Caption = 'Contribui'#231#227'o sobre Bens e Servi'#231'os'
-  ClientHeight = 561
-  ClientWidth = 784
+  ClientHeight = 612
+  ClientWidth = 1035
   OnActivate = FormActivate
-  ExplicitWidth = 800
-  ExplicitHeight = 600
+  ExplicitWidth = 1051
+  ExplicitHeight = 651
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtil: TPanel
-    Top = 529
-    Width = 784
-    ExplicitTop = 529
-    ExplicitWidth = 784
+    Top = 580
+    Width = 1035
+    ExplicitTop = 580
+    ExplicitWidth = 1035
     inherited btnOk: TSpeedButton
-      Left = 536
+      Left = 787
       ExplicitLeft = 536
     end
     inherited btnCancelar: TSpeedButton
-      Left = 661
+      Left = 912
       ExplicitLeft = 661
     end
   end
   object cxGrid1: TcxGrid [1]
     Left = 0
     Top = 0
-    Width = 784
-    Height = 529
+    Width = 1035
+    Height = 580
     Align = alClient
     TabOrder = 1
     LookAndFeel.Kind = lfStandard
@@ -53,17 +53,35 @@ inherited frmCBS: TfrmCBS
       object cxGrid1DBTableView1CBS_CODIGO: TcxGridDBColumn
         Caption = 'C'#243'digo'
         DataBinding.FieldName = 'CBS_CODIGO'
-        Width = 86
+        Width = 123
       end
       object cxGrid1DBTableView1CBS_DESCRICAO: TcxGridDBColumn
         Caption = 'Descri'#231#227'o'
         DataBinding.FieldName = 'CBS_DESCRICAO'
-        Width = 309
+        Width = 444
       end
       object cxGrid1DBTableView1CBS_ALIQUOTA: TcxGridDBColumn
         Caption = 'Al'#237'quota'
         DataBinding.FieldName = 'CBS_ALIQUOTA'
-        Width = 187
+        Width = 163
+      end
+      object cxGrid1DBTableView1CBS_CST: TcxGridDBColumn
+        Caption = 'CST'
+        DataBinding.FieldName = 'CBS_CST'
+        PropertiesClassName = 'TcxLookupComboBoxProperties'
+        Properties.DropDownListStyle = lsEditList
+        Properties.KeyFieldNames = 'CST_CODIGO'
+        Properties.ListColumns = <
+          item
+            FieldName = 'CST_DESCRICAO'
+          end>
+        Properties.ListSource = dsCST
+        Width = 145
+      end
+      object cxGrid1DBTableView1CBS_CLASS_TRIB: TcxGridDBColumn
+        Caption = 'Classifica'#231#227'o Fiscal'
+        DataBinding.FieldName = 'CBS_CLASS_TRIB'
+        Width = 144
       end
     end
     object cxGrid1Level1: TcxGridLevel
@@ -76,5 +94,15 @@ inherited frmCBS: TfrmCBS
   inherited cdsEdit: TFDQuery
     SQL.Strings = (
       'SELECT * FROM CBS ORDER BY CBS_CODIGO')
+  end
+  object qCST: TFDQuery
+    Connection = dbConn
+    Left = 568
+    Top = 200
+  end
+  object dsCST: TDataSource
+    DataSet = qCST
+    Left = 624
+    Top = 200
   end
 end
