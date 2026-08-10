@@ -3,8 +3,8 @@ object FrmMenu: TFrmMenu
   Top = 115
   BorderWidth = 1
   Caption = 'Adjutor - Sistema de Gest'#227'o Empresarial'
-  ClientHeight = 549
-  ClientWidth = 1356
+  ClientHeight = 547
+  ClientWidth = 1354
   Color = clWhite
   Font.Charset = ANSI_CHARSET
   Font.Color = clBlack
@@ -22,15 +22,15 @@ object FrmMenu: TFrmMenu
   OnResize = FormResize
   OnShow = FormShow
   DesignSize = (
-    1356
-    549)
+    1354
+    547)
   PixelsPerInch = 96
   TextHeight = 14
   object Image1: TImage
     Left = 0
     Top = 0
-    Width = 1356
-    Height = 510
+    Width = 1354
+    Height = 508
     Align = alClient
     Picture.Data = {
       0A544A504547496D61676596260200FFD8FFE000104A46494600010101006000
@@ -4552,7 +4552,7 @@ object FrmMenu: TFrmMenu
   end
   object imgLogoNovi: TImage
     Left = 32
-    Top = 507
+    Top = 505
     Width = 249
     Height = 83
     Anchors = [akLeft, akBottom]
@@ -6902,7 +6902,7 @@ object FrmMenu: TFrmMenu
   object imgSuporte: TImage
     AlignWithMargins = True
     Left = 956
-    Top = 425
+    Top = 423
     Width = 128
     Height = 139
     Anchors = [akLeft, akBottom]
@@ -7697,8 +7697,8 @@ object FrmMenu: TFrmMenu
   end
   object Status: TStatusBar
     Left = 0
-    Top = 532
-    Width = 1356
+    Top = 530
+    Width = 1354
     Height = 17
     Panels = <
       item
@@ -7714,8 +7714,8 @@ object FrmMenu: TFrmMenu
   end
   object Pan_Versao: TPanel
     Left = 0
-    Top = 510
-    Width = 1356
+    Top = 508
+    Width = 1354
     Height = 22
     Align = alBottom
     BevelOuter = bvNone

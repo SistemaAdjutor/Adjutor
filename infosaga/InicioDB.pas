@@ -1774,7 +1774,7 @@ Function TDBInicio.ValidaUserSenha( pUser, pSenha : String ) : boolean;
         if sData = '' then
         begin
           ValidaUserSenha(DBInicio.Usuario.USERNAME, DBInicio.Usuario.PSW);
-          JvThread1Execute(Self);
+          JvThread1.Execute( self );
           DataTolerancia := Now
         end
         else
@@ -3827,6 +3827,11 @@ procedure TDBInicio.ValidaOnline(
       // issue 2234
       sDataTolerancia := Validade( sChaveNova);
       sDataTolerancia := IncDay(sDataTolerancia, 15);
+      if sDataTolerancia < Date then
+      begin
+         ShowMessage( 'Prazo de licença do software expirou!!!' );
+         Application.Terminate;
+      end;
 
       if ( trim( sChaveNova ) <> '' )
       then

@@ -3224,7 +3224,10 @@ begin
           Exit;
        end;
     AlteraEmpresa(StrZero(CEmpresa.Text, 3), true);
+    // issue 2234
+    dbInicio.JvThread1.Execute(sender);
     dbInicio.ValidaUserSenha(DBInicio.Usuario.USERNAME, DBInicio.Usuario.PSW);
+
   end;
   CbEmpresa.Text := DBInicio.Empresa.RAZAO;
 end;
