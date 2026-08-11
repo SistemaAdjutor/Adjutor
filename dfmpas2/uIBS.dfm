@@ -11,7 +11,7 @@ inherited frmIBS: TfrmIBS
     Top = 529
     Width = 946
     ExplicitTop = 529
-    ExplicitWidth = 1007
+    ExplicitWidth = 946
     inherited btnOk: TSpeedButton
       Left = 698
       ExplicitLeft = 536
@@ -31,7 +31,6 @@ inherited frmIBS: TfrmIBS
     LookAndFeel.Kind = lfStandard
     LookAndFeel.NativeStyle = False
     LookAndFeel.ScrollbarMode = sbmClassic
-    ExplicitWidth = 1007
     object cxGrid1DBTableView1: TcxGridDBTableView
       Navigator.Buttons.CustomButtons = <>
       Navigator.Buttons.Cancel.Visible = False

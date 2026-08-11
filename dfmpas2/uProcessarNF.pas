@@ -152,6 +152,7 @@ var i, j, recordCount : integer;
  Municipal, Estadual, Federal: string;
  AliqMun, AliqUF: Double;
  AliqCBS, AliqIS: Double;
+ IbsCbsNaCFOP: boolean;
 
 begin
 {
@@ -409,8 +410,10 @@ begin
       // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
 
       // --- IBS ---
+   IbsCbsNaCFOP := qItemNota.FieldByName('OPE_MOSTRA_IBS_CBS').AsString = 'S';
+   // dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qItemNota.FieldByName('OPE_CODIGO').AsString)) = 'S';
    if (dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S')
-   and (dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qItemNota.FieldByName('OPE_CODIGO').AsString)) = 'S')
+   and IbsCbsNaCFOP
    then
    begin
 
@@ -441,9 +444,9 @@ begin
         // Busca alíquotas (prioridade: item > tabela OPE0000 > Parâmetro)
         AliqMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
         AliqUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
-        if AliqMun = 0 then
+        if (AliqMun = 0) and (not IbsCbsNaCFOP) then
           AliqMun := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_MUNICIPAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
-        if AliqUF = 0 then
+        if (AliqUF = 0) and (not IbsCbsNaCFOP) then
           AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
 
 
@@ -472,7 +475,7 @@ begin
       // --- CBS ---
       begin
         AliqCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
-        if AliqCBS = 0 then
+        if (AliqCBS = 0) and (not IbsCbsNaCFOP) then
           AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
 
 
@@ -656,7 +659,7 @@ begin
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CST, cbs_cfop.CBS_CST) AS CBS_CST,');
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CLASS_TRIB, cbs_cfop.CBS_CLASS_TRIB) AS CBS_CLASS_TRIB, ');
 
-    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA,	op.OPE_MOSTRA_IBS_CBS');
 
     qItemNota.SQL.Add('FROM NF_IT01 it');
     qItemNota.SQL.Add('JOIN NF0001 nf ON (nf.NF_NOTANUMBER = it.NF_IT_NOTANUMER)' );
