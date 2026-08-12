@@ -482,7 +482,7 @@ begin
 
           case chkRecorrente.State of
             cbChecked: SqlAdd(' CL.CLI_RECORRENTE = '+QuotedStr('S'));
-            cbUnchecked: SqlAdd(' CL.CLI_RECORRENTE = '+QuotedStr('N')  + ' OR   CL.CLI_RECORRENTE IS NULL'  );
+            cbUnchecked: SqlAdd(' (CL.CLI_RECORRENTE = ' + QuotedStr('N')  + ' OR  CL.CLI_RECORRENTE IS NULL) '  );
           end;
 
 
