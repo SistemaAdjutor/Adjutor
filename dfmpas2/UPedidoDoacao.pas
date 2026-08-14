@@ -351,7 +351,9 @@ begin
   ValidarPedido;
 
   if MessageDlg('Marcar este cliente como Recorrente?', mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-    chkCliRecorrente.Checked := True;
+    chkCliRecorrente.Checked := True
+  else
+    chkCliRecorrente.Checked := False;
 
 
   BeginTransaction;
@@ -422,8 +424,12 @@ begin
     begin
       if (not qAux2.FieldByName('ban_codigo').IsNull) or (qAux2.FieldByName('ban_codigo').AsString <> '') then
         cdsPedidoBAN_CODIGO.AsString := qAux2.FieldByName('ban_codigo').AsString;
-      if (not qAux2.FieldByName('FPG_REGISTRO').IsNull) or (qAux2.FieldByName('FPG_REGISTRO').AsInteger <> 0 )  then
+      if (not qAux2.FieldByName('FPG_REGISTRO').IsNull) and (qAux2.FieldByName('FPG_REGISTRO').AsInteger <> 0 )  then
         cdsPedidoFPG_REGISTRO.AsInteger := qAux2.FieldByName('FPG_REGISTRO').AsInteger;
+      if cdsPedidoFPG_REGISTRO.AsInteger = 0 then
+        cdsPedidoFPG_REGISTRO.AsInteger := BuscaUmDadoSqlAsInteger('SELECT FPG_REGISTRO FROM BAN0000 WHERE BAN_CODIGO = ' + QuotedStr(qAux2.FieldByName('ban_codigo').AsString));
+
+
       if qaux2.FieldByName('PCX_CODIGO').AsString <> '' then
       begin
         cdsPedidoPCX_CODIGO.AsString := qaux2.FieldByName('PCX_CODIGO').AsString;
@@ -862,7 +868,7 @@ begin
 end;
 
 procedure TfrmPedidoDoacao.GravarFatura;
-var sql : string;
+var sql, sql2 : string;
   numero_fat, numero_pc : string;
   clone : TClientDataSet;
   Banco_id, nf_reg : Integer;
@@ -958,7 +964,7 @@ begin
     //nota fiscal
 
     nf_reg :=  GetNextSequence('GEN_NF_REGISTRO');
-    sql := 'INSERT INTO NF0001 (nf_registro, NF_NOTANUMBER, NF_EMISSAO, NF_SAIDA, PED_CODIGO, CLI_CODIGO, NF_TOT_NOTA, NF_TOT_PROD, '+
+    sql2 := 'INSERT INTO NF0001 (nf_registro, NF_NOTANUMBER, NF_EMISSAO, NF_SAIDA, PED_CODIGO, CLI_CODIGO, NF_TOT_NOTA, NF_TOT_PROD, '+
            ' NF_CANCELADA, EMP_CODIGO, OPV_CODIGO, NF_TIPODOC, NF_VENDA_FATURADA) '+
            ' VALUES ('+
             IntToStr(nf_reg) + ','+

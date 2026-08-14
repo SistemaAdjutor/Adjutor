@@ -3486,19 +3486,19 @@ begin
 
 
      
-      Writeln(wREGISTRO,'1'
-              +contrato // NUMERO DO CONTRATO
-              +'0001' //NUMERO DA CONCESSIONARIA
+      Writeln(wREGISTRO,'1' // 1-1
+              +contrato // NUMERO DO CONTRATO 2-57
+              +'0001' //NUMERO DA CONCESSIONARIA 58-61
               +Copy(DateToStr(Date),1,2) {Data DD - dia }   //DATADEENVIO  DDMMAAAA
               +Copy(DateToStr(Date),4,2) {Data MM - mes }
-              +Copy(DateToStr(Date),7,4) {Data AAAA - ano}
-              +PreencheDireita('R$',6) //SIGLA DA MOEDA
-              +PrencheZeroEsquerda(IntToStr(wSEQ_REMESSA),6)
-              +PreencheDireita('',2)
-              +nomeCliente  //Nome do Cliente Contratante.
-              +PreencheDireita('',40)// livre
-              +'1' // tipo arquivo remessa
-              +PrencheZeroEsquerda('1',6)
+              +Copy(DateToStr(Date),7,4) {Data AAAA - ano  62-69}
+              +PreencheDireita('R$',6) //SIGLA DA MOEDA  70-75
+              +PrencheZeroEsquerda(IntToStr(wSEQ_REMESSA),6) // 76-81
+              +PreencheDireita('',2) // 82-83
+              +nomeCliente  //Nome do Cliente Contratante.  84-103
+              +PreencheDireita('',40)// livre 104-143
+              +'1' // tipo arquivo remessa 144-144
+              +PrencheZeroEsquerda('1',6) // 145-150
           );
       case rgMovCopel.ItemIndex of
        0: wMovCelesc := '74';
@@ -3514,29 +3514,29 @@ begin
         { REGISTRO 2 - detail, VALOR A SER LANÇADO NA FATURA}
 
         mesSub := PrimeiroDiadoMesSubsequente(Date);
-        Writeln(wREGISTRO,'2'
-                         +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsLargeint),15)
-                         +PreencheZeroEsquerda(ExtrairNumeros(FormatFloat('#,###,##0.00',CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency)),9){valor da parcela}
+        Writeln(wREGISTRO,'2' // 1-1
+                         +PreenchezeroEsquerda(inttostr(CdSCrCduplicata.FieldByname('PED_UND_CONSUMIDORA').AsLargeint),15) // 2-16
+                         +PreencheZeroEsquerda(ExtrairNumeros(FormatFloat('#,###,##0.00',CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency)),7){valor da parcela 17-23}
                          +Copy(DateToStr(Date),1,2) {Data DD - dia }   //DATADEENVIO  DDMMAAAA
                          +Copy(DateToStr(Date),4,2) {Data MM - mes }
-                         +Copy(DateToStr(Date),7,4) {Data AAAA - ano}
-                         +wMovCelesc
-                         +contaGerencial
-                         +iif(wMovCelesc<>'77','00','19') //Cobertura/Ocorrência
-                         +PreencheDireita(iif(wMovCelesc='77','NAO INFORMADO',''),30) //Descrição da Cobertura/Ocorrência
-                         +PreenchezeroEsquerda('0',10)
-                         +PreenchezeroEsquerda(CdSCrCduplicata.FieldByname('CLI_CODIGO').AsString,6)
-                         +PreencheDireita( COPY(CdSCrCduplicata.FieldByname('CLI_CGC').AsString,1,12),12)
+                         +Copy(DateToStr(Date),7,4) {Data AAAA - ano   24-31}
+                         +wMovCelesc // Código do Movimento 32-33
+                         +contaGerencial // 34-41
+                         +iif(wMovCelesc<>'77','00','19') //Cobertura/Ocorrência  42-43
+                         +PreencheDireita(iif(wMovCelesc='77','NAO INFORMADO',''),30) //Descrição da Cobertura/Ocorrência 44-73
+                         +PreencheDireita('', 10)// PreenchezeroEsquerda('0',10)    74-83
+                         +PreenchezeroEsquerda(CdSCrCduplicata.FieldByname('CLI_CODIGO').AsString,6) // 84-89
+                         +PreencheDireita( COPY(CdSCrCduplicata.FieldByname('CLI_CGC').AsString,1,12),12) // 90-101
                          +copy(DateToStr(mesSub),1,2) {data de emissao DD}
                          +copy(DateToStr(mesSub),4,2) {data de emissao mes MM}
-                         +copy(DateToStr(mesSub),7,4) {data de emissao ano AAAA   era  CdSCrCduplicata.FieldByname('FPC_VENCTO').AsDateTime; }
-                         +'00000000' //FIM DA VIGENCIA
+                         +copy(DateToStr(mesSub),7,4) {data de emissao ano AAAA   Mês do início da vigência 102-109 }
+                         +'00000000' //FIM DA VIGENCIA 110-117
                          +IIF(Length(CdSCrCduplicata.FieldByname('CLI_CGC').AsString)=14,
-                                  Copy(CdSCrCduplicata.FieldByname('CLI_CGC').AsString,13,2),PreencheDireita('',2) )
-                         +PreencheDireita('',2) //LIVRE
-                         +PreenchezeroEsquerda('',13)// Código Unidade consumidora anterior.
-                         +PreenchezeroEsquerda('',10)// Número do cliente anterior/Unidade Administrativa
-                         +PreenchezeroEsquerda(IntToStr(wNumeroRegistro),6)
+                                  Copy(CdSCrCduplicata.FieldByname('CLI_CGC').AsString,13,2),PreencheDireita('',2) ) // 118-119
+                         +PreencheDireita('',2) //LIVRE 120-121
+                         +PreenchezeroEsquerda('',13)// Código Unidade consumidora anterior.  122-134
+                         +PreenchezeroEsquerda('',10)// Número do cliente anterior/Unidade Administrativa   135-144
+                         +PreenchezeroEsquerda(IntToStr(wNumeroRegistro),6) // 145-150
                        );
         Inc(wNumeroRegistro,1);
         CValorTotal.Value     := (CValorTotal.Value   + CdSCrCduplicata.FieldByname('FPC_VLPARC').AsCurrency);

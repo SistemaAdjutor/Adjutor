@@ -377,6 +377,19 @@ begin
           begin
               SqlAdd('CL.CLI_RECORRENTE = ''S''');
               SqlAdd('CL.CLI_DATA_ULTIMA_PARCELA IS NOT NULL');
+
+              SqlAdd(
+                'EXISTS (' +
+                ' SELECT 1 ' +
+                '   FROM FAT0000 FAT ' +
+                '   JOIN FAT_PC01 FPC ' +
+                '     ON FPC.FAT_CODIGO = FAT.FAT_CODIGO ' +
+                '    AND FPC.EMP_CODIGO = FAT.EMP_CODIGO ' +
+                '  WHERE FAT.PED_CODIGO = PE.PED_CODIGO ' +
+                '    AND FAT.EMP_CODIGO = PE.EMP_CODIGO ' +
+                '    AND CAST(FPC.FPC_VENCTO AS DATE) = CAST(CL.CLI_DATA_ULTIMA_PARCELA AS DATE)' +
+                ')'
+              );
           end;
 
          campo := '';

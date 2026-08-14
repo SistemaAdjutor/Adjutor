@@ -111,6 +111,7 @@ type
     procedure rgTipoPessoaClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
     procedure btnExcelClick(Sender: TObject);
+    procedure chkRecorrenteClick(Sender: TObject);
   private
     procedure FiltraCli;
     var
@@ -206,7 +207,6 @@ begin
     end;
   chkUltCompra.Checked := iif(LeIni(arquivo, 'pesquisa', 'ultimacompra', ret) = 'TRUE', True, False)  ;
   AbreTabela:=True;
-  chkRecorrente.State := cbGrayed;
   Filtro; // abre tabelas
 end;
 
@@ -365,6 +365,12 @@ begin
   text := text + ' - '+Sender.AsString;
 end;
 
+procedure TfrmPesquisaClientes.chkRecorrenteClick(Sender: TObject);
+begin
+  inherited;
+  btnPesquisa.Click;
+end;
+
 procedure TfrmPesquisaClientes.FiltraCli;
 var pCid, pUf, wOrd: string;
 begin
@@ -476,7 +482,7 @@ begin
 
           case chkRecorrente.State of
             cbChecked: SqlAdd(' CL.CLI_RECORRENTE = '+QuotedStr('S'));
-            cbUnchecked: SqlAdd(' CL.CLI_RECORRENTE = '+QuotedStr('N'));
+            cbUnchecked: SqlAdd(' (CL.CLI_RECORRENTE = ' + QuotedStr('N')  + ' OR  CL.CLI_RECORRENTE IS NULL) '  );
           end;
 
 

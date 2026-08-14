@@ -67,7 +67,7 @@ inherited FormCliente: TFormCliente
     Top = 42
     Width = 1752
     Height = 538
-    ActivePage = TabSheet4
+    ActivePage = TabSheet1
     Align = alClient
     TabOrder = 0
     OnChange = PageClienteChange
