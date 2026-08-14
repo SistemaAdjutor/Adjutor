@@ -876,7 +876,7 @@ var sql, sql2 : string;
 begin
   try
     //GRAVAR FATURA
-    BeginTransaction;
+    //BeginTransaction;
     numero_fat := strzero(SequenciadorPRC( dbConn, dbInicio.EMPRESA.EMP_CODIGO, 'NF0001', 'NF_NOTANUMBER_S', 0),6);
     if BuscaUmDadoSqlAsFloat('SELECT OPV_COMISSAO_META_VENDEDOR FROM OPV0000 WHERE OPV_CODIGO = ' + cdsPedidoOPV_CODIGO.AsString) > 0 then
       comissaoVendedor := BuscaUmDadoSqlAsFloat('SELECT OPV_COMISSAO_META_VENDEDOR FROM OPV0000 WHERE OPV_CODIGO = ' + cdsPedidoOPV_CODIGO.AsString)
@@ -982,16 +982,16 @@ begin
             QuotedStr('S') +' )';
 
     if dbInicio.IsDesenvolvimento then
-      CopyToClipboard(sql);
+      CopyToClipboard(sql2);
 
-    ExecSql(SQL);
+    ExecSql(sql2);
     Aviso('FATURADO - Parcelas gravadas com sucesso.');
     HabilitaCampos(false, topMostrar);
-    CommitTransaction;
+    // CommitTransaction;
   except
    on e: exception do
    begin
-     RollBackTransaction;
+     // RollBackTransaction;
      raise Exception.Create(e.Message);
    end;
 

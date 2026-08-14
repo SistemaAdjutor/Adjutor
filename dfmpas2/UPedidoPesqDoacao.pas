@@ -737,12 +737,12 @@ begin
     QuotedStr(SqlCdsPesqOPV_CODIGO.AsString) + ', ' +
     FloatToSql(SqlCdsPesqPED_VLTOTAL_BRUTO.AsFloat) + ', ' +
     QuotedStr(SqlCdsPesqPCX_CODIGO.AsString) + ', ' +
-    SqlCdsPesqFPG_REGISTRO.AsString + ', ' +
+    iif(SqlCdsPesqFPG_REGISTRO.AsString = '', '0', SqlCdsPesqFPG_REGISTRO.AsString) + ', ' +
     QuotedStr(SqlCdsPesqBAN_CODIGO.AsString) + ', ' +
     SqlCdsPesqPED_PARCELA.AsString + ', ' +
     DateToSQL(FDataInicioNovoPedido) + ', ' +
     FloatToSql(TotalParcela) + ', ' +
-    SqlCdsPesqPED_UND_CONSUMIDORA.AsString + ', ' +
+    iif(SqlCdsPesqPED_UND_CONSUMIDORA.AsString = '', '0', SqlCdsPesqPED_UND_CONSUMIDORA.AsString) + ', ' +
     QuotedStr(SqlCdsPesqCCT_CODIGO.AsString) + ', ' +
     QuotedStr(vTipoStr) + ')';
 

@@ -1,0 +1,12 @@
+﻿Inicio da versão: 14/08/2026
+Atualizado em 14/08/2026
+
+principal: Arkson, Crystal Clean, Embraterm, Collect, Metalúrgica Água
+	2220 - Arkson : ajustar o rateio da Diferença ICMS
+	2241 - [SUP-120] Cristal Clean - Ficha técnica valores de custo de entrada
+	2249 - [SUP-139] Embraterm - ajuste de tributações do pis e cofins
+	2250 - Collect - Erro ao gerar pedidos e boletos
+	2252 - [SUP-140] Collect - correção da recorrencia
+	2253 - Agua : Estorna Ops concluidas - script
+	2254 - [SUP-147] Collect - Adequação da remessa Celesc ao Layout 2.5 (Nova UC de 15 dígitos)
+	2263 - Arkson – Duplicidade na Programação da Produção e erro de conversão
