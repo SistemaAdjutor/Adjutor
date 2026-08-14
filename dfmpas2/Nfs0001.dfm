@@ -26,6 +26,10 @@ inherited FormNfEntrada: TFormNfEntrada
     TabOrder = 2
     object tsDadosNota: TTabSheet
       Caption = 'Dados da Nota'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object Label24: TLabel
         Left = 6
         Top = 8
@@ -622,6 +626,10 @@ inherited FormNfEntrada: TFormNfEntrada
     object tsObservacao: TTabSheet
       Caption = 'Dados Adicionais ou OBS'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBMemo1: TDBMemo
         Left = 0
         Top = 0
@@ -636,6 +644,10 @@ inherited FormNfEntrada: TFormNfEntrada
     object TabSheet1: TTabSheet
       Caption = 'Informa'#231#245'es ao Fisco'
       ImageIndex = 2
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object DBMemo2: TDBMemo
         Left = 0
         Top = 0
@@ -1767,6 +1779,10 @@ inherited FormNfEntrada: TFormNfEntrada
       TabOrder = 12
       object tsIcms: TTabSheet
         Caption = 'ICMS'
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label34: TLabel
           Left = 144
           Top = 11
@@ -1898,6 +1914,10 @@ inherited FormNfEntrada: TFormNfEntrada
       object tsICMSST: TTabSheet
         Caption = 'ICMS ST'
         ImageIndex = 1
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label40: TLabel
           Left = 18
           Top = 11
@@ -1958,6 +1978,10 @@ inherited FormNfEntrada: TFormNfEntrada
       object tsIPI: TTabSheet
         Caption = 'IPI'
         ImageIndex = 2
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label29: TLabel
           Left = 40
           Top = 11
@@ -2049,6 +2073,10 @@ inherited FormNfEntrada: TFormNfEntrada
       object tsPIS: TTabSheet
         Caption = 'PIS'
         ImageIndex = 3
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label44: TLabel
           Left = 40
           Top = 11
@@ -2190,6 +2218,10 @@ inherited FormNfEntrada: TFormNfEntrada
       object tsCOFINS: TTabSheet
         Caption = 'COFINS'
         ImageIndex = 4
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label48: TLabel
           Left = 40
           Top = 11
@@ -2331,6 +2363,10 @@ inherited FormNfEntrada: TFormNfEntrada
       object tsPedidoCompra: TTabSheet
         Caption = 'Pedido de Compra'
         ImageIndex = 5
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label12: TLabel
           Left = 26
           Top = 13
@@ -2440,6 +2476,10 @@ inherited FormNfEntrada: TFormNfEntrada
       object tsFrete: TTabSheet
         Caption = 'Frete'
         ImageIndex = 6
+        ExplicitLeft = 0
+        ExplicitTop = 0
+        ExplicitWidth = 0
+        ExplicitHeight = 0
         object Label61: TLabel
           Left = 33
           Top = 12

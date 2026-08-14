@@ -7168,6 +7168,7 @@ begin
                DataCadastros.SqlUpdate.sql.text :=SQLDEF('PRODUTOS',wSql1,'WHERE PRD_REFER = '''+SqlCdsGridSemOCPRD_REFER.AsString+'''','','');
                try
                  DataCadastros.sqlUpdate.Execsql;
+                 AtualizarProdutosCompostos(SqlCdsGridSemOCPRD_REFER.AsString);
                except on e: Exception do
                  begin
                     wSql1 := 'SELECT PRD_PVENDA FROM PRD0000';

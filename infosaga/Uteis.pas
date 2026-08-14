@@ -7,7 +7,7 @@ interface
 uses
   uPlanoContasCentroCustoManual, Vcl.DBGrids, firedac.comp.client, Vcl.ComCtrls,
   IdSMTP, IdSSLOpenSSL, IdExplicitTLSClientServerBase, idMessage, IdIntercept, IdGlobal, IdAttachmentFile,
-  ACBrMail,
+  ACBrMail, SqlExpr,
   Forms, Classes, SysUtils, windows, math, Dialogs, DateUtils, Graphics, jpeg, winapi.messages,System.StrUtils,
   DB, Clipbrd, MaskUtils, Variants, Controls, ExtDlgs, WiniNet, WinSock, ExtCtrls, inicioDB, ComObj,
   Vcl.StdCtrls, cxDBLookupComboBox, Vcl.Buttons, Vcl.DBCtrls, ComboBoxRW, SgDbSeachComboUnit,  Vcl.Mask,
@@ -201,6 +201,17 @@ procedure ExecSql2(const pSql: string);
 function RealMod (x: double; MaxInteger: Integer) : double;
 function BloqueiaPedidoVendaFaturaAtraso(cliCodigo, prazoCodigo: string) : Boolean;
 procedure Cronometro(Iniciar: Integer);
+function NovaQueryFichaTecnica: TSQLQuery;
+function AtualizarProdutosCompostos(const APrdRefer: String): Boolean;
+procedure AtualizarProdutoFichaTecnica(const APrdRefer: String;
+                                      const ACusto,
+                                            ACustoIPI,
+                                            AMatPrima,
+                                            AMaoObra,
+                                            APrecoVenda : Currency);
+procedure RecalcularProdutoFichaTecnica(const APrdRefer: String);
+function AtualizarProdutosCompostosInterno(const APrdRefer: String;
+  const EmProcessamento, Processados: TStringList): Boolean;
 
 
 Const
@@ -273,7 +284,7 @@ var
 
 implementation
 
-uses DataCad, DataCad1, IniFiles, SqlExpr, uConclusaoOP, uEnvaseProdutos, uEmpresaExportacao, AutorizaForm, uPedido;
+uses RWFunc, DataCad, DataCad1, IniFiles, uConclusaoOP, uEnvaseProdutos, uEmpresaExportacao, AutorizaForm, uPedido;
 
 
 procedure GravaIni(arquivo, secao, nome, aTexto: string);
@@ -3292,7 +3303,252 @@ begin
 end;
 
 
+///////////////////////////////////////////////////////
+// ISSUE 2241
+///////////////////////////////////////////////////////
+
+
+function NovaQueryFichaTecnica: TSQLQuery;
+begin
+  Result := TSQLQuery.Create(nil);
+  Result.SQLConnection := DBInicio.MainDB;
+end;
+
+procedure AtualizarProdutoFichaTecnica(const APrdRefer: String;
+                                      const ACusto,
+                                            ACustoIPI,
+                                            AMatPrima,
+                                            AMaoObra,
+                                            APrecoVenda: Currency);
+var
+  Query: TSQLQuery;
+  CamposPrecoVenda: String;
+begin
+  Query := NovaQueryFichaTecnica;
+  try
+    if DBInicio.Empresa.wPMT_NAO_AUTO_PVENDA then
+      CamposPrecoVenda := ''
+    else
+      CamposPrecoVenda := ', PRD_PVENDA = :PRECO_VENDA';
+
+    Query.SQL.Text := SQLDEF(
+      'PRODUTOS',
+      'UPDATE PRD0000 SET ' +
+      'PRD_PCUSTO = :CUSTO, ' +
+      'PRD_CUSTOCOMIPI = :CUSTO_IPI, ' +
+      'PRD_PMATPRI = :MAT_PRIMA, ' +
+      'PRD_MAOOBRA = :MAO_OBRA' +
+      CamposPrecoVenda,
+      'WHERE PRD_REFER = :PRD_REFER',
+      '',
+      '');
+
+    Query.ParamByName('CUSTO').AsCurrency := ACusto;
+    Query.ParamByName('CUSTO_IPI').AsCurrency := ACustoIPI;
+    Query.ParamByName('MAT_PRIMA').AsCurrency := AMatPrima;
+    Query.ParamByName('MAO_OBRA').AsCurrency := AMaoObra;
+    Query.ParamByName('PRD_REFER').AsString := APrdRefer;
+    if not DBInicio.Empresa.wPMT_NAO_AUTO_PVENDA then
+      Query.ParamByName('PRECO_VENDA').AsCurrency := APrecoVenda;
+    Query.ExecSQL;
+  finally
+    Query.Free;
+  end;
+end;
+
+procedure RecalcularProdutoFichaTecnica(const APrdRefer: String);
+var
+  QueryCalculo,
+  QueryParametros: TSQLQuery;
+  Custo,
+  CustoIPI,
+  MateriaPrima,
+  MaoObra,
+  PrecoVenda,
+  Formula,
+  BaseFormula,
+  MargemVenda,
+  Consumo: Double;
+begin
+  Custo := 0;
+  CustoIPI := 0;
+  MateriaPrima := 0;
+  MaoObra := 0;
+  PrecoVenda := 0;
+  Formula := 1;
+  BaseFormula := 0;
+  MargemVenda := 0;
+
+  QueryCalculo := NovaQueryFichaTecnica;
+  QueryParametros := NovaQueryFichaTecnica;
+  try
+    QueryCalculo.SQL.Text := SQLDEF(
+      'PRODUTOS',
+      'SELECT FTI.FTI_UC, P.PRD_PCUSTO, P.PRD_CUSTOCOMIPI ' +
+      'FROM FTC_IT01 FTI ' +
+      'JOIN PRD0000 P ON P.PRD_REFER = FTI.PRD_REFER_ITENS ',
+      'WHERE FTI.PRD_REFER = :PRD_REFER ' +
+      'AND FTI.PRD_REFER <> ''000000''',
+      'FTI.PRD_REFER, FTI.PRD_REFER_ITENS',
+      'FTI.');
+    QueryCalculo.ParamByName('PRD_REFER').AsString := APrdRefer;
+    QueryCalculo.Open;
+
+    if QueryCalculo.IsEmpty then
+      Exit;
+
+    while not QueryCalculo.Eof do
+    begin
+      Consumo := QueryCalculo.FieldByName('FTI_UC').AsFloat;
+      Custo := Custo +
+        (QueryCalculo.FieldByName('PRD_PCUSTO').AsCurrency * Consumo);
+      CustoIPI := CustoIPI +
+        (QueryCalculo.FieldByName('PRD_CUSTOCOMIPI').AsCurrency * Consumo);
+      QueryCalculo.Next;
+    end;
+
+    MateriaPrima := Custo;
+
+    QueryParametros.SQL.Text := SQLDEF(
+      'PRODUTOS',
+      'SELECT F.FTC_TUP, F.FTC_BASEFORMULA, P.PRD_MARGEMVENDA ' +
+      'FROM FTC0000 F ' +
+      'JOIN PRD0000 P ON P.PRD_REFER = F.PRD_REFER ',
+      'WHERE F.PRD_REFER = :PRD_REFER',
+      '',
+      'F.');
+    QueryParametros.ParamByName('PRD_REFER').AsString := APrdRefer;
+    QueryParametros.Open;
+    if not QueryParametros.IsEmpty then
+    begin
+      MaoObra := QueryParametros.FieldByName('FTC_TUP').AsCurrency;
+      BaseFormula := QueryParametros.FieldByName('FTC_BASEFORMULA').AsCurrency;
+      MargemVenda := QueryParametros.FieldByName('PRD_MARGEMVENDA').AsCurrency;
+    end;
+    QueryParametros.Close;
+
+    QueryParametros.SQL.Text := SQLDEF(
+      'PARAMETROS',
+      'SELECT P.PMT_UNFORMULA FROM PRMT0001 P',
+      '',
+      'P.EMP_CODIGO',
+      'P.');
+    QueryParametros.Open;
+    if (not QueryParametros.IsEmpty) and
+       (QueryParametros.FieldByName('PMT_UNFORMULA').AsCurrency > 0) then
+      Formula := QueryParametros.FieldByName('PMT_UNFORMULA').AsCurrency;
+
+    MateriaPrima := MateriaPrima / Formula;
+    if BaseFormula > 0 then
+    begin
+      Custo := Custo / BaseFormula;
+      CustoIPI := CustoIPI / BaseFormula;
+      PrecoVenda := (MateriaPrima + MaoObra) / BaseFormula;
+    end
+    else
+      PrecoVenda := MateriaPrima + MaoObra;
+
+    if MargemVenda > 0 then
+      PrecoVenda := (1 + (MargemVenda / 100)) * CustoIPI;
+
+    AtualizarProdutoFichaTecnica(
+      APrdRefer,
+      Custo,
+      CustoIPI,
+      MateriaPrima,
+      MaoObra,
+      PrecoVenda);
+  finally
+    QueryParametros.Free;
+    QueryCalculo.Free;
+  end;
+end;
+
+function AtualizarProdutosCompostosInterno(const APrdRefer: String;
+  const EmProcessamento, Processados: TStringList): Boolean;
+var
+  Query: TSQLQuery;
+  ProdutosPais: TStringList;
+  ProdutoPai: String;
+  Indice: Integer;
+begin
+  Result := False;
+  if Processados.IndexOf(APrdRefer) >= 0 then
+    Exit;
+  if EmProcessamento.IndexOf(APrdRefer) >= 0 then
+    raise Exception.CreateFmt(
+      'Ciclo encontrado na ficha tecnica do produto %s.', [APrdRefer]);
+
+  EmProcessamento.Add(APrdRefer);
+  ProdutosPais := TStringList.Create;
+  Query := NovaQueryFichaTecnica;
+  try
+    Query.SQL.Text := SQLDEF(
+      'FICHATECNICA',
+      'SELECT DISTINCT FTI.PRD_REFER FROM FTC_IT01 FTI ',
+      'WHERE FTI.PRD_REFER_ITENS = :PRD_REFER',
+      'FTI.PRD_REFER',
+      'FTI.');
+    Query.ParamByName('PRD_REFER').AsString := APrdRefer;
+    Query.Open;
+    while not Query.Eof do
+    begin
+      ProdutosPais.Add(Query.FieldByName('PRD_REFER').AsString);
+      Query.Next;
+    end;
+    Query.Close;
+
+    for Indice := 0 to ProdutosPais.Count - 1 do
+    begin
+      ProdutoPai := ProdutosPais[Indice];
+      if EmProcessamento.IndexOf(ProdutoPai) >= 0 then
+        raise Exception.CreateFmt(
+          'Ciclo encontrado na ficha tecnica do produto %s.', [ProdutoPai]);
+      if Processados.IndexOf(ProdutoPai) >= 0 then
+        Continue;
+
+      RecalcularProdutoFichaTecnica(ProdutoPai);
+      Result := True;
+      if AtualizarProdutosCompostosInterno(
+           ProdutoPai, EmProcessamento, Processados) then
+        Result := True;
+    end;
+
+    Processados.Add(APrdRefer);
+  finally
+    EmProcessamento.Delete(EmProcessamento.IndexOf(APrdRefer));
+    Query.Free;
+    ProdutosPais.Free;
+  end;
+end;
+
+function AtualizarProdutosCompostos(const APrdRefer: String): Boolean;
+var
+  EmProcessamento,
+  Processados: TStringList;
+begin
+  EmProcessamento := TStringList.Create;
+  Processados := TStringList.Create;
+  try
+    EmProcessamento.CaseSensitive := False;
+    Processados.CaseSensitive := False;
+    Result := AtualizarProdutosCompostosInterno(
+      APrdRefer, EmProcessamento, Processados);
+  finally
+    Processados.Free;
+    EmProcessamento.Free;
+  end;
+end;
+
+
+
+
+
+
+
+
 end.
+
 
 
 
