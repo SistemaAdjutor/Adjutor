@@ -819,6 +819,8 @@ type
     procedure NotaDeDevolucao;
     procedure ItensDaNotaDeDevolucao(var sNF_IPIALIQ, sNF_ICMSVALOR: Currency; sNF_SUBTRIBASE, sNF_ALIQSUBTRIB, sNF_VLSUBST: string)  ;
     function RateioFrete: double;
+    function AliquotaPis(prdRefer: string): Double;
+    function AliquotaCofins(prdRefer: string): Double;
   public
     procedure CarregarParametros;
     property TipoFaturamento: String Read sTipoFaturamento Write sTipoFaturamento;
@@ -2496,6 +2498,32 @@ end;
 procedure TFormFatPedido.AjustaFiltroCfop;
 begin
      CbOper.FiltroTabela := FiltroCFOP;
+end;
+
+function TFormFatPedido.AliquotaCofins(prdRefer: string): Double;
+var
+  cofins: double;
+begin
+  // issue 2249
+  cofins := BuscaUmDadoSqlAsFloat('SELECT PRD_COFINS_ALIQUOTA FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(prdRefer));
+  if cofins > 0 then
+    Result := cofins
+  else
+    Result := fEMP_COFINS_ALIQ;
+
+end;
+
+function TFormFatPedido.AliquotaPis(prdRefer: string): Double;
+var
+  pis: double;
+begin
+  // issue 2249
+  pis := BuscaUmDadoSqlAsFloat('SELECT PRD_PIS_ALIQUOTA FROM PRD0000 WHERE PRD_REFER = ' + QuotedStr(prdRefer));
+  if pis > 0 then
+    Result := Pis
+  else
+    Result := fEMP_PIS_ALIQ;
+
 end;
 
 procedure TFormFatPedido.RxDataSaidaExit(Sender: tObject);
@@ -5021,7 +5049,10 @@ begin
                               else
     														wBasePIS := wBasePIS - vDescontoaux - wValorIcmsIndividual;
                             end;
-														wAliquotaPIS := Uteis.RoundTo ( fEMP_PIS_ALIQ, -2);
+
+                            // issue 2249
+														// wAliquotaPIS := Uteis.RoundTo ( fEMP_PIS_ALIQ, -2);
+														wAliquotaPIS := Uteis.RoundTo ( AliquotaPIS(CdsItemPedidoPRD_REFER.AsString), -2);
                             if not MatchStr(femp_crt ,[ '1','2'])   then
                             begin
                               if not MatchStr(cstPISCOFINS,['04','05','06','07','08','09']) then
@@ -5046,7 +5077,9 @@ begin
                               else
                                 wBaseCOFINS := wBaseCOFINS - vDescontoaux - wValorIcmsIndividual
                             end;
-														wAliquotaCOFINS := Uteis.RoundTo ( fEMP_COFINS_ALIQ, -2);
+                            // issue 2249
+														// wAliquotaCOFINS := Uteis.RoundTo ( fEMP_COFINS_ALIQ, -2);
+                            wAliquotaCOFINS := Uteis.RoundTo ( AliquotaCofins(CdsItemPedidoPRD_REFER.AsString), -2);
                             if not MatchStr(femp_crt ,[ '1','2'])   then
                             begin
                                if not MatchStr(cstPISCOFINS,['04','05','06','07','08','09']) then

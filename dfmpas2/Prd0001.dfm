@@ -24,7 +24,7 @@ inherited FormProduto: TFormProduto
     Top = 0
     Width = 2500
     Height = 566
-    ActivePage = Tbs_FichaTec
+    ActivePage = Tbs_Produtos
     Align = alTop
     HotTrack = True
     TabOrder = 0
@@ -8442,7 +8442,7 @@ inherited FormProduto: TFormProduto
         Top = 158
         Width = 1059
         Height = 142
-        ActivePage = TabSheet14
+        ActivePage = TabSheet10
         TabOrder = 1
         object TabSheet9: TTabSheet
           Caption = 'Organiza'#231#227'o do Produto'
@@ -9119,8 +9119,8 @@ inherited FormProduto: TFormProduto
             OnExit = DbcLkPrd_IPIExit
           end
           object DBEdit16: TDBEdit
-            Left = 639
-            Top = 82
+            Left = 646
+            Top = 23
             Width = 15
             Height = 22
             CharCase = ecUpperCase
@@ -9154,8 +9154,8 @@ inherited FormProduto: TFormProduto
             TabOrder = 5
           end
           object DBE_SITRIBUT: TDBEdit
-            Left = 581
-            Top = 87
+            Left = 659
+            Top = 23
             Width = 19
             Height = 22
             CharCase = ecUpperCase
@@ -9356,6 +9356,62 @@ inherited FormProduto: TFormProduto
             TabOrder = 15
             ValueChecked = 'S'
             ValueUnchecked = 'N'
+          end
+          object GroupBox17: TGroupBox
+            Left = 545
+            Top = 43
+            Width = 133
+            Height = 69
+            Caption = 'Al'#237'quotas'
+            TabOrder = 16
+            object Label337: TLabel
+              Left = 26
+              Top = 24
+              Width = 18
+              Height = 14
+              Caption = 'PIS:'
+            end
+            object Label338: TLabel
+              Left = 6
+              Top = 42
+              Width = 40
+              Height = 14
+              Caption = 'COFINS:'
+            end
+            object DBEdit80: TDBEdit
+              Left = 52
+              Top = 19
+              Width = 49
+              Height = 22
+              CharCase = ecUpperCase
+              DataField = 'PRD_PIS_ALIQUOTA'
+              DataSource = DsProdutos
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Arial'
+              Font.Style = []
+              MaxLength = 5
+              ParentFont = False
+              TabOrder = 0
+            end
+            object DBEdit81: TDBEdit
+              Left = 52
+              Top = 43
+              Width = 49
+              Height = 22
+              CharCase = ecUpperCase
+              DataField = 'PRD_COFINS_ALIQUOTA'
+              DataSource = DsProdutos
+              Font.Charset = ANSI_CHARSET
+              Font.Color = clBlack
+              Font.Height = -11
+              Font.Name = 'Arial'
+              Font.Style = []
+              MaxLength = 5
+              ParentFont = False
+              TabOrder = 1
+            end
           end
         end
         object TabSheet14: TTabSheet
@@ -18324,6 +18380,16 @@ inherited FormProduto: TFormProduto
       Precision = 10
       Size = 4
     end
+    object SqlProdutosPRD_PIS_ALIQUOTA: TFMTBCDField
+      FieldName = 'PRD_PIS_ALIQUOTA'
+      Precision = 18
+      Size = 5
+    end
+    object SqlProdutosPRD_COFINS_ALIQUOTA: TFMTBCDField
+      FieldName = 'PRD_COFINS_ALIQUOTA'
+      Precision = 18
+      Size = 5
+    end
   end
   object DspProdutos: TDataSetProvider [75]
     DataSet = SqlProdutos
@@ -19354,6 +19420,18 @@ inherited FormProduto: TFormProduto
       DisplayFormat = '0.####'
       Precision = 10
       Size = 4
+    end
+    object CdsProdutosPRD_PIS_ALIQUOTA: TFMTBCDField
+      FieldName = 'PRD_PIS_ALIQUOTA'
+      DisplayFormat = '#,##0.00'
+      Precision = 18
+      Size = 5
+    end
+    object CdsProdutosPRD_COFINS_ALIQUOTA: TFMTBCDField
+      FieldName = 'PRD_COFINS_ALIQUOTA'
+      DisplayFormat = '#,##0.00'
+      Precision = 18
+      Size = 5
     end
   end
   object DsProdutos: TDataSource [77]

@@ -2293,6 +2293,15 @@ type
     cmbIBS: TDBLookupComboBox;
     DBEdit79: TDBEdit;
     chkCFOPVenda: TCheckBox;
+    GroupBox17: TGroupBox;
+    Label337: TLabel;
+    Label338: TLabel;
+    DBEdit80: TDBEdit;
+    DBEdit81: TDBEdit;
+    SqlProdutosPRD_PIS_ALIQUOTA: TFMTBCDField;
+    CdsProdutosPRD_PIS_ALIQUOTA: TFMTBCDField;
+    SqlProdutosPRD_COFINS_ALIQUOTA: TFMTBCDField;
+    CdsProdutosPRD_COFINS_ALIQUOTA: TFMTBCDField;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
