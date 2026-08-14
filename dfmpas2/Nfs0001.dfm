@@ -1763,7 +1763,7 @@ inherited FormNfEntrada: TFormNfEntrada
       Top = 13
       Width = 421
       Height = 88
-      ActivePage = tsPedidoCompra
+      ActivePage = tsIcms
       TabOrder = 12
       object tsIcms: TTabSheet
         Caption = 'ICMS'
