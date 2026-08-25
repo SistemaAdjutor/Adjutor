@@ -81,24 +81,17 @@ end;
 procedure TfrmIBS.btnOkClick(Sender: TObject);
 begin
   if cdsEdit.State in [dsEdit, dsInsert] then
+  begin
     cdsEdit.Post;
-
-  try
     cdsEdit.ApplyUpdates(0);
-
-    // commit real no banco
-    if dbConn.InTransaction then
-      dbConn.CommitRetaining
-    else
+  end;
+  try
       dbConn.Commit;
-
-    cdsEdit.CommitUpdates; // limpa cache local
-
   except
     on E: Exception do
     begin
       if dbConn.InTransaction then
-        dbConn.RollbackRetaining;
+        dbConn.Rollback;
       cdsEdit.CancelUpdates;
       Application.ShowException(E);
     end;
@@ -119,8 +112,8 @@ end;
 procedure TfrmIBS.cdsEditAfterPost(DataSet: TDataSet);
 begin
 //  inherited;
-  cdsEdit.ApplyUpdates(0);
-  cdsEdit.Connection.CommitRetaining;
+//  cdsEdit.ApplyUpdates(0);
+  cdsEdit.Connection.Commit;
 {  cdsEdit.Close;
   cdsEdit.Open;
  }
