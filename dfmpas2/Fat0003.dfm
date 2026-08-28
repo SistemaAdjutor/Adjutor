@@ -1160,10 +1160,6 @@ inherited FormFatPedido: TFormFatPedido
       TabStop = False
       object TabSheet1: TTabSheet
         Caption = 'Dados Adicionais'
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object ScrollBox1: TScrollBox
           Left = 0
           Top = 0
@@ -1534,10 +1530,6 @@ inherited FormFatPedido: TFormFatPedido
       object tsServico: TTabSheet
         Caption = 'Servi'#231'o'
         ImageIndex = 4
-        ExplicitLeft = 0
-        ExplicitTop = 0
-        ExplicitWidth = 0
-        ExplicitHeight = 0
         object Label38: TLabel
           Left = 3
           Top = 9
@@ -3564,6 +3556,9 @@ inherited FormFatPedido: TFormFatPedido
     end
     object qIcmsICM_TIPO_CALCULO_DIFAL: TIntegerField
       FieldName = 'ICM_TIPO_CALCULO_DIFAL'
+    end
+    object qIcmsICM_TIPO_CALCULO_ST: TIntegerField
+      FieldName = 'ICM_TIPO_CALCULO_ST'
     end
   end
   object qNotaFiscal: TSQLQuery [24]

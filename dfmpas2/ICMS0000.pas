@@ -51,6 +51,7 @@ type
     dbIcmTipoCalculoDifal: TDBRadioGroup;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    DBRadioGroup1: TDBRadioGroup;
     procedure MudaCorCampos(Sender: tObject);
     procedure HabilitaBotoes;
     procedure DesabilitaBotoes;

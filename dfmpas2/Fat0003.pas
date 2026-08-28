@@ -666,6 +666,7 @@ type
     Label8: TLabel;
     Label52: TLabel;
     chkFreteProporcional: TCheckBox;
+    qIcmsICM_TIPO_CALCULO_ST: TIntegerField;
 
     procedure CurrcodBancoExit(Sender: tObject);
     procedure BitConfirmaNotaClick(Sender: tObject);
@@ -2870,6 +2871,7 @@ begin
 												'       ICM_SUB_TRI_SN, ' +
 												'       ICMS_REDUZIDO, ' +
                         '       FCP_PERC, ' +
+                        '       ICM_TIPO_CALCULO_ST, ' +
                         '       ICM_TIPO_CALCULO_DIFAL ' +
 												'from ICM0000 WHERE ICM_DESTINO = ' + quotedstr(uf)+ConcatSe( ' AND ', dbInicio.ExclusivoSql('ICMS') )  ;
 			qIcms.open;
@@ -4973,7 +4975,23 @@ begin
 
 																				wBaseValorSubs := wCalBaseValorSubs;
 
+                                        if qIcmsICM_TIPO_CALCULO_ST.AsInteger = 1 then
+                                          wCalBaseValorSubs := wBaseValorSubs / (1 - (qIcmsICMS_SUBS.AsFloat / 100) ) //  por dentro
+                                        else
+                                        begin
+  																				wCalBaseValorSubs := Uteis.RoundTo ( wBaseValorSubs * qIcmsICMS_SUBS.AsFloat / 100, -3 );  // por fora
+                                          wCalBaseValorSubs := Uteis.RoundTo ( wCalBaseValorSubs + wBaseValorSubs , -3);
+                                        end;
+
+																				wBaseValorSubs := wCalBaseValorSubs;
+
+
 																				wUfResultMVA := Uteis.RoundTo ( wBaseValorSubs * wUfAliqIcmsSubCli / 100, -3 );
+
+
+
+
+
                                         if  not bIsentarICMS then
                                         begin
                                           if (wValorIcmsIndividual=0) and (wIcmsAliq<>0) then
