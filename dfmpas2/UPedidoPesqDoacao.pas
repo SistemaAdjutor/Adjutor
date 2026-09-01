@@ -1508,37 +1508,80 @@ end;
 procedure TfrmPesqDoacao.dbGrPedidoTitleClick(Column: TColumn);
 var
   Bmk: TBookmark;
+  IndexName: string;
+  IndexOptions: TIndexOptions;
 begin
-  if not SameText(Column.FieldName, 'SELECIONADO') then
-    Exit;
-
-  Screen.Cursor := crHourGlass;
-  try
-    Bmk := SqlCdsPesq.GetBookmark;
+  if SameText(Column.FieldName, 'SELECIONADO') then
+  begin
+    Screen.Cursor := crHourGlass;
     try
-      SqlCdsPesq.DisableControls;
+      Bmk := SqlCdsPesq.GetBookmark;
       try
-        SqlCdsPesq.First;
-        while not SqlCdsPesq.Eof do
-        begin
-          SqlCdsPesq.Edit;
-          SqlCdsPesqSELECIONADO.AsBoolean := FMarcarTodos;
-          SqlCdsPesq.Post;
-          SqlCdsPesq.Next;
+        SqlCdsPesq.DisableControls;
+        try
+          SqlCdsPesq.First;
+          while not SqlCdsPesq.Eof do
+          begin
+            SqlCdsPesq.Edit;
+            SqlCdsPesqSELECIONADO.AsBoolean := FMarcarTodos;
+            SqlCdsPesq.Post;
+            SqlCdsPesq.Next;
+          end;
+        finally
+          SqlCdsPesq.EnableControls;
         end;
       finally
-        SqlCdsPesq.EnableControls;
+        if SqlCdsPesq.BookmarkValid(Bmk) then
+          SqlCdsPesq.GotoBookmark(Bmk);
+        SqlCdsPesq.FreeBookmark(Bmk);
       end;
+
+      FMarcarTodos := not FMarcarTodos;
+
+      dbGrPedido.Invalidate;
     finally
-      if SqlCdsPesq.BookmarkValid(Bmk) then
-        SqlCdsPesq.GotoBookmark(Bmk);
-      SqlCdsPesq.FreeBookmark(Bmk);
+      Screen.Cursor := crDefault;
     end;
 
-    FMarcarTodos := not FMarcarTodos;
+    Exit;
+  end;
 
-    dbGrPedido.Invalidate;
+  if not SqlCdsPesq.Active or (Column.Field = nil) then
+    Exit;
+
+  if (Column.Field.FieldKind <> fkData) or
+     (Column.Field.DataType in [ftBlob, ftMemo]) then
+  begin
+    Aviso('Não é possivel ordenar por esta coluna.');
+    Exit;
+  end;
+
+  if SameText(SqlCdsPesq.IndexName, 'asc_' + Column.FieldName) then
+  begin
+    IndexName := 'desc_' + Column.FieldName;
+    IndexOptions := [ixDescending];
+  end
+  else
+  begin
+    IndexName := 'asc_' + Column.FieldName;
+    IndexOptions := [];
+  end;
+
+  Screen.Cursor := crHourGlass;
+  Bmk := SqlCdsPesq.GetBookmark;
+  SqlCdsPesq.DisableControls;
+  try
+    SqlCdsPesq.IndexDefs.Update;
+    if SqlCdsPesq.IndexDefs.IndexOf(IndexName) < 0 then
+      SqlCdsPesq.AddIndex(IndexName, Column.FieldName, IndexOptions);
+
+    SqlCdsPesq.IndexName := IndexName;
+
+    if SqlCdsPesq.BookmarkValid(Bmk) then
+      SqlCdsPesq.GotoBookmark(Bmk);
   finally
+    SqlCdsPesq.FreeBookmark(Bmk);
+    SqlCdsPesq.EnableControls;
     Screen.Cursor := crDefault;
   end;
 end;
