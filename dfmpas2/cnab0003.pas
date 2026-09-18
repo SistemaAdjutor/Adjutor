@@ -1652,7 +1652,7 @@ begin
        // REGISTRO 2 :  comando de cadastramento, atualização cadastral ou cancelamento de cliente no plano ,
        //REGISTRO 6 :  informação de lançamento de valores de cobrança ou crédito no faturamento
        wtipoRegistro := StrToIntDef(copy(Retorno.Strings[i],1,1),0) ;
-       codConsumidora := copy(Retorno.Strings[i],2,13);
+       codConsumidora := copy(Retorno.Strings[i],2,15); // issue 2276, novo layout CELESC
        wNOSSO_NUMERRO        :=  codConsumidora;
        {*** falta -> inicio }
        if wtipoRegistro = 6 then
@@ -1665,11 +1665,12 @@ begin
          wVALOR_TARIFA         := '0';
          wVALOR_ABATIMENTO     := '0';
          wVALOR_DESCONTO       := '0';
-         wVALOR_PAGO           := IntToStr(strtoint(copy(retorno.Strings[i],15,7)))+','+copy(retorno.Strings[i],22,2);
+         wVALOR_PAGO           := IntToStr(strtoint(copy(retorno.Strings[i],17,7)))+','+copy(retorno.Strings[i],24,2);
          wVALOR_JUROS_MORA     := '0';
          wVALOR_MULTA          := '0';
          // wNOSSO_NUMERRO        := copy(Retorno.Strings[i],2,13) ;  //Identificação do cliente na COPEL
-         wNOSSO_NUMERRO        := copy(Retorno.Strings[i],105,121) ;  //Identificação da fatura na COPEL
+         // wNOSSO_NUMERRO        := copy(Retorno.Strings[i],105,121) ;  //Identificação da fatura na COPEL
+         wNOSSO_NUMERRO        := copy(Retorno.Strings[i], 84, 6) ;  //Identificação da fatura na CELESC Issue 2276
          //Data do lançamento 24 31 8
          if trim(copy(Retorno.Strings[i],24,8))='' then
            wDATA_OCORRENCIA := dataArq
