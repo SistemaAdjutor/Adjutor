@@ -177,6 +177,10 @@ type
     SqlCdsPesqBAN_CODIGO: TStringField;
     qSqlCdsPesqCCT_CODIGO: TStringField;
     SqlCdsPesqCCT_CODIGO: TStringField;
+    pRecorrencia: TPanel;
+    Panel4: TPanel;
+    RecorrenciaInativos: TMemo;
+    Panel3: TPanel;
     procedure Rad_ClienteClick(Sender: TObject);
     procedure BitPesquisarClick(Sender: TObject);
     procedure SqlCdsPesqPED_SITUACAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -215,7 +219,8 @@ type
     procedure ProcessarRecorrencia(const ACliCodigo: string; const ADataUltimaParcela: TDateTime);
     function ObterPedidoBaseRecorrencia(const ACliCodigo: String; const ADataUltimaParcela: TDateTime): String;
     procedure CarregarPedidoOrigem(const APedido: String);
-    procedure GerarNovoPedido;
+    function GerarNovoPedido: boolean;
+    function InserePCXREP(var vPcxCodigo, vRepCodigo: string): boolean;
     procedure CopiarCabecalhoPedido;
     procedure CopiarItensPedido;
     procedure AtualizarClienteRecorrente(const ACliCodigo: String);
@@ -231,6 +236,7 @@ type
     function CalcularNovaDataRecorrencia(const AData: TDateTime; ATipo: TPedidoTipoParcela): TDateTime;
     function RecalcularValorRecorrencia(AValor: Double): Double;
     function ExisteRecorrenciaSelecionada: Boolean;
+    procedure Panel4Click(Sender: TObject);
   private
     procedure BuscaPedido(ordem: string);
     procedure LayOutPesq;
@@ -363,7 +369,8 @@ begin
           if (rdCFinanceira.Checked) then
              sqlAdd( camposql( 'Pe.cct_codigo', CbContaFinanceira.idRetorno ));
 
-
+          // issue 2268 A = Ativo | I = Inativo | R = Recuperação
+          sqlAdd('cl.CLI_INATIVO <> ''R'' ');
 
            //A FATURAR = F , CANCELADO = C , FATURADO TOTAL = T, PARCIAL = P , FATURADO AGRUPADO  = A
           case cbbFaturamento.ItemIndex of
@@ -485,6 +492,11 @@ begin
     if frmRecorrencia.ShowModal <> mrOk then
       Exit;
 
+    // issue 2268
+    RecorrenciaInativos.Lines.Clear;
+    RecorrenciaInativos.Lines.Add('Cód. Cliente' + #9 + 'Cód. Vendedor');
+
+
     FContaFinanceiraRecorrencia := frmRecorrencia.cbContaFinanceiraRecorrencia.idRetorno;
     FTaxaRecorrencia :=
       StrToFloatDef(
@@ -503,6 +515,8 @@ begin
 
   BitPesquisarClick(Sender);
   ShowMessage('Processamento concluído.');
+  if RecorrenciaInativos.Lines.Count > 1 then
+    pRecorrencia.Visible := True;
 end;
 
 
@@ -594,7 +608,8 @@ begin
   // 5. EXECUÇÃO DO FLUXO (SEM RECALCULAR NADA)
   // -----------------------------------------
   CarregarPedidoOrigem(FPedidoOrigem);
-  GerarNovoPedido;
+  if not GerarNovoPedido then
+    Exit;
   CopiarCabecalhoPedido;
   // CopiarItensPedido;
   GerarFinanceiro;
@@ -664,14 +679,28 @@ begin
 end;
 
 
-procedure TfrmPesqDoacao.GerarNovoPedido;
+function TfrmPesqDoacao.GerarNovoPedido: Boolean;
 var
-  vTipoStr: string;
+  vTipoStr, vPcxCodigo, vRepCodigo: string;
   TotalParcela: double;
 begin
 
+  // -----------------------------------------------
+  // 1. VALIDA INFORMAÇÕES DO CADASTRO DO CLIENTE
+  // issue 2268 o PCX_CODIGO (centro de custo) e o REP_CODIGO (Vendedor), tem que vir do cadastro do cliente
+  // -----------------------------------------------
+  Result := True;
+  if not InserePCXREP(vPcxCodigo, vRepCodigo) then
+  begin
+    Result := False;
+    Exit;
+  end;
+
+
+
+
   // -----------------------------------
-  // 1. GERA NOVO CÓDIGO DO PEDIDO
+  // 1.1 GERA NOVO CÓDIGO DO PEDIDO
   // -----------------------------------
   FNovoPedido := StrZero( SequenciadorPRC ( dbInicio.MainDB, '001', 'PED0000', 'PED_CODIGO', 0 ) , 6 );
 
@@ -731,12 +760,12 @@ begin
     ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) + '), ' +
     '''T'', ' +
     DateTimeToSQL(Now) + ', ' +
-    QuotedStr(SqlCdsPesqREP_CODIGO.AsString) + ', ' +
+    QuotedStr(vRepCodigo) + ', ' +
     FloatToSql(SqlCdsPesqPED_VLTOTAL_LIQ.AsFloat) + ', ' +
     FloatToSql(SqlCdsPesqPED_VLTOTAL_LIQ.AsFloat) + ', ' +
     QuotedStr(SqlCdsPesqOPV_CODIGO.AsString) + ', ' +
     FloatToSql(SqlCdsPesqPED_VLTOTAL_BRUTO.AsFloat) + ', ' +
-    QuotedStr(SqlCdsPesqPCX_CODIGO.AsString) + ', ' +
+    QuotedStr(vPcxCodigo) + ', ' +
     iif(SqlCdsPesqFPG_REGISTRO.AsString = '', '0', SqlCdsPesqFPG_REGISTRO.AsString) + ', ' +
     QuotedStr(SqlCdsPesqBAN_CODIGO.AsString) + ', ' +
     SqlCdsPesqPED_PARCELA.AsString + ', ' +
@@ -752,6 +781,28 @@ begin
 
 end;
 
+
+function TfrmPesqDoacao.InserePCXREP(var vPcxCodigo, vRepCodigo: string): boolean;
+begin
+  // issue 2268
+  qAux2.Close;
+  qAux2.Sql.Text := 'SELECT PCX_CODIGO, REP_CODIGO FROM CLI0000 WHERE CLI_CODIGO = ' + QuotedStr(SqlCdsPesqCli_Codigo.AsString);
+  qAux2.Open;
+  vPcxCodigo := qAux2.FieldByNAme('PCX_CODIGO').AsString;
+  vRepCodigo := qAux2.FieldByNAme('REP_CODIGO').AsString;
+
+  qAux2.Close;
+  qAux2.Sql.Text := 'SELECT r.REP_SITUACAO FROM REP0000 r JOIN CLI0000 c ON c.REP_CODIGO = r.REP_CODIGO WHERE c.CLI_CODIGO = ' + QuotedStr(SqlCdsPesqCli_Codigo.AsString);
+  qAux2.Open;
+  if qAux2.FieldByNAme('REP_SITUACAO').AsString = 'I' then
+  begin
+    RecorrenciaInativos.Lines.Add(SqlCdsPesqCli_Codigo.AsString + #9 + vRepCodigo);
+    Result := False;
+  end
+  else
+    Result := True;
+
+end;
 
 
 procedure TfrmPesqDoacao.CopiarCabecalhoPedido;
@@ -1896,6 +1947,12 @@ begin
     Cursor := crDefault;
   end;
 
+end;
+
+procedure TfrmPesqDoacao.Panel4Click(Sender: TObject);
+begin
+  inherited;
+  pRecorrencia.Visible := False;
 end;
 
 procedure TfrmPesqDoacao.Pedidosporbanco1Click(Sender: TObject);
