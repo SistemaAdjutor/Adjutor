@@ -644,7 +644,7 @@ procedure TFrmIndustrializacaoPorKit.BitConfirmarClick(
   Sender: tObject);
 var
   sReferenciaProdutoSelecionada,
-  sCodigoProdutoSelecionado, prdDescri :string;
+  sCodigoProdutoSelecionado, prdDescri, prdDescriCompl, linha :string;
   iRegistro,
   iRegistroItem:Integer;
 
@@ -726,12 +726,22 @@ begin
 //                                 ' EMITIDA EM ' +  SqlCdsNotasDisponiveisENF_EMISSAO.AsString
 
 
+
+                  // issue 2258
+                  prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString ;
                  if (DBInicio.GetParametroSistema('PMT_VINC_NF_ITEM_RETORNO') = 'S') then
-                    prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString + ' ' +
-                                 ' #RR|' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
-                                 '|'  + SqlCdsNotasDisponiveisENF_IT_DET_NITEM.AsString + '|'
+                 begin
+                    linha := BuscaUmDadoSqlAsString('SELECT p.LIN_CODIGO FROM PRD0000 p WHERE p.PRD_REFER = ' + QuotedStr(SqlCdsNotasDisponiveisPRD_REFER.AsString));
+                    prdDescriCompl :=
+                                 '#RR|' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
+                                 '|'  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
+                                 '|'  + SqlCdsNotasDisponiveisPRD_REFER.AsString +
+                                 '|'  + linha + '|IND';
+                 end
                  else
-                    prdDescri := SqlCdsNotasDisponiveisPRD_DESCRI.AsString  ;
+                 begin
+                   prdDescriCompl := BuscaUmDadoSqlAsString('SELECT p.PRD_COMPL FROM PRD0000 p WHERE p.PRD_REFER = ' + QuotedStr(SqlCdsNotasDisponiveisPRD_REFER.AsString));
+                 end;
 
                  iRegistroItem := GravarPedidoItem(0,
                                                    SqlCdsNotasDisponiveisENF_UCOM.AsString,
@@ -741,7 +751,7 @@ begin
                                                    SqlCdsProdutoPRD_CODORIGINAL.AsString,
                                                    COPY(prdDescri,1,100),
                                                    SqlCdsNotasDisponiveisAMX_CODIGO.AsString,
-                                                   '',
+                                                   prdDescriCompl,   // sProdutoDescricaoComplemento
                                                    '',
                                                    '',
                                                    '0',
