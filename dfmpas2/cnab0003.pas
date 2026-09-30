@@ -1665,7 +1665,7 @@ begin
          wVALOR_TARIFA         := '0';
          wVALOR_ABATIMENTO     := '0';
          wVALOR_DESCONTO       := '0';
-         wVALOR_PAGO           := IntToStr(strtoint(copy(retorno.Strings[i],17,7)))+','+copy(retorno.Strings[i],24,2);
+         wVALOR_PAGO           := IntToStr(strtoint(copy(retorno.Strings[i],17,5)))+','+copy(retorno.Strings[i],22,2);
          wVALOR_JUROS_MORA     := '0';
          wVALOR_MULTA          := '0';
          // wNOSSO_NUMERRO        := copy(Retorno.Strings[i],2,13) ;  //Identificação do cliente na COPEL
