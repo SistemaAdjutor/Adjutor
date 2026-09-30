@@ -370,7 +370,7 @@ begin
              sqlAdd( camposql( 'Pe.cct_codigo', CbContaFinanceira.idRetorno ));
 
           // issue 2268 A = Ativo | I = Inativo | R = Recuperação
-          sqlAdd('cl.CLI_INATIVO <> ''R'' ');
+          sqlAdd('cl.CLI_INATIVO NOT IN (''R'' , ''I'') ');
 
            //A FATURAR = F , CANCELADO = C , FATURADO TOTAL = T, PARCIAL = P , FATURADO AGRUPADO  = A
           case cbbFaturamento.ItemIndex of
@@ -967,6 +967,7 @@ begin
   qAux3.SQL.Text :=
     'UPDATE CLI0000 SET ' +
     'CLI_DATA_ULTIMA_PARCELA = ' + DateToSQL(vNovaData) + ',' +
+    'CCT_CODIGO = ' + QuotedStr(FContaFinanceiraRecorrencia) + ',' +
     'CLI_HISTORICO = ' + QuotedStr(vHistorico) +
     ' WHERE CLI_CODIGO = ' + QuotedStr(ACliCodigo) +
     ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO);
