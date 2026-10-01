@@ -5744,6 +5744,9 @@ begin
           ' WHERE PED_CODIGO = ' + QuotedStr(CdsPedidosPED_CODIGO.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(DBInicio.EMP_CODIGO)
   );
 
+  if qAux3.IsEmpty then
+    Exit;
+
    CdsNotaFiscalNF_BASEICMS.AsFloat := qAux3.FieldByName('ENF_BASEICMS').AsFloat;
    CdsNotaFiscalNF_ALIQ_ICMS.AsFloat := qAux3.FieldByName('ENF_ALIQ_ICMS').AsFloat;
    CdsNotaFiscalNF_VL_ICMS.AsFloat := qAux3.FieldByName('ENF_VL_ICMS').AsFloat;
@@ -5767,6 +5770,9 @@ begin
           ' FROM ENF_DEVOLUCAO  ' +
           ' WHERE PED_CODIGO = ' + QuotedStr(CdsPedidosPED_CODIGO.AsString) + ' AND EMP_CODIGO = ' + QuotedStr(DBInicio.EMP_CODIGO)
   );
+  if qAux3.IsEmpty then
+    Exit;
+
   EnfNotaNumber := qAux3.FieldByName('ENF_NOTANUMBER').AsString;
   EnfSerie := qAux3.FieldByName('ENF_SERIE').AsString;
   ForCodigo := qAux3.FieldByName('FOR_CODIGO').AsString;
