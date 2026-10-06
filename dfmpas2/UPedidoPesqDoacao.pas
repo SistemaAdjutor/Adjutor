@@ -935,11 +935,14 @@ begin
   // 1. Busca data atual do cliente
   qAux2.Close;
   qAux2.SQL.Text :=
-    'SELECT CLI_DATA_ULTIMA_PARCELA, CLI_HISTORICO '+
-    'FROM CLI0000 '+
-    'WHERE CLI_CODIGO = ' + QuotedStr(ACliCodigo) +
-    ' AND EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO);
-
+    'SELECT C.CLI_DATA_ULTIMA_PARCELA, C.CLI_HISTORICO, R.REP_NOME ' +
+    'FROM CLI0000 C ' +
+    'INNER JOIN PED0000 P ON P.CLI_CODIGO = C.CLI_CODIGO ' +
+    ' AND P.EMP_CODIGO = C.EMP_CODIGO ' +
+    'INNER JOIN REP0000 R ON R.REP_CODIGO = P.REP_CODIGO ' +
+    'WHERE C.CLI_CODIGO = ' + QuotedStr(ACliCodigo) +
+    ' AND C.EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO) +
+    ' AND P.PED_CODIGO = ' + QuotedStr(FNovoPedido);
   qAux2.Open;
 
   if qAux2.IsEmpty then
@@ -956,7 +959,7 @@ begin
 
   vHistorico := qAux2.FieldByName('CLI_HISTORICO').AsString + #13 + #10 +
                 FormatDateTime('dd/mm/yyyy', Now) + ' - ' +
-                SqlCdsPesqREP_NOME.AsString  + ' - ' +
+                qAux2.FieldByName('REP_NOME').AsString  + ' - ' +
                 'RENOVAÇÃO AUTOMÁTICA PELO SISTEMA';
 
 
