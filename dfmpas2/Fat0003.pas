@@ -666,6 +666,8 @@ type
     Label8: TLabel;
     Label52: TLabel;
     chkFreteProporcional: TCheckBox;
+    CdsItemPedidoPRD_RETENCAO_PIS: TFMTBCDField;
+    CdsItemPedidoPRD_RETENCAO_COFINS: TFMTBCDField;
 
     procedure CurrcodBancoExit(Sender: tObject);
     procedure BitConfirmaNotaClick(Sender: tObject);
@@ -764,6 +766,8 @@ type
     cstPISCOFINS : string;
     fSerieNF, fUF, fwAtualizaEstoque, fwTp_Cobranca, fwTp_Docto, fsReferenciaProvisoriaOrcamento, fwCod_Carteira,
     fOPT_SIMPLES , fwNFModelo, fwPrmMarca, fwPrmEspecie, fTipoSeqNfe, fPMT_GerarTagICMSSubsPagaAnter,femp_crt,fPMT_CERTIFICADO_DIGITAL : string;
+
+    wTotalRetencaoPISCofins: Currency; // issue 2271
 
     // NOTA FISCAL
     PMT_MENSAGEM1, PMT_MENSAGEM2, PMT_MENSAGEM3 : string;
@@ -1786,7 +1790,12 @@ begin
     qItemPedido.Sql.Add(' (SELECT cast(COUNT(1) as integer) FROM PED_IT01 it2 WHERE p1.PRF_REGISTRO = IT2.PRF_REGISTRO_VINCULADO)  kit_virtual, ');
     qItemPedido.SQL.Add(' p1.PRF_QTDEPEND, ');
     qItemPedido.SQL.Add(' p1.CAP_CODIGO, ');
-    qItemPedido.SQL.Add(' p2.prd_cbenef ');
+
+    // qItemPedido.SQL.Add(' p2.prd_cbenef '); issue 2271
+    qItemPedido.Sql.Add('       p2.prd_cbenef,');
+    qItemPedido.Sql.Add('       p2.PRD_RETENCAO_PIS,');
+    qItemPedido.Sql.Add('       p2.PRD_RETENCAO_COFINS ');
+
     qItemPedido.Sql.Add('FROM PED_IT01 P1 ');
     qItemPedido.Sql.Add('     JOIN PRD0000 P2 ON P2.PRD_CODIGO = P1.PRD_CODIGO '  );
     qItemPedido.Sql.Add('     JOIN PRD0000 PM ON PM.PRD_CODIGO = P1.PRD_CODIGO ' );
@@ -2269,7 +2278,7 @@ begin
      cRetencao := edValorISS.Value +edValorINSS.Value + edValorCSLL.Value + edValorIR.Value + edValorPIS.Value+ edValorCOFINS.Value   // retenções serviço
    else
       cRetencao := edValorINSS.Value + edValorCSLL.Value + edValorIR.Value + edValorPIS.Value+ edValorCOFINS.Value ;  // retenções serviço
-   wFAT_VLFAT:= wValorProdFaturar + wTotalIPITotalNF + wTotalValorSubs +wVTotFPC_st + wSomaDespesas - CdsPedidosPED_DESCTOVL.AsFloat - wDescPISCofins;
+   wFAT_VLFAT:= wValorProdFaturar + wTotalIPITotalNF + wTotalValorSubs +wVTotFPC_st + wSomaDespesas - CdsPedidosPED_DESCTOVL.AsFloat - wDescPISCofins - wTotalRetencaoPISCofins; // issue 2271
 
    DiminuiICMSDesonerado := BuscaUmDadoSqlAsString('SELECT OPE_ICMS_DESONERADO_DIMINUI FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(strzero(cbOper.IdRetorno,3))) = 'S';
    if DiminuiICMSDesonerado then
@@ -2290,7 +2299,7 @@ begin
     begin
 
       sql:= ' UPDATE FAT0000 ' +
-            '  SET FAT_VL_LIQ = FAT_VL_LIQ + '+FloatToSql( wValorProdFaturar - CdsPedidosPED_DESCTOVL.AsFloat-cRetencao - iif(DiminuiICMSDesonerado,wTotalDesoneracao,0) )+
+            '  SET FAT_VL_LIQ = FAT_VL_LIQ + '+FloatToSql( wValorProdFaturar - CdsPedidosPED_DESCTOVL.AsFloat-cRetencao - wTotalRetencaoPISCofins - iif(DiminuiICMSDesonerado,wTotalDesoneracao,0) )+
             ' , FAT_VLFAT =  FAT_VLFAT+  '+FloatToSql( wFAT_VLFAT );
       If TipoFaturamento = 'S' then
          sql:= sql + ' , FPC_VALORSERV_LIQ =' +FloatToSql( wValorProdFaturar - CdsPedidosPED_DESCTOVL.AsFloat - iif(DiminuiICMSDesonerado,wTotalDesoneracao,0) )+
@@ -2343,10 +2352,30 @@ begin
                  '         '+qStr( 'N' )+', '+
                  '         '+qStr( CdsPedidosCLI_UF.AsString )+', '+
                  '         '+qStr( 'S' )+', '+
-                 '         '+iif((CurServicos.Value > 0) and (cRetencao>0 ), FloatToSql( wValorProdFaturar -
-                                       CdsPedidosPED_DESCTOVL.AsFloat -(cRetencao )),
-                                       FloatToSql( wValorProdFaturar - CdsPedidosPED_DESCTOVL.AsFloat  )  )+', ' +
+
+                 '         ' +
+                  iif(
+                    (CurServicos.Value > 0) and (cRetencao > 0),
+                    FloatToSql(
+                      wValorProdFaturar -
+                      CdsPedidosPED_DESCTOVL.AsFloat -
+                      cRetencao -
+                      wTotalRetencaoPISCofins
+                    ),
+                    FloatToSql(
+                      wValorProdFaturar -
+                      CdsPedidosPED_DESCTOVL.AsFloat -
+                      wTotalRetencaoPISCofins
+                    )
+                  ) + ', ' +
+
+//                 '         '+iif((CurServicos.Value > 0) and (cRetencao>0 ), FloatToSql( wValorProdFaturar -
+//                                       CdsPedidosPED_DESCTOVL.AsFloat -(cRetencao )),
+//                                       FloatToSql( wValorProdFaturar - CdsPedidosPED_DESCTOVL.AsFloat  )  )+', ' +
+
 //                 '         '+FloatToSql( wValorProdFaturar - CdsPedidosPED_DESCTOVL.AsFloat )+', '+
+
+
                  '         '+FloatToSql( wFAT_VLFAT )+', '+
                  '         '+FloatToSql( wTotalSemComissao )+', '+
                  '         '+FloatToSql( CdsPedidosPED_COMIS1.AsFloat )+', '+
@@ -2384,7 +2413,13 @@ begin
                  '         '+ IntToStr( cid_codigo_prestacao) +
                     ' )' ,false);
     end;
-     wVlParce := ( wValorProdFaturar + wTotalIPITotalNF + wSomaDespesas + wTotalValorSubs+wVTotFPC_st) - CdsPedidosPED_DESCTOVL.AsFloat-wDescPISCofins-cRetencao - iif(DiminuiICMSDesonerado,wTotalDesoneracao,0);
+     // issue 2271
+     wVlParce := ( wValorProdFaturar + wTotalIPITotalNF + wSomaDespesas + wTotalValorSubs+wVTotFPC_st) - CdsPedidosPED_DESCTOVL.AsFloat - wDescPISCofins - wTotalRetencaoPISCofins - cRetencao - iif(DiminuiICMSDesonerado,wTotalDesoneracao,0);
+     if wVlParce < 0 then
+        GeraException('A retencao de PIS/COFINS ultrapassa o valor da fatura.');
+
+
+
 
      wCct_codigo := qOperFiscCCT_CODIGO.AsString;
      if (CdsPedidosPCX_CODIGO.AsString = '') then
@@ -3803,7 +3838,7 @@ begin
      CdsNotaFiscalNF_IMPRESS.AsString := 'N';
      CdsNotaFiscalCLI_CODIGO.AsString := CdsPedidosCLI_CODIGO.AsString;
      CdsNotaFiscalNF_VL_DESCTO.AsFloat := CdsPedidosPED_DESCTOVL.AsFloat;
-     CdsNotaFiscalNF_VL_DESCTO_FAT.AsFloat := wDescPISCofins   ;//desconto PIS E COFINS + VALOR ANTECIPADO (VAI GRAVAR MAIS ADIANTE)
+     CdsNotaFiscalNF_VL_DESCTO_FAT.AsFloat := wDescPISCofins  + wTotalRetencaoPISCofins ;//desconto PIS E COFINS + VALOR ANTECIPADO (VAI GRAVAR MAIS ADIANTE) + retenção issue 2271
 
      if qOperFiscOPE_ESCRITA.AsString = 'S' then
         CdsNotaFiscalNF_INTERNO.AsString := 'N'  //Atualizar o livro fiscal porque nao foi gerado recibo
@@ -4173,6 +4208,7 @@ procedure TFormFatPedido.RateioFrete_despesas;
         vICMSSubstitutoTotal :=0 ;
         wBaseicms_simplesAproveit := 0; //items que tem aproveitamento de crédito   CSOSN 101,201
         vTotalICMS_Deson :=0;
+        wTotalRetencaoPISCofins := 0; // issue 2271
     end;
 ///
    procedure TFormFatPedido.IniciaVarItem;
@@ -5019,6 +5055,24 @@ begin
 												 end;
 										end;
 
+                    // issue 2271
+                    if
+                      (
+                        (CdsItemPedidoPRD_RETENCAO_PIS.AsCurrency > 0) or
+                        (CdsItemPedidoPRD_RETENCAO_COFINS.AsCurrency > 0)
+                      ) and
+                      (
+                        (qOperFiscOPE_TRIBPISCOFINS.AsString <> 'S') or
+                        (fEMP_PIS_ALIQ <= 0) or
+                        (fEMP_COFINS_ALIQ <= 0)
+                      )
+                    then
+                      GeraException(
+                        'Produto ' + CdsItemPedidoPRD_REFER.AsString +
+                        ' possui retencao de PIS/COFINS, mas a operacao nao possui tributacao correspondente.'
+                      );
+
+
 										// PIS E COFINS é pelo valor dos produtos + frete+seguro+despesas-descontos quando houver
 										// operação fiscal - Tributar PIS/COFINS - sobre pis e cofins vai frete + seguro + desp.acessorias
 
@@ -5091,6 +5145,46 @@ begin
   														wValorTotalPIS := Uteis.RoundTo ( wValorTotalPIS + wValorPIS, -2);
 	  													wValorTotalCOFINS := Uteis.RoundTo ( wValorTotalCOFINS + wValorCOFINS, -2 );
                             end;
+
+
+                            // issue 2271
+                            // Retencao de PIS do item
+                            if CdsItemPedido.FieldByName('PRD_RETENCAO_PIS').AsCurrency > 0 then
+                            begin
+                              if wAliquotaPIS <= 0 then
+                                GeraException(
+                                  'Produto ' + CdsItemPedidoPRD_REFER.AsString +
+                                  ' possui retencao de PIS, mas nao possui aliquota tributada.'
+                                );
+
+                              wTotalRetencaoPISCofins :=
+                                wTotalRetencaoPISCofins +
+                                Uteis.RoundTo(
+                                  wBasePIS *
+                                  CdsItemPedido.FieldByName('PRD_RETENCAO_PIS').AsCurrency / 100,
+                                  -2
+                                );
+                            end;
+
+                            // Retencao de COFINS do item
+                            if CdsItemPedido.FieldByName('PRD_RETENCAO_COFINS').AsCurrency > 0 then
+                            begin
+                              if wAliquotaCOFINS <= 0 then
+                                GeraException(
+                                  'Produto ' + CdsItemPedidoPRD_REFER.AsString +
+                                  ' possui retencao de COFINS, mas nao possui aliquota tributada.'
+                                );
+
+                              wTotalRetencaoPISCofins :=
+                                wTotalRetencaoPISCofins +
+                                Uteis.RoundTo(
+                                  wBaseCOFINS *
+                                  CdsItemPedido.FieldByName('PRD_RETENCAO_COFINS').AsCurrency / 100,
+                                  -2
+                                );
+                            end;
+
+
 
 
                             //ncm que reduz valor liquido como desconto

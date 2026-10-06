@@ -66,7 +66,7 @@ type
 
 
 	  fiCSOSN, fiCSOSN_ST, fCID_IBGE, fEmailVersaoSSL  : integer;
-
+    fTotalRetencaoPisCofins: Currency; // issue 2271 Retenção do PIS/COFINS
 
 
    procedure SetLote (const aValues:string);
@@ -507,10 +507,44 @@ begin
 
    end;
 
+// ===== FIM DA ROTINA DE IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
 
 
+// Retencao de PIS aplicada somente na fatura  - Issue 2271
+  if qItemNota.FieldByName('PRD_RETENCAO_PIS').AsCurrency > 0 then
+  begin
+    if qItemNota.FieldByName('NF_ALIQPIS').AsCurrency <= 0 then
+      GeraException(
+        'Produto ' + qItemNota.FieldByName('PRD_REFER').AsString +
+        ' possui retencao de PIS, mas nao possui aliquota tributada.'
+      );
 
+    fTotalRetencaoPisCofins :=
+      fTotalRetencaoPisCofins +
+      RoundTo(
+        qItemNota.FieldByName('NF_BASE_PIS').AsCurrency *
+        qItemNota.FieldByName('PRD_RETENCAO_PIS').AsCurrency / 100,
+        -2
+      );
+  end;
 
+  // Retencao de COFINS aplicada somente na fatura
+  if qItemNota.FieldByName('PRD_RETENCAO_COFINS').AsCurrency > 0 then
+  begin
+    if qItemNota.FieldByName('NF_ALIQCOFINS').AsCurrency <= 0 then
+      GeraException(
+        'Produto ' + qItemNota.FieldByName('PRD_REFER').AsString +
+        ' possui retencao de COFINS, mas nao possui aliquota tributada.'
+      );
+
+    fTotalRetencaoPisCofins :=
+      fTotalRetencaoPisCofins +
+      RoundTo(
+        qItemNota.FieldByName('NF_BASE_COFINS').AsCurrency *
+        qItemNota.FieldByName('PRD_RETENCAO_COFINS').AsCurrency / 100,
+        -2
+      );
+  end;
 
 
 
@@ -645,7 +679,10 @@ begin
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_DESCRICAO, cbs_cfop.CBS_DESCRICAO) AS CBS_DESCRICAO,');
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA, ibs_pr.IBS_ALIQUOTA, ibs_cfop.IBS_ALIQUOTA) AS IBS_ALIQUOTA,');
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA_UF, ibs_pr.IBS_ALIQUOTA_UF, ibs_cfop.IBS_ALIQUOTA_UF) AS IBS_ALIQUOTA_UF,');
-    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA,');
+
+    qItemNota.SQL.Add('pr.PRD_RETENCAO_PIS, pr.PRD_RETENCAO_COFINS'); // issue 2271
+
     qItemNota.SQL.Add('FROM NF_IT01 it');
     qItemNota.SQL.Add('JOIN NF0001 nf ON (nf.NF_NOTANUMBER = it.NF_IT_NOTANUMER)' );
     qItemNota.SQL.Add('LEFT JOIN CLI0000 cli ON cli.CLI_CODIGO = nf.CLI_CODIGO');
@@ -1983,7 +2020,6 @@ var vLiqFat, vLiqDesc, vParcelas, semValorComercial: double;
   HashSHA1: THashSHA1;
   Hash: TBytes;
 
-
   function InforComplentares (compl : string):string;
   begin
      compl := Trim(RetiraAcentos(compl));
@@ -2370,7 +2406,10 @@ begin
 
   end;
   MostraIBPT_Item :=  pos('IBPT',qNota.FieldByName('nf_observacao').AsString)>0 ;
+
+  fTotalRetencaoPisCofins := 0; // issue 2271
   AdicaoProdutosNFe;
+
   TotalizacaoNFE;
   //NF-e indicação da modalidade de frete e seus transporte
   // nfce - não pode e entregue na hora, sem frete
@@ -2494,16 +2533,16 @@ begin
 
 
 
-
       if PMT_FAT_NF_VL_LIQ_VALOR_ANTECIP then
         NotaF.NFe.Cobr.Fat.vLiq  := vLiqFat - qNota.FieldByName('FAT_VALORANTECIPADO').AsFloat
       else
         NotaF.NFe.Cobr.Fat.vLiq  := vLiqFat;
 
+      NotaF.NFe.Cobr.Fat.vDesc := vLiqDesc;
+
+
+
     end;
-
-    NotaF.NFe.Cobr.Fat.vDesc := vLiqDesc;
-
 
 
 
@@ -2526,6 +2565,8 @@ begin
             vParcelas :=  qDuplicata.FieldByName('FPC_VLPARC').AsFloat -    qDuplicata.FieldByName('FPC_VALR_SERVICOS').AsFloat
           else
            vParcelas :=   qDuplicata.FieldByName('FPC_VLPARC').AsFloat;
+
+
           if vParcelas >0  then
           begin
             Duplicata := NotaF.NFe.Cobr.Dup.Add;
@@ -2665,6 +2706,21 @@ begin
 
   //informações complementares ao contribuinte
   NotaF.NFe.InfAdic.infCpl     :=  InforComplentares(qNota.FieldByName('nf_observacao').AsString);
+
+  // Retenção de PIS/COFINS - issue 2271
+  if fTotalRetencaoPisCofins > 0 then
+  begin
+    if NotaF.NFe.InfAdic.infCpl <> '' then
+      NotaF.NFe.InfAdic.infCpl :=
+        NotaF.NFe.InfAdic.infCpl + ' | ';
+
+    NotaF.NFe.InfAdic.infCpl :=
+      NotaF.NFe.InfAdic.infCpl +
+      'Retencao PIS/COFINS R$ ' +
+      FormatFloat('#,##0.00', fTotalRetencaoPisCofins);
+  end;
+
+
   //informações complementares ao fisco
   NotaF.NFe.InfAdic.infAdFisco := InforComplentares(qNota.FieldByName('MSG_NFE_OPER_FISCAL').AsString);
   if  qNota.FieldByName('NF_VALOR_TOTAL_FCP').ascurrency >0 then
