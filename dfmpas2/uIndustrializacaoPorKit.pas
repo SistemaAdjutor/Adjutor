@@ -500,7 +500,13 @@ var
 
 begin
   inherited;
-  if ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) = 0) then
+//  if ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) = 0) then issue 2267
+//    Exit;
+
+  if (SqlCdsNotasDisponiveisENF_QTDE.AsFloat <=
+      SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) and
+     ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat -
+       SqlCdsNotasDisponiveisRETORNADO.AsFloat) <= 0) then
     Exit;
 
   if Column.FieldName = 'Selecao' then
@@ -613,7 +619,12 @@ begin
   SqlCdsNotasDisponiveis.First;
   while not SqlCdsNotasDisponiveis.Eof do
   begin
-    if (SqlCdsNotasDisponiveisENF_QTDE.AsFloat > SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) then
+    // if (SqlCdsNotasDisponiveisENF_QTDE.AsFloat >= SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) issue 2267
+    if (SqlCdsNotasDisponiveisENF_QTDE.AsFloat >
+      SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) or
+     ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat -
+       SqlCdsNotasDisponiveisRETORNADO.AsFloat) > 0)
+    then
     begin
       SqlCdsNotasDisponiveis.Edit;
       SqlCdsNotasDisponiveisSelecao.AsBoolean := not SqlCdsNotasDisponiveisSelecao.AsBoolean;
