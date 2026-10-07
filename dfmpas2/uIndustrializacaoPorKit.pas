@@ -735,8 +735,9 @@ begin
                     prdDescriCompl :=
                                  '#RR|' + SqlCdsNotasDisponiveisENF_NOTANUMBER.AsString +
                                  '|'  + SqlCdsNotasDisponiveisENF_SERIE.AsString +
+                                 '|'  + linha +
                                  '|'  + SqlCdsNotasDisponiveisPRD_REFER.AsString +
-                                 '|'  + linha + '|IND';
+                                 '|IND|';
                  end
                  else
                  begin
