@@ -7447,10 +7447,18 @@ inherited FormGimpRepr: TFormGimpRepr
     UpdateMode = upWhereAll
     Left = 704
     Top = 144
-    object SQLCdsComissaoProdFAT_CODIGO: TStringField
-      FieldName = 'FAT_CODIGO'
-      Required = True
+    object SQLCdsComissaoProdDATA_FATURAMENTO: TDateField
+      FieldName = 'DATA_FATURAMENTO'
+    end
+    object SQLCdsComissaoProdNUMERO_NF: TStringField
+      FieldName = 'NUMERO_NF'
       Size = 6
+    end
+    object SQLCdsComissaoProdFPC_VENCTO: TSQLTimeStampField
+      FieldName = 'FPC_VENCTO'
+    end
+    object SQLCdsComissaoProdDATA_RECEBIMENTO: TSQLTimeStampField
+      FieldName = 'DATA_RECEBIMENTO'
     end
     object SQLCdsComissaoProdCLI_CODIGO: TStringField
       FieldName = 'CLI_CODIGO'
@@ -7460,23 +7468,6 @@ inherited FormGimpRepr: TFormGimpRepr
       FieldName = 'CLI_RAZAO'
       Size = 55
     end
-    object SQLCdsComissaoProdREP_CODIGO: TStringField
-      FieldName = 'REP_CODIGO'
-      Size = 3
-    end
-    object SQLCdsComissaoProdFPC_DTEMIS: TSQLTimeStampField
-      FieldName = 'FPC_DTEMIS'
-    end
-    object SQLCdsComissaoProdFPC_PAGTO: TSQLTimeStampField
-      FieldName = 'FPC_PAGTO'
-    end
-    object SQLCdsComissaoProdFPC_VENCTO: TSQLTimeStampField
-      FieldName = 'FPC_VENCTO'
-    end
-    object SQLCdsComissaoProdEMP_CODIGO: TStringField
-      FieldName = 'EMP_CODIGO'
-      Size = 3
-    end
     object SQLCdsComissaoProdPRD_REFER: TStringField
       FieldName = 'PRD_REFER'
       Size = 11
@@ -7485,24 +7476,75 @@ inherited FormGimpRepr: TFormGimpRepr
       FieldName = 'PRD_DESCRI'
       Size = 50
     end
+    object SQLCdsComissaoProdFIT_QTDE: TFMTBCDField
+      FieldName = 'FIT_QTDE'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdVALOR_UNITARIO: TFMTBCDField
+      FieldName = 'VALOR_UNITARIO'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdVALOR_TOTAL: TFMTBCDField
+      FieldName = 'VALOR_TOTAL'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdPERCENTUAL_IMPOSTO: TFMTBCDField
+      FieldName = 'PERCENTUAL_IMPOSTO'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdVALOR_IMPOSTO: TFMTBCDField
+      FieldName = 'VALOR_IMPOSTO'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdNF_TIPO_FRETE: TStringField
+      FieldName = 'NF_TIPO_FRETE'
+      Size = 1
+    end
+    object SQLCdsComissaoProdFRETE: TFMTBCDField
+      FieldName = 'FRETE'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdPRECO_VENDA_REFERENCIAL: TFMTBCDField
+      FieldName = 'PRECO_VENDA_REFERENCIAL'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdPRECO_VENDA_REFERENCIAL_TOTAL: TFMTBCDField
+      FieldName = 'PRECO_VENDA_REFERENCIAL_TOTAL'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdMARGEM_CONTRIBUICAO: TFMTBCDField
+      FieldName = 'MARGEM_CONTRIBUICAO'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdCOMISSAO: TFMTBCDField
+      FieldName = 'COMISSAO'
+      Precision = 18
+      Size = 5
+    end
+    object SQLCdsComissaoProdEMP_CODIGO: TStringField
+      FieldName = 'EMP_CODIGO'
+      Size = 3
+    end
+    object SQLCdsComissaoProdREP_CODIGO: TStringField
+      FieldName = 'REP_CODIGO'
+      Size = 3
+    end
+    object SQLCdsComissaoProdPED_CODIGO: TStringField
+      FieldName = 'PED_CODIGO'
+      Size = 7
+    end
     object SQLCdsComissaoProdLIN_CODIGO: TStringField
       FieldName = 'LIN_CODIGO'
       Size = 3
-    end
-    object SQLCdsComissaoProdFIT_QTDE: TFMTBCDField
-      FieldName = 'FIT_QTDE'
-      Precision = 15
-      Size = 4
-    end
-    object SQLCdsComissaoProdFIT_PRECO: TFMTBCDField
-      FieldName = 'FIT_PRECO'
-      Precision = 15
-      Size = 4
-    end
-    object SQLCdsComissaoProdFIT_COMIS: TFMTBCDField
-      FieldName = 'FIT_COMIS'
-      Precision = 15
-      Size = 4
     end
     object SQLCdsComissaoProdCLI_CIDADE: TStringField
       FieldName = 'CLI_CIDADE'
@@ -7515,20 +7557,6 @@ inherited FormGimpRepr: TFormGimpRepr
     object SQLCdsComissaoProdLIN_DESCRI: TStringField
       FieldName = 'LIN_DESCRI'
       Size = 30
-    end
-    object SQLCdsComissaoProdCC_TOTAL_VENDA: TCurrencyField
-      FieldKind = fkCalculated
-      FieldName = 'CC_TOTAL_VENDA'
-      Calculated = True
-    end
-    object SQLCdsComissaoProdCC_TOTAL_COMIS: TCurrencyField
-      FieldKind = fkCalculated
-      FieldName = 'CC_TOTAL_COMIS'
-      Calculated = True
-    end
-    object SQLCdsComissaoProdPED_CODIGO: TStringField
-      FieldName = 'PED_CODIGO'
-      Size = 7
     end
   end
   object DsComissaoProd: TDataSource
@@ -7785,9 +7813,9 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
+        mmHeight = 3250
         mmLeft = 4498
-        mmTop = 15875
+        mmTop = 15870
         mmWidth = 10964
         BandType = 0
         LayerName = Foreground6
@@ -7798,7 +7826,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Fatura'
+        Caption = 'N'#186' N.F.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -7807,10 +7835,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3175
+        mmHeight = 3250
         mmLeft = 21696
-        mmTop = 15875
-        mmWidth = 10583
+        mmTop = 15870
+        mmWidth = 8996
         BandType = 0
         LayerName = Foreground6
       end
@@ -7829,10 +7857,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 46831
-        mmTop = 15875
-        mmWidth = 8805
+        mmHeight = 3250
+        mmLeft = 51065
+        mmTop = 15870
+        mmWidth = 8731
         BandType = 0
         LayerName = Foreground6
       end
@@ -7851,10 +7879,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 113771
-        mmTop = 15875
-        mmWidth = 9906
+        mmHeight = 3250
+        mmLeft = 94192
+        mmTop = 15870
+        mmWidth = 9790
         BandType = 0
         LayerName = Foreground6
       end
@@ -7877,7 +7905,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Pre'#231'o'
+        Caption = 'Vl. Unit.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -7886,10 +7914,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 171450
+        mmHeight = 3175
+        mmLeft = 152929
         mmTop = 15875
-        mmWidth = 7408
+        mmWidth = 10848
         BandType = 0
         LayerName = Foreground6
       end
@@ -7908,10 +7936,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 189971
-        mmTop = 15875
-        mmWidth = 6138
+        mmHeight = 3250
+        mmLeft = 146579
+        mmTop = 15870
+        mmWidth = 6085
         BandType = 0
         LayerName = Foreground6
       end
@@ -7921,7 +7949,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Vencimento'
+        Caption = 'Pr'#231'. Vd. Ref. Tot.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -7930,10 +7958,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 247386
-        mmTop = 15875
-        mmWidth = 15028
+        mmHeight = 3250
+        mmLeft = 233358
+        mmTop = 15870
+        mmWidth = 23813
         BandType = 0
         LayerName = Foreground6
       end
@@ -7943,7 +7971,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Com.%'
+        Caption = 'Frete'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -7952,10 +7980,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 216959
-        mmTop = 15875
-        mmWidth = 9356
+        mmHeight = 3250
+        mmLeft = 205837
+        mmTop = 15870
+        mmWidth = 6614
         BandType = 0
         LayerName = Foreground6
       end
@@ -7965,7 +7993,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Vl.Comiss'#227'o'
+        Caption = 'Pre'#231'o Vd. Ref.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -7974,10 +8002,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 227807
-        mmTop = 15875
-        mmWidth = 16002
+        mmHeight = 3250
+        mmLeft = 213772
+        mmTop = 15870
+        mmWidth = 18785
         BandType = 0
         LayerName = Foreground6
       end
@@ -7996,10 +8024,10 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 200290
-        mmTop = 15875
-        mmWidth = 14986
+        mmHeight = 3250
+        mmLeft = 189171
+        mmTop = 15870
+        mmWidth = 15081
         BandType = 0
         LayerName = Foreground6
       end
@@ -8009,7 +8037,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Pagamento'
+        Caption = 'Marg.Cont.'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -8018,10 +8046,32 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 265642
-        mmTop = 15875
-        mmWidth = 14520
+        mmHeight = 3704
+        mmLeft = 258763
+        mmTop = 15876
+        mmWidth = 13758
+        BandType = 0
+        LayerName = Foreground6
+      end
+      object ppLabel97: TppLabel
+        DesignLayer = ppDesignLayer7
+        UserName = 'Label97'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Vcto. N.F.'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 3250
+        mmLeft = 33338
+        mmTop = 15870
+        mmWidth = 12700
         BandType = 0
         LayerName = Foreground6
       end
@@ -8031,7 +8081,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        Caption = 'Pedido'
+        Caption = 'Vl. Total'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -8040,10 +8090,32 @@ inherited FormGimpRepr: TFormGimpRepr
         FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
         FormFieldSettings.FormFieldType = fftNone
         Transparent = True
-        mmHeight = 3260
-        mmLeft = 87048
-        mmTop = 15610
-        mmWidth = 8805
+        mmHeight = 3250
+        mmLeft = 175146
+        mmTop = 15870
+        mmWidth = 10319
+        BandType = 0
+        LayerName = Foreground6
+      end
+      object ppLabel98: TppLabel
+        DesignLayer = ppDesignLayer7
+        UserName = 'Label98'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        Caption = 'Comiss'#227'o'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+        FormFieldSettings.FormFieldType = fftNone
+        Transparent = True
+        mmHeight = 3704
+        mmLeft = 274638
+        mmTop = 15870
+        mmWidth = 11113
         BandType = 0
         LayerName = Foreground6
       end
@@ -8060,7 +8132,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        DataField = 'FPC_DTEMIS'
+        DataField = 'DATA_FATURAMENTO'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -8068,13 +8140,12 @@ inherited FormGimpRepr: TFormGimpRepr
         Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
-        TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
-        mmHeight = 3175
+        mmHeight = 3704
         mmLeft = 794
         mmTop = 0
-        mmWidth = 16669
+        mmWidth = 14552
         BandType = 4
         LayerName = Foreground6
       end
@@ -8084,7 +8155,7 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        DataField = 'FAT_CODIGO'
+        DataField = 'NUMERO_NF'
         DataPipeline = DBComissaoProd
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
@@ -8095,9 +8166,9 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
         mmHeight = 3175
-        mmLeft = 19315
+        mmLeft = 16404
         mmTop = 0
-        mmWidth = 12965
+        mmWidth = 10054
         BandType = 4
         LayerName = Foreground6
       end
@@ -8117,10 +8188,10 @@ inherited FormGimpRepr: TFormGimpRepr
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
-        mmHeight = 2921
-        mmLeft = 31221
+        mmHeight = 2910
+        mmLeft = 45244
         mmTop = 0
-        mmWidth = 53975
+        mmWidth = 46831
         BandType = 4
         LayerName = Foreground6
       end
@@ -8140,8 +8211,8 @@ inherited FormGimpRepr: TFormGimpRepr
         ParentDataPipeline = False
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
-        mmHeight = 2921
-        mmLeft = 116681
+        mmHeight = 2910
+        mmLeft = 94192
         mmTop = 0
         mmWidth = 46831
         BandType = 4
@@ -8153,9 +8224,9 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        DataField = 'FIT_PRECO'
+        DataField = 'VALOR_UNITARIO'
         DataPipeline = DBComissaoProd
-        DisplayFormat = '#,##0.00'
+        DisplayFormat = '#,##0.000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -8165,10 +8236,10 @@ inherited FormGimpRepr: TFormGimpRepr
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
-        mmHeight = 3260
-        mmLeft = 165100
+        mmHeight = 3175
+        mmLeft = 152929
         mmTop = 0
-        mmWidth = 15000
+        mmWidth = 10848
         BandType = 4
         LayerName = Foreground6
       end
@@ -8191,33 +8262,9 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
         mmHeight = 3175
-        mmLeft = 181505
+        mmLeft = 141817
         mmTop = 0
-        mmWidth = 15081
-        BandType = 4
-        LayerName = Foreground6
-      end
-      object ppVariable4: TppVariable
-        DesignLayer = ppDesignLayer7
-        UserName = 'Variable4'
-        HyperlinkEnabled = False
-        Border.Weight = 1.000000000000000000
-        Border.mmPadding = 0
-        BlankWhenZero = False
-        CalcOrder = 0
-        DataType = dtCurrency
-        DisplayFormat = '#,##0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = []
-        TextAlignment = taRightJustified
-        Transparent = True
-        mmHeight = 3175
-        mmLeft = 198438
-        mmTop = 0
-        mmWidth = 17000
+        mmWidth = 10848
         BandType = 4
         LayerName = Foreground6
       end
@@ -8238,8 +8285,8 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         Visible = False
         DataPipelineName = 'DBComissaoProd'
-        mmHeight = 3260
-        mmLeft = 2381
+        mmHeight = 3175
+        mmLeft = 78846
         mmTop = 0
         mmWidth = 5292
         BandType = 4
@@ -8264,64 +8311,15 @@ inherited FormGimpRepr: TFormGimpRepr
         Visible = False
         DataPipelineName = 'DBComissaoProd'
         mmHeight = 2910
-        mmLeft = 37042
-        mmTop = 265
+        mmLeft = 65881
+        mmTop = 0
         mmWidth = 9790
         BandType = 4
         LayerName = Foreground6
       end
-      object ppDBText60: TppDBText
+      object ppDBText84: TppDBText
         DesignLayer = ppDesignLayer7
-        UserName = 'DBText60'
-        HyperlinkEnabled = False
-        Border.Weight = 1.000000000000000000
-        Border.mmPadding = 0
-        DataField = 'FIT_COMIS'
-        DataPipeline = DBComissaoProd
-        DisplayFormat = '##0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = []
-        ParentDataPipeline = False
-        TextAlignment = taRightJustified
-        Transparent = True
-        DataPipelineName = 'DBComissaoProd'
-        mmHeight = 3175
-        mmLeft = 216959
-        mmTop = 0
-        mmWidth = 8996
-        BandType = 4
-        LayerName = Foreground6
-      end
-      object ppVariable5: TppVariable
-        DesignLayer = ppDesignLayer7
-        UserName = 'Variable5'
-        HyperlinkEnabled = False
-        Border.Weight = 1.000000000000000000
-        Border.mmPadding = 0
-        BlankWhenZero = False
-        CalcOrder = 1
-        DataType = dtCurrency
-        DisplayFormat = '#,##0.00'
-        Font.Charset = DEFAULT_CHARSET
-        Font.Color = clBlack
-        Font.Name = 'Arial'
-        Font.Size = 8
-        Font.Style = []
-        TextAlignment = taRightJustified
-        Transparent = True
-        mmHeight = 3175
-        mmLeft = 227807
-        mmTop = 0
-        mmWidth = 16000
-        BandType = 4
-        LayerName = Foreground6
-      end
-      object ppDBText61: TppDBText
-        DesignLayer = ppDesignLayer7
-        UserName = 'DBText61'
+        UserName = 'DBText84'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
@@ -8337,9 +8335,34 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
         mmHeight = 3175
-        mmLeft = 245798
+        mmLeft = 27517
         mmTop = 0
         mmWidth = 16669
+        BandType = 4
+        LayerName = Foreground6
+      end
+      object ppDBText60: TppDBText
+        DesignLayer = ppDesignLayer7
+        UserName = 'DBText60'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'VALOR_TOTAL'
+        DataPipeline = DBComissaoProd
+        DisplayFormat = '#,##0.000'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'DBComissaoProd'
+        mmHeight = 3175
+        mmLeft = 164033
+        mmTop = 0
+        mmWidth = 21431
         BandType = 4
         LayerName = Foreground6
       end
@@ -8349,8 +8372,9 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        DataField = 'FPC_PAGTO'
+        DataField = 'VALOR_IMPOSTO'
         DataPipeline = DBComissaoProd
+        DisplayFormat = '#,##0.000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -8361,32 +8385,59 @@ inherited FormGimpRepr: TFormGimpRepr
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
         mmHeight = 3175
-        mmLeft = 263790
+        mmLeft = 187584
         mmTop = 0
         mmWidth = 16669
         BandType = 4
         LayerName = Foreground6
       end
-      object ppDBText63: TppDBText
+      object ppDBText61: TppDBText
         DesignLayer = ppDesignLayer7
-        UserName = 'DBText501'
+        UserName = 'DBText61'
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        DataField = 'PED_CODIGO'
+        DataField = 'FRETE'
         DataPipeline = DBComissaoProd
+        DisplayFormat = '#,##0.000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
         Font.Size = 8
         Font.Style = []
         ParentDataPipeline = False
+        TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
         mmHeight = 3175
-        mmLeft = 86519
+        mmLeft = 204514
         mmTop = 0
-        mmWidth = 11906
+        mmWidth = 10583
+        BandType = 4
+        LayerName = Foreground6
+      end
+      object ppDBText63: TppDBText
+        DesignLayer = ppDesignLayer7
+        UserName = 'DBText63'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'PRECO_VENDA_REFERENCIAL'
+        DataPipeline = DBComissaoProd
+        DisplayFormat = '#,##0.000'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'DBComissaoProd'
+        mmHeight = 3175
+        mmLeft = 215888
+        mmTop = 0
+        mmWidth = 16669
         BandType = 4
         LayerName = Foreground6
       end
@@ -8396,8 +8447,9 @@ inherited FormGimpRepr: TFormGimpRepr
         HyperlinkEnabled = False
         Border.Weight = 1.000000000000000000
         Border.mmPadding = 0
-        DataField = 'PRD_REFER'
+        DataField = 'PRECO_VENDA_REFERENCIAL_TOTAL'
         DataPipeline = DBComissaoProd
+        DisplayFormat = '#,##0.000'
         Font.Charset = DEFAULT_CHARSET
         Font.Color = clBlack
         Font.Name = 'Arial'
@@ -8407,10 +8459,60 @@ inherited FormGimpRepr: TFormGimpRepr
         TextAlignment = taRightJustified
         Transparent = True
         DataPipelineName = 'DBComissaoProd'
-        mmHeight = 3260
-        mmLeft = 99748
+        mmHeight = 3175
+        mmLeft = 239443
         mmTop = 0
-        mmWidth = 16000
+        mmWidth = 16669
+        BandType = 4
+        LayerName = Foreground6
+      end
+      object ppDBText85: TppDBText
+        DesignLayer = ppDesignLayer7
+        UserName = 'DBText85'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'MARGEM_CONTRIBUICAO'
+        DataPipeline = DBComissaoProd
+        DisplayFormat = '#,##0.000'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'DBComissaoProd'
+        mmHeight = 3175
+        mmLeft = 260881
+        mmTop = 0
+        mmWidth = 11642
+        BandType = 4
+        LayerName = Foreground6
+      end
+      object ppDBText86: TppDBText
+        DesignLayer = ppDesignLayer7
+        UserName = 'DBText86'
+        HyperlinkEnabled = False
+        Border.Weight = 1.000000000000000000
+        Border.mmPadding = 0
+        DataField = 'COMISSAO'
+        DataPipeline = DBComissaoProd
+        DisplayFormat = '#,##0.000'
+        Font.Charset = DEFAULT_CHARSET
+        Font.Color = clBlack
+        Font.Name = 'Arial'
+        Font.Size = 8
+        Font.Style = []
+        ParentDataPipeline = False
+        TextAlignment = taRightJustified
+        Transparent = True
+        DataPipelineName = 'DBComissaoProd'
+        mmHeight = 3175
+        mmLeft = 274638
+        mmTop = 0
+        mmWidth = 12435
         BandType = 4
         LayerName = Foreground6
       end
@@ -8548,39 +8650,13 @@ inherited FormGimpRepr: TFormGimpRepr
           GroupNo = 0
           LayerName = Foreground6
         end
-        object ppDBCalc13: TppDBCalc
-          DesignLayer = ppDesignLayer7
-          UserName = 'DBCalc13'
-          HyperlinkEnabled = False
-          Border.Weight = 1.000000000000000000
-          Border.mmPadding = 0
-          DataField = 'FIT_QTDE'
-          DataPipeline = DBComissaoProd
-          DisplayFormat = '#,##0.000'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Name = 'Arial'
-          Font.Size = 8
-          Font.Style = []
-          ResetGroup = ppGroup5
-          TextAlignment = taRightJustified
-          Transparent = True
-          DataPipelineName = 'DBComissaoProd'
-          mmHeight = 3260
-          mmLeft = 181769
-          mmTop = 1000
-          mmWidth = 15081
-          BandType = 5
-          GroupNo = 0
-          LayerName = Foreground6
-        end
         object ppDBCalc14: TppDBCalc
           DesignLayer = ppDesignLayer7
           UserName = 'DBCalc14'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
           Border.mmPadding = 0
-          DataField = 'CC_TOTAL_VENDA'
+          DataField = 'VALOR_TOTAL'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.00'
           Font.Charset = DEFAULT_CHARSET
@@ -8592,10 +8668,10 @@ inherited FormGimpRepr: TFormGimpRepr
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'DBComissaoProd'
-          mmHeight = 3260
-          mmLeft = 198702
-          mmTop = 1000
-          mmWidth = 17000
+          mmHeight = 3175
+          mmLeft = 161396
+          mmTop = 1058
+          mmWidth = 24077
           BandType = 5
           GroupNo = 0
           LayerName = Foreground6
@@ -8606,7 +8682,7 @@ inherited FormGimpRepr: TFormGimpRepr
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
           Border.mmPadding = 0
-          DataField = 'CC_TOTAL_COMIS'
+          DataField = 'COMISSAO'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.00'
           Font.Charset = DEFAULT_CHARSET
@@ -8618,10 +8694,10 @@ inherited FormGimpRepr: TFormGimpRepr
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'DBComissaoProd'
-          mmHeight = 3260
-          mmLeft = 227013
-          mmTop = 1000
-          mmWidth = 17000
+          mmHeight = 3175
+          mmLeft = 270140
+          mmTop = 1058
+          mmWidth = 16933
           BandType = 5
           GroupNo = 0
           LayerName = Foreground6
@@ -8636,6 +8712,50 @@ inherited FormGimpRepr: TFormGimpRepr
           mmLeft = 0
           mmTop = 529
           mmWidth = 285751
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground6
+        end
+        object ppLabel99: TppLabel
+          DesignLayer = ppDesignLayer7
+          UserName = 'Label99'
+          Border.mmPadding = 0
+          Caption = 'Total'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 260880
+          mmTop = 1058
+          mmWidth = 6085
+          BandType = 5
+          GroupNo = 0
+          LayerName = Foreground6
+        end
+        object ppLabel100: TppLabel
+          DesignLayer = ppDesignLayer7
+          UserName = 'Label100'
+          Border.mmPadding = 0
+          Caption = 'Total Vendas'
+          Font.Charset = DEFAULT_CHARSET
+          Font.Color = clBlack
+          Font.Name = 'Arial'
+          Font.Size = 8
+          Font.Style = []
+          FormFieldSettings.FormSubmitInfo.SubmitMethod = fstPost
+          FormFieldSettings.FormFieldType = fftNone
+          TextAlignment = taRightJustified
+          Transparent = True
+          mmHeight = 3704
+          mmLeft = 143404
+          mmTop = 1059
+          mmWidth = 16933
           BandType = 5
           GroupNo = 0
           LayerName = Foreground6
@@ -8738,39 +8858,13 @@ inherited FormGimpRepr: TFormGimpRepr
         mmBottomOffset = 0
         mmHeight = 5027
         mmPrintPosition = 0
-        object ppDBCalc10: TppDBCalc
-          DesignLayer = ppDesignLayer7
-          UserName = 'DBCalc10'
-          HyperlinkEnabled = False
-          Border.Weight = 1.000000000000000000
-          Border.mmPadding = 0
-          DataField = 'FIT_QTDE'
-          DataPipeline = DBComissaoProd
-          DisplayFormat = '#,##0.000'
-          Font.Charset = DEFAULT_CHARSET
-          Font.Color = clBlack
-          Font.Name = 'Arial'
-          Font.Size = 8
-          Font.Style = []
-          ResetGroup = ppGroup6
-          TextAlignment = taRightJustified
-          Transparent = True
-          DataPipelineName = 'DBComissaoProd'
-          mmHeight = 3260
-          mmLeft = 181769
-          mmTop = 1000
-          mmWidth = 15081
-          BandType = 5
-          GroupNo = 1
-          LayerName = Foreground6
-        end
         object ppDBCalc11: TppDBCalc
           DesignLayer = ppDesignLayer7
           UserName = 'DBCalc101'
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
           Border.mmPadding = 0
-          DataField = 'CC_TOTAL_VENDA'
+          DataField = 'VALOR_TOTAL'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.00'
           Font.Charset = DEFAULT_CHARSET
@@ -8782,10 +8876,10 @@ inherited FormGimpRepr: TFormGimpRepr
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'DBComissaoProd'
-          mmHeight = 3260
-          mmLeft = 198702
-          mmTop = 1000
-          mmWidth = 17000
+          mmHeight = 3175
+          mmLeft = 164042
+          mmTop = 1058
+          mmWidth = 21431
           BandType = 5
           GroupNo = 1
           LayerName = Foreground6
@@ -8796,7 +8890,7 @@ inherited FormGimpRepr: TFormGimpRepr
           HyperlinkEnabled = False
           Border.Weight = 1.000000000000000000
           Border.mmPadding = 0
-          DataField = 'CC_TOTAL_COMIS'
+          DataField = 'COMISSAO'
           DataPipeline = DBComissaoProd
           DisplayFormat = '#,##0.00'
           Font.Charset = DEFAULT_CHARSET
@@ -8808,10 +8902,10 @@ inherited FormGimpRepr: TFormGimpRepr
           TextAlignment = taRightJustified
           Transparent = True
           DataPipelineName = 'DBComissaoProd'
-          mmHeight = 3260
-          mmLeft = 226748
-          mmTop = 1000
-          mmWidth = 17000
+          mmHeight = 3175
+          mmLeft = 270140
+          mmTop = 1058
+          mmWidth = 16933
           BandType = 5
           GroupNo = 1
           LayerName = Foreground6
@@ -8856,30 +8950,6 @@ inherited FormGimpRepr: TFormGimpRepr
       end
     end
     object raCodeModule5: TraCodeModule
-      object raProgramInfo13: TraProgramInfo
-        raClassName = 'TraEventHandler'
-        raProgram.ProgramName = 'Variable4OnCalc'
-        raProgram.ProgramType = ttProcedure
-        raProgram.Source = 
-          'procedure Variable4OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
-          ' := (DBComissaoProd['#39'FIT_QTDE'#39']* DBComissaoProd['#39'FIT_PRECO'#39'])'#13#10'e' +
-          'nd;'#13#10
-        raProgram.ComponentName = 'Variable4'
-        raProgram.EventName = 'OnCalc'
-        raProgram.EventID = 33
-      end
-      object raProgramInfo14: TraProgramInfo
-        raClassName = 'TraEventHandler'
-        raProgram.ProgramName = 'Variable5OnCalc'
-        raProgram.ProgramType = ttProcedure
-        raProgram.Source = 
-          'procedure Variable5OnCalc(var Value: Variant);'#13#10'begin'#13#10#13#10'  Value' +
-          ' :=(DBComissaoProd['#39'FIT_QTDE'#39']* DBComissaoProd['#39'FIT_PRECO'#39'])*DBC' +
-          'omissaoProd['#39'FIT_COMIS'#39']/100'#13#10#13#10'end;'#13#10
-        raProgram.ComponentName = 'Variable5'
-        raProgram.EventName = 'OnCalc'
-        raProgram.EventID = 33
-      end
     end
     object ppDesignLayers7: TppDesignLayers
       object ppDesignLayer7: TppDesignLayer
@@ -8893,18 +8963,40 @@ inherited FormGimpRepr: TFormGimpRepr
   end
   object DBComissaoProd: TppDBPipeline
     DataSource = DsComissaoProd
+    AutoCreateFields = False
     UserName = 'DBComissaoProd'
     Left = 888
     Top = 144
-    object DBComissaoProdppField1: TppField
-      FieldAlias = 'FAT_CODIGO'
-      FieldName = 'FAT_CODIGO'
+    object DBComissaoProdppField21: TppField
+      FieldAlias = 'DATA_FATURAMENTO'
+      FieldName = 'DATA_FATURAMENTO'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 0
+    end
+    object DBComissaoProdppField22: TppField
+      FieldAlias = 'NUMERO_NF'
+      FieldName = 'NUMERO_NF'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 1
+    end
+    object DBComissaoProdppField7: TppField
+      FieldAlias = 'FPC_VENCTO'
+      FieldName = 'FPC_VENCTO'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
-      Position = 0
+      Position = 2
       Searchable = False
       Sortable = False
+    end
+    object DBComissaoProdppField23: TppField
+      FieldAlias = 'DATA_RECEBIMENTO'
+      FieldName = 'DATA_RECEBIMENTO'
+      FieldLength = 10
+      DisplayWidth = 10
+      Position = 3
     end
     object DBComissaoProdppField2: TppField
       FieldAlias = 'CLI_CODIGO'
@@ -8912,7 +9004,7 @@ inherited FormGimpRepr: TFormGimpRepr
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
-      Position = 1
+      Position = 4
       Searchable = False
       Sortable = False
     end
@@ -8922,57 +9014,7 @@ inherited FormGimpRepr: TFormGimpRepr
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
-      Position = 2
-      Searchable = False
-      Sortable = False
-    end
-    object DBComissaoProdppField4: TppField
-      FieldAlias = 'REP_CODIGO'
-      FieldName = 'REP_CODIGO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 3
-      Searchable = False
-      Sortable = False
-    end
-    object DBComissaoProdppField5: TppField
-      FieldAlias = 'FPC_DTEMIS'
-      FieldName = 'FPC_DTEMIS'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 4
-      Searchable = False
-      Sortable = False
-    end
-    object DBComissaoProdppField6: TppField
-      FieldAlias = 'FPC_PAGTO'
-      FieldName = 'FPC_PAGTO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
       Position = 5
-      Searchable = False
-      Sortable = False
-    end
-    object DBComissaoProdppField7: TppField
-      FieldAlias = 'FPC_VENCTO'
-      FieldName = 'FPC_VENCTO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 6
-      Searchable = False
-      Sortable = False
-    end
-    object DBComissaoProdppField8: TppField
-      FieldAlias = 'EMP_CODIGO'
-      FieldName = 'EMP_CODIGO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 7
       Searchable = False
       Sortable = False
     end
@@ -8982,7 +9024,7 @@ inherited FormGimpRepr: TFormGimpRepr
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
-      Position = 8
+      Position = 6
       Searchable = False
       Sortable = False
     end
@@ -8992,17 +9034,7 @@ inherited FormGimpRepr: TFormGimpRepr
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
-      Position = 9
-      Searchable = False
-      Sortable = False
-    end
-    object DBComissaoProdppField11: TppField
-      FieldAlias = 'LIN_CODIGO'
-      FieldName = 'LIN_CODIGO'
-      FieldLength = 0
-      DataType = dtNotKnown
-      DisplayWidth = 0
-      Position = 10
+      Position = 7
       Searchable = False
       Sortable = False
     end
@@ -9012,77 +9044,107 @@ inherited FormGimpRepr: TFormGimpRepr
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
+      Position = 8
+      Searchable = False
+      Sortable = False
+    end
+    object DBComissaoProdppField1: TppField
+      FieldAlias = 'VALOR_UNITARIO'
+      FieldName = 'VALOR_UNITARIO'
+      FieldLength = 10
+      DataType = dtNotKnown
+      DisplayWidth = 10
+      Position = 9
+    end
+    object DBComissaoProdppField24: TppField
+      FieldAlias = 'VALOR_TOTAL'
+      FieldName = 'VALOR_TOTAL'
+      FieldLength = 10
+      DataType = dtNotKnown
+      DisplayWidth = 10
+      Position = 10
+    end
+    object DBComissaoProdppField25: TppField
+      FieldAlias = 'PERCENTUAL_IMPOSTO'
+      FieldName = 'PERCENTUAL_IMPOSTO'
+      FieldLength = 10
+      DataType = dtNotKnown
+      DisplayWidth = 10
       Position = 11
-      Searchable = False
-      Sortable = False
     end
-    object DBComissaoProdppField13: TppField
-      FieldAlias = 'FIT_PRECO'
-      FieldName = 'FIT_PRECO'
-      FieldLength = 0
+    object DBComissaoProdppField26: TppField
+      FieldAlias = 'VALOR_IMPOSTO'
+      FieldName = 'VALOR_IMPOSTO'
+      FieldLength = 10
       DataType = dtNotKnown
-      DisplayWidth = 0
+      DisplayWidth = 10
       Position = 12
-      Searchable = False
-      Sortable = False
     end
-    object DBComissaoProdppField14: TppField
-      FieldAlias = 'FIT_COMIS'
-      FieldName = 'FIT_COMIS'
-      FieldLength = 0
+    object DBComissaoProdppField27: TppField
+      FieldAlias = 'NF_TIPO_FRETE'
+      FieldName = 'NF_TIPO_FRETE'
+      FieldLength = 10
       DataType = dtNotKnown
-      DisplayWidth = 0
+      DisplayWidth = 10
       Position = 13
-      Searchable = False
-      Sortable = False
     end
-    object DBComissaoProdppField15: TppField
-      FieldAlias = 'CLI_CIDADE'
-      FieldName = 'CLI_CIDADE'
-      FieldLength = 0
+    object DBComissaoProdppField28: TppField
+      FieldAlias = 'FRETE'
+      FieldName = 'FRETE'
+      FieldLength = 10
       DataType = dtNotKnown
-      DisplayWidth = 0
+      DisplayWidth = 10
       Position = 14
-      Searchable = False
-      Sortable = False
     end
-    object DBComissaoProdppField16: TppField
-      FieldAlias = 'REP_NOME'
-      FieldName = 'REP_NOME'
-      FieldLength = 0
+    object DBComissaoProdppField29: TppField
+      FieldAlias = 'PRECO_VENDA_REFERENCIAL'
+      FieldName = 'PRECO_VENDA_REFERENCIAL'
+      FieldLength = 10
       DataType = dtNotKnown
-      DisplayWidth = 0
+      DisplayWidth = 10
       Position = 15
-      Searchable = False
-      Sortable = False
     end
-    object DBComissaoProdppField17: TppField
-      FieldAlias = 'LIN_DESCRI'
-      FieldName = 'LIN_DESCRI'
-      FieldLength = 0
+    object DBComissaoProdppField30: TppField
+      FieldAlias = 'PRECO_VENDA_REFERENCIAL_TOTAL'
+      FieldName = 'PRECO_VENDA_REFERENCIAL_TOTAL'
+      FieldLength = 10
       DataType = dtNotKnown
-      DisplayWidth = 0
+      DisplayWidth = 10
       Position = 16
-      Searchable = False
-      Sortable = False
     end
-    object DBComissaoProdppField18: TppField
-      FieldAlias = 'CC_TOTAL_VENDA'
-      FieldName = 'CC_TOTAL_VENDA'
-      FieldLength = 0
+    object DBComissaoProdppField31: TppField
+      FieldAlias = 'MARGEM_CONTRIBUICAO'
+      FieldName = 'MARGEM_CONTRIBUICAO'
+      FieldLength = 10
       DataType = dtNotKnown
-      DisplayWidth = 0
+      DisplayWidth = 10
       Position = 17
-      Searchable = False
-      Sortable = False
     end
-    object DBComissaoProdppField19: TppField
-      FieldAlias = 'CC_TOTAL_COMIS'
-      FieldName = 'CC_TOTAL_COMIS'
+    object DBComissaoProdppField32: TppField
+      FieldAlias = 'COMISSAO'
+      FieldName = 'COMISSAO'
+      FieldLength = 10
+      DataType = dtNotKnown
+      DisplayWidth = 10
+      Position = 18
+    end
+    object DBComissaoProdppField8: TppField
+      FieldAlias = 'EMP_CODIGO'
+      FieldName = 'EMP_CODIGO'
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
-      Position = 18
+      Position = 19
+      Searchable = False
+      Sortable = False
+    end
+    object DBComissaoProdppField4: TppField
+      FieldAlias = 'REP_CODIGO'
+      FieldName = 'REP_CODIGO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 20
       Searchable = False
       Sortable = False
     end
@@ -9092,7 +9154,47 @@ inherited FormGimpRepr: TFormGimpRepr
       FieldLength = 0
       DataType = dtNotKnown
       DisplayWidth = 0
-      Position = 19
+      Position = 21
+      Searchable = False
+      Sortable = False
+    end
+    object DBComissaoProdppField11: TppField
+      FieldAlias = 'LIN_CODIGO'
+      FieldName = 'LIN_CODIGO'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 22
+      Searchable = False
+      Sortable = False
+    end
+    object DBComissaoProdppField15: TppField
+      FieldAlias = 'CLI_CIDADE'
+      FieldName = 'CLI_CIDADE'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 23
+      Searchable = False
+      Sortable = False
+    end
+    object DBComissaoProdppField16: TppField
+      FieldAlias = 'REP_NOME'
+      FieldName = 'REP_NOME'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 24
+      Searchable = False
+      Sortable = False
+    end
+    object DBComissaoProdppField17: TppField
+      FieldAlias = 'LIN_DESCRI'
+      FieldName = 'LIN_DESCRI'
+      FieldLength = 0
+      DataType = dtNotKnown
+      DisplayWidth = 0
+      Position = 25
       Searchable = False
       Sortable = False
     end

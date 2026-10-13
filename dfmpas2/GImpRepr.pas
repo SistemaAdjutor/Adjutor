@@ -440,27 +440,20 @@ type
     SQLCdsComissaoProd: TSQLClientDataSet;
     DsComissaoProd: TDataSource;
     ppRComissaoProd: TppReport;
-    SQLCdsComissaoProdFAT_CODIGO: TStringField;
     SQLCdsComissaoProdCLI_CODIGO: TStringField;
     SQLCdsComissaoProdCLI_RAZAO: TStringField;
     SQLCdsComissaoProdREP_CODIGO: TStringField;
-    SQLCdsComissaoProdFPC_DTEMIS: TSQLTimeStampField;
-    SQLCdsComissaoProdFPC_PAGTO: TSQLTimeStampField;
     SQLCdsComissaoProdFPC_VENCTO: TSQLTimeStampField;
     SQLCdsComissaoProdEMP_CODIGO: TStringField;
     SQLCdsComissaoProdPRD_REFER: TStringField;
     SQLCdsComissaoProdPRD_DESCRI: TStringField;
     SQLCdsComissaoProdLIN_CODIGO: TStringField;
     SQLCdsComissaoProdFIT_QTDE: TFMTBCdField;
-    SQLCdsComissaoProdFIT_PRECO: TFMTBCdField;
-    SQLCdsComissaoProdFIT_COMIS: TFMTBCdField;
     ppParameterList1: TppParameterList;
     SQLCdsComissaoProdCLI_CIDADE: TStringField;
     SQLCdsComissaoProdREP_NOME: TStringField;
     SQLCdsComissaoProdLIN_DESCRI: TStringField;
     raCodeModule6: TraCodeModule;
-    SQLCdsComissaoProdCC_TOTAL_VENDA: TCurrencyField;
-    SQLCdsComissaoProdCC_TOTAL_COMIS: TCurrencyField;
     DBComissaoProd: TppDBPipeline;
     ppHeaderBand4: TppHeaderBand;
     ppLine25: TppLine;
@@ -489,13 +482,8 @@ type
     ppDBText53: TppDBText;
     ppDBText51: TppDBText;
     ppDBText54: TppDBText;
-    ppVariable4: TppVariable;
     ppDBREP_CODIGO: TppDBText;
     ppDBText57: TppDBText;
-    ppDBText60: TppDBText;
-    ppVariable5: TppVariable;
-    ppDBText61: TppDBText;
-    ppDBText62: TppDBText;
     ppGroup5: TppGroup;
     ppGroupHeaderBand5: TppGroupHeaderBand;
     ppDBText55: TppDBText;
@@ -508,22 +496,17 @@ type
     ppDBText58: TppDBText;
     ppDBText59: TppDBText;
     ppGroupFooterBand6: TppGroupFooterBand;
-    ppDBCalc10: TppDBCalc;
     ppDBCalc11: TppDBCalc;
     ppDBCalc12: TppDBCalc;
     raCodeModule5: TraCodeModule;
     ppLabel70: TppLabel;
     ppLabel80: TppLabel;
-    ppDBCalc13: TppDBCalc;
     ppDBCalc14: TppDBCalc;
     ppDBCalc16: TppDBCalc;
     ppLine28: TppLine;
     ppLine29: TppLine;
     ppLine31: TppLine;
     SQLCdsComissaoProdPED_CODIGO: TStringField;
-    ppLabel58: TppLabel;
-    ppDBText63: TppDBText;
-    ppDBText64: TppDBText;
     SqlCdsComissaoFPC_DESCONTADO: TStringField;
     SqlCdsComissaoNF_NUM_NFE: TIntegerField;
     rgEmpresaLogada: TRadioGroup;
@@ -647,6 +630,45 @@ type
     rbExcel: TRadioButton;
     ppLabel96: TppLabel;
     ppDBText82: TppDBText;
+    DBComissaoProdppField21: TppField;
+    SQLCdsComissaoProdNUMERO_NF: TStringField;
+    DBComissaoProdppField22: TppField;
+    SQLCdsComissaoProdDATA_RECEBIMENTO: TSQLTimeStampField;
+    DBComissaoProdppField23: TppField;
+    SQLCdsComissaoProdVALOR_UNITARIO: TFMTBCDField;
+    DBComissaoProdppField1: TppField;
+    SQLCdsComissaoProdVALOR_TOTAL: TFMTBCDField;
+    DBComissaoProdppField24: TppField;
+    SQLCdsComissaoProdPERCENTUAL_IMPOSTO: TFMTBCDField;
+    DBComissaoProdppField25: TppField;
+    SQLCdsComissaoProdVALOR_IMPOSTO: TFMTBCDField;
+    DBComissaoProdppField26: TppField;
+    SQLCdsComissaoProdNF_TIPO_FRETE: TStringField;
+    DBComissaoProdppField27: TppField;
+    SQLCdsComissaoProdFRETE: TFMTBCDField;
+    DBComissaoProdppField28: TppField;
+    SQLCdsComissaoProdPRECO_VENDA_REFERENCIAL: TFMTBCDField;
+    DBComissaoProdppField29: TppField;
+    SQLCdsComissaoProdPRECO_VENDA_REFERENCIAL_TOTAL: TFMTBCDField;
+    DBComissaoProdppField30: TppField;
+    SQLCdsComissaoProdMARGEM_CONTRIBUICAO: TFMTBCDField;
+    DBComissaoProdppField31: TppField;
+    SQLCdsComissaoProdCOMISSAO: TFMTBCDField;
+    DBComissaoProdppField32: TppField;
+    SQLCdsComissaoProdDATA_FATURAMENTO: TDateField;
+    ppLabel97: TppLabel;
+    ppDBText84: TppDBText;
+    ppDBText60: TppDBText;
+    ppDBText62: TppDBText;
+    ppDBText61: TppDBText;
+    ppDBText63: TppDBText;
+    ppDBText64: TppDBText;
+    ppDBText85: TppDBText;
+    ppDBText86: TppDBText;
+    ppLabel58: TppLabel;
+    ppLabel98: TppLabel;
+    ppLabel99: TppLabel;
+    ppLabel100: TppLabel;
 
     procedure FormShow(Sender: tObject);
     procedure BitOkClick(Sender: tObject);
@@ -1811,34 +1833,84 @@ begin
 
     wSeleciona := wSeleciona + ' and fpc.EMP_CODIGO = '+QuotedStr(dbInicio.Empresa.EMP_CODIGO);
     try
+     // issue 2262
      wSql1  :=
                ' SELECT DISTINCT ' +
-               '   fat.FAT_CODIGO, ' +
-               '   nfi.PRD_REFER, ' +
-               '   nfi.NF_QTDE  AS FIT_QTDE, ' +
-               '   prd.PRD_PVENDA - prd.PRD_PCUSTO AS FIT_PRECO, ' +
-               '   prd.PRD_COMISSAO AS FIT_COMIS, ' +
-               '   fpc.CLI_CODIGO, ' +
-               '   fpc.FPC_DTEMIS, ' +
-               '   fpc.FPC_PAGTO, ' +
+               '   nf.NF_EMISSAO AS DATA_FATURAMENTO, ' +
+               '   nf.NF_NOTANUMBER AS NUMERO_NF, ' +
                '   fpc.FPC_VENCTO, ' +
+               '   fpc.FPC_PAGTO AS DATA_RECEBIMENTO, ' +
+               '   fpc.CLI_CODIGO, ' +
+               '   cli.CLI_RAZAO, ' +
+               '   nfi.PRD_REFER, ' +
+               '   prd.PRD_DESCRI, ' +
+               '   nfi.NF_QTDE  AS FIT_QTDE, ' +
+               '   nfi.NF_PRECO AS VALOR_UNITARIO, ' +
+
+               '   CAST(CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '     CAST(COALESCE(nfi.NF_PRECO, 0) AS DOUBLE PRECISION) ' +
+               '     AS NUMERIC(18,5)) AS VALOR_TOTAL, ' +
+
+               '   COALESCE(emp.EMP_PERCENT_SIMPLES, 0) AS PERCENTUAL_IMPOSTO, ' +
+
+               '   CAST(CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '     CAST(COALESCE(nfi.NF_PRECO, 0) AS DOUBLE PRECISION) * ' +
+               '     CAST(COALESCE(emp.EMP_PERCENT_SIMPLES, 0) AS DOUBLE PRECISION) / 100.0 ' +
+               '     AS NUMERIC(18,5)) AS VALOR_IMPOSTO, ' +
+
+               '   nf.NF_TIPO_FRETE, ' +
+               '   CASE WHEN nf.NF_TIPO_FRETE = ''0'' ' +
+               '     THEN COALESCE(nfi.NF_IFRETE, 0) ELSE 0 END AS FRETE, ' +
+               '   COALESCE(prd.PRD_PVENDA, 0) AS PRECO_VENDA_REFERENCIAL, ' +
+
+               '   CAST(CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '     CAST(COALESCE(prd.PRD_PVENDA, 0) AS DOUBLE PRECISION) ' +
+               '     AS NUMERIC(18,5)) AS PRECO_VENDA_REFERENCIAL_TOTAL, ' +
+
+               '   CAST(CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '     CAST(COALESCE(nfi.NF_PRECO, 0) AS DOUBLE PRECISION) ' +
+               '     - CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '       CAST(COALESCE(prd.PRD_PVENDA, 0) AS DOUBLE PRECISION) ' +
+               '     - (CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '        CAST(COALESCE(nfi.NF_PRECO, 0) AS DOUBLE PRECISION) * ' +
+               '        CAST(COALESCE(emp.EMP_PERCENT_SIMPLES, 0) AS DOUBLE PRECISION) / 100.0) ' +
+               '     - CASE WHEN nf.NF_TIPO_FRETE = ''0'' ' +
+               '         THEN CAST(COALESCE(nfi.NF_IFRETE, 0) AS DOUBLE PRECISION) ' +
+               '         ELSE CAST(0 AS DOUBLE PRECISION) END ' +
+               '     AS NUMERIC(18,5)) AS MARGEM_CONTRIBUICAO, ' +
+
+               '   CAST((CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '     CAST(COALESCE(nfi.NF_PRECO, 0) AS DOUBLE PRECISION) ' +
+               '     - CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '       CAST(COALESCE(prd.PRD_PVENDA, 0) AS DOUBLE PRECISION) ' +
+               '     - (CAST(COALESCE(nfi.NF_QTDE, 0) AS DOUBLE PRECISION) * ' +
+               '        CAST(COALESCE(nfi.NF_PRECO, 0) AS DOUBLE PRECISION) * ' +
+               '        CAST(COALESCE(emp.EMP_PERCENT_SIMPLES, 0) AS DOUBLE PRECISION) / 100.0) ' +
+               '     - CASE WHEN nf.NF_TIPO_FRETE = ''0'' ' +
+               '         THEN CAST(COALESCE(nfi.NF_IFRETE, 0) AS DOUBLE PRECISION) ' +
+               '         ELSE CAST(0 AS DOUBLE PRECISION) END) * 0.30 ' +
+               '     AS NUMERIC(18,5)) AS COMISSAO, ' +
+
+               '   fpc.FPC_DTEMIS, ' +
                '   fpc.EMP_CODIGO, ' +
                '   fpc.REP_CODIGO, ' +
                '   fat.PED_CODIGO, ' +
-               '   prd.PRD_DESCRI, ' +
                '   prd.LIN_CODIGO, ' +
-               '   cli.CLI_RAZAO, ' +
                '   cli.CLI_CIDADE, ' +
                '   rep.REP_NOME, ' +
                '   lin.LIN_DESCRI ' +
                ' FROM FAT_PC01 fpc ' +
-               ' JOIN FAT0000 fat ON	(fat.FAT_CODIGO = fpc.FAT_CODIGO) ' +
-               ' JOIN NF0001 nf ON (nf.NF_NOTANUMBER = fat.FAT_CODIGO) ' +
-               ' JOIN NF_IT01 nfi ON (nfi.NF_IT_NOTANUMER = nf.NF_NUM_NFE) ' +
-               ' JOIN PRD0000 prd ON	(prd.PRD_REFER = nfi.PRD_REFER) ' +
-               ' JOIN CLI0000 cli ON	(cli.CLI_CODIGO = fat.CLI_CODIGO) ' +
-               ' JOIN REP0000 rep ON	(rep.REP_CODIGO = fpc.REP_CODIGO) ' +
-               ' LEFT JOIN PRD_LINHA lin ON	(lin.LIN_CODIGO = prd.LIN_CODIGO) ' ;
+               ' JOIN FAT0000 fat ON (fat.FAT_CODIGO = fpc.FAT_CODIGO ' +
+               '   AND fat.EMP_CODIGO = fpc.EMP_CODIGO) ' +
+               ' JOIN NF0001 nf ON (nf.NF_NOTANUMBER = fat.FAT_CODIGO ' +
+               '   AND nf.EMP_CODIGO = fat.EMP_CODIGO) ' +
+               ' JOIN NF_IT01 nfi ON (nfi.NF_IT_NOTANUMER = nf.NF_NOTANUMBER ' +
+               '   AND nfi.EMP_CODIGO = nf.EMP_CODIGO) ' +
+               ' JOIN PRD0000 prd ON (prd.PRD_REFER = nfi.PRD_REFER) ' +
+               ' JOIN CLI0000 cli ON (cli.CLI_CODIGO = fat.CLI_CODIGO) ' +
+               ' JOIN REP0000 rep ON (rep.REP_CODIGO = fpc.REP_CODIGO) ' +
+               ' JOIN EMP0000 emp ON (emp.EMP_CODIGO = fpc.EMP_CODIGO) ' +
+               ' LEFT JOIN PRD_LINHA lin ON (lin.LIN_CODIGO = prd.LIN_CODIGO) ' ;
 
 
 
@@ -2899,8 +2971,8 @@ end;
 
 procedure TFormGimpRepr.SQLCdsComissaoProdCalcFields(DataSet: TDataSet);
 begin
-SQLCdsComissaoProdCC_TOTAL_VENDA.AsCurrency := SQLCdsComissaoProdFIT_QTDE.Ascurrency * SQLCdsComissaoProdFIT_PRECO.Ascurrency;
-SQLCdsComissaoProdCC_TOTAL_COMIS.Ascurrency := (SQLCdsComissaoProdFIT_QTDE.Ascurrency * SQLCdsComissaoProdFIT_PRECO.Ascurrency)*SQLCdsComissaoProdFIT_COMIS.Ascurrency/100;
+// SQLCdsComissaoProdCC_TOTAL_VENDA.AsCurrency := SQLCdsComissaoProdFIT_QTDE.Ascurrency * SQLCdsComissaoProdFIT_PRECO.Ascurrency;
+// SQLCdsComissaoProdCC_TOTAL_COMIS.Ascurrency := (SQLCdsComissaoProdFIT_QTDE.Ascurrency * SQLCdsComissaoProdFIT_PRECO.Ascurrency)*SQLCdsComissaoProdFIT_COMIS.Ascurrency/100;
 end;
 
 procedure TFormGimpRepr.ImprimirBorderoAlternativo;
