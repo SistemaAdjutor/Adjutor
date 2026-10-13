@@ -2471,18 +2471,22 @@ begin
     //    if vLiqFat = 0  then
     //     vLiqFat:=qNota.FieldByName('NF_TOT_NOTA').AsFloat;
 
-    NotaF.NFe.Cobr.Fat.nFat  := qNota.FieldByName('NF_NOTANUMBER').AsString;
+
+    // issue 2271
+    {
     if ((qNota.FieldByName('NF_VL_DESCTO').AsFloat = 0) or (qNota.FieldByName('NF_VL_DESCTO').IsNull)) AND
        ((qNota.FieldByName('NF_VL_DESCTO_FAT').AsFloat = 0) or (qNota.FieldByName('NF_VL_DESCTO_FAT').IsNull))  then
       vLiqDesc := 0 // 0.0001 ????
     else
       vLiqDesc :=  qNota.FieldByName('NF_VL_DESCTO').AsFloat + qNota.FieldByName('NF_VL_DESCTO_FAT').AsFloat ;
+    }
       // valor antecipado não vai na fatura, somente no total da nota
-
-
       // NotaF.NFe.Cobr.Fat.vOrig := vLiqFat +  vLiqDesc -  qNota.FieldByName('FAT_VALORANTECIPADO').AsFloat ;
 
-
+    NotaF.NFe.Cobr.Fat.nFat  := qNota.FieldByName('NF_NOTANUMBER').AsString;
+    vLiqDesc :=
+      qNota.FieldByName('NF_VL_DESCTO').AsFloat +
+      fTotalRetencaoPisCofins;
 
 
 
@@ -2532,14 +2536,28 @@ begin
         NotaF.NFe.Cobr.Fat.vOrig := NotaF.NFe.Cobr.Fat.vOrig - semValorComercial;
 
 
-
+        //  issue 2271
+      {
       if PMT_FAT_NF_VL_LIQ_VALOR_ANTECIP then
         NotaF.NFe.Cobr.Fat.vLiq  := vLiqFat - qNota.FieldByName('FAT_VALORANTECIPADO').AsFloat
       else
         NotaF.NFe.Cobr.Fat.vLiq  := vLiqFat;
 
       NotaF.NFe.Cobr.Fat.vDesc := vLiqDesc;
+      }
 
+      if PMT_FAT_NF_VL_LIQ_VALOR_ANTECIP then
+        NotaF.NFe.Cobr.Fat.vLiq :=
+          vLiqFat -
+          qNota.FieldByName('FAT_VALORANTECIPADO').AsFloat
+      else
+        NotaF.NFe.Cobr.Fat.vLiq := vLiqFat;
+
+      if fTotalRetencaoPisCofins > 0 then
+        NotaF.NFe.Cobr.Fat.vOrig :=
+          NotaF.NFe.Cobr.Fat.vLiq + vLiqDesc;
+
+      NotaF.NFe.Cobr.Fat.vDesc := vLiqDesc;
 
 
     end;
