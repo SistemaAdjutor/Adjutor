@@ -66,7 +66,7 @@ type
 
 
 	  fiCSOSN, fiCSOSN_ST, fCID_IBGE, fEmailVersaoSSL  : integer;
-    fTotalRetencaoPisCofins: Currency; // issue 2271 Retenção do PIS/COFINS
+    fTotalRetencaoPisCofins, fTotalRetencaoPis, fTotalRetencaoCofins: Currency; // issue 2271 Retenção do PIS/COFINS
 
 
    procedure SetLote (const aValues:string);
@@ -519,13 +519,14 @@ begin
         ' possui retencao de PIS, mas nao possui aliquota tributada.'
       );
 
-    fTotalRetencaoPisCofins :=
-      fTotalRetencaoPisCofins +
+    fTotalRetencaoPis :=
+      fTotalRetencaoPis +
       RoundTo(
         qItemNota.FieldByName('NF_BASE_PIS').AsCurrency *
         qItemNota.FieldByName('PRD_RETENCAO_PIS').AsCurrency / 100,
         -2
       );
+
   end;
 
   // Retencao de COFINS aplicada somente na fatura
@@ -537,13 +538,13 @@ begin
         ' possui retencao de COFINS, mas nao possui aliquota tributada.'
       );
 
-    fTotalRetencaoPisCofins :=
-      fTotalRetencaoPisCofins +
-      RoundTo(
-        qItemNota.FieldByName('NF_BASE_COFINS').AsCurrency *
-        qItemNota.FieldByName('PRD_RETENCAO_COFINS').AsCurrency / 100,
-        -2
-      );
+      fTotalRetencaoCofins :=
+        fTotalRetencaoCofins +
+        RoundTo(
+          qItemNota.FieldByName('NF_BASE_COFINS').AsCurrency *
+          qItemNota.FieldByName('PRD_RETENCAO_COFINS').AsCurrency / 100,
+          -2
+        );
   end;
 
 
@@ -2407,8 +2408,13 @@ begin
   end;
   MostraIBPT_Item :=  pos('IBPT',qNota.FieldByName('nf_observacao').AsString)>0 ;
 
+  fTotalRetencaoPis := 0;
+  fTotalRetencaoCofins := 0;
   fTotalRetencaoPisCofins := 0; // issue 2271
+
   AdicaoProdutosNFe;
+
+  fTotalRetencaoPisCofins := fTotalRetencaoPis + fTotalRetencaoCofins;
 
   TotalizacaoNFE;
   //NF-e indicação da modalidade de frete e seus transporte
@@ -2554,9 +2560,10 @@ begin
         NotaF.NFe.Cobr.Fat.vLiq := vLiqFat;
 
       if fTotalRetencaoPisCofins > 0 then
-        NotaF.NFe.Cobr.Fat.vOrig :=
-          NotaF.NFe.Cobr.Fat.vLiq + vLiqDesc;
-
+      begin
+        NotaF.NFe.Cobr.Fat.vOrig := NotaF.NFe.Cobr.Fat.vLiq + vLiqDesc;
+        NotaF.NFe.Total.ICMSTot.vNF := NotaF.NFe.Cobr.Fat.vOrig;
+      end;
       NotaF.NFe.Cobr.Fat.vDesc := vLiqDesc;
 
 
@@ -3121,6 +3128,13 @@ begin
     NotaF.NFe.Total.retTrib.vIRRF := qNota.FieldByName('NF_TOT_PROD').AsFloat / 100 * 1.2;
   end;
 
+  if fTotalRetencaoPis > 0 then // issue 2271
+    NotaF.NFe.Total.retTrib.vRetPIS :=
+      fTotalRetencaoPis;
+
+  if fTotalRetencaoCofins > 0 then
+    NotaF.NFe.Total.retTrib.vRetCOFINS :=
+      fTotalRetencaoCofins;
 
   with NotaF.NFe.Total.ICMSTot do
   begin
