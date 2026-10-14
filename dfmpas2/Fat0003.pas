@@ -2278,7 +2278,7 @@ begin
      cRetencao := edValorISS.Value +edValorINSS.Value + edValorCSLL.Value + edValorIR.Value + edValorPIS.Value+ edValorCOFINS.Value   // retenções serviço
    else
       cRetencao := edValorINSS.Value + edValorCSLL.Value + edValorIR.Value + edValorPIS.Value+ edValorCOFINS.Value ;  // retenções serviço
-   wFAT_VLFAT:= wValorProdFaturar + wTotalIPITotalNF + wTotalValorSubs +wVTotFPC_st + wSomaDespesas - CdsPedidosPED_DESCTOVL.AsFloat - wDescPISCofins - wTotalRetencaoPISCofins; // issue 2271
+   wFAT_VLFAT:= wValorProdFaturar + wTotalIPITotalNF + wTotalValorSubs +wVTotFPC_st + wSomaDespesas - CdsPedidosPED_DESCTOVL.AsFloat  - wTotalRetencaoPISCofins; // issue 2271 - wDescPISCofins
 
    DiminuiICMSDesonerado := BuscaUmDadoSqlAsString('SELECT OPE_ICMS_DESONERADO_DIMINUI FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(strzero(cbOper.IdRetorno,3))) = 'S';
    if DiminuiICMSDesonerado then
@@ -2414,7 +2414,7 @@ begin
                     ' )' ,false);
     end;
      // issue 2271
-     wVlParce := ( wValorProdFaturar + wTotalIPITotalNF + wSomaDespesas + wTotalValorSubs+wVTotFPC_st) - CdsPedidosPED_DESCTOVL.AsFloat - wDescPISCofins - wTotalRetencaoPISCofins - cRetencao - iif(DiminuiICMSDesonerado,wTotalDesoneracao,0);
+     wVlParce := ( wValorProdFaturar + wTotalIPITotalNF + wSomaDespesas + wTotalValorSubs+wVTotFPC_st) - CdsPedidosPED_DESCTOVL.AsFloat - wTotalRetencaoPISCofins - cRetencao - iif(DiminuiICMSDesonerado,wTotalDesoneracao,0);
      if wVlParce < 0 then
         GeraException('A retencao de PIS/COFINS ultrapassa o valor da fatura.');
 
@@ -3838,7 +3838,7 @@ begin
      CdsNotaFiscalNF_IMPRESS.AsString := 'N';
      CdsNotaFiscalCLI_CODIGO.AsString := CdsPedidosCLI_CODIGO.AsString;
      CdsNotaFiscalNF_VL_DESCTO.AsFloat := CdsPedidosPED_DESCTOVL.AsFloat;
-     CdsNotaFiscalNF_VL_DESCTO_FAT.AsFloat := wDescPISCofins  + wTotalRetencaoPISCofins ;//desconto PIS E COFINS + VALOR ANTECIPADO (VAI GRAVAR MAIS ADIANTE) + retenção issue 2271
+     CdsNotaFiscalNF_VL_DESCTO_FAT.AsFloat := wTotalRetencaoPISCofins ;//desconto PIS E COFINS + VALOR ANTECIPADO (VAI GRAVAR MAIS ADIANTE) + retenção issue 2271
 
      if qOperFiscOPE_ESCRITA.AsString = 'S' then
         CdsNotaFiscalNF_INTERNO.AsString := 'N'  //Atualizar o livro fiscal porque nao foi gerado recibo

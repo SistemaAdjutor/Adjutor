@@ -2560,10 +2560,8 @@ begin
         NotaF.NFe.Cobr.Fat.vLiq := vLiqFat;
 
       if fTotalRetencaoPisCofins > 0 then
-      begin
-        NotaF.NFe.Cobr.Fat.vOrig := NotaF.NFe.Cobr.Fat.vLiq + vLiqDesc;
-        NotaF.NFe.Total.ICMSTot.vNF := NotaF.NFe.Cobr.Fat.vOrig;
-      end;
+        NotaF.NFe.Cobr.Fat.vOrig := NotaF.NFe.Total.ICMSTot.vNF;
+
       NotaF.NFe.Cobr.Fat.vDesc := vLiqDesc;
 
 
