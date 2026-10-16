@@ -2524,6 +2524,16 @@ inherited FormFatPedido: TFormFatPedido
     object CdsItemPedidoCAP_CODIGO: TIntegerField
       FieldName = 'CAP_CODIGO'
     end
+    object CdsItemPedidoPRD_RETENCAO_PIS: TFMTBCDField
+      FieldName = 'PRD_RETENCAO_PIS'
+      Precision = 18
+      Size = 5
+    end
+    object CdsItemPedidoPRD_RETENCAO_COFINS: TFMTBCDField
+      FieldName = 'PRD_RETENCAO_COFINS'
+      Precision = 18
+      Size = 5
+    end
     object CdsItemPedidoTOTAL_PRODUTOS_AG: TAggregateField
       Alignment = taRightJustify
       FieldName = 'TOTAL_PRODUTOS_AG'

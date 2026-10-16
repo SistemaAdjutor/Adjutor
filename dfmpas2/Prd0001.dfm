@@ -8442,7 +8442,7 @@ inherited FormProduto: TFormProduto
         Top = 158
         Width = 1059
         Height = 142
-        ActivePage = TabSheet10
+        ActivePage = TabSheet7
         TabOrder = 1
         object TabSheet9: TTabSheet
           Caption = 'Organiza'#231#227'o do Produto'
@@ -9871,16 +9871,17 @@ inherited FormProduto: TFormProduto
         object TabSheet7: TTabSheet
           Caption = 'Produto Especifico'
           ImageIndex = 4
+          ExplicitTop = 20
           object Label113: TLabel
-            Left = 56
-            Top = 55
+            Left = 24
+            Top = 63
             Width = 78
             Height = 14
             Caption = 'Tipo de Produto:'
           end
           object DBCheckBox3: TDBCheckBox
-            Left = 56
-            Top = 30
+            Left = 24
+            Top = 43
             Width = 185
             Height = 17
             Caption = 'Produto Especifico'
@@ -9891,8 +9892,8 @@ inherited FormProduto: TFormProduto
             ValueUnchecked = 'N '
           end
           object DBComboBox2: TDBComboBox
-            Left = 57
-            Top = 69
+            Left = 24
+            Top = 77
             Width = 145
             Height = 22
             DataField = 'ID_PRD_ESPECIFICO'
@@ -9905,8 +9906,8 @@ inherited FormProduto: TFormProduto
             TabOrder = 1
           end
           object GroupBox13: TGroupBox
-            Left = 224
-            Top = 10
+            Left = 245
+            Top = 3
             Width = 199
             Height = 91
             Caption = 'Medicamentos'
@@ -9929,8 +9930,8 @@ inherited FormProduto: TFormProduto
             end
           end
           object DBCheckBox5: TDBCheckBox
-            Left = 451
-            Top = 18
+            Left = 24
+            Top = 10
             Width = 198
             Height = 17
             Caption = 'Capacidade Obrigat'#243'ria para Venda'
@@ -9939,6 +9940,44 @@ inherited FormProduto: TFormProduto
             TabOrder = 3
             ValueChecked = 'S'
             ValueUnchecked = 'N'
+          end
+          object GroupBox27: TGroupBox
+            Left = 470
+            Top = 3
+            Width = 177
+            Height = 91
+            Caption = 'Reten'#231#227'o'
+            TabOrder = 4
+            object Label339: TLabel
+              Left = 32
+              Top = 24
+              Width = 18
+              Height = 14
+              Caption = 'PIS:'
+            end
+            object Label340: TLabel
+              Left = 10
+              Top = 56
+              Width = 40
+              Height = 14
+              Caption = 'COFINS:'
+            end
+            object cxDBTextEdit1: TcxDBTextEdit
+              Left = 57
+              Top = 21
+              DataBinding.DataField = 'PRD_RETENCAO_PIS'
+              DataBinding.DataSource = DsProdutos
+              TabOrder = 0
+              Width = 73
+            end
+            object cxDBTextEdit2: TcxDBTextEdit
+              Left = 57
+              Top = 53
+              DataBinding.DataField = 'PRD_RETENCAO_COFINS'
+              DataBinding.DataSource = DsProdutos
+              TabOrder = 1
+              Width = 70
+            end
           end
         end
         object tsTratamentoTermico: TTabSheet
@@ -18390,6 +18429,16 @@ inherited FormProduto: TFormProduto
       Precision = 18
       Size = 5
     end
+    object SqlProdutosPRD_RETENCAO_PIS: TFMTBCDField
+      FieldName = 'PRD_RETENCAO_PIS'
+      Precision = 18
+      Size = 5
+    end
+    object SqlProdutosPRD_RETENCAO_COFINS: TFMTBCDField
+      FieldName = 'PRD_RETENCAO_COFINS'
+      Precision = 18
+      Size = 5
+    end
   end
   object DspProdutos: TDataSetProvider [75]
     DataSet = SqlProdutos
@@ -19430,6 +19479,16 @@ inherited FormProduto: TFormProduto
     object CdsProdutosPRD_COFINS_ALIQUOTA: TFMTBCDField
       FieldName = 'PRD_COFINS_ALIQUOTA'
       DisplayFormat = '#,##0.00'
+      Precision = 18
+      Size = 5
+    end
+    object CdsProdutosPRD_RETENCAO_PIS: TFMTBCDField
+      FieldName = 'PRD_RETENCAO_PIS'
+      Precision = 18
+      Size = 5
+    end
+    object CdsProdutosPRD_RETENCAO_COFINS: TFMTBCDField
+      FieldName = 'PRD_RETENCAO_COFINS'
       Precision = 18
       Size = 5
     end

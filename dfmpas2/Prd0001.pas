@@ -2302,6 +2302,15 @@ type
     CdsProdutosPRD_PIS_ALIQUOTA: TFMTBCDField;
     SqlProdutosPRD_COFINS_ALIQUOTA: TFMTBCDField;
     CdsProdutosPRD_COFINS_ALIQUOTA: TFMTBCDField;
+    SqlProdutosPRD_RETENCAO_PIS: TFMTBCDField;
+    SqlProdutosPRD_RETENCAO_COFINS: TFMTBCDField;
+    GroupBox27: TGroupBox;
+    Label339: TLabel;
+    Label340: TLabel;
+    CdsProdutosPRD_RETENCAO_PIS: TFMTBCDField;
+    CdsProdutosPRD_RETENCAO_COFINS: TFMTBCDField;
+    cxDBTextEdit1: TcxDBTextEdit;
+    cxDBTextEdit2: TcxDBTextEdit;
     procedure Bit_SairClick( Sender : tObject );
     procedure Bit_novoClick( Sender : tObject );
     procedure Bit_ExcluirClick( Sender : tObject );
