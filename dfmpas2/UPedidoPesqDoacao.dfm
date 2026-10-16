@@ -878,6 +878,53 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       LimparCampoAoSair = True
     end
   end
+  object pRecorrencia: TPanel [6]
+    Left = 365
+    Top = 114
+    Width = 433
+    Height = 274
+    Caption = 'pRecorrencia'
+    TabOrder = 6
+    Visible = False
+    object Panel4: TPanel
+      Left = 1
+      Top = 249
+      Width = 431
+      Height = 24
+      Align = alBottom
+      Caption = 'OK'
+      TabOrder = 0
+      OnClick = Panel4Click
+      ExplicitTop = 104
+      ExplicitWidth = 223
+    end
+    object RecorrenciaInativos: TMemo
+      Left = 1
+      Top = 42
+      Width = 431
+      Height = 207
+      Align = alClient
+      Lines.Strings = (
+        'RecorrenciaInativos')
+      TabOrder = 1
+      ExplicitLeft = 33
+      ExplicitTop = 97
+      ExplicitWidth = 168
+      ExplicitHeight = 112
+    end
+    object Panel3: TPanel
+      Left = 1
+      Top = 1
+      Width = 431
+      Height = 41
+      Align = alTop
+      Caption = 'Clientes ativos que possuem Vendedores inativados. '
+      TabOrder = 2
+      ExplicitLeft = 64
+      ExplicitTop = 120
+      ExplicitWidth = 185
+    end
+  end
   inherited coCalcula: TACBrCalculadora
     Left = 464
     Top = 48
