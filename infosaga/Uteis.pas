@@ -3304,7 +3304,7 @@ end;
 
 
 ///////////////////////////////////////////////////////
-// ISSUE 2241
+// ISSUE 2241 - 2270
 ///////////////////////////////////////////////////////
 
 
@@ -3400,10 +3400,8 @@ begin
     while not QueryCalculo.Eof do
     begin
       Consumo := QueryCalculo.FieldByName('FTI_UC').AsFloat;
-      Custo := Custo +
-        (QueryCalculo.FieldByName('PRD_PCUSTO').AsCurrency * Consumo);
-      CustoIPI := CustoIPI +
-        (QueryCalculo.FieldByName('PRD_CUSTOCOMIPI').AsCurrency * Consumo);
+      Custo := Custo + (QueryCalculo.FieldByName('PRD_PCUSTO').AsCurrency * Consumo);
+      CustoIPI := CustoIPI + (QueryCalculo.FieldByName('PRD_PCUSTO').AsCurrency * Consumo); // issue 2270
       QueryCalculo.Next;
     end;
 
