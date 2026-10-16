@@ -45,7 +45,10 @@ type
     qCidade: TFDQuery;
     dsCidade: TDataSource;
     cxGrid1DBTableView1IBS_ALIQUOTA_UF: TcxGridDBColumn;
-    procedure FormCreate(Sender: TObject);
+    cxGrid1DBTableView1IBS_CST: TcxGridDBColumn;
+    cxGrid1DBTableView1IBS_CLASS_TRIB: TcxGridDBColumn;
+    qCST: TFDQuery;
+    dsCST: TDataSource;
     procedure cdsEditAfterOpen(DataSet: TDataSet);
     procedure cdsEditAfterPost(DataSet: TDataSet);
     procedure cdsEditBeforePost(DataSet: TDataSet);
@@ -54,6 +57,7 @@ type
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
     procedure cdsEditBeforeOpen(DataSet: TDataSet);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -77,31 +81,17 @@ end;
 procedure TfrmIBS.btnOkClick(Sender: TObject);
 begin
   if cdsEdit.State in [dsEdit, dsInsert] then
+  begin
     cdsEdit.Post;
-
-  try
     cdsEdit.ApplyUpdates(0);
-
-    // commit real no banco
-    if dbConn.InTransaction then
-      dbConn.CommitRetaining
-    else
+  end;
+  try
       dbConn.Commit;
-
-    cdsEdit.CommitUpdates; // limpa cache local
-
-    // força uma nova transação pro dataset (recarrega dados frescos)
-    cdsEdit.Close;
-    cdsEdit.Connection := nil;
-    dbConn.Connected := False;
-    dbConn.Connected := True;
-    cdsEdit.Connection := dbConn;
-    cdsEdit.Open;
   except
     on E: Exception do
     begin
       if dbConn.InTransaction then
-        dbConn.RollbackRetaining;
+        dbConn.Rollback;
       cdsEdit.CancelUpdates;
       Application.ShowException(E);
     end;
@@ -122,8 +112,8 @@ end;
 procedure TfrmIBS.cdsEditAfterPost(DataSet: TDataSet);
 begin
 //  inherited;
-  cdsEdit.ApplyUpdates(0);
-  cdsEdit.Connection.CommitRetaining;
+//  cdsEdit.ApplyUpdates(0);
+  cdsEdit.Connection.Commit;
 {  cdsEdit.Close;
   cdsEdit.Open;
  }
@@ -153,18 +143,21 @@ begin
   frmIBS.Caption := 'Imposto sobre Bens e Serviços';
 end;
 
-procedure TfrmIBS.FormCreate(Sender: TObject);
+procedure TfrmIBS.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
   inherited;
-  qCidade.SQL.Text := 'SELECT CID_CODIGO, CID_CIDADE FROM CID0000 ORDER BY CID_CIDADE';
-  qCidade.Open;
-  self.Width := 800;
-  self.Height := 600;
+  dbConn.Connected := False;
+  dbConn.Connected := True;
 end;
 
 procedure TfrmIBS.FormShow(Sender: TObject);
 begin
   inherited;
+  qCidade.SQL.Text := 'SELECT CID_CODIGO, CID_CIDADE FROM CID0000 ORDER BY CID_CIDADE';
+  qCidade.Open;
+  qCST.SQL.Text := 'SELECT CST_CODIGO, CAST(CST_CODIGO || '' - '' || CST_DESCRICAO AS VARCHAR(120) CHARACTER SET UTF8) AS CST_DESCRICAO FROM CLASSIFICACAO_TRIBUTARIA ORDER BY CST_CODIGO';
+  qCST.Open;
+
   cdsEdit.UpdateOptions.KeyFields := 'IBS_ID';
   cdsEdit.UpdateOptions.AutoIncFields := 'IBS_ID';
   cdsEdit.UpdateOptions.UpdateTableName := 'IBS';

@@ -31,7 +31,7 @@ uses
   cxDataStorage, cxEdit, cxNavigator,
   cxDataControllerConditionalFormattingRulesManagerDialog, cxDBData,
   cxGridLevel, cxGridCustomView, cxGridCustomTableView, cxGridTableView,
-  cxGridDBTableView, cxGrid;
+  cxGridDBTableView, cxGrid, cxDBLookupComboBox;
 
 type
   TfrmCBS = class(TfrmBaseDBEditFDAC)
@@ -41,6 +41,10 @@ type
     cxGrid1DBTableView1CBS_CODIGO: TcxGridDBColumn;
     cxGrid1DBTableView1CBS_DESCRICAO: TcxGridDBColumn;
     cxGrid1DBTableView1CBS_ALIQUOTA: TcxGridDBColumn;
+    cxGrid1DBTableView1CBS_CST: TcxGridDBColumn;
+    cxGrid1DBTableView1CBS_CLASS_TRIB: TcxGridDBColumn;
+    qCST: TFDQuery;
+    dsCST: TDataSource;
     procedure FormCreate(Sender: TObject);
     procedure cdsEditAfterOpen(DataSet: TDataSet);
     procedure cdsEditAfterPost(DataSet: TDataSet);
@@ -49,6 +53,7 @@ type
     procedure btnOkClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
     procedure FormActivate(Sender: TObject);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -85,13 +90,7 @@ begin
 
     cdsEdit.CommitUpdates; // limpa cache local
 
-    // força uma nova transação pro dataset (recarrega dados frescos)
-    cdsEdit.Close;
-    cdsEdit.Connection := nil;
-    dbConn.Connected := False;
-    dbConn.Connected := True;
-    cdsEdit.Connection := dbConn;
-    cdsEdit.Open;
+
   except
     on E: Exception do
     begin
@@ -132,6 +131,13 @@ begin
   frmCBS.Caption := 'Contribuição sobre Bens e Serviços';
 end;
 
+procedure TfrmCBS.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  inherited;
+  dbConn.Connected := False;
+  dbConn.Connected := True;
+end;
+
 procedure TfrmCBS.FormCreate(Sender: TObject);
 begin
   inherited;
@@ -145,6 +151,9 @@ begin
   cdsEdit.UpdateOptions.KeyFields := 'CBS_ID';
   cdsEdit.UpdateOptions.AutoIncFields := 'CBS_ID';
   cdsEdit.Open;
+  qCST.SQL.Text := 'SELECT CST_CODIGO, CST_CODIGO || ''- '' || CST_DESCRICAO AS CST_DESCRICAO FROM CLASSIFICACAO_TRIBUTARIA ORDER BY CST_CODIGO';
+  qCST.Open;
+
 end;
 
 end.

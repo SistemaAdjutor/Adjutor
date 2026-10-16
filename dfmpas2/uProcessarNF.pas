@@ -63,7 +63,7 @@ type
 
     femailAutenticacao, fPMT_RESPONSAVEL_TECNICO : boolean;
     fEmailRequerConexaoSSL, fEmailRequerConexaoTLS, fusar_logo : Boolean;
-
+    FIBSCBS_BaseCalculoTotal: Boolean; // true = a nota deve somar no total IBS/CBS
 
 	  fiCSOSN, fiCSOSN_ST, fCID_IBGE, fEmailVersaoSSL  : integer;
 
@@ -152,6 +152,7 @@ var i, j, recordCount : integer;
  Municipal, Estadual, Federal: string;
  AliqMun, AliqUF: Double;
  AliqCBS, AliqIS: Double;
+ IbsCbsNaCFOP: boolean;
 
 begin
 {
@@ -180,6 +181,7 @@ begin
 
   qItemNota.First;
   i := 1;
+  FIBSCBS_BaseCalculoTotal := True;
   //Adicionando Produtos  antigos DadosBasicosProduto  ProdutoImportacao
   while not qItemNota.Eof do
   begin
@@ -409,18 +411,23 @@ begin
       // ===== IMPOSTOS IBS, CBS e IS (Reforma Tributária) =====
 
       // --- IBS ---
-   if (dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S')
-   and (dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qItemNota.FieldByName('OPE_CODIGO').AsString)) = 'S')
+   IbsCbsNaCFOP := qItemNota.FieldByName('OPE_MOSTRA_IBS_CBS').AsString = 'S';
+   // dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qItemNota.FieldByName('OPE_CODIGO').AsString)) = 'S';
+   if (dbInicio.GetParametroSistema('PMT_ATIVAR_IBS_CBS') = 'S') //   and IbsCbsNaCFOP
    then
    begin
 
       begin
         // NotaF.NFe.Ide.cMunFGIBS := fCID_IBGE; // qItemNota.FieldByName('CID_COD_IBGE').AsInteger;
-        if qItemNota.FieldByName('IBS_CODIGO').AsString = '' then
+        if qItemNota.FieldByName('IBS_CST').AsString = '' then
           Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(dbInicio.GetParametroSistema('PMT_CST_IBS_CBS') )
         else
-          Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(qItemNota.FieldByName('IBS_CODIGO').AsString);
-        Produto.Imposto.IBSCBS.cClassTrib := '000001';
+          Produto.Imposto.IBSCBS.CST := StrToCSTIBSCBS(qItemNota.FieldByName('IBS_CST').AsString);
+
+        if qItemNota.FieldByName('IBS_CLASS_TRIB').AsString = '' then
+          Produto.Imposto.IBSCBS.cClassTrib := '000001'
+        else
+          Produto.Imposto.IBSCBS.cClassTrib := qItemNota.FieldByName('IBS_CLASS_TRIB').AsString;
 
         // Cria o grupo principal e subgrupos se necessário
         if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
@@ -437,9 +444,9 @@ begin
         // Busca alíquotas (prioridade: item > tabela OPE0000 > Parâmetro)
         AliqMun := qItemNota.FieldByName('IBS_ALIQUOTA').AsFloat;
         AliqUF := qItemNota.FieldByName('IBS_ALIQUOTA_UF').AsFloat;
-        if AliqMun = 0 then
+        if (AliqMun = 0) and (not IbsCbsNaCFOP) then
           AliqMun := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_MUNICIPAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
-        if AliqUF = 0 then
+        if (AliqUF = 0) and (not IbsCbsNaCFOP) then
           AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
 
 
@@ -468,7 +475,7 @@ begin
       // --- CBS ---
       begin
         AliqCBS := qItemNota.FieldByName('CBS_ALIQUOTA').AsFloat;
-        if AliqCBS = 0 then
+        if (AliqCBS = 0) and (not IbsCbsNaCFOP) then
           AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
 
 
@@ -485,6 +492,14 @@ begin
         else
           Produto.Imposto.IBSCBS.gIBSCBS.gCBS.vCBS := RoundTo(Produto.Imposto.IBSCBS.gIBSCBS.vBC * (AliqCBS / 100), -2);
       end;
+
+      if (AliqUF = 0) and (AliqCBS = 0) then
+      begin
+        FIBSCBS_BaseCalculoTotal := False;
+      end;
+
+
+
 
 
       // --- IS (Imposto Seletivo) ---
@@ -645,7 +660,15 @@ begin
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_DESCRICAO, cbs_cfop.CBS_DESCRICAO) AS CBS_DESCRICAO,');
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA, ibs_pr.IBS_ALIQUOTA, ibs_cfop.IBS_ALIQUOTA) AS IBS_ALIQUOTA,');
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA_UF, ibs_pr.IBS_ALIQUOTA_UF, ibs_cfop.IBS_ALIQUOTA_UF) AS IBS_ALIQUOTA_UF,');
-    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA');
+
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_CST, ibs_pr.IBS_CST, ibs_cfop.IBS_CST) AS IBS_CST,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_CLASS_TRIB, ibs_pr.IBS_CLASS_TRIB, ibs_cfop.IBS_CLASS_TRIB) AS IBS_CLASS_TRIB,');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CST, cbs_cfop.CBS_CST) AS CBS_CST,');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CLASS_TRIB, cbs_cfop.CBS_CLASS_TRIB) AS CBS_CLASS_TRIB, ');
+
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA,	op.OPE_MOSTRA_IBS_CBS');
+
     qItemNota.SQL.Add('FROM NF_IT01 it');
     qItemNota.SQL.Add('JOIN NF0001 nf ON (nf.NF_NOTANUMBER = it.NF_IT_NOTANUMER)' );
     qItemNota.SQL.Add('LEFT JOIN CLI0000 cli ON cli.CLI_CODIGO = nf.CLI_CODIGO');
@@ -657,11 +680,13 @@ begin
       qItemNota.SQL.Add('JOIN PRD0000 pr ON pr.PRD_REFER = it.PRD_REFER AND pr.PRD_STATUS = ''A'' AND pid.emp_codigo = nf.emp_codigo AND pr.emp_codigo = pid.emp_codigo  ');
     qItemNota.SQL.Add('LEFT JOIN SITUACAO_TRIBUTARIA st ON pr.STB_TRIBUTACAO = st.STB_TRIBUTACAO');
     qItemNota.SQL.Add('LEFT JOIN OPE0000 op ON op.OPE_CODIGO = it.OPE_CODIGO');
+
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_pr ON pr.IBS_ID = ibs_pr.IBS_ID');
     qItemNota.SQL.Add('LEFT JOIN CBS cbs_pr ON pr.CBS_ID = cbs_pr.CBS_ID');
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_cfop ON op.IBS_ID = ibs_cfop.IBS_ID');
     qItemNota.SQL.Add('LEFT JOIN CBS cbs_cfop ON op.CBS_ID = cbs_cfop.CBS_ID');
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_mun ON ibs_mun.CID_CODIGO = cli.CID_CODIGO');
+
     qItemNota.SQL.Add('LEFT JOIN CID0000 cid ON cid.CID_CODIGO = cli.CID_CODIGO');
     qItemNota.SQL.Add(' WHERE NF_IT_NOTANUMER = ' + QuotedStr(Nota));
     qItemNota.SQL.Add(' and it.emp_codigo = ' + QuotedStr(EmpCodigo));
@@ -3142,14 +3167,19 @@ begin
    and (dbInicio.BuscaUmDadoSqlAsString('SELECT OPE_MOSTRA_IBS_CBS FROM OPE0000 WHERE OPE_CODIGO = ' + QuotedStr(qNota.FieldByName('OPE_CODIGO').AsString)) = 'S')
   then
   begin
-    AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
-    if (dbInicio.GetParametroSistema('PMT_SOMA_IBS_UF_BASE_CALCULO') = 'S') then
-    begin
-      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat + SomaTotalCBSIBS(AliqUF); // qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqUF  / 100) ;
-    end
+    if FIBSCBS_BaseCalculoTotal then
+      AliqUF := BuscaUmDadoSQLAsFloat('SELECT PMT_IBS_ALIQUOTA_ESTADUAL FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO))
     else
-      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
+      AliqUF := 0;
+    if (dbInicio.GetParametroSistema('PMT_SOMA_IBS_UF_BASE_CALCULO') = 'S') then
+      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat + SomaTotalCBSIBS(AliqUF) // qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqUF  / 100) ;
+    else
+        notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat;
 
+    if not FIBSCBS_BaseCalculoTotal then
+    begin
+      notaf.NFe.Total.IBSCBSTot.vBCIBSCBS := 0;
+    end;
 
     notaf.NFe.Total.IBSCBSTot.gIBS.gIBSUFTot.vIBSUF := SomaTotalCBSIBS(AliqUF);
     // notaf.NFe.Total.IBSCBSTot.gIBS.gIBSUFTot.vIBSUF := RoundTo(  qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqUF / 100),  -2);
@@ -3160,7 +3190,9 @@ begin
 //    notaf.NFe.Total.IBSCBSTot.gIBS.vIBS := qNota.FieldByName('NF_TOT_PROD').AsFloat  * (AliqUF / 100);
     notaf.NFe.Total.IBSCBSTot.gIBS.vIBS := SomaTotalCBSIBS(AliqUF); // qNota.FieldByName('NF_TOT_PROD').AsFloat  * (AliqUF / 100);
 
-    AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
+    if FIBSCBS_BaseCalculoTotal then
+      AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO))
+    else AliqCBS := 0 ;
     notaf.NFe.Total.IBSCBSTot.gCBS.vCBS := SomaTotalCBSIBS(AliqCBS); // qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqCBS / 100) ;
     // notaf.NFe.Total.IBSCBSTot.gCBS.vCBS := qNota.FieldByName('NF_TOT_PROD').AsFloat * (AliqCBS / 100) ;
 
