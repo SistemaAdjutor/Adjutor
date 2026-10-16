@@ -3,11 +3,11 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
   Top = 72
   Caption = 'Industrializa'#231#227'o por Kit'
   ClientHeight = 532
-  ClientWidth = 1135
+  ClientWidth = 1212
   Font.Charset = ANSI_CHARSET
   Font.Name = 'Arial'
   Position = poMainFormCenter
-  ExplicitWidth = 1151
+  ExplicitWidth = 1228
   ExplicitHeight = 571
   PixelsPerInch = 96
   TextHeight = 14
@@ -42,7 +42,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
   object GroupBox1: TGroupBox [4]
     Left = 0
     Top = 67
-    Width = 1135
+    Width = 1212
     Height = 427
     Align = alTop
     Caption = 'Industrializa'#231#245'es Solicitadas e Dispon'#237'veis'
@@ -50,7 +50,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     object dbgrdNotasDisponveis: TDBGrid
       Left = 2
       Top = 16
-      Width = 1131
+      Width = 1208
       Height = 409
       Align = alClient
       Color = clWhite
@@ -170,6 +170,12 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
           Expanded = False
           FieldName = 'Saldo'
           Visible = True
+        end
+        item
+          Expanded = False
+          FieldName = 'SaldoNota'
+          Title.Caption = 'Saldo da Nota'
+          Visible = True
         end>
     end
   end
@@ -242,7 +248,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
   object grpFiltro: TGroupBox [7]
     Left = 0
     Top = 0
-    Width = 1135
+    Width = 1212
     Height = 67
     Align = alTop
     Caption = 'Filtro'
@@ -527,6 +533,12 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     end
     object SqlCdsNotasDisponiveisPRD_ESTOQUE: TFMTBCDField
       FieldName = 'PRD_ESTOQUE'
+      Size = 5
+    end
+    object SqlCdsNotasDisponiveisSaldoNota: TFMTBCDField
+      FieldKind = fkInternalCalc
+      FieldName = 'SaldoNota'
+      Precision = 15
       Size = 5
     end
   end
@@ -1317,7 +1329,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     Left = 384
     Top = 251
     Bitmap = {
-      494C0101010008001C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C0101010008002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000
