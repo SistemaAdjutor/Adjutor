@@ -170,9 +170,9 @@ object FormAliqICms: TFormAliqICms
   end
   object DBGridIcms: TDBGrid
     Left = 0
-    Top = 185
+    Top = 249
     Width = 1050
-    Height = 385
+    Height = 321
     Align = alClient
     DataSource = DataCadastros1.DsICMS
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgRowSelect, dgConfirmDelete, dgCancelOnExit]
@@ -306,11 +306,13 @@ object FormAliqICms: TFormAliqICms
     Left = 0
     Top = 41
     Width = 1050
-    Height = 144
+    Height = 208
     Align = alTop
     Color = clBtnFace
     ParentColor = False
     TabOrder = 1
+    ExplicitLeft = 24
+    ExplicitTop = 37
     object Label4: TLabel
       Left = 15
       Top = 43
@@ -347,15 +349,15 @@ object FormAliqICms: TFormAliqICms
       Caption = 'Estado:'
     end
     object Label7: TLabel
-      Left = 689
-      Top = 18
+      Left = 606
+      Top = 16
       Width = 26
       Height = 14
       Caption = 'IBGE:'
     end
     object Label8: TLabel
-      Left = 190
-      Top = 122
+      Left = 187
+      Top = 177
       Width = 26
       Height = 14
       Caption = 'MVA:'
@@ -367,8 +369,8 @@ object FormAliqICms: TFormAliqICms
       ParentFont = False
     end
     object Label9: TLabel
-      Left = 19
-      Top = 122
+      Left = 16
+      Top = 177
       Width = 103
       Height = 14
       Caption = 'Subst.Tribut'#225'ria(ST)?'
@@ -380,8 +382,8 @@ object FormAliqICms: TFormAliqICms
       ParentFont = False
     end
     object Label10: TLabel
-      Left = 281
-      Top = 122
+      Left = 278
+      Top = 177
       Width = 92
       Height = 14
       Caption = 'Aplica e Soma(+)?:'
@@ -416,8 +418,8 @@ object FormAliqICms: TFormAliqICms
     object Label15: TLabel
       Left = 178
       Top = 87
-      Width = 768
-      Height = 28
+      Width = 599
+      Height = 50
       Caption = 
         'Publicada no Portal da NF-e em 29.11.2012, a Nota T'#233'cnica n'#186' 05/' +
         '2012 trata da repercuss'#227'o da Resolu'#231#227'o do Senado Federal n'#186' 13/2' +
@@ -427,8 +429,8 @@ object FormAliqICms: TFormAliqICms
       WordWrap = True
     end
     object lbl1: TLabel
-      Left = 423
-      Top = 122
+      Left = 420
+      Top = 177
       Width = 216
       Height = 14
       Caption = 'N'#227'o aplicar ST e MVA direto neste cadastro. '
@@ -440,8 +442,8 @@ object FormAliqICms: TFormAliqICms
       ParentFont = False
     end
     object lbl2: TLabel
-      Left = 641
-      Top = 122
+      Left = 638
+      Top = 177
       Width = 295
       Height = 14
       Caption = 'Orienta'#231#227'o Atual (2012) : - Construir Regras de CFOP por UF.'
@@ -481,7 +483,7 @@ object FormAliqICms: TFormAliqICms
     object DbeIE_Subst: TDBEdit
       Left = 560
       Top = 63
-      Width = 230
+      Width = 113
       Height = 22
       CharCase = ecUpperCase
       DataField = 'ICM_IE_SUBTRIB'
@@ -512,8 +514,8 @@ object FormAliqICms: TFormAliqICms
       TabOrder = 1
     end
     object DBEIbge: TDBEdit
-      Left = 718
-      Top = 14
+      Left = 635
+      Top = 12
       Width = 52
       Height = 22
       DataField = 'ICM_COD_IBGE'
@@ -521,8 +523,8 @@ object FormAliqICms: TFormAliqICms
       TabOrder = 2
     end
     object DBEdit1: TDBEdit
-      Left = 218
-      Top = 118
+      Left = 215
+      Top = 173
       Width = 50
       Height = 22
       DataField = 'ICM_MVA'
@@ -530,8 +532,8 @@ object FormAliqICms: TFormAliqICms
       TabOrder = 8
     end
     object CbSubst_SN: TComboBox
-      Left = 125
-      Top = 118
+      Left = 122
+      Top = 173
       Width = 53
       Height = 22
       TabOrder = 9
@@ -544,8 +546,8 @@ object FormAliqICms: TFormAliqICms
         'SIM')
     end
     object CbApliSoma: TComboBox
-      Left = 376
-      Top = 118
+      Left = 373
+      Top = 173
       Width = 43
       Height = 22
       TabOrder = 7
@@ -632,6 +634,24 @@ object FormAliqICms: TFormAliqICms
       ParentFont = False
       TabOrder = 14
       OnClick = BitBtn2Click
+    end
+    object DBRadioGroup1: TDBRadioGroup
+      Left = 813
+      Top = 91
+      Width = 185
+      Height = 75
+      Caption = 'Tipo de C'#225'lculo para ST'
+      DataField = 'ICM_TIPO_CALCULO_ST'
+      DataSource = DataCadastros1.DsICMS
+      Items.Strings = (
+        'Base Simples'
+        'Base por Dentro')
+      ParentShowHint = False
+      ShowHint = False
+      TabOrder = 15
+      Values.Strings = (
+        '0'
+        '1')
     end
   end
   object Panel3: TPanel

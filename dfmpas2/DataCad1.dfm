@@ -85,6 +85,9 @@ object DataCadastros1: TDataCadastros1
     object SqlICMSICM_TIPO_CALCULO_DIFAL: TIntegerField
       FieldName = 'ICM_TIPO_CALCULO_DIFAL'
     end
+    object SqlICMSICM_TIPO_CALCULO_ST: TIntegerField
+      FieldName = 'ICM_TIPO_CALCULO_ST'
+    end
   end
   object DspICMS: TDataSetProvider
     DataSet = SqlICMS
@@ -183,6 +186,9 @@ object DataCadastros1: TDataCadastros1
     end
     object CdsICMSICM_TIPO_CALCULO_DIFAL: TIntegerField
       FieldName = 'ICM_TIPO_CALCULO_DIFAL'
+    end
+    object CdsICMSICM_TIPO_CALCULO_ST: TIntegerField
+      FieldName = 'ICM_TIPO_CALCULO_ST'
     end
   end
   object DsICMS: TDataSource

@@ -1749,6 +1749,8 @@ type
     CdsParametrosPMT_ID_CSRT_HOMOLOGACAO: TStringField;
     CdsParametrosPMT_CSRT_PRODUCAO: TStringField;
     CdsParametrosPMT_ID_CSRT_PRODUCAO: TStringField;
+    SqlICMSICM_TIPO_CALCULO_ST: TIntegerField;
+    CdsICMSICM_TIPO_CALCULO_ST: TIntegerField;
     procedure CdsICMSBeforeEdit(DataSet: TDataSet);
     procedure CdsCtAnaliseBeforeEdit(DataSet: TDataSet);
     procedure CdsProCaixaBeforeEdit(DataSet: TDataSet);
