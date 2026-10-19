@@ -1,0 +1,16 @@
+﻿Inicio da versão: 16/10/2026
+Atualizado em 16/10/2026
+
+principal: Drimec, Collect, Embraterm, Edge, SouthQuim, Arkson, Crystal Clean. 
+	2281 - Drimec - erros de calculos de impostos faturmento
+	2288 - Tela consultar Cliente
+	2256 - [SUP-148] Embraterm - IBS E CBS adicionar campos de CST e campo de Classificação tributaria
+	2258 - Edge - Inclusão de complemento automático na emissão da Nota Fiscal
+	2264 - [SUP-146] SouthQuim - ajuste do calculo do ICMS-ST por dentro
+	2267 - Arkson - Industrialização por Kit: divergência na exibição de retornos e saldos
+	2268 - Collect - ajuste recorrencia
+	2270 - Crystal Clean - Ajuste no cálculo dos custos do cadastro de produto
+	2271 - Embraterm : descontar pis e cofins do valor liquido da nota
+	2273 - Collect - Ordenação da tela de consulta pedidos
+	2276 - Collect - Retorno de Remessa Celesc
+	2278 - SouthQuim - calculo do difal erro
