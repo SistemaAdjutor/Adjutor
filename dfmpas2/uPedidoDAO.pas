@@ -1369,7 +1369,10 @@ procedure CalculoEstoquePendente(const afetaestoque: boolean; const stipo, Produ
  qPendenteNova, qpreciso: double;  const rSaldo: double; const dQtdeKit: double; var dQtdeEstoque: double; var stipoKardesES :string);
   var qtemp :Currency;
 begin
- stipoKardesES := 'S';
+  // issues 2289
+  if stipoKardesES = '' then
+    stipoKardesES := 'S';
+
  if not afetaestoque then
   begin
     qPendenteNova := 0;
