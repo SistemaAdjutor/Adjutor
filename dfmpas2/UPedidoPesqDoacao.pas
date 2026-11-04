@@ -370,7 +370,7 @@ begin
              sqlAdd( camposql( 'Pe.cct_codigo', CbContaFinanceira.idRetorno ));
 
           // issue 2268 A = Ativo | I = Inativo | R = Recuperação
-          sqlAdd('cl.CLI_INATIVO NOT IN (''R'' , ''I'') ');
+          // sqlAdd('cl.CLI_INATIVO NOT IN (''R'' , ''I'') ');                   issue 2294 mudou a regra de negócio
 
            //A FATURAR = F , CANCELADO = C , FATURADO TOTAL = T, PARCIAL = P , FATURADO AGRUPADO  = A
           case cbbFaturamento.ItemIndex of
@@ -445,6 +445,7 @@ begin
       end;
       if DBInicio.IsDesenvolvimento then
         CopyToClipBoard(qSqlCdsPesq.Text);
+      SqlCdsPesq.IndexName := '';
       SqlCdsPesq.open;
       SqlCdsPesq.Last;
       SqlCdsPesq.First; // subterfúgio para trazer todos os registros, pois ele estava trazendo somente os primeiros 20...
