@@ -601,7 +601,8 @@ begin
 
 
      IF ((Produto.Imposto.ICMS.cst IN [cst00, cst10,cst60, cst90]) and (NotaF.NFe.Dest.EnderDest.UF = 'PR')) OR
-       ((Produto.Imposto.ICMS.cst IN [cst00, cst10, cst40, cst60]) and (NotaF.NFe.Dest.EnderDest.UF = 'RJ')) OR
+       //  ((Produto.Imposto.ICMS.cst IN [cst00, cst10, cst40, cst60]) and (NotaF.NFe.Dest.EnderDest.UF = 'RJ')) OR     issue 2293
+       ((Produto.Imposto.ICMS.cst IN [cst00, cst10, cst60]) and (NotaF.NFe.Dest.EnderDest.UF = 'RJ')) OR
               ((Produto.Imposto.ICMS.cst IN [cst00, cst10]) and (NotaF.NFe.Dest.EnderDest.UF = 'RS'))  then
         produto.Prod.cBenef   := ''
      Else
@@ -693,9 +694,9 @@ begin
     qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_DESCRICAO, ibs_pr.IBS_DESCRICAO, ibs_cfop.IBS_DESCRICAO) AS IBS_DESCRICAO,');
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_CODIGO, cbs_cfop.CBS_CODIGO) AS CBS_CODIGO,');
     qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_DESCRICAO, cbs_cfop.CBS_DESCRICAO) AS CBS_DESCRICAO,');
-    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA, ibs_pr.IBS_ALIQUOTA, ibs_cfop.IBS_ALIQUOTA) AS IBS_ALIQUOTA,');
-    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA_UF, ibs_pr.IBS_ALIQUOTA_UF, ibs_cfop.IBS_ALIQUOTA_UF) AS IBS_ALIQUOTA_UF,');
-    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA, ibs_pr.IBS_ALIQUOTA, ibs_cfop.IBS_ALIQUOTA, pmt.PMT_IBS_ALIQUOTA_MUNICIPAL ) AS IBS_ALIQUOTA,');
+    qItemNota.SQL.Add('COALESCE(ibs_mun.IBS_ALIQUOTA_UF, ibs_pr.IBS_ALIQUOTA_UF, ibs_cfop.IBS_ALIQUOTA_UF, pmt.PMT_IBS_ALIQUOTA_ESTADUAL) AS IBS_ALIQUOTA_UF,');
+    qItemNota.SQL.Add('COALESCE(cbs_pr.CBS_ALIQUOTA, cbs_cfop.CBS_ALIQUOTA, pmt.PMT_CBS_ALIQUOTA) AS CBS_ALIQUOTA, pr.IS_ALIQUOTA,');
 
     qItemNota.SQL.Add('pr.PRD_RETENCAO_PIS, pr.PRD_RETENCAO_COFINS,'); // issue 2271
 
@@ -725,6 +726,7 @@ begin
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_cfop ON op.IBS_ID = ibs_cfop.IBS_ID');
     qItemNota.SQL.Add('LEFT JOIN CBS cbs_cfop ON op.CBS_ID = cbs_cfop.CBS_ID');
     qItemNota.SQL.Add('LEFT JOIN IBS ibs_mun ON ibs_mun.CID_CODIGO = cli.CID_CODIGO');
+    qItemNota.SQL.Add('JOIN PRMT0001 pmt ON pmt.EMP_CODIGO = NF.EMP_CODIGO');         // issue 2293
 
     qItemNota.SQL.Add('LEFT JOIN CID0000 cid ON cid.CID_CODIGO = cli.CID_CODIGO');
     qItemNota.SQL.Add(' WHERE NF_IT_NOTANUMER = ' + QuotedStr(Nota));
