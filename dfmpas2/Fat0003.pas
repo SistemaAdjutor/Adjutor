@@ -669,6 +669,7 @@ type
     CdsItemPedidoPRD_RETENCAO_PIS: TFMTBCDField;
     CdsItemPedidoPRD_RETENCAO_COFINS: TFMTBCDField;
     qIcmsICM_TIPO_CALCULO_ST: TIntegerField;
+    CdsPedidosOPV_TIPO: TStringField;
 
     procedure CurrcodBancoExit(Sender: tObject);
     procedure BitConfirmaNotaClick(Sender: tObject);
@@ -1409,7 +1410,7 @@ begin
      qPedidos.SQL.Add( '       p1.REP_CODIGO_INTERNO, ' );
      qpedidos.SQL.Add( '       p1.ENDERECO_ENTREGA, ')     ;
      qpedidos.SQL.Add( '       p1.CLI_CPF, '  )     ;
-     qpedidos.SQL.Add( '       RE.REP_NOME, SITEXP, '  )     ;
+     qpedidos.SQL.Add( '       RE.REP_NOME, SITEXP, op.OPV_TIPO, '  )     ;
      qpedidos.SQL.Add( '       OPV_ESTOQUE_REMESSAINDUS ');
      qPedidos.SQL.Add( 'FROM PED0000 P1' );
      qPedidos.SQL.Add( '    left JOIN CLI0000 C1 ON P1.CLI_CODIGO = C1.CLI_CODIGO ' );
@@ -1776,7 +1777,7 @@ begin
       qItemPedido.Sql.Add('   ((CASE PRF_PRODUTO_AGREGADO               '+
                           '      WHEN ''S'' THEN (SELECT PRF_QTDE-Coalesce( PRF_QTDEFAT,0) FROM PED_IT01 IK WHERE P1.PRF_REGISTRO_VINCULADO = IK.PRF_REGISTRO)* PRF_QTDE '+
                           '       WHEN ''N'' THEN PRF_QTDE                                              '+
-                          '       END) -Coalesce( p1.PRF_QTDEFAT,0)-Coalesce( p1.PRF_QTDEPEND,0)) as PRF_QTDE_FATURAR_CC,         ') ;
+                          '       END) -Coalesce( p1.PRF_QTDEFAT,0)-     (CASE P3.OPV_TIPO WHEN ''S'' THEN COALESCE( p1.PRF_QTDEPEND, 0) WHEN ''E'' THEN 0 END)     ) as PRF_QTDE_FATURAR_CC,         ') ;  // ISSUE 2289
       qItemPedido.Sql.Add(' CAST(CAST(((CASE PRF_PRODUTO_AGREGADO    '+
                                'WHEN ''S'' THEN (SELECT PRF_QTDE-Coalesce( PRF_QTDEFAT,0) FROM PED_IT01 IK WHERE P1.PRF_REGISTRO_VINCULADO = IK.PRF_REGISTRO)* PRF_QTDE '+
                                'WHEN ''N'' THEN PRF_QTDE                                                                                       '+
@@ -1986,7 +1987,7 @@ begin
              CdsItemPedido.Next;
           end;
           CdsItemPedido.First;
-          if cdsItemPedidoPRF_QTDEPEND.AsFloat > 0 then
+          if (cdsItemPedidoPRF_QTDEPEND.AsFloat > 0) and (CdsPedidosOPV_TIPO.AsString = 'S') then // issue 2289
           begin
             if MessageDlg('Existe item com saldo insuficiente deseja faturar parcial?', mtConfirmation, mbYesNo, 0) <> mrYes then
               exit
@@ -5330,6 +5331,9 @@ function TFormFatPedido.EstoqueInsuficiente: boolean;
 var Clone: TClientDataSet;
 begin
     result:= False;
+    if (CdsPedidosOPV_TIPO.AsString = 'E') then // issue 2289
+      Exit;
+
     if not (fwPMT_FATURAR_PENDENCIAS)  and (fwAtualizaEstoque = 'P') then
     begin
       clone := TClientDataSet.Create(Self);
