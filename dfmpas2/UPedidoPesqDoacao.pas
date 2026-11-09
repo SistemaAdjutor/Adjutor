@@ -181,6 +181,8 @@ type
     Panel4: TPanel;
     RecorrenciaInativos: TMemo;
     Panel3: TPanel;
+    rgStatusCliente: TRadioGroup;
+    chkRecorrente: TCheckBox;
     procedure Rad_ClienteClick(Sender: TObject);
     procedure BitPesquisarClick(Sender: TObject);
     procedure SqlCdsPesqPED_SITUACAOGetText(Sender: TField; var Text: string; DisplayText: Boolean);
@@ -371,6 +373,18 @@ begin
 
           // issue 2268 A = Ativo | I = Inativo | R = Recuperação
           // sqlAdd('cl.CLI_INATIVO NOT IN (''R'' , ''I'') ');                   issue 2294 mudou a regra de negócio
+          case rgStatusCliente.ItemIndex of
+            0: sqlAdd('cl.CLI_INATIVO = ''A'' ');
+            1: sqlAdd('cl.CLI_INATIVO = ''I'' ');
+            2: sqlAdd('cl.CLI_INATIVO = ''R'' ');
+          end;
+          if chkRecorrente.checked then
+            SqlAdd('CL.CLI_RECORRENTE = ''S'' ');
+
+
+
+
+
 
            //A FATURAR = F , CANCELADO = C , FATURADO TOTAL = T, PARCIAL = P , FATURADO AGRUPADO  = A
           case cbbFaturamento.ItemIndex of
@@ -380,9 +394,10 @@ begin
             4:SqlAdd('Pe.PED_SITUACAO in (''C'')');  //CANCELADOS
           end;
 
+
           if DataTipo.ItemIndex = 2 then
           begin
-              SqlAdd('CL.CLI_RECORRENTE = ''S''');
+              // SqlAdd('CL.CLI_RECORRENTE = ''S'''); issue 2294
               SqlAdd('CL.CLI_DATA_ULTIMA_PARCELA IS NOT NULL');
 
               SqlAdd(
