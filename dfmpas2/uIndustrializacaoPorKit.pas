@@ -820,7 +820,7 @@ begin
       SqlCdsNotasDisponiveis.First;
       while (not SqlCdsNotasDisponiveis.Eof) do
       begin
-        if SqlCdsNotasDisponiveisQuantidadeTmp.AsFloat > SqlCdsNotasDisponiveisSaldo.AsFloat then
+        if SqlCdsNotasDisponiveisQuantidadeTmp.AsFloat > SqlCdsNotasDisponiveisSaldoNota.AsFloat then
         begin
           MessageDlg('Quantidade informada é maior que o saldo'
           + #13 +
