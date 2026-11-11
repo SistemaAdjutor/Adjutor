@@ -39,7 +39,21 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     Height = 14
     Caption = '0'
   end
-  object GroupBox1: TGroupBox [4]
+  object Label5: TLabel [4]
+    Left = 278
+    Top = 516
+    Width = 185
+    Height = 14
+    Caption = 'N'#250'mero de Refer'#234'ncias Selecionadas:'
+  end
+  object lbNReferenciasSelecionadas: TLabel [5]
+    Left = 466
+    Top = 516
+    Width = 6
+    Height = 14
+    Caption = '0'
+  end
+  object GroupBox1: TGroupBox [6]
     Left = 0
     Top = 67
     Width = 1212
@@ -179,7 +193,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
         end>
     end
   end
-  object BitConfirmar: TBitBtn [5]
+  object BitConfirmar: TBitBtn [7]
     Left = 769
     Top = 500
     Width = 100
@@ -212,7 +226,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     TabOrder = 1
     OnClick = BitConfirmarClick
   end
-  object BitCancelar: TBitBtn [6]
+  object BitCancelar: TBitBtn [8]
     Left = 874
     Top = 500
     Width = 100
@@ -245,7 +259,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     TabOrder = 2
     OnClick = BitCancelarClick
   end
-  object grpFiltro: TGroupBox [7]
+  object grpFiltro: TGroupBox [9]
     Left = 0
     Top = 0
     Width = 1212
@@ -355,7 +369,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
       OnClick = chkSaldoClick
     end
   end
-  object BitBtn1: TBitBtn [8]
+  object BitBtn1: TBitBtn [10]
     Left = 664
     Top = 500
     Width = 100
@@ -1329,7 +1343,7 @@ inherited FrmIndustrializacaoPorKit: TFrmIndustrializacaoPorKit
     Left = 384
     Top = 251
     Bitmap = {
-      494C0101010008002C0010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
+      494C010101000800300010001000FFFFFFFFFF10FFFFFFFFFFFFFFFF424D3600
       0000000000003600000028000000400000001000000001002000000000000010
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000000000000000

@@ -109,6 +109,8 @@ type
     ImageList1: TImageList;
     SqlCdsNotasDisponiveisPRD_ESTOQUE: TFMTBCDField;
     SqlCdsNotasDisponiveisSaldoNota: TFMTBCDField;
+    Label5: TLabel;
+    lbNReferenciasSelecionadas: TLabel;
     procedure Bit_SairClick(Sender: tObject);
     procedure dbgrdNotasDisponveisDblClick(Sender: tObject);
     procedure dbgrdNotasDisponveisKeyPress(Sender: tObject; var Key: Char);
@@ -494,15 +496,14 @@ begin
 end;
 
 
+
 procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisCellClick(Column: TColumn);
 var
   sel, rec: integer;
-
+  lstReferencias: TStringList;
 begin
   inherited;
-//  if ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat - SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) = 0) then issue 2267
-//    Exit;
-
+  // issue 2286
   if (SqlCdsNotasDisponiveisENF_QTDE.AsFloat <=
       SqlCdsNotasDisponiveisENF_QUANTIDADE_IND_RETORNO.AsFloat) and
      ((SqlCdsNotasDisponiveisENF_QTDE.AsFloat -
@@ -515,19 +516,41 @@ begin
     Column.Field.AsBoolean := not Column.Field.AsBoolean;
     SqlCdsNotasDisponiveis.Post;
   end;
+
   rec := SqlCdsNotasDisponiveis.RecNo;
-  SqlCdsNotasDisponiveis.DisableControls;
-  SqlCdsNotasDisponiveis.First;
-  sel := 0;
-  while not SqlCdsNotasDisponiveis.Eof do
-  begin
-    if SqlCdsNotasDisponiveis.FieldByName('Selecao').AsBoolean then
-      inc(sel);
-    SqlCdsNotasDisponiveis.Next;
+  lstReferencias := TStringList.Create;
+  try
+    lstReferencias.Sorted := True;
+    lstReferencias.Duplicates := dupIgnore;
+
+    SqlCdsNotasDisponiveis.DisableControls;
+    try
+      SqlCdsNotasDisponiveis.First;
+      sel := 0;
+
+      while not SqlCdsNotasDisponiveis.Eof do
+      begin
+        if SqlCdsNotasDisponiveisSelecao.AsBoolean then
+        begin
+          Inc(sel);
+          lstReferencias.Add(
+            SqlCdsNotasDisponiveis.FieldByName('PRD_REFER').AsString
+          );
+        end;
+
+        SqlCdsNotasDisponiveis.Next;
+      end;
+
+      SqlCdsNotasDisponiveis.RecNo := rec;
+    finally
+      SqlCdsNotasDisponiveis.EnableControls;
+    end;
+
+    lbNItensSelecionados.Caption := IntToStr(sel);
+    lbNReferenciasSelecionadas.Caption := IntToStr(lstReferencias.Count);
+  finally
+    lstReferencias.Free;
   end;
-  SqlCdsNotasDisponiveis.RecNo := rec;
-  SqlCdsNotasDisponiveis.EnableControls;
-  lbNItensSelecionados.Caption := IntToStr(sel);
 end;
 
 procedure TFrmIndustrializacaoPorKit.dbgrdNotasDisponveisDblClick(
