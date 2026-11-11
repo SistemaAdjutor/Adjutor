@@ -2905,7 +2905,7 @@ inherited frmEditTabelas: TfrmEditTabelas
           Frame.Typ = []
           Fill.BackColor = clWindow
           Memo.UTF8W = (
-            'qualidade@embraterm.ind.br')
+            'comercial@embraterm.ind.br')
           ParentFont = False
         end
         object Shape2: TfrxShapeView
