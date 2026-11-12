@@ -110,7 +110,7 @@ begin
   Begin
    if CarregarXML(cdsBuscoMFE_REGISTRO.AsInteger) then
    begin
-     ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFE.fr3';
+     ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFeRetrato_RTC.fr3'; // era DANFE.fr3 issue 2297
      ACBrNFE1.NotasFiscais.Imprimir;
    end
    else
@@ -186,7 +186,7 @@ begin
                ACBrNFe1.WebServices.DistribuicaoDFe.retDistDFeInt.cStat,
                aCBrNFe1.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].XML);
                aCBrNFe1.NotasFiscais.LoadFromString(aCBrNFe1.WebServices.DistribuicaoDFe.retDistDFeInt.docZip.Items[i].XML);
-               ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFE.fr3';
+               ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFeRetrato_RTC.fr3'; // era DANFE.fr3 issue 2297
                ACBrNFE1.NotasFiscais.Imprimir;
              end;
           end
@@ -361,7 +361,7 @@ begin
   OpenAux('SELECT EMP_LOGO FROM EMP0000 WHERE EMP_CODIGO = '+ QuotedStr(DBInicio.Empresa.EMP_CODIGO)) ;
 
     ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
-    ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFE.fr3';
+    ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFeRetrato_RTC.fr3'; // era DANFE.fr3 issue 2297
 
 
   with ACBrNFe1.DANFE do
@@ -530,7 +530,7 @@ begin
            //aCBrNFe1.NotasFiscais.LoadFromString();
            if imprimir then
            begin
-            ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFE.fr3';
+            ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFeRetrato_RTC.fr3'; // era DANFE.fr3 issue 2297
             ACBrNFE1.NotasFiscais.Imprimir;
            end;
          end;

@@ -1003,7 +1003,7 @@ begin
   ACBrNFeDANFEFR1.CasasDecimais.qCom :=  fQtde;
   ACBrNFeDANFEFR1.CasasDecimais.vUnCom := fQtde;
   ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
-  ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFE.fr3';
+  ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFeRetrato_RTC.fr3'; // era DANFE.fr3 issue 2297
   ACBrNFeDANFCEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFeNFCe.fr3';
   ACBrNFeDANFCEFR1.logo := path+ '\temp'+'\'+'logo' + DBInicio.EMP_CODIGO + '.jpg';
   //ACBrNFeDANFCeFortes1.logo := path+ '\temp'+'\'+'logo.jpg';

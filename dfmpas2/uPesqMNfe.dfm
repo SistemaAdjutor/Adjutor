@@ -2,8 +2,8 @@ inherited frmPesqManifNFe: TfrmPesqManifNFe
   Caption = 'Manifesta'#231#227'o de NFe'
   ClientHeight = 483
   ClientWidth = 1314
-  ExplicitWidth = 1322
-  ExplicitHeight = 510
+  ExplicitWidth = 1330
+  ExplicitHeight = 522
   PixelsPerInch = 96
   TextHeight = 13
   inherited pnUtilTop: TPanel
@@ -54,6 +54,8 @@ inherited frmPesqManifNFe: TfrmPesqManifNFe
     ExplicitWidth = 1314
     ExplicitHeight = 406
     inherited tsNotas: TTabSheet
+      ExplicitLeft = 0
+      ExplicitTop = 0
       ExplicitWidth = 1306
       ExplicitHeight = 378
       inherited pnControle: TPanel
@@ -483,6 +485,8 @@ inherited frmPesqManifNFe: TfrmPesqManifNFe
     CasasDecimais.vUnCom = 2
     CasasDecimais.MaskqCom = ',0.00'
     CasasDecimais.MaskvUnCom = ',0.00'
+    CasasDecimais.Aliquota = 2
+    CasasDecimais.MaskAliquota = ',0.00'
     ACBrNFe = ACBrNFe1
     TipoDANFE = tiSemGeracao
     EspessuraBorda = 1

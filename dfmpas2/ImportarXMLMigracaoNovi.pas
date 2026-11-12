@@ -987,7 +987,7 @@ begin
               '         '+qStr( sttnfe )+', '+ //nf_status_nfe,
               '         '+qStr( 'S')+', '+ //nf_enviado_nfe_email,
               '         '+qStr( UpperCase(acbrnf1.NotasFiscais.Items[0].NFe.Dest.email))+', '+ //NF_EMAIL_ENVIO_NFE, ' +
-              '         '+qStr( acbrnf1.NotasFiscais.Items[0].NFe.ProcNfe.chNFe)+', '+  //NF_CHAVE_NFE,
+              '         '+qStr( acbrnf1.NotasFiscais.Items[0].NFe.ProcNfe.chDFe)+', '+  //NF_CHAVE_NFE,
               '         '+qStr( strzero( acbrnf1.NotasFiscais.Items[0].NFe.Ide.nNF,6) )+', '+ //NF_NUM_NFE,
               '         '+DATETOSQL(acbrnf1.NotasFiscais.Items[0].NFe.IDE.DeMI)+', '+ //NF_EMISSAO,
               '         '+DATETOSQL(acbrnf1.NotasFiscais.Items[0].NFe.IDE.dSaiEnt)+', '+ //NF_SAIDA,

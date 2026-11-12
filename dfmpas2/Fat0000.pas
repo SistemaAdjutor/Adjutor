@@ -1655,7 +1655,7 @@ begin
     else
     begin
       ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
-      ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\DANFE.fr3';
+      ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\DANFeRetrato_RTC.fr3'; // era DANFE.fr3 issue 2297
     end;
 
     ACBrNFe1.NotasFiscais.Clear;
@@ -1744,8 +1744,8 @@ begin
     nf.GerarNFE(True);
     nf.ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
     nf.ACBrNFe1.DANFE.PathPDF := DBInicio.Versao.PATH + 'NFe4' + '\' + FormatDateTime('yyyymm', Date) + '\Gerados\' + CdsNotas.FieldByName('NF_NOTANUMBER').AsString;
-    nf.ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\PredanfeNovo.fr3';  // BASEADO NO DANFeRetrato_2019.fr3
-    ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\PredanfeNovo.fr3';  // BASEADO NO DANFeRetrato_2019.fr3
+    nf.ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\DANFeRetrato_RTC.fr3';  // era PredanfeNovi.fr3 issue 2297
+    ACBrNFeDANFEFR1.FastFile := DBInicio.Versao.PATH + 'NFe4' + '\relatorio\DANFeRetrato_RTC.fr3';  // BASEADO NO DANFeRetrato_2019.fr3
 
     nf.ACBrNFE1.NotasFiscais.Imprimir;
 

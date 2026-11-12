@@ -430,7 +430,7 @@ begin
           Produto.Imposto.IBSCBS.cClassTrib := qItemNota.FieldByName('IBS_CLASS_TRIB').AsString;
 
         // Cria o grupo principal e subgrupos se necessário
-        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+{        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
           Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
 
         if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
@@ -438,7 +438,7 @@ begin
 
         if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF) then
           Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF := TgIBSUF.Create;
-
+ }
         Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
 
         // Busca alíquotas (prioridade: item > tabela OPE0000 > Parâmetro)
@@ -479,11 +479,11 @@ begin
           AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
 
 
-        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
-          Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+//        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+//          Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
 
-        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gCBS) then
-          Produto.Imposto.IBSCBS.gIBSCBS.gCBS := TgCBS.Create;
+//        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gCBS) then
+//          Produto.Imposto.IBSCBS.gIBSCBS.gCBS := TgCBS.Create;
 
         Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
         Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS := AliqCBS;
@@ -985,7 +985,8 @@ begin
   if tipo = moNFe then
   begin
     ACBrNFe1.DANFE := ACBrNFeDANFEFR1;
-    ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFE.fr3';
+    ACBrNFeDANFEFR1.FastFile :=  DBInicio.Versao.PATH+'NFe4'+'\relatorio\DANFeRetrato_RTC.fr3'; // issue 2297 era DANFE.fr3
+    ACBrNFeDANFEFR1.LeiauteDANFE := ldReformaTributaria;
 
     if DBInicio.Empresa.wPMT_FATURA_MULTIEMPRESA then
     begin
