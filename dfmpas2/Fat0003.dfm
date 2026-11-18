@@ -2925,6 +2925,10 @@ inherited FormFatPedido: TFormFatPedido
       Precision = 18
       Size = 5
     end
+    object CdsPedidosOPV_TIPO: TStringField
+      FieldName = 'OPV_TIPO'
+      Size = 1
+    end
   end
   object dsPedidos: TDataSource [20]
     DataSet = CdsPedidos

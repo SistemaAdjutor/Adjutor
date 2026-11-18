@@ -2048,7 +2048,7 @@ begin
      (FrmPedido.SqlCdsTipoPedidoOPV_ATESTOQUE.AsString = 'S') and
      (dbInicio.Empresa.wAtualizaEstoque = 'P') AND
       not ((qAux.FieldByName('pti_sigla').AsString = 'KT') and not dbinicio.Empresa.wPMT_CONTROLA_KIT ) and
-      (FrmPedido.SqlCdsTipoPedidoOPV_TIPO.AsString = 'S') and
+      ((FrmPedido.SqlCdsTipoPedidoOPV_TIPO.AsString = 'S') or (FrmPedido.SqlCdsTipoPedidoOPV_TIPO.AsString = 'E') )and
       TipoAtualizaEstoque(cbReferencia.cds.FieldByName('prd_refer').asstring) and
       GrupoAtualizaEstoque(cbReferencia.cds.FieldByName('prd_refer').asstring)  ;
 	 if (pgcPrincipal.ActivePage = tsSemGrade) then
@@ -2073,7 +2073,10 @@ begin
 				rQtdeNova := CurQuantidade.Value;
         qPendenteAnterior := FrmPedido.SqlCdsPedidoItem.FieldByName('prf_qtdePend').AsFloat;
 			end;
-     CalculoEstoquePendente(bAfetaEstoque, stipo, ProdutoOriginal, EdReferencia.Text, rQtdeAnterior, rQtdeNova,  qPendenteAnterior, qPendenteNova, qpreciso, rSaldo, dQtdeKit, dQtdeEstoque, stipoKardesES);
+
+      // issues 2289
+      stipoKardesES := FrmPedido.SqlCdsTipoPedidoOPV_TIPO.AsString;
+      CalculoEstoquePendente(bAfetaEstoque, stipo, ProdutoOriginal, EdReferencia.Text, rQtdeAnterior, rQtdeNova,  qPendenteAnterior, qPendenteNova, qpreciso, rSaldo, dQtdeKit, dQtdeEstoque, stipoKardesES);
 
 	 end
 	 else
@@ -2274,6 +2277,7 @@ begin
        end
        else //Quantidade Saldo
        if bAfetaEstoque
+            and (FrmPedido.SqlCdsTipoPedidoOPV_TIPO.AsString = 'S') // issue 2289
             and ((rQtdeAnterior<>rQtdeNova) )
             and ( IIF (sTipo= 'I', dQtdeKit*rQtdeNova,dQtdeKit*(IIF(rQtdeNova > rQtdeAnterior,  rQtdeNova - rQtdeAnterior,0))) > rSaldo)  then
        begin
@@ -2508,7 +2512,7 @@ begin
 
                       end
                       else
-                      if (rSaldo > 0) and not ((rQtdeAnterior=rQtdeNova) and (sTipo = 'I'))
+                      if ( (rSaldo > 0)  or (FrmPedido.SqlCdsTipoPedidoOPV_TIPO.AsString = 'E') ) and not ((rQtdeAnterior=rQtdeNova) and (sTipo = 'I'))
                       then
                       begin
                         KardexLancamento(IntToStr(iRegistro),         // registro interno
