@@ -7,7 +7,7 @@ interface
 uses
   uPlanoContasCentroCustoManual, Vcl.DBGrids, firedac.comp.client, Vcl.ComCtrls,
   IdSMTP, IdSSLOpenSSL, IdExplicitTLSClientServerBase, idMessage, IdIntercept, IdGlobal, IdAttachmentFile,
-  ACBrMail, SqlExpr,
+  ACBrMail, synachar, SqlExpr,
   Forms, Classes, SysUtils, windows, math, Dialogs, DateUtils, Graphics, jpeg, winapi.messages,System.StrUtils,
   DB, Clipbrd, MaskUtils, Variants, Controls, ExtDlgs, WiniNet, WinSock, ExtCtrls, inicioDB, ComObj,
   Vcl.StdCtrls, cxDBLookupComboBox, Vcl.Buttons, Vcl.DBCtrls, ComboBoxRW, SgDbSeachComboUnit,  Vcl.Mask,
@@ -2730,6 +2730,10 @@ begin
     begin
       DBInicio.ACBrMail.Clear;
       PreparaACBR(usuario);
+
+      DBInicio.ACBrMail.DefaultCharset := UTF_8;
+      DBInicio.ACBrMail.IDECharset := CP1252; // issue 2291
+
       DBInicio.ACBrMail.From := remetente;
       DBInicio.ACBrMail.FromName := DBInicio.Empresa.FANTASIA;
       DBInicio.ACBrMail.ReplyTo.Text := remetente;
@@ -2760,6 +2764,10 @@ begin
       SSLSocket := TIdSSLIOHandlerSocketOpenSSL.Create(smtp);
       SSLSocket.Intercept := DBInicio.IdConnectionIntercept1;
       msg:= tIdMessage.Create();
+
+      msg.ContentType := 'multipart/mixed'; // issue 2291
+      msg.CharSet := 'UTF-8';
+
       PreparaSMTP(usuario, smtp, SSLSocket);
       with msg do
       begin

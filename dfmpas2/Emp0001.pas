@@ -1229,10 +1229,10 @@ begin
   if not inputquery( 'Teste de envio de email','Informe o email para teste de envio:', emldest)  then
     Exit;
   corpo := TStringList.Create;
-  corpo.Add('Corpo da mensagem de Teste servidor NFE');
+  corpo.Add('Corpo da mensagem com acentuação de Teste servidor NFE');
   anexos := TStringList.Create;
   anexos.Add(dbInicio.SistemaLocal + 'Manuais\Adjutor MX_Manual.pdf');
-  if EnviaMail('NFE', DBInicio.Empresa.EMAIL, emldest, 'Teste de envio de Email NFE', DBInicio.Empresa.EMAIL, corpo, anexos) then
+  if EnviaMail('NFE', DBInicio.Empresa.EMAIL, emldest, 'Teste de envio com acentuação de Email NFE', DBInicio.Empresa.EMAIL, corpo, anexos) then
     ShowMessage('Mensagem enviada com sucesso!');;
   exit;
 end;
