@@ -1,18 +1,18 @@
 inherited frmPesqDoacao: TfrmPesqDoacao
   Caption = 'Pesquisa de Vendas Doa'#231#227'o'
   ClientHeight = 557
-  ClientWidth = 1114
+  ClientWidth = 1285
   Position = poMainFormCenter
   OnResize = FormResize
-  ExplicitWidth = 1130
+  ExplicitWidth = 1301
   ExplicitHeight = 596
   PixelsPerInch = 96
   TextHeight = 13
   object Panel1: TPanel [0]
     Left = 0
     Top = 0
-    Width = 1114
-    Height = 91
+    Width = 1285
+    Height = 109
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 0
@@ -23,10 +23,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Height = 13
     end
     object BtnImprimir: TJvArrowButton
-      Left = 906
-      Top = 54
+      Left = 1038
+      Top = 51
       Width = 80
-      Height = 40
+      Height = 36
       DropDown = relatorios
       Flat = True
       FlatArrowColor = clWhite
@@ -437,8 +437,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       end
     end
     object BtnSair: TBitBtn
-      Left = 906
-      Top = 6
+      Left = 1038
+      Top = 3
       Width = 83
       Height = 24
       Hint = 'Sair'
@@ -447,8 +447,8 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       OnClick = BtnSairClick
     end
     object BitPesquisar: TBitBtn
-      Left = 906
-      Top = 30
+      Left = 1038
+      Top = 27
       Width = 83
       Height = 24
       Hint = 'Pesquisar'
@@ -459,10 +459,10 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       OnClick = BitPesquisarClick
     end
     object rgSaida: TRadioGroup
-      Left = 992
-      Top = 7
-      Width = 97
-      Height = 88
+      Left = 1124
+      Top = 4
+      Width = 65
+      Height = 83
       Caption = 'Sa'#237'da'
       Items.Strings = (
         'V'#237'deo'
@@ -479,12 +479,34 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       TabOrder = 7
       OnClick = btnRenovarRecorrenciasClick
     end
+    object rgStatusCliente: TRadioGroup
+      Left = 912
+      Top = 3
+      Width = 113
+      Height = 86
+      Caption = 'Status Cliente'
+      ItemIndex = 0
+      Items.Strings = (
+        'Ativo'
+        'Inativo'
+        'Em Recupera'#231#227'o'
+        'Todos')
+      TabOrder = 8
+    end
+    object chkRecorrente: TCheckBox
+      Left = 921
+      Top = 89
+      Width = 97
+      Height = 17
+      Caption = 'Recorrente'
+      TabOrder = 9
+    end
   end
   object dbGrPedido: TDBGrid [1]
     Left = 0
-    Top = 91
-    Width = 1114
-    Height = 434
+    Top = 109
+    Width = 1285
+    Height = 416
     Align = alClient
     DataSource = DsPedidos
     Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit, dgTitleClick, dgTitleHotTrack]
@@ -783,10 +805,11 @@ inherited frmPesqDoacao: TfrmPesqDoacao
   object Panel2: TPanel [4]
     Left = 0
     Top = 525
-    Width = 1114
+    Width = 1285
     Height = 32
     Align = alBottom
     TabOrder = 4
+    ExplicitWidth = 1114
     object Label3: TLabel
       Left = 13
       Top = 9
@@ -895,8 +918,6 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Caption = 'OK'
       TabOrder = 0
       OnClick = Panel4Click
-      ExplicitTop = 104
-      ExplicitWidth = 223
     end
     object RecorrenciaInativos: TMemo
       Left = 1
@@ -907,10 +928,6 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Lines.Strings = (
         'RecorrenciaInativos')
       TabOrder = 1
-      ExplicitLeft = 33
-      ExplicitTop = 97
-      ExplicitWidth = 168
-      ExplicitHeight = 112
     end
     object Panel3: TPanel
       Left = 1
@@ -920,9 +937,6 @@ inherited frmPesqDoacao: TfrmPesqDoacao
       Align = alTop
       Caption = 'Clientes ativos que possuem Vendedores inativados. '
       TabOrder = 2
-      ExplicitLeft = 64
-      ExplicitTop = 120
-      ExplicitWidth = 185
     end
   end
   inherited coCalcula: TACBrCalculadora
