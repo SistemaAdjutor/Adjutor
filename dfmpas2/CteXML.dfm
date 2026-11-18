@@ -1163,6 +1163,7 @@ inherited frmCte: TfrmCte
       CriticalPoints.MinValueIncluded = False
       DisplayFormat = dfCurrency
       DecimalPlaces = 2
+      EditText = '0,00'
       ReadOnly = True
       TabOrder = 0
       ZeroEmpty = True
@@ -1194,6 +1195,7 @@ inherited frmCte: TfrmCte
       CriticalPoints.MinValueIncluded = False
       DisplayFormat = dfCurrency
       DecimalPlaces = 2
+      EditText = '0,00'
       ReadOnly = True
       TabOrder = 2
       ZeroEmpty = True
@@ -1209,6 +1211,7 @@ inherited frmCte: TfrmCte
       CriticalPoints.MinValueIncluded = False
       DisplayFormat = dfCurrency
       DecimalPlaces = 2
+      EditText = '0,00'
       ReadOnly = True
       TabOrder = 3
       ZeroEmpty = True
@@ -1224,6 +1227,7 @@ inherited frmCte: TfrmCte
       CriticalPoints.MinValueIncluded = False
       DisplayFormat = dfCurrency
       DecimalPlaces = 2
+      EditText = '0,00'
       ReadOnly = True
       TabOrder = 4
       ZeroEmpty = True
@@ -1239,6 +1243,7 @@ inherited frmCte: TfrmCte
       CriticalPoints.MinValueIncluded = False
       DisplayFormat = dfCurrency
       DecimalPlaces = 2
+      EditText = '0,00'
       ReadOnly = True
       TabOrder = 5
       ZeroEmpty = True
@@ -1254,6 +1259,7 @@ inherited frmCte: TfrmCte
       CriticalPoints.MinValueIncluded = False
       DisplayFormat = dfCurrency
       DecimalPlaces = 2
+      EditText = '0,00'
       ReadOnly = True
       TabOrder = 6
       ZeroEmpty = True
@@ -1429,8 +1435,8 @@ inherited frmCte: TfrmCte
     Top = 0
   end
   inherited DBConn: TSQLConnection
-    Left = 32
-    Top = 233
+    Left = 16
+    Top = 337
   end
   inherited qAux: TSQLQuery
     Left = 210
@@ -1454,8 +1460,8 @@ inherited frmCte: TfrmCte
     Configuracoes.WebServices.QuebradeLinha = '|'
     Configuracoes.RespTec.IdCSRT = 0
     DACTE = ACBrCTeDACTeRL1
-    Left = 88
-    Top = 248
+    Left = 64
+    Top = 336
   end
   object ACBrCTeDACTeRL1: TACBrCTeDACTeRL
     Sistema = 'Projeto ACBr - www.projetoacbr.com.br'
@@ -1485,8 +1491,8 @@ inherited frmCte: TfrmCte
     EPECEnviado = False
     ImprimeDescPorc = False
     PrintDialog = True
-    Left = 128
-    Top = 232
+    Left = 136
+    Top = 328
   end
   object qCfop: TSQLQuery
     MaxBlobSize = -1
@@ -1525,8 +1531,8 @@ inherited frmCte: TfrmCte
     Aggregates = <>
     Params = <>
     ProviderName = 'dspCte'
-    Left = 352
-    Top = 249
+    Left = 336
+    Top = 321
     object cdsCteECTE_REGISTRO: TIntegerField
       FieldName = 'ECTE_REGISTRO'
       ProviderFlags = [pfInUpdate, pfInWhere, pfInKey]
@@ -1647,14 +1653,14 @@ inherited frmCte: TfrmCte
   end
   object dspCte: TDataSetProvider
     DataSet = qCte
-    Left = 296
-    Top = 249
+    Left = 288
+    Top = 321
   end
   object qCte: TSQLQuery
     MaxBlobSize = -1
     Params = <>
     SQLConnection = DataCadastros.SQLConnection1
-    Left = 248
-    Top = 249
+    Left = 240
+    Top = 321
   end
 end

@@ -365,6 +365,7 @@ procedure TfrmCte.CadastraFornecedor;
 procedure TfrmCte.CarregaXML( const scaminho : string );
   var
     sql : string;
+    ValorNaoTributado: Double;
   begin
     if scaminho <> ''
     then
@@ -473,6 +474,13 @@ procedure TfrmCte.CarregaXML( const scaminho : string );
           edtAliquotaICMS.Value := ACBrCTe1.Conhecimentos.items[ 0 ]
             .CTe.imp.ICMS.ICMS90.pICMS;
         end;
+      cst20 : // issue 2287
+        begin
+          edtBaseIcms.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS20.vBC;
+          edtValorIcms.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS20.vICMS;
+          edtCST.text := '20';
+          edtAliquotaICMS.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.imp.ICMS.ICMS20.pICMS;
+        end;
       cstICMSOutraUF :
         begin
           edtBaseIcms.Value := ACBrCTe1.Conhecimentos.items[ 0 ]
@@ -487,7 +495,9 @@ procedure TfrmCte.CarregaXML( const scaminho : string );
 
     edtValorPrest.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.vPrest.vTPrest;
     edtValorNota.Value := ACBrCTe1.Conhecimentos.items[ 0 ].CTe.vPrest.vTPrest;
-    edtValorSemTributos.Value := edtValorNota.Value - edtBaseIcms.Value;
+    ValorNaoTributado := edtValorNota.Value - edtBaseIcms.Value;
+    edtValorSemTributos.Value := ValorNaoTributado;
+
 
     cdsCte.Close;
     qCte.CommandText := 'SELECT * FROM ENTCTE WHERE ECTE_NUMERO = ' +
