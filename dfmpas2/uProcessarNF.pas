@@ -235,8 +235,13 @@ begin
     else
     begin
       Produto.Prod.uTrib     :=  qItemNota.FieldByName('PRD_UND_TRIB').AsString;
-      Produto.Prod.qTrib     :=  qItemNota.FieldByName('PRF_QUANT_TRIB').AsFloat;
-      precoUndTrib :=   qItemNota.FieldByName('NF_PRECO').AsFloat *  qItemNota.FieldByName('NF_QTDE').AsFloat / qItemNota.FieldByName('PRF_QUANT_TRIB').AsFloat ;
+
+      // issue 2292
+      // Produto.Prod.qTrib     :=  qItemNota.FieldByName('PRF_QUANT_TRIB').AsFloat;
+      // precoUndTrib :=   qItemNota.FieldByName('NF_PRECO').AsFloat *  qItemNota.FieldByName('NF_QTDE').AsFloat / qItemNota.FieldByName('PRF_QUANT_TRIB').AsFloat ;
+      Produto.Prod.qTrib     :=  qItemNota.FieldByName('NF_QTDE').AsFloat;
+      precoUndTrib :=   qItemNota.FieldByName('NF_PRECO').AsFloat;
+
       Produto.Prod.vUnTrib   := precoUndTrib;
     end;
 
