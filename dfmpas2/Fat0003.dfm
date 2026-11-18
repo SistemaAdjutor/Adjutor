@@ -1417,6 +1417,23 @@ inherited FormFatPedido: TFormFatPedido
           TabOrder = 1
           OnClick = btnAdicionarClick
         end
+        object DBRadioGroup1: TDBRadioGroup
+          Left = 11
+          Top = 75
+          Width = 361
+          Height = 33
+          Caption = 'Posi'#231#227'o da Chave Refenciada no XML'
+          Columns = 2
+          DataField = 'NF_POSICAO_CHAVE_REFERENCIADA'
+          DataSource = DsNotaFiscal
+          Items.Strings = (
+            'No Cabe'#231'alho da Nota'
+            'No item da Nota')
+          TabOrder = 2
+          Values.Strings = (
+            '0'
+            '1')
+        end
       end
       object TabSheet4: TTabSheet
         Caption = 'Exporta'#231#227'o'
@@ -4098,6 +4115,9 @@ inherited FormFatPedido: TFormFatPedido
       FieldName = 'NF_VLDIFAL'
       Size = 5
     end
+    object qNotaFiscalNF_POSICAO_CHAVE_REFERENCIADA: TIntegerField
+      FieldName = 'NF_POSICAO_CHAVE_REFERENCIADA'
+    end
   end
   object dspNotaFiscal: TDataSetProvider [25]
     DataSet = qNotaFiscal
@@ -4689,6 +4709,9 @@ inherited FormFatPedido: TFormFatPedido
     object CdsNotaFiscalNF_VLDIFAL: TFMTBCDField
       FieldName = 'NF_VLDIFAL'
       Size = 5
+    end
+    object CdsNotaFiscalNF_POSICAO_CHAVE_REFERENCIADA: TIntegerField
+      FieldName = 'NF_POSICAO_CHAVE_REFERENCIADA'
     end
   end
   object DsNotaFiscal: TDataSource [27]

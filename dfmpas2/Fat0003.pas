@@ -669,6 +669,9 @@ type
     CdsItemPedidoPRD_RETENCAO_PIS: TFMTBCDField;
     CdsItemPedidoPRD_RETENCAO_COFINS: TFMTBCDField;
     qIcmsICM_TIPO_CALCULO_ST: TIntegerField;
+    DBRadioGroup1: TDBRadioGroup;
+    CdsNotaFiscalNF_POSICAO_CHAVE_REFERENCIADA: TIntegerField;
+    qNotaFiscalNF_POSICAO_CHAVE_REFERENCIADA: TIntegerField;
 
     procedure CurrcodBancoExit(Sender: tObject);
     procedure BitConfirmaNotaClick(Sender: tObject);

@@ -186,6 +186,11 @@ begin
   while not qItemNota.Eof do
   begin
     Produto := NotaF.NFe.Det.Add;
+    if (qNota.FieldByName('NF_CHAVE_NFE_REFERENCIADA').AsString <> '') and (qNota.FieldByName('NF_POSICAO_CHAVE_REFERENCIADA').AsInteger = 1) then
+    begin
+      Produto.DFeReferenciado.chaveAcesso := qNota.FieldByName('NF_CHAVE_NFE_REFERENCIADA').AsString;;
+      Produto.DFeReferenciado.nItem := i;
+    end;
     // Produto.Prod.detExport exportação indireta
     Produto.Prod.nItem    := i;
     if DBInicio.Empresa.wPMT_UTILIZA_CODIGO_ORIG_VD and (qItemNota.FieldByName('PRDCO_CODIGO_ORIGINAL').AsString <> '') then // CODIGO ORIGINAL NA DANFE
@@ -430,14 +435,14 @@ begin
           Produto.Imposto.IBSCBS.cClassTrib := qItemNota.FieldByName('IBS_CLASS_TRIB').AsString;
 
         // Cria o grupo principal e subgrupos se necessário
-        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
-          Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+        // if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+        //  Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
 
-        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
-          Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun := TgIBSMun.Create;
+        // if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun) then
+        //  Produto.Imposto.IBSCBS.gIBSCBS.gIBSMun := TgIBSMun.Create;
 
-        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF) then
-          Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF := TgIBSUF.Create;
+        // if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF) then
+        //  Produto.Imposto.IBSCBS.gIBSCBS.gIBSUF := TgIBSUF.Create;
 
         Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
 
@@ -479,11 +484,11 @@ begin
           AliqCBS := BuscaUmDadoSQLAsFloat('SELECT PMT_CBS_ALIQUOTA FROM PRMT0001 WHERE EMP_CODIGO = ' + QuotedStr(dbInicio.EMP_CODIGO));
 
 
-        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
-          Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
+        // if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS) then
+        //  Produto.Imposto.IBSCBS.gIBSCBS := TgIBSCBS.Create;
 
-        if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gCBS) then
-          Produto.Imposto.IBSCBS.gIBSCBS.gCBS := TgCBS.Create;
+        // if not Assigned(Produto.Imposto.IBSCBS.gIBSCBS.gCBS) then
+        //   Produto.Imposto.IBSCBS.gIBSCBS.gCBS := TgCBS.Create;
 
         Produto.Imposto.IBSCBS.gIBSCBS.vBC := qItemNota.FieldByName('TOTAL').AsFloat;
         Produto.Imposto.IBSCBS.gIBSCBS.gCBS.pCBS := AliqCBS;
@@ -768,7 +773,7 @@ begin
    ' NF_VLSEGURO, NF_DESP_ACES, NF_VLDIFAL, NF_VL_DESCTO, NF_VL_DESCTO_FAT,                                                                     '+
    ' NF_TOT_PROD, NF_TOT_NOTA , NF_VL_IPI, NF_BASE_IPI, NF_VALORTOT_PIS, NF_EMISSAO,NF_SAIDA,NF_HORASAIDA,                          '+
    ' nf.OPE_NATUREZA, nf.OPE_CODIGO, OPE_DESCRI,  NF_TIPODOC,                                                                       '+
-   ' NF_MODELO_NF, NF_SERIE, NF_TIPO_FRETE,nf_observacao, NF_CHAVE_NFE,                                                        '+
+   ' NF_MODELO_NF, NF_SERIE, NF_TIPO_FRETE,nf_observacao, NF_CHAVE_NFE, NF_POSICAO_CHAVE_REFERENCIADA,                         '+
    ' NF_PLACAVE, nf.nf_ufveiculo,                                                                                              '+
    ' ped.TRP_CODIGO, tr.TRP_RAZAO, trp_cep, PED_FRETE,                                                                         '+
    ' Tr.TRP_UF , TRP_INSC , TRP_CGC ,TRP_ENDERE,TRP_CIDADE, TRP_FONE,                                                          '+
@@ -2221,7 +2226,7 @@ begin
   //devolução
   if (NotaF.NFe.Ide.finNFe in [fnComplementar, fnAjuste, fnDevolucao]) or ( qnota.FieldByName('CLI_UF_ENTR').AsString = 'EX' )  then
   begin
-   if qNota.FieldByName('NF_CHAVE_NFE_REFERENCIADA').AsString <> '' then
+   if (qNota.FieldByName('NF_CHAVE_NFE_REFERENCIADA').AsString <> '') and (qNota.FieldByName('NF_POSICAO_CHAVE_REFERENCIADA').AsInteger = 0) then
    begin
      Referenciada := NotaF.NFe.Ide.NFref.Add;
      Referenciada.refNFe  := qNota.FieldByName('NF_CHAVE_NFE_REFERENCIADA').AsString;
