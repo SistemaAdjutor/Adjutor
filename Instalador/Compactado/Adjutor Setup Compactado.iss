@@ -2,8 +2,8 @@
 ; [Inno Setup(BR)]
 #define DataCriacaoInstalador GetDateTimeString('dd/mm/yyyy', '/', ':') 
 #define NomeAplicacao "Adjutor"
-#define VersaoBuild "616"
-#define VersaoSistema "3.0.9.616"
+#define VersaoBuild "617"
+#define VersaoSistema "3.0.9.617"
 #define PatchSistema ""
 #define Patch StringChange(PatchSistema," ","")
 #define MyAppPublisher "NOVI SISTEMAS"

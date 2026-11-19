@@ -1,0 +1,14 @@
+﻿Inicio da versão: 18/11/2026
+Atualizado em 18/11/2026
+
+principal: Embraterm, Edge, RPS, Parseals, LForja, Embraterm, Bepine, B.Avilla, Collect, Arkson
+	2272 - Embraterm - localizar campo de layout da tabela de preço/ acordo comercial
+	2286 - Edge - Incluir cálculo da quantidade de referências selecionadas
+	2287 - RPS - Valor não tributado incorreto na importação de XML de CT-e
+	2289 - Parseals - Pedido de entrada sem gera movimentação
+	2290 - LForja - Pedido como faturado total aparecendo no como pedente para faturar
+	2291 - Embraterm - envio de emails quebrando com caracteres
+	2292 - Bepine - itens faturando sem quantidade Tributaria
+	2293 - B.avilla - ST 40 excluindo Cbenf regra fiscal
+	2294 - Collect - Erro de filtro tela pedidos
+	2295 - Arkson - Industrialização por Kit – Validação incorreta do saldo do Kardex	 - 

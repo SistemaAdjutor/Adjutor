@@ -7,8 +7,8 @@ inherited frmImportarXMLMigracaoNovi: TfrmImportarXMLMigracaoNovi
   FormStyle = fsMDIChild
   Position = poMainFormCenter
   Visible = True
-  ExplicitWidth = 1016
-  ExplicitHeight = 497
+  ExplicitWidth = 1024
+  ExplicitHeight = 509
   PixelsPerInch = 96
   TextHeight = 13
   object ListViewLNK: TListView [0]
@@ -202,6 +202,10 @@ inherited frmImportarXMLMigracaoNovi: TfrmImportarXMLMigracaoNovi
     Visible = False
     object TabSheet1: TTabSheet
       Caption = 'Processadas'
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object ListView1: TListView
         Left = 0
         Top = 0
@@ -220,6 +224,10 @@ inherited frmImportarXMLMigracaoNovi: TfrmImportarXMLMigracaoNovi
     object TabSheet2: TTabSheet
       Caption = 'Ignoradas'
       ImageIndex = 1
+      ExplicitLeft = 0
+      ExplicitTop = 0
+      ExplicitWidth = 0
+      ExplicitHeight = 0
       object ListView2: TListView
         Left = 0
         Top = 0
